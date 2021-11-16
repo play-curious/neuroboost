@@ -1,0 +1,29 @@
+{
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "lib": ["es2020", "dom"],
+    "listEmittedFiles": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "pretty": true,
+    "target": "es2019",
+    // Required for importing 3rd-party dependencies like EventEmitter3
+    "esModuleInterop": true,
+    // Loaders needs this to use the more strict mini-signal types
+    "paths": {
+      "mini-signals": [
+        "node_modules/resource-loader/typings/mini-signals.d.ts"
+      ]
+    },
+    "baseUrl": "./"
+  }
+}

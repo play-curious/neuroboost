@@ -1,0 +1,32 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "You see two doors\n\n[[Go to the left|left]]\n[[Go to the right|right]]",
+		"position": {
+			"x": 439,
+			"y": 122
+		},
+		"colorID": 0
+	},
+	{
+		"title": "left",
+		"tags": "",
+		"body": "It's beautiful on the left",
+		"position": {
+			"x": 783,
+			"y": 118
+		},
+		"colorID": 0
+	},
+	{
+		"title": "right",
+		"tags": "",
+		"body": "It's ugly on the right",
+		"position": {
+			"x": 464,
+			"y": 427
+		},
+		"colorID": 0
+	}
+]

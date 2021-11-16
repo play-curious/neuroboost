@@ -1,0 +1,24 @@
+title: Start
+tags: 
+colorID: 0
+position: 439,122
+---
+You see two doors
+
+[[Go to the left|left]]
+[[Go to the right|right]]
+===
+title: left
+tags: 
+colorID: 0
+position: 783,118
+---
+It's beautiful on the left
+===
+title: right
+tags: 
+colorID: 0
+position: 464,427
+---
+It's ugly on the right
+===
