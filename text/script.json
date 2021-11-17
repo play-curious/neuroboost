@@ -1,0 +1,32 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "<<changeBackground 0x0000ff>>\n\nYou see two doors\n\nJon: Don't go to the right \n\n[[Go to the left|left]]\n[[Go to the right|right]]",
+		"position": {
+			"x": 373,
+			"y": 111
+		},
+		"colorID": 0
+	},
+	{
+		"title": "left",
+		"tags": "",
+		"body": "<<changeBackground 0x00ff00>>\n\nIt's beautiful on the left",
+		"position": {
+			"x": 782,
+			"y": 117
+		},
+		"colorID": 0
+	},
+	{
+		"title": "right",
+		"tags": "",
+		"body": "<<changeBackground 0xff0000>>\n\nIt's ugly on the right",
+		"position": {
+			"x": 492,
+			"y": 426
+		},
+		"colorID": 0
+	}
+]
