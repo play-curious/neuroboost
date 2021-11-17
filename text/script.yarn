@@ -1,24 +1,34 @@
 title: Start
-tags: 
+tags: tagOne tagTwo
 colorID: 0
-position: 439,122
+position: 373,111
 ---
-You see two doors
+<<changeBackground 0x0000ff>>
+
+<<set $doorCount to 2>>
+
+You see {$doorCount} doors
+
+Jon: Don't go to the right 
 
 [[Go to the left|left]]
 [[Go to the right|right]]
 ===
 title: left
-tags: 
+tags: tagTwo tagThree
 colorID: 0
-position: 783,118
+position: 782,116
 ---
+<<changeBackground 0x00ff00>>
+
 It's beautiful on the left
 ===
 title: right
 tags: 
 colorID: 0
-position: 464,427
+position: 492,426
 ---
+<<changeBackground 0xff0000>>
+
 It's ugly on the right
 ===

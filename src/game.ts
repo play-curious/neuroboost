@@ -45,6 +45,8 @@ class MainScene extends entity.EntityBase {
     }
 
     console.log("nodeValue", this._nodeValue);
+    console.log("tags", this._nodeValue.data.tags);
+    console.log("data", this._runner.variables.data);
 
     if (this._nodeValue instanceof bondage.TextResult) {
       console.log("text result", this._nodeValue.text);

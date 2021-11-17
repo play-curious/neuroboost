@@ -1,8 +1,8 @@
 [
 	{
 		"title": "Start",
-		"tags": "",
-		"body": "<<changeBackground 0x0000ff>>\n\nYou see two doors\n\nJon: Don't go to the right \n\n[[Go to the left|left]]\n[[Go to the right|right]]",
+		"tags": "tagOne tagTwo",
+		"body": "<<changeBackground 0x0000ff>>\n\n<<set $doorCount to 2>>\n\nYou see {$doorCount} doors\n\nJon: Don't go to the right \n\n[[Go to the left|left]]\n[[Go to the right|right]]",
 		"position": {
 			"x": 373,
 			"y": 111
@@ -11,11 +11,11 @@
 	},
 	{
 		"title": "left",
-		"tags": "",
+		"tags": "tagTwo tagThree",
 		"body": "<<changeBackground 0x00ff00>>\n\nIt's beautiful on the left",
 		"position": {
 			"x": 782,
-			"y": 117
+			"y": 116
 		},
 		"colorID": 0
 	},
