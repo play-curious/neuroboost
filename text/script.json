@@ -1,32 +1,42 @@
 [
-	{
-		"title": "Start",
-		"tags": "tagOne tagTwo",
-		"body": "<<changeBackground 0x0000ff>>\n\n<<set $doorCount to 2>>\n\nYou see {$doorCount} doors\n\nJon: Don't go to the right \n\n[[Go to the left|left]]\n[[Go to the right|right]]",
-		"position": {
-			"x": 373,
-			"y": 111
-		},
-		"colorID": 0
-	},
-	{
-		"title": "left",
-		"tags": "tagTwo tagThree",
-		"body": "<<changeBackground 0x00ff00>>\n\nIt's beautiful on the left",
-		"position": {
-			"x": 782,
-			"y": 116
-		},
-		"colorID": 0
-	},
-	{
-		"title": "right",
-		"tags": "",
-		"body": "<<changeBackground 0xff0000>>\n\nIt's ugly on the right",
-		"position": {
-			"x": 492,
-			"y": 426
-		},
-		"colorID": 0
-	}
+  {
+    "title": "Start",
+    "tags": "tagOne tagTwo",
+    "body": "<<changeBackground 0x0000ff>>\n\n<<set $doorCount to 2>>\n\nYou see {$doorCount} doors\n\n<< if $doorCount is 2 >>\nThere are two doors, yay!\n<< else  >>\nThere are not two doors. WTF?\n<< endif >>\n\nTime to jump!\n\n[[Jump]]",
+    "position": {
+      "x": 266,
+      "y": -19
+    },
+    "colorID": 0
+  },
+  {
+    "title": "left",
+    "tags": "tagTwo tagThree",
+    "body": "<<changeBackground 0x00ff00>>\n\nIt's beautiful on the left",
+    "position": {
+      "x": 782,
+      "y": 116
+    },
+    "colorID": 0
+  },
+  {
+    "title": "right",
+    "tags": "",
+    "body": "<<changeBackground 0xff0000>>\n\nIt's ugly on the right",
+    "position": {
+      "x": 492,
+      "y": 426
+    },
+    "colorID": 0
+  },
+  {
+    "title": "Jump",
+    "tags": "",
+    "body": "Jon: Don't go to the right \n\n\n[[Go to the left|left]]\n[[Go to the right|right]]",
+    "position": {
+      "x": 610,
+      "y": -125
+    },
+    "colorID": 0
+  }
 ]

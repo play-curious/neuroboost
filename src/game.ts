@@ -1,11 +1,16 @@
 import * as PIXI from "pixi.js";
+import * as _ from "underscore";
 
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
-import { util } from "prettier";
 
-// Bondage is loaded as global variable
+// Bondage is loaded as a global variable
 declare const bondage: any;
+
+// Initilize Underscore templates to ressemble YarnSpinner
+const templateSettings = {
+  interpolate: /\{\s*\$(.+?)\s*\}/g,
+};
 
 class MainScene extends entity.EntityBase {
   private _runner: any;
@@ -45,13 +50,19 @@ class MainScene extends entity.EntityBase {
     }
 
     console.log("nodeValue", this._nodeValue);
-    console.log("tags", this._nodeValue.data.tags);
+    console.log("tags", this._nodeValue.data?.tags);
     console.log("data", this._runner.variables.data);
 
     if (this._nodeValue instanceof bondage.TextResult) {
       console.log("text result", this._nodeValue.text);
 
-      this._nodeDisplay = new PIXI.Text(this._nodeValue.text, {
+      // Use underscore template to interpolate variables
+      const interpolatedText = _.template(
+        this._nodeValue.text,
+        templateSettings
+      )(this._runner.variables.data);
+
+      this._nodeDisplay = new PIXI.Text(interpolatedText, {
         fill: "white",
       });
       this._nodeDisplay.interactive = true;
