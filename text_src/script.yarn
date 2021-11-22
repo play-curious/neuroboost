@@ -1,7 +1,7 @@
 title: Start
 tags: tagOne tagTwo
 colorID: 0
-position: 373,111
+position: 264,-21
 ---
 <<changeBackground 0x0000ff>>
 
@@ -9,10 +9,21 @@ position: 373,111
 
 You see {$doorCount} doors
 
-Jon: Don't go to the right 
+<< if $doorCount is 2 >>
+There are two doors, yay!
+<< else  >>
+There are not two doors. WTF?
+<< endif >>
 
-[[Go to the left|left]]
-[[Go to the right|right]]
+Want to try a shortcut?
+-> Yes
+    Good choice
+-> No
+    You mean yes? Good choice
+
+Time to jump!
+
+[[Jump]]
 ===
 title: left
 tags: tagTwo tagThree
@@ -31,4 +42,15 @@ position: 492,426
 <<changeBackground 0xff0000>>
 
 It's ugly on the right
+===
+title: Jump
+tags: 
+colorID: 0
+position: 610,-125
+---
+Jon: Don't go to the right 
+
+
+[[Go to the left|left]]
+[[Go to the right|right]]
 ===
