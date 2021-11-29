@@ -15,6 +15,10 @@ const transitions = {
 };
 
 const graphicalAssets = [
+  // UI
+  "images/ui/dialog.png",
+
+  // Backgrounds
   "images/bg/bedroom.png",
   "images/bg/bedroom_night.png",
 

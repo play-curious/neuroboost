@@ -35,6 +35,8 @@ const templateSettings = {
   interpolate: /\{\s*\$(.+?)\s*\}/g,
 };
 
+const dialogRegexp = /^(\w+):(.+)/;
+
 const characterAnimations: { [key: string]: string[] } = {
   fred: ["cloth", "hair", "sleeves"],
 };
@@ -51,6 +53,7 @@ export class DialogScene extends entity.CompositeEntity {
   private _background: PIXI.Sprite;
   private _characterLayer: PIXI.Container;
   private _characterEntity: entity.ParallelEntity;
+  private _uiLayer: PIXI.Container;
 
   private _nodeDisplay: PIXI.DisplayObject;
 
@@ -67,6 +70,14 @@ export class DialogScene extends entity.CompositeEntity {
 
     this._characterLayer = new PIXI.Container();
     this._container.addChild(this._characterLayer);
+
+    this._uiLayer = new PIXI.Container();
+    this._uiLayer.addChild(
+      new PIXI.Sprite(
+        this.entityConfig.app.loader.resources["images/ui/dialog.png"].texture
+      )
+    );
+    this._container.addChild(this._uiLayer);
 
     this._runner = new bondage.Runner();
     this._runner.load(this.entityConfig.jsonAssets[this.scriptName]);
@@ -110,13 +121,50 @@ export class DialogScene extends entity.CompositeEntity {
         templateSettings
       )(this._runner.variables.data);
 
-      this._nodeDisplay = new PIXI.Text(interpolatedText, {
-        fill: "white",
-      });
-      this._nodeDisplay.interactive = true;
-      this._nodeDisplay.buttonMode = true;
-      this._on(this._nodeDisplay, "pointerup", this._advance);
+      let speaker, dialog: string;
+      if (dialogRegexp.test(interpolatedText)) {
+        let match = dialogRegexp.exec(interpolatedText);
+        speaker = match[1];
+        dialog = match[2].trim();
+      }
+
+      this._nodeDisplay = new PIXI.Container();
       this._container.addChild(this._nodeDisplay);
+
+      if (speaker && speaker.toLowerCase() !== "you") {
+        const speakerText = new PIXI.Text(speaker, {
+          fill: "white",
+          fontFamily: "Ubuntu",
+          fontSize: 40,
+        });
+        speakerText.position.set(437, 637);
+        speakerText.anchor.set(0.5);
+        (this._nodeDisplay as PIXI.Container).addChild(speakerText);
+      }
+
+      {
+        const hitBox = new PIXI.Container();
+        hitBox.position.set(140, 704);
+        hitBox.hitArea = new PIXI.Rectangle(0, 0, 1634, 322);
+        hitBox.interactive = true;
+        hitBox.buttonMode = true;
+        this._on(hitBox, "pointerup", this._advance);
+        (this._nodeDisplay as PIXI.Container).addChild(hitBox);
+      }
+
+      {
+        const dialogBox = new PIXI.Text(dialog || interpolatedText, {
+          fill: "white",
+          fontFamily: "Ubuntu",
+          fontSize: 40,
+          fontStyle: speaker ? "normal" : "italic",
+          wordWrap: true,
+          wordWrapWidth: 1325,
+          leading: 5,
+        });
+        dialogBox.position.set(140 + 122, 704 + 33);
+        (this._nodeDisplay as PIXI.Container).addChild(dialogBox);
+      }
     } else if (this._nodeValue instanceof bondage.OptionsResult) {
       // This works for both links between nodes and shortcut options
       console.log("options result", this._nodeValue.options);
@@ -124,11 +172,14 @@ export class DialogScene extends entity.CompositeEntity {
       this._nodeDisplay = new PIXI.Container();
       this._container.addChild(this._nodeDisplay);
 
+      let lastY = 704 + 33;
       for (let i = 0; i < this._nodeValue.options.length; i++) {
         const optionText = new PIXI.Text(this._nodeValue.options[i], {
-          fill: "yellow",
+          fill: 0xfdf4d3,
+          fontFamily: "Ubuntu",
+          fontSize: 40,
         });
-        optionText.position.set(10, 20 + i * 40);
+        optionText.position.set(140 + 122, lastY);
         optionText.interactive = true;
         optionText.buttonMode = true;
         this._on(optionText, "pointerup", () => {
@@ -136,6 +187,8 @@ export class DialogScene extends entity.CompositeEntity {
           this._advance();
         });
         (this._nodeDisplay as PIXI.Container).addChild(optionText);
+
+        lastY += optionText.height + 10;
       }
       // Select based on the option's index in the array (if you don't select an option, the dialog will continue past them)
       // this._nodeValue.select(1);
@@ -170,15 +223,22 @@ export class DialogScene extends entity.CompositeEntity {
 
     // Parse tags
     for (const tag of newNodeData.tags) {
+      let bg: string;
+      let character: string;
       if (tag.startsWith("bg:")) {
-        const bg: string = tag.split(":")[1].trim();
-        this.changeBackground(bg);
+        if (bg) console.warn("Trying to set background twice");
+
+        bg = tag.split(":")[1].trim();
       } else if (tag.startsWith("show:")) {
-        const character: string = tag.split(":")[1].trim();
-        this.changeCharacter(character);
+        if (character) console.warn("Trying to set character twice");
+
+        character = tag.split(":")[1].trim();
       } else {
         console.warn("Unknown tag in node data", tag);
       }
+
+      if (bg) this.changeBackground(bg);
+      this.changeCharacter(character);
     }
 
     this.emit("changeNodeData", oldNodeData, newNodeData);
@@ -194,7 +254,8 @@ export class DialogScene extends entity.CompositeEntity {
     this._lastBg = bg;
   }
 
-  changeCharacter(character: string): void {
+  // If character is null or undefined, will just remove current character
+  changeCharacter(character?: string): void {
     if (character === this._lastCharacter) return;
 
     // Remove all previous characters
@@ -203,31 +264,35 @@ export class DialogScene extends entity.CompositeEntity {
     if (this._characterEntity)
       this._deactivateChildEntity(this._characterEntity);
 
-    const characterContainer = new PIXI.Container();
+    if (character) {
+      const characterContainer = new PIXI.Container();
 
-    this._characterEntity = new entity.ParallelEntity();
-    this._activateChildEntity(
-      this._characterEntity,
-      entity.extendConfig({ container: characterContainer })
-    );
-
-    const baseDir = `images/characters/${character}`;
-
-    {
-      const baseSprite = new PIXI.Sprite(
-        this.entityConfig.app.loader.resources[baseDir + "/base.png"].texture
+      this._characterEntity = new entity.ParallelEntity();
+      this._activateChildEntity(
+        this._characterEntity,
+        entity.extendConfig({ container: characterContainer })
       );
-      characterContainer.addChild(baseSprite);
-    }
 
-    for (const animation of characterAnimations[character]) {
-      const animatedSpriteEntity = util.makeAnimatedSprite(
-        this._entityConfig.app.loader.resources[`${baseDir}/${animation}.json`]
-      );
-      this._characterEntity.addChildEntity(animatedSpriteEntity);
-    }
+      const baseDir = `images/characters/${character}`;
 
-    this._characterLayer.addChild(characterContainer);
+      {
+        const baseSprite = new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[baseDir + "/base.png"].texture
+        );
+        characterContainer.addChild(baseSprite);
+      }
+
+      for (const animation of characterAnimations[character]) {
+        const animatedSpriteEntity = util.makeAnimatedSprite(
+          this._entityConfig.app.loader.resources[
+            `${baseDir}/${animation}.json`
+          ]
+        );
+        this._characterEntity.addChildEntity(animatedSpriteEntity);
+      }
+
+      this._characterLayer.addChild(characterContainer);
+    }
 
     this._lastCharacter = character;
   }
