@@ -70,15 +70,15 @@ module.exports = {
           to: "deps",
         },
 
-        // // Copy game assets
-        // {
-        //   from: "images",
-        //   to: "images",
-        // },
-        // {
-        //   from: "fonts",
-        //   to: "fonts",
-        // },
+        // Copy game assets
+        {
+          from: "images",
+          to: "images",
+        },
+        {
+          from: "fonts",
+          to: "fonts",
+        },
         // {
         //   from: "audio",
         //   to: "audio",

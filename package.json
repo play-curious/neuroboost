@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "scripts": "gulp",
     "serve": "webpack serve --config webpack.dev.js",
     "start": "yarn serve",
     "build": "webpack --config webpack.dev.js",
