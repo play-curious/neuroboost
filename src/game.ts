@@ -38,7 +38,7 @@ const graphicalAssets = [
   "images/characters/temde/static.png",
 ];
 
-const fontAssets: string[] = ["Ubuntu"];
+const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 const jsonAssets = [{ key: "level1", url: "text/level1.json" }];
 

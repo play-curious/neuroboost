@@ -124,7 +124,7 @@ export class DialogScene extends entity.CompositeEntity {
     );
 
     // Setup clock
-    this._clock = new Clock(new PIXI.Point(1920 - 557, 0));
+    this._clock = new Clock(new PIXI.Point(1920 - 557 / 2, 0));
     this._on(
       this._variableStorage,
       "change:time",
@@ -440,7 +440,7 @@ class Clock extends entity.EntityBase {
       leading: 10,
       align: "center",
     });
-    this._textBox.position.set(270, 164);
+    this._textBox.position.set(270 / 2, 164 / 2);
     this._textBox.anchor.set(0.5);
     this._container.addChild(this._textBox);
 
@@ -454,8 +454,12 @@ class Clock extends entity.EntityBase {
   private _updateText() {
     const hours = Math.floor(this._minutesSinceMidnight / 60);
     const minutes = this._minutesSinceMidnight % 60;
+    const time = `${hours} : ${minutes < 10 ? "0" + minutes : minutes}`;
 
-    this._textBox.text = `${hours}h${minutes}`;
+    // TODO: make this configurable
+    const day = "Lundi";
+
+    this._textBox.text = `${time}\n${day}`;
   }
 
   get minutesSinceMidnight(): number {

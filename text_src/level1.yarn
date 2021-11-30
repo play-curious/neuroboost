@@ -32,7 +32,7 @@ You: Ouais ouais...
 Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam?
 You: Ouais... Vous poussez un grand soupir avant de raccrocher
 
-<< set $time to time + 15 >>
+<< set $time to $time + 15 >>
 
 [[Phone_off]]
 ===
