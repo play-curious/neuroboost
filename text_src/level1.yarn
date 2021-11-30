@@ -1,13 +1,16 @@
 title: Start
 tags: bg:bedroom
 colorID: 0
-position: -657,-334
+position: -683,-395
 ---
+<< set $time to 540 >>
+
 Bip! Bip! Il est 8 heures vous rappelle votre horloge connectée. 
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
 Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler :
-[[prendre l'appel|Appel_Fred]]
-[[rejeter l'appel|Rejet_Fred]]
+
+[[Prendre l'appel|Appel_Fred]]
+[[Rejeter l'appel|Rejet_Fred]]
 ===
 title: Appel_Fred
 tags: show:fred
@@ -28,6 +31,9 @@ Fred: C'est ça quand on est un génie.
 You: Ouais ouais...
 Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam?
 You: Ouais... Vous poussez un grand soupir avant de raccrocher
+
+<< set $time to time + 15 >>
+
 [[Phone_off]]
 ===
 title: Rejet_Fred
@@ -36,8 +42,8 @@ colorID: 0
 position: -292,-363
 ---
 Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle aussitôt!
-[[prendre l'appel|Appel_Fred]]
-[[rejeter appel|Rejet_Fred]]
+[[Prendre l'appel|Appel_Fred]]
+[[Rejeter appel|Rejet_Fred]]
 ===
 title: Phone_off
 tags: 
@@ -48,7 +54,6 @@ Vraiment ce Fred, il vous agace. Il ne fout rien et il passe haut la main! Il es
 Et c'est cette semaine que ça va se produire! La semaine de partiels de fin de semestre! Vous allez lui montrer de quelle étoffe sont fait les vrais winners!
 Il vous reste 6 heures avant l'heure H... 
 Il y a de quoi faire pour montrer à Fred qui est le Big Winner de l'Académie! 
-Alors, qu'allez vous faire ?
 [[Action_List]]
 ===
 title: Action_List
@@ -67,7 +72,7 @@ Que faites-vous maintenant?
 title: Petit_dej
 tags: bg:kitchen
 colorID: 0
-position: -842,251
+position: -843,249
 ---
 Yum Yum... Rien ne vaut une boîte de chimicookies et un synthécafé après le réveil. 
 De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le café traditionnels. Heureusement que le génie génétique permet désormais de resynthétiser tout ce qui a poussé ou vécu sur la Terre originelle...
@@ -86,7 +91,7 @@ Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, pu
 title: Revision
 tags: bg:desk
 colorID: 0
-position: -1088,259
+position: -1089,258
 ---
 Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Management. Rien que le titre vous barbe. ça commence mal...
 Vous passez les 2 heures à potasser ce long pensum ennuyeux. C'est à vous dégoûter de devenir un jour astronaute. Vous qui êtes super fan de Star Mars, du corsaire Yann Salto et du Chevalier Laser Dude Highwalker...
@@ -107,22 +112,22 @@ Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant.
 title: Lunch
 tags: bg:kitchen
 colorID: 0
-position: -1074,539
+position: -1075,538
 ---
 Yum Yum... Délicieux ce Burger Big Proteins Double Cheese!
 Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant de l'examen!
 Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures...
 Et maintenant, 
-[[il est temps d'aller en classe|Test]]
+[[Il est temps d'aller en classe|Test]]
 ===
 title: Test
 tags: bg:class
 colorID: 0
-position: -756,529
+position: -757,529
 ---
 Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier : ''Sujet d'examen'', que le compteur se met en route. 
 Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi.
-Après avoir validé votre rendu digital, vous quittez la salle et [[retrouvez Fred, qui vous attend à l'entrée de la classe|Post_Test]].
+Après avoir validé votre rendu digital, vous quittez la salle et [[Retrouvez Fred, qui vous attend à l'entrée de la classe|Post_Test]].
 ===
 title: Post_Test
 tags: bg:class show:fred
@@ -188,7 +193,7 @@ Demain est un autre jour, vivement demain...
 title: Reveil_Sage
 tags: bg:bedroom_night 
 colorID: 0
-position: -1431,783
+position: -1434,781
 ---
 Temde: Hello! Je te réveille?
 Vous vous redressez subitement! Quelle drôle de rêve! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras...
@@ -201,13 +206,13 @@ Temde: Salut! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom?
 
 <<input name>>
 
-Temde: Enchantée $name, lève-toi, on a du pain sur la planche!
+Temde: Enchantée { $name }, lève-toi, on a du pain sur la planche!
 You: Suiiiiis faaaaaaatigué...........
 Temde: Arrête tes jérémiades! T'as bricolé comme tu as pu, ça n'a pas marché. T'as juste qu'à reprendre le chantier et basta!
 You: Noon! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire! You: J'ai raté, j'ai raté. C'est fini, foutu!
-Temde: Pas du tout $name! Si je suis ici, c'est parce qu'on t'offre une seconde chance! Tu vas réparer ton engin académique, je te dis que ça! Allez suis-moi, on t'attend là-bas!
+Temde: Pas du tout { $name }! Si je suis ici, c'est parce qu'on t'offre une seconde chance! Tu vas réparer ton engin académique, je te dis que ça! Allez suis-moi, on t'attend là-bas!
 You: Qui m'attend? Où là-bas?
-Temde: Assez de blabla $name, suis-moi. On va pas y passer toute la nuit quand même!
+Temde: Assez de blabla { $name }, suis-moi. On va pas y passer toute la nuit quand même!
 
 [[Dire à cette fichue apparition onirique //Temdé// de s'en aller|Tenter_rester_chambre]]
 [[Se laisser guider par l'iréelle Miss Temdé|Assemblee_Sages]]
@@ -231,28 +236,28 @@ colorID: 0
 position: -870,908
 ---
 L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes.
-Temde: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, $name.
+Temde: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }.
 You: Mais....
-Azul: T'inquiète $name, mes confères et moi, on arrive parfois à lire dans tes pensées. C'est pour faciliter la communication
+Azul: T'inquiète { $name }, mes confères et moi, on arrive parfois à lire dans tes pensées. C'est pour faciliter la communication
 Sapiens: Tout à fait. Sinon nous risquerions de perdre un temps précieux dans des prolégomènes et des malentendus sans queue ni tête.
 Temde: C'est ça oui. Comme si ''Master Sapiens'' savait faire court...
 Ledai: Du calme ''Master Sapiens'' et ''Miss Temdé''. Et si nous abordions la question du soir...
-Azul: Attendez messieurs. C'est la première nuit que nous nous immisçons dans la vie de $name. Notre visiteur de ce soir ne sait plus à quel sage se vouer. Surtout qu'il ne nous connaît pas encore.
+Azul: Attendez messieurs. C'est la première nuit que nous nous immisçons dans la vie de { $name }. Notre visiteur de ce soir ne sait plus à quel sage se vouer. Surtout qu'il ne nous connaît pas encore.
 Sapiens: Très juste, ''Azul''. Puisque j'ai pris la parole, je me présente : je suis ''Master Sapiens'', le Gardien des Savoirs
 Ledai: Et moi, je suis ''Ledaï'', le Gardien des Pratiques.
-Azul: Enchanté de te rencontrer, $name. On m'appelle ''Azul'', le Gardien des Précognitions.
+Azul: Enchanté de te rencontrer, { $name }. On m'appelle ''Azul'', le Gardien des Précognitions.
 Ledai: Et tu as déjà fait la connaissance de notre 4e sage ''Miss Temdé''...
 Temde: ... La Gardienne des Improvisations.
 You: C'est pas possible, mon rêve devient de plus en plus en délirant.
-Azul: Pas du tout $name. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens.
+Azul: Pas du tout { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens.
 Sapiens: Tout à fait, ''Azul''. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi.
 [[Cékoilamétaconnexion???|Metaconnexion]]
 [[La Métacognition, déjà entendu parler|Metacognition]]
 ===
 title: Metaconnexion
-tags: 
+tags: autoshow
 colorID: 0
-position: -533,898
+position: -534,896
 ---
 You: Heuuuuu... J'ai rien compris de ce vous avez dit. La métaconnexion???
 Azul: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien.

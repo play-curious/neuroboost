@@ -10,4 +10,7 @@ module.exports = merge(common, {
     allowedHosts: [".playcurious.games"],
     port: portFinderSync.getPort(8080),
   },
+  watchOptions: {
+    ignored: [".git/**", "text_src/**"],
+  },
 });
