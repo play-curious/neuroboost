@@ -62,14 +62,14 @@ body.embedded {
 #game-parent {
   position: relative;
 
-  /*height: 540px; !*! fallback *!*/
-  /*height: calc((9 / 16) * 100vw);*/
-  /*max-height: calc(100vh - 80px);*/
+  height: 540px; /*! fallback *!*/
+  height: calc((9 / 16) * 100vw);
+  max-height: calc(100vh - 50px);
 
   /*width: 100%;*/
 
-  height: calc((16 / 9) * 100vw);
-  max-height: calc(100vh - 50px);
+  /* height: calc((16 / 9) * 100vw);
+  max-height: calc(100vh - 50px); */
 
   /* This background color will be overridden by the image */
   background-color: #1d1d32;
@@ -84,7 +84,7 @@ body.embedded {
 }
 
 .embedded #game-parent {
-  height: calc((16 / 9) * 100vw);
+  height: calc((9 / 16) * 100vw);
   max-height: 100vh;
 
   background-color: unset;
@@ -113,7 +113,7 @@ body.embedded {
   /*height: 540px; !* fallback *!*/
   /*height: calc((9 / 16) * 100vw);*/
 
-  height: calc((16 / 9) * 100vw);
+  height: calc((9 / 16) * 100vw);
   max-height: calc(100vh - 50px);
 
   /* Center the element
@@ -128,7 +128,7 @@ body.embedded {
 }
 
 .embedded #game-parent canvas {
-  height: calc((16 / 9) * 100vw);
+  height: calc((9 / 16) * 100vw);
   max-height: 100vh;
 }
 
