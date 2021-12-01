@@ -3,7 +3,7 @@ tags: bg:bedroom
 colorID: 0
 position: -683,-395
 ---
-<< set $time to 540 >>
+<< setTime 8:00 >>
 
 Bip! Bip! Il est 8 heures vous rappelle votre horloge connectée. 
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
@@ -32,7 +32,7 @@ You: Ouais ouais...
 Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam?
 You: Ouais... Vous poussez un grand soupir avant de raccrocher
 
-<< set $time to $time + 15 >>
+<< advanceTime 0:15 >>
 
 [[Phone_off]]
 ===
@@ -63,11 +63,15 @@ position: -856,-84
 ---
 Que faites-vous maintenant?
 
+<< if $time >= 720 >>
+Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
+[[Manger (à midi)|Lunch]]
+<< else>>
 [[Prendre le petit déjeuner|Petit_dej]] 
 [[Passer du temps sur le chat avec le pote d'une autre Université|Chat]]
 [[Réviser cette fichue Astronometric Data Management|Revision]]
 [[Binger votre série TV préférée|BingeTV]]
-[[Manger (à midi)|Lunch]]
+<< endif>>
 ===
 title: Petit_dej
 tags: bg:kitchen
@@ -76,7 +80,11 @@ position: -843,249
 ---
 Yum Yum... Rien ne vaut une boîte de chimicookies et un synthécafé après le réveil. 
 De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le café traditionnels. Heureusement que le génie génétique permet désormais de resynthétiser tout ce qui a poussé ou vécu sur la Terre originelle...
+
+<< advanceTime 0:30 >>
+
 Bon, ce n'est pas tout. 
+
 [[Action_List]]
 ===
 title: Chat
@@ -85,7 +93,12 @@ colorID: 0
 position: -583,238
 ---
 Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. 
-Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, puis Lou, puis Cam... Vous passez deux heures à discuter de tout, mais surtout de rien.  
+Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, puis Lou, puis Cam... 
+
+<< advanceTime 2:00 >>
+
+Vous passez deux heures à discuter de tout, mais surtout de rien.  
+
 [[Action_List]]
 ===
 title: Revision
@@ -94,7 +107,11 @@ colorID: 0
 position: -1089,258
 ---
 Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Management. Rien que le titre vous barbe. ça commence mal...
+
+<< advanceTime 2:00 >>
+
 Vous passez les 2 heures à potasser ce long pensum ennuyeux. C'est à vous dégoûter de devenir un jour astronaute. Vous qui êtes super fan de Star Mars, du corsaire Yann Salto et du Chevalier Laser Dude Highwalker...
+
 [[Action_List]]
 ===
 title: BingeTV
@@ -106,8 +123,13 @@ Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affich
 Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber. 
 Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable et séduisant corsaire Yann Salto. Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. 
 Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... Vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait détruire son moteur gauche! Il est obligé d'atterrir en catastrophe sur Tortuga.  
-Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite. Vous passez 4 heures à binger votre série préférée. Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe. 
-[[Manger (à midi)|Lunch]]
+Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite. 
+
+<< advanceTime 4:00 >>
+
+Vous passez 4 heures à binger votre série préférée. 
+
+[[Action_List]]
 ===
 title: Lunch
 tags: bg:kitchen

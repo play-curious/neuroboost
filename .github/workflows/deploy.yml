@@ -1,0 +1,46 @@
+# inside .github/workflows/action.yml
+name: Deploy to DigitalOcean
+on:
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        description: "Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)"
+        required: false
+        default: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "15"
+
+      - name: Debug with tmate
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build dist
+        run: yarn dist
+
+      - name: Upload to DigitalOcean
+        uses: idlefingers/do-space-sync-action@master
+        with:
+          args: --acl public-read
+        env:
+          SOURCE_DIR: ./dist/
+          SPACE_NAME: ${{ secrets.SPACE_NAME }}
+          SPACE_REGION: ${{ secrets.SPACE_REGION }}
+          SPACE_ACCESS_KEY_ID: ${{ secrets.SPACE_ACCESS_KEY_ID }}
+          SPACE_SECRET_ACCESS_KEY: ${{ secrets.SPACE_SECRET_ACCESS_KEY }}

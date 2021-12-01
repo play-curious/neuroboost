@@ -47,6 +47,21 @@ const characterAnimations: { [key: string]: string[] } = {
   fred: ["cloth", "hair", "sleeves"],
 };
 
+function parseTime(time: string): [number, number] {
+  const parts = time.split(":");
+  let h = 0,
+    m = 0;
+  if (parts.length === 1) {
+    h = parseInt(parts[0]);
+  } else if (parts.length === 2) {
+    h = parseInt(parts[0]);
+    m = parseInt(parts[1]);
+  } else {
+    throw new Error(`Can't parse time string "${time}`);
+  }
+  return [h, m];
+}
+
 /**
  * Variable Storage for YarnSpinner that emits events when data changes
  *
@@ -353,6 +368,18 @@ export class DialogScene extends entity.CompositeEntity {
     this._variableStorage.set(name, value);
   }
 
+  setTime(time: string) {
+    const [h, m] = parseTime(time);
+    this._variableStorage.set("time", (h * 60 + m).toString());
+  }
+
+  advanceTime(time: string) {
+    const [h, m] = parseTime(time);
+    const currentMinutes = parseInt(this._variableStorage.get("time"));
+    const newMinutes = currentMinutes + h * 60 + m;
+    this._variableStorage.set("time", newMinutes.toString());
+  }
+
   // If character is null or undefined, will just remove current character
   private _changeCharacter(character?: string): void {
     if (character === this._lastCharacter) return;
@@ -391,6 +418,7 @@ export class DialogScene extends entity.CompositeEntity {
             baseDir + "/static.png"
           ].texture
         );
+        baseSprite.scale.set(0.6);
         characterContainer.addChild(baseSprite);
       }
 
