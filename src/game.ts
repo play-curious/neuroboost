@@ -3,24 +3,53 @@ import * as _ from "underscore";
 
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
+import * as util from "booyah/src/util";
+import * as geom from "booyah/src/geom";
 
 import * as dialog from "./dialog";
+import * as journal from "./journal";
+
+// Have the HTML layer match the canvas scale and x-offset
+function resizeHtmlLayer(appSize: PIXI.Point): void {
+  const canvasBbox = document
+    .getElementById("pixi-canvas")
+    .getBoundingClientRect();
+  const canvasSize = new PIXI.Point(canvasBbox.width, canvasBbox.height);
+  const scale = util.toFixedFloor(
+    Math.min(canvasSize.x / appSize.x, canvasSize.y / appSize.y),
+    2
+  );
+  const offset = util.toFixedFloor(canvasBbox.left, 2);
+
+  console.log("setting scale", scale, "offset", offset);
+
+  const container = document.getElementById("html-layer");
+  const transformCss = `translate(${offset}px, 0px) scale(${scale})`;
+  for (const prop of ["transform", "webkitTransform", "msTransform"]) {
+    // @ts-ignore
+    container.style[prop] = transformCss;
+  }
+}
 
 const params = new URLSearchParams(window.location.search);
 const startNode = params.get("startNode") || "Start";
 
 const states: { [k: string]: entity.EntityResolvable } = {
   start: new dialog.DialogScene("level1", startNode),
+  journal: new journal.JournalScene(),
 };
 
 const transitions = {
-  start: entity.makeTransition("end"),
+  start: entity.makeTransition("journal"),
+  journal: entity.makeTransition("end"),
 };
 
 const graphicalAssets = [
   // UI
   "images/ui/dialog.png",
   "images/ui/clock.png",
+  "images/ui/journal_bg.png",
+  "images/ui/journal_button.png",
 
   // Backgrounds
   "images/bg/bedroom.png",
@@ -30,6 +59,7 @@ const graphicalAssets = [
   "images/bg/kitchen.png",
   "images/bg/party.png",
   "images/bg/circle.png",
+  "images/bg/schema_books.png",
 
   // Fred
   "images/characters/fred/static.png",
@@ -60,3 +90,7 @@ booyah.go({
   screenSize,
   splashScreen,
 });
+
+// Resize now, and force the resize to happen when the window size changes
+resizeHtmlLayer(screenSize);
+window.addEventListener("resize", () => resizeHtmlLayer(screenSize));

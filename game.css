@@ -188,6 +188,34 @@ body.embedded {
   -ms-transform: translate(-50%, -50%);
 }
 
+#html-layer {
+  position: relative;
+
+  transform-origin: 0% 0%;
+  -webkit-transform-origin: 0% 0%;
+  -ms-transform-origin: 0% 0%;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  pointer-events: none;
+}
+
+#html-layer > * {
+  pointer-events: auto;
+
+  font-family: "Jura";
+  font-size: 32pt;
+  color: white;
+}
+
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
+
 #descriptive-content {
   margin: 10px;
 }
