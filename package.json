@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "scripts": "gulp",
-    "serve": "webpack serve --config webpack.dev.js",
+    "serve": "yarn scripts && webpack serve --config webpack.dev.js",
     "start": "yarn serve",
-    "build": "webpack --config webpack.dev.js",
-    "dist": "webpack --config webpack.prod.js"
+    "build": "yarn scripts && webpack --config webpack.dev.js",
+    "dist": "yarn scripts && webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
