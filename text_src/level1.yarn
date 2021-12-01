@@ -134,11 +134,14 @@ Vous passez 4 heures à binger votre série préférée.
 title: Lunch
 tags: bg:kitchen
 colorID: 0
-position: -1075,538
+position: -1077,537
 ---
 Yum Yum... Délicieux ce Burger Big Proteins Double Cheese!
 Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant de l'examen!
 Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures...
+
+<< advanceTime 0:15 >>
+
 Et maintenant, 
 [[Il est temps d'aller en classe|Test]]
 ===
@@ -147,9 +150,16 @@ tags: bg:class
 colorID: 0
 position: -757,529
 ---
+<< setTime 14:00 >>
+
 Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier : ''Sujet d'examen'', que le compteur se met en route. 
 Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi.
-Après avoir validé votre rendu digital, vous quittez la salle et [[Retrouvez Fred, qui vous attend à l'entrée de la classe|Post_Test]].
+
+<< advanceTime 4:00 >>
+
+Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe
+
+[[Post_Test]]
 ===
 title: Post_Test
 tags: bg:class show:fred
@@ -166,23 +176,30 @@ Fred: Yes, tu n'en as pas trouvé.
 You: Non.
 Fred: C'est dommage. Tu sais qu'une mauvaise réponse t'enlève autant de point qu'une bonne réponse.
 You: Heuuuu...
+
+<< advanceTime 0:15 >>
+
 Fred s'apprête à vous répondre quand la sonnerie retentit. Les résultats du test viennent de tomber...
+
 [[Consulter les résultats|Resultats_Bad]]
 ===
 title: Resultats_Bad
 tags: bg:class show:fred
 colorID: 0
-position: -116,515
+position: -119,511
 ---
 Hélas... Fred n'avait pas tort... Les scores s'affichent sur l'écran de la porte principale. Vous êtes dans le peloton... de queue... La semaine de sprint commence mal...
 Fred: Hé, ça va? Tu as l'air tout blême d'un coup.
 You: Ben... J'ai tout juste ''D-''.
 Fred: Hé alors? Ce n'est pas la fin du monde. Ce n'est qu'une note parmi d'autres. Tu vas te rattraper.
 You: Facile à dire pour toi. Tu as eu ''A+''!
-Fred: Y a qu'une chose à faire dans ce cas!]
+Fred: Y a qu'une chose à faire dans ce cas!
 You: Quoi donc?
-Fred: [Se vider la tête! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande!
+Fred: Se vider la tête! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande!
 You: Je sais pas...
+
+<< advanceTime 0:15 >>
+
 [[Accepter l'offre de Fred|Fete_deprime]]
 [[Refuser l'offre de Fred|Rester_Chambre_deprime]]
 ===
@@ -192,21 +209,28 @@ colorID: 0
 position: 175,526
 ---
 Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer...
+
+<< advanceTime 2:00 >>
+
 Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais cette fois-ci, il n'insiste pas pour vous dissuader de partir. Manifestement, vous devez faire une sacrée tête d'enterrement. Même l'infatiguable Fred renonce à vous convaincre de rester t'amuser...
+
 [[Rentrer dormir|Chambre_Nuit]]
 ===
 title: Rester_Chambre_deprime
-tags: bg:bedroom
+tags: 
 colorID: 0
 position: 4,250
 ---
 Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à chaque fois qu'il revient à la charge, vous le renvoyez //gentiment// dans les cordes. Du coup, quand vous vous dirigez vers la porte de votre chambre, Fred ne dit plus rien. Pour la première fois, vous êtes parvenu à dissuader l'infatiguable Fred de passer un bon moment avec lui...
+
+<< advanceTime 0:30 >>
+
 [[Rentrer dormir|Chambre_Nuit]]
 ===
 title: Chambre_Nuit
 tags: bg:bedroom_night
 colorID: 0
-position: 457,522
+position: 454,519
 ---
 Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde... 
 Demain est un autre jour, vivement demain...
@@ -217,11 +241,14 @@ tags: bg:bedroom_night
 colorID: 0
 position: -1434,781
 ---
+<< hideUi >>
+
 Temde: Hello! Je te réveille?
 Vous vous redressez subitement! Quelle drôle de rêve! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras...
-Temde: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse!
 
 <<show temde>>
+Temde: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse!
+
 
 Quoi???... Vous tournez la tête et vous la voyez! La cyborg à quatre bras! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit:
 Temde: Salut! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom?
@@ -231,7 +258,8 @@ Temde: Salut! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom?
 Temde: Enchantée { $name }, lève-toi, on a du pain sur la planche!
 You: Suiiiiis faaaaaaatigué...........
 Temde: Arrête tes jérémiades! T'as bricolé comme tu as pu, ça n'a pas marché. T'as juste qu'à reprendre le chantier et basta!
-You: Noon! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire! You: J'ai raté, j'ai raté. C'est fini, foutu!
+You: Noon! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire! 
+You: J'ai raté, j'ai raté. C'est fini, foutu!
 Temde: Pas du tout { $name }! Si je suis ici, c'est parce qu'on t'offre une seconde chance! Tu vas réparer ton engin académique, je te dis que ça! Allez suis-moi, on t'attend là-bas!
 You: Qui m'attend? Où là-bas?
 Temde: Assez de blabla { $name }, suis-moi. On va pas y passer toute la nuit quand même!
@@ -242,7 +270,7 @@ Temde: Assez de blabla { $name }, suis-moi. On va pas y passer toute la nuit qua
 title: Tenter_rester_chambre
 tags: show:temde bg:bedroom_night
 colorID: 0
-position: -1148,920
+position: -1149,919
 ---
 You: Ça suffit ''Miss Temdé''! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain! J'ai besoin de reprendre des forces!!
 Temde: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis $name, tu l'auras voulu...

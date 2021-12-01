@@ -25,6 +25,11 @@ const graphicalAssets = [
   // Backgrounds
   "images/bg/bedroom.png",
   "images/bg/bedroom_night.png",
+  "images/bg/class.png",
+  "images/bg/desk.png",
+  "images/bg/kitchen.png",
+  "images/bg/party.png",
+  "images/bg/circle.png",
 
   // Fred
   "images/characters/fred/static.png",

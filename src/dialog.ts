@@ -105,6 +105,7 @@ export class DialogScene extends entity.CompositeEntity {
   private _characterLayer: PIXI.Container;
   // private _characterEntity: entity.ParallelEntity;
   private _uiLayer: PIXI.Container;
+  private _dialogLayer: PIXI.Container;
 
   private _nodeDisplay: PIXI.DisplayObject;
   private _clock: Clock;
@@ -132,11 +133,13 @@ export class DialogScene extends entity.CompositeEntity {
     this._uiLayer = new PIXI.Container();
     this._container.addChild(this._uiLayer);
 
-    this._uiLayer.addChild(
+    this._dialogLayer = new PIXI.Container();
+    this._dialogLayer.addChild(
       new PIXI.Sprite(
         this.entityConfig.app.loader.resources["images/ui/dialog.png"].texture
       )
     );
+    this._container.addChild(this._dialogLayer);
 
     // Setup clock
     this._clock = new Clock(new PIXI.Point(1920 - 557 / 2, 0));
@@ -378,6 +381,14 @@ export class DialogScene extends entity.CompositeEntity {
     const currentMinutes = parseInt(this._variableStorage.get("time"));
     const newMinutes = currentMinutes + h * 60 + m;
     this._variableStorage.set("time", newMinutes.toString());
+  }
+
+  hideUi() {
+    this._uiLayer.visible = false;
+  }
+
+  showUi() {
+    this._uiLayer.visible = true;
   }
 
   // If character is null or undefined, will just remove current character
