@@ -283,7 +283,7 @@ Miss Temdé lève la paume d'une de ses mains cybernétique, un rayon en jaillit
 title: Assemblee_Sages
 tags: bg:circle autoshow
 colorID: 0
-position: -870,908
+position: -871,907
 ---
 L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes.
 Temde: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }.
@@ -330,7 +330,79 @@ Azul: C'est-à-dire comment apprendre ... à apprendre
 title: Metacognition
 tags: autoshow
 colorID: 0
-position: -1350,1183
+position: -1352,1181
+---
+You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage?
+Ledai:Bravo, { $ name }, je n'aurai pas dit mieux.
+Sapiens: Je sens que nous avons ce soir, un candidat d'exception.
+Ledai: Venons en donc au sujet de ce soir, ''Master Sapiens''
+Sapiens Oui, la mémorisation.
+[[Qu'est-ce qu'elle a ma mémorisation?|memorisation]]
+===
+title: memorisation
+tags: bg:circle autoshow
+colorID: 0
+position: -1018,1189
+---
+Ledai: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit.
+Temde: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }.
+Sapiens: Oui bien sûr. Mais dans ce cas, ''Miss Temdé'', évite de m'interrompre sans arrêt... 
+
+<< changeBackground schema >>
+
+Sapiens: En bref, la cartographie de la mémoire dans le cerveau se découpe en deux zones. Comme tes deux hémisphères.
+
+<< showCloseup shelf_disorganized >>
+
+Sapiens: Il y a tout d'abord ''La mémoire courte''. Elle est utilisé quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas... Et elle stocke ça dans un énorme container. 
+Sapiens: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sans ordre précis. Elle les empile en vrac, les unes sur les autres, à gauche à droite. En bref, elle range ça n'importe comment, comme un amateur, un dilettante!
+
+Ledai: Oui. Ce qui fait que quand tu es à la recherche d'une référence particulière, tu ne sais plus où elle se trouve, ni si tous les documents sont rangés au même endroit.
+Sapiens: Tout à fait, c'est le chaos! La panique! La catastrophe!.. Alors que ''la mémoire longue''...
+
+[[C'est quoi la mémoire longue?|Memoire_Longue]]
+===
+title: Memoire_Longue
+tags: bg:schma autoshow
+colorID: 0
+position: -694,1205
+---
+<< showCloseup shelf_organized >>
+
+Sapiens: ''La mémoire longue'' c'est le caviar de la connaissance. Là au contraire, tout y est ordonné, rangé, archivé, classifié. Comme dans une authentique bibliothèque. Dès qu'on a besoin de trouver quelque chose, on sait où le trouver.
+
+Ledai: Sans compter que chaque élément de ''la mémoire longue'' contient un index, une table des matières. Le cerveau n'a plus qu'à suivre le plan et ça roule sans sursaut.
+Sapiens: En bref, le secret pour bien apprendre réside dans ta capacité à consolider tes nouvelles connaissances, les stocker de manière logique et efficace.
+Azul: Tu as saisi? Nos deux savants veulent te dire qu'ils vont t'aider à faire glisser tes nouveaux savoirs, de la mémoire courte à la mémoire longue.
+
+<< hideCloseup >>
+<< changeBackground circle >>
+
+You: Génial, Azul! Et je fais comment pour glisser et déposer mes révisions dans ma mémoire longue?
+
+[[Routinisation]]
+===
+title: Routinisation
+tags: bg:circle autoshow
+colorID: 0
+position: -425,1197
+---
+Sapiens: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler!
+Ledai: Il faut surtout pratiquer! Répéter et répéter et encore répéter! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement.
+Azul: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis pas la maîtriser.
+Ledai: Pour une fois que je suis d'accord avec ''Azul''. Ainsi, tu mémorises la liste des ingrédients, les dosages, comme les étapes de préparation et les temps de cuisson.
+Temde: Yep, et comme tu n'as plus besoin d'avoir le mode d'emploi, tu deviens un sage, tu es autonome!
+You: Et comment je fais pour que ma pratique devienne une routine?
+Ledai: Tout simplement en répétant, en appliquant.
+Sapiens: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : ''les rappels libres''.
+You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil. Comment faire?
+Ledai: En notant toutes les idées importantes dans ton 
+[[journal mental|Journal_Rappel_libre]]
+===
+title: Journal_Rappel_libre
+tags: 
+colorID: 0
+position: -164,1176
 ---
 
 ===

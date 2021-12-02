@@ -104,6 +104,7 @@ export class DialogScene extends entity.CompositeEntity {
   private _background: PIXI.Sprite;
   private _characterLayer: PIXI.Container;
   // private _characterEntity: entity.ParallelEntity;
+  private _closeupLayer: PIXI.Container;
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
 
@@ -119,7 +120,11 @@ export class DialogScene extends entity.CompositeEntity {
 
   _setup(): void {
     this._autoshowOn = false;
+
+    // Create variable storage with default values
     this._variableStorage = new VariableStorage();
+    this._variableStorage.set("name", "NAME");
+    this._variableStorage.set("time", "540");
 
     this._container = new PIXI.Container();
     this._entityConfig.container.addChild(this._container);
@@ -129,6 +134,9 @@ export class DialogScene extends entity.CompositeEntity {
 
     this._characterLayer = new PIXI.Container();
     this._container.addChild(this._characterLayer);
+
+    this._closeupLayer = new PIXI.Container();
+    this._container.addChild(this._closeupLayer);
 
     this._uiLayer = new PIXI.Container();
     this._container.addChild(this._uiLayer);
@@ -297,7 +305,7 @@ export class DialogScene extends entity.CompositeEntity {
     }
 
     // @ts-ignore
-    this[commandParts[0]](...commandParts.slice(1));
+    this[commandParts[0]](...commandParts.slice(1).map((arg) => arg.trim()));
 
     this._advance();
   }
@@ -389,6 +397,24 @@ export class DialogScene extends entity.CompositeEntity {
 
   showUi() {
     this._uiLayer.visible = true;
+  }
+
+  showCloseup(closeup?: string): void {
+    this._closeupLayer.removeChildren();
+    if (!closeup) return;
+
+    const sprite = new PIXI.Sprite(
+      this.entityConfig.app.loader.resources[
+        `images/closeups/${closeup}.png`
+      ].texture
+    );
+    sprite.position.set(400, 10);
+
+    this._closeupLayer.addChild(sprite);
+  }
+
+  hideCloseup(): void {
+    this.showCloseup();
   }
 
   // If character is null or undefined, will just remove current character

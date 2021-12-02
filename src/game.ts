@@ -59,7 +59,11 @@ const graphicalAssets = [
   "images/bg/kitchen.png",
   "images/bg/party.png",
   "images/bg/circle.png",
-  "images/bg/schema_books.png",
+  "images/bg/schema.png",
+
+  // Closeups
+  "images/closeups/shelf_disorganized.png",
+  "images/closeups/shelf_organized.png",
 
   // Fred
   "images/characters/fred/static.png",
