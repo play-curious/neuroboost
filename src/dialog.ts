@@ -123,7 +123,7 @@ export class DialogScene extends entity.CompositeEntity {
 
     // Create variable storage with default values
     this._variableStorage = new VariableStorage();
-    this._variableStorage.set("name", "NAME");
+    this._variableStorage.set("name", "Moi");
     this._variableStorage.set("time", "540");
 
     this._container = new PIXI.Container();
@@ -224,8 +224,12 @@ export class DialogScene extends entity.CompositeEntity {
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
 
-    if (speaker && speaker.toLowerCase() !== "you") {
-      const speakerText = new PIXI.Text(speaker, {
+    if (speaker) {
+      const speakerName =
+        speaker.toLowerCase() === "you"
+          ? this._variableStorage.get("name")
+          : speaker;
+      const speakerText = new PIXI.Text(speakerName, {
         fill: "white",
         fontFamily: "Jura",
         fontSize: 50,
@@ -254,6 +258,7 @@ export class DialogScene extends entity.CompositeEntity {
         fill: "white",
         fontFamily: "Ubuntu",
         fontSize: 40,
+        fontWeight: 300,
         fontStyle: speaker ? "normal" : "italic",
         wordWrap: true,
         wordWrapWidth: 1325,
