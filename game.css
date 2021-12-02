@@ -207,11 +207,10 @@ body.embedded {
   pointer-events: auto;
 
   font-family: "Jura";
-  font-size: 32pt;
   color: white;
 }
 
-input[type="radio"] {
+#html-layer input[type="radio"] {
   width: 20px;
   height: 20px;
 }
