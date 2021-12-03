@@ -99,6 +99,8 @@ Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, pu
 
 Vous passez deux heures à discuter de tout, mais surtout de rien.  
 
+<< set $visitedChat to true >>
+
 [[Action_List]]
 ===
 title: Revision
@@ -128,6 +130,8 @@ Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant.
 << advanceTime 4:00 >>
 
 Vous passez 4 heures à binger votre série préférée. 
+
+<< set $visitedBingeTv to true >>
 
 [[Action_List]]
 ===

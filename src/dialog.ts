@@ -64,6 +64,7 @@ function parseTime(time: string): [number, number] {
 
 /**
  * Variable Storage for YarnSpinner that emits events when data changes
+ * Can be initialized with data
  *
  * Emits:
  * - change(name : string, value : string)
@@ -74,6 +75,14 @@ export class VariableStorage
   implements YarnSpinner.VariableStorage
 {
   private _data: { [k: string]: string } = {};
+
+  constructor(initialData?: { [k: string]: string }) {
+    super();
+
+    if (initialData) {
+      for (const name in initialData) this._data[name] = initialData[name];
+    }
+  }
 
   set(name: string, value: string): void {
     this._data[name] = value;
@@ -113,7 +122,8 @@ export class DialogScene extends entity.CompositeEntity {
 
   constructor(
     public readonly scriptName: string,
-    public readonly startNode = "Start"
+    public readonly startNode = "Start",
+    public readonly startVariables?: { [k: string]: string }
   ) {
     super();
   }
@@ -121,9 +131,15 @@ export class DialogScene extends entity.CompositeEntity {
   _setup(): void {
     this._autoshowOn = false;
 
-    // Create variable storage with default values
-    this._variableStorage = new VariableStorage();
-    this._variableStorage.set("name", "Moi");
+    // Create variable storage
+    if (this.startVariables) {
+      this._variableStorage = new VariableStorage(this.startVariables);
+    } else {
+      // Use default values
+      this._variableStorage = new VariableStorage();
+      this._variableStorage.set("name", "Moi");
+    }
+    // Reset time
     this._variableStorage.set("time", "540");
 
     this._container = new PIXI.Container();
@@ -460,7 +476,7 @@ export class DialogScene extends entity.CompositeEntity {
             baseDir + "/static.png"
           ].texture
         );
-        baseSprite.scale.set(0.6);
+        baseSprite.scale.set(0.8);
         characterContainer.addChild(baseSprite);
       }
 
