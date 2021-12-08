@@ -277,12 +277,12 @@ colorID: 0
 position: -1149,919
 ---
 You: Ça suffit ''Miss Temdé''! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain! J'ai besoin de reprendre des forces!!
-Temde: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis $name, tu l'auras voulu...
+Temde: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
 Miss Temdé lève la paume d'une de ses mains cybernétique, un rayon en jaillit et vous englobe de sa lumière vert phosphorescente...
 
 <<fade green>>
 
-[[ Assemblee_Sages ]]
+[[Assemblee_Sages]]
 ===
 title: Assemblee_Sages
 tags: bg:circle autoshow

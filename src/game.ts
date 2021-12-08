@@ -32,7 +32,7 @@ function resizeHtmlLayer(appSize: PIXI.Point): void {
 }
 
 const params = new URLSearchParams(window.location.search);
-const startNode = params.get("startNode") || "Start";
+const startNode = params.get("startNode") || params.get("node") || "Start";
 
 const states: { [k: string]: entity.EntityResolvable } = {
   start: new dialog.DialogScene("level1", startNode),
