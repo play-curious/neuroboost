@@ -9,7 +9,8 @@ function convertYarnToJson(text) {
   let currentNode = {};
   let readingHeader = true;
   let body = "";
-  for (const line of text.split("\n")) {
+  for (let line of text.split("\n")) {
+    line = line.trim();
     if (line === "===") {
       // New node
       currentNode.body = body;
@@ -41,7 +42,7 @@ function convertYarnToJson(text) {
       }
     }
   }
-
+  
   return JSON.stringify(allNodes, null, 2);
 }
 
