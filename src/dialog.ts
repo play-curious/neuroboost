@@ -203,7 +203,7 @@ export class DialogScene extends entity.CompositeEntity {
       this._lastNodeData = this._nodeValue.data;
     }
 
-    console.log("nodeValue", this._nodeValue);
+    // console.log("nodeValue", this._nodeValue);
     // console.log("data", this._runner.variables.data);
 
     if (this._nodeValue instanceof bondage.TextResult) {
@@ -437,30 +437,17 @@ export class DialogScene extends entity.CompositeEntity {
 
  // If character is null or undefined, will just remove current character
  private _changeCharacter(character?: string): void {
-
-  console.log(character);
-
-
-
-
-
   if (character === this._lastCharacter) return;
 
   // Remove all previous characters
   this._characterLayer.removeChildren();
   this._lastCharacter = character;
 
-  console.log(this._characterEntity);
-
   if (this._characterEntity !== undefined) {
-    this._deactivateChildEntity(this._characterEntity);
+    if(this.childEntities.indexOf(this._characterEntity) != -1)
+      this._deactivateChildEntity(this._characterEntity);
     this._characterEntity = undefined;
   }
-
-
-
-
-
 
   if (character !== undefined && character !== "") {
     const characterContainer = new PIXI.Container();
@@ -511,9 +498,6 @@ export class DialogScene extends entity.CompositeEntity {
 
     // Static textures
     else if (_.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")) {
-
-      console.log("HERE");
-
       // Base
       const baseSprite = new PIXI.Sprite(
         this.entityConfig.app.loader.resources[
