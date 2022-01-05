@@ -68,10 +68,11 @@ const graphicalAssets = [
   "images/closeups/shelf_organized.png",
 
   // Fred
-  "images/characters/fred/static.png",
-  // "images/characters/fred/cloth.json",
-  // "images/characters/fred/hair.json",
-  // "images/characters/fred/sleeves.json",
+  "images/characters/fred/base.png",
+  "images/characters/fred/cloth.json",
+  "images/characters/fred/hair.json",
+  "images/characters/fred/sleeves.json",
+  "images/characters/fred/placeholders.json",
 
   "images/characters/azul/static.png",
   "images/characters/ledai/static.png",

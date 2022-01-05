@@ -43,10 +43,6 @@ const templateSettings = {
 
 const dialogRegexp = /^(\w+):(.+)/;
 
-const characterAnimations: { [key: string]: string[] } = {
-  fred: ["cloth", "hair", "sleeves"],
-};
-
 function parseTime(time: string): [number, number] {
   const parts = time.split(":");
   let h = 0,
@@ -112,7 +108,7 @@ export class DialogScene extends entity.CompositeEntity {
   private _container: PIXI.Container;
   private _background: PIXI.Sprite;
   private _characterLayer: PIXI.Container;
-  // private _characterEntity: entity.ParallelEntity;
+  private _characterEntity: entity.ParallelEntity;
   private _closeupLayer: PIXI.Container;
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
@@ -342,12 +338,13 @@ export class DialogScene extends entity.CompositeEntity {
     // By default, autoshow is off
     this._autoshowOn = false;
 
+    let bg: string;
+    let character: string;
+
     for (let tag of newNodeData.tags) {
       tag = tag.trim();
       if (tag === "") continue;
 
-      let bg: string;
-      let character: string;
       if (tag.startsWith("bg:")) {
         if (bg) console.warn("Trying to set background twice");
 
@@ -361,10 +358,10 @@ export class DialogScene extends entity.CompositeEntity {
       } else {
         console.warn("Unknown tag in node data", tag);
       }
-
-      if (bg) this.changeBackground(bg);
-      this._changeCharacter(character);
     }
+
+    if (bg) this.changeBackground(bg);
+    this._changeCharacter(character);
 
     this.emit("changeNodeData", oldNodeData, newNodeData);
   }
@@ -438,62 +435,108 @@ export class DialogScene extends entity.CompositeEntity {
     this.showCloseup();
   }
 
-  // If character is null or undefined, will just remove current character
-  private _changeCharacter(character?: string): void {
-    if (character === this._lastCharacter) return;
+ // If character is null or undefined, will just remove current character
+ private _changeCharacter(character?: string): void {
 
-    // Remove all previous characters
-    this._characterLayer.removeChildren();
+  console.log(character);
 
-    // if (this._characterEntity)
-    //   this._deactivateChildEntity(this._characterEntity);
 
-    if (character) {
-      const characterContainer = new PIXI.Container();
-      characterContainer.position.set(1920 / 2, 0);
 
-      // this._characterEntity = new entity.ParallelEntity();
-      // this._activateChildEntity(
-      //   this._characterEntity,
-      //   entity.extendConfig({ container: characterContainer })
-      // );
 
-      const baseDir = `images/characters/${character}`;
 
-      {
-        if (
-          !_.has(
-            this.entityConfig.app.loader.resources,
-            baseDir + "/static.png"
-          )
-        ) {
-          console.warn("Missing asset for character", character);
-          return;
-        }
+  if (character === this._lastCharacter) return;
 
-        const baseSprite = new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[
-            baseDir + "/static.png"
-          ].texture
+  // Remove all previous characters
+  this._characterLayer.removeChildren();
+  this._lastCharacter = character;
+
+  console.log(this._characterEntity);
+
+  if (this._characterEntity !== undefined) {
+    this._deactivateChildEntity(this._characterEntity);
+    this._characterEntity = undefined;
+  }
+
+
+
+
+
+
+  if (character !== undefined && character !== "") {
+    const characterContainer = new PIXI.Container();
+    characterContainer.position.set(1920 / 2, 0);
+
+    this._characterEntity = new entity.ParallelEntity();
+    this._activateChildEntity(
+      this._characterEntity,
+      entity.extendConfig({ container: characterContainer })
+    );
+
+    const baseDir = `images/characters/${character}`;
+
+
+
+    // Moving textures
+    if (_.has(this.entityConfig.app.loader.resources, baseDir + "/base.png")) {
+
+      // Base
+      const baseSprite = new PIXI.Sprite(
+        this.entityConfig.app.loader.resources[
+          baseDir + "/base.png"
+        ].texture
+      );
+  
+      characterContainer.addChild(baseSprite);
+
+      // Load animations JSON
+      let placeholdersJson = this._entityConfig.app.loader.resources[`${baseDir}/placeholders.json`].data;
+      for(const bodyPart of Object.keys(placeholdersJson)) {
+
+        const animatedSpriteEntity = util.makeAnimatedSprite(
+          this._entityConfig.app.loader.resources[`${baseDir}/${bodyPart}.json`]
         );
-        baseSprite.scale.set(0.8);
-        characterContainer.addChild(baseSprite);
+        animatedSpriteEntity.sprite.x = placeholdersJson[bodyPart].x;
+        animatedSpriteEntity.sprite.y = placeholdersJson[bodyPart].y;
+
+        animatedSpriteEntity.sprite.animationSpeed = 0.5;
+        this._characterEntity.addChildEntity(animatedSpriteEntity);
       }
-
-      // for (const animation of characterAnimations[character]) {
-      //   const animatedSpriteEntity = util.makeAnimatedSprite(
-      //     this._entityConfig.app.loader.resources[
-      //       `${baseDir}/${animation}.json`
-      //     ]
-      //   );
-
-      // this._characterEntity.addChildEntity(animatedSpriteEntity);
-
+  
+      // Place character on screen
       this._characterLayer.addChild(characterContainer);
+      characterContainer.setTransform(350, 150, 1.1, 1.1);
     }
 
-    this._lastCharacter = character;
+
+
+    // Static textures
+    else if (_.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")) {
+
+      console.log("HERE");
+
+      // Base
+      const baseSprite = new PIXI.Sprite(
+        this.entityConfig.app.loader.resources[
+          baseDir + "/static.png"
+        ].texture
+      );
+  
+      characterContainer.addChild(baseSprite);
+
+      // Place character on screen
+      this._characterLayer.addChild(characterContainer);
+      characterContainer.setTransform(0, 0, 1, 1);
+
+    }
+
+    
+    else {
+      console.warn("Missing asset for character", character);
+      return;
+    }
   }
+  
+}
 }
 
 class Clock extends entity.EntityBase {

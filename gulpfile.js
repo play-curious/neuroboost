@@ -14,6 +14,8 @@ function convertYarnToJson(text) {
     if (line === "===") {
       // New node
       currentNode.body = body;
+      if(!currentNode.hasOwnProperty("tags"))
+        currentNode.tags = "";
       allNodes.push(currentNode);
       currentNode = {};
       readingHeader = true;
