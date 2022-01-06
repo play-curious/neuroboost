@@ -185,6 +185,8 @@ export class DialogScene extends entity.CompositeEntity {
   private _advance(): void {
     if (this._nodeDisplay) this._container.removeChild(this._nodeDisplay);
     this._nodeDisplay = null;
+    
+    this._dialogLayer.visible = true;
 
     this._nodeValue = this._nodeIterator.next().value;
     // If result is undefined, stop here
@@ -284,27 +286,61 @@ export class DialogScene extends entity.CompositeEntity {
   private _handleChoice(nodeValue: YarnSpinner.ChoiceNode) {
     // This works for both links between nodes and shortcut options
     // console.log("options result", nodeValue.options);
-
+    this._dialogLayer.visible = false;
+    
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
 
-    let lastY = 704 + 33;
+    let currentY: number;
+
+    let choicebox_contour = new PIXI.Sprite(
+      this.entityConfig.app.loader.resources["images/ui/choicebox_contour.png"].texture
+    );
+    let choicebox_contour_reversed = new PIXI.Sprite();
+    choicebox_contour_reversed.texture = choicebox_contour.texture.clone();
+    choicebox_contour_reversed.setTransform(0, 0, 1, -1, 0, 0, 0, 0, choicebox_contour_reversed.y);
+    let choicebox_empty = new PIXI.Sprite(
+      this.entityConfig.app.loader.resources["images/ui/choicebox_empty.png"].texture
+    );
+
+    currentY = 1080 - 40  
+    
     for (let i = 0; i < nodeValue.options.length; i++) {
+      const choicebox = new PIXI.Container;
+      if(i == 0){
+        let choicebox_reversed = new PIXI.Sprite(
+          this.entityConfig.app.loader.resources["images/ui/choicebox_contour.png"].texture
+        );
+        choicebox_reversed.setTransform(0, choicebox_contour_reversed.height, 1, -1, 0, 0, 0, 0, choicebox_contour_reversed.y);
+        choicebox.addChild(choicebox_reversed);
+      } else if (i == nodeValue.options.length -1){
+        choicebox.addChild(new PIXI.Sprite(
+          this.entityConfig.app.loader.resources["images/ui/choicebox_contour.png"].texture
+        ));
+      } else {
+        choicebox.addChild(new PIXI.Sprite(
+          this.entityConfig.app.loader.resources["images/ui/choicebox_empty.png"].texture
+        ));
+      }
+      currentY -= choicebox.height + 20;
+      console.log(currentY, choicebox.height);
+      choicebox.setTransform(0, currentY);
+
       const optionText = new PIXI.Text(nodeValue.options[i], {
         fill: 0xfdf4d3,
         fontFamily: "Ubuntu",
         fontSize: 40,
       });
-      optionText.position.set(140 + 122, lastY);
-      optionText.interactive = true;
-      optionText.buttonMode = true;
-      this._on(optionText, "pointerup", () => {
+      optionText.anchor.set(0.5, 0.5);
+      optionText.position.set(choicebox.width/2, choicebox.height/2);
+      choicebox.interactive = true;
+      choicebox.buttonMode = true;
+      this._on(choicebox, "pointerup", () => {
         nodeValue.select(i);
         this._advance();
       });
-      (this._nodeDisplay as PIXI.Container).addChild(optionText);
-
-      lastY += optionText.height + 10;
+      choicebox.addChild(optionText);
+      (this._nodeDisplay as PIXI.Container).addChild(choicebox);
     }
   }
 
