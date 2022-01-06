@@ -68,11 +68,13 @@ const graphicalAssets = [
   "images/closeups/shelf_organized.png",
 
   // Fred
-  "images/characters/fred/base.png",
-  "images/characters/fred/cloth.json",
-  "images/characters/fred/hair.json",
-  "images/characters/fred/sleeves.json",
-  "images/characters/fred/placeholders.json",
+  "images/characters/fred/base.json",
+  "images/characters/fred/base_neutral.png",
+  "images/characters/fred/base_drunk.png",
+  "images/characters/fred/base_excited.png",
+  "images/characters/fred/cloth_a.json",
+  "images/characters/fred/hair_a.json",
+  "images/characters/fred/sleeves_a.json",
 
   "images/characters/azul/static.png",
   "images/characters/ledai/static.png",
@@ -84,7 +86,7 @@ const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 const jsonAssets = [
   { key: "level1", url: "text/level1.json" },
-  { key: "level2", url: "text/level2.json" },
+  { key: "level2", url: "text/level2.json" }
 ];
 
 const screenSize = new PIXI.Point(1920, 1080);

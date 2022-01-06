@@ -41,7 +41,7 @@ const templateSettings = {
   interpolate: /\{\s*\$(.+?)\s*\}/g,
 };
 
-const dialogRegexp = /^(\w+):(.+)/;
+const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
 
 function parseTime(time: string): [number, number] {
   const parts = time.split(":");
@@ -102,6 +102,7 @@ export class DialogScene extends entity.CompositeEntity {
   private _lastNodeData: YarnSpinner.NodeData;
   private _lastBg: string;
   private _lastCharacter: string;
+  private _lastMood: string;
   private _autoshowOn: boolean;
   private _variableStorage: VariableStorage;
 
@@ -226,11 +227,16 @@ export class DialogScene extends entity.CompositeEntity {
       templateSettings
     )(this._variableStorage.data);
 
-    let speaker, dialog: string;
+    let speaker, mood, dialog: string;
     if (dialogRegexp.test(interpolatedText)) {
       let match = dialogRegexp.exec(interpolatedText);
+
       speaker = match[1].trim();
-      dialog = match[2].trim();
+      mood = match[2];
+      dialog = match[3].trim();
+
+      if(mood !== undefined)
+        mood = mood.trim();
     }
 
     this._nodeDisplay = new PIXI.Container();
@@ -250,8 +256,9 @@ export class DialogScene extends entity.CompositeEntity {
       speakerText.anchor.set(0.5);
       (this._nodeDisplay as PIXI.Container).addChild(speakerText);
 
-      if (this._autoshowOn) {
-        this._changeCharacter(speaker.toLowerCase());
+      const speakerLow = speaker.toLowerCase();
+      if (this._autoshowOn || (this._lastCharacter === speakerLow && this._lastMood !== mood)) {
+        this._changeCharacter(speakerLow, mood);
       }
     }
 
@@ -436,12 +443,16 @@ export class DialogScene extends entity.CompositeEntity {
   }
 
  // If character is null or undefined, will just remove current character
- private _changeCharacter(character?: string): void {
-  if (character === this._lastCharacter) return;
+ private _changeCharacter(character?: string, mood?: string): void {
+
+  if(mood === undefined) mood = "neutral";
+
+  if (character === this._lastCharacter && mood === this._lastMood) return;
 
   // Remove all previous characters
   this._characterLayer.removeChildren();
   this._lastCharacter = character;
+  this._lastMood = mood;
 
   if (this._characterEntity !== undefined) {
     if(this.childEntities.indexOf(this._characterEntity) != -1)
@@ -460,30 +471,31 @@ export class DialogScene extends entity.CompositeEntity {
     );
 
     const baseDir = `images/characters/${character}`;
+    const basePng = baseDir + `/base_${mood}.png`;
 
-
+    console.log(basePng);
 
     // Moving textures
-    if (_.has(this.entityConfig.app.loader.resources, baseDir + "/base.png")) {
+    if (_.has(this.entityConfig.app.loader.resources, basePng)) {
 
       // Base
       const baseSprite = new PIXI.Sprite(
         this.entityConfig.app.loader.resources[
-          baseDir + "/base.png"
+          basePng
         ].texture
       );
   
       characterContainer.addChild(baseSprite);
 
       // Load animations JSON
-      let placeholdersJson = this._entityConfig.app.loader.resources[`${baseDir}/placeholders.json`].data;
-      for(const bodyPart of Object.keys(placeholdersJson)) {
+      let placeholdersJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
+      for(const bodyPart of placeholdersJson[mood]) {
 
         const animatedSpriteEntity = util.makeAnimatedSprite(
-          this._entityConfig.app.loader.resources[`${baseDir}/${bodyPart}.json`]
+          this._entityConfig.app.loader.resources[`${baseDir}/${bodyPart.model}.json`]
         );
-        animatedSpriteEntity.sprite.x = placeholdersJson[bodyPart].x;
-        animatedSpriteEntity.sprite.y = placeholdersJson[bodyPart].y;
+        animatedSpriteEntity.sprite.x = bodyPart.x;
+        animatedSpriteEntity.sprite.y = bodyPart.y;
 
         animatedSpriteEntity.sprite.animationSpeed = 0.5;
         this._characterEntity.addChildEntity(animatedSpriteEntity);
