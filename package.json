@@ -11,7 +11,7 @@
     "dist": "yarn scripts && webpack --config webpack.prod.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "playcurious",
   "license": "MIT",
   "dependencies": {
     "@pixi/filter-glow": "^4.1.3",
