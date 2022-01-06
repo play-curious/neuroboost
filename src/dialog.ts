@@ -4,6 +4,7 @@ import * as PIXI from "pixi.js";
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 import * as util from "booyah/src/util";
+import MultiStyleText from "pixi-multistyle-text";
 
 // Bondage is loaded as a global variable
 declare const bondage: any;
@@ -266,15 +267,38 @@ export class DialogScene extends entity.CompositeEntity {
     }
 
     {
-      const dialogBox = new PIXI.Text(dialog || interpolatedText, {
-        fill: "white",
-        fontFamily: "Ubuntu",
-        fontSize: 40,
-        fontWeight: 300,
-        fontStyle: speaker ? "normal" : "italic",
-        wordWrap: true,
-        wordWrapWidth: 1325,
-        leading: 10,
+      const dialogBox = new MultiStyleText(dialog || interpolatedText,
+      {
+        "default": {
+          fill: "white",
+          fontFamily: "Ubuntu",
+          fontSize: 40,
+          fontWeight: "300",
+          fontStyle: speaker ? "normal" : "italic",
+          wordWrap: true,
+          wordWrapWidth: 1325,
+          leading: 10,
+        },
+        "i": {
+          fill: "white",
+          fontFamily: "Ubuntu",
+          fontSize: 40,
+          fontWeight: "300",
+          fontStyle: "italic",
+          wordWrap: true,
+          wordWrapWidth: 1325,
+          leading: 10,
+        },
+        "b": {
+          fill: "white",
+          fontFamily: "Ubuntu",
+          fontSize: 40,
+          fontWeight: "bold",
+          fontStyle: speaker ? "normal" : "italic",
+          wordWrap: true,
+          wordWrapWidth: 1325,
+          leading: 10,
+        },
       });
       dialogBox.position.set(140 + 122, 704 + 33);
       (this._nodeDisplay as PIXI.Container).addChild(dialogBox);

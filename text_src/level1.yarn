@@ -17,7 +17,7 @@ tags: show:fred
 colorID: 0
 position: -498,-43
 ---
-Fred: Hello! c'est Fred!
+Fred: Hello! <b>c'est</b> <i>Fred</i> !
 You:Je sais, j'ai vu ton nom.
 Fred: Yes yes... Tu fais quoi là, maintenant?
 You:Je viens de me réveiller.
