@@ -392,10 +392,26 @@ export class DialogScene extends entity.CompositeEntity {
     this._changeCharacter();
   }
 
-  input(name: string) {
+  prompt(varName: string, message: string, _default: string) {
     // TODO: replace this with HTML form
-    const value = prompt();
-    this._variableStorage.set(name, value);
+
+    // {
+    //   // todo: use entity for waiting input
+    //   const form = document.createElement("form")
+    //   form.innerHTML = `Mon nom: <input type=text name=name> <input type=submit name=Ok>`
+    //   form.onsubmit = (event) => {
+    //     event.preventDefault()
+    //
+    //   }
+    // }
+
+    const value = prompt(message, _default).trim();
+    this._variableStorage.set(varName, value || _default);
+  }
+
+  eval(code: string) {
+    const evaluated = eval(code)
+    this._variableStorage.set("eval", evaluated)
   }
 
   setTime(time: string) {
