@@ -1,8 +1,9 @@
 import * as _ from "underscore";
 import * as PIXI from "pixi.js";
 
-import * as booyah from "booyah/src/booyah";
+import * as easing from "booyah/src/easing";
 import * as entity from "booyah/src/entity";
+import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
 
 // Bondage is loaded as a global variable
@@ -43,7 +44,7 @@ const templateSettings = {
 
 const dialogRegexp = /^(\w+):(.+)/;
 
-function parseTime(time: string): [number, number] {
+function parseTime(time: string): [hours: number, minutes: number] {
   const parts = time.split(":");
   let h = 0,
     m = 0;
@@ -407,6 +408,23 @@ export class DialogScene extends entity.CompositeEntity {
     const currentMinutes = parseInt(this._variableStorage.get("time"));
     const newMinutes = currentMinutes + h * 60 + m;
     this._variableStorage.set("time", newMinutes.toString());
+  }
+
+  /**
+   * Animate the time change
+   */
+  advanceTimeAnimation(time: string) {
+    const [h, m] = parseTime(time);
+    const currentMinutes = parseInt(this._variableStorage.get("time"));
+    return new tween.Tween({
+      duration: 2000,
+      easing: easing.easeInOutQuint,
+      from: currentMinutes,
+      to: currentMinutes + h * 60 + m,
+      onUpdate(value) {
+        this._variableStorage.set("time", Math.round(value).toString())
+      }
+    })
   }
 
   hideUi() {
