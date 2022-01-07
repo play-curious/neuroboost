@@ -53,19 +53,24 @@ const graphicalAssets = [
   "images/ui/journal_bg.png",
   "images/ui/journal_button.png",
 
+  // ////////////////////////////////////////////
   // Backgrounds
-  "images/bg/bedroom.png",
-  "images/bg/bedroom_night.png",
-  "images/bg/class.png",
-  "images/bg/desk.png",
-  "images/bg/kitchen.png",
-  "images/bg/party.png",
-  "images/bg/circle.png",
-  "images/bg/schema.png",
+  "images/bg/bedroom/base.png",
+  "images/bg/bedroom_night/base.png",
+  "images/bg/class/base.png",
+  "images/bg/desk/base.png",
+  "images/bg/kitchen/base.png",
+  "images/bg/party/base.png",
+  "images/bg/circle/base.png",
+  "images/bg/schema/base.png",
 
+  // ////////////////////////////////////////////
   // Closeups
   "images/closeups/shelf_disorganized.png",
   "images/closeups/shelf_organized.png",
+
+  // ////////////////////////////////////////////
+  // Characters
 
   // Fred
   "images/characters/fred/base.json",
@@ -91,7 +96,7 @@ const jsonAssets = [
 
 const screenSize = new PIXI.Point(1920, 1080);
 
-const splashScreen = "images/bg/outside.png";
+const splashScreen = "images/bg/outside/base.png";
 
 booyah.go({
   states,

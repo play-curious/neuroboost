@@ -376,7 +376,7 @@ export class DialogScene extends entity.CompositeEntity {
   changeBackground(bg: string): void {
     if (bg === this._lastBg) return;
 
-    const fileName = `images/bg/${bg}.png`;
+    const fileName = `images/bg/${bg}/base.png`;
     if (!_.has(this.entityConfig.app.loader.resources, fileName)) {
       console.warn("Missing asset for background", bg);
       return;
