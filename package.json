@@ -8,7 +8,8 @@
     "serve": "yarn scripts && webpack serve --config webpack.dev.js",
     "start": "yarn serve",
     "build": "yarn scripts && webpack --config webpack.dev.js",
-    "dist": "yarn scripts && webpack --config webpack.prod.js"
+    "dist": "yarn scripts && webpack --config webpack.prod.js",
+    "format": "prettier --write src gulpfile.js README.md"
   },
   "keywords": [],
   "author": "playcurious",
@@ -45,7 +46,7 @@
     "esbuild-loader": "^2.15.1",
     "html-webpack-plugin": "^5.3.1",
     "portfinder-sync": "^0.0.2",
-    "prettier": "^2.3.1",
+    "prettier": "^2.5.1",
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.2",
     "webhook-discord": "^3.7.7",

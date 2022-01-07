@@ -405,13 +405,16 @@ export class DialogScene extends entity.CompositeEntity {
     //   }
     // }
 
-    const value = prompt(message.replace(/_/g, " "), _default.replace(/_/g, " ")).trim();
+    const value = prompt(
+      message.replace(/_/g, " "),
+      _default.replace(/_/g, " ")
+    )?.trim();
     this._variableStorage.set(varName, value || _default.replace(/_/g, " "));
   }
 
   eval(code: string) {
-    const evaluated = eval(code)
-    this._variableStorage.set("eval", evaluated)
+    const evaluated = eval(code);
+    this._variableStorage.set("eval", evaluated);
   }
 
   setTime(time: string) {
@@ -438,9 +441,9 @@ export class DialogScene extends entity.CompositeEntity {
       from: currentMinutes,
       to: currentMinutes + h * 60 + m,
       onUpdate(value) {
-        this._variableStorage.set("time", Math.round(value).toString())
-      }
-    })
+        this._variableStorage.set("time", Math.round(value).toString());
+      },
+    });
   }
 
   hideUi() {
@@ -469,92 +472,88 @@ export class DialogScene extends entity.CompositeEntity {
     this.showCloseup();
   }
 
- // If character is null or undefined, will just remove current character
- private _changeCharacter(character?: string): void {
-  if (character === this._lastCharacter) return;
+  // If character is null or undefined, will just remove current character
+  private _changeCharacter(character?: string): void {
+    if (character === this._lastCharacter) return;
 
-  // Remove all previous characters
-  this._characterLayer.removeChildren();
-  this._lastCharacter = character;
+    // Remove all previous characters
+    this._characterLayer.removeChildren();
+    this._lastCharacter = character;
 
-  if (this._characterEntity !== undefined) {
-    if(this.childEntities.indexOf(this._characterEntity) != -1)
-      this._deactivateChildEntity(this._characterEntity);
-    this._characterEntity = undefined;
-  }
+    if (this._characterEntity !== undefined) {
+      if (this.childEntities.indexOf(this._characterEntity) != -1)
+        this._deactivateChildEntity(this._characterEntity);
+      this._characterEntity = undefined;
+    }
 
-  if (character !== undefined && character !== "") {
-    const characterContainer = new PIXI.Container();
-    characterContainer.position.set(1920 / 2, 0);
+    if (character !== undefined && character !== "") {
+      const characterContainer = new PIXI.Container();
+      characterContainer.position.set(1920 / 2, 0);
 
-    this._characterEntity = new entity.ParallelEntity();
-    this._activateChildEntity(
-      this._characterEntity,
-      entity.extendConfig({ container: characterContainer })
-    );
-
-    const baseDir = `images/characters/${character}`;
-
-
-
-    // Moving textures
-    if (_.has(this.entityConfig.app.loader.resources, baseDir + "/base.png")) {
-
-      // Base
-      const baseSprite = new PIXI.Sprite(
-        this.entityConfig.app.loader.resources[
-          baseDir + "/base.png"
-        ].texture
+      this._characterEntity = new entity.ParallelEntity();
+      this._activateChildEntity(
+        this._characterEntity,
+        entity.extendConfig({ container: characterContainer })
       );
-  
-      characterContainer.addChild(baseSprite);
 
-      // Load animations JSON
-      let placeholdersJson = this._entityConfig.app.loader.resources[`${baseDir}/placeholders.json`].data;
-      for(const bodyPart of Object.keys(placeholdersJson)) {
+      const baseDir = `images/characters/${character}`;
 
-        const animatedSpriteEntity = util.makeAnimatedSprite(
-          this._entityConfig.app.loader.resources[`${baseDir}/${bodyPart}.json`]
+      // Moving textures
+      if (
+        _.has(this.entityConfig.app.loader.resources, baseDir + "/base.png")
+      ) {
+        // Base
+        const baseSprite = new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[baseDir + "/base.png"].texture
         );
-        animatedSpriteEntity.sprite.x = placeholdersJson[bodyPart].x;
-        animatedSpriteEntity.sprite.y = placeholdersJson[bodyPart].y;
 
-        animatedSpriteEntity.sprite.animationSpeed = 0.5;
-        this._characterEntity.addChildEntity(animatedSpriteEntity);
+        characterContainer.addChild(baseSprite);
+
+        // Load animations JSON
+        let placeholdersJson =
+          this._entityConfig.app.loader.resources[
+            `${baseDir}/placeholders.json`
+          ].data;
+        for (const bodyPart of Object.keys(placeholdersJson)) {
+          const animatedSpriteEntity = util.makeAnimatedSprite(
+            this._entityConfig.app.loader.resources[
+              `${baseDir}/${bodyPart}.json`
+            ]
+          );
+          animatedSpriteEntity.sprite.x = placeholdersJson[bodyPart].x;
+          animatedSpriteEntity.sprite.y = placeholdersJson[bodyPart].y;
+
+          animatedSpriteEntity.sprite.animationSpeed = 0.5;
+          this._characterEntity.addChildEntity(animatedSpriteEntity);
+        }
+
+        // Place character on screen
+        this._characterLayer.addChild(characterContainer);
+        characterContainer.setTransform(350, 150, 1.1, 1.1);
       }
-  
-      // Place character on screen
-      this._characterLayer.addChild(characterContainer);
-      characterContainer.setTransform(350, 150, 1.1, 1.1);
-    }
 
+      // Static textures
+      else if (
+        _.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")
+      ) {
+        // Base
+        const baseSprite = new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            baseDir + "/static.png"
+          ].texture
+        );
 
+        characterContainer.addChild(baseSprite);
 
-    // Static textures
-    else if (_.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")) {
-      // Base
-      const baseSprite = new PIXI.Sprite(
-        this.entityConfig.app.loader.resources[
-          baseDir + "/static.png"
-        ].texture
-      );
-  
-      characterContainer.addChild(baseSprite);
-
-      // Place character on screen
-      this._characterLayer.addChild(characterContainer);
-      characterContainer.setTransform(0, 0, 1, 1);
-
-    }
-
-    
-    else {
-      console.warn("Missing asset for character", character);
-      return;
+        // Place character on screen
+        this._characterLayer.addChild(characterContainer);
+        characterContainer.setTransform(0, 0, 1, 1);
+      } else {
+        console.warn("Missing asset for character", character);
+        return;
+      }
     }
   }
-  
-}
 }
 
 class Clock extends entity.EntityBase {
