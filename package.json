@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "scripts": "gulp",
+    "watch": "gulp watch",
     "serve": "yarn scripts && webpack serve --config webpack.dev.js",
     "start": "yarn serve",
     "build": "yarn scripts && webpack --config webpack.dev.js",

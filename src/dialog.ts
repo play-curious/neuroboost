@@ -39,7 +39,7 @@ declare namespace YarnSpinner {
 
 // Initilize Underscore templates to ressemble YarnSpinner
 const templateSettings = {
-  interpolate: /\{\s*\$(.+?)\s*\}/g,
+  interpolate: /{\s*\$(.+?)\s*}/g,
 };
 
 const dialogRegexp = /^(\w+):(.+)/;
@@ -398,7 +398,12 @@ export class DialogScene extends entity.CompositeEntity {
     // {
     //   // todo: use entity for waiting input
     //   const form = document.createElement("form")
-    //   form.innerHTML = `Mon nom: <input type=text name=name> <input type=submit name=Ok>`
+    //   form.innerHTML = `
+    //     <label> ${message.replace(/_/g, " ")}
+    //       <input type=text name=name value="${_default.replace(/_/g, " ")}">
+    //     </label>
+    //     <input type=submit name=Ok >
+    //   `
     //   form.onsubmit = (event) => {
     //     event.preventDefault()
     //
@@ -426,24 +431,18 @@ export class DialogScene extends entity.CompositeEntity {
     const [h, m] = parseTime(time);
     const currentMinutes = parseInt(this._variableStorage.get("time"));
     const newMinutes = currentMinutes + h * 60 + m;
-    this._variableStorage.set("time", newMinutes.toString());
-  }
 
-  /**
-   * Animate the time change
-   */
-  advanceTimeAnimation(time: string) {
-    const [h, m] = parseTime(time);
-    const currentMinutes = parseInt(this._variableStorage.get("time"));
-    return new tween.Tween({
-      duration: 2000,
-      easing: easing.easeInOutQuint,
-      from: currentMinutes,
-      to: currentMinutes + h * 60 + m,
-      onUpdate(value) {
-        this._variableStorage.set("time", Math.round(value).toString());
-      },
-    });
+    this._activateChildEntity(
+      new tween.Tween({
+        duration: 2000,
+        easing: easing.easeInOutQuint,
+        from: currentMinutes,
+        to: newMinutes,
+        onUpdate(value) {
+          this._variableStorage.set("time", Math.round(value).toString());
+        },
+      })
+    );
   }
 
   hideUi() {
