@@ -1,5 +1,7 @@
 import * as entity from "booyah/src/entity";
-import PIXI from "pixi.js";
+import * as PIXI from "pixi.js";
+
+export const dayNames = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
 
 export function parseTime(time: string): [hours: number, minutes: number] {
   const parts = time.split(":");
@@ -16,21 +18,24 @@ export function parseTime(time: string): [hours: number, minutes: number] {
   return [h, m];
 }
 
-export class Clock extends entity.EntityBase {
+export class Clock extends entity.CompositeEntity {
+  private _days: number
   private _minutesSinceMidnight: number;
   private _pos: PIXI.IPoint;
 
   private _container: PIXI.Container;
   private _textBox: PIXI.Text;
 
-  constructor(pos: PIXI.IPoint, minutesSinceMidnight: number = 0) {
+  constructor(pos: PIXI.IPoint) {
     super();
 
     this._pos = pos;
-    this._minutesSinceMidnight = minutesSinceMidnight;
   }
 
   _setup() {
+    this._days = 0
+    this._minutesSinceMidnight = 0
+
     this._container = new PIXI.Container();
     this._container.position.copyFrom(this._pos);
 
@@ -61,11 +66,9 @@ export class Clock extends entity.EntityBase {
     const hours = Math.floor(this._minutesSinceMidnight / 60);
     const minutes = this._minutesSinceMidnight % 60;
     const time = `${hours} : ${minutes < 10 ? "0" + minutes : minutes}`;
+    const dayName = dayNames[this._days % 7];
 
-    // TODO: make this configurable
-    const day = "Lundi";
-
-    this._textBox.text = `${time}\n${day}`;
+    this._textBox.text = `${time}\n${dayName}`;
   }
 
   get minutesSinceMidnight(): number {
@@ -74,8 +77,17 @@ export class Clock extends entity.EntityBase {
 
   set minutesSinceMidnight(value: number) {
     this._minutesSinceMidnight = value;
+
+    const dayMinutes = 60 * 24
+    while(this._minutesSinceMidnight > dayMinutes) {
+      this._minutesSinceMidnight -= dayMinutes
+      this._days ++
+    }
+
     this._updateText();
   }
 
-  advanceTime(time: string) {}
+  advanceTime(time: string) {
+
+  }
 }

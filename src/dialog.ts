@@ -575,7 +575,8 @@ export class DialogScene extends entity.CompositeEntity {
         easing: easing.easeInOutQuint,
         from: currentMinutes,
         to: newMinutes,
-        onUpdate(value) {
+        onUpdate: (value) => {
+          console.log("update time by", value)
           this._variableStorage.set("time", Math.round(value).toString());
         },
       })
