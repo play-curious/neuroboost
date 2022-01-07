@@ -257,7 +257,7 @@ Temde: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire 
 Quoi???... Vous tournez la tête et vous la voyez! La cyborg à quatre bras! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit:
 Temde: Salut! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom?
 
-<<prompt name "Mon nom:" "Moi">>
+<<prompt name Mon_nom: Steve>>
 
 Temde: Enchantée { $name }, lève-toi, on a du pain sur la planche!
 You: Suiiiiis faaaaaaatigué...........

@@ -405,8 +405,8 @@ export class DialogScene extends entity.CompositeEntity {
     //   }
     // }
 
-    const value = prompt(message, _default).trim();
-    this._variableStorage.set(varName, value || _default);
+    const value = prompt(message.replace(/_/g, " "), _default.replace(/_/g, " ")).trim();
+    this._variableStorage.set(varName, value || _default.replace(/_/g, " "));
   }
 
   eval(code: string) {
