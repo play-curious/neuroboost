@@ -262,7 +262,7 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "hair.png",
+	"image": "hair_a.png",
 	"format": "RGBA8888",
 	"size": {"w":477,"h":502},
 	"scale": "1",

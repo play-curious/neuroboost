@@ -390,7 +390,7 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "sleeves.png",
+	"image": "sleeves_a.png",
 	"format": "RGBA8888",
 	"size": {"w":900,"h":731},
 	"scale": "1",

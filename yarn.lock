@@ -7026,6 +7026,11 @@ pixi-filters@^4.1.2:
     "@pixi/filter-twist" "4.1.5"
     "@pixi/filter-zoom-blur" "4.1.5"
 
+pixi-multistyle-text@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/pixi-multistyle-text/-/pixi-multistyle-text-0.10.0.tgz#4134c96604e837166eafcdf6f65f886f9af7f469"
+  integrity sha512-1OB/+QDkdUAZlm3DaNTYkDEN8VI0uIUgblhD46cxC3CRcrz0yUYFhmX+aYx9hbg8pV1rATQTUEbsXq1tmnvc7Q==
+
 pixi.js@5.3.10:
   version "5.3.10"
   resolved "https://registry.yarnpkg.com/pixi.js/-/pixi.js-5.3.10.tgz#602a8411690bbc4009561f07b189cb574e53c43f"

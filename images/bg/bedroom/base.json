@@ -1,0 +1,34 @@
+{
+    "sprites": [
+        {
+            "model": "bocal",
+            "speed": 3,
+            "x": 10,
+            "y": 701
+        },
+        {
+            "model": "flowers",
+            "speed": 4,
+            "x": 36,
+            "y": 270
+        },
+        {
+            "model": "plants",
+            "speed": 4,
+            "x": 1770,
+            "y": 782
+        },
+        {
+            "model": "smoke",
+            "speed": 3,
+            "x": 1601,
+            "y": 663
+        },
+        {
+            "model": "steam",
+            "speed": 3,
+            "x": 200,
+            "y": 542
+        }
+    ]
+}

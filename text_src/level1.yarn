@@ -5,7 +5,11 @@ position: -683,-395
 ---
 << setTime 8:00 >>
 
+<<<<<<< HEAD
 Bip! Bip! Il est 8 heures vous rappelle votre horloge connectée.
+=======
+Bip! Bip! Il est 8 heures vous rappelle votre <b>horloge connectée</b>. 
+>>>>>>> f13c13029d11e65a2e260b352e74cf4e9724543c
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
 Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler :
 
@@ -17,11 +21,11 @@ tags: show:fred
 colorID: 0
 position: -498,-43
 ---
-Fred: Hello! c'est Fred!
+Fred: <b>Hello!</b> <i>c'est</i> <bi>Fred</bi> !
 You:Je sais, j'ai vu ton nom.
-Fred: Yes yes... Tu fais quoi là, maintenant?
+Fred drunk: Yes yes... Tu fais quoi là, maintenant?
 You:Je viens de me réveiller.
-Fred:Tu sais qu'on a le partiel de cet aprèm?
+Fred excited:Tu sais qu'on a le partiel de cet aprèm?
 You: Heu... ouais... C'est sur quoi déjà? 
 Fred:La matière que tu n'aimes pas du tout : l'Atronometric Data Management
 You:Ouais... Le truc super long qui veut rien dire...

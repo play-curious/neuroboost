@@ -1,0 +1,110 @@
+{
+  "frames": {
+    "plants00000.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 130,
+        "h": 166
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 132,
+        "w": 130,
+        "h": 166
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 300
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "plants00001.png": {
+      "frame": {
+        "x": 0,
+        "y": 334,
+        "w": 125,
+        "h": 167
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 25,
+        "y": 132,
+        "w": 125,
+        "h": 167
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 300
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "plants00002.png": {
+      "frame": {
+        "x": 0,
+        "y": 501,
+        "w": 121,
+        "h": 167
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 29,
+        "y": 132,
+        "w": 121,
+        "h": 167
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 300
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "plants0003.png": {
+      "frame": {
+        "x": 0,
+        "y": 166,
+        "w": 126,
+        "h": 168
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 24,
+        "y": 131,
+        "w": 126,
+        "h": 168
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 300
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "animations": {
+    "tissu": ["plants0000.png","plants0001.png","plants0002.png","plants0003.png"]
+  },
+  "meta": {
+    "version": "1.0",
+    "image": "plants.png",
+    "format": "RGBA8888",
+    "size": { "w": 130, "h": 668 },
+    "scale": 1
+  }
+}
