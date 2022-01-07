@@ -53,6 +53,8 @@ const graphicalAssets = [
   "images/ui/clock.png",
   "images/ui/journal_bg.png",
   "images/ui/journal_button.png",
+  "images/ui/choicebox_contour.png",
+  "images/ui/choicebox_empty.png",
 
   // ////////////////////////////////////////////
   // Backgrounds
