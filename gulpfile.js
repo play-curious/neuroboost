@@ -1,7 +1,7 @@
 const gulp = require("gulp");
 const transform = require("gulp-transform");
 const rename = require("gulp-rename");
-const _ = require("underscore");
+const cp = require("child_process");
 
 function convertYarnToJson(text) {
   const allNodes = [];
@@ -14,8 +14,7 @@ function convertYarnToJson(text) {
     if (line === "===") {
       // New node
       currentNode.body = body;
-      if(!currentNode.hasOwnProperty("tags"))
-        currentNode.tags = "";
+      if (!currentNode.hasOwnProperty("tags")) currentNode.tags = "";
       allNodes.push(currentNode);
       currentNode = {};
       readingHeader = true;
@@ -44,7 +43,7 @@ function convertYarnToJson(text) {
       }
     }
   }
-  
+
   return JSON.stringify(allNodes, null, 2);
 }
 
@@ -55,7 +54,27 @@ function convertTextToJson() {
     .pipe(rename({ extname: ".json" }))
     .pipe(gulp.dest("text/"));
 }
+
+function watch(cb) {
+  const spawn = cp.spawn("webpack serve --config webpack.dev.js", {
+    shell: true,
+  });
+
+  spawn.stdout.on("data", (data) => {
+    console.log(`${data}`.trim());
+  });
+
+  spawn.stderr.on("data", (data) => {
+    console.error(`${data}`.trim());
+  });
+
+  spawn.on("close", () => cb());
+
+  gulp.watch("text_src/**/*.yarn", convertTextToJson);
+}
+
 exports.convertTextToJson = convertTextToJson;
+exports.watch = gulp.series(convertTextToJson, watch);
 
 // Meta-tasks
 

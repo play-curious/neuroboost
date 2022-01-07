@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "scripts": "gulp",
+    "watch": "gulp watch",
     "serve": "yarn scripts && webpack serve --config webpack.dev.js",
     "start": "yarn serve",
     "build": "yarn scripts && webpack --config webpack.dev.js",
-    "dist": "yarn scripts && webpack --config webpack.prod.js"
+    "dist": "yarn scripts && webpack --config webpack.prod.js",
+    "format": "prettier --write src gulpfile.js README.md"
   },
   "keywords": [],
-  "author": "",
+  "author": "playcurious",
   "license": "MIT",
   "dependencies": {
     "@pixi/filter-glow": "^4.1.3",
@@ -33,6 +35,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-useref": "^5.0.0",
     "pixi-filters": "^4.1.2",
+    "pixi-multistyle-text": "^0.10.0",
     "pixi.js": "5.3.10",
     "pump": "^3.0.0",
     "underscore": "^1.13.1",
@@ -45,7 +48,7 @@
     "esbuild-loader": "^2.15.1",
     "html-webpack-plugin": "^5.3.1",
     "portfinder-sync": "^0.0.2",
-    "prettier": "^2.3.1",
+    "prettier": "^2.5.1",
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.2",
     "webhook-discord": "^3.7.7",

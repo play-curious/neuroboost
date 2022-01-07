@@ -7026,6 +7026,11 @@ pixi-filters@^4.1.2:
     "@pixi/filter-twist" "4.1.5"
     "@pixi/filter-zoom-blur" "4.1.5"
 
+pixi-multistyle-text@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/pixi-multistyle-text/-/pixi-multistyle-text-0.10.0.tgz#4134c96604e837166eafcdf6f65f886f9af7f469"
+  integrity sha512-1OB/+QDkdUAZlm3DaNTYkDEN8VI0uIUgblhD46cxC3CRcrz0yUYFhmX+aYx9hbg8pV1rATQTUEbsXq1tmnvc7Q==
+
 pixi.js@5.3.10:
   version "5.3.10"
   resolved "https://registry.yarnpkg.com/pixi.js/-/pixi.js-5.3.10.tgz#602a8411690bbc4009561f07b189cb574e53c43f"
@@ -7128,10 +7133,10 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
 
-prettier@^2.3.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.4.1.tgz#671e11c89c14a4cfc876ce564106c4a6726c9f5c"
-  integrity sha512-9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA==
+prettier@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
+  integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==
 
 pretty-error@^4.0.0:
   version "4.0.0"
