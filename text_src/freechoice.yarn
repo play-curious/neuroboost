@@ -28,7 +28,7 @@ position: -227.99999237060547,-12.000001430511475
 [[Lit|Bedroom_post_freechoice]]
 ===
 title: Kitchen_post_freechoice
-tags: bg:kitchen subfreechoice
+tags: bg:kitchen
 position: 154.18483924865723,-494.810161113739
 colorID: 6
 ---
@@ -37,7 +37,7 @@ colorID: 6
 [[Boire|Drink]]
 ===
 title: Desk_post_freechoice
-tags: bg:desk subfreechoice
+tags: bg:desk
 position: 120.36970138549805,-23.45100736618042
 colorID: 5
 ---
@@ -46,7 +46,7 @@ colorID: 5
 [[Chatter|Chat]]
 ===
 title: Bedroom_post_freechoice
-tags: bg:bedroom subfreechoice
+tags: bg:bedroom
 position: 118.1803970336914,423.54286766052246
 ---
 <<moreTags subchoice:Bedroom_freechoice>>

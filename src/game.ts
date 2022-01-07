@@ -55,7 +55,7 @@ const graphicalAssets = [
   "images/ui/journal_button.png",
   "images/ui/choicebox_contour.png",
   "images/ui/choicebox_empty.png",
-  "images/ui/freechoice_box.png",
+  "images/ui/arrow_return.png",
 
   // ////////////////////////////////////////////
   // Backgrounds

@@ -339,32 +339,8 @@ export class DialogScene extends entity.CompositeEntity {
 
     let currentY: number;
 
-    let choicebox_contour = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources[
-        "images/ui/choicebox_contour.png"
-      ].texture
-    );
-    let choicebox_contour_reversed = new PIXI.Sprite();
-    choicebox_contour_reversed.texture = choicebox_contour.texture.clone();
-    choicebox_contour_reversed.setTransform(
-      0,
-      0,
-      1,
-      -1,
-      0,
-      0,
-      0,
-      0,
-      choicebox_contour_reversed.y
-    );
-    let choicebox_empty = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources[
-        "images/ui/choicebox_empty.png"
-      ].texture
-    );
-
     currentY = 1080 - 40;
-
+      
     for (let i = 0; i < nodeValue.options.length; i++) {
       const choicebox = new PIXI.Container();
       if (i == 0) {
@@ -374,34 +350,38 @@ export class DialogScene extends entity.CompositeEntity {
           ].texture
         );
         choicebox_reversed.setTransform(
-          0,
-          choicebox_contour_reversed.height,
+          1920/2,
+          choicebox_reversed.height,
           1,
           -1,
           0,
           0,
           0,
-          0,
-          choicebox_contour_reversed.y
+          choicebox_reversed.width / 2,
+          choicebox_reversed.y
         );
 
         choicebox.addChild(choicebox_reversed);
       } else if (i == nodeValue.options.length - 1) {
-        choicebox.addChild(
-          new PIXI.Sprite(
-            this.entityConfig.app.loader.resources[
-              "images/ui/choicebox_contour.png"
-            ].texture
-          )
+        const choicebox_contour = new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            "images/ui/choicebox_contour.png"
+          ].texture
         );
+        choicebox_contour.setTransform(
+          1920/2, 0, 0, 0, 0, 0, 0, choicebox_contour.width/2, 0
+        );
+        choicebox.addChild(choicebox_contour);
       } else {
-        choicebox.addChild(
-          new PIXI.Sprite(
-            this.entityConfig.app.loader.resources[
-              "images/ui/choicebox_empty.png"
-            ].texture
-          )
+        const choicebox_empty = new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            "images/ui/choicebox_empty.png"
+          ].texture
         );
+        choicebox_empty.setTransform(
+          1920/2, 0, 0, 0, 0, 0, 0, choicebox_empty.width/2, 0
+        );
+        choicebox.addChild(choicebox_empty);
       }
       currentY -= choicebox.height + 20;
       choicebox.setTransform(0, currentY);
@@ -420,11 +400,31 @@ export class DialogScene extends entity.CompositeEntity {
         this._advance();
       });
       choicebox.addChild(optionText);
-      (this._nodeDisplay as PIXI.Container).addChild(choicebox);
+      this._nodeDisplay.addChild(choicebox);
     }
 
     // Can go back if from a freechoice (subchoice)
-    
+    if(this._moreTags.hasOwnProperty("subchoice")){
+      const arrow_back = new PIXI.Container;
+      arrow_back.addChild(
+        new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            "images/ui/arrow_return.png"
+          ].texture
+        )
+      );
+      arrow_back.scale.set(0.65);
+      arrow_back.position.set(10, 1080 - (arrow_back.height + 10));
+
+      arrow_back.interactive = true;
+      arrow_back.buttonMode = true;
+      this._on(arrow_back, "pointerup", () => {
+        this._nodeIterator = this._runner.run(this._moreTags["subchoice"]);
+        this._advance();
+      });
+
+      this._nodeDisplay.addChild(arrow_back);
+    }
 
   }
 
