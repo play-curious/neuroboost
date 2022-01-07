@@ -63,7 +63,7 @@ position: -164.2171859741211,-922.8048057556152
 colorID: 6
 ---
 Munch munch...
-<< advanceTime 15 >>
+<< advanceTime 0:15 >>
 (15 minutes se sont écoulées)
 [[Bedroom_pre_freechoice]]
 ===
@@ -73,7 +73,7 @@ position: -141.4043846130371,-590.7074584960938
 colorID: 6
 ---
 Glouglou...
-<< advanceTime 30 >>
+<< advanceTime 0:30 >>
 (30 minutes se sont écoulées)
 [[Bedroom_pre_freechoice]]
 ===
@@ -83,7 +83,7 @@ position: 552.7621421813965,-252.32909679412842
 colorID: 5
 ---
 Vous ne comprenez rien...
-<< advanceTime 90 >>
+<< advanceTime 1:30 >>
 (1 h 30 minutes se sont écoulées)
 [[Bedroom_pre_freechoice]]
 ===
@@ -92,7 +92,7 @@ tags: bg:desk
 position: 582.3251314163208,179.62422561645508
 ---
 Vous parlez de tout et de rien avec votre ami...
-<< advanceTime 60 >>
+<< advanceTime 1 >>
 (1 heure s'est écoulée)
 [[Bedroom_pre_freechoice]]
 ===
@@ -101,7 +101,7 @@ tags: bg:bedroom
 position: -162.99997520446777,512.0000267028809
 ---
 Vous regardez la saison 2 de The Poacher...
-<< advanceTime 280 >>
+<< advanceTime 4:40 >>
 (4 h 40 se sont écoulées)
 [[Bedroom_pre_freechoice]]
 ===
@@ -110,7 +110,7 @@ tags: bg:kitchen
 position: -153.3624382019043,839.1665534973145
 ---
 Vous vous relaxez...
-<< advanceTime 45 >>
+<< advanceTime 0:45 >>
 (45 minutes se sont écoulées)
 [[Bedroom_pre_freechoice]]
 ===
