@@ -114,7 +114,6 @@ export class Clock extends entity.CompositeEntity {
       from: currentMinutes,
       to: newMinutes,
       onUpdate: (value) => {
-        console.log("update time by", value);
         this._variableStorage.set("time", Math.round(value).toString());
       },
     });
