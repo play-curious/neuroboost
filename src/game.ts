@@ -55,7 +55,17 @@ const graphicalAssets = [
 
   // ////////////////////////////////////////////
   // Backgrounds
+
+  // Bedroom
   "images/bg/bedroom/base.png",
+  "images/bg/bedroom/base.json",
+  "images/bg/bedroom/bocal.json",
+  "images/bg/bedroom/flowers.json",
+  "images/bg/bedroom/plants.json",
+  "images/bg/bedroom/smoke.json",
+  "images/bg/bedroom/steam.json",
+
+  // Others
   "images/bg/bedroom_night/base.png",
   "images/bg/class/base.png",
   "images/bg/desk/base.png",
@@ -81,6 +91,7 @@ const graphicalAssets = [
   "images/characters/fred/hair_a.json",
   "images/characters/fred/sleeves_a.json",
 
+  // Others
   "images/characters/azul/static.png",
   "images/characters/ledai/static.png",
   "images/characters/sapiens/static.png",

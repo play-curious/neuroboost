@@ -107,7 +107,8 @@ export class DialogScene extends entity.CompositeEntity {
   private _variableStorage: VariableStorage;
 
   private _container: PIXI.Container;
-  private _background: PIXI.Sprite;
+  private _backgroundLayer: PIXI.Container;
+  private _backgroundEntity: entity.ParallelEntity;
   private _characterLayer: PIXI.Container;
   private _characterEntity: entity.ParallelEntity;
   private _closeupLayer: PIXI.Container;
@@ -142,8 +143,8 @@ export class DialogScene extends entity.CompositeEntity {
     this._container = new PIXI.Container();
     this._entityConfig.container.addChild(this._container);
 
-    this._background = new PIXI.Sprite();
-    this._container.addChild(this._background);
+    this._backgroundLayer = new PIXI.Container();
+    this._container.addChild(this._backgroundLayer);
 
     this._characterLayer = new PIXI.Container();
     this._container.addChild(this._characterLayer);
@@ -376,14 +377,55 @@ export class DialogScene extends entity.CompositeEntity {
   changeBackground(bg: string): void {
     if (bg === this._lastBg) return;
 
-    const fileName = `images/bg/${bg}/base.png`;
+    const folderName = `images/bg/${bg}`
+    const fileName = `${folderName}/base.png`;
+    const fileNameJson = `${folderName}/base.json`;
     if (!_.has(this.entityConfig.app.loader.resources, fileName)) {
       console.warn("Missing asset for background", bg);
       return;
     }
 
-    this._background.texture =
-      this.entityConfig.app.loader.resources[fileName].texture;
+    // Remove existing
+    this._backgroundLayer.removeChildren();
+    if (this._backgroundEntity !== undefined) {
+      if(this.childEntities.indexOf(this._backgroundEntity) != -1)
+        this._deactivateChildEntity(this._backgroundEntity);
+      this._backgroundEntity = undefined;
+    }
+
+    // Set background base
+    const background = new PIXI.Sprite(
+      this.entityConfig.app.loader.resources[fileName].texture
+    );
+    this._backgroundLayer.addChild(background);
+    
+    // Set animations
+    if(_.has(this.entityConfig.app.loader.resources, fileNameJson)) {
+
+      console.log("HERE")
+
+      this._backgroundEntity = new entity.ParallelEntity();
+      this._activateChildEntity(
+        this._backgroundEntity,
+        entity.extendConfig({ container: this._backgroundLayer })
+      );
+
+      let baseJson = this._entityConfig.app.loader.resources[fileNameJson].data;
+      for(const bgPart of baseJson.sprites) {
+
+        console.log(bgPart);
+
+        const animatedSpriteEntity = util.makeAnimatedSprite(
+          this._entityConfig.app.loader.resources[`${folderName}/${bgPart.model}.json`]
+        );
+        animatedSpriteEntity.sprite.x = bgPart.x;
+        animatedSpriteEntity.sprite.y = bgPart.y;
+
+        animatedSpriteEntity.sprite.animationSpeed = (1/bgPart.speed)*0.33;
+        this._backgroundEntity.addChildEntity(animatedSpriteEntity);
+      }
+    }
+
 
     this._lastBg = bg;
   }
@@ -442,97 +484,94 @@ export class DialogScene extends entity.CompositeEntity {
     this.showCloseup();
   }
 
- // If character is null or undefined, will just remove current character
- private _changeCharacter(character?: string, mood?: string): void {
+  // If character is null or undefined, will just remove current character
+  private _changeCharacter(character?: string, mood?: string): void {
 
-  if(mood === undefined) mood = "neutral";
+    if(mood === undefined) mood = "neutral";
 
-  if (character === this._lastCharacter && mood === this._lastMood) return;
+    if (character === this._lastCharacter && mood === this._lastMood) return;
 
-  // Remove all previous characters
-  this._characterLayer.removeChildren();
-  this._lastCharacter = character;
-  this._lastMood = mood;
+    // Remove all previous characters
+    this._characterLayer.removeChildren();
+    this._lastCharacter = character;
+    this._lastMood = mood;
 
-  if (this._characterEntity !== undefined) {
-    if(this.childEntities.indexOf(this._characterEntity) != -1)
-      this._deactivateChildEntity(this._characterEntity);
-    this._characterEntity = undefined;
-  }
+    if (this._characterEntity !== undefined) {
+      if(this.childEntities.indexOf(this._characterEntity) != -1)
+        this._deactivateChildEntity(this._characterEntity);
+      this._characterEntity = undefined;
+    }
 
-  if (character !== undefined && character !== "") {
-    const characterContainer = new PIXI.Container();
-    characterContainer.position.set(1920 / 2, 0);
+    if (character !== undefined && character !== "") {
+      const characterContainer = new PIXI.Container();
+      characterContainer.position.set(1920 / 2, 0);
 
-    this._characterEntity = new entity.ParallelEntity();
-    this._activateChildEntity(
-      this._characterEntity,
-      entity.extendConfig({ container: characterContainer })
-    );
-
-    const baseDir = `images/characters/${character}`;
-    const basePng = baseDir + `/base_${mood}.png`;
-
-    // Moving textures
-    if (_.has(this.entityConfig.app.loader.resources, basePng)) {
-
-      // Base
-      const baseSprite = new PIXI.Sprite(
-        this.entityConfig.app.loader.resources[
-          basePng
-        ].texture
+      this._characterEntity = new entity.ParallelEntity();
+      this._activateChildEntity(
+        this._characterEntity,
+        entity.extendConfig({ container: characterContainer })
       );
-      baseSprite.anchor.set(0,0);
-      baseSprite.pivot.set((baseSprite.width -1920)/2, (baseSprite.height -1080)/2);
-  
-      characterContainer.addChild(baseSprite);
 
-      // Load animations JSON
-      let placeholdersJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
-      for(const bodyPart of placeholdersJson[mood]) {
+      const baseDir = `images/characters/${character}`;
+      const basePng = baseDir + `/base_${mood}.png`;
 
-        const animatedSpriteEntity = util.makeAnimatedSprite(
-          this._entityConfig.app.loader.resources[`${baseDir}/${bodyPart.model}.json`]
+      // Moving textures
+      if (_.has(this.entityConfig.app.loader.resources, basePng)) {
+
+        // Base
+        const baseSprite = new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            basePng
+          ].texture
         );
-        animatedSpriteEntity.sprite.x = bodyPart.x;
-        animatedSpriteEntity.sprite.y = bodyPart.y;
-
-        animatedSpriteEntity.sprite.animationSpeed = 0.5;
-        this._characterEntity.addChildEntity(animatedSpriteEntity);
-      }
-  
-      // Place character on screen
-      this._characterLayer.addChild(characterContainer);
-      characterContainer.setTransform(350, 150, 1.1, 1.1);
-    }
-
-
-
-    // Static textures
-    else if (_.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")) {
-      // Base
-      const baseSprite = new PIXI.Sprite(
-        this.entityConfig.app.loader.resources[
-          baseDir + "/static.png"
-        ].texture
-      );
-  
-      characterContainer.addChild(baseSprite);
-
-      // Place character on screen
-      this._characterLayer.addChild(characterContainer);
-      characterContainer.setTransform(0, 0, 1, 1);
-
-    }
-
+        baseSprite.anchor.set(0,0);
+        baseSprite.pivot.set((baseSprite.width -1920)/2, (baseSprite.height -1080)/2);
     
-    else {
-      console.warn("Missing asset for character", character);
-      return;
+        characterContainer.addChild(baseSprite);
+
+        // Load animations JSON
+        let baseJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
+        for(const bodyPart of baseJson[mood]) {
+
+          const animatedSpriteEntity = util.makeAnimatedSprite(
+            this._entityConfig.app.loader.resources[`${baseDir}/${bodyPart.model}.json`]
+          );
+          animatedSpriteEntity.sprite.x = bodyPart.x;
+          animatedSpriteEntity.sprite.y = bodyPart.y;
+
+          animatedSpriteEntity.sprite.animationSpeed = 0.5;
+          this._characterEntity.addChildEntity(animatedSpriteEntity);
+        }
+    
+        // Place character on screen
+        this._characterLayer.addChild(characterContainer);
+        characterContainer.setTransform(350, 150, 1.1, 1.1);
+      }
+
+      // Static textures
+      else if (_.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")) {
+        // Base
+        const baseSprite = new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            baseDir + "/static.png"
+          ].texture
+        );
+    
+        characterContainer.addChild(baseSprite);
+
+        // Place character on screen
+        this._characterLayer.addChild(characterContainer);
+        characterContainer.setTransform(0, 0, 1, 1);
+
+      }
+
+      else {
+        console.warn("Missing asset for character", character);
+        return;
+      }
     }
+    
   }
-  
-}
 }
 
 class Clock extends entity.EntityBase {
