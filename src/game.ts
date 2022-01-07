@@ -35,7 +35,7 @@ const params = new URLSearchParams(window.location.search);
 const startNode = params.get("startNode") || params.get("node") || "Start";
 
 const states: { [k: string]: entity.EntityResolvable } = {
-  start: new dialog.DialogScene("level1", startNode),
+  start: new dialog.DialogScene("freechoice", startNode),
   journal: new journal.JournalScene(),
   level2: new dialog.DialogScene("level2", startNode),
 };
@@ -80,13 +80,17 @@ const graphicalAssets = [
   "images/characters/ledai/static.png",
   "images/characters/sapiens/static.png",
   "images/characters/temde/static.png",
+
+  // Freechoices
+  "images/ui/freechoice.json",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 const jsonAssets = [
-  { key: "level1", url: "text/level1.json" },
-  { key: "level2", url: "text/level2.json" },
+  { key: "freechoice", url: "text/freechoice.json"},
+  // { key: "level1", url: "text/level1.json" },
+  // { key: "level2", url: "text/level2.json" },
 ];
 
 const screenSize = new PIXI.Point(1920, 1080);

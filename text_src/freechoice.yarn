@@ -1,0 +1,113 @@
+title: Start
+tags: bg:bedroom
+position: -1499.17578125,9.743258476257324
+---
+<< setTime 8:00 >>
+
+You're wondering what you should be doing in your free time.
+[[Bedroom_pre_freechoice]]
+===
+
+
+
+title: Bedroom_pre_freechoice
+tags: bg:bedroom
+position: -1179.9999866485596,3.999999523162842
+---
+So, what to do ?
+
+[[Bedroom_freechoice]]
+===
+title: Bedroom_freechoice
+tags: bg:bedroom
+position: -227.99999237060547,-12.000001430511475
+---
+<<moreTags freechoice:bedroom_choice>>
+[[Cuisine|Kitchen_post_freechoice]]
+[[Bureau|Desk_post_freechoice]]
+[[Lit|Bedroom_post_freechoice]]
+===
+title: Kitchen_post_freechoice
+tags: bg:kitchen subfreechoice
+position: 154.18483924865723,-494.810161113739
+colorID: 6
+---
+[[Manger|Eat]]
+[[Boire|Drink]]
+===
+title: Desk_post_freechoice
+tags: bg:desk subfreechoice
+position: 120.36970138549805,-23.45100736618042
+colorID: 5
+---
+[[Réviser|Study]]
+[[Chatter|Chat]]
+===
+title: Bedroom_post_freechoice
+tags: bg:bedroom subfreechoice
+position: 118.1803970336914,423.54286766052246
+---
+[[Binge TV|Binge]]
+[[Sieste|Sleep]]
+===
+
+
+
+===
+title: Eat
+tags: bg:kitchen
+position: -164.2171859741211,-922.8048057556152
+colorID: 6
+---
+Munch munch...
+<< advanceTime 15 >>
+(15 minutes se sont écoulées)
+[[Bedroom_pre_freechoice]]
+===
+title: Drink
+tags: bg:kitchen
+position: -141.4043846130371,-590.7074584960938
+colorID: 6
+---
+Glouglou...
+<< advanceTime 30 >>
+(30 minutes se sont écoulées)
+[[Bedroom_pre_freechoice]]
+===
+title: Study
+tags: bg:desk
+position: 552.7621421813965,-252.32909679412842
+colorID: 5
+---
+Vous ne comprenez rien...
+<< advanceTime 90 >>
+(1 h 30 minutes se sont écoulées)
+[[Bedroom_pre_freechoice]]
+===
+title: Chat
+tags: bg:desk
+position: 582.3251314163208,179.62422561645508
+---
+Vous parlez de tout et de rien avec votre ami...
+<< advanceTime 60 >>
+(1 heure s'est écoulée)
+[[Bedroom_pre_freechoice]]
+===
+title: Binge
+tags: bg:bedroom
+position: -162.99997520446777,512.0000267028809
+---
+Vous regardez la saison 2 de The Poacher...
+<< advanceTime 280 >>
+(4 h 40 se sont écoulées)
+[[Bedroom_pre_freechoice]]
+===
+title: Sleep
+tags: bg:kitchen
+position: -153.3624382019043,839.1665534973145
+---
+Vous vous relaxez...
+<< advanceTime 45 >>
+(45 minutes se sont écoulées)
+[[Bedroom_pre_freechoice]]
+===

@@ -104,6 +104,8 @@ export class DialogScene extends entity.CompositeEntity {
   private _lastCharacter: string;
   private _autoshowOn: boolean;
   private _variableStorage: VariableStorage;
+  private _previousNodeData: YarnSpinner.NodeData;
+  private _moreTags: Record<string, string>;
 
   private _container: PIXI.Container;
   private _background: PIXI.Sprite;
@@ -135,6 +137,7 @@ export class DialogScene extends entity.CompositeEntity {
       this._variableStorage = new VariableStorage();
       this._variableStorage.set("name", "Moi");
     }
+    this._moreTags = {};
     // Reset time
     this._variableStorage.set("time", "540");
 
@@ -187,6 +190,7 @@ export class DialogScene extends entity.CompositeEntity {
     this._nodeDisplay = null;
     
     this._dialogLayer.visible = true;
+    this._moreTags = {};
 
     this._nodeValue = this._nodeIterator.next().value;
     // If result is undefined, stop here
@@ -205,13 +209,13 @@ export class DialogScene extends entity.CompositeEntity {
       this._lastNodeData = this._nodeValue.data;
     }
 
-    // console.log("nodeValue", this._nodeValue);
-    // console.log("data", this._runner.variables.data);
-
     if (this._nodeValue instanceof bondage.TextResult) {
       this._handleDialog((this._nodeValue as YarnSpinner.TextNode).text);
     } else if (this._nodeValue instanceof bondage.OptionsResult) {
-      this._handleChoice(this._nodeValue as YarnSpinner.ChoiceNode);
+      if(this._moreTags.hasOwnProperty("freechoice"))
+        this._handleFreechoice(this._moreTags["freechoice"], this._nodeValue as YarnSpinner.ChoiceNode);
+      else
+        this._handleChoice(this._nodeValue as YarnSpinner.ChoiceNode);
     } else if (this._nodeValue instanceof bondage.CommandResult) {
       this._handleCommand((this._nodeValue as YarnSpinner.TextNode).text);
     } else {
@@ -220,8 +224,6 @@ export class DialogScene extends entity.CompositeEntity {
   }
 
   private _handleDialog(text: string) {
-    // console.log("text result", text);
-
     // Use underscore template to interpolate variables
     const interpolatedText = _.template(
       text,
@@ -285,23 +287,12 @@ export class DialogScene extends entity.CompositeEntity {
 
   private _handleChoice(nodeValue: YarnSpinner.ChoiceNode) {
     // This works for both links between nodes and shortcut options
-    // console.log("options result", nodeValue.options);
     this._dialogLayer.visible = false;
     
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
 
     let currentY: number;
-
-    let choicebox_contour = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources["images/ui/choicebox_contour.png"].texture
-    );
-    let choicebox_contour_reversed = new PIXI.Sprite();
-    choicebox_contour_reversed.texture = choicebox_contour.texture.clone();
-    choicebox_contour_reversed.setTransform(0, 0, 1, -1, 0, 0, 0, 0, choicebox_contour_reversed.y);
-    let choicebox_empty = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources["images/ui/choicebox_empty.png"].texture
-    );
 
     currentY = 1080 - 40  
     
@@ -311,7 +302,7 @@ export class DialogScene extends entity.CompositeEntity {
         let choicebox_reversed = new PIXI.Sprite(
           this.entityConfig.app.loader.resources["images/ui/choicebox_contour.png"].texture
         );
-        choicebox_reversed.setTransform(0, choicebox_contour_reversed.height, 1, -1, 0, 0, 0, 0, choicebox_contour_reversed.y);
+        choicebox_reversed.setTransform(0, choicebox_reversed.height, 1, -1, 0, 0, 0, 0, choicebox_reversed.y);
         choicebox.addChild(choicebox_reversed);
       } else if (i == nodeValue.options.length -1){
         choicebox.addChild(new PIXI.Sprite(
@@ -323,7 +314,6 @@ export class DialogScene extends entity.CompositeEntity {
         ));
       }
       currentY -= choicebox.height + 20;
-      console.log(currentY, choicebox.height);
       choicebox.setTransform(0, currentY);
 
       const optionText = new PIXI.Text(nodeValue.options[i], {
@@ -346,7 +336,6 @@ export class DialogScene extends entity.CompositeEntity {
 
   private _handleCommand(command: string): void {
     // If the text was inside <<here>>, it will get returned as a CommandResult string, which you can use in any way you want
-    // console.log("command result", command);
 
     const commandParts = command.split(" ");
 
@@ -363,11 +352,31 @@ export class DialogScene extends entity.CompositeEntity {
     this._advance();
   }
 
+  // TODO: Freechoice
+  private _handleFreechoice(freechoice: string, nodeValue: YarnSpinner.ChoiceNode) {
+    this._dialogLayer.visible = false;
+
+    let freechoicesJSON = this._entityConfig.app.loader.resources[`images/ui/freechoices.json`].data;
+    if(!freechoicesJSON.hasOwnProperty(freechoice))
+      return;
+
+    this._nodeDisplay = new PIXI.Container();
+    this._container.addChild(this._nodeDisplay);
+    console.log("FREECHOICE");
+
+    for (let i = 0; i < nodeValue.options.length; i++) {
+      if(!freechoicesJSON.hasOwnProperty(nodeValue.options[i]))
+        return;
+      const freechoicebox = new PIXI.Container;
+      console.log("FreeHue");
+    }
+  }
+
   private _onChangeNodeData(
     oldNodeData: YarnSpinner.NodeData,
     newNodeData: YarnSpinner.NodeData
   ) {
-    console.log("changing node data", oldNodeData, " --> ", newNodeData);
+    //console.log("changing node data", oldNodeData, " --> ", newNodeData);
 
     // Parse tags
 
@@ -376,7 +385,6 @@ export class DialogScene extends entity.CompositeEntity {
 
     let bg: string;
     let character: string;
-
     for (let tag of newNodeData.tags) {
       tag = tag.trim();
       if (tag === "") continue;
@@ -469,6 +477,13 @@ export class DialogScene extends entity.CompositeEntity {
 
   hideCloseup(): void {
     this.showCloseup();
+  }
+
+  moreTags(...tags: string[]): void {
+    for(const tag of tags){
+      const [key, value] = tag.split(":");
+      this._moreTags[key] = value;
+    }
   }
 
  // If character is null or undefined, will just remove current character

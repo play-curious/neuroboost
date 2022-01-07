@@ -1,0 +1,16 @@
+{
+    "bedroom_freechoice": {
+        "Kitchen_post_freechoice":{
+            "x": 100,
+            "y": 100
+        },
+        "Desk_post_freechoice":{
+            "x": 300,
+            "y": 300
+        },
+        "Bedroom_post_freechoice":{
+            "x": 500,
+            "y": 500
+        }
+    }
+}
