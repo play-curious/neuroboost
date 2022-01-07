@@ -115,7 +115,7 @@ export class DialogScene extends entity.CompositeEntity {
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
 
-  private _nodeDisplay: PIXI.DisplayObject;
+  private _nodeDisplay: PIXI.Container;
   private _clock: Clock;
 
   constructor(
@@ -190,7 +190,6 @@ export class DialogScene extends entity.CompositeEntity {
     this._nodeDisplay = null;
     
     this._dialogLayer.visible = true;
-    this._moreTags = {};
 
     this._nodeValue = this._nodeIterator.next().value;
     // If result is undefined, stop here
@@ -209,6 +208,10 @@ export class DialogScene extends entity.CompositeEntity {
       this._lastNodeData = this._nodeValue.data;
     }
 
+    if(this._moreTags.hasOwnProperty("subchoice")){
+      delete this._moreTags.freechoice;
+    }
+    
     if (this._nodeValue instanceof bondage.TextResult) {
       this._handleDialog((this._nodeValue as YarnSpinner.TextNode).text);
     } else if (this._nodeValue instanceof bondage.OptionsResult) {
@@ -332,6 +335,10 @@ export class DialogScene extends entity.CompositeEntity {
       choicebox.addChild(optionText);
       (this._nodeDisplay as PIXI.Container).addChild(choicebox);
     }
+
+    // Can go back if from a freechoice (subchoice)
+    
+
   }
 
   private _handleCommand(command: string): void {
@@ -356,19 +363,44 @@ export class DialogScene extends entity.CompositeEntity {
   private _handleFreechoice(freechoice: string, nodeValue: YarnSpinner.ChoiceNode) {
     this._dialogLayer.visible = false;
 
-    let freechoicesJSON = this._entityConfig.app.loader.resources[`images/ui/freechoices.json`].data;
+    const freechoicesJSON = this._entityConfig.app.loader.resources[`images/ui/freechoice.json`].data;
     if(!freechoicesJSON.hasOwnProperty(freechoice))
       return;
+    const currentFreechoices = freechoicesJSON[freechoice];
 
-    this._nodeDisplay = new PIXI.Container();
+    this._nodeDisplay = new PIXI.Container;
     this._container.addChild(this._nodeDisplay);
-    console.log("FREECHOICE");
-
+    
     for (let i = 0; i < nodeValue.options.length; i++) {
-      if(!freechoicesJSON.hasOwnProperty(nodeValue.options[i]))
+      if(!currentFreechoices.hasOwnProperty(nodeValue.options[i]))
         return;
+      const freechoicebox_bg = new PIXI.Graphics();
+      freechoicebox_bg.beginFill(0x1033AA);
+      freechoicebox_bg.drawRect(-75, -20, 150, 40);
+
+      const freechoicebox_text = new PIXI.Text(nodeValue.options[i]);
+      freechoicebox_text.anchor.set(0.5, 0.5);
+      
       const freechoicebox = new PIXI.Container;
-      console.log("FreeHue");
+      freechoicebox.addChild(
+        freechoicebox_bg,
+        freechoicebox_text
+      );
+
+      const currentData = currentFreechoices[nodeValue.options[i]];
+      freechoicebox.position.set(
+        currentData.x,
+        currentData.y
+      );
+
+      freechoicebox.interactive = true;
+      freechoicebox.buttonMode = true;
+      this._on(freechoicebox, "pointerup", () => {
+        nodeValue.select(i);
+        this._advance();
+      });
+
+      this._nodeDisplay.addChild(freechoicebox);
     }
   }
 
@@ -376,12 +408,14 @@ export class DialogScene extends entity.CompositeEntity {
     oldNodeData: YarnSpinner.NodeData,
     newNodeData: YarnSpinner.NodeData
   ) {
-    //console.log("changing node data", oldNodeData, " --> ", newNodeData);
+    console.log("changing node data", oldNodeData, " --> ", newNodeData);
 
     // Parse tags
 
     // By default, autoshow is off
     this._autoshowOn = false;
+    this._moreTags = {};
+    this._previousNodeData = oldNodeData;
 
     let bg: string;
     let character: string;

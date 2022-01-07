@@ -1,15 +1,15 @@
 {
     "bedroom_freechoice": {
-        "Kitchen_post_freechoice":{
-            "x": 100,
-            "y": 100
+        "Cuisine":{
+            "x": 220,
+            "y": 430
         },
-        "Desk_post_freechoice":{
-            "x": 300,
-            "y": 300
+        "Bureau":{
+            "x": 1040,
+            "y": 450
         },
-        "Bedroom_post_freechoice":{
-            "x": 500,
+        "Lit":{
+            "x": 1300,
             "y": 500
         }
     }
