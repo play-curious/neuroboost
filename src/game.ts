@@ -49,6 +49,7 @@ const transitions = {
 const graphicalAssets = [
   // UI
   "images/ui/dialog.png",
+  "images/ui/dialog_speaker.png",
   "images/ui/clock.png",
   "images/ui/journal_bg.png",
   "images/ui/journal_button.png",

@@ -114,6 +114,7 @@ export class DialogScene extends entity.CompositeEntity {
   private _closeupLayer: PIXI.Container;
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
+  private _dialogSpeaker: PIXI.Container;
 
   private _nodeDisplay: PIXI.DisplayObject;
   private _clock: Clock;
@@ -162,6 +163,15 @@ export class DialogScene extends entity.CompositeEntity {
       )
     );
     this._container.addChild(this._dialogLayer);
+
+    this._dialogSpeaker = new PIXI.Container();
+    this._dialogSpeaker.addChild(
+      new PIXI.Sprite(
+        this.entityConfig.app.loader.resources["images/ui/dialog_speaker.png"].texture
+      )
+    );
+    this._dialogSpeaker.position.set(202, 601);
+    this._dialogLayer.addChild(this._dialogSpeaker);
 
     // Setup clock
     this._clock = new Clock(new PIXI.Point(1920 - 557 / 2, 0));
@@ -242,8 +252,9 @@ export class DialogScene extends entity.CompositeEntity {
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
-
+    
     if (speaker) {
+      this._dialogSpeaker.visible = true;
       const speakerName =
         speaker.toLowerCase() === "you"
           ? this._variableStorage.get("name")
@@ -253,7 +264,10 @@ export class DialogScene extends entity.CompositeEntity {
         fontFamily: "Jura",
         fontSize: 50,
       });
-      speakerText.position.set(437, 637);
+      speakerText.position.set(
+        this._dialogSpeaker.x + (this._dialogSpeaker.width / 2),
+        this._dialogSpeaker.y + (this._dialogSpeaker.height / 2)
+      );
       speakerText.anchor.set(0.5);
       (this._nodeDisplay as PIXI.Container).addChild(speakerText);
 
@@ -261,6 +275,8 @@ export class DialogScene extends entity.CompositeEntity {
       if (this._autoshowOn || (this._lastCharacter === speakerLow && this._lastMood !== mood)) {
         this._changeCharacter(speakerLow, mood);
       }
+    } else {
+      this._dialogSpeaker.visible = false;
     }
 
     {
