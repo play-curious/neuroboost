@@ -53,26 +53,45 @@ const graphicalAssets = [
   "images/ui/journal_bg.png",
   "images/ui/journal_button.png",
 
+  // ////////////////////////////////////////////
   // Backgrounds
-  "images/bg/bedroom.png",
-  "images/bg/bedroom_night.png",
-  "images/bg/class.png",
-  "images/bg/desk.png",
-  "images/bg/kitchen.png",
-  "images/bg/party.png",
-  "images/bg/circle.png",
-  "images/bg/schema.png",
 
+  // Bedroom
+  "images/bg/bedroom/base.png",
+  "images/bg/bedroom/base.json",
+  "images/bg/bedroom/bocal.json",
+  "images/bg/bedroom/flowers.json",
+  "images/bg/bedroom/plants.json",
+  "images/bg/bedroom/smoke.json",
+  "images/bg/bedroom/steam.json",
+
+  // Others
+  "images/bg/bedroom_night/base.png",
+  "images/bg/class/base.png",
+  "images/bg/desk/base.png",
+  "images/bg/kitchen/base.png",
+  "images/bg/party/base.png",
+  "images/bg/circle/base.png",
+  "images/bg/schema/base.png",
+
+  // ////////////////////////////////////////////
   // Closeups
   "images/closeups/shelf_disorganized.png",
   "images/closeups/shelf_organized.png",
 
-  // Fred
-  "images/characters/fred/static.png",
-  // "images/characters/fred/cloth.json",
-  // "images/characters/fred/hair.json",
-  // "images/characters/fred/sleeves.json",
+  // ////////////////////////////////////////////
+  // Characters
 
+  // Fred
+  "images/characters/fred/base.json",
+  "images/characters/fred/base_neutral.png",
+  "images/characters/fred/base_drunk.png",
+  "images/characters/fred/base_excited.png",
+  "images/characters/fred/cloth_a.json",
+  "images/characters/fred/hair_a.json",
+  "images/characters/fred/sleeves_a.json",
+
+  // Others
   "images/characters/azul/static.png",
   "images/characters/ledai/static.png",
   "images/characters/sapiens/static.png",
@@ -83,12 +102,12 @@ const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 const jsonAssets = [
   { key: "level1", url: "text/level1.json" },
-  { key: "level2", url: "text/level2.json" },
+  { key: "level2", url: "text/level2.json" }
 ];
 
 const screenSize = new PIXI.Point(1920, 1080);
 
-const splashScreen = "images/bg/outside.png";
+const splashScreen = "images/bg/outside/base.png";
 
 booyah.go({
   states,

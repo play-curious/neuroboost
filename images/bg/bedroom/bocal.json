@@ -1,0 +1,398 @@
+{
+  "frames": {
+    "bocal00000.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00001.png": {
+      "frame": {
+        "x": 139,
+        "y": 0,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00002.png": {
+      "frame": {
+        "x": 278,
+        "y": 0,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00003.png": {
+      "frame": {
+        "x": 417,
+        "y": 0,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00004.png": {
+      "frame": {
+        "x": 0,
+        "y": 117,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00005.png": {
+      "frame": {
+        "x": 139,
+        "y": 117,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00006.png": {
+      "frame": {
+        "x": 278,
+        "y": 117,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00007.png": {
+      "frame": {
+        "x": 417,
+        "y": 117,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00008.png": {
+      "frame": {
+        "x": 0,
+        "y": 234,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00009.png": {
+      "frame": {
+        "x": 139,
+        "y": 234,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00010.png": {
+      "frame": {
+        "x": 278,
+        "y": 234,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00011.png": {
+      "frame": {
+        "x": 417,
+        "y": 234,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00012.png": {
+      "frame": {
+        "x": 0,
+        "y": 351,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00013.png": {
+      "frame": {
+        "x": 139,
+        "y": 351,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00014.png": {
+      "frame": {
+        "x": 278,
+        "y": 351,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "bocal00015.png": {
+      "frame": {
+        "x": 417,
+        "y": 351,
+        "w": 139,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 43,
+        "w": 139,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "animations": {
+    "tissu": ["bocal00000.png", "bocal00001.png", "bocal00002.png", "bocal00003.png", "bocal00004.png",   "bocal00005.png", "bocal00006.png", "bocal00007.png", "bocal00008.png", "bocal00009.png", "bocal00010.png", "bocal00011.png", "bocal00012.png", "bocal00013.png", "bocal00014.png", "bocal00015.png"]
+  },
+  "meta": {
+    "version": "1.0",
+    "image": "bocal.png",
+    "format": "RGBA8888",
+    "size": { "w": 556, "h": 468 },
+    "scale": 1
+  }
+}

@@ -41,11 +41,7 @@ const templateSettings = {
   interpolate: /\{\s*\$(.+?)\s*\}/g,
 };
 
-const dialogRegexp = /^(\w+):(.+)/;
-
-const characterAnimations: { [key: string]: string[] } = {
-  fred: ["cloth", "hair", "sleeves"],
-};
+const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
 
 function parseTime(time: string): [number, number] {
   const parts = time.split(":");
@@ -106,13 +102,15 @@ export class DialogScene extends entity.CompositeEntity {
   private _lastNodeData: YarnSpinner.NodeData;
   private _lastBg: string;
   private _lastCharacter: string;
+  private _lastMood: string;
   private _autoshowOn: boolean;
   private _variableStorage: VariableStorage;
 
   private _container: PIXI.Container;
-  private _background: PIXI.Sprite;
+  private _backgroundLayer: PIXI.Container;
+  private _backgroundEntity: entity.ParallelEntity;
   private _characterLayer: PIXI.Container;
-  // private _characterEntity: entity.ParallelEntity;
+  private _characterEntity: entity.ParallelEntity;
   private _closeupLayer: PIXI.Container;
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
@@ -145,8 +143,8 @@ export class DialogScene extends entity.CompositeEntity {
     this._container = new PIXI.Container();
     this._entityConfig.container.addChild(this._container);
 
-    this._background = new PIXI.Sprite();
-    this._container.addChild(this._background);
+    this._backgroundLayer = new PIXI.Container();
+    this._container.addChild(this._backgroundLayer);
 
     this._characterLayer = new PIXI.Container();
     this._container.addChild(this._characterLayer);
@@ -207,7 +205,7 @@ export class DialogScene extends entity.CompositeEntity {
       this._lastNodeData = this._nodeValue.data;
     }
 
-    console.log("nodeValue", this._nodeValue);
+    // console.log("nodeValue", this._nodeValue);
     // console.log("data", this._runner.variables.data);
 
     if (this._nodeValue instanceof bondage.TextResult) {
@@ -230,11 +228,16 @@ export class DialogScene extends entity.CompositeEntity {
       templateSettings
     )(this._variableStorage.data);
 
-    let speaker, dialog: string;
+    let speaker, mood, dialog: string;
     if (dialogRegexp.test(interpolatedText)) {
       let match = dialogRegexp.exec(interpolatedText);
+
       speaker = match[1].trim();
-      dialog = match[2].trim();
+      mood = match[2];
+      dialog = match[3].trim();
+
+      if(mood !== undefined)
+        mood = mood.trim();
     }
 
     this._nodeDisplay = new PIXI.Container();
@@ -254,8 +257,9 @@ export class DialogScene extends entity.CompositeEntity {
       speakerText.anchor.set(0.5);
       (this._nodeDisplay as PIXI.Container).addChild(speakerText);
 
-      if (this._autoshowOn) {
-        this._changeCharacter(speaker.toLowerCase());
+      const speakerLow = speaker.toLowerCase();
+      if (this._autoshowOn || (this._lastCharacter === speakerLow && this._lastMood !== mood)) {
+        this._changeCharacter(speakerLow, mood);
       }
     }
 
@@ -342,12 +346,13 @@ export class DialogScene extends entity.CompositeEntity {
     // By default, autoshow is off
     this._autoshowOn = false;
 
+    let bg: string;
+    let character: string;
+
     for (let tag of newNodeData.tags) {
       tag = tag.trim();
       if (tag === "") continue;
 
-      let bg: string;
-      let character: string;
       if (tag.startsWith("bg:")) {
         if (bg) console.warn("Trying to set background twice");
 
@@ -361,10 +366,10 @@ export class DialogScene extends entity.CompositeEntity {
       } else {
         console.warn("Unknown tag in node data", tag);
       }
-
-      if (bg) this.changeBackground(bg);
-      this._changeCharacter(character);
     }
+
+    if (bg) this.changeBackground(bg);
+    this._changeCharacter(character);
 
     this.emit("changeNodeData", oldNodeData, newNodeData);
   }
@@ -372,14 +377,55 @@ export class DialogScene extends entity.CompositeEntity {
   changeBackground(bg: string): void {
     if (bg === this._lastBg) return;
 
-    const fileName = `images/bg/${bg}.png`;
+    const folderName = `images/bg/${bg}`
+    const fileName = `${folderName}/base.png`;
+    const fileNameJson = `${folderName}/base.json`;
     if (!_.has(this.entityConfig.app.loader.resources, fileName)) {
       console.warn("Missing asset for background", bg);
       return;
     }
 
-    this._background.texture =
-      this.entityConfig.app.loader.resources[fileName].texture;
+    // Remove existing
+    this._backgroundLayer.removeChildren();
+    if (this._backgroundEntity !== undefined) {
+      if(this.childEntities.indexOf(this._backgroundEntity) != -1)
+        this._deactivateChildEntity(this._backgroundEntity);
+      this._backgroundEntity = undefined;
+    }
+
+    // Set background base
+    const background = new PIXI.Sprite(
+      this.entityConfig.app.loader.resources[fileName].texture
+    );
+    this._backgroundLayer.addChild(background);
+    
+    // Set animations
+    if(_.has(this.entityConfig.app.loader.resources, fileNameJson)) {
+
+      console.log("HERE")
+
+      this._backgroundEntity = new entity.ParallelEntity();
+      this._activateChildEntity(
+        this._backgroundEntity,
+        entity.extendConfig({ container: this._backgroundLayer })
+      );
+
+      let baseJson = this._entityConfig.app.loader.resources[fileNameJson].data;
+      for(const bgPart of baseJson.sprites) {
+
+        console.log(bgPart);
+
+        const animatedSpriteEntity = util.makeAnimatedSprite(
+          this._entityConfig.app.loader.resources[`${folderName}/${bgPart.model}.json`]
+        );
+        animatedSpriteEntity.sprite.x = bgPart.x;
+        animatedSpriteEntity.sprite.y = bgPart.y;
+
+        animatedSpriteEntity.sprite.animationSpeed = (1/bgPart.speed)*0.33;
+        this._backgroundEntity.addChildEntity(animatedSpriteEntity);
+      }
+    }
+
 
     this._lastBg = bg;
   }
@@ -439,60 +485,92 @@ export class DialogScene extends entity.CompositeEntity {
   }
 
   // If character is null or undefined, will just remove current character
-  private _changeCharacter(character?: string): void {
-    if (character === this._lastCharacter) return;
+  private _changeCharacter(character?: string, mood?: string): void {
+
+    if(mood === undefined) mood = "neutral";
+
+    if (character === this._lastCharacter && mood === this._lastMood) return;
 
     // Remove all previous characters
     this._characterLayer.removeChildren();
+    this._lastCharacter = character;
+    this._lastMood = mood;
 
-    // if (this._characterEntity)
-    //   this._deactivateChildEntity(this._characterEntity);
+    if (this._characterEntity !== undefined) {
+      if(this.childEntities.indexOf(this._characterEntity) != -1)
+        this._deactivateChildEntity(this._characterEntity);
+      this._characterEntity = undefined;
+    }
 
-    if (character) {
+    if (character !== undefined && character !== "") {
       const characterContainer = new PIXI.Container();
       characterContainer.position.set(1920 / 2, 0);
 
-      // this._characterEntity = new entity.ParallelEntity();
-      // this._activateChildEntity(
-      //   this._characterEntity,
-      //   entity.extendConfig({ container: characterContainer })
-      // );
+      this._characterEntity = new entity.ParallelEntity();
+      this._activateChildEntity(
+        this._characterEntity,
+        entity.extendConfig({ container: characterContainer })
+      );
 
       const baseDir = `images/characters/${character}`;
+      const basePng = baseDir + `/base_${mood}.png`;
 
-      {
-        if (
-          !_.has(
-            this.entityConfig.app.loader.resources,
-            baseDir + "/static.png"
-          )
-        ) {
-          console.warn("Missing asset for character", character);
-          return;
+      // Moving textures
+      if (_.has(this.entityConfig.app.loader.resources, basePng)) {
+
+        // Base
+        const baseSprite = new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            basePng
+          ].texture
+        );
+        baseSprite.anchor.set(0,0);
+        baseSprite.pivot.set((baseSprite.width -1920)/2, (baseSprite.height -1080)/2);
+    
+        characterContainer.addChild(baseSprite);
+
+        // Load animations JSON
+        let baseJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
+        for(const bodyPart of baseJson[mood]) {
+
+          const animatedSpriteEntity = util.makeAnimatedSprite(
+            this._entityConfig.app.loader.resources[`${baseDir}/${bodyPart.model}.json`]
+          );
+          animatedSpriteEntity.sprite.x = bodyPart.x;
+          animatedSpriteEntity.sprite.y = bodyPart.y;
+
+          animatedSpriteEntity.sprite.animationSpeed = 0.5;
+          this._characterEntity.addChildEntity(animatedSpriteEntity);
         }
+    
+        // Place character on screen
+        this._characterLayer.addChild(characterContainer);
+        characterContainer.setTransform(350, 150, 1.1, 1.1);
+      }
 
+      // Static textures
+      else if (_.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")) {
+        // Base
         const baseSprite = new PIXI.Sprite(
           this.entityConfig.app.loader.resources[
             baseDir + "/static.png"
           ].texture
         );
-        baseSprite.scale.set(0.8);
+    
         characterContainer.addChild(baseSprite);
+
+        // Place character on screen
+        this._characterLayer.addChild(characterContainer);
+        characterContainer.setTransform(0, 0, 1, 1);
+
       }
 
-      // for (const animation of characterAnimations[character]) {
-      //   const animatedSpriteEntity = util.makeAnimatedSprite(
-      //     this._entityConfig.app.loader.resources[
-      //       `${baseDir}/${animation}.json`
-      //     ]
-      //   );
-
-      // this._characterEntity.addChildEntity(animatedSpriteEntity);
-
-      this._characterLayer.addChild(characterContainer);
+      else {
+        console.warn("Missing asset for character", character);
+        return;
+      }
     }
-
-    this._lastCharacter = character;
+    
   }
 }
 

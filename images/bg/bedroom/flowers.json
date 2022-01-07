@@ -1,0 +1,86 @@
+{
+  "frames": {
+    "fleurs00000.png": {
+      "frame": {
+        "x": 0,
+        "y": 151,
+        "w": 104,
+        "h": 76
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 19,
+        "y": 53,
+        "w": 104,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fleurs00001.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 105,
+        "h": 76
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 53,
+        "w": 105,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fleurs00002.png": {
+      "frame": {
+        "x": 0,
+        "y": 76,
+        "w": 105,
+        "h": 75
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 53,
+        "w": 105,
+        "h": 75
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 200
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "animations": {
+    "tissu": ["fleurs00000.png","fleurs00001.png","fleurs00002.png"]
+  },
+  "meta": {
+    "version": "1.0",
+    "image": "flowers.png",
+    "format": "RGBA8888",
+    "size": { "w": 105, "h": 227 },
+    "scale": 1
+  }
+}
