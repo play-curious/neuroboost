@@ -473,8 +473,6 @@ export class DialogScene extends entity.CompositeEntity {
     const baseDir = `images/characters/${character}`;
     const basePng = baseDir + `/base_${mood}.png`;
 
-    console.log(basePng);
-
     // Moving textures
     if (_.has(this.entityConfig.app.loader.resources, basePng)) {
 
@@ -484,6 +482,8 @@ export class DialogScene extends entity.CompositeEntity {
           basePng
         ].texture
       );
+      baseSprite.anchor.set(0,0);
+      baseSprite.pivot.set((baseSprite.width -1920)/2, (baseSprite.height -1080)/2);
   
       characterContainer.addChild(baseSprite);
 
