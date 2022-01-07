@@ -164,7 +164,10 @@ export class DialogScene extends entity.CompositeEntity {
     this._dialogLayer.addChild(this._dialogSpeaker);
 
     // Setup clock
-    this._clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
+    this._clock = new clock.Clock(
+      this._variableStorage,
+      new PIXI.Point(1920 - 557 / 2, 0)
+    );
     this._on(
       this._variableStorage,
       "change:time",
@@ -565,22 +568,7 @@ export class DialogScene extends entity.CompositeEntity {
   }
 
   advanceTime(time: string) {
-    const [h, m] = clock.parseTime(time);
-    const currentMinutes = parseInt(this._variableStorage.get("time"));
-    const newMinutes = currentMinutes + h * 60 + m;
-
-    this._activateChildEntity(
-      new tween.Tween({
-        duration: 2000,
-        easing: easing.easeInOutQuint,
-        from: currentMinutes,
-        to: newMinutes,
-        onUpdate: (value) => {
-          console.log("update time by", value)
-          this._variableStorage.set("time", Math.round(value).toString());
-        },
-      })
-    );
+    this._activateChildEntity(this._clock.advanceTime(time));
   }
 
   hideUi() {
