@@ -270,7 +270,7 @@ export class DialogScene extends entity.CompositeEntity {
   setTime(time: clock.ResolvableTime) {
     let [, , minutesSinceMidnight] = clock.parseTime(time);
 
-    while (minutesSinceMidnight > clock.dayMinutes)
+    while (minutesSinceMidnight >= clock.dayMinutes)
       minutesSinceMidnight -= clock.dayMinutes;
 
     this._variableStorage.set("time", `${minutesSinceMidnight}`);
@@ -283,7 +283,7 @@ export class DialogScene extends entity.CompositeEntity {
     const minutesSinceMidnight = Number(this._variableStorage.get("time"));
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
 
-    while (newMinutes > clock.dayMinutes) newMinutes -= clock.dayMinutes;
+    while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
 
     this._variableStorage.set("time", `${newMinutes}`);
 
