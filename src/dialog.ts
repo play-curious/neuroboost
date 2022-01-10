@@ -5,38 +5,33 @@ import MultiStyleText from "pixi-multistyle-text";
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 import * as util from "booyah/src/util";
+
 import * as clock from "./clock";
+import * as variable from "./variable";
 
 // Bondage is loaded as a global variable
 declare const bondage: any;
 
-declare namespace YarnSpinner {
-  interface NodeData {
-    title: string;
-    tags: string[];
-    body: string;
-  }
-
-  interface TextNode {
-    data: NodeData;
-    lineNum: number;
-    text: string;
-  }
-
-  interface ChoiceNode {
-    lineNum: number[];
-    options: string[];
-    selected: number;
-    select: (i: number) => void;
-  }
-
-  type Node = TextNode | ChoiceNode;
-
-  interface VariableStorage {
-    set: (name: string, value: string) => void;
-    get: (name: string) => string;
-  }
+interface NodeData {
+  title: string;
+  tags: string[];
+  body: string;
 }
+
+interface TextNode {
+  data: NodeData;
+  lineNum: number;
+  text: string;
+}
+
+interface ChoiceNode {
+  lineNum: number[];
+  options: string[];
+  selected: number;
+  select: (i: number) => void;
+}
+
+type Node = TextNode | ChoiceNode;
 
 // Initilize Underscore templates to ressemble YarnSpinner
 const templateSettings = {
@@ -45,53 +40,16 @@ const templateSettings = {
 
 const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
 
-/**
- * Variable Storage for YarnSpinner that emits events when data changes
- * Can be initialized with data
- *
- * Emits:
- * - change(name : string, value : string)
- * - change:${name}(value : string)
- */
-export class VariableStorage
-  extends PIXI.utils.EventEmitter
-  implements YarnSpinner.VariableStorage
-{
-  private _data: { [k: string]: string } = {};
-
-  constructor(initialData?: { [k: string]: string }) {
-    super();
-
-    if (initialData) {
-      for (const name in initialData) this._data[name] = initialData[name];
-    }
-  }
-
-  set(name: string, value: string): void {
-    this._data[name] = value;
-    this.emit("change", name, value);
-    this.emit(`change:${name}`, value);
-  }
-
-  get(name: string): string {
-    return this._data[name];
-  }
-
-  get data(): { [k: string]: string } {
-    return this._data;
-  }
-}
-
 export class DialogScene extends entity.CompositeEntity {
   private _runner: any;
   private _nodeIterator: any;
-  private _nodeValue: YarnSpinner.Node;
-  private _lastNodeData: YarnSpinner.NodeData;
+  private _nodeValue: Node;
+  private _lastNodeData: NodeData;
   private _lastBg: string;
   private _lastCharacter: string;
   private _lastMood: string;
   private _autoshowOn: boolean;
-  private _variableStorage: VariableStorage;
+  private _variableStorage: variable.VariableStorage;
 
   private _container: PIXI.Container;
   private _backgroundLayer: PIXI.Container;
@@ -108,8 +66,7 @@ export class DialogScene extends entity.CompositeEntity {
 
   constructor(
     public readonly scriptName: string,
-    public readonly startNode = "Start",
-    public readonly startVariables?: { [k: string]: string }
+    public readonly startNode = "Start"
   ) {
     super();
   }
@@ -118,15 +75,11 @@ export class DialogScene extends entity.CompositeEntity {
     this._autoshowOn = false;
 
     // Create variable storage
-    if (this.startVariables) {
-      this._variableStorage = new VariableStorage(this.startVariables);
-    } else {
-      // Use default values
-      this._variableStorage = new VariableStorage();
-      this._variableStorage.set("name", "Moi");
-    }
-    // Reset time
-    this._variableStorage.set("time", "540");
+    this._variableStorage = new variable.VariableStorage({
+      name: "Moi",
+      time: "540",
+      eval: "",
+    });
 
     this._container = new PIXI.Container();
     this._entityConfig.container.addChild(this._container);
@@ -164,14 +117,12 @@ export class DialogScene extends entity.CompositeEntity {
 
     // Setup clock
     this._clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
-    this._on(
-      this._variableStorage,
-      "change:time",
-      (value) => (this._clock.minutesSinceMidnight = parseInt(value))
-    );
     this._activateChildEntity(
       this._clock,
       entity.extendConfig({ container: this._uiLayer })
+    );
+    this._clock.minutesSinceMidnight = Number(
+      this._variableStorage.get("time")
     );
 
     this._runner = new bondage.Runner("");
@@ -216,11 +167,11 @@ export class DialogScene extends entity.CompositeEntity {
     // console.log("data", this._runner.variables.data);
 
     if (this._nodeValue instanceof bondage.TextResult) {
-      this._handleDialog((this._nodeValue as YarnSpinner.TextNode).text);
+      this._handleDialog((this._nodeValue as TextNode).text);
     } else if (this._nodeValue instanceof bondage.OptionsResult) {
-      this._handleChoice(this._nodeValue as YarnSpinner.ChoiceNode);
+      this._handleChoice(this._nodeValue as ChoiceNode);
     } else if (this._nodeValue instanceof bondage.CommandResult) {
-      this._handleCommand((this._nodeValue as YarnSpinner.TextNode).text);
+      this._handleCommand((this._nodeValue as TextNode).text);
     } else {
       throw new Error(`Unknown bondage result ${this._nodeValue}`);
     }
@@ -316,7 +267,7 @@ export class DialogScene extends entity.CompositeEntity {
     }
   }
 
-  private _handleChoice(nodeValue: YarnSpinner.ChoiceNode) {
+  private _handleChoice(nodeValue: ChoiceNode) {
     // This works for both links between nodes and shortcut options
     // console.log("options result", nodeValue.options);
     this._dialogLayer.visible = false;
@@ -430,10 +381,7 @@ export class DialogScene extends entity.CompositeEntity {
     this._advance();
   }
 
-  private _onChangeNodeData(
-    oldNodeData: YarnSpinner.NodeData,
-    newNodeData: YarnSpinner.NodeData
-  ) {
+  private _onChangeNodeData(oldNodeData: NodeData, newNodeData: NodeData) {
     console.log("changing node data", oldNodeData, " --> ", newNodeData);
 
     // Parse tags
@@ -534,7 +482,11 @@ export class DialogScene extends entity.CompositeEntity {
     this._changeCharacter();
   }
 
-  prompt(varName: string, message: string, _default: string) {
+  prompt<VarName extends keyof variable.Variables>(
+    varName: VarName,
+    message: string,
+    _default: variable.Variables[VarName]
+  ) {
     // TODO: replace this with HTML form
 
     // {
@@ -556,7 +508,10 @@ export class DialogScene extends entity.CompositeEntity {
       message.replace(/_/g, " "),
       _default.replace(/_/g, " ")
     )?.trim();
-    this._variableStorage.set(varName, value || _default.replace(/_/g, " "));
+    this._variableStorage.set(
+      varName,
+      value || (_default.replace(/_/g, " ") as any)
+    );
   }
 
   eval(code: string) {
@@ -570,11 +525,20 @@ export class DialogScene extends entity.CompositeEntity {
     while (minutesSinceMidnight > clock.dayMinutes)
       minutesSinceMidnight -= clock.dayMinutes;
 
-    this._variableStorage.set("time", minutesSinceMidnight.toString());
+    this._variableStorage.set("time", `${minutesSinceMidnight}`);
+
+    this._clock.minutesSinceMidnight = minutesSinceMidnight;
   }
 
   advanceTime(time: clock.ResolvableTime) {
-    this.setTime(time);
+    const [, , minutesToAdvance] = clock.parseTime(time);
+    const minutesSinceMidnight = Number(this._variableStorage.get("time"));
+    let newMinutes = minutesSinceMidnight + minutesToAdvance;
+
+    while (newMinutes > clock.dayMinutes) newMinutes -= clock.dayMinutes;
+
+    this._variableStorage.set("time", `${newMinutes}`);
+
     this._activateChildEntity(this._clock.advanceTime(time));
   }
 
