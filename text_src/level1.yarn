@@ -41,7 +41,7 @@ tags:
 colorID: 0
 position: -292,-363
 ---
-Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle aussitôt!
+Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle aussitôt !
 [[Prendre l'appel|Appel_Fred]]
 [[Rejeter appel|Rejet_Fred]]
 ===
@@ -50,10 +50,10 @@ tags:
 colorID: 0
 position: -219,-76
 ---
-Vraiment ce Fred, il vous agace. Il ne fout rien et il passe haut la main! Il est temps que ça change!
-Et c'est cette semaine que ça va se produire! La semaine de partiels de fin de semestre! Vous allez lui montrer de quelle étoffe sont fait les vrais winners!
+Vraiment ce Fred, il vous agace. Il ne fout rien et il passe haut la main ! Il est temps que ça change !
+Et c'est cette semaine que ça va se produire ! La semaine de partiels de fin de semestre ! Vous allez lui montrer de quelle étoffe sont fait les vrais winners!
 Il vous reste 6 heures avant l'heure H... 
-Il y a de quoi faire pour montrer à Fred qui est le Big Winner de l'Académie! 
+Il y a de quoi faire pour montrer à Fred qui est le Big Winner de l'Académie ! 
 [[Action_List]]
 ===
 title: Action_List
@@ -61,7 +61,7 @@ tags: bg:bedroom
 colorID: 0
 position: -856,-84
 ---
-Que faites-vous maintenant?
+Que faites-vous maintenant ?
 
 << if $time >= 720 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
@@ -108,7 +108,7 @@ tags: bg:desk
 colorID: 0
 position: -1089,258
 ---
-Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Management. Rien que le titre vous barbe. ça commence mal...
+Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Management. Rien que le titre vous barbe. Ça commence mal...
 
 << advanceTime 2:00 >>
 
@@ -140,9 +140,9 @@ tags: bg:kitchen
 colorID: 0
 position: -1077,537
 ---
-Yum Yum... Délicieux ce Burger Big Proteins Double Cheese!
-Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant de l'examen!
-Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures...
+Yum Yum... Délicieux ce Burger Big Proteins Double Cheese !
+Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant de l'examen !
+Glouglou... Une bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures...
 
 << advanceTime 0:15 >>
 
@@ -156,7 +156,7 @@ position: -757,529
 ---
 << setTime 14:00 >>
 
-Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier : ''Sujet d'examen'', que le compteur se met en route. 
+Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. À peine vous cliquez sur le fichier : ''Sujet d'examen'', que le compteur se met en route. 
 Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi.
 
 << advanceTime 4:00 >>
@@ -170,11 +170,11 @@ tags: bg:class show:fred
 colorID: 0
 position: -436,500
 ---
-Fred: Alors, ça l'a fait?
+Fred: Alors, ça l'a fait ?
 You: Je pense oui. C'était basique.
 Fred: Yes, je m'attendais à plus tordu que ça.
 You: Moi aussi
-Fred: Y avait quelques petits pièges, mais ils sont tellement gros, on ne pouvait pas les louper!
+Fred: Y avait quelques petits pièges, mais ils sont tellement gros, on ne pouvait pas les louper !
 You: Ah bon?
 Fred: Yes, tu n'en as pas trouvé.
 You: Non.
@@ -193,13 +193,13 @@ colorID: 0
 position: -119,511
 ---
 Hélas... Fred n'avait pas tort... Les scores s'affichent sur l'écran de la porte principale. Vous êtes dans le peloton... de queue... La semaine de sprint commence mal...
-Fred: Hé, ça va? Tu as l'air tout blême d'un coup.
+Fred: Hé, ça va ? Tu as l'air tout blême d'un coup.
 You: Ben... J'ai tout juste ''D-''.
-Fred: Hé alors? Ce n'est pas la fin du monde. Ce n'est qu'une note parmi d'autres. Tu vas te rattraper.
-You: Facile à dire pour toi. Tu as eu ''A+''!
-Fred: Y a qu'une chose à faire dans ce cas!
+Fred: Hé alors ? Ce n'est pas la fin du monde. Ce n'est qu'une note parmi d'autres. Tu vas te rattraper.
+You: Facile à dire pour toi. Tu as eu ''A+'' !
+Fred: Y a qu'une chose à faire dans ce cas !
 You: Quoi donc?
-Fred: Se vider la tête! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande!
+Fred: Se vider la tête! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande !
 You: Je sais pas...
 
 << advanceTime 0:15 >>
@@ -216,7 +216,7 @@ Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fê
 
 << advanceTime 2:00 >>
 
-Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais cette fois-ci, il n'insiste pas pour vous dissuader de partir. Manifestement, vous devez faire une sacrée tête d'enterrement. Même l'infatiguable Fred renonce à vous convaincre de rester t'amuser...
+Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais cette fois-ci, il n'insiste pas pour vous dissuader de partir. Manifestement, vous devez faire une sacrée tête d'enterrement. Même l'infatigable Fred renonce à vous convaincre de rester t'amuser...
 
 [[Rentrer dormir|Chambre_Nuit]]
 ===
@@ -225,7 +225,7 @@ tags:
 colorID: 0
 position: 4,250
 ---
-Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à chaque fois qu'il revient à la charge, vous le renvoyez //gentiment// dans les cordes. Du coup, quand vous vous dirigez vers la porte de votre chambre, Fred ne dit plus rien. Pour la première fois, vous êtes parvenu à dissuader l'infatiguable Fred de passer un bon moment avec lui...
+Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à chaque fois qu'il revient à la charge, vous le renvoyez //gentiment// dans les cordes. Du coup, quand vous vous dirigez vers la porte de votre chambre, Fred ne dit plus rien. Pour la première fois, vous êtes parvenu à dissuader l'infatigable Fred de passer un bon moment avec lui...
 
 << advanceTime 0:30 >>
 
@@ -247,26 +247,26 @@ position: -1434,781
 ---
 << hideUi >>
 
-Temde: Hello! Je te réveille?
-Vous vous redressez subitement! Quelle drôle de rêve! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras...
+Temde: Hello ! Je te réveille ?
+Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de deux bras...
 
 <<show temde>>
 Temde: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse!
 
 
-Quoi???... Vous tournez la tête et vous la voyez! La cyborg à quatre bras! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit:
-Temde: Salut! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom?
+Quoi???... Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit :
+Temde: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ?
 
 <<prompt name Mon_nom: Steve>>
 
-Temde: Enchantée { $name }, lève-toi, on a du pain sur la planche!
+Temde: Enchantée { $name }, lève-toi, on a du pain sur la planche !
 You: Suiiiiis faaaaaaatigué...........
-Temde: Arrête tes jérémiades! T'as bricolé comme tu as pu, ça n'a pas marché. T'as juste qu'à reprendre le chantier et basta!
-You: Noon! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire! 
+Temde: Arrête tes jérémiades ! T'as bricolé comme tu as pu, ça n'a pas marché. T'as juste qu'à reprendre le chantier et basta !
+You: Noon! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire !
 You: J'ai raté, j'ai raté. C'est fini, foutu!
-Temde: Pas du tout { $name }! Si je suis ici, c'est parce qu'on t'offre une seconde chance! Tu vas réparer ton engin académique, je te dis que ça! Allez suis-moi, on t'attend là-bas!
-You: Qui m'attend? Où là-bas?
-Temde: Assez de blabla { $name }, suis-moi. On va pas y passer toute la nuit quand même!
+Temde: Pas du tout { $name }! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Tu vas réparer ton engin académique, je te dis que ça ! Allez suis-moi, on t'attend là-bas !
+You: Qui m'attend ? Où là-bas ?
+Temde: Assez de blabla { $name }, suis-moi. On va pas y passer toute la nuit quand même !
 
 [[Dire à cette fichue apparition onirique //Temdé// de s'en aller|Tenter_rester_chambre]]
 [[Se laisser guider par l'iréelle Miss Temdé|Assemblee_Sages]]
