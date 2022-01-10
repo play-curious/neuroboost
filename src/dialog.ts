@@ -3,9 +3,7 @@ import * as PIXI from "pixi.js";
 import MultiStyleText from "pixi-multistyle-text";
 
 import * as booyah from "booyah/src/booyah";
-import * as easing from "booyah/src/easing";
 import * as entity from "booyah/src/entity";
-import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
 import * as clock from "./clock";
 
@@ -165,10 +163,7 @@ export class DialogScene extends entity.CompositeEntity {
     this._dialogLayer.addChild(this._dialogSpeaker);
 
     // Setup clock
-    this._clock = new clock.Clock(
-      this._variableStorage,
-      new PIXI.Point(1920 - 557 / 2, 0)
-    );
+    this._clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
     this._on(
       this._variableStorage,
       "change:time",
@@ -189,7 +184,7 @@ export class DialogScene extends entity.CompositeEntity {
   }
 
   _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
-    if(signal === "gainedVisibility"){
+    if (signal === "gainedVisibility") {
       booyah.changeGameState("playing");
     }
   }
@@ -569,12 +564,17 @@ export class DialogScene extends entity.CompositeEntity {
     this._variableStorage.set("eval", evaluated);
   }
 
-  setTime(time: string) {
-    const [h, m] = clock.parseTime(time);
-    this._variableStorage.set("time", (h * 60 + m).toString());
+  setTime(time: clock.ResolvableTime) {
+    let [, , minutesSinceMidnight] = clock.parseTime(time);
+
+    while (minutesSinceMidnight > clock.dayMinutes)
+      minutesSinceMidnight -= clock.dayMinutes;
+
+    this._variableStorage.set("time", minutesSinceMidnight.toString());
   }
 
-  advanceTime(time: string) {
+  advanceTime(time: clock.ResolvableTime) {
+    this.setTime(time);
     this._activateChildEntity(this._clock.advanceTime(time));
   }
 

@@ -4,7 +4,9 @@ import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 import * as easing from "booyah/src/easing";
 
-import * as dialog from "./dialog";
+export type ResolvableTime = `${number}:${number}`;
+
+export const dayMinutes = 60 * 24;
 
 export const dayNames = [
   "lundi",
@@ -16,7 +18,9 @@ export const dayNames = [
   "dimanche",
 ];
 
-export function parseTime(time: string): [hours: number, minutes: number] {
+export function parseTime(
+  time: ResolvableTime
+): [hours: number, minutes: number, minutesSinceMidnight: number] {
   const parts = time.split(":");
   let h = 0,
     m = 0;
@@ -28,7 +32,7 @@ export function parseTime(time: string): [hours: number, minutes: number] {
   } else {
     throw new Error(`Can't parse time string "${time}"`);
   }
-  return [h, m];
+  return [h, m, h * 60 + m];
 }
 
 export class Clock extends entity.CompositeEntity {
@@ -39,10 +43,7 @@ export class Clock extends entity.CompositeEntity {
   private _container: PIXI.Container;
   private _textBox: PIXI.Text;
 
-  constructor(
-    private _variableStorage: dialog.VariableStorage,
-    pos: PIXI.IPoint
-  ) {
+  constructor(pos: PIXI.IPoint) {
     super();
 
     this._pos = pos;
@@ -94,8 +95,7 @@ export class Clock extends entity.CompositeEntity {
   set minutesSinceMidnight(value: number) {
     this._minutesSinceMidnight = value;
 
-    const dayMinutes = 60 * 24;
-    while (this._minutesSinceMidnight > dayMinutes) {
+    while (this._minutesSinceMidnight >= dayMinutes) {
       this._minutesSinceMidnight -= dayMinutes;
       this._days++;
     }
@@ -103,9 +103,9 @@ export class Clock extends entity.CompositeEntity {
     this._updateText();
   }
 
-  advanceTime(time: string) {
+  advanceTime(time: ResolvableTime) {
     const [h, m] = parseTime(time);
-    const currentMinutes = parseInt(this._variableStorage.get("time"));
+    const currentMinutes = this._minutesSinceMidnight;
     const newMinutes = currentMinutes + h * 60 + m;
 
     return new tween.Tween({
@@ -114,8 +114,7 @@ export class Clock extends entity.CompositeEntity {
       from: currentMinutes,
       to: newMinutes,
       onUpdate: (value) => {
-        console.log("update time by", value);
-        this._variableStorage.set("time", Math.round(value).toString());
+        this.minutesSinceMidnight = Math.round(value);
       },
     });
   }
