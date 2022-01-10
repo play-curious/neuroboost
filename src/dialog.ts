@@ -508,6 +508,7 @@ export class DialogScene extends entity.CompositeEntity {
             `${folderName}/${bgPart.model}.json`
           ]
         );
+        animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
         animatedSpriteEntity.sprite.x = bgPart.x;
         animatedSpriteEntity.sprite.y = bgPart.y;
 
@@ -628,7 +629,6 @@ export class DialogScene extends entity.CompositeEntity {
 
     if (character !== undefined && character !== "") {
       const characterContainer = new PIXI.Container();
-      characterContainer.position.set(1920 / 2, 0);
       this._characterEntity = new entity.ParallelEntity();
       this._activateChildEntity(
         this._characterEntity,
@@ -661,6 +661,7 @@ export class DialogScene extends entity.CompositeEntity {
               `${baseDir}/${bodyPart.model}.json`
             ]
           );
+          animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
           animatedSpriteEntity.sprite.x = bodyPart.x;
           animatedSpriteEntity.sprite.y = bodyPart.y;
 
