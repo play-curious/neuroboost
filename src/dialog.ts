@@ -2,6 +2,7 @@ import * as _ from "underscore";
 import * as PIXI from "pixi.js";
 import MultiStyleText from "pixi-multistyle-text";
 
+import * as booyah from "booyah/src/booyah";
 import * as easing from "booyah/src/easing";
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
@@ -185,6 +186,12 @@ export class DialogScene extends entity.CompositeEntity {
     // Advance the dialogue manually from the node titled 'Start'
     this._nodeIterator = this._runner.run(this.startNode);
     this._advance();
+  }
+
+  _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
+    if(signal === "gainedVisibility"){
+      booyah.changeGameState("playing");
+    }
   }
 
   private _advance(): void {
