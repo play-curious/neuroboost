@@ -1,8 +1,12 @@
 import * as _ from "underscore";
 import * as PIXI from "pixi.js";
+
 import MultiStyleText from "pixi-multistyle-text";
+
 import * as entity from "booyah/src/entity";
 import * as util from "booyah/src/util";
+
+import * as variable from "./variable";
 
 // Initilize Underscore templates to ressemble YarnSpinner
 const templateSettings = {
@@ -28,7 +32,7 @@ export class Graphics extends entity.CompositeEntity {
 
   private _nodeDisplay: PIXI.Container;
 
-  constructor(private readonly _variableStorageData: { [k: string]: string }) {
+  constructor(private readonly _variableStorageData: variable.Variables) {
     super();
   }
 
