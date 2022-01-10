@@ -39,6 +39,7 @@ export class Clock extends entity.CompositeEntity {
   private _days: number;
   private _minutesSinceMidnight: number;
   private _pos: PIXI.IPoint;
+  private _hidden: boolean;
 
   private _container: PIXI.Container;
   private _textBox: PIXI.Text;
@@ -86,6 +87,15 @@ export class Clock extends entity.CompositeEntity {
     const dayName = dayNames[this._days % 7];
 
     this._textBox.text = `${time}\n${dayName}`;
+  }
+
+  get hidden(): boolean {
+    return this._hidden;
+  }
+
+  set hidden(hidden: boolean) {
+    this._container.visible = !hidden;
+    this._hidden = hidden;
   }
 
   get minutesSinceMidnight(): number {

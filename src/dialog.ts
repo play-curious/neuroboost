@@ -296,4 +296,12 @@ export class DialogScene extends entity.CompositeEntity {
       this._moreTags[key] = value;
     }
   }
+
+  hideClock() {
+    this._clock.hidden = true;
+  }
+
+  showClock() {
+    this._clock.hidden = false;
+  }
 }

@@ -37,8 +37,6 @@ export class Graphics extends entity.CompositeEntity {
   }
 
   _setup(): void {
-    console.log("HELLOOOO");
-
     this._container = new PIXI.Container();
     this._entityConfig.container.addChild(this._container);
 
