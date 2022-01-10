@@ -2,18 +2,18 @@
   "neutral": [
     {
       "model": "hair_a",
-      "x": 825, 
-      "y": 5
+      "x": 962, 
+      "y": 87
     },
     {
       "model": "sleeves_a",
-      "x": 724, 
-      "y": 201
+      "x": 975, 
+      "y": 306
     },
     {
       "model": "cloth_a",
-      "x": 903, 
-      "y": 412
+      "x": 1034, 
+      "y": 575
     }
   ],
   "excited": [
@@ -58,8 +58,8 @@
   "drunk": [
     {
       "model": "hair_a",
-      "x": 825, 
-      "y": 5
+      "x": 962, 
+      "y": 87
     },
     {
       "model": "sleeves_a",

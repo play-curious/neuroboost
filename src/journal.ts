@@ -23,7 +23,7 @@ export class JournalScene extends entity.CompositeEntity {
 
     const bg = new PIXI.Sprite(
       this.entityConfig.app.loader.resources[
-        "images/bg/bedroom_night.png"
+        "images/bg/bedroom_night/base.png"
       ].texture
     );
     this._container.addChild(bg);

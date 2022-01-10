@@ -55,6 +55,7 @@ const graphicalAssets = [
   "images/ui/journal_button.png",
   "images/ui/choicebox_contour.png",
   "images/ui/choicebox_empty.png",
+  "images/ui/arrow_return.png",
 
   // ////////////////////////////////////////////
   // Backgrounds
@@ -99,6 +100,9 @@ const graphicalAssets = [
   "images/characters/ledai/static.png",
   "images/characters/sapiens/static.png",
   "images/characters/temde/static.png",
+
+  // Freechoices
+  "images/ui/freechoice.json",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
