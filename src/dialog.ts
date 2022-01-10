@@ -2,6 +2,7 @@ import * as _ from "underscore";
 import * as PIXI from "pixi.js";
 import MultiStyleText from "pixi-multistyle-text";
 
+import * as booyah from "booyah/src/booyah";
 import * as easing from "booyah/src/easing";
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
