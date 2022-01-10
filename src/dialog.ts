@@ -246,10 +246,12 @@ export class DialogScene extends entity.CompositeEntity {
     //     </label>
     //     <input type=submit name=Ok >
     //   `
+    //   form.styles.(todo: set position to absolute and place it on middle screen)
     //   form.onsubmit = (event) => {
     //     event.preventDefault()
-    //
+    //     if(ok) document.body.removeChild(form)
     //   }
+    //   document.body.appendChild(form)
     // }
 
     const value = prompt(
