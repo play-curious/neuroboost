@@ -152,10 +152,10 @@ export class DialogScene extends entity.CompositeEntity {
         nodeValue.select(id);
         this._advance();
       },
-      () => {
+      this._moreTags.hasOwnProperty("subchoice") ? () => {
         this._nodeIterator = this._runner.run(this._moreTags["subchoice"]);
         this._advance();
-      }
+      } : undefined
     );
   }
 

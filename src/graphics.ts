@@ -238,74 +238,32 @@ export class Graphics extends entity.CompositeEntity {
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
 
-    let currentY: number;
-
-    let choicebox_contour = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources[
-        "images/ui/choicebox_contour.png"
-      ].texture
-    );
-    let choicebox_contour_reversed = new PIXI.Sprite();
-    choicebox_contour_reversed.texture = choicebox_contour.texture.clone();
-    choicebox_contour_reversed.setTransform(
-      0,
-      0,
-      1,
-      -1,
-      0,
-      0,
-      0,
-      0,
-      choicebox_contour_reversed.y
-    );
-    let choicebox_empty = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources[
-        "images/ui/choicebox_empty.png"
-      ].texture
-    );
-
-    currentY = 1080 - 40;
+    let currentY: number = 1080 - 40;
 
     for (let i: number = 0; i < nodeOptions.length; i++) {
       const choicebox = new PIXI.Container();
-      if (i == 0) {
-        let choicebox_reversed = new PIXI.Sprite(
+      choicebox.addChild(
+        new PIXI.Sprite(
           this.entityConfig.app.loader.resources[
-            "images/ui/choicebox_contour.png"
+            i === 0 ? "images/ui/choicebox_contour_reversed.png"
+            : (i === nodeOptions.length - 1 ? "images/ui/choicebox_contour.png"
+            : "images/ui/choicebox_empty.png")
           ].texture
-        );
-        choicebox_reversed.setTransform(
-          0,
-          choicebox_contour_reversed.height,
-          1,
-          -1,
-          0,
-          0,
-          0,
-          0,
-          choicebox_contour_reversed.y
-        );
-        choicebox.addChild(choicebox_reversed);
-      } else if (i == nodeOptions.length - 1) {
-        choicebox.addChild(
-          new PIXI.Sprite(
-            this.entityConfig.app.loader.resources[
-              "images/ui/choicebox_contour.png"
-            ].texture
-          )
-        );
-      } else {
-        choicebox.addChild(
-          new PIXI.Sprite(
-            this.entityConfig.app.loader.resources[
-              "images/ui/choicebox_empty.png"
-            ].texture
-          )
-        );
-      }
+        )
+      );
+
       currentY -= choicebox.height + 20;
-      console.log(currentY, choicebox.height);
-      choicebox.setTransform(0, currentY);
+      choicebox.setTransform(
+        1920 / 2,
+        currentY,
+        1,
+        1,
+        0,
+        0,
+        0,
+        choicebox.width / 2,
+        choicebox.y
+      );
 
       const optionText = new PIXI.Text(nodeOptions[i], {
         fill: 0xfdf4d3,
