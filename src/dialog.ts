@@ -1,6 +1,7 @@
 import * as _ from "underscore";
 
 import * as PIXI from "pixi.js";
+import * as booyah from "booyah/src/booyah";
 import * as easing from "booyah/src/easing";
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
@@ -116,7 +117,10 @@ export class DialogScene extends entity.CompositeEntity {
     this._graphics.setup(this._lastFrameInfo, this.entityConfig);
 
     // Setup clock
-    this._clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
+    this._clock = new clock.Clock(
+      this._variableStorage,
+      new PIXI.Point(1920 - 557 / 2, 0)
+    );
     this._on(
       this._variableStorage,
       "change:time",
@@ -134,6 +138,12 @@ export class DialogScene extends entity.CompositeEntity {
     // Advance the dialogue manually from the node titled 'Start'
     this._nodeIterator = this._runner.run(this.startNode);
     this._advance();
+  }
+
+  _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
+    if(signal === "gainedVisibility"){
+      booyah.changeGameState("playing");
+    }
   }
 
   private _advance(): void {
@@ -291,21 +301,6 @@ export class DialogScene extends entity.CompositeEntity {
   }
 
   advanceTime(time: string) {
-    const [h, m] = clock.parseTime(time);
-    const currentMinutes = parseInt(this._variableStorage.get("time"));
-    const newMinutes = currentMinutes + h * 60 + m;
-
-    this._activateChildEntity(
-      new tween.Tween({
-        duration: 2000,
-        easing: easing.easeInOutQuint,
-        from: currentMinutes,
-        to: newMinutes,
-        onUpdate: (value) => {
-          console.log("update time by", value)
-          this._variableStorage.set("time", Math.round(value).toString());
-        },
-      })
-    );
+    this._activateChildEntity(this._clock.advanceTime(time));
   }
 }
