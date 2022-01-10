@@ -62,16 +62,41 @@ colorID: 0
 position: -856,-84
 ---
 Que faites-vous maintenant?
-
+[[Action_List_Freechoice]]
+===
+title: Action_List_Freechoice
+tags: bg:bedroom
+colorID: 0
+position: 0, 0
+---
 << if $time >= 720 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 [[Manger (à midi)|Lunch]]
 << else>>
-[[Prendre le petit déjeuner|Petit_dej]] 
+<<moreTags freechoice:Action_List_Freechoice>>
+[[Cuisine@cuisine|cuisine_subchoice]]
+[[Bureau@bureau|bureau_subchoice]]
+[[Lit@lit|lit_subchoice]]
+<< endif>>
+===
+title: cuisine_subchoice
+tags: bg:kitchen
+---
+<<moreTags subchoice:Action_List_Freechoice>>
+[[Prendre le petit déjeuner|Petit_dej]]
+===
+title: bureau_subchoice
+tags: bg:desk
+---
+<<moreTags subchoice:Action_List_Freechoice>>
 [[Passer du temps sur le chat avec le pote d'une autre Université|Chat]]
 [[Réviser cette fichue Astronometric Data Management|Revision]]
+===
+title: lit_subchoice
+tags: bg:bedroom
+---
+<<moreTags subchoice:Action_List_Freechoice>>
 [[Binger votre série TV préférée|BingeTV]]
-<< endif>>
 ===
 title: Petit_dej
 tags: bg:kitchen

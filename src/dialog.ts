@@ -441,21 +441,21 @@ export class DialogScene extends entity.CompositeEntity {
     this._dialogLayer.visible = false;
 
     const freechoicesJSON = this._entityConfig.app.loader.resources[`images/ui/freechoice.json`].data;
-    if(!freechoicesJSON.hasOwnProperty(freechoice))
-      return;
-    const currentFreechoices = freechoicesJSON[freechoice];
 
     this._nodeDisplay = new PIXI.Container;
-    this._container.addChild(this._nodeDisplay);
-    
+
+    let freechoicesFound = 0;
     for (let i = 0; i < nodeValue.options.length; i++) {
-      if(!currentFreechoices.hasOwnProperty(nodeValue.options[i]))
-        return;
+      const [choiceText, jsonValue] = nodeValue.options[i].split("@");
+      if(!freechoicesJSON.hasOwnProperty(jsonValue))
+        continue;
+      freechoicesFound++;
+
       const freechoicebox_bg = new PIXI.Graphics();
       freechoicebox_bg.beginFill(0x1033AA);
       freechoicebox_bg.drawRect(-75, -20, 150, 40);
 
-      const freechoicebox_text = new PIXI.Text(nodeValue.options[i]);
+      const freechoicebox_text = new PIXI.Text(choiceText);
       freechoicebox_text.anchor.set(0.5, 0.5);
       
       const freechoicebox = new PIXI.Container;
@@ -464,7 +464,7 @@ export class DialogScene extends entity.CompositeEntity {
         freechoicebox_text
       );
 
-      const currentData = currentFreechoices[nodeValue.options[i]];
+      const currentData = freechoicesJSON[jsonValue];
       freechoicebox.position.set(
         currentData.x,
         currentData.y
@@ -478,6 +478,17 @@ export class DialogScene extends entity.CompositeEntity {
       });
 
       this._nodeDisplay.addChild(freechoicebox);
+    }
+    if(freechoicesFound === nodeValue.options.length){
+      this._container.addChild(this._nodeDisplay);
+    }
+    else if (freechoicesFound === 0) {
+      for(let i = 0; i < nodeValue.options.length; i++){
+        nodeValue.options[i] = nodeValue.options[i].split("@")[0];
+      }
+      this._handleChoice(nodeValue);
+    } else {
+      throw new Error("Missing freechoice(s) in freechoice.json");
     }
   }
 
