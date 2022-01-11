@@ -67,7 +67,7 @@ export class DialogScene extends entity.CompositeEntity {
 
     // Setup graphics
     this._graphics = new graphics.Graphics(this._variableStorage.data);
-    this._graphics.setup(this._lastFrameInfo, this.entityConfig);
+    this._activateChildEntity(this._graphics);
 
     // Setup clock
     this._clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
@@ -88,11 +88,11 @@ export class DialogScene extends entity.CompositeEntity {
     this._advance();
   }
 
-  _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
-    if (signal === "gainedVisibility") {
-      booyah.changeGameState("playing");
-    }
+_onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
+  if (signal === "gainedVisibility") {
+    booyah.changeGameState("playing");
   }
+}
 
   private _advance(): void {
     console.log("GRAPHICS", this._graphics);

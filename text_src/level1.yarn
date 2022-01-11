@@ -1,6 +1,5 @@
 title: Start
 tags: bg:bedroom
-colorID: 0
 position: -683,-395
 ---
 << setTime 8:00 >>
@@ -11,6 +10,8 @@ Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler
 
 [[Prendre l'appel|Appel_Fred]]
 [[Rejeter l'appel|Rejet_Fred]]
+[[Bonjour|Rejet_Fred]]
+[[Au Revoir|Rejet_Fred]]
 ===
 title: Appel_Fred
 tags: show:fred
@@ -38,12 +39,13 @@ You: Ouais... Vous poussez un grand soupir avant de raccrocher
 ===
 title: Rejet_Fred
 tags: 
-colorID: 0
 position: -292,-363
 ---
 Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle aussitôt!
 [[Prendre l'appel|Appel_Fred]]
-[[Rejeter appel|Rejet_Fred]]
+[[Rejeter l'appel|Rejet_Fred]]
+[[Bonjour|Rejet_Fred]]
+[[Au Revoir|Rejet_Fred]]
 ===
 title: Phone_off
 tags: 

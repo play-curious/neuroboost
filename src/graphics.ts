@@ -5,6 +5,8 @@ import MultiStyleText from "pixi-multistyle-text";
 
 import * as entity from "booyah/src/entity";
 import * as util from "booyah/src/util";
+import * as tween from "booyah/src/tween";
+import * as easing from "booyah/src/easing";
 
 import * as variable from "./variable";
 
@@ -238,8 +240,9 @@ export class Graphics extends entity.CompositeEntity {
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
 
+    const animationShifting = 120;
     let currentY: number = 1080 - 40;
-
+    const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
       const choicebox = new PIXI.Container();
       choicebox.addChild(
@@ -257,8 +260,9 @@ export class Graphics extends entity.CompositeEntity {
         choicebox.width / 2,
         choicebox.y
       );
+      console.log(((i % 2) * -1));
       choicebox.position.set(
-        1920 / 2,
+        1920 * 2 * ((i % 2) ? -1 : 1),
         currentY,
       );
 
@@ -267,16 +271,64 @@ export class Graphics extends entity.CompositeEntity {
         fontFamily: "Ubuntu",
         fontSize: 40,
       });
+      
       optionText.anchor.set(0.5, 0.5);
       optionText.position.set(choicebox.width / 2, choicebox.height / 2);
-      choicebox.interactive = true;
-      choicebox.buttonMode = true;
-      this._on(choicebox, "pointerup", () => {
-        onBoxClick(i);
-      });
+      box_tweens.push(new entity.EntitySequence([
+        new entity.WaitingEntity(Math.min(nodeOptions.length - (1 + i) ,1) * animationShifting * (nodeOptions.length - (1 + i))),
+        new tween.Tween({
+          duration: 800,
+          easing: easing.easeOutQuint,
+          from: ((i % 2) ? -1920 / 2 : (3 * 1920) / 2),
+          to: 1920 / 2,
+          onUpdate: (value) => {
+            choicebox.position.x = value;
+          },
+          onTeardown: () => {
+            choicebox.interactive = true;
+            choicebox.buttonMode = true;
+  
+            this._on(choicebox, "pointerup", () => {
+              onBoxClick(i);
+            });
+      
+            this._on(choicebox, "mouseover", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1,
+                  to: 1.03,
+                  onUpdate: (value) => {
+                    choicebox.scale.set(value);
+                  },
+                })
+              );
+            });
+            this._on(choicebox, "mouseout", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1.03,
+                  to: 1,
+                  onUpdate: (value) => {
+                    choicebox.scale.set(value);
+                  },
+                })
+              );
+            });
+          }
+        })
+      ]));
+
       choicebox.addChild(optionText);
       this._nodeDisplay.addChild(choicebox);
     }
+
+    this._activateChildEntity(
+      new entity.ParallelEntity(box_tweens)
+    )
 
     if (subchoice !== undefined) {
       const arrow_back = new PIXI.Container();
@@ -383,8 +435,6 @@ export class Graphics extends entity.CompositeEntity {
 
     // Set animations
     if (_.has(this.entityConfig.app.loader.resources, fileNameJson)) {
-      console.log("HERE");
-
       this._backgroundEntity = new entity.ParallelEntity();
       this._activateChildEntity(
         this._backgroundEntity,
