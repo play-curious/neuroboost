@@ -8,7 +8,7 @@ import * as util from "booyah/src/util";
 const options = [
   "Rappel libre",
   "Lecture de notes",
-  "Lectre à voix haute",
+  "Lecture à voix haute",
   "Révision en groupe",
   "Faire des exercices",
 ];
@@ -49,7 +49,7 @@ export class JournalScene extends entity.CompositeEntity {
 
       leftElements.insertAdjacentHTML(
         "beforeend",
-        "<p>Lorsque tu as besoin de reviser, quelles techniques utilises-tu ?</h1>"
+        "<p>Lorsque tu as besoin de réviser, quelles techniques utilises-tu ?</h1>"
       );
       for (let i = 0; i < options.length; i++) {
         const option = options[i];
@@ -68,7 +68,7 @@ export class JournalScene extends entity.CompositeEntity {
 
       const rightQuestion = document.createElement("p");
       rightQuestion.textContent =
-        "Si tu pouvais apprendre plus facilement ou retenir des informations plus longtemps, qu'est-ceque cela pourrait changer à ta vie ?";
+        "Si tu pouvais apprendre plus facilement ou retenir des informations plus longtemps, qu'est-ce que cela pourrait changer à ta vie ?";
       rightQuestion.style.position = "absolute";
       rightQuestion.style.left = "940px";
       rightQuestion.style.top = "140px";

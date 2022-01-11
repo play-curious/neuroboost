@@ -253,16 +253,13 @@ export class Graphics extends entity.CompositeEntity {
       );
 
       currentY -= choicebox.height + 20;
-      choicebox.setTransform(
-        1920 / 2,
-        currentY,
-        1,
-        1,
-        0,
-        0,
-        0,
+      choicebox.pivot.set(
         choicebox.width / 2,
         choicebox.y
+      );
+      choicebox.position.set(
+        1920 / 2,
+        currentY,
       );
 
       const optionText = new PIXI.Text(nodeOptions[i], {
