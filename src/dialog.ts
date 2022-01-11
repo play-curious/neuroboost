@@ -67,7 +67,10 @@ export class DialogScene extends entity.CompositeEntity {
 
     // Setup graphics
     this._graphics = new graphics.Graphics(this._variableStorage.data);
-    this._graphics.setup(this._lastFrameInfo, this.entityConfig);
+    this._activateChildEntity(
+      this._graphics,
+      entity.extendConfig({ container: this._entityConfig.container })
+    );
 
     // Setup clock
     this._clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));

@@ -4,6 +4,7 @@ import * as PIXI from "pixi.js";
 import MultiStyleText from "pixi-multistyle-text";
 
 import * as entity from "booyah/src/entity";
+import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
 
 import * as variable from "./variable";
@@ -188,18 +189,17 @@ export class Graphics extends entity.CompositeEntity {
       this._dialogSpeaker.visible = false;
     }
 
+    const hitBox = new PIXI.Container();
     {
-      const hitBox = new PIXI.Container();
       hitBox.position.set(140, 704);
       hitBox.hitArea = new PIXI.Rectangle(0, 0, 1634, 322);
       hitBox.interactive = true;
       hitBox.buttonMode = true;
-      this._on(hitBox, "pointerup", onBoxClick);
       this._nodeDisplay.addChild(hitBox);
     }
 
     {
-      const dialogBox = new MultiStyleText(dialog || interpolatedText, {
+      const dialogBox = new MultiStyleText("", {
         default: {
           fill: "white",
           fontFamily: "Ubuntu",
@@ -222,7 +222,42 @@ export class Graphics extends entity.CompositeEntity {
         },
       });
       dialogBox.position.set(140 + 122, 704 + 33);
+      dialogBox.interactive = true;
+
       this._nodeDisplay.addChild(dialogBox);
+
+      const defilementDurationPerLetter = 25;
+
+      const baseText = (dialog || interpolatedText).trim();
+
+      const accelerate = () => {
+        if (defilement.isSetup) this._deactivateChildEntity(defilement);
+      };
+
+      const defilement = new tween.Tween({
+        from: 1,
+        to: baseText.length,
+        duration: baseText.length * defilementDurationPerLetter,
+        onUpdate: (value) => {
+          console.log("updated");
+          dialogBox.text = baseText.slice(0, Math.round(value));
+        },
+        onTeardown: () => {
+          dialogBox.text = baseText;
+          this._off(hitBox, "pointerup", accelerate);
+          this._on(hitBox, "pointerup", onBoxClick);
+        },
+      });
+
+      this._activateChildEntity(defilement);
+
+      console.table({
+        defilement: defilement.isSetup,
+        baseText,
+        duration: baseText.length * defilementDurationPerLetter,
+      });
+
+      this._once(hitBox, "pointerup", accelerate);
     }
   }
 

@@ -119,6 +119,9 @@ export class Clock extends entity.CompositeEntity {
       onUpdate: (value) => {
         this.minutesSinceMidnight = Math.round(value);
       },
+      onTeardown: () => {
+        this.minutesSinceMidnight = newMinutes;
+      },
     });
   }
 }
