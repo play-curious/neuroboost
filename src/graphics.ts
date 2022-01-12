@@ -363,7 +363,7 @@ export class Graphics extends entity.CompositeEntity {
 
     this._activateChildEntity(
       new entity.ParallelEntity(box_tweens)
-    )
+    );
 
     if (subchoice !== undefined) {
       const arrow_back = new PIXI.Container();
@@ -398,6 +398,8 @@ export class Graphics extends entity.CompositeEntity {
 
     this._nodeDisplay = new PIXI.Container();
 
+    const freeboxTweens: entity.EntityBase[] = [];
+    const animationShifting = 120;
     let freechoicesFound = 0;
     for (let i = 0; i < nodeOptions.length; i++) {
       const [choiceText, jsonValue] = nodeOptions[i].split("@");
@@ -416,18 +418,63 @@ export class Graphics extends entity.CompositeEntity {
 
       const currentData = freechoicesJSON[jsonValue];
       freechoicebox.position.set(currentData.x, currentData.y);
+      freechoicebox.scale.set(0);
 
-      freechoicebox.interactive = true;
-      freechoicebox.buttonMode = true;
+      freeboxTweens.push(new entity.EntitySequence([
+        new entity.WaitingEntity(Math.min(i, 1) * animationShifting * i),
+        new tween.Tween({
+          duration: 650,
+          easing: easing.easeOutBack,
+          from: 0,
+          to: 1,
+          onUpdate: (value) => {
+            freechoicebox.scale.set(value);
+          },
+          onTeardown: () => {
+            freechoicebox.interactive = true;
+            freechoicebox.buttonMode = true;
 
-      this._on(freechoicebox, "pointerup", () => {
-        onBoxClick(i);
-      });
+            this._on(freechoicebox, "pointerup", () => {
+              onBoxClick(i);
+            });
+
+            this._on(freechoicebox, "mouseover", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1,
+                  to: 1.03,
+                  onUpdate: (value) => {
+                    freechoicebox.scale.set(value);
+                  },
+                })
+              );
+            });
+            this._on(freechoicebox, "mouseout", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1.03,
+                  to: 1,
+                  onUpdate: (value) => {
+                    freechoicebox.scale.set(value);
+                  },
+                })
+              );
+            });
+          }
+        })
+      ]))
 
       this._nodeDisplay.addChild(freechoicebox);
     }
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
+      this._activateChildEntity(
+        new entity.ParallelEntity(freeboxTweens)
+      );
     } else if (freechoicesFound === 0) {
       for (let i = 0; i < nodeOptions.length; i++) {
         nodeOptions[i] = nodeOptions[i].split("@")[0];

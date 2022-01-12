@@ -1,6 +1,6 @@
 title: Start
 tags: bg:bedroom
-position: -683,-395
+position: -1979.929937362671,-817.3228759765625
 ---
 << setTime 8:00 >>
 
@@ -10,13 +10,11 @@ Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler
 
 [[Prendre l'appel|Appel_Fred]]
 [[Rejeter l'appel|Rejet_Fred]]
-[[Bonjour|Rejet_Fred]]
-[[Au Revoir|Rejet_Fred]]
+[[Freechoices|Action_List]]
 ===
 title: Appel_Fred
 tags: show:fred
-colorID: 0
-position: -498,-43
+position: -1617.4276733398438,-825.2426147460938
 ---
 Fred: <b>Hello!</b> <i>c'est</i> <bi>Fred</bi> !
 You:Je sais, j'ai vu ton nom.
@@ -39,18 +37,15 @@ You: Ouais... Vous poussez un grand soupir avant de raccrocher
 ===
 title: Rejet_Fred
 tags: 
-position: -292,-363
+position: -1805.537826538086,-561.8787231445312
 ---
 Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle aussitôt!
 [[Prendre l'appel|Appel_Fred]]
 [[Rejeter l'appel|Rejet_Fred]]
-[[Bonjour|Rejet_Fred]]
-[[Au Revoir|Rejet_Fred]]
 ===
 title: Phone_off
 tags: 
-colorID: 0
-position: -219,-76
+position: -1293.9966201782227,-821.3144836425781
 ---
 Vraiment ce Fred, il vous agace. Il ne fout rien et il passe haut la main! Il est temps que ça change!
 Et c'est cette semaine que ça va se produire! La semaine de partiels de fin de semestre! Vous allez lui montrer de quelle étoffe sont fait les vrais winners!
@@ -59,51 +54,44 @@ Il y a de quoi faire pour montrer à Fred qui est le Big Winner de l'Académie!
 [[Action_List]]
 ===
 title: Action_List
-tags: bg:bedroom
-colorID: 0
-position: -856,-84
+tags: bg:bedroom freechoice
+position: -847.2033081054688,-821.7307662963867
 ---
+<< if isFirstTime() is true >>
 Que faites-vous maintenant?
-[[Action_List_Freechoice]]
-===
-title: Action_List_Freechoice
-tags: bg:bedroom
-colorID: 0
-position: 0, 0
----
+<< endif >>
 << if $time >= 720 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 [[Manger (à midi)|Lunch]]
 << else>>
-<<moreTags freechoice:Action_List_Freechoice>>
 [[Cuisine@cuisine|cuisine_subchoice]]
 [[Bureau@bureau|bureau_subchoice]]
 [[Lit@lit|lit_subchoice]]
 << endif>>
 ===
+
 title: cuisine_subchoice
-tags: bg:kitchen
+tags: bg:kitchen subchoice
+position: -319.1514720916748,-55.38755989074707
 ---
-<<moreTags subchoice:Action_List_Freechoice>>
 [[Prendre le petit déjeuner|Petit_dej]]
 ===
 title: bureau_subchoice
-tags: bg:desk
+tags: bg:desk subchoice
+position: -993.6492929458618,-75.37680292129517
 ---
-<<moreTags subchoice:Action_List_Freechoice>>
 [[Passer du temps sur le chat avec le pote d'une autre Université|Chat]]
 [[Réviser cette fichue Astronometric Data Management|Revision]]
 ===
 title: lit_subchoice
-tags: bg:bedroom
+tags: bg:bedroom subchoice
+position: -1657.0987854003906,-48.1837592124939
 ---
-<<moreTags subchoice:Action_List_Freechoice>>
 [[Binger votre série TV préférée|BingeTV]]
 ===
 title: Petit_dej
 tags: bg:kitchen
-colorID: 0
-position: -843,249
+position: -441.43939208984375,237.24887084960938
 ---
 Yum Yum... Rien ne vaut une boîte de chimicookies et un synthécafé après le réveil. 
 De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le café traditionnels. Heureusement que le génie génétique permet désormais de resynthétiser tout ce qui a poussé ou vécu sur la Terre originelle...
@@ -116,8 +104,7 @@ Bon, ce n'est pas tout.
 ===
 title: Chat
 tags: 
-colorID: 0
-position: -583,238
+position: -779.0828857421875,231.5269012451172
 ---
 Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. 
 Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, puis Lou, puis Cam... 
@@ -132,8 +119,7 @@ Vous passez deux heures à discuter de tout, mais surtout de rien.
 ===
 title: Revision
 tags: bg:desk
-colorID: 0
-position: -1089,258
+position: -1231.30712890625,224.80491638183594
 ---
 Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Management. Rien que le titre vous barbe. ça commence mal...
 
@@ -145,8 +131,7 @@ Vous passez les 2 heures à potasser ce long pensum ennuyeux. C'est à vous dég
 ===
 title: BingeTV
 tags: 
-colorID: 0
-position: -1372,235
+position: -1573.0745849609375,216.18408203125
 ---
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
 Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber. 
@@ -164,8 +149,7 @@ Vous passez 4 heures à binger votre série préférée.
 ===
 title: Lunch
 tags: bg:kitchen
-colorID: 0
-position: -1077,537
+position: -1003.4832763671875,523.215576171875
 ---
 Yum Yum... Délicieux ce Burger Big Proteins Double Cheese!
 Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant de l'examen!
@@ -442,3 +426,6 @@ En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magn
 
 Serait-ce le ''journal mental'' dont parlait Ledai ?
 ===
+
+
+
