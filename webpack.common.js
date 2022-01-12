@@ -66,7 +66,7 @@ module.exports = {
 
         // Copy non-module JS library
         {
-          from: "node_modules/bondage/dist/bondage.min.js",
+          from: require.resolve("bondage/dist/bondage.min.js"),
           to: "deps",
         },
 

@@ -18,7 +18,7 @@
   "dependencies": {
     "@pixi/filter-glow": "^4.1.3",
     "@types/uuid": "^8.3.0",
-    "bondage": "^2.2.0",
+    "bondage": "github:play-curious/bondage.js",
     "booyah": "github:play-curious/booyah",
     "csv-parse": "^4.16.0",
     "del": "^6.0.0",

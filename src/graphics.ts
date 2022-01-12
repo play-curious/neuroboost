@@ -4,7 +4,10 @@ import * as PIXI from "pixi.js";
 import MultiStyleText from "pixi-multistyle-text";
 
 import * as entity from "booyah/src/entity";
+import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
+import * as tween from "booyah/src/tween";
+import * as easing from "booyah/src/easing";
 
 import * as variable from "./variable";
 
@@ -188,18 +191,17 @@ export class Graphics extends entity.CompositeEntity {
       this._dialogSpeaker.visible = false;
     }
 
+    const hitBox = new PIXI.Container();
     {
-      const hitBox = new PIXI.Container();
       hitBox.position.set(140, 704);
       hitBox.hitArea = new PIXI.Rectangle(0, 0, 1634, 322);
       hitBox.interactive = true;
       hitBox.buttonMode = true;
-      this._on(hitBox, "pointerup", onBoxClick);
       this._nodeDisplay.addChild(hitBox);
     }
 
     {
-      const dialogBox = new MultiStyleText(dialog || interpolatedText, {
+      const dialogBox = new MultiStyleText("", {
         default: {
           fill: "white",
           fontFamily: "Ubuntu",
@@ -222,7 +224,42 @@ export class Graphics extends entity.CompositeEntity {
         },
       });
       dialogBox.position.set(140 + 122, 704 + 33);
+      dialogBox.interactive = true;
+
       this._nodeDisplay.addChild(dialogBox);
+
+      const defilementDurationPerLetter = 25;
+
+      const baseText = (dialog || interpolatedText).trim();
+
+      const accelerate = () => {
+        if (defilement.isSetup) this._deactivateChildEntity(defilement);
+      };
+
+      const defilement = new tween.Tween({
+        from: 1,
+        to: baseText.length,
+        duration: baseText.length * defilementDurationPerLetter,
+        onUpdate: (value) => {
+          console.log("updated");
+          dialogBox.text = baseText.slice(0, Math.round(value));
+        },
+        onTeardown: () => {
+          dialogBox.text = baseText;
+          this._off(hitBox, "pointerup", accelerate);
+          this._on(hitBox, "pointerup", onBoxClick);
+        },
+      });
+
+      this._activateChildEntity(defilement);
+
+      console.table({
+        defilement: defilement.isSetup,
+        baseText,
+        duration: baseText.length * defilementDurationPerLetter,
+      });
+
+      this._once(hitBox, "pointerup", accelerate);
     }
   }
 
@@ -238,90 +275,95 @@ export class Graphics extends entity.CompositeEntity {
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
 
-    let currentY: number;
-
-    let choicebox_contour = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources[
-        "images/ui/choicebox_contour.png"
-      ].texture
-    );
-    let choicebox_contour_reversed = new PIXI.Sprite();
-    choicebox_contour_reversed.texture = choicebox_contour.texture.clone();
-    choicebox_contour_reversed.setTransform(
-      0,
-      0,
-      1,
-      -1,
-      0,
-      0,
-      0,
-      0,
-      choicebox_contour_reversed.y
-    );
-    let choicebox_empty = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources[
-        "images/ui/choicebox_empty.png"
-      ].texture
-    );
-
-    currentY = 1080 - 40;
-
+    const animationShifting = 120;
+    let currentY: number = 1080 - 40;
+    const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
       const choicebox = new PIXI.Container();
-      if (i == 0) {
-        let choicebox_reversed = new PIXI.Sprite(
+      choicebox.addChild(
+        new PIXI.Sprite(
           this.entityConfig.app.loader.resources[
-            "images/ui/choicebox_contour.png"
+            i === 0 ? "images/ui/choicebox_contour_reversed.png"
+            : (i === nodeOptions.length - 1 ? "images/ui/choicebox_contour.png"
+            : "images/ui/choicebox_empty.png")
           ].texture
-        );
-        choicebox_reversed.setTransform(
-          0,
-          choicebox_contour_reversed.height,
-          1,
-          -1,
-          0,
-          0,
-          0,
-          0,
-          choicebox_contour_reversed.y
-        );
-        choicebox.addChild(choicebox_reversed);
-      } else if (i == nodeOptions.length - 1) {
-        choicebox.addChild(
-          new PIXI.Sprite(
-            this.entityConfig.app.loader.resources[
-              "images/ui/choicebox_contour.png"
-            ].texture
-          )
-        );
-      } else {
-        choicebox.addChild(
-          new PIXI.Sprite(
-            this.entityConfig.app.loader.resources[
-              "images/ui/choicebox_empty.png"
-            ].texture
-          )
-        );
-      }
+        )
+      );
+
       currentY -= choicebox.height + 20;
-      console.log(currentY, choicebox.height);
-      choicebox.setTransform(0, currentY);
+      choicebox.pivot.set(
+        choicebox.width / 2,
+        choicebox.y
+      );
+      console.log(((i % 2) * -1));
+      choicebox.position.set(
+        1920 * 2 * ((i % 2) ? -1 : 1),
+        currentY,
+      );
 
       const optionText = new PIXI.Text(nodeOptions[i], {
         fill: 0xfdf4d3,
         fontFamily: "Ubuntu",
         fontSize: 40,
       });
+      
       optionText.anchor.set(0.5, 0.5);
       optionText.position.set(choicebox.width / 2, choicebox.height / 2);
-      choicebox.interactive = true;
-      choicebox.buttonMode = true;
-      this._on(choicebox, "pointerup", () => {
-        onBoxClick(i);
-      });
+      box_tweens.push(new entity.EntitySequence([
+        new entity.WaitingEntity(Math.min(nodeOptions.length - (1 + i) ,1) * animationShifting * (nodeOptions.length - (1 + i))),
+        new tween.Tween({
+          duration: 800,
+          easing: easing.easeOutQuint,
+          from: ((i % 2) ? -1920 / 2 : (3 * 1920) / 2),
+          to: 1920 / 2,
+          onUpdate: (value) => {
+            choicebox.position.x = value;
+          },
+          onTeardown: () => {
+            choicebox.interactive = true;
+            choicebox.buttonMode = true;
+  
+            this._on(choicebox, "pointerup", () => {
+              onBoxClick(i);
+            });
+      
+            this._on(choicebox, "mouseover", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1,
+                  to: 1.03,
+                  onUpdate: (value) => {
+                    choicebox.scale.set(value);
+                  },
+                })
+              );
+            });
+            this._on(choicebox, "mouseout", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1.03,
+                  to: 1,
+                  onUpdate: (value) => {
+                    choicebox.scale.set(value);
+                  },
+                })
+              );
+            });
+          }
+        })
+      ]));
+
       choicebox.addChild(optionText);
       this._nodeDisplay.addChild(choicebox);
     }
+
+    this._activateChildEntity(
+      new entity.ParallelEntity(box_tweens)
+    );
 
     if (subchoice !== undefined) {
       const arrow_back = new PIXI.Container();
@@ -356,6 +398,8 @@ export class Graphics extends entity.CompositeEntity {
 
     this._nodeDisplay = new PIXI.Container();
 
+    const freeboxTweens: entity.EntityBase[] = [];
+    const animationShifting = 120;
     let freechoicesFound = 0;
     for (let i = 0; i < nodeOptions.length; i++) {
       const [choiceText, jsonValue] = nodeOptions[i].split("@");
@@ -374,18 +418,63 @@ export class Graphics extends entity.CompositeEntity {
 
       const currentData = freechoicesJSON[jsonValue];
       freechoicebox.position.set(currentData.x, currentData.y);
+      freechoicebox.scale.set(0);
 
-      freechoicebox.interactive = true;
-      freechoicebox.buttonMode = true;
+      freeboxTweens.push(new entity.EntitySequence([
+        new entity.WaitingEntity(Math.min(i, 1) * animationShifting * i),
+        new tween.Tween({
+          duration: 650,
+          easing: easing.easeOutBack,
+          from: 0,
+          to: 1,
+          onUpdate: (value) => {
+            freechoicebox.scale.set(value);
+          },
+          onTeardown: () => {
+            freechoicebox.interactive = true;
+            freechoicebox.buttonMode = true;
 
-      this._on(freechoicebox, "pointerup", () => {
-        onBoxClick(i);
-      });
+            this._on(freechoicebox, "pointerup", () => {
+              onBoxClick(i);
+            });
+
+            this._on(freechoicebox, "mouseover", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1,
+                  to: 1.03,
+                  onUpdate: (value) => {
+                    freechoicebox.scale.set(value);
+                  },
+                })
+              );
+            });
+            this._on(freechoicebox, "mouseout", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1.03,
+                  to: 1,
+                  onUpdate: (value) => {
+                    freechoicebox.scale.set(value);
+                  },
+                })
+              );
+            });
+          }
+        })
+      ]))
 
       this._nodeDisplay.addChild(freechoicebox);
     }
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
+      this._activateChildEntity(
+        new entity.ParallelEntity(freeboxTweens)
+      );
     } else if (freechoicesFound === 0) {
       for (let i = 0; i < nodeOptions.length; i++) {
         nodeOptions[i] = nodeOptions[i].split("@")[0];
@@ -428,7 +517,6 @@ export class Graphics extends entity.CompositeEntity {
 
     // Set animations
     if (_.has(this.entityConfig.app.loader.resources, fileNameJson)) {
-
       this._backgroundEntity = new entity.ParallelEntity();
       this._activateChildEntity(
         this._backgroundEntity,
