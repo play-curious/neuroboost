@@ -117,7 +117,6 @@ export class DialogScene extends entity.CompositeEntity {
     this._nodeValue = this._nodeIterator.next().value;
     // If result is undefined, stop here
     if (!this._nodeValue) {
-      console.log("Reached end");
       this._transition = entity.makeTransition();
       return;
     }

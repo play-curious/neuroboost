@@ -6,7 +6,6 @@ import MultiStyleText from "pixi-multistyle-text";
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
-import * as tween from "booyah/src/tween";
 import * as easing from "booyah/src/easing";
 
 import * as variable from "./variable";
@@ -143,8 +142,6 @@ export class Graphics extends entity.CompositeEntity {
     autoShow: boolean,
     onBoxClick: () => unknown
   ) {
-    // console.log("text result", text);
-
     // Use underscore template to interpolate variables
     const interpolatedText = _.template(
       text,
@@ -241,7 +238,6 @@ export class Graphics extends entity.CompositeEntity {
         to: baseText.length,
         duration: baseText.length * defilementDurationPerLetter,
         onUpdate: (value) => {
-          console.log("updated");
           dialogBox.text = baseText.slice(0, Math.round(value));
         },
         onTeardown: () => {
@@ -253,12 +249,6 @@ export class Graphics extends entity.CompositeEntity {
 
       this._activateChildEntity(defilement);
 
-      console.table({
-        defilement: defilement.isSetup,
-        baseText,
-        duration: baseText.length * defilementDurationPerLetter,
-      });
-
       this._once(hitBox, "pointerup", accelerate);
     }
   }
@@ -269,7 +259,6 @@ export class Graphics extends entity.CompositeEntity {
     subchoice?: () => unknown
   ) {
     // This works for both links between nodes and shortcut options
-    // console.log("options result", nodeValue.options);
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();
@@ -295,13 +284,13 @@ export class Graphics extends entity.CompositeEntity {
         choicebox.width / 2,
         choicebox.y
       );
-      console.log(((i % 2) * -1));
+      
       choicebox.position.set(
         1920 * 2 * ((i % 2) ? -1 : 1),
         currentY,
       );
-
-      const optionText = new PIXI.Text(nodeOptions[i], {
+      
+      const optionText = new PIXI.Text(nodeOptions[nodeOptions.length - (1 + i)], {
         fill: 0xfdf4d3,
         fontFamily: "Ubuntu",
         fontSize: 40,
@@ -324,7 +313,7 @@ export class Graphics extends entity.CompositeEntity {
             choicebox.buttonMode = true;
   
             this._on(choicebox, "pointerup", () => {
-              onBoxClick(i);
+              onBoxClick(nodeOptions.length - (1 + i));
             });
       
             this._on(choicebox, "mouseover", () => {
@@ -525,8 +514,6 @@ export class Graphics extends entity.CompositeEntity {
 
       let baseJson = this._entityConfig.app.loader.resources[fileNameJson].data;
       for (const bgPart of baseJson.sprites) {
-        console.log(bgPart);
-
         const animatedSpriteEntity = util.makeAnimatedSprite(
           this._entityConfig.app.loader.resources[
             `${folderName}/${bgPart.model}.json`
