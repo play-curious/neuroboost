@@ -1,0 +1,29 @@
+{
+    "sprites": [
+        {
+            "model": "bird",
+            "x": 1770,
+            "y": 150
+        },
+        {
+            "model": "plantsA",
+            "x": 650,
+            "y": 733
+        },
+        {
+            "model": "plantsB",
+            "x": 1218,
+            "y": 648
+        },
+        {
+            "model": "treeLeft",
+            "x": 151,
+            "y": 452
+        },
+        {
+            "model": "treeMiddle",
+            "x": 1109,
+            "y": 461
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "sprites": [
+        {
+            "model": "clignotantRB",
+            "x": 516,
+            "y": 413
+        },
+        {
+            "model": "clignotantBJ",
+            "x": 1617,
+            "y": 400
+        },
+        {
+            "model": "characters",
+            "x": 960,
+            "y": 540
+        }
+    ]
+}
