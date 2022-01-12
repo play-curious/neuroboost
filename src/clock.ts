@@ -9,45 +9,38 @@ export type ResolvableTime = `${number}:${number}`;
 export const dayMinutes = 60 * 24;
 
 export const dayNames = [
-  "lundi",
-  "mardi",
-  "mercredi",
-  "jeudi",
-  "vendredi",
-  "samedi",
-  "dimanche",
+  "Lundi",
+  "Mardi",
+  "Mercredi",
+  "Jeudi",
+  "Vendredi",
+  "Samedi",
+  "Dimanche",
 ];
 
 export function parseTime(
   time: ResolvableTime
 ): [hours: number, minutes: number, minutesSinceMidnight: number] {
-  const parts = time.split(":");
-  let h = 0,
-    m = 0;
-  if (parts.length === 1) {
-    h = parseInt(parts[0]);
-  } else if (parts.length === 2) {
-    h = parseInt(parts[0]);
-    m = parseInt(parts[1]);
-  } else {
+  const [_h, _m] = time.split(":");
+  const h = Number(_h);
+  const m = Number(_m ?? 0);
+
+  if (isNaN(h) || isNaN(m))
     throw new Error(`Can't parse time string "${time}"`);
-  }
+
   return [h, m, h * 60 + m];
 }
 
 export class Clock extends entity.CompositeEntity {
   private _days: number;
   private _minutesSinceMidnight: number;
-  private _pos: PIXI.IPoint;
   private _hidden: boolean;
 
   private _container: PIXI.Container;
   private _textBox: PIXI.Text;
 
-  constructor(pos: PIXI.IPoint) {
+  constructor(private _position: PIXI.IPoint) {
     super();
-
-    this._pos = pos;
   }
 
   _setup() {
@@ -55,7 +48,7 @@ export class Clock extends entity.CompositeEntity {
     this._minutesSinceMidnight = 0;
 
     this._container = new PIXI.Container();
-    this._container.position.copyFrom(this._pos);
+    this._container.position.copyFrom(this._position);
 
     const bg = new PIXI.Sprite(
       this.entityConfig.app.loader.resources["images/ui/clock.png"].texture
@@ -125,6 +118,9 @@ export class Clock extends entity.CompositeEntity {
       to: newMinutes,
       onUpdate: (value) => {
         this.minutesSinceMidnight = Math.round(value);
+      },
+      onTeardown: () => {
+        this.minutesSinceMidnight = newMinutes;
       },
     });
   }
