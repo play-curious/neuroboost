@@ -428,7 +428,6 @@ export class Graphics extends entity.CompositeEntity {
 
     // Set animations
     if (_.has(this.entityConfig.app.loader.resources, fileNameJson)) {
-      console.log("HERE");
 
       this._backgroundEntity = new entity.ParallelEntity();
       this._activateChildEntity(
@@ -438,19 +437,22 @@ export class Graphics extends entity.CompositeEntity {
 
       let baseJson = this._entityConfig.app.loader.resources[fileNameJson].data;
       for (const bgPart of baseJson.sprites) {
-        console.log(bgPart);
 
-        const animatedSpriteEntity = util.makeAnimatedSprite(
-          this._entityConfig.app.loader.resources[
-            `${folderName}/${bgPart.model}.json`
-          ]
-        );
-        animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
-        animatedSpriteEntity.sprite.x = bgPart.x;
-        animatedSpriteEntity.sprite.y = bgPart.y;
+        // Load animated texture
+        if(_.has(this._entityConfig.app.loader.resources, `${folderName}/${bgPart.model}.json`)) {
 
-        animatedSpriteEntity.sprite.animationSpeed = (1 / bgPart.speed) * 0.33;
-        this._backgroundEntity.addChildEntity(animatedSpriteEntity);
+          const animatedSpriteEntity = util.makeAnimatedSprite(
+            this._entityConfig.app.loader.resources[
+              `${folderName}/${bgPart.model}.json`
+            ]
+          );
+          animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
+          animatedSpriteEntity.sprite.x = bgPart.x;
+          animatedSpriteEntity.sprite.y = bgPart.y;
+  
+          animatedSpriteEntity.sprite.animationSpeed = 0.33;
+          this._backgroundEntity.addChildEntity(animatedSpriteEntity);
+        }
       }
     }
 
@@ -505,9 +507,9 @@ export class Graphics extends entity.CompositeEntity {
         characterContainer.addChild(baseSprite);
 
         // Load animations JSON
-        let baseJson =
-          this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
+        let baseJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
         for (const bodyPart of baseJson[mood]) {
+
           const animatedSpriteEntity = util.makeAnimatedSprite(
             this._entityConfig.app.loader.resources[
               `${baseDir}/${bodyPart.model}.json`
@@ -517,7 +519,7 @@ export class Graphics extends entity.CompositeEntity {
           animatedSpriteEntity.sprite.x = bodyPart.x;
           animatedSpriteEntity.sprite.y = bodyPart.y;
 
-          animatedSpriteEntity.sprite.animationSpeed = 0.5;
+          animatedSpriteEntity.sprite.animationSpeed = 0.33;
           this._characterEntity.addChildEntity(animatedSpriteEntity);
         }
 

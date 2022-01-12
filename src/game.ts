@@ -64,18 +64,60 @@ const graphicalAssets = [
   "images/bg/bedroom/base.png",
   "images/bg/bedroom/base.json",
   "images/bg/bedroom/bocal.json",
-  "images/bg/bedroom/flowers.json",
+  "images/bg/bedroom/fleurs.json",
   "images/bg/bedroom/plants.json",
   "images/bg/bedroom/smoke.json",
-  "images/bg/bedroom/steam.json",
+  "images/bg/bedroom/vapeur.json",
+
+  // Bedroom night
+  "images/bg/bedroom_night/base.png",
+  "images/bg/bedroom_night/base.json",
+  "images/bg/bedroom_night/bocal.json",
+  "images/bg/bedroom_night/fleurs.json",
+  "images/bg/bedroom_night/plants.json",
+  "images/bg/bedroom_night/smoke.json",
+  "images/bg/bedroom_night/vapeur.json",
+  "images/bg/bedroom_night/nightShade.json",
+
+  // Classroom
+  "images/bg/class/base.png",
+  "images/bg/class/base.json",
+  "images/bg/class/desk_1.json",
+  "images/bg/class/desk_2.json",
+  "images/bg/class/desk_3.json",
+  "images/bg/class/desk_4.json",
+  "images/bg/class/desk_5.json",
+  "images/bg/class/hologramme.json",
+  "images/bg/class/music.json",
+  "images/bg/class/plant_1.json",
+  "images/bg/class/plant_2.json",
+
+  // Circle
+  "images/bg/circle/base.png",
+  "images/bg/circle/base.json",
+  "images/bg/circle/brain.json",
+  "images/bg/circle/sapiens.json",
+
+  // Party
+  "images/bg/party/base.png",
+  "images/bg/party/base.json",
+  "images/bg/party/clignotantRB.json",
+  "images/bg/party/clignotantBJ.json",
+  "images/bg/party/characters.json",
+
+  // Sport
+  "images/bg/sport/base.png",
+  "images/bg/sport/base.json",
+  "images/bg/sport/bird.json",
+  "images/bg/sport/plantsA.json",
+  "images/bg/sport/plantsB.json",
+  "images/bg/sport/treeLeft.json",
+  "images/bg/sport/treeMiddle.json",
 
   // Others
-  "images/bg/bedroom_night/base.png",
-  "images/bg/class/base.png",
   "images/bg/desk/base.png",
+  "images/bg/outside/base.png",
   "images/bg/kitchen/base.png",
-  "images/bg/party/base.png",
-  "images/bg/circle/base.png",
   "images/bg/schema/base.png",
 
   // ////////////////////////////////////////////

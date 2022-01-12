@@ -67,7 +67,7 @@ export class DialogScene extends entity.CompositeEntity {
 
     // Setup graphics
     this._graphics = new graphics.Graphics(this._variableStorage.data);
-    this._graphics.setup(this._lastFrameInfo, this.entityConfig);
+    this._activateChildEntity(this._graphics);
 
     // Setup clock
     this._clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
@@ -95,7 +95,6 @@ export class DialogScene extends entity.CompositeEntity {
   }
 
   private _advance(): void {
-    console.log("GRAPHICS", this._graphics);
     this._graphics.hideNode();
     this._graphics.showDialogLayer();
 
@@ -185,7 +184,7 @@ export class DialogScene extends entity.CompositeEntity {
   }
 
   private _onChangeNodeData(oldNodeData: NodeData, newNodeData: NodeData) {
-    console.log("changing node data", oldNodeData, " --> ", newNodeData);
+    //console.log("changing node data", oldNodeData, " --> ", newNodeData);
 
     // Parse tags
 
