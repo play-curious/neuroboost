@@ -41,7 +41,6 @@ export class DialogScene extends entity.CompositeEntity {
   private _nodeValue: Node;
   private _lastNodeData: NodeData;
   private _autoshowOn: boolean;
-  private _variableStorage: variable.VariableStorage;
   private _previousNodeDatas: NodeData[];
 
   private _graphics: graphics.Graphics;
@@ -50,7 +49,8 @@ export class DialogScene extends entity.CompositeEntity {
 
   constructor(
     public readonly scriptName: string,
-    public readonly startNode = "Start"
+    public readonly startNode = "Start",
+    public _variableStorage: variable.VariableStorage,
   ) {
     super();
   }
@@ -58,12 +58,6 @@ export class DialogScene extends entity.CompositeEntity {
   _setup(): void {
     this._autoshowOn = false;
 
-    // Create variable storage
-    this._variableStorage = new variable.VariableStorage({
-      name: "Moi",
-      time: "540",
-      eval: "",
-    });
     this._previousNodeDatas = [];
 
     // Setup graphics
@@ -287,6 +281,7 @@ export class DialogScene extends entity.CompositeEntity {
     while (minutesSinceMidnight >= clock.dayMinutes)
       minutesSinceMidnight -= clock.dayMinutes;
 
+    // @ts-ignore
     this._variableStorage.set("time", `${minutesSinceMidnight}`);
 
     this._clock.minutesSinceMidnight = minutesSinceMidnight;
@@ -298,7 +293,7 @@ export class DialogScene extends entity.CompositeEntity {
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
 
     while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
-
+    // @ts-ignore
     this._variableStorage.set("time", `${newMinutes}`);
 
     this._activateChildEntity(this._clock.advanceTime(time));

@@ -9,6 +9,9 @@ import * as geom from "booyah/src/geom";
 import * as dialog from "./dialog";
 import * as journal from "./journal";
 
+import * as clock from "./clock";
+import * as variable from "./variable";
+
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
   const canvasBbox = document
@@ -34,11 +37,16 @@ function resizeHtmlLayer(appSize: PIXI.Point): void {
 const params = new URLSearchParams(window.location.search);
 const startNode = params.get("startNode") || params.get("node") || "Start";
 
-const states: { [k: string]: entity.EntityResolvable } = {
-  start: new dialog.DialogScene("level1", startNode),
-  journal: new journal.JournalScene(),
-  level2: new dialog.DialogScene("level2", startNode),
-};
+const _variableStorage = new variable.VariableStorage({
+  name: "Moi",
+  time: "540",
+  eval: "",
+});
+
+const states: { [k: string]: entity.EntityResolvable } = {};
+states["start"] = new dialog.DialogScene("level1", startNode, _variableStorage);
+states["journal"] = new journal.JournalScene();
+states["level2"] = new dialog.DialogScene("level2", startNode, _variableStorage);
 
 const transitions = {
   start: entity.makeTransition("journal"),
