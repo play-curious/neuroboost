@@ -29,6 +29,7 @@ interface ChoiceNode {
   lineNum: number[];
   options: string[];
   selected: number;
+  data: NodeData;
   select: (i: number) => void;
 }
 
@@ -41,7 +42,7 @@ export class DialogScene extends entity.CompositeEntity {
   private _lastNodeData: NodeData;
   private _autoshowOn: boolean;
   private _variableStorage: variable.VariableStorage;
-  private _moreTags: Record<string, string>;
+  private _previousNodeDatas: NodeData[];
 
   private _graphics: graphics.Graphics;
 
@@ -63,7 +64,7 @@ export class DialogScene extends entity.CompositeEntity {
       time: "540",
       eval: "",
     });
-    this._moreTags = {};
+    this._previousNodeDatas = [];
 
     // Setup graphics
     this._graphics = new graphics.Graphics(this._variableStorage.data);
@@ -81,6 +82,14 @@ export class DialogScene extends entity.CompositeEntity {
 
     this._runner = new bondage.Runner("");
     this._runner.setVariableStorage(this._variableStorage);
+    this._runner.registerFunction('isFirstTime', (data: any) => {
+      for(const nodeData of this._previousNodeDatas){
+        if(!nodeData) continue;
+        if(nodeData.title == data.title)
+          return false;
+      }
+      return true;
+    });
     this._runner.load(this.entityConfig.jsonAssets[this.scriptName]);
 
     // Advance the dialogue manually from the node titled 'Start'
@@ -88,14 +97,17 @@ export class DialogScene extends entity.CompositeEntity {
     this._advance();
   }
 
-_onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
-  if (signal === "gainedVisibility") {
-    booyah.changeGameState("playing");
+  _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
+    if (signal === "gainedVisibility") {
+      booyah.changeGameState("playing");
+    }
   }
-}
+
+  private _hasTag(nodeData: NodeData, tag: string): boolean {
+    return nodeData.tags.includes(tag);
+  }
 
   private _advance(): void {
-    console.log("GRAPHICS", this._graphics);
     this._graphics.hideNode();
     this._graphics.showDialogLayer();
 
@@ -113,22 +125,21 @@ _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
       this._nodeValue.data.title !== this._lastNodeData?.title
     ) {
       this._onChangeNodeData(this._lastNodeData, this._nodeValue.data);
+      this._previousNodeDatas.push(this._lastNodeData);
       this._lastNodeData = this._nodeValue.data;
-    }
-
-    if (this._moreTags.hasOwnProperty("subchoice")) {
-      delete this._moreTags.freechoice;
     }
 
     if (this._nodeValue instanceof bondage.TextResult) {
       this._handleDialog((this._nodeValue as TextNode).text);
     } else if (this._nodeValue instanceof bondage.OptionsResult) {
-      if (this._moreTags.hasOwnProperty("freechoice"))
+      if (this._hasTag(this._nodeValue.data, "freechoice")) {
         this._handleFreechoice(
-          this._moreTags["freechoice"],
+          this._nodeValue.data.title,
           this._nodeValue as ChoiceNode
         );
-      else this._handleChoice(this._nodeValue as ChoiceNode);
+      } else {
+        this._handleChoice(this._nodeValue as ChoiceNode);
+      }
     } else if (this._nodeValue instanceof bondage.CommandResult) {
       this._handleCommand((this._nodeValue as TextNode).text);
     } else {
@@ -152,8 +163,8 @@ _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
         nodeValue.select(id);
         this._advance();
       },
-      this._moreTags.hasOwnProperty("subchoice") ? () => {
-        this._nodeIterator = this._runner.run(this._moreTags["subchoice"]);
+      this._hasTag(nodeValue.data, "subchoice") ? () => {
+        this._nodeIterator = this._runner.run(_.last(this._previousNodeDatas).title);
         this._advance();
       } : undefined
     );
@@ -191,7 +202,6 @@ _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
 
     // By default, autoshow is off
     this._autoshowOn = false;
-    this._moreTags = {};
 
     let bg: string;
     let character: string;
@@ -290,13 +300,6 @@ _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
     this._variableStorage.set("time", `${newMinutes}`);
 
     this._activateChildEntity(this._clock.advanceTime(time));
-  }
-
-  moreTags(...tags: string[]): void {
-    for (const tag of tags) {
-      const [key, value] = tag.split(":");
-      this._moreTags[key] = value;
-    }
   }
 
   hideClock() {
