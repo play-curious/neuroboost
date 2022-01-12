@@ -34,71 +34,71 @@
 },
 "plants00004.png":
 {
-	"frame": {"x":1,"y":343,"w":126,"h":169},
-	"rotated": false,
+	"frame": {"x":263,"y":1,"w":126,"h":169},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":24,"y":131,"w":126,"h":169},
 	"sourceSize": {"w":150,"h":300}
 },
 "plants00005.png":
 {
-	"frame": {"x":1,"y":343,"w":126,"h":169},
-	"rotated": false,
+	"frame": {"x":263,"y":1,"w":126,"h":169},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":24,"y":131,"w":126,"h":169},
 	"sourceSize": {"w":150,"h":300}
 },
 "plants00006.png":
 {
-	"frame": {"x":1,"y":343,"w":126,"h":169},
-	"rotated": false,
+	"frame": {"x":263,"y":1,"w":126,"h":169},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":24,"y":131,"w":126,"h":169},
 	"sourceSize": {"w":150,"h":300}
 },
 "plants00007.png":
 {
-	"frame": {"x":1,"y":343,"w":126,"h":169},
-	"rotated": false,
+	"frame": {"x":263,"y":1,"w":126,"h":169},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":24,"y":131,"w":126,"h":169},
 	"sourceSize": {"w":150,"h":300}
 },
 "plants00008.png":
 {
-	"frame": {"x":1,"y":514,"w":122,"h":169},
-	"rotated": false,
+	"frame": {"x":263,"y":129,"w":122,"h":169},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":28,"y":131,"w":122,"h":169},
 	"sourceSize": {"w":150,"h":300}
 },
 "plants00009.png":
 {
-	"frame": {"x":1,"y":514,"w":122,"h":169},
-	"rotated": false,
+	"frame": {"x":263,"y":129,"w":122,"h":169},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":28,"y":131,"w":122,"h":169},
 	"sourceSize": {"w":150,"h":300}
 },
 "plants00010.png":
 {
-	"frame": {"x":1,"y":514,"w":122,"h":169},
-	"rotated": false,
+	"frame": {"x":263,"y":129,"w":122,"h":169},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":28,"y":131,"w":122,"h":169},
 	"sourceSize": {"w":150,"h":300}
 },
 "plants00011.png":
 {
-	"frame": {"x":1,"y":514,"w":122,"h":169},
-	"rotated": false,
+	"frame": {"x":263,"y":129,"w":122,"h":169},
+	"rotated": true,
 	"trimmed": true,
 	"spriteSourceSize": {"x":28,"y":131,"w":122,"h":169},
 	"sourceSize": {"w":150,"h":300}
 },
 "plants00012.png":
 {
-	"frame": {"x":1,"y":171,"w":127,"h":170},
+	"frame": {"x":134,"y":1,"w":127,"h":170},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":130,"w":127,"h":170},
@@ -106,7 +106,7 @@
 },
 "plants00013.png":
 {
-	"frame": {"x":1,"y":171,"w":127,"h":170},
+	"frame": {"x":134,"y":1,"w":127,"h":170},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":130,"w":127,"h":170},
@@ -114,7 +114,7 @@
 },
 "plants00014.png":
 {
-	"frame": {"x":1,"y":171,"w":127,"h":170},
+	"frame": {"x":134,"y":1,"w":127,"h":170},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":130,"w":127,"h":170},
@@ -122,7 +122,7 @@
 },
 "plants00015.png":
 {
-	"frame": {"x":1,"y":171,"w":127,"h":170},
+	"frame": {"x":134,"y":1,"w":127,"h":170},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":130,"w":127,"h":170},
@@ -136,8 +136,8 @@
 	"version": "1.0",
 	"image": "plants.png",
 	"format": "RGBA8888",
-	"size": {"w":133,"h":684},
+	"size": {"w":433,"h":252},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:7ebb213cfd27975bdde749dae103325f:637445958245e5cae581c25e72112ae4:1289142517ebf077ccf29c1aafcf4ff4$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d4c152b2e729b30b6793ccb39c579e62:637445958245e5cae581c25e72112ae4:1289142517ebf077ccf29c1aafcf4ff4$"
 }
 }

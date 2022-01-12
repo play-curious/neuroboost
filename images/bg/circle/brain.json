@@ -1,0 +1,111 @@
+{"frames": {
+
+"brain00000.png":
+{
+	"frame": {"x":1,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+},
+"brain00001.png":
+{
+	"frame": {"x":1,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+},
+"brain00002.png":
+{
+	"frame": {"x":1,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+},
+"brain00003.png":
+{
+	"frame": {"x":503,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+},
+"brain00004.png":
+{
+	"frame": {"x":503,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+},
+"brain00005.png":
+{
+	"frame": {"x":503,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+},
+"brain00006.png":
+{
+	"frame": {"x":1005,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+},
+"brain00007.png":
+{
+	"frame": {"x":1005,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+},
+"brain00008.png":
+{
+	"frame": {"x":1005,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+},
+"brain00009.png":
+{
+	"frame": {"x":1507,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+},
+"brain00010.png":
+{
+	"frame": {"x":1507,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+},
+"brain00011.png":
+{
+	"frame": {"x":1507,"y":1,"w":500,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":300},
+	"sourceSize": {"w":500,"h":300}
+}},
+"animations": {
+	"brain": ["brain00000.png","brain00001.png","brain00002.png","brain00003.png","brain00004.png","brain00005.png","brain00006.png","brain00007.png","brain00008.png","brain00009.png","brain00010.png","brain00011.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "brain.png",
+	"format": "RGBA8888",
+	"size": {"w":2008,"h":302},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1f8dd9c5dc5b6e5eb1cef6a39292353a:a57b5f78377364f894b6633f03632fb5:743e7fc89d1ea64f9363efe1452a38b0$"
+}
+}

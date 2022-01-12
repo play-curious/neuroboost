@@ -24,6 +24,11 @@
             "model": "vapeur",
             "x": 277,
             "y": 645
+        },
+        {
+            "model": "nightShade",
+            "x": 0,
+            "y": 0
         }
     ]
 }

@@ -1,0 +1,207 @@
+{"frames": {
+
+"Hologramm_0000.png":
+{
+	"frame": {"x":1258,"y":1,"w":174,"h":208},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":3,"w":174,"h":208},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0001.png":
+{
+	"frame": {"x":1258,"y":1,"w":174,"h":208},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":3,"w":174,"h":208},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0002.png":
+{
+	"frame": {"x":1258,"y":1,"w":174,"h":208},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":3,"w":174,"h":208},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0003.png":
+{
+	"frame": {"x":543,"y":1,"w":176,"h":211},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":211},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0004.png":
+{
+	"frame": {"x":543,"y":1,"w":176,"h":211},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":211},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0005.png":
+{
+	"frame": {"x":543,"y":1,"w":176,"h":211},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":211},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0006.png":
+{
+	"frame": {"x":901,"y":1,"w":175,"h":210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":175,"h":210},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0007.png":
+{
+	"frame": {"x":901,"y":1,"w":175,"h":210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":175,"h":210},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0008.png":
+{
+	"frame": {"x":901,"y":1,"w":175,"h":210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":175,"h":210},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0009.png":
+{
+	"frame": {"x":721,"y":1,"w":178,"h":210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":178,"h":210},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0010.png":
+{
+	"frame": {"x":721,"y":1,"w":178,"h":210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":178,"h":210},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0011.png":
+{
+	"frame": {"x":721,"y":1,"w":178,"h":210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":178,"h":210},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0012.png":
+{
+	"frame": {"x":364,"y":1,"w":177,"h":212},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":212},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0013.png":
+{
+	"frame": {"x":364,"y":1,"w":177,"h":212},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":212},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0014.png":
+{
+	"frame": {"x":364,"y":1,"w":177,"h":212},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":212},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0015.png":
+{
+	"frame": {"x":183,"y":1,"w":179,"h":212},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":179,"h":212},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0016.png":
+{
+	"frame": {"x":183,"y":1,"w":179,"h":212},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":179,"h":212},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0017.png":
+{
+	"frame": {"x":183,"y":1,"w":179,"h":212},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":179,"h":212},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0018.png":
+{
+	"frame": {"x":1,"y":1,"w":180,"h":212},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":180,"h":212},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0019.png":
+{
+	"frame": {"x":1,"y":1,"w":180,"h":212},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":180,"h":212},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0020.png":
+{
+	"frame": {"x":1,"y":1,"w":180,"h":212},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":180,"h":212},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0021.png":
+{
+	"frame": {"x":1078,"y":1,"w":178,"h":208},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w":178,"h":208},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0022.png":
+{
+	"frame": {"x":1078,"y":1,"w":178,"h":208},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w":178,"h":208},
+	"sourceSize": {"w":180,"h":212}
+},
+"Hologramm_0023.png":
+{
+	"frame": {"x":1078,"y":1,"w":178,"h":208},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w":178,"h":208},
+	"sourceSize": {"w":180,"h":212}
+}},
+"animations": {
+	"Hologramm": ["Hologramm_0000.png","Hologramm_0001.png","Hologramm_0002.png","Hologramm_0003.png","Hologramm_0004.png","Hologramm_0005.png","Hologramm_0006.png","Hologramm_0007.png","Hologramm_0008.png","Hologramm_0009.png","Hologramm_0010.png","Hologramm_0011.png","Hologramm_0012.png","Hologramm_0013.png","Hologramm_0014.png","Hologramm_0015.png","Hologramm_0016.png","Hologramm_0017.png","Hologramm_0018.png","Hologramm_0019.png","Hologramm_0020.png","Hologramm_0021.png","Hologramm_0022.png","Hologramm_0023.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "hologramme.png",
+	"format": "RGBA8888",
+	"size": {"w":1433,"h":214},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:64bce86a2c4d66022aeac40e98bc4a6f:fe9cd14fbffe20c0d13c081f108f56fb:f367936dfc43d1f517202ead0c17e410$"
+}
+}
