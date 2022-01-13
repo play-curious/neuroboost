@@ -36,21 +36,20 @@ interface ChoiceNode {
 type Node = TextNode | ChoiceNode;
 
 export class DialogScene extends entity.CompositeEntity {
-  private _runner: any;
   private _nodeIterator: any;
   private _nodeValue: Node;
   private _lastNodeData: NodeData;
   private _autoshowOn: boolean;
-  private _variableStorage: variable.VariableStorage;
   private _previousNodeDatas: NodeData[];
 
   private _graphics: graphics.Graphics;
 
-  private _clock: clock.Clock;
-
   constructor(
     public readonly scriptName: string,
-    public readonly startNode = "Start"
+    public readonly startNode = "Start",
+    private _runner: any,
+    private _variableStorage: variable.VariableStorage,
+    private _clock: clock.Clock
   ) {
     super();
   }
@@ -58,12 +57,6 @@ export class DialogScene extends entity.CompositeEntity {
   _setup(): void {
     this._autoshowOn = false;
 
-    // Create variable storage
-    this._variableStorage = new variable.VariableStorage({
-      name: "Moi",
-      time: "540",
-      eval: "",
-    });
     this._previousNodeDatas = [];
 
     // Setup graphics
@@ -74,7 +67,6 @@ export class DialogScene extends entity.CompositeEntity {
     );
 
     // Setup clock
-    this._clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
     this._activateChildEntity(
       this._clock,
       entity.extendConfig({ container: this._graphics.getUi() })
@@ -83,8 +75,6 @@ export class DialogScene extends entity.CompositeEntity {
       this._variableStorage.get("time")
     );
 
-    this._runner = new bondage.Runner("");
-    this._runner.setVariableStorage(this._variableStorage);
     this._runner.registerFunction('isFirstTime', (data: any) => {
       for(const nodeData of this._previousNodeDatas){
         if(!nodeData) continue;
@@ -117,7 +107,6 @@ export class DialogScene extends entity.CompositeEntity {
     this._nodeValue = this._nodeIterator.next().value;
     // If result is undefined, stop here
     if (!this._nodeValue) {
-      console.log("Reached end");
       this._transition = entity.makeTransition();
       return;
     }
@@ -299,7 +288,7 @@ export class DialogScene extends entity.CompositeEntity {
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
 
     while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
-
+    
     this._variableStorage.set("time", `${newMinutes}`);
 
     this._activateChildEntity(this._clock.advanceTime(time));
