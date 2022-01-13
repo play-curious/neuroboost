@@ -9,6 +9,11 @@ import * as geom from "booyah/src/geom";
 import * as dialog from "./dialog";
 import * as journal from "./journal";
 
+import * as clock from "./clock";
+import * as variable from "./variable";
+
+declare const bondage: any;
+
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
   const canvasBbox = document
@@ -34,17 +39,51 @@ function resizeHtmlLayer(appSize: PIXI.Point): void {
 const params = new URLSearchParams(window.location.search);
 const startNode = params.get("startNode") || params.get("node") || "Start";
 
-const states: { [k: string]: entity.EntityResolvable } = {
-  start: new dialog.DialogScene("level1", startNode),
-  journal: new journal.JournalScene(),
-  level2: new dialog.DialogScene("level2", startNode),
-};
+// Common attributes for all DialogScene
+//   - VariableStorage
+//   - Bondage.Runner
+//   - Clock
+const _variableStorage = new variable.VariableStorage({
+  name: "Moi",
+  time: "540",
+  eval: "",
+});
+const _runner = new bondage.Runner("");
+_runner.setVariableStorage(_variableStorage);
+const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
-const transitions = {
-  start: entity.makeTransition("journal"),
-  journal: entity.makeTransition("level2"),
-  level2: entity.makeTransition("end"),
-};
+const statesName = [
+  "D1_level1",
+  "D1_level2",
+  "D2_level1"
+];
+
+const states: { [k: string]: entity.EntityResolvable } = {};
+for(const stateName of statesName){
+  states[stateName === statesName[0] ? "start" : stateName] = new dialog.DialogScene(stateName, startNode, _runner, _variableStorage, _clock);
+  states[`journal_${stateName}`] = new journal.JournalScene(_variableStorage);
+}
+
+const transitions: Record<string, entity.Transition> = {};
+let i = 0;
+let previousState = "";
+for(const state in states){
+  if(i != 0)
+    transitions[previousState] = entity.makeTransition(state);
+  previousState = state;
+  i++;
+}
+transitions[previousState] = entity.makeTransition("end");
+
+const jsonAssets: Array<string | { key: string; url: string }> = [];
+for(const stateName of statesName){
+  jsonAssets.push({
+    key: stateName,
+    url: `text/${stateName}.json` 
+  });
+}
+
+console.log("Scenes(states):", states, "\n\nTransitions:\n", transitions, "\n\nJSONAssets:\n", jsonAssets);
 
 const graphicalAssets = [
   // UI
@@ -107,11 +146,6 @@ const graphicalAssets = [
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
-
-const jsonAssets = [
-  { key: "level1", url: "text/level1.json" },
-  { key: "level2", url: "text/level2.json" },
-];
 
 const screenSize = new PIXI.Point(1920, 1080);
 

@@ -14,6 +14,10 @@ Compile and watch just TypeScript `yarn start` or `yarn serve`
 
 Build for production with `yarn dist`
 
+### YarnSpinner
+
+TODO
+
 ### Notes
 
 - To add YarnSpinner custom command, place it as method of DialogScene class in `src/dialog.ts`

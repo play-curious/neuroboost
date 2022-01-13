@@ -5,6 +5,8 @@ import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 import * as util from "booyah/src/util";
 
+import * as variable from "./variable";
+
 const options = [
   "Rappel libre",
   "Lecture de notes",
@@ -16,6 +18,12 @@ const options = [
 export class JournalScene extends entity.CompositeEntity {
   private _container: PIXI.Container;
   private _htmlContainer: HTMLElement;
+
+  constructor(
+    private _variableStorage: variable.VariableStorage
+  ) {
+    super();
+  }
 
   _setup(): void {
     this._container = new PIXI.Container();
