@@ -5,7 +5,7 @@ position: -893,370
 ---
 << setTime 8:00>>
 
-Bip! Bip! Il est 8 heures vous rappelle votre horloge connectée. Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. 
+Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. 
 
 Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler : 
 [[Prendre l'appel|Appel_Fred_Rewind]] 
@@ -16,19 +16,19 @@ tags: show:fred
 colorID: 0
 position: -592,376
 ---
-Fred: Hello! c'est Fred!
-You: Qu'est-ce que tu veux me dire cette fois-ci? 
+Fred: Hello ! c'est Fred !
+You: Qu'est-ce que tu veux me dire cette fois-ci ? 
 Fred: Yo, je vois que tu n'es pas de bonne humeur ce matin... 
 You: Normal, j'ai foiré le partiel d'Atronometric Data Management.
-Fred: Yes, la bonne blague, c'est cet après-midi qu'on le passe!
-You: Quoi?!  
+Fred: Yes, la bonne blague, c'est cet après-midi qu'on le passe !
+You: Quoi ?!  
 Fred: Yes, on est lundi matin. C'est ce qui est prévu. 
-You: Lundi?! Mais c'était hier!! 
+You: Lundi ?! Mais c'était hier !! 
 Fred: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui. 
-You: C'est dingue! Je rêve ou quoi?
+You: C'est dingue ! Je rêve ou quoi ?
 Fred: No no, je t'assure que c'est la réalité, coco. 
 You: Heu... 
-Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam? 
+Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ? 
 You: Heu...... 
 
 Vous raccrochez sans vous en rendre compte 
@@ -42,24 +42,24 @@ tags:
 colorID: 0
 position: -758,62
 ---
-Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais vaincu. Il vous rappelle aussitôt!
+Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais vaincu. Il vous rappelle aussitôt !
 [[Prendre l'appel|Appel_Fred_Rewind]]
 [[Rejeter appel|Rejet_Fred_Rewind]]
 ===
 title: Phone_off_Rewind
-tags: bg:bedroom
+tags:
 colorID: 0
 position: -342,363
 ---
-Mais c'est quoi ce truc?! On dirait que vous avez fait un bon en arrière dans le temps! Vous allez pouvoir repasser le partiel d'Atronometric Data Management. C'est la chance du siècle! 
-Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre! 
+Mais c'est quoi ce truc ?! On dirait que vous avez fait un bon en arrière dans le temps ! Vous allez pouvoir repasser le partiel d'Atronometric Data Management. C'est la chance du siècle ! 
+Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre ! 
 
-Il vous reste 6 heures avant l'heure H... Aujourd'hui, vous allez montrer à Fred qui est le Big Winner de l'Académie!
+Il vous reste 6 heures avant l'heure H... Aujourd'hui, vous allez montrer à Fred qui est le Big Winner de l'Académie !
 
 [[Action_List_Rewind]]
 ===
 title: Action_List_Rewind
-tags: bg:bedroom
+tags:
 colorID: 0
 position: -895,604
 ---
@@ -83,7 +83,7 @@ position: -1284,1084
 ---
 Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... 
 D'accord, ce repas est bien chargé en calories et en caféine, mais vous avez mangé le même hier. Ça commence à bien faire ces sensations de "déjà-vu"...
-Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route! 
+Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route ! 
 [[Il est temps de battre votre précédent score!|Test_Rewind]]
 ===
 title: Petit_dej_Rewind
@@ -103,14 +103,13 @@ tags: bg:bedbroom
 colorID: 0
 position: -755,827
 ---
-''Pensez-vous vraiment que c'est ce que vous a recommandé les 4 Sages de la Métacognition?''
+<b>Pensez-vous vraiment que c'est ce que vous a recommandé les 4 Sages de la Métacognition?</b>
 
 Peu importe, il est trop tard maintenant, vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. Vous êtes pingé par Alex, vous engagez la conversation.
-
 Ensuite, c'est Dom, puis Lou, puis Cam... 
 
-<< if $visitedChat >>
-''Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...''
+<< if visited("Chat") >>
+<b>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</b>
 << endif >> 
 
 << advanceTime 2:00 >>

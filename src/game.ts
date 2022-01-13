@@ -45,8 +45,8 @@ const _variableStorage = new variable.VariableStorage({
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
 const statesName = [
-  //"D1_level1",
-  //"D1_level2",
+  "D1_level1",
+  "D1_level2",
   "D2_level1"
 ];
 
@@ -132,9 +132,6 @@ const graphicalAssets = [
   "images/characters/ledai/static.png",
   "images/characters/sapiens/static.png",
   "images/characters/temde/static.png",
-
-  // Freechoices
-  "images/ui/freechoice.json",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
