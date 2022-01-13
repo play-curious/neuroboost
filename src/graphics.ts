@@ -4,10 +4,9 @@ import * as PIXI from "pixi.js";
 import MultiStyleText from "pixi-multistyle-text";
 
 import * as entity from "booyah/src/entity";
+import * as easing from "booyah/src/easing";
 import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
-import * as easing from "booyah/src/easing";
-
 import * as variable from "./variable";
 
 // Initilize Underscore templates to ressemble YarnSpinner
@@ -513,17 +512,22 @@ export class Graphics extends entity.CompositeEntity {
 
       let baseJson = this._entityConfig.app.loader.resources[fileNameJson].data;
       for (const bgPart of baseJson.sprites) {
-        const animatedSpriteEntity = util.makeAnimatedSprite(
-          this._entityConfig.app.loader.resources[
-            `${folderName}/${bgPart.model}.json`
-          ]
-        );
-        animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
-        animatedSpriteEntity.sprite.x = bgPart.x;
-        animatedSpriteEntity.sprite.y = bgPart.y;
 
-        animatedSpriteEntity.sprite.animationSpeed = (1 / bgPart.speed) * 0.33;
-        this._backgroundEntity.addChildEntity(animatedSpriteEntity);
+        // Load animated texture
+        if(_.has(this._entityConfig.app.loader.resources, `${folderName}/${bgPart.model}.json`)) {
+
+          const animatedSpriteEntity = util.makeAnimatedSprite(
+            this._entityConfig.app.loader.resources[
+              `${folderName}/${bgPart.model}.json`
+            ]
+          );
+          animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
+          animatedSpriteEntity.sprite.x = bgPart.x;
+          animatedSpriteEntity.sprite.y = bgPart.y;
+  
+          animatedSpriteEntity.sprite.animationSpeed = 0.33;
+          this._backgroundEntity.addChildEntity(animatedSpriteEntity);
+        }
       }
     }
 
@@ -578,20 +582,25 @@ export class Graphics extends entity.CompositeEntity {
         characterContainer.addChild(baseSprite);
 
         // Load animations JSON
-        let baseJson =
-          this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
+        let baseJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
         for (const bodyPart of baseJson[mood]) {
-          const animatedSpriteEntity = util.makeAnimatedSprite(
-            this._entityConfig.app.loader.resources[
-              `${baseDir}/${bodyPart.model}.json`
-            ]
-          );
-          animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
-          animatedSpriteEntity.sprite.x = bodyPart.x;
-          animatedSpriteEntity.sprite.y = bodyPart.y;
 
-          animatedSpriteEntity.sprite.animationSpeed = 0.5;
-          this._characterEntity.addChildEntity(animatedSpriteEntity);
+          if(_.has(this._entityConfig.app.loader.resources, `${baseDir}/${bodyPart.model}.json`)) {
+            const animatedSpriteEntity = util.makeAnimatedSprite(
+              this._entityConfig.app.loader.resources[
+                `${baseDir}/${bodyPart.model}.json`
+              ]
+            );
+            animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
+            animatedSpriteEntity.sprite.x = bodyPart.x;
+            animatedSpriteEntity.sprite.y = bodyPart.y;
+
+            animatedSpriteEntity.sprite.animationSpeed = 0.33;
+            this._characterEntity.addChildEntity(animatedSpriteEntity);
+          }
+          else {
+            console.log(`Missing : ${baseDir}/${bodyPart.model}.json`)
+          }
         }
 
         // Place character on screen

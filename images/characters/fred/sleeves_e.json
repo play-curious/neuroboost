@@ -1,0 +1,327 @@
+{"frames": {
+
+"Fred_Smiling_Sleeves_0000.png":
+{
+	"frame": {"x":559,"y":1,"w":324,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":324,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0001.png":
+{
+	"frame": {"x":559,"y":1,"w":324,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":324,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0002.png":
+{
+	"frame": {"x":559,"y":1,"w":324,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":324,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0003.png":
+{
+	"frame": {"x":372,"y":335,"w":330,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":0,"w":330,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0004.png":
+{
+	"frame": {"x":372,"y":335,"w":330,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":0,"w":330,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0005.png":
+{
+	"frame": {"x":372,"y":335,"w":330,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":0,"w":330,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0006.png":
+{
+	"frame": {"x":1,"y":340,"w":335,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":335,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0007.png":
+{
+	"frame": {"x":1,"y":340,"w":335,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":335,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0008.png":
+{
+	"frame": {"x":1,"y":340,"w":335,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":335,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0009.png":
+{
+	"frame": {"x":1,"y":1,"w":337,"h":184},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":337,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0010.png":
+{
+	"frame": {"x":1,"y":1,"w":337,"h":184},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":337,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0011.png":
+{
+	"frame": {"x":1,"y":1,"w":337,"h":184},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":337,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0012.png":
+{
+	"frame": {"x":187,"y":1,"w":332,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":332,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0013.png":
+{
+	"frame": {"x":187,"y":1,"w":332,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":332,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0014.png":
+{
+	"frame": {"x":187,"y":1,"w":332,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":332,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0015.png":
+{
+	"frame": {"x":558,"y":332,"w":327,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":327,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0016.png":
+{
+	"frame": {"x":558,"y":332,"w":327,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":327,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0017.png":
+{
+	"frame": {"x":558,"y":332,"w":327,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":327,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0018.png":
+{
+	"frame": {"x":744,"y":1,"w":323,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":1,"w":323,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0019.png":
+{
+	"frame": {"x":744,"y":1,"w":323,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":1,"w":323,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0020.png":
+{
+	"frame": {"x":744,"y":1,"w":323,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":1,"w":323,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0021.png":
+{
+	"frame": {"x":744,"y":326,"w":321,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":1,"w":321,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0022.png":
+{
+	"frame": {"x":744,"y":326,"w":321,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":1,"w":321,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0023.png":
+{
+	"frame": {"x":744,"y":326,"w":321,"h":183},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":1,"w":321,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0024.png":
+{
+	"frame": {"x":660,"y":661,"w":324,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":1,"w":324,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0025.png":
+{
+	"frame": {"x":660,"y":661,"w":324,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":1,"w":324,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0026.png":
+{
+	"frame": {"x":660,"y":661,"w":324,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":1,"w":324,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0027.png":
+{
+	"frame": {"x":1,"y":677,"w":325,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":1,"w":325,"h":181},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0028.png":
+{
+	"frame": {"x":1,"y":677,"w":325,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":1,"w":325,"h":181},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0029.png":
+{
+	"frame": {"x":1,"y":677,"w":325,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":1,"w":325,"h":181},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0030.png":
+{
+	"frame": {"x":328,"y":676,"w":330,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":330,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0031.png":
+{
+	"frame": {"x":328,"y":676,"w":330,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":330,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0032.png":
+{
+	"frame": {"x":328,"y":676,"w":330,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":330,"h":183},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0033.png":
+{
+	"frame": {"x":186,"y":340,"w":334,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":334,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0034.png":
+{
+	"frame": {"x":186,"y":340,"w":334,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":334,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0035.png":
+{
+	"frame": {"x":186,"y":340,"w":334,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":334,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0036.png":
+{
+	"frame": {"x":373,"y":1,"w":329,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":329,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0037.png":
+{
+	"frame": {"x":373,"y":1,"w":329,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":329,"h":184},
+	"sourceSize": {"w":337,"h":184}
+},
+"Fred_Smiling_Sleeves_0038.png":
+{
+	"frame": {"x":373,"y":1,"w":329,"h":184},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":329,"h":184},
+	"sourceSize": {"w":337,"h":184}
+}},
+"animations": {
+	"Fred_Smiling_Sleeves": ["Fred_Smiling_Sleeves_0000.png","Fred_Smiling_Sleeves_0001.png","Fred_Smiling_Sleeves_0002.png","Fred_Smiling_Sleeves_0003.png","Fred_Smiling_Sleeves_0004.png","Fred_Smiling_Sleeves_0005.png","Fred_Smiling_Sleeves_0006.png","Fred_Smiling_Sleeves_0007.png","Fred_Smiling_Sleeves_0008.png","Fred_Smiling_Sleeves_0009.png","Fred_Smiling_Sleeves_0010.png","Fred_Smiling_Sleeves_0011.png","Fred_Smiling_Sleeves_0012.png","Fred_Smiling_Sleeves_0013.png","Fred_Smiling_Sleeves_0014.png","Fred_Smiling_Sleeves_0015.png","Fred_Smiling_Sleeves_0016.png","Fred_Smiling_Sleeves_0017.png","Fred_Smiling_Sleeves_0018.png","Fred_Smiling_Sleeves_0019.png","Fred_Smiling_Sleeves_0020.png","Fred_Smiling_Sleeves_0021.png","Fred_Smiling_Sleeves_0022.png","Fred_Smiling_Sleeves_0023.png","Fred_Smiling_Sleeves_0024.png","Fred_Smiling_Sleeves_0025.png","Fred_Smiling_Sleeves_0026.png","Fred_Smiling_Sleeves_0027.png","Fred_Smiling_Sleeves_0028.png","Fred_Smiling_Sleeves_0029.png","Fred_Smiling_Sleeves_0030.png","Fred_Smiling_Sleeves_0031.png","Fred_Smiling_Sleeves_0032.png","Fred_Smiling_Sleeves_0033.png","Fred_Smiling_Sleeves_0034.png","Fred_Smiling_Sleeves_0035.png","Fred_Smiling_Sleeves_0036.png","Fred_Smiling_Sleeves_0037.png","Fred_Smiling_Sleeves_0038.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "sleeves_e.png",
+	"format": "RGBA8888",
+	"size": {"w":985,"h":860},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:277644f66007915ec29d816ba4f07840:1d60c852b4f5048503bdbd3a0449f537:7bd435b2ab4c3802d046b3f4ff4164fb$"
+}
+}

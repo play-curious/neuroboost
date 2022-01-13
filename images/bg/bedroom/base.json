@@ -2,31 +2,26 @@
     "sprites": [
         {
             "model": "bocal",
-            "speed": 3,
             "x": 80,
             "y": 803
         },
         {
-            "model": "flowers",
-            "speed": 4,
+            "model": "fleurs",
             "x": 112,
             "y": 370
         },
         {
             "model": "plants",
-            "speed": 4,
             "x": 1846,
             "y": 925
         },
         {
             "model": "smoke",
-            "speed": 3,
             "x": 1680,
             "y": 802
         },
         {
-            "model": "steam",
-            "speed": 3,
+            "model": "vapeur",
             "x": 277,
             "y": 645
         }

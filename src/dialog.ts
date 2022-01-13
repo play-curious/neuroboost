@@ -188,7 +188,7 @@ export class DialogScene extends entity.CompositeEntity {
   }
 
   private _onChangeNodeData(oldNodeData: NodeData, newNodeData: NodeData) {
-    console.log("changing node data", oldNodeData, " --> ", newNodeData);
+    //console.log("changing node data", oldNodeData, " --> ", newNodeData);
 
     // Parse tags
 

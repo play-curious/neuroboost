@@ -2,140 +2,136 @@
   "neutral": [
     {
       "model": "hair_a",
-      "x": 962, 
-      "y": 87
+      "x": 959, 
+      "y": 91
     },
     {
       "model": "sleeves_a",
-      "x": 975, 
+      "x": 949, 
       "y": 306
     },
     {
-      "model": "cloth_a",
-      "x": 1034, 
-      "y": 575
+      "model": "scarf_a",
+      "x": 1022, 
+      "y": 561
+    }
+  ],
+  "drunk": [
+    {
+      "model": "eyes_c",
+      "x": 957,
+	    "y": 101
+    },
+    {
+      "model": "hair_b",
+      "x": 951,
+      "y": 68
+    },
+    {
+      "model": "sleeves_c",
+      "x": 956, 
+      "y": 306
+    },
+    {
+      "model": "scarf_b",
+      "x": 1022,
+      "y": 576
+    },
+    {
+      "model": "arm_drunk",
+      "x": 809,
+      "y": 356
     }
   ],
   "excited": [
     {
-      "model": "hair_a",
-      "x": 825, 
-      "y": 5
+      "model": "eyes_b",
+      "x": 983,
+      "y": 103
     },
     {
-      "model": "sleeves_a",
-      "x": 724, 
-      "y": 201
+      "model": "hair_b",
+      "x": 976,
+      "y": 68
     },
     {
-      "model": "cloth_a",
-      "x": 903, 
-      "y": 412
+      "model": "scarf_b",
+      "x": 1048,
+      "y": 576
+    },
+    {
+      "model": "sleeves_b",
+      "x": 988,
+      "y": 307
     }
   ],
   "smiling": [
     {
       "model": "hair_b",
-      "x": 962, 
-      "y": 67
+      "x": 928,
+      "y": 68
     },
     {
-      "model": "eyes_b",
-      "x": 968, 
-      "y": 100
+      "model": "sleeves_e",
+      "x": 937,
+	    "y": 307
     },
     {
-      "model": "sleeves_c",
-      "x": 975, 
-      "y": 306
-    },
-    {
-      "model": "cloth_b",
-      "x": 1034, 
-      "y": 575
-    }
-  ],
-  "drunk": [
-    {
-      "model": "hair_a",
-      "x": 962, 
-      "y": 87
-    },
-    {
-      "model": "sleeves_a",
-      "x": 724, 
-      "y": 201
-    },
-    {
-      "model": "cloth_a",
-      "x": 903, 
-      "y": 412
+      "model": "scarf_b",
+      "x": 1002,
+      "y": 576
     }
   ],
   "surprised": [
-    {
-      "model": "hair_b",
-      "x": 962, 
-      "y": 67
-    },
-    {
-      "model": "eyes_d",
-      "x": 968, 
-      "y": 100
-    },
-    {
-      "model": "sleeves_e",
-      "x": 975, 
-      "y": 306
-    },
-    {
-      "model": "cloth_b",
-      "x": 1034, 
-      "y": 575
-    }
+    
   ],
   "happy": [
     {
+      "model": "eyes_f",
+      "x": 951,
+	    "y": 101
+    },
+    {
       "model": "hair_b",
-      "x": 962, 
-      "y": 67
+      "x": 944,
+      "y": 68
     },
     {
-      "model": "eyes_e",
-      "x": 968, 
-      "y": 100
+      "model": "sleeves_f",
+      "x": 942,
+	    "y": 307
     },
     {
-      "model": "sleeves_e",
-      "x": 975, 
-      "y": 306
+      "model": "scarf_b",
+      "x": 1016,
+      "y": 576
     },
     {
-      "model": "cloth_b",
-      "x": 1034, 
-      "y": 575
+      "model": "arm_happy",
+      "x": 996,
+      "y": 358
     }
   ],
   "sad": [
     {
+      "model": "eyes_d",
+      "x": 963,
+	    "y": 102
+    },
+    {
       "model": "hair_b",
-      "x": 962, 
-      "y": 67
+      "x": 954,
+      "y": 68
     },
     {
-      "model": "eyes_f",
-      "x": 968, 
-      "y": 100
+      "model": "sleeves_d",
+      "x": 958,
+	    "y": 307
     },
     {
-      "model": "sleeves_f",
-      "x": 975, 
-      "y": 306
-    },
-    {
-      "model": "cloth_b",
-      "x": 1034, 
-      "y": 575
+      "model": "scarf_b",
+      "x": 1027,
+      "y": 576
     }
   ]
 }

@@ -1,0 +1,111 @@
+{"frames": {
+
+"vapeur00000.png":
+{
+	"frame": {"x":1,"y":1,"w":49,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":80,"w":49,"h":35},
+	"sourceSize": {"w":150,"h":200}
+},
+"vapeur00001.png":
+{
+	"frame": {"x":1,"y":1,"w":49,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":80,"w":49,"h":35},
+	"sourceSize": {"w":150,"h":200}
+},
+"vapeur00002.png":
+{
+	"frame": {"x":1,"y":1,"w":49,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":80,"w":49,"h":35},
+	"sourceSize": {"w":150,"h":200}
+},
+"vapeur00003.png":
+{
+	"frame": {"x":1,"y":1,"w":49,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":80,"w":49,"h":35},
+	"sourceSize": {"w":150,"h":200}
+},
+"vapeur00004.png":
+{
+	"frame": {"x":1,"y":75,"w":53,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":78,"w":53,"h":36},
+	"sourceSize": {"w":150,"h":200}
+},
+"vapeur00005.png":
+{
+	"frame": {"x":1,"y":75,"w":53,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":78,"w":53,"h":36},
+	"sourceSize": {"w":150,"h":200}
+},
+"vapeur00006.png":
+{
+	"frame": {"x":1,"y":75,"w":53,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":78,"w":53,"h":36},
+	"sourceSize": {"w":150,"h":200}
+},
+"vapeur00007.png":
+{
+	"frame": {"x":1,"y":75,"w":53,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":78,"w":53,"h":36},
+	"sourceSize": {"w":150,"h":200}
+},
+"vapeur00008.png":
+{
+	"frame": {"x":1,"y":38,"w":50,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":57,"y":79,"w":50,"h":35},
+	"sourceSize": {"w":150,"h":200}
+},
+"vapeur00009.png":
+{
+	"frame": {"x":1,"y":38,"w":50,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":57,"y":79,"w":50,"h":35},
+	"sourceSize": {"w":150,"h":200}
+},
+"vapeur00010.png":
+{
+	"frame": {"x":1,"y":38,"w":50,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":57,"y":79,"w":50,"h":35},
+	"sourceSize": {"w":150,"h":200}
+},
+"vapeur00011.png":
+{
+	"frame": {"x":1,"y":38,"w":50,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":57,"y":79,"w":50,"h":35},
+	"sourceSize": {"w":150,"h":200}
+}},
+"animations": {
+	"vapeur": ["vapeur00000.png","vapeur00001.png","vapeur00002.png","vapeur00003.png","vapeur00004.png","vapeur00005.png","vapeur00006.png","vapeur00007.png","vapeur00008.png","vapeur00009.png","vapeur00010.png","vapeur00011.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "vapeur.png",
+	"format": "RGBA8888",
+	"size": {"w":55,"h":112},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:43264f67eef6c606cb06f04490ba74e4:d21c571869ed87a81f9a44883254a550:45365c753d2d4d5ae42afef18cf6dfc1$"
+}
+}
