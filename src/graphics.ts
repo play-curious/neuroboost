@@ -221,7 +221,6 @@ export class Graphics extends entity.CompositeEntity {
         },
       });
       dialogBox.position.set(140 + 122, 704 + 33);
-      dialogBox.interactive = true;
 
       this._nodeDisplay.addChild(dialogBox);
 
