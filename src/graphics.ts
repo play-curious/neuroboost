@@ -541,7 +541,7 @@ export class Graphics extends entity.CompositeEntity {
    * @param mood
    */
   public setCharacter(character?: string, mood?: string): void {
-    if (mood === undefined) mood = "neutral";
+    if (mood === undefined) mood = "happy";
 
     if (character === this._lastCharacter && mood === this._lastMood) return;
 
