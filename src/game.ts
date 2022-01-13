@@ -12,6 +12,8 @@ import * as journal from "./journal";
 import * as clock from "./clock";
 import * as variable from "./variable";
 
+declare const bondage: any;
+
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
   const canvasBbox = document
@@ -37,11 +39,17 @@ function resizeHtmlLayer(appSize: PIXI.Point): void {
 const params = new URLSearchParams(window.location.search);
 const startNode = params.get("startNode") || params.get("node") || "Start";
 
+// Common attributes for all DialogScene
+//   - VariableStorage
+//   - Bondage.Runner
+//   - Clock
 const _variableStorage = new variable.VariableStorage({
   name: "Moi",
   time: "540",
   eval: "",
 });
+const _runner = new bondage.Runner("");
+_runner.setVariableStorage(_variableStorage);
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
 const statesName = [
@@ -52,7 +60,7 @@ const statesName = [
 
 const states: { [k: string]: entity.EntityResolvable } = {};
 for(const stateName of statesName){
-  states[stateName === statesName[0] ? "start" : stateName] = new dialog.DialogScene(stateName, startNode, _variableStorage, _clock);
+  states[stateName === statesName[0] ? "start" : stateName] = new dialog.DialogScene(stateName, startNode, _runner, _variableStorage, _clock);
   states[`journal_${stateName}`] = new journal.JournalScene(_variableStorage);
 }
 
@@ -132,6 +140,9 @@ const graphicalAssets = [
   "images/characters/ledai/static.png",
   "images/characters/sapiens/static.png",
   "images/characters/temde/static.png",
+
+  // Freechoices
+  "images/ui/freechoice.json",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
