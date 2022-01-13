@@ -1,0 +1,327 @@
+{"frames": {
+
+"Fred_Excited_Hairs_0000.png":
+{
+	"frame": {"x":1,"y":1471,"w":170,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":170,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0001.png":
+{
+	"frame": {"x":1,"y":1471,"w":170,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":170,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0002.png":
+{
+	"frame": {"x":1,"y":1471,"w":170,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":170,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0003.png":
+{
+	"frame": {"x":1,"y":795,"w":176,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":176,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0004.png":
+{
+	"frame": {"x":1,"y":795,"w":176,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":176,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0005.png":
+{
+	"frame": {"x":1,"y":795,"w":176,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":176,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0006.png":
+{
+	"frame": {"x":1,"y":661,"w":177,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":2,"w":177,"h":132},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0007.png":
+{
+	"frame": {"x":1,"y":661,"w":177,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":2,"w":177,"h":132},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0008.png":
+{
+	"frame": {"x":1,"y":661,"w":177,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":2,"w":177,"h":132},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0009.png":
+{
+	"frame": {"x":1,"y":263,"w":181,"h":125},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":9,"w":181,"h":125},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0010.png":
+{
+	"frame": {"x":1,"y":263,"w":181,"h":125},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":9,"w":181,"h":125},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0011.png":
+{
+	"frame": {"x":1,"y":263,"w":181,"h":125},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":9,"w":181,"h":125},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0012.png":
+{
+	"frame": {"x":1,"y":1,"w":184,"h":130},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":184,"h":130},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0013.png":
+{
+	"frame": {"x":1,"y":1,"w":184,"h":130},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":184,"h":130},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0014.png":
+{
+	"frame": {"x":1,"y":1,"w":184,"h":130},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":184,"h":130},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0015.png":
+{
+	"frame": {"x":1,"y":390,"w":180,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":180,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0016.png":
+{
+	"frame": {"x":1,"y":390,"w":180,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":180,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0017.png":
+{
+	"frame": {"x":1,"y":390,"w":180,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":180,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0018.png":
+{
+	"frame": {"x":1,"y":1335,"w":173,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":173,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0019.png":
+{
+	"frame": {"x":1,"y":1335,"w":173,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":173,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0020.png":
+{
+	"frame": {"x":1,"y":1335,"w":173,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":173,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0021.png":
+{
+	"frame": {"x":1,"y":1607,"w":169,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":169,"h":133},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0022.png":
+{
+	"frame": {"x":1,"y":1607,"w":169,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":169,"h":133},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0023.png":
+{
+	"frame": {"x":1,"y":1607,"w":169,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":169,"h":133},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0024.png":
+{
+	"frame": {"x":1,"y":1064,"w":174,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":174,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0025.png":
+{
+	"frame": {"x":1,"y":1064,"w":174,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":174,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0026.png":
+{
+	"frame": {"x":1,"y":1064,"w":174,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":174,"h":134},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0027.png":
+{
+	"frame": {"x":1,"y":526,"w":178,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":0,"w":178,"h":133},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0028.png":
+{
+	"frame": {"x":1,"y":526,"w":178,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":0,"w":178,"h":133},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0029.png":
+{
+	"frame": {"x":1,"y":526,"w":178,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":0,"w":178,"h":133},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0030.png":
+{
+	"frame": {"x":1,"y":133,"w":183,"h":128},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":183,"h":128},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0031.png":
+{
+	"frame": {"x":1,"y":133,"w":183,"h":128},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":183,"h":128},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0032.png":
+{
+	"frame": {"x":1,"y":133,"w":183,"h":128},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":183,"h":128},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0033.png":
+{
+	"frame": {"x":1,"y":931,"w":175,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":175,"h":131},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0034.png":
+{
+	"frame": {"x":1,"y":931,"w":175,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":175,"h":131},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0035.png":
+{
+	"frame": {"x":1,"y":931,"w":175,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":175,"h":131},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0036.png":
+{
+	"frame": {"x":1,"y":1200,"w":174,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":0,"w":174,"h":133},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0037.png":
+{
+	"frame": {"x":1,"y":1200,"w":174,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":0,"w":174,"h":133},
+	"sourceSize": {"w":184,"h":134}
+},
+"Fred_Excited_Hairs_0038.png":
+{
+	"frame": {"x":1,"y":1200,"w":174,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":0,"w":174,"h":133},
+	"sourceSize": {"w":184,"h":134}
+}},
+"animations": {
+	"Fred_Excited_Hairs": ["Fred_Excited_Hairs_0000.png","Fred_Excited_Hairs_0001.png","Fred_Excited_Hairs_0002.png","Fred_Excited_Hairs_0003.png","Fred_Excited_Hairs_0004.png","Fred_Excited_Hairs_0005.png","Fred_Excited_Hairs_0006.png","Fred_Excited_Hairs_0007.png","Fred_Excited_Hairs_0008.png","Fred_Excited_Hairs_0009.png","Fred_Excited_Hairs_0010.png","Fred_Excited_Hairs_0011.png","Fred_Excited_Hairs_0012.png","Fred_Excited_Hairs_0013.png","Fred_Excited_Hairs_0014.png","Fred_Excited_Hairs_0015.png","Fred_Excited_Hairs_0016.png","Fred_Excited_Hairs_0017.png","Fred_Excited_Hairs_0018.png","Fred_Excited_Hairs_0019.png","Fred_Excited_Hairs_0020.png","Fred_Excited_Hairs_0021.png","Fred_Excited_Hairs_0022.png","Fred_Excited_Hairs_0023.png","Fred_Excited_Hairs_0024.png","Fred_Excited_Hairs_0025.png","Fred_Excited_Hairs_0026.png","Fred_Excited_Hairs_0027.png","Fred_Excited_Hairs_0028.png","Fred_Excited_Hairs_0029.png","Fred_Excited_Hairs_0030.png","Fred_Excited_Hairs_0031.png","Fred_Excited_Hairs_0032.png","Fred_Excited_Hairs_0033.png","Fred_Excited_Hairs_0034.png","Fred_Excited_Hairs_0035.png","Fred_Excited_Hairs_0036.png","Fred_Excited_Hairs_0037.png","Fred_Excited_Hairs_0038.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "hair_b.png",
+	"format": "RGBA8888",
+	"size": {"w":186,"h":1741},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:640cd3e4fad72d8c254e1ea3c0bce32f:b3d8d03aff6ce92b8cee36ed811382c8:a6b75fb2962a254cdcf1d8a3fa29bc97$"
+}
+}

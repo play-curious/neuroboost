@@ -1,0 +1,327 @@
+{"frames": {
+
+"Fred_Drunk_Yeux_0000.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0001.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0002.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0003.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0004.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0005.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0006.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0007.png":
+{
+	"frame": {"x":78,"y":1,"w":74,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":74,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0008.png":
+{
+	"frame": {"x":78,"y":1,"w":74,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":74,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0009.png":
+{
+	"frame": {"x":78,"y":1,"w":74,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":74,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0010.png":
+{
+	"frame": {"x":154,"y":1,"w":72,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":72,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0011.png":
+{
+	"frame": {"x":154,"y":1,"w":72,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":72,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0012.png":
+{
+	"frame": {"x":154,"y":1,"w":72,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":72,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0013.png":
+{
+	"frame": {"x":78,"y":1,"w":74,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":74,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0014.png":
+{
+	"frame": {"x":78,"y":1,"w":74,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":74,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0015.png":
+{
+	"frame": {"x":78,"y":1,"w":74,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":74,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0016.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0017.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0018.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0019.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0020.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0021.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0022.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0023.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0024.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0025.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0026.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0027.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0028.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0029.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0030.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0031.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0032.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0033.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0034.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0035.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0036.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0037.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+},
+"Fred_Drunk_Yeux_0038.png":
+{
+	"frame": {"x":1,"y":1,"w":75,"h":17},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":17},
+	"sourceSize": {"w":75,"h":17}
+}},
+"animations": {
+	"Fred_Drunk_Yeux": ["Fred_Drunk_Yeux_0000.png","Fred_Drunk_Yeux_0001.png","Fred_Drunk_Yeux_0002.png","Fred_Drunk_Yeux_0003.png","Fred_Drunk_Yeux_0004.png","Fred_Drunk_Yeux_0005.png","Fred_Drunk_Yeux_0006.png","Fred_Drunk_Yeux_0007.png","Fred_Drunk_Yeux_0008.png","Fred_Drunk_Yeux_0009.png","Fred_Drunk_Yeux_0010.png","Fred_Drunk_Yeux_0011.png","Fred_Drunk_Yeux_0012.png","Fred_Drunk_Yeux_0013.png","Fred_Drunk_Yeux_0014.png","Fred_Drunk_Yeux_0015.png","Fred_Drunk_Yeux_0016.png","Fred_Drunk_Yeux_0017.png","Fred_Drunk_Yeux_0018.png","Fred_Drunk_Yeux_0019.png","Fred_Drunk_Yeux_0020.png","Fred_Drunk_Yeux_0021.png","Fred_Drunk_Yeux_0022.png","Fred_Drunk_Yeux_0023.png","Fred_Drunk_Yeux_0024.png","Fred_Drunk_Yeux_0025.png","Fred_Drunk_Yeux_0026.png","Fred_Drunk_Yeux_0027.png","Fred_Drunk_Yeux_0028.png","Fred_Drunk_Yeux_0029.png","Fred_Drunk_Yeux_0030.png","Fred_Drunk_Yeux_0031.png","Fred_Drunk_Yeux_0032.png","Fred_Drunk_Yeux_0033.png","Fred_Drunk_Yeux_0034.png","Fred_Drunk_Yeux_0035.png","Fred_Drunk_Yeux_0036.png","Fred_Drunk_Yeux_0037.png","Fred_Drunk_Yeux_0038.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "eyes_c.png",
+	"format": "RGBA8888",
+	"size": {"w":227,"h":19},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8a2ef56716a1831df3e2ec10013fd563:a885a0e330d7a00ca6267150d2a4a06d:0014c3d3206a0a226612dfcbf4cbf729$"
+}
+}

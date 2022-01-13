@@ -1,0 +1,20 @@
+{"frames": {
+
+"arm_happy.png":
+{
+	"frame": {"x":1,"y":1,"w":155,"h":156},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":59,"y":65,"w":155,"h":156},
+	"sourceSize": {"w":273,"h":277}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "arm_happy.png",
+	"format": "RGBA8888",
+	"size": {"w":157,"h":158},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:643da68e04a5e8f6fa0eaf79b0079d70:9f3fcc1c731bd5ba6b90f62709795665:378359d1cf8060a8a9ef4f88d469c9c2$"
+}
+}

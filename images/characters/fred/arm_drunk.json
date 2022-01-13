@@ -1,0 +1,20 @@
+{"frames": {
+
+"arm_drunk.png":
+{
+	"frame": {"x":1,"y":1,"w":118,"h":222},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":42,"w":118,"h":222},
+	"sourceSize": {"w":203,"h":292}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "arm_drunk.png",
+	"format": "RGBA8888",
+	"size": {"w":120,"h":224},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:10ed6f562ca9787aed196ec108d96183:8f4081a413be7390fa48e8401e045458:ac13d0acd1390b38ec4d1559831f3c69$"
+}
+}

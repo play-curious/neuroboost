@@ -1,0 +1,327 @@
+{"frames": {
+
+"Fred_Drunk_Manches_0000.png":
+{
+	"frame": {"x":333,"y":556,"w":324,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":324,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0001.png":
+{
+	"frame": {"x":333,"y":556,"w":324,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":324,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0002.png":
+{
+	"frame": {"x":333,"y":556,"w":324,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":324,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0003.png":
+{
+	"frame": {"x":1,"y":555,"w":330,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":0,"w":330,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0004.png":
+{
+	"frame": {"x":1,"y":555,"w":330,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":0,"w":330,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0005.png":
+{
+	"frame": {"x":1,"y":555,"w":330,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":0,"w":330,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0006.png":
+{
+	"frame": {"x":1,"y":186,"w":335,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":335,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0007.png":
+{
+	"frame": {"x":1,"y":186,"w":335,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":335,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0008.png":
+{
+	"frame": {"x":1,"y":186,"w":335,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":335,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0009.png":
+{
+	"frame": {"x":1,"y":1,"w":337,"h":183},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":337,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0010.png":
+{
+	"frame": {"x":1,"y":1,"w":337,"h":183},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":337,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0011.png":
+{
+	"frame": {"x":1,"y":1,"w":337,"h":183},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":337,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0012.png":
+{
+	"frame": {"x":1,"y":370,"w":332,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":332,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0013.png":
+{
+	"frame": {"x":1,"y":370,"w":332,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":332,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0014.png":
+{
+	"frame": {"x":1,"y":370,"w":332,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":332,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0015.png":
+{
+	"frame": {"x":335,"y":371,"w":327,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":327,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0016.png":
+{
+	"frame": {"x":335,"y":371,"w":327,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":327,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0017.png":
+{
+	"frame": {"x":335,"y":371,"w":327,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":327,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0018.png":
+{
+	"frame": {"x":659,"y":556,"w":323,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":1,"w":323,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0019.png":
+{
+	"frame": {"x":659,"y":556,"w":323,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":1,"w":323,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0020.png":
+{
+	"frame": {"x":659,"y":556,"w":323,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":1,"w":323,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0021.png":
+{
+	"frame": {"x":660,"y":740,"w":321,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":1,"w":321,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0022.png":
+{
+	"frame": {"x":660,"y":740,"w":321,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":1,"w":321,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0023.png":
+{
+	"frame": {"x":660,"y":740,"w":321,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":1,"w":321,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0024.png":
+{
+	"frame": {"x":676,"y":1,"w":324,"h":182},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":1,"w":324,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0025.png":
+{
+	"frame": {"x":676,"y":1,"w":324,"h":182},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":1,"w":324,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0026.png":
+{
+	"frame": {"x":676,"y":1,"w":324,"h":182},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":1,"w":324,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0027.png":
+{
+	"frame": {"x":333,"y":741,"w":325,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":1,"w":325,"h":181},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0028.png":
+{
+	"frame": {"x":333,"y":741,"w":325,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":1,"w":325,"h":181},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0029.png":
+{
+	"frame": {"x":333,"y":741,"w":325,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":1,"w":325,"h":181},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0030.png":
+{
+	"frame": {"x":1,"y":740,"w":330,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":330,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0031.png":
+{
+	"frame": {"x":1,"y":740,"w":330,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":330,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0032.png":
+{
+	"frame": {"x":1,"y":740,"w":330,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":330,"h":182},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0033.png":
+{
+	"frame": {"x":340,"y":1,"w":334,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":334,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0034.png":
+{
+	"frame": {"x":340,"y":1,"w":334,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":334,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0035.png":
+{
+	"frame": {"x":340,"y":1,"w":334,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":334,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0036.png":
+{
+	"frame": {"x":338,"y":186,"w":329,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":329,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0037.png":
+{
+	"frame": {"x":338,"y":186,"w":329,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":329,"h":183},
+	"sourceSize": {"w":337,"h":183}
+},
+"Fred_Drunk_Manches_0038.png":
+{
+	"frame": {"x":338,"y":186,"w":329,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":329,"h":183},
+	"sourceSize": {"w":337,"h":183}
+}},
+"animations": {
+	"Fred_Drunk_Manches": ["Fred_Drunk_Manches_0000.png","Fred_Drunk_Manches_0001.png","Fred_Drunk_Manches_0002.png","Fred_Drunk_Manches_0003.png","Fred_Drunk_Manches_0004.png","Fred_Drunk_Manches_0005.png","Fred_Drunk_Manches_0006.png","Fred_Drunk_Manches_0007.png","Fred_Drunk_Manches_0008.png","Fred_Drunk_Manches_0009.png","Fred_Drunk_Manches_0010.png","Fred_Drunk_Manches_0011.png","Fred_Drunk_Manches_0012.png","Fred_Drunk_Manches_0013.png","Fred_Drunk_Manches_0014.png","Fred_Drunk_Manches_0015.png","Fred_Drunk_Manches_0016.png","Fred_Drunk_Manches_0017.png","Fred_Drunk_Manches_0018.png","Fred_Drunk_Manches_0019.png","Fred_Drunk_Manches_0020.png","Fred_Drunk_Manches_0021.png","Fred_Drunk_Manches_0022.png","Fred_Drunk_Manches_0023.png","Fred_Drunk_Manches_0024.png","Fred_Drunk_Manches_0025.png","Fred_Drunk_Manches_0026.png","Fred_Drunk_Manches_0027.png","Fred_Drunk_Manches_0028.png","Fred_Drunk_Manches_0029.png","Fred_Drunk_Manches_0030.png","Fred_Drunk_Manches_0031.png","Fred_Drunk_Manches_0032.png","Fred_Drunk_Manches_0033.png","Fred_Drunk_Manches_0034.png","Fred_Drunk_Manches_0035.png","Fred_Drunk_Manches_0036.png","Fred_Drunk_Manches_0037.png","Fred_Drunk_Manches_0038.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "sleeves_c.png",
+	"format": "RGBA8888",
+	"size": {"w":983,"h":923},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9c49ed5b0d12b762c0a82547a059eb37:92cb700935cca57d21882870b49011b5:fe41f9589b074e63300debbd633f69e5$"
+}
+}
