@@ -36,7 +36,6 @@ interface ChoiceNode {
 type Node = TextNode | ChoiceNode;
 
 export class DialogScene extends entity.CompositeEntity {
-  private _runner: any;
   private _nodeIterator: any;
   private _nodeValue: Node;
   private _lastNodeData: NodeData;
@@ -48,6 +47,7 @@ export class DialogScene extends entity.CompositeEntity {
   constructor(
     public readonly scriptName: string,
     public readonly startNode = "Start",
+    private _runner: any,
     private _variableStorage: variable.VariableStorage,
     private _clock: clock.Clock
   ) {
@@ -75,8 +75,6 @@ export class DialogScene extends entity.CompositeEntity {
       this._variableStorage.get("time")
     );
 
-    this._runner = new bondage.Runner("");
-    this._runner.setVariableStorage(this._variableStorage);
     this._runner.registerFunction('isFirstTime', (data: any) => {
       for(const nodeData of this._previousNodeDatas){
         if(!nodeData) continue;
