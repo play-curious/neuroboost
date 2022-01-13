@@ -45,12 +45,11 @@ export class DialogScene extends entity.CompositeEntity {
 
   private _graphics: graphics.Graphics;
 
-  private _clock: clock.Clock;
-
   constructor(
     public readonly scriptName: string,
     public readonly startNode = "Start",
-    public _variableStorage: variable.VariableStorage,
+    private _variableStorage: variable.VariableStorage,
+    private _clock: clock.Clock
   ) {
     super();
   }
@@ -68,7 +67,6 @@ export class DialogScene extends entity.CompositeEntity {
     );
 
     // Setup clock
-    this._clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
     this._activateChildEntity(
       this._clock,
       entity.extendConfig({ container: this._graphics.getUi() })
@@ -281,7 +279,6 @@ export class DialogScene extends entity.CompositeEntity {
     while (minutesSinceMidnight >= clock.dayMinutes)
       minutesSinceMidnight -= clock.dayMinutes;
 
-    // @ts-ignore
     this._variableStorage.set("time", `${minutesSinceMidnight}`);
 
     this._clock.minutesSinceMidnight = minutesSinceMidnight;
@@ -293,7 +290,7 @@ export class DialogScene extends entity.CompositeEntity {
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
 
     while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
-    // @ts-ignore
+    
     this._variableStorage.set("time", `${newMinutes}`);
 
     this._activateChildEntity(this._clock.advanceTime(time));

@@ -84,7 +84,7 @@ position: -993.6492929458618,-75.37680292129517
 ===
 title: lit_subchoice
 tags: bg:bedroom subchoice
-position: -1657.0987854003906,-48.1837592124939
+position: -1716.8310852050781,-38.99417304992676
 ---
 [[Binger votre série TV préférée|BingeTV]]
 ===
@@ -336,7 +336,7 @@ tags: autoshow
 position: -730.5562744140625,1421.6199951171875
 ---
 You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage?
-Ledai:Bravo, { $ name }, je n'aurai pas dit mieux.
+Ledai:Bravo, { $name }, je n'aurai pas dit mieux.
 Sapiens: Je sens que nous avons ce soir, un candidat d'exception.
 Ledai: Venons en donc au sujet de ce soir, ''Master Sapiens''
 Sapiens Oui, la mémorisation.

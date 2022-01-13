@@ -42,17 +42,36 @@ const _variableStorage = new variable.VariableStorage({
   time: "540",
   eval: "",
 });
+const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
+
+const statesName = ["D1_level1", "D2_level1", "level2"];
 
 const states: { [k: string]: entity.EntityResolvable } = {};
-states["start"] = new dialog.DialogScene("level1", startNode, _variableStorage);
-states["journal"] = new journal.JournalScene();
-states["level2"] = new dialog.DialogScene("level2", startNode, _variableStorage);
+for(const stateName of statesName){
+  states[stateName === statesName[0] ? "start" : stateName] = new dialog.DialogScene(stateName, startNode, _variableStorage, _clock);
+  states[`journal_${stateName}`] = new journal.JournalScene(_variableStorage);
+}
 
-const transitions = {
-  start: entity.makeTransition("journal"),
-  journal: entity.makeTransition("level2"),
-  level2: entity.makeTransition("end"),
-};
+const transitions: Record<string, entity.Transition> = {};
+let i = 0;
+let previousState = "";
+for(const state in states){
+  if(i != 0)
+    transitions[previousState] = entity.makeTransition(state);
+  previousState = state;
+  i++;
+}
+transitions[previousState] = entity.makeTransition("end");
+
+const jsonAssets: Array<string | { key: string; url: string }> = [];
+for(const stateName of statesName){
+  jsonAssets.push({
+    key: stateName,
+    url: `text/${stateName}.json` 
+  });
+}
+
+console.log("Scenes(states):", states, "\n\nTransitions:\n", transitions, "\n\nJSONAssets:\n", jsonAssets);
 
 const graphicalAssets = [
   // UI
@@ -115,11 +134,6 @@ const graphicalAssets = [
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
-
-const jsonAssets = [
-  { key: "level1", url: "text/level1.json" },
-  { key: "level2", url: "text/level2.json" },
-];
 
 const screenSize = new PIXI.Point(1920, 1080);
 
