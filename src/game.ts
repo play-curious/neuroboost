@@ -131,12 +131,30 @@ const graphicalAssets = [
 
   // Fred
   "images/characters/fred/base.json",
-  "images/characters/fred/base_neutral.png",
   "images/characters/fred/base_drunk.png",
   "images/characters/fred/base_excited.png",
-  "images/characters/fred/cloth_a.json",
+  "images/characters/fred/base_happy.png",
+  "images/characters/fred/base_neutral.png",
+  "images/characters/fred/base_sad.png",
+  "images/characters/fred/base_smiling.png",
+  //"images/characters/fred/base_surprised.png",
+
+  "images/characters/fred/arm_drunk.json",
+  "images/characters/fred/arm_happy.json",
+  "images/characters/fred/eyes_b.json",
+  "images/characters/fred/eyes_c.json",
+  "images/characters/fred/eyes_d.json",
+  "images/characters/fred/eyes_f.json",
   "images/characters/fred/hair_a.json",
+  "images/characters/fred/hair_b.json",
+  "images/characters/fred/scarf_a.json",
+  "images/characters/fred/scarf_b.json",
   "images/characters/fred/sleeves_a.json",
+  "images/characters/fred/sleeves_b.json",
+  "images/characters/fred/sleeves_c.json",
+  "images/characters/fred/sleeves_d.json",
+  "images/characters/fred/sleeves_e.json",
+  "images/characters/fred/sleeves_f.json",
 
   // Others
   "images/characters/azul/static.png",

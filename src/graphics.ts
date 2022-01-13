@@ -4,10 +4,9 @@ import * as PIXI from "pixi.js";
 import MultiStyleText from "pixi-multistyle-text";
 
 import * as entity from "booyah/src/entity";
+import * as easing from "booyah/src/easing";
 import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
-import * as tween from "booyah/src/tween";
-import * as easing from "booyah/src/easing";
 
 import * as variable from "./variable";
 
@@ -241,7 +240,6 @@ export class Graphics extends entity.CompositeEntity {
         to: baseText.length,
         duration: baseText.length * defilementDurationPerLetter,
         onUpdate: (value) => {
-          console.log("updated");
           dialogBox.text = baseText.slice(0, Math.round(value));
         },
         onTeardown: () => {
@@ -253,11 +251,11 @@ export class Graphics extends entity.CompositeEntity {
 
       this._activateChildEntity(defilement);
 
-      console.table({
+      /*console.table({
         defilement: defilement.isSetup,
         baseText,
         duration: baseText.length * defilementDurationPerLetter,
-      });
+      });*/
 
       this._once(hitBox, "pointerup", accelerate);
     }
@@ -598,17 +596,22 @@ export class Graphics extends entity.CompositeEntity {
         let baseJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
         for (const bodyPart of baseJson[mood]) {
 
-          const animatedSpriteEntity = util.makeAnimatedSprite(
-            this._entityConfig.app.loader.resources[
-              `${baseDir}/${bodyPart.model}.json`
-            ]
-          );
-          animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
-          animatedSpriteEntity.sprite.x = bodyPart.x;
-          animatedSpriteEntity.sprite.y = bodyPart.y;
+          if(_.has(this._entityConfig.app.loader.resources, `${baseDir}/${bodyPart.model}.json`)) {
+            const animatedSpriteEntity = util.makeAnimatedSprite(
+              this._entityConfig.app.loader.resources[
+                `${baseDir}/${bodyPart.model}.json`
+              ]
+            );
+            animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
+            animatedSpriteEntity.sprite.x = bodyPart.x;
+            animatedSpriteEntity.sprite.y = bodyPart.y;
 
-          animatedSpriteEntity.sprite.animationSpeed = 0.33;
-          this._characterEntity.addChildEntity(animatedSpriteEntity);
+            animatedSpriteEntity.sprite.animationSpeed = 0.33;
+            this._characterEntity.addChildEntity(animatedSpriteEntity);
+          }
+          else {
+            console.log(`Missing : ${baseDir}/${bodyPart.model}.json`)
+          }
         }
 
         // Place character on screen

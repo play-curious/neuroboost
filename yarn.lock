@@ -2323,10 +2323,9 @@ body-parser@1.19.0:
     raw-body "2.4.0"
     type-is "~1.6.17"
 
-bondage@^2.2.0:
+"bondage@github:play-curious/bondage.js":
   version "2.2.0"
-  resolved "https://registry.yarnpkg.com/bondage/-/bondage-2.2.0.tgz#2219bc7a0486c80c6cb5a263a456e788ab717459"
-  integrity sha512-5sf5Ur2av1kzDzQsul9FgMy9ADDBxcOdc0Ky3OItBitTnKPiEONdHTcw4w1+tx20T7syWKbesYtB1xObe362hQ==
+  resolved "https://codeload.github.com/play-curious/bondage.js/tar.gz/686ff819f35b8856fd4bddc4c9b5b8ff5f620901"
   dependencies:
     commander "^2.9.0"
     inquirer "^3.0.6"
