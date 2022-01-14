@@ -52,7 +52,11 @@ const _runner = new bondage.Runner("");
 _runner.setVariableStorage(_variableStorage);
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
-const statesName = ["D1_level1", "D1_level2", "D2_level1"];
+const statesName = [
+  "D1_level1",
+  "D1_level2",
+  "D2_level1"
+];
 
 const states: { [k: string]: entity.EntityResolvable } = {};
 for (const stateName of statesName) {
@@ -108,6 +112,11 @@ const graphicalAssets = [
   "images/bg/bedroom/plants.json",
   "images/bg/bedroom/smoke.json",
   "images/bg/bedroom/vapeur.json",
+  //   - Highlights
+  "images/ui/highlights/bureau.png",
+  "images/ui/highlights/cuisine.png",
+  "images/ui/highlights/lit.png",
+  "images/ui/highlights/salon.png",
 
   // Bedroom night
   "images/bg/bedroom_night/base.png",
@@ -200,9 +209,6 @@ const graphicalAssets = [
   "images/characters/ledai/static.png",
   "images/characters/sapiens/static.png",
   "images/characters/temde/static.png",
-
-  // Freechoices
-  "images/ui/freechoice.json",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];

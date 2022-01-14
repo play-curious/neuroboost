@@ -65,7 +65,7 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
 << else>>
 [[Cuisine@cuisine|cuisine_subchoice]]
 [[Bureau@bureau|bureau_subchoice]]
-[[Lit@lit|lit_subchoice]]
+[[Salon@salon|lit_subchoice]]
 << endif>>
 ===
 

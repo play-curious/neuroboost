@@ -383,74 +383,73 @@ export class Graphics extends entity.CompositeEntity {
   ) {
     this._dialogLayer.visible = false;
 
-    const freechoicesJSON =
-      this._entityConfig.app.loader.resources[`images/ui/freechoice.json`].data;
-
     this._nodeDisplay = new PIXI.Container();
 
+    const highlightJSON = require("../vectors/hitbox.json");
+
     const freeboxTweens: entity.EntityBase[] = [];
-    const animationShifting = 120;
+    const [animationShifting, baseAlpha] = [300, 0.6];
     let freechoicesFound = 0;
     for (let i = 0; i < nodeOptions.length; i++) {
       const [choiceText, jsonValue] = nodeOptions[i].split("@");
-      if (!freechoicesJSON.hasOwnProperty(jsonValue)) continue;
+      if (!highlightJSON.hasOwnProperty(jsonValue)) continue;
       freechoicesFound++;
 
-      const freechoicebox_bg = new PIXI.Graphics();
-      freechoicebox_bg.beginFill(0x1033aa);
-      freechoicebox_bg.drawRect(-75, -20, 150, 40);
+      let highlight: PIXI.Sprite;
+      if(_.has(this.entityConfig.app.loader.resources, `images/ui/highlights/${jsonValue}.png`)){
+        highlight = new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            `images/ui/highlights/${jsonValue}.png`
+          ].texture
+        )
+        highlight.alpha = 0;
+        this._nodeDisplay.addChild(highlight);
+      } else continue;
 
-      const freechoicebox_text = new PIXI.Text(choiceText);
-      freechoicebox_text.anchor.set(0.5, 0.5);
-
-      const freechoicebox = new PIXI.Container();
-      freechoicebox.addChild(freechoicebox_bg, freechoicebox_text);
-
-      const currentData = freechoicesJSON[jsonValue];
-      freechoicebox.position.set(currentData.x, currentData.y);
-      freechoicebox.scale.set(0);
+      const hitboxPositions = highlightJSON[jsonValue];
+      highlight.hitArea = new PIXI.Polygon(hitboxPositions);
 
       freeboxTweens.push(
         new entity.EntitySequence([
           new entity.WaitingEntity(Math.min(i, 1) * animationShifting * i),
           new tween.Tween({
-            duration: 650,
+            duration: 1000,
             easing: easing.easeOutBack,
             from: 0,
-            to: 1,
+            to: baseAlpha,
             onUpdate: (value) => {
-              freechoicebox.scale.set(value);
+              highlight.alpha = value;
             },
             onTeardown: () => {
-              freechoicebox.interactive = true;
-              freechoicebox.buttonMode = true;
+              highlight.interactive = true;
+              highlight.buttonMode = true;
 
-              this._on(freechoicebox, "pointerup", () => {
+              this._on(highlight, "pointerup", () => {
                 onBoxClick(i);
               });
 
-              this._on(freechoicebox, "mouseover", () => {
+              this._on(highlight, "mouseover", () => {
+                this._activateChildEntity(
+                  new tween.Tween({
+                    duration: 200,
+                    easing: easing.easeOutBack,
+                    from: baseAlpha,
+                    to: 1,
+                    onUpdate: (value) => {
+                      highlight.alpha = value;
+                    },
+                  })
+                );
+              });
+              this._on(highlight, "mouseout", () => {
                 this._activateChildEntity(
                   new tween.Tween({
                     duration: 200,
                     easing: easing.easeOutBack,
                     from: 1,
-                    to: 1.03,
+                    to: baseAlpha,
                     onUpdate: (value) => {
-                      freechoicebox.scale.set(value);
-                    },
-                  })
-                );
-              });
-              this._on(freechoicebox, "mouseout", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: 1.03,
-                    to: 1,
-                    onUpdate: (value) => {
-                      freechoicebox.scale.set(value);
+                      highlight.alpha = value;
                     },
                   })
                 );
@@ -460,7 +459,7 @@ export class Graphics extends entity.CompositeEntity {
         ])
       );
 
-      this._nodeDisplay.addChild(freechoicebox);
+      this._nodeDisplay.addChild(highlight);
     }
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
