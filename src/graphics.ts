@@ -541,14 +541,12 @@ export class Graphics extends entity.CompositeEntity {
    * @param mood
    */
   public setCharacter(character?: string, mood?: string): void {
-    if (mood === undefined) mood = "happy";
+    //if (mood === undefined) mood = "happy";
 
     if (character === this._lastCharacter && mood === this._lastMood) return;
 
     // Remove all previous characters
     this._characterLayer.removeChildren();
-    this._lastCharacter = character;
-    this._lastMood = mood;
 
     if (this._characterEntity !== undefined) {
       if (this.childEntities.indexOf(this._characterEntity) != -1)
@@ -565,6 +563,11 @@ export class Graphics extends entity.CompositeEntity {
       );
 
       const baseDir = `images/characters/${character}`;
+
+      let baseJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
+      if(!_.has(baseJson, mood))
+        mood = baseJson["default"];
+
       const basePng = baseDir + `/base_${mood}.png`;
 
       // Moving textures
@@ -582,7 +585,6 @@ export class Graphics extends entity.CompositeEntity {
         characterContainer.addChild(baseSprite);
 
         // Load animations JSON
-        let baseJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
         for (const bodyPart of baseJson[mood]) {
 
           if(_.has(this._entityConfig.app.loader.resources, `${baseDir}/${bodyPart.model}.json`)) {
@@ -605,7 +607,7 @@ export class Graphics extends entity.CompositeEntity {
 
         // Place character on screen
         this._characterLayer.addChild(characterContainer);
-        characterContainer.setTransform(350, 150, 1.1, 1.1);
+        characterContainer.setTransform(250, 80, 1.1, 1.1);
       }
 
       // Static textures
@@ -629,5 +631,8 @@ export class Graphics extends entity.CompositeEntity {
         return;
       }
     }
+
+    this._lastCharacter = character;
+    this._lastMood = mood;
   }
 }
