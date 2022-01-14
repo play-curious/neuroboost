@@ -388,7 +388,7 @@ export class Graphics extends entity.CompositeEntity {
     const highlightJSON = require("../vectors/hitbox.json");
 
     const freeboxTweens: entity.EntityBase[] = [];
-    const [animationShifting, baseAlpha] = [300, 0.6];
+    const [animationShifting, baseAlpha] = [120, 0.6];
     let freechoicesFound = 0;
     for (let i = 0; i < nodeOptions.length; i++) {
       const [choiceText, jsonValue] = nodeOptions[i].split("@");
