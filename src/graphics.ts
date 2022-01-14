@@ -270,87 +270,90 @@ export class Graphics extends entity.CompositeEntity {
       choicebox.addChild(
         new PIXI.Sprite(
           this.entityConfig.app.loader.resources[
-            i === 0 ? "images/ui/choicebox_contour_reversed.png"
-            : (i === nodeOptions.length - 1 ? "images/ui/choicebox_contour.png"
-            : "images/ui/choicebox_empty.png")
+            i === 0
+              ? "images/ui/choicebox_contour_reversed.png"
+              : i === nodeOptions.length - 1
+              ? "images/ui/choicebox_contour.png"
+              : "images/ui/choicebox_empty.png"
           ].texture
         )
       );
 
       currentY -= choicebox.height + 20;
-      choicebox.pivot.set(
-        choicebox.width / 2,
-        choicebox.y
+      choicebox.pivot.set(choicebox.width / 2, choicebox.y);
+
+      choicebox.position.set(1920 * 2 * (i % 2 ? -1 : 1), currentY);
+
+      const optionText = new PIXI.Text(
+        nodeOptions[nodeOptions.length - (1 + i)],
+        {
+          fill: 0xfdf4d3,
+          fontFamily: "Ubuntu",
+          fontSize: 40,
+        }
       );
-      
-      choicebox.position.set(
-        1920 * 2 * ((i % 2) ? -1 : 1),
-        currentY,
-      );
-      
-      const optionText = new PIXI.Text(nodeOptions[nodeOptions.length - (1 + i)], {
-        fill: 0xfdf4d3,
-        fontFamily: "Ubuntu",
-        fontSize: 40,
-      });
-      
+
       optionText.anchor.set(0.5, 0.5);
       optionText.position.set(choicebox.width / 2, choicebox.height / 2);
-      box_tweens.push(new entity.EntitySequence([
-        new entity.WaitingEntity(Math.min(nodeOptions.length - (1 + i) ,1) * animationShifting * (nodeOptions.length - (1 + i))),
-        new tween.Tween({
-          duration: 800,
-          easing: easing.easeOutQuint,
-          from: ((i % 2) ? -1920 / 2 : (3 * 1920) / 2),
-          to: 1920 / 2,
-          onUpdate: (value) => {
-            choicebox.position.x = value;
-          },
-          onTeardown: () => {
-            choicebox.interactive = true;
-            choicebox.buttonMode = true;
-  
-            this._on(choicebox, "pointerup", () => {
-              onBoxClick(nodeOptions.length - (1 + i));
-            });
-      
-            this._on(choicebox, "mouseover", () => {
-              this._activateChildEntity(
-                new tween.Tween({
-                  duration: 200,
-                  easing: easing.easeOutBack,
-                  from: 1,
-                  to: 1.03,
-                  onUpdate: (value) => {
-                    choicebox.scale.set(value);
-                  },
-                })
-              );
-            });
-            this._on(choicebox, "mouseout", () => {
-              this._activateChildEntity(
-                new tween.Tween({
-                  duration: 200,
-                  easing: easing.easeOutBack,
-                  from: 1.03,
-                  to: 1,
-                  onUpdate: (value) => {
-                    choicebox.scale.set(value);
-                  },
-                })
-              );
-            });
-          }
-        })
-      ]));
+      box_tweens.push(
+        new entity.EntitySequence([
+          new entity.WaitingEntity(
+            Math.min(nodeOptions.length - (1 + i), 1) *
+              animationShifting *
+              (nodeOptions.length - (1 + i))
+          ),
+          new tween.Tween({
+            duration: 800,
+            easing: easing.easeOutQuint,
+            from: i % 2 ? -1920 / 2 : (3 * 1920) / 2,
+            to: 1920 / 2,
+            onUpdate: (value) => {
+              choicebox.position.x = value;
+            },
+            onTeardown: () => {
+              choicebox.interactive = true;
+              choicebox.buttonMode = true;
+
+              this._on(choicebox, "pointerup", () => {
+                onBoxClick(nodeOptions.length - (1 + i));
+              });
+
+              this._on(choicebox, "mouseover", () => {
+                this._activateChildEntity(
+                  new tween.Tween({
+                    duration: 200,
+                    easing: easing.easeOutBack,
+                    from: 1,
+                    to: 1.03,
+                    onUpdate: (value) => {
+                      choicebox.scale.set(value);
+                    },
+                  })
+                );
+              });
+              this._on(choicebox, "mouseout", () => {
+                this._activateChildEntity(
+                  new tween.Tween({
+                    duration: 200,
+                    easing: easing.easeOutBack,
+                    from: 1.03,
+                    to: 1,
+                    onUpdate: (value) => {
+                      choicebox.scale.set(value);
+                    },
+                  })
+                );
+              });
+            },
+          }),
+        ])
+      );
 
       choicebox.addChild(optionText);
       this._nodeDisplay.addChild(choicebox);
     }
 
-    this._activateChildEntity(
-      new entity.ParallelEntity(box_tweens)
-    );
+    this._activateChildEntity(new entity.ParallelEntity(box_tweens));
 
     if (subchoice !== undefined) {
       const arrow_back = new PIXI.Container();
@@ -407,61 +410,61 @@ export class Graphics extends entity.CompositeEntity {
       freechoicebox.position.set(currentData.x, currentData.y);
       freechoicebox.scale.set(0);
 
-      freeboxTweens.push(new entity.EntitySequence([
-        new entity.WaitingEntity(Math.min(i, 1) * animationShifting * i),
-        new tween.Tween({
-          duration: 650,
-          easing: easing.easeOutBack,
-          from: 0,
-          to: 1,
-          onUpdate: (value) => {
-            freechoicebox.scale.set(value);
-          },
-          onTeardown: () => {
-            freechoicebox.interactive = true;
-            freechoicebox.buttonMode = true;
+      freeboxTweens.push(
+        new entity.EntitySequence([
+          new entity.WaitingEntity(Math.min(i, 1) * animationShifting * i),
+          new tween.Tween({
+            duration: 650,
+            easing: easing.easeOutBack,
+            from: 0,
+            to: 1,
+            onUpdate: (value) => {
+              freechoicebox.scale.set(value);
+            },
+            onTeardown: () => {
+              freechoicebox.interactive = true;
+              freechoicebox.buttonMode = true;
 
-            this._on(freechoicebox, "pointerup", () => {
-              onBoxClick(i);
-            });
+              this._on(freechoicebox, "pointerup", () => {
+                onBoxClick(i);
+              });
 
-            this._on(freechoicebox, "mouseover", () => {
-              this._activateChildEntity(
-                new tween.Tween({
-                  duration: 200,
-                  easing: easing.easeOutBack,
-                  from: 1,
-                  to: 1.03,
-                  onUpdate: (value) => {
-                    freechoicebox.scale.set(value);
-                  },
-                })
-              );
-            });
-            this._on(freechoicebox, "mouseout", () => {
-              this._activateChildEntity(
-                new tween.Tween({
-                  duration: 200,
-                  easing: easing.easeOutBack,
-                  from: 1.03,
-                  to: 1,
-                  onUpdate: (value) => {
-                    freechoicebox.scale.set(value);
-                  },
-                })
-              );
-            });
-          }
-        })
-      ]))
+              this._on(freechoicebox, "mouseover", () => {
+                this._activateChildEntity(
+                  new tween.Tween({
+                    duration: 200,
+                    easing: easing.easeOutBack,
+                    from: 1,
+                    to: 1.03,
+                    onUpdate: (value) => {
+                      freechoicebox.scale.set(value);
+                    },
+                  })
+                );
+              });
+              this._on(freechoicebox, "mouseout", () => {
+                this._activateChildEntity(
+                  new tween.Tween({
+                    duration: 200,
+                    easing: easing.easeOutBack,
+                    from: 1.03,
+                    to: 1,
+                    onUpdate: (value) => {
+                      freechoicebox.scale.set(value);
+                    },
+                  })
+                );
+              });
+            },
+          }),
+        ])
+      );
 
       this._nodeDisplay.addChild(freechoicebox);
     }
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
-      this._activateChildEntity(
-        new entity.ParallelEntity(freeboxTweens)
-      );
+      this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
     } else if (freechoicesFound === 0) {
       for (let i = 0; i < nodeOptions.length; i++) {
         nodeOptions[i] = nodeOptions[i].split("@")[0];
@@ -512,10 +515,13 @@ export class Graphics extends entity.CompositeEntity {
 
       let baseJson = this._entityConfig.app.loader.resources[fileNameJson].data;
       for (const bgPart of baseJson.sprites) {
-
         // Load animated texture
-        if(_.has(this._entityConfig.app.loader.resources, `${folderName}/${bgPart.model}.json`)) {
-
+        if (
+          _.has(
+            this._entityConfig.app.loader.resources,
+            `${folderName}/${bgPart.model}.json`
+          )
+        ) {
           const animatedSpriteEntity = util.makeAnimatedSprite(
             this._entityConfig.app.loader.resources[
               `${folderName}/${bgPart.model}.json`
@@ -524,7 +530,7 @@ export class Graphics extends entity.CompositeEntity {
           animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
           animatedSpriteEntity.sprite.x = bgPart.x;
           animatedSpriteEntity.sprite.y = bgPart.y;
-  
+
           animatedSpriteEntity.sprite.animationSpeed = 0.33;
           this._backgroundEntity.addChildEntity(animatedSpriteEntity);
         }
@@ -582,10 +588,15 @@ export class Graphics extends entity.CompositeEntity {
         characterContainer.addChild(baseSprite);
 
         // Load animations JSON
-        let baseJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
+        let baseJson =
+          this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
         for (const bodyPart of baseJson[mood]) {
-
-          if(_.has(this._entityConfig.app.loader.resources, `${baseDir}/${bodyPart.model}.json`)) {
+          if (
+            _.has(
+              this._entityConfig.app.loader.resources,
+              `${baseDir}/${bodyPart.model}.json`
+            )
+          ) {
             const animatedSpriteEntity = util.makeAnimatedSprite(
               this._entityConfig.app.loader.resources[
                 `${baseDir}/${bodyPart.model}.json`
@@ -597,9 +608,8 @@ export class Graphics extends entity.CompositeEntity {
 
             animatedSpriteEntity.sprite.animationSpeed = 0.33;
             this._characterEntity.addChildEntity(animatedSpriteEntity);
-          }
-          else {
-            console.log(`Missing : ${baseDir}/${bodyPart.model}.json`)
+          } else {
+            console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
           }
         }
 

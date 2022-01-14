@@ -19,9 +19,7 @@ export class JournalScene extends entity.CompositeEntity {
   private _container: PIXI.Container;
   private _htmlContainer: HTMLElement;
 
-  constructor(
-    private _variableStorage: variable.VariableStorage
-  ) {
+  constructor(private _variableStorage: variable.VariableStorage) {
     super();
   }
 
