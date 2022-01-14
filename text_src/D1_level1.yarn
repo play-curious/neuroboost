@@ -65,7 +65,8 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
 << else>>
 [[Cuisine@cuisine|cuisine_subchoice]]
 [[Bureau@bureau|bureau_subchoice]]
-[[Lit@lit|lit_subchoice]]
+[[Lit@lit|salon_subchoice]]
+[[Salon@salon|salon_subchoice]]
 << endif>>
 ===
 
@@ -82,7 +83,7 @@ position: -993.6492929458618,-75.37680292129517
 [[Passer du temps sur le chat avec le pote d'une autre Université|Chat]]
 [[Réviser cette fichue Astronometric Data Management|Revision]]
 ===
-title: lit_subchoice
+title: salon_subchoice
 tags: bg:bedroom subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---

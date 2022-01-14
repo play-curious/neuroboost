@@ -75,11 +75,10 @@ export class DialogScene extends entity.CompositeEntity {
       this._variableStorage.get("time")
     );
 
-    this._runner.registerFunction('isFirstTime', (data: any) => {
-      for(const nodeData of this._previousNodeDatas){
-        if(!nodeData) continue;
-        if(nodeData.title == data.title)
-          return false;
+    this._runner.registerFunction("isFirstTime", (data: any) => {
+      for (const nodeData of this._previousNodeDatas) {
+        if (!nodeData) continue;
+        if (nodeData.title == data.title) return false;
       }
       return true;
     });
@@ -155,10 +154,14 @@ export class DialogScene extends entity.CompositeEntity {
         nodeValue.select(id);
         this._advance();
       },
-      this._hasTag(nodeValue.data, "subchoice") ? () => {
-        this._nodeIterator = this._runner.run(_.last(this._previousNodeDatas).title);
-        this._advance();
-      } : undefined
+      this._hasTag(nodeValue.data, "subchoice")
+        ? () => {
+            this._nodeIterator = this._runner.run(
+              _.last(this._previousNodeDatas).title
+            );
+            this._advance();
+          }
+        : undefined
     );
   }
 
@@ -288,7 +291,7 @@ export class DialogScene extends entity.CompositeEntity {
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
 
     while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
-    
+
     this._variableStorage.set("time", `${newMinutes}`);
 
     this._activateChildEntity(this._clock.advanceTime(time));

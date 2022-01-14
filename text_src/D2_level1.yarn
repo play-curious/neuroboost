@@ -305,13 +305,13 @@ title: Miss_Temde
 tags: show:temde
 position: 357,1662
 ---
-Temde: Hello { $Name }.
+Temde: Hello { $name }.
 You: Quoi ?! Vous encore ?!
 Temde: Yep, on n'a pas fini de t'embêter en effet.
 You: M'embêter ?! Vous lisez dans mes pensées ?!
 Temde: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retourne ! 
 You: Où ça ?
-Temde: À l'Assemblée des 4 sages |4_Sages
+Temde: À l'Assemblée des 4 sages
 
 [[4_Sages]]
 ===
@@ -320,11 +320,11 @@ tags: bg:circle autoshow
 position: -1226,2186
 colorID: 1
 ---
-Sapiens: Bonsoir { $Name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre.
+Sapiens: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre.
 Azul: Un truc qui te servira également au quotidien.
 Ledai: Un mode d'emploi pour optimiser les performances de ton moteur biologique!
 Temdé: Yep, un tuyau qui sonne juste, tellement c'est évident!
-Sapiens: Tu m'écoutes { $Name }?
+Sapiens: Tu m'écoutes { $name }?
 [[Oui|Revelation]]
 ===
 title: Revelation
@@ -393,7 +393,7 @@ tags: autoshow
 position: -894,2571
 ---
 Sapiens: Grossière erreur, jeune novice ! On ne stoque pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures !
-Ledai: Certes, Master Sapiens, mais laissons une chance à { $Name }. 
+Ledai: Certes, Master Sapiens, mais laissons une chance à { $name }. 
 Sapiens: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
 
 [[QCM_nourriture]]
@@ -430,7 +430,7 @@ tags: autoshow
 position: -360.48431396484375,2565.951904296875
 ---
 Sapiens: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité.
-Azul: Master Sapiens, { $Name} est encore novice et vous avez d'autres quizz à lui poser.
+Azul: Master Sapiens, { $name } est encore novice et vous avez d'autres quizz à lui poser.
 Sapiens: En effet. L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
 
 [[QCM_sport]]
@@ -447,7 +447,7 @@ tags: autoshow
 position: 230.49474334716797,2819.384765625
 ---
 Sapiens: Exactement ! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand !
-Temde: Très bien, mais faites court et concis ! { $Name } est fatigué !
+Temde: Très bien, mais faites court et concis ! { $name } est fatigué !
 Ledai: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
 Sapiens: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
 
@@ -458,7 +458,7 @@ tags: autoshow
 position: 231.0813808441162,2564.470947265625
 ---
 Sapiens: Encore une idée reçue, une affirmation infondée! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand!
-Temde: Très bien, mais faites court et concis! { $Name } est fatiguée!
+Temde: Très bien, mais faites court et concis! { $name } est fatiguée!
 Sapiens: C'est comme ça quand on ne prend pas soin de son métabolisme!
 Ledai: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
 Sapiens: Et je n'ai pas fini. Il me reste la dernière fiche test! Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.

@@ -59,31 +59,35 @@ const statesName = [
 ];
 
 const states: { [k: string]: entity.EntityResolvable } = {};
-for(const stateName of statesName){
-  states[stateName === statesName[0] ? "start" : stateName] = new dialog.DialogScene(stateName, startNode, _runner, _variableStorage, _clock);
+for (const stateName of statesName) {
+  states[stateName === statesName[0] ? "start" : stateName] =
+    new dialog.DialogScene(
+      stateName,
+      startNode,
+      _runner,
+      _variableStorage,
+      _clock
+    );
   states[`journal_${stateName}`] = new journal.JournalScene(_variableStorage);
 }
 
 const transitions: Record<string, entity.Transition> = {};
 let i = 0;
 let previousState = "";
-for(const state in states){
-  if(i != 0)
-    transitions[previousState] = entity.makeTransition(state);
+for (const state in states) {
+  if (i != 0) transitions[previousState] = entity.makeTransition(state);
   previousState = state;
   i++;
 }
 transitions[previousState] = entity.makeTransition("end");
 
 const jsonAssets: Array<string | { key: string; url: string }> = [];
-for(const stateName of statesName){
+for (const stateName of statesName) {
   jsonAssets.push({
     key: stateName,
-    url: `text/${stateName}.json` 
+    url: `text/${stateName}.json`,
   });
 }
-
-console.log("Scenes(states):", states, "\n\nTransitions:\n", transitions, "\n\nJSONAssets:\n", jsonAssets);
 
 const graphicalAssets = [
   // UI
@@ -108,6 +112,11 @@ const graphicalAssets = [
   "images/bg/bedroom/plants.json",
   "images/bg/bedroom/smoke.json",
   "images/bg/bedroom/vapeur.json",
+  //   - Highlights
+  "images/ui/highlights/bureau.png",
+  "images/ui/highlights/cuisine.png",
+  "images/ui/highlights/lit.png",
+  "images/ui/highlights/salon.png",
 
   // Bedroom night
   "images/bg/bedroom_night/base.png",
@@ -199,9 +208,6 @@ const graphicalAssets = [
   "images/characters/ledai/static.png",
   "images/characters/sapiens/static.png",
   "images/characters/temde/static.png",
-
-  // Freechoices
-  "images/ui/freechoice.json",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
