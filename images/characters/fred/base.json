@@ -1,21 +1,4 @@
 {
-  "neutral": [
-    {
-      "model": "hair_a",
-      "x": 959, 
-      "y": 91
-    },
-    {
-      "model": "sleeves_a",
-      "x": 949, 
-      "y": 306
-    },
-    {
-      "model": "scarf_a",
-      "x": 1022, 
-      "y": 561
-    }
-  ],
   "drunk": [
     {
       "model": "eyes_c",
@@ -67,6 +50,11 @@
   ],
   "smiling": [
     {
+      "model": "eyes_e",
+      "x": 937,
+	    "y": 102
+    },
+    {
       "model": "hair_b",
       "x": 928,
       "y": 68
@@ -83,7 +71,26 @@
     }
   ],
   "surprised": [
-    
+    {
+      "model": "eyes_g",
+      "x": 954,
+	    "y": 102
+    },
+    {
+      "model": "hair_b",
+      "x": 946,
+      "y": 68
+    },
+    {
+      "model": "scarf_b",
+      "x": 1018,
+      "y": 576
+    },
+    {
+      "model": "sleeves_g",
+      "x": 945,
+	    "y": 307
+    }
   ],
   "happy": [
     {
@@ -133,5 +140,6 @@
       "x": 1027,
       "y": 576
     }
-  ]
+  ],
+  "default": "happy"
 }
