@@ -53,7 +53,7 @@ _runner.setVariableStorage(_variableStorage);
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
 const statesName = [
-  "fred",
+  "temde",
   "D1_level1",
   "D1_level2",
   "D2_level1"
@@ -206,10 +206,10 @@ const graphicalAssets = [
 
   // Temde
   "images/characters/temde/base.json",
-  "images/characters/temde/base_cheerful.png",
-  "images/characters/temde/base_sad.png",
-  "images/characters/temde/base_smiling.png",
-  "images/characters/temde/base_thinking.png",
+  "images/characters/temde/base_cheerful.json",
+  "images/characters/temde/base_sad.json",
+  "images/characters/temde/base_smiling.json",
+  "images/characters/temde/base_thinking.json",
 
   "images/characters/temde/arms_sad.json",
   "images/characters/temde/arms_thinking.json",
