@@ -53,7 +53,7 @@ _runner.setVariableStorage(_variableStorage);
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
 const statesName = [
-  "temde",
+  "sapiens",
   "D1_level1",
   "D1_level2",
   "D2_level1"
@@ -217,10 +217,23 @@ const graphicalAssets = [
   "images/characters/temde/dress_a.json",
   "images/characters/temde/foulard_a.json",
 
+  // Sapiens
+  "images/characters/sapiens/base.json",
+  "images/characters/sapiens/base_angry.json",
+  "images/characters/sapiens/base_concerned.json",
+  "images/characters/sapiens/base_smiling.json",
+  "images/characters/sapiens/base_thinking.json",
+  
+  "images/characters/sapiens/brain_a.json",
+  "images/characters/sapiens/eyes_a.json",
+  "images/characters/sapiens/eyes_b.json",
+  "images/characters/sapiens/eyes_c.json",
+  "images/characters/sapiens/sleeves_a.json",
+  "images/characters/sapiens/sleeves_c.json",
+
   // Others
   "images/characters/azul/static.png",
   "images/characters/ledai/static.png",
-  "images/characters/sapiens/static.png",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];

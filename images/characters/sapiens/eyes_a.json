@@ -1,0 +1,175 @@
+{"frames": {
+
+"yeux00000.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00001.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00002.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00003.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00004.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00005.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00006.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00007.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00008.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00009.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00010.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00011.png":
+{
+	"frame": {"x":59,"y":20,"w":60,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":56,"w":60,"h":19},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00012.png":
+{
+	"frame": {"x":1,"y":1,"w":58,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":57,"w":58,"h":17},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00013.png":
+{
+	"frame": {"x":1,"y":1,"w":58,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":57,"w":58,"h":17},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00014.png":
+{
+	"frame": {"x":61,"y":1,"w":56,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":57,"w":56,"h":17},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00015.png":
+{
+	"frame": {"x":61,"y":1,"w":56,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":57,"w":56,"h":17},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00016.png":
+{
+	"frame": {"x":61,"y":1,"w":56,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":57,"w":56,"h":17},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00017.png":
+{
+	"frame": {"x":61,"y":1,"w":56,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":57,"w":56,"h":17},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00018.png":
+{
+	"frame": {"x":1,"y":20,"w":56,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":57,"w":56,"h":17},
+	"sourceSize": {"w":117,"h":117}
+},
+"yeux00019.png":
+{
+	"frame": {"x":1,"y":20,"w":56,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":57,"w":56,"h":17},
+	"sourceSize": {"w":117,"h":117}
+}},
+"animations": {
+	"yeux": ["yeux00000.png","yeux00001.png","yeux00002.png","yeux00003.png","yeux00004.png","yeux00005.png","yeux00006.png","yeux00007.png","yeux00008.png","yeux00009.png","yeux00010.png","yeux00011.png","yeux00012.png","yeux00013.png","yeux00014.png","yeux00015.png","yeux00016.png","yeux00017.png","yeux00018.png","yeux00019.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "eyes_a.png",
+	"format": "RGBA8888",
+	"size": {"w":120,"h":40},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1d674652607998519f1e78492d620b8f:e1be127afac7190a501a1990eab50cb4:fb03db1e46ea03fa4ed5328c52be699e$"
+}
+}
