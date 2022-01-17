@@ -154,29 +154,29 @@ const graphicalAssets = [
 ];
 
 const fxAssets = [
-  "AlarmClock_LOOP.wav",
-  "Bell_Meditation.wav",
-  "Click.wav",
-  "Dialog_TypeWriter_LOOP.wav",
-  "EatCook.wav",
-  "Failure.wav",
-  "Narration_TypeWriter_LOOP.wav",
-  "Notification.wav",
-  "PhoneRing_LOOP.wav",
-  "Sleep_LOOP.wav",
-  "Sports_LOOP.wav",
-  "Success.wav",
-  "Teleportation.wav",
-  "TVStarwars_LOOP.wav",
-  "Work_LOOP.wav",
+  "AlarmClock_LOOP",
+  "Bell_Meditation",
+  "Click",
+  "Dialog_TypeWriter_LOOP",
+  "EatCook",
+  "Failure",
+  "Narration_TypeWriter_LOOP",
+  "Notification",
+  "PhoneRing_LOOP",
+  "Sleep_LOOP",
+  "Sports_LOOP",
+  "Success",
+  "Teleportation",
+  "TVStarwars_LOOP",
+  "Work_LOOP",
 ];
 
 const musicAssets = [
-  "Mysterious.wav",
-  "NegativeSad.wav",
-  "Neutral.wav",
-  "Tense.wav",
-  "Victory.wav",
+  "Mysterious",
+  "NegativeSad",
+  "Neutral",
+  "Tense",
+  "Victory",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
