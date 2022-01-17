@@ -154,7 +154,21 @@ const graphicalAssets = [
 ];
 
 const fxAssets = [
-  ""
+  "audio/sfx/AlarmClock_LOOP.wav",
+  "audio/sfx/Bell_Meditation.wav",
+  "audio/sfx/Click.wav",
+  "audio/sfx/Dialog_TypeWriter_LOOP.wav",
+  "audio/sfx/EatCook.wav",
+  "audio/sfx/Failure.wav",
+  "audio/sfx/Narration_TypeWriter_LOOP.wav",
+  "audio/sfx/Notification.wav",
+  "audio/sfx/PhoneRing_LOOP.wav",
+  "audio/sfx/Sleep_LOOP.wav",
+  "audio/sfx/Sports_LOOP.wav",
+  "audio/sfx/Success.wav",
+  "audio/sfx/Teleportation.wav",
+  "audio/sfx/TVStarwars_LOOP.wav",
+  "audio/sfx/Work_LOOP.wav",
 ]
 
 const musicAssets = [
