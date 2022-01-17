@@ -230,10 +230,11 @@ export class Graphics extends entity.CompositeEntity {
 
       const typeWriterSfx = new entity.EntitySequence(
         [
-          new entity.FunctionCallEntity(() =>
-            this._entityConfig.fxMachine.play("Dialog_TypeWriter_LOOP.wav")
-          ),
-          new entity.WaitingEntity(1000),
+          new entity.FunctionCallEntity(() => {
+            console.log("start FX");
+            this._entityConfig.fxMachine.play("Dialog_TypeWriter_LOOP");
+          }),
+          new entity.WaitingEntity(250),
         ],
         { loop: true }
       );
