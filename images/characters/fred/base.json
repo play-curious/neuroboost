@@ -1,6 +1,11 @@
 {
   "drunk": [
     {
+      "model": "base_drunk",
+      "x": 960,
+	    "y": 540
+    },
+    {
       "model": "eyes_c",
       "x": 957,
 	    "y": 101
@@ -28,6 +33,11 @@
   ],
   "excited": [
     {
+      "model": "base_excited",
+      "x": 960,
+	    "y": 540
+    },
+    {
       "model": "eyes_b",
       "x": 983,
       "y": 103
@@ -49,6 +59,11 @@
     }
   ],
   "smiling": [
+    {
+      "model": "base_smiling",
+      "x": 960,
+	    "y": 540
+    },
     {
       "model": "eyes_e",
       "x": 937,
@@ -72,6 +87,11 @@
   ],
   "surprised": [
     {
+      "model": "base_surprised",
+      "x": 960,
+	    "y": 540
+    },
+    {
       "model": "eyes_g",
       "x": 954,
 	    "y": 102
@@ -93,6 +113,11 @@
     }
   ],
   "happy": [
+    {
+      "model": "base_happy",
+      "x": 960,
+	    "y": 540
+    },
     {
       "model": "eyes_f",
       "x": 951,
@@ -120,6 +145,11 @@
     }
   ],
   "sad": [
+    {
+      "model": "base_sad",
+      "x": 960,
+	    "y": 540
+    },
     {
       "model": "eyes_d",
       "x": 963,

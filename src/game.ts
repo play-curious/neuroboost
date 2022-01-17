@@ -53,6 +53,7 @@ _runner.setVariableStorage(_variableStorage);
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
 const statesName = [
+  "fred",
   "D1_level1",
   "D1_level2",
   "D2_level1"
@@ -179,12 +180,12 @@ const graphicalAssets = [
 
   // Fred
   "images/characters/fred/base.json",
-  "images/characters/fred/base_drunk.png",
-  "images/characters/fred/base_excited.png",
-  "images/characters/fred/base_happy.png",
-  "images/characters/fred/base_sad.png",
-  "images/characters/fred/base_smiling.png",
-  "images/characters/fred/base_surprised.png",
+  "images/characters/fred/base_drunk.json",
+  "images/characters/fred/base_excited.json",
+  "images/characters/fred/base_happy.json",
+  "images/characters/fred/base_sad.json",
+  "images/characters/fred/base_smiling.json",
+  "images/characters/fred/base_surprised.json",
 
   "images/characters/fred/arm_drunk.json",
   "images/characters/fred/arm_happy.json",
@@ -203,11 +204,23 @@ const graphicalAssets = [
   "images/characters/fred/sleeves_f.json",
   "images/characters/fred/sleeves_g.json",
 
+  // Temde
+  "images/characters/temde/base.json",
+  "images/characters/temde/base_cheerful.png",
+  "images/characters/temde/base_sad.png",
+  "images/characters/temde/base_smiling.png",
+  "images/characters/temde/base_thinking.png",
+
+  "images/characters/temde/arms_sad.json",
+  "images/characters/temde/arms_thinking.json",
+  "images/characters/temde/cheveuxYeux_a.json",
+  "images/characters/temde/dress_a.json",
+  "images/characters/temde/foulard_a.json",
+
   // Others
   "images/characters/azul/static.png",
   "images/characters/ledai/static.png",
   "images/characters/sapiens/static.png",
-  "images/characters/temde/static.png",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];

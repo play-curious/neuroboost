@@ -568,76 +568,61 @@ export class Graphics extends entity.CompositeEntity {
       );
 
       const baseDir = `images/characters/${character}`;
-
+      
       let baseJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
       if(!_.has(baseJson, mood))
         mood = baseJson["default"];
 
-      const basePng = baseDir + `/base_${mood}.png`;
-
-      // Moving textures
-      if (_.has(this.entityConfig.app.loader.resources, basePng)) {
-        // Base
-        const baseSprite = new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[basePng].texture
-        );
-        baseSprite.anchor.set(0, 0);
-        baseSprite.pivot.set(
-          (baseSprite.width - 1920) / 2,
-          (baseSprite.height - 1080) / 2
-        );
-
-        characterContainer.addChild(baseSprite);
-
-        // Load animations JSON
-        for (const bodyPart of baseJson[mood]) {
-          if (
-            _.has(
-              this._entityConfig.app.loader.resources,
+      // Load animations JSON
+      for (const bodyPart of baseJson[mood]) {
+        if (
+          _.has(
+            this._entityConfig.app.loader.resources,
+            `${baseDir}/${bodyPart.model}.json`
+          )
+        ) {
+          const animatedSpriteEntity = util.makeAnimatedSprite(
+            this._entityConfig.app.loader.resources[
               `${baseDir}/${bodyPart.model}.json`
-            )
-          ) {
-            const animatedSpriteEntity = util.makeAnimatedSprite(
-              this._entityConfig.app.loader.resources[
-                `${baseDir}/${bodyPart.model}.json`
-              ]
-            );
-            animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
-            animatedSpriteEntity.sprite.x = bodyPart.x;
-            animatedSpriteEntity.sprite.y = bodyPart.y;
+            ]
+          );
+          animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
+          animatedSpriteEntity.sprite.x = bodyPart.x;
+          animatedSpriteEntity.sprite.y = bodyPart.y;
 
-            animatedSpriteEntity.sprite.animationSpeed = 0.33;
-            this._characterEntity.addChildEntity(animatedSpriteEntity);
-          } else {
-            console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
-          }
+          animatedSpriteEntity.sprite.animationSpeed = 0.33;
+          this._characterEntity.addChildEntity(animatedSpriteEntity);
+        } else {
+          console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
         }
-
-        // Place character on screen
-        this._characterLayer.addChild(characterContainer);
-        characterContainer.setTransform(250, 80, 1.1, 1.1);
       }
 
-      // Static textures
-      else if (
-        _.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")
-      ) {
-        // Base
-        const baseSprite = new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[
-            baseDir + "/static.png"
-          ].texture
-        );
+      // Place character on screen
+      this._characterLayer.addChild(characterContainer);
+      //characterContainer.setTransform(250, 80, 1.1, 1.1);
+      characterContainer.setTransform(0, 0, 1, 1);
+        
 
-        characterContainer.addChild(baseSprite);
+      // // Static textures
+      // else if (
+      //   _.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")
+      // ) {
+      //   // Base
+      //   const baseSprite = new PIXI.Sprite(
+      //     this.entityConfig.app.loader.resources[
+      //       baseDir + "/static.png"
+      //     ].texture
+      //   );
 
-        // Place character on screen
-        this._characterLayer.addChild(characterContainer);
-        characterContainer.setTransform(0, 0, 1, 1);
-      } else {
-        console.warn("Missing asset for character", character);
-        return;
-      }
+      //   characterContainer.addChild(baseSprite);
+
+      //   // Place character on screen
+      //   this._characterLayer.addChild(characterContainer);
+      //   characterContainer.setTransform(0, 0, 1, 1);
+      // } else {
+      //   console.warn("Missing asset for character", character);
+      //   return;
+      // }
     }
 
     this._lastCharacter = character;
