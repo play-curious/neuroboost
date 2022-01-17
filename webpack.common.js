@@ -79,10 +79,10 @@ module.exports = {
           from: "fonts",
           to: "fonts",
         },
-        // {
-        //   from: "audio",
-        //   to: "audio",
-        // },
+        {
+          from: "audio",
+          to: "audio",
+        },
         // {
         //   from: "video",
         //   to: "video",
