@@ -169,7 +169,7 @@ const fxAssets = [
   "audio/sfx/Teleportation.wav",
   "audio/sfx/TVStarwars_LOOP.wav",
   "audio/sfx/Work_LOOP.wav",
-]
+];
 
 const musicAssets = [
   "audio/musics/Mysterious.wav",
@@ -192,12 +192,10 @@ booyah.go({
   fontAssets,
   jsonAssets,
   fxAssets,
+  musicAssets,
   screenSize,
   splashScreen,
-  entityInstallers: [
-    audio.installJukebox,
-    audio.installFxMachine,
-  ]
+  entityInstallers: [audio.installJukebox, audio.installFxMachine],
 });
 
 // Resize now, and force the resize to happen when the window size changes
