@@ -16,7 +16,7 @@ export class Gauge extends entity.CompositeEntity {
     this._container = new PIXI.Container();
     this._container.position.copyFrom(this._position);
     this._container.addChild(this._image);
-    
+
     this._entityConfig.container.addChild(this._container);
   }
 
