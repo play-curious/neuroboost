@@ -158,7 +158,11 @@ const fxAssets = [
 ]
 
 const musicAssets = [
-  ""
+  "audio/musics/Mysterious.wav",
+  "audio/musics/NegativeSad.wav",
+  "audio/musics/Neutral.wav",
+  "audio/musics/Tense.wav",
+  "audio/musics/Victory.wav",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
