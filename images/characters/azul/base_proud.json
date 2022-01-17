@@ -1,0 +1,20 @@
+{"frames": {
+
+"base_proud.png":
+{
+	"frame": {"x":1,"y":1,"w":421,"h":1074},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":0,"w":421,"h":1074},
+	"sourceSize": {"w":481,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "base_proud.png",
+	"format": "RGBA8888",
+	"size": {"w":423,"h":1076},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:75ee0d89973be02abac41b0fa520ff9d:a4ede1e2c9c19707e1b56a83d7922731:494a33d73b42c22f3e04467979a5f055$"
+}
+}
