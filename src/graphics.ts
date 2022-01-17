@@ -228,23 +228,37 @@ export class Graphics extends entity.CompositeEntity {
 
       const baseText = (dialog || interpolatedText).trim();
 
-      const accelerate = () => {
-        if (defilement.isSetup) this._deactivateChildEntity(defilement);
-      };
+      const typeWriterSfx = new entity.EntitySequence(
+        [
+          new entity.FunctionCallEntity(() =>
+            this._entityConfig.fxMachine.play("Dialog_TypeWriter_LOOP.wav")
+          ),
+          new entity.WaitingEntity(1000),
+        ],
+        { loop: true }
+      );
 
       const defilement = new tween.Tween({
         from: 1,
         to: baseText.length,
         duration: baseText.length * defilementDurationPerLetter,
+        onSetup: () => {
+          this._activateChildEntity(typeWriterSfx);
+        },
         onUpdate: (value) => {
           dialogBox.text = baseText.slice(0, Math.round(value));
         },
         onTeardown: () => {
           dialogBox.text = baseText;
+          this._deactivateChildEntity(typeWriterSfx);
           this._off(hitBox, "pointerup", accelerate);
           this._on(hitBox, "pointerup", onBoxClick);
         },
       });
+
+      const accelerate = () => {
+        if (defilement.isSetup) this._deactivateChildEntity(defilement);
+      };
 
       this._activateChildEntity(defilement);
 
