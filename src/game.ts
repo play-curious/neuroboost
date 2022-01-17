@@ -1,10 +1,9 @@
 import * as PIXI from "pixi.js";
-import * as _ from "underscore";
 
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
+import * as audio from "booyah/src/audio";
 import * as util from "booyah/src/util";
-import * as geom from "booyah/src/geom";
 
 import * as dialog from "./dialog";
 import * as journal from "./journal";
@@ -154,6 +153,14 @@ const graphicalAssets = [
   "images/ui/freechoice.json",
 ];
 
+const fxAssets = [
+  ""
+]
+
+const musicAssets = [
+  ""
+];
+
 const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 const screenSize = new PIXI.Point(1920, 1080);
@@ -166,8 +173,13 @@ booyah.go({
   graphicalAssets,
   fontAssets,
   jsonAssets,
+  fxAssets,
   screenSize,
   splashScreen,
+  entityInstallers: [
+    audio.installJukebox,
+    audio.installFxMachine,
+  ]
 });
 
 // Resize now, and force the resize to happen when the window size changes
