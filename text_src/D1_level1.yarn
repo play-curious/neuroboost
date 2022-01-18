@@ -3,11 +3,13 @@ tags: bg:bedroom
 position: -1979.929937362671,-817.3228759765625
 ---
 << setTime 8:00 >>
+<< music Neutral >>
 
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
+<< fx PhoneRing_LOOP >>
 Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler.
-
+<< fx PhoneRing_LOOP >>
 [[Prendre l'appel|Appel_Fred]]
 [[Rejeter l'appel|Rejet_Fred]]
 ===
@@ -39,6 +41,7 @@ tags:
 position: -1805.537826538086,-561.8787231445312
 ---
 Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle aussitôt !
+<< fx PhoneRing_LOOP >>
 [[Prendre l'appel|Appel_Fred]]
 [[Rejeter l'appel|Rejet_Fred]]
 ===
@@ -188,7 +191,9 @@ You: Heuuuu...
 
 << advanceTime 0:15 >>
 
-Fred s'apprête à vous répondre quand la sonnerie retentit. Les résultats du test viennent de tomber...
+Fred s'apprête à vous répondre quand la sonnerie retentit.
+<< fx AlarmClock_LOOP >>
+Les résultats du test viennent de tomber...
 
 [[Consulter les résultats|Resultats_Bad]]
 ===
@@ -239,6 +244,7 @@ position: -17.766727447509766,752.0414428710938
 ---
 Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde... 
 Demain est un autre jour, vivement demain...
+<< fx Sleep_LOOP >>
 [[Faire un gros somme|Reveil_Sage]]
 ===
 title: Reveil_Sage

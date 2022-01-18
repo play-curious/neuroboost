@@ -309,7 +309,7 @@ export class DialogScene extends entity.CompositeEntity {
     this._entityConfig.jukebox.play(musicName);
   }
 
-  sfx(sfxName: string) {
+  fx(sfxName: string) {
     this._entityConfig.fxMachine.play(sfxName);
   }
 }

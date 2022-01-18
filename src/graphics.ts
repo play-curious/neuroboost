@@ -7,7 +7,10 @@ import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
 import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
+
 import * as variable from "./variable";
+
+import * as $ from "./$";
 
 // Initilize Underscore templates to ressemble YarnSpinner
 const templateSettings = {
@@ -147,7 +150,7 @@ export class Graphics extends entity.CompositeEntity {
       templateSettings
     )(this._variableStorageData);
 
-    let speaker, mood, dialog: string;
+    let speaker: string, mood: string, dialog: string;
     if (dialogRegexp.test(interpolatedText)) {
       let match = dialogRegexp.exec(interpolatedText);
 
@@ -227,15 +230,9 @@ export class Graphics extends entity.CompositeEntity {
 
       const baseText = (dialog || interpolatedText).trim();
 
-      const typeWriterSfx = new entity.EntitySequence(
-        [
-          new entity.FunctionCallEntity(() => {
-            console.log("start FX");
-            this._entityConfig.fxMachine.play("Dialog_TypeWriter_LOOP");
-          }),
-          new entity.WaitingEntity(250),
-        ],
-        { loop: true }
+      const writer = $.loopFX.bind(this)(
+        `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
+        250
       );
 
       const defilement = new tween.Tween({
@@ -243,14 +240,14 @@ export class Graphics extends entity.CompositeEntity {
         to: baseText.length,
         duration: baseText.length * defilementDurationPerLetter,
         onSetup: () => {
-          this._activateChildEntity(typeWriterSfx);
+          this._activateChildEntity(writer);
         },
         onUpdate: (value) => {
           dialogBox.text = baseText.slice(0, Math.round(value));
         },
         onTeardown: () => {
           dialogBox.text = baseText;
-          this._deactivateChildEntity(typeWriterSfx);
+          this._deactivateChildEntity(writer);
           this._off(hitBox, "pointerup", accelerate);
           this._on(hitBox, "pointerup", onBoxClick);
         },
