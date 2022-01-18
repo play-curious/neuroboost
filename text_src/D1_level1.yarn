@@ -30,7 +30,8 @@ You: Facile à dire pour toi, tu révises jamais !
 Fred: C'est ça quand on est un génie.
 You: Ouais ouais...
 Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
-You: Ouais... Vous poussez un grand soupir avant de raccrocher
+You: Ouais...
+Vous poussez un grand soupir avant de raccrocher
 
 << advanceTime 0:15 >>
 
@@ -139,7 +140,7 @@ position: -1573.0745849609375,216.18408203125
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
 Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
 
-<< loopFX TVStarwars_LOOP 300 >>
+<< loopFX TVStarwars_LOOP 10000 >>
 
 Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable et séduisant corsaire Yann Salto. Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. 
 Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... Vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait détruire son moteur gauche ! Il est obligé d'atterrir en catastrophe sur Tortuga.  
@@ -156,6 +157,7 @@ title: Lunch
 tags: bg:kitchen
 position: -1026.218994140625,513.7423095703125
 ---
+<< fx EatCook >>
 Yum Yum... Délicieux ce Burger Big Proteins Double Cheese !
 Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant l'examen !
 Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures...
