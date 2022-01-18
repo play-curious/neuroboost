@@ -144,10 +144,8 @@ export class Graphics extends entity.CompositeEntity {
       let match = dialogRegexp.exec(interpolatedText);
 
       speaker = match[1].trim();
-      mood = match[2];
+      mood = match[2]?.trim();
       dialog = match[3].trim();
-
-      if (mood !== undefined) mood = mood.trim();
     }
 
     this._nodeDisplay = new PIXI.Container();
@@ -173,12 +171,8 @@ export class Graphics extends entity.CompositeEntity {
         )
       );
 
-      const speakerLow = speaker.toLowerCase();
-      if (
-        autoShow ||
-        (this._lastCharacter === speakerLow && this._lastMood !== mood)
-      ) {
-        this.setCharacter(speakerLow, mood);
+      if (autoShow && speaker.toLowerCase() !== "you") {
+        this.setCharacter(speaker.toLowerCase(), mood?.toLowerCase());
       }
     } else {
       this._dialogSpeaker.visible = false;
@@ -563,7 +557,7 @@ export class Graphics extends entity.CompositeEntity {
       this._characterEntity = undefined;
     }
 
-    if (character !== undefined && character !== "") {
+    if (character && character !== "you") {
       const characterContainer = new PIXI.Container();
       this._characterEntity = new entity.ParallelEntity();
       this._activateChildEntity(
@@ -584,8 +578,7 @@ export class Graphics extends entity.CompositeEntity {
             this._entityConfig.app.loader.resources,
             `${baseDir}/${bodyPart.model}.json`
           )
-        )
-        {
+        ) {
           const animatedSpriteEntity = util.makeAnimatedSprite(
             this._entityConfig.app.loader.resources[
               `${baseDir}/${bodyPart.model}.json`
@@ -595,8 +588,11 @@ export class Graphics extends entity.CompositeEntity {
           animatedSpriteEntity.sprite.x = bodyPart.x;
           animatedSpriteEntity.sprite.y = bodyPart.y;
 
-          if(_.has(bodyPart, "scale")) {
-            animatedSpriteEntity.sprite.scale.set(bodyPart.scale, bodyPart.scale);
+          if (_.has(bodyPart, "scale")) {
+            animatedSpriteEntity.sprite.scale.set(
+              bodyPart.scale,
+              bodyPart.scale
+            );
             console.log(bodyPart.scale);
           }
 
