@@ -56,15 +56,21 @@ export class Clock extends entity.CompositeEntity {
 
     this._container.addChild(this.$.sprite("images/ui/clock.png"));
 
-    this._textBox = new PIXI.Text("", {
-      fill: "black",
-      fontFamily: "Jura",
-      fontSize: 40,
-      leading: 10,
-      align: "center",
-    });
-    this._textBox.position.set(270 / 2, 164 / 2);
-    this._textBox.anchor.set(0.5);
+    this._textBox = this.$.text(
+      "",
+      {
+        fill: "black",
+        fontFamily: "Jura",
+        fontSize: 40,
+        leading: 10,
+        align: "center",
+      },
+      (it) => {
+        it.anchor.set(0.5);
+        it.position.set(270 / 2, 164 / 2);
+      }
+    );
+
     this._container.addChild(this._textBox);
 
     this._entityConfig.container.addChild(this._container);

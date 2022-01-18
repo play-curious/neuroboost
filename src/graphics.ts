@@ -155,23 +155,22 @@ export class Graphics extends entity.CompositeEntity {
 
     if (speaker) {
       this._dialogSpeaker.visible = true;
-      const speakerName = speaker.toLowerCase() === "you" ? name : speaker;
-      const speakerText = new PIXI.Text(speakerName, {
-        fill: "white",
-        fontFamily: "Jura",
-        fontSize: 50,
-      });
-      speakerText.position.set(
-        this._dialogSpeaker.x + this._dialogSpeaker.width / 2,
-        this._dialogSpeaker.y + this._dialogSpeaker.height / 2
-      );
-      speakerText.anchor.set(0.5);
       this._nodeDisplay.addChild(
-        this.$.text(speaker.toLowerCase() === "you" ? name : speaker, {
-          fontFamily: "Jura",
-          fontSize: 50,
-          fill: "white",
-        })
+        this.$.text(
+          speaker.toLowerCase() === "you" ? name : speaker,
+          {
+            fontFamily: "Jura",
+            fill: "white",
+            fontSize: 50,
+          },
+          (it) => {
+            it.anchor.set(0.5);
+            it.position.set(
+              this._dialogSpeaker.x + this._dialogSpeaker.width / 2,
+              this._dialogSpeaker.y + this._dialogSpeaker.height / 2
+            );
+          }
+        )
       );
 
       const speakerLow = speaker.toLowerCase();
@@ -289,17 +288,6 @@ export class Graphics extends entity.CompositeEntity {
 
       choicebox.position.set(1920 * 2 * (i % 2 ? -1 : 1), currentY);
 
-      const optionText = new PIXI.Text(
-        nodeOptions[nodeOptions.length - (1 + i)],
-        {
-          fill: 0xfdf4d3,
-          fontFamily: "Ubuntu",
-          fontSize: 40,
-        }
-      );
-
-      optionText.anchor.set(0.5, 0.5);
-      optionText.position.set(choicebox.width / 2, choicebox.height / 2);
       box_tweens.push(
         new entity.EntitySequence([
           new entity.WaitingEntity(
@@ -354,7 +342,21 @@ export class Graphics extends entity.CompositeEntity {
         ])
       );
 
-      choicebox.addChild(optionText);
+      choicebox.addChild(
+        this.$.text(
+          nodeOptions[nodeOptions.length - (1 + i)],
+          {
+            fill: 0xfdf4d3,
+            fontFamily: "Ubuntu",
+            fontSize: 40,
+          },
+          (it) => {
+            it.anchor.set(0.5);
+            it.position.set(choicebox.width / 2, choicebox.height / 2);
+          }
+        )
+      );
+
       this._nodeDisplay.addChild(choicebox);
     }
 
