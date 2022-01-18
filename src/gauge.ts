@@ -1,8 +1,6 @@
 import * as PIXI from "pixi.js";
 
 import * as entity from "booyah/src/entity";
-import * as tween from "booyah/src/tween";
-import * as easing from "booyah/src/easing";
 
 export class Gauge extends entity.CompositeEntity {
   private _container: PIXI.Container;

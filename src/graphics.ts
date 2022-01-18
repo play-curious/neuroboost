@@ -10,7 +10,7 @@ import * as util from "booyah/src/util";
 
 import * as variable from "./variable";
 
-import * as $ from "./$";
+import $ from "./$";
 
 // Initilize Underscore templates to ressemble YarnSpinner
 const templateSettings = {
@@ -20,6 +20,8 @@ const templateSettings = {
 const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
 
 export class Graphics extends entity.CompositeEntity {
+  private $ = $(this);
+
   private _lastBg: string;
   private _lastCharacter: string;
   private _lastMood: string;
@@ -57,21 +59,11 @@ export class Graphics extends entity.CompositeEntity {
     this._container.addChild(this._uiLayer);
 
     this._dialogLayer = new PIXI.Container();
-    this._dialogLayer.addChild(
-      new PIXI.Sprite(
-        this.entityConfig.app.loader.resources["images/ui/dialog.png"].texture
-      )
-    );
+    this._dialogLayer.addChild(this.$.sprite("images/ui/dialog.png"));
     this._container.addChild(this._dialogLayer);
 
     this._dialogSpeaker = new PIXI.Container();
-    this._dialogSpeaker.addChild(
-      new PIXI.Sprite(
-        this.entityConfig.app.loader.resources[
-          "images/ui/dialog_speaker.png"
-        ].texture
-      )
-    );
+    this._dialogSpeaker.addChild(this.$.sprite("images/ui/dialog_speaker.png"));
     this._dialogSpeaker.position.set(202, 601);
     this._dialogLayer.addChild(this._dialogSpeaker);
   }
@@ -117,14 +109,11 @@ export class Graphics extends entity.CompositeEntity {
     this._closeupLayer.removeChildren();
     if (!closeup) return;
 
-    const sprite = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources[
-        `images/closeups/${closeup}.png`
-      ].texture
+    this._closeupLayer.addChild(
+      this.$.sprite(`images/closeups/${closeup}.png`, (it) => {
+        it.position.set(400, 10);
+      })
     );
-    sprite.position.set(400, 10);
-
-    this._closeupLayer.addChild(sprite);
   }
 
   /**
@@ -230,7 +219,7 @@ export class Graphics extends entity.CompositeEntity {
 
       const baseText = (dialog || interpolatedText).trim();
 
-      const writer = $.loopFX.bind(this)(
+      const writer = this.$.loopFX(
         `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
         250
       );
@@ -280,14 +269,12 @@ export class Graphics extends entity.CompositeEntity {
     for (let i: number = 0; i < nodeOptions.length; i++) {
       const choicebox = new PIXI.Container();
       choicebox.addChild(
-        new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[
-            i === 0
-              ? "images/ui/choicebox_contour_reversed.png"
-              : i === nodeOptions.length - 1
-              ? "images/ui/choicebox_contour.png"
-              : "images/ui/choicebox_empty.png"
-          ].texture
+        this.$.sprite(
+          i === 0
+            ? "images/ui/choicebox_contour_reversed.png"
+            : i === nodeOptions.length - 1
+            ? "images/ui/choicebox_contour.png"
+            : "images/ui/choicebox_empty.png"
         )
       );
 
@@ -369,13 +356,7 @@ export class Graphics extends entity.CompositeEntity {
 
     if (subchoice !== undefined) {
       const arrow_back = new PIXI.Container();
-      arrow_back.addChild(
-        new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[
-            "images/ui/arrow_return.png"
-          ].texture
-        )
-      );
+      arrow_back.addChild(this.$.sprite("images/ui/arrow_return.png"));
       arrow_back.scale.set(0.65);
       arrow_back.position.set(10, 1080 - (arrow_back.height + 10));
 
@@ -414,12 +395,13 @@ export class Graphics extends entity.CompositeEntity {
           `images/ui/highlights/${jsonValue}.png`
         )
       ) {
-        highlight = new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[
-            `images/ui/highlights/${jsonValue}.png`
-          ].texture
+        highlight = this.$.sprite(
+          `images/ui/highlights/${jsonValue}.png`,
+          (it) => {
+            it.alpha = 0;
+          }
         );
-        highlight.alpha = 0;
+
         this._nodeDisplay.addChild(highlight);
       } else continue;
 
@@ -499,8 +481,8 @@ export class Graphics extends entity.CompositeEntity {
   public setBackground(bg: string) {
     if (bg === this._lastBg) return;
 
-    const folderName = `images/bg/${bg}`;
-    const fileName = `${folderName}/base.png`;
+    const folderName: `images/${string}` = `images/bg/${bg}`;
+    const fileName: `images/${string}.png` = `${folderName}/base.png`;
     const fileNameJson = `${folderName}/base.json`;
     if (!_.has(this.entityConfig.app.loader.resources, fileName)) {
       console.warn("Missing asset for background", bg);
@@ -516,10 +498,7 @@ export class Graphics extends entity.CompositeEntity {
     }
 
     // Set background base
-    const background = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources[fileName].texture
-    );
-    this._backgroundLayer.addChild(background);
+    this._backgroundLayer.addChild(this.$.sprite(fileName));
 
     // Set animations
     if (_.has(this.entityConfig.app.loader.resources, fileNameJson)) {
@@ -590,21 +569,17 @@ export class Graphics extends entity.CompositeEntity {
         this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
       if (!_.has(baseJson, mood)) mood = baseJson["default"];
 
-      const basePng = baseDir + `/base_${mood}.png`;
+      const basePng = (baseDir + `/base_${mood}.png`) as `images/${string}.png`;
 
       // Moving textures
       if (_.has(this.entityConfig.app.loader.resources, basePng)) {
         // Base
-        const baseSprite = new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[basePng].texture
+        characterContainer.addChild(
+          this.$.sprite(basePng, (it) => {
+            it.anchor.set(0);
+            it.pivot.set((it.width - 1920) / 2, (it.height - 1080) / 2);
+          })
         );
-        baseSprite.anchor.set(0, 0);
-        baseSprite.pivot.set(
-          (baseSprite.width - 1920) / 2,
-          (baseSprite.height - 1080) / 2
-        );
-
-        characterContainer.addChild(baseSprite);
 
         // Load animations JSON
         for (const bodyPart of baseJson[mood]) {
@@ -640,13 +615,9 @@ export class Graphics extends entity.CompositeEntity {
         _.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")
       ) {
         // Base
-        const baseSprite = new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[
-            baseDir + "/static.png"
-          ].texture
+        characterContainer.addChild(
+          this.$.sprite((baseDir + "/static.png") as `images/${string}.png`)
         );
-
-        characterContainer.addChild(baseSprite);
 
         // Place character on screen
         this._characterLayer.addChild(characterContainer);

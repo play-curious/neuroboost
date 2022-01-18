@@ -4,6 +4,8 @@ import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 import * as easing from "booyah/src/easing";
 
+import $ from "./$";
+
 export type ResolvableTime = `${number}:${number}`;
 
 export const dayMinutes = 60 * 24;
@@ -32,6 +34,8 @@ export function parseTime(
 }
 
 export class Clock extends entity.CompositeEntity {
+  private $ = $(this);
+
   private _days: number;
   private _minutesSinceMidnight: number;
   private _hidden: boolean;
@@ -50,10 +54,7 @@ export class Clock extends entity.CompositeEntity {
     this._container = new PIXI.Container();
     this._container.position.copyFrom(this._position);
 
-    const bg = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources["images/ui/clock.png"].texture
-    );
-    this._container.addChild(bg);
+    this._container.addChild(this.$.sprite("images/ui/clock.png"));
 
     this._textBox = new PIXI.Text("", {
       fill: "black",
