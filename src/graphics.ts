@@ -7,7 +7,10 @@ import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
 import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
+
 import * as variable from "./variable";
+
+import $ from "./$";
 
 // Initilize Underscore templates to ressemble YarnSpinner
 const templateSettings = {
@@ -17,6 +20,8 @@ const templateSettings = {
 const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
 
 export class Graphics extends entity.CompositeEntity {
+  private $ = $(this);
+
   private _lastBg: string;
   private _lastCharacter: string;
   private _lastMood: string;
@@ -54,21 +59,11 @@ export class Graphics extends entity.CompositeEntity {
     this._container.addChild(this._uiLayer);
 
     this._dialogLayer = new PIXI.Container();
-    this._dialogLayer.addChild(
-      new PIXI.Sprite(
-        this.entityConfig.app.loader.resources["images/ui/dialog.png"].texture
-      )
-    );
+    this._dialogLayer.addChild(this.$.sprite("images/ui/dialog.png"));
     this._container.addChild(this._dialogLayer);
 
     this._dialogSpeaker = new PIXI.Container();
-    this._dialogSpeaker.addChild(
-      new PIXI.Sprite(
-        this.entityConfig.app.loader.resources[
-          "images/ui/dialog_speaker.png"
-        ].texture
-      )
-    );
+    this._dialogSpeaker.addChild(this.$.sprite("images/ui/dialog_speaker.png"));
     this._dialogSpeaker.position.set(202, 601);
     this._dialogLayer.addChild(this._dialogSpeaker);
   }
@@ -114,14 +109,11 @@ export class Graphics extends entity.CompositeEntity {
     this._closeupLayer.removeChildren();
     if (!closeup) return;
 
-    const sprite = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources[
-        `images/closeups/${closeup}.png`
-      ].texture
+    this._closeupLayer.addChild(
+      this.$.sprite(`images/closeups/${closeup}.png`, (it) => {
+        it.position.set(400, 10);
+      })
     );
-    sprite.position.set(400, 10);
-
-    this._closeupLayer.addChild(sprite);
   }
 
   /**
@@ -147,7 +139,7 @@ export class Graphics extends entity.CompositeEntity {
       templateSettings
     )(this._variableStorageData);
 
-    let speaker, mood, dialog: string;
+    let speaker: string, mood: string, dialog: string;
     if (dialogRegexp.test(interpolatedText)) {
       let match = dialogRegexp.exec(interpolatedText);
 
@@ -163,18 +155,23 @@ export class Graphics extends entity.CompositeEntity {
 
     if (speaker) {
       this._dialogSpeaker.visible = true;
-      const speakerName = speaker.toLowerCase() === "you" ? name : speaker;
-      const speakerText = new PIXI.Text(speakerName, {
-        fill: "white",
-        fontFamily: "Jura",
-        fontSize: 50,
-      });
-      speakerText.position.set(
-        this._dialogSpeaker.x + this._dialogSpeaker.width / 2,
-        this._dialogSpeaker.y + this._dialogSpeaker.height / 2
+      this._nodeDisplay.addChild(
+        this.$.text(
+          speaker.toLowerCase() === "you" ? name : speaker,
+          {
+            fontFamily: "Jura",
+            fill: "white",
+            fontSize: 50,
+          },
+          (it) => {
+            it.anchor.set(0.5);
+            it.position.set(
+              this._dialogSpeaker.x + this._dialogSpeaker.width / 2,
+              this._dialogSpeaker.y + this._dialogSpeaker.height / 2
+            );
+          }
+        )
       );
-      speakerText.anchor.set(0.5);
-      this._nodeDisplay.addChild(speakerText);
 
       const speakerLow = speaker.toLowerCase();
       if (
@@ -227,15 +224,9 @@ export class Graphics extends entity.CompositeEntity {
 
       const baseText = (dialog || interpolatedText).trim();
 
-      const typeWriterSfx = new entity.EntitySequence(
-        [
-          new entity.FunctionCallEntity(() => {
-            console.log("start FX");
-            this._entityConfig.fxMachine.play("Dialog_TypeWriter_LOOP");
-          }),
-          new entity.WaitingEntity(250),
-        ],
-        { loop: true }
+      const writer = this.$.loopFX(
+        `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
+        250
       );
 
       const defilement = new tween.Tween({
@@ -243,14 +234,14 @@ export class Graphics extends entity.CompositeEntity {
         to: baseText.length,
         duration: baseText.length * defilementDurationPerLetter,
         onSetup: () => {
-          this._activateChildEntity(typeWriterSfx);
+          this._activateChildEntity(writer);
         },
         onUpdate: (value) => {
           dialogBox.text = baseText.slice(0, Math.round(value));
         },
         onTeardown: () => {
           dialogBox.text = baseText;
-          this._deactivateChildEntity(typeWriterSfx);
+          this._deactivateChildEntity(writer);
           this._off(hitBox, "pointerup", accelerate);
           this._on(hitBox, "pointerup", onBoxClick);
         },
@@ -283,14 +274,12 @@ export class Graphics extends entity.CompositeEntity {
     for (let i: number = 0; i < nodeOptions.length; i++) {
       const choicebox = new PIXI.Container();
       choicebox.addChild(
-        new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[
-            i === 0
-              ? "images/ui/choicebox_contour_reversed.png"
-              : i === nodeOptions.length - 1
-              ? "images/ui/choicebox_contour.png"
-              : "images/ui/choicebox_empty.png"
-          ].texture
+        this.$.sprite(
+          i === 0
+            ? "images/ui/choicebox_contour_reversed.png"
+            : i === nodeOptions.length - 1
+            ? "images/ui/choicebox_contour.png"
+            : "images/ui/choicebox_empty.png"
         )
       );
 
@@ -299,17 +288,6 @@ export class Graphics extends entity.CompositeEntity {
 
       choicebox.position.set(1920 * 2 * (i % 2 ? -1 : 1), currentY);
 
-      const optionText = new PIXI.Text(
-        nodeOptions[nodeOptions.length - (1 + i)],
-        {
-          fill: 0xfdf4d3,
-          fontFamily: "Ubuntu",
-          fontSize: 40,
-        }
-      );
-
-      optionText.anchor.set(0.5, 0.5);
-      optionText.position.set(choicebox.width / 2, choicebox.height / 2);
       box_tweens.push(
         new entity.EntitySequence([
           new entity.WaitingEntity(
@@ -364,7 +342,21 @@ export class Graphics extends entity.CompositeEntity {
         ])
       );
 
-      choicebox.addChild(optionText);
+      choicebox.addChild(
+        this.$.text(
+          nodeOptions[nodeOptions.length - (1 + i)],
+          {
+            fill: 0xfdf4d3,
+            fontFamily: "Ubuntu",
+            fontSize: 40,
+          },
+          (it) => {
+            it.anchor.set(0.5);
+            it.position.set(choicebox.width / 2, choicebox.height / 2);
+          }
+        )
+      );
+
       this._nodeDisplay.addChild(choicebox);
     }
 
@@ -372,13 +364,7 @@ export class Graphics extends entity.CompositeEntity {
 
     if (subchoice !== undefined) {
       const arrow_back = new PIXI.Container();
-      arrow_back.addChild(
-        new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[
-            "images/ui/arrow_return.png"
-          ].texture
-        )
-      );
+      arrow_back.addChild(this.$.sprite("images/ui/arrow_return.png"));
       arrow_back.scale.set(0.65);
       arrow_back.position.set(10, 1080 - (arrow_back.height + 10));
 
@@ -417,12 +403,13 @@ export class Graphics extends entity.CompositeEntity {
           `images/ui/highlights/${jsonValue}.png`
         )
       ) {
-        highlight = new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[
-            `images/ui/highlights/${jsonValue}.png`
-          ].texture
+        highlight = this.$.sprite(
+          `images/ui/highlights/${jsonValue}.png`,
+          (it) => {
+            it.alpha = 0;
+          }
         );
-        highlight.alpha = 0;
+
         this._nodeDisplay.addChild(highlight);
       } else continue;
 
@@ -502,8 +489,8 @@ export class Graphics extends entity.CompositeEntity {
   public setBackground(bg: string) {
     if (bg === this._lastBg) return;
 
-    const folderName = `images/bg/${bg}`;
-    const fileName = `${folderName}/base.png`;
+    const folderName: `images/${string}` = `images/bg/${bg}`;
+    const fileName: `images/${string}.png` = `${folderName}/base.png`;
     const fileNameJson = `${folderName}/base.json`;
     if (!_.has(this.entityConfig.app.loader.resources, fileName)) {
       console.warn("Missing asset for background", bg);
@@ -519,10 +506,7 @@ export class Graphics extends entity.CompositeEntity {
     }
 
     // Set background base
-    const background = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources[fileName].texture
-    );
-    this._backgroundLayer.addChild(background);
+    this._backgroundLayer.addChild(this.$.sprite(fileName));
 
     // Set animations
     if (_.has(this.entityConfig.app.loader.resources, fileNameJson)) {
