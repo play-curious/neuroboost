@@ -10,6 +10,8 @@ import * as variable from "./variable";
 
 import * as graphics from "./graphics";
 
+import $ from "./$";
+
 // Bondage is loaded as a global variable
 declare const bondage: any;
 
@@ -36,12 +38,14 @@ interface ChoiceNode {
 type Node = TextNode | ChoiceNode;
 
 export class DialogScene extends entity.CompositeEntity {
+  private $ = $(this);
+
   private _nodeIterator: any;
   private _nodeValue: Node;
   private _lastNodeData: NodeData;
   private _autoshowOn: boolean;
   private _previousNodeDatas: NodeData[];
-
+  private _fxLoops: Map<string, entity.EntitySequence>;
   private _graphics: graphics.Graphics;
 
   constructor(
@@ -56,7 +60,7 @@ export class DialogScene extends entity.CompositeEntity {
 
   _setup(): void {
     this._autoshowOn = false;
-
+    this._fxLoops = new Map();
     this._previousNodeDatas = [];
 
     // Setup graphics
@@ -309,7 +313,32 @@ export class DialogScene extends entity.CompositeEntity {
     this._entityConfig.jukebox.play(musicName);
   }
 
-  fx(sfxName: string) {
-    this._entityConfig.fxMachine.play(sfxName);
+  fx(fxName: string) {
+    this._entityConfig.fxMachine.play(fxName);
+  }
+
+  loopFX(fxName: `${string}_LOOP`, loopDuration: `${number}`) {
+    const duration = Number(loopDuration);
+    const loops = this._fxLoops;
+
+    if (loops.has(fxName))
+      return console.warn(`${fxName} fx is already activated`);
+
+    const loop = this.$.loopFX(fxName, duration);
+
+    this._activateChildEntity(loop);
+
+    this._fxLoops.set(fxName, loop);
+  }
+
+  stopFX(fxName: `${string}_LOOP`) {
+    const loop = this._fxLoops.get(fxName);
+
+    if (loop) {
+      this._deactivateChildEntity(loop);
+      this._fxLoops.delete(fxName);
+    } else {
+      console.warn(`${fxName} fx is already deactivated`);
+    }
   }
 }
