@@ -53,7 +53,6 @@ _runner.setVariableStorage(_variableStorage);
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
 const statesName = [
-  "temde",
   "D1_level1",
   "D1_level2",
   "D2_level1"
