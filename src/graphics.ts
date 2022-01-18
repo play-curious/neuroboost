@@ -7,7 +7,9 @@ import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
 import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
+
 import * as variable from "./variable";
+import * as gauge from "./gauge";
 
 // Initilize Underscore templates to ressemble YarnSpinner
 const templateSettings = {
@@ -32,6 +34,8 @@ export class Graphics extends entity.CompositeEntity {
   private _dialogSpeaker: PIXI.Container;
 
   private _nodeDisplay: PIXI.Container;
+
+  private _gauges: Record<string, gauge.Gauge>;
 
   constructor(private readonly _variableStorageData: variable.Variables) {
     super();
@@ -71,6 +75,25 @@ export class Graphics extends entity.CompositeEntity {
     );
     this._dialogSpeaker.position.set(202, 601);
     this._dialogLayer.addChild(this._dialogSpeaker);
+
+    this._gauges = {};
+    const gaugesList = ["sleep", "food"];
+    for (let i = 0; i < gaugesList.length; i++) {
+      const _gauge = gaugesList[i];
+      this._gauges[_gauge] = new gauge.Gauge(
+        new PIXI.Point(140 * i + 10, 0),
+        new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            `images/ui/gauges/${_gauge}.png`
+          ].texture
+        ),
+        _gauge
+      );
+      this._activateChildEntity(
+        this._gauges[_gauge],
+        entity.extendConfig({ container: this._container })
+      );
+    }
   }
 
   public getUi(): PIXI.Container {
@@ -146,7 +169,6 @@ export class Graphics extends entity.CompositeEntity {
       text,
       templateSettings
     )(this._variableStorageData);
-
     let speaker, mood, dialog: string;
     if (dialogRegexp.test(interpolatedText)) {
       let match = dialogRegexp.exec(interpolatedText);

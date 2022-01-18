@@ -48,17 +48,18 @@ colorID: 0
 position: -439,141
 ---
 << if isFirstTime() >>
-Maintenant que la partie bat son plein, qu'avez-vous envie de faire?
+Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << endif >>
 
+<< if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
 [[Aller swinguer sur le Dance Floor|DanceFloor]]
 [[Se Rafraîchir le gosier|Boire_Soft]]
 [[Grignotter un petit booster de calories|Snacking]]
 [[Jouer de la guitare|Guitar_Jam]]
 [[Chatter avec Fred|Chatter_avec_Fred]]
-
-// WHEN SLEEP OR FOOD-HEALTH IS LESS THAN 50% link to TIRED//
+<< else >>
 [[TIRED]]
+<< endif >>
 ===
 title: DanceFloor
 tags: 
@@ -69,7 +70,7 @@ Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par
 Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public ! 
 Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressivement de l'orbite disco, vous saluez trois fois la foule avant de quitter la piste de danse. Votre sortie est suivie par un tonnerre d'applaudissements ! Vous parvenez même à entendre les Houras de Fred qui survolent péniblement au-dessus des fracas de mains qui claquent et claquent encore...  
 
-//Decrease Sleep by 40%//
+<< removeFromGauge sleep 40 >>
 
 [[Que faire maintenant ?|Choix_neutres]]
 ===
@@ -81,7 +82,7 @@ position: -553,437
 Le Bar est, vous le confirmez, rempli à craquer de bonnes choses à boire et à manger. Un petit soft, sans alcool et légèrement chargé en caféine, ça va vous booster le corps et l'esprit.
 Vous prenez donc une pinte de Xeno Cola. Vous savez qu'ils ont dilué le Xeno Cole dans l'eau et une mer de glaçons. Vous buvez plutôt du Xeno Décaféiné. L'effet s'en ressent néanmoins. Vous voilà prêt à repartir à l'assaut de la nuit !
 
-//Increase Food-Health by 10%//
+<< addToGauge food 10 >>
 
 [[Et ensuite ?|Choix_neutres]]
 ===
@@ -92,7 +93,7 @@ position: -37,437
 ---
 Le Bar est sûrement réappovisionné en permanence. Il y a toujours autant de bonnes choses à grignoter. Après tout ce que vous avez bu et sué, il est temps de s'avaler quelques grammes de calories. Comme dit le proverbe: "Une barre de Max après chaque moment, fait de l'étudiant un gagnant". Et c'est bien vrai, vous en aviez besoin de cette pause cacao Max. Elle vous redynamise... 
 
-//Increase Food-Health by 10%//
+<< addToGauge food 10 >>
 
 [[Et ensuite?|Choix_neutres]]
 ===
@@ -106,7 +107,7 @@ Vous posez l'instrument sur vos genoux, vous allumez l'amplificateur. Vous grato
 Tous les yeux se tournent vers vous. Quelqu'un coupe la musique. Vous voilà seul sur la grande scène. À vous de jouer ! Vous vous lancez dans une improvisation à cordes cybermétalliques. Le temps file, la foule boit vos notes. Vous ne vous en souciez plus, absorbé que vous êtes dans votre oeuvre sonore.
 Quand vous daignez enfin vous arrêter et relever les yeux, vous êtes salué par un concert d'applaudissements ! Vous remarquez Fred qui vous contemple, tout sourire, et qui lève le pouce en signe d'acquiescement.
 
-//Decrease Sleep by 30%//
+<< removeFromGauge sleep 30 >>
 
 [[Un autre exploit en tête?|Choix_neutres]]
 ===
@@ -117,7 +118,8 @@ position: -37,-40
 ---
 La sono du Sound System est à fond, pourtant, cela ne vous empêche pas d'échanger, Fred et vous. Vous vous connaissez depuis suffisamment longtemps. Vous pourriez même échanger par ondes télépathiques. Les ingénieurs neurocybernétiques sont sur le créneau, mais les premiers prototypes sont pour l'instant décevants. Peu importe, vous vous marrez bien tous les deux. Un peu d'imagination et vous vous projetteriez dans un concert Live IRL comme on en faisait, du temps de l'écran 2D.
 
-//Decrease Sleep by 20% And Decrease Food-Health by 25%//
+<< removeFromGauge sleep 20 >>
+<< removeFromGauge food 25 >>
 
 [[Ensuite ?|Choix_neutres]]
 ===
@@ -141,7 +143,8 @@ colorID: 0
 position: -894,909
 ---
 Fred vous amène jusqu'à un large canapé-fauteuil. Vous vous effondrez dedans. C'est clair, vous avez besoin de reprendre des forces. Il vous dit deux ou trois choses, vous ne savez pas, vous n'écoutez pas, vous n'entendez pas. Vos paupières s'abaissent, vous glissez doucement dans une douce langueur...
-//Increase Sleep 10% = sieste peu efficace//
+
+<< addToGauge sleep 10 >>
 
 Puis, on vous secoue brusquement !!!
 
@@ -170,13 +173,14 @@ position: -239,909
 La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la piste de danse. Vous allez lui montrer que vous aussi, vous n'êtes pas un looser ! Alors ? quel est votre plan d'attaque ?
 << endif >>
 
+<< if getGauge("sleep") >= 25 && getGauge("food") >= 25 >>
 [[Retourner swinguer sur le Dance Floor|DanceFloor2]]
 [[Se rafraîchir au bar|Cafe_ou_Alcool]]
 [[Grignoter quelque chose|Medoc_Bot]]
 [[Refaire un solo de guitare en criant tout votre saoul|Metal_Jam]]
-
-// When Sleep or Food-Health is less than 25% link to Go_To_Bed//
-[[Vite! Au lit|Go_To_Bed]]
+<< else >>
+[[Vite ! Au lit|Go_To_Bed]]
+<< endif >>
 ===
 title: DanceFloor2
 tags: 
@@ -188,7 +192,7 @@ Vous voilà redevenu le centre d'attention de la soirée, le centre d'attraction
 
 Vous rentrez peu à peu en transe, au rythme de la musique. Puis, au bout de quelques minutes, vous regagnez l'orbite de la planète Disco ! Et c'est reparti pour une bonne heure de Breaking Beat endiablé ! Votre performance rencontre un succès planétaire et discothécaire !
 
-//Decrease Sleep by 30%//
+<< removeFromGauge sleep 30 >>
 
 [[Arriverez-vous à faire encore mieux ?|Que_Faire]]
 ===
@@ -200,8 +204,8 @@ position: -395,1232
 Dingue ! Le bar n'est plus aussi approvisionné ! Il ne reste plus aucun soft doux, ni même de Xeno Cola. 
 Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un shot de X-Espresso ou une canette de ZedBoul. Tant pis, vous avez besoin d'un coup de pouce !
 
-// Decrease Food-Health by 30% //
-// Incresse Sleep by 10% //
+<< removeFromGauge food 30 >>
+<< addToGauge sleep 10 >>
 
 [[Un shot et on y retourne !|Que_Faire]]
 ===
@@ -224,8 +228,8 @@ You: Merci.
 
 Le BarBot vous tend une espèce de gomme multicolore. Vous la mettez dans votre bouche. Niac... Ils ont vraiment abusé de colorants et de sucre de synthèse. Vous grimacez mais continuez à l'ingérer docilement. Vous ressentez assez rapidement un effet revitalisant.
 
-// Decrease Food-Health by 35% //
-// Increase Sleep by 10% //
+<< removeFromGauge food 35 >>
+<< addToGauge sleep 10 >>
 
 [[Ouf, ça c'est fait, et maintenant ?|Que_Faire]]
 ===
@@ -237,7 +241,7 @@ position: 144,845
 Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota, c'est qu'elle vous attendait. Vous réactivez sa carte-son HD 4K. Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête à vous écouter. On dirait que la star de la soirée, c'est vous, à vous de le prouver, à vous de jouer !
 Vous repartez dans un concert solo d'improvisation, où les riffs électriques et les accords cybermétalliques s'accordent pour composer une symphonie post-électronique. C'est à nouveau un show d'enfer ! Vous êtes applaudi, encore et encore. Au point où vous accordez à votre public un morceau bonus.
 
-//Decrease Sleep by 20%//
+<< removeFromGauge sleep 20 >>
 
 [[Comment faire encore plus fort ?|Que_Faire]]
 ===

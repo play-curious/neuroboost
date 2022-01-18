@@ -82,6 +82,10 @@ export class DialogScene extends entity.CompositeEntity {
       }
       return true;
     });
+    this._runner.registerFunction("getGauge", (data: any, value:number) => {
+      
+      return 100;
+    });
     this._runner.load(this.entityConfig.jsonAssets[this.scriptName]);
 
     // Advance the dialogue manually from the node titled 'Start'
@@ -303,6 +307,31 @@ export class DialogScene extends entity.CompositeEntity {
 
   showClock() {
     this._clock.hidden = false;
+  }
+
+  setGauge<VarName extends keyof variable.Gauges>(
+    gaugeName: VarName,
+    value: variable.Gauges[VarName]
+  ) {
+    this._variableStorage.set(gaugeName, value);
+  }
+
+  addToGauge<VarName extends keyof variable.Gauges>(
+    gaugeName: VarName,
+    value: variable.Gauges[VarName]
+  ) {
+    let oldValue = this._variableStorage.get(gaugeName);
+    const newValue = Math.min(Number(oldValue) + Number(value), 100);
+    this._variableStorage.set(gaugeName, `${newValue}`);
+  }
+
+  removeFromGauge<VarName extends keyof variable.Gauges>(
+    gaugeName: VarName,
+    value: variable.Gauges[VarName]
+  ) {
+    let oldValue = this._variableStorage.get(gaugeName);
+    const newValue = Math.max(Number(oldValue) - Number(value), 0);
+    this._variableStorage.set(gaugeName, `${newValue}`);
   }
 
   music(musicName: string) {
