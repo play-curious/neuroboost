@@ -205,7 +205,6 @@ You: Heuuuu...
 << advanceTime 0:15 >>
 
 Fred s'apprête à vous répondre quand la sonnerie retentit.
-<< fx AlarmClock_LOOP >>
 Les résultats du test viennent de tomber...
 
 [[Consulter les résultats|Resultats_Bad]]

@@ -166,7 +166,13 @@ export class Graphics extends entity.CompositeEntity {
         this._dialogSpeaker.y + this._dialogSpeaker.height / 2
       );
       speakerText.anchor.set(0.5);
-      this._nodeDisplay.addChild(speakerText);
+      this._nodeDisplay.addChild(
+        this.$.text(speaker.toLowerCase() === "you" ? name : speaker, {
+          fontFamily: "Jura",
+          fontSize: 50,
+          fill: "white",
+        })
+      );
 
       const speakerLow = speaker.toLowerCase();
       if (

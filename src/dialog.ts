@@ -156,6 +156,7 @@ export class DialogScene extends entity.CompositeEntity {
       nodeValue.options,
       (id) => {
         nodeValue.select(id);
+        this._entityConfig.fxMachine.play("Click");
         this._advance();
       },
       this._hasTag(nodeValue.data, "subchoice")
@@ -163,6 +164,7 @@ export class DialogScene extends entity.CompositeEntity {
             this._nodeIterator = this._runner.run(
               _.last(this._previousNodeDatas).title
             );
+            this._entityConfig.fxMachine.play("Click");
             this._advance();
           }
         : undefined
@@ -190,6 +192,7 @@ export class DialogScene extends entity.CompositeEntity {
   private _handleFreechoice(freechoice: string, nodeValue: ChoiceNode) {
     this._graphics.setFreechoice(nodeValue.options, (id) => {
       nodeValue.select(id);
+      this._entityConfig.fxMachine.play("Click");
       this._advance();
     });
   }

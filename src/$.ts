@@ -34,5 +34,16 @@ export default function $(ctx: entity.EntityBase) {
 
       return sprite;
     },
+    text(
+      text: string,
+      styles: Partial<PIXI.TextStyle> & { fontFamily: "Ubuntu" | "Jura" },
+      edit?: (it: PIXI.Text) => unknown
+    ): PIXI.Text {
+      const pixiText = new PIXI.Text(text, styles);
+
+      edit?.(pixiText);
+
+      return pixiText;
+    },
   };
 }
