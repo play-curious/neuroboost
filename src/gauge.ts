@@ -20,7 +20,7 @@ export class Gauge extends entity.CompositeEntity {
 
   constructor(private _position: PIXI.Point, private _image: PIXI.Sprite) {
     super();
-    this._radius = _image.width / 2;
+    this._radius = (_image.width > _image.height ? _image.width : _image.height) / 2;
   }
 
   _setup() {
