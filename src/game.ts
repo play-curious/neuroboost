@@ -53,7 +53,7 @@ _runner.setVariableStorage(_variableStorage);
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
 const statesName = [
-  "azul",
+  "temde",
   "D1_level1",
   "D1_level2",
   "D2_level1"
@@ -206,47 +206,75 @@ const graphicalAssets = [
 
   // Temde
   "images/characters/temde/base.json",
-  "images/characters/temde/base_cheerful.json",
-  "images/characters/temde/base_sad.json",
-  "images/characters/temde/base_smiling.json",
-  "images/characters/temde/base_thinking.json",
+  "images/characters/temde/static_cheerful.json",
+  "images/characters/temde/static_neutral.json",
+  "images/characters/temde/static_sad.json",
+  "images/characters/temde/static_smiling.json",
+  "images/characters/temde/static_thinking.json",
+  // "images/characters/temde/base_cheerful.json",
+  // "images/characters/temde/base_sad.json",
+  // "images/characters/temde/base_smiling.json",
+  // "images/characters/temde/base_thinking.json",
 
-  "images/characters/temde/arms_sad.json",
-  "images/characters/temde/arms_thinking.json",
-  "images/characters/temde/cheveuxYeux_a.json",
-  "images/characters/temde/dress_a.json",
-  "images/characters/temde/foulard_a.json",
+  // "images/characters/temde/arms_sad.json",
+  // "images/characters/temde/arms_thinking.json",
+  // "images/characters/temde/cheveuxYeux_a.json",
+  // "images/characters/temde/dress_a.json",
+  // "images/characters/temde/foulard_a.json",
 
   // Sapiens
   "images/characters/sapiens/base.json",
-  "images/characters/sapiens/base_angry.json",
-  "images/characters/sapiens/base_concerned.json",
-  "images/characters/sapiens/base_smiling.json",
-  "images/characters/sapiens/base_thinking.json",
+  "images/characters/sapiens/static_angry.json",
+  "images/characters/sapiens/static_concerned.json",
+  "images/characters/sapiens/static_neutral.json",
+  "images/characters/sapiens/static_smiling.json",
+  "images/characters/sapiens/static_thinking.json",
+  // "images/characters/sapiens/base_angry.json",
+  // "images/characters/sapiens/base_concerned.json",
+  // "images/characters/sapiens/base_smiling.json",
+  // "images/characters/sapiens/base_thinking.json",
   
-  "images/characters/sapiens/brain_a.json",
-  "images/characters/sapiens/eyes_a.json",
-  "images/characters/sapiens/eyes_b.json",
-  "images/characters/sapiens/eyes_c.json",
-  "images/characters/sapiens/sleeves_a.json",
-  "images/characters/sapiens/sleeves_c.json",
+  // "images/characters/sapiens/brain_a.json",
+  // "images/characters/sapiens/eyes_a.json",
+  // "images/characters/sapiens/eyes_b.json",
+  // "images/characters/sapiens/eyes_c.json",
+  // "images/characters/sapiens/sleeves_a.json",
+  // "images/characters/sapiens/sleeves_c.json",
 
   // Azul
   "images/characters/azul/base.json",
-  "images/characters/azul/base_cheerful.json",
-  "images/characters/azul/base_happy.json",
-  "images/characters/azul/base_proud.json",
-  "images/characters/azul/base_sad.json",
+  "images/characters/azul/static_cheerful.json",
+  "images/characters/azul/static_happy.json",
+  "images/characters/azul/static_neutral.json",
+  "images/characters/azul/static_proud.json",
+  "images/characters/azul/static_sad.json",
+  // "images/characters/azul/base_cheerful.json",
+  // "images/characters/azul/base_happy.json",
+  // "images/characters/azul/base_proud.json",
+  // "images/characters/azul/base_sad.json",
 
-  "images/characters/azul/hairs_b.json",
-  "images/characters/azul/pants_b.json",
-  "images/characters/azul/sleeves_b.json",
-  "images/characters/azul/sleeves_c.json",
-  "images/characters/azul/sleeves_d.json",
-  "images/characters/azul/sleeves_e.json",
+  // "images/characters/azul/hairs_b.json",
+  // "images/characters/azul/pants_b.json",
+  // "images/characters/azul/sleeves_b.json",
+  // "images/characters/azul/sleeves_c.json",
+  // "images/characters/azul/sleeves_d.json",
+  // "images/characters/azul/sleeves_e.json",
 
-  // Others
-  "images/characters/ledai/static.png",
+  // Ledai
+  "images/characters/ledai/base.json",
+  "images/characters/ledai/static_doubtful.json",
+  "images/characters/ledai/static_explaining.json",
+  "images/characters/ledai/static_happy.json",
+  "images/characters/ledai/static_neutral.json",
+  // "images/characters/ledai/base_explaining.json",
+  // "images/characters/ledai/base_happy.json",
+  // "images/characters/ledai/base_doubtful.json",
+
+  // "images/characters/ledai/cape_a.json",
+  // "images/characters/ledai/collar_b.json",
+  // "images/characters/ledai/dress_a.json",
+  // "images/characters/ledai/eyes_c.json",
+
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];

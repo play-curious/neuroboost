@@ -1,7 +1,15 @@
 {
-    "cheerful": [
+    "doubtful": [
         {
-            "model": "static_cheerful",
+            "model": "static_doubtful",
+            "x": 960,
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "explaining": [
+        {
+            "model": "static_explaining",
             "x": 960,
             "y": 540,
             "scale": 0.6
@@ -18,22 +26,6 @@
     "neutral": [
         {
             "model": "static_neutral",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "proud": [
-        {
-            "model": "static_proud",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "sad": [
-        {
-            "model": "static_sad",
             "x": 960,
             "y": 540,
             "scale": 0.6

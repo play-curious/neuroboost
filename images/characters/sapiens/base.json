@@ -1,81 +1,43 @@
 {
     "angry": [
         {
-            "model": "base_angry",
+            "model": "static_angry",
             "x": 960,
-            "y": 560
-        },
-        {
-            "model": "brain_a",
-            "x": 960,
-            "y": 239
-        },
-        {
-            "model": "eyes_b",
-            "x": 947,
-            "y": 360
-        },
-        {
-            "model": "sleeves_a",
-            "x": 964,
-            "y": 647
+            "y": 540,
+            "scale": 0.6
         }
     ],
     "concerned": [
         {
-            "model": "base_concerned",
+            "model": "static_concerned",
             "x": 960,
-            "y": 550
-        },
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "neutral": [
         {
-            "model": "brain_a",
+            "model": "static_neutral",
             "x": 960,
-            "y": 239
-        },
-        {
-            "model": "eyes_c",
-            "x": 955,
-            "y": 363
-        },
-        {
-            "model": "sleeves_c",
-            "x": 976,
-            "y": 742
+            "y": 540,
+            "scale": 0.6
         }
     ],
     "smiling": [
         {
-            "model": "base_smiling",
+            "model": "static_smiling",
             "x": 960,
-            "y": 550
-        },
-        {
-            "model": "brain_a",
-            "x": 960,
-            "y": 239
-        },
-        {
-            "model": "eyes_c",
-            "x": 955,
-            "y": 363
-        },
-        {
-            "model": "sleeves_c",
-            "x": 976,
-            "y": 742
+            "y": 540,
+            "scale": 0.6
         }
     ],
     "thinking": [
         {
-            "model": "base_thinking",
+            "model": "static_thinking",
             "x": 960,
-            "y": 560
-        },
-        {
-            "model": "brain_a",
-            "x": 960,
-            "y": 239
+            "y": 540,
+            "scale": 0.6
         }
     ],
-    "default": "angry"
+    "default": "smiling"
 }

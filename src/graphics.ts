@@ -580,7 +580,8 @@ export class Graphics extends entity.CompositeEntity {
             this._entityConfig.app.loader.resources,
             `${baseDir}/${bodyPart.model}.json`
           )
-        ) {
+        )
+        {
           const animatedSpriteEntity = util.makeAnimatedSprite(
             this._entityConfig.app.loader.resources[
               `${baseDir}/${bodyPart.model}.json`
@@ -589,6 +590,11 @@ export class Graphics extends entity.CompositeEntity {
           animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
           animatedSpriteEntity.sprite.x = bodyPart.x;
           animatedSpriteEntity.sprite.y = bodyPart.y;
+
+          if(_.has(bodyPart, "scale")) {
+            animatedSpriteEntity.sprite.scale.set(bodyPart.scale, bodyPart.scale);
+            console.log(bodyPart.scale);
+          }
 
           animatedSpriteEntity.sprite.animationSpeed = 0.33;
           this._characterEntity.addChildEntity(animatedSpriteEntity);
@@ -599,30 +605,8 @@ export class Graphics extends entity.CompositeEntity {
 
       // Place character on screen
       this._characterLayer.addChild(characterContainer);
-      //characterContainer.setTransform(250, 80, 1.1, 1.1);
-      characterContainer.setTransform(0, 0, 1, 1);
-        
-
-      // // Static textures
-      // else if (
-      //   _.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")
-      // ) {
-      //   // Base
-      //   const baseSprite = new PIXI.Sprite(
-      //     this.entityConfig.app.loader.resources[
-      //       baseDir + "/static.png"
-      //     ].texture
-      //   );
-
-      //   characterContainer.addChild(baseSprite);
-
-      //   // Place character on screen
-      //   this._characterLayer.addChild(characterContainer);
-      //   characterContainer.setTransform(0, 0, 1, 1);
-      // } else {
-      //   console.warn("Missing asset for character", character);
-      //   return;
-      // }
+      characterContainer.setTransform(250, 80, 1.1, 1.1);
+      //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
     }
 
     this._lastCharacter = character;
