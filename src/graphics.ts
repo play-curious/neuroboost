@@ -227,23 +227,38 @@ export class Graphics extends entity.CompositeEntity {
 
       const baseText = (dialog || interpolatedText).trim();
 
-      const accelerate = () => {
-        if (defilement.isSetup) this._deactivateChildEntity(defilement);
-      };
+      const typeWriterSfx = new entity.EntitySequence(
+        [
+          new entity.FunctionCallEntity(() => {
+            console.log("start FX");
+            this._entityConfig.fxMachine.play("Dialog_TypeWriter_LOOP");
+          }),
+          new entity.WaitingEntity(250),
+        ],
+        { loop: true }
+      );
 
       const defilement = new tween.Tween({
         from: 1,
         to: baseText.length,
         duration: baseText.length * defilementDurationPerLetter,
+        onSetup: () => {
+          this._activateChildEntity(typeWriterSfx);
+        },
         onUpdate: (value) => {
           dialogBox.text = baseText.slice(0, Math.round(value));
         },
         onTeardown: () => {
           dialogBox.text = baseText;
+          this._deactivateChildEntity(typeWriterSfx);
           this._off(hitBox, "pointerup", accelerate);
           this._on(hitBox, "pointerup", onBoxClick);
         },
       });
+
+      const accelerate = () => {
+        if (defilement.isSetup) this._deactivateChildEntity(defilement);
+      };
 
       this._activateChildEntity(defilement);
 
@@ -396,12 +411,17 @@ export class Graphics extends entity.CompositeEntity {
       freechoicesFound++;
 
       let highlight: PIXI.Sprite;
-      if(_.has(this.entityConfig.app.loader.resources, `images/ui/highlights/${jsonValue}.png`)){
+      if (
+        _.has(
+          this.entityConfig.app.loader.resources,
+          `images/ui/highlights/${jsonValue}.png`
+        )
+      ) {
         highlight = new PIXI.Sprite(
           this.entityConfig.app.loader.resources[
             `images/ui/highlights/${jsonValue}.png`
           ].texture
-        )
+        );
         highlight.alpha = 0;
         this._nodeDisplay.addChild(highlight);
       } else continue;
@@ -568,10 +588,10 @@ export class Graphics extends entity.CompositeEntity {
       );
 
       const baseDir = `images/characters/${character}`;
-      
-      let baseJson = this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
-      if(!_.has(baseJson, mood))
-        mood = baseJson["default"];
+
+      let baseJson =
+        this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
+      if (!_.has(baseJson, mood)) mood = baseJson["default"];
 
       // Load animations JSON
       for (const bodyPart of baseJson[mood]) {

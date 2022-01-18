@@ -304,4 +304,12 @@ export class DialogScene extends entity.CompositeEntity {
   showClock() {
     this._clock.hidden = false;
   }
+
+  music(musicName: string) {
+    this._entityConfig.jukebox.play(musicName);
+  }
+
+  sfx(sfxName: string) {
+    this._entityConfig.fxMachine.play(sfxName);
+  }
 }
