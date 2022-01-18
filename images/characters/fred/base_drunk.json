@@ -1,0 +1,20 @@
+{"frames": {
+
+"base_drunk.png":
+{
+	"frame": {"x":1,"y":1,"w":426,"h":1039},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":41,"w":426,"h":1039},
+	"sourceSize": {"w":487,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "base_drunk.png",
+	"format": "RGBA8888",
+	"size": {"w":428,"h":1041},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:91d002ad483fbd5a3bf9a823219c4b00:92bc5530f57ea02fbba03af85bc7b2a2:a8d756ad06c997a0071aa32e95772b46$"
+}
+}

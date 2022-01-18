@@ -1,0 +1,20 @@
+{"frames": {
+
+"base_thinking.png":
+{
+	"frame": {"x":1,"y":1,"w":427,"h":1069},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":5,"w":427,"h":1069},
+	"sourceSize": {"w":501,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "base_thinking.png",
+	"format": "RGBA8888",
+	"size": {"w":429,"h":1071},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ada4ca0d120810f0561a254d4a9a72b5:066a220151b226cf1879e92f427318d4:d7035484f206d3672ca8eb8de6cf3c62$"
+}
+}

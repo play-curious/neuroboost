@@ -577,63 +577,40 @@ export class Graphics extends entity.CompositeEntity {
         this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
       if (!_.has(baseJson, mood)) mood = baseJson["default"];
 
-      const basePng = (baseDir + `/base_${mood}.png`) as `images/${string}.png`;
-
-      // Moving textures
-      if (_.has(this.entityConfig.app.loader.resources, basePng)) {
-        // Base
-        characterContainer.addChild(
-          this.$.sprite(basePng, (it) => {
-            it.anchor.set(0);
-            it.pivot.set((it.width - 1920) / 2, (it.height - 1080) / 2);
-          })
-        );
-
-        // Load animations JSON
-        for (const bodyPart of baseJson[mood]) {
-          if (
-            _.has(
-              this._entityConfig.app.loader.resources,
+      // Load animations JSON
+      for (const bodyPart of baseJson[mood]) {
+        if (
+          _.has(
+            this._entityConfig.app.loader.resources,
+            `${baseDir}/${bodyPart.model}.json`
+          )
+        )
+        {
+          const animatedSpriteEntity = util.makeAnimatedSprite(
+            this._entityConfig.app.loader.resources[
               `${baseDir}/${bodyPart.model}.json`
-            )
-          ) {
-            const animatedSpriteEntity = util.makeAnimatedSprite(
-              this._entityConfig.app.loader.resources[
-                `${baseDir}/${bodyPart.model}.json`
-              ]
-            );
-            animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
-            animatedSpriteEntity.sprite.x = bodyPart.x;
-            animatedSpriteEntity.sprite.y = bodyPart.y;
+            ]
+          );
+          animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
+          animatedSpriteEntity.sprite.x = bodyPart.x;
+          animatedSpriteEntity.sprite.y = bodyPart.y;
 
-            animatedSpriteEntity.sprite.animationSpeed = 0.33;
-            this._characterEntity.addChildEntity(animatedSpriteEntity);
-          } else {
-            console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
+          if(_.has(bodyPart, "scale")) {
+            animatedSpriteEntity.sprite.scale.set(bodyPart.scale, bodyPart.scale);
+            console.log(bodyPart.scale);
           }
+
+          animatedSpriteEntity.sprite.animationSpeed = 0.33;
+          this._characterEntity.addChildEntity(animatedSpriteEntity);
+        } else {
+          console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
         }
-
-        // Place character on screen
-        this._characterLayer.addChild(characterContainer);
-        characterContainer.setTransform(250, 80, 1.1, 1.1);
       }
 
-      // Static textures
-      else if (
-        _.has(this.entityConfig.app.loader.resources, baseDir + "/static.png")
-      ) {
-        // Base
-        characterContainer.addChild(
-          this.$.sprite((baseDir + "/static.png") as `images/${string}.png`)
-        );
-
-        // Place character on screen
-        this._characterLayer.addChild(characterContainer);
-        characterContainer.setTransform(0, 0, 1, 1);
-      } else {
-        console.warn("Missing asset for character", character);
-        return;
-      }
+      // Place character on screen
+      this._characterLayer.addChild(characterContainer);
+      characterContainer.setTransform(250, 80, 1.1, 1.1);
+      //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
     }
 
     this._lastCharacter = character;

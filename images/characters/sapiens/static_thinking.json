@@ -1,0 +1,20 @@
+{"frames": {
+
+"sapiens_thinking.png":
+{
+	"frame": {"x":1,"y":1,"w":743,"h":1664},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":115,"y":99,"w":743,"h":1664},
+	"sourceSize": {"w":990,"h":1799}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "static_thinking.png",
+	"format": "RGBA8888",
+	"size": {"w":745,"h":1666},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9562d1185950067b3f0b00774d8fb179:8a2f89a63b79b66ab208359f13531a97:00a3c07f0b1df153a64d7e11ca82b399$"
+}
+}
