@@ -389,4 +389,16 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     this._graphics.fade(color, IN === "true", OUT === "true", Number(duration));
   }
+
+  fadeIn(hexColor: string, duration: `${number}`) {
+    const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
+
+    this._graphics.fadeIn(color, Number(duration));
+  }
+
+  fadeOut(hexColor: string, duration: `${number}`) {
+    const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
+
+    this._graphics.fadeOut(color, Number(duration));
+  }
 }

@@ -20,6 +20,7 @@ const templateSettings = {
 const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
+  private _fade: PIXI.Graphics;
   private _lastBg: string;
   private _lastCharacter: string;
   private _lastMood: string;
@@ -92,6 +93,13 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       );
       this._gauges[_gauge].getGauge().visible = false;
     }
+
+    this._fade = new PIXI.Graphics()
+      .beginFill(0xffffff)
+      .drawRect(0, 0, 1920, 1080)
+      .endFill();
+    this._fade.alpha = 0;
+    this._fxLayer.addChild(this._fade);
   }
 
   public getGaugeValue(name: string): number {
@@ -657,37 +665,79 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public fade(color: string, IN: boolean, OUT: boolean, duration: number) {
-    const graphics = new PIXI.Graphics()
-      .beginFill(eval(color.replace("#", "0x")))
-      .drawRect(0, 0, 1920, 1080)
-      .endFill();
+    this._fade.tint = eval(color.replace("#", "0x"));
 
-    const fx = new entity.EntitySequence([
-      new entity.FunctionCallEntity(() => {
-        graphics.alpha = 0;
-        this._fxLayer.addChild(graphics);
-      }),
-      new tween.Tween({
-        duration: IN && OUT ? duration / 2 : IN ? duration : 0,
-        from: 0,
-        to: 1,
-        onUpdate: (value) => {
-          graphics.alpha = value;
-        },
-      }),
-      new tween.Tween({
-        duration: IN && OUT ? duration / 2 : OUT ? duration : 0,
-        from: 1,
-        to: 0,
-        onUpdate: (value) => {
-          graphics.alpha = value;
-        },
-      }),
-      new entity.FunctionCallEntity(() => {
-        this._fxLayer.removeChild(graphics);
-      }),
-    ]);
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 0;
+        }),
+        new tween.Tween({
+          duration: IN && OUT ? duration / 2 : IN ? duration : 0,
+          from: 0,
+          to: 1,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new tween.Tween({
+          duration: IN && OUT ? duration / 2 : OUT ? duration : 0,
+          from: 1,
+          to: 0,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 0;
+        }),
+      ])
+    );
+  }
 
-    this._activateChildEntity(fx);
+  fadeIn(color: string, duration: number) {
+    this._fade.tint = eval(color.replace("#", "0x"));
+
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 0;
+        }),
+        new tween.Tween({
+          duration: duration,
+          from: 0,
+          to: 1,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 1;
+        }),
+      ])
+    );
+  }
+
+  fadeOut(color: string, duration: number) {
+    this._fade.tint = eval(color.replace("#", "0x"));
+
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 1;
+        }),
+        new tween.Tween({
+          duration: duration,
+          from: 1,
+          to: 0,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 0;
+        }),
+      ])
+    );
   }
 }

@@ -297,7 +297,9 @@ You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me la
 Temde: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
 Miss Temdé lève la paume d'une de ses mains cybernétique, un rayon en jaillit et vous englobe de sa lumière vert phosphorescente...
 
-<<fade 12ea12 true true 5000 >>
+<<fadeIn 12ea12 2000 >>
+
+You: <i>Wow...</i>
 
 [[Assemblee_Sages]]
 ===
@@ -305,6 +307,8 @@ title: Assemblee_Sages
 tags: bg:circle autoshow
 position: -562.1727294921875,1164.6718139648438
 ---
+<<fadeOut 12ea12 2000>>
+
 L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes.
 Temde: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }.
 You: Mais....
