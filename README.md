@@ -1,10 +1,10 @@
-## Polytech Game
+# Polytech Game
 
-### Installation
+## Installation
 
 Use `yarn` to install dependencies
 
-### Development
+## Development
 
 Compile YarnSpinner scripts with `gulp`
 
@@ -18,7 +18,7 @@ Build for production with `yarn dist`
 
 TODO
 
-### Notes
+## Notes
 
 - To add YarnSpinner custom command, place it as method of DialogScene class in `src/dialog.ts`
 - To add YarnSpinner custom variable, add it to Variables interface in `src/variable.ts`

@@ -2,8 +2,6 @@ import * as PIXI from "pixi.js";
 import '@pixi/graphics-extras';
 
 import * as entity from "booyah/src/entity";
-import * as tween from "booyah/src/tween";
-import * as easing from "booyah/src/easing";
 
 enum GaugeColor {
   Grey    = 0x777777,
