@@ -76,10 +76,11 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
 << else>>
 [[Cuisine@cuisine|cuisine_subchoice]]
 [[Bureau@bureau|bureau_subchoice]]
-[[Lit@lit|salon_subchoice]]
 [[Salon@salon|salon_subchoice]]
 << endif>>
 ===
+
+
 
 title: cuisine_subchoice
 tags: bg:kitchen subchoice
@@ -99,6 +100,9 @@ tags: bg:bedroom subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
 [[Binger votre série TV préférée|BingeTV]]
+
+
+
 ===
 title: Petit_dej
 tags: bg:kitchen
