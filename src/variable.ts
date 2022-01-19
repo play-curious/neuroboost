@@ -24,6 +24,14 @@ export class VariableStorage extends PIXI.utils.EventEmitter {
     super();
   }
 
+  listen<VarName extends keyof Variables>(
+    event: "change" | `change:${VarName}`,
+    fn: (value: Variables[VarName]) => unknown
+  ): this {
+    this.on(event, fn);
+    return this;
+  }
+
   set<VarName extends keyof Variables>(
     name: VarName,
     value: Variables[VarName]

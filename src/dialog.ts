@@ -1,16 +1,14 @@
 import * as _ from "underscore";
 
 import * as PIXI from "pixi.js";
+
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
-import * as util from "booyah/src/util";
 
 import * as clock from "./clock";
 import * as variable from "./variable";
-
 import * as graphics from "./graphics";
-
-import $ from "./$";
+import * as extension from "./extension";
 
 // Bondage is loaded as a global variable
 declare const bondage: any;
@@ -37,9 +35,7 @@ interface ChoiceNode {
 
 type Node = TextNode | ChoiceNode;
 
-export class DialogScene extends entity.CompositeEntity {
-  private $ = $(this);
-
+export class DialogScene extends extension.ExtendedCompositeEntity {
   private _nodeIterator: any;
   private _nodeValue: Node;
   private _lastNodeData: NodeData;
@@ -67,7 +63,7 @@ export class DialogScene extends entity.CompositeEntity {
     this._graphics = new graphics.Graphics(this._variableStorage.data);
     this._activateChildEntity(
       this._graphics,
-      entity.extendConfig({ container: this.$.config().container })
+      entity.extendConfig({ container: this.config.container })
     );
 
     // Setup clock
@@ -159,7 +155,7 @@ export class DialogScene extends entity.CompositeEntity {
       nodeValue.options,
       (id) => {
         nodeValue.select(id);
-        this.$.config().fxMachine.play("Click");
+        this.config.fxMachine.play("Click");
         this._advance();
       },
       this._hasTag(nodeValue.data, "subchoice")
@@ -167,7 +163,7 @@ export class DialogScene extends entity.CompositeEntity {
             this._nodeIterator = this._runner.run(
               _.last(this._previousNodeDatas).title
             );
-            this.$.config().fxMachine.play("Click");
+            this.config.fxMachine.play("Click");
             this._advance();
           }
         : undefined
@@ -195,7 +191,7 @@ export class DialogScene extends entity.CompositeEntity {
   private _handleFreechoice(freechoice: string, nodeValue: ChoiceNode) {
     this._graphics.setFreechoice(nodeValue.options, (id) => {
       nodeValue.select(id);
-      this.$.config().fxMachine.play("Click");
+      this.config.fxMachine.play("Click");
       this._advance();
     });
   }
@@ -342,11 +338,11 @@ export class DialogScene extends entity.CompositeEntity {
   }
 
   music(musicName: string) {
-    this.$.config().jukebox.play(musicName);
+    this.config.jukebox.play(musicName);
   }
 
   fx(fxName: string) {
-    this.$.config().fxMachine.play(fxName);
+    this.config.fxMachine.play(fxName);
   }
 
   loopFX(fxName: `${string}_LOOP`, loopDuration: `${number}`) {
@@ -356,7 +352,7 @@ export class DialogScene extends entity.CompositeEntity {
     if (loops.has(fxName))
       return console.warn(`${fxName} fx is already activated`);
 
-    const loop = this.$.loopFX(fxName, duration);
+    const loop = this.makeFxLoop(fxName, duration);
 
     this._activateChildEntity(loop);
 

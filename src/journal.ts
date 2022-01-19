@@ -3,8 +3,7 @@ import * as PIXI from "pixi.js";
 import * as entity from "booyah/src/entity";
 
 import * as variable from "./variable";
-
-import $ from "./$";
+import * as extension from "./extension";
 
 const options = [
   "Rappel libre",
@@ -14,8 +13,7 @@ const options = [
   "Faire des exercices",
 ];
 
-export class JournalScene extends entity.CompositeEntity {
-  private $ = $(this);
+export class JournalScene extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
   private _htmlContainer: HTMLElement;
 
@@ -25,11 +23,11 @@ export class JournalScene extends entity.CompositeEntity {
 
   _setup(): void {
     this._container = new PIXI.Container();
-    this.$.config().container.addChild(this._container);
+    this.config.container.addChild(this._container);
 
     this._container.addChild(
-      this.$.sprite("images/bg/bedroom_night/base.png"),
-      this.$.sprite("images/ui/journal_bg.png")
+      this.makeSprite("images/bg/bedroom_night/base.png"),
+      this.makeSprite("images/ui/journal_bg.png")
     );
 
     const htmlLayer = document.getElementById("html-layer");
@@ -91,7 +89,7 @@ export class JournalScene extends entity.CompositeEntity {
       rightElements.appendChild(textArea);
 
       this._container.addChild(
-        this.$.sprite("images/ui/journal_button.png", (it) => {
+        this.makeSprite("images/ui/journal_button.png", (it) => {
           it.anchor.set(1, 0);
           it.position.set(1750, 720);
           it.interactive = true;
@@ -108,7 +106,7 @@ export class JournalScene extends entity.CompositeEntity {
   }
 
   _teardown() {
-    this.$.config().container.removeChild(this._container);
+    this.config.container.removeChild(this._container);
     this._htmlContainer.remove();
   }
 }
