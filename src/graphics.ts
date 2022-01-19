@@ -214,8 +214,9 @@ export class Graphics extends entity.CompositeEntity {
         )
       );
 
-      if (autoShow && speaker.toLowerCase() !== "you") {
-        this.addCharacter(speaker.toLowerCase(), mood?.toLowerCase());
+      const speakerLC = speaker.toLowerCase();
+      if ( (autoShow && speakerLC !== "you") || (speakerLC === this._lastCharacter && mood !== this._lastMood) ) {
+        this.addCharacter(speakerLC, mood?.toLowerCase());
       }
     } else {
       this._dialogSpeaker.visible = false;
@@ -583,26 +584,32 @@ export class Graphics extends entity.CompositeEntity {
   /**
    * 
    */
-  public removeCharacters() {
+  public removeCharacters(withAnimation: boolean = true) {
 
     for(const [id, character] of this._characters) {
       this._characters.delete(id);
 
-      this._activateChildEntity(
-        new tween.Tween({
-          duration: 800,
-          easing: easing.easeOutQuint,
-          from: 250,
-          to: 1250,
-          onUpdate: (value) => {
-            character.container.position.x = value;
-          },
-          onTeardown: () => {
-            this._characterLayer.removeChild(character.container);
-            // this._deactivateChildEntity(character.entity);
-          }
-        })
-      );
+      if(withAnimation) {
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 800,
+            easing: easing.easeOutQuint,
+            from: 250,
+            to: 1250,
+            onUpdate: (value) => {
+              character.container.position.x = value;
+            },
+            onTeardown: () => {
+              this._characterLayer.removeChild(character.container);
+              // this._deactivateChildEntity(character.entity);
+            }
+          })
+        );
+      }
+      else {
+        this._characterLayer.removeChild(character.container);
+      }
+      
     }
   }
 
@@ -616,10 +623,11 @@ export class Graphics extends entity.CompositeEntity {
 
     if (character === this._lastCharacter && mood === this._lastMood) return;
 
+    const characterChanged = character !== this._lastCharacter;
     this._lastCharacter = character;
     this._lastMood = mood;
 
-    this.removeCharacters();
+    this.removeCharacters(characterChanged);
 
     if (character && character !== "you") {
       const characterCE = {
@@ -675,17 +683,19 @@ export class Graphics extends entity.CompositeEntity {
       characterCE.container.setTransform(250, 80, 1.1, 1.1);
       //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
 
-      this._activateChildEntity(
-        new tween.Tween({
-          duration: 800,
-          easing: easing.easeOutQuint,
-          from: 1250,
-          to: 250,
-          onUpdate: (value) => {
-            characterCE.container.position.x = value;
-          }
-        })
-      );
+      if(characterChanged) {
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 800,
+            easing: easing.easeOutQuint,
+            from: 1250,
+            to: 250,
+            onUpdate: (value) => {
+              characterCE.container.position.x = value;
+            }
+          })
+        );
+      }
     }
   }
 }
