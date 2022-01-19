@@ -6,4 +6,4 @@ package-lock.json
 .idea/
 text/
 dist/
-text_src/documentation.txt
+text_src/documentation.md
