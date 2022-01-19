@@ -86,6 +86,9 @@ export class DialogScene extends entity.CompositeEntity {
       }
       return true;
     });
+    this._runner.registerFunction("getGauge", (data: any, gauge:string) => {
+      return this._graphics.getGaugeValue(gauge);
+    });
     this._runner.load(this.entityConfig.jsonAssets[this.scriptName]);
 
     // Advance the dialogue manually from the node titled 'Start'
@@ -312,6 +315,31 @@ export class DialogScene extends entity.CompositeEntity {
     this._clock.hidden = false;
   }
 
+  setGauge<VarName extends keyof variable.Gauges>(
+    gaugeName: VarName,
+    value: variable.Gauges[VarName]
+  ) {
+    this._variableStorage.set(gaugeName, value);
+  }
+
+  addToGauge<VarName extends keyof variable.Gauges>(
+    gaugeName: VarName,
+    value: variable.Gauges[VarName]
+  ) {
+    let oldValue = this._variableStorage.get(gaugeName);
+    const newValue = Math.min(Number(oldValue) + Number(value), 100);
+    this._variableStorage.set(gaugeName, `${newValue}`);
+  }
+
+  removeFromGauge<VarName extends keyof variable.Gauges>(
+    gaugeName: VarName,
+    value: variable.Gauges[VarName]
+  ) {
+    let oldValue = this._variableStorage.get(gaugeName);
+    const newValue = Math.max(Number(oldValue) - Number(value), 0);
+    this._variableStorage.set(gaugeName, `${newValue}`);
+  }
+
   music(musicName: string) {
     this._entityConfig.jukebox.play(musicName);
   }
@@ -343,5 +371,15 @@ export class DialogScene extends entity.CompositeEntity {
     } else {
       console.warn(`${fxName} fx is already deactivated`);
     }
+  }
+
+  showGauges(...gaugesName: string[]){
+    gaugesName.pop();
+    this._graphics.toggleGauges(true, ...gaugesName);
+  }
+
+  hideGauges(...gaugesName: string[]){
+    gaugesName.pop();
+    this._graphics.toggleGauges(false, ...gaugesName);
   }
 }
