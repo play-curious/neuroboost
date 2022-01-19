@@ -2,6 +2,9 @@ import * as PIXI from "pixi.js";
 
 import * as entity from "booyah/src/entity";
 
+import * as variable from "./variable";
+import * as clock from "./clock";
+
 /**
  * Extension for add useful entity utils
  * @param ctx
@@ -45,5 +48,14 @@ export default function $(ctx: entity.EntityBase) {
 
       return pixiText;
     },
+    config(): EntityConfig {
+      return ctx.entityConfig as EntityConfig;
+    },
   };
+}
+
+interface EntityConfig extends entity.EntityConfig {
+  variableStorage: variable.VariableStorage;
+  container?: PIXI.Container;
+  clock: clock.Clock;
 }

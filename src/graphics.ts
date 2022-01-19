@@ -9,6 +9,7 @@ import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
 
 import * as variable from "./variable";
+import * as gauge from "./gauge";
 
 import $ from "./$";
 
@@ -37,6 +38,8 @@ export class Graphics extends entity.CompositeEntity {
   private _dialogSpeaker: PIXI.Container;
 
   private _nodeDisplay: PIXI.Container;
+
+  private _gauges: Record<string, gauge.Gauge>;
 
   constructor(private readonly _variableStorageData: variable.Variables) {
     super();
@@ -68,6 +71,32 @@ export class Graphics extends entity.CompositeEntity {
     this._dialogSpeaker.addChild(this.$.sprite("images/ui/dialog_speaker.png"));
     this._dialogSpeaker.position.set(202, 601);
     this._dialogLayer.addChild(this._dialogSpeaker);
+
+    this._gauges = {};
+    const gaugesList = ["sleep", "food"];
+    for (let i = 0; i < gaugesList.length; i++) {
+      const _gauge = gaugesList[i];
+      this._gauges[_gauge] = new gauge.Gauge(
+        new PIXI.Point(140 * i + 10, 0),
+        new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            `images/ui/gauges/${_gauge}.png`
+          ].texture
+        ),
+        _gauge
+      );
+      this._activateChildEntity(
+        this._gauges[_gauge],
+        entity.extendConfig({ container: this._container })
+      );
+      this._gauges[_gauge].getGauge().visible = false;
+    }
+  }
+
+  public getGaugeValue(name: string): number{
+    if(this._gauges.hasOwnProperty(name))
+      return this._gauges[name].getValue();
+    return undefined;
   }
 
   public getUi(): PIXI.Container {
@@ -99,6 +128,18 @@ export class Graphics extends entity.CompositeEntity {
   public hideNode() {
     if (this._nodeDisplay) this._container.removeChild(this._nodeDisplay);
     this._nodeDisplay = null;
+  }
+
+  public toggleGauges( visibility: boolean, ...gaugesName: string[]){
+    if(gaugesName.length === 0){
+      for(const gaugeName in this._gauges){
+        this._gauges[gaugeName].getGauge().visible = visibility;
+      }
+    } else {
+      for(const gaugeName of gaugesName){
+        this._gauges[gaugeName].getGauge().visible = visibility
+      }
+    }
   }
 
   /**
@@ -146,10 +187,8 @@ export class Graphics extends entity.CompositeEntity {
       let match = dialogRegexp.exec(interpolatedText);
 
       speaker = match[1].trim();
-      mood = match[2];
+      mood = match[2]?.trim();
       dialog = match[3].trim();
-
-      if (mood !== undefined) mood = mood.trim();
     }
 
     this._nodeDisplay = new PIXI.Container();
@@ -175,12 +214,8 @@ export class Graphics extends entity.CompositeEntity {
         )
       );
 
-      const speakerLow = speaker.toLowerCase();
-      if (
-        autoShow ||
-        (this._lastCharacter === speakerLow && this._lastMood !== mood)
-      ) {
-        this.addCharacter(speakerLow, mood);
+      if (autoShow && speaker.toLowerCase() !== "you") {
+        this.addCharacter(speaker.toLowerCase(), mood?.toLowerCase());
       }
     } else {
       this._dialogSpeaker.visible = false;
@@ -586,7 +621,7 @@ export class Graphics extends entity.CompositeEntity {
 
     this.removeCharacters();
 
-    if (character !== undefined && character !== "" && character !== "you") {
+    if (character && character !== "you") {
       const characterCE = {
         container: new PIXI.Container(),
         entity: new entity.ParallelEntity()
@@ -610,8 +645,7 @@ export class Graphics extends entity.CompositeEntity {
             this._entityConfig.app.loader.resources,
             `${baseDir}/${bodyPart.model}.json`
           )
-        )
-        {
+        ) {
           const animatedSpriteEntity = util.makeAnimatedSprite(
             this._entityConfig.app.loader.resources[
               `${baseDir}/${bodyPart.model}.json`
@@ -621,8 +655,11 @@ export class Graphics extends entity.CompositeEntity {
           animatedSpriteEntity.sprite.x = bodyPart.x;
           animatedSpriteEntity.sprite.y = bodyPart.y;
 
-          if(_.has(bodyPart, "scale")) {
-            animatedSpriteEntity.sprite.scale.set(bodyPart.scale, bodyPart.scale);
+          if (_.has(bodyPart, "scale")) {
+            animatedSpriteEntity.sprite.scale.set(
+              bodyPart.scale,
+              bodyPart.scale
+            );
             console.log(bodyPart.scale);
           }
 
