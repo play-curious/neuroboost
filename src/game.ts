@@ -46,12 +46,25 @@ const _variableStorage = new variable.VariableStorage({
   name: "Moi",
   time: "540",
   eval: "",
+  sleep: "100",
+  food: "100",
 });
 const _runner = new bondage.Runner("");
 _runner.setVariableStorage(_variableStorage);
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
-const statesName = ["D1_level1", "D1_level2", "D2_level1"];
+export function installGameDatas(rootConfig: entity.EntityConfig) {
+  rootConfig.variableStorage = _variableStorage;
+  rootConfig.runner = _runner;
+  rootConfig.clock = _clock;
+}
+
+// prettier-ignore
+const statesName = [
+//  "D1_level1",
+// "D1_level2",
+  "D2_level1"
+];
 
 const states: { [k: string]: entity.EntityResolvable } = {};
 for (const stateName of statesName) {
@@ -95,6 +108,13 @@ const graphicalAssets = [
   "images/ui/choicebox_contour_reversed.png",
   "images/ui/choicebox_empty.png",
   "images/ui/arrow_return.png",
+
+  //  - Gauges
+  "images/ui/gauges/innerDisk_green.png",
+  "images/ui/gauges/innerDisk_yellow.png",
+  "images/ui/gauges/innerDisk_red.png",
+  "images/ui/gauges/sleep.png",
+  "images/ui/gauges/food.png",
 
   // ////////////////////////////////////////////
   // Backgrounds
@@ -313,7 +333,11 @@ booyah.go({
   musicAssets,
   screenSize,
   splashScreen,
-  entityInstallers: [audio.installJukebox, audio.installFxMachine],
+  entityInstallers: [
+    audio.installJukebox,
+    audio.installFxMachine,
+    installGameDatas,
+  ],
 });
 
 // Resize now, and force the resize to happen when the window size changes

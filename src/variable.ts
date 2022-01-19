@@ -1,9 +1,14 @@
 import * as PIXI from "pixi.js";
 
-export interface Variables {
+export interface Variables extends Gauges {
   time: `${number}`;
   name: string;
   eval: string;
+}
+
+export interface Gauges {
+  sleep: `${number}`;
+  food: `${number}`;
 }
 
 /**

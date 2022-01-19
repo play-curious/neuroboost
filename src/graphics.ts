@@ -9,6 +9,7 @@ import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
 
 import * as variable from "./variable";
+import * as gauge from "./gauge";
 
 import $ from "./$";
 
@@ -38,6 +39,8 @@ export class Graphics extends entity.CompositeEntity {
 
   private _nodeDisplay: PIXI.Container;
 
+  private _gauges: Record<string, gauge.Gauge>;
+
   constructor(private readonly _variableStorageData: variable.Variables) {
     super();
   }
@@ -66,6 +69,32 @@ export class Graphics extends entity.CompositeEntity {
     this._dialogSpeaker.addChild(this.$.sprite("images/ui/dialog_speaker.png"));
     this._dialogSpeaker.position.set(202, 601);
     this._dialogLayer.addChild(this._dialogSpeaker);
+
+    this._gauges = {};
+    const gaugesList = ["sleep", "food"];
+    for (let i = 0; i < gaugesList.length; i++) {
+      const _gauge = gaugesList[i];
+      this._gauges[_gauge] = new gauge.Gauge(
+        new PIXI.Point(140 * i + 10, 0),
+        new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            `images/ui/gauges/${_gauge}.png`
+          ].texture
+        ),
+        _gauge
+      );
+      this._activateChildEntity(
+        this._gauges[_gauge],
+        entity.extendConfig({ container: this._container })
+      );
+      this._gauges[_gauge].getGauge().visible = false;
+    }
+  }
+
+  public getGaugeValue(name: string): number{
+    if(this._gauges.hasOwnProperty(name))
+      return this._gauges[name].getValue();
+    return undefined;
   }
 
   public getUi(): PIXI.Container {
@@ -97,6 +126,18 @@ export class Graphics extends entity.CompositeEntity {
   public hideNode() {
     if (this._nodeDisplay) this._container.removeChild(this._nodeDisplay);
     this._nodeDisplay = null;
+  }
+
+  public toggleGauges( visibility: boolean, ...gaugesName: string[]){
+    if(gaugesName.length === 0){
+      for(const gaugeName in this._gauges){
+        this._gauges[gaugeName].getGauge().visible = visibility;
+      }
+    } else {
+      for(const gaugeName of gaugesName){
+        this._gauges[gaugeName].getGauge().visible = visibility
+      }
+    }
   }
 
   /**
