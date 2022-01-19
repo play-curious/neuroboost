@@ -60,7 +60,7 @@ export default function $(ctx: entity.EntityBase) {
 
 interface EntityConfig extends entity.EntityConfig {
   variableStorage: variable.VariableStorage;
-  container?: PIXI.Container;
+  container: PIXI.Container;
   clock: clock.Clock;
   directives: booyah.Directives;
   app: PIXI.Application;
@@ -75,4 +75,5 @@ interface EntityConfig extends entity.EntityConfig {
   muted: boolean;
   jukebox: audio.Jukebox;
   narrator: narration.SubtitleNarrator;
+  fxMachine: audio.FxMachine;
 }

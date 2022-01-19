@@ -73,11 +73,11 @@ export class Clock extends entity.CompositeEntity {
 
     this._container.addChild(this._textBox);
 
-    this._entityConfig.container.addChild(this._container);
+    this.$.config().container.addChild(this._container);
   }
 
   _teardown() {
-    this._entityConfig.container.removeChild(this._container);
+    this.$.config().container.removeChild(this._container);
   }
 
   private _updateText() {

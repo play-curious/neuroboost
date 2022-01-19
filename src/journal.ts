@@ -25,7 +25,7 @@ export class JournalScene extends entity.CompositeEntity {
 
   _setup(): void {
     this._container = new PIXI.Container();
-    this._entityConfig.container.addChild(this._container);
+    this.$.config().container.addChild(this._container);
 
     this._container.addChild(
       this.$.sprite("images/bg/bedroom_night/base.png"),
@@ -108,7 +108,7 @@ export class JournalScene extends entity.CompositeEntity {
   }
 
   _teardown() {
-    this._entityConfig.container.removeChild(this._container);
+    this.$.config().container.removeChild(this._container);
     this._htmlContainer.remove();
   }
 }

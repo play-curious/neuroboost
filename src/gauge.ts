@@ -46,7 +46,7 @@ export class Gauge extends entity.CompositeEntity {
     this._container = new PIXI.Container();
     this._container.position.copyFrom(this._position);
     this._container.addChild(this._innerDisk, this._image, this._outerDisk);
-    this._entityConfig.container.addChild(this._container);
+    this.$.config().container.addChild(this._container);
 
     this._currentTween = {
       animation: undefined,
