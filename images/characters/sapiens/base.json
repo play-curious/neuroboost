@@ -1,0 +1,43 @@
+{
+    "angry": [
+        {
+            "model": "static_angry",
+            "x": 960,
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "concerned": [
+        {
+            "model": "static_concerned",
+            "x": 960,
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "neutral": [
+        {
+            "model": "static_neutral",
+            "x": 960,
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "smiling": [
+        {
+            "model": "static_smiling",
+            "x": 960,
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "thinking": [
+        {
+            "model": "static_thinking",
+            "x": 960,
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "default": "smiling"
+}

@@ -1,0 +1,20 @@
+{"frames": {
+
+"base_happy.png":
+{
+	"frame": {"x":1,"y":1,"w":343,"h":1037},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":43,"w":343,"h":1037},
+	"sourceSize": {"w":474,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "base_happy.png",
+	"format": "RGBA8888",
+	"size": {"w":345,"h":1039},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:cfde083070367bbb0aabd2c844b980cd:77ff6b3c0ffbb369bfd7ffbb8160a05d:4ad21823c8260cfde373f5560011df2d$"
+}
+}

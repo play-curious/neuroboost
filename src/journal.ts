@@ -1,11 +1,10 @@
-import * as _ from "underscore";
 import * as PIXI from "pixi.js";
 
-import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
-import * as util from "booyah/src/util";
 
 import * as variable from "./variable";
+
+import $ from "./$";
 
 const options = [
   "Rappel libre",
@@ -16,6 +15,7 @@ const options = [
 ];
 
 export class JournalScene extends entity.CompositeEntity {
+  private $ = $(this);
   private _container: PIXI.Container;
   private _htmlContainer: HTMLElement;
 
@@ -27,17 +27,10 @@ export class JournalScene extends entity.CompositeEntity {
     this._container = new PIXI.Container();
     this._entityConfig.container.addChild(this._container);
 
-    const bg = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources[
-        "images/bg/bedroom_night/base.png"
-      ].texture
+    this._container.addChild(
+      this.$.sprite("images/bg/bedroom_night/base.png"),
+      this.$.sprite("images/ui/journal_bg.png")
     );
-    this._container.addChild(bg);
-
-    const journalBg = new PIXI.Sprite(
-      this.entityConfig.app.loader.resources["images/ui/journal_bg.png"].texture
-    );
-    this._container.addChild(journalBg);
 
     const htmlLayer = document.getElementById("html-layer");
     this._htmlContainer = document.createElement("div");
@@ -97,21 +90,20 @@ export class JournalScene extends entity.CompositeEntity {
       textArea.style.background = "transparent";
       rightElements.appendChild(textArea);
 
-      const button = new PIXI.Sprite(
-        this.entityConfig.app.loader.resources[
-          "images/ui/journal_button.png"
-        ].texture
+      this._container.addChild(
+        this.$.sprite("images/ui/journal_button.png", (it) => {
+          it.anchor.set(1, 0);
+          it.position.set(1750, 720);
+          it.interactive = true;
+          it.buttonMode = true;
+
+          this._on(
+            it,
+            "pointerup",
+            () => (this._transition = entity.makeTransition())
+          );
+        })
       );
-      button.anchor.set(1, 0);
-      button.position.set(1750, 720);
-      button.interactive = true;
-      button.buttonMode = true;
-      this._on(
-        button,
-        "pointerup",
-        () => (this._transition = entity.makeTransition())
-      );
-      this._container.addChild(button);
     }
   }
 

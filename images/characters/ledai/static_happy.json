@@ -1,0 +1,20 @@
+{"frames": {
+
+"ledai_happy.png":
+{
+	"frame": {"x":1,"y":1,"w":671,"h":1661},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":170,"y":59,"w":671,"h":1661},
+	"sourceSize": {"w":990,"h":1799}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "static_happy.png",
+	"format": "RGBA8888",
+	"size": {"w":673,"h":1663},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:88988d9fa2e76769e85ae69257ea7342:08b4f92cf28e9a25a5a9c9c4307bcbe7:bcaf27d99eca05944b47375bdebde4e5$"
+}
+}

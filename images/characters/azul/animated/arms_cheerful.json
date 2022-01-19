@@ -1,0 +1,20 @@
+{"frames": {
+
+"arms_cheerful.png":
+{
+	"frame": {"x":1,"y":1,"w":427,"h":263},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":22,"w":427,"h":263},
+	"sourceSize": {"w":517,"h":319}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "arms_cheerful.png",
+	"format": "RGBA8888",
+	"size": {"w":429,"h":265},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c4e2648359d2c7414e89d6e9201bb2d2:9541c76a8b7057a9ec5fea30b5d5b176:da096ae1ba513df5337e1ec8f22f81ee$"
+}
+}

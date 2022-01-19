@@ -1,0 +1,20 @@
+{"frames": {
+
+"azul_sad.png":
+{
+	"frame": {"x":1,"y":1,"w":704,"h":1752},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":100,"y":47,"w":704,"h":1752},
+	"sourceSize": {"w":990,"h":1799}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "static_sad.png",
+	"format": "RGBA8888",
+	"size": {"w":706,"h":1754},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5cad4982631d989256c59206e81abcb8:fee499d68e42719d44114120b0b253ae:dd4d9bf13d922de660e3e17a7f9639bf$"
+}
+}

@@ -1,0 +1,20 @@
+{"frames": {
+
+"arms_thinking.png":
+{
+	"frame": {"x":1,"y":1,"w":159,"h":329},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":16,"w":159,"h":329},
+	"sourceSize": {"w":203,"h":364}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "arms_thinking.png",
+	"format": "RGBA8888",
+	"size": {"w":161,"h":331},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9dec466321a20633e33a6de6119802bb:975ba6cad744970883969d8f5a596cf0:be8a64f783af46a44d6d0c5b8054fe07$"
+}
+}

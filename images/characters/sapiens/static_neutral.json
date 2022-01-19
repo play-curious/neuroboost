@@ -1,0 +1,20 @@
+{"frames": {
+
+"sapiens_neutral.png":
+{
+	"frame": {"x":1,"y":1,"w":736,"h":1662},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":115,"y":100,"w":736,"h":1662},
+	"sourceSize": {"w":990,"h":1799}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "static_neutral.png",
+	"format": "RGBA8888",
+	"size": {"w":738,"h":1664},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:48003970358449476c93b8b63f8e1ea5:cd762db1cdc9c29864ca94f38e3fac1b:8a2d7a69bf71e81e13f06fb2b412bfc0$"
+}
+}

@@ -3,9 +3,13 @@ tags: bg:bedroom
 position: -1979.929937362671,-817.3228759765625
 ---
 << setTime 8:00 >>
-
+<< music Neutral >>
+<< fx AlarmClock_LOOP >>
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
+
+<< loopFX PhoneRing_LOOP 5000 >>
+
 Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler.
 
 [[Prendre l'appel|Appel_Fred]]
@@ -15,6 +19,8 @@ title: Appel_Fred
 tags: show:fred
 position: -1617.4276733398438,-825.2426147460938
 ---
+<< stopFX PhoneRing_LOOP >>
+
 Fred: Hello ! C'est Fred !
 You: Je sais, j'ai vu ton nom.
 Fred: Yes yes... Tu fais quoi là, maintenant ?
@@ -28,7 +34,8 @@ You: Facile à dire pour toi, tu révises jamais !
 Fred: C'est ça quand on est un génie.
 You: Ouais ouais...
 Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
-You: Ouais... Vous poussez un grand soupir avant de raccrocher
+You: Ouais...
+Vous poussez un grand soupir avant de raccrocher
 
 << advanceTime 0:15 >>
 
@@ -38,7 +45,10 @@ title: Rejet_Fred
 tags: 
 position: -1805.537826538086,-561.8787231445312
 ---
+<< loopFX PhoneRing_LOOP 5000 >>
+
 Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle aussitôt !
+
 [[Prendre l'appel|Appel_Fred]]
 [[Rejeter l'appel|Rejet_Fred]]
 ===
@@ -107,7 +117,8 @@ tags:
 position: -779.0828857421875,231.5269012451172
 ---
 Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. 
-Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, puis Lou, puis Cam... 
+<< fx Notification >>
+Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, puis Lou, puis Cam...
 
 << advanceTime 2:00 >>
 
@@ -132,12 +143,16 @@ tags:
 position: -1573.0745849609375,216.18408203125
 ---
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
-Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber. 
+Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
+
+<< loopFX TVStarwars_LOOP 10000 >>
+
 Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable et séduisant corsaire Yann Salto. Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. 
 Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... Vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait détruire son moteur gauche ! Il est obligé d'atterrir en catastrophe sur Tortuga.  
 Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite. 
 
 << advanceTime 4:00 >>
+<< stopFX TVStarwars_LOOP >>
 
 Vous passez 4 heures à binger votre série préférée.
 
@@ -147,6 +162,7 @@ title: Lunch
 tags: bg:kitchen
 position: -1026.218994140625,513.7423095703125
 ---
+<< fx EatCook >>
 Yum Yum... Délicieux ce Burger Big Proteins Double Cheese !
 Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant l'examen !
 Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures...
@@ -188,7 +204,8 @@ You: Heuuuu...
 
 << advanceTime 0:15 >>
 
-Fred s'apprête à vous répondre quand la sonnerie retentit. Les résultats du test viennent de tomber...
+Fred s'apprête à vous répondre quand la sonnerie retentit.
+Les résultats du test viennent de tomber...
 
 [[Consulter les résultats|Resultats_Bad]]
 ===
@@ -239,6 +256,7 @@ position: -17.766727447509766,752.0414428710938
 ---
 Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde... 
 Demain est un autre jour, vivement demain...
+<< fx Sleep_LOOP >>
 [[Faire un gros somme|Reveil_Sage]]
 ===
 title: Reveil_Sage

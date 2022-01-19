@@ -1,0 +1,20 @@
+{"frames": {
+
+"base_excited.png":
+{
+	"frame": {"x":1,"y":1,"w":449,"h":1040},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":40,"w":449,"h":1040},
+	"sourceSize": {"w":535,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "base_excited.png",
+	"format": "RGBA8888",
+	"size": {"w":451,"h":1042},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c9899b39d6a8ca5b981f9fde40847b2a:f15bc4aa4f85cf204787fafc16b27633:86165b49dd39a18a8f0d03897731d808$"
+}
+}

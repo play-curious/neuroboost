@@ -1,0 +1,191 @@
+{"frames": {
+
+"MASTER SAPIENS_CONCERNED_ANIM00.png":
+{
+	"frame": {"x":98,"y":70,"w":93,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":5,"w":93,"h":70},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM01.png":
+{
+	"frame": {"x":98,"y":70,"w":93,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":5,"w":93,"h":70},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM02.png":
+{
+	"frame": {"x":98,"y":70,"w":93,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":5,"w":93,"h":70},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM03.png":
+{
+	"frame": {"x":99,"y":142,"w":92,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":0,"w":92,"h":74},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM04.png":
+{
+	"frame": {"x":99,"y":142,"w":92,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":0,"w":92,"h":74},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM05.png":
+{
+	"frame": {"x":99,"y":142,"w":92,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":0,"w":92,"h":74},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM06.png":
+{
+	"frame": {"x":1,"y":215,"w":89,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":0,"w":89,"h":75},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM07.png":
+{
+	"frame": {"x":1,"y":215,"w":89,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":0,"w":89,"h":75},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM08.png":
+{
+	"frame": {"x":1,"y":215,"w":89,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":0,"w":89,"h":75},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM09.png":
+{
+	"frame": {"x":92,"y":218,"w":100,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":0,"w":100,"h":74},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM10.png":
+{
+	"frame": {"x":92,"y":218,"w":100,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":0,"w":100,"h":74},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM11.png":
+{
+	"frame": {"x":92,"y":218,"w":100,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":0,"w":100,"h":74},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM12.png":
+{
+	"frame": {"x":1,"y":142,"w":96,"h":71},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":3,"w":96,"h":71},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM13.png":
+{
+	"frame": {"x":1,"y":142,"w":96,"h":71},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":3,"w":96,"h":71},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM14.png":
+{
+	"frame": {"x":1,"y":142,"w":96,"h":71},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":3,"w":96,"h":71},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM15.png":
+{
+	"frame": {"x":1,"y":70,"w":95,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":30,"y":4,"w":95,"h":69},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM16.png":
+{
+	"frame": {"x":1,"y":70,"w":95,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":30,"y":4,"w":95,"h":69},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM17.png":
+{
+	"frame": {"x":1,"y":70,"w":95,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":30,"y":4,"w":95,"h":69},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM18.png":
+{
+	"frame": {"x":95,"y":1,"w":97,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":29,"y":8,"w":97,"h":67},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM19.png":
+{
+	"frame": {"x":95,"y":1,"w":97,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":29,"y":8,"w":97,"h":67},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM20.png":
+{
+	"frame": {"x":95,"y":1,"w":97,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":29,"y":8,"w":97,"h":67},
+	"sourceSize": {"w":147,"h":83}
+},
+"MASTER SAPIENS_CONCERNED_ANIM21.png":
+{
+	"frame": {"x":1,"y":1,"w":92,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":8,"w":92,"h":66},
+	"sourceSize": {"w":147,"h":83}
+}},
+"animations": {
+	"MASTER SAPIENS_CONCERNED_ANIM": ["MASTER SAPIENS_CONCERNED_ANIM00.png","MASTER SAPIENS_CONCERNED_ANIM01.png","MASTER SAPIENS_CONCERNED_ANIM02.png","MASTER SAPIENS_CONCERNED_ANIM03.png","MASTER SAPIENS_CONCERNED_ANIM04.png","MASTER SAPIENS_CONCERNED_ANIM05.png","MASTER SAPIENS_CONCERNED_ANIM06.png","MASTER SAPIENS_CONCERNED_ANIM07.png","MASTER SAPIENS_CONCERNED_ANIM08.png","MASTER SAPIENS_CONCERNED_ANIM09.png","MASTER SAPIENS_CONCERNED_ANIM10.png","MASTER SAPIENS_CONCERNED_ANIM11.png","MASTER SAPIENS_CONCERNED_ANIM12.png","MASTER SAPIENS_CONCERNED_ANIM13.png","MASTER SAPIENS_CONCERNED_ANIM14.png","MASTER SAPIENS_CONCERNED_ANIM15.png","MASTER SAPIENS_CONCERNED_ANIM16.png","MASTER SAPIENS_CONCERNED_ANIM17.png","MASTER SAPIENS_CONCERNED_ANIM18.png","MASTER SAPIENS_CONCERNED_ANIM19.png","MASTER SAPIENS_CONCERNED_ANIM20.png","MASTER SAPIENS_CONCERNED_ANIM21.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "sleeves_c.png",
+	"format": "RGBA8888",
+	"size": {"w":193,"h":293},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0cafd940f3e85c7e429b4acc6a2e1e3e:7c5cbfe1d6982c97c91fc860648abc85:d3c6f6e7e6fbac234620fa751b064773$"
+}
+}

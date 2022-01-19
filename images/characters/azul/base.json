@@ -1,0 +1,43 @@
+{
+    "cheerful": [
+        {
+            "model": "static_cheerful",
+            "x": 960,
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "happy": [
+        {
+            "model": "static_happy",
+            "x": 960,
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "neutral": [
+        {
+            "model": "static_neutral",
+            "x": 960,
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "proud": [
+        {
+            "model": "static_proud",
+            "x": 960,
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "sad": [
+        {
+            "model": "static_sad",
+            "x": 960,
+            "y": 540,
+            "scale": 0.6
+        }
+    ],
+    "default": "happy"
+}
