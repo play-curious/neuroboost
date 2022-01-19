@@ -27,6 +27,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
   private _backgroundLayer: PIXI.Container;
   private _backgroundEntity: entity.ParallelEntity;
+  private _fxLayer: PIXI.Container;
   private _characterLayer: PIXI.Container;
   private _characterEntity: entity.ParallelEntity;
   private _closeupLayer: PIXI.Container;
@@ -55,6 +56,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._closeupLayer = new PIXI.Container();
     this._container.addChild(this._closeupLayer);
 
+    this._fxLayer = new PIXI.Container();
+    this._container.addChild(this._fxLayer);
+
     this._uiLayer = new PIXI.Container();
     this._container.addChild(this._uiLayer);
 
@@ -70,7 +74,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._dialogLayer.addChild(this._dialogSpeaker);
 
     this._gauges = {};
-    const gaugesList = ["sleep", "food"];
+    const gaugesList: (keyof variable.Gauges)[] = ["sleep", "food"];
     for (let i = 0; i < gaugesList.length; i++) {
       const _gauge = gaugesList[i];
       this._gauges[_gauge] = new gauge.Gauge(
@@ -650,5 +654,40 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._lastCharacter = character;
     this._lastMood = mood;
+  }
+
+  public fade(color: string, IN: boolean, OUT: boolean, duration: number) {
+    const graphics = new PIXI.Graphics()
+      .beginFill(eval(color.replace("#", "0x")))
+      .drawRect(0, 0, 1920, 1080)
+      .endFill();
+
+    const fx = new entity.EntitySequence([
+      new entity.FunctionCallEntity(() => {
+        graphics.alpha = 0;
+        this._fxLayer.addChild(graphics);
+      }),
+      new tween.Tween({
+        duration: IN && OUT ? duration / 2 : IN ? duration : 0,
+        from: 0,
+        to: 1,
+        onUpdate: (value) => {
+          graphics.alpha = value;
+        },
+      }),
+      new tween.Tween({
+        duration: IN && OUT ? duration / 2 : OUT ? duration : 0,
+        from: 1,
+        to: 0,
+        onUpdate: (value) => {
+          graphics.alpha = value;
+        },
+      }),
+      new entity.FunctionCallEntity(() => {
+        this._fxLayer.removeChild(graphics);
+      }),
+    ]);
+
+    this._activateChildEntity(fx);
   }
 }

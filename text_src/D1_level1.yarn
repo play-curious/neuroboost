@@ -297,7 +297,7 @@ You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me la
 Temde: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
 Miss Temdé lève la paume d'une de ses mains cybernétique, un rayon en jaillit et vous englobe de sa lumière vert phosphorescente...
 
-<<fade green>>
+<<fade 12ea12 true true 5000 >>
 
 [[Assemblee_Sages]]
 ===

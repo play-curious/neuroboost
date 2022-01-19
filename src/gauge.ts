@@ -3,7 +3,6 @@ import "@pixi/graphics-extras";
 
 import * as tween from "booyah/src/tween";
 import * as easing from "booyah/src/easing";
-import * as entity from "booyah/src/entity";
 
 import * as extension from "./extension";
 import * as variable from "./variable";

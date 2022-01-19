@@ -378,4 +378,15 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     gaugesName.pop();
     this._graphics.toggleGauges(false, ...gaugesName);
   }
+
+  fade(
+    hexColor: string,
+    IN: "true" | "false" = "false",
+    OUT: "true" | "false" = "false",
+    duration: `${number}`
+  ) {
+    const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
+
+    this._graphics.fade(color, IN === "true", OUT === "true", Number(duration));
+  }
 }
