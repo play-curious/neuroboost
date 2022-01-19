@@ -82,9 +82,8 @@ export class DialogScene extends entity.CompositeEntity {
       }
       return true;
     });
-    this._runner.registerFunction("getGauge", (data: any, value:number) => {
-      
-      return 100;
+    this._runner.registerFunction("getGauge", (data: any, gauge:string) => {
+      return this._graphics.getGaugeValue(gauge);
     });
     this._runner.load(this.entityConfig.jsonAssets[this.scriptName]);
 
@@ -340,5 +339,15 @@ export class DialogScene extends entity.CompositeEntity {
 
   sfx(sfxName: string) {
     this._entityConfig.fxMachine.play(sfxName);
+  }
+
+  showGauges(...gaugesName: string[]){
+    gaugesName.pop();
+    this._graphics.toggleGauges(true, ...gaugesName);
+  }
+
+  hideGauges(...gaugesName: string[]){
+    gaugesName.pop();
+    this._graphics.toggleGauges(false, ...gaugesName);
   }
 }

@@ -48,6 +48,7 @@ colorID: 0
 position: -439,141
 ---
 << if isFirstTime() >>
+<< showGauges sleep food >>
 Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << endif >>
 
@@ -144,9 +145,9 @@ position: -894,909
 ---
 Fred vous amène jusqu'à un large canapé-fauteuil. Vous vous effondrez dedans. C'est clair, vous avez besoin de reprendre des forces. Il vous dit deux ou trois choses, vous ne savez pas, vous n'écoutez pas, vous n'entendez pas. Vos paupières s'abaissent, vous glissez doucement dans une douce langueur...
 
-<< addToGauge sleep 10 >>
-
 Puis, on vous secoue brusquement !!!
+
+<< addToGauge sleep 10 >>
 
 [[Ouvrir les yeux|Open_Eyes]]
 ===
@@ -216,7 +217,7 @@ position: -115,1232
 ---
 Vous vous dirigez vers le bar, toutefois, vous ne distinguez plus aucun snack de disponible. Vous vous tournez alors vers un BarBot.
 
-<< show barbot >>
+// << show barbot >>
 BarBot: Vous désirez ?
 You: Manger quelque chose  qui redonne de l'énergie. 
 BarBot: À sucer ou avaler ?
@@ -258,6 +259,7 @@ title: SeReposer
 tags: bg:bedroom
 position: -892.5641479492188,1663.6494140625
 ---
+<< hideGauges >>
 Vous filez dans votre chambre en quatrième vitesse. Mais vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent ! Vous avez l'impression de rester coincé une heure dans ce cagibi. C'est pénible, surtout que votre vision se trouble, se dédouble. Vous avez vraiment dû un peu trop abuser...
 Une fois votre corvée accomplie, vous rampez jusqu'à votre lit. Vous vous glissez dedans tout habillé et fermez les yeux. Malheureusement, vous avez la tête qui tourne et qui serre, vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité. 
 Non, décidément, rien à faire, vous n'arrivez pas à dormir. Et les heures s'égrènent... Jusqu'à ce que votre horloge connectée vous tire de votre léthargie... 

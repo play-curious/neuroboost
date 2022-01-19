@@ -4,6 +4,7 @@ import "@pixi/graphics-extras";
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 import * as easing from "booyah/src/easing";
+import { values } from "underscore";
 
 export class Gauge extends entity.CompositeEntity {
   private _container: PIXI.Container;
@@ -13,7 +14,7 @@ export class Gauge extends entity.CompositeEntity {
   private _center: PIXI.Point;
   private _radius: number;
 
-  private _currentTween: tween.Tween;
+  private _currentTween: {animation: tween.Tween, to: number};
 
   private _value: number;
 
@@ -44,7 +45,12 @@ export class Gauge extends entity.CompositeEntity {
     this._container.addChild(this._innerDisk, this._image, this._outerDisk);
     this._entityConfig.container.addChild(this._container);
 
-    this._container.scale.set(1.5);
+    this._currentTween = {
+      animation: undefined,
+      to: 0
+    };
+
+    this._container.scale.set(0.4);
 
     this.resetValue(Number(this.entityConfig.variableStorage.get(this.name)));
 
@@ -59,6 +65,12 @@ export class Gauge extends entity.CompositeEntity {
 
   public getGauge(): PIXI.Container {
     return this._container;
+  }
+
+  public getValue(): number {
+    if(this._currentTween.animation)
+      return this._currentTween.to;
+    return this._value;
   }
 
   private colorByValue(value: number): string {
@@ -91,12 +103,13 @@ export class Gauge extends entity.CompositeEntity {
   }
 
   changeValue(newValue: number) {
-    console.log(this._currentTween);
-    if (this._currentTween) this._deactivateChildEntity(this._currentTween);
+    if(newValue === this._value) return;
+    if (this._currentTween.animation) this._deactivateChildEntity(this._currentTween.animation);
     
-    this._currentTween = new tween.Tween({
-      duration: 5000,
-      easing: easing.easeInSine,
+    this._currentTween.to = newValue;
+    this._currentTween.animation = new tween.Tween({
+      duration: 1200,
+      easing: easing.easeInOutQuart,
       from: this._value,
       to: newValue,
       onUpdate: (value) => {
@@ -104,9 +117,9 @@ export class Gauge extends entity.CompositeEntity {
       },
       onTeardown: () => {
         this.resetValue(newValue);
-        this._currentTween = null;
+        this._currentTween.animation = null;
       },
     });
-    this._activateChildEntity(this._currentTween);
+    this._activateChildEntity(this._currentTween.animation);
   }
 }
