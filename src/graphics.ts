@@ -20,12 +20,12 @@ export class Graphics extends entity.CompositeEntity {
   private _lastBg: string;
   private _lastCharacter: string;
   private _lastMood: string;
+  private _characters: Map<string, {container: PIXI.Container, entity: entity.ParallelEntity}>;
 
   private _container: PIXI.Container;
   private _backgroundLayer: PIXI.Container;
   private _backgroundEntity: entity.ParallelEntity;
   private _characterLayer: PIXI.Container;
-  private _characterEntity: entity.ParallelEntity;
   private _closeupLayer: PIXI.Container;
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
@@ -46,6 +46,8 @@ export class Graphics extends entity.CompositeEntity {
 
     this._characterLayer = new PIXI.Container();
     this._container.addChild(this._characterLayer);
+
+    this._characters = new Map();
 
     this._closeupLayer = new PIXI.Container();
     this._container.addChild(this._closeupLayer);
@@ -181,7 +183,7 @@ export class Graphics extends entity.CompositeEntity {
         autoShow ||
         (this._lastCharacter === speakerLow && this._lastMood !== mood)
       ) {
-        this.setCharacter(speakerLow, mood);
+        this.addCharacter(speakerLow, mood);
       }
     } else {
       this._dialogSpeaker.visible = false;
@@ -560,31 +562,55 @@ export class Graphics extends entity.CompositeEntity {
   }
 
   /**
+   * 
+   */
+  public removeCharacters() {
+
+    for(const [id, character] of this._characters) {
+      this._characters.delete(id);
+
+      this._activateChildEntity(
+        new tween.Tween({
+          duration: 800,
+          easing: easing.easeOutQuint,
+          from: 250,
+          to: 1250,
+          onUpdate: (value) => {
+            character.container.position.x = value;
+          },
+          onTeardown: () => {
+            this._characterLayer.removeChild(character.container);
+            // this._deactivateChildEntity(character.entity);
+          }
+        })
+      );
+    }
+  }
+
+  /**
    *
    *
    * @param character if null or undefined, it will remove current character
    * @param mood
    */
-  public setCharacter(character?: string, mood?: string): void {
-    //if (mood === undefined) mood = "happy";
+  public addCharacter(character?: string, mood?: string): void {
 
     if (character === this._lastCharacter && mood === this._lastMood) return;
 
-    // Remove all previous characters
-    this._characterLayer.removeChildren();
+    this._lastCharacter = character;
+    this._lastMood = mood;
 
-    if (this._characterEntity !== undefined) {
-      if (this.childEntities.indexOf(this._characterEntity) != -1)
-        this._deactivateChildEntity(this._characterEntity);
-      this._characterEntity = undefined;
-    }
+    this.removeCharacters();
 
-    if (character !== undefined && character !== "") {
-      const characterContainer = new PIXI.Container();
-      this._characterEntity = new entity.ParallelEntity();
+    if (character !== undefined && character !== "" && character !== "you") {
+      const characterCE = {
+        container: new PIXI.Container(),
+        entity: new entity.ParallelEntity()
+      }
+      this._characters.set(character, characterCE);
       this._activateChildEntity(
-        this._characterEntity,
-        entity.extendConfig({ container: characterContainer })
+        characterCE.entity,
+        entity.extendConfig({ container: characterCE.container })
       );
 
       const baseDir = `images/characters/${character}`;
@@ -617,19 +643,28 @@ export class Graphics extends entity.CompositeEntity {
           }
 
           animatedSpriteEntity.sprite.animationSpeed = 0.33;
-          this._characterEntity.addChildEntity(animatedSpriteEntity);
+          characterCE.entity.addChildEntity(animatedSpriteEntity);
         } else {
           console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
         }
       }
 
       // Place character on screen
-      this._characterLayer.addChild(characterContainer);
-      characterContainer.setTransform(250, 80, 1.1, 1.1);
+      this._characterLayer.addChild(characterCE.container);
+      characterCE.container.setTransform(250, 80, 1.1, 1.1);
       //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
-    }
 
-    this._lastCharacter = character;
-    this._lastMood = mood;
+      this._activateChildEntity(
+        new tween.Tween({
+          duration: 800,
+          easing: easing.easeOutQuint,
+          from: 1250,
+          to: 250,
+          onUpdate: (value) => {
+            characterCE.container.position.x = value;
+          }
+        })
+      );
+    }
   }
 }
