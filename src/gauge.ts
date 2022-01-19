@@ -1,10 +1,9 @@
 import * as PIXI from "pixi.js";
 import "@pixi/graphics-extras";
 
-import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 import * as easing from "booyah/src/easing";
-import { values } from "underscore";
+import * as entity from "booyah/src/entity";
 
 export class Gauge extends entity.CompositeEntity {
   private _container: PIXI.Container;
@@ -14,11 +13,15 @@ export class Gauge extends entity.CompositeEntity {
   private _center: PIXI.Point;
   private _radius: number;
 
-  private _currentTween: {animation: tween.Tween, to: number};
+  private _currentTween: { animation: tween.Tween; to: number };
 
   private _value: number;
 
-  constructor(private _position: PIXI.Point, private _image: PIXI.Sprite, public readonly name: string) {
+  constructor(
+    private _position: PIXI.Point,
+    private _image: PIXI.Sprite,
+    public readonly name: string
+  ) {
     super();
     this._value = 100;
   }
@@ -43,19 +46,21 @@ export class Gauge extends entity.CompositeEntity {
     this._container = new PIXI.Container();
     this._container.position.copyFrom(this._position);
     this._container.addChild(this._innerDisk, this._image, this._outerDisk);
-    this._entityConfig.container.addChild(this._container);
+    this.$.config().container.addChild(this._container);
 
     this._currentTween = {
       animation: undefined,
-      to: 0
+      to: 0,
     };
 
     this._container.scale.set(0.4);
 
     this.resetValue(Number(this.entityConfig.variableStorage.get(this.name)));
 
-    this._on(this.entityConfig.variableStorage, `change:${this.name}`,
-      (value) => (this.changeValue(Number(value)))
+    this._on(
+      this.entityConfig.variableStorage,
+      `change:${this.name}`,
+      (value) => this.changeValue(Number(value))
     );
   }
 
@@ -68,8 +73,7 @@ export class Gauge extends entity.CompositeEntity {
   }
 
   public getValue(): number {
-    if(this._currentTween.animation)
-      return this._currentTween.to;
+    if (this._currentTween.animation) return this._currentTween.to;
     return this._value;
   }
 
@@ -103,9 +107,10 @@ export class Gauge extends entity.CompositeEntity {
   }
 
   changeValue(newValue: number) {
-    if(newValue === this._value) return;
-    if (this._currentTween.animation) this._deactivateChildEntity(this._currentTween.animation);
-    
+    if (newValue === this._value) return;
+    if (this._currentTween.animation)
+      this._deactivateChildEntity(this._currentTween.animation);
+
     this._currentTween.to = newValue;
     this._currentTween.animation = new tween.Tween({
       duration: 1200,

@@ -67,7 +67,7 @@ export class DialogScene extends entity.CompositeEntity {
     this._graphics = new graphics.Graphics(this._variableStorage.data);
     this._activateChildEntity(
       this._graphics,
-      entity.extendConfig({ container: this._entityConfig.container })
+      entity.extendConfig({ container: this.$.config().container })
     );
 
     // Setup clock
@@ -86,7 +86,7 @@ export class DialogScene extends entity.CompositeEntity {
       }
       return true;
     });
-    this._runner.registerFunction("getGauge", (data: any, gauge:string) => {
+    this._runner.registerFunction("getGauge", (data: any, gauge: string) => {
       return this._graphics.getGaugeValue(gauge);
     });
     this._runner.load(this.entityConfig.jsonAssets[this.scriptName]);
@@ -159,7 +159,7 @@ export class DialogScene extends entity.CompositeEntity {
       nodeValue.options,
       (id) => {
         nodeValue.select(id);
-        this._entityConfig.fxMachine.play("Click");
+        this.$.config().fxMachine.play("Click");
         this._advance();
       },
       this._hasTag(nodeValue.data, "subchoice")
@@ -167,7 +167,7 @@ export class DialogScene extends entity.CompositeEntity {
             this._nodeIterator = this._runner.run(
               _.last(this._previousNodeDatas).title
             );
-            this._entityConfig.fxMachine.play("Click");
+            this.$.config().fxMachine.play("Click");
             this._advance();
           }
         : undefined
@@ -195,7 +195,7 @@ export class DialogScene extends entity.CompositeEntity {
   private _handleFreechoice(freechoice: string, nodeValue: ChoiceNode) {
     this._graphics.setFreechoice(nodeValue.options, (id) => {
       nodeValue.select(id);
-      this._entityConfig.fxMachine.play("Click");
+      this.$.config().fxMachine.play("Click");
       this._advance();
     });
   }
@@ -341,11 +341,11 @@ export class DialogScene extends entity.CompositeEntity {
   }
 
   music(musicName: string) {
-    this._entityConfig.jukebox.play(musicName);
+    this.$.config().jukebox.play(musicName);
   }
 
   fx(fxName: string) {
-    this._entityConfig.fxMachine.play(fxName);
+    this.$.config().fxMachine.play(fxName);
   }
 
   loopFX(fxName: `${string}_LOOP`, loopDuration: `${number}`) {
@@ -373,12 +373,12 @@ export class DialogScene extends entity.CompositeEntity {
     }
   }
 
-  showGauges(...gaugesName: string[]){
+  showGauges(...gaugesName: string[]) {
     gaugesName.pop();
     this._graphics.toggleGauges(true, ...gaugesName);
   }
 
-  hideGauges(...gaugesName: string[]){
+  hideGauges(...gaugesName: string[]) {
     gaugesName.pop();
     this._graphics.toggleGauges(false, ...gaugesName);
   }

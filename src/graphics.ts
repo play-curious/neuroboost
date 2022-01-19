@@ -47,7 +47,7 @@ export class Graphics extends entity.CompositeEntity {
 
   _setup(): void {
     this._container = new PIXI.Container();
-    this._entityConfig.container.addChild(this._container);
+    this.$.config().container.addChild(this._container);
 
     this._backgroundLayer = new PIXI.Container();
     this._container.addChild(this._backgroundLayer);
@@ -91,9 +91,8 @@ export class Graphics extends entity.CompositeEntity {
     }
   }
 
-  public getGaugeValue(name: string): number{
-    if(this._gauges.hasOwnProperty(name))
-      return this._gauges[name].getValue();
+  public getGaugeValue(name: string): number {
+    if (this._gauges.hasOwnProperty(name)) return this._gauges[name].getValue();
     return undefined;
   }
 
@@ -128,14 +127,14 @@ export class Graphics extends entity.CompositeEntity {
     this._nodeDisplay = null;
   }
 
-  public toggleGauges( visibility: boolean, ...gaugesName: string[]){
-    if(gaugesName.length === 0){
-      for(const gaugeName in this._gauges){
+  public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
+    if (gaugesName.length === 0) {
+      for (const gaugeName in this._gauges) {
         this._gauges[gaugeName].getGauge().visible = visibility;
       }
     } else {
-      for(const gaugeName of gaugesName){
-        this._gauges[gaugeName].getGauge().visible = visibility
+      for (const gaugeName of gaugesName) {
+        this._gauges[gaugeName].getGauge().visible = visibility;
       }
     }
   }
@@ -551,17 +550,17 @@ export class Graphics extends entity.CompositeEntity {
         entity.extendConfig({ container: this._backgroundLayer })
       );
 
-      let baseJson = this._entityConfig.app.loader.resources[fileNameJson].data;
+      let baseJson = this.$.config().app.loader.resources[fileNameJson].data;
       for (const bgPart of baseJson.sprites) {
         // Load animated texture
         if (
           _.has(
-            this._entityConfig.app.loader.resources,
+            this.$.config().app.loader.resources,
             `${folderName}/${bgPart.model}.json`
           )
         ) {
           const animatedSpriteEntity = util.makeAnimatedSprite(
-            this._entityConfig.app.loader.resources[
+            this.$.config().app.loader.resources[
               `${folderName}/${bgPart.model}.json`
             ]
           );
@@ -609,19 +608,19 @@ export class Graphics extends entity.CompositeEntity {
       const baseDir = `images/characters/${character}`;
 
       let baseJson =
-        this._entityConfig.app.loader.resources[`${baseDir}/base.json`].data;
+        this.$.config().app.loader.resources[`${baseDir}/base.json`].data;
       if (!_.has(baseJson, mood)) mood = baseJson["default"];
 
       // Load animations JSON
       for (const bodyPart of baseJson[mood]) {
         if (
           _.has(
-            this._entityConfig.app.loader.resources,
+            this.$.config().app.loader.resources,
             `${baseDir}/${bodyPart.model}.json`
           )
         ) {
           const animatedSpriteEntity = util.makeAnimatedSprite(
-            this._entityConfig.app.loader.resources[
+            this.$.config().app.loader.resources[
               `${baseDir}/${bodyPart.model}.json`
             ]
           );

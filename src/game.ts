@@ -247,7 +247,7 @@ const graphicalAssets = [
   // "images/characters/sapiens/base_concerned.json",
   // "images/characters/sapiens/base_smiling.json",
   // "images/characters/sapiens/base_thinking.json",
-  
+
   // "images/characters/sapiens/brain_a.json",
   // "images/characters/sapiens/eyes_a.json",
   // "images/characters/sapiens/eyes_b.json",
@@ -288,7 +288,6 @@ const graphicalAssets = [
   // "images/characters/ledai/collar_b.json",
   // "images/characters/ledai/dress_a.json",
   // "images/characters/ledai/eyes_c.json",
-
 ];
 
 const fxAssets = [
