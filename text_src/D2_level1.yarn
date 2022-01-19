@@ -217,7 +217,7 @@ position: -115,1232
 ---
 Vous vous dirigez vers le bar, toutefois, vous ne distinguez plus aucun snack de disponible. Vous vous tournez alors vers un BarBot.
 
-// << show barbot >>
+ << show barbot >>
 BarBot: Vous désirez ?
 You: Manger quelque chose  qui redonne de l'énergie. 
 BarBot: À sucer ou avaler ?
