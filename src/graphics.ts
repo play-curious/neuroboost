@@ -8,10 +8,9 @@ import * as easing from "booyah/src/easing";
 import * as tween from "booyah/src/tween";
 import * as util from "booyah/src/util";
 
+import * as extension from "./extension";
 import * as variable from "./variable";
 import * as gauge from "./gauge";
-
-import $ from "./$";
 
 // Initilize Underscore templates to ressemble YarnSpinner
 const templateSettings = {
@@ -20,9 +19,7 @@ const templateSettings = {
 
 const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
 
-export class Graphics extends entity.CompositeEntity {
-  private $ = $(this);
-
+export class Graphics extends extension.ExtendedCompositeEntity {
   private _lastBg: string;
   private _lastCharacter: string;
   private _lastMood: string;
@@ -47,7 +44,7 @@ export class Graphics extends entity.CompositeEntity {
 
   _setup(): void {
     this._container = new PIXI.Container();
-    this.$.config().container.addChild(this._container);
+    this.config.container.addChild(this._container);
 
     this._backgroundLayer = new PIXI.Container();
     this._container.addChild(this._backgroundLayer);
@@ -62,11 +59,13 @@ export class Graphics extends entity.CompositeEntity {
     this._container.addChild(this._uiLayer);
 
     this._dialogLayer = new PIXI.Container();
-    this._dialogLayer.addChild(this.$.sprite("images/ui/dialog.png"));
+    this._dialogLayer.addChild(this.makeSprite("images/ui/dialog.png"));
     this._container.addChild(this._dialogLayer);
 
     this._dialogSpeaker = new PIXI.Container();
-    this._dialogSpeaker.addChild(this.$.sprite("images/ui/dialog_speaker.png"));
+    this._dialogSpeaker.addChild(
+      this.makeSprite("images/ui/dialog_speaker.png")
+    );
     this._dialogSpeaker.position.set(202, 601);
     this._dialogLayer.addChild(this._dialogSpeaker);
 
@@ -150,7 +149,7 @@ export class Graphics extends entity.CompositeEntity {
     if (!closeup) return;
 
     this._closeupLayer.addChild(
-      this.$.sprite(`images/closeups/${closeup}.png`, (it) => {
+      this.makeSprite(`images/closeups/${closeup}.png`, (it) => {
         it.position.set(400, 10);
       })
     );
@@ -194,7 +193,7 @@ export class Graphics extends entity.CompositeEntity {
     if (speaker) {
       this._dialogSpeaker.visible = true;
       this._nodeDisplay.addChild(
-        this.$.text(
+        this.makeText(
           speaker.toLowerCase() === "you" ? name : speaker,
           {
             fontFamily: "Jura",
@@ -258,7 +257,7 @@ export class Graphics extends entity.CompositeEntity {
 
       const baseText = (dialog || interpolatedText).trim();
 
-      const writer = this.$.loopFX(
+      const writer = this.makeFxLoop(
         `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
         250
       );
@@ -308,7 +307,7 @@ export class Graphics extends entity.CompositeEntity {
     for (let i: number = 0; i < nodeOptions.length; i++) {
       const choicebox = new PIXI.Container();
       choicebox.addChild(
-        this.$.sprite(
+        this.makeSprite(
           i === 0
             ? "images/ui/choicebox_contour_reversed.png"
             : i === nodeOptions.length - 1
@@ -377,7 +376,7 @@ export class Graphics extends entity.CompositeEntity {
       );
 
       choicebox.addChild(
-        this.$.text(
+        this.makeText(
           nodeOptions[nodeOptions.length - (1 + i)],
           {
             fill: 0xfdf4d3,
@@ -398,7 +397,7 @@ export class Graphics extends entity.CompositeEntity {
 
     if (subchoice !== undefined) {
       const arrow_back = new PIXI.Container();
-      arrow_back.addChild(this.$.sprite("images/ui/arrow_return.png"));
+      arrow_back.addChild(this.makeSprite("images/ui/arrow_return.png"));
       arrow_back.scale.set(0.65);
       arrow_back.position.set(10, 1080 - (arrow_back.height + 10));
 
@@ -437,7 +436,7 @@ export class Graphics extends entity.CompositeEntity {
           `images/ui/highlights/${jsonValue}.png`
         )
       ) {
-        highlight = this.$.sprite(
+        highlight = this.makeSprite(
           `images/ui/highlights/${jsonValue}.png`,
           (it) => {
             it.alpha = 0;
@@ -540,7 +539,7 @@ export class Graphics extends entity.CompositeEntity {
     }
 
     // Set background base
-    this._backgroundLayer.addChild(this.$.sprite(fileName));
+    this._backgroundLayer.addChild(this.makeSprite(fileName));
 
     // Set animations
     if (_.has(this.entityConfig.app.loader.resources, fileNameJson)) {
@@ -550,17 +549,17 @@ export class Graphics extends entity.CompositeEntity {
         entity.extendConfig({ container: this._backgroundLayer })
       );
 
-      let baseJson = this.$.config().app.loader.resources[fileNameJson].data;
+      let baseJson = this.config.app.loader.resources[fileNameJson].data;
       for (const bgPart of baseJson.sprites) {
         // Load animated texture
         if (
           _.has(
-            this.$.config().app.loader.resources,
+            this.config.app.loader.resources,
             `${folderName}/${bgPart.model}.json`
           )
         ) {
           const animatedSpriteEntity = util.makeAnimatedSprite(
-            this.$.config().app.loader.resources[
+            this.config.app.loader.resources[
               `${folderName}/${bgPart.model}.json`
             ]
           );
@@ -608,19 +607,19 @@ export class Graphics extends entity.CompositeEntity {
       const baseDir = `images/characters/${character}`;
 
       let baseJson =
-        this.$.config().app.loader.resources[`${baseDir}/base.json`].data;
+        this.config.app.loader.resources[`${baseDir}/base.json`].data;
       if (!_.has(baseJson, mood)) mood = baseJson["default"];
 
       // Load animations JSON
       for (const bodyPart of baseJson[mood]) {
         if (
           _.has(
-            this.$.config().app.loader.resources,
+            this.config.app.loader.resources,
             `${baseDir}/${bodyPart.model}.json`
           )
         ) {
           const animatedSpriteEntity = util.makeAnimatedSprite(
-            this.$.config().app.loader.resources[
+            this.config.app.loader.resources[
               `${baseDir}/${bodyPart.model}.json`
             ]
           );

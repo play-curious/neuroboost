@@ -5,7 +5,16 @@ import * as tween from "booyah/src/tween";
 import * as easing from "booyah/src/easing";
 import * as entity from "booyah/src/entity";
 
-export class Gauge extends entity.CompositeEntity {
+import * as extension from "./extension";
+import * as variable from "./variable";
+
+export function colorByValue(value: number): string {
+  if (value > 66) return "images/ui/gauges/innerDisk_green.png";
+  else if (value > 33) return "images/ui/gauges/innerDisk_yellow.png";
+  else return "images/ui/gauges/innerDisk_red.png";
+}
+
+export class Gauge extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
   private _innerDisk: PIXI.Sprite;
   private _outerDisk: PIXI.Graphics;
@@ -20,7 +29,7 @@ export class Gauge extends entity.CompositeEntity {
   constructor(
     private _position: PIXI.Point,
     private _image: PIXI.Sprite,
-    public readonly name: string
+    public readonly name: keyof variable.Gauges
   ) {
     super();
     this._value = 100;
@@ -29,9 +38,7 @@ export class Gauge extends entity.CompositeEntity {
   _setup() {
     this._innerDisk = new PIXI.Sprite();
     this._innerDisk.texture =
-      this.entityConfig.app.loader.resources[
-        this.colorByValue(this._value)
-      ].texture;
+      this.config.app.loader.resources[colorByValue(this._value)].texture;
     this._center = new PIXI.Point(
       this._innerDisk.width / 2,
       this._innerDisk.height / 2
@@ -46,7 +53,7 @@ export class Gauge extends entity.CompositeEntity {
     this._container = new PIXI.Container();
     this._container.position.copyFrom(this._position);
     this._container.addChild(this._innerDisk, this._image, this._outerDisk);
-    this.$.config().container.addChild(this._container);
+    this.config.container.addChild(this._container);
 
     this._currentTween = {
       animation: undefined,
@@ -55,16 +62,15 @@ export class Gauge extends entity.CompositeEntity {
 
     this._container.scale.set(0.4);
 
-    this.resetValue(Number(this.entityConfig.variableStorage.get(this.name)));
+    this.resetValue(Number(this.config.variableStorage.get(this.name)));
 
-    this._on(
-      this.entityConfig.variableStorage,
-      `change:${this.name}`,
-      (value) => this.changeValue(Number(value))
+    this.config.variableStorage.listen(`change:${this.name}`, (value) =>
+      this.changeValue(Number(value))
     );
   }
 
   _teardown() {
+    this.config.variableStorage.off(`change:${this.name}`);
     this._container = undefined;
   }
 
@@ -77,20 +83,12 @@ export class Gauge extends entity.CompositeEntity {
     return this._value;
   }
 
-  private colorByValue(value: number): string {
-    if (value > 66) return "images/ui/gauges/innerDisk_green.png";
-    else if (value > 33) return "images/ui/gauges/innerDisk_yellow.png";
-    else return "images/ui/gauges/innerDisk_red.png";
-  }
-
   resetValue(value: number) {
     const torusOffset = -8;
     const torusWidth = 16;
 
     this._innerDisk.texture =
-      this.entityConfig.app.loader.resources[
-        this.colorByValue(this._value)
-      ].texture;
+      this.config.app.loader.resources[colorByValue(this._value)].texture;
 
     this._outerDisk.clear();
     this._outerDisk.beginFill(0xffffff);
