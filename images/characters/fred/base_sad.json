@@ -1,0 +1,20 @@
+{"frames": {
+
+"base_sad.png":
+{
+	"frame": {"x":1,"y":1,"w":332,"h":1033},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":47,"w":332,"h":1033},
+	"sourceSize": {"w":407,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "base_sad.png",
+	"format": "RGBA8888",
+	"size": {"w":334,"h":1035},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5622bf9c10d73f529a46b55a73933433:70865bfa7e5ce0838be64347f7779620:c557bf27c9e0134d2cb3c4e34fcbbe78$"
+}
+}

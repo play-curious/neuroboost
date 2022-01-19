@@ -1,0 +1,20 @@
+{"frames": {
+
+"sapiens_smiling.png":
+{
+	"frame": {"x":1,"y":1,"w":736,"h":1662},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":115,"y":100,"w":736,"h":1662},
+	"sourceSize": {"w":990,"h":1799}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "static_smiling.png",
+	"format": "RGBA8888",
+	"size": {"w":738,"h":1664},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e729c4bb4446c83df27e9c8888b10472:a34025cf260beee5efd2ec288fea3ffb:777c617af6ded50f02e3317520ffa776$"
+}
+}

@@ -1,0 +1,20 @@
+{"frames": {
+
+"temde_sad.png":
+{
+	"frame": {"x":1,"y":1,"w":716,"h":1790},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":114,"y":2,"w":716,"h":1790},
+	"sourceSize": {"w":990,"h":1799}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "static_sad.png",
+	"format": "RGBA8888",
+	"size": {"w":718,"h":1792},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c77ffde9bc34462b816cafd645e9a5bd:c75f8f49a8bc5b44aafdf5e4a75c852c:0b3caf2fb8160ac9a8164657d359a347$"
+}
+}

@@ -1,0 +1,207 @@
+{"frames": {
+
+"MISS TEMDÉ_Cheerful_Dress_00.png":
+{
+	"frame": {"x":1,"y":1,"w":384,"h":151},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":16,"w":384,"h":151},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_01.png":
+{
+	"frame": {"x":1,"y":1,"w":384,"h":151},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":16,"w":384,"h":151},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_02.png":
+{
+	"frame": {"x":1,"y":1,"w":384,"h":151},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":16,"w":384,"h":151},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_03.png":
+{
+	"frame": {"x":1,"y":300,"w":379,"h":146},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":19,"w":379,"h":146},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_04.png":
+{
+	"frame": {"x":1,"y":300,"w":379,"h":146},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":19,"w":379,"h":146},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_05.png":
+{
+	"frame": {"x":1,"y":300,"w":379,"h":146},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":19,"w":379,"h":146},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_06.png":
+{
+	"frame": {"x":1,"y":1194,"w":370,"h":144},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":19,"w":370,"h":144},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_07.png":
+{
+	"frame": {"x":1,"y":895,"w":373,"h":148},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":15,"w":373,"h":148},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_08.png":
+{
+	"frame": {"x":1,"y":895,"w":373,"h":148},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":15,"w":373,"h":148},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_09.png":
+{
+	"frame": {"x":1,"y":154,"w":381,"h":144},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":18,"w":381,"h":144},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_10.png":
+{
+	"frame": {"x":1,"y":154,"w":381,"h":144},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":18,"w":381,"h":144},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_11.png":
+{
+	"frame": {"x":1,"y":154,"w":381,"h":144},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":18,"w":381,"h":144},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_12.png":
+{
+	"frame": {"x":1,"y":1045,"w":373,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":16,"w":373,"h":147},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_13.png":
+{
+	"frame": {"x":1,"y":1045,"w":373,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":16,"w":373,"h":147},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_14.png":
+{
+	"frame": {"x":1,"y":1045,"w":373,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":16,"w":373,"h":147},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_15.png":
+{
+	"frame": {"x":1,"y":746,"w":374,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":17,"w":374,"h":147},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_16.png":
+{
+	"frame": {"x":1,"y":746,"w":374,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":17,"w":374,"h":147},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_17.png":
+{
+	"frame": {"x":1,"y":746,"w":374,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":17,"w":374,"h":147},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_18.png":
+{
+	"frame": {"x":1,"y":448,"w":377,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":18,"w":377,"h":147},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_19.png":
+{
+	"frame": {"x":1,"y":448,"w":377,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":18,"w":377,"h":147},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_20.png":
+{
+	"frame": {"x":1,"y":448,"w":377,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":18,"w":377,"h":147},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_21.png":
+{
+	"frame": {"x":1,"y":597,"w":375,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":19,"w":375,"h":147},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_22.png":
+{
+	"frame": {"x":1,"y":597,"w":375,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":19,"w":375,"h":147},
+	"sourceSize": {"w":475,"h":233}
+},
+"MISS TEMDÉ_Cheerful_Dress_23.png":
+{
+	"frame": {"x":1,"y":597,"w":375,"h":147},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":19,"w":375,"h":147},
+	"sourceSize": {"w":475,"h":233}
+}},
+"animations": {
+	"MISS TEMDÉ_Cheerful_Dress": ["MISS TEMDÉ_Cheerful_Dress_00.png","MISS TEMDÉ_Cheerful_Dress_01.png","MISS TEMDÉ_Cheerful_Dress_02.png","MISS TEMDÉ_Cheerful_Dress_03.png","MISS TEMDÉ_Cheerful_Dress_04.png","MISS TEMDÉ_Cheerful_Dress_05.png","MISS TEMDÉ_Cheerful_Dress_06.png","MISS TEMDÉ_Cheerful_Dress_07.png","MISS TEMDÉ_Cheerful_Dress_08.png","MISS TEMDÉ_Cheerful_Dress_09.png","MISS TEMDÉ_Cheerful_Dress_10.png","MISS TEMDÉ_Cheerful_Dress_11.png","MISS TEMDÉ_Cheerful_Dress_12.png","MISS TEMDÉ_Cheerful_Dress_13.png","MISS TEMDÉ_Cheerful_Dress_14.png","MISS TEMDÉ_Cheerful_Dress_15.png","MISS TEMDÉ_Cheerful_Dress_16.png","MISS TEMDÉ_Cheerful_Dress_17.png","MISS TEMDÉ_Cheerful_Dress_18.png","MISS TEMDÉ_Cheerful_Dress_19.png","MISS TEMDÉ_Cheerful_Dress_20.png","MISS TEMDÉ_Cheerful_Dress_21.png","MISS TEMDÉ_Cheerful_Dress_22.png","MISS TEMDÉ_Cheerful_Dress_23.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "dress_a.png",
+	"format": "RGBA8888",
+	"size": {"w":386,"h":1339},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4bcf909b4a24116e7959006e579001b0:113c8e2ef03b2f1dab975613b02adcbe:b8d66d59c3da9756318b9a7465c9502e$"
+}
+}

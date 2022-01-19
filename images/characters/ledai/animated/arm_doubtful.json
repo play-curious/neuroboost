@@ -1,0 +1,20 @@
+{"frames": {
+
+"arm_doubtful.png":
+{
+	"frame": {"x":1,"y":1,"w":96,"h":154},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":119,"y":95,"w":96,"h":154},
+	"sourceSize": {"w":301,"h":290}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "arm_doubtful.png",
+	"format": "RGBA8888",
+	"size": {"w":98,"h":156},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:438c9bf628c55439c7f64c222289b412:29879f29addf382cc5d645c2060934ab:2982e64c38a0a2b85df9ee7659d1f477$"
+}
+}

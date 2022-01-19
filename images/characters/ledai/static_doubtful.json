@@ -1,0 +1,20 @@
+{"frames": {
+
+"ledai_doubtful.png":
+{
+	"frame": {"x":1,"y":1,"w":658,"h":1661},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":183,"y":59,"w":658,"h":1661},
+	"sourceSize": {"w":990,"h":1799}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "static_doubtful.png",
+	"format": "RGBA8888",
+	"size": {"w":660,"h":1663},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:fd84d3fe594e92ddc14f33f2367a5056:6c2619d6d0959a02786aeb0a05bc9148:9dc84977c18c6211a6b570ee4197fd55$"
+}
+}
