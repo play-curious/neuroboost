@@ -226,19 +226,20 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     }
 
     if (bg) this._graphics.setBackground(bg);
-    this._graphics.setCharacter(character);
+    this._graphics.addCharacter(character);
 
     this.emit("changeNodeData", oldNodeData, newNodeData);
   }
 
   // Shortcut for _changeCharacter()
   show(character: string): void {
-    this._graphics.setCharacter(character);
+    this._graphics.addCharacter(character);
   }
 
   // Shortcut for _changeCharacter()
   hide(): void {
-    this._graphics.setCharacter();
+    this._graphics.removeCharacters();
+    //this._graphics.addCharacter();
   }
 
   prompt<VarName extends keyof variable.Variables>(

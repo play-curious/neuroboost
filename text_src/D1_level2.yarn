@@ -59,7 +59,7 @@ Il vous reste 6 heures avant l'heure H... Aujourd'hui, vous allez montrer à Fre
 [[Action_List_Rewind]]
 ===
 title: Action_List_Rewind
-tags:
+tags: freechoice
 colorID: 0
 position: -895,604
 ---
@@ -69,12 +69,35 @@ Que faites-vous maintenant?
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 [[Manger (à midi)|Lunch_Rewind]]
 << else>>
-[[Prendre le petit déjeuner|Petit_dej_Rewind]] 
-[[Passer du temps sur le chat avec le pote d'une autre Université|Chat_Rewind]] 
-[[Réviser cette fichue Astronometric Data Management|Revision_Rewind]] 
-[[Binger votre série TV préférée|BingeTV_Rewind]] 
-[[Rappel libre|Rappel_libre]]
+[[Cuisine@cuisine|cuisine_subchoice]]
+[[Bureau@bureau|bureau_subchoice]]
+[[Salon@salon|salon_subchoice]]
 << endif>>
+===
+
+
+title: cuisine_subchoice
+tags: bg:kitchen subchoice
+position: -319.1514720916748,-55.38755989074707
+---
+[[Prendre le petit déjeuner|Petit_dej_Rewind]] 
+===
+title: bureau_subchoice
+tags: bg:desk subchoice
+position: -993.6492929458618,-75.37680292129517
+---
+[[Passer du temps sur le chat avec le pote d'une autre Université|Chat_Rewind]]
+[[Réviser cette fichue Astronometric Data Management|Revision_Rewind]]
+===
+title: salon_subchoice
+tags: bg:bedroom subchoice
+position: -1716.8310852050781,-38.99417304992676
+---
+[[Binger votre série TV préférée|BingeTV_Rewind]]
+[[Rappel libre|Rappel_libre]]
+
+
+
 ===
 title: Lunch_Rewind
 tags: bg:kitchen
