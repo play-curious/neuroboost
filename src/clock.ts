@@ -4,7 +4,7 @@ import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 import * as easing from "booyah/src/easing";
 
-import $ from "./$";
+import * as extension from "./extension";
 
 export type ResolvableTime = `${number}:${number}`;
 
@@ -33,9 +33,7 @@ export function parseTime(
   return [h, m, h * 60 + m];
 }
 
-export class Clock extends entity.CompositeEntity {
-  private $ = $(this);
-
+export class Clock extends extension.ExtendedCompositeEntity {
   private _days: number;
   private _minutesSinceMidnight: number;
   private _hidden: boolean;
@@ -54,9 +52,9 @@ export class Clock extends entity.CompositeEntity {
     this._container = new PIXI.Container();
     this._container.position.copyFrom(this._position);
 
-    this._container.addChild(this.$.sprite("images/ui/clock.png"));
+    this._container.addChild(this.makeSprite("images/ui/clock.png"));
 
-    this._textBox = this.$.text(
+    this._textBox = this.makeText(
       "",
       {
         fill: "black",
@@ -73,11 +71,11 @@ export class Clock extends entity.CompositeEntity {
 
     this._container.addChild(this._textBox);
 
-    this.$.config().container.addChild(this._container);
+    this.config.container.addChild(this._container);
   }
 
   _teardown() {
-    this.$.config().container.removeChild(this._container);
+    this.config.container.removeChild(this._container);
   }
 
   private _updateText() {
