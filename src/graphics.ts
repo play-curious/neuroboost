@@ -584,8 +584,7 @@ export class Graphics extends entity.CompositeEntity {
             this._entityConfig.app.loader.resources,
             `${baseDir}/${bodyPart.model}.json`
           )
-        )
-        {
+        ) {
           const animatedSpriteEntity = util.makeAnimatedSprite(
             this._entityConfig.app.loader.resources[
               `${baseDir}/${bodyPart.model}.json`
@@ -595,8 +594,11 @@ export class Graphics extends entity.CompositeEntity {
           animatedSpriteEntity.sprite.x = bodyPart.x;
           animatedSpriteEntity.sprite.y = bodyPart.y;
 
-          if(_.has(bodyPart, "scale")) {
-            animatedSpriteEntity.sprite.scale.set(bodyPart.scale, bodyPart.scale);
+          if (_.has(bodyPart, "scale")) {
+            animatedSpriteEntity.sprite.scale.set(
+              bodyPart.scale,
+              bodyPart.scale
+            );
             console.log(bodyPart.scale);
           }
 

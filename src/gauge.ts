@@ -1,14 +1,14 @@
 import * as PIXI from "pixi.js";
-import '@pixi/graphics-extras';
+import "@pixi/graphics-extras";
 
 import * as entity from "booyah/src/entity";
 
 enum GaugeColor {
-  Grey    = 0x777777,
-  Red     = 0xB0160B,
-  Yellow  = 0xDBCA2E,
-  Green   = 0x46DE14
-};
+  Grey = 0x777777,
+  Red = 0xb0160b,
+  Yellow = 0xdbca2e,
+  Green = 0x46de14,
+}
 
 export class Gauge extends entity.CompositeEntity {
   private _container: PIXI.Container;
@@ -42,10 +42,10 @@ export class Gauge extends entity.CompositeEntity {
   }
 
   private colorByValue(value: number): number {
-    if(value === undefined) return GaugeColor.Grey;
+    if (value === undefined) return GaugeColor.Grey;
 
-    if(value > 66) return GaugeColor.Green;
-    else if(value > 33) return GaugeColor.Yellow;
+    if (value > 66) return GaugeColor.Green;
+    else if (value > 33) return GaugeColor.Yellow;
     else return GaugeColor.Red;
   }
 
@@ -57,10 +57,22 @@ export class Gauge extends entity.CompositeEntity {
     const animationDuration = 1000;
 
     // Color change
-    if(oldColor != newColor){
-      const oldRGB = [(oldColor >> 16) & 255, (oldColor >> 8) & 255, oldColor & 255];
-      const newRGB = [(newColor >> 16) & 255, (newColor >> 8) & 255, newColor & 255];
-      const difRGB = [newRGB[0] - oldRGB[0], newRGB[1] - oldRGB[1], newRGB[2] - oldRGB[2]];
+    if (oldColor != newColor) {
+      const oldRGB = [
+        (oldColor >> 16) & 255,
+        (oldColor >> 8) & 255,
+        oldColor & 255,
+      ];
+      const newRGB = [
+        (newColor >> 16) & 255,
+        (newColor >> 8) & 255,
+        newColor & 255,
+      ];
+      const difRGB = [
+        newRGB[0] - oldRGB[0],
+        newRGB[1] - oldRGB[1],
+        newRGB[2] - oldRGB[2],
+      ];
       gaugeAnimations.push(
         new tween.Tween({
           duration: animationDuration,
@@ -70,16 +82,20 @@ export class Gauge extends entity.CompositeEntity {
           onUpdate: (value) => {
             let newHex = 0;
             const valRGB = [
-              oldRGB[0] + (difRGB[0] * (value / 100)),
-              oldRGB[1] + (difRGB[1] * (value / 100)),
-              oldRGB[2] + (difRGB[2] * (value / 100))
+              oldRGB[0] + difRGB[0] * (value / 100),
+              oldRGB[1] + difRGB[1] * (value / 100),
+              oldRGB[2] + difRGB[2] * (value / 100),
             ];
-            newHex = (valRGB[0] << 16) + (valRGB[1] << 8) + (valRGB[2]);
-            
+            newHex = (valRGB[0] << 16) + (valRGB[1] << 8) + valRGB[2];
+
             this._innerDisk.clear();
             this._innerDisk.beginFill(newHex);
-            this._innerDisk.drawCircle(this._radius, this._radius, this._radius);
-          }
+            this._innerDisk.drawCircle(
+              this._radius,
+              this._radius,
+              this._radius
+            );
+          },
         })
       );
     }
@@ -87,7 +103,7 @@ export class Gauge extends entity.CompositeEntity {
     // Torus change
     const torusOffset = 3;
     const torusWidth = 10;
-    const torusDiff = ((torusWidth / 2) + torusOffset);
+    const torusDiff = torusWidth / 2 + torusOffset;
     gaugeAnimations.push(
       new tween.Tween({
         duration: animationDuration,
@@ -96,14 +112,16 @@ export class Gauge extends entity.CompositeEntity {
         to: newValue,
         onUpdate: (value) => {
           this._outerDisk.clear();
-          this._outerDisk.beginFill(0xFFFFFF);
+          this._outerDisk.beginFill(0xffffff);
           this._outerDisk.drawTorus(
-            this._radius, this._radius,
-            this._radius - torusDiff, this._radius + torusDiff,
+            this._radius,
+            this._radius,
+            this._radius - torusDiff,
+            this._radius + torusDiff,
             -(PIXI.PI_2 / 4),
-            -(PIXI.PI_2 / 4) + (PIXI.PI_2 * (value / 100))
+            -(PIXI.PI_2 / 4) + PIXI.PI_2 * (value / 100)
           );
-        }
+        },
       })
     );
 
