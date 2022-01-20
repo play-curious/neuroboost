@@ -172,7 +172,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _handleCommand(command: string): void {
     // If the text was inside <<here>>, it will get returned as a CommandResult string, which you can use in any way you want
-    const commandParts = command.split(" ");
+    const commandParts = command.trim().split(/\s+/);
 
     // Attempt to call a method based on the command
     if (!(commandParts[0] in this)) {
@@ -380,26 +380,13 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this._graphics.toggleGauges(false, ...gaugesName);
   }
 
-  fade(
-    hexColor: string,
-    IN: "true" | "false" = "false",
-    OUT: "true" | "false" = "false",
-    duration: `${number}`
-  ) {
+  fadeIn(duration: `${number}` = "1000", hexColor: string = "#00000") {
     const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
 
-    this._graphics.fade(color, IN === "true", OUT === "true", Number(duration));
+    this._graphics.fadeIn(Number(duration), color);
   }
 
-  fadeIn(hexColor: string, duration: `${number}`) {
-    const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
-
-    this._graphics.fadeIn(color, Number(duration));
-  }
-
-  fadeOut(hexColor: string, duration: `${number}`) {
-    const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
-
-    this._graphics.fadeOut(color, Number(duration));
+  fadeOut(duration: `${number}` = "1000") {
+    this._graphics.fadeOut(Number(duration));
   }
 }

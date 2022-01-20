@@ -701,38 +701,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   }
 
-  public fade(color: string, IN: boolean, OUT: boolean, duration: number) {
-    this._fade.tint = eval(color.replace("#", "0x"));
-
-    this._activateChildEntity(
-      new entity.EntitySequence([
-        new entity.FunctionCallEntity(() => {
-          this._fade.alpha = 0;
-        }),
-        new tween.Tween({
-          duration: IN && OUT ? duration / 2 : IN ? duration : 0,
-          from: 0,
-          to: 1,
-          onUpdate: (value) => {
-            this._fade.alpha = value;
-          },
-        }),
-        new tween.Tween({
-          duration: IN && OUT ? duration / 2 : OUT ? duration : 0,
-          from: 1,
-          to: 0,
-          onUpdate: (value) => {
-            this._fade.alpha = value;
-          },
-        }),
-        new entity.FunctionCallEntity(() => {
-          this._fade.alpha = 0;
-        }),
-      ])
-    );
-  }
-
-  fadeIn(color: string, duration: number) {
+  fadeIn(duration: number = 1000, color: string = "#000000") {
     this._fade.tint = eval(color.replace("#", "0x"));
 
     this._activateChildEntity(
@@ -755,9 +724,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     );
   }
 
-  fadeOut(color: string, duration: number) {
-    this._fade.tint = eval(color.replace("#", "0x"));
-
+  fadeOut(duration: number = 1000) {
     this._activateChildEntity(
       new entity.EntitySequence([
         new entity.FunctionCallEntity(() => {
