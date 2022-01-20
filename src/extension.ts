@@ -7,7 +7,9 @@ import * as booyah from "booyah/src/booyah";
 import * as audio from "booyah/src/audio";
 
 import * as variable from "./variable";
+import * as images from "./images";
 import * as clock from "./clock";
+import * as util from "booyah/src/util";
 
 export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
   get config(): ExtendedEntityConfig {
@@ -30,7 +32,7 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
   }
 
   makeSprite(
-    path: `images/${string}.png`,
+    path: images.StaticSpritePath,
     edit?: (it: PIXI.Sprite) => unknown
   ): PIXI.Sprite {
     const sprite = new PIXI.Sprite(
@@ -40,6 +42,19 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
     edit?.(sprite);
 
     return sprite;
+  }
+
+  makeAnimatedSprite(
+    path: images.AnimatedSpritePath,
+    edit?: (it: PIXI.AnimatedSprite) => unknown
+  ) {
+    const spriteEntity = util.makeAnimatedSprite(
+      this.config.app.loader.resources[path]
+    );
+
+    edit?.(spriteEntity.sprite);
+
+    return spriteEntity;
   }
 
   makeText(

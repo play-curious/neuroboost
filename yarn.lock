@@ -1428,6 +1428,14 @@
   dependencies:
     "@types/node" "*"
 
+"@types/gulp-tap@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/gulp-tap/-/gulp-tap-1.0.1.tgz#6bcf2beff616e2c8b8077d592baec9bb73b98d0a"
+  integrity sha512-TTxKFun5mAOeO1lvx4PWWXaNqNKyk5DxOMqSuRkDX3we0hnJhELLQuZxEAfdFmEFS5Ou1tPKx4KsVnrBMfrolQ==
+  dependencies:
+    "@types/node" "*"
+    "@types/vinyl" "*"
+
 "@types/gulp-util@*":
   version "3.0.36"
   resolved "https://registry.yarnpkg.com/@types/gulp-util/-/gulp-util-3.0.36.tgz#4645e967d375635a57bce1a495059b25a4080de7"
@@ -4471,6 +4479,13 @@ gulp-rename@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/gulp-rename/-/gulp-rename-2.0.0.tgz#9bbc3962b0c0f52fc67cd5eaff6c223ec5b9cf6c"
   integrity sha512-97Vba4KBzbYmR5VBs9mWmK+HwIf5mj+/zioxfZhOKeXtx5ZjBk57KFlePf5nxq9QsTtFl0ejnHE3zTC9MHXqyQ==
+
+gulp-tap@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-tap/-/gulp-tap-2.0.0.tgz#6f66b79870dcbfc364cf4ebe0735b6008473200f"
+  integrity sha512-U5/v1bTozx672QHzrvzPe6fPl2io7Wqyrx2y30AG53eMU/idH4BrY/b2yikOkdyhjDqGgPoMUMnpBg9e9LK8Nw==
+  dependencies:
+    through2 "^3.0.1"
 
 gulp-template@^5.0.0:
   version "5.0.0"

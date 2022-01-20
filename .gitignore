@@ -2,6 +2,7 @@ node_modules
 .DS_Store
 yarn-error.log
 package-lock.json
+/src/images.ts
 .vscode/
 .idea/
 text/
