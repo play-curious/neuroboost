@@ -157,15 +157,12 @@ export const commands: Record<string, Command> = {
     this.graphics.toggleGauges(false, ...gaugesName);
   },
 
-  fadeIn(hexColor: string, duration: `${number}`) {
+  fadeIn(duration: `${number}` = "1000", hexColor: string = "#00000") {
     const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
-
-    this.graphics.fadeIn(color, Number(duration));
+    this.graphics.fadeIn(Number(duration), color);
   },
 
-  fadeOut(hexColor: string, duration: `${number}`) {
-    const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
-
-    this.graphics.fadeOut(color, Number(duration));
-  },
+  fadeOut(duration: `${number}` = "1000") {
+    this.graphics.fadeOut(Number(duration));
+  }
 };
