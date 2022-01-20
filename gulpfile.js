@@ -85,26 +85,32 @@ function handleImages() {
           template
             .replace(
               '"$1"',
-              files
-                .filter((file) => file.animated)
-                .map((file) => `"${file.imagePath}.json"`)
-                .join(" | ")
+              "\n" +
+                files
+                  .filter((file) => file.animated)
+                  .map((file) => `  | "${file.imagePath}.json"`)
+                  .join("\n")
             )
             .replace(
               '"$2"',
-              files
-                .filter((file) => !file.animated)
-                .map((file) => `"${file.imagePath}.png"`)
-                .join(" | ")
+              "\n" +
+                files
+                  .filter((file) => !file.animated)
+                  .map((file) => `  | "${file.imagePath}.png"`)
+                  .join("\n")
             )
             .replace(
               '"$3"',
-              files
-                .map(
-                  (file) =>
-                    `"${file.imagePath + (file.animated ? ".json" : ".png")}"`
-                )
-                .join(", ")
+              "\n" +
+                files
+                  .map(
+                    (file) =>
+                      `  "${
+                        file.imagePath + (file.animated ? ".json" : ".png")
+                      }",`
+                  )
+                  .join("\n") +
+                "\n"
             )
         );
       })

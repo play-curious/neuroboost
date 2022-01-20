@@ -142,6 +142,7 @@ export const commands: Record<string, Command> = {
     if (loop) {
       this.deactivate(loop);
       fxLoops.delete(fxName);
+      //this.config.fxMachine.stop(fxName);
     } else {
       console.warn(`${fxName} fx is already deactivated`);
     }
@@ -164,5 +165,5 @@ export const commands: Record<string, Command> = {
 
   fadeOut(duration: `${number}` = "1000") {
     this.graphics.fadeOut(Number(duration));
-  }
+  },
 };
