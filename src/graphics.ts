@@ -43,6 +43,7 @@ const textHtmlStyle = (speaker: string, color: string = "white") => ({
 });
 
 export class Graphics extends extension.ExtendedCompositeEntity {
+  private _fade: PIXI.Graphics;
   private _lastBg: string;
   private _lastCharacter: string;
   private _lastMood: string;
@@ -51,6 +52,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
   private _backgroundLayer: PIXI.Container;
   private _backgroundEntity: entity.ParallelEntity;
+  private _fxLayer: PIXI.Container;
   private _characterLayer: PIXI.Container;
   private _closeupLayer: PIXI.Container;
   private _uiLayer: PIXI.Container;
@@ -80,6 +82,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._closeupLayer = new PIXI.Container();
     this._container.addChild(this._closeupLayer);
 
+    this._fxLayer = new PIXI.Container();
+    this._container.addChild(this._fxLayer);
+
     this._uiLayer = new PIXI.Container();
     this._container.addChild(this._uiLayer);
 
@@ -95,7 +100,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._dialogLayer.addChild(this._dialogSpeaker);
 
     this._gauges = {};
-    const gaugesList = ["sleep", "food"];
+    const gaugesList: (keyof variable.Gauges)[] = ["sleep", "food"];
     for (let i = 0; i < gaugesList.length; i++) {
       const _gauge = gaugesList[i];
       this._gauges[_gauge] = new gauge.Gauge(
@@ -113,6 +118,13 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       );
       this._gauges[_gauge].getGauge().visible = false;
     }
+
+    this._fade = new PIXI.Graphics()
+      .beginFill(0xffffff)
+      .drawRect(0, 0, 1920, 1080)
+      .endFill();
+    this._fade.alpha = 0;
+    this._fxLayer.addChild(this._fade);
   }
 
   public getGaugeValue(name: string): number {
@@ -691,5 +703,82 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         );
       }
     }
+  }
+
+  public fade(color: string, IN: boolean, OUT: boolean, duration: number) {
+    this._fade.tint = eval(color.replace("#", "0x"));
+
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 0;
+        }),
+        new tween.Tween({
+          duration: IN && OUT ? duration / 2 : IN ? duration : 0,
+          from: 0,
+          to: 1,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new tween.Tween({
+          duration: IN && OUT ? duration / 2 : OUT ? duration : 0,
+          from: 1,
+          to: 0,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 0;
+        }),
+      ])
+    );
+  }
+
+  fadeIn(color: string, duration: number) {
+    this._fade.tint = eval(color.replace("#", "0x"));
+
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 0;
+        }),
+        new tween.Tween({
+          duration: duration,
+          from: 0,
+          to: 1,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 1;
+        }),
+      ])
+    );
+  }
+
+  fadeOut(color: string, duration: number) {
+    this._fade.tint = eval(color.replace("#", "0x"));
+
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 1;
+        }),
+        new tween.Tween({
+          duration: duration,
+          from: 1,
+          to: 0,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 0;
+        }),
+      ])
+    );
   }
 }
