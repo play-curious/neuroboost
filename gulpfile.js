@@ -1,7 +1,11 @@
-const gulp = require("gulp");
 const transform = require("gulp-transform");
 const rename = require("gulp-rename");
+const util = require("gulp-util");
+const gulp = require("gulp");
+const path = require("path");
+const tap = require("gulp-tap");
 const cp = require("child_process");
+const fs = require("fs");
 
 function convertYarnToJson(text) {
   const allNodes = [];
@@ -55,6 +59,56 @@ function convertTextToJson() {
     .pipe(gulp.dest("text/"));
 }
 
+function handleImages() {
+  const template = fs.readFileSync(
+    path.join(__dirname, "templates", "images.ts"),
+    "utf8"
+  );
+
+  return gulp
+    .src("images/**/*.png")
+    .pipe(
+      tap((file) => {
+        file.imagePath = path
+          .relative(__dirname, file.path)
+          .replace(/\\/g, "/")
+          .replace(/\.png$/, "");
+        file.animated = fs.existsSync(file.path.replace(/\.png$/, ".json"));
+      })
+    )
+    .pipe(
+      util.buffer((err, files) => {
+        fs.writeFileSync(
+          path.join(__dirname, "src", "images.ts"),
+          template
+            .replace(
+              '"$1"',
+              files
+                .filter((file) => file.animated)
+                .map((file) => `"${file.imagePath}.json"`)
+                .join(" | ")
+            )
+            .replace(
+              '"$2"',
+              files
+                .filter((file) => !file.animated)
+                .map((file) => `"${file.imagePath}.png"`)
+                .join(" | ")
+            )
+            .replace(
+              '"$3"',
+              files
+                .map(
+                  (file) =>
+                    `"${file.imagePath + (file.animated ? ".json" : ".png")}"`
+                )
+                .join(", ")
+            )
+        );
+      })
+    );
+}
+
 function watch(cb) {
   const spawn = cp.spawn("webpack serve --config webpack.dev.js", {
     shell: true,
@@ -71,11 +125,13 @@ function watch(cb) {
   spawn.on("close", () => cb());
 
   gulp.watch("text_src/**/*.yarn", convertTextToJson);
+  gulp.watch("images/**/*", handleImages);
 }
 
+exports.handleImages = handleImages;
 exports.convertTextToJson = convertTextToJson;
-exports.watch = gulp.series(convertTextToJson, watch);
+exports.watch = gulp.series(convertTextToJson, handleImages, watch);
 
 // Meta-tasks
 
-exports.default = convertTextToJson;
+exports.default = gulp.series(convertTextToJson, handleImages);

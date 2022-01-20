@@ -10,6 +10,7 @@ import * as util from "booyah/src/util";
 
 import * as extension from "./extension";
 import * as variable from "./variable";
+import * as images from "./images";
 import * as gauge from "./gauge";
 
 // Initilize Underscore templates to ressemble YarnSpinner
@@ -24,7 +25,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _lastBg: string;
   private _lastCharacter: string;
   private _lastMood: string;
-  private _characters: Map<string, {container: PIXI.Container, entity: entity.ParallelEntity}>;
+  private _characters: Map<
+    string,
+    { container: PIXI.Container; entity: entity.ParallelEntity }
+  >;
 
   private _container: PIXI.Container;
   private _backgroundLayer: PIXI.Container;
@@ -152,18 +156,14 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   }
 
-  /**
-   *
-   *
-   * @param closeup
-   * @returns
-   */
-  public showCloseup(closeup?: string): void {
+  public showCloseup(
+    path?: images.StaticSpritePath & `images/closeups/${string}.png`
+  ): void {
     this._closeupLayer.removeChildren();
-    if (!closeup) return;
+    if (!path) return;
 
     this._closeupLayer.addChild(
-      this.makeSprite(`images/closeups/${closeup}.png`, (it) => {
+      this.makeSprite(path, (it) => {
         it.position.set(400, 10);
       })
     );
@@ -225,7 +225,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       );
 
       const speakerLC = speaker.toLowerCase();
-      if ( (autoShow && speakerLC !== "you") || (speakerLC === this._lastCharacter && mood !== this._lastMood) ) {
+      if (
+        (autoShow && speakerLC !== "you") ||
+        (speakerLC === this._lastCharacter && mood !== this._lastMood)
+      ) {
         this.addCharacter(speakerLC, mood?.toLowerCase());
       }
     } else {
@@ -444,19 +447,14 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       if (!highlightJSON.hasOwnProperty(jsonValue)) continue;
       freechoicesFound++;
 
+      const path: images.SpritePath & `images/ui/highlights/${string}.png` =
+        `images/ui/highlights/${jsonValue}.png` as any;
+
       let highlight: PIXI.Sprite;
-      if (
-        _.has(
-          this.entityConfig.app.loader.resources,
-          `images/ui/highlights/${jsonValue}.png`
-        )
-      ) {
-        highlight = this.makeSprite(
-          `images/ui/highlights/${jsonValue}.png`,
-          (it) => {
-            it.alpha = 0;
-          }
-        );
+      if (_.has(this.entityConfig.app.loader.resources, path)) {
+        highlight = this.makeSprite(path, (it) => {
+          it.alpha = 0;
+        });
 
         this._nodeDisplay.addChild(highlight);
       } else continue;
@@ -554,7 +552,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
 
     // Set background base
-    this._backgroundLayer.addChild(this.makeSprite(fileName));
+    this._backgroundLayer.addChild(this.makeSprite(fileName as any));
 
     // Set animations
     if (_.has(this.entityConfig.app.loader.resources, fileNameJson)) {
@@ -573,16 +571,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             `${folderName}/${bgPart.model}.json`
           )
         ) {
-          const animatedSpriteEntity = util.makeAnimatedSprite(
-            this.config.app.loader.resources[
-              `${folderName}/${bgPart.model}.json`
-            ]
+          const animatedSpriteEntity = this.makeAnimatedSprite(
+            `${folderName}/${bgPart.model}.json` as any,
+            (it) => {
+              it.anchor.set(0.5);
+              it.position.copyFrom(bgPart);
+              it.animationSpeed = 0.33;
+            }
           );
-          animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
-          animatedSpriteEntity.sprite.x = bgPart.x;
-          animatedSpriteEntity.sprite.y = bgPart.y;
 
-          animatedSpriteEntity.sprite.animationSpeed = 0.33;
           this._backgroundEntity.addChildEntity(animatedSpriteEntity);
         }
       }
@@ -592,14 +589,13 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   /**
-   * 
+   *
    */
   public removeCharacters(withAnimation: boolean = true) {
-
-    for(const [id, character] of this._characters) {
+    for (const [id, character] of this._characters) {
       this._characters.delete(id);
 
-      if(withAnimation) {
+      if (withAnimation) {
         this._activateChildEntity(
           new tween.Tween({
             duration: 800,
@@ -612,14 +608,12 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             onTeardown: () => {
               this._characterLayer.removeChild(character.container);
               // this._deactivateChildEntity(character.entity);
-            }
+            },
           })
         );
-      }
-      else {
+      } else {
         this._characterLayer.removeChild(character.container);
       }
-      
     }
   }
 
@@ -630,7 +624,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    * @param mood
    */
   public addCharacter(character?: string, mood?: string): void {
-
     if (character === this._lastCharacter && mood === this._lastMood) return;
 
     const characterChanged = character !== this._lastCharacter;
@@ -642,8 +635,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     if (character && character !== "you") {
       const characterCE = {
         container: new PIXI.Container(),
-        entity: new entity.ParallelEntity()
-      }
+        entity: new entity.ParallelEntity(),
+      };
       this._characters.set(character, characterCE);
       this._activateChildEntity(
         characterCE.entity,
@@ -664,24 +657,19 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             `${baseDir}/${bodyPart.model}.json`
           )
         ) {
-          const animatedSpriteEntity = util.makeAnimatedSprite(
-            this.config.app.loader.resources[
-              `${baseDir}/${bodyPart.model}.json`
-            ]
+          const animatedSpriteEntity = this.makeAnimatedSprite(
+            `${baseDir}/${bodyPart.model}.json` as any,
+            (it) => {
+              it.anchor.set(0.5);
+              it.position.copyFrom(bodyPart);
+              it.animationSpeed = 0.33;
+
+              if (_.has(bodyPart, "scale")) {
+                it.scale.set(bodyPart.scale);
+              }
+            }
           );
-          animatedSpriteEntity.sprite.anchor.set(0.5, 0.5);
-          animatedSpriteEntity.sprite.x = bodyPart.x;
-          animatedSpriteEntity.sprite.y = bodyPart.y;
 
-          if (_.has(bodyPart, "scale")) {
-            animatedSpriteEntity.sprite.scale.set(
-              bodyPart.scale,
-              bodyPart.scale
-            );
-            console.log(bodyPart.scale);
-          }
-
-          animatedSpriteEntity.sprite.animationSpeed = 0.33;
           characterCE.entity.addChildEntity(animatedSpriteEntity);
         } else {
           console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
@@ -693,7 +681,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       characterCE.container.setTransform(250, 80, 1.1, 1.1);
       //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
 
-      if(characterChanged) {
+      if (characterChanged) {
         this._activateChildEntity(
           new tween.Tween({
             duration: 800,
@@ -702,7 +690,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             to: 250,
             onUpdate: (value) => {
               characterCE.container.position.x = value;
-            }
+            },
           })
         );
       }
