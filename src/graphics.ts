@@ -554,15 +554,22 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     // Set background base
     this._backgroundLayer.addChild(this.makeSprite(fileName as any));
 
+    let baseJson: any;
+
+    try {
+      baseJson = require(fileNameJson);
+    } catch (err) {
+      baseJson = null;
+    }
+
     // Set animations
-    if (_.has(this.entityConfig.app.loader.resources, fileNameJson)) {
+    if (baseJson !== null) {
       this._backgroundEntity = new entity.ParallelEntity();
       this._activateChildEntity(
         this._backgroundEntity,
         entity.extendConfig({ container: this._backgroundLayer })
       );
 
-      let baseJson = this.config.app.loader.resources[fileNameJson].data;
       for (const bgPart of baseJson.sprites) {
         // Load animated texture
         if (
@@ -588,9 +595,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._lastBg = bg;
   }
 
-  /**
-   *
-   */
   public removeCharacters(withAnimation: boolean = true) {
     for (const [id, character] of this._characters) {
       this._characters.delete(id);
@@ -645,8 +649,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       const baseDir = `images/characters/${character}`;
 
-      let baseJson =
-        this.config.app.loader.resources[`${baseDir}/base.json`].data;
+      let baseJson = require(`${baseDir}/base.json`);
+
       if (!_.has(baseJson, mood)) mood = baseJson["default"];
 
       // Load animations JSON

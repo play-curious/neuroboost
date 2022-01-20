@@ -66,7 +66,7 @@ function handleImages() {
   );
 
   return gulp
-    .src("images/**/*.png")
+    .src(["images/**/*.png", "!images/**/base.json"])
     .pipe(
       tap((file) => {
         file.imagePath = path
