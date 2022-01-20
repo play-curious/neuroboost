@@ -66,14 +66,16 @@ function handleImages() {
   );
 
   return gulp
-    .src(["images/**/*.png", "!images/**/base.json"])
+    .src(["images/**/*.png"])
     .pipe(
       tap((file) => {
         file.imagePath = path
           .relative(__dirname, file.path)
           .replace(/\\/g, "/")
           .replace(/\.png$/, "");
-        file.animated = fs.existsSync(file.path.replace(/\.png$/, ".json"));
+        file.animated =
+          path.basename(file.path) !== "base.png" &&
+          fs.existsSync(file.path.replace(/\.png$/, ".json"));
       })
     )
     .pipe(

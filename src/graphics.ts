@@ -537,7 +537,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     const folderName: `images/${string}` = `images/bg/${bg}`;
     const fileName: `images/${string}.png` = `${folderName}/base.png`;
-    const fileNameJson = `${folderName}/base.json`;
+    const fileNameJson = `../${folderName}/base.json`;
     if (!_.has(this.entityConfig.app.loader.resources, fileName)) {
       console.warn("Missing asset for background", bg);
       return;
@@ -649,7 +649,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       const baseDir = `images/characters/${character}`;
 
-      let baseJson = require(`${baseDir}/base.json`);
+      let baseJson = require(`../${baseDir}/base.json`);
 
       if (!_.has(baseJson, mood)) mood = baseJson["default"];
 
