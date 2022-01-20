@@ -6,6 +6,7 @@ import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 
 import * as clock from "./clock";
+import * as command from "./command";
 import * as variable from "./variable";
 import * as graphics from "./graphics";
 import * as extension from "./extension";
@@ -41,39 +42,38 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   private _lastNodeData: NodeData;
   private _autoshowOn: boolean;
   private _previousNodeDatas: NodeData[];
-  private _fxLoops: Map<string, entity.EntitySequence>;
-  private _graphics: graphics.Graphics;
+
+  public graphics: graphics.Graphics;
 
   constructor(
     public readonly scriptName: string,
     public readonly startNode = "Start",
     private _runner: any,
-    private _variableStorage: variable.VariableStorage,
-    private _clock: clock.Clock
+    public readonly variableStorage: variable.VariableStorage,
+    public readonly clock: clock.Clock
   ) {
     super();
   }
 
   _setup(): void {
+    command.fxLoops.clear();
+
     this._autoshowOn = false;
-    this._fxLoops = new Map();
     this._previousNodeDatas = [];
 
     // Setup graphics
-    this._graphics = new graphics.Graphics(this._variableStorage.data);
+    this.graphics = new graphics.Graphics(this.variableStorage.data);
     this._activateChildEntity(
-      this._graphics,
+      this.graphics,
       entity.extendConfig({ container: this.config.container })
     );
 
     // Setup clock
     this._activateChildEntity(
-      this._clock,
-      entity.extendConfig({ container: this._graphics.getUi() })
+      this.clock,
+      entity.extendConfig({ container: this.graphics.getUi() })
     );
-    this._clock.minutesSinceMidnight = Number(
-      this._variableStorage.get("time")
-    );
+    this.clock.minutesSinceMidnight = Number(this.variableStorage.get("time"));
 
     this._runner.registerFunction("isFirstTime", (data: any) => {
       for (const nodeData of this._previousNodeDatas) {
@@ -83,7 +83,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       return true;
     });
     this._runner.registerFunction("getGauge", (data: any, gauge: string) => {
-      return this._graphics.getGaugeValue(gauge);
+      return this.graphics.getGaugeValue(gauge);
     });
     this._runner.load(this.entityConfig.jsonAssets[this.scriptName]);
 
@@ -103,8 +103,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(): void {
-    this._graphics.hideNode();
-    this._graphics.showDialogLayer();
+    this.graphics.hideNode();
+    this.graphics.showDialogLayer();
 
     this._nodeValue = this._nodeIterator.next().value;
     // If result is undefined, stop here
@@ -142,16 +142,16 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _handleDialog(text: string) {
-    this._graphics.showDialog(
+    this.graphics.showDialog(
       text,
-      this._variableStorage.get("name"),
+      this.variableStorage.get("name"),
       this._autoshowOn,
       this._advance.bind(this)
     );
   }
 
   private _handleChoice(nodeValue: ChoiceNode) {
-    this._graphics.setChoice(
+    this.graphics.setChoice(
       nodeValue.options,
       (id) => {
         nodeValue.select(id);
@@ -170,26 +170,27 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     );
   }
 
-  private _handleCommand(command: string): void {
+  private _handleCommand(cmd: string): void {
     // If the text was inside <<here>>, it will get returned as a CommandResult string, which you can use in any way you want
-    const commandParts = command.trim().split(/\s+/);
+    const commandParts = cmd.trim().split(/\s+/);
 
     // Attempt to call a method based on the command
-    if (!(commandParts[0] in this)) {
+    if (!(commandParts[0] in command.commands)) {
       console.warn(`No matching command "${commandParts[0]}"`);
       this._advance();
       return;
     }
 
-    // @ts-ignore
-    this[commandParts[0]](...commandParts.slice(1).map((arg) => arg.trim()));
+    command.commands[commandParts[0]].bind(this)(
+      ...commandParts.slice(1).map((arg) => arg.trim())
+    );
 
     this._advance();
   }
 
   // TODO: Freechoice
   private _handleFreechoice(freechoice: string, nodeValue: ChoiceNode) {
-    this._graphics.setFreechoice(nodeValue.options, (id) => {
+    this.graphics.setFreechoice(nodeValue.options, (id) => {
       nodeValue.select(id);
       this.config.fxMachine.play("Click");
       this._advance();
@@ -225,168 +226,21 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       }
     }
 
-    if (bg) this._graphics.setBackground(bg);
-    this._graphics.addCharacter(character);
+    if (bg) this.graphics.setBackground(bg);
+    this.graphics.addCharacter(character);
 
     this.emit("changeNodeData", oldNodeData, newNodeData);
   }
 
-  // Shortcut for _changeCharacter()
-  show(character: string): void {
-    this._graphics.addCharacter(character);
-  }
-
-  // Shortcut for _changeCharacter()
-  hide(): void {
-    this._graphics.removeCharacters();
-    //this._graphics.addCharacter();
-  }
-
-  prompt<VarName extends keyof variable.Variables>(
-    varName: VarName,
-    message: string,
-    _default: variable.Variables[VarName]
+  activate(
+    e: entity.EntityBase,
+    config?: entity.EntityConfigResolvable,
+    transition?: entity.Transition
   ) {
-    // TODO: replace this with HTML form
-
-    // {
-    //   // todo: use entity for waiting input
-    //   const form = document.createElement("form")
-    //   form.innerHTML = `
-    //     <label> ${message.replace(/_/g, " ")}
-    //       <input type=text name=name value="${_default.replace(/_/g, " ")}">
-    //     </label>
-    //     <input type=submit name=Ok >
-    //   `
-    //   form.styles.(todo: set position to absolute and place it on middle screen)
-    //   form.onsubmit = (event) => {
-    //     event.preventDefault()
-    //     if(ok) document.body.removeChild(form)
-    //   }
-    //   document.body.appendChild(form)
-    // }
-
-    const value = prompt(
-      message.replace(/_/g, " "),
-      _default.replace(/_/g, " ")
-    )?.trim();
-    this._variableStorage.set(
-      varName,
-      value || (_default.replace(/_/g, " ") as any)
-    );
+    this._activateChildEntity(e, config, transition);
   }
 
-  eval(code: string) {
-    const evaluated = eval(code);
-    this._variableStorage.set("eval", evaluated);
-  }
-
-  setTime(time: clock.ResolvableTime) {
-    let [, , minutesSinceMidnight] = clock.parseTime(time);
-
-    while (minutesSinceMidnight >= clock.dayMinutes)
-      minutesSinceMidnight -= clock.dayMinutes;
-
-    this._variableStorage.set("time", `${minutesSinceMidnight}`);
-
-    this._clock.minutesSinceMidnight = minutesSinceMidnight;
-  }
-
-  advanceTime(time: clock.ResolvableTime) {
-    const [, , minutesToAdvance] = clock.parseTime(time);
-    const minutesSinceMidnight = Number(this._variableStorage.get("time"));
-    let newMinutes = minutesSinceMidnight + minutesToAdvance;
-
-    while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
-
-    this._variableStorage.set("time", `${newMinutes}`);
-
-    this._activateChildEntity(this._clock.advanceTime(time));
-  }
-
-  hideClock() {
-    this._clock.hidden = true;
-  }
-
-  showClock() {
-    this._clock.hidden = false;
-  }
-
-  setGauge<VarName extends keyof variable.Gauges>(
-    gaugeName: VarName,
-    value: variable.Gauges[VarName]
-  ) {
-    this._variableStorage.set(gaugeName, value);
-  }
-
-  addToGauge<VarName extends keyof variable.Gauges>(
-    gaugeName: VarName,
-    value: variable.Gauges[VarName]
-  ) {
-    let oldValue = this._variableStorage.get(gaugeName);
-    const newValue = Math.min(Number(oldValue) + Number(value), 100);
-    this._variableStorage.set(gaugeName, `${newValue}`);
-  }
-
-  removeFromGauge<VarName extends keyof variable.Gauges>(
-    gaugeName: VarName,
-    value: variable.Gauges[VarName]
-  ) {
-    let oldValue = this._variableStorage.get(gaugeName);
-    const newValue = Math.max(Number(oldValue) - Number(value), 0);
-    this._variableStorage.set(gaugeName, `${newValue}`);
-  }
-
-  music(musicName: string) {
-    this.config.jukebox.play(musicName);
-  }
-
-  fx(fxName: string) {
-    this.config.fxMachine.play(fxName);
-  }
-
-  loopFX(fxName: `${string}_LOOP`, loopDuration: `${number}`) {
-    const duration = Number(loopDuration);
-    const loops = this._fxLoops;
-
-    if (loops.has(fxName))
-      return console.warn(`${fxName} fx is already activated`);
-
-    const loop = this.makeFxLoop(fxName, duration);
-
-    this._activateChildEntity(loop);
-
-    this._fxLoops.set(fxName, loop);
-  }
-
-  stopFX(fxName: `${string}_LOOP`) {
-    const loop = this._fxLoops.get(fxName);
-
-    if (loop) {
-      this._deactivateChildEntity(loop);
-      this._fxLoops.delete(fxName);
-    } else {
-      console.warn(`${fxName} fx is already deactivated`);
-    }
-  }
-
-  showGauges(...gaugesName: string[]) {
-    gaugesName.pop();
-    this._graphics.toggleGauges(true, ...gaugesName);
-  }
-
-  hideGauges(...gaugesName: string[]) {
-    gaugesName.pop();
-    this._graphics.toggleGauges(false, ...gaugesName);
-  }
-
-  fadeIn(duration: `${number}` = "1000", hexColor: string = "#00000") {
-    const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
-
-    this._graphics.fadeIn(Number(duration), color);
-  }
-
-  fadeOut(duration: `${number}` = "1000") {
-    this._graphics.fadeOut(Number(duration));
+  deactivate(e: entity.EntityBase) {
+    this._deactivateChildEntity(e);
   }
 }
