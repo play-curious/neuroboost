@@ -11,6 +11,6 @@ module.exports = merge(common, {
     port: portFinderSync.getPort(8080),
   },
   watchOptions: {
-    ignored: [".git/**", "images/**", "text_src/**"],
+    ignored: [".git", ".github", "node_modules", "images", "text_src"],
   },
 });
