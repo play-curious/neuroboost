@@ -2361,9 +2361,9 @@ boolbase@^1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-"booyah@github:play-curious/booyah":
+"booyah@github:play-curious/booyah#polytech":
   version "2.0.0"
-  resolved "https://codeload.github.com/play-curious/booyah/tar.gz/30b493a776686c6517f42bdf123f349e2109dd43"
+  resolved "https://codeload.github.com/play-curious/booyah/tar.gz/37938efc3d6443d97508b3e90c78761cabfe2e09"
   dependencies:
     "@types/fontfaceobserver" "^0.0.6"
     "@types/google.analytics" "0.0.41"

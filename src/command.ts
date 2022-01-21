@@ -142,7 +142,7 @@ export const commands: Record<string, Command> = {
     if (loop) {
       this.deactivate(loop);
       fxLoops.delete(fxName);
-      //this.config.fxMachine.stop(fxName);
+      this.config.fxMachine.stop(fxName);
     } else {
       console.warn(`${fxName} fx is already deactivated`);
     }
