@@ -1,19 +1,16 @@
 import * as _ from "underscore";
 import * as PIXI from "pixi.js";
 
-import MultiStyleText from "pixi-multistyle-text";
-
 import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
 import * as tween from "booyah/src/tween";
-import * as util from "booyah/src/util";
 
 import * as extension from "./extension";
 import * as variable from "./variable";
 import * as images from "./images";
 import * as gauge from "./gauge";
 
-// Initilize Underscore templates to ressemble YarnSpinner
+// Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
   interpolate: /{\s*\$(.+?)\s*}/g,
 };
@@ -245,8 +242,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
 
     {
-      const dialogBox = new MultiStyleText("", {
-        default: {
+      const dialogBox = this.makeText(
+        "",
+        {
           fill: "white",
           fontFamily: "Ubuntu",
           fontSize: 40,
@@ -254,25 +252,14 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           wordWrap: true,
           wordWrapWidth: 1325,
           leading: 10,
+          isSpeaker: !!speaker,
         },
-        i: {
-          fontStyle: "italic",
-        },
-        b: {
-          fontWeight: "bold",
-          fontStyle: speaker ? "normal" : "italic",
-        },
-        bi: {
-          fontWeight: "bold",
-          fontStyle: "italic",
-        },
-      });
-      dialogBox.position.set(140 + 122, 704 + 33);
+        (it) => it.position.set(140 + 122, 704 + 33)
+      );
 
       this._nodeDisplay.addChild(dialogBox);
 
       const defilementDurationPerLetter = 25;
-
       const baseText = (dialog || interpolatedText).trim();
 
       const writer = this.makeFxLoop(
@@ -397,9 +384,13 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         this.makeText(
           nodeOptions[nodeOptions.length - (1 + i)],
           {
-            fill: 0xfdf4d3,
+            fill: "#fdf4d3",
             fontFamily: "Ubuntu",
             fontSize: 40,
+            fontStyle: "normal",
+            wordWrap: true,
+            wordWrapWidth: 1325,
+            leading: 10,
           },
           (it) => {
             it.anchor.set(0.5);
@@ -713,38 +704,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   }
 
-  public fade(color: string, IN: boolean, OUT: boolean, duration: number) {
-    this._fade.tint = eval(color.replace("#", "0x"));
-
-    this._activateChildEntity(
-      new entity.EntitySequence([
-        new entity.FunctionCallEntity(() => {
-          this._fade.alpha = 0;
-        }),
-        new tween.Tween({
-          duration: IN && OUT ? duration / 2 : IN ? duration : 0,
-          from: 0,
-          to: 1,
-          onUpdate: (value) => {
-            this._fade.alpha = value;
-          },
-        }),
-        new tween.Tween({
-          duration: IN && OUT ? duration / 2 : OUT ? duration : 0,
-          from: 1,
-          to: 0,
-          onUpdate: (value) => {
-            this._fade.alpha = value;
-          },
-        }),
-        new entity.FunctionCallEntity(() => {
-          this._fade.alpha = 0;
-        }),
-      ])
-    );
-  }
-
-  fadeIn(color: string, duration: number) {
+  fadeIn(duration: number = 1000, color: string = "#000000") {
     this._fade.tint = eval(color.replace("#", "0x"));
 
     this._activateChildEntity(
@@ -767,26 +727,25 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     );
   }
 
-  fadeOut(color: string, duration: number) {
-    this._fade.tint = eval(color.replace("#", "0x"));
-
-    this._activateChildEntity(
-      new entity.EntitySequence([
-        new entity.FunctionCallEntity(() => {
-          this._fade.alpha = 1;
-        }),
-        new tween.Tween({
-          duration: duration,
-          from: 1,
-          to: 0,
-          onUpdate: (value) => {
-            this._fade.alpha = value;
-          },
-        }),
-        new entity.FunctionCallEntity(() => {
-          this._fade.alpha = 0;
-        }),
-      ])
-    );
+  fadeOut(duration: number = 1000) {
+    if (this._fade.alpha !== 0)
+      this._activateChildEntity(
+        new entity.EntitySequence([
+          new entity.FunctionCallEntity(() => {
+            this._fade.alpha = 1;
+          }),
+          new tween.Tween({
+            duration: duration,
+            from: 1,
+            to: 0,
+            onUpdate: (value) => {
+              this._fade.alpha = value;
+            },
+          }),
+          new entity.FunctionCallEntity(() => {
+            this._fade.alpha = 0;
+          }),
+        ])
+      );
   }
 }

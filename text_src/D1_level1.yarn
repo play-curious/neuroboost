@@ -108,6 +108,7 @@ title: Petit_dej
 tags: bg:kitchen
 position: -441.43939208984375,237.24887084960938
 ---
+<< fx EatCook >>
 Yum Yum... Rien ne vaut une boîte de chimicookies et un synthécafé après le réveil. 
 De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le café traditionnels. Heureusement que le génie génétique permet désormais de resynthétiser tout ce qui a poussé ou vécu sur la Terre originelle...
 
@@ -300,11 +301,12 @@ position: -719.885986328125,901.3107299804688
 ---
 You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !!
 Temde: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
-Miss Temdé lève la paume d'une de ses mains cybernétique, un rayon en jaillit et vous englobe de sa lumière vert phosphorescente...
 
-<<fadeIn 12ea12 2000 >>
+Miss Temdé lève la paume d'une de ses mains cybernétique...
 
-You: <i>Wow...</i>
+<<fadeIn 1000 12ea12 >>
+
+un rayon en jaillit et vous englobe de sa lumière vert phosphorescente.
 
 [[Assemblee_Sages]]
 ===
@@ -312,7 +314,7 @@ title: Assemblee_Sages
 tags: bg:circle autoshow
 position: -562.1727294921875,1164.6718139648438
 ---
-<<fadeOut 12ea12 2000>>
+<< fadeOut >>
 
 L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes.
 Temde: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }.

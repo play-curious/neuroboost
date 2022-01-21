@@ -11,6 +11,8 @@ import * as images from "./images";
 import * as clock from "./clock";
 import * as util from "booyah/src/util";
 
+import MultiStyleText from "pixi-multistyle-text";
+
 export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
   get config(): ExtendedEntityConfig {
     return this._entityConfig as ExtendedEntityConfig;
@@ -59,10 +61,29 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
 
   makeText(
     text: string,
-    styles: Partial<PIXI.TextStyle> & { fontFamily: "Ubuntu" | "Jura" },
+    options: Partial<PIXI.TextStyle> & {
+      fontFamily: "Ubuntu" | "Jura";
+    } & TextOptions,
     edit?: (it: PIXI.Text) => unknown
   ): PIXI.Text {
-    const pixiText = new PIXI.Text(text, styles);
+    const styles = options;
+
+    delete styles.isSpeaker;
+
+    const pixiText = new MultiStyleText(text, {
+      default: styles,
+      i: {
+        fontStyle: "italic",
+      },
+      b: {
+        fontWeight: "bold",
+        fontStyle: options.isSpeaker ? "normal" : "italic",
+      },
+      bi: {
+        fontWeight: "bold",
+        fontStyle: "italic",
+      },
+    });
 
     edit?.(pixiText);
 
@@ -88,4 +109,8 @@ interface ExtendedEntityConfig extends entity.EntityConfig {
   jukebox: audio.Jukebox;
   narrator: narration.SubtitleNarrator;
   fxMachine: audio.FxMachine;
+}
+
+export interface TextOptions {
+  isSpeaker?: boolean;
 }
