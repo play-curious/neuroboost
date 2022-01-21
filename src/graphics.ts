@@ -255,7 +255,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           isSpeaker: !!speaker,
         },
         (it) => it.position.set(140 + 122, 704 + 33)
-      )
+      );
 
       this._nodeDisplay.addChild(dialogBox);
 
@@ -393,8 +393,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             leading: 10,
           },
           (it) => {
-            it.anchor.set(.5)
-            it.position.set(choicebox.width / 2, choicebox.height / 2)
+            it.anchor.set(0.5);
+            it.position.set(choicebox.width / 2, choicebox.height / 2);
           }
         )
       );
@@ -716,7 +716,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   fadeOut(duration: number = 1000) {
-    if(this._fade.alpha !== 0)
+    if (this._fade.alpha !== 0)
       this._activateChildEntity(
         new entity.EntitySequence([
           new entity.FunctionCallEntity(() => {
