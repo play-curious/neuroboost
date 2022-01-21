@@ -20,6 +20,29 @@ const templateSettings = {
 
 const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
 
+const textHtmlStyle = (speaker: string, color: string = "white") => ({
+  default: {
+    fill: color,
+    fontFamily: "Ubuntu",
+    fontSize: 40,
+    fontStyle: speaker ? "normal" : "italic",
+    wordWrap: true,
+    wordWrapWidth: 1325,
+    leading: 10,
+  },
+  i: {
+    fontStyle: "italic",
+  },
+  b: {
+    fontWeight: "bold",
+    fontStyle: speaker ? "normal" : "italic",
+  },
+  bi: {
+    fontWeight: "bold",
+    fontStyle: "italic",
+  },
+});
+
 export class Graphics extends extension.ExtendedCompositeEntity {
   private _fade: PIXI.Graphics;
   private _lastBg: string;
@@ -245,28 +268,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
 
     {
-      const dialogBox = new MultiStyleText("", {
-        default: {
-          fill: "white",
-          fontFamily: "Ubuntu",
-          fontSize: 40,
-          fontStyle: speaker ? "normal" : "italic",
-          wordWrap: true,
-          wordWrapWidth: 1325,
-          leading: 10,
-        },
-        i: {
-          fontStyle: "italic",
-        },
-        b: {
-          fontWeight: "bold",
-          fontStyle: speaker ? "normal" : "italic",
-        },
-        bi: {
-          fontWeight: "bold",
-          fontStyle: "italic",
-        },
-      });
+      // TODO
+      const dialogBox = new MultiStyleText("", textHtmlStyle(speaker));
       dialogBox.position.set(140 + 122, 704 + 33);
 
       this._nodeDisplay.addChild(dialogBox);
@@ -393,20 +396,13 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         ])
       );
 
-      choicebox.addChild(
-        this.makeText(
-          nodeOptions[nodeOptions.length - (1 + i)],
-          {
-            fill: 0xfdf4d3,
-            fontFamily: "Ubuntu",
-            fontSize: 40,
-          },
-          (it) => {
-            it.anchor.set(0.5);
-            it.position.set(choicebox.width / 2, choicebox.height / 2);
-          }
-        )
+      const text = new MultiStyleText(
+        nodeOptions[nodeOptions.length - (1 + i)],
+        textHtmlStyle(".", "#fdf4d3")
       );
+      text.anchor.set(0.5);
+      text.position.set(choicebox.width / 2, choicebox.height / 2);
+      choicebox.addChild(text);
 
       this._nodeDisplay.addChild(choicebox);
     }
