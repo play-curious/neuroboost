@@ -1,6 +1,11 @@
 {
     "sprites": [
         {
+            "model": "background",
+            "x": 960,
+            "y": 540
+        },
+        {
             "model": "bocal",
             "x": 80,
             "y": 803
@@ -30,5 +35,6 @@
             "x": 0,
             "y": 0
         }
-    ]
+    ],
+    "default": "sprites"
 }

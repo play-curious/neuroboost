@@ -531,19 +531,18 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    * Set background
    *
    * @param bg Background's name
+   * @param mood Background's mood (time of the day)
    */
-  public setBackground(bg: string) {
+  public setBackground(bg: string, mood?: string) {
+    console.log("HEY");
+
+    // Check if background change
     if (bg === this._lastBg) return;
 
-    const folderName: `images/${string}` = `images/bg/${bg}`;
-    const fileName: `images/${string}.png` = `${folderName}/base.png`;
-    const fileNameJson = `../${folderName}/base.json`;
-    if (!_.has(this.entityConfig.app.loader.resources, fileName)) {
-      console.warn("Missing asset for background", bg);
-      return;
-    }
+    // Register last background
+    this._lastBg = bg;
 
-    // Remove existing
+    // Remove background
     this._backgroundLayer.removeChildren();
     if (this._backgroundEntity !== undefined) {
       if (this.childEntities.indexOf(this._backgroundEntity) != -1)
@@ -551,48 +550,50 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._backgroundEntity = undefined;
     }
 
-    // Set background base
-    this._backgroundLayer.addChild(this.makeSprite(fileName as any));
+    // Create Entity
+    this._backgroundEntity = new entity.ParallelEntity();
+    // Activate entity
+    this._activateChildEntity(
+      this._backgroundEntity,
+      entity.extendConfig({ container: this._backgroundLayer })
+    );
 
-    let baseJson: any;
+    // Set directory to access resources
+    const baseDir = `images/bg/${bg}`;
+    const baseJson = require(`../${baseDir}/base.json`);
 
-    try {
-      baseJson = require(fileNameJson);
-    } catch (err) {
-      baseJson = null;
-    }
+    // If mood is incorrect, get default one
+    if (!_.has(baseJson, mood)) mood = baseJson["default"];
 
-    // Set animations
-    if (baseJson !== null) {
-      this._backgroundEntity = new entity.ParallelEntity();
-      this._activateChildEntity(
-        this._backgroundEntity,
-        entity.extendConfig({ container: this._backgroundLayer })
+    // For each part
+    for (const bgPart of baseJson.sprites) {
+      // Create animated sprite and set properties
+      const animatedSpriteEntity = this.makeAnimatedSprite(
+        `${baseDir}/${bgPart.model}.json` as any,
+        (it) => {
+          it.anchor.set(0.5);
+          it.position.copyFrom(bgPart);
+          it.animationSpeed = 0.33;
+        }
       );
 
-      for (const bgPart of baseJson.sprites) {
-        // Load animated texture
-        if (
-          _.has(
-            this.config.app.loader.resources,
-            `${folderName}/${bgPart.model}.json`
-          )
-        ) {
-          const animatedSpriteEntity = this.makeAnimatedSprite(
-            `${folderName}/${bgPart.model}.json` as any,
-            (it) => {
-              it.anchor.set(0.5);
-              it.position.copyFrom(bgPart);
-              it.animationSpeed = 0.33;
-            }
-          );
-
-          this._backgroundEntity.addChildEntity(animatedSpriteEntity);
-        }
-      }
+      // Add animated sprite to entity
+      this._backgroundEntity.addChildEntity(animatedSpriteEntity);
     }
 
-    this._lastBg = bg;
+    // Place character on screen
+    // If character changed, do animation
+
+    // const folderName: `images/${string}` = `images/bg/${bg}`;
+    // const fileName: `images/${string}.png` = `${folderName}/base.png`;
+    // const fileNameJson = `../${folderName}/base.json`;
+    // if (!_.has(this.entityConfig.app.loader.resources, fileName)) {
+    //   console.warn("Missing asset for background", bg);
+    //   return;
+    // }
+
+    // Set background base
+    // this._backgroundLayer.addChild(this.makeSprite(fileName as any));
   }
 
   public removeCharacters(withAnimation: boolean = true) {
@@ -628,32 +629,40 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    * @param mood
    */
   public addCharacter(character?: string, mood?: string): void {
+    // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
 
+    // Register last character & mood
     const characterChanged = character !== this._lastCharacter;
     this._lastCharacter = character;
     this._lastMood = mood;
 
+    // Remove characters
     this.removeCharacters(characterChanged);
 
+    // If character or character not you
     if (character && character !== "you") {
+      // Create container & Entity
       const characterCE = {
         container: new PIXI.Container(),
         entity: new entity.ParallelEntity(),
       };
+      // Add new container/entity to a map
       this._characters.set(character, characterCE);
+      // Activate entity
       this._activateChildEntity(
         characterCE.entity,
         entity.extendConfig({ container: characterCE.container })
       );
 
+      // Set directory to access resources
       const baseDir = `images/characters/${character}`;
+      const baseJson = require(`../${baseDir}/base.json`);
 
-      let baseJson = require(`../${baseDir}/base.json`);
-
+      // If mood is incorrect, get default one
       if (!_.has(baseJson, mood)) mood = baseJson["default"];
 
-      // Load animations JSON
+      // For each part
       for (const bodyPart of baseJson[mood]) {
         if (
           _.has(
@@ -661,6 +670,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             `${baseDir}/${bodyPart.model}.json`
           )
         ) {
+          // Create animated sprite and set properties
           const animatedSpriteEntity = this.makeAnimatedSprite(
             `${baseDir}/${bodyPart.model}.json` as any,
             (it) => {
@@ -674,6 +684,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             }
           );
 
+          // Add animated sprite to entity
           characterCE.entity.addChildEntity(animatedSpriteEntity);
         } else {
           console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
@@ -685,6 +696,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       characterCE.container.setTransform(250, 80, 1.1, 1.1);
       //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
 
+      // If character changed, do animation
       if (characterChanged) {
         this._activateChildEntity(
           new tween.Tween({

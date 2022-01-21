@@ -1,6 +1,11 @@
 {
     "sprites": [
         {
+            "model": "background",
+            "x": 960,
+            "y": 540
+        },
+        {
             "model": "clignotantRB",
             "x": 516,
             "y": 413
@@ -15,5 +20,6 @@
             "x": 960,
             "y": 540
         }
-    ]
+    ],
+    "default": "sprites"
 }
