@@ -716,23 +716,24 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   fadeOut(duration: number = 1000) {
-    this._activateChildEntity(
-      new entity.EntitySequence([
-        new entity.FunctionCallEntity(() => {
-          this._fade.alpha = 1;
-        }),
-        new tween.Tween({
-          duration: duration,
-          from: 1,
-          to: 0,
-          onUpdate: (value) => {
-            this._fade.alpha = value;
-          },
-        }),
-        new entity.FunctionCallEntity(() => {
-          this._fade.alpha = 0;
-        }),
-      ])
-    );
+    if(this._fade.alpha !== 0)
+      this._activateChildEntity(
+        new entity.EntitySequence([
+          new entity.FunctionCallEntity(() => {
+            this._fade.alpha = 1;
+          }),
+          new tween.Tween({
+            duration: duration,
+            from: 1,
+            to: 0,
+            onUpdate: (value) => {
+              this._fade.alpha = value;
+            },
+          }),
+          new entity.FunctionCallEntity(() => {
+            this._fade.alpha = 0;
+          }),
+        ])
+      );
   }
 }
