@@ -245,8 +245,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
 
     {
-      const dialogBox = new MultiStyleText("", {
-        default: {
+      const dialogBox = this.makeText(
+        "",
+        {
           fill: "white",
           fontFamily: "Ubuntu",
           fontSize: 40,
@@ -254,25 +255,14 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           wordWrap: true,
           wordWrapWidth: 1325,
           leading: 10,
+          isSpeaker: !!speaker,
         },
-        i: {
-          fontStyle: "italic",
-        },
-        b: {
-          fontWeight: "bold",
-          fontStyle: speaker ? "normal" : "italic",
-        },
-        bi: {
-          fontWeight: "bold",
-          fontStyle: "italic",
-        },
-      });
-      dialogBox.position.set(140 + 122, 704 + 33);
+        (it) => it.position.set(140 + 122, 704 + 33)
+      )
 
       this._nodeDisplay.addChild(dialogBox);
 
       const defilementDurationPerLetter = 25;
-
       const baseText = (dialog || interpolatedText).trim();
 
       const writer = this.makeFxLoop(
