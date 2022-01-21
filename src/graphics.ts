@@ -1,19 +1,16 @@
 import * as _ from "underscore";
 import * as PIXI from "pixi.js";
 
-import MultiStyleText from "pixi-multistyle-text";
-
 import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
 import * as tween from "booyah/src/tween";
-import * as util from "booyah/src/util";
 
 import * as extension from "./extension";
 import * as variable from "./variable";
 import * as images from "./images";
 import * as gauge from "./gauge";
 
-// Initilize Underscore templates to ressemble YarnSpinner
+// Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
   interpolate: /{\s*\$(.+?)\s*}/g,
 };
@@ -387,13 +384,17 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         this.makeText(
           nodeOptions[nodeOptions.length - (1 + i)],
           {
-            fill: 0xfdf4d3,
+            fill: "#fdf4d3",
             fontFamily: "Ubuntu",
             fontSize: 40,
+            fontStyle: "normal",
+            wordWrap: true,
+            wordWrapWidth: 1325,
+            leading: 10,
           },
           (it) => {
-            it.anchor.set(0.5);
-            it.position.set(choicebox.width / 2, choicebox.height / 2);
+            it.anchor.set(.5)
+            it.position.set(choicebox.width / 2, choicebox.height / 2)
           }
         )
       );
