@@ -48,7 +48,7 @@ export const commands: Record<string, Command> = {
       message.replace(/_/g, " "),
       _default.replace(/_/g, " ")
     )?.trim();
-    this._variableStorage.set(
+    this.variableStorage.set(
       varName,
       value || (_default.replace(/_/g, " ") as any)
     );
