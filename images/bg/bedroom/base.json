@@ -1,7 +1,7 @@
 {
-    "sprites": [
+    "day": [
         {
-            "model": "background",
+            "model": "background_day",
             "x": 960,
             "y": 540
         },
@@ -31,5 +31,42 @@
             "y": 645
         }
     ],
-    "default": "sprites"
+    "night": [
+        {
+            "model": "background_night",
+            "x": 960,
+            "y": 540
+        },
+        {
+            "model": "bocal",
+            "x": 80,
+            "y": 803
+        },
+        {
+            "model": "fleurs",
+            "x": 112,
+            "y": 370
+        },
+        {
+            "model": "plants",
+            "x": 1846,
+            "y": 925
+        },
+        {
+            "model": "smoke",
+            "x": 1680,
+            "y": 802
+        },
+        {
+            "model": "vapeur",
+            "x": 277,
+            "y": 645
+        },
+        {
+            "model": "nightShade",
+            "x": 960,
+            "y": 540
+        }
+    ],
+    "default": "day"
 }

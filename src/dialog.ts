@@ -206,6 +206,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this._autoshowOn = false;
 
     let bg: string;
+    let bg_mood: string;
     let character: string;
     for (let tag of newNodeData.tags) {
       tag = tag.trim();
@@ -214,7 +215,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       if (tag.startsWith("bg:")) {
         if (bg) console.warn("Trying to set background twice");
 
-        bg = tag.split(":")[1].trim();
+        [bg, bg_mood] = tag.split(":")[1].trim().split("_", 2);
       } else if (tag.startsWith("show:")) {
         if (character) console.warn("Trying to set character twice");
 
@@ -226,7 +227,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       }
     }
 
-    if (bg) this.graphics.setBackground(bg);
+    if (bg) this.graphics.setBackground(bg, bg_mood);
     this.graphics.addCharacter(character);
 
     this.emit("changeNodeData", oldNodeData, newNodeData);

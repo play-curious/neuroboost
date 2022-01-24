@@ -20,6 +20,7 @@ const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
 export class Graphics extends extension.ExtendedCompositeEntity {
   private _fade: PIXI.Graphics;
   private _lastBg: string;
+  private _lastBgMood: string;
   private _lastCharacter: string;
   private _lastMood: string;
   private _characters: Map<
@@ -525,13 +526,13 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    * @param mood Background's mood (time of the day)
    */
   public setBackground(bg: string, mood?: string) {
-    console.log("HEY");
 
     // Check if background change
-    if (bg === this._lastBg) return;
+    if (bg === this._lastBg && mood === this._lastBgMood) return;
 
     // Register last background
     this._lastBg = bg;
+    this._lastBgMood = mood;
 
     // Remove background
     this._backgroundLayer.removeChildren();
@@ -553,11 +554,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const baseDir = `images/bg/${bg}`;
     const baseJson = require(`../${baseDir}/base.json`);
 
+    console.log("mood before", mood);
+
     // If mood is incorrect, get default one
     if (!_.has(baseJson, mood)) mood = baseJson["default"];
 
+    console.log("mood after", mood);
+
     // For each part
-    for (const bgPart of baseJson.sprites) {
+    for (const bgPart of baseJson[mood]) {
       // Create animated sprite and set properties
       const animatedSpriteEntity = this.makeAnimatedSprite(
         `${baseDir}/${bgPart.model}.json` as any,
@@ -571,20 +576,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       // Add animated sprite to entity
       this._backgroundEntity.addChildEntity(animatedSpriteEntity);
     }
-
-    // Place character on screen
-    // If character changed, do animation
-
-    // const folderName: `images/${string}` = `images/bg/${bg}`;
-    // const fileName: `images/${string}.png` = `${folderName}/base.png`;
-    // const fileNameJson = `../${folderName}/base.json`;
-    // if (!_.has(this.entityConfig.app.loader.resources, fileName)) {
-    //   console.warn("Missing asset for background", bg);
-    //   return;
-    // }
-
-    // Set background base
-    // this._backgroundLayer.addChild(this.makeSprite(fileName as any));
   }
 
   public removeCharacters(withAnimation: boolean = true) {

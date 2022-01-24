@@ -11,10 +11,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "background.png",
+	"image": "background_day.png",
 	"format": "RGBA8888",
 	"size": {"w":1922,"h":1082},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:5f45724a8d0a39ca974b144e8a529856:9559049719bf714052fa43d1f6d9f81b:2ba65c328dea799e4d80739630892abf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1339283b5480840558ee76e15ff08b12:15faf50b4c99dcdc259ddf2347ff3c45:2ba65c328dea799e4d80739630892abf$"
 }
 }

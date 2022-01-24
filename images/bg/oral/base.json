@@ -1,0 +1,20 @@
+{
+    "sprites": [
+        {
+            "model": "background",
+            "x": 960,
+            "y": 540
+        },
+        {
+            "model": "pupitre",
+            "x": 960,
+            "y": 540
+        },
+        {
+            "model": "lightProjo",
+            "x": 960,
+            "y": 540
+        }
+    ],
+    "default": "sprites"
+}

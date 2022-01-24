@@ -1,0 +1,20 @@
+{"frames": {
+
+"light_projo.png":
+{
+	"frame": {"x":1,"y":1,"w":1898,"h":1026},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":54,"w":1898,"h":1026},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lightProjo.png",
+	"format": "RGBA8888",
+	"size": {"w":1900,"h":1028},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:044e1a6665b1885c64e35f358d6556ee:97e9213e7d8034d9de007167322de786:8ead222c974a9caf2cb2dd1ad5b426e0$"
+}
+}

@@ -1,0 +1,20 @@
+{"frames": {
+
+"pupitre.png":
+{
+	"frame": {"x":1,"y":1,"w":670,"h":451},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":780,"y":629,"w":670,"h":451},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "pupitre.png",
+	"format": "RGBA8888",
+	"size": {"w":672,"h":453},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9ff121734e89d316613e37a1367196d2:bbedbd03751e1d7d60e8f2be02c89481:3d578c57d6a25d2d358d5c5a62df050d$"
+}
+}
