@@ -105,12 +105,16 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _advance(): void {
     this._nodeValue = this._nodeIterator.next().value;
+    const [bg, bgMood] = this._nodeValue.data.tags.find(tag => tag.startsWith("bg:")).replace("bg:", "").split("_")
+    const oldBackgroundName = this.graphics._lastBg
 
     this._activateChildEntity(
       new entity.EntitySequence([
         () =>
-          "data" in this._nodeValue &&
-          this._nodeValue.data.title !== this._lastNodeData?.title
+          ("data" in this._nodeValue &&
+          this._nodeValue.data.tags.find(tag => tag.startsWith("bg:")) !== this.graphics.last &&
+          this._nodeValue.data.tags.find(tag => tag.startsWith("bg:")) !== this.graphics.last &&
+          this._nodeValue.data.title !== this._lastNodeData?.title)
             ? this.graphics.fadeIn(200)
             : new entity.FunctionCallEntity(() => null),
         new entity.FunctionCallEntity(() => {
@@ -134,8 +138,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
           }
 
           if (this._nodeValue instanceof bondage.TextResult) {
+            this.activate(this.graphics.fadeOut(200))
             this._handleDialog((this._nodeValue as TextNode).text);
           } else if (this._nodeValue instanceof bondage.OptionsResult) {
+            this.activate(this.graphics.fadeOut(200))
             if (this._hasTag(this._nodeValue.data, "freechoice")) {
               this._handleFreechoice(
                 this._nodeValue.data.title,
