@@ -102,6 +102,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       .drawRect(0, 0, 1920, 1080)
       .endFill();
     this._fade.alpha = 0;
+    this._fade.visible = false;
     this._fxLayer.addChild(this._fade);
   }
 
@@ -693,11 +694,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   fadeIn(duration: number = 1000, color: string = "#000000") {
-    this._fade.tint = eval(color.replace("#", "0x"));
-
-    this._activateChildEntity(
-      new entity.EntitySequence([
+    if (!this._fade.visible)
+      return new entity.EntitySequence([
         new entity.FunctionCallEntity(() => {
+          this._fade.tint = eval(color.replace("#", "0x"));
+          this._fade.visible = true;
           this._fade.alpha = 0;
         }),
         new tween.Tween({
@@ -711,29 +712,29 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         new entity.FunctionCallEntity(() => {
           this._fade.alpha = 1;
         }),
-      ])
-    );
+      ]);
+    return new entity.FunctionCallEntity(() => null);
   }
 
   fadeOut(duration: number = 1000) {
-    if (this._fade.alpha !== 0)
-      this._activateChildEntity(
-        new entity.EntitySequence([
-          new entity.FunctionCallEntity(() => {
-            this._fade.alpha = 1;
-          }),
-          new tween.Tween({
-            duration: duration,
-            from: 1,
-            to: 0,
-            onUpdate: (value) => {
-              this._fade.alpha = value;
-            },
-          }),
-          new entity.FunctionCallEntity(() => {
-            this._fade.alpha = 0;
-          }),
-        ])
-      );
+    if (this._fade.visible)
+      return new entity.EntitySequence([
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 1;
+        }),
+        new tween.Tween({
+          duration: duration,
+          from: 1,
+          to: 0,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 0;
+          this._fade.visible = false;
+        }),
+      ]);
+    return new entity.FunctionCallEntity(() => null);
   }
 }

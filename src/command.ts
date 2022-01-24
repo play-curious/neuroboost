@@ -160,10 +160,10 @@ export const commands: Record<string, Command> = {
 
   fadeIn(duration: `${number}` = "1000", hexColor: string = "#00000") {
     const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
-    this.graphics.fadeIn(Number(duration), color);
+    this.activate(this.graphics.fadeIn(Number(duration), color));
   },
 
   fadeOut(duration: `${number}` = "1000") {
-    this.graphics.fadeOut(Number(duration));
+    this.activate(this.graphics.fadeOut(Number(duration)));
   },
 };

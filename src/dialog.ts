@@ -4,6 +4,7 @@ import * as PIXI from "pixi.js";
 
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
+import * as tween from "booyah/src/tween";
 
 import * as clock from "./clock";
 import * as command from "./command";
@@ -103,42 +104,55 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(): void {
-    this.graphics.hideNode();
-    this.graphics.showDialogLayer();
-
     this._nodeValue = this._nodeIterator.next().value;
-    // If result is undefined, stop here
-    if (!this._nodeValue) {
-      this._transition = entity.makeTransition();
-      return;
-    }
 
-    // Check if the node data has changed
-    if (
-      "data" in this._nodeValue &&
-      this._nodeValue.data.title !== this._lastNodeData?.title
-    ) {
-      this._onChangeNodeData(this._lastNodeData, this._nodeValue.data);
-      this._previousNodeDatas.push(this._lastNodeData);
-      this._lastNodeData = this._nodeValue.data;
-    }
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        () =>
+          "data" in this._nodeValue &&
+          this._nodeValue.data.title !== this._lastNodeData?.title
+            ? this.graphics.fadeIn(200)
+            : new entity.FunctionCallEntity(() => null),
+        new entity.FunctionCallEntity(() => {
+          this.graphics.hideNode();
+          this.graphics.showDialogLayer();
 
-    if (this._nodeValue instanceof bondage.TextResult) {
-      this._handleDialog((this._nodeValue as TextNode).text);
-    } else if (this._nodeValue instanceof bondage.OptionsResult) {
-      if (this._hasTag(this._nodeValue.data, "freechoice")) {
-        this._handleFreechoice(
-          this._nodeValue.data.title,
-          this._nodeValue as ChoiceNode
-        );
-      } else {
-        this._handleChoice(this._nodeValue as ChoiceNode);
-      }
-    } else if (this._nodeValue instanceof bondage.CommandResult) {
-      this._handleCommand((this._nodeValue as TextNode).text);
-    } else {
-      throw new Error(`Unknown bondage result ${this._nodeValue}`);
-    }
+          // If result is undefined, stop here
+          if (!this._nodeValue) {
+            this._transition = entity.makeTransition();
+            return;
+          }
+
+          // Check if the node data has changed
+          if (
+            "data" in this._nodeValue &&
+            this._nodeValue.data.title !== this._lastNodeData?.title
+          ) {
+            this._onChangeNodeData(this._lastNodeData, this._nodeValue.data);
+            this._previousNodeDatas.push(this._lastNodeData);
+            this._lastNodeData = this._nodeValue.data;
+          }
+
+          if (this._nodeValue instanceof bondage.TextResult) {
+            this._handleDialog((this._nodeValue as TextNode).text);
+          } else if (this._nodeValue instanceof bondage.OptionsResult) {
+            if (this._hasTag(this._nodeValue.data, "freechoice")) {
+              this._handleFreechoice(
+                this._nodeValue.data.title,
+                this._nodeValue as ChoiceNode
+              );
+            } else {
+              this._handleChoice(this._nodeValue as ChoiceNode);
+            }
+          } else if (this._nodeValue instanceof bondage.CommandResult) {
+            this._handleCommand((this._nodeValue as TextNode).text);
+          } else {
+            throw new Error(`Unknown bondage result ${this._nodeValue}`);
+          }
+        }),
+        this.graphics.fadeOut(200),
+      ])
+    );
   }
 
   private _handleDialog(text: string) {
