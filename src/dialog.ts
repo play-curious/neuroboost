@@ -44,6 +44,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   private _autoshowOn: boolean;
   private _previousNodeDatas: NodeData[];
 
+  public disabledClick: boolean;
   public graphics: graphics.Graphics;
 
   constructor(
@@ -59,6 +60,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   _setup(): void {
     command.fxLoops.clear();
 
+    this.disabledClick = false;
     this._autoshowOn = false;
     this._previousNodeDatas = [];
 
@@ -105,19 +107,24 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _advance(): void {
     this._nodeValue = this._nodeIterator.next().value;
-    const [bg, bgMood] = this._nodeValue.data.tags.find(tag => tag.startsWith("bg:")).replace("bg:", "").split("_")
-    const oldBackgroundName = this.graphics._lastBg
 
     this._activateChildEntity(
       new entity.EntitySequence([
         () =>
-          ("data" in this._nodeValue &&
-          this._nodeValue.data.tags.find(tag => tag.startsWith("bg:")) !== this.graphics.last &&
-          this._nodeValue.data.tags.find(tag => tag.startsWith("bg:")) !== this.graphics.last &&
-          this._nodeValue.data.title !== this._lastNodeData?.title)
+          this._nodeValue?.hasOwnProperty("data") &&
+          (() => {
+            const { lastBg, lastMood } = this.graphics.last;
+            const [bg, mood] = this._nodeValue.data?.tags
+              .find((tag) => tag.startsWith("bg:"))
+              ?.replace("bg:", "")
+              .split("_") || ["GNEUH"];
+            return (bg !== "GNEUH" && bg !== lastBg) || mood !== lastMood;
+          })() &&
+          this._nodeValue.data.title !== this._lastNodeData?.title
             ? this.graphics.fadeIn(200)
             : new entity.FunctionCallEntity(() => null),
         new entity.FunctionCallEntity(() => {
+          this.disabledClick = true;
           this.graphics.hideNode();
           this.graphics.showDialogLayer();
 
@@ -138,59 +145,67 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
           }
 
           if (this._nodeValue instanceof bondage.TextResult) {
-            this.activate(this.graphics.fadeOut(200))
-            this._handleDialog((this._nodeValue as TextNode).text);
+            this.activate(this.graphics.fadeOut(200));
+            this._handleDialog((this._nodeValue as TextNode).text, true);
           } else if (this._nodeValue instanceof bondage.OptionsResult) {
-            this.activate(this.graphics.fadeOut(200))
+            this.activate(this.graphics.fadeOut(200));
             if (this._hasTag(this._nodeValue.data, "freechoice")) {
               this._handleFreechoice(
                 this._nodeValue.data.title,
-                this._nodeValue as ChoiceNode
+                this._nodeValue as ChoiceNode,
+                true
               );
             } else {
-              this._handleChoice(this._nodeValue as ChoiceNode);
+              this._handleChoice(this._nodeValue as ChoiceNode, true);
             }
           } else if (this._nodeValue instanceof bondage.CommandResult) {
-            this._handleCommand((this._nodeValue as TextNode).text);
+            this._handleCommand((this._nodeValue as TextNode).text, true);
           } else {
             throw new Error(`Unknown bondage result ${this._nodeValue}`);
           }
         }),
         this.graphics.fadeOut(200),
+        new entity.FunctionCallEntity(() => {
+          this.disabledClick = false;
+        }),
       ])
     );
   }
 
-  private _handleDialog(text: string) {
-    this.graphics.showDialog(
-      text,
-      this.variableStorage.get("name"),
-      this._autoshowOn,
-      this._advance.bind(this)
-    );
+  private _handleDialog(text: string, notClicked = false) {
+    if (notClicked || !this.disabledClick)
+      this.graphics.showDialog(
+        text,
+        this.variableStorage.get("name"),
+        this._autoshowOn,
+        this._advance.bind(this)
+      );
   }
 
-  private _handleChoice(nodeValue: ChoiceNode) {
-    this.graphics.setChoice(
-      nodeValue.options,
-      (id) => {
-        nodeValue.select(id);
-        this.config.fxMachine.play("Click");
-        this._advance();
-      },
-      this._hasTag(nodeValue.data, "subchoice")
-        ? () => {
-            this._nodeIterator = this._runner.run(
-              _.last(this._previousNodeDatas).title
-            );
-            this.config.fxMachine.play("Click");
-            this._advance();
-          }
-        : undefined
-    );
+  private _handleChoice(nodeValue: ChoiceNode, notClicked = false) {
+    if (notClicked || !this.disabledClick)
+      this.graphics.setChoice(
+        nodeValue.options,
+        (id) => {
+          nodeValue.select(id);
+          this.config.fxMachine.play("Click");
+          this._advance();
+        },
+        this._hasTag(nodeValue.data, "subchoice")
+          ? () => {
+              this._nodeIterator = this._runner.run(
+                _.last(this._previousNodeDatas).title
+              );
+              this.config.fxMachine.play("Click");
+              this._advance();
+            }
+          : undefined
+      );
   }
 
-  private _handleCommand(cmd: string): void {
+  private _handleCommand(cmd: string, notClicked = false): void {
+    if (!notClicked && this.disabledClick) return;
+
     // If the text was inside <<here>>, it will get returned as a CommandResult string, which you can use in any way you want
     const commandParts = cmd.trim().split(/\s+/);
 
@@ -209,12 +224,17 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   // TODO: Freechoice
-  private _handleFreechoice(freechoice: string, nodeValue: ChoiceNode) {
-    this.graphics.setFreechoice(nodeValue.options, (id) => {
-      nodeValue.select(id);
-      this.config.fxMachine.play("Click");
-      this._advance();
-    });
+  private _handleFreechoice(
+    freechoice: string,
+    nodeValue: ChoiceNode,
+    notClicked = false
+  ) {
+    if (notClicked || !this.disabledClick)
+      this.graphics.setFreechoice(nodeValue.options, (id) => {
+        nodeValue.select(id);
+        this.config.fxMachine.play("Click");
+        this._advance();
+      });
   }
 
   private _onChangeNodeData(oldNodeData: NodeData, newNodeData: NodeData) {

@@ -25,7 +25,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _lastMood: string;
   private _characters: Map<
     string,
-    { container: PIXI.Container; entity: entity.ParallelEntity }
+    {
+      container: PIXI.Container;
+      entity: entity.ParallelEntity;
+    }
   >;
 
   private _container: PIXI.Container;
@@ -44,6 +47,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
   constructor(private readonly _variableStorageData: variable.Variables) {
     super();
+  }
+
+  get last() {
+    return {
+      lastBg: this._lastBg,
+      lastBgMood: this._lastBgMood,
+      lastCharacter: this._lastCharacter,
+      lastMood: this._lastMood,
+    };
   }
 
   _setup(): void {
@@ -527,7 +539,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    * @param mood Background's mood (time of the day)
    */
   public setBackground(bg: string, mood?: string) {
-
     // Check if background change
     if (bg === this._lastBg && mood === this._lastBgMood) return;
 

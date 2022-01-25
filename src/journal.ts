@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js";
 
 import * as entity from "booyah/src/entity";
 
+import * as graphics from "./graphics";
 import * as variable from "./variable";
 import * as extension from "./extension";
 
@@ -25,10 +26,8 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
     this._container = new PIXI.Container();
     this.config.container.addChild(this._container);
 
-    this._container.addChild(
-      this.makeSprite("images/bg/bedroom_night/base.png"),
-      this.makeSprite("images/ui/journal_bg.png")
-    );
+    //this._graphics.setBackground("bedroom", "night")
+    this._container.addChild(this.makeSprite("images/ui/journal_bg.png"));
 
     const htmlLayer = document.getElementById("html-layer");
     this._htmlContainer = document.createElement("div");
