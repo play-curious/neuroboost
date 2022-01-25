@@ -1,5 +1,4 @@
 import * as _ from "underscore";
-
 import * as PIXI from "pixi.js";
 
 import * as booyah from "booyah/src/booyah";

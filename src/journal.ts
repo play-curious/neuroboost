@@ -1,8 +1,10 @@
 import * as PIXI from "pixi.js";
 
-import * as entity from "booyah/src/entity";
+import { GlitchFilter } from "@pixi/filter-glitch";
 
-import * as graphics from "./graphics";
+import * as entity from "booyah/src/entity";
+import * as tween from "booyah/src/tween";
+
 import * as variable from "./variable";
 import * as extension from "./extension";
 
@@ -15,6 +17,7 @@ const options = [
 ];
 
 export class JournalScene extends extension.ExtendedCompositeEntity {
+  private _glitch: PIXI.Filter & GlitchFilter;
   private _container: PIXI.Container;
   private _htmlContainer: HTMLElement;
 
@@ -23,11 +26,53 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
+    this._glitch = new GlitchFilter({
+      red: [0, 0],
+      blue: [0, 0],
+      green: [0, 0],
+      offset: 0,
+      slices: 10,
+    }) as any;
+
     this._container = new PIXI.Container();
+    this._container.filters = [this._glitch];
     this.config.container.addChild(this._container);
 
     //this._graphics.setBackground("bedroom", "night")
-    this._container.addChild(this.makeSprite("images/ui/journal_bg.png"));
+    this._container.addChild(
+      this.makeSprite("images/ui/journal_bg.png", (it) => it)
+    );
+
+    this._activateChildEntity(
+      new entity.EntitySequence(
+        [
+          () => new entity.WaitingEntity(Math.floor(10 + Math.random() * 2000)),
+          () =>
+            new entity.FunctionCallEntity(() => {
+              this._glitch.red = [
+                Math.floor(Math.random() * 50),
+                Math.floor(Math.random() * 50),
+              ];
+              this._glitch.green = [
+                Math.floor(Math.random() * 50),
+                Math.floor(Math.random() * 50),
+              ];
+              this._glitch.offset = Math.floor(5 + Math.random() * 5);
+              this._glitch.slices = Math.floor(10 + Math.random() * 15);
+            }),
+          () => new entity.WaitingEntity(Math.floor(10 + Math.random() * 500)),
+          () =>
+            new entity.FunctionCallEntity(() => {
+              this._glitch.red = [0, 0];
+              this._glitch.green = [0, 0];
+              this._glitch.offset = 0;
+            }),
+        ],
+        {
+          loop: true,
+        }
+      )
+    );
 
     const htmlLayer = document.getElementById("html-layer");
     this._htmlContainer = document.createElement("div");

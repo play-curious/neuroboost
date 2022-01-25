@@ -67,18 +67,20 @@ const statesName = [
   "D2_level1"
 ];
 
-const states: { [k: string]: entity.EntityResolvable } = {};
-for (const stateName of statesName) {
-  states[stateName === statesName[0] ? "start" : stateName] =
-    new dialog.DialogScene(
-      stateName,
-      startNode,
-      _runner,
-      _variableStorage,
-      _clock
-    );
-  states[`journal_${stateName}`] = new journal.JournalScene(_variableStorage);
-}
+const states: { [k: string]: entity.EntityResolvable } = {
+  start: new journal.JournalScene(_variableStorage),
+};
+// for (const stateName of statesName) {
+//   states[stateName === statesName[0] ? "start" : stateName] =
+//     new dialog.DialogScene(
+//       stateName,
+//       startNode,
+//       _runner,
+//       _variableStorage,
+//       _clock
+//     );
+//   states[`journal_${stateName}`] = new journal.JournalScene(_variableStorage);
+// }
 
 const transitions: Record<string, entity.Transition> = {};
 let i = 0;
