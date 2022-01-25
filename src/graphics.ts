@@ -570,6 +570,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           it.anchor.set(0.5);
           it.position.copyFrom(bgPart);
           it.animationSpeed = 0.33;
+
+          if(_.has(bgPart, "alpha"))
+            it.alpha = bgPart.alpha;
         }
       );
 

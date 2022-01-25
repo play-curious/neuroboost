@@ -6,20 +6,14 @@
             "y": 540
         },
         {
-            "model": "pupitre",
+            "model": "bigPlanet",
             "x": 960,
             "y": 540
         },
         {
-            "model": "lightProjo",
+            "model": "littlePlanets",
             "x": 960,
-            "y": 540
-        },
-        {
-            "model": "lights",
-            "x": 960,
-            "y": 872,
-            "alpha": 0.1
+            "y": 200
         }
     ],
     "default": "sprites"
