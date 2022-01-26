@@ -5,6 +5,7 @@ import * as clock from "./clock";
 import * as entity from "booyah/src/entity";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
+export type YarnFunction = (this: dialog.DialogScene, ...args: [string | number | boolean][]) => unknown;
 
 export const fxLoops: Map<string, entity.EntitySequence> = new Map();
 
@@ -167,3 +168,11 @@ export const commands: Record<string, Command> = {
     this.graphics.fadeOut(Number(duration));
   },
 };
+
+export const functions: Record<string, YarnFunction> = {
+  isFirstTime(): boolean {
+    return this.runner.history.some(
+      result => result.metadata.title === this.runner.currentResult.metadata.title
+    );
+  }
+}

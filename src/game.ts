@@ -12,7 +12,7 @@ import * as clock from "./clock";
 import * as images from "./images";
 import * as variable from "./variable";
 
-declare const bondage: any;
+import * as yarnBound from "yarn-bound";
 
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
@@ -41,7 +41,6 @@ const startNode = params.get("startNode") || params.get("node") || "Start";
 
 // Common attributes for all DialogScene
 //   - VariableStorage
-//   - Bondage.Runner
 //   - Clock
 const _variableStorage = new variable.VariableStorage({
   name: "Moi",
@@ -50,8 +49,17 @@ const _variableStorage = new variable.VariableStorage({
   sleep: "100",
   food: "100",
 });
-const _runner = new bondage.Runner("");
-_runner.setVariableStorage(_variableStorage);
+const globalHistory: yarnBound.Result[] = [];
+function runnerMaker(file: string): yarnBound.YarnBound<variable.VariableStorage> {
+  const runner = new yarnBound.YarnBound({
+    dialogue: file,
+    startAt: startNode,
+    variableStorage: _variableStorage,
+    functions: {}
+  });
+  runner.history = globalHistory;
+  return runner;
+};
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
 export function installGameDatas(rootConfig: entity.EntityConfig) {
@@ -59,6 +67,7 @@ export function installGameDatas(rootConfig: entity.EntityConfig) {
   rootConfig.clock = _clock;
   rootConfig.app.renderer.plugins.interaction.mouseOverRenderer = true;
 }
+
 
 // prettier-ignore
 const statesName = [
@@ -73,11 +82,24 @@ for (const stateName of statesName) {
     new dialog.DialogScene(
       stateName,
       startNode,
-      _runner,
       _variableStorage,
       _clock
     );
   states[`journal_${stateName}`] = new journal.JournalScene(_variableStorage);
+}
+
+async function yarnsLoader(){
+  const texts = await Promise.all(statesName.map(name => fetch(`levels/${name}.yarn`).then(async (response) => {
+    return response.text()
+  })))
+
+  let i = 0
+  for(const stateName in states){
+    if(states[stateName] instanceof dialog.DialogScene){
+      (states[stateName] as dialog.DialogScene).loadRunner(runnerMaker(texts[i]));
+      i++
+    }
+  }
 }
 
 const transitions: Record<string, entity.Transition> = {};
@@ -90,13 +112,7 @@ for (const state in states) {
 }
 transitions[previousState] = entity.makeTransition("end");
 
-const jsonAssets: Array<string | { key: string; url: string }> = [];
-for (const stateName of statesName) {
-  jsonAssets.push({
-    key: stateName,
-    url: `text/${stateName}.json`,
-  });
-}
+
 
 const fxAssets = [
   "AlarmClock_LOOP",
@@ -135,11 +151,11 @@ booyah.go({
   transitions,
   graphicalAssets: images.graphicalAssets,
   fontAssets,
-  jsonAssets,
   fxAssets,
   musicAssets,
   screenSize,
   splashScreen,
+  extraLoaders: [yarnsLoader],
   entityInstallers: [
     audio.installJukebox,
     audio.installFxMachine,

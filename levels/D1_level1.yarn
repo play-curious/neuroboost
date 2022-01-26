@@ -1,0 +1,480 @@
+title: Start
+tags: bg|bedroom
+position: -1979.929937362671,-817.3228759765625
+---
+<< setTime 8:00 >>
+<< music Neutral >>
+<< loopFX AlarmClock_LOOP 2000 >>
+Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.
+<< stopFX AlarmClock_LOOP >>
+Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
+
+<< loopFX PhoneRing_LOOP 5000 >>
+
+-> Prendre l'appel
+  << jump Appel_Fred >>
+-> Rejeter l'appel
+  << jump Rejet_Fred >>
+===
+title: Appel_Fred
+tags: show|fred
+position: -1617.4276733398438,-825.2426147460938
+---
+<< stopFX PhoneRing_LOOP >>
+
+Fred: Hello ! C'est Fred !
+You: Je sais, j'ai vu ton nom.
+Fred: Yes yes... Tu fais quoi là, maintenant ?
+You: Je viens de me réveiller.
+Fred: Tu sais qu'on a le partiel de cet aprèm ?
+You: Heu... ouais... C'est sur quoi déjà ?
+Fred: La matière que tu n'aimes pas du tout : l'Atronometric Data Management
+You: Ouais... Le truc super long qui veut rien dire...
+Fred: Tu rigoles, c'est super passionnant et super cool ! J'adore !
+You: Facile à dire pour toi, tu révises jamais !
+Fred: C'est ça quand on est un génie.
+You: Ouais ouais...
+Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
+You: Ouais...
+Vous poussez un grand soupir avant de raccrocher
+
+<< advanceTime 0:15 >>
+
+<<jump Phone_off>>
+===
+title: Rejet_Fred
+tags: 
+position: -1805.537826538086,-561.8787231445312
+---
+<< loopFX PhoneRing_LOOP 5000 >>
+
+Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle aussitôt !
+
+// Option "Prendre l'appel" moved to the end of this node
+// Option "Rejeter l'appel" moved to the end of this node
+-> Prendre l'appel
+    <<jump Appel_Fred>>
+-> Rejeter l'appel
+    <<jump Rejet_Fred>>
+===
+title: Phone_off
+tags: 
+position: -1293.9966201782227,-821.3144836425781
+---
+Vraiment ce Fred, il vous agace. Il ne fout rien et il passe haut la main ! Il est temps que ça change !
+Et c'est cette semaine que ça va se produire ! La semaine de partiels de fin de semestre ! Vous allez lui montrer de quelle étoffe sont fait les vrais winners !
+Il vous reste 6 heures avant l'heure H... 
+Il y a de quoi faire pour montrer à Fred qui est le Big Winner de l'Académie ! 
+<<jump Action_List>>
+===
+title: Action_List
+tags: bg:bedroom freechoice
+position: -847.2033081054688,-821.7307662963867
+---
+<< if isFirstTime() >>
+Que faites-vous maintenant ?
+<< endif >>
+<< if $time >= 720 >>
+Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
+-> Manger (à midi)
+    <<jump Lunch>>
+<< else>>
+-> Cuisine@cuisine
+    <<jump cuisine_subchoice>>
+-> Bureau@bureau
+    <<jump bureau_subchoice>>
+-> Salon@salon
+    <<jump salon_subchoice>>
+<< endif>>
+===
+
+
+
+title: cuisine_subchoice
+tags: bg:kitchen subchoice
+position: -319.1514720916748,-55.38755989074707
+---
+// Option "Prendre le petit déjeuner" moved to the end of this node
+-> Prendre le petit déjeuner
+    <<jump Petit_dej>>
+===
+title: bureau_subchoice
+tags: bg:desk subchoice
+position: -993.6492929458618,-75.37680292129517
+---
+// Option "Passer du temps sur le chat avec le pote d'une autre Université" moved to the end of this node
+// Option "Réviser cette fichue Astronometric Data Management" moved to the end of this node
+-> Passer du temps sur le chat avec le pote d'une autre Université
+    <<jump Chat>>
+-> Réviser cette fichue Astronometric Data Management
+    <<jump Revision>>
+===
+title: salon_subchoice
+tags: bg:bedroom subchoice
+position: -1716.8310852050781,-38.99417304992676
+---
+// Option "Binger votre série TV préférée" moved to the end of this node
+
+
+
+-> Binger votre série TV préférée
+    <<jump BingeTV>>
+===
+title: Petit_dej
+tags: bg:kitchen
+position: -441.43939208984375,237.24887084960938
+---
+<< fx EatCook >>
+Yum Yum... Rien ne vaut une boîte de chimicookies et un synthécafé après le réveil. 
+De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le café traditionnels. Heureusement que le génie génétique permet désormais de resynthétiser tout ce qui a poussé ou vécu sur la Terre originelle...
+
+<< advanceTime 0:30 >>
+
+Bon, ce n'est pas tout. 
+
+<<jump Action_List>>
+===
+title: Chat
+tags: 
+position: -779.0828857421875,231.5269012451172
+---
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. 
+<< fx Notification >>
+Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, puis Lou, puis Cam...
+
+<< advanceTime 2:00 >>
+
+Vous passez deux heures à discuter de tout, mais surtout de rien.
+
+<<jump Action_List>>
+===
+title: Revision
+tags: bg:desk
+position: -1231.30712890625,224.80491638183594
+---
+Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Management. Rien que le titre vous barbe. ça commence mal...
+
+<< advanceTime 2:00 >>
+
+Vous passez les 2 heures à potasser ce long pensum ennuyeux. C'est à vous dégoûter de devenir un jour astronaute. Vous qui êtes super fan de Star Mars, du corsaire Yann Salto et du Chevalier Laser Dude Highwalker...
+
+<<jump Action_List>>
+===
+title: BingeTV
+tags: 
+position: -1573.0745849609375,216.18408203125
+---
+Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
+Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
+
+<< loopFX TVStarwars_LOOP 10000 >>
+
+Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable et séduisant corsaire Yann Salto. Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. 
+Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... Vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait détruire son moteur gauche ! Il est obligé d'atterrir en catastrophe sur Tortuga.  
+Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite. 
+
+<< advanceTime 4:00 >>
+<< stopFX TVStarwars_LOOP >>
+
+Vous passez 4 heures à binger votre série préférée.
+
+<<jump Action_List>>
+===
+title: Lunch
+tags: bg:kitchen
+position: -1026.218994140625,513.7423095703125
+---
+<< fx EatCook >>
+Yum Yum... Délicieux ce Burger Big Proteins Double Cheese !
+Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant l'examen !
+Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures...
+
+<< advanceTime 0:15 >>
+
+Et maintenant, 
+// Option "Il est temps d'aller en classe" moved to the end of this node
+-> Il est temps d'aller en classe
+    <<jump Test>>
+===
+title: Test
+tags: bg:class
+position: -666.0570068359375,500.580322265625
+---
+<< setTime 14:00 >>
+
+Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b>, que le compteur se met en route. 
+Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi.
+
+<< advanceTime 4:00 >>
+
+Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe
+
+<<jump Post_Test>>
+===
+title: Post_Test
+tags: bg:class show:fred
+position: -341.2677307128906,490.52679443359375
+---
+Fred: Alors, ça l'a fait ?
+You: Je pense oui. C'était basique.
+Fred: Yes, je m'attendais à plus tordu que ça.
+You: Moi aussi
+Fred: Y avait quelques petits pièges, mais ils sont tellement gros, on ne pouvait pas les louper !
+You: Ah bon ?
+Fred: Yes, tu n'en as pas trouvé.
+You: Non.
+Fred: C'est dommage. Tu sais qu'une mauvaise réponse t'enlève autant de point qu'une bonne réponse.
+You: Heuuuu...
+
+<< advanceTime 0:15 >>
+
+Fred s'apprête à vous répondre quand la sonnerie retentit.
+Les résultats du test viennent de tomber...
+
+// Option "Consulter les résultats" moved to the end of this node
+-> Consulter les résultats
+    <<jump Resultats_Bad>>
+===
+title: Resultats_Bad
+tags: bg:class show:fred
+position: -16.689138412475586,492.05352783203125
+---
+Hélas... Fred n'avait pas tort... Les scores s'affichent sur l'écran de la porte principale. Vous êtes dans le peloton... de queue... La semaine de sprint commence mal...
+Fred: Hé, ça va ? Tu as l'air tout blême d'un coup.
+You: Ben... J'ai tout juste <b>D-</b>.
+Fred: Hé alors ? Ce n'est pas la fin du monde. Ce n'est qu'une note parmi d'autres. Tu vas te rattraper.
+You: Facile à dire pour toi. Tu as eu <b>A+</b> !
+Fred: Y a qu'une chose à faire dans ce cas !
+You: Quoi donc ?
+Fred: Se vider la tête ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande !
+You: Je sais pas...
+
+<< advanceTime 0:15 >>
+
+// Option "Accepter l'offre de Fred" moved to the end of this node
+// Option "Refuser l'offre de Fred" moved to the end of this node
+-> Accepter l'offre de Fred
+    <<jump Fete_deprime>>
+-> Refuser l'offre de Fred
+    <<jump Rester_Chambre_deprime>>
+===
+title: Fete_deprime
+tags: bg:party
+position: 402.3575134277344,484.3177490234375
+---
+Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer...
+
+<< advanceTime 2:00 >>
+
+Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais cette fois-ci, il n'insiste pas pour vous dissuader de partir. Manifestement, vous devez faire une sacrée tête d'enterrement. Même l'infatiguable Fred renonce à vous convaincre de rester t'amuser...
+
+// Option "Rentrer dormir" moved to the end of this node
+-> Rentrer dormir
+    <<jump Chambre_Nuit>>
+===
+title: Rester_Chambre_deprime
+tags: 
+position: 403.7701988220215,752.0811309814453
+---
+Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à chaque fois qu'il revient à la charge, vous le renvoyez <i>gentiment</i> dans les cordes. Du coup, quand vous vous dirigez vers la porte de votre chambre, Fred ne dit plus rien. Pour la première fois, vous êtes parvenu à dissuader l'infatiguable Fred de passer un bon moment avec lui...
+
+<< advanceTime 0:30 >>
+
+// Option "Rentrer dormir" moved to the end of this node
+-> Rentrer dormir
+    <<jump Chambre_Nuit>>
+===
+title: Chambre_Nuit
+tags: bg:bedroom_night
+position: -17.766727447509766,752.0414428710938
+---
+Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde... 
+Demain est un autre jour, vivement demain...
+<< fx Sleep_LOOP >>
+// Option "Faire un gros somme" moved to the end of this node
+-> Faire un gros somme
+    <<jump Reveil_Sage>>
+===
+title: Reveil_Sage
+tags: bg:bedroom_night 
+position: -352.5212097167969,897.6408081054688
+---
+<< hideUi >>
+
+Temde: Hello! Je te réveille?
+Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras...
+
+<<show temde>>
+Temde: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse !
+
+
+Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit :
+Temde: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ?
+
+<<prompt name Mon_nom: Steve>>
+
+Temde: Enchantée { $name }. Lève-toi, on a du pain sur la planche !
+You: Suiiiiis faaaaaaatigué...........
+Temde: Arrête tes jérémiades ! T'as bricolé comme tu as pu, ça n'a pas marché. T'as juste qu'à reprendre le chantier et basta !
+You: Noon ! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire ! 
+You: J'ai raté, j'ai raté. C'est fini, foutu !
+Temde: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Tu vas réparer ton engin académique, je ne te dis que ça ! Allez suis-moi, on t'attend là-bas !
+You: Qui m'attend ? Où là-bas ?
+Temde: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit quand même !
+
+// Option "Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller" moved to the end of this node
+// Option "Se laisser guider par l'iréelle Miss Temdé" moved to the end of this node
+-> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller
+    <<jump Tenter_rester_chambre>>
+-> Se laisser guider par l'iréelle Miss Temdé
+    <<jump Assemblee_Sages>>
+===
+title: Tenter_rester_chambre
+tags: show:temde bg:bedroom_night
+position: -719.885986328125,901.3107299804688
+---
+You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !!
+Temde: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
+
+Miss Temdé lève la paume d'une de ses mains cybernétique...
+
+<<fadeIn 1000 12ea12 >>
+
+un rayon en jaillit et vous englobe de sa lumière vert phosphorescente.
+
+<<jump Assemblee_Sages>>
+===
+title: Assemblee_Sages
+tags: bg:circle autoshow
+position: -562.1727294921875,1164.6718139648438
+---
+<< fadeOut >>
+
+L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes.
+Temde: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }.
+You: Mais....
+Azul: T'inquiète { $name }, mes confères et moi, on arrive parfois à lire dans tes pensées. C'est pour faciliter la communication.
+Sapiens: Tout à fait. Sinon nous risquerions de perdre un temps précieux dans des prolégomènes et des malentendus sans queue ni tête.
+Temde: C'est ça oui. Comme si <b>Master Sapiens</b> savait faire court...
+Ledai: Du calme <b>Master Sapiens</b> et <b>Miss Temdé</b>. Et si nous abordions la question du soir...
+Azul: Attendez messieurs. C'est la première nuit que nous nous immisçons dans la vie de { $name }. Notre visiteur de ce soir ne sait plus à quel sage se vouer. Surtout qu'il ne nous connaît pas encore.
+Sapiens: Très juste, <b>Azul</b>. Puisque j'ai pris la parole, je me présente : je suis <b>Master Sapiens</b>, le Gardien des Savoirs
+Ledai: Et moi, je suis <b>Ledaï</b>, le Gardien des Pratiques.
+Azul: Enchanté de te rencontrer, { $name }. On m'appelle <b>Azul</b>, le Gardien des Précognitions.
+Ledai: Et tu as déjà fait la connaissance de notre 4e sage <b>Miss Temdé</b>...
+Temde: ... La Gardienne des Improvisations.
+You: C'est pas possible, mon rêve devient de plus en plus en délirant.
+Azul: Pas du tout { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens.
+Sapiens: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi.
+// Option "Cékoilamétaconnexion???" moved to the end of this node
+// Option "La Métacognition, déjà entendu parler" moved to the end of this node
+-> Cékoilamétaconnexion???
+    <<jump Metaconnexion>>
+-> La Métacognition, déjà entendu parler
+    <<jump Metacognition>>
+===
+title: Metaconnexion
+tags: autoshow
+position: -878.8255004882812,1170.7235107421875
+---
+You: Heuuuuu... J'ai rien compris de ce vous avez dit. La métaconnexion ???
+Azul: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien.
+Temde: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de faire ! Et de trouver une solution qui marche !
+Sapiens: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences...
+You: Les neurosciences ?
+Sapiens: Les sciences appliquées au fonctionnement de tes processus mentaux.
+You: Quoi ?
+Temde: Quel est le mode d'emploi de ton cerveau, quoi.
+Sapiens: Hum... J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière.
+Azul: Pardonnez-lui, <b>Master Sapiens</b>. <b>Miss Temdé</b> n'y met pas les formes, mais sa pédagogie s'est révélé parfois percutante.
+Sapiens: Moui...
+You: Et la métacognition alors ?
+Sapiens: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux.
+You: Hein ???
+Azul: C'est-à-dire comment apprendre ... à apprendre  
+
+<<jump Metacognition>>
+===
+title: Metacognition
+tags: autoshow
+position: -730.5562744140625,1421.6199951171875
+---
+You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage ?
+Ledai: Bravo, { $name }, je n'aurai pas dit mieux.
+Sapiens: Je sens que nous avons ce soir, un candidat d'exception.
+Ledai: Venons en donc au sujet de ce soir, <b>Master Sapiens</b>.
+Sapiens: Oui, la mémorisation.
+// Option "Qu'est-ce qu'elle a ma mémorisation?" moved to the end of this node
+-> Qu'est-ce qu'elle a ma mémorisation?
+    <<jump memorisation>>
+===
+title: memorisation
+tags: autoshow
+position: -366.2418212890625,1422.0413818359375
+---
+Ledai: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit.
+Temde: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }.
+Sapiens: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt... 
+
+<< changeBackground schema >>
+
+Sapiens: En bref, la cartographie de la mémoire dans le cerveau se découpe en deux zones. Comme tes deux hémisphères.
+
+<< showCloseup shelf_disorganized >>
+
+Sapiens: Il y a tout d'abord <b>La mémoire courte</b>. Elle est utilisé quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas... Et elle stocke ça dans un énorme container. 
+Sapiens: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sans ordre précis. Elle les empile en vrac, les unes sur les autres, à gauche à droite. En bref, elle range ça n'importe comment, comme un amateur, un dilettante !
+
+Ledai: Oui. Ce qui fait que quand tu es à la recherche d'une référence particulière, tu ne sais plus où elle se trouve, ni si tous les documents sont rangés au même endroit.
+Sapiens: Tout à fait, c'est le chaos ! La panique ! La catastrophe !.. Alors que <b>la mémoire longue</b>...
+
+// Option "C'est quoi la mémoire longue?" moved to the end of this node
+-> C'est quoi la mémoire longue?
+    <<jump Memoire_Longue>>
+===
+title: Memoire_Longue
+tags: bg:schma autoshow
+position: -63.20210266113281,1418.4576416015625
+---
+<< showCloseup shelf_organized >>
+
+Sapiens: <b>La mémoire longue</b> c'est le caviar de la connaissance. Là au contraire, tout y est ordonné, rangé, archivé, classifié. Comme dans une authentique bibliothèque. Dès qu'on a besoin de trouver quelque chose, on sait où le trouver.
+
+Ledai: Sans compter que chaque élément de <b>la mémoire longue</b> contient un index, une table des matières. Le cerveau n'a plus qu'à suivre le plan et ça roule sans sursaut.
+Sapiens: En bref, le secret pour bien apprendre réside dans ta capacité à consolider tes nouvelles connaissances, les stocker de manière logique et efficace.
+Azul: Tu as saisi ? Nos deux savants veulent te dire qu'ils vont t'aider à faire glisser tes nouveaux savoirs, de la mémoire courte à la mémoire longue.
+
+<< hideCloseup >>
+<< changeBackground circle >>
+
+You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions dans ma mémoire longue ?
+
+<<jump Routinisation>>
+===
+title: Routinisation
+tags: bg:circle autoshow
+position: 243.36883544921875,1410.058349609375
+---
+Sapiens: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
+Ledai: Il faut surtout pratiquer ! Répéter et répéter et encore répéter ! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement.
+Azul: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis pas la maîtriser.
+Ledai: Pour une fois que je suis d'accord avec <b>Azul</b>. Ainsi, tu mémorises la liste des ingrédients, les dosages, comme les étapes de préparation et les temps de cuisson.
+Temde: Yep, et comme tu n'as plus besoin d'avoir le mode d'emploi, tu deviens un sage, tu es autonome !
+You: Et comment je fais pour que ma pratique devienne une routine?
+Ledai: Tout simplement en répétant, en appliquant.
+Sapiens: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : <b>les rappels libres</b>.
+You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil. Comment faire ?
+Ledai: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> !
+===
+title: Journal_Rappel_libre
+tags: bg:bedroom_night
+position: 528.9749550819397,1406.2884521484375
+---
+Flash !!!
+Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Les 4 sages non plus ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée. Curieusement, vous ne vous sentez pas inquiet.
+En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof... 
+Serait-ce le <bi>journal mental</bi> dont parlait Ledai ?
+===
+
+
+

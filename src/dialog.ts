@@ -11,55 +11,40 @@ import * as variable from "./variable";
 import * as graphics from "./graphics";
 import * as extension from "./extension";
 
-// Bondage is loaded as a global variable
-declare const bondage: any;
+import * as yarnBound from "yarn-bound";
 
-interface NodeData {
-  title: string;
-  tags: string[];
-  body: string;
+declare module "yarn-bound" {
+  interface Metadata {
+    tags?: string
+    bg?: string;
+    show?: string;
+  }
 }
-
-interface TextNode {
-  data: NodeData;
-  lineNum: number;
-  text: string;
-}
-
-interface ChoiceNode {
-  lineNum: number[];
-  options: string[];
-  selected: number;
-  data: NodeData;
-  select: (i: number) => void;
-}
-
-type Node = TextNode | ChoiceNode;
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
-  private _nodeIterator: any;
-  private _nodeValue: Node;
-  private _lastNodeData: NodeData;
+  private _lastNodeData: yarnBound.Metadata;
   private _autoshowOn: boolean;
-  private _previousNodeDatas: NodeData[];
 
+  public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
 
   constructor(
     public readonly scriptName: string,
     public readonly startNode = "Start",
-    private _runner: any,
     public readonly variableStorage: variable.VariableStorage,
     public readonly clock: clock.Clock
   ) {
     super();
   }
 
+  get metadata() {
+    return this.runner.currentResult.metadata;
+  }
+
   _setup(): void {
     command.fxLoops.clear();
 
     this._autoshowOn = false;
-    this._previousNodeDatas = [];
 
     // Setup graphics
     this.graphics = new graphics.Graphics(this.variableStorage.data);
@@ -75,21 +60,14 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     );
     this.clock.minutesSinceMidnight = Number(this.variableStorage.get("time"));
 
-    this._runner.registerFunction("isFirstTime", (data: any) => {
-      for (const nodeData of this._previousNodeDatas) {
-        if (!nodeData) continue;
-        if (nodeData.title == data.title) return false;
-      }
-      return true;
-    });
-    this._runner.registerFunction("getGauge", (data: any, gauge: string) => {
-      return this.graphics.getGaugeValue(gauge);
-    });
-    this._runner.load(this.entityConfig.jsonAssets[this.scriptName]);
+    this._advance(-1);
+  }
 
-    // Advance the dialogue manually from the node titled 'Start'
-    this._nodeIterator = this._runner.run(this.startNode);
-    this._advance();
+  public loadRunner(runner: yarnBound.YarnBound<variable.VariableStorage>){
+    this.runner = runner;
+    console.log(this.runner)
+    for(const funcName in command.functions)
+      this.runner.registerFunction(funcName, command.functions[funcName]);
   }
 
   _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
@@ -98,50 +76,47 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     }
   }
 
-  private _hasTag(nodeData: NodeData, tag: string): boolean {
-    return nodeData.tags.includes(tag);
+  private _hasTag(nodeData: yarnBound.Metadata, tag: string): boolean {
+    return nodeData.tags?.match(tag)?.length > 0;
   }
 
-  private _advance(): void {
+  private _advance(selectId?: number): void {
     this.graphics.hideNode();
     this.graphics.showDialogLayer();
 
-    this._nodeValue = this._nodeIterator.next().value;
+    if(selectId !== -1)
+      this.runner.advance(selectId);
+
     // If result is undefined, stop here
-    if (!this._nodeValue) {
+    if (this.metadata.hasOwnProperty("isDialogueEnd")) {
       this._transition = entity.makeTransition();
       return;
     }
 
     // Check if the node data has changed
-    if (
-      "data" in this._nodeValue &&
-      this._nodeValue.data.title !== this._lastNodeData?.title
-    ) {
-      this._onChangeNodeData(this._lastNodeData, this._nodeValue.data);
-      this._previousNodeDatas.push(this._lastNodeData);
-      this._lastNodeData = this._nodeValue.data;
+    if (this._lastNodeData?.title !== this.metadata.title) {
+      this._onChangeNodeData(this._lastNodeData, this.metadata);
+      this._lastNodeData = this.metadata;
     }
 
-    if (this._nodeValue instanceof bondage.TextResult) {
-      this._handleDialog((this._nodeValue as TextNode).text);
-    } else if (this._nodeValue instanceof bondage.OptionsResult) {
-      if (this._hasTag(this._nodeValue.data, "freechoice")) {
-        this._handleFreechoice(
-          this._nodeValue.data.title,
-          this._nodeValue as ChoiceNode
-        );
+    if (this.runner.currentResult instanceof yarnBound.TextResult) {
+      this._handleDialog();
+    } else if (this.runner.currentResult instanceof yarnBound.OptionsResult) {
+      debugger;
+      if (this._hasTag(this.metadata, "freechoice")) {
+        this._handleFreechoice();
       } else {
-        this._handleChoice(this._nodeValue as ChoiceNode);
+        this._handleChoice();
       }
-    } else if (this._nodeValue instanceof bondage.CommandResult) {
-      this._handleCommand((this._nodeValue as TextNode).text);
+    } else if (this.runner.currentResult instanceof yarnBound.CommandResult) {
+      this._handleCommand();
     } else {
-      throw new Error(`Unknown bondage result ${this._nodeValue}`);
+      throw new Error(`Unknown bondage result ${this.runner.currentResult}`);
     }
   }
 
-  private _handleDialog(text: string) {
+  private _handleDialog() {
+    const text = (this.runner.currentResult as yarnBound.TextResult).text;
     this.graphics.showDialog(
       text,
       this.variableStorage.get("name"),
@@ -150,28 +125,31 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     );
   }
 
-  private _handleChoice(nodeValue: ChoiceNode) {
+  private _handleChoice() {
+    const options: string[] = [];
+    for(const option of (this.runner.currentResult as yarnBound.OptionsResult).options){
+      if(option.isAvailable)
+        options.push(option.text);
+    }
     this.graphics.setChoice(
-      nodeValue.options,
+      options,
       (id) => {
-        nodeValue.select(id);
         this.config.fxMachine.play("Click");
-        this._advance();
+        this._advance.bind(this)(id);
       },
-      this._hasTag(nodeValue.data, "subchoice")
+      this._hasTag(this.metadata, "subchoice")
         ? () => {
-            this._nodeIterator = this._runner.run(
-              _.last(this._previousNodeDatas).title
-            );
+          // TODO: Add a "go to" in yarn-bound
             this.config.fxMachine.play("Click");
-            this._advance();
+            this._advance.bind(this)();
           }
         : undefined
     );
   }
 
-  private _handleCommand(cmd: string): void {
+  private _handleCommand(): void {
     // If the text was inside <<here>>, it will get returned as a CommandResult string, which you can use in any way you want
+    const cmd = (this.runner.currentResult as yarnBound.CommandResult).command;
     const commandParts = cmd.trim().split(/\s+/);
 
     // Attempt to call a method based on the command
@@ -188,37 +166,42 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this._advance();
   }
 
-  // TODO: Freechoice
-  private _handleFreechoice(freechoice: string, nodeValue: ChoiceNode) {
-    this.graphics.setFreechoice(nodeValue.options, (id) => {
-      nodeValue.select(id);
-      this.config.fxMachine.play("Click");
-      this._advance();
-    });
+  private _handleFreechoice() {
+    const options: string[] = [];
+    for(const option of (this.runner.currentResult as yarnBound.OptionsResult).options){
+      if(option.isAvailable)
+        options.push(option.text);
+    }
+
+    this.graphics.setFreechoice(
+      options, (id) => {
+        this.config.fxMachine.play("Click");
+        this._advance.bind(this)(id);
+      }
+    );
   }
 
-  private _onChangeNodeData(oldNodeData: NodeData, newNodeData: NodeData) {
+  private _onChangeNodeData(oldNodeData: yarnBound.Metadata, newNodeData: yarnBound.Metadata) {
     //console.log("changing node data", oldNodeData, " --> ", newNodeData);
-
     // Parse tags
 
     // By default, autoshow is off
     this._autoshowOn = false;
-
     let bg: string;
     let character: string;
-    for (let tag of newNodeData.tags) {
+
+    for (let tag of newNodeData.tags.split(" ")) {
       tag = tag.trim();
       if (tag === "") continue;
 
-      if (tag.startsWith("bg:")) {
+      if (tag.startsWith("bg|")) {
         if (bg) console.warn("Trying to set background twice");
 
-        bg = tag.split(":")[1].trim();
-      } else if (tag.startsWith("show:")) {
+        bg = tag.split("|")[1].trim();
+      } else if (tag.startsWith("show|")) {
         if (character) console.warn("Trying to set character twice");
 
-        character = tag.split(":")[1].trim();
+        character = tag.split("|")[1].trim();
       } else if (tag === "autoshow") {
         this._autoshowOn = true;
       } else {
