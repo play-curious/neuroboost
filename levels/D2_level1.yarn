@@ -12,8 +12,12 @@ Fred: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur.
 You: Oui, mais faudra avoir l'esprit clair et sain.
 Fred: No worry, on s'en va avant l'aube, on fait une petite sieste et on sera nickel pour l'heure H.
 
-[[Accepter l'invitation|Cafeteria]]
-[[Refuser l'invitation|Retour_chambre]]
+// Option "Accepter l'invitation" moved to the end of this node
+// Option "Refuser l'invitation" moved to the end of this node
+-> Accepter l'invitation
+    <<jump Cafeteria>>
+-> Refuser l'invitation
+    <<jump Retour_chambre>>
 ===
 title: Retour_chambre
 tags: bg:bedroom
@@ -27,8 +31,12 @@ Fred: On n'est plus potes ? À la vie, à la mort ?
 You: Arrête de jouer ta victime, Fred, c'est fatiguant.
 Fred: Steuplay...
 
-[[Accepter l'invitation|Cafeteria]]
-[[Refuser l'invitation|Retour_chambre]]
+// Option "Accepter l'invitation" moved to the end of this node
+// Option "Refuser l'invitation" moved to the end of this node
+-> Accepter l'invitation
+    <<jump Cafeteria>>
+-> Refuser l'invitation
+    <<jump Retour_chambre>>
 ===
 title: Cafeteria
 tags: bg:party show:fred
@@ -40,7 +48,9 @@ Fred: Alors, tu vois qu'on peut étudier tout en s'amusant.
 You: Oui ! J'espère juste ne pas le regretter demain matin.
 Fred: No worry. Faut juste savoir gérer.
 Fred a raison, l'ambiance est vivifiante et enivrante... Vous vous laisser gagner par le flow et par les good vibes...
-[[The show must go on|Choix_neutres]]
+// Option "The show must go on" moved to the end of this node
+-> The show must go on
+    <<jump Choix_neutres>>
 ===
 title: Choix_neutres
 tags: 
@@ -53,14 +63,24 @@ Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << endif >>
 
 << if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
-[[Aller swinguer sur le Dance Floor|DanceFloor]]
-[[Se Rafraîchir le gosier|Boire_Soft]]
-[[Grignotter un petit booster de calories|Snacking]]
-[[Jouer de la guitare|Guitar_Jam]]
-[[Chatter avec Fred|Chatter_avec_Fred]]
+// Option "Aller swinguer sur le Dance Floor" moved to the end of this node
+// Option "Se Rafraîchir le gosier" moved to the end of this node
+// Option "Grignotter un petit booster de calories" moved to the end of this node
+// Option "Jouer de la guitare" moved to the end of this node
+// Option "Chatter avec Fred" moved to the end of this node
 << else >>
-[[TIRED]]
+<<jump TIRED>>
 << endif >>
+-> Aller swinguer sur le Dance Floor <<if (getGauge("sleep") >= 50 && getGauge("food") >= 50)>>
+    <<jump DanceFloor>>
+-> Se Rafraîchir le gosier <<if (getGauge("sleep") >= 50 && getGauge("food") >= 50)>>
+    <<jump Boire_Soft>>
+-> Grignotter un petit booster de calories <<if (getGauge("sleep") >= 50 && getGauge("food") >= 50)>>
+    <<jump Snacking>>
+-> Jouer de la guitare <<if (getGauge("sleep") >= 50 && getGauge("food") >= 50)>>
+    <<jump Guitar_Jam>>
+-> Chatter avec Fred <<if (getGauge("sleep") >= 50 && getGauge("food") >= 50)>>
+    <<jump Chatter_avec_Fred>>
 ===
 title: DanceFloor
 tags: 
@@ -73,7 +93,9 @@ Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressi
 
 << removeFromGauge sleep 40 >>
 
-[[Que faire maintenant ?|Choix_neutres]]
+// Option "Que faire maintenant ?" moved to the end of this node
+-> Que faire maintenant ?
+    <<jump Choix_neutres>>
 ===
 title: Boire_Soft
 tags: 
@@ -85,7 +107,9 @@ Vous prenez donc une pinte de Xeno Cola. Vous savez qu'ils ont dilué le Xeno Co
 
 << addToGauge food 10 >>
 
-[[Et ensuite ?|Choix_neutres]]
+// Option "Et ensuite ?" moved to the end of this node
+-> Et ensuite ?
+    <<jump Choix_neutres>>
 ===
 title: Snacking
 tags: 
@@ -96,7 +120,9 @@ Le Bar est sûrement réappovisionné en permanence. Il y a toujours autant de b
 
 << addToGauge food 10 >>
 
-[[Et ensuite?|Choix_neutres]]
+// Option "Et ensuite?" moved to the end of this node
+-> Et ensuite?
+    <<jump Choix_neutres>>
 ===
 title: Guitar_Jam
 tags: 
@@ -110,7 +136,9 @@ Quand vous daignez enfin vous arrêter et relever les yeux, vous êtes salué pa
 
 << removeFromGauge sleep 30 >>
 
-[[Un autre exploit en tête?|Choix_neutres]]
+// Option "Un autre exploit en tête?" moved to the end of this node
+-> Un autre exploit en tête?
+    <<jump Choix_neutres>>
 ===
 title: Chatter_avec_Fred
 tags: 
@@ -122,7 +150,9 @@ La sono du Sound System est à fond, pourtant, cela ne vous empêche pas d'écha
 << removeFromGauge sleep 20 >>
 << removeFromGauge food 25 >>
 
-[[Ensuite ?|Choix_neutres]]
+// Option "Ensuite ?" moved to the end of this node
+-> Ensuite ?
+    <<jump Choix_neutres>>
 ===
 title: TIRED
 tags: 
@@ -136,7 +166,9 @@ Fred: Tu es un peu trop fatigué. Y a un sofa dans le coin, là-bas. Va te repos
 You: Et toi ?
 Fred: Je t'accompagne. Je reste encore, j'ai la pêche !
 You: OK.
-[[Se reposer|Sofa]]
+// Option "Se reposer" moved to the end of this node
+-> Se reposer
+    <<jump Sofa>>
 ===
 title: Sofa
 tags: 
@@ -149,7 +181,9 @@ Puis, on vous secoue brusquement !!!
 
 << addToGauge sleep 10 >>
 
-[[Ouvrir les yeux|Open_Eyes]]
+// Option "Ouvrir les yeux" moved to the end of this node
+-> Ouvrir les yeux
+    <<jump Open_Eyes>>
 ===
 title: Open_Eyes
 tags: show:fred
@@ -163,7 +197,7 @@ Quand vous entendez Fred se vanter d'être plus énergique, votre sang et votre 
 You: Pareil alors.
 << hide fred >>
 
-[[Que_Faire]]
+<<jump Que_Faire>>
 ===
 title: Que_Faire
 tags: 
@@ -175,13 +209,23 @@ La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la pist
 << endif >>
 
 << if getGauge("sleep") >= 25 && getGauge("food") >= 25 >>
-[[Retourner swinguer sur le Dance Floor|DanceFloor2]]
-[[Se rafraîchir au bar|Cafe_ou_Alcool]]
-[[Grignoter quelque chose|Medoc_Bot]]
-[[Refaire un solo de guitare en criant tout votre saoul|Metal_Jam]]
+// Option "Retourner swinguer sur le Dance Floor" moved to the end of this node
+// Option "Se rafraîchir au bar" moved to the end of this node
+// Option "Grignoter quelque chose" moved to the end of this node
+// Option "Refaire un solo de guitare en criant tout votre saoul" moved to the end of this node
 << else >>
-[[Vite ! Au lit|Go_To_Bed]]
+// Option "Vite ! Au lit" moved to the end of this node
 << endif >>
+-> Retourner swinguer sur le Dance Floor <<if (getGauge("sleep") >= 25 && getGauge("food") >= 25)>>
+    <<jump DanceFloor2>>
+-> Se rafraîchir au bar <<if (getGauge("sleep") >= 25 && getGauge("food") >= 25)>>
+    <<jump Cafe_ou_Alcool>>
+-> Grignoter quelque chose <<if (getGauge("sleep") >= 25 && getGauge("food") >= 25)>>
+    <<jump Medoc_Bot>>
+-> Refaire un solo de guitare en criant tout votre saoul <<if (getGauge("sleep") >= 25 && getGauge("food") >= 25)>>
+    <<jump Metal_Jam>>
+-> Vite ! Au lit <<if !(getGauge("sleep") >= 25 && getGauge("food") >= 25)>>
+    <<jump Go_To_Bed>>
 ===
 title: DanceFloor2
 tags: 
@@ -195,7 +239,9 @@ Vous rentrez peu à peu en transe, au rythme de la musique. Puis, au bout de que
 
 << removeFromGauge sleep 30 >>
 
-[[Arriverez-vous à faire encore mieux ?|Que_Faire]]
+// Option "Arriverez-vous à faire encore mieux ?" moved to the end of this node
+-> Arriverez-vous à faire encore mieux ?
+    <<jump Que_Faire>>
 ===
 title: Cafe_ou_Alcool
 tags: 
@@ -208,7 +254,9 @@ Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un 
 << removeFromGauge food 30 >>
 << addToGauge sleep 10 >>
 
-[[Un shot et on y retourne !|Que_Faire]]
+// Option "Un shot et on y retourne !" moved to the end of this node
+-> Un shot et on y retourne !
+    <<jump Que_Faire>>
 ===
 title: Medoc_Bot
 tags: 
@@ -232,7 +280,9 @@ Le BarBot vous tend une espèce de gomme multicolore. Vous la mettez dans votre 
 << removeFromGauge food 35 >>
 << addToGauge sleep 10 >>
 
-[[Ouf, ça c'est fait, et maintenant ?|Que_Faire]]
+// Option "Ouf, ça c'est fait, et maintenant ?" moved to the end of this node
+-> Ouf, ça c'est fait, et maintenant ?
+    <<jump Que_Faire>>
 ===
 title: Metal_Jam
 tags: 
@@ -244,7 +294,9 @@ Vous repartez dans un concert solo d'improvisation, où les riffs électriques e
 
 << removeFromGauge sleep 20 >>
 
-[[Comment faire encore plus fort ?|Que_Faire]]
+// Option "Comment faire encore plus fort ?" moved to the end of this node
+-> Comment faire encore plus fort ?
+    <<jump Que_Faire>>
 ===
 title: Go_To_Bed
 tags: 
@@ -253,7 +305,7 @@ position: -1226,1662
 ---
 Mince, il ne reste plus personne sur la piste. Tu ne vois plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Tu aperçois les premiers rayons de soleil filtrer à travers les fenêtres de la salle. Il est temps d'aller dormir. D'un coup, tu te sens fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... ce matin...
 
-[[SeReposer]]
+<<jump SeReposer>>
 ===
 title: SeReposer
 tags: bg:bedroom
@@ -263,7 +315,7 @@ position: -892.5641479492188,1663.6494140625
 Vous filez dans votre chambre en quatrième vitesse. Mais vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent ! Vous avez l'impression de rester coincé une heure dans ce cagibi. C'est pénible, surtout que votre vision se trouble, se dédouble. Vous avez vraiment dû un peu trop abuser...
 Une fois votre corvée accomplie, vous rampez jusqu'à votre lit. Vous vous glissez dedans tout habillé et fermez les yeux. Malheureusement, vous avez la tête qui tourne et qui serre, vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité. 
 Non, décidément, rien à faire, vous n'arrivez pas à dormir. Et les heures s'égrènent... Jusqu'à ce que votre horloge connectée vous tire de votre léthargie... 
-[[Bip_Bip]]
+<<jump Bip_Bip>>
 ===
 title: Bip_Bip
 tags: bg:bedroom
@@ -274,7 +326,9 @@ Argh... Il est encore trop tôt ! Vous ne vous êtes pas reposé. Vous aimeriez 
 Vous vous levez sans grande conviction. Vous enlevez vos vêtements, ils sentent la sueur et d'autres mauvaises odeurs. Vous en enfilez de nouveaux et partez au front. 
 Pas le temps d'avaler un petit déjeuner, pas envie de toute manière...
 
-[[Aller en cours|ExamenTP]]
+// Option "Aller en cours" moved to the end of this node
+-> Aller en cours
+    <<jump ExamenTP>>
 ===
 title: ExamenTP
 tags: bg:class
@@ -293,7 +347,9 @@ Fred: Fingers crossed ! Tout peut encore arriver.
 Hagard, vous quittez Fred et vous vous rendez à votre poste. Vous calez difficilement sur votre siège et tentez de suivre les instructions qui défilent sur l'écran. Ce n'est pas la première fois que vous pilotez un drone d'ingénierie. Vous êtes même assez doué à ce jeu. Cependant, ce matin, vous êtes trop fatigué, trop barbouillé, trop peu concentré. Vous avez du mal à décrypter les consignes, pourtant classiques. Vous avez du mal à guider votre appareil. Vous commettez trop d'erreurs, vous frôlez même le crash. 
 C'est la cata, la bérézina, la défaite. Vous savez que vous avez foiré votre examen. Vous sortez de la salle juste après la fin du test, vous passez même devant Fred sans rien dire.
 
-[[Vous filez dans votre chambre|Dodo_Echec]]
+// Option "Vous filez dans votre chambre" moved to the end of this node
+-> Vous filez dans votre chambre
+    <<jump Dodo_Echec>>
 ===
 title: Dodo_Echec
 tags: bg:bedroom
@@ -305,7 +361,9 @@ Vous êtes défait et épuisé. Vous ne prenez même pas le temps de gémir ou d
 
 C'est alors que vous sursautez d'agacement ! Quelqu'un vous chatouille et vous gratouille les pieds, les mains, le nez, les oreilles...
 
-[[Qui ose m'embêter dans mon lit ?|Miss_Temde]]
+// Option "Qui ose m'embêter dans mon lit ?" moved to the end of this node
+-> Qui ose m'embêter dans mon lit ?
+    <<jump Miss_Temde>>
 ===
 title: Miss_Temde
 tags: show:temde
@@ -319,7 +377,7 @@ Temde: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retourne !
 You: Où ça ?
 Temde: À l'Assemblée des 4 sages
 
-[[4_Sages]]
+<<jump 4_Sages>>
 ===
 title: 4_Sages
 tags: bg:circle autoshow
@@ -331,7 +389,9 @@ Azul: Un truc qui te servira également au quotidien.
 Ledai: Un mode d'emploi pour optimiser les performances de ton moteur biologique!
 Temdé: Yep, un tuyau qui sonne juste, tellement c'est évident!
 Sapiens: Tu m'écoutes { $name }?
-[[Oui|Revelation]]
+// Option "Oui" moved to the end of this node
+-> Oui
+    <<jump Revelation>>
 ===
 title: Revelation
 tags: autoshow
@@ -366,7 +426,7 @@ Sapiens: Plusieurs heures. 6 heures pour les plus vifs. 10 heures pour les plus 
 You: Et si je dispose même pas de 6 heures ?
 Azul: Il y a une solution de dépannage
 
-[[Sieste]]
+<<jump Sieste>>
 ===
 title: Sieste
 tags: autoshow
@@ -382,7 +442,9 @@ Temde: Tire une bonne leçon de ton erreur !
 Azul: Tu sais ce qu'il faut faire, écouter les besoins de ton corps et le recharger !
 Sapiens: Tu as compris cette nouvelle leçon ?
 
-[[Oui|QCM_Recues]]
+// Option "Oui" moved to the end of this node
+-> Oui
+    <<jump QCM_Recues>>
 ===
 title: QCM_Recues
 tags: autoshow
@@ -391,8 +453,12 @@ colorID: 1
 ---
 Sapiens: C'est ce que nous allons voir.
 Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos réserves, on peut continuer à agir, à travailler. On n'a pas besoin de dormir et de recharger les batteries tant qu'elles ne sont pas à plat.
-[[Vrai|Stock_Sommeil_No]]
-[[Faux|Stock_Sommeil_Yes]]
+// Option "Vrai" moved to the end of this node
+// Option "Faux" moved to the end of this node
+-> Vrai
+    <<jump Stock_Sommeil_No>>
+-> Faux
+    <<jump Stock_Sommeil_Yes>>
 ===
 title: Stock_Sommeil_No
 tags: autoshow
@@ -402,7 +468,7 @@ Sapiens: Grossière erreur, jeune novice ! On ne stoque pas le sommeil. Chaque n
 Ledai: Certes, Master Sapiens, mais laissons une chance à { $name }. 
 Sapiens: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
 
-[[QCM_nourriture]]
+<<jump QCM_nourriture>>
 ===
 title: Stock_Sommeil_Yes
 tags: autoshow
@@ -412,14 +478,18 @@ Sapiens: Bravo ! Le sommeil ne se stoque pas, il faut veiller à recharger son m
 Ledai: Une autre phrase quiz, Master Sapiens ?
 Sapiens: Oui. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
 
-[[QCM_nourriture]]
+<<jump QCM_nourriture>>
 ===
 title: QCM_nourriture
 tags: 
 position: -626.0598487854004,2674.352530479431
 ---
-[[Vrai|Goinfrer_No]]
-[[Faux|Food_Equilibree_Yes]]
+// Option "Vrai" moved to the end of this node
+// Option "Faux" moved to the end of this node
+-> Vrai
+    <<jump Goinfrer_No>>
+-> Faux
+    <<jump Food_Equilibree_Yes>>
 ===
 title: Food_Equilibree_Yes
 tags: autoshow
@@ -429,7 +499,7 @@ Sapiens: Excellente réponse ! Le secret d'un entretien métabolique durable est
 Azul: Est-ce la fin de la séance de quizz ?
 Sapiens: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième: l'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
 
-[[QCM_sport]]
+<<jump QCM_sport>>
 ===
 title: Goinfrer_No
 tags: autoshow
@@ -439,14 +509,18 @@ Sapiens: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir 
 Azul: Master Sapiens, { $name } est encore novice et vous avez d'autres quizz à lui poser.
 Sapiens: En effet. L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
 
-[[QCM_sport]]
+<<jump QCM_sport>>
 ===
 title: QCM_sport
 tags: 
 position: -60.00000190734863,2675.53902053833
 ---
-[[Vrai|Sport_Yes]]
-[[Faux|Sport_No]]
+// Option "Vrai" moved to the end of this node
+// Option "Faux" moved to the end of this node
+-> Vrai
+    <<jump Sport_Yes>>
+-> Faux
+    <<jump Sport_No>>
 ===
 title: Sport_Yes
 tags: autoshow
@@ -457,7 +531,7 @@ Temde: Très bien, mais faites court et concis ! { $name } est fatigué !
 Ledai: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
 Sapiens: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
 
-[[QCM_sommeil]]
+<<jump QCM_sommeil>>
 ===
 title: Sport_No
 tags: autoshow
@@ -469,14 +543,18 @@ Sapiens: C'est comme ça quand on ne prend pas soin de son métabolisme!
 Ledai: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
 Sapiens: Et je n'ai pas fini. Il me reste la dernière fiche test! Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
 
-[[QCM_sommeil]]
+<<jump QCM_sommeil>>
 ===
 title: QCM_sommeil
 tags: 
 position: 488.6152229309082,2704.2566652297974
 ---
-[[Vrai|Sommeil_Double_No]]
-[[Faux|Sommeil_Double_Yes]]
+// Option "Vrai" moved to the end of this node
+// Option "Faux" moved to the end of this node
+-> Vrai
+    <<jump Sommeil_Double_No>>
+-> Faux
+    <<jump Sommeil_Double_Yes>>
 ===
 title: Sommeil_Double_No
 tags: autoshow
@@ -486,8 +564,12 @@ Sapiens: Non-sens ! Pas plus que le métabolisme stoque du sommeil jour après j
 Azul: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment.
 Sapiens: Je profite de la remarque d'Azul pour poser une question subsidiaire. Pour recharger ton métabolisme, combien d'heures tu dois dormir chaque jour ?
 
-[[8heures|8heures]]
-[[Ça dépend, 6 à 10 heures|6_10heures]]
+// Option "8heures" moved to the end of this node
+// Option "Ça dépend, 6 à 10 heures" moved to the end of this node
+-> 8heures
+    <<jump heures>>
+-> Ça dépend, 6 à 10 heures
+    <<jump _10heures>>
 ===
 title: 8heures
 tags: autoshow
@@ -495,8 +577,12 @@ position: 1085.4264526367188,2697.2666015625
 ---
 Azul: C'est ton dernier mot ?
 
-[[8 heures|8heures]]
-[[Entre 6 et 10 heures |6_10heures]]
+// Option "8 heures" moved to the end of this node
+// Option "Entre 6 et 10 heures " moved to the end of this node
+-> 8 heures
+    <<jump heures>>
+-> Entre 6 et 10 heures 
+    <<jump _10heures>>
 ===
 title: 6_10heures
 tags: autoshow
@@ -505,7 +591,7 @@ position: 1088.5292358398438,3016.003662109375
 Sapiens: Ah, je préfère ça. Ce qui me rappelle le temps où je...
 Temde: Non, on coupe ! Le temps presse !
 Ledai: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
-[[journal_mental]]
+<<jump journal_mental>>
 ===
 title: Sommeil_Double_Yes
 tags: autoshow
@@ -514,7 +600,7 @@ position: 761.5772399902344,3030.35302734375
 Sapiens: Bien sûr ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que...
 Temde: Non non, on coupe ! Le temps presse !
 Ledai: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
-[[journal_mental]]!
+<<jump journal_mental>>!
 ===
 title: journal_mental
 tags: bg:bedroom_night

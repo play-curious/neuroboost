@@ -137,13 +137,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         this.config.fxMachine.play("Click");
         this._advance.bind(this)(id);
       },
-      this._hasTag(this.metadata, "subchoice")
-        ? () => {
-          // TODO: Add a "go to" in yarn-bound
-            this.config.fxMachine.play("Click");
-            this._advance.bind(this)();
-          }
-        : undefined
+      this._hasTag(this.metadata, "subchoice") ?
+      options.indexOf("back") : undefined
     );
   }
 

@@ -69,7 +69,7 @@ title: Action_List
 tags: bg|bedroom freechoice
 position: -847.2033081054688,-821.7307662963867
 ---
-<< if isFirstTime() >>
+<< if isFirstTime("Action_List") >>
 Que faites-vous maintenant ?
 << endif >>
 << if $time >= 720 >>
@@ -94,28 +94,28 @@ position: -319.1514720916748,-55.38755989074707
 ---
 -> Prendre le petit déjeuner
     <<jump Petit_dej>>
+-> back
+    <<jump Action_List>>
 ===
 title: bureau_subchoice
 tags: bg|desk subchoice
 position: -993.6492929458618,-75.37680292129517
 ---
-// Option "Passer du temps sur le chat avec le pote d'une autre Université" moved to the end of this node
-// Option "Réviser cette fichue Astronometric Data Management" moved to the end of this node
 -> Passer du temps sur le chat avec le pote d'une autre Université
     <<jump Chat>>
 -> Réviser cette fichue Astronometric Data Management
     <<jump Revision>>
+-> back
+    <<jump Action_List>>
 ===
 title: salon_subchoice
 tags: bg|bedroom subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
-// Option "Binger votre série TV préférée" moved to the end of this node
-
-
-
 -> Binger votre série TV préférée
     <<jump BingeTV>>
+-> back
+    <<jump Action_List>>
 ===
 title: Petit_dej
 tags: bg|kitchen
@@ -188,8 +188,7 @@ Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et évit
 
 << advanceTime 0:15 >>
 
-Et maintenant, 
-// Option "Il est temps d'aller en classe" moved to the end of this node
+Et maintenant,
 -> Il est temps d'aller en classe
     <<jump Test>>
 ===
@@ -228,7 +227,6 @@ You: Heuuuu...
 Fred s'apprête à vous répondre quand la sonnerie retentit.
 Les résultats du test viennent de tomber...
 
-// Option "Consulter les résultats" moved to the end of this node
 -> Consulter les résultats
     <<jump Resultats_Bad>>
 ===
@@ -248,8 +246,6 @@ You: Je sais pas...
 
 << advanceTime 0:15 >>
 
-// Option "Accepter l'offre de Fred" moved to the end of this node
-// Option "Refuser l'offre de Fred" moved to the end of this node
 -> Accepter l'offre de Fred
     <<jump Fete_deprime>>
 -> Refuser l'offre de Fred
@@ -265,7 +261,6 @@ Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fê
 
 Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais cette fois-ci, il n'insiste pas pour vous dissuader de partir. Manifestement, vous devez faire une sacrée tête d'enterrement. Même l'infatiguable Fred renonce à vous convaincre de rester t'amuser...
 
-// Option "Rentrer dormir" moved to the end of this node
 -> Rentrer dormir
     <<jump Chambre_Nuit>>
 ===
@@ -277,7 +272,6 @@ Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à cha
 
 << advanceTime 0:30 >>
 
-// Option "Rentrer dormir" moved to the end of this node
 -> Rentrer dormir
     <<jump Chambre_Nuit>>
 ===
@@ -288,7 +282,6 @@ position: -17.766727447509766,752.0414428710938
 Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde... 
 Demain est un autre jour, vivement demain...
 << fx Sleep_LOOP >>
-// Option "Faire un gros somme" moved to the end of this node
 -> Faire un gros somme
     <<jump Reveil_Sage>>
 ===
@@ -319,8 +312,6 @@ Temde: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre une sec
 You: Qui m'attend ? Où là-bas ?
 Temde: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit quand même !
 
-// Option "Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller" moved to the end of this node
-// Option "Se laisser guider par l'iréelle Miss Temdé" moved to the end of this node
 -> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller
     <<jump Tenter_rester_chambre>>
 -> Se laisser guider par l'iréelle Miss Temdé
@@ -363,8 +354,6 @@ Temde: ... La Gardienne des Improvisations.
 You: C'est pas possible, mon rêve devient de plus en plus en délirant.
 Azul: Pas du tout { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens.
 Sapiens: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi.
-// Option "Cékoilamétaconnexion???" moved to the end of this node
-// Option "La Métacognition, déjà entendu parler" moved to the end of this node
 -> Cékoilamétaconnexion???
     <<jump Metaconnexion>>
 -> La Métacognition, déjà entendu parler
@@ -401,7 +390,6 @@ Ledai: Bravo, { $name }, je n'aurai pas dit mieux.
 Sapiens: Je sens que nous avons ce soir, un candidat d'exception.
 Ledai: Venons en donc au sujet de ce soir, <b>Master Sapiens</b>.
 Sapiens: Oui, la mémorisation.
-// Option "Qu'est-ce qu'elle a ma mémorisation?" moved to the end of this node
 -> Qu'est-ce qu'elle a ma mémorisation?
     <<jump memorisation>>
 ===
@@ -425,7 +413,6 @@ Sapiens: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sans o
 Ledai: Oui. Ce qui fait que quand tu es à la recherche d'une référence particulière, tu ne sais plus où elle se trouve, ni si tous les documents sont rangés au même endroit.
 Sapiens: Tout à fait, c'est le chaos ! La panique ! La catastrophe !.. Alors que <b>la mémoire longue</b>...
 
-// Option "C'est quoi la mémoire longue?" moved to the end of this node
 -> C'est quoi la mémoire longue?
     <<jump Memoire_Longue>>
 ===

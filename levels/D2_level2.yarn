@@ -1,0 +1,372 @@
+title: Sofa_Restart
+tags: 
+colorID: 8
+position: -1156,366
+---
+Vous êtes lové dans une confortable et douce langueur... Quand...
+
+On vous secoue brusquement !!!
+
+//set Gauges $sleep to 100 and $food to 70 ??
+// L'idée serait que le joueur puisse rester encore faire la fête s'il se contente de danser ou de jouer de la musique = fatigue tant que cela ne descend pas en dessous d'un certain seuil
+// Mais il ne doit pas prendre d'alcool ou de substances dopantes = junk food bad
+
+<< showGauges sleep food >>
+
+
+// Option "Ouvrir les yeux" moved to the end of this node
+-> Ouvrir les yeux
+    <<jump Open_Eyes>>
+===
+title: Open_Eyes
+tags: show:fred
+colorID: 0
+position: -805,367
+---
+Fred: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
+Et c'est reparti pour un tour... Fred répète comme un perroquet ce qu'il vous a déjà dit hier soir... Vous voilà revenu en arrière... En plein milieu de cette soirée de plaisir et de tentations... Certes, vous en avez trop fait, mais l'ambiance et le public était avec vous... Dur dur...
+You: ... Hum...
+Fred: Moi je reste. Je te le répète.
+Après tout, Vous avez encore de l'énergie à revendre pour la soiré. Vous savez qu'il faut simplement faire attention à ne pas trop vider vos réserves de sommeil et de nourriture... Mais comme vous l'ont répété les 4 sages. C'est avant tout une question de dosage, de volonté. Le tout est de savoir s'arrêter quand il le faut. Et puis, vous voulez montrer à Fred, que vous aussi, vous êtes en béton...
+You: Pari tenu!
+Fred: Yolo! T'as mangé du tigre aujourd'hui?!
+You: C'est pas faux.
+<< hide fred >>
+
+<<jump Que_Faire>>
+===
+title: Que_Faire
+tags: 
+colorID: 0
+position: -494,361
+---
+<< if isFirstTime() >>
+On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses... 
+
+// Option "Retourner swinguer sur le Dance Floor" moved to the end of this node
+// Option "Se rafraîchir au bar" moved to the end of this node
+// Option "Grignoter quelque chose" moved to the end of this node
+// Option "Refaire un solo de guitare en criant tout votre saoul" moved to the end of this node
+<< endif >>
+
+<< if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
+// vérifier les valeurs des conditions, pas sûr que ça marche comme ça
+// l'idée est que le joueur continue ait trois fins: Very good, good, bad
+// Option "Retourner swinguer sur le Dance Floor" moved to the end of this node
+// Option "Se rafraîchir au bar" moved to the end of this node
+// Option "Grignoter quelque chose" moved to the end of this node
+// Option "Refaire un solo de guitare en criant tout votre saoul" moved to the end of this node
+// Option "Quitter la salle avant d'être épuisé " moved to the end of this node 
+<< else >>
+// Option "Vite ! Au lit" moved to the end of this node
+<< endif >>
+-> Retourner swinguer sur le Dance Floor <<if (isFirstTime())>>
+    <<jump DanceFloor2>>
+-> Se rafraîchir au bar <<if (isFirstTime())>>
+    <<jump Cafe_ou_Alcool>>
+-> Grignoter quelque chose <<if (isFirstTime())>>
+    <<jump Medoc_Bot>>
+-> Refaire un solo de guitare en criant tout votre saoul <<if (isFirstTime())>>
+    <<jump Metal_Jam>>
+-> Retourner swinguer sur le Dance Floor <<if (getGauge("sleep") >= 50 && getGauge("food") >= 50)>>
+    <<jump DanceFloor2>>
+-> Se rafraîchir au bar <<if (getGauge("sleep") >= 50 && getGauge("food") >= 50)>>
+    <<jump Cafe_ou_Alcool>>
+-> Grignoter quelque chose <<if (getGauge("sleep") >= 50 && getGauge("food") >= 50)>>
+    <<jump Medoc_Bot>>
+-> Refaire un solo de guitare en criant tout votre saoul <<if (getGauge("sleep") >= 50 && getGauge("food") >= 50)>>
+    <<jump Metal_Jam>>
+-> Quitter la salle avant d'être épuisé  <<if (getGauge("sleep") >= 50 && getGauge("food") >= 50)>>
+    <<jump End_of_Party>>
+-> Vite ! Au lit <<if !(getGauge("sleep") >= 50 && getGauge("food") >= 50)>>
+    <<jump Go_To_Bed_Loose>>
+===
+title: DanceFloor2
+tags: 
+colorID: 0
+position: 12,605
+---
+Vous rejoignez le centre de la piste. Vous levez le bras, histoire d'indiquer à la foule que vous êtes sur le ring! Prêt à leur accorder un nouveau show exclusif et endiablé! Tout le monde s'arrête de gigoter et se rassemble tout autour de vous. 
+C'est la classe, vous voilà redevenu le centre d'attention de la soirée, le centre d'attraction de la salle.
+
+Vous rentrez peu à peu en transe, au rythme de la musique. Puis, au bout de quelques minutes, vous décollez et vous atteignez à la vitesse de la lumière l'orbite de la planète Disco ! Et c'est reparti pour une bonne heure de Breaking Beat endiablé ! Votre performance rencontre un succès intergalactique et musicalesque !
+
+<< removeFromGauge sleep 30 >>
+
+// Option "Arriverez-vous à faire encore mieux ?" moved to the end of this node
+-> Arriverez-vous à faire encore mieux ?
+    <<jump Que_Faire>>
+===
+title: Cafe_ou_Alcool
+tags: 
+colorID: 0
+position: -614,863
+---
+Sans surprise, le bar n'est plus aussi approvisionné ! Il ne reste plus aucun soft doux, ni même de Xeno Cola. 
+Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un shot de X-Espresso ou une canette de ZedBoul. 
+
+// Option "Vous laissez tomber " moved to the end of this node
+// Option "Vous vous résignez " moved to the end of this node
+-> Vous laissez tomber 
+    <<jump Que_Faire>>
+-> Vous vous résignez 
+    <<jump Drink_Bad>>
+===
+title: Medoc_Bot
+tags: 
+colorID: 0
+position: -13,943
+---
+Vous vous dirigez vers le bar, en pure perte. Encore une fois, tous les snack ont disparu. Vous vous tournez vers un BarBot.
+
+ << show barbot >>
+BarBot: Vous désirez ?
+You: Manger ton machin coloré qui rebooste. 
+BarBot: À sucer ou avaler ?
+You: Le truc à sucer !
+BarBot: La boule magique ?
+You: Oui, c'est ça.
+BarBot: Une boule magique alors.
+You: Il y a quoi au juste dedans ?
+BarBot: Des molécules actives de synthèse. C'est un stupéfiant de catégorie 1, banal, à consommer sans modération.
+
+// Option "Vous préférez ne pas avaler ce truc " moved to the end of this node
+// Option "Vous prenez quand même la boule magique " moved to the end of this node
+-> Vous préférez ne pas avaler ce truc 
+    <<jump Que_Faire>>
+-> Vous prenez quand même la boule magique 
+    <<jump Eat_Bad>>
+===
+title: Metal_Jam
+tags: 
+colorID: 0
+position: 98,349
+---
+Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota depuis hier. Elle vous attend, elle vous réclame. Vous réactivez sa carte-son HD 4K. Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête une nouvelle fois à vous écouter. Vous savez que la star de la soirée, c'est vous. Et vous allez le leur prouver, à eux et à Fred ! À vous de jouer !
+Vous repartez dans un concert solo d'improvisation, où les riffs électriques et les accords cybermétalliques s'accordent pour composer une symphonie post-électronique. Vous vous surpassez par rapport à hier soir ! Vous avez le flow, vous avez le fuel, vous avez la soul rock teinté de métal ! Vous êtes applaudi, encore et encore et encore... Bon joueur, vous accordez à votre public un morceau bonus. Et un deuxième, parce qu'ils le réclament, et le méritent.
+
+<< removeFromGauge sleep 20 >>
+
+// Option "Comment faire encore plus fort ?" moved to the end of this node
+-> Comment faire encore plus fort ?
+    <<jump Que_Faire>>
+===
+title: End_of_Party
+tags: 
+colorID: 0
+position: -1084,1219
+---
+// if getGauge("sleep") >= 50 && getGauge("food") >= 50
+Vous vous rapprochez de Fred, qui est en pleine conversation avec un groupe d'étudiants docteurs.
+You: Fred, il est tard, il est temps d'aller faire un somme.
+Fred: Déjà ? Je suis en pleine conversation...
+You: Je suis fatigué, j'y vais.
+Fred: OK. T'as raison. Je te suis.
+Fred dit bonne nuit à ses interlocuteurs. Vous aussi. Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle. 
+
+// Option "Vite ! Au lit" moved to the end of this node
+
+// if getGauge("sleep") >= 25 && getGauge("food") >= 50
+Fred: Hey, j'en peux plus. J'y vais.
+You: Déjà ? Tu déclares forfait ?
+Fred: Yes yes.
+You: OK, je te suis.
+Fred: Cool...
+Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle. 
+
+// Option "Vite ! Au lit" moved to the end of this node
+
+// if getGauge("sleep") >= 25 && getGauge("food") < 50 
+
+En effet, vous vous sentez vraiment fatigué, la tête et l'estomac lourd. Il est temps d'aller se coucher. Vous quittez la salle sans dire au revoir à Fred ou à quiconque.
+
+// Option "Vite ! Au lit" moved to the end of this node
+-> Vite ! Au lit
+    <<jump Go_To_Bed_Good>>
+-> Vite ! Au lit
+    <<jump Go_To_Bed_VeryGood>>
+-> Vite ! Au lit
+    <<jump Go_To_Bed_Loose>>
+===
+title: Go_To_Bed_Good
+tags: 
+colorID: 0
+position: -614,1124
+---
+Arrivé devant la porte de votre chambre, Fred se tourne vers vous.
+Fred: C'est vraiment sympa ce soir.
+You: Ouais
+Fred: Je suis content que tu sois venu ce soir. Tu as assuré. Tu as mis le groove à la salle!
+You: Merci. Bonne nuit, Fred.
+Fred: Pareil.
+Sur ces mots, Fred s'éloigne et vous laisse. 
+
+// Option "Se Reposer" moved to the end of this node
+-> Se Reposer
+    <<jump Se_Reposer_Good>>
+===
+title: Go_To_Bed_VeryGood
+tags: 
+colorID: 0
+position: -616,1387
+---
+Arrivé devant la porte de votre chambre, Fred se tourne vers vous.
+Fred: C'est vraiment la hype ce soir.
+You: Ouais
+Fred: Non seulement tu es venu, tu as mis le groove dans la salle. Mais si j'étais pas venu te chercher, t'étais encore branché sur les vibes de la fête... Chapeau bas. 
+You: Merci, Fred.  Bonne nuit.
+Fred: T'es vraiment un winner. Bonne nuit aussi.
+Sur ces confidences, ces louanges, Fred s'éloigne et vous laisse. 
+
+// Option "Se Reposer" moved to the end of this node
+-> Se Reposer
+    <<jump Se_Reposer_Good>>
+===
+title: Se_Reposer_Good
+tags: 
+colorID: 0
+position: -247,1257
+---
+<< hideGauges >>
+Vous entrez tranquillement dans votre chambre. Vous vous allez aux toilettes. Votre vessie en a besoin. Vos dents aussi. Vous vous dévêtez et gagnez votre lit. Vous êtes bien crevé, mais encore pas éteint. Il est temps pour de se recharger. À défaut d'un nuit de sommeil, un somme vous fera déjà le plus grand bien.
+// Option "Un petit somme" moved to the end of this node
+-> Un petit somme
+    <<jump Sieste_Good>>
+===
+title: Sieste_Good
+tags: 
+colorID: 0
+position: 47,1248
+---
+// add gauge Sleep 40
+La seconde vous dormez déjà.
+Et la minute suivante vous entendez le bip bip de votre horloge connectée. Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'hier. Vous vous changez rapidement. Ce qui vous laisse le temps de prendre un petit déjeuner. 
+
+// Option "Petit déjeuner " moved to the end of this node
+-> Petit déjeuner 
+    <<jump Petit_Dejeuner_Good>>
+===
+title: Petit_Dejeuner_Good
+tags: 
+colorID: 0
+position: 314,1225
+---
+Yum Yum... Un petit déjeuner bien riche quand on a fait un somme trop court, ça vous booste le corps et le système nerveux ! Vous sentez que votre organisme reprend du tonus et de la vigueur...
+// add je ne sais pas combien en gauge Food
+
+// Option "Aller en cours" moved to the end of this node
+-> Aller en cours
+    <<jump ExamenTP_Good>>
+===
+title: ExamenTP_Good
+tags: 
+colorID: 0
+position: 560,1255
+---
+Ce matin, vous retrouvez votre ami Fred, qui vous attend avec le sourire.
+
+<< show fred>>
+Fred: Yolo, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps...
+You: Ouais...
+Fed: Je vois ça. J'espère que tu as bien dormi. 
+You: Ouais.
+Fred: Yes yes. Moi aussi. On se revoit tout à l'heure.
+
+Vous vous rendez à votre poste. Vous calez sur votre siège et prenez connaissance des instructions qui défilent sur l'écran. Vous savez comment piloter un drone d'ingénierie. Vous êtes même doué à ce jeu. Enfin, vous vous sentez suffisamment reposé. En effet, vous appliquez sans trop de difficulté les consignes. À part une erreur ou deux, vous guidez votre appareil à bon port. 
+Puis, vous sortez de la salle de classe.
+<<jump Sortir>>
+===
+title: Sortir
+tags: 
+colorID: 0
+position: 865,1263
+---
+Dehors, vous rejoignez Fred.
+Fred: C'était easy, non?
+You: Ouais.
+Fred: Je pense avoir cartonné. Et toi.
+You: Ça devrait aller.
+C'est à ce moment que les résultats tombent. Fred décroche un [b]A[/b] et vous un [b]B[/b]
+Fred: Hey ! Attention, hein ! Tu serais pas en train de vouloir me dépasser ?...
+You: Bien entendu.
+Fred: Je t'adore, tu as toujours la phrase qui tue. Allez, on va manger un petit truc et on file au cinoche. On est libre maintenant jusqu'à demain.
+You: Yes.
+Fred: Yes yes!
+===
+title: Replay
+tags: 
+colorID: 0
+position: -1230,778
+---
+Nonononoon... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition. 
+Vous devez respecter votre cycle de sommeil et d'alimentation ! 
+
+Vous allez devoir retourner à cette soirée festive...
+
+// Option "Retourner à la fête " moved to the end of this node
+-> Retourner à la fête 
+    <<jump Sofa_Restart>>
+===
+title: Go_To_Bed_Loose
+tags: 
+colorID: 1
+position: -1235,1648
+---
+Mince, il ne reste plus personne sur la piste. Vous ne ne voyez plus Fred. Il est sacrément tard, ou sacrément tôt. Les premiers rayons de soleil filtrent à travers les fenêtres de la salle. 
+Vous avez péché par ambition. Vous n'avez pas assez écouté votre corps. Vous êtes épuisé, totalement à plat. Il est plus que temps d'aller dormir.  Vous sentez que cela cogne dans votre tête. Allez-vous pouvoir récupérer assez de sommeil ?...
+
+<<jump SeReposer>>
+===
+title: SeReposer
+tags: bg:bedroom
+colorID: 0
+position: -902,1646
+---
+<< hideGauges >>
+Vous filez dans votre chambre en titubant. Vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent ! Vous avez l'impression de rester coincé une heure dans ce cagibi. C'est pénible, surtout que votre vision se trouble, se dédouble. Pas de doute, vous n'avez pas su quitter l'arène à temps. Vous avez franchi la ligne rouge. Vous êtes plus que crevé...
+Vous avez la tête qui tourne et qui serre, qui vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité. 
+Non, décidément, rien à faire, vous n'arrivez pas à vous endormir... 
+
+<<jump Bip_Bip>>
+===
+title: Bip_Bip
+tags: bg:bedroom
+colorID: 0
+position: -569,1646
+---
+Argh... L'horloge connectée vous fait bondir de votre lit ! Il est encore trop tôt ! Vous ne vous êtes toujours pas reposé. Vous aimeriez avoir une bonne nuit de sommeil... Vous avez encore raté votre soirée. Vous avez voulu battre Fred à son propre jeu. Vous étiez tellement obsédé par l'idée de gagner que vous avez négligé votre bien-être. Vous n'avez pas écouté votre corps.
+Au final, vous avez encore perdu...
+
+// Option "Recommencer " moved to the end of this node
+-> Recommencer 
+    <<jump Replay>>
+===
+title: Drink_Bad
+tags: 
+colorID: 0
+position: -908,644
+---
+Tant pis, vous avez besoin d'un coup de pouce... Du moins, le pensez-vous...
+<< removeFromGauge food 30 >>
+<< addToGauge sleep 10 >>
+
+// Option "Un shot et on y retourne !" moved to the end of this node
+-> Un shot et on y retourne !
+    <<jump Que_Faire>>
+===
+title: Eat_Bad
+tags: 
+colorID: 0
+position: -386,723
+---
+BarBot: Tenez.
+You: Merci.
+Le BarBot vous tend une espèce de gomme multicolore. Vous la mettez dans votre bouche. Niac... C'est moche, ça a un sale goût et vous vous demandez si vous avez fait le bon choix... Trop tard, c'est fait. Vous ressentez quand même un effet revitalisant. Cela suffira-t-il ?...
+
+<< removeFromGauge food 40 >>
+<< addToGauge sleep 10 >>
+
+// Option "Bon, ça c'est fait, et maintenant ?" moved to the end of this node
+-> Bon, ça c'est fait, et maintenant ?
+    <<jump Que_Faire>>
+===

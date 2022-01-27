@@ -298,7 +298,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public setChoice(
     nodeOptions: string[],
     onBoxClick: (choiceId: number) => unknown,
-    subchoice?: () => unknown
+    subchoice?: number
   ) {
     // This works for both links between nodes and shortcut options
     this._dialogLayer.visible = false;
@@ -310,6 +310,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
+      if(subchoice === nodeOptions.length - (i+1)) continue;
+
       const choicebox = new PIXI.Container();
       choicebox.addChild(
         this.makeSprite(
@@ -404,7 +406,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._activateChildEntity(new entity.ParallelEntity(box_tweens));
 
-    if (subchoice !== undefined) {
+    if (subchoice) {
       const arrow_back = new PIXI.Container();
       arrow_back.addChild(this.makeSprite("images/ui/arrow_return.png"));
       arrow_back.scale.set(0.65);
@@ -413,7 +415,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       arrow_back.interactive = true;
       arrow_back.buttonMode = true;
       this._on(arrow_back, "pointerup", () => {
-        subchoice();
+        onBoxClick(subchoice);
       });
 
       this._nodeDisplay.addChild(arrow_back);
