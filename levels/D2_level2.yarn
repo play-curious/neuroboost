@@ -1,10 +1,9 @@
 title: Sofa_Restart
-tags: 
+tags: bg|bedroom_night
 colorID: 8
 position: -1156,366
 ---
 Vous êtes lové dans une confortable et douce langueur... Quand...
-
 On vous secoue brusquement !!!
 
 //set Gauges $sleep to 100 and $food to 70 ??
@@ -19,7 +18,7 @@ On vous secoue brusquement !!!
     <<jump Open_Eyes>>
 ===
 title: Open_Eyes
-tags: show:fred
+tags: show|fred
 colorID: 0
 position: -805,367
 ---
@@ -318,7 +317,7 @@ Vous avez péché par ambition. Vous n'avez pas assez écouté votre corps. Vous
 <<jump SeReposer>>
 ===
 title: SeReposer
-tags: bg:bedroom
+tags: bg|bedroom
 colorID: 0
 position: -902,1646
 ---
@@ -330,7 +329,7 @@ Non, décidément, rien à faire, vous n'arrivez pas à vous endormir...
 <<jump Bip_Bip>>
 ===
 title: Bip_Bip
-tags: bg:bedroom
+tags: bg|bedroom
 colorID: 0
 position: -569,1646
 ---
