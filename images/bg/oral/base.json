@@ -6,17 +6,12 @@
             "y": 540
         },
         {
-            "model": "clignotantRB",
-            "x": 516,
-            "y": 413
+            "model": "pupitre",
+            "x": 960,
+            "y": 540
         },
         {
-            "model": "clignotantBJ",
-            "x": 1617,
-            "y": 400
-        },
-        {
-            "model": "characters",
+            "model": "lightProjo",
             "x": 960,
             "y": 540
         }

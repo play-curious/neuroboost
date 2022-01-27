@@ -1,6 +1,11 @@
 {
     "sprites": [
         {
+            "model": "background",
+            "x": 960,
+            "y": 540
+        },
+        {
             "model": "bird",
             "x": 1770,
             "y": 150
@@ -25,5 +30,6 @@
             "x": 1109,
             "y": 461
         }
-    ]
+    ],
+    "default": "sprites"
 }

@@ -1,6 +1,11 @@
 {
     "sprites": [
         {
+            "model": "background",
+            "x": 960,
+            "y": 540
+        },
+        {
             "model": "desk_1",
             "x": 1485,
             "y": 851
@@ -45,5 +50,6 @@
             "x": 315,
 	        "y": 88
         }
-    ]
+    ],
+    "default": "sprites"
 }

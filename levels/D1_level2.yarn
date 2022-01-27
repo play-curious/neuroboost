@@ -1,5 +1,5 @@
 title: Start
-tags: bg:bedroom
+tags: bg|bedroom
 colorID: 0
 position: -893,370
 ---
@@ -8,15 +8,13 @@ position: -893,370
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. 
 
 Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler : 
-// Option "Prendre l'appel" moved to the end of this node 
-// Option "Rejeter l'appel" moved to the end of this node
 -> Prendre l'appel
     <<jump Appel_Fred_Rewind>>
 -> Rejeter l'appel
     <<jump Rejet_Fred_Rewind>>
 ===
 title: Appel_Fred_Rewind
-tags: show:fred
+tags: show|fred
 colorID: 0
 position: -592,376
 ---
@@ -47,15 +45,15 @@ colorID: 0
 position: -758,62
 ---
 Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais vaincu. Il vous rappelle aussitôt !
-// Option "Prendre l'appel" moved to the end of this node
-// Option "Rejeter appel" moved to the end of this node
+
+
 -> Prendre l'appel
     <<jump Appel_Fred_Rewind>>
 -> Rejeter appel
     <<jump Rejet_Fred_Rewind>>
 ===
 title: Phone_off_Rewind
-tags: bg:bedroom
+tags: bg|bedroom
 colorID: 0
 position: -342,363
 ---
@@ -67,78 +65,73 @@ Il vous reste 6 heures avant l'heure H... Aujourd'hui, vous allez montrer à Fre
 <<jump Action_List_Rewind>>
 ===
 title: Action_List_Rewind
-tags: bg:bedroom freechoice
+tags: bg|bedroom freechoice
 colorID: 0
 position: -895,604
 ---
+<< if isFirstTime("Action_List_Rewind") >>
 Que faites-vous maintenant?
+<< endif >>
 
 << if $time >= 720 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
-// Option "Manger (à midi)" moved to the end of this node
 << else>>
-// Option "Cuisine@cuisine" moved to the end of this node
-// Option "Bureau@bureau" moved to the end of this node
-// Option "Salon@salon" moved to the end of this node
-<< endif>>
--> Manger (à midi) <<if ($time >= 720)>>
+-> Manger (à midi)
     <<jump Lunch_Rewind>>
--> Cuisine@cuisine <<if !($time >= 720)>>
+-> Cuisine@cuisine
     <<jump cuisine_subchoice>>
--> Bureau@bureau <<if !($time >= 720)>>
+-> Bureau@bureau
     <<jump bureau_subchoice>>
--> Salon@salon <<if !($time >= 720)>>
+-> Salon@salon
     <<jump salon_subchoice>>
+<< endif>>
 ===
 
 
 title: cuisine_subchoice
-tags: bg:kitchen subchoice
+tags: bg|kitchen subchoice
 position: -319.1514720916748,-55.38755989074707
 ---
-// Option "Prendre le petit déjeuner" moved to the end of this node 
 -> Prendre le petit déjeuner
     <<jump Petit_dej_Rewind>>
+-> back
+    <<jump Action_List_Rewind>>
 ===
 title: bureau_subchoice
-tags: bg:desk subchoice
+tags: bg|desk subchoice
 position: -993.6492929458618,-75.37680292129517
 ---
-// Option "Passer du temps sur le chat avec le pote d'une autre Université" moved to the end of this node
-// Option "Réviser cette fichue Astronometric Data Management" moved to the end of this node
 -> Passer du temps sur le chat avec le pote d'une autre Université
     <<jump Chat_Rewind>>
 -> Réviser cette fichue Astronometric Data Management
     <<jump Revision_Rewind>>
+-> back
+    <<jump Action_List_Rewind>>
 ===
 title: salon_subchoice
-tags: bg:bedroom subchoice
+tags: bg|bedroom subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
-// Option "Binger votre série TV préférée" moved to the end of this node
-// Option "Rappel libre" moved to the end of this node
-
-
-
 -> Binger votre série TV préférée
     <<jump BingeTV_Rewind>>
 -> Rappel libre
     <<jump Rappel_libre>>
+-> back
+    <<jump Action_List_Rewind>>
 ===
 title: Lunch_Rewind
-tags: bg:kitchen
+tags: bg|kitchen
 colorID: 7
 position: -1284,1084
 ---
 Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... 
 D'accord, ce repas est bien chargé en calories et en caféine, mais vous avez mangé le même hier. Ça commence à bien faire ces sensations de "déjà-vu"...
 Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route ! 
-// Option "Il est temps de battre votre précédent score!" moved to the end of this node
 -> Il est temps de battre votre précédent score!
     <<jump Test_Rewind>>
 ===
 title: Petit_dej_Rewind
-tags: bg:kitchen
+tags: bg|kitchen
 colorID: 0
 position: -1040,831
 ---
@@ -150,7 +143,7 @@ Bon, ce n'est pas tout.
 <<jump Action_List_Rewind>>
 ===
 title: Chat_Rewind
-tags: bg:bedbroom
+tags: bg|bedbroom
 colorID: 0
 position: -755,827
 ---
@@ -170,7 +163,7 @@ Vous passez deux heures à discuter de tout, mais surtout de rien.
 <<jump Action_List_Rewind>>
 ===
 title: Revision_Rewind
-tags: bg:desk
+tags: bg|desk
 colorID: 0
 position: -508,824
 ---
@@ -206,7 +199,7 @@ Vous passez 4 heures à binger votre série préférée.
 <<jump Action_List_Rewind>>
 ===
 title: Rappel_libre
-tags: bg:desk
+tags: bg|desk
 colorID: 0
 position: -42,822
 ---
@@ -223,7 +216,7 @@ Vous prenez encore le temps de relire votre cours pour combler les lacunes qui v
 <<jump Action_List_Rewind>>
 ===
 title: Test_Rewind
-tags: bg:class
+tags: bg|class
 colorID: 0
 position: -1007,1085
 ---
@@ -238,7 +231,7 @@ Euphorique, vous quittez la salle et retrouvez Fred, qui vous attend à l'entré
 <<jump Post_Test_Rewind>>
 ===
 title: Post_Test_Rewind
-tags: show:fred
+tags: show|fred
 colorID: 0
 position: -742,1087
 ---
@@ -254,9 +247,7 @@ Fred: C'est génial ! Je t'ai encore jamais vu comme ça.
 You: Ouais...
 Fred s'apprête à vous répondre quand la sonnerie retentit. Les résultats du test viennent de tomber...
 << if visited("Rappel_libre") >>
-// Option "Consulter les résultats" moved to the end of this node
 << else >>
-// Option "Consulter les résultats" moved to the end of this node
 << endif >>
 -> Consulter les résultats <<if (visited("Rappel_libre"))>>
     <<jump Resultats_Good>>

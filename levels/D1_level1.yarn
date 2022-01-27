@@ -5,8 +5,11 @@ position: -1979.929937362671,-817.3228759765625
 << setTime 8:00 >>
 << music Neutral >>
 << loopFX AlarmClock_LOOP 2000 >>
+
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.
+
 << stopFX AlarmClock_LOOP >>
+
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
 
 << loopFX PhoneRing_LOOP 5000 >>

@@ -1,0 +1,10 @@
+{
+    "sprites": [
+        {
+            "model": "background",
+            "x": 960,
+            "y": 540
+        }
+    ],
+    "default": "sprites"
+}

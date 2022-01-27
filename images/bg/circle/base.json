@@ -1,6 +1,11 @@
 {
     "sprites": [
         {
+            "model": "background",
+            "x": 960,
+            "y": 540
+        },
+        {
             "model": "brain",
             "x": 1056,
 	        "y": 518
@@ -10,5 +15,6 @@
             "x": 1553,
 	        "y": 572
         }
-    ]
+    ],
+    "default": "sprites"
 }

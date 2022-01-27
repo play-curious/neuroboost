@@ -1,9 +1,9 @@
 import * as _ from "underscore";
-
 import * as PIXI from "pixi.js";
 
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
+import * as tween from "booyah/src/tween";
 
 import * as clock from "./clock";
 import * as command from "./command";
@@ -26,6 +26,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   private _autoshowOn: boolean;
 
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
+  public disabledClick: boolean;
   public graphics: graphics.Graphics;
 
   constructor(
@@ -44,6 +45,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   _setup(): void {
     command.fxLoops.clear();
 
+    this.disabledClick = false;
     this._autoshowOn = false;
 
     // Setup graphics
@@ -81,9 +83,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(selectId?: number): void {
-    this.graphics.hideNode();
-    this.graphics.showDialogLayer();
-
     if(selectId !== -1)
       this.runner.advance(selectId);
 
@@ -93,26 +92,52 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       return;
     }
 
-    // Check if the node data has changed
-    if (this._lastNodeData?.title !== this.metadata.title) {
-      this._onChangeNodeData(this._lastNodeData, this.metadata);
-      this._lastNodeData = this.metadata;
-    }
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        () =>
+          (() => {
+            const { lastBg, lastMood } = this.graphics.last;
+            const [bg, mood] = this.metadata.tags.split(/\s+/)
+              .find((tag) => tag.startsWith("bg|"))
+              ?.replace("bg|", "")
+              .split("_") || ["GNEUH"];
+            return (bg !== "GNEUH" && bg !== lastBg) || mood !== lastMood;
+          })() &&
+          this.metadata.title !== this._lastNodeData?.title
+            ? this.graphics.fadeIn(200)
+            : new entity.FunctionCallEntity(() => null),
+        new entity.FunctionCallEntity(() => {
+          this.disabledClick = true;
+          this.graphics.hideNode();
+          this.graphics.showDialogLayer();
 
-    if (this.runner.currentResult instanceof yarnBound.TextResult) {
-      this._handleDialog();
-    } else if (this.runner.currentResult instanceof yarnBound.OptionsResult) {
-      debugger;
-      if (this._hasTag(this.metadata, "freechoice")) {
-        this._handleFreechoice();
-      } else {
-        this._handleChoice();
-      }
-    } else if (this.runner.currentResult instanceof yarnBound.CommandResult) {
-      this._handleCommand();
-    } else {
-      throw new Error(`Unknown bondage result ${this.runner.currentResult}`);
-    }
+          // Check if the node data has changed
+          if (this._lastNodeData?.title !== this.metadata.title) {
+            this._onChangeNodeData(this._lastNodeData, this.metadata);
+            this._lastNodeData = this.metadata;
+          }
+
+          if (this.runner.currentResult instanceof yarnBound.TextResult) {
+            this._handleDialog();
+          } else if (this.runner.currentResult instanceof yarnBound.OptionsResult) {
+            debugger;
+            if (this._hasTag(this.metadata, "freechoice")) {
+              this._handleFreechoice();
+            } else {
+              this._handleChoice();
+            }
+          } else if (this.runner.currentResult instanceof yarnBound.CommandResult) {
+            this._handleCommand();
+          } else {
+            throw new Error(`Unknown bondage result ${this.runner.currentResult}`);
+          }
+        }),
+        this.graphics.fadeOut(200),
+        new entity.FunctionCallEntity(() => {
+          this.disabledClick = false;
+        }),
+      ])
+    );
   }
 
   private _handleDialog() {
@@ -183,9 +208,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     // By default, autoshow is off
     this._autoshowOn = false;
     let bg: string;
+    let bg_mood: string;
     let character: string;
 
-    for (let tag of newNodeData.tags.split(" ")) {
+    for (let tag of newNodeData.tags.split(/\s+/)) {
       tag = tag.trim();
       if (tag === "") continue;
 
@@ -204,7 +230,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       }
     }
 
-    if (bg) this.graphics.setBackground(bg);
+    if (bg) this.graphics.setBackground(bg, bg_mood);
     this.graphics.addCharacter(character);
 
     this.emit("changeNodeData", oldNodeData, newNodeData);
