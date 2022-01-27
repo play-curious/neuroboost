@@ -45,8 +45,6 @@ colorID: 0
 position: -758,62
 ---
 Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais vaincu. Il vous rappelle aussitôt !
-
-
 -> Prendre l'appel
     <<jump Appel_Fred_Rewind>>
 -> Rejeter appel

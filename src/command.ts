@@ -150,7 +150,6 @@ export const commands: Record<string, Command> = {
   },
 
   showGauges(...gaugesName: string[]) {
-    gaugesName.pop();
     this.graphics.toggleGauges(true, ...gaugesName);
   },
 
@@ -167,6 +166,8 @@ export const commands: Record<string, Command> = {
   fadeOut(duration: `${number}` = "1000") {
     this.activate(this.graphics.fadeOut(Number(duration)));
   },
+
+  empty(){}
 };
 
 export const functions: Record<string, YarnFunction> = {
@@ -174,5 +175,8 @@ export const functions: Record<string, YarnFunction> = {
     return this.runner.history.filter(
       (result) => {return result.metadata.title === node}
     ).length <= 1;
+  },
+  getGauge(gauge: string): number {
+    return this.graphics.getGaugeValue(gauge);
   }
 }

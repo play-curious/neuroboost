@@ -73,9 +73,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._closeupLayer = new PIXI.Container();
     this._container.addChild(this._closeupLayer);
 
-    this._fxLayer = new PIXI.Container();
-    this._container.addChild(this._fxLayer);
-
     this._uiLayer = new PIXI.Container();
     this._container.addChild(this._uiLayer);
 
@@ -89,6 +86,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     );
     this._dialogSpeaker.position.set(202, 601);
     this._dialogLayer.addChild(this._dialogSpeaker);
+
+    this._fxLayer = new PIXI.Container();
+    this._container.addChild(this._fxLayer);
 
     this._gauges = {};
     const gaugesList: (keyof variable.Gauges)[] = ["sleep", "food"];

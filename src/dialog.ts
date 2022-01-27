@@ -31,7 +31,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   constructor(
     public readonly scriptName: string,
-    public readonly startNode = "Start",
     public readonly variableStorage: variable.VariableStorage,
     public readonly clock: clock.Clock
   ) {
@@ -67,9 +66,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   public loadRunner(runner: yarnBound.YarnBound<variable.VariableStorage>){
     this.runner = runner;
-    console.log(this.runner)
-    for(const funcName in command.functions)
+    for(const funcName in command.functions){
       this.runner.registerFunction(funcName, command.functions[funcName].bind(this));
+    }
   }
 
   _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
@@ -83,14 +82,14 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(selectId?: number): void {
-    if(selectId !== -1)
-      this.runner.advance(selectId);
-
     // If result is undefined, stop here
     if (this.metadata.hasOwnProperty("isDialogueEnd")) {
       this._transition = entity.makeTransition();
       return;
     }
+    
+    if(selectId !== -1)
+      this.runner.advance(selectId);
 
     this._activateChildEntity(
       new entity.EntitySequence([
@@ -118,9 +117,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
           }
 
           if (this.runner.currentResult instanceof yarnBound.TextResult) {
+            this.activate(this.graphics.fadeOut(200));
             this._handleDialog();
           } else if (this.runner.currentResult instanceof yarnBound.OptionsResult) {
-            debugger;
+            this.activate(this.graphics.fadeOut(200));
             if (this._hasTag(this.metadata, "freechoice")) {
               this._handleFreechoice();
             } else {
@@ -146,7 +146,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       text,
       this.variableStorage.get("name"),
       this._autoshowOn,
-      this._advance.bind(this)
+      () => {
+        if(this.disabledClick) return;
+        this._advance.bind(this)();
+      }
     );
   }
 
@@ -159,6 +162,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.graphics.setChoice(
       options,
       (id) => {
+        if(this.disabledClick) return;
         this.config.fxMachine.play("Click");
         this._advance.bind(this)(id);
       },
@@ -195,6 +199,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     this.graphics.setFreechoice(
       options, (id) => {
+        if(this.disabledClick) return;
         this.config.fxMachine.play("Click");
         this._advance.bind(this)(id);
       }
@@ -218,7 +223,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       if (tag.startsWith("bg|")) {
         if (bg) console.warn("Trying to set background twice");
 
-        bg = tag.split("|")[1].trim();
+        [bg, bg_mood] = tag.split("|")[1].trim().split("_");
       } else if (tag.startsWith("show|")) {
         if (character) console.warn("Trying to set character twice");
 

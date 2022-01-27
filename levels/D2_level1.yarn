@@ -377,7 +377,7 @@ Temde: Pas les substances miracles de synthèse. Mensonges de bonimenteurs !
 Sapiens: Ton corps a besoin d'énergie. Il a également besoin de se recharger.
 You: Comme mon palmphone ?
 Ledai: Tout à fait.
-You: [[Comment ?|Sommeil]]
+<<jump Sommeil>>
 ===
 title: Sommeil
 tags: autoshow
@@ -432,6 +432,7 @@ Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos r
     Ledai: Une autre phrase quiz, Master Sapiens ?
     Sapiens: Oui. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
 
+<<empty>>
 
 -> Vrai
     Sapiens: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité.
@@ -442,6 +443,7 @@ Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos r
     Azul: Est-ce la fin de la séance de quizz ?
     Sapiens: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième: l'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
 
+<<empty>>
 
 -> Vrai
     Sapiens: Exactement ! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand !
@@ -455,6 +457,7 @@ Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos r
     Ledai: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
     Sapiens: Et je n'ai pas fini. Il me reste la dernière fiche test! Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
 
+<<empty>>
 
 -> Vrai
     Sapiens: Non-sens ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière !

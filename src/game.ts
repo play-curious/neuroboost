@@ -26,8 +26,6 @@ function resizeHtmlLayer(appSize: PIXI.Point): void {
   );
   const offset = util.toFixedFloor(canvasBbox.left, 2);
 
-  console.log("setting scale", scale, "offset", offset);
-
   const container = document.getElementById("html-layer");
   const transformCss = `translate(${offset}px, 0px) scale(${scale})`;
   for (const prop of ["transform", "webkitTransform", "msTransform"]) {
@@ -35,9 +33,6 @@ function resizeHtmlLayer(appSize: PIXI.Point): void {
     container.style[prop] = transformCss;
   }
 }
-
-const params = new URLSearchParams(window.location.search);
-const startNode = params.get("startNode") || params.get("node") || "Start";
 
 // Common attributes for all DialogScene
 //   - VariableStorage
@@ -50,10 +45,10 @@ const _variableStorage = new variable.VariableStorage({
   food: "100",
 });
 const globalHistory: yarnBound.Result[] = [];
-function runnerMaker(file: string): yarnBound.YarnBound<variable.VariableStorage> {
+function runnerMaker(file: string, start: string): yarnBound.YarnBound<variable.VariableStorage> {
   const runner = new yarnBound.YarnBound({
     dialogue: file,
-    startAt: startNode,
+    startAt: start,
     variableStorage: _variableStorage,
     functions: {}
   });
@@ -69,19 +64,26 @@ export function installGameDatas(rootConfig: entity.EntityConfig) {
 }
 
 
+const params = new URLSearchParams(window.location.search);
+const startNode = params.get("startNode") || params.get("node") || "Start";
+
 // prettier-ignore
-const statesName = [
+let statesName = [
   "D1_level1",
   "D1_level2",
-  "D2_level1"
+  "D2_level1",
+  "D2_level2"
 ];
+
+const startFile = params.get("level") || "start";
+const startIndex = statesName.indexOf(startFile);
+statesName.splice(0, startIndex);
 
 const states: { [k: string]: entity.EntityResolvable } = {};
 for (const stateName of statesName) {
   states[stateName === statesName[0] ? "start" : stateName] =
     new dialog.DialogScene(
       stateName,
-      startNode,
       _variableStorage,
       _clock
     );
@@ -96,7 +98,7 @@ async function yarnsLoader(){
   let i = 0
   for(const stateName in states){
     if(states[stateName] instanceof dialog.DialogScene){
-      (states[stateName] as dialog.DialogScene).loadRunner(runnerMaker(texts[i]));
+      (states[stateName] as dialog.DialogScene).loadRunner(runnerMaker(texts[i], i === 0 ? startNode : "Start"));
       i++
     }
   }
