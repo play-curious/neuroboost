@@ -424,6 +424,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     nodeOptions: string[],
     onBoxClick: (choiceId: number) => unknown
   ) {
+    debugger;
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();

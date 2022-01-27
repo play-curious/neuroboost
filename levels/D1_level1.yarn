@@ -50,8 +50,6 @@ position: -1805.537826538086,-561.8787231445312
 
 Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle aussitôt !
 
-// Option "Prendre l'appel" moved to the end of this node
-// Option "Rejeter l'appel" moved to the end of this node
 -> Prendre l'appel
     <<jump Appel_Fred>>
 -> Rejeter l'appel
@@ -68,7 +66,7 @@ Il y a de quoi faire pour montrer à Fred qui est le Big Winner de l'Académie !
 <<jump Action_List>>
 ===
 title: Action_List
-tags: bg:bedroom freechoice
+tags: bg|bedroom freechoice
 position: -847.2033081054688,-821.7307662963867
 ---
 << if isFirstTime() >>
@@ -91,15 +89,14 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
 
 
 title: cuisine_subchoice
-tags: bg:kitchen subchoice
+tags: bg|kitchen subchoice
 position: -319.1514720916748,-55.38755989074707
 ---
-// Option "Prendre le petit déjeuner" moved to the end of this node
 -> Prendre le petit déjeuner
     <<jump Petit_dej>>
 ===
 title: bureau_subchoice
-tags: bg:desk subchoice
+tags: bg|desk subchoice
 position: -993.6492929458618,-75.37680292129517
 ---
 // Option "Passer du temps sur le chat avec le pote d'une autre Université" moved to the end of this node
@@ -110,7 +107,7 @@ position: -993.6492929458618,-75.37680292129517
     <<jump Revision>>
 ===
 title: salon_subchoice
-tags: bg:bedroom subchoice
+tags: bg|bedroom subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
 // Option "Binger votre série TV préférée" moved to the end of this node
@@ -121,7 +118,7 @@ position: -1716.8310852050781,-38.99417304992676
     <<jump BingeTV>>
 ===
 title: Petit_dej
-tags: bg:kitchen
+tags: bg|kitchen
 position: -441.43939208984375,237.24887084960938
 ---
 << fx EatCook >>
@@ -149,7 +146,7 @@ Vous passez deux heures à discuter de tout, mais surtout de rien.
 <<jump Action_List>>
 ===
 title: Revision
-tags: bg:desk
+tags: bg|desk
 position: -1231.30712890625,224.80491638183594
 ---
 Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Management. Rien que le titre vous barbe. ça commence mal...
@@ -181,7 +178,7 @@ Vous passez 4 heures à binger votre série préférée.
 <<jump Action_List>>
 ===
 title: Lunch
-tags: bg:kitchen
+tags: bg|kitchen
 position: -1026.218994140625,513.7423095703125
 ---
 << fx EatCook >>
@@ -197,7 +194,7 @@ Et maintenant,
     <<jump Test>>
 ===
 title: Test
-tags: bg:class
+tags: bg|class
 position: -666.0570068359375,500.580322265625
 ---
 << setTime 14:00 >>
@@ -212,7 +209,7 @@ Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fre
 <<jump Post_Test>>
 ===
 title: Post_Test
-tags: bg:class show:fred
+tags: bg|class show|fred
 position: -341.2677307128906,490.52679443359375
 ---
 Fred: Alors, ça l'a fait ?
@@ -236,7 +233,7 @@ Les résultats du test viennent de tomber...
     <<jump Resultats_Bad>>
 ===
 title: Resultats_Bad
-tags: bg:class show:fred
+tags: bg|class show|fred
 position: -16.689138412475586,492.05352783203125
 ---
 Hélas... Fred n'avait pas tort... Les scores s'affichent sur l'écran de la porte principale. Vous êtes dans le peloton... de queue... La semaine de sprint commence mal...
@@ -259,7 +256,7 @@ You: Je sais pas...
     <<jump Rester_Chambre_deprime>>
 ===
 title: Fete_deprime
-tags: bg:party
+tags: bg|party
 position: 402.3575134277344,484.3177490234375
 ---
 Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer...
@@ -285,7 +282,7 @@ Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à cha
     <<jump Chambre_Nuit>>
 ===
 title: Chambre_Nuit
-tags: bg:bedroom_night
+tags: bg|bedroom_night
 position: -17.766727447509766,752.0414428710938
 ---
 Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde... 
@@ -296,7 +293,7 @@ Demain est un autre jour, vivement demain...
     <<jump Reveil_Sage>>
 ===
 title: Reveil_Sage
-tags: bg:bedroom_night 
+tags: bg|bedroom_night 
 position: -352.5212097167969,897.6408081054688
 ---
 << hideUi >>
@@ -330,7 +327,7 @@ Temde: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit 
     <<jump Assemblee_Sages>>
 ===
 title: Tenter_rester_chambre
-tags: show:temde bg:bedroom_night
+tags: show|temde bg|bedroom_night
 position: -719.885986328125,901.3107299804688
 ---
 You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !!
@@ -345,7 +342,7 @@ un rayon en jaillit et vous englobe de sa lumière vert phosphorescente.
 <<jump Assemblee_Sages>>
 ===
 title: Assemblee_Sages
-tags: bg:circle autoshow
+tags: bg|circle autoshow
 position: -562.1727294921875,1164.6718139648438
 ---
 << fadeOut >>
@@ -433,7 +430,7 @@ Sapiens: Tout à fait, c'est le chaos ! La panique ! La catastrophe !.. Alors qu
     <<jump Memoire_Longue>>
 ===
 title: Memoire_Longue
-tags: bg:schma autoshow
+tags: bg|schma autoshow
 position: -63.20210266113281,1418.4576416015625
 ---
 << showCloseup shelf_organized >>
@@ -452,7 +449,7 @@ You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions 
 <<jump Routinisation>>
 ===
 title: Routinisation
-tags: bg:circle autoshow
+tags: bg|circle autoshow
 position: 243.36883544921875,1410.058349609375
 ---
 Sapiens: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
@@ -467,7 +464,7 @@ You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil.
 Ledai: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> !
 ===
 title: Journal_Rappel_libre
-tags: bg:bedroom_night
+tags: bg|bedroom_night
 position: 528.9749550819397,1406.2884521484375
 ---
 Flash !!!

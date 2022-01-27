@@ -67,7 +67,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.runner = runner;
     console.log(this.runner)
     for(const funcName in command.functions)
-      this.runner.registerFunction(funcName, command.functions[funcName]);
+      this.runner.registerFunction(funcName, command.functions[funcName].bind(this));
   }
 
   _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
