@@ -124,6 +124,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     return undefined;
   }
 
+  public setGauge(name: string, value: number) {
+    if (this._gauges.hasOwnProperty(name))
+      this._gauges[name].resetValue(value);
+  }
+
   public getUi(): PIXI.Container {
     return this._uiLayer;
   }

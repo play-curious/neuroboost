@@ -3,6 +3,7 @@ import * as variable from "./variable";
 import * as images from "./images";
 import * as clock from "./clock";
 import * as entity from "booyah/src/entity";
+import { Graphics } from "pixi.js";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (this: dialog.DialogScene, ...args: any[]) => unknown;
@@ -95,7 +96,7 @@ export const commands: Record<string, Command> = {
     gaugeName: VarName,
     value: variable.Gauges[VarName]
   ) {
-    this.variableStorage.set(gaugeName, value);
+    (this as dialog.DialogScene).graphics.setGauge(gaugeName, Number(value));
   },
 
   addToGauge<VarName extends keyof variable.Gauges>(
@@ -104,7 +105,7 @@ export const commands: Record<string, Command> = {
   ) {
     let oldValue = this.variableStorage.get(gaugeName);
     const newValue = Math.min(Number(oldValue) + Number(value), 100);
-    this.variableStorage.set(gaugeName, `${newValue}`);
+    (this as dialog.DialogScene).variableStorage.set(gaugeName, `${newValue}`);
   },
 
   removeFromGauge<VarName extends keyof variable.Gauges>(
@@ -113,7 +114,7 @@ export const commands: Record<string, Command> = {
   ) {
     let oldValue = this.variableStorage.get(gaugeName);
     const newValue = Math.max(Number(oldValue) - Number(value), 0);
-    this.variableStorage.set(gaugeName, `${newValue}`);
+    (this as dialog.DialogScene).variableStorage.set(gaugeName, `${newValue}`);
   },
 
   music(musicName: string) {
