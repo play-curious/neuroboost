@@ -25,7 +25,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _lastMood: string;
   private _characters: Map<
     string,
-    { container: PIXI.Container; entity: entity.ParallelEntity }
+    {
+      container: PIXI.Container;
+      entity: entity.ParallelEntity;
+    }
   >;
 
   private _container: PIXI.Container;
@@ -46,6 +49,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     super();
   }
 
+  get last() {
+    return {
+      lastBg: this._lastBg,
+      lastBgMood: this._lastBgMood,
+      lastCharacter: this._lastCharacter,
+      lastMood: this._lastMood,
+    };
+  }
+
   _setup(): void {
     this._container = new PIXI.Container();
     this.config.container.addChild(this._container);
@@ -61,9 +73,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._closeupLayer = new PIXI.Container();
     this._container.addChild(this._closeupLayer);
 
-    this._fxLayer = new PIXI.Container();
-    this._container.addChild(this._fxLayer);
-
     this._uiLayer = new PIXI.Container();
     this._container.addChild(this._uiLayer);
 
@@ -77,6 +86,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     );
     this._dialogSpeaker.position.set(202, 601);
     this._dialogLayer.addChild(this._dialogSpeaker);
+
+    this._fxLayer = new PIXI.Container();
+    this._container.addChild(this._fxLayer);
 
     this._gauges = {};
     const gaugesList: (keyof variable.Gauges)[] = ["sleep", "food"];
@@ -103,12 +115,18 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       .drawRect(0, 0, 1920, 1080)
       .endFill();
     this._fade.alpha = 0;
+    this._fade.visible = false;
     this._fxLayer.addChild(this._fade);
   }
 
   public getGaugeValue(name: string): number {
     if (this._gauges.hasOwnProperty(name)) return this._gauges[name].getValue();
     return undefined;
+  }
+
+  public setGauge(name: string, value: number) {
+    if (this._gauges.hasOwnProperty(name))
+      this._gauges[name].resetValue(value);
   }
 
   public getUi(): PIXI.Container {
@@ -299,7 +317,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public setChoice(
     nodeOptions: string[],
     onBoxClick: (choiceId: number) => unknown,
-    subchoice?: () => unknown
+    subchoice?: number
   ) {
     // This works for both links between nodes and shortcut options
     this._dialogLayer.visible = false;
@@ -311,6 +329,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
+      if(subchoice === nodeOptions.length - (i+1)) continue;
+
       const choicebox = new PIXI.Container();
       choicebox.addChild(
         this.makeSprite(
@@ -405,7 +425,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._activateChildEntity(new entity.ParallelEntity(box_tweens));
 
-    if (subchoice !== undefined) {
+    if (subchoice) {
       const arrow_back = new PIXI.Container();
       arrow_back.addChild(this.makeSprite("images/ui/arrow_return.png"));
       arrow_back.scale.set(0.65);
@@ -414,7 +434,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       arrow_back.interactive = true;
       arrow_back.buttonMode = true;
       this._on(arrow_back, "pointerup", () => {
-        subchoice();
+        onBoxClick(subchoice);
       });
 
       this._nodeDisplay.addChild(arrow_back);
@@ -425,6 +445,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     nodeOptions: string[],
     onBoxClick: (choiceId: number) => unknown
   ) {
+    debugger;
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();
@@ -526,7 +547,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    * @param mood Background's mood (time of the day)
    */
   public setBackground(bg: string, mood?: string) {
-
     // Check if background change
     if (bg === this._lastBg && mood === this._lastBgMood) return;
 
@@ -699,11 +719,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   fadeIn(duration: number = 1000, color: string = "#000000") {
-    this._fade.tint = eval(color.replace("#", "0x"));
-
-    this._activateChildEntity(
-      new entity.EntitySequence([
+    if (!this._fade.visible)
+      return new entity.EntitySequence([
         new entity.FunctionCallEntity(() => {
+          this._fade.tint = eval(color.replace("#", "0x"));
+          this._fade.visible = true;
           this._fade.alpha = 0;
         }),
         new tween.Tween({
@@ -717,29 +737,29 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         new entity.FunctionCallEntity(() => {
           this._fade.alpha = 1;
         }),
-      ])
-    );
+      ]);
+    return new entity.FunctionCallEntity(() => null);
   }
 
   fadeOut(duration: number = 1000) {
-    if (this._fade.alpha !== 0)
-      this._activateChildEntity(
-        new entity.EntitySequence([
-          new entity.FunctionCallEntity(() => {
-            this._fade.alpha = 1;
-          }),
-          new tween.Tween({
-            duration: duration,
-            from: 1,
-            to: 0,
-            onUpdate: (value) => {
-              this._fade.alpha = value;
-            },
-          }),
-          new entity.FunctionCallEntity(() => {
-            this._fade.alpha = 0;
-          }),
-        ])
-      );
+    if (this._fade.visible)
+      return new entity.EntitySequence([
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 1;
+        }),
+        new tween.Tween({
+          duration: duration,
+          from: 1,
+          to: 0,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new entity.FunctionCallEntity(() => {
+          this._fade.alpha = 0;
+          this._fade.visible = false;
+        }),
+      ]);
+    return new entity.FunctionCallEntity(() => null);
   }
 }

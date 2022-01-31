@@ -3,8 +3,10 @@ import * as variable from "./variable";
 import * as images from "./images";
 import * as clock from "./clock";
 import * as entity from "booyah/src/entity";
+import { Graphics } from "pixi.js";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
+export type YarnFunction = (this: dialog.DialogScene, ...args: any[]) => unknown;
 
 export const fxLoops: Map<string, entity.EntitySequence> = new Map();
 
@@ -94,7 +96,7 @@ export const commands: Record<string, Command> = {
     gaugeName: VarName,
     value: variable.Gauges[VarName]
   ) {
-    this.variableStorage.set(gaugeName, value);
+    (this as dialog.DialogScene).graphics.setGauge(gaugeName, Number(value));
   },
 
   addToGauge<VarName extends keyof variable.Gauges>(
@@ -103,7 +105,7 @@ export const commands: Record<string, Command> = {
   ) {
     let oldValue = this.variableStorage.get(gaugeName);
     const newValue = Math.min(Number(oldValue) + Number(value), 100);
-    this.variableStorage.set(gaugeName, `${newValue}`);
+    (this as dialog.DialogScene).variableStorage.set(gaugeName, `${newValue}`);
   },
 
   removeFromGauge<VarName extends keyof variable.Gauges>(
@@ -112,7 +114,7 @@ export const commands: Record<string, Command> = {
   ) {
     let oldValue = this.variableStorage.get(gaugeName);
     const newValue = Math.max(Number(oldValue) - Number(value), 0);
-    this.variableStorage.set(gaugeName, `${newValue}`);
+    (this as dialog.DialogScene).variableStorage.set(gaugeName, `${newValue}`);
   },
 
   music(musicName: string) {
@@ -149,7 +151,6 @@ export const commands: Record<string, Command> = {
   },
 
   showGauges(...gaugesName: string[]) {
-    gaugesName.pop();
     this.graphics.toggleGauges(true, ...gaugesName);
   },
 
@@ -160,10 +161,23 @@ export const commands: Record<string, Command> = {
 
   fadeIn(duration: `${number}` = "1000", hexColor: string = "#00000") {
     const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
-    this.graphics.fadeIn(Number(duration), color);
+    this.activate(this.graphics.fadeIn(Number(duration), color));
   },
 
   fadeOut(duration: `${number}` = "1000") {
-    this.graphics.fadeOut(Number(duration));
+    this.activate(this.graphics.fadeOut(Number(duration)));
   },
+
+  empty(){}
 };
+
+export const functions: Record<string, YarnFunction> = {
+  isFirstTime(node: string): boolean {
+    return this.runner.history.filter(
+      (result) => {return result.metadata.title === node}
+    ).length <= 1;
+  },
+  getGauge(gauge: string): number {
+    return this.graphics.getGaugeValue(gauge);
+  }
+}

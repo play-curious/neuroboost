@@ -1,0 +1,52 @@
+title: Start
+tags:
+---
+[[Fred]]
+===
+title: Fred
+tags: bg:bedroom show:fred
+---
+Fred_drunk: drunk
+Fred_excited: excited
+Fred_happy: happy
+Fred_sad: sads
+Fred_smiling: smiling
+Fred_surprised: surprised
+[[Azul]]
+===
+title: Azul
+tags: bg:bedroom show:azul
+---
+Azul_cheerful: cheerful
+Azul_happy: happy
+Azul_proud: proud
+Azul_sad: sad
+[[Ledai]]
+===
+title: Ledai
+tags: bg:bedroom show:ledai
+---
+Ledai_doubtful: doubtful
+Ledai_explaining: explaining
+Ledai_happy: happy
+[[Temde]]
+===
+title: Temde
+tags: bg:bedroom show:temde
+---
+Temde_cheerful: cheerful
+Temde_neutral: neutral
+Temde_sad: sad
+Temde_smiling: smiling
+Temde_thinking: thinking
+[[Sapiens]]
+===
+title: Sapiens
+tags: bg:bedroom show:sapiens
+---
+Sapiens_angry: angry
+Sapiens_concerned: concerned
+Sapiens_happy: happy
+Sapiens_thinking: Sapiens_thinking
+[[Start]]
+===

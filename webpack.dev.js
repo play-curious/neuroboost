@@ -12,6 +12,6 @@ module.exports = merge(common, {
     host: '192.168.8.120',
   },
   watchOptions: {
-    ignored: [".git", ".github", "node_modules", "images", "text_src"],
+    ignored: [".git", ".github", "node_modules", "images"],
   },
 });
