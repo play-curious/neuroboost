@@ -62,6 +62,7 @@ export function installGameDatas(rootConfig: entity.EntityConfig) {
 
 // prettier-ignore
 const statesName = [
+  "characters",
   "D1_level1",
   "D1_level2",
   "D2_level1"
