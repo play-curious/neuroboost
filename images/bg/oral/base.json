@@ -19,7 +19,7 @@
             "model": "lights",
             "x": 960,
             "y": 872,
-            "alpha": 0.1
+            "alpha": 0.2
         }
     ],
     "default": "sprites"
