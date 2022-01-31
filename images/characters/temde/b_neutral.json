@@ -1,0 +1,20 @@
+{"frames": {
+
+"b_neutral.png":
+{
+	"frame": {"x":1,"y":1,"w":500,"h":1071},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":706,"y":4,"w":500,"h":1071},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "b_neutral.png",
+	"format": "RGBA8888",
+	"size": {"w":502,"h":1073},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:aec659481ef73bb0bb082006d9f38f21:e102a49cf92c38fd178c95287a84c0d9:2dd92f9ac989b8a12159b47a35d8a175$"
+}
+}
