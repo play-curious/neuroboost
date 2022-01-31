@@ -1,43 +1,81 @@
 {
-    "angry": [
-        {
-            "model": "static_angry",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "concerned": [
-        {
-            "model": "static_concerned",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "neutral": [
-        {
-            "model": "static_neutral",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "smiling": [
-        {
-            "model": "static_smiling",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "thinking": [
-        {
-            "model": "static_thinking",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "default": "smiling"
+  "concerned": [
+    {
+      "model": "b_concerned",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_armsCoHa",
+      "x": 977.5,
+      "y": 743.0
+    },
+    {
+      "model": "bp_eyesCoHa",
+      "x": 955.5,
+      "y": 364.0
+    },
+    {
+      "model": "bp_brainCoHaTh",
+      "x": 960.5,
+      "y": 242.0
+    }
+  ],
+  "angry": [
+    {
+      "model": "b_angry",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_armsAn",
+      "x": 966.5,
+      "y": 471.0
+    },
+    {
+      "model": "bp_eyesAn",
+      "x": 948.0,
+      "y": 362.0
+    },
+    {
+      "model": "bp_brainAn",
+      "x": 1024.5,
+      "y": 446.5
+    }
+  ],
+  "thinking": [
+    {
+      "model": "b_thinking",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_brainCoHaTh",
+      "x": 960.5,
+      "y": 242.0
+    }
+  ],
+  "happy": [
+    {
+      "model": "b_happy",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_armsCoHa",
+      "x": 977.5,
+      "y": 743.0
+    },
+    {
+      "model": "bp_eyesCoHa",
+      "x": 955.5,
+      "y": 364.0
+    },
+    {
+      "model": "bp_brainCoHaTh",
+      "x": 960.5,
+      "y": 242.0
+    }
+  ],
+  "default": "concerned"
 }

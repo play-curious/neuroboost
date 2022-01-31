@@ -1,0 +1,20 @@
+{"frames": {
+
+"armsTh0000.png":
+{
+	"frame": {"x":1,"y":1,"w":284,"h":335},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":284,"h":335},
+	"sourceSize": {"w":284,"h":335}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bp_armsTh.png",
+	"format": "RGBA8888",
+	"size": {"w":286,"h":337},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:959da53e70c65eca973f7ec473620f9a:a3c5a2d4d645440f2aae4236eb8eb2d5:06e1445f5b25994f30f5325e2386a27a$"
+}
+}

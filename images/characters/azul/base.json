@@ -1,43 +1,96 @@
 {
-    "cheerful": [
-        {
-            "model": "static_cheerful",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "happy": [
-        {
-            "model": "static_happy",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "neutral": [
-        {
-            "model": "static_neutral",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "proud": [
-        {
-            "model": "static_proud",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "sad": [
-        {
-            "model": "static_sad",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "default": "happy"
+  "happy": [
+    {
+      "model": "b_happy",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_pantsChHaPrSa",
+      "x": 987.0,
+      "y": 693.0
+    },
+    {
+      "model": "bp_hairChHaPrSa",
+      "x": 969.0,
+      "y": 210.0
+    },
+    {
+      "model": "bp_sleevesChHa",
+      "x": 971.5,
+      "y": 311.5
+    }
+  ],
+  "proud": [
+    {
+      "model": "b_proud",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_sleevesPr",
+      "x": 1009.5,
+      "y": 302.5
+    },
+    {
+      "model": "bp_pantsChHaPrSa",
+      "x": 987.0,
+      "y": 693.0
+    },
+    {
+      "model": "bp_hairChHaPrSa",
+      "x": 969.0,
+      "y": 210.0
+    }
+  ],
+  "sad": [
+    {
+      "model": "b_sad",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_pantsChHaPrSa",
+      "x": 987.0,
+      "y": 693.0
+    },
+    {
+      "model": "bp_sleevesSa",
+      "x": 976.5,
+      "y": 321.0
+    },
+    {
+      "model": "bp_hairChHaPrSa",
+      "x": 969.0,
+      "y": 210.0
+    }
+  ],
+  "cheerful": [
+    {
+      "model": "b_cheerful",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_pantsChHaPrSa",
+      "x": 987.0,
+      "y": 693.0
+    },
+    {
+      "model": "bp_hairChHaPrSa",
+      "x": 969.0,
+      "y": 210.0
+    },
+    {
+      "model": "bp_armsCh",
+      "x": 971.5,
+      "y": 319.5
+    },
+    {
+      "model": "bp_sleevesChHa",
+      "x": 971.5,
+      "y": 311.5
+    }
+  ],
+  "default": "happy"
 }
