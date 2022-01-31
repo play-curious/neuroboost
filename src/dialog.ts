@@ -142,8 +142,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _handleDialog() {
     const text = (this.runner.currentResult as yarnBound.TextResult).text;
+    const name = (this.runner.currentResult as yarnBound.TextResult).markup[0]?.properties.name;
     this.graphics.showDialog(
       text,
+      name,
       this.variableStorage.get("name"),
       this._autoshowOn,
       () => {

@@ -199,6 +199,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public showDialog(
     text: string,
     name: string,
+    playerName: string,
     autoShow: boolean,
     onBoxClick: () => unknown
   ) {
@@ -209,13 +210,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     )(this._variableStorageData);
 
     let speaker: string, mood: string, dialog: string;
-    if (dialogRegexp.test(interpolatedText)) {
-      let match = dialogRegexp.exec(interpolatedText);
-      console.log(match);
-      speaker = match[1].trim();
-      mood = match[3]?.trim();
-      dialog = match[4].trim();
-    }
+    if(name)
+      [speaker, mood] = name.split("_");
+    console.log(speaker, mood, dialog);
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
@@ -224,7 +221,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._dialogSpeaker.visible = true;
       this._nodeDisplay.addChild(
         this.makeText(
-          speaker.toLowerCase() === "you" ? name : speaker,
+          speaker.toLowerCase() === "you" ? playerName : speaker,
           {
             fontFamily: "Jura",
             fill: "white",
@@ -445,7 +442,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     nodeOptions: string[],
     onBoxClick: (choiceId: number) => unknown
   ) {
-    debugger;
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();
