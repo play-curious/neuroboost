@@ -15,7 +15,7 @@ const templateSettings = {
   interpolate: /{\s*\$(.+?)\s*}/g,
 };
 
-const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
+const dialogRegexp = /^([a-zA-Z]+)(_([a-zA-Z]+))?:(.+)/;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
   private _fade: PIXI.Graphics;
@@ -193,10 +193,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     let speaker: string, mood: string, dialog: string;
     if (dialogRegexp.test(interpolatedText)) {
       let match = dialogRegexp.exec(interpolatedText);
-
+      console.log(match);
       speaker = match[1].trim();
-      mood = match[2]?.trim();
-      dialog = match[3].trim();
+      mood = match[3]?.trim();
+      dialog = match[4].trim();
     }
 
     this._nodeDisplay = new PIXI.Container();
