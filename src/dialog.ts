@@ -141,9 +141,16 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _handleDialog() {
+    const textResult = this.runner.currentResult as yarnBound.TextResult;
     const text = (this.runner.currentResult as yarnBound.TextResult).text;
+    let speaker = '';
+    if(textResult.markup?.length > 0 && textResult.markup[0].name === 'character'){
+      speaker = textResult.markup[0].properties["name"];
+    }
+
     this.graphics.showDialog(
       text,
+      speaker,
       this.variableStorage.get("name"),
       this._autoshowOn,
       () => {

@@ -198,6 +198,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
   public showDialog(
     text: string,
+    speaker: string,
     name: string,
     autoShow: boolean,
     onBoxClick: () => unknown
@@ -207,14 +208,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       text,
       templateSettings
     )(this._variableStorageData);
-
-    let speaker: string, mood: string, dialog: string;
-    if (dialogRegexp.test(interpolatedText)) {
-      let match = dialogRegexp.exec(interpolatedText);
-
-      speaker = match[1].trim();
-      mood = match[2]?.trim();
-      dialog = match[3].trim();
+    
+    let mood = '';
+    if(speaker.toLowerCase() !== 'you' && speaker.split("_").length > 1){
+      [speaker, mood] = speaker.split("_");
     }
 
     this._nodeDisplay = new PIXI.Container();
@@ -239,7 +236,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           }
         )
       );
-
+      
       const speakerLC = speaker.toLowerCase();
       if (
         (autoShow && speakerLC !== "you") ||
@@ -279,7 +276,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._nodeDisplay.addChild(dialogBox);
 
       const defilementDurationPerLetter = 25;
-      const baseText = (dialog || interpolatedText).trim();
+      const baseText = (text || interpolatedText).trim();
 
       const writer = this.makeFxLoop(
         `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
@@ -633,7 +630,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public addCharacter(character?: string, mood?: string): void {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
-
+    debugger;
     // Register last character & mood
     const characterChanged = character !== this._lastCharacter;
     this._lastCharacter = character;
