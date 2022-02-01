@@ -1,0 +1,383 @@
+{"frames": {
+
+"planets00000.png":
+{
+	"frame": {"x":1259,"y":1457,"w":461,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":153,"y":0,"w":461,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00001.png":
+{
+	"frame": {"x":1259,"y":1457,"w":461,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":153,"y":0,"w":461,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00002.png":
+{
+	"frame": {"x":1596,"y":729,"w":460,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":154,"y":0,"w":460,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00003.png":
+{
+	"frame": {"x":1596,"y":729,"w":460,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":154,"y":0,"w":460,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00004.png":
+{
+	"frame": {"x":1965,"y":1,"w":460,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":154,"y":0,"w":460,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00005.png":
+{
+	"frame": {"x":1965,"y":1,"w":460,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":154,"y":0,"w":460,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00006.png":
+{
+	"frame": {"x":2058,"y":729,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00007.png":
+{
+	"frame": {"x":2058,"y":729,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00008.png":
+{
+	"frame": {"x":2427,"y":1,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00009.png":
+{
+	"frame": {"x":2427,"y":1,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00010.png":
+{
+	"frame": {"x":1722,"y":1457,"w":460,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":154,"y":0,"w":460,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00011.png":
+{
+	"frame": {"x":1722,"y":1457,"w":460,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":154,"y":0,"w":460,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00012.png":
+{
+	"frame": {"x":2184,"y":1457,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00013.png":
+{
+	"frame": {"x":2184,"y":1457,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00014.png":
+{
+	"frame": {"x":2519,"y":729,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00015.png":
+{
+	"frame": {"x":2519,"y":729,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00016.png":
+{
+	"frame": {"x":2888,"y":1,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00017.png":
+{
+	"frame": {"x":2888,"y":1,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00018.png":
+{
+	"frame": {"x":486,"y":1,"w":545,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":154,"y":0,"w":545,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00019.png":
+{
+	"frame": {"x":486,"y":1,"w":545,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":154,"y":0,"w":545,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00020.png":
+{
+	"frame": {"x":1131,"y":729,"w":463,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":151,"y":0,"w":463,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00021.png":
+{
+	"frame": {"x":1131,"y":729,"w":463,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":151,"y":0,"w":463,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00022.png":
+{
+	"frame": {"x":1033,"y":1,"w":465,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":149,"y":0,"w":465,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00023.png":
+{
+	"frame": {"x":1033,"y":1,"w":465,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":149,"y":0,"w":465,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00024.png":
+{
+	"frame": {"x":792,"y":1457,"w":465,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":149,"y":0,"w":465,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00025.png":
+{
+	"frame": {"x":792,"y":1457,"w":465,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":149,"y":0,"w":465,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00026.png":
+{
+	"frame": {"x":1500,"y":1,"w":463,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":151,"y":0,"w":463,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00027.png":
+{
+	"frame": {"x":1500,"y":1,"w":463,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":151,"y":0,"w":463,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00028.png":
+{
+	"frame": {"x":1,"y":1714,"w":461,"h":789},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":153,"y":0,"w":461,"h":789},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00029.png":
+{
+	"frame": {"x":1,"y":1714,"w":461,"h":789},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":153,"y":0,"w":461,"h":789},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00030.png":
+{
+	"frame": {"x":2645,"y":1457,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00031.png":
+{
+	"frame": {"x":2645,"y":1457,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00032.png":
+{
+	"frame": {"x":2980,"y":729,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00033.png":
+{
+	"frame": {"x":2980,"y":729,"w":459,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":459,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00034.png":
+{
+	"frame": {"x":3349,"y":1,"w":457,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":157,"y":0,"w":457,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00035.png":
+{
+	"frame": {"x":3349,"y":1,"w":457,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":157,"y":0,"w":457,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00036.png":
+{
+	"frame": {"x":3106,"y":1457,"w":453,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":161,"y":0,"w":453,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00037.png":
+{
+	"frame": {"x":3106,"y":1457,"w":453,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":161,"y":0,"w":453,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00038.png":
+{
+	"frame": {"x":3441,"y":729,"w":451,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":163,"y":0,"w":451,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00039.png":
+{
+	"frame": {"x":3441,"y":729,"w":451,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":163,"y":0,"w":451,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00040.png":
+{
+	"frame": {"x":1,"y":1,"w":483,"h":983},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":158,"y":0,"w":483,"h":983},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00041.png":
+{
+	"frame": {"x":1,"y":1,"w":483,"h":983},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":158,"y":0,"w":483,"h":983},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00042.png":
+{
+	"frame": {"x":1,"y":986,"w":614,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":614,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00043.png":
+{
+	"frame": {"x":1,"y":986,"w":614,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":614,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00044.png":
+{
+	"frame": {"x":617,"y":729,"w":512,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":512,"h":726},
+	"sourceSize": {"w":699,"h":983}
+},
+"planets00045.png":
+{
+	"frame": {"x":617,"y":729,"w":512,"h":726},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":155,"y":0,"w":512,"h":726},
+	"sourceSize": {"w":699,"h":983}
+}},
+"animations": {
+	"planets": ["planets00000.png","planets00001.png","planets00002.png","planets00003.png","planets00004.png","planets00005.png","planets00006.png","planets00007.png","planets00008.png","planets00009.png","planets00010.png","planets00011.png","planets00012.png","planets00013.png","planets00014.png","planets00015.png","planets00016.png","planets00017.png","planets00018.png","planets00019.png","planets00020.png","planets00021.png","planets00022.png","planets00023.png","planets00024.png","planets00025.png","planets00026.png","planets00027.png","planets00028.png","planets00029.png","planets00030.png","planets00031.png","planets00032.png","planets00033.png","planets00034.png","planets00035.png","planets00036.png","planets00037.png","planets00038.png","planets00039.png","planets00040.png","planets00041.png","planets00042.png","planets00043.png","planets00044.png","planets00045.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "planets.png",
+	"format": "RGBA8888",
+	"size": {"w":3893,"h":2184},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8d168dd86d3ff17a59c7c50fbe1f7bea:1dc8992aef360c2603b40e81a9349742:b39012af8c10e6f2542ba48f4ca1957d$"
+}
+}

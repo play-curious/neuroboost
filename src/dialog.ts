@@ -144,7 +144,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     const textResult = this.runner.currentResult as yarnBound.TextResult;
     const text = (this.runner.currentResult as yarnBound.TextResult).text;
     let speaker = '';
-    if(textResult.markup?.length > 0 && textResult.markup[0].name === 'character'){
+    if(textResult.markup[0]?.name === 'character'){
       speaker = textResult.markup[0].properties["name"];
     }
 

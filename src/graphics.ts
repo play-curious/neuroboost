@@ -15,7 +15,7 @@ const templateSettings = {
   interpolate: /{\s*\$(.+?)\s*}/g,
 };
 
-const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
+const dialogRegexp = /^([a-zA-Z]+)(_([a-zA-Z]+))?:(.+)/;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
   private _fade: PIXI.Graphics;
@@ -198,8 +198,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
   public showDialog(
     text: string,
-    speaker: string,
     name: string,
+    playerName: string,
     autoShow: boolean,
     onBoxClick: () => unknown
   ) {
@@ -208,11 +208,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       text,
       templateSettings
     )(this._variableStorageData);
-    
-    let mood = '';
-    if(speaker.toLowerCase() !== 'you' && speaker.split("_").length > 1){
-      [speaker, mood] = speaker.split("_");
-    }
+
+    let speaker: string, mood: string, dialog: string;
+    if(name)
+      [speaker, mood] = name.split("_");
+    console.log(speaker, mood, dialog);
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
@@ -221,7 +221,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._dialogSpeaker.visible = true;
       this._nodeDisplay.addChild(
         this.makeText(
-          speaker.toLowerCase() === "you" ? name : speaker,
+          speaker.toLowerCase() === "you" ? playerName : speaker,
           {
             fontFamily: "Jura",
             fill: "white",
@@ -442,7 +442,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     nodeOptions: string[],
     onBoxClick: (choiceId: number) => unknown
   ) {
-    debugger;
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();
@@ -587,6 +586,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           it.anchor.set(0.5);
           it.position.copyFrom(bgPart);
           it.animationSpeed = 0.33;
+
+          if(_.has(bgPart, "alpha"))
+            it.alpha = bgPart.alpha;
         }
       );
 

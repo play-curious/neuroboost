@@ -1,43 +1,128 @@
 {
-    "cheerful": [
-        {
-            "model": "static_cheerful",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "neutral": [
-        {
-            "model": "static_neutral",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "sad": [
-        {
-            "model": "static_sad",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "smiling": [
-        {
-            "model": "static_smiling",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "thinking": [
-        {
-            "model": "static_thinking",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "default": "smiling"
+  "neutral": [
+    {
+      "model": "b_neutral",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_dressChNeTh",
+      "x": 970.5,
+      "y": 938.0
+    },
+    {
+      "model": "bp_haireyesChNeSaSm",
+      "x": 956.0,
+      "y": 152.5
+    },
+    {
+      "model": "bp_foulardChNeSaSmTh",
+      "x": 865.0,
+      "y": 414.5
+    }
+  ],
+  "thinking": [
+    {
+      "model": "b_thinking",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_dressChNeTh",
+      "x": 970.5,
+      "y": 938.0
+    },
+    {
+      "model": "bp_armsTh",
+      "x": 961.0,
+      "y": 330.5
+    },
+    {
+      "model": "bp_foulardChNeSaSmTh",
+      "x": 865.0,
+      "y": 414.5
+    },
+    {
+      "model": "bp_haireyesTh",
+      "x": 955.0,
+      "y": 153.5
+    }
+  ],
+  "sad": [
+    {
+      "model": "b_sad",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_armsSaSm",
+      "x": 945.5,
+      "y": 384.0
+    },
+    {
+      "model": "bp_haireyesChNeSaSm",
+      "x": 956.0,
+      "y": 152.5
+    },
+    {
+      "model": "bp_dressSaSm",
+      "x": 970.5,
+      "y": 938.0
+    },
+    {
+      "model": "bp_foulardChNeSaSmTh",
+      "x": 865.0,
+      "y": 414.5
+    }
+  ],
+  "smiling": [
+    {
+      "model": "b_smiling",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_armsSaSm",
+      "x": 945.5,
+      "y": 384.0
+    },
+    {
+      "model": "bp_haireyesChNeSaSm",
+      "x": 956.0,
+      "y": 152.5
+    },
+    {
+      "model": "bp_dressSaSm",
+      "x": 970.5,
+      "y": 938.0
+    },
+    {
+      "model": "bp_foulardChNeSaSmTh",
+      "x": 865.0,
+      "y": 414.5
+    }
+  ],
+  "cheerful": [
+    {
+      "model": "b_cheerful",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_dressChNeTh",
+      "x": 970.5,
+      "y": 938.0
+    },
+    {
+      "model": "bp_haireyesChNeSaSm",
+      "x": 956.0,
+      "y": 152.5
+    },
+    {
+      "model": "bp_foulardChNeSaSmTh",
+      "x": 865.0,
+      "y": 414.5
+    }
+  ],
+  "default": "neutral"
 }

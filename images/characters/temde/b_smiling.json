@@ -1,0 +1,20 @@
+{"frames": {
+
+"b_smiling.png":
+{
+	"frame": {"x":1,"y":1,"w":404,"h":1070},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":771,"y":4,"w":404,"h":1070},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "b_smiling.png",
+	"format": "RGBA8888",
+	"size": {"w":406,"h":1072},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6afc223bc505748c519c7f5f76fb4fd0:7f7b375c313d84f4990569a98215e6ba:04cbc7edfbed2cd63a0eccebc3f6bdf6$"
+}
+}
