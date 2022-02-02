@@ -125,8 +125,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public setGauge(name: string, value: number) {
-    if (this._gauges.hasOwnProperty(name))
-      this._gauges[name].resetValue(value);
+    if (this._gauges.hasOwnProperty(name)) this._gauges[name].resetValue(value);
   }
 
   public getUi(): PIXI.Container {
@@ -210,8 +209,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     )(this._variableStorageData);
 
     let speaker: string, mood: string, dialog: string;
-    if(name)
-      [speaker, mood] = name.split("_");
+    if (name) [speaker, mood] = name.split("_");
     console.log(speaker, mood, dialog);
 
     this._nodeDisplay = new PIXI.Container();
@@ -236,7 +234,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           }
         )
       );
-      
+
       const speakerLC = speaker.toLowerCase();
       if (
         (autoShow && speakerLC !== "you") ||
@@ -326,7 +324,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
-      if(subchoice === nodeOptions.length - (i+1)) continue;
+      if (subchoice === nodeOptions.length - (i + 1)) continue;
 
       const choicebox = new PIXI.Container();
       choicebox.addChild(
@@ -587,8 +585,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           it.position.copyFrom(bgPart);
           it.animationSpeed = 0.33;
 
-          if(_.has(bgPart, "alpha"))
-            it.alpha = bgPart.alpha;
+          if (_.has(bgPart, "alpha")) it.alpha = bgPart.alpha;
         }
       );
 
@@ -632,7 +629,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public addCharacter(character?: string, mood?: string): void {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
-    debugger;
     // Register last character & mood
     const characterChanged = character !== this._lastCharacter;
     this._lastCharacter = character;
