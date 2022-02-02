@@ -15,7 +15,7 @@ import * as yarnBound from "yarn-bound";
 
 declare module "yarn-bound" {
   interface Metadata {
-    tags?: string
+    tags?: string;
     bg?: string;
     show?: string;
   }
@@ -64,10 +64,13 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this._advance(-1);
   }
 
-  public loadRunner(runner: yarnBound.YarnBound<variable.VariableStorage>){
+  public loadRunner(runner: yarnBound.YarnBound<variable.VariableStorage>) {
     this.runner = runner;
-    for(const funcName in command.functions){
-      this.runner.registerFunction(funcName, command.functions[funcName].bind(this));
+    for (const funcName in command.functions) {
+      this.runner.registerFunction(
+        funcName,
+        command.functions[funcName].bind(this)
+      );
     }
   }
 
@@ -82,27 +85,32 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(selectId?: number): void {
-    // If result is undefined, stop here
+    // If requesting dialog end, stop here
     if (this.metadata.hasOwnProperty("isDialogueEnd")) {
       this._transition = entity.makeTransition();
       return;
     }
-    
-    if(selectId !== -1)
-      this.runner.advance(selectId);
+
+    if (selectId !== -1) this.runner.advance(selectId);
+
+    // If result is undefined, stop here
+    if (this.runner.currentResult === undefined) {
+      this._transition = entity.makeTransition();
+      return;
+    }
 
     this._activateChildEntity(
       new entity.EntitySequence([
         () =>
           (() => {
             const { lastBg, lastMood } = this.graphics.last;
-            const [bg, mood] = this.metadata.tags.split(/\s+/)
+            const [bg, mood] = this.metadata.tags
+              .split(/\s+/)
               .find((tag) => tag.startsWith("bg|"))
               ?.replace("bg|", "")
               .split("_") || ["GNEUH"];
             return (bg !== "GNEUH" && bg !== lastBg) || mood !== lastMood;
-          })() &&
-          this.metadata.title !== this._lastNodeData?.title
+          })() && this.metadata.title !== this._lastNodeData?.title
             ? this.graphics.fadeIn(200)
             : new entity.FunctionCallEntity(() => null),
         new entity.FunctionCallEntity(() => {
@@ -119,17 +127,23 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
           if (this.runner.currentResult instanceof yarnBound.TextResult) {
             this.activate(this.graphics.fadeOut(200));
             this._handleDialog();
-          } else if (this.runner.currentResult instanceof yarnBound.OptionsResult) {
+          } else if (
+            this.runner.currentResult instanceof yarnBound.OptionsResult
+          ) {
             this.activate(this.graphics.fadeOut(200));
             if (this._hasTag(this.metadata, "freechoice")) {
               this._handleFreechoice();
             } else {
               this._handleChoice();
             }
-          } else if (this.runner.currentResult instanceof yarnBound.CommandResult) {
+          } else if (
+            this.runner.currentResult instanceof yarnBound.CommandResult
+          ) {
             this._handleCommand();
           } else {
-            throw new Error(`Unknown bondage result ${this.runner.currentResult}`);
+            throw new Error(
+              `Unknown bondage result ${this.runner.currentResult}`
+            );
           }
         }),
         this.graphics.fadeOut(200),
@@ -143,8 +157,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   private _handleDialog() {
     const textResult = this.runner.currentResult as yarnBound.TextResult;
     const text = (this.runner.currentResult as yarnBound.TextResult).text;
-    let speaker = '';
-    if(textResult.markup[0]?.name === 'character'){
+    let speaker = "";
+    if (textResult.markup[0]?.name === "character") {
       speaker = textResult.markup[0].properties["name"];
     }
 
@@ -154,7 +168,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this.variableStorage.get("name"),
       this._autoshowOn,
       () => {
-        if(this.disabledClick) return;
+        if (this.disabledClick) return;
         this._advance.bind(this)();
       }
     );
@@ -162,19 +176,20 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _handleChoice() {
     const options: string[] = [];
-    for(const option of (this.runner.currentResult as yarnBound.OptionsResult).options){
-      if(option.isAvailable)
-        options.push(option.text);
+    for (const option of (this.runner.currentResult as yarnBound.OptionsResult)
+      .options) {
+      if (option.isAvailable) options.push(option.text);
     }
     this.graphics.setChoice(
       options,
       (id) => {
-        if(this.disabledClick) return;
+        if (this.disabledClick) return;
         this.config.fxMachine.play("Click");
         this._advance.bind(this)(id);
       },
-      this._hasTag(this.metadata, "subchoice") ?
-      options.indexOf("back") : undefined
+      this._hasTag(this.metadata, "subchoice")
+        ? options.indexOf("back")
+        : undefined
     );
   }
 
@@ -199,21 +214,22 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _handleFreechoice() {
     const options: string[] = [];
-    for(const option of (this.runner.currentResult as yarnBound.OptionsResult).options){
-      if(option.isAvailable)
-        options.push(option.text);
+    for (const option of (this.runner.currentResult as yarnBound.OptionsResult)
+      .options) {
+      if (option.isAvailable) options.push(option.text);
     }
 
-    this.graphics.setFreechoice(
-      options, (id) => {
-        if(this.disabledClick) return;
-        this.config.fxMachine.play("Click");
-        this._advance.bind(this)(id);
-      }
-    );
+    this.graphics.setFreechoice(options, (id) => {
+      if (this.disabledClick) return;
+      this.config.fxMachine.play("Click");
+      this._advance.bind(this)(id);
+    });
   }
 
-  private _onChangeNodeData(oldNodeData: yarnBound.Metadata, newNodeData: yarnBound.Metadata) {
+  private _onChangeNodeData(
+    oldNodeData: yarnBound.Metadata,
+    newNodeData: yarnBound.Metadata
+  ) {
     //console.log("changing node data", oldNodeData, " --> ", newNodeData);
     // Parse tags
 
