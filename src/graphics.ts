@@ -15,10 +15,9 @@ const templateSettings = {
   interpolate: /{\s*\$(.+?)\s*}/g,
 };
 
-const dialogRegexp = /^(\w+)(\s\w+)?:(.+)/;
+const dialogRegexp = /^([a-zA-Z]+)(_([a-zA-Z]+))?:(.+)/;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
-  private _fade: PIXI.Graphics;
   private _lastBg: string;
   private _lastBgMood: string;
   private _lastCharacter: string;
@@ -31,6 +30,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   >;
 
+  private _fade: PIXI.Graphics;
   private _container: PIXI.Container;
   private _backgroundLayer: PIXI.Container;
   private _backgroundEntity: entity.ParallelEntity;
@@ -73,9 +73,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._closeupLayer = new PIXI.Container();
     this._container.addChild(this._closeupLayer);
 
-    this._fxLayer = new PIXI.Container();
-    this._container.addChild(this._fxLayer);
-
     this._uiLayer = new PIXI.Container();
     this._container.addChild(this._uiLayer);
 
@@ -89,6 +86,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     );
     this._dialogSpeaker.position.set(202, 601);
     this._dialogLayer.addChild(this._dialogSpeaker);
+
+    this._fxLayer = new PIXI.Container();
+    this._container.addChild(this._fxLayer);
 
     this._gauges = {};
     const gaugesList: (keyof variable.Gauges)[] = ["sleep", "food"];
@@ -105,9 +105,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       );
       this._activateChildEntity(
         this._gauges[_gauge],
-        entity.extendConfig({ container: this._container })
+        entity.extendConfig({ container: this._uiLayer })
       );
-      this._gauges[_gauge].getGauge().visible = false;
+      this._gauges[_gauge].getGauge().visible = true;
     }
 
     this._fade = new PIXI.Graphics()
@@ -116,12 +116,16 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       .endFill();
     this._fade.alpha = 0;
     this._fade.visible = false;
-    this._fxLayer.addChild(this._fade);
+    this._container.addChild(this._fade);
   }
 
   public getGaugeValue(name: string): number {
     if (this._gauges.hasOwnProperty(name)) return this._gauges[name].getValue();
     return undefined;
+  }
+
+  public setGauge(name: string, value: number) {
+    if (this._gauges.hasOwnProperty(name)) this._gauges[name].resetValue(value);
   }
 
   public getUi(): PIXI.Container {
@@ -194,6 +198,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public showDialog(
     text: string,
     name: string,
+    playerName: string,
     autoShow: boolean,
     onBoxClick: () => unknown
   ) {
@@ -204,13 +209,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     )(this._variableStorageData);
 
     let speaker: string, mood: string, dialog: string;
-    if (dialogRegexp.test(interpolatedText)) {
-      let match = dialogRegexp.exec(interpolatedText);
-
-      speaker = match[1].trim();
-      mood = match[2]?.trim();
-      dialog = match[3].trim();
-    }
+    if (name) [speaker, mood] = name.split("_");
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
@@ -219,7 +218,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._dialogSpeaker.visible = true;
       this._nodeDisplay.addChild(
         this.makeText(
-          speaker.toLowerCase() === "you" ? name : speaker,
+          speaker.toLowerCase() === "you" ? playerName : speaker,
           {
             fontFamily: "Jura",
             fill: "white",
@@ -274,7 +273,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._nodeDisplay.addChild(dialogBox);
 
       const defilementDurationPerLetter = 25;
-      const baseText = (dialog || interpolatedText).trim();
+      const baseText = (text || interpolatedText).trim();
 
       const writer = this.makeFxLoop(
         `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
@@ -310,20 +309,21 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public setChoice(
-    nodeOptions: string[],
+    nodeOptions: Record<string, string>[],
     onBoxClick: (choiceId: number) => unknown,
-    subchoice?: () => unknown
+    subchoice?: number
   ) {
     // This works for both links between nodes and shortcut options
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
-
     const animationShifting = 120;
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
+      if(subchoice === Number(nodeOptions[i].id)) continue;
+
       const choicebox = new PIXI.Container();
       choicebox.addChild(
         this.makeSprite(
@@ -360,7 +360,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               choicebox.buttonMode = true;
 
               this._on(choicebox, "pointerup", () => {
-                onBoxClick(nodeOptions.length - (1 + i));
+                onBoxClick(Number(nodeOptions[i].id));
               });
 
               this._on(choicebox, "mouseover", () => {
@@ -396,7 +396,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       choicebox.addChild(
         this.makeText(
-          nodeOptions[nodeOptions.length - (1 + i)],
+          nodeOptions[i].text,
           {
             fill: "#fdf4d3",
             fontFamily: "Ubuntu",
@@ -418,7 +418,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._activateChildEntity(new entity.ParallelEntity(box_tweens));
 
-    if (subchoice !== undefined) {
+    if (subchoice) {
       const arrow_back = new PIXI.Container();
       arrow_back.addChild(this.makeSprite("images/ui/arrow_return.png"));
       arrow_back.scale.set(0.65);
@@ -427,7 +427,33 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       arrow_back.interactive = true;
       arrow_back.buttonMode = true;
       this._on(arrow_back, "pointerup", () => {
-        subchoice();
+        onBoxClick(subchoice);
+      });
+      this._on(arrow_back, "mouseover", () => {
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 200,
+            easing: easing.easeOutBack,
+            from: 0.65,
+            to: 0.66,
+            onUpdate: (value) => {
+              arrow_back.scale.set(value);
+            },
+          })
+        );
+      });
+      this._on(arrow_back, "mouseout", () => {
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 200,
+            easing: easing.easeOutBack,
+            from: 0.66,
+            to: 0.65,
+            onUpdate: (value) => {
+              arrow_back.scale.set(value);
+            },
+          })
+        );
       });
 
       this._nodeDisplay.addChild(arrow_back);
@@ -438,6 +464,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     nodeOptions: string[],
     onBoxClick: (choiceId: number) => unknown
   ) {
+    
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();
@@ -517,16 +544,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         ])
       );
 
-      this._nodeDisplay.addChild(highlight);
+      //this._nodeDisplay.addChild(highlight);
     }
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
       this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
-    } else if (freechoicesFound === 0) {
-      for (let i = 0; i < nodeOptions.length; i++) {
-        nodeOptions[i] = nodeOptions[i].split("@")[0];
-      }
-      this.setChoice(nodeOptions, onBoxClick);
     } else {
       throw new Error("Missing freechoice(s) in freechoice.json");
     }
@@ -566,12 +588,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const baseDir = `images/bg/${bg}`;
     const baseJson = require(`../${baseDir}/base.json`);
 
-    console.log("mood before", mood);
-
     // If mood is incorrect, get default one
     if (!_.has(baseJson, mood)) mood = baseJson["default"];
-
-    console.log("mood after", mood);
 
     // For each part
     for (const bgPart of baseJson[mood]) {
@@ -582,6 +600,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           it.anchor.set(0.5);
           it.position.copyFrom(bgPart);
           it.animationSpeed = 0.33;
+
+          if (_.has(bgPart, "alpha")) it.alpha = bgPart.alpha;
         }
       );
 
@@ -625,7 +645,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public addCharacter(character?: string, mood?: string): void {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
-
+    
     // Register last character & mood
     const characterChanged = character !== this._lastCharacter;
     this._lastCharacter = character;

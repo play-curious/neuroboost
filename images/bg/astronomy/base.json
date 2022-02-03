@@ -1,0 +1,15 @@
+{
+    "sprites": [
+        {
+            "model": "background",
+            "x": 960,
+            "y": 540
+        },
+        {
+            "model": "planets",
+            "x": 929.5,
+	        "y": 491.5
+        }
+    ],
+    "default": "sprites"
+}

@@ -64,12 +64,6 @@ module.exports = {
         // Copy CSS
         { from: "*.css" },
 
-        // Copy non-module JS library
-        {
-          from: require.resolve("bondage/dist/bondage.min.js"),
-          to: "deps",
-        },
-
         // Copy game assets
         {
           from: "images",
@@ -83,14 +77,14 @@ module.exports = {
           from: "audio",
           to: "audio",
         },
+        {
+          from: "levels",
+          to: "levels",
+        },
         // {
         //   from: "video",
         //   to: "video",
         // },
-        {
-          from: "text",
-          to: "text",
-        },
       ],
     }),
     // //opimize all image file

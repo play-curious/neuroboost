@@ -1,35 +1,94 @@
 {
-    "doubtful": [
-        {
-            "model": "static_doubtful",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "explaining": [
-        {
-            "model": "static_explaining",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "happy": [
-        {
-            "model": "static_happy",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "neutral": [
-        {
-            "model": "static_neutral",
-            "x": 960,
-            "y": 540,
-            "scale": 0.6
-        }
-    ],
-    "default": "happy"
+  "doubtful": [
+    {
+      "model": "b_doubtful",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_collarDoHa",
+      "x": 953.5,
+      "y": 189.0
+    },
+    {
+      "model": "bp_eyesDo",
+      "x": 916.5,
+      "y": 79.0
+    },
+    {
+      "model": "bp_armsDo",
+      "x": 1119.0,
+      "y": 615.0
+    },
+    {
+      "model": "bp_sleevesDo",
+      "x": 1124.5,
+      "y": 448.0
+    },
+    {
+      "model": "bp_dressDoHa",
+      "x": 963.0,
+      "y": 817.5
+    }
+  ],
+  "happy": [
+    {
+      "model": "b_happy",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_collarDoHa",
+      "x": 953.5,
+      "y": 189.0
+    },
+    {
+      "model": "bp_handsHa",
+      "x": 945.5,
+      "y": 448.0
+    },
+    {
+      "model": "bp_dressDoHa",
+      "x": 963.0,
+      "y": 817.5
+    },
+    {
+      "model": "bp_eyesHa",
+      "x": 933.5,
+      "y": 76.0
+    },
+    {
+      "model": "bp_sleevesHa",
+      "x": 956.0,
+      "y": 449.5
+    }
+  ],
+  "explaining": [
+    {
+      "model": "b_explaining",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "bp_sleevesEx",
+      "x": 956.0,
+      "y": 449.5
+    },
+    {
+      "model": "bp_dressEx",
+      "x": 963.0,
+      "y": 817.0
+    },
+    {
+      "model": "bp_collarEx",
+      "x": 953.5,
+      "y": 189.5
+    },
+    {
+      "model": "bp_armsEx",
+      "x": 946.0,
+      "y": 465.5
+    }
+  ],
+  "default": "doubtful"
 }
