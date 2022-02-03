@@ -283,4 +283,24 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   deactivate(e: entity.EntityBase) {
     this._deactivateChildEntity(e);
   }
+
+  save() {
+    const save: Save = {
+
+    }
+
+    localStorage.setItem("save", JSON.stringify(save))
+  }
+
+  loadSave(): Save {
+    return JSON.parse(localStorage.getItem("save"))
+  }
+
+  hasSave() {
+    return !!localStorage.getItem("save")
+  }
+}
+
+interface Save {
+
 }
