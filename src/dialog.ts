@@ -222,7 +222,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         .options[i];
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
       if (
-        // TODO: fix bug in YarnBound fork
         option.hashtags.includes("once") &&
         this._selectedOptions.includes(selectedOptionId)
       )

@@ -8955,6 +8955,6 @@ yargs@^7.1.0:
 
 "yarn-bound@github:play-curious/yarn-bound":
   version "0.2.17"
-  resolved "https://codeload.github.com/play-curious/yarn-bound/tar.gz/42e3390b534c2074c007da3799c24b0abc7c691d"
+  resolved "https://codeload.github.com/play-curious/yarn-bound/tar.gz/5bfadf15bc0c8f18ddf847c812ee7ca2c3bf9c19"
   dependencies:
     "@mnbroatch/bondage" "^3.1.0"
