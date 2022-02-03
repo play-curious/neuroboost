@@ -91,7 +91,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._container.addChild(this._fxLayer);
 
     this._gauges = {};
-    const gaugesList: (keyof variable.Gauges)[] = ["sleep", "food", "learn"];
+    const gaugesList: (keyof variable.Gauges)[] = ["learning", "sleep", "food"];
     for (let i = 0; i < gaugesList.length; i++) {
       const _gauge = gaugesList[i];
       this._gauges[_gauge] = new gauge.Gauge(
@@ -107,7 +107,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         this._gauges[_gauge],
         entity.extendConfig({ container: this._uiLayer })
       );
-      this._gauges[_gauge].getGauge().visible = true;
     }
 
     this._fade = new PIXI.Graphics()

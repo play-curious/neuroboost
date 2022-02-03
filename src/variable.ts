@@ -9,7 +9,7 @@ export interface Variables extends Gauges {
 export interface Gauges {
   sleep: `${number}`;
   food: `${number}`;
-  learn: `${number}`;
+  learning: `${number}`;
 }
 
 /**

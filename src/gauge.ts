@@ -31,10 +31,11 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     public readonly name: keyof variable.Gauges
   ) {
     super();
-    this._value = 100;
   }
 
   _setup() {
+    this._value = parseInt(this.config.variableStorage.get(this.name));
+
     this._innerDisk = new PIXI.Sprite();
     this._innerDisk.texture =
       this.config.app.loader.resources[colorByValue(this._value)].texture;
