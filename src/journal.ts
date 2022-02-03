@@ -43,24 +43,33 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       this.makeSprite("images/ui/journal_bg.png", (it) => it)
     );
 
+    const shifting = 10;
+    const frequency = 500;
+
     this._activateChildEntity(
       new entity.EntitySequence(
         [
-          () => new entity.WaitingEntity(Math.floor(10 + Math.random() * 2000)),
+          () =>
+            new entity.WaitingEntity(
+              Math.floor(10 + Math.random() * frequency)
+            ),
           () =>
             new entity.FunctionCallEntity(() => {
               this._glitch.red = [
-                Math.floor(Math.random() * 50),
-                Math.floor(Math.random() * 50),
+                Math.floor(Math.random() * shifting),
+                Math.floor(Math.random() * shifting),
               ];
               this._glitch.green = [
-                Math.floor(Math.random() * 50),
-                Math.floor(Math.random() * 50),
+                Math.floor(Math.random() * shifting),
+                Math.floor(Math.random() * shifting),
               ];
               this._glitch.offset = Math.floor(5 + Math.random() * 5);
               this._glitch.slices = Math.floor(10 + Math.random() * 15);
             }),
-          () => new entity.WaitingEntity(Math.floor(10 + Math.random() * 500)),
+          () =>
+            new entity.WaitingEntity(
+              Math.floor(10 + Math.random() * (frequency / 4))
+            ),
           () =>
             new entity.FunctionCallEntity(() => {
               this._glitch.red = [0, 0];
