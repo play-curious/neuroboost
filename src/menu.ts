@@ -288,18 +288,31 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     this.debugPressCount = 0;
     if(this.animation) this._deactivateChildEntity(this.animation);
+
     this.animation = new tween.Tween({
-      duration: 400,
+      duration: 150,
       easing: easing.easeInOutQuart,
-      from: this.popupBackground.x,
-      to: 0,
+      from: this.menuButton.x,
+      to: -this.menuButton.width,
       onUpdate: (value) => {
-        console.log(value);
-        this.popupBackground.position.set(value, this.popupBackground.y);
+        this.menuButton.x = value;
       },
       onTeardown: () => {
-        this.animation = undefined;
-        booyah.changeGameState("paused");
+        this.menuButton.visible = false;
+        this.animation = new tween.Tween({
+          duration: 250,
+          easing: easing.easeInOutQuart,
+          from: this.popupBackground.x,
+          to: 0,
+          onUpdate: (value) => {
+            this.popupBackground.x = value;
+          },
+          onTeardown: () => {
+            this.animation = undefined;
+            booyah.changeGameState("paused");
+          }
+        });
+        this._activateChildEntity(this.animation);
       }
     });
     this._activateChildEntity(this.animation);
@@ -313,7 +326,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     if(this.animation) this._deactivateChildEntity(this.animation);
     this.animation = new tween.Tween({
-      duration: 400,
+      duration: 250,
       easing: easing.easeInOutQuart,
       from: this.popupBackground.x,
       to: -this.popupBackground.width,
@@ -321,9 +334,22 @@ export class Menu extends extension.ExtendedCompositeEntity {
         this.popupBackground.x = value;
       },
       onTeardown: () => {
-        this.animation = undefined;
         this.menuButton.visible = true;
         this.container.visible = false;
+        this.animation = new tween.Tween({
+          duration: 150,
+          easing: easing.easeInOutQuart,
+          from: -this.menuButton.width,
+          to: 0,
+          onUpdate: (value) => {
+            this.menuButton.x = value;
+          },
+          onTeardown: () => {
+            this.animation = undefined;
+            this.container.visible = false;
+          }
+        });
+        this._activateChildEntity(this.animation);
       }
     });
     this._activateChildEntity(this.animation);
@@ -332,11 +358,11 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any): void {
     if (signal === "pause" && !this.opened) {
+      this.open();
       this.opened = true;
-      this.menuButton.visible = false;
-
       this._onOpen();
     } else if (signal === "play" && this.opened) {
+      this.close();
       this.opened = false;
     }
   }
