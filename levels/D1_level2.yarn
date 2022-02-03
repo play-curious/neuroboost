@@ -73,9 +73,9 @@ Que faites-vous maintenant?
 
 << if $time >= 720 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
-<< else>>
 -> Manger (à midi)
     <<jump Lunch_Rewind>>
+<< else>>
 -> Cuisine@cuisine
     <<jump cuisine_subchoice>>
 -> Bureau@bureau
@@ -141,7 +141,7 @@ Bon, ce n'est pas tout.
 <<jump Action_List_Rewind>>
 ===
 title: Chat_Rewind
-tags: bg|bedbroom
+tags: bg|bedroom
 colorID: 0
 position: -755,827
 ---
