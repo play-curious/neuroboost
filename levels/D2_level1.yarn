@@ -1,9 +1,17 @@
+# gauges: learning
+
 title: Start
 tags: bg|class show|fred
 colorID: 8
 position: -1226,-34
 ---
 Vous êtes toujours avec Fred à contempler les résultats de ce premier examen de la semaine de sprint. Ce dernier se retourne vers vous.
+
+<< setGauge sleep 0 >>
+<< setGauge food 0 >>
+<< addToGauge sleep 100 >>
+<< addToGauge food 70 >>
+
 Fred: Avec des scores pareil, y a plus qu'une chose à faire !
 You: Quoi donc ?
 Fred: Célébrer ce premier jour victorieux ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande !
@@ -54,7 +62,6 @@ colorID: 0
 position: -439,141
 ---
 << if isFirstTime("Choix_neutres") >>
-<< showGauges sleep food >>
 Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << endif >>
 
