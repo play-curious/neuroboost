@@ -1,0 +1,20 @@
+{"frames": {
+
+"shelf_organized.png":
+{
+	"frame": {"x":1,"y":1,"w":475,"h":607},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":475,"h":607},
+	"sourceSize": {"w":475,"h":607}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "shelf_organized.png",
+	"format": "RGBA8888",
+	"size": {"w":477,"h":609},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ddbfbd48cc64a1aab0391e10e3c468fa:b3caacfc05eece678ed0e802e39fa505:2eddeb5edf7373f6c511fe12ca3a81b5$"
+}
+}

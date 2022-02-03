@@ -168,6 +168,12 @@ export const commands: Record<string, Command> = {
     this.activate(this.graphics.fadeOut(Number(duration)));
   },
 
+  setBackground(name: string) {
+    const [bg, mood] = name.split("_", 2);
+    console.log(bg, mood);
+    this.graphics.setBackground(bg, mood);
+  },
+
   empty(){}
 };
 

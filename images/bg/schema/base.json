@@ -6,5 +6,29 @@
             "y": 540
         }
     ],
+    "shelf-organized": [
+        {
+            "model": "background",
+            "x": 960,
+            "y": 540
+        },
+        {
+            "model": "shelf_organized",
+            "x": 638,
+            "y": 314
+        }
+    ],
+    "shelf-disorganized": [
+        {
+            "model": "background",
+            "x": 960,
+            "y": 540
+        },
+        {
+            "model": "shelf_disorganized",
+            "x": 638,
+            "y": 314
+        }
+    ],
     "default": "sprites"
 }
