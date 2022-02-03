@@ -1,0 +1,20 @@
+{"frames": {
+
+"barbot (copie).png":
+{
+	"frame": {"x":1,"y":1,"w":948,"h":649},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":431,"y":121,"w":948,"h":649},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "barbot.png",
+	"format": "RGBA8888",
+	"size": {"w":950,"h":651},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ed54c6ca998524fd82b2d15d677f025a:27ed376801da30351b7f2ff402bbcbf4:4b433630370d0ae62bb1d9fc420d3e0b$"
+}
+}

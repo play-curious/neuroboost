@@ -620,7 +620,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             duration: 800,
             easing: easing.easeOutQuint,
             from: 250,
-            to: 1250,
+            to: 1500,
             onUpdate: (value) => {
               character.container.position.x = value;
             },
@@ -716,7 +716,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           new tween.Tween({
             duration: 800,
             easing: easing.easeOutQuint,
-            from: 1250,
+            from: 1500,
             to: 250,
             onUpdate: (value) => {
               characterCE.container.position.x = value;
