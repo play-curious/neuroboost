@@ -27,8 +27,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   private _autoshowOn: boolean;
   private _selectedOptions: string[];
 
-  private _debugNode: number;
-
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public disabledClick: boolean;
   public graphics: graphics.Graphics;
@@ -46,9 +44,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
-    this.config.jukebox.changeVolume(0);
-    this.config.fxMachine.changeVolume(0);
-    this._debugNode = 0;
 
     command.fxLoops.clear();
 
@@ -170,7 +165,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     if (textResult.markup[0]?.name === "character") {
       speaker = textResult.markup[0].properties["name"];
     }
-    this._debugNode++;
     this.graphics.showDialog(
       text,
       speaker,
