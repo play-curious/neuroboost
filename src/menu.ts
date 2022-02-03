@@ -23,7 +23,7 @@ const defaultSettings: Settings = {
 const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
   credits: {
     Programming: ["Camille Abella", "André Quentin", "Maréchal Eliot"],
-    "Game Design": "?",
+    "Game Design": "Jesse Himmelstein",
     "Graphic Design": ["Xuan", "Sana"],
     Animation: ["Xuan", "Sana"],
     QA: "Ilyes Khamassi",
