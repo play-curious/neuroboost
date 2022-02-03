@@ -14,6 +14,10 @@ Compile and watch just TypeScript `yarn start` or `yarn serve`
 
 Build for production with `yarn dist`
 
+### Refresh linked dependencies
+
+Run the following command: `yarn add github:play-curious/repo-name -f`
+
 ### YarnSpinner
 
 TODO
