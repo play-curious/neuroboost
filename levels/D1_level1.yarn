@@ -289,7 +289,7 @@ Demain est un autre jour, vivement demain...
     <<jump Reveil_Sage>>
 ===
 title: Reveil_Sage
-tags: bg|bedroom_night 
+tags: bg|bedroom_night noUi
 position: -352.5212097167969,897.6408081054688
 ---
 << hideUi >>
@@ -321,7 +321,7 @@ Temde: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit 
     <<jump Assemblee_Sages>>
 ===
 title: Tenter_rester_chambre
-tags: show|temde bg|bedroom_night
+tags: show|temde bg|bedroom_night noUi
 position: -719.885986328125,901.3107299804688
 ---
 You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !!
@@ -336,7 +336,7 @@ un rayon en jaillit et vous englobe de sa lumière vert phosphorescente.
 <<jump Assemblee_Sages>>
 ===
 title: Assemblee_Sages
-tags: bg|circle autoshow
+tags: bg|circle autoshow noUi
 position: -562.1727294921875,1164.6718139648438
 ---
 << fadeOut >>
@@ -363,7 +363,7 @@ Sapiens: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de 
     <<jump Metacognition>>
 ===
 title: Metaconnexion
-tags: autoshow
+tags: autoshow noUi
 position: -878.8255004882812,1170.7235107421875
 ---
 You: Heuuuuu... J'ai rien compris de ce vous avez dit. La métaconnexion ???
@@ -385,7 +385,7 @@ Azul: C'est-à-dire comment apprendre ... à apprendre
 <<jump Metacognition>>
 ===
 title: Metacognition
-tags: autoshow
+tags: autoshow noUi
 position: -730.5562744140625,1421.6199951171875
 ---
 You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage ?
@@ -397,7 +397,7 @@ Sapiens: Oui, la mémorisation.
     <<jump memorisation>>
 ===
 title: memorisation
-tags: autoshow
+tags: autoshow noUi
 position: -366.2418212890625,1422.0413818359375
 ---
 Ledai: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit.
@@ -420,7 +420,7 @@ Sapiens: Tout à fait, c'est le chaos ! La panique ! La catastrophe !.. Alors qu
     <<jump Memoire_Longue>>
 ===
 title: Memoire_Longue
-tags: bg|schema autoshow
+tags: bg|schema autoshow noUi
 position: -63.20210266113281,1418.4576416015625
 ---
 << showCloseup shelf_organized >>
@@ -439,7 +439,7 @@ You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions 
 <<jump Routinisation>>
 ===
 title: Routinisation
-tags: bg|circle autoshow
+tags: bg|circle autoshow noUi
 position: 243.36883544921875,1410.058349609375
 ---
 Sapiens: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
@@ -456,7 +456,7 @@ Ledai: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> 
 <<jump Journal_Rappel_libre>>
 ===
 title: Journal_Rappel_libre
-tags: bg|bedroom_night
+tags: bg|bedroom_night noUi
 position: 528.9749550819397,1406.2884521484375
 ---
 Flash !!!

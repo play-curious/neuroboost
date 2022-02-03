@@ -105,9 +105,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       );
       this._activateChildEntity(
         this._gauges[_gauge],
-        entity.extendConfig({ container: this._container })
+        entity.extendConfig({ container: this._uiLayer })
       );
-      this._gauges[_gauge].getGauge().visible = false;
+      this._gauges[_gauge].getGauge().visible = true;
     }
 
     this._fade = new PIXI.Graphics()

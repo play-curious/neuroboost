@@ -247,6 +247,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   private _onChangeNodeData(oldNodeData: yarnBound.Metadata, newNodeData: yarnBound.Metadata) {
     // By default, autoshow is off
     this._autoshowOn = false;
+    let noUi: boolean = false;
     let bg: string;
     let bg_mood: string;
     let character: string;
@@ -265,11 +266,16 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         character = tag.split("|")[1].trim();
       } else if (tag === "autoshow") {
         this._autoshowOn = true;
+      } else if (tag === "noUi") {
+        noUi = true;
       } else {
         console.warn("Unknown tag in node data", tag);
       }
     }
 
+    if(noUi) this.graphics.hideUi();
+    else this.graphics.showUi();
+    
     if (bg) this.graphics.setBackground(bg, bg_mood);
     this.graphics.addCharacter(character);
 
