@@ -544,13 +544,28 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         ])
       );
 
-      //this._nodeDisplay.addChild(highlight);
+      this._nodeDisplay.addChild(highlight);
     }
+    console.log(freechoicesFound, nodeOptions.length);
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
       this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
-    } else {
-      throw new Error("Missing freechoice(s) in freechoice.json");
+    }
+    else if (freechoicesFound === 0) {
+      const options: Record<string, string>[] = [];
+      for (let i = 0; i < nodeOptions.length; i++) {
+        options.push({
+          text: nodeOptions[i],
+          id: i.toString()
+        })
+      }
+      this.setChoice(options, onBoxClick);
+    } 
+    else if(freechoicesFound !== nodeOptions.length) {
+      console.error("Free choice & choice are not compatible");
+    }
+    else {
+      console.error("Should not happen");
     }
   }
 
