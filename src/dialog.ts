@@ -33,8 +33,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   constructor(
     public readonly scriptName: string,
-    public readonly variableStorage: variable.VariableStorage,
-    public readonly clock: clock.Clock
+    public readonly startNode: string
   ) {
     super();
   }
@@ -44,6 +43,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
+    this._initRunner();
 
     command.fxLoops.clear();
 
@@ -52,7 +52,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this._selectedOptions = [];
 
     // Setup graphics
-    this.graphics = new graphics.Graphics(this.variableStorage.data);
+    this.graphics = new graphics.Graphics();
     this._activateChildEntity(
       this.graphics,
       entity.extendConfig({ container: this.config.container })
@@ -60,16 +60,25 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     // Setup clock
     this._activateChildEntity(
-      this.clock,
+      this.config.clock,
       entity.extendConfig({ container: this.graphics.getUi() })
     );
-    this.clock.minutesSinceMidnight = Number(this.variableStorage.get("time"));
+    this.config.clock.minutesSinceMidnight = Number(
+      this.config.variableStorage.get("time")
+    );
 
     this._advance(-1);
   }
 
-  public loadRunner(runner: yarnBound.YarnBound<variable.VariableStorage>) {
-    this.runner = runner;
+  _initRunner() {
+    this.runner = new yarnBound.YarnBound({
+      dialogue: this.config.levels[this.scriptName],
+      startAt: this.startNode,
+      variableStorage: this.config.variableStorage,
+      functions: {},
+    });
+    this.runner.history = this.config.globalHistory;
+
     for (const funcName in command.functions) {
       this.runner.registerFunction(
         funcName,
@@ -162,7 +171,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.graphics.showDialog(
       text,
       speaker,
-      this.variableStorage.get("name"),
+      this.config.variableStorage.get("name"),
       this._autoshowOn,
       () => {
         if (this.disabledClick) return;
@@ -172,19 +181,30 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _handleChoice() {
-    this.metadata.choiceId ? this.metadata.choiceId++ : this.metadata.choiceId = 0;
+    this.metadata.choiceId
+      ? this.metadata.choiceId++
+      : (this.metadata.choiceId = 0);
     const options: Record<string, string>[] = [];
     let indexOfBack = 0;
-    for(let i=0; i < (this.runner.currentResult as yarnBound.OptionsResult).options.length; i++){
-      const option = (this.runner.currentResult as yarnBound.OptionsResult).options[i];
+    for (
+      let i = 0;
+      i < (this.runner.currentResult as yarnBound.OptionsResult).options.length;
+      i++
+    ) {
+      const option = (this.runner.currentResult as yarnBound.OptionsResult)
+        .options[i];
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
-      if(option.hashtags.includes("once") && this._selectedOptions.includes(selectedOptionId))
+      if (
+        // TODO: fix bug in YarnBound fork
+        option.hashtags.includes("once") &&
+        this._selectedOptions.includes(selectedOptionId)
+      )
         continue;
       options.push({
         text: option.text,
-        id: `${i}`
+        id: `${i}`,
       });
-      if(option.text === "back") indexOfBack = i;
+      if (option.text === "back") indexOfBack = i;
     }
     options.reverse();
     this.graphics.setChoice(
@@ -192,11 +212,12 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       (id) => {
         if (this.disabledClick) return;
         this.config.fxMachine.play("Click");
-        this._selectedOptions.push(`${this.metadata.title}|${this.metadata.choiceId}|${id}`);
+        this._selectedOptions.push(
+          `${this.metadata.title}|${this.metadata.choiceId}|${id}`
+        );
         this._advance.bind(this)(id);
       },
-      this._hasTag(this.metadata, "subchoice") ?
-      indexOfBack : undefined
+      this._hasTag(this.metadata, "subchoice") ? indexOfBack : undefined
     );
   }
 
@@ -232,7 +253,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     });
   }
 
-  private _onChangeNodeData(oldNodeData: yarnBound.Metadata, newNodeData: yarnBound.Metadata) {
+  private _onChangeNodeData(
+    oldNodeData: yarnBound.Metadata,
+    newNodeData: yarnBound.Metadata
+  ) {
     // By default, autoshow is off
     this._autoshowOn = false;
     let noUi: boolean = false;
@@ -261,9 +285,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       }
     }
 
-    if(noUi) this.graphics.hideUi();
+    if (noUi) this.graphics.hideUi();
     else this.graphics.showUi();
-    
+
     if (bg) this.graphics.setBackground(bg, bg_mood);
     this.graphics.addCharacter(character);
 

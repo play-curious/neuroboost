@@ -93,6 +93,8 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
 
 interface ExtendedEntityConfig extends entity.EntityConfig {
   variableStorage: variable.VariableStorage;
+  globalHistory: yarnBound.Result[];
+  levels: string[];
   container: PIXI.Container;
   clock: clock.Clock;
   directives: booyah.Directives;

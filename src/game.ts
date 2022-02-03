@@ -38,7 +38,7 @@ function resizeHtmlLayer(appSize: PIXI.Point): void {
 // Common attributes for all DialogScene
 //   - VariableStorage
 //   - Clock
-const _variableStorage = new variable.VariableStorage({
+const variableStorage = new variable.VariableStorage({
   name: "Moi",
   time: "540",
   eval: "",
@@ -46,63 +46,70 @@ const _variableStorage = new variable.VariableStorage({
   food: "100",
 });
 const globalHistory: yarnBound.Result[] = [];
-function runnerMaker(file: string, start: string): yarnBound.YarnBound<variable.VariableStorage> {
-  const runner = new yarnBound.YarnBound({
-    dialogue: file,
-    startAt: start,
-    variableStorage: _variableStorage,
-    functions: {}
-  });
-  runner.history = globalHistory;
-  return runner;
-};
+
+// function runnerMaker(
+//   file: string,
+//   start: string
+// ): yarnBound.YarnBound<variable.VariableStorage> {
+//   const runner = new yarnBound.YarnBound({
+//     dialogue: file,
+//     startAt: start,
+//     variableStorage: _variableStorage,
+//     functions: {},
+//   });
+//   runner.history = globalHistory;
+//   return runner;
+// }
+
+// TODO: Move this to dialog rather than in the game
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
-export function installGameDatas(rootConfig: entity.EntityConfig) {
-  rootConfig.variableStorage = _variableStorage;
+export function installGameData(rootConfig: entity.EntityConfig) {
+  rootConfig.variableStorage = variableStorage;
+  rootConfig.globalHistory = globalHistory;
   rootConfig.clock = _clock;
   rootConfig.app.renderer.plugins.interaction.mouseOverRenderer = true;
 }
-
 
 const params = new URLSearchParams(window.location.search);
 const startNode = params.get("startNode") || params.get("node") || "Start";
 
 // prettier-ignore
-let statesName = [
+const stateNames = [
   "D1_level1",
   "D1_level2",
   "D2_level1",
   "D2_level2"
 ];
-
-const startFile = params.get("level") || "start";
-const startIndex = statesName.indexOf(startFile);
-statesName.splice(0, startIndex);
+let startingLevel = "D1_level1";
 
 const states: { [k: string]: entity.EntityResolvable } = {};
-for (const stateName of statesName) {
-  states[stateName === statesName[0] ? "start" : stateName] =
-    new dialog.DialogScene(
-      stateName,
-      _variableStorage,
-      _clock
-    );
-  states[`journal_${stateName}`] = new journal.JournalScene(_variableStorage);
+for (const stateName of stateNames) {
+  states[stateName] = new dialog.DialogScene(stateName, startNode);
+  states[`journal_${stateName}`] = new journal.JournalScene(variableStorage);
 }
 
-async function yarnsLoader(){
-  const texts = await Promise.all(statesName.map(name => fetch(`levels/${name}.yarn`).then(async (response) => {
-    return response.text()
-  })))
+async function levelLoader(entityConfig: entity.EntityConfig) {
+  const levels: { [k: string]: string } = {};
+  await Promise.all(
+    stateNames.map(async (name) => {
+      const response = await fetch(`levels/${name}.yarn`);
+      const text = await response.text();
+      levels[name] = text;
+    })
+  );
 
-  let i = 0
-  for(const stateName in states){
-    if(states[stateName] instanceof dialog.DialogScene){
-      (states[stateName] as dialog.DialogScene).loadRunner(runnerMaker(texts[i], i === 0 ? startNode : "Start"));
-      i++
-    }
-  }
+  entityConfig.levels = levels;
+
+  // let i = 0;
+  // for (const stateName in states) {
+  //   if (states[stateName] instanceof dialog.DialogScene) {
+  //     (states[stateName] as dialog.DialogScene).loadRunner(
+  //       runnerMaker(texts[i], i === 0 ? startNode : "Start")
+  //     );
+  //     i++;
+  //   }
+  // }
 }
 
 const transitions: Record<string, entity.Transition> = {};
@@ -114,8 +121,6 @@ for (const state in states) {
   i++;
 }
 transitions[previousState] = entity.makeTransition("end");
-
-
 
 const fxAssets = [
   "AlarmClock_LOOP",
@@ -150,6 +155,7 @@ const screenSize = new PIXI.Point(1920, 1080);
 const splashScreen = "images/bg/outside/background.png";
 
 booyah.go({
+  startingScene: params.get("level") || params.get("scene") || startingLevel,
   states,
   transitions,
   graphicalAssets: images.graphicalAssets,
@@ -158,12 +164,12 @@ booyah.go({
   musicAssets,
   screenSize,
   splashScreen,
-  extraLoaders: [yarnsLoader],
+  extraLoaders: [levelLoader],
   entityInstallers: [
     audio.installJukebox,
     audio.installFxMachine,
     menu.makeInstallMenu,
-    installGameDatas,
+    installGameData,
   ],
 });
 

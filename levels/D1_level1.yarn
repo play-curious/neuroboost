@@ -399,18 +399,18 @@ Sapiens_thinking: Oui, la mémorisation.
     <<jump memorisation>>
 ===
 title: memorisation
-tags: autoshow noUi
+tags: bg|circle autoshow noUi
 position: -366.2418212890625,1422.0413818359375
 ---
 Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit.
 Temde_thinking: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }.
 Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt... 
 
-<< changeBackground schema >>
+<< setBackground schema >>
 
 Sapiens_thinking: En bref, la cartographie de la mémoire dans le cerveau se découpe en deux zones. Comme tes deux hémisphères.
 
-<< showCloseup shelf_disorganized >>
+<< setBackground schema_shelf-disorganized >>
 
 Sapiens_thinking: Il y a tout d'abord <b>La mémoire courte</b>. Elle est utilisé quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas... Et elle stocke ça dans un énorme container. 
 Sapiens_thinking: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sans ordre précis. Elle les empile en vrac, les unes sur les autres, à gauche à droite. En bref, elle range ça n'importe comment, comme un amateur, un dilettante !
@@ -422,10 +422,10 @@ Sapiens_thinking: Tout à fait, c'est le chaos ! La panique ! La catastrophe !..
     <<jump Memoire_Longue>>
 ===
 title: Memoire_Longue
-tags: bg|schema autoshow noUi
+tags: autoshow noUi
 position: -63.20210266113281,1418.4576416015625
 ---
-<< showCloseup shelf_organized >>
+<< setBackground schema_shelf-organized >>
 
 Sapiens_thinking: <b>La mémoire longue</b> c'est le caviar de la connaissance. Là au contraire, tout y est ordonné, rangé, archivé, classifié. Comme dans une authentique bibliothèque. Dès qu'on a besoin de trouver quelque chose, on sait où le trouver.
 
@@ -433,8 +433,7 @@ Ledai_explaining: Sans compter que chaque élément de <b>la mémoire longue</b>
 Sapiens_thinking: En bref, le secret pour bien apprendre réside dans ta capacité à consolider tes nouvelles connaissances, les stocker de manière logique et efficace.
 Azul_happy: Tu as saisi ? Nos deux savants veulent te dire qu'ils vont t'aider à faire glisser tes nouveaux savoirs, de la mémoire courte à la mémoire longue.
 
-<< hideCloseup >>
-<< changeBackground circle >>
+<< setBackground circle >>
 
 You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions dans ma mémoire longue ?
 

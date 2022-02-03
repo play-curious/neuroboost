@@ -45,7 +45,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
   private _gauges: Record<string, gauge.Gauge>;
 
-  constructor(private readonly _variableStorageData: variable.Variables) {
+  constructor() {
     super();
   }
 
@@ -206,7 +206,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const interpolatedText = _.template(
       text,
       templateSettings
-    )(this._variableStorageData);
+    )(this.config.variableStorage.data);
 
     let speaker: string, mood: string, dialog: string;
     if (name) [speaker, mood] = name.split("_");
@@ -322,7 +322,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
-      if(subchoice === Number(nodeOptions[i].id)) continue;
+      if (subchoice === Number(nodeOptions[i].id)) continue;
 
       const choicebox = new PIXI.Container();
       choicebox.addChild(
@@ -464,7 +464,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     nodeOptions: string[],
     onBoxClick: (choiceId: number) => unknown
   ) {
-    
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();
@@ -544,13 +543,28 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         ])
       );
 
-      //this._nodeDisplay.addChild(highlight);
+      this._nodeDisplay.addChild(highlight);
     }
+    console.log(freechoicesFound, nodeOptions.length);
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
       this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
-    } else {
-      throw new Error("Missing freechoice(s) in freechoice.json");
+    }
+    else if (freechoicesFound === 0) {
+      const options: Record<string, string>[] = [];
+      for (let i = 0; i < nodeOptions.length; i++) {
+        options.push({
+          text: nodeOptions[i],
+          id: i.toString()
+        })
+      }
+      this.setChoice(options, onBoxClick);
+    } 
+    else if(freechoicesFound !== nodeOptions.length) {
+      console.error("Free choice & choice are not compatible");
+    }
+    else {
+      console.error("Should not happen");
     }
   }
 
@@ -620,7 +634,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             duration: 800,
             easing: easing.easeOutQuint,
             from: 250,
-            to: 1250,
+            to: 1500,
             onUpdate: (value) => {
               character.container.position.x = value;
             },
@@ -645,7 +659,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public addCharacter(character?: string, mood?: string): void {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
-    
+
     // Register last character & mood
     const characterChanged = character !== this._lastCharacter;
     this._lastCharacter = character;
@@ -716,7 +730,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           new tween.Tween({
             duration: 800,
             easing: easing.easeOutQuint,
-            from: 1250,
+            from: 1500,
             to: 250,
             onUpdate: (value) => {
               characterCE.container.position.x = value;

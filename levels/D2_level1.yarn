@@ -241,7 +241,7 @@ position: -115,1232
 ---
 Vous vous dirigez vers le bar, toutefois, vous ne distinguez plus aucun snack de disponible. Vous vous tournez alors vers un BarBot.
 
- << show barbot >>
+<< show barbot >>
 BarBot: Vous désirez ?
 You: Manger quelque chose  qui redonne de l'énergie. 
 BarBot: À sucer ou avaler ?
@@ -252,6 +252,7 @@ BarBot: Ce sera une boule magique... Il faut la sucer doucement.
 You: Merci.
 
 Le BarBot vous tend une espèce de gomme multicolore. Vous la mettez dans votre bouche. Niac... Ils ont vraiment abusé de colorants et de sucre de synthèse. Vous grimacez mais continuez à l'ingérer docilement. Vous ressentez assez rapidement un effet revitalisant.
+<< hide >>
 
 << removeFromGauge food 35 >>
 << addToGauge sleep 10 >>
