@@ -25,19 +25,19 @@ position: -1617.4276733398438,-825.2426147460938
 ---
 << stopFX PhoneRing_LOOP >>
 
-Fred: Hello ! C'est Fred !
+Fred_excited: Hello ! C'est Fred !
 You: Je sais, j'ai vu ton nom.
-Fred_drunk: Yes yes... Tu fais quoi là, maintenant ?
+Fred_smiling: Yes yes... Tu fais quoi là, maintenant ?
 You: Je viens de me réveiller.
-Fred: Tu sais qu'on a le partiel de cet aprèm ?
+Fred_smiling: Tu sais qu'on a le partiel de cet aprèm ?
 You: Heu... ouais... C'est sur quoi déjà ?
-Fred: La matière que tu n'aimes pas du tout : l'Atronometric Data Management
+Fred_smiling: La matière que tu n'aimes pas du tout : l'Atronometric Data Management
 You: Ouais... Le truc super long qui veut rien dire...
-Fred: Tu rigoles, c'est super passionnant et super cool ! J'adore !
+Fred_happy: Tu rigoles, c'est super passionnant et super cool ! J'adore !
 You: Facile à dire pour toi, tu révises jamais !
-Fred: C'est ça quand on est un génie.
+Fred_smiling: C'est ça quand on est un génie.
 You: Ouais ouais...
-Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
+Fred_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
 You: Ouais...
 Vous poussez un grand soupir avant de raccrocher
 
@@ -420,7 +420,7 @@ Sapiens: Tout à fait, c'est le chaos ! La panique ! La catastrophe !.. Alors qu
     <<jump Memoire_Longue>>
 ===
 title: Memoire_Longue
-tags: bg|schma autoshow
+tags: bg|schema autoshow
 position: -63.20210266113281,1418.4576416015625
 ---
 << showCloseup shelf_organized >>
@@ -452,6 +452,8 @@ Ledai: Tout simplement en répétant, en appliquant.
 Sapiens: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : <b>les rappels libres</b>.
 You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil. Comment faire ?
 Ledai: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> !
+
+<<jump Journal_Rappel_libre>>
 ===
 title: Journal_Rappel_libre
 tags: bg|bedroom_night

@@ -1,0 +1,20 @@
+{"frames": {
+
+"armsDo0000.png":
+{
+	"frame": {"x":1,"y":1,"w":94,"h":152},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":94,"h":152},
+	"sourceSize": {"w":94,"h":152}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bp_armsDo.png",
+	"format": "RGBA8888",
+	"size": {"w":96,"h":154},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1d5dfeac27df3b78d7dee3a69778a3b4:8140fd262070b4865078be12d549bcf1:9e08c75b9843bc4208ac1992e8c6f49e$"
+}
+}

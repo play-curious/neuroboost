@@ -6,6 +6,16 @@
             "y": 540
         },
         {
+            "model": "lights",
+            "x": 960,
+            "y": 500
+        },
+        {
+            "model": "shade",
+            "x": 960,
+            "y": 540
+        },
+        {
             "model": "clignotantRB",
             "x": 516,
             "y": 413

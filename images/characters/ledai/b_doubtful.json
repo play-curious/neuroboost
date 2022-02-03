@@ -1,0 +1,20 @@
+{"frames": {
+
+"b_doubtful.png":
+{
+	"frame": {"x":1,"y":1,"w":414,"h":796},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":751,"y":11,"w":414,"h":796},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "b_doubtful.png",
+	"format": "RGBA8888",
+	"size": {"w":416,"h":798},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:727491e294c57fbc10d63394d26d0f28:d70100452377238058fad3c84954d5ed:9d8d788b6722951777694e430b992791$"
+}
+}

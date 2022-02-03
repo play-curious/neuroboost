@@ -2,7 +2,7 @@
 
 "base.png":
 {
-	"frame": {"x":1,"y":1,"w":1920,"h":1080},
+	"frame": {"x":0,"y":0,"w":1920,"h":1080},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1080},
