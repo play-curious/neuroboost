@@ -75,9 +75,9 @@ Que faites-vous maintenant?
 
 << if $time >= 720 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
-<< else>>
 -> Manger (à midi)
     <<jump Lunch_Rewind>>
+<< else>>
 -> Cuisine@cuisine
     <<jump cuisine_subchoice>>
 -> Bureau@bureau
@@ -105,6 +105,8 @@ position: -993.6492929458618,-75.37680292129517
     <<jump Chat_Rewind>>
 -> Réviser cette fichue Astronometric Data Management
     <<jump Revision_Rewind>>
+-> Essayer le rappel libre
+    <<jump Rappel_libre>>
 -> back
     <<jump Action_List_Rewind>>
 ===
@@ -114,8 +116,6 @@ position: -1716.8310852050781,-38.99417304992676
 ---
 -> Binger votre série TV préférée
     <<jump BingeTV_Rewind>>
--> Rappel libre
-    <<jump Rappel_libre>>
 -> back
     <<jump Action_List_Rewind>>
 ===
@@ -143,7 +143,7 @@ Bon, ce n'est pas tout.
 <<jump Action_List_Rewind>>
 ===
 title: Chat_Rewind
-tags: bg|bedbroom
+tags: bg|bedroom
 colorID: 0
 position: -755,827
 ---
@@ -172,7 +172,7 @@ Aujourd'hui, vous voulez réussir votre journée. Vous voulez coiffer Fred au po
 
 << advanceTime 2:00 >>
 
-<< addToGauge 30 >>
+<< addToGauge learning 30 >>
 
 Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à potasser ce long pensum ennuyeux ! Beuark !
 <<jump Action_List_Rewind>>
@@ -211,7 +211,7 @@ Vous essayez de vous souvenir de ce que vous avez retenu en cours. Ce n'est pas 
 
 Mais lorsque vous replonger dans la lecture pour verifier vos réponses, vous constatez que ça vous aide vraiment à mettre de l'ordre dans votre esprit. Il y a encore du travail à faire, mais ça sort plus facilement de votre tête !
 
-<< addToGauge 100 >>
+<< addToGauge learning 100 >>
 
 Vous prenez encore le temps de relire votre cours pour combler les lacunes qui vous gênent encore. Résultat, vous vous sentez bien plus prêt à attaquer l'examen cette fois.
 
@@ -251,12 +251,12 @@ Fred: C'est génial ! Je t'ai encore jamais vu comme ça.
 You: Ouais...
 Fred s'apprête à vous répondre quand la sonnerie retentit. Les résultats du test viennent de tomber...
 << if visited("Rappel_libre") >>
-<< else >>
-<< endif >>
--> Consulter les résultats <<if (visited("Rappel_libre"))>>
+-> Consulter les résultats 
     <<jump Resultats_Good>>
--> Consulter les résultats <<if !(visited("Rappel_libre"))>>
+<< else >>
+-> Consulter les résultats 
     <<jump Resultats_Bad_Again>>
+<< end >>
 ===
 title: Resultats_Good
 tags: 

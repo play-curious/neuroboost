@@ -21,7 +21,8 @@ title: Retour_chambre
 tags: bg|bedroom
 position: -894,-168
 ---
-Allongé tranquillement sur votre lit, vous vous replongez dans la lecture augmentée de l'atlas Ouiki_4D de Star Mars - The Lone Lightsaber... Quand... DRING ! DRING ! DRIIIIIING !... Inutile d'allumer le téléscreen de votre porte. Vous vous doutez qui sonne comme dératé... FRED !!
+Allongé tranquillement sur votre lit, vous vous replongez dans la lecture augmentée de l'atlas Ouiki_4D de Star Mars - The Lone Lightsaber... Quand...
+DRING ! DRING ! DRIIIIIING !... Inutile d'allumer le téléscreen de votre porte. Vous vous doutez qui sonne comme dératé... FRED !!
 << show fred >>
 Fred: Allez, tu peux pas me laisser tout seul.
 You: Et si.
@@ -77,9 +78,11 @@ tags:
 colorID: 0
 position: -37,200
 ---
-Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffez doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous. C'est comme si vous vous étiez calé sur l'orbite de la Planète Disco. Vous vous trémoussez, vous vous déhanchez, vous sautez, vous virevoltez, vous tournoyez comme un globe scintillant ou une boule disco radieuse ! 
+Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffez doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous. 
+C'est comme si vous vous étiez calé sur l'orbite de la Planète Disco. Vous vous trémoussez, vous vous déhanchez, vous sautez, vous virevoltez, vous tournoyez comme un globe scintillant ou une boule disco radieuse ! 
 Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public ! 
-Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressivement de l'orbite disco, vous saluez trois fois la foule avant de quitter la piste de danse. Votre sortie est suivie par un tonnerre d'applaudissements ! Vous parvenez même à entendre les Houras de Fred qui survolent péniblement au-dessus des fracas de mains qui claquent et claquent encore...  
+Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressivement de l'orbite disco, vous saluez trois fois la foule avant de quitter la piste de danse. Votre sortie est suivie par un tonnerre d'applaudissements !
+Vous parvenez même à entendre les Houras de Fred qui survolent péniblement au-dessus des fracas de mains qui claquent et claquent encore...  
 
 << removeFromGauge sleep 40 >>
 
@@ -104,7 +107,8 @@ tags:
 colorID: 0
 position: -37,437
 ---
-Le Bar est sûrement réappovisionné en permanence. Il y a toujours autant de bonnes choses à grignoter. Après tout ce que vous avez bu et sué, il est temps de s'avaler quelques grammes de calories. Comme dit le proverbe: "Une barre de Max après chaque moment, fait de l'étudiant un gagnant". Et c'est bien vrai, vous en aviez besoin de cette pause cacao Max. Elle vous redynamise... 
+Le Bar est sûrement réappovisionné en permanence. Il y a toujours autant de bonnes choses à grignoter. Après tout ce que vous avez bu et sué, il est temps de s'avaler quelques grammes de calories.
+Comme dit le proverbe: "Une barre de Max après chaque moment, fait de l'étudiant un gagnant". Et c'est bien vrai, vous en aviez besoin de cette pause cacao Max. Elle vous redynamise... 
 
 << addToGauge food 10 >>
 
@@ -118,7 +122,8 @@ position: -287,437
 ---
 Vous vous approchez tranquillement de la guitare posée près de l'enceinte murale. On dirait une cithare classique, sauf qu'elle possède une carte-son HD 4K. Génial ! Un vrai bijoux de technologie HiFi ! 
 Vous posez l'instrument sur vos genoux, vous allumez l'amplificateur. Vous gratouillez les cordes, à la mano, tout simplement. Dingue, le rugissement cybersonique qu'elle envoie ! Ça déchire l'air ambiant et ça réveille la foule !
-Tous les yeux se tournent vers vous. Quelqu'un coupe la musique. Vous voilà seul sur la grande scène. À vous de jouer ! Vous vous lancez dans une improvisation à cordes cybermétalliques. Le temps file, la foule boit vos notes. Vous ne vous en souciez plus, absorbé que vous êtes dans votre oeuvre sonore.
+Tous les yeux se tournent vers vous. Quelqu'un coupe la musique. Vous voilà seul sur la grande scène. À vous de jouer ! Vous vous lancez dans une improvisation à cordes cybermétalliques.
+Le temps file, la foule boit vos notes. Vous ne vous en souciez plus, absorbé que vous êtes dans votre oeuvre sonore.
 Quand vous daignez enfin vous arrêter et relever les yeux, vous êtes salué par un concert d'applaudissements ! Vous remarquez Fred qui vous contemple, tout sourire, et qui lève le pouce en signe d'acquiescement.
 
 << removeFromGauge sleep 30 >>
@@ -131,7 +136,8 @@ tags:
 colorID: 0
 position: -37,-40
 ---
-La sono du Sound System est à fond, pourtant, cela ne vous empêche pas d'échanger, Fred et vous. Vous vous connaissez depuis suffisamment longtemps. Vous pourriez même échanger par ondes télépathiques. Les ingénieurs neurocybernétiques sont sur le créneau, mais les premiers prototypes sont pour l'instant décevants. Peu importe, vous vous marrez bien tous les deux. Un peu d'imagination et vous vous projetteriez dans un concert Live IRL comme on en faisait, du temps de l'écran 2D.
+La sono du Sound System est à fond, pourtant, cela ne vous empêche pas d'échanger, Fred et vous. Vous vous connaissez depuis suffisamment longtemps. Vous pourriez même échanger par ondes télépathiques. Les ingénieurs neurocybernétiques sont sur le créneau, mais les premiers prototypes sont pour l'instant décevants.
+Peu importe, vous vous marrez bien tous les deux. Un peu d'imagination et vous vous projetteriez dans un concert Live IRL comme on en faisait, du temps de l'écran 2D.
 
 << removeFromGauge sleep 20 >>
 << removeFromGauge food 25 >>
@@ -278,7 +284,8 @@ tags:
 colorID: 1
 position: -1226,1662
 ---
-Mince, il ne reste plus personne sur la piste. Tu ne vois plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Tu aperçois les premiers rayons de soleil filtrer à travers les fenêtres de la salle. Il est temps d'aller dormir. D'un coup, tu te sens fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... ce matin...
+Mince, il ne reste plus personne sur la piste. Tu ne vois plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Tu aperçois les premiers rayons de soleil filtrer à travers les fenêtres de la salle. Il est temps d'aller dormir.
+D'un coup, tu te sens fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... ce matin...
 
 <<jump SeReposer>>
 ===
@@ -287,7 +294,8 @@ tags: bg|bedroom
 position: -892.5641479492188,1663.6494140625
 ---
 << hideGauges >>
-Vous filez dans votre chambre en quatrième vitesse. Mais vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent ! Vous avez l'impression de rester coincé une heure dans ce cagibi. C'est pénible, surtout que votre vision se trouble, se dédouble. Vous avez vraiment dû un peu trop abuser...
+Vous filez dans votre chambre en quatrième vitesse. Mais vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent !
+Vous avez l'impression de rester coincé une heure dans ce cagibi. C'est pénible, surtout que votre vision se trouble, se dédouble. Vous avez vraiment dû un peu trop abuser...
 Une fois votre corvée accomplie, vous rampez jusqu'à votre lit. Vous vous glissez dedans tout habillé et fermez les yeux. Malheureusement, vous avez la tête qui tourne et qui serre, vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité. 
 Non, décidément, rien à faire, vous n'arrivez pas à dormir. Et les heures s'égrènent... Jusqu'à ce que votre horloge connectée vous tire de votre léthargie... 
 <<jump Bip_Bip>>
@@ -318,7 +326,8 @@ Fed: Je vois ça. Tu ne t'es pas assez ménagé.
 You: Muuuh...
 Fred: Fingers crossed ! Tout peut encore arriver.
 
-Hagard, vous quittez Fred et vous vous rendez à votre poste. Vous calez difficilement sur votre siège et tentez de suivre les instructions qui défilent sur l'écran. Ce n'est pas la première fois que vous pilotez un drone d'ingénierie. Vous êtes même assez doué à ce jeu. Cependant, ce matin, vous êtes trop fatigué, trop barbouillé, trop peu concentré. Vous avez du mal à décrypter les consignes, pourtant classiques. Vous avez du mal à guider votre appareil. Vous commettez trop d'erreurs, vous frôlez même le crash. 
+Hagard, vous quittez Fred et vous vous rendez à votre poste. Vous calez difficilement sur votre siège et tentez de suivre les instructions qui défilent sur l'écran. Ce n'est pas la première fois que vous pilotez un drone d'ingénierie. Vous êtes même assez doué à ce jeu.
+Cependant, ce matin, vous êtes trop fatigué, trop barbouillé, trop peu concentré. Vous avez du mal à décrypter les consignes, pourtant classiques. Vous avez du mal à guider votre appareil. Vous commettez trop d'erreurs, vous frôlez même le crash. 
 C'est la cata, la bérézina, la défaite. Vous savez que vous avez foiré votre examen. Vous sortez de la salle juste après la fin du test, vous passez même devant Fred sans rien dire.
 
 -> Vous filez dans votre chambre

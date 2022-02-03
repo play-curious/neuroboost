@@ -1,5 +1,3 @@
-const transform = require("gulp-transform");
-const rename = require("gulp-rename");
 const util = require("gulp-util");
 const gulp = require("gulp");
 const path = require("path");
@@ -87,4 +85,4 @@ exports.watch = gulp.series(handleImages, watch);
 
 // Meta-tasks
 
-exports.default = gulp.series(handleImages);
+exports.default = handleImages;
