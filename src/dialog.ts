@@ -5,6 +5,7 @@ import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 
+import * as save from "./save";
 import * as clock from "./clock";
 import * as command from "./command";
 import * as variable from "./variable";
@@ -32,7 +33,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   public graphics: graphics.Graphics;
 
   constructor(
-    public readonly scriptName: string,
+    public readonly stateName: string,
     public readonly startNode: string
   ) {
     super();
@@ -43,6 +44,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
+    save.save(this.stateName);
+
     this._initRunner();
 
     command.fxLoops.clear();
@@ -72,7 +75,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   _initRunner() {
     this.runner = new yarnBound.YarnBound({
-      dialogue: this.config.levels[this.scriptName],
+      dialogue: this.config.levels[this.stateName],
       startAt: this.startNode,
       variableStorage: this.config.variableStorage,
       functions: {},

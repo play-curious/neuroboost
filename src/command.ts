@@ -1,9 +1,8 @@
 import * as dialog from "./dialog";
 import * as variable from "./variable";
-import * as images from "./images";
 import * as clock from "./clock";
+import * as save from "./save";
 import * as entity from "booyah/src/entity";
-import { Graphics } from "pixi.js";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (
@@ -186,5 +185,14 @@ export const functions: Record<string, YarnFunction> = {
   },
   getGauge(gauge: string): number {
     return this.graphics.getGaugeValue(gauge);
+  },
+  save() {
+    save.save(this.stateName);
+  },
+  resetSave() {
+    save.save();
+  },
+  hasSave(): boolean {
+    return save.hasSave();
   },
 };

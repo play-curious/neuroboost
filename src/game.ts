@@ -1,18 +1,17 @@
 import * as PIXI from "pixi.js";
+import * as yarnBound from "yarn-bound";
 
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 import * as audio from "booyah/src/audio";
 import * as util from "booyah/src/util";
 
-import * as dialog from "./dialog";
-import * as journal from "./journal";
-
+import * as save from "./save";
 import * as clock from "./clock";
 import * as images from "./images";
+import * as dialog from "./dialog";
+import * as journal from "./journal";
 import * as variable from "./variable";
-
-import * as yarnBound from "yarn-bound";
 
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
@@ -80,9 +79,12 @@ const stateNames = [
   "D2_level1",
   "D2_level2"
 ];
-let startingLevel = "D1_level1";
 
-const states: { [k: string]: entity.EntityResolvable } = {};
+let startingLevel = "Start_Menu";
+
+const states: { [k: string]: entity.EntityResolvable } = {
+  Start_Menu: new save.StartMenu(),
+};
 for (const stateName of stateNames) {
   states[stateName] = new dialog.DialogScene(stateName, startNode);
   states[`journal_${stateName}`] = new journal.JournalScene(variableStorage);
