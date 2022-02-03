@@ -75,7 +75,7 @@ position: -847.2033081054688,-821.7307662963867
 << if isFirstTime("Action_List") >>
 Que faites-vous maintenant ?
 << endif >>
-<< if $time >= 720 >>
+<< if $time >= 1400 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
     <<jump Lunch>>
@@ -95,7 +95,7 @@ title: cuisine_subchoice
 tags: bg|kitchen subchoice
 position: -319.1514720916748,-55.38755989074707
 ---
--> Prendre le petit déjeuner
+-> Prendre le petit déjeuner#once
     <<jump Petit_dej>>
 -> back
     <<jump Action_List>>
@@ -104,9 +104,9 @@ title: bureau_subchoice
 tags: bg|desk subchoice
 position: -993.6492929458618,-75.37680292129517
 ---
--> Passer du temps sur le chat avec le pote d'une autre Université
+-> Passer du temps sur le chat avec le pote d'une autre Université#once
     <<jump Chat>>
--> Réviser cette fichue Astronometric Data Management
+-> Réviser cette fichue Astronometric Data Management#once
     <<jump Revision>>
 -> back
     <<jump Action_List>>
@@ -115,7 +115,7 @@ title: salon_subchoice
 tags: bg|bedroom subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
--> Binger votre série TV préférée
+-> Binger votre série TV préférée#once
     <<jump BingeTV>>
 -> back
     <<jump Action_List>>

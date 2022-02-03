@@ -312,7 +312,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public setChoice(
-    nodeOptions: string[],
+    nodeOptions: Record<string, string>[],
     onBoxClick: (choiceId: number) => unknown,
     subchoice?: number
   ) {
@@ -326,7 +326,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
-      if(subchoice === nodeOptions.length - (i+1)) continue;
+      if(subchoice === Number(nodeOptions[i].id)) continue;
 
       const choicebox = new PIXI.Container();
       choicebox.addChild(
@@ -364,7 +364,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               choicebox.buttonMode = true;
 
               this._on(choicebox, "pointerup", () => {
-                onBoxClick(nodeOptions.length - (1 + i));
+                onBoxClick(Number(nodeOptions[nodeOptions.length - (1 + i)].id));
               });
 
               this._on(choicebox, "mouseover", () => {
@@ -400,7 +400,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       choicebox.addChild(
         this.makeText(
-          nodeOptions[nodeOptions.length - (1 + i)],
+          nodeOptions[nodeOptions.length - (1 + i)].text,
           {
             fill: "#fdf4d3",
             fontFamily: "Ubuntu",
@@ -442,7 +442,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     nodeOptions: string[],
     onBoxClick: (choiceId: number) => unknown
   ) {
-    debugger;
+    
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();
@@ -527,11 +527,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
       this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
-    } else if (freechoicesFound === 0) {
-      for (let i = 0; i < nodeOptions.length; i++) {
-        nodeOptions[i] = nodeOptions[i].split("@")[0];
-      }
-      this.setChoice(nodeOptions, onBoxClick);
     } else {
       throw new Error("Missing freechoice(s) in freechoice.json");
     }
@@ -630,7 +625,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public addCharacter(character?: string, mood?: string): void {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
-    debugger;
+    
     // Register last character & mood
     const characterChanged = character !== this._lastCharacter;
     this._lastCharacter = character;

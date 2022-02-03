@@ -18,12 +18,16 @@ declare module "yarn-bound" {
     tags?: string
     bg?: string;
     show?: string;
+    choiceId?: number;
   }
 }
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
   private _lastNodeData: yarnBound.Metadata;
   private _autoshowOn: boolean;
+  private _selectedOptions: string[];
+
+  private _debugNode: number;
 
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public disabledClick: boolean;
@@ -42,10 +46,15 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
+    this.config.jukebox.changeVolume(0);
+    this.config.fxMachine.changeVolume(0);
+    this._debugNode = 0;
+
     command.fxLoops.clear();
 
     this.disabledClick = false;
     this._autoshowOn = false;
+    this._selectedOptions = [];
 
     // Setup graphics
     this.graphics = new graphics.Graphics(this.variableStorage.data);
@@ -82,6 +91,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(selectId?: number): void {
+    this.disabledClick = true;
     // If result is undefined, stop here
     if (this.metadata.hasOwnProperty("isDialogueEnd")) {
       this._transition = entity.makeTransition();
@@ -106,7 +116,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
             ? this.graphics.fadeIn(200)
             : new entity.FunctionCallEntity(() => null),
         new entity.FunctionCallEntity(() => {
-          this.disabledClick = true;
           this.graphics.hideNode();
           this.graphics.showDialogLayer();
 
@@ -147,7 +156,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     if(textResult.markup?.length > 0 && textResult.markup[0].name === 'character'){
       speaker = textResult.markup[0].properties["name"];
     }
-
+    this._debugNode++;
     this.graphics.showDialog(
       text,
       speaker,
@@ -161,20 +170,31 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _handleChoice() {
-    const options: string[] = [];
-    for(const option of (this.runner.currentResult as yarnBound.OptionsResult).options){
-      if(option.isAvailable)
-        options.push(option.text);
+    this.metadata.choiceId ? this.metadata.choiceId++ : this.metadata.choiceId = 0;
+    const options: Record<string, string>[] = [];
+    let indexOfBack = 0;
+    for(let i=0; i < (this.runner.currentResult as yarnBound.OptionsResult).options.length; i++){
+      const option = (this.runner.currentResult as yarnBound.OptionsResult).options[i];
+      const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
+      if(option.hashtags.includes("once") && this._selectedOptions.includes(selectedOptionId))
+        continue;
+      options.push({
+        text: option.text,
+        id: `${i}`
+      });
+      if(option.text === "back") indexOfBack = i;
     }
+    console.log(options);
     this.graphics.setChoice(
       options,
       (id) => {
         if(this.disabledClick) return;
         this.config.fxMachine.play("Click");
+        this._selectedOptions.push(`${this.metadata.title}|${this.metadata.choiceId}|${id}`);
         this._advance.bind(this)(id);
       },
       this._hasTag(this.metadata, "subchoice") ?
-      options.indexOf("back") : undefined
+      indexOfBack : undefined
     );
   }
 
@@ -193,7 +213,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     command.commands[commandParts[0]].bind(this)(
       ...commandParts.slice(1).map((arg) => arg.trim())
     );
-
     this._advance();
   }
 
@@ -214,9 +233,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _onChangeNodeData(oldNodeData: yarnBound.Metadata, newNodeData: yarnBound.Metadata) {
-    //console.log("changing node data", oldNodeData, " --> ", newNodeData);
-    // Parse tags
-
     // By default, autoshow is off
     this._autoshowOn = false;
     let bg: string;
