@@ -105,9 +105,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       );
       this._activateChildEntity(
         this._gauges[_gauge],
-        entity.extendConfig({ container: this._container })
+        entity.extendConfig({ container: this._uiLayer })
       );
-      this._gauges[_gauge].getGauge().visible = false;
+      this._gauges[_gauge].getGauge().visible = true;
     }
 
     this._fade = new PIXI.Graphics()
@@ -125,8 +125,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public setGauge(name: string, value: number) {
-    if (this._gauges.hasOwnProperty(name))
-      this._gauges[name].resetValue(value);
+    if (this._gauges.hasOwnProperty(name)) this._gauges[name].resetValue(value);
   }
 
   public getUi(): PIXI.Container {
@@ -210,9 +209,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     )(this._variableStorageData);
 
     let speaker: string, mood: string, dialog: string;
-    if(name)
-      [speaker, mood] = name.split("_");
-    console.log(speaker, mood, dialog);
+    if (name) [speaker, mood] = name.split("_");
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
@@ -236,7 +233,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           }
         )
       );
-      
+
       const speakerLC = speaker.toLowerCase();
       if (
         (autoShow && speakerLC !== "you") ||
@@ -312,7 +309,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public setChoice(
-    nodeOptions: string[],
+    nodeOptions: Record<string, string>[],
     onBoxClick: (choiceId: number) => unknown,
     subchoice?: number
   ) {
@@ -321,12 +318,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
-
     const animationShifting = 120;
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
-      if(subchoice === nodeOptions.length - (i+1)) continue;
+      if(subchoice === Number(nodeOptions[i].id)) continue;
 
       const choicebox = new PIXI.Container();
       choicebox.addChild(
@@ -364,7 +360,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               choicebox.buttonMode = true;
 
               this._on(choicebox, "pointerup", () => {
-                onBoxClick(nodeOptions.length - (1 + i));
+                onBoxClick(Number(nodeOptions[i].id));
               });
 
               this._on(choicebox, "mouseover", () => {
@@ -400,7 +396,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       choicebox.addChild(
         this.makeText(
-          nodeOptions[nodeOptions.length - (1 + i)],
+          nodeOptions[i].text,
           {
             fill: "#fdf4d3",
             fontFamily: "Ubuntu",
@@ -433,6 +429,32 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._on(arrow_back, "pointerup", () => {
         onBoxClick(subchoice);
       });
+      this._on(arrow_back, "mouseover", () => {
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 200,
+            easing: easing.easeOutBack,
+            from: 0.65,
+            to: 0.66,
+            onUpdate: (value) => {
+              arrow_back.scale.set(value);
+            },
+          })
+        );
+      });
+      this._on(arrow_back, "mouseout", () => {
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 200,
+            easing: easing.easeOutBack,
+            from: 0.66,
+            to: 0.65,
+            onUpdate: (value) => {
+              arrow_back.scale.set(value);
+            },
+          })
+        );
+      });
 
       this._nodeDisplay.addChild(arrow_back);
     }
@@ -442,6 +464,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     nodeOptions: string[],
     onBoxClick: (choiceId: number) => unknown
   ) {
+    
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();
@@ -526,11 +549,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
       this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
-    } else if (freechoicesFound === 0) {
-      for (let i = 0; i < nodeOptions.length; i++) {
-        nodeOptions[i] = nodeOptions[i].split("@")[0];
-      }
-      this.setChoice(nodeOptions, onBoxClick);
     } else {
       throw new Error("Missing freechoice(s) in freechoice.json");
     }
@@ -570,12 +588,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const baseDir = `images/bg/${bg}`;
     const baseJson = require(`../${baseDir}/base.json`);
 
-    console.log("mood before", mood);
-
     // If mood is incorrect, get default one
     if (!_.has(baseJson, mood)) mood = baseJson["default"];
-
-    console.log("mood after", mood);
 
     // For each part
     for (const bgPart of baseJson[mood]) {
@@ -587,8 +601,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           it.position.copyFrom(bgPart);
           it.animationSpeed = 0.33;
 
-          if(_.has(bgPart, "alpha"))
-            it.alpha = bgPart.alpha;
+          if (_.has(bgPart, "alpha")) it.alpha = bgPart.alpha;
         }
       );
 

@@ -96,7 +96,7 @@ title: cuisine_subchoice
 tags: bg|kitchen subchoice
 position: -319.1514720916748,-55.38755989074707
 ---
--> Prendre le petit déjeuner
+-> Prendre le petit déjeuner#once
     <<jump Petit_dej>>
 -> back
     <<jump Action_List>>
@@ -105,9 +105,9 @@ title: bureau_subchoice
 tags: bg|desk subchoice
 position: -993.6492929458618,-75.37680292129517
 ---
--> Passer du temps sur le chat avec le pote d'une autre Université
+-> Passer du temps sur le chat avec le pote d'une autre Université#once
     <<jump Chat>>
--> Réviser cette fichue Astronometric Data Management
+-> Réviser cette fichue Astronometric Data Management#once
     <<jump Revision>>
 -> back
     <<jump Action_List>>
@@ -116,7 +116,7 @@ title: salon_subchoice
 tags: bg|bedroom subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
--> Binger votre série TV préférée
+-> Binger votre série TV préférée#once
     <<jump BingeTV>>
 -> back
     <<jump Action_List>>
@@ -291,7 +291,7 @@ Demain est un autre jour, vivement demain...
     <<jump Reveil_Sage>>
 ===
 title: Reveil_Sage
-tags: bg|bedroom_night 
+tags: bg|bedroom_night noUi
 position: -352.5212097167969,897.6408081054688
 ---
 << hideUi >>
@@ -323,7 +323,7 @@ Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute 
     <<jump Assemblee_Sages>>
 ===
 title: Tenter_rester_chambre
-tags: show|temde bg|bedroom_night
+tags: show|temde bg|bedroom_night noUi
 position: -719.885986328125,901.3107299804688
 ---
 You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !!
@@ -338,7 +338,7 @@ un rayon en jaillit et vous englobe de sa lumière vert phosphorescente.
 <<jump Assemblee_Sages>>
 ===
 title: Assemblee_Sages
-tags: bg|circle autoshow
+tags: bg|circle autoshow noUi
 position: -562.1727294921875,1164.6718139648438
 ---
 << fadeOut >>
@@ -365,7 +365,7 @@ Sapiens_thinking: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les ar
     <<jump Metacognition>>
 ===
 title: Metaconnexion
-tags: autoshow
+tags: autoshow noUi
 position: -878.8255004882812,1170.7235107421875
 ---
 You: Heuuuuu... J'ai rien compris de ce vous avez dit. La métaconnexion ???
@@ -387,7 +387,7 @@ Azul_happy: C'est-à-dire comment apprendre ... à apprendre
 <<jump Metacognition>>
 ===
 title: Metacognition
-tags: autoshow
+tags: autoshow noUi
 position: -730.5562744140625,1421.6199951171875
 ---
 You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage ?
@@ -399,7 +399,7 @@ Sapiens_thinking: Oui, la mémorisation.
     <<jump memorisation>>
 ===
 title: memorisation
-tags: autoshow
+tags: autoshow noUi
 position: -366.2418212890625,1422.0413818359375
 ---
 Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit.
@@ -422,7 +422,7 @@ Sapiens_thinking: Tout à fait, c'est le chaos ! La panique ! La catastrophe !..
     <<jump Memoire_Longue>>
 ===
 title: Memoire_Longue
-tags: bg|schma autoshow
+tags: bg|schema autoshow noUi
 position: -63.20210266113281,1418.4576416015625
 ---
 << showCloseup shelf_organized >>
@@ -441,7 +441,7 @@ You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions 
 <<jump Routinisation>>
 ===
 title: Routinisation
-tags: bg|circle autoshow
+tags: bg|circle autoshow noUi
 position: 243.36883544921875,1410.058349609375
 ---
 Sapiens_thinking: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
@@ -454,9 +454,11 @@ Ledai_explaining: Tout simplement en répétant, en appliquant.
 Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : <b>les rappels libres</b>.
 You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil. Comment faire ?
 Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> !
+
+<<jump Journal_Rappel_libre>>
 ===
 title: Journal_Rappel_libre
-tags: bg|bedroom_night
+tags: bg|bedroom_night noUi
 position: 528.9749550819397,1406.2884521484375
 ---
 Flash !!!
