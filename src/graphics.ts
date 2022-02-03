@@ -63,32 +63,34 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this.config.container.addChild(this._container);
 
     this._backgroundLayer = new PIXI.Container();
-    this._container.addChild(this._backgroundLayer);
-
     this._characterLayer = new PIXI.Container();
-    this._container.addChild(this._characterLayer);
-
-    this._characters = new Map();
-
     this._closeupLayer = new PIXI.Container();
-    this._container.addChild(this._closeupLayer);
-
     this._uiLayer = new PIXI.Container();
-    this._container.addChild(this._uiLayer);
-
     this._dialogLayer = new PIXI.Container();
-    this._dialogLayer.addChild(this.makeSprite("images/ui/dialog.png"));
-    this._container.addChild(this._dialogLayer);
+    this._fxLayer = new PIXI.Container();
+
+    this._container.addChild(
+      this._backgroundLayer,
+      this._characterLayer,
+      this._closeupLayer,
+      this._uiLayer,
+      this._dialogLayer,
+      this._fxLayer
+    );
 
     this._dialogSpeaker = new PIXI.Container();
+    this._dialogSpeaker.position.set(202, 601);
+
+    this._dialogLayer.addChild(
+      this.makeSprite("images/ui/dialog.png"),
+      this._dialogSpeaker
+    );
+
     this._dialogSpeaker.addChild(
       this.makeSprite("images/ui/dialog_speaker.png")
     );
-    this._dialogSpeaker.position.set(202, 601);
-    this._dialogLayer.addChild(this._dialogSpeaker);
 
-    this._fxLayer = new PIXI.Container();
-    this._container.addChild(this._fxLayer);
+    this._characters = new Map();
 
     this._gauges = {};
     const gaugesList: (keyof variable.Gauges)[] = ["learning", "sleep", "food"];
@@ -115,7 +117,12 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       .endFill();
     this._fade.alpha = 0;
     this._fade.visible = false;
-    this._container.addChild(this._fade);
+    this._fxLayer.addChild(this._fade);
+  }
+
+  _teardown() {
+    this.config.container.removeChild(this._container);
+    this._container = null;
   }
 
   public getGaugeValue(name: string): number {

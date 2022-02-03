@@ -39,9 +39,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
     this.config.container.addChild(this._container);
 
     //this._graphics.setBackground("bedroom", "night")
-    this._container.addChild(
-      this.makeSprite("images/ui/journal_bg.png", (it) => it)
-    );
+    this._container.addChild(this.makeSprite("images/ui/journal_bg.png"));
 
     const shifting = 10;
     const frequency = 500;
@@ -161,5 +159,6 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
   _teardown() {
     this.config.container.removeChild(this._container);
     this._htmlContainer.remove();
+    this._container = null;
   }
 }
