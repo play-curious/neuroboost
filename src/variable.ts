@@ -1,5 +1,8 @@
 import * as PIXI from "pixi.js";
 
+export const width = 1920;
+export const height = 1080;
+
 export interface Variables extends Gauges {
   time: `${number}`;
   name: string;

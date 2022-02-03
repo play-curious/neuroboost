@@ -78,12 +78,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     }
   }
 
-  _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any) {
-    if (signal === "gainedVisibility") {
-      booyah.changeGameState("playing");
-    }
-  }
-
   private _hasTag(nodeData: yarnBound.Metadata, tag: string): boolean {
     return nodeData.tags?.match(tag)?.length > 0;
   }

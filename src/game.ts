@@ -5,6 +5,7 @@ import * as entity from "booyah/src/entity";
 import * as audio from "booyah/src/audio";
 import * as util from "booyah/src/util";
 
+import * as menu from "./menu";
 import * as dialog from "./dialog";
 import * as journal from "./journal";
 
@@ -161,6 +162,7 @@ booyah.go({
   entityInstallers: [
     audio.installJukebox,
     audio.installFxMachine,
+    menu.makeInstallMenu,
     installGameDatas,
   ],
 });
