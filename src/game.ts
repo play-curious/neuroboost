@@ -43,22 +43,9 @@ const variableStorage = new variable.VariableStorage({
   eval: "",
   sleep: "100",
   food: "100",
+  learning: "0",
 });
 const globalHistory: yarnBound.Result[] = [];
-
-// function runnerMaker(
-//   file: string,
-//   start: string
-// ): yarnBound.YarnBound<variable.VariableStorage> {
-//   const runner = new yarnBound.YarnBound({
-//     dialogue: file,
-//     startAt: start,
-//     variableStorage: _variableStorage,
-//     functions: {},
-//   });
-//   runner.history = globalHistory;
-//   return runner;
-// }
 
 // TODO: Move this to dialog rather than in the game
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
@@ -99,16 +86,6 @@ async function levelLoader(entityConfig: entity.EntityConfig) {
   );
 
   entityConfig.levels = levels;
-
-  // let i = 0;
-  // for (const stateName in states) {
-  //   if (states[stateName] instanceof dialog.DialogScene) {
-  //     (states[stateName] as dialog.DialogScene).loadRunner(
-  //       runnerMaker(texts[i], i === 0 ? startNode : "Start")
-  //     );
-  //     i++;
-  //   }
-  // }
 }
 
 const transitions: Record<string, entity.Transition> = {};

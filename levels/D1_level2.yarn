@@ -1,3 +1,5 @@
+# gauges: learning
+
 title: Start
 tags: bg|bedroom
 colorID: 0
@@ -170,6 +172,8 @@ Aujourd'hui, vous voulez réussir votre journée. Vous voulez coiffer Fred au po
 
 << advanceTime 2:00 >>
 
+<< addToGauge 30 >>
+
 Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à potasser ce long pensum ennuyeux ! Beuark !
 <<jump Action_List_Rewind>>
 ===
@@ -206,6 +210,8 @@ Il est temps d'appliquer la méthode miracle que vous ont enseignée ces esprits
 Vous essayez de vous souvenir de ce que vous avez retenu en cours. Ce n'est pas brillant. Vous vous ne souvenez de très peu de choses. Pas étonnant, vous n'aimez pas cette matière. 
 
 Mais lorsque vous replonger dans la lecture pour verifier vos réponses, vous constatez que ça vous aide vraiment à mettre de l'ordre dans votre esprit. Il y a encore du travail à faire, mais ça sort plus facilement de votre tête !
+
+<< addToGauge 100 >>
 
 Vous prenez encore le temps de relire votre cours pour combler les lacunes qui vous gênent encore. Résultat, vous vous sentez bien plus prêt à attaquer l'examen cette fois.
 

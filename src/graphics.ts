@@ -91,7 +91,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._container.addChild(this._fxLayer);
 
     this._gauges = {};
-    const gaugesList: (keyof variable.Gauges)[] = ["sleep", "food"];
+    const gaugesList: (keyof variable.Gauges)[] = ["learning", "sleep", "food"];
     for (let i = 0; i < gaugesList.length; i++) {
       const _gauge = gaugesList[i];
       this._gauges[_gauge] = new gauge.Gauge(
@@ -107,7 +107,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         this._gauges[_gauge],
         entity.extendConfig({ container: this._uiLayer })
       );
-      this._gauges[_gauge].getGauge().visible = true;
     }
 
     this._fade = new PIXI.Graphics()
@@ -549,21 +548,18 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
       this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
-    }
-    else if (freechoicesFound === 0) {
+    } else if (freechoicesFound === 0) {
       const options: Record<string, string>[] = [];
       for (let i = 0; i < nodeOptions.length; i++) {
         options.push({
           text: nodeOptions[i],
-          id: i.toString()
-        })
+          id: i.toString(),
+        });
       }
       this.setChoice(options, onBoxClick);
-    } 
-    else if(freechoicesFound !== nodeOptions.length) {
+    } else if (freechoicesFound !== nodeOptions.length) {
       console.error("Free choice & choice are not compatible");
-    }
-    else {
+    } else {
       console.error("Should not happen");
     }
   }
