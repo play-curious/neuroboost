@@ -251,12 +251,12 @@ Fred: C'est génial ! Je t'ai encore jamais vu comme ça.
 You: Ouais...
 Fred s'apprête à vous répondre quand la sonnerie retentit. Les résultats du test viennent de tomber...
 << if visited("Rappel_libre") >>
--> Consulter les résultats 
+-> Consulter les résultats
     <<jump Resultats_Good>>
 << else >>
--> Consulter les résultats 
+-> Consulter les résultats
     <<jump Resultats_Bad_Again>>
-<< end >>
+<< endif >>
 ===
 title: Resultats_Good
 tags: 
