@@ -40,7 +40,7 @@ tags: bg|party show|fred
 colorID: 0
 position: -894,141
 ---
-Vous voilà donc à la cafétéria. Avec Fred. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer. 
+Vous voilà donc à la cafétéria. Avec Fred. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer.
 Fred: Alors, tu vois qu'on peut étudier tout en s'amusant.
 You: Oui ! J'espère juste ne pas le regretter demain matin.
 Fred: No worry. Faut juste savoir gérer.
@@ -49,7 +49,7 @@ Fred a raison, l'ambiance est vivifiante et enivrante... Vous vous laisser gagne
     <<jump Choix_neutres>>
 ===
 title: Choix_neutres
-tags: 
+tags:
 colorID: 0
 position: -439,141
 ---
@@ -74,15 +74,15 @@ Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << endif >>
 ===
 title: DanceFloor
-tags: 
+tags:
 colorID: 0
 position: -37,200
 ---
-Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffez doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous. 
-C'est comme si vous vous étiez calé sur l'orbite de la Planète Disco. Vous vous trémoussez, vous vous déhanchez, vous sautez, vous virevoltez, vous tournoyez comme un globe scintillant ou une boule disco radieuse ! 
-Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public ! 
+Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffez doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous.
+C'est comme si vous vous étiez calé sur l'orbite de la Planète Disco. Vous vous trémoussez, vous vous déhanchez, vous sautez, vous virevoltez, vous tournoyez comme un globe scintillant ou une boule disco radieuse !
+Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public !
 Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressivement de l'orbite disco, vous saluez trois fois la foule avant de quitter la piste de danse. Votre sortie est suivie par un tonnerre d'applaudissements !
-Vous parvenez même à entendre les Houras de Fred qui survolent péniblement au-dessus des fracas de mains qui claquent et claquent encore...  
+Vous parvenez même à entendre les Houras de Fred qui survolent péniblement au-dessus des fracas de mains qui claquent et claquent encore...
 
 << removeFromGauge sleep 40 >>
 
@@ -90,7 +90,7 @@ Vous parvenez même à entendre les Houras de Fred qui survolent péniblement au
     <<jump Choix_neutres>>
 ===
 title: Boire_Soft
-tags: 
+tags:
 colorID: 0
 position: -553,437
 ---
@@ -103,12 +103,12 @@ Vous prenez donc une pinte de Xeno Cola. Vous savez qu'ils ont dilué le Xeno Co
     <<jump Choix_neutres>>
 ===
 title: Snacking
-tags: 
+tags:
 colorID: 0
 position: -37,437
 ---
 Le Bar est sûrement réappovisionné en permanence. Il y a toujours autant de bonnes choses à grignoter. Après tout ce que vous avez bu et sué, il est temps de s'avaler quelques grammes de calories.
-Comme dit le proverbe: "Une barre de Max après chaque moment, fait de l'étudiant un gagnant". Et c'est bien vrai, vous en aviez besoin de cette pause cacao Max. Elle vous redynamise... 
+Comme dit le proverbe: "Une barre de Max après chaque moment, fait de l'étudiant un gagnant". Et c'est bien vrai, vous en aviez besoin de cette pause cacao Max. Elle vous redynamise...
 
 << addToGauge food 10 >>
 
@@ -116,11 +116,11 @@ Comme dit le proverbe: "Une barre de Max après chaque moment, fait de l'étudia
     <<jump Choix_neutres>>
 ===
 title: Guitar_Jam
-tags: 
+tags:
 colorID: 0
 position: -287,437
 ---
-Vous vous approchez tranquillement de la guitare posée près de l'enceinte murale. On dirait une cithare classique, sauf qu'elle possède une carte-son HD 4K. Génial ! Un vrai bijoux de technologie HiFi ! 
+Vous vous approchez tranquillement de la guitare posée près de l'enceinte murale. On dirait une cithare classique, sauf qu'elle possède une carte-son HD 4K. Génial ! Un vrai bijoux de technologie HiFi !
 Vous posez l'instrument sur vos genoux, vous allumez l'amplificateur. Vous gratouillez les cordes, à la mano, tout simplement. Dingue, le rugissement cybersonique qu'elle envoie ! Ça déchire l'air ambiant et ça réveille la foule !
 Tous les yeux se tournent vers vous. Quelqu'un coupe la musique. Vous voilà seul sur la grande scène. À vous de jouer ! Vous vous lancez dans une improvisation à cordes cybermétalliques.
 Le temps file, la foule boit vos notes. Vous ne vous en souciez plus, absorbé que vous êtes dans votre oeuvre sonore.
@@ -132,7 +132,7 @@ Quand vous daignez enfin vous arrêter et relever les yeux, vous êtes salué pa
     <<jump Choix_neutres>>
 ===
 title: Chatter_avec_Fred
-tags: 
+tags:
 colorID: 0
 position: -37,-40
 ---
@@ -146,7 +146,7 @@ Peu importe, vous vous marrez bien tous les deux. Un peu d'imagination et vous v
     <<jump Choix_neutres>>
 ===
 title: TIRED
-tags: 
+tags:
 colorID: 1
 position: -1226,909
 ---
@@ -161,7 +161,7 @@ You: OK.
     <<jump Sofa>>
 ===
 title: Sofa
-tags: 
+tags:
 colorID: 0
 position: -894,909
 ---
@@ -189,7 +189,7 @@ You: Pareil alors.
 <<jump Que_Faire>>
 ===
 title: Que_Faire
-tags: 
+tags:
 colorID: 0
 position: -239,909
 ---
@@ -200,7 +200,7 @@ La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la pist
 << if getGauge("sleep") >= 25 && getGauge("food") >= 25 >>
 -> Retourner swinguer sur le Dance Floor
     <<jump DanceFloor2>>
--> Se rafraîchir au bar 
+-> Se rafraîchir au bar
     <<jump Cafe_ou_Alcool>>
 -> Grignoter quelque chose
     <<jump Medoc_Bot>>
@@ -212,7 +212,7 @@ La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la pist
 << endif >>
 ===
 title: DanceFloor2
-tags: 
+tags:
 colorID: 0
 position: 144,1133
 ---
@@ -227,11 +227,11 @@ Vous rentrez peu à peu en transe, au rythme de la musique. Puis, au bout de que
     <<jump Que_Faire>>
 ===
 title: Cafe_ou_Alcool
-tags: 
+tags:
 colorID: 0
 position: -395,1232
 ---
-Dingue ! Le bar n'est plus aussi approvisionné ! Il ne reste plus aucun soft doux, ni même de Xeno Cola. 
+Dingue ! Le bar n'est plus aussi approvisionné ! Il ne reste plus aucun soft doux, ni même de Xeno Cola.
 Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un shot de X-Espresso ou une canette de ZedBoul. Tant pis, vous avez besoin d'un coup de pouce !
 
 << removeFromGauge food 30 >>
@@ -241,7 +241,7 @@ Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un 
     <<jump Que_Faire>>
 ===
 title: Medoc_Bot
-tags: 
+tags:
 colorID: 0
 position: -115,1232
 ---
@@ -249,7 +249,7 @@ Vous vous dirigez vers le bar, toutefois, vous ne distinguez plus aucun snack de
 
 << show barbot >>
 BarBot: Vous désirez ?
-You: Manger quelque chose  qui redonne de l'énergie. 
+You: Manger quelque chose  qui redonne de l'énergie.
 BarBot: À sucer ou avaler ?
 You: Le plus efficace.
 BarBot: Avec ou sans sucre ?
@@ -267,7 +267,7 @@ Le BarBot vous tend une espèce de gomme multicolore. Vous la mettez dans votre 
     <<jump Que_Faire>>
 ===
 title: Metal_Jam
-tags: 
+tags:
 colorID: 0
 position: 144,845
 ---
@@ -280,7 +280,7 @@ Vous repartez dans un concert solo d'improvisation, où les riffs électriques e
     <<jump Que_Faire>>
 ===
 title: Go_To_Bed
-tags: 
+tags:
 colorID: 1
 position: -1226,1662
 ---
@@ -296,8 +296,8 @@ position: -892.5641479492188,1663.6494140625
 << hideGauges >>
 Vous filez dans votre chambre en quatrième vitesse. Mais vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent !
 Vous avez l'impression de rester coincé une heure dans ce cagibi. C'est pénible, surtout que votre vision se trouble, se dédouble. Vous avez vraiment dû un peu trop abuser...
-Une fois votre corvée accomplie, vous rampez jusqu'à votre lit. Vous vous glissez dedans tout habillé et fermez les yeux. Malheureusement, vous avez la tête qui tourne et qui serre, vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité. 
-Non, décidément, rien à faire, vous n'arrivez pas à dormir. Et les heures s'égrènent... Jusqu'à ce que votre horloge connectée vous tire de votre léthargie... 
+Une fois votre corvée accomplie, vous rampez jusqu'à votre lit. Vous vous glissez dedans tout habillé et fermez les yeux. Malheureusement, vous avez la tête qui tourne et qui serre, vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité.
+Non, décidément, rien à faire, vous n'arrivez pas à dormir. Et les heures s'égrènent... Jusqu'à ce que votre horloge connectée vous tire de votre léthargie...
 <<jump Bip_Bip>>
 ===
 title: Bip_Bip
@@ -306,7 +306,7 @@ colorID: 0
 position: -557,1662
 ---
 Argh... Il est encore trop tôt ! Vous ne vous êtes pas reposé. Vous aimeriez avoir une bonne nuit de sommeil... C'est trop tard maintenant, il faut aller au charbon...
-Vous vous levez sans grande conviction. Vous enlevez vos vêtements, ils sentent la sueur et d'autres mauvaises odeurs. Vous en enfilez de nouveaux et partez au front. 
+Vous vous levez sans grande conviction. Vous enlevez vos vêtements, ils sentent la sueur et d'autres mauvaises odeurs. Vous en enfilez de nouveaux et partez au front.
 Pas le temps d'avaler un petit déjeuner, pas envie de toute manière...
 
 -> Aller en cours
@@ -327,7 +327,7 @@ You: Muuuh...
 Fred: Fingers crossed ! Tout peut encore arriver.
 
 Hagard, vous quittez Fred et vous vous rendez à votre poste. Vous calez difficilement sur votre siège et tentez de suivre les instructions qui défilent sur l'écran. Ce n'est pas la première fois que vous pilotez un drone d'ingénierie. Vous êtes même assez doué à ce jeu.
-Cependant, ce matin, vous êtes trop fatigué, trop barbouillé, trop peu concentré. Vous avez du mal à décrypter les consignes, pourtant classiques. Vous avez du mal à guider votre appareil. Vous commettez trop d'erreurs, vous frôlez même le crash. 
+Cependant, ce matin, vous êtes trop fatigué, trop barbouillé, trop peu concentré. Vous avez du mal à décrypter les consignes, pourtant classiques. Vous avez du mal à guider votre appareil. Vous commettez trop d'erreurs, vous frôlez même le crash.
 C'est la cata, la bérézina, la défaite. Vous savez que vous avez foiré votre examen. Vous sortez de la salle juste après la fin du test, vous passez même devant Fred sans rien dire.
 
 -> Vous filez dans votre chambre
@@ -354,7 +354,7 @@ Temde: Hello { $name }.
 You: Quoi ?! Vous encore ?!
 Temde: Yep, on n'a pas fini de t'embêter en effet.
 You: M'embêter ?! Vous lisez dans mes pensées ?!
-Temde: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retourne ! 
+Temde: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retourne !
 You: Où ça ?
 Temde: À l'Assemblée des 4 sages
 
@@ -378,12 +378,12 @@ tags: autoshow
 colorID: 0
 position: -894,2186
 ---
-Sapiens: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Un appareil électronique a besoin d'électricité pour démarrer et fonctionner. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire ! 
+Sapiens: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Un appareil électronique a besoin d'électricité pour démarrer et fonctionner. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire !
 Ledai: Tout à fait, ton engin biologique, a besoin de calories... et de vitamines.
 Sapiens: Mais pas n'importe lesquelles. Celles qui nourrissent et facilitent la conduction neurobiologique.
 You: C'est quoi ce charabia?
 Azul: Les 2 savants veulent dire que que ton corps a besoin de boire et de manger. Des bonnes choses.
-Temde: Pas les substances miracles de synthèse. Mensonges de bonimenteurs ! 
+Temde: Pas les substances miracles de synthèse. Mensonges de bonimenteurs !
 Sapiens: Ton corps a besoin d'énergie. Il a également besoin de se recharger.
 You: Comme mon palmphone ?
 Ledai: Tout à fait.
@@ -417,7 +417,7 @@ You: Un somme ?
 Temde: Yep, une bonne sieste quoi !
 Azul: Hier, tu es rentré trop tard et trop énervé pour te reposer.
 Sapiens: Tu n'as pas pu profiter des heures restantes pour recharger ta batterie.
-Ledai: Tout à fait, tu as abusé des réserves de ton matériel biologique et tu as cédé aux sirènes des carburants de synthèse ! 
+Ledai: Tout à fait, tu as abusé des réserves de ton matériel biologique et tu as cédé aux sirènes des carburants de synthèse !
 Temde: Tire une bonne leçon de ton erreur !
 Azul: Tu sais ce qu'il faut faire, écouter les besoins de ton corps et le recharger !
 Sapiens: Tu as compris cette nouvelle leçon ?
@@ -434,10 +434,12 @@ Sapiens: C'est ce que nous allons voir.
 
 Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos réserves, on peut continuer à agir, à travailler. On n'a pas besoin de dormir et de recharger les batteries tant qu'elles ne sont pas à plat.
 -> Vrai
+    << fx Failure >>
     Sapiens: Grossière erreur, jeune novice ! On ne stoque pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures !
-    Ledai: Certes, Master Sapiens, mais laissons une chance à { $name }. 
+    Ledai: Certes, Master Sapiens, mais laissons une chance à { $name }.
     Sapiens: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
 -> Faux
+    << fx Success >>
     Sapiens: Bravo ! Le sommeil ne se stoque pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain.
     Ledai: Une autre phrase quiz, Master Sapiens ?
     Sapiens: Oui. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
@@ -445,10 +447,12 @@ Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos r
 <<empty>>
 
 -> Vrai
+    << fx Failure >>
     Sapiens: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité.
     Azul: Master Sapiens, { $name } est encore novice et vous avez d'autres quizz à lui poser.
     Sapiens: En effet. L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
 -> Faux
+    << fx Success >>
     Sapiens: Excellente réponse ! Le secret d'un entretien métabolique durable est de se nourrir régulièrement, de manière équilibrée.
     Azul: Est-ce la fin de la séance de quizz ?
     Sapiens: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième: l'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
@@ -456,11 +460,13 @@ Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos r
 <<empty>>
 
 -> Vrai
+    << fx Success >>
     Sapiens: Exactement ! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand !
     Temde: Très bien, mais faites court et concis ! { $name } est fatigué !
     Ledai: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
     Sapiens: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
 -> Faux
+    << fx Failure >>
     Sapiens: Encore une idée reçue, une affirmation infondée! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand!
     Temde: Très bien, mais faites court et concis! { $name } est fatiguée!
     Sapiens: C'est comme ça quand on ne prend pas soin de son métabolisme!
@@ -470,6 +476,7 @@ Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos r
 <<empty>>
 
 -> Vrai
+    << fx Failure >>
     Sapiens: Non-sens ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière !
     Azul: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment.
     Sapiens: Je profite de la remarque d'Azul pour poser une question subsidiaire. Pour recharger ton métabolisme, combien d'heures tu dois dormir chaque jour ?
@@ -478,6 +485,7 @@ Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos r
     -> Ça dépend, 6 à 10 heures
         <<jump six_10_heures>>
 -> Faux
+    << fx Success >>
     Sapiens: Bien sûr ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que...
     Temde: Non non, on coupe ! Le temps presse !
     Ledai: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
@@ -490,7 +498,7 @@ position: 1085.4264526367188,2697.2666015625
 Azul: C'est ton dernier mot ?
 -> 8 heures
     <<jump huit_heures>>
--> Entre 6 et 10 heures 
+-> Entre 6 et 10 heures
     <<jump six_10_heures>>
 ===
 title: six_10_heures
@@ -507,7 +515,7 @@ tags: bg|bedroom_night
 position: 762.537109375,3380.74169921875
 ---
 Flash !!!
-Le carré de jardin tranquille des sages a disparu subitement ! 
+Le carré de jardin tranquille des sages a disparu subitement !
 Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être.
 Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages...
 ===
