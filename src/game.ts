@@ -54,7 +54,7 @@ const _runner = new bondage.Runner("");
 _runner.setVariableStorage(_variableStorage);
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
-export function installGameDatas(rootConfig: entity.EntityConfig) {
+export function installGameData(rootConfig: entity.EntityConfig) {
   rootConfig.variableStorage = _variableStorage;
   rootConfig.clock = _clock;
   rootConfig.app.renderer.plugins.interaction.mouseOverRenderer = true;
@@ -145,7 +145,7 @@ booyah.go({
   entityInstallers: [
     audio.installJukebox,
     audio.installFxMachine,
-    installGameDatas,
+    installGameData,
   ],
 });
 
