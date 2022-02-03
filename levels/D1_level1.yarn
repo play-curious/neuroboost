@@ -39,6 +39,7 @@ Fred_smiling: C'est ça quand on est un génie.
 You: Ouais ouais...
 Fred_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
 You: Ouais...
+<< hide >>
 Vous poussez un grand soupir avant de raccrocher
 
 << advanceTime 0:15 >>
@@ -214,37 +215,38 @@ title: Post_Test
 tags: bg|class show|fred
 position: -341.2677307128906,490.52679443359375
 ---
-Fred: Alors, ça l'a fait ?
+Fred_excited: Alors, ça l'a fait ?
 You: Je pense oui. C'était basique.
-Fred: Yes, je m'attendais à plus tordu que ça.
+Fred_smiling: Yes, je m'attendais à plus tordu que ça.
 You: Moi aussi
-Fred: Y avait quelques petits pièges, mais ils sont tellement gros, on ne pouvait pas les louper !
+Fred_smiling: Y avait quelques petits pièges, mais ils sont tellement gros, on ne pouvait pas les louper !
 You: Ah bon ?
-Fred: Yes, tu n'en as pas trouvé.
+Fred_surprised: Yes, tu n'en as pas trouvé.
 You: Non.
-Fred: C'est dommage. Tu sais qu'une mauvaise réponse t'enlève autant de point qu'une bonne réponse.
+Fred_smiling: C'est dommage. Tu sais qu'une mauvaise réponse t'enlève autant de point qu'une bonne réponse.
 You: Heuuuu...
 
 << advanceTime 0:15 >>
 
 Fred s'apprête à vous répondre quand la sonnerie retentit.
 Les résultats du test viennent de tomber...
-
+<< hide >>
 -> Consulter les résultats
     <<jump Resultats_Bad>>
 ===
 title: Resultats_Bad
-tags: bg|class show|fred
+tags: bg|class
 position: -16.689138412475586,492.05352783203125
 ---
 Hélas... Fred n'avait pas tort... Les scores s'affichent sur l'écran de la porte principale. Vous êtes dans le peloton... de queue... La semaine de sprint commence mal...
-Fred: Hé, ça va ? Tu as l'air tout blême d'un coup.
+<< show fred >>
+Fred_excited: Hé, ça va ? Tu as l'air tout blême d'un coup.
 You: Ben... J'ai tout juste <b>D-</b>.
-Fred: Hé alors ? Ce n'est pas la fin du monde. Ce n'est qu'une note parmi d'autres. Tu vas te rattraper.
+Fred_happy: Hé alors ? Ce n'est pas la fin du monde. Ce n'est qu'une note parmi d'autres. Tu vas te rattraper.
 You: Facile à dire pour toi. Tu as eu <b>A+</b> !
-Fred: Y a qu'une chose à faire dans ce cas !
+Fred_smiling: Y a qu'une chose à faire dans ce cas !
 You: Quoi donc ?
-Fred: Se vider la tête ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande !
+Fred_happy: Se vider la tête ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande !
 You: Je sais pas...
 
 << advanceTime 0:15 >>
@@ -298,22 +300,22 @@ Temde: Hello! Je te réveille?
 Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras...
 
 <<show temde>>
-Temde: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse !
+Temde_smiling: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse !
 
 
 Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit :
-Temde: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ?
+Temde_smiling: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ?
 
 <<prompt name Mon_nom: Steve>>
 
-Temde: Enchantée { $name }. Lève-toi, on a du pain sur la planche !
+Temde_smiling: Enchantée { $name }. Lève-toi, on a du pain sur la planche !
 You: Suiiiiis faaaaaaatigué...........
-Temde: Arrête tes jérémiades ! T'as bricolé comme tu as pu, ça n'a pas marché. T'as juste qu'à reprendre le chantier et basta !
+Temde_sad: Arrête tes jérémiades ! T'as bricolé comme tu as pu, ça n'a pas marché. T'as juste qu'à reprendre le chantier et basta !
 You: Noon ! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire ! 
 You: J'ai raté, j'ai raté. C'est fini, foutu !
-Temde: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Tu vas réparer ton engin académique, je ne te dis que ça ! Allez suis-moi, on t'attend là-bas !
+Temde_smiling: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Tu vas réparer ton engin académique, je ne te dis que ça ! Allez suis-moi, on t'attend là-bas !
 You: Qui m'attend ? Où là-bas ?
-Temde: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit quand même !
+Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit quand même !
 
 -> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller
     <<jump Tenter_rester_chambre>>
@@ -325,7 +327,7 @@ tags: show|temde bg|bedroom_night
 position: -719.885986328125,901.3107299804688
 ---
 You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !!
-Temde: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
+Temde_thinking: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
 
 Miss Temdé lève la paume d'une de ses mains cybernétique...
 
@@ -342,21 +344,21 @@ position: -562.1727294921875,1164.6718139648438
 << fadeOut >>
 
 L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes.
-Temde: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }.
+Temde_smiling: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }.
 You: Mais....
-Azul: T'inquiète { $name }, mes confères et moi, on arrive parfois à lire dans tes pensées. C'est pour faciliter la communication.
-Sapiens: Tout à fait. Sinon nous risquerions de perdre un temps précieux dans des prolégomènes et des malentendus sans queue ni tête.
-Temde: C'est ça oui. Comme si <b>Master Sapiens</b> savait faire court...
-Ledai: Du calme <b>Master Sapiens</b> et <b>Miss Temdé</b>. Et si nous abordions la question du soir...
-Azul: Attendez messieurs. C'est la première nuit que nous nous immisçons dans la vie de { $name }. Notre visiteur de ce soir ne sait plus à quel sage se vouer. Surtout qu'il ne nous connaît pas encore.
-Sapiens: Très juste, <b>Azul</b>. Puisque j'ai pris la parole, je me présente : je suis <b>Master Sapiens</b>, le Gardien des Savoirs
-Ledai: Et moi, je suis <b>Ledaï</b>, le Gardien des Pratiques.
-Azul: Enchanté de te rencontrer, { $name }. On m'appelle <b>Azul</b>, le Gardien des Précognitions.
-Ledai: Et tu as déjà fait la connaissance de notre 4e sage <b>Miss Temdé</b>...
-Temde: ... La Gardienne des Improvisations.
+Azul_happy: T'inquiète { $name }, mes confères et moi, on arrive parfois à lire dans tes pensées. C'est pour faciliter la communication.
+Sapiens_happy: Tout à fait. Sinon nous risquerions de perdre un temps précieux dans des prolégomènes et des malentendus sans queue ni tête.
+Temde_thinking: C'est ça oui. Comme si <b>Master Sapiens</b> savait faire court...
+Ledai_doubtful: Du calme <b>Master Sapiens</b> et <b>Miss Temdé</b>. Et si nous abordions la question du soir...
+Azul_sad: Attendez messieurs. C'est la première nuit que nous nous immisçons dans la vie de { $name }. Notre visiteur de ce soir ne sait plus à quel sage se vouer. Surtout qu'il ne nous connaît pas encore.
+Sapiens_thinking: Très juste, <b>Azul</b>. Puisque j'ai pris la parole, je me présente : je suis <b>Master Sapiens</b>, le Gardien des Savoirs
+Ledai_explaining: Et moi, je suis <b>Ledaï</b>, le Gardien des Pratiques.
+Azul_proud: Enchanté de te rencontrer, { $name }. On m'appelle <b>Azul</b>, le Gardien des Précognitions.
+Ledai_explaining: Et tu as déjà fait la connaissance de notre 4e sage <b>Miss Temdé</b>...
+Temde_smiling: ... La Gardienne des Improvisations.
 You: C'est pas possible, mon rêve devient de plus en plus en délirant.
-Azul: Pas du tout { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens.
-Sapiens: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi.
+Azul_happy: Pas du tout { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens.
+Sapiens_thinking: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi.
 -> Cékoilamétaconnexion???
     <<jump Metaconnexion>>
 -> La Métacognition, déjà entendu parler
@@ -367,20 +369,20 @@ tags: autoshow
 position: -878.8255004882812,1170.7235107421875
 ---
 You: Heuuuuu... J'ai rien compris de ce vous avez dit. La métaconnexion ???
-Azul: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien.
-Temde: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de faire ! Et de trouver une solution qui marche !
-Sapiens: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences...
+Azul_proud: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien.
+Temde_smiling: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de faire ! Et de trouver une solution qui marche !
+Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences...
 You: Les neurosciences ?
-Sapiens: Les sciences appliquées au fonctionnement de tes processus mentaux.
+Sapiens_happy: Les sciences appliquées au fonctionnement de tes processus mentaux.
 You: Quoi ?
-Temde: Quel est le mode d'emploi de ton cerveau, quoi.
-Sapiens: Hum... J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière.
-Azul: Pardonnez-lui, <b>Master Sapiens</b>. <b>Miss Temdé</b> n'y met pas les formes, mais sa pédagogie s'est révélé parfois percutante.
-Sapiens: Moui...
+Temde_sad: Quel est le mode d'emploi de ton cerveau, quoi.
+Sapiens_concerned: Hum... J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière.
+Azul_sad: Pardonnez-lui, <b>Master Sapiens</b>. <b>Miss Temdé</b> n'y met pas les formes, mais sa pédagogie s'est révélé parfois percutante.
+Sapiens_concerned: Moui...
 You: Et la métacognition alors ?
-Sapiens: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux.
+Sapiens_thinking: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux.
 You: Hein ???
-Azul: C'est-à-dire comment apprendre ... à apprendre  
+Azul_happy: C'est-à-dire comment apprendre ... à apprendre  
 
 <<jump Metacognition>>
 ===
@@ -389,10 +391,10 @@ tags: autoshow
 position: -730.5562744140625,1421.6199951171875
 ---
 You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage ?
-Ledai: Bravo, { $name }, je n'aurai pas dit mieux.
-Sapiens: Je sens que nous avons ce soir, un candidat d'exception.
-Ledai: Venons en donc au sujet de ce soir, <b>Master Sapiens</b>.
-Sapiens: Oui, la mémorisation.
+Ledai_happy: Bravo, { $name }, je n'aurai pas dit mieux.
+Sapiens_happy: Je sens que nous avons ce soir, un candidat d'exception.
+Ledai_explaining: Venons en donc au sujet de ce soir, <b>Master Sapiens</b>.
+Sapiens_thinking: Oui, la mémorisation.
 -> Qu'est-ce qu'elle a ma mémorisation?
     <<jump memorisation>>
 ===
@@ -400,21 +402,21 @@ title: memorisation
 tags: autoshow
 position: -366.2418212890625,1422.0413818359375
 ---
-Ledai: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit.
-Temde: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }.
-Sapiens: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt... 
+Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit.
+Temde_thinking: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }.
+Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt... 
 
 << changeBackground schema >>
 
-Sapiens: En bref, la cartographie de la mémoire dans le cerveau se découpe en deux zones. Comme tes deux hémisphères.
+Sapiens_thinking: En bref, la cartographie de la mémoire dans le cerveau se découpe en deux zones. Comme tes deux hémisphères.
 
 << showCloseup shelf_disorganized >>
 
-Sapiens: Il y a tout d'abord <b>La mémoire courte</b>. Elle est utilisé quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas... Et elle stocke ça dans un énorme container. 
-Sapiens: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sans ordre précis. Elle les empile en vrac, les unes sur les autres, à gauche à droite. En bref, elle range ça n'importe comment, comme un amateur, un dilettante !
+Sapiens_thinking: Il y a tout d'abord <b>La mémoire courte</b>. Elle est utilisé quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas... Et elle stocke ça dans un énorme container. 
+Sapiens_thinking: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sans ordre précis. Elle les empile en vrac, les unes sur les autres, à gauche à droite. En bref, elle range ça n'importe comment, comme un amateur, un dilettante !
 
-Ledai: Oui. Ce qui fait que quand tu es à la recherche d'une référence particulière, tu ne sais plus où elle se trouve, ni si tous les documents sont rangés au même endroit.
-Sapiens: Tout à fait, c'est le chaos ! La panique ! La catastrophe !.. Alors que <b>la mémoire longue</b>...
+Ledai_explaining: Oui. Ce qui fait que quand tu es à la recherche d'une référence particulière, tu ne sais plus où elle se trouve, ni si tous les documents sont rangés au même endroit.
+Sapiens_thinking: Tout à fait, c'est le chaos ! La panique ! La catastrophe !.. Alors que <b>la mémoire longue</b>...
 
 -> C'est quoi la mémoire longue?
     <<jump Memoire_Longue>>
@@ -425,11 +427,11 @@ position: -63.20210266113281,1418.4576416015625
 ---
 << showCloseup shelf_organized >>
 
-Sapiens: <b>La mémoire longue</b> c'est le caviar de la connaissance. Là au contraire, tout y est ordonné, rangé, archivé, classifié. Comme dans une authentique bibliothèque. Dès qu'on a besoin de trouver quelque chose, on sait où le trouver.
+Sapiens_thinking: <b>La mémoire longue</b> c'est le caviar de la connaissance. Là au contraire, tout y est ordonné, rangé, archivé, classifié. Comme dans une authentique bibliothèque. Dès qu'on a besoin de trouver quelque chose, on sait où le trouver.
 
-Ledai: Sans compter que chaque élément de <b>la mémoire longue</b> contient un index, une table des matières. Le cerveau n'a plus qu'à suivre le plan et ça roule sans sursaut.
-Sapiens: En bref, le secret pour bien apprendre réside dans ta capacité à consolider tes nouvelles connaissances, les stocker de manière logique et efficace.
-Azul: Tu as saisi ? Nos deux savants veulent te dire qu'ils vont t'aider à faire glisser tes nouveaux savoirs, de la mémoire courte à la mémoire longue.
+Ledai_explaining: Sans compter que chaque élément de <b>la mémoire longue</b> contient un index, une table des matières. Le cerveau n'a plus qu'à suivre le plan et ça roule sans sursaut.
+Sapiens_thinking: En bref, le secret pour bien apprendre réside dans ta capacité à consolider tes nouvelles connaissances, les stocker de manière logique et efficace.
+Azul_happy: Tu as saisi ? Nos deux savants veulent te dire qu'ils vont t'aider à faire glisser tes nouveaux savoirs, de la mémoire courte à la mémoire longue.
 
 << hideCloseup >>
 << changeBackground circle >>
@@ -442,16 +444,16 @@ title: Routinisation
 tags: bg|circle autoshow
 position: 243.36883544921875,1410.058349609375
 ---
-Sapiens: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
-Ledai: Il faut surtout pratiquer ! Répéter et répéter et encore répéter ! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement.
-Azul: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis pas la maîtriser.
-Ledai: Pour une fois que je suis d'accord avec <b>Azul</b>. Ainsi, tu mémorises la liste des ingrédients, les dosages, comme les étapes de préparation et les temps de cuisson.
-Temde: Yep, et comme tu n'as plus besoin d'avoir le mode d'emploi, tu deviens un sage, tu es autonome !
+Sapiens_thinking: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
+Ledai_explaining: Il faut surtout pratiquer ! Répéter et répéter et encore répéter ! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement.
+Azul_happy: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis pas la maîtriser.
+Ledai_explaining: Pour une fois que je suis d'accord avec <b>Azul</b>. Ainsi, tu mémorises la liste des ingrédients, les dosages, comme les étapes de préparation et les temps de cuisson.
+Temde_cheerful: Yep, et comme tu n'as plus besoin d'avoir le mode d'emploi, tu deviens un sage, tu es autonome !
 You: Et comment je fais pour que ma pratique devienne une routine?
-Ledai: Tout simplement en répétant, en appliquant.
-Sapiens: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : <b>les rappels libres</b>.
+Ledai_explaining: Tout simplement en répétant, en appliquant.
+Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : <b>les rappels libres</b>.
 You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil. Comment faire ?
-Ledai: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> !
+Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> !
 ===
 title: Journal_Rappel_libre
 tags: bg|bedroom_night
