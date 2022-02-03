@@ -41,7 +41,7 @@
     "pump": "^3.0.0",
     "underscore": "^1.13.1",
     "uuid": "^8.3.2",
-    "yarn-bound": "github:play-curious/yarn-bound" 
+    "yarn-bound": "github:play-curious/yarn-bound"
   },
   "devDependencies": {
     "@types/gulp-tap": "^1.0.1",

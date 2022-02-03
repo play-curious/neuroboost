@@ -1,18 +1,17 @@
 import * as PIXI from "pixi.js";
+import * as yarnBound from "yarn-bound";
 
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 import * as audio from "booyah/src/audio";
 import * as util from "booyah/src/util";
 
-import * as dialog from "./dialog";
-import * as journal from "./journal";
-
+import * as save from "./save";
 import * as clock from "./clock";
 import * as images from "./images";
+import * as dialog from "./dialog";
+import * as journal from "./journal";
 import * as variable from "./variable";
-
-import * as yarnBound from "yarn-bound";
 
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
@@ -45,16 +44,19 @@ const _variableStorage = new variable.VariableStorage({
   food: "100",
 });
 const globalHistory: yarnBound.Result[] = [];
-function runnerMaker(file: string, start: string): yarnBound.YarnBound<variable.VariableStorage> {
+function makeRunner(
+  file: string,
+  start: string
+): yarnBound.YarnBound<variable.VariableStorage> {
   const runner = new yarnBound.YarnBound({
     dialogue: file,
     startAt: start,
     variableStorage: _variableStorage,
-    functions: {}
+    functions: {},
   });
   runner.history = globalHistory;
   return runner;
-};
+}
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
 
 export function installGameData(rootConfig: entity.EntityConfig) {
@@ -63,9 +65,10 @@ export function installGameData(rootConfig: entity.EntityConfig) {
   rootConfig.app.renderer.plugins.interaction.mouseOverRenderer = true;
 }
 
-
 const params = new URLSearchParams(window.location.search);
-const startNode = params.get("startNode") || params.get("node") || "Start";
+const startNode = save.hasSave()
+  ? save.loadSave()
+  : params.get("startNode") || params.get("node") || "Start";
 
 // prettier-ignore
 let statesName = [
@@ -79,27 +82,31 @@ const startFile = params.get("level") || "start";
 const startIndex = statesName.indexOf(startFile);
 statesName.splice(0, startIndex);
 
-const states: { [k: string]: entity.EntityResolvable } = {};
+const states: { [k: string]: entity.EntityResolvable } = {
+  Start_Menu: new save.StartMenu(),
+};
 for (const stateName of statesName) {
   states[stateName === statesName[0] ? "start" : stateName] =
-    new dialog.DialogScene(
-      stateName,
-      _variableStorage,
-      _clock
-    );
+    new dialog.DialogScene(stateName, _variableStorage, _clock);
   states[`journal_${stateName}`] = new journal.JournalScene(_variableStorage);
 }
 
-async function yarnsLoader(){
-  const texts = await Promise.all(statesName.map(name => fetch(`levels/${name}.yarn`).then(async (response) => {
-    return response.text()
-  })))
+async function yarnsLoader() {
+  const texts = await Promise.all(
+    statesName.map((name) =>
+      fetch(`levels/${name}.yarn`).then(async (response) => {
+        return response.text();
+      })
+    )
+  );
 
-  let i = 0
-  for(const stateName in states){
-    if(states[stateName] instanceof dialog.DialogScene){
-      (states[stateName] as dialog.DialogScene).loadRunner(runnerMaker(texts[i], i === 0 ? startNode : "Start"));
-      i++
+  let i = 0;
+  for (const stateName in states) {
+    if (states[stateName] instanceof dialog.DialogScene) {
+      (states[stateName] as dialog.DialogScene).loadRunner(
+        makeRunner(texts[i], i === 0 ? startNode : "Start")
+      );
+      i++;
     }
   }
 }
@@ -113,8 +120,6 @@ for (const state in states) {
   i++;
 }
 transitions[previousState] = entity.makeTransition("end");
-
-
 
 const fxAssets = [
   "AlarmClock_LOOP",

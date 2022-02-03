@@ -1,12 +1,14 @@
 import * as dialog from "./dialog";
 import * as variable from "./variable";
-import * as images from "./images";
 import * as clock from "./clock";
+import * as save from "./save";
 import * as entity from "booyah/src/entity";
-import { Graphics } from "pixi.js";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
-export type YarnFunction = (this: dialog.DialogScene, ...args: any[]) => unknown;
+export type YarnFunction = (
+  this: dialog.DialogScene,
+  ...args: any[]
+) => unknown;
 
 export const fxLoops: Map<string, entity.EntitySequence> = new Map();
 
@@ -168,16 +170,27 @@ export const commands: Record<string, Command> = {
     this.activate(this.graphics.fadeOut(Number(duration)));
   },
 
-  empty(){}
+  empty() {},
 };
 
 export const functions: Record<string, YarnFunction> = {
   isFirstTime(node: string): boolean {
-    return this.runner.history.filter(
-      (result) => {return result.metadata.title === node}
-    ).length <= 1;
+    return (
+      this.runner.history.filter((result) => {
+        return result.metadata.title === node;
+      }).length <= 1
+    );
   },
   getGauge(gauge: string): number {
     return this.graphics.getGaugeValue(gauge);
-  }
-}
+  },
+  save() {
+    save.save(this.stateName);
+  },
+  resetSave() {
+    save.save();
+  },
+  hasSave(): boolean {
+    return save.hasSave();
+  },
+};
