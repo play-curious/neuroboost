@@ -1,7 +1,5 @@
 import * as PIXI from "pixi.js";
 
-import * as tween from "booyah/src/tween";
-import * as easing from "booyah/src/easing";
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 import * as util from "booyah/src/util";
@@ -49,8 +47,6 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   private opened: boolean;
   private container: PIXI.Container;
-
-  private animation: tween.Tween;
 
   private blackBackground: PIXI.Graphics;
   private popupBackground: PIXI.Sprite;
@@ -114,7 +110,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.popupBackground = this.makeSprite("images/menu/background.png",
       (it) => {
         it.anchor.set(0, 0.5);
-        it.position.set(-it.width, variable.height / 2);
+        it.position.set(0, variable.height / 2);
       });
       this.popupBackground.interactive = true;
       this.container.addChild(this.popupBackground);
@@ -125,7 +121,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.8);
-        it.position.set(0, this.popupBackground.height * 0.5);
+        it.position.set(this.popupBackground.width / 2, this.popupBackground.height * 0.66);
   
         it.interactive = true;
         it.buttonMode = true;
@@ -143,7 +139,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         }
       );
       this.creditButton.anchor.set(0.5);
-      this.creditButton.position.set(0, this.popupBackground.height * 0.37);
+      this.creditButton.position.set(this.popupBackground.width / 2, this.popupBackground.height * 0.37);
       this.creditButton.interactive = true;
       this.creditButton.buttonMode = true;
       this._on(this.creditButton, "pointertap", this._showCredits);
@@ -154,10 +150,10 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
-      this.title = this.makeSprite("images/menu/menu.png",
+      this.title = this.makeSprite("images/menu/title.png",
       (it) => {
         it.anchor.set(0.5);
-        it.position.set(0, -this.popupBackground.height / 2);
+        it.position.set(this.popupBackground.width / 2, -this.popupBackground.height / 3);
       });
       this.popupBackground.addChild(this.title);
     }
@@ -171,11 +167,15 @@ export class Menu extends extension.ExtendedCompositeEntity {
         },
         this.settings.fullscreen ? "on" : "off"
       );
-      this.fullscreenSwitcher.container.position.set(-200, -200);
+      this.fullscreenSwitcher.container.position.set(this.popupBackground.width / 2, +200);
       this.fullscreenSwitcher.onStateChange((state) => {
-        if (state === "on")
+        debugger;
+        if (state === "on") {
           util.requestFullscreen(document.getElementById("game-parent"));
-        else if (util.inFullscreen()) util.exitFullscreen();
+        }
+        else if (util.inFullscreen()) {
+          util.exitFullscreen();
+        }
         this.settings.fullscreen = state === "on";
         this.saveSettings();
       });
@@ -206,7 +206,9 @@ export class Menu extends extension.ExtendedCompositeEntity {
           }
         }
       );
-      this.musicVolumeSwitcher.container.position.y += 100;
+      this.musicVolumeSwitcher.container.position.x = 
+        this.popupBackground.width - 310;
+      this.musicVolumeSwitcher.container.position.y += 40;
       this.musicVolumeSwitcher.onStateChange((state) => {
         this._entityConfig.playOptions.setOption("musicOn", state !== "0");
         // Set volume to be 0.5 max
@@ -242,7 +244,9 @@ export class Menu extends extension.ExtendedCompositeEntity {
           }
         }
       );
-      this.soundVolumeSwitcher.container.position.y -= 100;
+      this.soundVolumeSwitcher.container.position.x = 
+        this.popupBackground.width - 290;
+      this.soundVolumeSwitcher.container.position.y -= 120;
       this.soundVolumeSwitcher.onStateChange((state) => {
         this._entityConfig.playOptions.setOption("fxOn", state !== "0");
         const volume = Number(state);
@@ -284,38 +288,10 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   open() {
     if (this.opened) return;
-    this.container.visible = true;
 
+    booyah.changeGameState("paused");
     this.debugPressCount = 0;
-    if(this.animation) this._deactivateChildEntity(this.animation);
 
-    this.animation = new tween.Tween({
-      duration: 150,
-      easing: easing.easeInOutQuart,
-      from: this.menuButton.x,
-      to: -this.menuButton.width,
-      onUpdate: (value) => {
-        this.menuButton.x = value;
-      },
-      onTeardown: () => {
-        this.menuButton.visible = false;
-        this.animation = new tween.Tween({
-          duration: 250,
-          easing: easing.easeInOutQuart,
-          from: this.popupBackground.x,
-          to: 0,
-          onUpdate: (value) => {
-            this.popupBackground.x = value;
-          },
-          onTeardown: () => {
-            this.animation = undefined;
-            booyah.changeGameState("paused");
-          }
-        });
-        this._activateChildEntity(this.animation);
-      }
-    });
-    this._activateChildEntity(this.animation);
     // Displaying the menu will be done in _onSignal()
   }
 
@@ -323,47 +299,20 @@ export class Menu extends extension.ExtendedCompositeEntity {
     if (!this.opened) return;
 
     booyah.changeGameState("playing");
-
-    if(this.animation) this._deactivateChildEntity(this.animation);
-    this.animation = new tween.Tween({
-      duration: 250,
-      easing: easing.easeInOutQuart,
-      from: this.popupBackground.x,
-      to: -this.popupBackground.width,
-      onUpdate: (value) => {
-        this.popupBackground.x = value;
-      },
-      onTeardown: () => {
-        this.menuButton.visible = true;
-        this.container.visible = false;
-        this.animation = new tween.Tween({
-          duration: 150,
-          easing: easing.easeInOutQuart,
-          from: -this.menuButton.width,
-          to: 0,
-          onUpdate: (value) => {
-            this.menuButton.x = value;
-          },
-          onTeardown: () => {
-            this.animation = undefined;
-            this.container.visible = false;
-          }
-        });
-        this._activateChildEntity(this.animation);
-      }
-    });
-    this._activateChildEntity(this.animation);
     // Hiding the menu will be done in _onSignal()
   }
 
   _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any): void {
     if (signal === "pause" && !this.opened) {
-      this.open();
       this.opened = true;
+      this.menuButton.visible = false;
+      this.container.visible = true;
+
       this._onOpen();
     } else if (signal === "play" && this.opened) {
-      this.close();
       this.opened = false;
+      this.menuButton.visible = true;
+      this.container.visible = false;
     }
   }
 
@@ -437,6 +386,7 @@ export class SpriteSwitcher<
   }
 
   switch(stateName: keyof States) {
+    debugger;
     this.currentState = stateName;
     this.container.removeChildren();
     this.currentSprite = new PIXI.Sprite(
