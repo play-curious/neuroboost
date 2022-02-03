@@ -27,7 +27,7 @@ const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
     "Narrative Design": "Ronan Le Breton",
     "Sound Design": "Jean-Baptiste Mar",
     "Graphic Design": ["Xuan Le", "Sana Coftier", "Nawel Benrhannou"],
-    Animation: ["Xuan Le", "Sana Coftier", "Nawel Benrhannou"],
+    Animation: ["Xuan Le", "Sana Coftier"],
     QA: "Ilyes Khamassi",
   },
   fontFamily: "Optimus",
