@@ -5,6 +5,7 @@ import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 
+import * as save from "./save";
 import * as clock from "./clock";
 import * as command from "./command";
 import * as variable from "./variable";
@@ -33,8 +34,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   constructor(
     public readonly stateName: string,
-    public readonly variableStorage: variable.VariableStorage,
-    public readonly clock: clock.Clock
+    public readonly startNode: string
   ) {
     super();
   }
@@ -44,6 +44,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
+    save.save(this.stateName);
+
+    this._initRunner();
+
     command.fxLoops.clear();
 
     this.disabledClick = false;
@@ -51,7 +55,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this._selectedOptions = [];
 
     // Setup graphics
-    this.graphics = new graphics.Graphics(this.variableStorage.data);
+    this.graphics = new graphics.Graphics();
     this._activateChildEntity(
       this.graphics,
       entity.extendConfig({ container: this.config.container })
@@ -59,16 +63,25 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     // Setup clock
     this._activateChildEntity(
-      this.clock,
+      this.config.clock,
       entity.extendConfig({ container: this.graphics.getUi() })
     );
-    this.clock.minutesSinceMidnight = Number(this.variableStorage.get("time"));
+    this.config.clock.minutesSinceMidnight = Number(
+      this.config.variableStorage.get("time")
+    );
 
     this._advance(-1);
   }
 
-  public loadRunner(runner: yarnBound.YarnBound<variable.VariableStorage>) {
-    this.runner = runner;
+  _initRunner() {
+    this.runner = new yarnBound.YarnBound({
+      dialogue: this.config.levels[this.stateName],
+      startAt: this.startNode,
+      variableStorage: this.config.variableStorage,
+      functions: {},
+    });
+    this.runner.history = this.config.globalHistory;
+
     for (const funcName in command.functions) {
       this.runner.registerFunction(
         funcName,
@@ -167,7 +180,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.graphics.showDialog(
       text,
       speaker,
-      this.variableStorage.get("name"),
+      this.config.variableStorage.get("name"),
       this._autoshowOn,
       () => {
         if (this.disabledClick) return;
@@ -191,6 +204,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         .options[i];
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
       if (
+        // TODO: fix bug in YarnBound fork
         option.hashtags.includes("once") &&
         this._selectedOptions.includes(selectedOptionId)
       )

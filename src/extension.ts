@@ -1,5 +1,6 @@
 import * as PIXI from "pixi.js";
 import * as howler from "howler";
+import MultiStyleText from "pixi-multistyle-text";
 
 import * as narration from "booyah/src/narration";
 import * as entity from "booyah/src/entity";
@@ -10,8 +11,7 @@ import * as variable from "./variable";
 import * as images from "./images";
 import * as clock from "./clock";
 import * as util from "booyah/src/util";
-
-import MultiStyleText from "pixi-multistyle-text";
+import * as yarnBound from "yarn-bound";
 
 export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
   get config(): ExtendedEntityConfig {
@@ -93,6 +93,8 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
 
 interface ExtendedEntityConfig extends entity.EntityConfig {
   variableStorage: variable.VariableStorage;
+  globalHistory: yarnBound.Result[];
+  levels: Record<string, string>;
   container: PIXI.Container;
   clock: clock.Clock;
   directives: booyah.Directives;

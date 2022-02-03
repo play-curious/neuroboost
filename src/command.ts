@@ -52,7 +52,7 @@ export const commands: Record<string, Command> = {
       message.replace(/_/g, " "),
       _default.replace(/_/g, " ")
     )?.trim();
-    this.variableStorage.set(
+    this.config.variableStorage.set(
       varName,
       value || (_default.replace(/_/g, " ") as any)
     );
@@ -60,7 +60,7 @@ export const commands: Record<string, Command> = {
 
   eval(code: string) {
     const evaluated = eval(code);
-    this.variableStorage.set("eval", evaluated);
+    this.config.variableStorage.set("eval", evaluated);
   },
 
   setTime(time: clock.ResolvableTime) {
@@ -69,54 +69,56 @@ export const commands: Record<string, Command> = {
     while (minutesSinceMidnight >= clock.dayMinutes)
       minutesSinceMidnight -= clock.dayMinutes;
 
-    this.variableStorage.set("time", `${minutesSinceMidnight}`);
+    this.config.variableStorage.set("time", `${minutesSinceMidnight}`);
 
-    this.clock.minutesSinceMidnight = minutesSinceMidnight;
+    this.config.clock.minutesSinceMidnight = minutesSinceMidnight;
   },
 
   advanceTime(time: clock.ResolvableTime) {
     const [, , minutesToAdvance] = clock.parseTime(time);
-    const minutesSinceMidnight = Number(this.variableStorage.get("time"));
+    const minutesSinceMidnight = Number(
+      this.config.variableStorage.get("time")
+    );
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
 
     while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
 
-    this.variableStorage.set("time", `${newMinutes}`);
+    this.config.variableStorage.set("time", `${newMinutes}`);
 
-    this.activate(this.clock.advanceTime(time));
+    this.activate(this.config.clock.advanceTime(time));
   },
 
   hideClock() {
-    this.clock.hidden = true;
+    this.config.clock.hidden = true;
   },
 
   showClock() {
-    this.clock.hidden = false;
+    this.config.clock.hidden = false;
   },
 
   setGauge<VarName extends keyof variable.Gauges>(
     gaugeName: VarName,
     value: variable.Gauges[VarName]
   ) {
-    (this as dialog.DialogScene).graphics.setGauge(gaugeName, Number(value));
+    this.graphics.setGauge(gaugeName, Number(value));
   },
 
   addToGauge<VarName extends keyof variable.Gauges>(
     gaugeName: VarName,
     value: variable.Gauges[VarName]
   ) {
-    let oldValue = this.variableStorage.get(gaugeName);
+    let oldValue = this.config.variableStorage.get(gaugeName);
     const newValue = Math.min(Number(oldValue) + Number(value), 100);
-    (this as dialog.DialogScene).variableStorage.set(gaugeName, `${newValue}`);
+    this.config.variableStorage.set(gaugeName, `${newValue}`);
   },
 
   removeFromGauge<VarName extends keyof variable.Gauges>(
     gaugeName: VarName,
     value: variable.Gauges[VarName]
   ) {
-    let oldValue = this.variableStorage.get(gaugeName);
+    let oldValue = this.config.variableStorage.get(gaugeName);
     const newValue = Math.max(Number(oldValue) - Number(value), 0);
-    (this as dialog.DialogScene).variableStorage.set(gaugeName, `${newValue}`);
+    this.config.variableStorage.set(gaugeName, `${newValue}`);
   },
 
   music(musicName: string) {
