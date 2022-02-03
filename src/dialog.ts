@@ -70,10 +70,15 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this.config.variableStorage.get("time")
     );
 
+    // Hide gauges by default
+    this.graphics.toggleGauges(false);
+
     this._advance(-1);
+
+    this._parseFileTags();
   }
 
-  _initRunner() {
+  private _initRunner() {
     this.runner = new yarnBound.YarnBound({
       dialogue: this.config.levels[this.stateName],
       startAt: this.startNode,
@@ -87,6 +92,19 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         funcName,
         command.functions[funcName].bind(this)
       );
+    }
+  }
+
+  private _parseFileTags() {
+    if (this.metadata.filetags) {
+      // Show gauges as specified in file tags
+      for (const tag of this.metadata.filetags) {
+        if (tag.startsWith("gauges")) {
+          const values = tag.split(":")[1].trim();
+          const gauges = values.split(" ");
+          this.graphics.toggleGauges(true, ...gauges);
+        }
+      }
     }
   }
 
