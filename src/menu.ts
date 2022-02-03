@@ -169,7 +169,6 @@ export class Menu extends extension.ExtendedCompositeEntity {
       );
       this.fullscreenSwitcher.container.position.set(this.popupBackground.width / 2, +200);
       this.fullscreenSwitcher.onStateChange((state) => {
-        debugger;
         if (state === "on") {
           util.requestFullscreen(document.getElementById("game-parent"));
         }
@@ -386,7 +385,6 @@ export class SpriteSwitcher<
   }
 
   switch(stateName: keyof States) {
-    debugger;
     this.currentState = stateName;
     this.container.removeChildren();
     this.currentSprite = new PIXI.Sprite(
