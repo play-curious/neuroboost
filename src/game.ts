@@ -66,7 +66,8 @@ const stateNames = [
   "D1_level1",
   "D1_level2",
   "D2_level1",
-  "D2_level2"
+  "D2_level2",
+  "End_Screen"
 ];
 
 let startingLevel = "Start_Menu";
