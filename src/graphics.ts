@@ -210,7 +210,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     let speaker: string, mood: string, dialog: string;
     if (name) [speaker, mood] = name.split("_");
-    console.log(speaker, mood, dialog);
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
@@ -319,7 +318,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
-
     const animationShifting = 120;
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
@@ -362,7 +360,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               choicebox.buttonMode = true;
 
               this._on(choicebox, "pointerup", () => {
-                onBoxClick(Number(nodeOptions[nodeOptions.length - (1 + i)].id));
+                onBoxClick(Number(nodeOptions[i].id));
               });
 
               this._on(choicebox, "mouseover", () => {
@@ -398,7 +396,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       choicebox.addChild(
         this.makeText(
-          nodeOptions[nodeOptions.length - (1 + i)].text,
+          nodeOptions[i].text,
           {
             fill: "#fdf4d3",
             fontFamily: "Ubuntu",
@@ -430,6 +428,32 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       arrow_back.buttonMode = true;
       this._on(arrow_back, "pointerup", () => {
         onBoxClick(subchoice);
+      });
+      this._on(arrow_back, "mouseover", () => {
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 200,
+            easing: easing.easeOutBack,
+            from: 0.65,
+            to: 0.66,
+            onUpdate: (value) => {
+              arrow_back.scale.set(value);
+            },
+          })
+        );
+      });
+      this._on(arrow_back, "mouseout", () => {
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 200,
+            easing: easing.easeOutBack,
+            from: 0.66,
+            to: 0.65,
+            onUpdate: (value) => {
+              arrow_back.scale.set(value);
+            },
+          })
+        );
       });
 
       this._nodeDisplay.addChild(arrow_back);
@@ -564,12 +588,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const baseDir = `images/bg/${bg}`;
     const baseJson = require(`../${baseDir}/base.json`);
 
-    console.log("mood before", mood);
-
     // If mood is incorrect, get default one
     if (!_.has(baseJson, mood)) mood = baseJson["default"];
-
-    console.log("mood after", mood);
 
     // For each part
     for (const bgPart of baseJson[mood]) {

@@ -198,7 +198,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       });
       if(option.text === "back") indexOfBack = i;
     }
-    console.log(options);
+    options.reverse();
     this.graphics.setChoice(
       options,
       (id) => {
