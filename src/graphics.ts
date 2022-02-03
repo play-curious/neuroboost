@@ -18,7 +18,6 @@ const templateSettings = {
 const dialogRegexp = /^([a-zA-Z]+)(_([a-zA-Z]+))?:(.+)/;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
-  private _fade: PIXI.Graphics;
   private _lastBg: string;
   private _lastBgMood: string;
   private _lastCharacter: string;
@@ -31,6 +30,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   >;
 
+  private _fade: PIXI.Graphics;
   private _container: PIXI.Container;
   private _backgroundLayer: PIXI.Container;
   private _backgroundEntity: entity.ParallelEntity;
@@ -116,7 +116,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       .endFill();
     this._fade.alpha = 0;
     this._fade.visible = false;
-    this._fxLayer.addChild(this._fade);
+    this._container.addChild(this._fade);
   }
 
   public getGaugeValue(name: string): number {
@@ -521,7 +521,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         ])
       );
 
-      this._nodeDisplay.addChild(highlight);
+      //this._nodeDisplay.addChild(highlight);
     }
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
@@ -632,7 +632,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public addCharacter(character?: string, mood?: string): void {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
-    debugger;
+    
     // Register last character & mood
     const characterChanged = character !== this._lastCharacter;
     this._lastCharacter = character;
