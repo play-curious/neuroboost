@@ -39,7 +39,7 @@ colorID: 0
 position: -494,361
 ---
 << if isFirstTime("Que_Faire") >>
-On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses... 
+On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses...
 << endif >>
 
 << if getGauge("sleep") >= 50 || getGauge("food") >= 50 >>
@@ -61,11 +61,11 @@ On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait
 
 ===
 title: DanceFloor2
-tags: 
+tags:
 colorID: 0
 position: 12,605
 ---
-Vous rejoignez le centre de la piste. Vous levez le bras, histoire d'indiquer à la foule que vous êtes sur le ring! Prêt à leur accorder un nouveau show exclusif et endiablé! Tout le monde s'arrête de gigoter et se rassemble tout autour de vous. 
+Vous rejoignez le centre de la piste. Vous levez le bras, histoire d'indiquer à la foule que vous êtes sur le ring! Prêt à leur accorder un nouveau show exclusif et endiablé! Tout le monde s'arrête de gigoter et se rassemble tout autour de vous.
 C'est la classe, vous voilà redevenu le centre d'attention de la soirée, le centre d'attraction de la salle.
 
 Vous rentrez peu à peu en transe, au rythme de la musique. Puis, au bout de quelques minutes, vous décollez et vous atteignez à la vitesse de la lumière l'orbite de la planète Disco ! Et c'est reparti pour une bonne heure de Breaking Beat endiablé ! Votre performance rencontre un succès intergalactique et musicalesque !
@@ -76,20 +76,20 @@ Vous rentrez peu à peu en transe, au rythme de la musique. Puis, au bout de que
     <<jump Que_Faire>>
 ===
 title: Cafe_ou_Alcool
-tags: 
+tags:
 colorID: 0
 position: -614,863
 ---
-Sans surprise, le bar n'est plus aussi approvisionné ! Il ne reste plus aucun soft doux, ni même de Xeno Cola. 
-Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un shot de X-Espresso ou une canette de ZedBoul. 
+Sans surprise, le bar n'est plus aussi approvisionné ! Il ne reste plus aucun soft doux, ni même de Xeno Cola.
+Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un shot de X-Espresso ou une canette de ZedBoul.
 
--> Vous laissez tomber 
+-> Vous laissez tomber
     <<jump Que_Faire>>
--> Vous vous résignez 
+-> Vous vous résignez
     <<jump Drink_Bad>>
 ===
 title: Medoc_Bot
-tags: 
+tags:
 colorID: 0
 position: -13,943
 ---
@@ -97,7 +97,7 @@ Vous vous dirigez vers le bar, en pure perte. Encore une fois, tous les snack on
 
  << show barbot >>
 BarBot: Vous désirez ?
-You: Manger ton machin coloré qui rebooste. 
+You: Manger ton machin coloré qui rebooste.
 BarBot: À sucer ou avaler ?
 You: Le truc à sucer !
 BarBot: La boule magique ?
@@ -106,13 +106,13 @@ BarBot: Une boule magique alors.
 You: Il y a quoi au juste dedans ?
 BarBot: Des molécules actives de synthèse. C'est un stupéfiant de catégorie 1, banal, à consommer sans modération.
 
--> Vous préférez ne pas avaler ce truc 
+-> Vous préférez ne pas avaler ce truc
     <<jump Que_Faire>>
--> Vous prenez quand même la boule magique 
+-> Vous prenez quand même la boule magique
     <<jump Eat_Bad>>
 ===
 title: Metal_Jam
-tags: 
+tags:
 colorID: 0
 position: 98,349
 ---
@@ -127,7 +127,7 @@ Vous êtes applaudi, encore et encore et encore... Bon joueur, vous accordez à 
     <<jump Que_Faire>>
 ===
 title: End_of_Party
-tags: 
+tags:
 colorID: 0
 position: -1084,1219
 ---
@@ -137,7 +137,7 @@ You: Fred, il est tard, il est temps d'aller faire un somme.
 Fred: Déjà ? Je suis en pleine conversation...
 You: Je suis fatigué, j'y vais.
 Fred: OK. T'as raison. Je te suis.
-Fred dit bonne nuit à ses interlocuteurs. Vous aussi. Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle. 
+Fred dit bonne nuit à ses interlocuteurs. Vous aussi. Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle.
 
 -> Vite ! Au lit
     <<jump Go_To_Bed_Good>>
@@ -148,7 +148,7 @@ You: Déjà ? Tu déclares forfait ?
 Fred: Yes yes.
 You: OK, je te suis.
 Fred: Cool...
-Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle. 
+Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle.
 
 -> Vite ! Au lit
     <<jump Go_To_Bed_VeryGood>>
@@ -172,7 +172,7 @@ You: Ouais
 Fred: Je suis content que tu sois venu ce soir. Tu as assuré. Tu as mis le groove à la salle!
 You: Merci. Bonne nuit, Fred.
 Fred: Pareil.
-Sur ces mots, Fred s'éloigne et vous laisse. 
+Sur ces mots, Fred s'éloigne et vous laisse.
 
 -> Se Reposer
     <<jump Se_Reposer_Good>>
@@ -185,10 +185,10 @@ position: -616,1387
 Arrivé devant la porte de votre chambre, Fred se tourne vers vous.
 Fred: C'est vraiment la hype ce soir.
 You: Ouais
-Fred: Non seulement tu es venu, tu as mis le groove dans la salle. Mais si j'étais pas venu te chercher, t'étais encore branché sur les vibes de la fête... Chapeau bas. 
+Fred: Non seulement tu es venu, tu as mis le groove dans la salle. Mais si j'étais pas venu te chercher, t'étais encore branché sur les vibes de la fête... Chapeau bas.
 You: Merci, Fred.  Bonne nuit.
 Fred: T'es vraiment un winner. Bonne nuit aussi.
-Sur ces confidences, ces louanges, Fred s'éloigne et vous laisse. 
+Sur ces confidences, ces louanges, Fred s'éloigne et vous laisse.
 
 -> Se Reposer
     <<jump Se_Reposer_Good>>
@@ -211,9 +211,9 @@ position: 47,1248
 ---
 << add gauge Sleep 40 >>
 La seconde vous dormez déjà.
-Et la minute suivante vous entendez le bip bip de votre horloge connectée. Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'hier. Vous vous changez rapidement. Ce qui vous laisse le temps de prendre un petit déjeuner. 
+Et la minute suivante vous entendez le bip bip de votre horloge connectée. Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'hier. Vous vous changez rapidement. Ce qui vous laisse le temps de prendre un petit déjeuner.
 
--> Petit déjeuner 
+-> Petit déjeuner
     <<jump Petit_Dejeuner_Good>>
 ===
 title: Petit_Dejeuner_Good
@@ -237,12 +237,12 @@ Ce matin, vous retrouvez votre ami Fred, qui vous attend avec le sourire.
 << show fred>>
 Fred: Yolo, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps...
 You: Ouais...
-Fed: Je vois ça. J'espère que tu as bien dormi. 
+Fed: Je vois ça. J'espère que tu as bien dormi.
 You: Ouais.
 Fred: Yes yes. Moi aussi. On se revoit tout à l'heure.
 
 Vous vous rendez à votre poste. Vous vous calez sur votre siège et prenez connaissance des instructions qui défilent sur l'écran. Vous savez comment piloter un drone d'ingénierie. Vous êtes même doué à ce jeu
-Enfin, vous vous sentez suffisamment reposé. En effet, vous appliquez sans trop de difficulté les consignes. À part une erreur ou deux, vous guidez votre appareil à bon port. 
+Enfin, vous vous sentez suffisamment reposé. En effet, vous appliquez sans trop de difficulté les consignes. À part une erreur ou deux, vous guidez votre appareil à bon port.
 Puis, vous sortez de la salle de classe.
 <<jump Sortir>>
 ===
@@ -268,12 +268,12 @@ tags: bg|circle
 colorID: 0
 position: -1230,778
 ---
-Nonononoon... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition. 
-Vous devez respecter votre cycle de sommeil et d'alimentation ! 
+Nonononoon... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition.
+Vous devez respecter votre cycle de sommeil et d'alimentation !
 
 Vous allez devoir retourner à cette soirée festive...
 
--> Retourner à la fête 
+-> Retourner à la fête
     <<jump Start>>
 ===
 title: Go_To_Bed_Loose
@@ -281,7 +281,7 @@ tags: bg|party
 colorID: 1
 position: -1235,1648
 ---
-Mince, il ne reste plus personne sur la piste. Vous ne ne voyez plus Fred. Il est sacrément tard, ou sacrément tôt. Les premiers rayons de soleil filtrent à travers les fenêtres de la salle. 
+Mince, il ne reste plus personne sur la piste. Vous ne ne voyez plus Fred. Il est sacrément tard, ou sacrément tôt. Les premiers rayons de soleil filtrent à travers les fenêtres de la salle.
 Vous avez péché par ambition. Vous n'avez pas assez écouté votre corps. Vous êtes épuisé, totalement à plat. Il est plus que temps d'aller dormir.  Vous sentez que cela cogne dans votre tête. Allez-vous pouvoir récupérer assez de sommeil ?...
 
 <<jump SeReposer>>
@@ -294,25 +294,33 @@ position: -902,1646
 << hideGauges >>
 Vous filez dans votre chambre en titubant. Vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent ! Vous avez l'impression de rester coincé une heure dans ce cagibi.
 C'est pénible, surtout que votre vision se trouble, se dédouble. Pas de doute, vous n'avez pas su quitter l'arène à temps. Vous avez franchi la ligne rouge. Vous êtes plus que crevé...
-Vous avez la tête qui tourne et qui serre, qui vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité. 
-Non, décidément, rien à faire, vous n'arrivez pas à vous endormir... 
+Vous avez la tête qui tourne et qui serre, qui vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité.
+Non, décidément, rien à faire, vous n'arrivez pas à vous endormir...
 
 <<jump Bip_Bip>>
 ===
-title:  
+title: Bip_Bip
 tags: bg|bedroom
 colorID: 0
 position: -569,1646
 ---
+<< loopFX AlarmClock_LOOP 2000 >>
+
 Argh... L'horloge connectée vous fait bondir de votre lit ! Il est encore trop tôt ! Vous ne vous êtes toujours pas reposé. Vous aimeriez avoir une bonne nuit de sommeil...
+
+<< stopFX AlarmClock_LOOP >>
+
 Vous avez encore raté votre soirée. Vous avez voulu battre Fred à son propre jeu. Vous étiez tellement obsédé par l'idée de gagner que vous avez négligé votre bien-être. Vous n'avez pas écouté votre corps.
+
+<< fx Failure >>
+
 Au final, vous avez encore perdu...
 
--> Recommencer 
+-> Recommencer
     <<jump Replay>>
 ===
 title: Drink_Bad
-tags: 
+tags:
 colorID: 0
 position: -908,644
 ---
@@ -324,7 +332,7 @@ Tant pis, vous avez besoin d'un coup de pouce... Du moins, le pensez-vous...
     <<jump Que_Faire>>
 ===
 title: Eat_Bad
-tags: 
+tags:
 colorID: 0
 position: -386,723
 ---

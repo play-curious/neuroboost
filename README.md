@@ -18,6 +18,10 @@ Build for production with `yarn dist`
 
 Run the following command: `yarn add github:play-curious/repo-name -f`
 
+### Jump to specific node
+
+Type on your browser: `www.domain.com/?node=NodeTitle&level=LevelName`
+
 ### YarnSpinner
 
 TODO
