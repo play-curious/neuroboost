@@ -22,20 +22,12 @@ const defaultSettings: Settings = {
 
 const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
   credits: {
-    Programming: [
-      "Camille Abella",
-      "André Quentin",
-      "Maréchal Eliot"
-    ],
-    "Game Design": "?",
-    "Graphic Design": [
-      "Xuan",
-      "Sana"
-    ],
-    Animation: [
-      "Xuan",
-      "Sana"
-    ],
+    Programming: ["Camille Abella", "André Quentin", "Maréchal Eliot"],
+    "Game Design": "Jesse Himmelstein",
+    "Narrative Design": "Ronan Le Breton",
+    "Sound Design": "Jean-Baptiste Mar",
+    "Graphic Design": ["Xuan Le", "Sana Coftier", "Nawel Benrhannou"],
+    Animation: ["Xuan Le", "Sana Coftier"],
     QA: "Ilyes Khamassi",
   },
   fontFamily: "Optimus",
