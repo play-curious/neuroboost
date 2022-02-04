@@ -60,7 +60,9 @@ export function installGameData(rootConfig: entity.EntityConfig) {
 }
 
 const params = new URLSearchParams(window.location.search);
-const startNode = params.get("startNode") || params.get("node") || "Start";
+const startingNode = params.get("startNode") || params.get("node") || "Start";
+const startingScene =
+  params.get("level") || params.get("scene") || "Start_Menu";
 
 // prettier-ignore
 const stateNames = [
@@ -71,18 +73,17 @@ const stateNames = [
   "End_Screen"
 ];
 
-let startingLevel = "Start_Menu";
-
 const states: { [k: string]: entity.EntityResolvable } = {
   Start_Menu: new save.StartMenu(),
 };
 for (const stateName of stateNames) {
-  states[stateName] = new dialog.DialogScene(stateName, startNode);
-  states[`journal_${stateName}`] = new journal.JournalScene(variableStorage);
+  states[stateName] = new dialog.DialogScene(stateName, startingNode);
+  if (stateName === "D1_level1")
+    states[`journal_${stateName}`] = new journal.JournalScene(variableStorage);
 }
 
 async function levelLoader(entityConfig: entity.EntityConfig) {
-  const levels: { [k: string]: string } = {};
+  const levels: Record<string, string> = {};
   await Promise.all(
     stateNames.map(async (name) => {
       const response = await fetch(`levels/${name}.yarn`);
@@ -138,7 +139,7 @@ const screenSize = new PIXI.Point(1920, 1080);
 const splashScreen = "images/bg/outside/background.png";
 
 booyah.go({
-  startingScene: params.get("level") || params.get("scene") || startingLevel,
+  startingScene,
   states,
   transitions,
   graphicalAssets: images.graphicalAssets,
