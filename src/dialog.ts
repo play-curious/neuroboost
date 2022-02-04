@@ -192,7 +192,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       speaker,
       this.config.variableStorage.get("name"),
       this._autoshowOn,
-      this._advance.bind(this)
+      () => this._advance.bind(this)(id)
     );
   }
 
