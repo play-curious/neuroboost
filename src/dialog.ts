@@ -110,7 +110,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         command.functions[funcName].bind(this)
       );
     }
-    
+
     this.runner.advance();
   }
 
@@ -181,7 +181,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _handleDialog(placeholder?: string, id?: number) {
     const textResult = this.runner.currentResult as yarnBound.TextResult;
-    const text = placeholder || (this.runner.currentResult as yarnBound.TextResult).text;
+    const text =
+      placeholder || (this.runner.currentResult as yarnBound.TextResult).text;
     let speaker = "";
     if (!placeholder && textResult.markup[0]?.name === "character") {
       speaker = textResult.markup[0].properties["name"];
@@ -225,11 +226,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       if (option.text === "back") indexOfBack = i;
     }
 
-    if(options.length === 1 && indexOfBack !== -1){
-      this._handleDialog("Vous ne pouvez rien faire ici...", indexOfBack);
-      return;
-    }
-    
+    // if(options.length === 1 && indexOfBack !== -1){
+    //   this._handleDialog("Vous ne pouvez rien faire ici...", indexOfBack);
+    //   return;
+    // }
+
     options.reverse();
 
     this.graphics.setChoice(

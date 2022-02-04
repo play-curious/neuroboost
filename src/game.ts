@@ -45,7 +45,7 @@ const variableStorage = new variable.VariableStorage({
   sleep: "100",
   food: "100",
   learning: "0",
-  mentalLoad: "0"
+  mentalLoad: "0",
 });
 const globalHistory: yarnBound.Result[] = [];
 

@@ -61,7 +61,7 @@ tags:
 colorID: 0
 position: -439,141
 ---
-<< if isFirstTime() >>
+<< if !visited() >>
 Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << endif >>
 << visit >>
@@ -200,7 +200,7 @@ tags:
 colorID: 0
 position: -239,909
 ---
-<< if isFirstTime() >>
+<< if !visited() >>
 La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la piste de danse. Vous allez lui montrer que vous aussi, vous n'êtes pas un looser ! Alors ? quel est votre plan d'attaque ?
 << endif >>
 << visit >>

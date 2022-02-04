@@ -204,19 +204,8 @@ export const commands: Record<string, Command> = {
 };
 
 export const functions: Record<string, YarnFunction> = {
-  isFirstTime(node?: string): boolean {
-    if(!node) {
-      node = this.runner.currentResult?.metadata.title;
-    }
-    const visited = node ? this.visited.has(node) : false;
-    console.log(node, "isFirstTime?", !visited);
-    return !visited;
-  },
-  visited(node?: string): boolean {
-    if(!node) {
-      node = this.runner.currentResult?.metadata.title;
-    }
-    const visited = node ? this.visited.has(node) : false;
+  visited(node = this.metadata.title): boolean {
+    const visited = this.visited.has(node);
     console.log(node, "visited?", visited);
     return visited;
   },

@@ -69,7 +69,7 @@ tags: bg|bedroom freechoice
 colorID: 0
 position: -895,604
 ---
-<< if isFirstTime() >>
+<< if !visited() >>
 Que faites-vous maintenant?
 << endif >>
 << visit >>
