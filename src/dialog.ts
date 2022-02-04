@@ -23,13 +23,30 @@ declare module "yarn-bound" {
   }
 }
 
+export function isText(
+  result: yarnBound.Result
+): result is yarnBound.TextResult {
+  return result instanceof yarnBound.TextResult;
+}
+
+export function isCommand(
+  result: yarnBound.Result
+): result is yarnBound.CommandResult {
+  return result instanceof yarnBound.CommandResult;
+}
+
+export function isOption(
+  result: yarnBound.Result
+): result is yarnBound.OptionsResult {
+  return result instanceof yarnBound.OptionsResult;
+}
+
 export class DialogScene extends extension.ExtendedCompositeEntity {
   private _lastNodeData: yarnBound.Metadata;
-  private _autoshowOn: boolean;
   private _selectedOptions: string[];
+  private _autoshowOn: boolean;
 
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
-  public disabledClick: boolean;
   public graphics: graphics.Graphics;
   public visited: Set<string>;
 
@@ -51,7 +68,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     command.fxLoops.clear();
 
-    this.disabledClick = false;
     this._autoshowOn = false;
     this._selectedOptions = [];
     this.visited = new Set();
@@ -122,7 +138,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(selectId?: number): void {
-    this.disabledClick = true;
     // If result is undefined, stop here
     if (this.metadata.hasOwnProperty("isDialogueEnd")) {
       this._transition = entity.makeTransition();
@@ -137,58 +152,31 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       return;
     }
 
-    this._activateChildEntity(
-      new entity.EntitySequence([
-        () =>
-          (() => {
-            const { lastBg, lastMood } = this.graphics.last;
-            const [bg, mood] = this.metadata.tags
-              .split(/\s+/)
-              .find((tag) => tag.startsWith("bg|"))
-              ?.replace("bg|", "")
-              .split("_") || ["GNEUH"];
-            return (bg !== "GNEUH" && bg !== lastBg) || mood !== lastMood;
-          })() && this.metadata.title !== this._lastNodeData?.title
-            ? this.graphics.fadeIn(200)
-            : new entity.FunctionCallEntity(() => null),
-        new entity.FunctionCallEntity(() => {
-          this.graphics.hideNode();
-          this.graphics.showDialogLayer();
+    this.graphics.hideNode();
+    this.graphics.showDialogLayer();
 
-          // Check if the node data has changed
-          if (this._lastNodeData?.title !== this.metadata.title) {
-            this._onChangeNodeData(this._lastNodeData, this.metadata);
-            this._lastNodeData = this.metadata;
-          }
+    // Check if the node data has changed
+    if (this._lastNodeData?.title !== this.metadata.title) {
+      this._onChangeNodeData(this._lastNodeData, this.metadata);
+      this._lastNodeData = this.metadata;
+    }
 
-          if (this.runner.currentResult instanceof yarnBound.TextResult) {
-            this.activate(this.graphics.fadeOut(200));
-            this._handleDialog();
-          } else if (
-            this.runner.currentResult instanceof yarnBound.OptionsResult
-          ) {
-            this.activate(this.graphics.fadeOut(200));
-            if (this._hasTag(this.metadata, "freechoice")) {
-              this._handleFreechoice();
-            } else {
-              this._handleChoice();
-            }
-          } else if (
-            this.runner.currentResult instanceof yarnBound.CommandResult
-          ) {
-            this._handleCommand();
-          } else {
-            throw new Error(
-              `Unknown bondage result ${this.runner.currentResult}`
-            );
-          }
-        }),
-        this.graphics.fadeOut(200),
-        new entity.FunctionCallEntity(() => {
-          this.disabledClick = false;
-        }),
-      ])
-    );
+    const result = this.runner.currentResult;
+
+    if (isText(result)) {
+      this._handleDialog();
+    } else if (isOption(result)) {
+      if (this._hasTag(this.metadata, "freechoice")) {
+        this._handleFreechoice();
+      } else {
+        this._handleChoice();
+      }
+    } else if (isCommand(result)) {
+      this._handleCommand();
+    } else {
+      console.error("Unknown bondage result:", this.runner.currentResult);
+      throw new Error(`Unknown bondage result`);
+    }
   }
 
   private _handleDialog(placeholder?: string, id?: number) {
@@ -203,47 +191,50 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       speaker,
       this.config.variableStorage.get("name"),
       this._autoshowOn,
-      () => {
-        if (this.disabledClick) return;
-        this._advance.bind(this)(id);
-      }
+      this._advance.bind(this)
     );
   }
 
   private _handleChoice() {
+    const result = this.runner.currentResult;
+
+    if (!isOption(result))
+      throw new Error("Called _handleChoice for unknown result");
+
     this.metadata.choiceId
       ? this.metadata.choiceId++
       : (this.metadata.choiceId = 0);
     const options: Record<string, string>[] = [];
-    let indexOfBack = -1;
-    for (
-      let i = 0;
-      i < (this.runner.currentResult as yarnBound.OptionsResult).options.length;
-      i++
-    ) {
-      const option = (this.runner.currentResult as yarnBound.OptionsResult)
-        .options[i];
+
+    let indexOfBack = 0;
+    for (let i = 0; i < result.options.length; i++) {
+      const option = result.options[i];
+
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
       if (
         option.hashtags.includes("once") &&
         this._selectedOptions.includes(selectedOptionId)
       )
         continue;
+
       options.push({
         text: option.text,
         id: `${i}`,
       });
+
       if (option.text === "back") indexOfBack = i;
     }
+
     if(options.length === 1 && indexOfBack !== -1){
       this._handleDialog("Vous ne pouvez rien faire ici...", indexOfBack);
       return;
     }
+    
     options.reverse();
+
     this.graphics.setChoice(
       options,
       (id) => {
-        if (this.disabledClick) return;
         this.config.fxMachine.play("Click");
         this._selectedOptions.push(
           `${this.metadata.title}|${this.metadata.choiceId}|${id}`
@@ -254,9 +245,31 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     );
   }
 
+  private _handleFreechoice() {
+    const result = this.runner.currentResult;
+
+    if (!isOption(result))
+      throw new Error("Called _handleChoice for unknown result");
+
+    const options: string[] = [];
+    for (const option of result.options) {
+      if (option.isAvailable) options.push(option.text);
+    }
+
+    this.graphics.setFreechoice(options, (id) => {
+      this.config.fxMachine.play("Click");
+      this._advance.bind(this)(id);
+    });
+  }
+
   private _handleCommand(): void {
     // If the text was inside <<here>>, it will get returned as a CommandResult string, which you can use in any way you want
-    const cmd = (this.runner.currentResult as yarnBound.CommandResult).command;
+    const result = this.runner.currentResult;
+
+    if (!isCommand(result))
+      throw new Error("Called _handleCommand for unknown result");
+
+    const cmd = result.command;
     const commandParts = cmd.trim().split(/\s+/);
 
     // Attempt to call a method based on the command
@@ -269,21 +282,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     command.commands[commandParts[0]].bind(this)(
       ...commandParts.slice(1).map((arg) => arg.trim())
     );
+
     this._advance();
-  }
-
-  private _handleFreechoice() {
-    const options: string[] = [];
-    for (const option of (this.runner.currentResult as yarnBound.OptionsResult)
-      .options) {
-      if (option.isAvailable) options.push(option.text);
-    }
-
-    this.graphics.setFreechoice(options, (id) => {
-      if (this.disabledClick) return;
-      this.config.fxMachine.play("Click");
-      this._advance.bind(this)(id);
-    });
   }
 
   private _onChangeNodeData(
