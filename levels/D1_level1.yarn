@@ -73,10 +73,10 @@ title: Action_List
 tags: bg|bedroom freechoice
 position: -847.2033081054688,-821.7307662963867
 ---
-<< if isFirstTime("Action_List") >>
+<< if isFirstTime() >>
 Que faites-vous maintenant ?
 << endif >>
-
+<< visit >>
 << if $time >= 720 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
@@ -142,6 +142,7 @@ Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir
 Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, puis Lou, puis Cam...
 
 << advanceTime 2:00 >>
+<< visit >>
 
 Vous passez deux heures à discuter de tout, mais surtout de rien.
 
@@ -160,10 +161,11 @@ Vous passez les 2 heures à potasser ce long pensum ennuyeux. C'est à vous dég
 <<jump Action_List>>
 ===
 title: BingeTV
-tags:
+tags: bg|desk
 position: -1573.0745849609375,216.18408203125
 ---
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
+<< visit("BingeTV") >>
 Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
 
 << loopFX TVStarwars_LOOP 10000 >>

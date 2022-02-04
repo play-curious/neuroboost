@@ -61,10 +61,10 @@ tags:
 colorID: 0
 position: -439,141
 ---
-<< if isFirstTime("Choix_neutres") >>
+<< if isFirstTime() >>
 Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << endif >>
-
+<< visit >>
 << if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
 -> Aller swinguer sur le Dance Floor
     <<jump DanceFloor>>
@@ -203,7 +203,7 @@ position: -239,909
 << if isFirstTime() >>
 La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la piste de danse. Vous allez lui montrer que vous aussi, vous n'êtes pas un looser ! Alors ? quel est votre plan d'attaque ?
 << endif >>
-
+<< visit >>
 << if getGauge("sleep") >= 25 && getGauge("food") >= 25 >>
 -> Retourner swinguer sur le Dance Floor
     <<jump DanceFloor2>>
