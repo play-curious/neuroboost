@@ -20,19 +20,19 @@ tags: show|fred
 colorID: 0
 position: -592,376
 ---
-Fred: Hello ! c'est Fred !
+Fred_excited: Hello ! c'est Fred !
 You: Qu'est-ce que tu veux me dire cette fois-ci ? 
-Fred: Yo, je vois que tu n'es pas de bonne humeur ce matin... 
+Fred_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin... 
 You: Normal, j'ai foiré le partiel d'Atronometric Data Management.
-Fred: Yes, la bonne blague, c'est cet après-midi qu'on le passe !
+Fred_smiling: Yes, la bonne blague, c'est cet après-midi qu'on le passe !
 You: Quoi ?!  
-Fred: Yes, on est lundi matin. C'est ce qui est prévu. 
+Fred_smiling: Yes, on est lundi matin. C'est ce qui est prévu. 
 You: Lundi ?! Mais c'était hier !! 
-Fred: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui. 
+Fred_excited: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui. 
 You: C'est dingue ! Je rêve ou quoi ?
-Fred: No no, je t'assure que c'est la réalité, coco. 
+Fred_smiling: No no, je t'assure que c'est la réalité, coco. 
 You: Heu... 
-Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ? 
+Fred_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ? 
 You: Heu...... 
 
 Vous raccrochez sans vous en rendre compte 
@@ -253,15 +253,15 @@ tags: show|fred
 colorID: 0
 position: -742,1087
 ---
-Fred: Alors, ça l'a fait ?
+Fred_excited: Alors, ça l'a fait ?
 You: Ouais ! Trop facile !
-Fred: Yes, je suis content pour toi. Toi qui n'aimais pas cette matière.
+Fred_happy: Yes, je suis content pour toi. Toi qui n'aimais pas cette matière.
 You: Ouais, mais ce coup-ci, j'ai mis le paquet !
-Fred: Ahhhh... Génial !
+Fred_smiling: Ahhhh... Génial !
 You: Je vais avoir <b>A</b> !
-Fred: No... Pas moins ?
+Fred_happy: No... Pas moins ?
 You: Je te le dis !
-Fred: C'est génial ! Je t'ai encore jamais vu comme ça.
+Fred_smiling: C'est génial ! Je t'ai encore jamais vu comme ça.
 You: Ouais...
 
 << advanceTime 0:15 >>
@@ -284,9 +284,9 @@ position: -529,1332
 ---
 Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore...
 
-Fred: Hé, C'est vachement bien pour une matière que tu détestes.
+Fred_smiling: Hé, C'est vachement bien pour une matière que tu détestes.
 You: Facile à dire pour toi. Tu as eu <b>A+</b>
-Fred: Et alors ? Tu feras mieux la prochaine fois.
+Fred_happy: Et alors ? Tu feras mieux la prochaine fois.
 
 << advanceTime 0:05 >>
 
