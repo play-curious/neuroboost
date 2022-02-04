@@ -13,7 +13,6 @@ import * as graphics from "./graphics";
 import * as extension from "./extension";
 
 import * as yarnBound from "yarn-bound";
-import { createNoSubstitutionTemplateLiteral } from "typescript";
 
 declare module "yarn-bound" {
   interface Metadata {
