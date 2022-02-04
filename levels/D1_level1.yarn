@@ -171,10 +171,11 @@ Le générique démarre et déroule sur un fond scintillant d'étoiles un texte 
 Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... Vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait détruire son moteur gauche ! Il est obligé d'atterrir en catastrophe sur Tortuga.
 Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite.
 
-<< advanceTime 4:00 >>
+<< advanceTime 4:00 12:00 1:00 >>
 << stopFX TVStarwars_LOOP >>
 
-Vous passez 4 heures à binger votre série préférée.
+Au final vous passez trop de temps à binger votre série préférée.
+// ORIGINAL: Vous passez 4 heures à binger votre série préférée.
 
 <<jump Action_List>>
 ===
