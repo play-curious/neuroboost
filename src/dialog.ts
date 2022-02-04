@@ -74,7 +74,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     // Hide gauges by default
     this.graphics.toggleGauges(false);
-
     this._advance(-1);
 
     this._parseFileTags();
@@ -95,6 +94,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         command.functions[funcName].bind(this)
       );
     }
+    
+    this.runner.advance();
   }
 
   private _parseFileTags() {
