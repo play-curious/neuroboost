@@ -622,6 +622,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         this._deactivateChildEntity(last);
       }
     }
+
+    this._lastCharacter = undefined;
   }
 
   /**
