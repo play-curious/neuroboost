@@ -173,10 +173,11 @@ Le générique démarre et déroule sur un fond scintillant d'étoiles un texte 
 Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... Vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait détruire son moteur gauche ! Il est obligé d'atterrir en catastrophe sur Tortuga.
 Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite.
 
-<< advanceTime 4:00 >>
+<< advanceTime 4:00 12:00 1:00 >>
 << stopFX TVStarwars_LOOP >>
 
-Vous passez 4 heures à binger votre série préférée.
+Au final vous passez trop de temps à binger votre série préférée.
+// ORIGINAL: Vous passez 4 heures à binger votre série préférée.
 
 <<jump Action_List>>
 ===
@@ -189,7 +190,7 @@ Yum Yum... Délicieux ce Burger Big Proteins Double Cheese !
 Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant l'examen !
 Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures...
 
-<< advanceTime 0:15 >>
+<< advanceTime 0:30 >>
 
 Et maintenant,
 -> Il est temps d'aller en classe
@@ -259,6 +260,9 @@ title: Fete_deprime
 tags: bg|party
 position: 402.3575134277344,484.3177490234375
 ---
+
+<< advanceTime 0:30 >>
+
 Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer...
 
 << advanceTime 2:00 >>
@@ -266,6 +270,7 @@ Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fê
 Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais cette fois-ci, il n'insiste pas pour vous dissuader de partir. Manifestement, vous devez faire une sacrée tête d'enterrement. Même l'infatiguable Fred renonce à vous convaincre de rester t'amuser...
 
 -> Rentrer dormir
+    << advanceTime 0:30 >>
     <<jump Chambre_Nuit>>
 ===
 title: Rester_Chambre_deprime

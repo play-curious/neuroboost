@@ -551,7 +551,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       this._nodeDisplay.addChild(highlight);
     }
-    console.log(freechoicesFound, nodeOptions.length);
+    
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
       this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));

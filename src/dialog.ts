@@ -264,7 +264,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     command.commands[commandParts[0]].bind(this)(
       ...commandParts.slice(1).map((arg) => arg.trim())
     );
-    console.log("test");
     this._advance();
   }
 
