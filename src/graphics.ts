@@ -241,10 +241,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       );
 
       const speakerLC = speaker.toLowerCase();
-      if (
-        (autoShow && speakerLC !== "you") ||
-        (speakerLC === this._lastCharacter && mood !== this._lastMood)
-      ) {
+      if (autoShow && speakerLC !== "you") {
         this.addCharacter(speakerLC, mood?.toLowerCase());
       }
     } else {
