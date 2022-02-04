@@ -76,6 +76,7 @@ position: -847.2033081054688,-821.7307662963867
 << if isFirstTime("Action_List") >>
 Que faites-vous maintenant ?
 << endif >>
+
 << if $time >= 720 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
@@ -188,7 +189,7 @@ Yum Yum... Délicieux ce Burger Big Proteins Double Cheese !
 Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant l'examen !
 Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures...
 
-<< advanceTime 0:15 >>
+<< advanceTime 0:30 >>
 
 Et maintenant,
 -> Il est temps d'aller en classe
