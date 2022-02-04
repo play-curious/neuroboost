@@ -1,5 +1,8 @@
 import * as PIXI from "pixi.js";
 
+export const width = 1920;
+export const height = 1080;
+
 export interface Variables extends Gauges {
   time: `${number}`;
   name: string;
@@ -9,6 +12,7 @@ export interface Variables extends Gauges {
 export interface Gauges {
   sleep: `${number}`;
   food: `${number}`;
+  learning: `${number}`;
 }
 
 /**
@@ -36,12 +40,14 @@ export class VariableStorage extends PIXI.utils.EventEmitter {
     name: VarName,
     value: Variables[VarName]
   ) {
+    console.log("SET", name, value);
     this._data[name] = value;
     this.emit("change", name, value);
     this.emit(`change:${name}`, value);
   }
 
   get<VarName extends keyof Variables>(name: VarName): Variables[VarName] {
+    console.log("GET", name, this._data[name]);
     return this._data[name];
   }
 

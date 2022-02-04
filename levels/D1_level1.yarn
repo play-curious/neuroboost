@@ -3,12 +3,12 @@ tags: bg|bedroom
 position: -1979.929937362671,-817.3228759765625
 ---
 << setTime 8:00 >>
-<< music Neutral >>
-<< loopFX AlarmClock_LOOP 2000 >>
+<< loopFX Chime_LOOP 1000 >>
 
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.
 
-<< stopFX AlarmClock_LOOP >>
+<< stopFX Chime_LOOP >>
+<< music Neutral >>
 
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
 
@@ -47,7 +47,7 @@ Vous poussez un grand soupir avant de raccrocher
 <<jump Phone_off>>
 ===
 title: Rejet_Fred
-tags: 
+tags:
 position: -1805.537826538086,-561.8787231445312
 ---
 << loopFX PhoneRing_LOOP 5000 >>
@@ -60,13 +60,13 @@ Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle
     <<jump Rejet_Fred>>
 ===
 title: Phone_off
-tags: 
+tags:
 position: -1293.9966201782227,-821.3144836425781
 ---
 Vraiment ce Fred, il vous agace. Il ne fout rien et il passe haut la main ! Il est temps que ça change !
 Et c'est cette semaine que ça va se produire ! La semaine de partiels de fin de semestre ! Vous allez lui montrer de quelle étoffe sont fait les vrais winners !
-Il vous reste 6 heures avant l'heure H... 
-Il y a de quoi faire pour montrer à Fred qui est le Big Winner de l'Académie ! 
+Il vous reste 6 heures avant l'heure H...
+Il y a de quoi faire pour montrer à Fred qui est le Big Winner de l'Académie !
 <<jump Action_List>>
 ===
 title: Action_List
@@ -123,20 +123,20 @@ tags: bg|kitchen
 position: -441.43939208984375,237.24887084960938
 ---
 << fx EatCook >>
-Yum Yum... Rien ne vaut une boîte de chimicookies et un synthécafé après le réveil. 
+Yum Yum... Rien ne vaut une boîte de chimicookies et un synthécafé après le réveil.
 De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le café traditionnels. Heureusement que le génie génétique permet désormais de resynthétiser tout ce qui a poussé ou vécu sur la Terre originelle...
 
 << advanceTime 0:30 >>
 
-Bon, ce n'est pas tout. 
+Bon, ce n'est pas tout.
 
 <<jump Action_List>>
 ===
 title: Chat
-tags: 
+tags:
 position: -779.0828857421875,231.5269012451172
 ---
-Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. 
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi.
 << fx Notification >>
 Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, puis Lou, puis Cam...
 
@@ -159,7 +159,7 @@ Vous passez les 2 heures à potasser ce long pensum ennuyeux. C'est à vous dég
 <<jump Action_List>>
 ===
 title: BingeTV
-tags: 
+tags:
 position: -1573.0745849609375,216.18408203125
 ---
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
@@ -167,9 +167,9 @@ Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - 
 
 << loopFX TVStarwars_LOOP 10000 >>
 
-Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable et séduisant corsaire Yann Salto. Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. 
-Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... Vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait détruire son moteur gauche ! Il est obligé d'atterrir en catastrophe sur Tortuga.  
-Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite. 
+Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable et séduisant corsaire Yann Salto. Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse.
+Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... Vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait détruire son moteur gauche ! Il est obligé d'atterrir en catastrophe sur Tortuga.
+Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite.
 
 << advanceTime 4:00 >>
 << stopFX TVStarwars_LOOP >>
@@ -199,7 +199,7 @@ position: -666.0570068359375,500.580322265625
 ---
 << setTime 14:00 >>
 
-Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b>, que le compteur se met en route. 
+Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b>, que le compteur se met en route.
 Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi.
 
 << advanceTime 4:00 >>
@@ -271,7 +271,7 @@ Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais
     <<jump Chambre_Nuit>>
 ===
 title: Rester_Chambre_deprime
-tags: 
+tags:
 position: 403.7701988220215,752.0811309814453
 ---
 Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à chaque fois qu'il revient à la charge, vous le renvoyez <i>gentiment</i> dans les cordes. Du coup, quand vous vous dirigez vers la porte de votre chambre, Fred ne dit plus rien. Pour la première fois, vous êtes parvenu à dissuader l'infatiguable Fred de passer un bon moment avec lui...
@@ -285,7 +285,7 @@ title: Chambre_Nuit
 tags: bg|bedroom_night
 position: -17.766727447509766,752.0414428710938
 ---
-Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde... 
+Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde...
 Demain est un autre jour, vivement demain...
 << fx Sleep_LOOP >>
 -> Faire un gros somme
@@ -295,7 +295,7 @@ title: Reveil_Sage
 tags: bg|bedroom_night noUi
 position: -352.5212097167969,897.6408081054688
 ---
-<< hideUi >>
+<< music Mysterious >>
 
 Temde: Hello! Je te réveille?
 Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras...
@@ -312,11 +312,13 @@ Temde_smiling: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit no
 Temde_smiling: Enchantée { $name }. Lève-toi, on a du pain sur la planche !
 You: Suiiiiis faaaaaaatigué...........
 Temde_sad: Arrête tes jérémiades ! T'as bricolé comme tu as pu, ça n'a pas marché. T'as juste qu'à reprendre le chantier et basta !
-You: Noon ! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire ! 
+You: Noon ! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire !
 You: J'ai raté, j'ai raté. C'est fini, foutu !
 Temde_smiling: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Tu vas réparer ton engin académique, je ne te dis que ça ! Allez suis-moi, on t'attend là-bas !
 You: Qui m'attend ? Où là-bas ?
 Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit quand même !
+
+<< music Neutral >>
 
 -> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller
     <<jump Tenter_rester_chambre>>
@@ -343,6 +345,7 @@ tags: bg|circle autoshow noUi
 position: -562.1727294921875,1164.6718139648438
 ---
 << fadeOut >>
+<< music Tense >>
 
 L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes.
 Temde_smiling: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }.
@@ -360,6 +363,9 @@ Temde_smiling: ... La Gardienne des Improvisations.
 You: C'est pas possible, mon rêve devient de plus en plus en délirant.
 Azul_happy: Pas du tout { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens.
 Sapiens_thinking: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi.
+
+<< music Neutral >>
+
 -> Cékoilamétaconnexion???
     <<jump Metaconnexion>>
 -> La Métacognition, déjà entendu parler
@@ -383,7 +389,7 @@ Sapiens_concerned: Moui...
 You: Et la métacognition alors ?
 Sapiens_thinking: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux.
 You: Hein ???
-Azul_happy: C'est-à-dire comment apprendre ... à apprendre  
+Azul_happy: C'est-à-dire comment apprendre ... à apprendre
 
 <<jump Metacognition>>
 ===
@@ -405,7 +411,7 @@ position: -366.2418212890625,1422.0413818359375
 ---
 Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit.
 Temde_thinking: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }.
-Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt... 
+Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt...
 
 << setBackground schema >>
 
@@ -413,7 +419,7 @@ Sapiens_thinking: En bref, la cartographie de la mémoire dans le cerveau se dé
 
 << setBackground schema_shelf-disorganized >>
 
-Sapiens_thinking: Il y a tout d'abord <b>La mémoire courte</b>. Elle est utilisé quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas... Et elle stocke ça dans un énorme container. 
+Sapiens_thinking: Il y a tout d'abord <b>La mémoire courte</b>. Elle est utilisé quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas... Et elle stocke ça dans un énorme container.
 Sapiens_thinking: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sans ordre précis. Elle les empile en vrac, les unes sur les autres, à gauche à droite. En bref, elle range ça n'importe comment, comme un amateur, un dilettante !
 
 Ledai_explaining: Oui. Ce qui fait que quand tu es à la recherche d'une référence particulière, tu ne sais plus où elle se trouve, ni si tous les documents sont rangés au même endroit.
@@ -463,7 +469,7 @@ position: 528.9749550819397,1406.2884521484375
 ---
 Flash !!!
 Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Les 4 sages non plus ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée. Curieusement, vous ne vous sentez pas inquiet.
-En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof... 
+En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof...
 Serait-ce le <bi>journal mental</bi> dont parlait Ledai ?
 ===
 

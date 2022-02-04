@@ -14,6 +14,10 @@ Compile and watch just TypeScript `yarn start` or `yarn serve`
 
 Build for production with `yarn dist`
 
+Refresh linked dependencies `yarn add github:play-curious/REPO_NAME -f`
+
+Jump to specific node on your browser: `www.domain.com/?node=NODE_TITLE&level=LEVEL_NAME`
+
 ### YarnSpinner
 
 TODO

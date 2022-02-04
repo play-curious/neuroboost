@@ -7,6 +7,8 @@ import * as audio from "booyah/src/audio";
 import * as util from "booyah/src/util";
 
 import * as save from "./save";
+import * as menu from "./menu";
+
 import * as clock from "./clock";
 import * as images from "./images";
 import * as dialog from "./dialog";
@@ -42,22 +44,9 @@ const variableStorage = new variable.VariableStorage({
   eval: "",
   sleep: "100",
   food: "100",
+  learning: "0",
 });
 const globalHistory: yarnBound.Result[] = [];
-
-// function runnerMaker(
-//   file: string,
-//   start: string
-// ): yarnBound.YarnBound<variable.VariableStorage> {
-//   const runner = new yarnBound.YarnBound({
-//     dialogue: file,
-//     startAt: start,
-//     variableStorage: _variableStorage,
-//     functions: {},
-//   });
-//   runner.history = globalHistory;
-//   return runner;
-// }
 
 // TODO: Move this to dialog rather than in the game
 const _clock = new clock.Clock(new PIXI.Point(1920 - 557 / 2, 0));
@@ -77,7 +66,8 @@ const stateNames = [
   "D1_level1",
   "D1_level2",
   "D2_level1",
-  "D2_level2"
+  "D2_level2",
+  "End_Screen"
 ];
 
 let startingLevel = "Start_Menu";
@@ -101,16 +91,6 @@ async function levelLoader(entityConfig: entity.EntityConfig) {
   );
 
   entityConfig.levels = levels;
-
-  // let i = 0;
-  // for (const stateName in states) {
-  //   if (states[stateName] instanceof dialog.DialogScene) {
-  //     (states[stateName] as dialog.DialogScene).loadRunner(
-  //       runnerMaker(texts[i], i === 0 ? startNode : "Start")
-  //     );
-  //     i++;
-  //   }
-  // }
 }
 
 const transitions: Record<string, entity.Transition> = {};
@@ -139,6 +119,7 @@ const fxAssets = [
   "Teleportation",
   "TVStarwars_LOOP",
   "Work_LOOP",
+  "Chime_LOOP",
 ];
 
 const musicAssets = [
@@ -169,6 +150,7 @@ booyah.go({
   entityInstallers: [
     audio.installJukebox,
     audio.installFxMachine,
+    menu.makeInstallMenu,
     installGameData,
   ],
 });
