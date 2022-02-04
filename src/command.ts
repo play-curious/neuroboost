@@ -177,11 +177,15 @@ export const commands: Record<string, Command> = {
 
 export const functions: Record<string, YarnFunction> = {
   isFirstTime(node: string): boolean {
-    return (
-      this.runner.history.filter((result) => {
-        return result.metadata.title === node;
-      }).length <= 1
-    );
+    const visited = this.runner.history.some((result) => {
+      return result.metadata.title === node;
+    });
+    return !visited;
+  },
+  visited(node: string): boolean {
+    return this.runner.history.some((result) => {
+      return result.metadata.title === node;
+    });
   },
   getGauge(gauge: string): number {
     return this.graphics.getGaugeValue(gauge);
