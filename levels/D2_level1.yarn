@@ -12,13 +12,13 @@ Vous êtes toujours avec Fred à contempler les résultats de ce premier examen 
 << addToGauge sleep 100 >>
 << addToGauge food 70 >>
 
-Fred: Avec des scores pareil, y a plus qu'une chose à faire !
+Fred_smiling: Avec des scores pareil, y a plus qu'une chose à faire !
 You: Quoi donc ?
-Fred: Célébrer ce premier jour victorieux ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande !
+Fred_happy: Célébrer ce premier jour victorieux ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande !
 You: Je sais pas... Demain matin, on a un exercice de simulation. Un test de pilotage de drone d'ingénierie !
-Fred: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur.
+Fred_happy: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur.
 You: Oui, mais faudra avoir l'esprit clair et sain.
-Fred: No worry, on s'en va avant l'aube, on fait une petite sieste et on sera nickel pour l'heure H.
+Fred_smiling: No worry, on s'en va avant l'aube, on fait une petite sieste et on sera nickel pour l'heure H.
 
 -> Accepter l'invitation
     <<jump Cafeteria>>
@@ -32,11 +32,11 @@ position: -894,-168
 Allongé tranquillement sur votre lit, vous vous replongez dans la lecture augmentée de l'atlas Ouiki_4D de Star Mars - The Lone Lightsaber... Quand...
 DRING ! DRING ! DRIIIIIING !... Inutile d'allumer le téléscreen de votre porte. Vous vous doutez qui sonne comme dératé... FRED !!
 << show fred >>
-Fred: Allez, tu peux pas me laisser tout seul.
+Fred_excited: Allez, tu peux pas me laisser tout seul.
 You: Et si.
-Fred: On n'est plus potes ? À la vie, à la mort ?
+Fred_happy: On n'est plus potes ? À la vie, à la mort ?
 You: Arrête de jouer ta victime, Fred, c'est fatiguant.
-Fred: Steuplay...
+Fred_happy: Steuplay...
 
 -> Accepter l'invitation
     <<jump Cafeteria>>
@@ -49,9 +49,9 @@ colorID: 0
 position: -894,141
 ---
 Vous voilà donc à la cafétéria. Avec Fred. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer.
-Fred: Alors, tu vois qu'on peut étudier tout en s'amusant.
+Fred_smiling: Alors, tu vois qu'on peut étudier tout en s'amusant.
 You: Oui ! J'espère juste ne pas le regretter demain matin.
-Fred: No worry. Faut juste savoir gérer.
+Fred_happy: No worry. Faut juste savoir gérer.
 Fred a raison, l'ambiance est vivifiante et enivrante... Vous vous laisser gagner par le flow et par les good vibes...
 -> The show must go on
     <<jump Choix_neutres>>
@@ -158,11 +158,11 @@ colorID: 1
 position: -1226,909
 ---
 Tout d'un coup, le son de la musique s'affaiblit, les voix deviennent des murmures inaudibles. Vous vous sentez mou, très mou, très très mou...
-Fred: Hé, ça va ?
+Fred_drunk: Hé, ça va ?
 You: ...  Heu...
-Fred: Tu es un peu trop fatigué. Y a un sofa dans le coin, là-bas. Va te reposer.
+Fred_drunk: Tu es un peu trop fatigué. Y a un sofa dans le coin, là-bas. Va te reposer.
 You: Et toi ?
-Fred: Je t'accompagne. Je reste encore, j'ai la pêche !
+Fred_drunk: Je t'accompagne. Je reste encore, j'ai la pêche !
 You: OK.
 -> Se reposer
     <<jump Sofa>>
@@ -186,9 +186,9 @@ tags: show|fred
 colorID: 0
 position: -581,909
 ---
-Fred: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
+Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
 You: ... Heu... Et toi ?
-Fred: Moi je reste. Je te le répète.
+Fred_happy: Moi je reste. Je te le répète.
 Quand vous entendez Fred se vanter d'être plus énergique, votre sang et votre ego ne font qu'un tour !
 You: Pareil alors.
 << hide fred >>
@@ -357,13 +357,13 @@ title: Miss_Temde
 tags: show|temde
 position: 357,1662
 ---
-Temde: Hello { $name }.
+Temde_smiling: Hello { $name }.
 You: Quoi ?! Vous encore ?!
-Temde: Yep, on n'a pas fini de t'embêter en effet.
+Temde_cheerful: Yep, on n'a pas fini de t'embêter en effet.
 You: M'embêter ?! Vous lisez dans mes pensées ?!
-Temde: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retourne !
+Temde_cheerful: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retourne !
 You: Où ça ?
-Temde: À l'Assemblée des 4 sages
+Temde_smiling: À l'Assemblée des 4 sages
 
 <<jump Four_Sages>>
 ===
@@ -372,11 +372,11 @@ tags: bg|circle autoshow
 position: -1226,2186
 colorID: 1
 ---
-Sapiens: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre.
-Azul: Un truc qui te servira également au quotidien.
-Ledai: Un mode d'emploi pour optimiser les performances de ton moteur biologique!
-Temdé: Yep, un tuyau qui sonne juste, tellement c'est évident!
-Sapiens: Tu m'écoutes { $name }?
+Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre.
+Azul_happy: Un truc qui te servira également au quotidien.
+Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique!
+Temdé_smiling: Yep, un tuyau qui sonne juste, tellement c'est évident!
+Sapiens_concerned: Tu m'écoutes { $name }?
 -> Oui
     <<jump Revelation>>
 ===
@@ -385,33 +385,33 @@ tags: autoshow
 colorID: 0
 position: -894,2186
 ---
-Sapiens: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Un appareil électronique a besoin d'électricité pour démarrer et fonctionner. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire !
-Ledai: Tout à fait, ton engin biologique, a besoin de calories... et de vitamines.
-Sapiens: Mais pas n'importe lesquelles. Celles qui nourrissent et facilitent la conduction neurobiologique.
+Sapiens_thinking: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Un appareil électronique a besoin d'électricité pour démarrer et fonctionner. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire !
+Ledai_explaining: Tout à fait, ton engin biologique, a besoin de calories... et de vitamines.
+Sapiens_thinking: Mais pas n'importe lesquelles. Celles qui nourrissent et facilitent la conduction neurobiologique.
 You: C'est quoi ce charabia?
-Azul: Les 2 savants veulent dire que que ton corps a besoin de boire et de manger. Des bonnes choses.
-Temde: Pas les substances miracles de synthèse. Mensonges de bonimenteurs !
-Sapiens: Ton corps a besoin d'énergie. Il a également besoin de se recharger.
+Azul_happy: Les 2 savants veulent dire que que ton corps a besoin de boire et de manger. Des bonnes choses.
+Temde_thinking: Pas les substances miracles de synthèse. Mensonges de bonimenteurs !
+Sapiens_thinking: Ton corps a besoin d'énergie. Il a également besoin de se recharger.
 You: Comme mon palmphone ?
-Ledai: Tout à fait.
+Ledai_happy: Tout à fait.
 <<jump Sommeil>>
 ===
 title: Sommeil
 tags: autoshow
 position: -894,2186
 ---
-Sapiens: Ton système biologique, comme ton palmphone, a besoin chaque nuit de recharger sa batterie.
+Sapiens_thinking: Ton système biologique, comme ton palmphone, a besoin chaque nuit de recharger sa batterie.
 You: Ah bon ? Ça suffit pas de le nourrir... en énergie calorique ?
-Ledai: Hélas, non. Pour pouvoir refaire le plein en énergie, il doit cesser toute activité.
+Ledai_explaining: Hélas, non. Pour pouvoir refaire le plein en énergie, il doit cesser toute activité.
 You: Je comprends pas.
-Sapiens: Imagine que ton appareil s'éteigne brutalement parce que sa batterie est à plat. Tu ne peux plus t'en servir, il faut d'abord recharger sa batterie.
+Sapiens_thinking: Imagine que ton appareil s'éteigne brutalement parce que sa batterie est à plat. Tu ne peux plus t'en servir, il faut d'abord recharger sa batterie.
 You: Ouais, mais dès qu'il est remonté à 10%, je peux le rallumer et m'en servir.
-Azul: Ton enveloppe biologique est plus exigeante et plus gourmande.
-Temde: Elle en demande plus. Une nuit de sommeil !
+Azul_happy: Ton enveloppe biologique est plus exigeante et plus gourmande.
+Temde_smiling: Elle en demande plus. Une nuit de sommeil !
 You: Ça veut dire combien ?
-Sapiens: Plusieurs heures. 6 heures pour les plus vifs. 10 heures pour les plus mous.
+Sapiens_thinking: Plusieurs heures. 6 heures pour les plus vifs. 10 heures pour les plus mous.
 You: Et si je dispose même pas de 6 heures ?
-Azul: Il y a une solution de dépannage
+Azul_proud: Il y a une solution de dépannage
 
 <<jump Sieste>>
 ===
@@ -419,15 +419,15 @@ title: Sieste
 tags: autoshow
 position: -557,2186
 ---
-Azul: Si tu n'as pas eu le temps de profiter d'une bonne nuit de sommeil, tu fais un somme !
+Azul_happy: Si tu n'as pas eu le temps de profiter d'une bonne nuit de sommeil, tu fais un somme !
 You: Un somme ?
-Temde: Yep, une bonne sieste quoi !
-Azul: Hier, tu es rentré trop tard et trop énervé pour te reposer.
-Sapiens: Tu n'as pas pu profiter des heures restantes pour recharger ta batterie.
-Ledai: Tout à fait, tu as abusé des réserves de ton matériel biologique et tu as cédé aux sirènes des carburants de synthèse !
-Temde: Tire une bonne leçon de ton erreur !
-Azul: Tu sais ce qu'il faut faire, écouter les besoins de ton corps et le recharger !
-Sapiens: Tu as compris cette nouvelle leçon ?
+Temde_smiling: Yep, une bonne sieste quoi !
+Azul_sad: Hier, tu es rentré trop tard et trop énervé pour te reposer.
+Sapiens_thinking: Tu n'as pas pu profiter des heures restantes pour recharger ta batterie.
+Ledai_explaining: Tout à fait, tu as abusé des réserves de ton matériel biologique et tu as cédé aux sirènes des carburants de synthèse !
+Temde_smiling: Tire une bonne leçon de ton erreur !
+Azul_happy: Tu sais ce qu'il faut faire, écouter les besoins de ton corps et le recharger !
+Sapiens_happy: Tu as compris cette nouvelle leçon ?
 
 -> Oui
     <<jump QCM_Recues>>
@@ -437,72 +437,72 @@ tags: autoshow
 position: -1226,2741
 colorID: 1
 ---
-Sapiens: C'est ce que nous allons voir.
+Sapiens_thinking: C'est ce que nous allons voir.
 
-Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos réserves, on peut continuer à agir, à travailler. On n'a pas besoin de dormir et de recharger les batteries tant qu'elles ne sont pas à plat.
+Sapiens_thinking: Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos réserves, on peut continuer à agir, à travailler. On n'a pas besoin de dormir et de recharger les batteries tant qu'elles ne sont pas à plat.
 -> Vrai
     << fx Failure >>
-    Sapiens: Grossière erreur, jeune novice ! On ne stoque pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures !
-    Ledai: Certes, Master Sapiens, mais laissons une chance à { $name }.
-    Sapiens: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
+    Sapiens_angry: Grossière erreur, jeune novice ! On ne stoque pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures !
+    Ledai_explaining: Certes, Master Sapiens, mais laissons une chance à { $name }.
+    Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
 -> Faux
     << fx Success >>
-    Sapiens: Bravo ! Le sommeil ne se stoque pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain.
-    Ledai: Une autre phrase quiz, Master Sapiens ?
-    Sapiens: Oui. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
+    Sapiens_happy: Bravo ! Le sommeil ne se stoque pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain.
+    Ledai_happy: Une autre phrase quiz, Master Sapiens ?
+    Sapiens_thinking: Oui. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
 
 <<empty>>
 
 -> Vrai
     << fx Failure >>
-    Sapiens: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité.
-    Azul: Master Sapiens, { $name } est encore novice et vous avez d'autres quizz à lui poser.
-    Sapiens: En effet. L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
+    Sapiens_angry: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité.
+    Azul_sad: Master Sapiens, { $name } est encore novice et vous avez d'autres quizz à lui poser.
+    Sapiens_thinking: En effet. L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
 -> Faux
     << fx Success >>
-    Sapiens: Excellente réponse ! Le secret d'un entretien métabolique durable est de se nourrir régulièrement, de manière équilibrée.
-    Azul: Est-ce la fin de la séance de quizz ?
-    Sapiens: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième: l'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
+    Sapiens_happy: Excellente réponse ! Le secret d'un entretien métabolique durable est de se nourrir régulièrement, de manière équilibrée.
+    Azul_cheerful: Est-ce la fin de la séance de quizz ?
+    Sapiens_thinking: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième: l'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
 
 <<empty>>
 
 -> Vrai
     << fx Success >>
-    Sapiens: Exactement ! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand !
-    Temde: Très bien, mais faites court et concis ! { $name } est fatigué !
-    Ledai: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
-    Sapiens: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
+    Sapiens_happy: Exactement ! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand !
+    Temde_smiling: Très bien, mais faites court et concis ! { $name } est fatigué !
+    Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
+    Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
 -> Faux
     << fx Failure >>
-    Sapiens: Encore une idée reçue, une affirmation infondée! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand!
-    Temde: Très bien, mais faites court et concis! { $name } est fatiguée!
-    Sapiens: C'est comme ça quand on ne prend pas soin de son métabolisme!
-    Ledai: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
-    Sapiens: Et je n'ai pas fini. Il me reste la dernière fiche test! Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
+    Sapiens_angry: Encore une idée reçue, une affirmation infondée! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand!
+    Temde_sad: Très bien, mais faites court et concis! { $name } est fatiguée!
+    Sapiens_concerned: C'est comme ça quand on ne prend pas soin de son métabolisme!
+    Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
+    Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test! Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
 
 <<empty>>
 
 -> Vrai
     << fx Failure >>
-    Sapiens: Non-sens ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière !
-    Azul: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment.
-    Sapiens: Je profite de la remarque d'Azul pour poser une question subsidiaire. Pour recharger ton métabolisme, combien d'heures tu dois dormir chaque jour ?
+    Sapiens_angry: Non-sens ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière !
+    Azul_sad: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment.
+    Sapiens_thinking: Je profite de la remarque d'Azul pour poser une question subsidiaire. Pour recharger ton métabolisme, combien d'heures tu dois dormir chaque jour ?
     -> 8heures
         <<jump huit_heures>>
     -> Ça dépend, 6 à 10 heures
         <<jump six_10_heures>>
 -> Faux
     << fx Success >>
-    Sapiens: Bien sûr ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que...
-    Temde: Non non, on coupe ! Le temps presse !
-    Ledai: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
+    Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que...
+    Temde_neutral: Non non, on coupe ! Le temps presse !
+    Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
     <<jump journal_mental>>!
 ===
 title: huit_heures
 tags: autoshow
 position: 1085.4264526367188,2697.2666015625
 ---
-Azul: C'est ton dernier mot ?
+Azul_sad: C'est ton dernier mot ?
 -> 8 heures
     <<jump huit_heures>>
 -> Entre 6 et 10 heures
@@ -512,9 +512,9 @@ title: six_10_heures
 tags: autoshow
 position: 1088.5292358398438,3016.003662109375
 ---
-Sapiens: Ah, je préfère ça. Ce qui me rappelle le temps où je...
-Temde: Non, on coupe ! Le temps presse !
-Ledai: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
+Sapiens_happy: Ah, je préfère ça. Ce qui me rappelle le temps où je...
+Temde_neutral: Non, on coupe ! Le temps presse !
+Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
 <<jump journal_mental>>
 ===
 title: journal_mental
