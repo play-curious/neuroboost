@@ -218,6 +218,8 @@ tags: bg|class
 colorID: 0
 position: -1007,1085
 ---
+<< setTime 14:00 >>
+
 Vous voilà désormais dans la grande salle. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier : <b>Sujet d'examen</b>, que le compteur se met en route. 
 
 << advanceTime 4:00 >>
