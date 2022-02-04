@@ -13,6 +13,7 @@ export interface Gauges {
   sleep: `${number}`;
   food: `${number}`;
   learning: `${number}`;
+  mentalLoad: `${number}`;
 }
 
 /**
