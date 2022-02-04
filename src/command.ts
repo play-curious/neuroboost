@@ -198,13 +198,16 @@ export const commands: Record<string, Command> = {
    * Mark a node as visited
    * @param node Node to mark as visited
    */
-  visit(node: string = this.metadata.title) {
+  visit(node: string) {
+    if (!node || node.includes('"'))
+      throw new Error("Please give a valid node title in << visit >>");
     this.visited.add(node);
   },
 };
 
 export const functions: Record<string, YarnFunction> = {
-  visited(node = this.metadata.title): boolean {
+  visited(node: string): boolean {
+    if (!node) throw new Error("Please give a valid node title in visited()");
     const visited = this.visited.has(node);
     console.log(node, "visited?", visited);
     return visited;
