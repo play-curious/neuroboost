@@ -6,7 +6,6 @@ import * as util from "booyah/src/util";
 
 import * as extension from "./extension";
 import * as variable from "./variable";
-import { isArrowFunction } from "typescript";
 
 interface Settings {
   fx: number;
