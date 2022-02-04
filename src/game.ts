@@ -80,7 +80,7 @@ const states: { [k: string]: entity.EntityResolvable } = {
 };
 for (const stateName of stateNames) {
   if(stateName.includes("journal")) states[`${stateName}`] = new journal.JournalScene(variableStorage);
-  else states[stateName] = new dialog.DialogScene(stateName, startNode);
+  else states[stateName] = new dialog.DialogScene(stateName, startingNode);
 }
 
 async function levelLoader(entityConfig: entity.EntityConfig) {
