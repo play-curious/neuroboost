@@ -74,11 +74,15 @@ export const commands: Record<string, Command> = {
     this.config.clock.minutesSinceMidnight = minutesSinceMidnight;
   },
 
-  advanceTime(time: clock.ResolvableTime, maxTime?: clock.ResolvableTime, stepTime?: clock.ResolvableTime) {
+  advanceTime(
+    time: clock.ResolvableTime,
+    maxTime?: clock.ResolvableTime,
+    stepTime?: clock.ResolvableTime
+  ) {
     const [, , minutesToAdvance] = clock.parseTime(time);
 
     let minutesToStop, minutesStep;
-    if(maxTime) {
+    if (maxTime) {
       minutesToStop = clock.parseTime(maxTime)[2];
       minutesStep = clock.parseTime(stepTime)[2];
     }
@@ -89,7 +93,7 @@ export const commands: Record<string, Command> = {
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
 
     // Cut the time if it goes over restriction
-    while(newMinutes -minutesStep > minutesToStop) newMinutes -=minutesStep;
+    while (newMinutes - minutesStep > minutesToStop) newMinutes -= minutesStep;
 
     // Cut the time if it goes over one day
     while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
@@ -189,15 +193,26 @@ export const commands: Record<string, Command> = {
   },
 
   empty() {},
+
+  /**
+   * Mark a node as visited
+   * @param node Node to mark as visited
+   */
+  visit(node: string = this.metadata.title) {
+    this.visited.add(node);
+  },
 };
 
 export const functions: Record<string, YarnFunction> = {
-  isFirstTime(node: string): boolean {
-    return (
-      this.runner.history.filter((result) => {
-        return result.metadata.title === node;
-      }).length <= 1
-    );
+  isFirstTime(node: string = this.metadata.title): boolean {
+    const visited = this.visited.has(node);
+    console.log(node, "isFirstTime?", !visited);
+    return !visited;
+  },
+  visited(node: string = this.metadata.title): boolean {
+    const visited = this.visited.has(node);
+    console.log(node, "visited?", visited);
+    return visited;
   },
   getGauge(gauge: string): number {
     return this.graphics.getGaugeValue(gauge);
