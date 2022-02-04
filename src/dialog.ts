@@ -188,11 +188,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     );
   }
 
-  private _handleDialog() {
+  private _handleDialog(placeholder?: string, id?: number) {
     const textResult = this.runner.currentResult as yarnBound.TextResult;
-    const text = (this.runner.currentResult as yarnBound.TextResult).text;
+    const text = placeholder || (this.runner.currentResult as yarnBound.TextResult).text;
     let speaker = "";
-    if (textResult.markup[0]?.name === "character") {
+    if (!placeholder && textResult.markup[0]?.name === "character") {
       speaker = textResult.markup[0].properties["name"];
     }
     this.graphics.showDialog(
@@ -202,7 +202,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this._autoshowOn,
       () => {
         if (this.disabledClick) return;
-        this._advance.bind(this)();
+        this._advance.bind(this)(id);
       }
     );
   }
@@ -212,7 +212,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       ? this.metadata.choiceId++
       : (this.metadata.choiceId = 0);
     const options: Record<string, string>[] = [];
-    let indexOfBack = 0;
+    let indexOfBack = -1;
     for (
       let i = 0;
       i < (this.runner.currentResult as yarnBound.OptionsResult).options.length;
@@ -231,6 +231,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         id: `${i}`,
       });
       if (option.text === "back") indexOfBack = i;
+    }
+    if(options.length === 1 && indexOfBack !== -1){
+      this._handleDialog("Vous ne pouvez rien faire ici...", indexOfBack);
+      return;
     }
     options.reverse();
     this.graphics.setChoice(
