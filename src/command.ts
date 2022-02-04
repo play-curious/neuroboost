@@ -189,15 +189,22 @@ export const commands: Record<string, Command> = {
   },
 
   empty() {},
+
+  visit(node: string = this.metadata.title) {
+    this.visited.add(node);
+  },
 };
 
 export const functions: Record<string, YarnFunction> = {
-  isFirstTime(node: string): boolean {
-    return (
-      this.runner.history.filter((result) => {
-        return result.metadata.title === node;
-      }).length <= 1
-    );
+  isFirstTime(node: string = this.metadata.title): boolean {
+    const visited = this.visited.has(node);
+    console.log(node, "isFirstTime?", !visited);
+    return !visited;
+  },
+  visited(node: string = this.metadata.title): boolean {
+    const visited = this.visited.has(node);
+    console.log(node, "visited?", visited);
+    return visited;
   },
   getGauge(gauge: string): number {
     return this.graphics.getGaugeValue(gauge);
