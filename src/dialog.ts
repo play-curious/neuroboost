@@ -25,8 +25,8 @@ declare module "yarn-bound" {
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
   private _lastNodeData: yarnBound.Metadata;
-  private _autoshowOn: boolean;
   private _selectedOptions: string[];
+  private _autoshowOn: boolean;
 
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public disabledClick: boolean;
@@ -136,58 +136,30 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       return;
     }
 
-    this._activateChildEntity(
-      new entity.EntitySequence([
-        () =>
-          (() => {
-            const { lastBg, lastMood } = this.graphics.last;
-            const [bg, mood] = this.metadata.tags
-              .split(/\s+/)
-              .find((tag) => tag.startsWith("bg|"))
-              ?.replace("bg|", "")
-              .split("_") || ["GNEUH"];
-            return (bg !== "GNEUH" && bg !== lastBg) || mood !== lastMood;
-          })() && this.metadata.title !== this._lastNodeData?.title
-            ? this.graphics.fadeIn(200)
-            : new entity.FunctionCallEntity(() => null),
-        new entity.FunctionCallEntity(() => {
-          this.graphics.hideNode();
-          this.graphics.showDialogLayer();
+    this.graphics.hideNode();
+    this.graphics.showDialogLayer();
 
-          // Check if the node data has changed
-          if (this._lastNodeData?.title !== this.metadata.title) {
-            this._onChangeNodeData(this._lastNodeData, this.metadata);
-            this._lastNodeData = this.metadata;
-          }
+    // Check if the node data has changed
+    if (this._lastNodeData?.title !== this.metadata.title) {
+      this._onChangeNodeData(this._lastNodeData, this.metadata);
+      this._lastNodeData = this.metadata;
+    }
 
-          if (this.runner.currentResult instanceof yarnBound.TextResult) {
-            this.activate(this.graphics.fadeOut(200));
-            this._handleDialog();
-          } else if (
-            this.runner.currentResult instanceof yarnBound.OptionsResult
-          ) {
-            this.activate(this.graphics.fadeOut(200));
-            if (this._hasTag(this.metadata, "freechoice")) {
-              this._handleFreechoice();
-            } else {
-              this._handleChoice();
-            }
-          } else if (
-            this.runner.currentResult instanceof yarnBound.CommandResult
-          ) {
-            this._handleCommand();
-          } else {
-            throw new Error(
-              `Unknown bondage result ${this.runner.currentResult}`
-            );
-          }
-        }),
-        this.graphics.fadeOut(200),
-        new entity.FunctionCallEntity(() => {
-          this.disabledClick = false;
-        }),
-      ])
-    );
+    if (this.runner.currentResult instanceof yarnBound.TextResult) {
+      this.activate(this.graphics.fadeOut(200));
+      this._handleDialog();
+    } else if (this.runner.currentResult instanceof yarnBound.OptionsResult) {
+      this.activate(this.graphics.fadeOut(200));
+      if (this._hasTag(this.metadata, "freechoice")) {
+        this._handleFreechoice();
+      } else {
+        this._handleChoice();
+      }
+    } else if (this.runner.currentResult instanceof yarnBound.CommandResult) {
+      this._handleCommand();
+    } else {
+      throw new Error(`Unknown bondage result ${this.runner.currentResult}`);
+    }
   }
 
   private _handleDialog() {
