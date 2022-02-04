@@ -111,10 +111,10 @@ export class Clock extends extension.ExtendedCompositeEntity {
     this._updateText();
   }
 
-  advanceTime(time: ResolvableTime) {
-    const [h, m] = parseTime(time);
+  advanceTime(newMinutes: number) {
+    //const [h, m, hm] = parseTime(time);
     const currentMinutes = this._minutesSinceMidnight;
-    const newMinutes = currentMinutes + h * 60 + m;
+    //const newMinutes = currentMinutes + hm;
 
     return new tween.Tween({
       duration: 2000,

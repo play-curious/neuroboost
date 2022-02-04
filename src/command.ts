@@ -74,18 +74,29 @@ export const commands: Record<string, Command> = {
     this.config.clock.minutesSinceMidnight = minutesSinceMidnight;
   },
 
-  advanceTime(time: clock.ResolvableTime) {
+  advanceTime(time: clock.ResolvableTime, maxTime?: clock.ResolvableTime, stepTime?: clock.ResolvableTime) {
     const [, , minutesToAdvance] = clock.parseTime(time);
+
+    let minutesToStop, minutesStep;
+    if(maxTime) {
+      minutesToStop = clock.parseTime(maxTime)[2];
+      minutesStep = clock.parseTime(stepTime)[2];
+    }
+
     const minutesSinceMidnight = Number(
       this.config.variableStorage.get("time")
     );
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
 
+    // Cut the time if it goes over restriction
+    while(newMinutes -minutesStep > minutesToStop) newMinutes -=minutesStep;
+
+    // Cut the time if it goes over one day
     while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
 
     this.config.variableStorage.set("time", `${newMinutes}`);
 
-    this.activate(this.config.clock.advanceTime(time));
+    this.activate(this.config.clock.advanceTime(newMinutes));
   },
 
   hideClock() {
@@ -170,6 +181,11 @@ export const commands: Record<string, Command> = {
 
   fadeOut(duration: `${number}` = "1000") {
     this.activate(this.graphics.fadeOut(Number(duration)));
+  },
+
+  setBackground(name: string) {
+    const [bg, mood] = name.split("_");
+    this.graphics.setBackground(bg, mood);
   },
 
   empty() {},

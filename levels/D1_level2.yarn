@@ -20,19 +20,19 @@ tags: show|fred
 colorID: 0
 position: -592,376
 ---
-Fred: Hello ! c'est Fred !
+Fred_excited: Hello ! c'est Fred !
 You: Qu'est-ce que tu veux me dire cette fois-ci ? 
-Fred: Yo, je vois que tu n'es pas de bonne humeur ce matin... 
+Fred_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin... 
 You: Normal, j'ai foiré le partiel d'Atronometric Data Management.
-Fred: Yes, la bonne blague, c'est cet après-midi qu'on le passe !
+Fred_smiling: Yes, la bonne blague, c'est cet après-midi qu'on le passe !
 You: Quoi ?!  
-Fred: Yes, on est lundi matin. C'est ce qui est prévu. 
+Fred_smiling: Yes, on est lundi matin. C'est ce qui est prévu. 
 You: Lundi ?! Mais c'était hier !! 
-Fred: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui. 
+Fred_excited: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui. 
 You: C'est dingue ! Je rêve ou quoi ?
-Fred: No no, je t'assure que c'est la réalité, coco. 
+Fred_smiling: No no, je t'assure que c'est la réalité, coco. 
 You: Heu... 
-Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ? 
+Fred_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ? 
 You: Heu...... 
 
 Vous raccrochez sans vous en rendre compte 
@@ -124,9 +124,14 @@ tags: bg|kitchen
 colorID: 7
 position: -1284,1084
 ---
+<< fx EatCook >>
+
 Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... 
 D'accord, ce repas est bien chargé en calories et en caféine, mais vous avez mangé le même hier. Ça commence à bien faire ces sensations de "déjà-vu"...
 Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route ! 
+
+<< advanceTime 0:30 >>
+
 -> Il est temps de battre votre précédent score!
     <<jump Test_Rewind>>
 ===
@@ -135,6 +140,8 @@ tags: bg|kitchen
 colorID: 0
 position: -1040,831
 ---
+<< fx EatCook >>
+
 Encore un petit déjeuner chimicookies arrosé d'un synthécafé. C'est clair que ce matin dégage un étrange air de "déjà-vu"...
 Bon, ce n'est pas tout. 
 
@@ -150,6 +157,7 @@ position: -755,827
 <b>Pensez-vous vraiment que c'est ce que vous a recommandé les 4 Sages de la Métacognition?</b>
 
 Peu importe, il est trop tard maintenant, vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. Vous êtes pingé par Alex, vous engagez la conversation.
+<< fx Notification >>
 Ensuite, c'est Dom, puis Lou, puis Cam... 
 
 << if visited("Chat") >>
@@ -185,6 +193,8 @@ position: -288,823
 <bi>Pensez-vous vraiment que c'est ce que vous ont recommandé les 4 Sages de la Métacognition?</bi>
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés. Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber. 
 
+<< loopFX TVStarwars_LOOP 10000 >>
+
 Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable corsaire Yann Salto. 
 Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... 
 
@@ -194,9 +204,11 @@ Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. 
 
 En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait amocher son vaisseau ! Il est obligé d'atterrir en catastrophe sur Tortuga.  Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite. 
 
-<< advanceTime 4:00 >>
+<< advanceTime 4:00 12:00 1:00 >>
+<< stopFX TVStarwars_LOOP >>
 
-Vous passez 4 heures à binger votre série préférée. 
+Au final vous passez trop de temps à binger votre série préférée.
+// ORIGINAL: Vous passez 4 heures à binger votre série préférée.
 
 <<jump Action_List_Rewind>>
 ===
@@ -224,6 +236,8 @@ tags: bg|class
 colorID: 0
 position: -1007,1085
 ---
+<< setTime 14:00 >>
+
 Vous voilà désormais dans la grande salle. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier : <b>Sujet d'examen</b>, que le compteur se met en route. 
 
 << advanceTime 4:00 >>
@@ -239,17 +253,22 @@ tags: show|fred
 colorID: 0
 position: -742,1087
 ---
-Fred: Alors, ça l'a fait ?
+Fred_excited: Alors, ça l'a fait ?
 You: Ouais ! Trop facile !
-Fred: Yes, je suis content pour toi. Toi qui n'aimais pas cette matière.
+Fred_happy: Yes, je suis content pour toi. Toi qui n'aimais pas cette matière.
 You: Ouais, mais ce coup-ci, j'ai mis le paquet !
-Fred: Ahhhh... Génial !
+Fred_smiling: Ahhhh... Génial !
 You: Je vais avoir <b>A</b> !
-Fred: No... Pas moins ?
+Fred_happy: No... Pas moins ?
 You: Je te le dis !
-Fred: C'est génial ! Je t'ai encore jamais vu comme ça.
+Fred_smiling: C'est génial ! Je t'ai encore jamais vu comme ça.
 You: Ouais...
-Fred s'apprête à vous répondre quand la sonnerie retentit. Les résultats du test viennent de tomber...
+
+<< advanceTime 0:15 >>
+
+Fred s'apprête à vous répondre quand la sonnerie retentit.
+Les résultats du test viennent de tomber...
+
 << if visited("Rappel_libre") >>
 -> Consulter les résultats
     <<jump Resultats_Good>>
@@ -265,9 +284,12 @@ position: -529,1332
 ---
 Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore...
 
-Fred: Hé, C'est vachement bien pour une matière que tu détestes.
+Fred_smiling: Hé, C'est vachement bien pour une matière que tu détestes.
 You: Facile à dire pour toi. Tu as eu <b>A+</b>
-Fred: Et alors ? Tu feras mieux la prochaine fois.
+Fred_happy: Et alors ? Tu feras mieux la prochaine fois.
+
+<< advanceTime 0:05 >>
+
 ===
 title: Resultats_Bad_Again
 tags: 
