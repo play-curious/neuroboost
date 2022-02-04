@@ -22,14 +22,14 @@ tags: bg|party show|fred
 colorID: 0
 position: -805,367
 ---
-Fred: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
+Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
 Et c'est reparti pour un tour... Fred répète comme un perroquet ce qu'il vous a déjà dit hier soir... Vous voilà revenu en arrière... En plein milieu de cette soirée de plaisir et de tentations... Certes, vous en avez trop fait, mais l'ambiance et le public était avec vous... Dur dur...
 You: ...Hum... Tu fais quoi toi ?
-Fred: Moi je reste. Je te le répète.
+Fred_happy: Moi je reste. Je te le répète.
 Après tout, Vous avez encore de l'énergie à revendre pour la soiré. Vous savez qu'il faut simplement faire attention à ne pas trop vider vos réserves de sommeil et de nourriture...
 Mais comme vous l'ont répété les 4 sages, c'est avant tout une question de dosage, de volonté. Le tout est de savoir s'arrêter quand il le faut. Et puis, vous voulez montrer à Fred, que vous aussi, vous êtes en béton...
 You: Pari tenu!
-Fred: Yolo ! T'as mangé du tigre aujourd'hui ?!
+Fred_smiling: Yolo ! T'as mangé du tigre aujourd'hui ?!
 You: C'est pas faux.
 << hide fred >>
 
@@ -136,20 +136,20 @@ position: -1084,1219
 << if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
 Vous vous rapprochez de Fred, qui est en pleine conversation avec un groupe d'étudiants docteurs.
 You: Fred, il est tard, il est temps d'aller faire un somme.
-Fred: Déjà ? Je suis en pleine conversation...
+Fred_sad: Déjà ? Je suis en pleine conversation...
 You: Je suis fatigué, j'y vais.
-Fred: OK. T'as raison. Je te suis.
+Fred_smiling: OK. T'as raison. Je te suis.
 Fred dit bonne nuit à ses interlocuteurs. Vous aussi. Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle.
 
 -> Vite ! Au lit
     <<jump Go_To_Bed_Good>>
 
 << elseif getGauge("sleep") >= 25 && getGauge("food") >= 50 >>
-Fred: Hey, j'en peux plus. J'y vais.
+Fred_sad: Hey, j'en peux plus. J'y vais.
 You: Déjà ? Tu déclares forfait ?
-Fred: Yes yes.
+Fred_smiling: Yes yes.
 You: OK, je te suis.
-Fred: Cool...
+Fred_smiling: Cool...
 Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle.
 
 -> Vite ! Au lit
@@ -169,11 +169,11 @@ colorID: 0
 position: -614,1124
 ---
 Arrivé devant la porte de votre chambre, Fred se tourne vers vous.
-Fred: C'est vraiment sympa ce soir.
+Fred_smiling: C'était vraiment sympa ce soir.
 You: Ouais
-Fred: Je suis content que tu sois venu ce soir. Tu as assuré. Tu as mis le groove à la salle!
+Fred_happy: Je suis content que tu sois venu ce soir. Tu as assuré. Tu as mis le groove à la salle!
 You: Merci. Bonne nuit, Fred.
-Fred: Pareil.
+Fred_excited: Pareil.
 Sur ces mots, Fred s'éloigne et vous laisse.
 
 -> Se Reposer
@@ -185,11 +185,11 @@ colorID: 0
 position: -616,1387
 ---
 Arrivé devant la porte de votre chambre, Fred se tourne vers vous.
-Fred: C'est vraiment la hype ce soir.
+Fred_happy: C'était vraiment la hype ce soir.
 You: Ouais
-Fred: Non seulement tu es venu, tu as mis le groove dans la salle. Mais si j'étais pas venu te chercher, t'étais encore branché sur les vibes de la fête... Chapeau bas.
+Fred_happy: Non seulement tu es venu, tu as mis le groove dans la salle. Mais si j'étais pas venu te chercher, t'étais encore branché sur les vibes de la fête... Chapeau bas.
 You: Merci, Fred.  Bonne nuit.
-Fred: T'es vraiment un winner. Bonne nuit aussi.
+Fred_excited: T'es vraiment un winner. Bonne nuit aussi.
 Sur ces confidences, ces louanges, Fred s'éloigne et vous laisse.
 
 -> Se Reposer
@@ -237,11 +237,11 @@ position: 560,1255
 Ce matin, vous retrouvez votre ami Fred, qui vous attend avec le sourire.
 
 << show fred>>
-Fred: Yolo, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps...
+Fred_excited: Yolo, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps...
 You: Ouais...
-Fed: Je vois ça. J'espère que tu as bien dormi.
+Fred_smiling: Je vois ça. J'espère que tu as bien dormi.
 You: Ouais.
-Fred: Yes yes. Moi aussi. On se revoit tout à l'heure.
+Fred_excited: Yes yes. Moi aussi. On se revoit tout à l'heure.
 
 Vous vous rendez à votre poste. Vous vous calez sur votre siège et prenez connaissance des instructions qui défilent sur l'écran. Vous savez comment piloter un drone d'ingénierie. Vous êtes même doué à ce jeu
 Enfin, vous vous sentez suffisamment reposé. En effet, vous appliquez sans trop de difficulté les consignes. À part une erreur ou deux, vous guidez votre appareil à bon port.
@@ -254,16 +254,16 @@ colorID: 0
 position: 865,1263
 ---
 Dehors, vous rejoignez Fred.
-Fred: C'était easy, non?
+Fred_smiling: C'était easy, non?
 You: Ouais.
-Fred: Je pense avoir cartonné. Et toi.
+Fred_happy: Je pense avoir cartonné. Et toi.
 You: Ça devrait aller.
 C'est à ce moment que les résultats tombent. Fred décroche un <b>A</b> et vous un <b>B</b>
-Fred: Hey ! Attention, hein ! Tu serais pas en train de vouloir me dépasser ?...
+Fred_smiling: Hey ! Attention, hein ! Tu serais pas en train de vouloir me dépasser ?...
 You: Bien entendu.
-Fred: Je t'adore, tu as toujours la phrase qui tue. Allez, on va manger un petit truc et on file au cinoche. On est libre maintenant jusqu'à demain.
+Fred_smiling: Je t'adore, tu as toujours la phrase qui tue. Allez, on va manger un petit truc et on file au cinoche. On est libre maintenant jusqu'à demain.
 You: Yes.
-Fred: Yes yes!
+Fred_smiling: Yes yes!
 ===
 title: Replay
 tags: bg|circle
@@ -334,14 +334,15 @@ Tant pis, vous avez besoin d'un coup de pouce... Du moins, le pensez-vous...
     <<jump Que_Faire>>
 ===
 title: Eat_Bad
-tags:
+tags: show:barbot
 colorID: 0
 position: -386,723
 ---
-<< show barbot >>
 BarBot: Tenez.
 You: Merci.
 Le BarBot vous tend une espèce de gomme multicolore. Vous la mettez dans votre bouche. Niac... C'est moche, ça a un sale goût et vous vous demandez si vous avez fait le bon choix... Trop tard, c'est fait. Vous ressentez quand même un effet revitalisant. Cela suffira-t-il ?...
+<< hide >>
+
 
 << removeFromGauge food 40 >>
 << addToGauge sleep 10 >>
