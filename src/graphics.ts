@@ -6,7 +6,6 @@ import * as easing from "booyah/src/easing";
 import * as tween from "booyah/src/tween";
 
 import * as extension from "./extension";
-import * as character from "./character";
 import * as variable from "./variable";
 import * as images from "./images";
 import * as gauge from "./gauge";
@@ -21,6 +20,15 @@ const dialogRegexp = /^([a-zA-Z]+)(_([a-zA-Z]+))?:(.+)/;
 export class Graphics extends extension.ExtendedCompositeEntity {
   private _lastBg: string;
   private _lastBgMood: string;
+  private _lastCharacter: string;
+  private _lastMood: string;
+  private _characters: Map<
+    string,
+    {
+      container: PIXI.Container;
+      entity: entity.ParallelEntity;
+    }
+  >;
 
   private _fade: PIXI.Graphics;
   private _container: PIXI.Container;
@@ -43,8 +51,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
   get last() {
     return {
-      bg: this._lastBg,
-      bgMood: this._lastBgMood,
+      lastBg: this._lastBg,
+      lastBgMood: this._lastBgMood,
+      lastCharacter: this._lastCharacter,
+      lastMood: this._lastMood,
     };
   }
 
@@ -79,6 +89,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._dialogSpeaker.addChild(
       this.makeSprite("images/ui/dialog_speaker.png")
     );
+
+    this._characters = new Map();
 
     this._gauges = {};
     const gaugesList: (keyof variable.Gauges)[] = ["learning", "sleep", "food"];
@@ -613,13 +625,27 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public removeCharacters(withAnimation: boolean = true) {
-    const last = character.Character.current;
+    for (const [id, character] of this._characters) {
+      this._characters.delete(id);
 
-    if (last) {
       if (withAnimation) {
-        this._activateChildEntity(last.hide());
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 800,
+            easing: easing.easeOutQuint,
+            from: 250,
+            to: 1500,
+            onUpdate: (value) => {
+              character.container.position.x = value;
+            },
+            onTeardown: () => {
+              this._characterLayer.removeChild(character.container);
+              // this._deactivateChildEntity(character.entity);
+            },
+          })
+        );
       } else {
-        this._deactivateChildEntity(last);
+        this._characterLayer.removeChild(character.container);
       }
     }
 
@@ -629,31 +655,91 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   /**
    *
    *
-   * @param name if null or undefined, it will remove current character
+   * @param character if null or undefined, it will remove current character
    * @param mood
    */
-  public addCharacter(name?: string, mood?: string): void {
-    const last = character.Character.current;
-
+  public addCharacter(character?: string, mood?: string): void {
     // Check if character or mood change
-    if (last && name === last.name && mood === last.mood) return;
+    if (character === this._lastCharacter && mood === this._lastMood) return;
 
-    // name changed ?
-    const changed = !character.Character.current || name !== last.name;
+    // Register last character & mood
+    const characterChanged = character !== this._lastCharacter;
+    this._lastCharacter = character;
+    this._lastMood = mood;
 
     // Remove characters
-    this.removeCharacters(changed);
+    this.removeCharacters(characterChanged);
 
     // If character or character not you
-    if (name && name !== "you") {
-      const char = new character.Character(name, mood);
-
+    if (character && character !== "you") {
+      // Create container & Entity
+      const characterCE = {
+        container: new PIXI.Container(),
+        entity: new entity.ParallelEntity(),
+      };
+      // Add new container/entity to a map
+      this._characters.set(character, characterCE);
+      // Activate entity
       this._activateChildEntity(
-        char,
-        entity.extendConfig({ container: this._characterLayer })
+        characterCE.entity,
+        entity.extendConfig({ container: characterCE.container })
       );
 
-      if (changed) this._activateChildEntity(char.show());
+      // Set directory to access resources
+      const baseDir = `images/characters/${character}`;
+      const baseJson = require(`../${baseDir}/base.json`);
+
+      // If mood is incorrect, get default one
+      if (!_.has(baseJson, mood)) mood = baseJson["default"];
+
+      // For each part
+      for (const bodyPart of baseJson[mood]) {
+        if (
+          _.has(
+            this.config.app.loader.resources,
+            `${baseDir}/${bodyPart.model}.json`
+          )
+        ) {
+          // Create animated sprite and set properties
+          const animatedSpriteEntity = this.makeAnimatedSprite(
+            `${baseDir}/${bodyPart.model}.json` as any,
+            (it) => {
+              it.anchor.set(0.5);
+              it.position.copyFrom(bodyPart);
+              it.animationSpeed = 0.33;
+
+              if (_.has(bodyPart, "scale")) {
+                it.scale.set(bodyPart.scale);
+              }
+            }
+          );
+
+          // Add animated sprite to entity
+          characterCE.entity.addChildEntity(animatedSpriteEntity);
+        } else {
+          console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
+        }
+      }
+
+      // Place character on screen
+      this._characterLayer.addChild(characterCE.container);
+      characterCE.container.setTransform(250, 80, 1.1, 1.1);
+      //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
+
+      // If character changed, do animation
+      if (characterChanged) {
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 800,
+            easing: easing.easeOutQuint,
+            from: 1500,
+            to: 250,
+            onUpdate: (value) => {
+              characterCE.container.position.x = value;
+            },
+          })
+        );
+      }
     }
   }
 
