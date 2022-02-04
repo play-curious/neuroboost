@@ -7,9 +7,9 @@ position: -893,370
 ---
 << setTime 8:00>>
 
-Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. 
+Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
 
-Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler : 
+Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler :
 -> Prendre l'appel
     <<jump Appel_Fred_Rewind>>
 -> Rejeter l'appel
@@ -21,28 +21,28 @@ colorID: 0
 position: -592,376
 ---
 Fred: Hello ! c'est Fred !
-You: Qu'est-ce que tu veux me dire cette fois-ci ? 
-Fred: Yo, je vois que tu n'es pas de bonne humeur ce matin... 
+You: Qu'est-ce que tu veux me dire cette fois-ci ?
+Fred: Yo, je vois que tu n'es pas de bonne humeur ce matin...
 You: Normal, j'ai foiré le partiel d'Atronometric Data Management.
 Fred: Yes, la bonne blague, c'est cet après-midi qu'on le passe !
-You: Quoi ?!  
-Fred: Yes, on est lundi matin. C'est ce qui est prévu. 
-You: Lundi ?! Mais c'était hier !! 
-Fred: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui. 
+You: Quoi ?!
+Fred: Yes, on est lundi matin. C'est ce qui est prévu.
+You: Lundi ?! Mais c'était hier !!
+Fred: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui.
 You: C'est dingue ! Je rêve ou quoi ?
-Fred: No no, je t'assure que c'est la réalité, coco. 
-You: Heu... 
-Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ? 
-You: Heu...... 
+Fred: No no, je t'assure que c'est la réalité, coco.
+You: Heu...
+Fred: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
+You: Heu......
 
-Vous raccrochez sans vous en rendre compte 
+Vous raccrochez sans vous en rendre compte
 
 << advanceTime 0:15 >>
 
 <<jump Phone_off_Rewind>>
 ===
 title: Rejet_Fred_Rewind
-tags: 
+tags:
 colorID: 0
 position: -758,62
 ---
@@ -57,8 +57,8 @@ tags: bg|bedroom
 colorID: 0
 position: -342,363
 ---
-Mais c'est quoi ce truc ?! On dirait que vous avez fait un bon en arrière dans le temps ! Vous allez pouvoir repasser le partiel d'Atronometric Data Management. C'est la chance du siècle ! 
-Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre ! 
+Mais c'est quoi ce truc ?! On dirait que vous avez fait un bon en arrière dans le temps ! Vous allez pouvoir repasser le partiel d'Atronometric Data Management. C'est la chance du siècle !
+Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre !
 
 Il vous reste 6 heures avant l'heure H... Aujourd'hui, vous allez montrer à Fred qui est le Big Winner de l'Académie !
 
@@ -124,9 +124,9 @@ tags: bg|kitchen
 colorID: 7
 position: -1284,1084
 ---
-Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... 
+Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola...
 D'accord, ce repas est bien chargé en calories et en caféine, mais vous avez mangé le même hier. Ça commence à bien faire ces sensations de "déjà-vu"...
-Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route ! 
+Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route !
 -> Il est temps de battre votre précédent score!
     <<jump Test_Rewind>>
 ===
@@ -136,7 +136,7 @@ colorID: 0
 position: -1040,831
 ---
 Encore un petit déjeuner chimicookies arrosé d'un synthécafé. C'est clair que ce matin dégage un étrange air de "déjà-vu"...
-Bon, ce n'est pas tout. 
+Bon, ce n'est pas tout.
 
 << advanceTime 0:30 >>
 
@@ -150,15 +150,15 @@ position: -755,827
 <b>Pensez-vous vraiment que c'est ce que vous a recommandé les 4 Sages de la Métacognition?</b>
 
 Peu importe, il est trop tard maintenant, vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. Vous êtes pingé par Alex, vous engagez la conversation.
-Ensuite, c'est Dom, puis Lou, puis Cam... 
+Ensuite, c'est Dom, puis Lou, puis Cam...
 
 << if visited("Chat") >>
 <bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi>
-<< endif >> 
+<< endif >>
 
 << advanceTime 2:00 >>
 
-Vous passez deux heures à discuter de tout, mais surtout de rien.  
+Vous passez deux heures à discuter de tout, mais surtout de rien.
 
 <<jump Action_List_Rewind>>
 ===
@@ -167,7 +167,7 @@ tags: bg|desk
 colorID: 0
 position: -508,824
 ---
-Vous ouvrez une nouvelle fois votre dossier Astrometric Data Management. Qu'est-ce que c'est barbant... Mais cette fois, vous ravalez votre bile. 
+Vous ouvrez une nouvelle fois votre dossier Astrometric Data Management. Qu'est-ce que c'est barbant... Mais cette fois, vous ravalez votre bile.
 Aujourd'hui, vous voulez réussir votre journée. Vous voulez coiffer Fred au poteau! Vous aussi, vous aurez un <i>A+</i>
 
 << advanceTime 2:00 >>
@@ -178,25 +178,25 @@ Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à pot
 <<jump Action_List_Rewind>>
 ===
 title: BingeTV_Rewind
-tags: 
+tags: bg|desk
 colorID: 0
 position: -288,823
 ---
 <bi>Pensez-vous vraiment que c'est ce que vous ont recommandé les 4 Sages de la Métacognition?</bi>
-Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés. Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber. 
+Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés. Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
 
-Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable corsaire Yann Salto. 
-Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... 
+Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable corsaire Yann Salto.
+Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse...
 
-<< if visited("BingeTv") >>
+<< if visited("BingeTV") or visited("BingeTV_Rewind") >>
 <bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi>
 << endif >>
 
-En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait amocher son vaisseau ! Il est obligé d'atterrir en catastrophe sur Tortuga.  Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite. 
+En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait amocher son vaisseau ! Il est obligé d'atterrir en catastrophe sur Tortuga.  Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite.
 
 << advanceTime 4:00 >>
 
-Vous passez 4 heures à binger votre série préférée. 
+Vous passez 4 heures à binger votre série préférée.
 
 <<jump Action_List_Rewind>>
 ===
@@ -205,9 +205,9 @@ tags: bg|desk
 colorID: 0
 position: -42,822
 ---
-Il est temps d'appliquer la méthode miracle que vous ont enseignée ces esprits qui vous ont parlé durant votre sommeil. 
+Il est temps d'appliquer la méthode miracle que vous ont enseignée ces esprits qui vous ont parlé durant votre sommeil.
 
-Vous essayez de vous souvenir de ce que vous avez retenu en cours. Ce n'est pas brillant. Vous vous ne souvenez de très peu de choses. Pas étonnant, vous n'aimez pas cette matière. 
+Vous essayez de vous souvenir de ce que vous avez retenu en cours. Ce n'est pas brillant. Vous vous ne souvenez de très peu de choses. Pas étonnant, vous n'aimez pas cette matière.
 
 Mais lorsque vous replonger dans la lecture pour verifier vos réponses, vous constatez que ça vous aide vraiment à mettre de l'ordre dans votre esprit. Il y a encore du travail à faire, mais ça sort plus facilement de votre tête !
 
@@ -224,7 +224,7 @@ tags: bg|class
 colorID: 0
 position: -1007,1085
 ---
-Vous voilà désormais dans la grande salle. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier : <b>Sujet d'examen</b>, que le compteur se met en route. 
+Vous voilà désormais dans la grande salle. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier : <b>Sujet d'examen</b>, que le compteur se met en route.
 
 << advanceTime 4:00 >>
 
@@ -259,22 +259,26 @@ Fred s'apprête à vous répondre quand la sonnerie retentit. Les résultats du 
 << endif >>
 ===
 title: Resultats_Good
-tags: 
+tags:
 colorID: 0
 position: -529,1332
 ---
+<< music Victory >>
+
 Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore...
 
 Fred: Hé, C'est vachement bien pour une matière que tu détestes.
 You: Facile à dire pour toi. Tu as eu <b>A+</b>
 Fred: Et alors ? Tu feras mieux la prochaine fois.
+
+<< music Neutral >>
 ===
 title: Resultats_Bad_Again
-tags: 
+tags:
 colorID: 0
 position: -476,1087
 ---
-TaTaTaTa... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition. 
+TaTaTaTa... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition.
 
 Tentez à nouveau de passer ce premier examen...
 

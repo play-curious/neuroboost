@@ -175,17 +175,26 @@ export const commands: Record<string, Command> = {
   empty() {},
 };
 
+const isVisited: YarnFunction = function (node: string) {
+  let visitCount = this.runner.history.filter((result) => {
+    return result.metadata.title === node;
+  }).length;
+
+  if (this.metadata.title === node) visitCount--;
+
+  return visitCount > 0;
+};
+
 export const functions: Record<string, YarnFunction> = {
   isFirstTime(node: string): boolean {
-    const visited = this.runner.history.some((result) => {
-      return result.metadata.title === node;
-    });
+    const visited = isVisited.bind(this)(node);
+    console.log(node, "isFirstTime?", !visited);
     return !visited;
   },
   visited(node: string): boolean {
-    return this.runner.history.some((result) => {
-      return result.metadata.title === node;
-    });
+    const visited = isVisited.bind(this)(node);
+    console.log(node, "visited?", visited);
+    return visited;
   },
   getGauge(gauge: string): number {
     return this.graphics.getGaugeValue(gauge);
