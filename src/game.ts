@@ -67,8 +67,10 @@ const startingScene =
 // prettier-ignore
 const stateNames = [
   "D1_level1",
+  "journal_D1_level1",
   "D1_level2",
   "D2_level1",
+  "journal_D2_level1",
   "D2_level2",
   "End_Screen"
 ];
@@ -77,18 +79,19 @@ const states: { [k: string]: entity.EntityResolvable } = {
   Start_Menu: new save.StartMenu(),
 };
 for (const stateName of stateNames) {
-  states[stateName] = new dialog.DialogScene(stateName, startingNode);
-  if (stateName === "D1_level1")
-    states[`journal_${stateName}`] = new journal.JournalScene(variableStorage);
+  if(stateName.includes("journal")) states[`${stateName}`] = new journal.JournalScene(variableStorage);
+  else states[stateName] = new dialog.DialogScene(stateName, startNode);
 }
 
 async function levelLoader(entityConfig: entity.EntityConfig) {
   const levels: Record<string, string> = {};
   await Promise.all(
     stateNames.map(async (name) => {
-      const response = await fetch(`levels/${name}.yarn`);
-      const text = await response.text();
-      levels[name] = text;
+      if(!name.includes("journal")){
+        const response = await fetch(`levels/${name}.yarn`);
+        const text = await response.text();
+        levels[name] = text;
+      }
     })
   );
 

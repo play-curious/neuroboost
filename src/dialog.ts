@@ -226,10 +226,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       if (option.text === "back") indexOfBack = i;
     }
 
-    // if(options.length === 1 && indexOfBack !== -1){
-    //   this._handleDialog("Vous ne pouvez rien faire ici...", indexOfBack);
-    //   return;
-    // }
+    if(this._hasTag(this.metadata, "subchoice") && options.length === 1 && indexOfBack !== -1){
+      this._handleDialog("Vous ne pouvez rien faire ici...", indexOfBack);
+      return;
+    }
 
     options.reverse();
 
