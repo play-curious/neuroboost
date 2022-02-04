@@ -73,9 +73,10 @@ title: Action_List
 tags: bg|bedroom freechoice
 position: -847.2033081054688,-821.7307662963867
 ---
-<< if isFirstTime("Action_List") >>
+<< if isFirstTime() >>
 Que faites-vous maintenant ?
 << endif >>
+<< visit >>
 << if $time >= 720 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
@@ -89,9 +90,6 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
     <<jump salon_subchoice>>
 << endif>>
 ===
-
-
-
 title: cuisine_subchoice
 tags: bg|kitchen subchoice
 position: -319.1514720916748,-55.38755989074707
@@ -166,6 +164,7 @@ tags: bg|desk
 position: -1573.0745849609375,216.18408203125
 ---
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
+<< visit("BingeTV") >>
 Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
 
 << loopFX TVStarwars_LOOP 10000 >>

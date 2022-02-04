@@ -69,10 +69,10 @@ tags: bg|bedroom freechoice
 colorID: 0
 position: -895,604
 ---
-<< if isFirstTime("Action_List_Rewind") >>
+<< if isFirstTime() >>
 Que faites-vous maintenant?
 << endif >>
-
+<< visit >>
 << if $time >= 720 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
@@ -188,12 +188,13 @@ Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affich
 Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable corsaire Yann Salto.
 Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse...
 
-<< if visited("BingeTV") or visited("BingeTV_Rewind") >>
+<< if visited("BingeTV") >>
 <bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi>
 << endif >>
 
 En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait amocher son vaisseau ! Il est obligé d'atterrir en catastrophe sur Tortuga.  Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite.
 
+<< visit BingeTV >>
 << advanceTime 4:00 >>
 
 Vous passez 4 heures à binger votre série préférée.

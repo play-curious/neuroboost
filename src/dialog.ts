@@ -31,6 +31,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public disabledClick: boolean;
   public graphics: graphics.Graphics;
+  public visited: Set<string>;
 
   constructor(
     public readonly stateName: string,
@@ -53,6 +54,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.disabledClick = false;
     this._autoshowOn = false;
     this._selectedOptions = [];
+    this.visited = new Set();
 
     // Setup graphics
     this.graphics = new graphics.Graphics();
