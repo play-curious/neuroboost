@@ -1,24 +1,13 @@
 import * as PIXI from "pixi.js";
 
-import * as entity from "booyah/src/entity";
+import time from "dayjs";
+
 import * as tween from "booyah/src/tween";
 import * as easing from "booyah/src/easing";
 
 import * as extension from "./extension";
 
 export type ResolvableTime = `${number}:${number}`;
-
-export const dayMinutes = 60 * 24;
-
-export const dayNames = [
-  "Lundi",
-  "Mardi",
-  "Mercredi",
-  "Jeudi",
-  "Vendredi",
-  "Samedi",
-  "Dimanche",
-];
 
 export function parseTime(
   time: ResolvableTime
@@ -33,9 +22,25 @@ export function parseTime(
   return [h, m, h * 60 + m];
 }
 
+export const days = [
+  "Dimanche",
+  "Lundi",
+  "Mardi",
+  "Mercredi",
+  "Jeudi",
+  "Vendredi",
+  "Samedi",
+];
+
+export function minutesToDate(minutes: number) {
+  return time(minutes * 60 * 1000);
+}
+
+export function dateToText(date: time.Dayjs) {
+  return `${date.format("h:mm")}\n${days[date.get("day")]}`;
+}
+
 export class Clock extends extension.ExtendedCompositeEntity {
-  private _days: number;
-  private _minutesSinceMidnight: number;
   private _hidden: boolean;
 
   private _container: PIXI.Container;
@@ -46,9 +51,6 @@ export class Clock extends extension.ExtendedCompositeEntity {
   }
 
   _setup() {
-    this._days = 0;
-    this._minutesSinceMidnight = 0;
-
     this._container = new PIXI.Container();
     this._container.position.copyFrom(this._position);
 
@@ -78,13 +80,12 @@ export class Clock extends extension.ExtendedCompositeEntity {
     this.config.container.removeChild(this._container);
   }
 
-  private _updateText() {
-    const hours = Math.floor(this._minutesSinceMidnight / 60);
-    const minutes = this._minutesSinceMidnight % 60;
-    const time = `${hours} : ${minutes < 10 ? "0" + minutes : minutes}`;
-    const dayName = dayNames[this._days % 7];
+  updateTextFromDate(newTime: time.Dayjs) {
+    this._textBox.text = dateToText(newTime);
+  }
 
-    this._textBox.text = `${time}\n${dayName}`;
+  get date() {
+    return minutesToDate(Number(this.config.variableStorage.get("time")));
   }
 
   get hidden(): boolean {
@@ -96,36 +97,33 @@ export class Clock extends extension.ExtendedCompositeEntity {
     this._hidden = hidden;
   }
 
-  get minutesSinceMidnight(): number {
-    return this._minutesSinceMidnight;
+  set minutesSinceMidnight(minutes: number) {
+    this.config.variableStorage.set("time", `${minutes}`);
+    this.updateTextFromDate(minutesToDate(minutes));
   }
 
-  set minutesSinceMidnight(value: number) {
-    this._minutesSinceMidnight = value;
+  advanceTime(addedMinutes: number) {
+    const savedMinutes = Number(this.config.variableStorage.get("time"));
+    const finalMinutes = savedMinutes + addedMinutes;
 
-    while (this._minutesSinceMidnight >= dayMinutes) {
-      this._minutesSinceMidnight -= dayMinutes;
-      this._days++;
-    }
+    this.config.variableStorage.set("time", `${finalMinutes}`);
 
-    this._updateText();
-  }
+    const date = minutesToDate(Math.round(savedMinutes));
 
-  advanceTime(newMinutes: number) {
-    //const [h, m, hm] = parseTime(time);
-    const currentMinutes = this._minutesSinceMidnight;
-    //const newMinutes = currentMinutes + hm;
+    let cachedMinutes = savedMinutes;
 
     return new tween.Tween({
       duration: 2000,
       easing: easing.easeInOutQuint,
-      from: currentMinutes,
-      to: newMinutes,
-      onUpdate: (value) => {
-        this.minutesSinceMidnight = Math.round(value);
+      from: savedMinutes,
+      to: finalMinutes,
+      onUpdate: (minutes) => {
+        const added = minutes - cachedMinutes;
+        cachedMinutes = minutes;
+        this.updateTextFromDate(date.add(added, "minutes"));
       },
       onTeardown: () => {
-        this.minutesSinceMidnight = newMinutes;
+        this.updateTextFromDate(minutesToDate(finalMinutes));
       },
     });
   }

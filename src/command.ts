@@ -65,12 +65,6 @@ export const commands: Record<string, Command> = {
 
   setTime(time: clock.ResolvableTime) {
     let [, , minutesSinceMidnight] = clock.parseTime(time);
-
-    while (minutesSinceMidnight >= clock.dayMinutes)
-      minutesSinceMidnight -= clock.dayMinutes;
-
-    this.config.variableStorage.set("time", `${minutesSinceMidnight}`);
-
     this.config.clock.minutesSinceMidnight = minutesSinceMidnight;
   },
 
@@ -94,9 +88,6 @@ export const commands: Record<string, Command> = {
 
     // Cut the time if it goes over restriction
     while (newMinutes - minutesStep > minutesToStop) newMinutes -= minutesStep;
-
-    // Cut the time if it goes over one day
-    while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
 
     this.config.variableStorage.set("time", `${newMinutes}`);
 
