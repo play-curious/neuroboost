@@ -109,9 +109,6 @@ Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous 
 << advanceTime 1:00 >>
 << decrease $Chargementale 10/100 >>
 
-<< increase $notesynthese +1>>
-// Il faut valider 3 ou 4 sessions pour finir la sythèse. Objectif irréalisable en level1 mais à atteindre en level2 : detail utile pour le rewind...//
-
 -> Il ne reste plus qu'à s'y mettre maintenant 
     <<jump Liste_Taches>>
 ===
