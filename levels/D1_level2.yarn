@@ -31,9 +31,9 @@ You: Lundi ?! Mais c'était hier !!
 Fred_excited: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui.
 You: C'est dingue ! Je rêve ou quoi ?
 Fred_smiling: No no, je t'assure que c'est la réalité, coco.
-You: Heu...
+You: Euh...
 Fred_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
-You: Heu......
+You: Euh, ok...
 
 Vous raccrochez sans vous en rendre compte
 
@@ -212,7 +212,6 @@ En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleur
 << stopFX TVStarwars_LOOP >>
 
 Au final vous passez trop de temps à binger votre série préférée.
-// ORIGINAL: Vous passez 4 heures à binger votre série préférée.
 
 <<jump Action_List_Rewind>>
 ===
