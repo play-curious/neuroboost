@@ -74,11 +74,15 @@ export const commands: Record<string, Command> = {
     this.config.clock.minutesSinceMidnight = minutesSinceMidnight;
   },
 
-  advanceTime(time: clock.ResolvableTime, maxTime?: clock.ResolvableTime, stepTime?: clock.ResolvableTime) {
+  advanceTime(
+    time: clock.ResolvableTime,
+    maxTime?: clock.ResolvableTime,
+    stepTime?: clock.ResolvableTime
+  ) {
     const [, , minutesToAdvance] = clock.parseTime(time);
 
     let minutesToStop, minutesStep;
-    if(maxTime) {
+    if (maxTime) {
       minutesToStop = clock.parseTime(maxTime)[2];
       minutesStep = clock.parseTime(stepTime)[2];
     }
@@ -89,7 +93,7 @@ export const commands: Record<string, Command> = {
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
 
     // Cut the time if it goes over restriction
-    while(newMinutes -minutesStep > minutesToStop) newMinutes -=minutesStep;
+    while (newMinutes - minutesStep > minutesToStop) newMinutes -= minutesStep;
 
     // Cut the time if it goes over one day
     while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
