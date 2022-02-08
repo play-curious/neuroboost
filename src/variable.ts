@@ -14,6 +14,7 @@ export interface Gauges {
   food: `${number}`;
   learning: `${number}`;
   mentalLoad: `${number}`;
+  stress: `${number}`
 }
 
 /**
