@@ -48,16 +48,16 @@ tags: bg|party show|fred
 colorID: 0
 position: -894,141
 ---
-Vous voilà donc à la cafétéria. Avec Fred. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer.
+Vous voilà donc à la cafétéria avec Fred. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer.
 Fred_smiling: Alors, tu vois qu'on peut étudier tout en s'amusant.
 You: Oui ! J'espère juste ne pas le regretter demain matin.
 Fred_happy: No worry. Faut juste savoir gérer.
-Fred a raison, l'ambiance est vivifiante et enivrante... Vous vous laisser gagner par le flow et par les good vibes...
+Fred a raison, l'ambiance est vivifiante et enivrante... Vous vous laissez gagner par le flow et par les good vibes...
 -> The show must go on
     <<jump Choix_neutres>>
 ===
 title: Choix_neutres
-tags:
+tags: bg|party
 colorID: 0
 position: -439,141
 ---
@@ -66,15 +66,15 @@ Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << endif >>
 << visit Choix_neutres >>
 << if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
--> Aller swinguer sur le Dance Floor
+-> Aller swinguer sur le Dance Floor#once
     <<jump DanceFloor>>
--> Se Rafraîchir le gosier
+-> Se rafraîchir le gosier#once
     <<jump Boire_Soft>>
--> Grignotter un petit booster de calories
+-> Grignotter un petit booster de calories#once
     <<jump Snacking>>
--> Jouer de la guitare
+-> Jouer de la guitare#once
     <<jump Guitar_Jam>>
--> Chatter avec Fred
+-> Chatter avec Fred#once
     <<jump Chatter_avec_Fred>>
 << else >>
 <<jump TIRED>>
@@ -85,7 +85,7 @@ tags:
 colorID: 0
 position: -37,200
 ---
-Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffez doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous.
+Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffer doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous.
 C'est comme si vous vous étiez calé sur l'orbite de la Planète Disco. Vous vous trémoussez, vous vous déhanchez, vous sautez, vous virevoltez, vous tournoyez comme un globe scintillant ou une boule disco radieuse !
 Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public !
 Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressivement de l'orbite disco, vous saluez trois fois la foule avant de quitter la piste de danse. Votre sortie est suivie par un tonnerre d'applaudissements !
@@ -187,7 +187,7 @@ colorID: 0
 position: -581,909
 ---
 Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
-You: ... Heu... Et toi ?
+You: ...Euh... Et toi ?
 Fred_happy: Moi je reste. Je te le répète.
 Quand vous entendez Fred se vanter d'être plus énergique, votre sang et votre ego ne font qu'un tour !
 You: Pareil alors.
@@ -205,13 +205,13 @@ La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la pist
 << endif >>
 << visit Que_Faire >>
 << if getGauge("sleep") >= 25 && getGauge("food") >= 25 >>
--> Retourner swinguer sur le Dance Floor
+-> Retourner swinguer sur le Dance Floor#once
     <<jump DanceFloor2>>
--> Se rafraîchir au bar
+-> Se rafraîchir au bar#once
     <<jump Cafe_ou_Alcool>>
--> Grignoter quelque chose
+-> Grignoter quelque chose#once
     <<jump Medoc_Bot>>
--> Refaire un solo de guitare en criant tout votre saoul
+-> Refaire un solo de guitare en criant tout votre saoul#once
     <<jump Metal_Jam>>
 << else >>
 -> Vite ! Au lit
@@ -278,7 +278,7 @@ tags:
 colorID: 0
 position: 144,845
 ---
-Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota, c'est qu'elle vous attendait. Vous réactivez sa carte-son HD 4K. Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête à vous écouter. On dirait que la star de la soirée, c'est vous, à vous de le prouver, à vous de jouer !
+Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota, c'est qu'elle vous attendait. Vous réactivez sa carte-son HD 4K. Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête à vous écouter. On dirait que la star de la soirée, c'est vous. À vous de le prouver, à vous de jouer !
 Vous repartez dans un concert solo d'improvisation, où les riffs électriques et les accords cybermétalliques s'accordent pour composer une symphonie post-électronique. C'est à nouveau un show d'enfer ! Vous êtes applaudi, encore et encore. Au point où vous accordez à votre public un morceau bonus.
 
 << removeFromGauge sleep 20 >>
@@ -333,7 +333,7 @@ Fed: Je vois ça. Tu ne t'es pas assez ménagé.
 You: Muuuh...
 Fred: Fingers crossed ! Tout peut encore arriver.
 
-Hagard, vous quittez Fred et vous vous rendez à votre poste. Vous calez difficilement sur votre siège et tentez de suivre les instructions qui défilent sur l'écran. Ce n'est pas la première fois que vous pilotez un drone d'ingénierie. Vous êtes même assez doué à ce jeu.
+Hagard, vous quittez Fred et vous vous rendez à votre poste. Vous vous calez difficilement sur votre siège et tentez de suivre les instructions qui défilent sur l'écran. Ce n'est pas la première fois que vous pilotez un drone d'ingénierie. Vous êtes même assez doué à ce jeu.
 Cependant, ce matin, vous êtes trop fatigué, trop barbouillé, trop peu concentré. Vous avez du mal à décrypter les consignes, pourtant classiques. Vous avez du mal à guider votre appareil. Vous commettez trop d'erreurs, vous frôlez même le crash.
 C'est la cata, la bérézina, la défaite. Vous savez que vous avez foiré votre examen. Vous sortez de la salle juste après la fin du test, vous passez même devant Fred sans rien dire.
 
@@ -354,7 +354,7 @@ C'est alors que vous sursautez d'agacement ! Quelqu'un vous chatouille et vous g
     <<jump Miss_Temde>>
 ===
 title: Miss_Temde
-tags: show|temde
+tags: show|temde noUi
 position: 357,1662
 ---
 Temde_smiling: Hello { $name }.
@@ -368,7 +368,7 @@ Temde_smiling: À l'Assemblée des 4 sages
 <<jump Four_Sages>>
 ===
 title: Four_Sages
-tags: bg|circle autoshow
+tags: bg|circle autoshow  noUi
 position: -1226,2186
 colorID: 1
 ---
@@ -376,12 +376,13 @@ Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t
 Azul_happy: Un truc qui te servira également au quotidien.
 Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique!
 Temdé_smiling: Yep, un tuyau qui sonne juste, tellement c'est évident!
-Sapiens_concerned: Tu m'écoutes { $name }?
+Sapiens_concerned: Tu m'écoutes { $name } ?
+
 -> Oui
     <<jump Revelation>>
 ===
 title: Revelation
-tags: autoshow
+tags: autoshow noUi
 colorID: 0
 position: -894,2186
 ---
@@ -394,10 +395,11 @@ Temde_thinking: Pas les substances miracles de synthèse. Mensonges de bonimente
 Sapiens_thinking: Ton corps a besoin d'énergie. Il a également besoin de se recharger.
 You: Comme mon palmphone ?
 Ledai_happy: Tout à fait.
+
 <<jump Sommeil>>
 ===
 title: Sommeil
-tags: autoshow
+tags: autoshow noUi
 position: -894,2186
 ---
 Sapiens_thinking: Ton système biologique, comme ton palmphone, a besoin chaque nuit de recharger sa batterie.
@@ -410,13 +412,13 @@ Azul_happy: Ton enveloppe biologique est plus exigeante et plus gourmande.
 Temde_smiling: Elle en demande plus. Une nuit de sommeil !
 You: Ça veut dire combien ?
 Sapiens_thinking: Plusieurs heures. 6 heures pour les plus vifs. 10 heures pour les plus mous.
-You: Et si je dispose même pas de 6 heures ?
+You: Et si je ne dispose même pas de 6 heures ?
 Azul_proud: Il y a une solution de dépannage
 
 <<jump Sieste>>
 ===
 title: Sieste
-tags: autoshow
+tags: autoshow noUi
 position: -557,2186
 ---
 Azul_happy: Si tu n'as pas eu le temps de profiter d'une bonne nuit de sommeil, tu fais un somme !
@@ -433,7 +435,7 @@ Sapiens_happy: Tu as compris cette nouvelle leçon ?
     <<jump QCM_Recues>>
 ===
 title: QCM_Recues
-tags: autoshow
+tags: autoshow noUi
 position: -1226,2741
 colorID: 1
 ---
@@ -444,43 +446,39 @@ Sapiens_thinking: Notre corps emmagasine des unités de sommeil. Tant qu'on n'a 
     << fx Failure >>
     Sapiens_angry: Grossière erreur, jeune novice ! On ne stoque pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures !
     Ledai_explaining: Certes, Master Sapiens, mais laissons une chance à { $name }.
-    Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
 -> Faux
     << fx Success >>
     Sapiens_happy: Bravo ! Le sommeil ne se stoque pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain.
     Ledai_happy: Une autre phrase quiz, Master Sapiens ?
-    Sapiens_thinking: Oui. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
 
-<<empty>>
+Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
 
 -> Vrai
     << fx Failure >>
     Sapiens_angry: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité.
     Azul_sad: Master Sapiens, { $name } est encore novice et vous avez d'autres quizz à lui poser.
-    Sapiens_thinking: En effet. L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
+    Sapiens_thinking: En effet.
 -> Faux
     << fx Success >>
     Sapiens_happy: Excellente réponse ! Le secret d'un entretien métabolique durable est de se nourrir régulièrement, de manière équilibrée.
     Azul_cheerful: Est-ce la fin de la séance de quizz ?
-    Sapiens_thinking: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième: l'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
-
-<<empty>>
+    Sapiens_thinking: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième: 
+    
+Sapiens_thinking: L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
 
 -> Vrai
     << fx Success >>
     Sapiens_happy: Exactement ! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand !
     Temde_smiling: Très bien, mais faites court et concis ! { $name } est fatigué !
     Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
-    Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
 -> Faux
     << fx Failure >>
     Sapiens_angry: Encore une idée reçue, une affirmation infondée! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand!
     Temde_sad: Très bien, mais faites court et concis! { $name } est fatiguée!
     Sapiens_concerned: C'est comme ça quand on ne prend pas soin de son métabolisme!
     Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
-    Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test! Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
 
-<<empty>>
+Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
 
 -> Vrai
     << fx Failure >>
@@ -499,7 +497,7 @@ Sapiens_thinking: Notre corps emmagasine des unités de sommeil. Tant qu'on n'a 
     <<jump journal_mental>>!
 ===
 title: huit_heures
-tags: autoshow
+tags: autoshow noUi
 position: 1085.4264526367188,2697.2666015625
 ---
 Azul_sad: C'est ton dernier mot ?
@@ -509,7 +507,7 @@ Azul_sad: C'est ton dernier mot ?
     <<jump six_10_heures>>
 ===
 title: six_10_heures
-tags: autoshow
+tags: autoshow noUi
 position: 1088.5292358398438,3016.003662109375
 ---
 Sapiens_happy: Ah, je préfère ça. Ce qui me rappelle le temps où je...
@@ -518,7 +516,7 @@ Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter
 <<jump journal_mental>>
 ===
 title: journal_mental
-tags: bg|bedroom_night
+tags: bg|bedroom_night noUi
 position: 762.537109375,3380.74169921875
 ---
 Flash !!!
