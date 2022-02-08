@@ -1,7 +1,7 @@
 # gauges: learning sleep food
 
 title: Start
-tags: bg|bedroom_night
+tags: bg|bedroom_night noUi
 colorID: 8
 position: -1156,366
 ---
@@ -23,7 +23,7 @@ colorID: 0
 position: -805,367
 ---
 Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
-Et c'est reparti pour un tour... Fred répète comme un perroquet ce qu'il vous a déjà dit hier soir... Vous voilà revenu en arrière... En plein milieu de cette soirée de plaisir et de tentations... Certes, vous en avez trop fait, mais l'ambiance et le public était avec vous... Dur dur...
+Et c'est reparti pour un tour... Fred répète comme un perroquet ce qu'il vous a déjà dit hier soir... Vous voilà revenu en arrière... En plein milieu de cette soirée de plaisir et de tentations... Certes, vous en avez trop fait, mais l'ambiance et le public étaient avec vous... Dur dur...
 You: ...Hum... Tu fais quoi toi ?
 Fred_happy: Moi je reste. Je te le répète.
 Après tout, Vous avez encore de l'énergie à revendre pour la soiré. Vous savez qu'il faut simplement faire attention à ne pas trop vider vos réserves de sommeil et de nourriture...
@@ -201,6 +201,7 @@ colorID: 0
 position: -247,1257
 ---
 << hideGauges >>
+//TODO: hmmmmm
 Vous entrez tranquillement dans votre chambre. Vous allez aux toilettes. Votre vessie en a besoin. Vos dents aussi. Vous vous dévêtez et gagnez votre lit. Vous êtes bien crevé, mais encore pas éteint. Il est temps pour de se recharger. À défaut d'un nuit de sommeil, un somme vous fera déjà le plus grand bien.
 
 -> Un petit somme
@@ -212,7 +213,7 @@ colorID: 0
 position: 47,1248
 ---
 << add gauge Sleep 40 >>
-La seconde vous dormez déjà.
+La seconde où vous touchez votre lit, vous dormez déjà.
 Et la minute suivante vous entendez le bip bip de votre horloge connectée. Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'hier. Vous vous changez rapidement. Ce qui vous laisse le temps de prendre un petit déjeuner.
 
 -> Petit déjeuner
@@ -237,7 +238,7 @@ position: 560,1255
 Ce matin, vous retrouvez votre ami Fred, qui vous attend avec le sourire.
 
 << show fred>>
-Fred_excited: Yolo, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps...
+Fred_excited: Hey, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps...
 You: Ouais...
 Fred_smiling: Je vois ça. J'espère que tu as bien dormi.
 You: Ouais.

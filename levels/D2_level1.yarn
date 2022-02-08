@@ -68,9 +68,9 @@ Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
 -> Aller swinguer sur le Dance Floor#once
     <<jump DanceFloor>>
--> Se rafraîchir le gosier#once
+-> Se rafraîchir le gosier
     <<jump Boire_Soft>>
--> Grignotter un petit booster de calories#once
+-> Grignotter un petit booster de calories
     <<jump Snacking>>
 -> Jouer de la guitare#once
     <<jump Guitar_Jam>>
@@ -207,9 +207,9 @@ La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la pist
 << if getGauge("sleep") >= 25 && getGauge("food") >= 25 >>
 -> Retourner swinguer sur le Dance Floor#once
     <<jump DanceFloor2>>
--> Se rafraîchir au bar#once
+-> Se rafraîchir au bar
     <<jump Cafe_ou_Alcool>>
--> Grignoter quelque chose#once
+-> Grignoter quelque chose
     <<jump Medoc_Bot>>
 -> Refaire un solo de guitare en criant tout votre saoul#once
     <<jump Metal_Jam>>
