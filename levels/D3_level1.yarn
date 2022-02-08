@@ -1,10 +1,12 @@
+# gauges: sleep food mentalLoad
+
 title: Start_Mercredi
-tags: SynthesePNLIAA bg|bedroom
+tags: bg|bedroom
 colorID: 0
 position: -941,-697
 ---
 << setTime 8:00 >>
-Bip! Bip! Il est 8 heures vous rappelle votre horloge connectée. Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie d'Omniscience et de Polytechnologie Universelle. Attention, ça ne veut pas dire jour de repos! 
+Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie d'Omniscience et de Polytechnologie Universelle. Attention, ça ne veut pas dire jour de repos ! 
 Ronronron... Votre palmphone qui vibre. Sans suprise, vous voyez que l'appel vient de Fred.
 
 -> Prendre l'appel
@@ -15,17 +17,17 @@ tags:
 colorID: 0
 position: -631,-697
 ---
-Fred: Hello! Je te dérange pas?
+Fred: Hello ! Je te dérange pas ?
 You: Naaan...
-Fred: Tu fais quoi là, maintenant?
+Fred: Tu fais quoi là, maintenant ?
 You: Je finis mon petit déjeuner.
-Fred: Yes yes. Cool. Tu viens avec moi à la salle de gym?
+Fred: Yes yes. Cool. Tu viens avec moi à la salle de gym ?
 You: Naan... Je dois travailler en autonomie.
-Fred: Tu veux parler de la note de synthèse sur la PNLIAA?
+Fred: Tu veux parler de la note de synthèse sur la PNLIAA ?
 You: Ouais. La Programmation Neuro Linguistique des Intelligences Artifielles Analogiques.
 Fred: No worry. On a juste qu'à minuit pour la déposer sur le FTP de l'Académie.
 You: C'est vrai. C'est assez touffu ce truc de PNLIAA.
-Fred: Pfuuu. Tu prends trop les choses au sérieux. Alors tu viens?
+Fred: Pfuuu. Tu prends trop les choses au sérieux. Alors tu viens ?
 
 << advanceTime 1:00 >>
 
@@ -42,21 +44,20 @@ position: -23,-776
 Vous vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit.
 Fred: Je savais que tu allais venir.
 You: La preuve.
-Fred: Yes. Après notre séance de gym, tu vas voir, tu vas torcher cette note de synthèse!
+Fred: Yes. Après notre séance de gym, tu vas voir, tu vas torcher cette note de synthèse !
 You: On verra, je l'espère.
-Fred: No worry! Allez viens!
+Fred: No worry ! Allez viens !
 Vous emboîtez le pas de Fred et vous éclatez tous les deux aux différentes activités proposées: cybersprint, electroskate, eBall, eJump...
 Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
-Fred: Tu pars déjà, lâcheur?
+Fred: Tu pars déjà, lâcheur ?
 You: J'en peux plus.
 Fred: Tant pis.
 
 << advanceTime 2:00 >>
-<< increase $Sleep 30/100>>
-<< increase $Food 30/100>>
-<< increase $chargementale 30/100>>
+<< addToGauge sleep 30 >>
+<< addToGauge food 30 >>
+<< addToGauge mentalLoad 30 >>
 
-// Option "Retourner dans votre chambre " moved to the end of this node
 -> Retourner dans votre chambre 
     <<jump Liste_Taches>>
 ===
@@ -65,98 +66,101 @@ tags: bg|bedroom
 colorID: 1
 position: -328,-637
 ---
-Que faites-vous maintenant?
+<<if !visited("Liste_Taches")>>
+Que faites-vous maintenant ?
+<<visit Liste_Taches>>
+<<endif>>
 
 // Matin//
 << if $time <= 840 >> 
--> Préparer son bureau avant de se mettre à travailler
+-> Préparer son bureau avant de se mettre à travailler#once
     <<jump Ranger>>
--> Ouvrir le chat histoire de se détendre
+-> Ouvrir le chat histoire de se détendre#once
     <<jump Chat>>
--> Débuter la rédaction de la note de synthèse
+-> Débuter la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
--> Binger votre série TV préférée
+-> Binger votre série TV préférée#once
     <<jump BingeTV>>
--> Faire une sieste
+-> Faire une sieste#once
     <<jump Sleep>>
 
 // Après Midi//
 <<elseif $time < 1200 >>
--> Se détendre sur le chat 
+-> Se détendre sur le chat#once
     <<jump Chat>>
--> Continuer la rédaction de la note de synthèse
+-> Continuer la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
--> Binger votre série TV préférée 
+-> Binger votre série TV préférée#once
     <<jump BingeTV>>
--> Faire une sieste
+-> Faire une sieste#once
     <<jump Sleep>>
--> Manger
+-> Manger#once
     <<jump Diner>>
 
 // Soirée//
-<< elseif $chargementale >= 100 >>
--> Faire un somme  <<if !($time < 1200) && !($time <= 840) && ($chargementale >= 100)>>
+<< elseif getGauge("mentalLoad") >= 100 >>
+-> Faire un somme
     <<jump Surcharge_Cognitive>>
 
 <<endif>>
 ===
 title: Ranger
-tags: 
+tags: bg|desk
 colorID: 0
 position: -958,-443
 ---
 Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite votre le paper print de votre brief, les documents de référence que vous avez déjà en possession. Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document. Avant de commencer la rédaction de votre note, vous prenez le temps d'établir un plan de réflexion et de travail. Certes, cela vous prend du temps, mais ça va vous faciliter le processus de rédaction.
 << advanceTime 1:00 >>
-<< decrease $Chargementale 10/100 >>
+<< removeFromGauge mentalLoad 10 >>
 
 -> Il ne reste plus qu'à s'y mettre maintenant 
     <<jump Liste_Taches>>
 ===
 title: Chat
-tags: 
+tags: bg|desk
 colorID: 0
 position: -388,-306
 ---
-Vous cliquez sur l'icône ChatApp de votre Palmphone. Il y a encore plus de monde que lundi! Vous êtes pingé par Fred! Il vous demande si vous ne voulez pas le rejoindre à la salle de gym! Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous ne pouvez ignorer son injonction! Toute la communauté va apprendre que vous avez refusé un duel virtuel, que vous êtes un lâche...
-Vexé et décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait. Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Il y a encore plus de monde que lundi ! Vous êtes pingé par Fred ! Il vous demande si vous ne voulez pas le rejoindre à la salle de gym ! Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous ne pouvez ignorer son injonction ! Toute la communauté va apprendre que vous avez refusé un duel virtuel, que vous êtes un lâche...
+Vexé et décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait. Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.
 << advanceTime 2:00 >>
-<< increase $Chargementale 30/100 >>
+<< addToGauge mentalLoad 30 >>
 
--> Et maintenant, il faut peut-être travailler sur cette note de synthèse? 
+-> Et maintenant, il faut peut-être travailler sur cette note de synthèse ? 
     <<jump Liste_Taches>>
 ===
 title: BingeTV
-tags: 
+tags: bg|desk
 colorID: 0
 position: 326,-411
 ---
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber. 
-Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir! Ils sont parvenu à décryogéniser Jaba Fett. Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de de Mana de toute la galaxie!
-Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran! Vont-ils parvenir à arrêter Dude? L'empêcher de libérer la galaxie du joug de l'Imperium Noir? Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples: les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..
+Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir ! Ils sont parvenu à décryogéniser Jaba Fett. Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de de Mana de toute la galaxie !
+Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran ! Vont-ils parvenir à arrêter Dude ? L'empêcher de libérer la galaxie du joug de l'Imperium Noir ? Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples: les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..
 Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse...
 
 << advanceTime 3:00 >>
-<< increase $Food 30/100>>
-<< increase $Chargementale 40/100>>
+<< addToGauge food 30>>
+<< addToGauge mentalLoad 40>>
 
--> Vite, au travail! 
+-> Vite, au travail ! 
     <<jump Liste_Taches>>
 ===
 title: Sleep
-tags: 
+tags: bg|bedroom
 colorID: 0
 position: -706,-331
 ---
 Vous vous rappelez ce que vous ont dit les 4 Sages. Dormir régulièrement, tous les jours. Toutefois, si le temps manque, un petit somme, ça fait du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux. Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
 
-<< decrease $Sleep 20/100 >>
-<< decrease $Chargementale 10/100 >> 
+<< removeFromGauge sleep 20 >>
+<< removeFromGauge mentalLoad 10 >> 
 
 -> Maintenant, il faut s'y remettre 
     <<jump Liste_Taches>>
 ===
 title: Redaction_Note
-tags: 
+tags: bg|desk
 colorID: 0
 position: -22,-299
 ---
@@ -175,51 +179,49 @@ Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred ve
     <<jump Fred_again>>
 ===
 title: Fred_again
-tags: 
+tags: bg|desk
 colorID: 0
 position: 33,47
 ---
-Fred: Alors? Je t'attends toujours? Quand viens-tu?
+Fred: Alors ? Je t'attends toujours ? Quand viens-tu ?
 You: Heu... Je sais pas.
-Fred: Beware! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
-Nooon! Si la communauté apprend que vous avez décliné le défi de Fred. Fred, le membre le plus populaire du Métaverse de la fraternité étudiante. Vous êtes grillé aux yeux de tous les camarades de l'Académie d'Omniscience et de Polytechnologie Universelle... Vous êtes piégé. quand faut y aller, faut y aller...
+Fred: Beware ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
+Nooon ! Si la communauté apprend que vous avez décliné le défi de Fred. Fred, le membre le plus populaire du Métaverse de la fraternité étudiante. Vous êtes grillé aux yeux de tous les camarades de l'Académie d'Omniscience et de Polytechnologie Universelle... Vous êtes piégé. quand faut y aller, faut y aller...
 
-// Option "Retrouver Fred " moved to the end of this node
 -> Retrouver Fred 
     <<jump Salle_Gym2>>
 ===
 title: Salle_Gym2
-tags: 
+tags: bg|sport
 colorID: 0
 position: 317,29
 ---
-<< Show salle gym /stade? >>
 Vous relevez le défi lancé par Fred. En fait, vous vous éclatez tous les deux comme des enfants; cybersprint, electroskate, eBall, eJump...
 Le moins que l'on puisse dire, c'est que vous êtes donné à fond. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
-Fred: Tu pars déjà, tu déclares forfait?
+Fred: Tu pars déjà, tu déclares forfait ?
 You: J'en peux plus.
 Fred: Alors, j'ai gagné.
 You: Pour une fois.
 
 << advanceTime 2:00 >>
-<< increase $Sleep 30/100>>
-<< increase $Food 30/100>>
-<< increase $chargementale 30/100>>
+<< addToGauge sleep 30 >>
+<< addToGauge food 30 >>>
+<< addToGauge mentalLoad 30 >>
 
 -> Retourner dans votre chambre 
     <<jump Liste_Taches>>
 ===
 title: Surcharge_Cognitive
-tags: 
+tags: bg|bedroom
 colorID: 0
 position: -427,-43
 ---
-Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte. Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note!...
+Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte. Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...
 N'empêche, vous sentez votre tête penchez en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrer dans le noir...
 Puis, vous entendez une voix familière: 
 
-Azul: Tout va bien ( $name)?
-You: Tais-toi, Miss Temdé!
+Azul: Tout va bien ( $name) ?
+You: Tais-toi, Miss Temdé !
 Azul: Raté, c'est moi, Azul.
 You: Zut...
 Azul: Pas grave, viens, on a une nouveau truc à t'apprendre. 
@@ -228,67 +230,67 @@ Azul: Pas grave, viens, on a une nouveau truc à t'apprendre.
     <<jump Assemblee_3>>
 ===
 title: Assemblee_3
-tags: bg|circle
+tags: bg|circle noUi
 colorID: 1
 position: -1091,21
 ---
-Hop, la seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin exotique. Ce petit nid de verdure que vos hôtes nomment l'assemblée des Sages. C'est de la téléportation ou de la magie? Et où se trouve ce fichu décor si criant de vérité... On dirait d'authentiques plantes exotiques...
+Hop, la seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin exotique. Ce petit nid de verdure que vos hôtes nomment l'assemblée des Sages. C'est de la téléportation ou de la magie ? Et où se trouve ce fichu décor si criant de vérité... On dirait d'authentiques plantes exotiques...
 Temde: Yep, elles sont réelles, ce ne sont pas des végétaux synthétiques. C'est moi qui m'en occupe.
 Sapiens: Super Miss Temdé. Je ne crois pas que { $name } soit venu pour échanger sur cette question.
 Ledai: Tout à fait. Cette nouvelle session aura pour objet la surcharge cognitive.
-You: Quoi?!
+You: Quoi ?!
 Azul: On t'as appris à ménager ton corps.
 Temde: Bien dormir et manger équilibré.
 Sapiens: C'est la même chose avec tes capacités mentales. Elles ont besoin d'énergie et de recharger les batteries. Je te l'ai dit. Mais elles peuvent aussi tomber en panne.
-You: Comment ça?
+You: Comment ça ?
 Sapiens: Si tu les surcharges.
 Ledai: Si tu les fais surchauffer. Comme ton ordinateur, il peut se bloquer, ne plus répondre.
-You: Ah bon? 
+You: Ah bon ? 
 Sapiens: Il faut utiliser la technique
 <<jump pomodoro>>
 ===
 title: pomodoro
-tags: 
+tags:  noUi
 colorID: 0
 position: -750,149
 ---
-You: Et ça consiste en quoi?
+You: Et ça consiste en quoi ?
 Ledai: C'est très simple. Il faut fractionner ta tâche en plusieurs petites tâches. 
 You: Un exemple.
 Ledai: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir en une seule fois. Tu vas le couper en plus petit bouts que tu vas du premier au dernier morceau.
-You: Ouais... Et si je veux le dévorer?
+You: Ouais... Et si je veux le dévorer ?
 Sapiens: Ah, jeunesse insouciante... Tu vas t'étouffer, tu vas faire exploser ton estomac jusqu'à régurgiter ce que tu auras péniblement avalé. 
 Ledai: Beuha... C'est dégoûtant.
 Azul: L'important n'est pas de s'élancer, mais de franchir le kilomètre suivant, et ainsi de suite jusqu'à la ligne d'arrivée.
 Temde: L'important est de tenir l'effort sur la durée, pas de sprinter.
-You: Et c'est tout?
+You: Et c'est tout ?
 Sapiens: Non. Il y a autre chose. Le plus important... Éviter les distractions.
--> Les distractions ?
+-> Les distractions  ?
     <<jump Les_distractions>>
 ===
 title: Les_distractions
-tags: 
+tags:  noUi
 colorID: 0
 position: -370,280
 ---
 Sapiens: Les perturbations extérieures qui parasitent ta charge mentale et saturent tes processus de calcul cérébral.
-You: Hé, je suis pas une machine!
+You: Hé, je suis pas une machine !
 Ledai: Tout à fait, l'erreur est humaine, pas informatique.
 Azul: Je la fais court. Plus on est concentré, moins on peut disperser son attention.
-Temde: Regarde-moi! J'ai quatre bras! Toi, tu n'en as que deux, je peux jongler avec plus de balles que toi! Mais, moi aussi, j'ai mes limites. À un moment, je n'arriverai plus à lancer en l'air toutes ces balles.
-You: C'est ça. Je te défie!
+Temde: Regarde-moi ! J'ai quatre bras ! Toi, tu n'en as que deux, je peux jongler avec plus de balles que toi ! Mais, moi aussi, j'ai mes limites. À un moment, je n'arriverai plus à lancer en l'air toutes ces balles.
+You: C'est ça. Je te défie !
 Miss Temdé se lève tranquillement et étend ses mains. Des balles apparues de nulle part se matérialisent dans ses paumes. Miss Temdé jongle ainsi avec quatre, cinq, puis six balles...
 Temde: À ton tour, montre-nous tes limites.
 <<jump Quit_Mini_Game>>
 <<jump Jongler>>
 ===
 title: Jongler
-tags: 
+tags:  noUi
 colorID: 0
 position: -184,504
 ---
-// TODO: Faire un jeu ?
-texte jeu interactif jongler?
+// TODO: Faire un jeu  ?
+texte jeu interactif jongler ?
 
 
 // When the player loose, too many balls//
@@ -298,14 +300,14 @@ texte jeu interactif jongler?
     <<jump Quit_Mini_Game>>
 ===
 title: Le_Quizz_des_Sages
-tags: 
+tags:  noUi
 colorID: 0
 position: 342,320
 ---
 Sapiens: Je suis content de voir que tu te prends au jeu.
 Ledai: En effet, tout ce travail n'est pas mené en vain.
 You: J'espère bien. C'est parfois barbant votre baratin...
-Ledai: Notre baratin? Mais, nous essayons de t'améliorer...
+Ledai: Notre baratin ? Mais, nous essayons de t'améliorer...
 You: Mouais...
 Sapiens: Commençons par cette question. La technique pomodoro consiste à fractionner une tâche en plusieurs tâches.
 -> Pour pouvoir jongler avec chacune dans l'ordre que l'on veut, voire en même temps
@@ -314,15 +316,15 @@ Sapiens: Commençons par cette question. La technique pomodoro consiste à fract
     <<jump Pomodoro_Yes>>
 ===
 title: Pomodoro_No
-tags: 
+tags:  noUi
 colorID: 0
 position: 701,260
 ---
-Sapiens: N'importe quoi! Tu n'as rien compris de ce qu'on a dit. Je suis attristé de voir tout le mal que Miss Temdé s'est donné avec la parabole des balles de jonglage. Non, on ne peut pas gérer n'importe quelle tâche dans n'importe quel ordre! Et surtout pas tout en même temps! Ta charge cognitive encaisse, encaisse. Et elle finit par saturer.
+Sapiens: N'importe quoi ! Tu n'as rien compris de ce qu'on a dit. Je suis attristé de voir tout le mal que Miss Temdé s'est donné avec la parabole des balles de jonglage. Non, on ne peut pas gérer n'importe quelle tâche dans n'importe quel ordre ! Et surtout pas tout en même temps ! Ta charge cognitive encaisse, encaisse. Et elle finit par saturer.
 Ledai: Hélas. Le "mode multitâche" a la vie dure.
 Azul: Cessons de regarder le verre à moitié vide. Je pense que { $name } a compris la leçon cette fois.
 Ledai: bien parlé Azul.
-Sapiens: J'espère. Continuons avec la deuxième affirmation test, laquelle est la bonne?
+Sapiens: J'espère. Continuons avec la deuxième affirmation test, laquelle est la bonne ?
 Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... 
 Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. Tu travailleras uniquement l'après-midi 
 Ou tu préfères travailler matin et après-midi afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement
@@ -332,15 +334,15 @@ Ou tu préfères travailler matin et après-midi afin de te ménager des pauses 
     <<jump GestionTemps_Yes>>
 ===
 title: Pomodoro_Yes
-tags: 
+tags:  noUi
 colorID: 0
 position: 698,531
 ---
-Sapiens: Exactement! On doit apprendre les tâches les unes après les autres de manière logique.
+Sapiens: Exactement ! On doit apprendre les tâches les unes après les autres de manière logique.
 Ledai: Que ce soit de manière linéaire ou itérative. On n'entame jamais une tâche importante si on ne sait pas d'où on vient ni on veut aller. 
 Temde: Oui, enfin, grosso modo...
-Azul: Chut! Ne commençons pas à nous chicaner. Comment voulez-vous que { $name } y comprenne quelque chose...
-Sapiens: Merci, Azul. Continuons avec la deuxième affirmation test, laquelle est la bonne?
+Azul: Chut ! Ne commençons pas à nous chicaner. Comment voulez-vous que { $name } y comprenne quelque chose...
+Sapiens: Merci, Azul. Continuons avec la deuxième affirmation test, laquelle est la bonne ?
 Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... 
 Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. Tu travailleras uniquement l'après-midi 
 Ou tu préfères travailler matin et après-midi afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement
@@ -350,19 +352,19 @@ Ou tu préfères travailler matin et après-midi afin de te ménager des pauses 
     <<jump GestionTemps_Yes>>
 ===
 title: GestionTemps_No
-tags: 
+tags:  noUi
 colorID: 0
 position: 1042,297
 ---
-Sapiens: J'en perds ma barbe! Quelle réponse idiote! Tu as compris ce qu'est la surcharge cognitive?
+Sapiens: J'en perds ma barbe ! Quelle réponse idiote ! Tu as compris ce qu'est la surcharge cognitive ?
 You: C'est quand le cerveau fatigue, il surchauffe.
-Ledai: Alors pourquoi as-tu cru cette affirmation?
-You: Parce que mon pote, Fred, il bosse à la dernière minute et ça marche!
+Ledai: Alors pourquoi as-tu cru cette affirmation ?
+You: Parce que mon pote, Fred, il bosse à la dernière minute et ça marche !
 Temde: Tu n'es pas ton pote.
 Azul: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil: Il faut travailler régulièrement, sans excès.
 Temde: Surtout ne pas tout reporter au dernier moment.
 Ledai: Sinon, tu risques le court-circuit, le "system failure"...
-Sapiens: C'est enfin compris?
+Sapiens: C'est enfin compris ?
 You: Oui.
 Sapiens: Alors voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive... Choisis bien cette fois ta réponse.
 -> Les distracteurs sont comme des bonbons qui récompensent les pauses entre chaque session de concentration intense
@@ -371,7 +373,7 @@ Sapiens: Alors voici la dernière proposition test. J'ai insisté sur le rôle d
     <<jump Distracteurs_Yes>>
 ===
 title: GestionTemps_Yes
-tags: 
+tags:  noUi
 colorID: 0
 position: 1048,579
 ---
@@ -379,7 +381,7 @@ Sapiens: Tout à fait. Chaque chose en son temps. Comme tes ordinateurs, il faut
 Azul: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil: Il faut travailler régulièrement, sans excès.
 Temde: Surtout ne pas tout reporter au dernier moment.
 Ledai: Sinon, tu risques le court-circuit, le "system failure"...
-Sapiens: C'est enfin compris?
+Sapiens: C'est enfin compris ?
 You: Oui.
 Sapiens: Alors voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive... Choisis bien ta réponse.
 -> Les distracteurs sont comme des bonbons qui récompensent les pauses entre chaque session de concentration intense
@@ -388,86 +390,86 @@ Sapiens: Alors voici la dernière proposition test. J'ai insisté sur le rôle d
     <<jump Distracteurs_Yes>>
 ===
 title: Distracteurs_No
-tags: 
+tags:  noUi
 colorID: 0
 position: 1281,310
 ---
-Sapiens: Quelle horreur! Quel non-sens! Les distracteurs... Réseaux sociaux, notifications automatiques, connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport direct avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses! Comme leur nom l'indique, ce sont des nuisances! Ils t'empêchent d'être 100% concentré sur la tâche présente. Les distracteurs distraient ton attention, la dispersent dans toute les directions! Par conséquent les distracteurs affaiblissent ta capacité cognitive... 
+Sapiens: Quelle horreur ! Quel non-sens ! Les distracteurs... Réseaux sociaux, notifications automatiques, connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport direct avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses ! Comme leur nom l'indique, ce sont des nuisances ! Ils t'empêchent d'être 100% concentré sur la tâche présente. Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Par conséquent les distracteurs affaiblissent ta capacité cognitive... 
 You: Ah... zut...
-Sapiens: C'est tout ce que tu as à me dire?
+Sapiens: C'est tout ce que tu as à me dire ?
 You: Ben... Ouais...
 Sapiens: Quelle misère.
-Azul: Je pense que { $name } a compris cette fois-ci. N'est-ce pas?
+Azul: Je pense que { $name } a compris cette fois-ci. N'est-ce pas ?
 You: Oui.
-Sapiens: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi?
+Sapiens: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ?
 You: Parce qu'il réduisent mon attention.
-Ledai: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites!
+Ledai: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites !
 Azul: Il faut se ménager un espace de calme et de paix, une bulle d'attention.
 Sapiens: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...
 You: OK.
-Ledai: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental!
+Ledai: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !
 
 -> Journal mental 
     <<jump JournalMental>>
 ===
 title: Distracteurs_Yes
-tags: 
+tags:  noUi
 colorID: 0
 position: 1384,604
 ---
-Sapiens: Bien entendu. Les Réseaux sociaux, les notifications automatiques, la connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport immédiat avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses! Comme leur nom l'indique, ce sont des nuisances! Les distracteurs distraient ton attention, la dispersent dans toute les directions! Les distracteurs affaiblissent ta capacité cognitive. Tu dois être 100% concentré sur la tâche présente, pas être distrait par d'autre choses ou d'autres personnes..
+Sapiens: Bien entendu. Les Réseaux sociaux, les notifications automatiques, la connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport immédiat avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses ! Comme leur nom l'indique, ce sont des nuisances ! Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Les distracteurs affaiblissent ta capacité cognitive. Tu dois être 100% concentré sur la tâche présente, pas être distrait par d'autre choses ou d'autres personnes..
 You: Oui.
-Sapiens: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi?
+Sapiens: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ?
 You: Parce qu'il réduisent mon attention.
-Ledai: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites!
+Ledai: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites !
 Azul: Il faut se ménager un espace de calme de paix une bulle d'attention.
 Sapiens: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...
 You: OK.
-Ledai: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental!
+Ledai: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !
 
 -> Journal mental 
     <<jump JournalMental>>
 ===
 title: JournalMental
-tags: 
+tags:  noUi
 colorID: 1
 position: 1209,900
 ---
-Flash!!! 
+Flash !!! 
 Vous revoilà seul... Dans cet instant figé, dans cette parenthèse intime entre l'ombre et la lumière, le jour et la nuit. Votre "carnet d'ingénieur tout-terrain" est entre vos mains... 
-Qu'allez-vous noter dessus?
+Qu'allez-vous noter dessus ?
 ===
 title: Lunch
-tags: 
+tags: bg|kitchen
 colorID: 0
 position: 477,-702
 ---
-Yum Yum! Il est temps de se faire une pause "manger équilibré", comme le recommande les Sages. Vous vous cuisinez un Green Burger Full Vegie. Franchement, c'est étrange, tant pour le goût que pour l'aspect. On dirait un burger à la viande et il n'y en a aucune. En outre, c'est vraiment copieux. Et les frites à base de riz croustillant... Dingue. C'est meilleur que les frites de chez Naz Do...
+Yum Yum ! Il est temps de se faire une pause "manger équilibré", comme le recommande les Sages. Vous vous cuisinez un Green Burger Full Vegie. Franchement, c'est étrange, tant pour le goût que pour l'aspect. On dirait un burger à la viande et il n'y en a aucune. En outre, c'est vraiment copieux. Et les frites à base de riz croustillant... Dingue. C'est meilleur que les frites de chez Naz Do...
 
 << advanceTime 0:30 >>
-<< decrease $Sleep 20/100 >>
-<< decrease $Food 20/100 >>
-// Option "C'est pas tout, il faut s'y remettre " moved to the end of this node
+<< removeFromGauge sleep 20 >>
+<< addToGauge food 20 >>
+
 -> C'est pas tout, il faut s'y remettre 
     <<jump Liste_Taches>>
 ===
 title: Diner
-tags: 
+tags: bg|kitchen
 colorID: 0
 position: 684,-454
 ---
 À cette heure-ci, vous n'avez pas trop envie de cuire quelque chose de trop lourd. Un mix de ratatouilles de légumes du soleil d'Aldébaran, y a rien de mieux... Vous ouvrez votre boîte de plat-rouge-bio. Vous servez le tout avec une assiette de céréales complètes. C'est simple, chaud, nourrissant et franchement bon.
 
 << advanceTime 0:30 >>
-<< decrease $Sleep 20/100 >>
-<< decrease $Food 20/100 >>
+<< removeFromGauge sleep 20 >>
+<< addToGauge food 20 >>
 
 
--> La journée n'est pas encore finie! 
+-> La journée n'est pas encore finie ! 
     <<jump Liste_Taches>>
 ===
 title: Quit_Mini_Game
-tags: 
+tags: noUi
 colorID: 0
 position: 182,578
 ---
@@ -478,14 +480,14 @@ Temde: Ou à les contourner. C'est selon.
 Ledai: Exactement, et c'est l'objet de cette session.
 Sapiens: Gérer ta charge cognitive. Ne surtout pas saturer ton processeur cérébral. 
 Ledai: S'isoler des éléments distracteurs. Ne pas abuser du "mode multitâches".
-You: C'est quoi le "mode multitâches"?
+You: C'est quoi le "mode multitâches" ?
 Temde: En "mode multitâches", tu commence une action, tu passes à une autre, puis à une troisième...
 Azul: Ou tu en mènes plusieurs de front.
 Ledai: Au lieu de focaliser ton processeur sur un calcul stratégique, tu fragmente ton attention.
-Sapiens: Cela réduit ta capacité cognitive. Et à un moment donnée, cette dernière sature! Elle bloque! Elle freeze!
+Sapiens: Cela réduit ta capacité cognitive. Et à un moment donnée, cette dernière sature ! Elle bloque ! Elle freeze !
 Ledai: Elle ne répond plus, c'est l'écran bleu.
 You: Ah.
-Sapiens: Un petit questionnaire pour conclure?
+Sapiens: Un petit questionnaire pour conclure ?
 
 <<jump Le_Quizz_des_Sages>>
 ===
