@@ -79,7 +79,8 @@ const states: { [k: string]: entity.EntityResolvable } = {
   Start_Menu: new save.StartMenu(),
 };
 for (const stateName of stateNames) {
-  if(stateName.includes("journal")) states[`${stateName}`] = new journal.JournalScene(variableStorage);
+  if (stateName.includes("journal"))
+    states[`${stateName}`] = new journal.JournalScene(variableStorage);
   else states[stateName] = new dialog.DialogScene(stateName, startingNode);
 }
 
@@ -87,7 +88,7 @@ async function levelLoader(entityConfig: entity.EntityConfig) {
   const levels: Record<string, string> = {};
   await Promise.all(
     stateNames.map(async (name) => {
-      if(!name.includes("journal")){
+      if (!name.includes("journal")) {
         const response = await fetch(`levels/${name}.yarn`);
         const text = await response.text();
         levels[name] = text;
