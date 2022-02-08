@@ -1,5 +1,7 @@
+# gauges: sleep food stress
+
 title: Start
-tags: ExamenGRH
+tags: bg|bedroom
 colorID: 8
 position: -2835,-498
 ---
@@ -7,49 +9,41 @@ Bip ! Bip ! Votre horloge connectée vous surprend en plein milieu d'un rêve me
 Hélas, ce ne sera pas pour aujourd'hui. Ce matin, vous devez réviser. Nous sommes jeudi, la semaine de partiels ne s'est pas achevée. Vous devez passer encore un examen cet après-midi. La GRH : la Gestion des Ressources Hybrides. C'est-à-dire les forces vives : biologiques, numériques, et biologinumériques...
 
 Ronronron... Votre palmphone vibre. Pour la première fois de la semaine, ce n'est pas Fred, mais votre grand-mère. Qu'est-ce qui lui prend de vous appeler à cette heure-ci ?
-// Option "prendre l'appel " moved to the end of this node 
-// Option "rejeter l'appel " moved to the end of this node
--> prendre l'appel 
+
+-> Prendre l'appel 
     <<jump Appel_Mamie>>
--> rejeter l'appel 
+-> Rejeter l'appel 
     <<jump Rejet_Mamie>>
 ===
 title: Liste_Taches
-tags: 
+tags: bg|bedroom
 colorID: 1
 position: -2103,-617
 ---
 Que voulez-vous faire?
-<< if $time >= 13h30 >>
+<< if $time >= 810 >>
 C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
-// Option "Manger " moved to the end of this node
-
-<< else>> 
-// Option "Prendre votre petit déjeuner " moved to the end of this node
-// Option "Appeler vos parents " moved to the end of this node
-// Option "Réviser votre cours, façon "rappel libre" " moved to the end of this node
-// Option "Vous informer en ligne sur les causes et les effets des pathologies cardiaques" moved to the end of this node
-// Option "Appeler Fred " moved to the end of this node
-<< endif>>
--> Manger  <<if ($time >= 13)>>
+-> Manger
     <<jump Lunch>>
--> Prendre votre petit déjeuner  <<if !($time >= 13)>>
+<< else>> 
+-> Prendre votre petit déjeuner#once
     <<jump Breakfast>>
--> Appeler vos parents  <<if !($time >= 13)>>
+-> Appeler vos parents#once
     <<jump Maman_Call>>
--> Réviser votre cours, façon "rappel libre"  <<if !($time >= 13)>>
+-> Réviser votre cours, façon "rappel libre" #once
     <<jump Rappel_libre>>
--> Vous informer en ligne sur les causes et les effets des pathologies cardiaques <<if !($time >= 13)>>
+-> Vous informer en ligne sur les causes et les effets des pathologies cardiaques#once
     <<jump Web_Info>>
--> Appeler Fred  <<if !($time >= 13)>>
+-> Appeler Fred#once
     <<jump Fred_Call>>
+<< endif>>
+
 ===
 title: Appel_Mamie
-tags: 
+tags: bg|bedroom
 colorID: 0
 position: -2531,-441
 ---
-<< Pas d'image de personnage ou un fond noir avec une silhouette>>
 You: Bonjour mamie ! Pourquoi je ne te vois pas ?
 Mamie: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir...
 You: ah bon ?
@@ -63,9 +57,9 @@ Mamie: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux...
 You: Ton coeur ?! Mamie...
 Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire ! Du coup, votre aïeule coupe court à la conversation. Vous n'en saurez pas plus. Quel choc !! Votre grand-mère à l'hôpital, la connaissant dure comme du béton armé, c'est du sérieux. Vraiment, ça craint...
 Il y a des journées comme celle-ci qu'on préférerais zapper... Du coup, vous ne savez plus du tout par quoi vous allez commencer... 
-<< setStress: 40/100 >>
+<< addToGauge stress 40 >>
 << setTime: 8:30 >>
-// Option "Pourtant, il faut choisir " moved to the end of this node
+
 -> Pourtant, il faut choisir 
     <<jump Liste_Taches>>
 ===
@@ -76,31 +70,30 @@ position: -2511,-712
 ---
 Ce n'est pas une heure pour appeler ses enfants ! Vous pourriez être en cours ou en examen ! Vraiment, les grands-parents, il faut leur imposer une mise à jour du manuel du savoir-vivre !...
 Votre palmphone s'ébroue de nouveau ! C'est encore votre grand-mère ! Elle insiste, ce n'est pas son genre. En général, elle laisse un message sur votre répondeur. C'est peut-être sérieux...
-// Option "prendre l'appel " moved to the end of this node 
-// Option "rejeter l'appel " moved to the end of this node
--> prendre l'appel 
+
+-> Prendre l'appel 
     <<jump Appel_Mamie>>
--> rejeter l'appel 
+-> Rejeter l'appel 
     <<jump Rejet_Mamie>>
 ===
 title: Breakfast
-tags: 
+tags: bg|kitchen
 colorID: 0
 position: -1962,-316
 ---
 C'est vraiment pas yum yum ce matin... Votre muesli à la crème n'a pas de goût et votre jus d'orange reconstitué vous attaque l'estomac. C'est trop acide. Décidément, la nourriture biologcindus ne ne fait pas toujours des miracles. Surtout, quand le moral est bas... Au moins, vous vous sentez le corps moins vidé. 
 <<advanceTime 0:15>>
-// Option "Que faites-vous maintenant? " moved to the end of this node
+
 -> Que faites-vous maintenant? 
     <<jump Liste_Taches>>
 ===
 title: Maman_Call
-tags: 
+tags: bg|bedroom
 colorID: 0
 position: -1710,-324
 ---
 Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous appuyez sur le bouton "appel". Votre mère décroche :
-// ne pas monter l'image de maman, juste un silhouette lambda en noir, comme pour mamie?//
+
 Maman: Bibi. Tu es au courant ?
 You: Oui. Mamie m'a appelé. Qu'a-t-elle ?
 Maman: Elle a fait une crise cardiaque. On l'a admise d'urgence à l'hôpital. Son état est stable mais on doit l'opérer.
@@ -110,36 +103,35 @@ You: Merci. Du coup, je suis plus stressé..
 Maman: Bibi, je ne pensais pas te... 
 You: J'ai compris. Bye !
 Vous raccrochez, encore plus énervé. Cette histoire sent de plus en plus mauvais...
-<< increase $Stress 10/100 >>
+<< addToGauge stress 10 >>
 <<advanceTime 0:20>>
-// Option "Il faut se ressaisir et agir " moved to the end of this node
+
 -> Il faut se ressaisir et agir 
     <<jump Liste_Taches>>
 ===
 title: Rappel_libre
-tags: 
+tags: bg|desk
 colorID: 0
 position: -1423,-343
 ---
 Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés. Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs... En direction de votre grand-mère, de son problème cardiaque, de son opération. Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond...
-<< increase Memorisation 20/100 >>
+<< addToGauge learning 20 >>
 <<advanceTime 2:00 >>
-// Option "Qu'est-ce que vous allez bien faire ?" moved to the end of this node
+
 -> Qu'est-ce que vous allez bien faire ?
     <<jump Liste_Taches>>
 ===
 title: Web_Info
-tags: 
+tags: bg|desk
 colorID: 0
 position: -1108,-345
 ---
 Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches. Vous passez les deux heures suivantes à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations. Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes...
 Vous vous demandez si c'était une si bonne idée de vouloir s'informer tout seul sur un sujet aussi sensible...
 
-<< increase $Stress 20/100 >>
+<< addToGauge stress 20 >>
 <<advanceTime 2:00>>
- 
-// Option "Et maintenant, que faire? " moved to the end of this node
+
 -> Et maintenant, que faire? 
     <<jump Liste_Taches>>
 ===
@@ -161,26 +153,23 @@ Fred: Non, surtout pas d'alcool ! Viens avec moi, on va se défouler à la salle
 You: Sais pas...
 Fred: Si, follow me...
 
-// Option "Accepter la proposition de Fred " moved to the end of this node
-// Option "Refuser la proposition de Fred " moved to the end of this node
 -> Accepter la proposition de Fred 
     <<jump Sport_Stress>>
 -> Refuser la proposition de Fred 
     <<jump NoMove_Stress>>
 ===
 title: Lunch
-tags: 
+tags: bg|kitchen
 colorID: 1
 position: -2328,-127
 ---
 Zuuut !! Déjà l'heure de se préparer à sortir ! Pas le temps de faire dans le subtil et l'équilibré. Vous enfournez dans le four radio un Burger Big Proteins Double Cheese ! Le temps que votre plat réchauffe, vous videz une canette de Xeno Cola ! Cinq bouchées plus tard et un rapide coup de serviette pour enlever le ketchup, vous enfilez vos frustres et vous filez en salle...
 
-// Option "Se rendre à l'examen " moved to the end of this node
 -> Se rendre à l'examen 
     <<jump Salle_Examen>>
 ===
 title: Sport_Stress
-tags: 
+tags: bg|sport
 colorID: 0
 position: -554,-240
 ---
@@ -196,18 +185,20 @@ You: Crevé...
 Fred: Cool et...
 You: Toujours aussi véner...
 Fred: Damned.
-// reduce sleep? c'est vraiment fatiguant 
+
+<< removeFromGauge sleep 40 >>
 
 Hélas, cet exercice de frappe intense ne semble pas avoir évacué votre angoisse, loin de là.
 
 <<advanceTime 1:30 >>
-<<increase stress 20/100>>
-// Option "Qu'est-ce que vous allez bien pouvoir faire ?" moved to the end of this node
+<<addToGauge stress 20>>
+<<visit Sport_Stress>>
+
 -> Qu'est-ce que vous allez bien pouvoir faire ?
     <<jump Liste_Taches>>
 ===
 title: NoMove_Stress
-tags: 
+tags: bg|desk
 colorID: 0
 position: -593,-581
 ---
@@ -221,14 +212,15 @@ You: Tu fais chier, Fred...
 Fred: C'est pour ça que je suis ton pote... ah ah...
 Vous grognez et vous pestez, cependant, vous lancez le serveur GameStream. Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred. Son skin est aujourd'hui fuschia et orange fluo, c'est vraiment laid. Bon, c'est facile à repérer et viser. Vous respirez un bon coup et plongez dans Crawl of Study. C'est un MOBA, se situant dans une reconstitution 3D de l'Académie d'Omniscience et de Polytechnologie Universelle. Le gameplay mélange  Plateformer en mode Parkour et TPS en mode athlète grec néo-antique. Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser. Pour autant, cela ne réduit pas votre trouble. Vous êtes aussi énervé après deux bonnes heures de jeu qu'avant.
 <<advanceTime 2:00 >>
-<<inscrease stress 20/100>>
-// reduce sleep?
-// Option "Qu'est-ce que vous allez bien pouvoir faire ?" moved to the end of this node
+<<addToGauge stress 20>>
+<<removeFromGauge sleep 20>>
+<<visit NoMove_Stress>>
+
 -> Qu'est-ce que vous allez bien pouvoir faire ?
     <<jump Liste_Taches>>
 ===
 title: Salle_Examen
-tags: 
+tags: bg|class
 colorID: 0
 position: -2091,70
 ---
@@ -236,15 +228,16 @@ Vous retrouvez devant l'entrée de la salle de classe, Fred. Ce dernier vous reg
 Fred: Damned, ça n'a pas l'air d'aller. Tu as le visage blême.
 You: Ça va, ça va...
 //if le joueur n'a pas déjà joué avec Fred ce matin
-Fred: Ah bon ? Hier, tu crachais le feu. Aujourd'hui, tu es glacé.
+//Fred: Ah bon ? Hier, tu crachais le feu. Aujourd'hui, tu es glacé.
 // if le joueur a déjà joué Moba ou Boxe avec Fred
+<<if visited("Sport_Stress")>>
 Fred: Ah bon ? J'ai bien l'impression que notre séance de sport ne t'a pas réussi. 
 You: Ça va, je t'assure...
+<<endif>>
 Votre palmphone vibre. C'est votre mère qui tente de vous rejoindre. Fred vous fixe des yeux:
 Fred: T'es sûr ? Ça va ?
 You: Attends...
-// Option "Prendre l'appel " moved to the end of this node
-// Option "Rejeter l'appel " moved to the end of this node
+
 -> Prendre l'appel 
     <<jump Maman_blabla>>
 -> Rejeter l'appel 
@@ -256,7 +249,6 @@ colorID: 0
 position: -1799,-1
 ---
 Vous collez le combiné à votre oreille:
-//show profile black or stay tuned to Fred?
 You: Maman ?
 Maman: Oui, Bibi
 Heuah.... Manquait plus que votre mère vous appelle encore "Bibi". Vous n'êtes plus un nourisson !
@@ -265,7 +257,7 @@ Maman: C'est mamie.
 You: Quoi encore ?
 Maman: Elle est sortie du bloc.
 You: Et alors ?
-Maman: Ça va... Mais
+Maman: Ça va... Mais...
 You: Mais ?
 Maman: On l'a transféré en salle de réanimation.
 You: Ça veut dire quoi ?
@@ -276,13 +268,12 @@ You: Je te laisse, on va en examen !
 Maman: Courage, Bibi...
 En clair, les choses ne s'annoncent bien. Vraiment pas bien.  
 
-<< Increase Stress 40/100>>
+<< addToGauge stress 40>>
 
 Fred: Alors? Tu as une figure de déterré...
 You: Tu crois pas si bien dire...
 Fred: Pardon ?
-// Option "Tout raconter à Fred " moved to the end of this node
-// Option "Ne rien dire à Fred " moved to the end of this node
+
 -> Tout raconter à Fred 
     <<jump Fred_implorer>>
 -> Ne rien dire à Fred 
@@ -301,10 +292,8 @@ Vous entrez dans le journal de messagerie et demandez la conversion textuelle du
 L'opération a été menée à bien, mais votre grand-mère a fait un malaise. Elle a été transférée en service de réanimation critique...
 Fred: Alors ?
 You: Heu...
-<< Increase Stress 30/100>>
+<< addToGauge stress 30>>
 
-// Option "Tout raconter à Fred " moved to the end of this node
-// Option "Ne rien dire à Fred " moved to the end of this node
 -> Tout raconter à Fred 
     <<jump Fred_implorer>>
 -> Ne rien dire à Fred 
@@ -318,8 +307,8 @@ position: -1478,261
 Fred: Dis-moi.
 You: Puisque tu veux savoir...
 Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Elle a été hospitalisée d'urgence. Elle vient de subir une opération. Malheureusement, ça n'est pas bien passé. Elle a été transféré en réanimation. Elle est encore dans le coma... Vous êtes tellement stressé, vous monopolisez la parole. Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver des mots doux et réconfortants... L'horloge automatique sonne! C'est déjà l'heure d'entrer en salle d'examen! Trop nul... 
-<< increase Stress 10/100 >>
-// Option "Entrer dans la salle " moved to the end of this node
+<< AddToGauge stress 10 >>
+
 -> Entrer dans la salle 
     <<jump Examen>>
 ===
@@ -337,28 +326,24 @@ You: Tais-toi !
 Fred: Ok, si tu le prends comme ça...
 L'horloge automatique sonne! Il est l'heure d'entrer dans la salle. L'examen va commencer...
 
-// Option "Entrer dans la salle " moved to the end of this node
 -> Entrer dans la salle 
     <<jump Examen>>
 ===
 title: Examen
-tags: GestionRessHybrides
+tags: 
 colorID: 0
 position: -1140,98
 ---
-<< if Stress >= 70/100 >>
-Vous vous asseyez devant votre pupitre. Vous avez l'esprit troublé. Et ce n'est pas un problème d'attention. Vous n'arrivez tout simplement pas à vous concentrer. Le sujet s'affiche à l'écran: [b]La loi de Murphy dans la GRH[/b]... Génial... Le sujet super cool. C'est plutôt vous qui subissez en ce moment la loi de Murphy... Il y avait une faible probabilité de recevoir une nouvelle désastreuse, vous l'avez reçue ce matin. Et depuis, ça ne fait qu'empirer...
-Vous répondez aux questions au hasard, sans trop savoir ce que l'on vous demande et ce qu'il faut indiquer. C'est un peu comme si votre corps était là, mais votre esprit ailleurs. Les quatre heures passent dans un espace-temps indéterminé. Vous validez sans conviction votre copie et quittez la salle, l'air hagard, agité parfois de légers tremblements.
-<< else>>
-LEVEL2
-//Impossible dans le level1 //
-<< endif>>
-// Option "Sortir " moved to the end of this node
+Vous vous asseyez devant votre pupitre. Vous avez l'esprit troublé. Et ce n'est pas un problème d'attention. Vous n'arrivez tout simplement pas à vous concentrer. Le sujet s'affiche à l'écran: [b]La loi de Murphy dans la GRH[/b]...
+Génial... Le sujet super cool. C'est plutôt vous qui subissez en ce moment la loi de Murphy... Il y avait une faible probabilité de recevoir une nouvelle désastreuse, vous l'avez reçue ce matin. Et depuis, ça ne fait qu'empirer...
+Vous répondez aux questions au hasard, sans trop savoir ce que l'on vous demande et ce qu'il faut indiquer. C'est un peu comme si votre corps était là, mais votre esprit ailleurs.
+Les quatre heures passent dans un espace-temps indéterminé. Vous validez sans conviction votre copie et quittez la salle, l'air hagard, agité parfois de légers tremblements.
+
 -> Sortir 
     <<jump Resultats_bad>>
 ===
 title: Resultats_bad
-tags: LawMURPHY C
+tags: 
 colorID: 0
 position: -1146,346
 ---
@@ -368,22 +353,23 @@ You: Non merci...
 Fred: Tu as foiré toi aussi ?
 You: S'il n'y avait que ça...
 Fred vous avoue ne pas être content de sa performance... Hélas, ce n'est ni le jour ni l'heure. Vous vous fichez de votre score. De toute manière, vous êtes entré de plain-pied dans le cercle vicieux de la loi de Murphy. Tout ne peut aller que de mal en pis...
-Vous pensez à votre grand-mère. Vous ne pensez qu'à ça. Autant vous dire que vous n'avez même pas l'envie d'éclater de rire quand les résultats s'affichent au tableau. Vous n'avez pas la moyenne : un petit [b]D[/b]. Fred n'a eu que [b]C+[/b]. Il a l'air déçu. Et alors ? Vous auriez eu A tous les deux, ce n'est pas ça qui ferait sortir votre grand-mère de son coma. Vous dites au-revoir à votre pote et retournez à votre chambre.
-// Option "Chambre " moved to the end of this node
+Vous pensez à votre grand-mère. Vous ne pensez qu'à ça. Autant vous dire que vous n'avez même pas l'envie d'éclater de rire quand les résultats s'affichent au tableau. Vous n'avez pas la moyenne : un petit <b>D</b>. Fred n'a eu que <b>C+</b>. Il a l'air déçu.
+Et alors ? Vous auriez eu A tous les deux, ce n'est pas ça qui ferait sortir votre grand-mère de son coma. Vous dites au-revoir à votre pote et retournez à votre chambre.
+
 -> Chambre 
     <<jump Bedroom_night>>
 ===
 title: Bedroom_night
-tags: 
+tags: bg|bedroom_night
 colorID: 1
 position: -2775,414
 ---
 Vous rentrez dans votre chambre. Vous avez la tête compressée. Vous ressassez sans cesse les incidents de la journée. Vous n'osez rappelez votre mère. Vous attendez que celle-ci vous rappelle.
-Puis, le soir venu, vous vous efforcez  de manger mieux: une soupe bio mécanorganique. Mais le ventre et le coeur n'y sont pas. Vous êtes très, très énervé. Vous ne savez plus quoi penser, ni que faire pour vous calmer. Votre corps et votre instinct vous dit qu'il faut trouver le sommeil. Vous vous changez et vous glissez dans le lit. Mais vos pensées sont toujours là et vous agitent l'esprit.
+Puis, le soir venu, vous vous efforcez  de manger mieux : une soupe bio mécanorganique. Mais le ventre et le coeur n'y sont pas. Vous êtes très, très énervé. Vous ne savez plus quoi penser, ni que faire pour vous calmer.
+Votre corps et votre instinct vous dit qu'il faut trouver le sommeil. Vous vous changez et vous glissez dans le lit. Mais vos pensées sont toujours là et vous agitent l'esprit.
 
-<< set $Sleep to 80/100?>>
+<< addToGauge sleep 80 >>
 
-// Option "Que faire? " moved to the end of this node
 -> Que faire? 
     <<jump Choix_night>>
 ===
@@ -393,7 +379,7 @@ colorID: 0
 position: -2405,533
 ---
 Vous demandez à votre IA locale de basculer en mode Zéro-Distraction. Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même. Cependant, cette solitude ne vous renforce pas, elle vous met seul, face à vos idées noires. Vous continuez à tourber en boucle les mêmes pensées dramatiques. Impossible de trouver le sommeil. Vous demandez à votre IA de rebasculer en mode normal. Il faut essayer autre chose...
-// Option "Quoi d'autre? " moved to the end of this node
+
 -> Quoi d'autre? 
     <<jump Choix_night>>
 ===
@@ -404,10 +390,6 @@ position: -2405,261
 ---
 Vous examinez votre palmphone: aucun appel ou message. Ce silence est angoissant. Comment parviendrez-vous à vous endormir?
 
-// Option "Couper toute distraction mentale " moved to the end of this node
-// Option "Appeler votre mère " moved to the end of this node
-// Option "Attendre que ça vienne " moved to the end of this node
-// Option "Faire une sieste" moved to the end of this node
 -> Couper toute distraction mentale 
     <<jump Zero_Distraction>>
 -> Appeler votre mère 
@@ -424,8 +406,8 @@ position: -2052,519
 ---
 Vous rappelez votre mère. Une fois... Deux fois... Elle ne répond pas. Vous lui laissez un message confus et maladroit avant de raccrocher. Pourquoi donc, elle ne décroche pas ? ... Serait-elle à l'hôpital avec votre grand-mère ? Elle ne peut pas vous répondre, ou elle ne veut pas vous répondre ?... Que se passe-t-il ? Comment se porte votre grand-mère ?...
 
-<< increase $Sleep  10/100?>>
-<< increase $Stress 20/100?>>
+<< addToGauge sleep 10>>
+<< addToGauge stress 20>>
 ===
 title: Rien
 tags: 
@@ -440,7 +422,6 @@ Ledai: Suis-moi. On va te réparer ton moteur émotionnel...
 You: Ahhhh... Heu...
 Ledai: Allez...
 
-// Option "Suivre Ledai " moved to the end of this node
 -> Suivre Ledai 
     <<jump Assemblee_Sages>>
 ===
@@ -456,11 +437,10 @@ La sieste est une technique efficace quand on éprouve une fatigue importante et
     <<jump Choix_night>>
 ===
 title: Assemblee_Sages
-tags: 
+tags: bg|circle noUi
 colorID: 1
 position: -2849,698
 ---
-<< show Assemblée >>
 Vous voilà de nouveau à l'Assemblée des Sages. Cet endroit normalement si verdoyant et si paisible. Mais ce soir, vous voyez tout en gris, voire en noir. Même ce paradis vous semble triste et éteint. D'autant que vous ne voyez pas en quoi les experts de la métacognition pourraient aider votre grand-mère à sortir du coma.
 You: Je vois pas ce que je fais là. C'est ma mamie qui va mal, pas moi.
 Ledai: Au contraire, tu ne raisonne pas positivement et rationnellement.
@@ -472,14 +452,13 @@ You: Vous allez m'apprendre quoi cette fois ?
 Azul: À gérer tes émotions.
 Temde: À prévoir tout, même l'imprévisible.
 You: C'est ça ouais.
-Master Sapiens: Tss... Quel manque de confiance dans note sagesse et notre expertise... 
+Sapiens: Tss... Quel manque de confiance dans note sagesse et notre expertise... 
 
-// Option "Balivernes! " moved to the end of this node
 -> Balivernes! 
     <<jump LeStress>>
 ===
 title: LeStress
-tags: 
+tags:  noUi
 colorID: 0
 position: -2497,778
 ---
@@ -493,13 +472,11 @@ Temde: Ta grand-mère traverse une épreuve difficile. C'est un fait. Malheureus
 You: Quoi ?! Vous me demandez de l'ignorer, d'agir en égoïste ?!
 Agacé, vous sautez sur place! Le sang vous monte à la tête...
 Sapiens: Suffit !
-Azul : Calme-toi et écoute.
-// Option "Fais-nous confiance " moved to the end of this node
--> Fais-nous confiance 
-    <<jump Frustration>>
+Azul: Calme-toi et écoute. Fais-nous confiance 
+<<jump Frustration>>
 ===
 title: Frustration
-tags: 
+tags:  noUi
 colorID: 0
 position: -2241,797
 ---
@@ -517,12 +494,11 @@ Temde: Ledai a raison. Tu ne peux pas faire plus. À part attendre la suite.
 You: Et si ?
 Azul: Arrête de voir les choses en noir. Tu verras bien.
 
-// Option "Comment? " moved to the end of this node
 -> Comment? 
     <<jump Stress_cognition>>
 ===
 title: Stress_cognition
-tags: 
+tags:  noUi
 colorID: 0
 position: -1890,847
 ---
@@ -537,12 +513,11 @@ You: C'est ça le stress ?
 Ledai: Le temps semble s'écouler de plus en plus vite. Au point où tu n'arrives plus à traiter les informations.
 Sapiens: Tu ne peux plus à la fois analyser, décider et choisir ton mode d'action.
 You: Et comment faire pour combattre le stress ?
-// Option " Réduire la vitesse " moved to the end of this node
-->  Réduire la vitesse 
-    <<jump Destress>>
+
+<<jump Destress>>
 ===
 title: Destress
-tags: 
+tags:  noUi
 colorID: 0
 position: -1609,900
 ---
@@ -558,12 +533,11 @@ Temde: Par exemple toute activité agréable qui demande attention ou concentrat
 You: Lesquelles ?
 Azul: Jouer de la musique, chanter, dessiner, danser avec entrain. Le sport, quant il est pratiqué de manière sereine et consciente. La méditation...
 
-// Option "C'est tout? " moved to the end of this node
 -> C'est tout? 
     <<jump Lacher_prise>>
 ===
 title: Lacher_prise
-tags: 
+tags:  noUi
 colorID: 0
 position: -1289,866
 ---
@@ -575,12 +549,11 @@ You: OK. Ça a l'air si simple, à vous écouter. Pourtant, je me sens si mal...
 Sapiens: Ne t'inquiète pas. Nous n'en avons pas fini. Je vais encore quelques questions Quizz pour m'assurer que tu as bien compris.
 Azul: Comment répondre de manière consciente et sereine à la peur, à l'angoisse, au stress.
 
-// Option "Prêt? " moved to the end of this node
 -> Prêt? 
     <<jump Quizz_Meditation>>
 ===
 title: Quizz_Meditation
-tags: 
+tags:  noUi
 colorID: 0
 position: -1238,1170
 ---
@@ -588,15 +561,13 @@ Sapiens: Je t'ai dit qu'il te faut pratiquer une activé qui mobilise ton attent
 You: Oui.
 Sapiens. Parfait. Alors, pour réduire ton stress, dois-tu:
 
-// Option "Te concentrer intensément et écraser à laide de ta volonté tes mauvaises pensées? " moved to the end of this node
-// Option "Pratiquer la médiation en pleine conscience? " moved to the end of this node
 -> Te concentrer intensément et écraser à laide de ta volonté tes mauvaises pensées? 
     <<jump Meditation_No>>
 -> Pratiquer la médiation en pleine conscience? 
     <<jump Meditation_Yes>>
 ===
 title: Meditation_No
-tags: 
+tags:  noUi
 colorID: 0
 position: -1492,1185
 ---
@@ -610,12 +581,11 @@ You: Ah bon ?
 Azul: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent...
 You: Ahhh. D'accord...
 
-// Option "Question suivante " moved to the end of this node
 -> Question suivante 
     <<jump Quizz_sport>>
 ===
 title: Meditation_Yes
-tags: 
+tags:  noUi
 colorID: 0
 position: -1337,1489
 ---
@@ -626,26 +596,23 @@ You: Ah bon ?
 Azul: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent...
 You: Ouaaah... ça a l'air bien...
 
-// Option "Question suivante " moved to the end of this node
 -> Question suivante 
     <<jump Quizz_sport>>
 ===
 title: Quizz_sport
-tags: 
+tags:  noUi
 colorID: 0
 position: -1755,1393
 ---
 Sapiens: Voyons si tu vas trouver la bonne réponse. Pour réduire ton stress, tu peux également agir de manière physique et tangible.
 
-// Option "En imaginant que le sac de frappe sur lequel tu tapes représente la cause de ta frustration " moved to the end of this node
-// Option "En pratiquant un sport plus doux et moins agressif. Comme le jogging " moved to the end of this node
 -> En imaginant que le sac de frappe sur lequel tu tapes représente la cause de ta frustration 
     <<jump Sport_No>>
 -> En pratiquant un sport plus doux et moins agressif. Comme le jogging 
     <<jump Sport_Yes>>
 ===
 title: Sport_No
-tags: 
+tags:  noUi
 colorID: 0
 position: -2038,1180
 ---
@@ -656,12 +623,11 @@ Azul: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher pri
 Sapiens: En conclusion, éviter une activité trop brutale, qui pourrait générer à son tour du stress ou de la tension. 
 You: Ah.
 
-// Option "Dernière question " moved to the end of this node
 -> Dernière question 
     <<jump Quizz_Art>>
 ===
 title: Sport_Yes
-tags: 
+tags:  noUi
 colorID: 0
 position: -2013,1534
 ---
@@ -669,21 +635,25 @@ Sapiens: Bien répondu. Il faut également veiller à choisir une activité phys
 Azul: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité calme, qui consomme ton énergie en douceur, te détende. 
 Sapiens: En conclusion, éviter une activité trop violente, trop agressive, qui pourrait générer à son tour du stress ou de la tension. 
 
-// Option "Dernière question " moved to the end of this node
 -> Dernière question 
     <<jump Quizz_Art>>
 ===
 title: Quizz_Art
-tags: 
+tags:  noUi
 colorID: 0
 position: -2326,1406
 ---
 Sapiens: Dernière question. Pour réduire ton stress, tu peux choisir de pratiquer une activité ludique, créative, artistique.  
-Qui fait écho à ton angoisse : [[Comme visionner un film mélodramatique ou tragique |Art_ No]] 
-Qui détourne ton attention de ton angoisse : [[Comme jouer des musiques joyeuses, radieuses, pleines de vie |Art_Yes]]
+Qui fait écho à ton angoisse, comme visionner un film mélodramatique ou tragique. 
+Qui détourne ton attention de ton angoisse comme jouer des musiques joyeuses, radieuses, pleines de vie.
+
+-> Echo à l'angoisse
+    <<jump Art_No>>
+-> S'en détourner
+    <<jump Art_Yes>>
 ===
-title: Art_ No
-tags: 
+title: Art_No
+tags:  noUi
 colorID: 0
 position: -2553,1159
 ---
@@ -699,14 +669,13 @@ You: Ah...
 Sapiens: N'hésite pas à recourir aux choix clairs et éprouvés.
 Azul: L'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent. 
 You: Je note tout ça dans mon "carnet d'ingénieur tout-terrain" ?
-Ledai: Oui!
+Ledai: Oui !
 
-// Option "Note tout ça dans ton journal mental " moved to the end of this node
 -> Note tout ça dans ton journal mental 
     <<jump Journal_Mental>>
 ===
 title: Art_Yes
-tags: 
+tags:  noUi
 colorID: 0
 position: -2589,1474
 ---
@@ -722,12 +691,11 @@ Azul: L'important, c'est le bien être, la pensée claire et lucide. Mieux vaut 
 You: Je note tout ça dans mon "carnet d'ingénieur tout-terrain"?
 Ledai: Oui !
 
-// Option "Note tout ça dans ton journal mental " moved to the end of this node
 -> Note tout ça dans ton journal mental 
     <<jump Journal_Mental>>
 ===
 title: Journal_Mental
-tags: 
+tags:  noUi
 colorID: 0
 position: -2880,1290
 ---
