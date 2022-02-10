@@ -92,25 +92,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._characters = new Map();
 
-    this._gauges = {};
-    const gaugesList: (keyof variable.Gauges)[] = ["learning", "sleep", "food"];
-    for (let i = 0; i < gaugesList.length; i++) {
-      const _gauge = gaugesList[i];
-      this._gauges[_gauge] = new gauge.Gauge(
-        new PIXI.Point(140 * i + 10, 0),
-        new PIXI.Sprite(
-          this.entityConfig.app.loader.resources[
-            `images/ui/gauges/${_gauge}.png`
-          ].texture
-        ),
-        _gauge
-      );
-      this._activateChildEntity(
-        this._gauges[_gauge],
-        entity.extendConfig({ container: this._uiLayer })
-      );
-    }
-
     this._fade = new PIXI.Graphics()
       .beginFill(0xffffff)
       .drawRect(0, 0, 1920, 1080)
@@ -123,6 +104,26 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   _teardown() {
     this.config.container.removeChild(this._container);
     this._container = null;
+  }
+
+  public initGauges(gaugesList: (keyof variable.Gauges)[]) {
+    this._gauges = {};
+    for (let i = 0; i < gaugesList.length; i++) {
+      const _gauge = gaugesList[i];
+      this._gauges[_gauge] = new gauge.Gauge(
+        new PIXI.Point(140 * i + 15, 15),
+        new PIXI.Sprite(
+          this.entityConfig.app.loader.resources[
+            `images/ui/gauges/${_gauge}.png`
+          ].texture
+        ),
+        _gauge
+      );
+      this._activateChildEntity(
+        this._gauges[_gauge],
+        entity.extendConfig({ container: this._uiLayer })
+      );
+    }
   }
 
   public getGaugeValue(name: string): number {
