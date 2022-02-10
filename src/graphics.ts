@@ -242,10 +242,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       );
 
       const speakerLC = speaker.toLowerCase();
-      if (
-        (autoShow && speakerLC !== "you") ||
-        (speakerLC === this._lastCharacter && mood !== this._lastMood)
-      ) {
+      if (autoShow && speakerLC !== "you") {
         this.addCharacter(speakerLC, mood?.toLowerCase());
       }
     } else {
@@ -552,7 +549,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       this._nodeDisplay.addChild(highlight);
     }
-    console.log(freechoicesFound, nodeOptions.length);
+
     if (freechoicesFound === nodeOptions.length) {
       this._container.addChild(this._nodeDisplay);
       this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
@@ -652,6 +649,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         this._characterLayer.removeChild(character.container);
       }
     }
+
+    this._lastCharacter = undefined;
   }
 
   /**

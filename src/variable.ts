@@ -44,14 +44,12 @@ export class VariableStorage extends PIXI.utils.EventEmitter {
     name: VarName,
     value: Variables[VarName]
   ) {
-    console.log("SET", name, value);
     this._data[name] = value;
     this.emit("change", name, value);
     this.emit(`change:${name}`, value);
   }
 
   get<VarName extends keyof Variables>(name: VarName): Variables[VarName] {
-    console.log("GET", name, this._data[name]);
     return this._data[name];
   }
 

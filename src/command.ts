@@ -11,6 +11,7 @@ export type YarnFunction = (
 ) => unknown;
 
 export const fxLoops: Map<string, entity.EntitySequence> = new Map();
+export const savedGauges: Map<keyof variable.Gauges, number> = new Map();
 
 export const commands: Record<string, Command> = {
   // Shortcut for _changeCharacter()
@@ -74,18 +75,33 @@ export const commands: Record<string, Command> = {
     this.config.clock.minutesSinceMidnight = minutesSinceMidnight;
   },
 
-  advanceTime(time: clock.ResolvableTime) {
+  advanceTime(
+    time: clock.ResolvableTime,
+    maxTime?: clock.ResolvableTime,
+    stepTime?: clock.ResolvableTime
+  ) {
     const [, , minutesToAdvance] = clock.parseTime(time);
+
+    let minutesToStop, minutesStep;
+    if (maxTime) {
+      minutesToStop = clock.parseTime(maxTime)[2];
+      minutesStep = clock.parseTime(stepTime)[2];
+    }
+
     const minutesSinceMidnight = Number(
       this.config.variableStorage.get("time")
     );
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
 
+    // Cut the time if it goes over restriction
+    while (newMinutes - minutesStep >= minutesToStop) newMinutes -= minutesStep;
+
+    // Cut the time if it goes over one day
     while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
 
     this.config.variableStorage.set("time", `${newMinutes}`);
 
-    this.activate(this.config.clock.advanceTime(time));
+    this.activate(this.config.clock.advanceTime(newMinutes));
   },
 
   hideClock() {
@@ -119,6 +135,21 @@ export const commands: Record<string, Command> = {
     let oldValue = this.config.variableStorage.get(gaugeName);
     const newValue = Math.max(Number(oldValue) - Number(value), 0);
     this.config.variableStorage.set(gaugeName, `${newValue}`);
+  },
+
+  saveGauges<VarName extends keyof variable.Gauges>(...names: VarName[]) {
+    savedGauges.clear();
+    names.forEach( name => {
+      console.log(`save ${name}`);
+      savedGauges.set(name, Number(this.config.variableStorage.get(name)));
+    });
+  },
+
+  loadGauges() {
+    savedGauges.forEach( (id, key) => {
+      console.log(`load ${key}`);
+      this.config.variableStorage.set(key, `${savedGauges.get(key)}`);
+    });
   },
 
   music(musicName: string) {
@@ -172,16 +203,30 @@ export const commands: Record<string, Command> = {
     this.activate(this.graphics.fadeOut(Number(duration)));
   },
 
+  setBackground(name: string) {
+    const [bg, mood] = name.split("_");
+    this.graphics.setBackground(bg, mood);
+  },
+
   empty() {},
+
+  /**
+   * Mark a node as visited
+   * @param node Node to mark as visited
+   */
+  visit(node: string) {
+    if (!node || node.includes('"'))
+      throw new Error("Please give a valid node title in << visit >>");
+    this.visited.add(node);
+  },
 };
 
 export const functions: Record<string, YarnFunction> = {
-  isFirstTime(node: string): boolean {
-    return (
-      this.runner.history.filter((result) => {
-        return result.metadata.title === node;
-      }).length <= 1
-    );
+  visited(node: string): boolean {
+    if (!node) throw new Error("Please give a valid node title in visited()");
+    const visited = this.visited.has(node);
+    console.log(node, "visited?", visited);
+    return visited;
   },
   getGauge(gauge: string): number {
     return this.graphics.getGaugeValue(gauge);

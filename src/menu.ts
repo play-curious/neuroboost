@@ -6,7 +6,6 @@ import * as util from "booyah/src/util";
 
 import * as extension from "./extension";
 import * as variable from "./variable";
-import { isArrowFunction } from "typescript";
 
 interface Settings {
   fx: number;
@@ -82,12 +81,10 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.blackBackground.alpha = 0;
       this._on(this.blackBackground, "pointerup", this.close);
       this.container.addChild(this.blackBackground);
-
     }
 
     {
-      this.menuButton = this.makeSprite("images/menu/menu_button.png",
-      (it) => {
+      this.menuButton = this.makeSprite("images/menu/menu_button.png", (it) => {
         it.anchor.set(0, 0.5);
         it.alpha = 0.8;
         it.position.set(0, variable.height / 2);
@@ -99,39 +96,47 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
-      this.popupBackground = this.makeSprite("images/menu/background.png",
-      (it) => {
-        it.anchor.set(0, 0.5);
-        it.position.set(0, variable.height / 2);
-      });
+      this.popupBackground = this.makeSprite(
+        "images/menu/background.png",
+        (it) => {
+          it.anchor.set(0, 0.5);
+          it.position.set(0, variable.height / 2);
+        }
+      );
       this.popupBackground.interactive = true;
       this.container.addChild(this.popupBackground);
     }
 
     {
-      this.playCuriousLogo = this.makeSprite("images/menu/playcurious_logo.png",
-      (it) => {
-        it.anchor.set(0.5);
-        it.scale.set(0.8);
-        it.position.set(this.popupBackground.width / 2, this.popupBackground.height * 0.66);
-  
-        it.interactive = true;
-        it.buttonMode = true;
-      });
+      this.playCuriousLogo = this.makeSprite(
+        "images/menu/playcurious_logo.png",
+        (it) => {
+          it.anchor.set(0.5);
+          it.scale.set(0.8);
+          it.position.set(
+            this.popupBackground.width / 2,
+            this.popupBackground.height * 0.66
+          );
+
+          it.interactive = true;
+          it.buttonMode = true;
+        }
+      );
       this._on(this.playCuriousLogo, "pointertap", this._onTapPCLogo);
       this.popupBackground.addChild(this.playCuriousLogo);
     }
 
     {
-      this.creditButton = this.makeText("credits",
-        {
-          fontFamily: "Ubuntu",
-          fill: "white",
-          fontSize: 50,
-        }
-      );
+      this.creditButton = this.makeText("credits", {
+        fontFamily: "Ubuntu",
+        fill: "white",
+        fontSize: 50,
+      });
       this.creditButton.anchor.set(0.5);
-      this.creditButton.position.set(this.popupBackground.width / 2, this.popupBackground.height * 0.37);
+      this.creditButton.position.set(
+        this.popupBackground.width / 2,
+        this.popupBackground.height * 0.37
+      );
       this.creditButton.interactive = true;
       this.creditButton.buttonMode = true;
       this._on(this.creditButton, "pointertap", this._showCredits);
@@ -142,10 +147,12 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
-      this.title = this.makeSprite("images/menu/title.png",
-      (it) => {
+      this.title = this.makeSprite("images/menu/title.png", (it) => {
         it.anchor.set(0.5);
-        it.position.set(this.popupBackground.width / 2, -this.popupBackground.height / 3);
+        it.position.set(
+          this.popupBackground.width / 2,
+          -this.popupBackground.height / 3
+        );
       });
       this.popupBackground.addChild(this.title);
     }
@@ -159,12 +166,14 @@ export class Menu extends extension.ExtendedCompositeEntity {
         },
         this.settings.fullscreen ? "on" : "off"
       );
-      this.fullscreenSwitcher.container.position.set(this.popupBackground.width / 2, +200);
+      this.fullscreenSwitcher.container.position.set(
+        this.popupBackground.width / 2,
+        +200
+      );
       this.fullscreenSwitcher.onStateChange((state) => {
         if (state === "on") {
           util.requestFullscreen(document.getElementById("game-parent"));
-        }
-        else if (util.inFullscreen()) {
+        } else if (util.inFullscreen()) {
           util.exitFullscreen();
         }
         this.settings.fullscreen = state === "on";
@@ -197,7 +206,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
           }
         }
       );
-      this.musicVolumeSwitcher.container.position.x = 
+      this.musicVolumeSwitcher.container.position.x =
         this.popupBackground.width - 310;
       this.musicVolumeSwitcher.container.position.y += 40;
       this.musicVolumeSwitcher.onStateChange((state) => {
@@ -235,7 +244,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
           }
         }
       );
-      this.soundVolumeSwitcher.container.position.x = 
+      this.soundVolumeSwitcher.container.position.x =
         this.popupBackground.width - 290;
       this.soundVolumeSwitcher.container.position.y -= 120;
       this.soundVolumeSwitcher.onStateChange((state) => {
@@ -317,7 +326,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
   }
 
   private _onOpen() {
-    this.blackBackground.visible = true
+    this.blackBackground.visible = true;
   }
 
   private _showCredits() {
@@ -333,10 +342,9 @@ export class Menu extends extension.ExtendedCompositeEntity {
 export function makeInstallMenu(
   rootConfig: entity.EntityConfig,
   rootEntity: entity.ParallelEntity
-)
-{
-    rootConfig.menu = new Menu();
-    rootEntity.addChildEntity(rootConfig.menu);
+) {
+  rootConfig.menu = new Menu();
+  rootEntity.addChildEntity(rootConfig.menu);
 }
 
 /**
@@ -345,7 +353,7 @@ export function makeInstallMenu(
  */
 export class SpriteSwitcher<
   States extends Record<string, string> = Record<"on" | "off", string>
-  > extends entity.EntityBase {
+> extends entity.EntityBase {
   public currentSprite?: PIXI.Sprite;
   public currentState?: keyof States;
   public container = new PIXI.Container();
