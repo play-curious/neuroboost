@@ -6,12 +6,7 @@ import * as easing from "booyah/src/easing";
 
 import * as extension from "./extension";
 import * as variable from "./variable";
-
-export function colorByValue(value: number): string {
-  if (value > 66) return "images/ui/gauges/innerDisk_green.png";
-  else if (value > 33) return "images/ui/gauges/innerDisk_yellow.png";
-  else return "images/ui/gauges/innerDisk_red.png";
-}
+import { StaticSpritePath } from "./images";
 
 export class Gauge extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
@@ -24,6 +19,7 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   private _currentTween: { animation: tween.Tween; to: number };
 
   private _value: number;
+  private _inverted: boolean;
 
   constructor(
     private _position: PIXI.Point,
@@ -35,10 +31,10 @@ export class Gauge extends extension.ExtendedCompositeEntity {
 
   _setup() {
     this._value = parseInt(this.config.variableStorage.get(this.name));
+    this._inverted = variable.InvertedGauges.includes(this.name);
 
     this._innerDisk = new PIXI.Sprite();
-    this._innerDisk.texture =
-      this.config.app.loader.resources[colorByValue(this._value)].texture;
+    this._innerDisk.texture = this.makeSprite(this.colorByValue(this._value)).texture;
     this._center = new PIXI.Point(
       this._innerDisk.width / 2,
       this._innerDisk.height / 2
@@ -83,12 +79,17 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     return this._value;
   }
 
+  colorByValue(value: number): StaticSpritePath {
+    if (value > 66) return this._inverted ? "images/ui/gauges/innerDisk_red.png" : "images/ui/gauges/innerDisk_green.png"
+    else if (value > 33) return "images/ui/gauges/innerDisk_yellow.png";
+    else return this._inverted ? "images/ui/gauges/innerDisk_green.png" : "images/ui/gauges/innerDisk_red.png"
+  }
+
   resetValue(value: number) {
     const torusOffset = -8;
     const torusWidth = 16;
 
-    this._innerDisk.texture =
-      this.config.app.loader.resources[colorByValue(this._value)].texture;
+    this._innerDisk.texture = this.makeSprite(this.colorByValue(this._value)).texture;
 
     this._outerDisk.clear();
     this._outerDisk.beginFill(0xffffff);

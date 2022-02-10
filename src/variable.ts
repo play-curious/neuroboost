@@ -14,8 +14,10 @@ export interface Gauges {
   food: `${number}`;
   learning: `${number}`;
   mentalLoad: `${number}`;
-  stress: `${number}`
+  stress: `${number}`;
 }
+
+export const InvertedGauges = ["mentalLoad", "stress"];
 
 /**
  * Variable Storage for YarnSpinner that emits events when data changes

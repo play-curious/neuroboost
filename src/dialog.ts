@@ -93,6 +93,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         command.functions[funcName].bind(this)
       );
     }
+
+    this.runner.advance();
   }
 
   private _parseFileTags() {
