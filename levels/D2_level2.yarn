@@ -9,6 +9,7 @@ Vous êtes lové dans une confortable et douce langueur... Quand...
 On vous secoue brusquement !!!
 
 << loadGauges >>
+<< showGauges >>
 // << showGauge food sleep >>
 // << setGauge sleep 100 >>
 // << setGauge food 80 >>
@@ -40,7 +41,7 @@ title: Que_Faire
 tags: bg|party
 position: -950.9030456542969,86.7411298751831
 ---
-<< if !visited() >>
+<< if !visited("Que_Faire") >>
 On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses...
 << endif >>
 << visit Que_Faire >>

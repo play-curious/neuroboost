@@ -71,7 +71,7 @@ tags: bg|party
 colorID: 0
 position: -850.2415771484375,-40.334877014160156
 ---
-<< if !visited() >>
+<< if !visited("Choix_neutres") >>
 Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << endif >>
 << visit Choix_neutres >>
@@ -212,7 +212,7 @@ title: Que_Faire
 tags: 
 position: 256.4327850341797,-39.769962310791016
 ---
-<< if !visited() >>
+<< if !visited("Que_Faire") >>
 La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la piste de danse. Vous allez lui montrer que vous aussi, vous n'êtes pas un looser ! Alors ? quel est votre plan d'attaque ?
 << endif >>
 << visit Que_Faire >>
