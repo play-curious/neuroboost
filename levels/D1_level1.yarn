@@ -74,7 +74,7 @@ title: Action_List
 tags: bg|bedroom freechoice
 position: -847.2033081054688,-821.7307662963867
 ---
-<< if !visited() >>
+<< if !visited("Action_List") >>
 Que faites-vous maintenant ?
 << endif >>
 << visit Action_List >>
