@@ -11,6 +11,7 @@ export type YarnFunction = (
 ) => unknown;
 
 export const fxLoops: Map<string, entity.EntitySequence> = new Map();
+export const savedGauges: Map<keyof variable.Gauges, number> = new Map();
 
 export const commands: Record<string, Command> = {
   // Shortcut for _changeCharacter()
@@ -93,7 +94,7 @@ export const commands: Record<string, Command> = {
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
 
     // Cut the time if it goes over restriction
-    while (newMinutes - minutesStep > minutesToStop) newMinutes -= minutesStep;
+    while (newMinutes - minutesStep >= minutesToStop) newMinutes -= minutesStep;
 
     // Cut the time if it goes over one day
     while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
@@ -134,6 +135,21 @@ export const commands: Record<string, Command> = {
     let oldValue = this.config.variableStorage.get(gaugeName);
     const newValue = Math.max(Number(oldValue) - Number(value), 0);
     this.config.variableStorage.set(gaugeName, `${newValue}`);
+  },
+
+  saveGauges<VarName extends keyof variable.Gauges>(...names: VarName[]) {
+    savedGauges.clear();
+    names.forEach( name => {
+      console.log(`save ${name}`);
+      savedGauges.set(name, Number(this.config.variableStorage.get(name)));
+    });
+  },
+
+  loadGauges() {
+    savedGauges.forEach( (id, key) => {
+      console.log(`load ${key}`);
+      this.config.variableStorage.set(key, `${savedGauges.get(key)}`);
+    });
   },
 
   music(musicName: string) {
