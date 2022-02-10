@@ -98,7 +98,7 @@ export class Gauge extends extension.ExtendedCompositeEntity {
       this._radius + torusOffset - torusWidth / 2,
       this._radius + torusOffset + torusWidth / 2,
       -(PIXI.PI_2 / 4) + PIXI.PI_2 / 150,
-      -(PIXI.PI_2 / 4) + PIXI.PI_2 * ((value > 0 ? value : 0.8) / 100)
+      -(PIXI.PI_2 / 4) + PIXI.PI_2 * ((value > 0.8 ? value : 0.8) / 100)
     );
 
     this._value = value;

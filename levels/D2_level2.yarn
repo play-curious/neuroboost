@@ -24,7 +24,7 @@ tags: bg|party show|fred
 position: -1172.1470947265625,85.38811206817627
 ---
 Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
-Et c'est reparti pour un tour... Fred répète comme un perroquet ce qu'il vous a déjà dit hier soir... Vous voilà revenu en arrière... En plein milieu de cette soirée de plaisir et de tentations... Certes, vous en avez trop fait, mais l'ambiance et le public était avec vous... Dur dur...
+Et c'est reparti pour un tour... Fred répète comme un perroquet ce qu'il vous a déjà dit hier soir... Vous voilà revenu en arrière... En plein milieu de cette soirée de plaisir et de tentations... Certes, vous en avez trop fait, mais l'ambiance et le public étaient avec vous... Dur dur...
 You: ...Hum... Tu fais quoi toi ?
 Fred_happy: Moi je reste. Je te le répète.
 Après tout, Vous avez encore de l'énergie à revendre pour la soiré. Vous savez qu'il faut simplement faire attention à ne pas trop vider vos réserves de sommeil et de nourriture...
@@ -40,7 +40,7 @@ title: Que_Faire
 tags: bg|party
 position: -950.9030456542969,86.7411298751831
 ---
-<< if !visited("Que_Faire") >>
+<< if !visited() >>
 On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses...
 << endif >>
 << visit Que_Faire >>
@@ -196,6 +196,7 @@ tags: bg|bedroom_night
 position: -281.2446746826172,1109.7478637695312
 ---
 << hideGauges >>
+//TODO: hmmmmm
 Vous entrez tranquillement dans votre chambre. Vous allez aux toilettes. Votre vessie en a besoin. Vos dents aussi. Vous vous dévêtez et gagnez votre lit. Vous êtes bien crevé, mais encore pas éteint. Il est temps pour de se recharger. À défaut d'un nuit de sommeil, un somme vous fera déjà le plus grand bien.
 
 -> Un petit somme
@@ -205,7 +206,7 @@ title: Sieste_Good
 tags: bg|bedroom_night
 position: -62.58292770385742,1107.5968017578125
 ---
-La seconde vous dormez déjà.
+La seconde où vous touchez votre lit, vous dormez déjà.
 << addToGauge sleep 40 >>
 << advanceTime 8:00 8:00 0:05 >>
 Et la minute suivante vous entendez le bip bip de votre horloge connectée. Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'hier. Vous vous changez rapidement. Ce qui vous laisse le temps de prendre un petit déjeuner.
@@ -234,7 +235,7 @@ position: 375.0788269042969,1111.1724853515625
 Ce matin, vous retrouvez votre ami Fred, qui vous attend avec le sourire.
 
 << show fred>>
-Fred_excited: Yolo, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps...
+Fred_excited: Hey, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps...
 You: Ouais...
 Fred_smiling: Je vois ça. J'espère que tu as bien dormi.
 You: Ouais.

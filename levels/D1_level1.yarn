@@ -73,7 +73,7 @@ title: Action_List
 tags: bg|bedroom freechoice
 position: -847.2033081054688,-821.7307662963867
 ---
-<< if !visited("Action_List") >>
+<< if !visited() >>
 Que faites-vous maintenant ?
 << endif >>
 << visit Action_List >>
@@ -202,6 +202,7 @@ tags: bg|class
 position: -666.0570068359375,500.580322265625
 ---
 << setTime 14:00 >>
+<< setTime 14:00 >>
 
 Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b>, que le compteur se met en route.
 Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi.
@@ -312,6 +313,7 @@ Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! El
 Temde_smiling: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ?
 
 <<prompt name Mon_nom: Steve>>
+<<empty>>
 
 Temde_smiling: Enchantée { $name }. Lève-toi, on a du pain sur la planche !
 You: Suiiiiis faaaaaaatigué...........
@@ -326,7 +328,7 @@ Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute 
 
 -> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller
     <<jump Tenter_rester_chambre>>
--> Se laisser guider par l'iréelle Miss Temdé
+-> Se laisser guider par l'irréelle Miss Temdé
     <<jump Assemblee_Sages>>
 ===
 title: Tenter_rester_chambre
@@ -340,7 +342,7 @@ Miss Temdé lève la paume d'une de ses mains cybernétique...
 
 <<fadeIn 1000 12ea12 >>
 
-un rayon en jaillit et vous englobe de sa lumière vert phosphorescente.
+Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente.
 
 <<jump Assemblee_Sages>>
 ===
@@ -393,7 +395,7 @@ Sapiens_concerned: Moui...
 You: Et la métacognition alors ?
 Sapiens_thinking: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux.
 You: Hein ???
-Azul_happy: C'est-à-dire comment apprendre ... à apprendre
+Azul_happy: C'est-à-dire comment apprendre... à apprendre !
 
 <<jump Metacognition>>
 ===
