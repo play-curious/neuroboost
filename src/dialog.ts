@@ -317,7 +317,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         this._autoshowOn = true;
       } else if (tag === "noUi") {
         noUi = true;
-      } else {
+      } else if (tag !== "freechoice" && tag !== "subchoice") {
         console.warn("Unknown tag in node data", tag);
       }
     }
