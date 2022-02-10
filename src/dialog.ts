@@ -43,12 +43,12 @@ export function isOption(
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
   private _lastNodeData: yarnBound.Metadata;
-  private _selectedOptions: string[];
   private _autoshowOn: boolean;
 
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
   public visited: Set<string>;
+  public selectedOptions: string[];
 
   constructor(
     public readonly stateName: string,
@@ -69,7 +69,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     command.fxLoops.clear();
 
     this._autoshowOn = false;
-    this._selectedOptions = [];
+    this.selectedOptions = [];
     this.visited = new Set();
 
     // Setup graphics
@@ -214,7 +214,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
       if (
         option.hashtags.includes("once") &&
-        this._selectedOptions.includes(selectedOptionId)
+        this.selectedOptions.includes(selectedOptionId)
       )
         continue;
 
@@ -241,7 +241,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       options,
       (id) => {
         this.config.fxMachine.play("Click");
-        this._selectedOptions.push(
+        this.selectedOptions.push(
           `${this.metadata.title}|${this.metadata.choiceId}|${id}`
         );
         this._advance.bind(this)(id);

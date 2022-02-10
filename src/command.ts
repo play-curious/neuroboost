@@ -219,6 +219,10 @@ export const commands: Record<string, Command> = {
       throw new Error("Please give a valid node title in << visit >>");
     this.visited.add(node);
   },
+
+  clearOnce(){
+    this.selectedOptions = [];
+  }
 };
 
 export const functions: Record<string, YarnFunction> = {
