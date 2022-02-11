@@ -21,7 +21,7 @@ On vous secoue brusquement !!!
     <<jump Open_Eyes>>
 ===
 title: Open_Eyes
-tags: bg|party show|fred
+tags: bg|party autoshow
 position: -1172.1470947265625,85.38811206817627
 ---
 Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
@@ -127,7 +127,7 @@ Vous êtes applaudi, encore et encore et encore... Bon joueur, vous accordez à 
     <<jump Que_Faire>>
 ===
 title: End_of_Party
-tags: 
+tags: autoshow
 position: -731.0557861328125,994.7333374023438
 ---
 << if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
@@ -161,7 +161,7 @@ En effet, vous vous sentez vraiment fatigué, la tête et l'estomac lourd. Il es
 << endif >>
 ===
 title: Go_To_Bed_Good
-tags: bg|bedroom_night
+tags: bg|bedroom_night autoshow
 position: -503.7049560546875,991.6459350585938
 ---
 << advanceTime 0:15 >>
@@ -177,7 +177,7 @@ Sur ces mots, Fred s'éloigne et vous laisse.
     <<jump Se_Reposer_Good>>
 ===
 title: Go_To_Bed_VeryGood
-tags: bg|bedroom_night
+tags: bg|bedroom_night autoshow
 position: -502.02838134765625,1214.2044677734375
 ---
 << advanceTime 0:15 >>
@@ -227,7 +227,7 @@ Yum Yum... Un petit déjeuner bien riche quand on a fait un somme trop court, ç
     <<jump ExamenTP_Good>>
 ===
 title: ExamenTP_Good
-tags: bg|class
+tags: bg|class autoshow
 position: 375.0788269042969,1111.1724853515625
 ---
 
@@ -251,7 +251,7 @@ Puis, vous sortez de la salle de classe.
 <<jump Sortir>>
 ===
 title: Sortir
-tags: bg|class
+tags: bg|class autoshow
 position: 591.0426635742188,1112.3233642578125
 ---
 Dehors, vous rejoignez Fred.
@@ -336,7 +336,7 @@ Tant pis, vous avez besoin d'un coup de pouce... Du moins, le pensez-vous...
     <<jump Que_Faire>>
 ===
 title: Eat_Bad
-tags: show:barbot
+tags: autoshow
 position: -505.91009521484375,303.20033264160156
 ---
 BarBot: Tenez.
