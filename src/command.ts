@@ -64,15 +64,20 @@ export const commands: Record<string, Command> = {
     this.config.variableStorage.set("eval", evaluated);
   },
 
-  setTime(time: clock.ResolvableTime) {
+  setTime(time: clock.ResolvableTime, day?: string) {
     let [, , minutesSinceMidnight] = clock.parseTime(time);
-
-    while (minutesSinceMidnight >= clock.dayMinutes)
-      minutesSinceMidnight -= clock.dayMinutes;
-
+    if(day){
+      minutesSinceMidnight += Number(day) * clock.dayMinutes;
+    } else {
+      const currentMinutesSinceMidnight = Math.floor(Number(
+        this.config.variableStorage.get("time")
+      ) / clock.dayMinutes);
+      minutesSinceMidnight += currentMinutesSinceMidnight * clock.dayMinutes;
+    }
+    console.log("MinutesSinceMidnight", minutesSinceMidnight);
     this.config.variableStorage.set("time", `${minutesSinceMidnight}`);
 
-    this.config.clock.minutesSinceMidnight = minutesSinceMidnight;
+    this.config.clock.setTime(minutesSinceMidnight);
   },
 
   advanceTime(
@@ -87,7 +92,7 @@ export const commands: Record<string, Command> = {
       minutesToStop = clock.parseTime(maxTime)[2];
       minutesStep = clock.parseTime(stepTime)[2];
     }
-
+    
     const minutesSinceMidnight = Number(
       this.config.variableStorage.get("time")
     );
@@ -96,12 +101,9 @@ export const commands: Record<string, Command> = {
     // Cut the time if it goes over restriction
     while (newMinutes - minutesStep >= minutesToStop) newMinutes -= minutesStep;
 
-    // Cut the time if it goes over one day
-    while (newMinutes >= clock.dayMinutes) newMinutes -= clock.dayMinutes;
-
     this.config.variableStorage.set("time", `${newMinutes}`);
 
-    this.activate(this.config.clock.advanceTime(newMinutes));
+    this.config.clock.advanceTime(newMinutes);
   },
 
   hideClock() {
@@ -232,16 +234,37 @@ export const functions: Record<string, YarnFunction> = {
     console.log(node, "visited?", visited);
     return visited;
   },
+
   getGauge(gauge: string): number {
     return this.graphics.getGaugeValue(gauge);
   },
+
   save() {
     save.save(this.stateName);
   },
+
   resetSave() {
     save.save();
   },
+
   hasSave(): boolean {
     return save.hasSave();
   },
+
+  isTimeOver(time: clock.ResolvableTime, day?: string): boolean {
+    debugger;
+    let [, , minutesSinceMidnight] = clock.parseTime(time);
+    const currentMinutesSinceMidnight = Math.floor(Number(
+      this.config.variableStorage.get("time")
+    ));
+    
+    let nbrDay = Number(day);
+
+    if(day === undefined){
+      nbrDay = Math.floor(currentMinutesSinceMidnight / clock.dayMinutes);
+    }
+
+    minutesSinceMidnight += clock.dayMinutes * nbrDay;
+    return currentMinutesSinceMidnight >= minutesSinceMidnight;
+  }
 };

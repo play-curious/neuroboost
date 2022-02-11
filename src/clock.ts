@@ -78,10 +78,11 @@ export class Clock extends extension.ExtendedCompositeEntity {
   }
 
   private _updateText() {
-    const hours = Math.floor(this._minutesSinceMidnight / 60);
+    const days = Math.floor(this._minutesSinceMidnight / dayMinutes);
+    const hours = Math.floor((this._minutesSinceMidnight - (days * dayMinutes)) / 60);
     const minutes = this._minutesSinceMidnight % 60;
     const time = `${hours} : ${minutes < 10 ? "0" + minutes : minutes}`;
-    const dayName = dayNames[this._days % 7];
+    const dayName = dayNames[days % 7];
 
     this._textBox.text = `${time}\n${dayName}`;
   }
@@ -131,6 +132,10 @@ export class Clock extends extension.ExtendedCompositeEntity {
       },
     });
 
-    return this._clockTween;
+    this._activateChildEntity(this._clockTween);
+  }
+
+  isTimeOver(time: ResolvableTime, day?: string){
+    
   }
 }
