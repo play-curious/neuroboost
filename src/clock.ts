@@ -34,19 +34,18 @@ export function parseTime(
 }
 
 export class Clock extends extension.ExtendedCompositeEntity {
-  private _days: number;
   private _minutesSinceMidnight: number;
   private _hidden: boolean;
 
   private _container: PIXI.Container;
   private _textBox: PIXI.Text;
+  private _clockTween: tween.Tween;
 
   constructor(private _position: PIXI.IPoint) {
     super();
   }
 
   _setup() {
-    this._days = 0;
     this._minutesSinceMidnight = 0;
 
     this._container = new PIXI.Container();
@@ -55,7 +54,7 @@ export class Clock extends extension.ExtendedCompositeEntity {
     this._container.addChild(this.makeSprite("images/ui/clock.png"));
 
     this._textBox = this.makeText(
-      "",
+      "0:00",
       {
         fill: "black",
         fontFamily: "Jura",
@@ -103,20 +102,22 @@ export class Clock extends extension.ExtendedCompositeEntity {
   set minutesSinceMidnight(value: number) {
     this._minutesSinceMidnight = value;
 
-    while (this._minutesSinceMidnight >= dayMinutes) {
-      this._minutesSinceMidnight -= dayMinutes;
-      this._days++;
-    }
-
     this._updateText();
   }
 
-  advanceTime(newMinutes: number) {
-    //const [h, m, hm] = parseTime(time);
-    const currentMinutes = this._minutesSinceMidnight;
-    //const newMinutes = currentMinutes + hm;
+  setTime(newMinutes: number){
+    if(this._clockTween)
+      this._deactivateChildEntity(this._clockTween);
+    
+    this.minutesSinceMidnight = newMinutes;
+  }
 
-    return new tween.Tween({
+  advanceTime(newMinutes: number) {
+    if(this._clockTween)
+      this._deactivateChildEntity(this._clockTween);
+
+    const currentMinutes = this._minutesSinceMidnight;
+    this._clockTween = new tween.Tween({
       duration: 2000,
       easing: easing.easeInOutQuint,
       from: currentMinutes,
@@ -126,7 +127,10 @@ export class Clock extends extension.ExtendedCompositeEntity {
       },
       onTeardown: () => {
         this.minutesSinceMidnight = newMinutes;
+        this._clockTween = undefined;
       },
     });
+
+    return this._clockTween;
   }
 }
