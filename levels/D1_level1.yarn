@@ -11,6 +11,7 @@ Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.
 << stopFX Chime_LOOP >>
 << music Neutral >>
 
+
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
 
 << loopFX PhoneRing_LOOP 5000 >>

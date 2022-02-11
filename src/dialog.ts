@@ -87,12 +87,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.config.clock.minutesSinceMidnight = Number(
       this.config.variableStorage.get("time")
     );
-
-    // Hide gauges by default
-    this.graphics.toggleGauges(false);
-    this._advance(-1);
-
+    
     this._parseFileTags();
+    
+    this._advance(-1);
   }
 
   private _initRunner() {
@@ -283,7 +281,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this._advance();
       return;
     }
-
+    
     command.commands[commandParts[0]].bind(this)(
       ...commandParts.slice(1).map((arg) => arg.trim())
     );
