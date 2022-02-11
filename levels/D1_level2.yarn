@@ -16,7 +16,7 @@ Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler
     <<jump Rejet_Fred_Rewind>>
 ===
 title: Appel_Fred_Rewind
-tags: show|fred
+tags: autoshow
 colorID: 0
 position: -592,376
 ---
@@ -35,6 +35,8 @@ You: Euh...
 Fred_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
 You: Euh, ok...
 
+<< hide >>
+
 Vous raccrochez sans vous en rendre compte
 
 << advanceTime 0:15 >>
@@ -49,8 +51,6 @@ position: -758,62
 Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais vaincu. Il vous rappelle aussitôt !
 -> Prendre l'appel
     <<jump Appel_Fred_Rewind>>
--> Rejeter appel
-    <<jump Rejet_Fred_Rewind>>
 ===
 title: Phone_off_Rewind
 tags: bg|bedroom
@@ -252,7 +252,7 @@ Euphorique, vous quittez la salle et retrouvez Fred, qui vous attend à l'entré
 <<jump Post_Test_Rewind>>
 ===
 title: Post_Test_Rewind
-tags: show|fred
+tags: autoshow
 colorID: 0
 position: -742,1087
 ---
@@ -281,7 +281,7 @@ Les résultats du test viennent de tomber...
 << endif >>
 ===
 title: Resultats_Good
-tags:
+tags: autoshow
 colorID: 0
 position: -529,1332
 ---

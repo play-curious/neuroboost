@@ -192,7 +192,6 @@ export const commands: Record<string, Command> = {
   },
 
   hideGauges(...gaugesName: string[]) {
-    gaugesName.pop();
     this.graphics.toggleGauges(false, ...gaugesName);
   },
 

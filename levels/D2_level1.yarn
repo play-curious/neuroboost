@@ -1,10 +1,12 @@
-# gauges: food sleep
+#gauges: sleep food
 
 title: Start
-tags: bg|class show|fred
+tags: bg|class autoshow
 position: -1523.9072265625,-40.47624206542969
 colorID: 8
 ---
+
+<< empty >>
 << setTime 18:20 >>
 
 Vous êtes toujours avec Fred à contempler les résultats de ce premier examen de la semaine de sprint. Ce dernier se retourne vers vous.
@@ -165,7 +167,7 @@ Peu importe, vous vous marrez bien tous les deux. Un peu d'imagination et vous v
     <<jump Choix_neutres>>
 ===
 title: TIRED
-tags: 
+tags: autoshow
 position: -403.5168056488037,-39.76996612548828
 colorID: 1
 ---
@@ -196,7 +198,7 @@ Puis, on vous secoue brusquement !!!
     <<jump Open_Eyes>>
 ===
 title: Open_Eyes
-tags: show|fred
+tags: autoshow
 position: 34.24329662322998,-36.5318603515625
 ---
 Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
@@ -261,12 +263,11 @@ Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un 
     <<jump Que_Faire>>
 ===
 title: Medoc_Bot
-tags: 
+tags: autoshow
 position: 474.3383331298828,-40.58226013183594
 ---
 Vous vous dirigez vers le bar, toutefois, vous ne distinguez plus aucun snack de disponible. Vous vous tournez alors vers un BarBot.
 
-<< show barbot >>
 BarBot: Vous désirez ?
 You: Manger quelque chose  qui redonne de l'énergie.
 BarBot: À sucer ou avaler ?
@@ -336,19 +337,18 @@ Pas le temps d'avaler un petit déjeuner, pas envie de toute manière...
     <<jump ExamenTP>>
 ===
 title: ExamenTP
-tags: bg|class
+tags: bg|class autoshow
 position: 1372.3470306396484,399.1321716308594
 ---
 << setTime 9:00 >>
 
 Ce matin, vous vous retrouvez noyé dans la masse, ou plutôt isolé dans la foule. Vous vous sentez léger, flottant, invisible. Heureusement, vous apercevez votre ami Fred.
 
-<< show fred>>
-Fred: Gosh, tu étais déchaîné hier soir ! Et tu as déchaîné la foule...
+Fred_excited: Gosh, tu étais déchaîné hier soir ! Et tu as déchaîné la foule...
 You: Humm...
-Fred: Je vois ça. Tu ne t'es pas assez ménagé.
+Fred_smiling: Je vois ça. Tu ne t'es pas assez ménagé.
 You: Muuuh...
-Fred: Fingers crossed ! Tout peut encore arriver.
+Fred_happy: Fingers crossed ! Tout peut encore arriver.
 << hide >>
 
 Hagard, vous quittez Fred et vous vous rendez à votre poste. Vous vous calez difficilement sur votre siège et tentez de suivre les instructions qui défilent sur l'écran. Ce n'est pas la première fois que vous pilotez un drone d'ingénierie. Vous êtes même assez doué à ce jeu.
@@ -373,7 +373,7 @@ C'est alors que vous sursautez d'agacement ! Quelqu'un vous chatouille et vous g
     <<jump Miss_Temde>>
 ===
 title: Miss_Temde
-tags: show|temde noUi
+tags: autoshow noUi
 position: 1807.6790771484375,395.8939208984375
 ---
 Temde_smiling: Hello { $name }.
