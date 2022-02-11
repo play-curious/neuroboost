@@ -242,7 +242,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       );
 
       const speakerLC = speaker.toLowerCase();
-      if (autoShow && speakerLC !== "you") {
+      const moodChanged = mood?.toLowerCase() !== this._lastMood;
+      if ((autoShow || moodChanged) && speakerLC !== "you") {
         this.addCharacter(speakerLC, mood?.toLowerCase());
       }
     } else {
@@ -632,7 +633,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       if (withAnimation) {
         this._activateChildEntity(
           new tween.Tween({
-            duration: 800,
+            duration: 1500,
             easing: easing.easeOutQuint,
             from: 250,
             to: 1500,
@@ -651,6 +652,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
 
     this._lastCharacter = undefined;
+    this._lastMood = undefined;
   }
 
   /**
@@ -663,13 +665,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
 
-    // Register last character & mood
-    const characterChanged = character !== this._lastCharacter;
-    this._lastCharacter = character;
-    this._lastMood = mood;
+    console.log(this._lastCharacter, this._lastMood, "->", character, mood);
 
     // Remove characters
+    const characterChanged = character !== this._lastCharacter;
     this.removeCharacters(characterChanged);
+
+    // Register last character & mood
+    this._lastCharacter = character;
+    this._lastMood = mood;
 
     // If character or character not you
     if (character && character !== "you") {
@@ -731,7 +735,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       if (characterChanged) {
         this._activateChildEntity(
           new tween.Tween({
-            duration: 800,
+            duration: 1500,
             easing: easing.easeOutQuint,
             from: 1500,
             to: 250,

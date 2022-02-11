@@ -21,7 +21,7 @@ Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'
   << jump Rejet_Fred >>
 ===
 title: Appel_Fred
-tags: show|fred
+tags: autoshow
 position: -1617.4276733398438,-825.2426147460938
 ---
 << stopFX PhoneRing_LOOP >>
@@ -57,8 +57,6 @@ Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle
 
 -> Prendre l'appel
     <<jump Appel_Fred>>
--> Rejeter l'appel
-    <<jump Rejet_Fred>>
 ===
 title: Phone_off
 tags:
@@ -215,7 +213,7 @@ Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fre
 <<jump Post_Test>>
 ===
 title: Post_Test
-tags: bg|class show|fred
+tags: bg|class autoshow
 position: -341.2677307128906,490.52679443359375
 ---
 Fred_excited: Alors, ça l'a fait ?
@@ -238,11 +236,11 @@ Les résultats du test viennent de tomber...
     <<jump Resultats_Bad>>
 ===
 title: Resultats_Bad
-tags: bg|class
+tags: bg|class autoshow
 position: -16.689138412475586,492.05352783203125
 ---
 Hélas... Fred n'avait pas tort... Les scores s'affichent sur l'écran de la porte principale. Vous êtes dans le peloton... de queue... La semaine de sprint commence mal...
-<< show fred >>
+
 Fred_excited: Hé, ça va ? Tu as l'air tout blême d'un coup.
 You: Ben... J'ai tout juste <b>D-</b>.
 Fred_happy: Hé alors ? Ce n'est pas la fin du monde. Ce n'est qu'une note parmi d'autres. Tu vas te rattraper.
