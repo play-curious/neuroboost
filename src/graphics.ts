@@ -169,7 +169,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
     if (gaugesName.length === 0) {
-      debugger;
+      
       for (const gaugeName in this._gauges) {
         this._gauges[gaugeName].getGauge().visible = visibility;
       }
