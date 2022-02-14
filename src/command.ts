@@ -97,6 +97,7 @@ export const commands: Record<string, Command> = {
       this.config.variableStorage.get("time")
     );
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
+    minutesToStop += Math.floor(minutesSinceMidnight / clock.dayMinutes) * clock.dayMinutes;
 
     // Cut the time if it goes over restriction
     while (newMinutes - minutesStep >= minutesToStop) newMinutes -= minutesStep;

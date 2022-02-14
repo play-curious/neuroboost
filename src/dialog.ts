@@ -62,7 +62,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
-    save.save(this.stateName);
+    save.save(
+      this.stateName,
+      this.config.variableStorage
+    );
 
     this._initRunner();
 
