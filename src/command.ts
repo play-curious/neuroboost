@@ -252,7 +252,7 @@ export const functions: Record<string, YarnFunction> = {
   },
 
   isTimeOver(time: clock.ResolvableTime, day?: string): boolean {
-    debugger;
+    
     let [, , minutesSinceMidnight] = clock.parseTime(time);
     const currentMinutesSinceMidnight = Math.floor(Number(
       this.config.variableStorage.get("time")
