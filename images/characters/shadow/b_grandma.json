@@ -1,0 +1,20 @@
+{"frames": {
+
+"b_grandma.png":
+{
+	"frame": {"x":1,"y":1,"w":351,"h":833},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":738,"y":223,"w":351,"h":833},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "b_grandma.png",
+	"format": "RGBA8888",
+	"size": {"w":353,"h":835},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:075a91fc6d881cd766abf7f6052f15dd:1f2bbed6cd929290fe36d470a1267a76:bf85407c8f45d1752e8c1baec92f46f7$"
+}
+}

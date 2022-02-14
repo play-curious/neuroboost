@@ -15,8 +15,8 @@ export const savedGauges: Map<keyof variable.Gauges, number> = new Map();
 
 export const commands: Record<string, Command> = {
   // Shortcut for _changeCharacter()
-  show(character: string): void {
-    this.graphics.addCharacter(character);
+  show(character: string, mood?: string): void {
+    this.graphics.addCharacter(character, mood);
   },
 
   // Shortcut for _changeCharacter()

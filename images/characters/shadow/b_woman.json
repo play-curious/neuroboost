@@ -1,0 +1,20 @@
+{"frames": {
+
+"b_woman.png":
+{
+	"frame": {"x":1,"y":1,"w":335,"h":1022},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":787,"y":34,"w":335,"h":1022},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "b_woman.png",
+	"format": "RGBA8888",
+	"size": {"w":337,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6aa965d986f5412d41e6c82b72f50058:fbd8d4240316298d1d60fe6db52addea:2be43d8ffb565fa913561de47f0ce098$"
+}
+}

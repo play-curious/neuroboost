@@ -1,0 +1,24 @@
+{
+  "grandma": [
+    {
+      "model": "b_grandma",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "fred": [
+    {
+      "model": "b_fred",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "woman": [
+    {
+      "model": "b_woman",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "default": "grandma"
+}
