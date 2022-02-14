@@ -67,6 +67,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       localStorage.getItem("settings") || JSON.stringify(defaultSettings);
 
     this.settings = JSON.parse(raw);
+    this.settings.fullscreen = util.inFullscreen();
 
     this.container = new PIXI.Container();
 
