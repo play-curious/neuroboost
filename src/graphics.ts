@@ -168,16 +168,33 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
-    if (gaugesName.length === 0) {
-      
-      for (const gaugeName in this._gauges) {
-        this._gauges[gaugeName].getGauge().visible = visibility;
-      }
-    } else {
-      for (const gaugeName of gaugesName) {
-        this._gauges[gaugeName].getGauge().visible = visibility;
-      }
+    for (const gaugeName in this._gauges) {
+      if(gaugesName.length === 0 || gaugesName.includes(gaugeName))
+        gaugesName.push(gaugeName);
     }
+    
+    let i=0;
+    const gaugesTween: entity.EntityBase[] = [];
+    for (const gaugeName of gaugesName) {
+      const currentGauge = this._gauges[gaugeName].getGauge();
+      currentGauge.position.y = - (currentGauge.height + 30);
+      gaugesTween.push(
+        new entity.EntitySequence([
+          new entity.WaitingEntity(i * 120),
+          new tween.Tween({
+            duration: 800,
+            easing: easing.easeInOutBack,
+            from: currentGauge.position.y,
+            to: 15,
+            onUpdate: (value) => {
+              currentGauge.position.y = value;
+            }
+          })
+        ])
+      );
+    }
+
+    this._activateChildEntity(new entity.ParallelEntity(gaugesTween));
   }
 
   public showCloseup(
