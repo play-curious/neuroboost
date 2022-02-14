@@ -4,7 +4,7 @@ position: -1979.929937362671,-817.3228759765625
 ---
 << empty >>
 << setTime 8:00 >>
-<< loopFX Chime_LOOP 1000 >>
+<< loopFX Chime_LOOP 2000 >>
 
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.
 
