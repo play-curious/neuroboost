@@ -1,0 +1,20 @@
+{"frames": {
+
+"b_fred.png":
+{
+	"frame": {"x":1,"y":1,"w":344,"h":1068},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":788,"y":0,"w":344,"h":1068},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "b_fred.png",
+	"format": "RGBA8888",
+	"size": {"w":346,"h":1070},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:db942abb5dd6389d379d0aa3161292ac:1ab26d93b0cfdb52bae9217ef1f17748:18238b33456d0087c965ddcc3a97c050$"
+}
+}

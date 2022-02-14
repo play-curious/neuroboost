@@ -15,8 +15,8 @@ export const savedGauges: Map<keyof variable.Gauges, number> = new Map();
 
 export const commands: Record<string, Command> = {
   // Shortcut for _changeCharacter()
-  show(character: string): void {
-    this.graphics.addCharacter(character);
+  show(character: string, mood?: string): void {
+    this.graphics.addCharacter(character, mood);
   },
 
   // Shortcut for _changeCharacter()
@@ -262,7 +262,7 @@ export const functions: Record<string, YarnFunction> = {
   },
 
   isTimeOver(time: clock.ResolvableTime, day?: string): boolean {
-    debugger;
+    
     let [, , minutesSinceMidnight] = clock.parseTime(time);
     const currentMinutesSinceMidnight = Math.floor(Number(
       this.config.variableStorage.get("time")
