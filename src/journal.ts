@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 
 import { GlitchFilter } from "@pixi/filter-glitch";
+import { CRTFilter } from "pixi-filters";
 
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
@@ -18,6 +19,7 @@ const options = [
 
 export class JournalScene extends extension.ExtendedCompositeEntity {
   private _glitch: PIXI.Filter & GlitchFilter;
+  private _holo: PIXI.Filter & CRTFilter;
   private _container: PIXI.Container;
   private _htmlContainer: HTMLElement;
 
@@ -33,16 +35,38 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       offset: 0,
       slices: 10,
     }) as any;
+    this._holo = new CRTFilter({
+      curvature: 0,
+      lineWidth: 0.5,
+      lineContrast: 0.3,
+      noise: 0.15
+    }) as any;
 
     this._container = new PIXI.Container();
-    this._container.filters = [this._glitch];
+    this._container.filters = [this._glitch, this._holo];
     this.config.container.addChild(this._container);
 
     //this._graphics.setBackground("bedroom", "night")
     this._container.addChild(this.makeSprite("images/ui/journal_bg.png"));
 
-    const shifting = 10;
-    const frequency = 500;
+    const shifting = 5;
+    const frequency = 2000;
+
+    this._activateChildEntity(
+      new entity.EntitySequence(
+        [
+          () =>
+            new entity.FunctionCallEntity(() => {
+
+              this._holo.seed = Math.random();
+              this._holo.time = (this._holo.time + 0.1) % 20;
+            })
+        ],
+        {
+          loop: true
+        }
+      )
+    )
 
     this._activateChildEntity(
       new entity.EntitySequence(
@@ -61,7 +85,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
                 Math.floor(Math.random() * shifting),
                 Math.floor(Math.random() * shifting),
               ];
-              this._glitch.offset = Math.floor(5 + Math.random() * 5);
+              this._glitch.offset = Math.floor(1 + Math.random() * 2);
               this._glitch.slices = Math.floor(10 + Math.random() * 15);
             }),
           () =>
