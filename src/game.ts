@@ -101,16 +101,15 @@ async function levelLoader(entityConfig: entity.EntityConfig) {
 }
 
 const transitions: Record<string, entity.Transition> = {};
-let i = 0;
+let i = 1;
 let previousState = "";
 for (const state in states) {
-  // Skips the first state (Start_menu)
-  if(i === 0) continue;
   if(i !== 1) transitions[previousState] = entity.makeTransition(state);
   previousState = state;
   i++;
 }
 transitions[previousState] = entity.makeTransition("end");
+console.log("TRNASIATION", transitions);
 
 const fxAssets = [
   "AlarmClock_LOOP",
