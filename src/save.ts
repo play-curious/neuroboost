@@ -1,21 +1,29 @@
 import * as PIXI from "pixi.js";
 import * as extension from "./extension";
+import * as variable from "./variable";
 import * as entity from "booyah/src/entity";
 
-export function save(stateName?: string) {
+export function save(stateName?: string, variableStorage?: variable.VariableStorage) {
   if (!stateName) {
     console.log("removed save");
     localStorage.removeItem("save");
+    localStorage.removeItem("variableStorage");
   } else {
     console.log("saved game state:", stateName);
     localStorage.setItem("save", stateName);
+    localStorage.setItem("variableStorage", JSON.stringify(variableStorage.data));
   }
 }
 
-export function loadSave(): string {
-  const stateName = localStorage.getItem("save");
-  console.log("loaded game state:", stateName);
-  return stateName;
+export function loadSave(): {state: string, variableStorage: variable.VariableStorage} {
+  const state = localStorage.getItem("save");
+  const varstorage = JSON.parse(localStorage.getItem("variableStorage"));
+  const variableStorage = new variable.VariableStorage(varstorage);
+  console.log("loaded game data:", state, variableStorage);
+  return {
+    state,
+    variableStorage
+  };
 }
 
 export function hasSave(): boolean {
@@ -67,7 +75,9 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
           this.container.addChild(it);
 
           this._on(it, "click", () => {
-            this._transition = entity.makeTransition(loadSave());
+            const saveData = loadSave();
+            this.config.variableStorage = saveData.variableStorage;
+            this._transition = entity.makeTransition(saveData.state);
           });
         }
       );
