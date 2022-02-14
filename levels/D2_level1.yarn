@@ -39,7 +39,7 @@ Fred_happy: On n'est plus potes ? À la vie, à la mort ?
 You: Arrête de jouer ta victime, Fred, c'est fatiguant.
 Fred_happy: Steuplay...
 
-<< if isTimeOver 19:30 >>
+<< if isTimeOver("19:30") >>
 -> Accepter l'invitation
     <<jump Cafeteria>>
 -> Refuser l'invitation
