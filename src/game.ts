@@ -104,7 +104,9 @@ const transitions: Record<string, entity.Transition> = {};
 let i = 0;
 let previousState = "";
 for (const state in states) {
-  if (i != 0) transitions[previousState] = entity.makeTransition(state);
+  // Skips the first state (Start_menu)
+  if(i === 0) continue;
+  if(i !== 1) transitions[previousState] = entity.makeTransition(state);
   previousState = state;
   i++;
 }
