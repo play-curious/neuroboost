@@ -168,8 +168,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
+    const noName = gaugesName.length === 0;
     for (const gaugeName in this._gauges) {
-      if(gaugesName.length === 0 || gaugesName.includes(gaugeName))
+      if(noName || gaugesName.includes(gaugeName))
         gaugesName.push(gaugeName);
     }
     
@@ -177,7 +178,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const gaugesTween: entity.EntityBase[] = [];
     for (const gaugeName of gaugesName) {
       const currentGauge = this._gauges[gaugeName].getGauge();
-      currentGauge.position.y = - (currentGauge.height + 30);
+      currentGauge.position.y = visibility ? -(currentGauge.height + 30) : 15;
       gaugesTween.push(
         new entity.EntitySequence([
           new entity.WaitingEntity(i * 120),
@@ -185,13 +186,21 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             duration: 800,
             easing: easing.easeInOutBack,
             from: currentGauge.position.y,
-            to: 15,
+            to: visibility ? 15 : -(currentGauge.height + 30),
+            onSetup: () => {
+              currentGauge.visible = true;
+            },
             onUpdate: (value) => {
               currentGauge.position.y = value;
+              console.log(i, value);
+            },
+            onTeardown: () => {
+              currentGauge.visible = visibility;
             }
           })
         ])
       );
+      i++;
     }
 
     this._activateChildEntity(new entity.ParallelEntity(gaugesTween));
