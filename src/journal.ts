@@ -153,8 +153,8 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       textArea.style.position = "absolute";
       textArea.style.left = "947px";
       textArea.style.top = "280px";
-      textArea.style.width = "755px";
-      textArea.style.height = "435px";
+      textArea.style.width = "735px";
+      textArea.style.height = "425px";
       textArea.style.fontSize = "28px";
       textArea.style.fontFamily = "Ubuntu";
       textArea.style.color = "white";
