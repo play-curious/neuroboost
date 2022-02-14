@@ -79,10 +79,11 @@ const stateNames = [
 const states: { [k: string]: entity.EntityResolvable } = {
   Start_Menu: new save.StartMenu(),
 };
+let j = 0;
 for (const stateName of stateNames) {
   if (stateName.includes("journal"))
     states[`${stateName}`] = new journal.JournalScene(variableStorage);
-  else states[stateName] = new dialog.DialogScene(stateName, startingNode);
+  else states[stateName] = new dialog.DialogScene(stateName, j++ === 0 ? startingNode : "Start");
 }
 
 async function levelLoader(entityConfig: entity.EntityConfig) {
@@ -109,7 +110,6 @@ for (const state in states) {
   i++;
 }
 transitions[previousState] = entity.makeTransition("end");
-console.log("TRNASIATION", transitions);
 
 const fxAssets = [
   "AlarmClock_LOOP",
