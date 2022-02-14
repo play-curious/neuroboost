@@ -53,19 +53,12 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
     const frequency = 2000;
 
     this._activateChildEntity(
-      new entity.EntitySequence(
-        [
-          () =>
-            new entity.FunctionCallEntity(() => {
-
-              this._holo.seed = Math.random();
-              this._holo.time = (this._holo.time + 0.1) % 20;
-            })
-        ],
-        {
-          loop: true
+      new entity.FunctionalEntity({
+        update: () => {
+          this._holo.seed = Math.random();
+          this._holo.time = (this._holo.time + 0.1) % 20;
         }
-      )
+      })
     )
 
     this._activateChildEntity(
