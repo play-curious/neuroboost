@@ -77,7 +77,7 @@ position: -847.2033081054688,-821.7307662963867
 Que faites-vous maintenant ?
 << endif >>
 << visit Action_List >>
-<< if $time >= 720 >>
+<< if isTimeOver 12:00 >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
     <<jump Lunch>>
