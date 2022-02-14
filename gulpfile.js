@@ -5,7 +5,7 @@ const tap = require("gulp-tap");
 const cp = require("child_process");
 const fs = require("fs");
 
-function handleImages() {
+function images() {
   const template = fs.readFileSync(
     path.join(__dirname, "templates", "images.ts"),
     "utf8"
@@ -77,12 +77,12 @@ function watch(cb) {
   });
 
   spawn.on("close", () => cb());
-  gulp.watch("images/**/*", handleImages);
+  gulp.watch("images/**/*", images);
 }
 
-exports.handleImages = handleImages;
-exports.watch = gulp.series(handleImages, watch);
+exports.images = images;
+exports.watch = gulp.series(images, watch);
 
 // Meta-tasks
 
-exports.default = handleImages;
+exports.default = images;
