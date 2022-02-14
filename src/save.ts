@@ -98,8 +98,11 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
         this.container.addChild(it);
 
         this._on(it, "click", () => {
+          if(hasSave()){
+            if(!confirm("Vous avez une partie en cours. Êtes vous sûr de vouloir en commencer une nouvelle ?"))
+              return;
+          }
           save();
-
           this._transition = entity.makeTransition("D1_level1");
         });
       }
