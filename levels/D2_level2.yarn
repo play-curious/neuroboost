@@ -210,7 +210,12 @@ position: -62.58292770385742,1107.5968017578125
 La seconde où vous touchez votre lit, vous dormez déjà.
 << addToGauge sleep 40 >>
 << advanceTime 8:00 8:00 0:05 >>
-Et la minute suivante vous entendez le bip bip de votre horloge connectée. Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'hier. Vous vous changez rapidement. Ce qui vous laisse le temps de prendre un petit déjeuner.
+
+<< loopFX Chime_LOOP 2000 >>
+Et la minute suivante vous entendez le bip bip de votre horloge connectée. 
+<< stopFX Chime_LOOP >>
+
+Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'hier. Vous vous changez rapidement. Ce qui vous laisse le temps de prendre un petit déjeuner.
 
 -> Petit déjeuner
     <<jump Petit_Dejeuner_Good>>

@@ -83,7 +83,10 @@ let j = 0;
 for (const stateName of stateNames) {
   if (stateName.includes("journal"))
     states[`${stateName}`] = new journal.JournalScene(variableStorage);
-  else states[stateName] = new dialog.DialogScene(stateName, j++ === 0 ? startingNode : "Start");
+  else states[stateName] = new dialog.DialogScene(
+    stateName,
+    stateName === startingScene ? startingNode : "Start"
+  );
 }
 
 async function levelLoader(entityConfig: entity.EntityConfig) {

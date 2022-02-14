@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "scripts": "gulp",
+    "images": "gulp images",
     "watch": "gulp watch",
-    "serve": "yarn scripts && webpack serve --config webpack.dev.js",
+    "serve": "yarn watch",
     "start": "yarn serve",
-    "build": "yarn scripts && webpack --config webpack.dev.js",
-    "dist": "yarn scripts && webpack --config webpack.prod.js",
+    "build": "yarn images && webpack --config webpack.dev.js",
+    "dist": "yarn images && webpack --config webpack.prod.js",
     "format": "prettier --write src gulpfile.js README.md"
   },
   "keywords": [],
