@@ -8,13 +8,9 @@ colorID: 8
 Vous êtes lové dans une confortable et douce langueur... Quand...
 On vous secoue brusquement !!!
 
+<< music Tense >>
 << loadGauges >>
 << showGauges >>
-// << showGauge food sleep >>
-// << setGauge sleep 100 >>
-// << setGauge food 80 >>
-// << addToGauge sleep 100 >>
-// << addToGauge food 70 >>
 << setTime 1:30 >>
 
 -> Ouvrir les yeux
@@ -43,19 +39,19 @@ position: -950.9030456542969,86.7411298751831
 ---
 << if !visited("Que_Faire") >>
 On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses...
-<< endif >>
 << visit Que_Faire >>
-<< if getGauge("sleep") >= 50 || getGauge("food") >= 50 >>
+<< endif >>
 
+<< if getGauge("sleep") >= 50 || getGauge("food") >= 50 >>
 -> Retourner swinguer sur le Dance Floor#once
     <<jump DanceFloor2>>
--> Se rafraîchir au bar
+-> Se rafraîchir au bar#once
     <<jump Cafe_ou_Alcool>>
--> Grignoter quelque chose
+-> Grignoter quelque chose#once
     <<jump Medoc_Bot>>
 -> Refaire un solo de guitare en criant tout votre saoul#once
     <<jump Metal_Jam>>
--> Quitter la salle avant d'être épuisé
+-> Quitter la salle avant d'être épuisé#once
     <<jump End_of_Party>>
 << else >>
 -> Vite ! Au lit
@@ -164,6 +160,7 @@ title: Go_To_Bed_Good
 tags: bg|bedroom_night autoshow
 position: -503.7049560546875,991.6459350585938
 ---
+<< music >>
 << advanceTime 0:15 >>
 Arrivé devant la porte de votre chambre, Fred se tourne vers vous.
 Fred_smiling: C'était vraiment sympa ce soir.
@@ -180,6 +177,7 @@ title: Go_To_Bed_VeryGood
 tags: bg|bedroom_night autoshow
 position: -502.02838134765625,1214.2044677734375
 ---
+<< music >>
 << advanceTime 0:15 >>
 Arrivé devant la porte de votre chambre, Fred se tourne vers vous.
 Fred_happy: C'était vraiment la hype ce soir.
@@ -197,7 +195,7 @@ tags: bg|bedroom_night
 position: -281.2446746826172,1109.7478637695312
 ---
 << hideGauges >>
-//TODO: hmmmmm
+
 Vous entrez tranquillement dans votre chambre. Vous allez aux toilettes. Votre vessie en a besoin. Vos dents aussi. Vous vous dévêtez et gagnez votre lit. Vous êtes bien crevé, mais encore pas éteint. Il est temps pour de se recharger. À défaut d'un nuit de sommeil, un somme vous fera déjà le plus grand bien.
 
 -> Un petit somme
@@ -214,7 +212,7 @@ La seconde où vous touchez votre lit, vous dormez déjà.
 << loopFX Chime_LOOP 2000 >>
 Et la minute suivante vous entendez le bip bip de votre horloge connectée. 
 << stopFX Chime_LOOP >>
-
+<< music Neutral >>
 Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'hier. Vous vous changez rapidement. Ce qui vous laisse le temps de prendre un petit déjeuner.
 
 -> Petit déjeuner
@@ -289,6 +287,7 @@ tags: bg|party
 position: -286.4623107910156,765.6393432617188
 colorID: 1
 ---
+<< music >>
 Mince, il ne reste plus personne sur la piste. Vous ne ne voyez plus Fred. Il est sacrément tard, ou sacrément tôt. Les premiers rayons de soleil filtrent à travers les fenêtres de la salle.
 Vous avez péché par ambition. Vous n'avez pas assez écouté votre corps. Vous êtes épuisé, totalement à plat. Il est plus que temps d'aller dormir.  Vous sentez que cela cogne dans votre tête. Allez-vous pouvoir récupérer assez de sommeil ?...
 
@@ -314,6 +313,7 @@ position: 139.57297730445862,766.5597534179688
 ---
 << loopFX AlarmClock_LOOP 2000 >>
 << advanceTime 8:00 8:00 0:05 >>
+<< music Neutral >>
 
 Argh... L'horloge connectée vous fait bondir de votre lit ! Il est encore trop tôt ! Vous ne vous êtes toujours pas reposé. Vous aimeriez avoir une bonne nuit de sommeil...
 
