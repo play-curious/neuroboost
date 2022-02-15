@@ -295,6 +295,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     oldNodeData: yarnBound.Metadata,
     newNodeData: yarnBound.Metadata
   ) {
+    if(!_.has(newNodeData, "tags")){
+      this.emit("changeNodeData", oldNodeData, newNodeData);
+      return;
+    }
     // By default, autoshow is off
     this._autoshowOn = false;
     let noUi: boolean = false;
