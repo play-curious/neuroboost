@@ -1,0 +1,199 @@
+{"frames": {
+
+"brainThHaCoAn0001.png":
+{
+	"frame": {"x":1,"y":1,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0002.png":
+{
+	"frame": {"x":1,"y":1,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0003.png":
+{
+	"frame": {"x":1,"y":1,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0004.png":
+{
+	"frame": {"x":1,"y":1,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0005.png":
+{
+	"frame": {"x":1,"y":83,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0006.png":
+{
+	"frame": {"x":1,"y":83,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0007.png":
+{
+	"frame": {"x":1,"y":83,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0008.png":
+{
+	"frame": {"x":1,"y":165,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0009.png":
+{
+	"frame": {"x":1,"y":165,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0010.png":
+{
+	"frame": {"x":1,"y":165,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0011.png":
+{
+	"frame": {"x":1,"y":247,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0012.png":
+{
+	"frame": {"x":1,"y":247,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0013.png":
+{
+	"frame": {"x":1,"y":247,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0014.png":
+{
+	"frame": {"x":1,"y":329,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0015.png":
+{
+	"frame": {"x":1,"y":329,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0016.png":
+{
+	"frame": {"x":1,"y":329,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0017.png":
+{
+	"frame": {"x":1,"y":83,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0018.png":
+{
+	"frame": {"x":1,"y":83,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0019.png":
+{
+	"frame": {"x":1,"y":83,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0020.png":
+{
+	"frame": {"x":1,"y":83,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0021.png":
+{
+	"frame": {"x":1,"y":165,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0022.png":
+{
+	"frame": {"x":1,"y":165,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+},
+"brainThHaCoAn0023.png":
+{
+	"frame": {"x":1,"y":165,"w":103,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":80},
+	"sourceSize": {"w":103,"h":80}
+}},
+"animations": {
+	"brainThHaCoAn": ["brainThHaCoAn0001.png","brainThHaCoAn0002.png","brainThHaCoAn0003.png","brainThHaCoAn0004.png","brainThHaCoAn0005.png","brainThHaCoAn0006.png","brainThHaCoAn0007.png","brainThHaCoAn0008.png","brainThHaCoAn0009.png","brainThHaCoAn0010.png","brainThHaCoAn0011.png","brainThHaCoAn0012.png","brainThHaCoAn0013.png","brainThHaCoAn0014.png","brainThHaCoAn0015.png","brainThHaCoAn0016.png","brainThHaCoAn0017.png","brainThHaCoAn0018.png","brainThHaCoAn0019.png","brainThHaCoAn0020.png","brainThHaCoAn0021.png","brainThHaCoAn0022.png","brainThHaCoAn0023.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "p_brainThHaCoAn.png",
+	"format": "RGBA8888",
+	"size": {"w":105,"h":410},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3a6e412fad0e5ddaf77f6fe877e1435e:4fcf47443747837ccb4c6a6210efbf2e:332fb426d2d772cbbe7bc70e95396fb4$"
+}
+}

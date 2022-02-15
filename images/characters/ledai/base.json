@@ -6,29 +6,29 @@
       "y": 540.0
     },
     {
-      "model": "bp_collarDoHa",
+      "model": "p_collarDo",
       "x": 953.5,
       "y": 189.0
     },
     {
-      "model": "bp_eyesDo",
+      "model": "p_dressHaExDo",
+      "x": 963.0,
+      "y": 817.5
+    },
+    {
+      "model": "p_eyesDo",
       "x": 916.5,
       "y": 79.0
     },
     {
-      "model": "bp_armsDo",
+      "model": "p_armsDo",
       "x": 1119.0,
       "y": 615.0
     },
     {
-      "model": "bp_sleevesDo",
+      "model": "p_sleevesDo",
       "x": 1124.5,
       "y": 448.0
-    },
-    {
-      "model": "bp_dressDoHa",
-      "x": 963.0,
-      "y": 817.5
     }
   ],
   "happy": [
@@ -38,27 +38,27 @@
       "y": 540.0
     },
     {
-      "model": "bp_collarDoHa",
-      "x": 953.5,
-      "y": 189.0
-    },
-    {
-      "model": "bp_handsHa",
-      "x": 945.5,
-      "y": 448.0
-    },
-    {
-      "model": "bp_dressDoHa",
+      "model": "p_dressHaExDo",
       "x": 963.0,
       "y": 817.5
     },
     {
-      "model": "bp_eyesHa",
-      "x": 933.5,
-      "y": 76.0
+      "model": "p_handsHa",
+      "x": 945.5,
+      "y": 448.0
     },
     {
-      "model": "bp_sleevesHa",
+      "model": "p_collarHa",
+      "x": 953.5,
+      "y": 189.0
+    },
+    {
+      "model": "p_eyesHa",
+      "x": 933.5,
+      "y": 77.0
+    },
+    {
+      "model": "p_sleevesHa",
       "x": 956.0,
       "y": 449.5
     }
@@ -70,22 +70,22 @@
       "y": 540.0
     },
     {
-      "model": "bp_sleevesEx",
+      "model": "p_sleevesEx",
       "x": 956.0,
       "y": 449.5
     },
     {
-      "model": "bp_dressEx",
+      "model": "p_dressHaExDo",
       "x": 963.0,
-      "y": 817.0
+      "y": 817.5
     },
     {
-      "model": "bp_collarEx",
+      "model": "p_collarEx",
       "x": 953.5,
       "y": 189.5
     },
     {
-      "model": "bp_armsEx",
+      "model": "p_armsEx",
       "x": 946.0,
       "y": 465.5
     }

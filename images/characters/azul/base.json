@@ -6,19 +6,19 @@
       "y": 540.0
     },
     {
-      "model": "bp_pantsChHaPrSa",
-      "x": 987.0,
-      "y": 693.0
-    },
-    {
-      "model": "bp_hairChHaPrSa",
+      "model": "p_hairSaPrHaCh",
       "x": 969.0,
       "y": 210.0
     },
     {
-      "model": "bp_sleevesPr",
-      "x": 1009.5,
-      "y": 302.5
+      "model": "p_pantsSaPrHaCh",
+      "x": 987.0,
+      "y": 693.0
+    },
+    {
+      "model": "p_sleevesHa",
+      "x": 1006.0,
+      "y": 311.5
     }
   ],
   "proud": [
@@ -28,19 +28,19 @@
       "y": 540.0
     },
     {
-      "model": "bp_sleevesPr",
+      "model": "p_hairSaPrHaCh",
+      "x": 969.0,
+      "y": 210.0
+    },
+    {
+      "model": "p_sleevesPr",
       "x": 1009.5,
       "y": 302.5
     },
     {
-      "model": "bp_pantsChHaPrSa",
+      "model": "p_pantsSaPrHaCh",
       "x": 987.0,
       "y": 693.0
-    },
-    {
-      "model": "bp_hairChHaPrSa",
-      "x": 969.0,
-      "y": 210.0
     }
   ],
   "sad": [
@@ -50,19 +50,19 @@
       "y": 540.0
     },
     {
-      "model": "bp_pantsChHaPrSa",
-      "x": 987.0,
-      "y": 693.0
+      "model": "p_hairSaPrHaCh",
+      "x": 969.0,
+      "y": 210.0
     },
     {
-      "model": "bp_sleevesSa",
+      "model": "p_sleevesSa",
       "x": 976.5,
       "y": 321.0
     },
     {
-      "model": "bp_hairChHaPrSa",
-      "x": 969.0,
-      "y": 210.0
+      "model": "p_pantsSaPrHaCh",
+      "x": 987.0,
+      "y": 693.0
     }
   ],
   "cheerful": [
@@ -72,22 +72,22 @@
       "y": 540.0
     },
     {
-      "model": "bp_pantsChHaPrSa",
-      "x": 987.0,
-      "y": 693.0
-    },
-    {
-      "model": "bp_hairChHaPrSa",
+      "model": "p_hairSaPrHaCh",
       "x": 969.0,
       "y": 210.0
     },
     {
-      "model": "bp_armsCh",
+      "model": "p_handsCh",
       "x": 971.5,
-      "y": 319.5
+      "y": 346.0
     },
     {
-      "model": "bp_sleevesChHa",
+      "model": "p_pantsSaPrHaCh",
+      "x": 987.0,
+      "y": 693.0
+    },
+    {
+      "model": "p_sleevesCh",
       "x": 971.5,
       "y": 311.5
     }
