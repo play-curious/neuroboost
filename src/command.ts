@@ -15,8 +15,8 @@ export const savedGauges: Map<keyof variable.Gauges, number> = new Map();
 
 export const commands: Record<string, Command> = {
   // Shortcut for _changeCharacter()
-  show(character: string): void {
-    this.graphics.addCharacter(character);
+  show(character: string, mood?: string): void {
+    this.graphics.addCharacter(character, mood);
   },
 
   // Shortcut for _changeCharacter()
@@ -63,6 +63,8 @@ export const commands: Record<string, Command> = {
     const evaluated = eval(code);
     this.config.variableStorage.set("eval", evaluated);
   },
+
+  // CLOCK
 
   setTime(time: clock.ResolvableTime, day?: string) {
     let [, , minutesSinceMidnight] = clock.parseTime(time);
@@ -115,6 +117,16 @@ export const commands: Record<string, Command> = {
     this.config.clock.hidden = false;
   },
 
+  // GAUGES
+
+  showGauges(...gaugesName: string[]) {
+    this.graphics.toggleGauges(true, ...gaugesName);
+  },
+
+  hideGauges(...gaugesName: string[]) {
+    this.graphics.toggleGauges(false, ...gaugesName);
+  },
+
   setGauge<VarName extends keyof variable.Gauges>(
     gaugeName: VarName,
     value: variable.Gauges[VarName]
@@ -155,6 +167,8 @@ export const commands: Record<string, Command> = {
     });
   },
 
+  // MUSIC FX
+
   music(musicName: string) {
     this.config.jukebox.play(musicName);
   },
@@ -188,13 +202,7 @@ export const commands: Record<string, Command> = {
     }
   },
 
-  showGauges(...gaugesName: string[]) {
-    this.graphics.toggleGauges(true, ...gaugesName);
-  },
-
-  hideGauges(...gaugesName: string[]) {
-    this.graphics.toggleGauges(false, ...gaugesName);
-  },
+  // FADES
 
   fadeIn(duration: `${number}` = "1000", hexColor: string = "#00000") {
     const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
@@ -210,7 +218,7 @@ export const commands: Record<string, Command> = {
     this.graphics.setBackground(bg, mood);
   },
 
-  empty() {},
+  // NODE INFO
 
   /**
    * Mark a node as visited
@@ -224,7 +232,9 @@ export const commands: Record<string, Command> = {
 
   clearOnce(){
     this.selectedOptions = [];
-  }
+  },
+
+  empty(){},
 };
 
 export const functions: Record<string, YarnFunction> = {
@@ -252,7 +262,7 @@ export const functions: Record<string, YarnFunction> = {
   },
 
   isTimeOver(time: clock.ResolvableTime, day?: string): boolean {
-    debugger;
+    
     let [, , minutesSinceMidnight] = clock.parseTime(time);
     const currentMinutesSinceMidnight = Math.floor(Number(
       this.config.variableStorage.get("time")
