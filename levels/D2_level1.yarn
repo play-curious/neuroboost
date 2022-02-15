@@ -8,6 +8,7 @@ colorID: 8
 
 << empty >>
 << setTime 18:20 >>
+<< music Neutral >>
 
 Vous êtes toujours avec Fred à contempler les résultats de ce premier examen de la semaine de sprint. Ce dernier se retourne vers vous.
 
@@ -56,9 +57,8 @@ position: -1075.3348388671875,-37.09675598144531
 << showGauges food sleep >>
 << setGauge sleep 100 >>
 << setGauge food 80 >>
-//<< addToGauge sleep 100 >>
-//<< addToGauge food 70 >>
 << setTime 20:00 >>
+<< music Tense >>
 
 Vous voilà donc à la cafétéria avec Fred. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer.
 Fred_smiling: Alors, tu vois qu'on peut étudier tout en s'amusant.
@@ -315,6 +315,7 @@ title: SeReposer
 tags: bg|bedroom
 position: 927.2608032226562,397.54339599609375
 ---
+<< music >>
 << hideGauges >>
 << advanceTime 0:15 >>
 Vous filez dans votre chambre en quatrième vitesse. Mais vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent !
@@ -329,6 +330,7 @@ title: Bip_Bip
 tags: bg|bedroom
 position: 1149.49072265625,399.1321105957031
 ---
+<< music Neutral >>
 Argh... Il est encore trop tôt ! Vous ne vous êtes pas reposé. Vous aimeriez avoir une bonne nuit de sommeil... C'est trop tard maintenant, il faut aller au charbon...
 Vous vous levez sans grande conviction. Vous enlevez vos vêtements, ils sentent la sueur et d'autres mauvaises odeurs. Vous en enfilez de nouveaux et partez au front.
 Pas le temps d'avaler un petit déjeuner, pas envie de toute manière...
@@ -376,6 +378,7 @@ title: Miss_Temde
 tags: autoshow noUi
 position: 1807.6790771484375,395.8939208984375
 ---
+<< music Mysterious >>
 Temde_smiling: Hello { $name }.
 You: Quoi ?! Vous encore ?!
 Temde_cheerful: Yep, on n'a pas fini de t'embêter en effet.
