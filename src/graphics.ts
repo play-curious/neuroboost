@@ -827,16 +827,17 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       new entity.FunctionCallEntity(() => {
         this._fade.tint = eval(color.replace("#", "0x"));
         this._fade.visible = true;
-        this._fade.alpha = 0;
+        this._fade.alpha = 1;
       }),
-      new tween.Tween({
-        duration: duration,
-        from: 0,
-        to: 1,
-        onUpdate: (value) => {
-          this._fade.alpha = value;
-        },
-      }),
+      new entity.WaitingEntity(duration/4),
+      // new tween.Tween({
+      //   duration: duration,
+      //   from: 0,
+      //   to: 1,
+      //   onUpdate: (value) => {
+      //     this._fade.alpha = value;
+      //   },
+      // }),
       new tween.Tween({
         duration: duration,
         from: 1,

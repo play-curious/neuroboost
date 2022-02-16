@@ -214,7 +214,8 @@ export const commands: Record<string, Command> = {
   },
 
   fade(duration: `${number}` = "1000", hexColor: string = "#00000") {
-    this.graphics.fade(Number(duration), hexColor);
+    const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
+    this.graphics.fade(Number(duration), color);
   },
 
   setBackground(name: string) {
