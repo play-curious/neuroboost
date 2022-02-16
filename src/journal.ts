@@ -29,28 +29,29 @@ const options: {[key: string]: any} = {
     closeQuestion: {
       question: "Penses-tu que ton alimentation est saine ?",
       answers: [
-        "oui",
-        "plus ou moins",
-        "ça dépend",
-        "non",
+        "Oui",
+        "Souvent oui",
+        "Rarement oui",
+        "Non",
       ],
     },
     openQuestion: {
-      question: "<Insérer une question sur l'alimentation ici>",
+      question: "Comment pourrais-tu améliorer ton alimentation pour mieux apprendre ?",
     }
   },
   sleep: {
     closeQuestion: {
-      question: "Penses-tu que ton rythme de sommeil est sein ?",
+      question: "De combien de temps de sommeil as tu besoin ?",
       answers: [
-        "oui",
-        "plus ou moins",
-        "ça dépend",
-        "non",
+        "10h ou plus",
+        "9h",
+        "8h",
+        "7h",
+        "6h ou moins",
       ],
     },
     openQuestion: {
-      question: "<Insérer une question sur le sommeil ici>",
+      question: "Quels facteurs te permettent de bien dormir le soir ?",
     }
   }
 };
