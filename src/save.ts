@@ -1,7 +1,9 @@
 import * as PIXI from "pixi.js";
+import * as entity from "booyah/src/entity";
+
 import * as extension from "./extension";
 import * as variable from "./variable";
-import * as entity from "booyah/src/entity";
+import * as popup from "./popup";
 
 export function save(stateName?: string, variableStorage?: variable.VariableStorage) {
   if (!stateName) {
@@ -109,11 +111,19 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
 
         this._on(it, "click", () => {
           if(hasSave()){
-            if(!confirm("Vous avez une partie en cours. Êtes vous sûr de vouloir en commencer une nouvelle ?"))
-              return;
+            this._activateChildEntity(
+              new popup.Confirm(
+                "Vous avez une partie en cours. Êtes vous sûr de vouloir en commencer une nouvelle ?",
+                () => {
+                  save();
+                  this._transition = entity.makeTransition("D1_level1");
+                }
+              )
+            );
+          } else {
+            save();
+            this._transition = entity.makeTransition("D1_level1");
           }
-          save();
-          this._transition = entity.makeTransition("D1_level1");
         });
       }
     );
