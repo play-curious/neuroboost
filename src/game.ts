@@ -68,10 +68,11 @@ const startingScene =
 // prettier-ignore
 const stateNames = [
   "D1_level1",
-  "journal_D1_level1",
+  "journal_method",
   "D1_level2",
   "D2_level1",
-  "journal_D2_level1",
+  "journal_food",
+  "journal_sleep",
   "D2_level2",
   "End_Screen"
 ];
@@ -81,7 +82,7 @@ const states: { [k: string]: entity.EntityResolvable } = {
 };
 for (const stateName of stateNames) {
   if (stateName.includes("journal"))
-    states[`${stateName}`] = new journal.JournalScene(variableStorage);
+    states[`${stateName}`] = new journal.JournalScene(variableStorage, stateName.split("_")[1]);
   else states[stateName] = new dialog.DialogScene(
     stateName,
     stateName === startingScene ? startingNode : "Start"
