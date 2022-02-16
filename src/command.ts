@@ -213,6 +213,10 @@ export const commands: Record<string, Command> = {
     this.activate(this.graphics.fadeOut(Number(duration)));
   },
 
+  fade(duration: `${number}` = "1000", hexColor: string = "#00000") {
+    this.graphics.fade(Number(duration), hexColor);
+  },
+
   setBackground(name: string) {
     const [bg, mood] = name.split("_");
     this.graphics.setBackground(bg, mood);

@@ -820,4 +820,36 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       ]);
     return new entity.FunctionCallEntity(() => null);
   }
+
+  fade(duration: number = 1000, color: string = "#000000") {
+
+    this._activateChildEntity(new entity.EntitySequence([
+      new entity.FunctionCallEntity(() => {
+        this._fade.tint = eval(color.replace("#", "0x"));
+        this._fade.visible = true;
+        this._fade.alpha = 0;
+      }),
+      new tween.Tween({
+        duration: duration,
+        from: 0,
+        to: 1,
+        onUpdate: (value) => {
+          this._fade.alpha = value;
+        },
+      }),
+      new tween.Tween({
+        duration: duration,
+        from: 1,
+        to: 0,
+        onUpdate: (value) => {
+          this._fade.alpha = value;
+        },
+      }),
+      new entity.FunctionCallEntity(() => {
+        this._fade.visible = false;
+        this._fade.alpha = 0;
+      }),
+    ]));
+
+  }
 }
