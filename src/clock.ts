@@ -79,7 +79,9 @@ export class Clock extends extension.ExtendedCompositeEntity {
 
   private _updateText() {
     const days = Math.floor(this._minutesSinceMidnight / dayMinutes);
-    const hours = Math.floor((this._minutesSinceMidnight - (days * dayMinutes)) / 60);
+    const hours = Math.floor(
+      (this._minutesSinceMidnight - days * dayMinutes) / 60
+    );
     const minutes = this._minutesSinceMidnight % 60;
     const time = `${hours} : ${minutes < 10 ? "0" + minutes : minutes}`;
     const dayName = dayNames[days % 7];
@@ -106,16 +108,14 @@ export class Clock extends extension.ExtendedCompositeEntity {
     this._updateText();
   }
 
-  setTime(newMinutes: number){
-    if(this._clockTween)
-      this._deactivateChildEntity(this._clockTween);
-    
+  setTime(newMinutes: number) {
+    if (this._clockTween) this._deactivateChildEntity(this._clockTween);
+
     this.minutesSinceMidnight = newMinutes;
   }
 
   advanceTime(newMinutes: number) {
-    if(this._clockTween)
-      this._deactivateChildEntity(this._clockTween);
+    if (this._clockTween) this._deactivateChildEntity(this._clockTween);
 
     const currentMinutes = this._minutesSinceMidnight;
     this._clockTween = new tween.Tween({
@@ -135,7 +135,5 @@ export class Clock extends extension.ExtendedCompositeEntity {
     this._activateChildEntity(this._clockTween);
   }
 
-  isTimeOver(time: ResolvableTime, day?: string){
-    
-  }
+  isTimeOver(time: ResolvableTime, day?: string) {}
 }
