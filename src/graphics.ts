@@ -372,7 +372,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       choicebox.pivot.set(choicebox.width / 2, choicebox.y);
 
       choicebox.position.set(1920 * 2 * (i % 2 ? 1 : -1), currentY);
-      choicebox.position.y = currentY;
 
       box_tweens.push(
         new entity.EntitySequence([

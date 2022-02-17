@@ -123,6 +123,7 @@ tags: bg|bedroom subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
 -> Binger votre série TV préférée#once
+    << fadeIn >>
     <<jump BingeTV>>
 -> back
     <<jump Action_List>>
@@ -175,6 +176,7 @@ title: BingeTV
 tags: bg|desk
 position: -1573.0745849609375,216.18408203125
 ---
+<< fadeOut >>
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
 << visit BingeTV >>
 Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
@@ -191,12 +193,14 @@ Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant.
 Au final, vous passez trop de temps à binger votre série préférée.
 // ORIGINAL: Vous passez 4 heures à binger votre série préférée.
 
+<< fadeIn >>
 <<jump Action_List>>
 ===
 title: Lunch
 tags: bg|kitchen
 position: -1026.218994140625,513.7423095703125
 ---
+<< fadeOut >>
 << fx EatCook >>
 Yum Yum... Délicieux ce Burger Big Proteins Double Cheese !
 Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant l'examen !
@@ -213,9 +217,8 @@ title: Test
 tags: bg|class
 position: -666.0570068359375,500.580322265625
 ---
+<< setTime 14:00 >>
 << fadeOut >>
-<< setTime 14:00 >>
-<< setTime 14:00 >>
 
 Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b>, que le compteur se met en route.
 Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi.
