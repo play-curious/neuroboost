@@ -6,43 +6,32 @@ import * as variable from "./variable";
 
 abstract class Popup extends extension.ExtendedCompositeEntity {
     protected _container: PIXI.Container;
-    // private _textArea: PIXI.Container;
     protected _okButton: PIXI.Container;
 
+    protected _containerOffset: number;
+
     public constructor(
-        public readonly _callback: () => unknown
+        public readonly _callback: (...args: any) => unknown
     ){
         super();
     }
 
     _setup(): void {
-        const containerOffset = 70;
+        this._containerOffset = 70;
         this._container = new PIXI.Container();
-        this._container.position.x = containerOffset;
+        this._container.position.x = this._containerOffset;
         this._container.interactive = true;
         const blackBackground = new PIXI.Graphics()
             .beginFill(0x333333, 0.8)
-            .drawRect(0-containerOffset, 0, variable.width, variable.height)
+            .drawRect(0-this._containerOffset, 0, variable.width, variable.height)
             .endFill();
         blackBackground.alpha = 1;
         this._container.addChild(
             blackBackground,
             this.makeSprite("images/ui/popup/background.png"),
-            // this.makeSprite("images/ui/popup/textarea.png"),
             this.makeSprite("images/ui/popup/ok_button.png")
         );
 
-        
-
-        // this._textArea = new PIXI.Container;
-        // {
-        //     this._textArea.position.set(324, 425);
-        //     this._textArea.hitArea = new PIXI.Rectangle(0, 0, 1141, 75);
-        //     this._textArea.interactive = true;
-        //     this._textArea.buttonMode = true;
-        //     this._container.addChild(this._textArea);
-        // }
-        
         this._okButton = new PIXI.Container;
         {
             this._okButton.position.set(1203, 540);
@@ -66,10 +55,6 @@ abstract class Popup extends extension.ExtendedCompositeEntity {
             )
             this._container.addChild(this._okButton);
         }
-        this._on(this._okButton, "pointerup", () => {
-            this._teardown();
-            this._callback();
-        });
 
         this.config.container.addChild(this._container);
     }
@@ -86,7 +71,7 @@ export class Confirm extends Popup {
 
     public constructor(
         public readonly _message: string,
-        public readonly _callback: () => unknown
+        readonly _callback: () => unknown
     ){
         super(_callback);
     }
@@ -108,11 +93,11 @@ export class Confirm extends Popup {
                   fontSize: 50,
                   fontWeight: "bold",
                   wordWrap: true,
-                  wordWrapWidth: 1301,
+                  wordWrapWidth: 1261,
                 },
                 (it) => {
                     it.anchor.set(0, 0.5);
-                    it.position.set(221, 416)
+                    it.position.set(241, 416)
                 }
             )
         );
@@ -141,10 +126,83 @@ export class Confirm extends Popup {
             )
             this._container.addChild(this._cancelButton);
         }
-        this._on(this._cancelButton, "pointerup", this._teardown);
+        this._on(this._cancelButton, "pointerup", super._teardown);
+        
+        this._on(this._okButton, "pointerup", () => {
+            this._teardown();
+            this._callback();
+        });
+    }
+}
+
+export class Prompt extends Popup {
+    private _msgBox: PIXI.Container;
+    private _textInput: HTMLInputElement;
+
+    public constructor(
+        public readonly _message: string,
+        readonly _callback: (text: string) => unknown,
+        public readonly _placeholder?: string
+    ){
+        super(_callback);
+    }
+
+    _setup(): void {
+        super._setup();
+
+        this._container.addChild(
+            this.makeSprite("images/ui/popup/textarea.png"),
+        );
+
+        this._msgBox = new PIXI.Container();
+        this._msgBox.addChild(
+            this.makeText(
+                this._message,
+                {
+                  fontFamily: "Jura",
+                  fill: "white",
+                  fontSize: 50,
+                  fontWeight: "bold",
+                  wordWrap: true,
+                  wordWrapWidth: 1261,
+                },
+                (it) => {
+                    it.anchor.set(0, 0.5);
+                    it.position.set(241, 366)
+                }
+            )
+        );
+        this._container.addChild(this._msgBox);
+
+        this._textInput = document.createElement("input");
+        {
+            document.getElementById("html-layer").append(this._textInput);
+            this._textInput.setAttribute("type", "text");
+            this._textInput.setAttribute("maxlength", "14");
+            this._textInput.onkeydown = (ev) => {return /[a-z]/i.test(ev.key);}
+            this._textInput.style.position = "absolute";
+            this._textInput.style.left = `${330 + this._containerOffset}px`;
+            this._textInput.style.top = "428px";
+            this._textInput.style.width = "1137px";
+            this._textInput.style.height = "71px";
+            this._textInput.style.fontSize = "50px";
+            this._textInput.style.fontFamily = "Ubuntu";
+            this._textInput.style.color = "white";
+            this._textInput.style.border = "none";
+            this._textInput.style.borderRadius = "2%";
+            this._textInput.style.background = "transparent";
+            this._textInput.style.resize = "none";
+
+            this._on(this._okButton, "pointerup", () => {
+                const textContent = this._textInput.value;
+                this._teardown();
+                this._callback(textContent);
+            });
+        }
     }
 
     _teardown(): void {
+        this._textInput.remove();
         super._teardown();
     }
 }
