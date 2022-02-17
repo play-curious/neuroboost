@@ -192,12 +192,17 @@ export const commands: Record<string, Command> = {
 
   fadeIn(duration: `${number}` = "1000", hexColor: string = "#00000") {
     const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
-    this.activate(this.graphics.fadeIn(Number(duration), color));
+    return this.graphics.fadeIn(Number(duration), color);
   },
 
   fadeOut(duration: `${number}` = "1000") {
-    this.activate(this.graphics.fadeOut(Number(duration)));
+    return this.graphics.fadeOut(Number(duration));
   },
+
+  // fade(duration: `${number}` = "1000", hexColor: string = "#00000") {
+  //   const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
+  //   this.graphics.fade(Number(duration), color);
+  // },
 
   setBackground(name: string) {
     const [bg, mood] = name.split("_");

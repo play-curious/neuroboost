@@ -9,13 +9,52 @@ import * as tween from "booyah/src/tween";
 import * as variable from "./variable";
 import * as extension from "./extension";
 
-const options = [
-  "Rappel libre",
-  "Lecture de notes",
-  "Lecture à voix haute",
-  "Révision en groupe",
-  "Faire des exercices",
-];
+const options: {[key: string]: any} = {
+  method: {
+    closeQuestion: {
+      question: "Lorsque tu as besoin de réviser, quelles techniques utilises-tu ?",
+      answers: [
+        "Rappel libre",
+        "Lecture de notes",
+        "Lecture à voix haute",
+        "Révision en groupe",
+        "Faire des exercices",
+      ],
+    },
+    openQuestion: {
+      question: "Si tu pouvais apprendre plus facilement ou retenir des informations plus longtemps, qu'est-ce que cela pourrait changer à ta vie ?"
+    },
+  },
+  food: {
+    closeQuestion: {
+      question: "Penses-tu que ton alimentation est saine ?",
+      answers: [
+        "Oui",
+        "Souvent oui",
+        "Rarement oui",
+        "Non",
+      ],
+    },
+    openQuestion: {
+      question: "Comment pourrais-tu améliorer ton alimentation pour mieux apprendre ?",
+    }
+  },
+  sleep: {
+    closeQuestion: {
+      question: "De combien de temps de sommeil as tu besoin ?",
+      answers: [
+        "10h ou plus",
+        "9h",
+        "8h",
+        "7h",
+        "6h ou moins",
+      ],
+    },
+    openQuestion: {
+      question: "Quels facteurs te permettent de bien dormir le soir ?",
+    }
+  }
+};
 
 export class JournalScene extends extension.ExtendedCompositeEntity {
   private _glitch: PIXI.Filter & GlitchFilter;
@@ -23,7 +62,9 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
   private _htmlContainer: HTMLElement;
 
-  constructor(private _variableStorage: variable.VariableStorage) {
+  constructor(
+    private variableStorage: variable.VariableStorage,
+    private option: string) {
     super();
   }
 
@@ -114,15 +155,16 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
 
       leftElements.insertAdjacentHTML(
         "beforeend",
-        "<p>Lorsque tu as besoin de réviser, quelles techniques utilises-tu ?</h1>"
+        `<p>${options[this.option].closeQuestion.question}</h1>`
       );
-      for (let i = 0; i < options.length; i++) {
-        const option = options[i];
+      const answers = options[this.option].closeQuestion.answers;
+      console.log(answers);
+      for (let i = 0; i < answers.length; i++) {
         leftElements.insertAdjacentHTML(
           "beforeend",
           `<br>
         <input type="radio" name="closed-question" id="closed-question-${i}" value="${i}">
-        <label for="closed-question-${i}">${option}</label>`
+        <label for="closed-question-${i}">${answers[i]}</label>`
         );
       }
     }
@@ -132,8 +174,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       this._htmlContainer.appendChild(rightElements);
 
       const rightQuestion = document.createElement("p");
-      rightQuestion.textContent =
-        "Si tu pouvais apprendre plus facilement ou retenir des informations plus longtemps, qu'est-ce que cela pourrait changer à ta vie ?";
+      rightQuestion.textContent = options[this.option].openQuestion.question;
       rightQuestion.style.position = "absolute";
       rightQuestion.style.left = "940px";
       rightQuestion.style.top = "140px";
@@ -154,6 +195,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       textArea.style.border = "none";
       textArea.style.borderRadius = "2%";
       textArea.style.background = "transparent";
+      textArea.style.resize = "none";
       rightElements.appendChild(textArea);
 
       this._container.addChild(

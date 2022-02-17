@@ -6,19 +6,19 @@
       "y": 540.0
     },
     {
-      "model": "bp_dressChNeTh",
+      "model": "p_foulardThSmSaNeCh",
+      "x": 865.0,
+      "y": 413.5
+    },
+    {
+      "model": "p_haireyesThSmSaNeCh",
+      "x": 955.0,
+      "y": 153.5
+    },
+    {
+      "model": "p_dressThSmSaNeCh",
       "x": 970.5,
       "y": 938.0
-    },
-    {
-      "model": "bp_haireyesChNeSaSm",
-      "x": 956.0,
-      "y": 152.5
-    },
-    {
-      "model": "bp_foulardChNeSaSmTh",
-      "x": 865.0,
-      "y": 414.5
     }
   ],
   "thinking": [
@@ -28,24 +28,24 @@
       "y": 540.0
     },
     {
-      "model": "bp_dressChNeTh",
-      "x": 970.5,
-      "y": 938.0
+      "model": "p_foulardThSmSaNeCh",
+      "x": 865.0,
+      "y": 413.5
     },
     {
-      "model": "bp_armsTh",
+      "model": "p_armsTh",
       "x": 961.0,
       "y": 330.5
     },
     {
-      "model": "bp_foulardChNeSaSmTh",
-      "x": 865.0,
-      "y": 414.5
-    },
-    {
-      "model": "bp_haireyesTh",
+      "model": "p_haireyesThSmSaNeCh",
       "x": 955.0,
       "y": 153.5
+    },
+    {
+      "model": "p_dressThSmSaNeCh",
+      "x": 970.5,
+      "y": 938.0
     }
   ],
   "sad": [
@@ -55,24 +55,24 @@
       "y": 540.0
     },
     {
-      "model": "bp_armsSaSm",
+      "model": "p_foulardThSmSaNeCh",
+      "x": 865.0,
+      "y": 413.5
+    },
+    {
+      "model": "p_haireyesThSmSaNeCh",
+      "x": 955.0,
+      "y": 153.5
+    },
+    {
+      "model": "p_armsSa",
       "x": 945.5,
       "y": 384.0
     },
     {
-      "model": "bp_haireyesChNeSaSm",
-      "x": 956.0,
-      "y": 152.5
-    },
-    {
-      "model": "bp_dressSaSm",
+      "model": "p_dressThSmSaNeCh",
       "x": 970.5,
       "y": 938.0
-    },
-    {
-      "model": "bp_foulardChNeSaSmTh",
-      "x": 865.0,
-      "y": 414.5
     }
   ],
   "smiling": [
@@ -82,24 +82,24 @@
       "y": 540.0
     },
     {
-      "model": "bp_armsSaSm",
-      "x": 945.5,
-      "y": 384.0
+      "model": "p_armsSm",
+      "x": 924.5,
+      "y": 407.0
     },
     {
-      "model": "bp_haireyesChNeSaSm",
-      "x": 956.0,
-      "y": 152.5
+      "model": "p_foulardThSmSaNeCh",
+      "x": 865.0,
+      "y": 413.5
     },
     {
-      "model": "bp_dressSaSm",
+      "model": "p_haireyesThSmSaNeCh",
+      "x": 955.0,
+      "y": 153.5
+    },
+    {
+      "model": "p_dressThSmSaNeCh",
       "x": 970.5,
       "y": 938.0
-    },
-    {
-      "model": "bp_foulardChNeSaSmTh",
-      "x": 865.0,
-      "y": 414.5
     }
   ],
   "cheerful": [
@@ -109,19 +109,19 @@
       "y": 540.0
     },
     {
-      "model": "bp_dressChNeTh",
+      "model": "p_foulardThSmSaNeCh",
+      "x": 865.0,
+      "y": 413.5
+    },
+    {
+      "model": "p_haireyesThSmSaNeCh",
+      "x": 955.0,
+      "y": 153.5
+    },
+    {
+      "model": "p_dressThSmSaNeCh",
       "x": 970.5,
       "y": 938.0
-    },
-    {
-      "model": "bp_haireyesChNeSaSm",
-      "x": 956.0,
-      "y": 152.5
-    },
-    {
-      "model": "bp_foulardChNeSaSmTh",
-      "x": 865.0,
-      "y": 414.5
     }
   ],
   "default": "neutral"
