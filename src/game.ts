@@ -46,7 +46,7 @@ const variableStorage = new variable.VariableStorage({
   food: "100",
   learning: "0",
   mentalLoad: "0",
-  stress: "0"
+  stress: "0",
 });
 const globalHistory: yarnBound.Result[] = [];
 
@@ -82,11 +82,15 @@ const states: { [k: string]: entity.EntityResolvable } = {
 };
 for (const stateName of stateNames) {
   if (stateName.includes("journal"))
-    states[`${stateName}`] = new journal.JournalScene(variableStorage, stateName.split("_")[1]);
-  else states[stateName] = new dialog.DialogScene(
-    stateName,
-    stateName === startingScene ? startingNode : "Start"
-  );
+    states[`${stateName}`] = new journal.JournalScene(
+      variableStorage,
+      stateName.split("_")[1]
+    );
+  else
+    states[stateName] = new dialog.DialogScene(
+      stateName,
+      stateName === startingScene ? startingNode : "Start"
+    );
 }
 
 async function levelLoader(entityConfig: entity.EntityConfig) {
@@ -108,7 +112,7 @@ const transitions: Record<string, entity.Transition> = {};
 let i = 1;
 let previousState = "";
 for (const state in states) {
-  if(i !== 1) transitions[previousState] = entity.makeTransition(state);
+  if (i !== 1) transitions[previousState] = entity.makeTransition(state);
   previousState = state;
   i++;
 }

@@ -62,10 +62,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
-    save.save(
-      this.stateName,
-      this.config.variableStorage
-    );
+    save.save(this.stateName, this.config.variableStorage);
 
     this._initRunner();
 
@@ -90,9 +87,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.config.clock.minutesSinceMidnight = Number(
       this.config.variableStorage.get("time")
     );
-    
+
     this._parseFileTags();
-    
+
     this._advance(-1);
   }
 
@@ -285,20 +282,21 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this._advance();
       return;
     }
-    
+
     const resultEntity = command.commands[commandParts[0]].bind(this)(
       ...commandParts.slice(1).map((arg) => arg.trim())
     );
 
-    if(resultEntity) {
-      this._activateChildEntity(new entity.EntitySequence([
-        resultEntity,
-        new entity.FunctionCallEntity( () => {
-          this._advance();
-        }),
-      ]))
-    }
-    else {
+    if (resultEntity) {
+      this._activateChildEntity(
+        new entity.EntitySequence([
+          resultEntity,
+          new entity.FunctionCallEntity(() => {
+            this._advance();
+          }),
+        ])
+      );
+    } else {
       this._advance();
     }
   }
@@ -307,7 +305,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     oldNodeData: yarnBound.Metadata,
     newNodeData: yarnBound.Metadata
   ) {
-    if(!_.has(newNodeData, "tags")){
+    if (!_.has(newNodeData, "tags")) {
       this.emit("changeNodeData", oldNodeData, newNodeData);
       return;
     }
