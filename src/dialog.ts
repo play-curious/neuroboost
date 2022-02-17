@@ -285,10 +285,21 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       return;
     }
     
-    command.commands[commandParts[0]].bind(this)(
+    const resultEntity = command.commands[commandParts[0]].bind(this)(
       ...commandParts.slice(1).map((arg) => arg.trim())
     );
-    this._advance();
+
+    if(resultEntity) {
+      this._activateChildEntity(new entity.EntitySequence([
+        resultEntity,
+        new entity.FunctionCallEntity( () => {
+          this._advance();
+        }),
+      ]))
+    }
+    else {
+      this._advance();
+    }
   }
 
   private _onChangeNodeData(

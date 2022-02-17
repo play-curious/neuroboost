@@ -73,6 +73,7 @@ title: Action_List
 tags: bg|bedroom freechoice
 position: -847.2033081054688,-821.7307662963867
 ---
+<< fadeOut >>
 << if !visited("Action_List") >>
 Que faites-vous maintenant ?
 << endif >>
@@ -80,14 +81,14 @@ Que faites-vous maintenant ?
 << if isTimeOver("12:00") >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
-    << fade >>
+    << fadeIn >>
     <<jump Lunch>>
 << else>>
 -> Cuisine@cuisine
-    << fade >>
+    << fadeIn >>
     <<jump cuisine_subchoice>>
 -> Bureau@bureau
-    << fade >>
+    << fadeIn >>
     <<jump bureau_subchoice>>
 -> Salon@salon
     <<jump salon_subchoice>>
@@ -97,22 +98,24 @@ title: cuisine_subchoice
 tags: bg|kitchen subchoice
 position: -319.1514720916748,-55.38755989074707
 ---
+<< fadeOut >>
 -> Prendre le petit déjeuner#once
     <<jump Petit_dej>>
 -> back
-    << fade >>
+    << fadeIn >>
     <<jump Action_List>>
 ===
 title: bureau_subchoice
 tags: bg|desk subchoice
 position: -993.6492929458618,-75.37680292129517
 ---
+<< fadeOut >>
 -> Passer du temps sur le chat avec le pote d'une autre Université#once
     <<jump Chat>>
 -> Réviser cette fichue Astronometric Data Management#once
     <<jump Revision>>
 -> back
-    << fade >>
+    << fadeIn >>
     <<jump Action_List>>
 ===
 title: salon_subchoice
@@ -136,7 +139,7 @@ De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le c
 
 Bon, ce n'est pas tout.
 
-<< fade >>
+<< fadeIn >>
 <<jump Action_List>>
 ===
 title: Chat
@@ -152,7 +155,7 @@ Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, pu
 
 Vous passez deux heures à discuter de tout, mais surtout de rien.
 
-<< fade >>
+<< fadeIn >>
 <<jump Action_List>>
 ===
 title: Revision
@@ -165,7 +168,7 @@ Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Manage
 
 Vous passez les 2 heures à potasser ce long pensum ennuyeux. C'est à vous dégoûter de devenir un jour astronaute. Vous qui êtes super fan de Star Mars, du corsaire Yann Salto et du Chevalier Laser Dude Highwalker...
 
-<< fade >>
+<< fadeIn >>
 <<jump Action_List>>
 ===
 title: BingeTV
@@ -203,13 +206,14 @@ Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et évit
 
 Et maintenant,
 -> Il est temps d'aller en classe
-    << fade >>
+    << fadeIn >>
     <<jump Test>>
 ===
 title: Test
 tags: bg|class
 position: -666.0570068359375,500.580322265625
 ---
+<< fadeOut >>
 << setTime 14:00 >>
 << setTime 14:00 >>
 
@@ -263,7 +267,7 @@ You: Je sais pas...
 << advanceTime 0:15 >>
 
 -> Accepter l'offre de Fred
-    << fade >>
+    << fadeIn >>
     <<jump Fete_deprime>>
 -> Refuser l'offre de Fred
     <<jump Rester_Chambre_deprime>>
@@ -272,7 +276,7 @@ title: Fete_deprime
 tags: bg|party
 position: 402.3575134277344,484.3177490234375
 ---
-
+<< fadeOut >>
 << advanceTime 0:30 >>
 
 Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer...
@@ -283,7 +287,7 @@ Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais
 
 -> Rentrer dormir
     << advanceTime 0:30 >>
-    << fade >>
+    << fadeIn >>
     <<jump Chambre_Nuit>>
 ===
 title: Rester_Chambre_deprime
@@ -295,18 +299,19 @@ Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à cha
 << advanceTime 0:30 >>
 
 -> Rentrer dormir
-    << fade >>
+    << fadeIn >>
     <<jump Chambre_Nuit>>
 ===
 title: Chambre_Nuit
 tags: bg|bedroom_night
 position: -17.766727447509766,752.0414428710938
 ---
+<< fadeOut >>
 Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde...
 Demain est un autre jour, vivement demain...
 << fx Sleep_LOOP >>
 -> Faire un gros somme
-    << fade >>
+    << fadeIn >>
     <<jump Reveil_Sage>>
 ===
 title: Reveil_Sage
@@ -314,6 +319,7 @@ tags: bg|bedroom_night noUi
 position: -352.5212097167969,897.6408081054688
 ---
 << music Mysterious >>
+<< fadeOut >>
 
 Temde: Hello! Je te réveille?
 Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras...
@@ -342,7 +348,7 @@ Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute 
 -> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller
     <<jump Tenter_rester_chambre>>
 -> Se laisser guider par l'irréelle Miss Temdé
-    << fade >>
+    << fadeIn >>
     <<jump Assemblee_Sages>>
 ===
 title: Tenter_rester_chambre
@@ -358,15 +364,15 @@ Miss Temdé lève la paume d'une de ses mains cybernétique...
 
 Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente.
 
-<< fade 1000 12ea12 >>
+<< fadeIn 1000 12ea12 >>
 <<jump Assemblee_Sages>>
 ===
 title: Assemblee_Sages
 tags: bg|circle autoshow noUi
 position: -562.1727294921875,1164.6718139648438
 ---
-<< fadeOut >>
 << music Tense >>
+<< fadeOut >>
 
 L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes.
 Temde_smiling: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }.
@@ -434,8 +440,9 @@ Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'appr
 Temde_thinking: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }.
 Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt...
 
-<< fade 200 >>
+<< fadeIn 200 >>
 << setBackground schema >>
+<< fadeOut 200 >>
 
 Sapiens_thinking: En bref, la cartographie de la mémoire dans le cerveau se découpe en deux zones. Comme tes deux hémisphères.
 
@@ -462,8 +469,9 @@ Ledai_explaining: Sans compter que chaque élément de <b>la mémoire longue</b>
 Sapiens_thinking: En bref, le secret pour bien apprendre réside dans ta capacité à consolider tes nouvelles connaissances, les stocker de manière logique et efficace.
 Azul_happy: Tu as saisi ? Nos deux savants veulent te dire qu'ils vont t'aider à faire glisser tes nouveaux savoirs, de la mémoire courte à la mémoire longue.
 
-<< fade 200 >>
+<< fadeIn 200 >>
 << setBackground circle >>
+<< fadeOut 200 >>
 
 You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions dans ma mémoire longue ?
 
@@ -484,13 +492,14 @@ Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacogn
 You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil. Comment faire ?
 Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> !
 
-<< fade >>
+<< fadeIn >>
 <<jump Journal_Rappel_libre>>
 ===
 title: Journal_Rappel_libre
 tags: bg|bedroom_night noUi
 position: 528.9749550819397,1406.2884521484375
 ---
+<< fadeOut >>
 Flash !!!
 Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Les 4 sages non plus ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée. Curieusement, vous ne vous sentez pas inquiet.
 En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof...
