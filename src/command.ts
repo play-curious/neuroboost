@@ -1,8 +1,10 @@
+import * as entity from "booyah/src/entity";
+
 import * as dialog from "./dialog";
 import * as variable from "./variable";
 import * as clock from "./clock";
 import * as save from "./save";
-import * as entity from "booyah/src/entity";
+import * as popup from "./popup";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (
@@ -30,32 +32,16 @@ export const commands: Record<string, Command> = {
     message: string,
     _default: variable.Variables[VarName]
   ) {
-    // TODO: replace this with HTML form
-
-    // {
-    //   // todo: use entity for waiting input
-    //   const form = document.createElement("form")
-    //   form.innerHTML = `
-    //     <label> ${message.replace(/_/g, " ")}
-    //       <input type=text name=name value="${_default.replace(/_/g, " ")}">
-    //     </label>
-    //     <input type=submit name=Ok >
-    //   `
-    //   form.styles.(todo: set position to absolute and place it on middle screen)
-    //   form.onsubmit = (event) => {
-    //     event.preventDefault()
-    //     if(ok) document.body.removeChild(form)
-    //   }
-    //   document.body.appendChild(form)
-    // }
-
-    const value = prompt(
-      message.replace(/_/g, " "),
-      _default.replace(/_/g, " ")
-    )?.trim();
-    this.config.variableStorage.set(
-      varName,
-      value || (_default.replace(/_/g, " ") as any)
+    this._activateChildEntity(
+      new popup.Prompt(
+        message.replace(/_/g, " "),
+        (text) => {
+          this.config.variableStorage.set(
+            varName,
+            text || (_default.replace(/_/g, " ") as any)
+          );
+        }
+      )
     );
   },
 

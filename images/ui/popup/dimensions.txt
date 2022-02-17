@@ -10,9 +10,9 @@ width: 262
 height: 75
 ---------------
 [TEXTAREA]
-324, 425
-width: 1141
-height: 75
+326, 428
+width: 1137
+height: 71
 ---------------
 [MSG]
 221, 336
