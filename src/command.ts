@@ -32,17 +32,16 @@ export const commands: Record<string, Command> = {
     message: string,
     _default: variable.Variables[VarName]
   ) {
-    this._activateChildEntity(
-      new popup.Prompt(
-        message.replace(/_/g, " "),
-        (text) => {
-          this.config.variableStorage.set(
-            varName,
-            text || (_default.replace(/_/g, " ") as any)
-          );
-        }
-      )
+    const promptPopup = new popup.Prompt(
+      message.replace(/_/g, " "),
+      (text) => {
+        this.config.variableStorage.set(
+          varName,
+          text || (_default.replace(/_/g, " ") as any)
+        );
+      }
     );
+    return promptPopup;
   },
 
   eval(code: string) {

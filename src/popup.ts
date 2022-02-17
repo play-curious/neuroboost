@@ -1,6 +1,8 @@
 import * as _ from "underscore";
 import * as PIXI from "pixi.js";
 
+import * as entity from "booyah/src/entity";
+
 import * as extension from "./extension";
 import * as variable from "./variable";
 
@@ -126,10 +128,10 @@ export class Confirm extends Popup {
             )
             this._container.addChild(this._cancelButton);
         }
-        this._on(this._cancelButton, "pointerup", super._teardown);
+        this._on(this._cancelButton, "pointerup", () => {this._transition = entity.makeTransition();});
         
         this._on(this._okButton, "pointerup", () => {
-            this._teardown();
+            this._transition = entity.makeTransition();
             this._callback();
         });
     }
@@ -195,7 +197,7 @@ export class Prompt extends Popup {
 
             this._on(this._okButton, "pointerup", () => {
                 const textContent = this._textInput.value;
-                this._teardown();
+                this._transition = entity.makeTransition();
                 this._callback(textContent);
             });
         }
