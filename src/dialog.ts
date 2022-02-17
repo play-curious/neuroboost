@@ -154,7 +154,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     }
 
     this.graphics.hideNode();
-    this.graphics.showDialogLayer();
 
     // Check if the node data has changed
     if (this._lastNodeData?.title !== this.metadata.title) {
@@ -165,8 +164,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     const result = this.runner.currentResult;
 
     if (isText(result)) {
+      this.graphics.showDialogLayer();
       this._handleDialog();
     } else if (isOption(result)) {
+      this.graphics.showDialogLayer();
       if (this._hasTag(this.metadata, "freechoice")) {
         this._handleFreechoice();
       } else {
