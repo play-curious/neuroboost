@@ -371,7 +371,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       currentY -= choicebox.height + 20;
       choicebox.pivot.set(choicebox.width / 2, choicebox.y);
 
-      choicebox.position.set(1920 * 2 * (i % 2 ? -1 : 1), currentY);
+      choicebox.position.set(1920 * 2 * (i % 2 ? 1 : -1), currentY);
+      choicebox.position.y = currentY;
 
       box_tweens.push(
         new entity.EntitySequence([
@@ -383,7 +384,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           new tween.Tween({
             duration: 800,
             easing: easing.easeOutQuint,
-            from: i % 2 ? -1920 / 2 : (3 * 1920) / 2,
+            from: !(i % 2) ? -1920 / 2 : (3 * 1920) / 2,
             to: 1920 / 2,
             onUpdate: (value) => {
               choicebox.position.x = value;
