@@ -187,12 +187,12 @@ export const commands: Record<string, Command> = {
 
   // FADES
 
-  fadeIn(duration: `${number}` = "1000", hexColor: string = "#00000") {
+  fadeIn(duration: `${number}` = "500", hexColor: string = "#00000") {
     const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
     return this.graphics.fadeIn(Number(duration), color);
   },
 
-  fadeOut(duration: `${number}` = "1000") {
+  fadeOut(duration: `${number}` = "500") {
     return this.graphics.fadeOut(Number(duration));
   },
 

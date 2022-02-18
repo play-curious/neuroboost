@@ -354,7 +354,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const animationShifting = 120;
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
-    console.log("NodeOptions", nodeOptions);
     for (let i: number = 0; i < nodeOptions.length; i++) {
       if (subchoice === Number(nodeOptions[i].id)) continue;
 
