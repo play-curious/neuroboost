@@ -171,5 +171,12 @@
       "y": 576
     }
   ],
+  "shadow": [
+    {
+      "model": "b_fred",
+      "x": 960,
+      "y": 540
+    }
+  ],
   "default": "happy"
 }
