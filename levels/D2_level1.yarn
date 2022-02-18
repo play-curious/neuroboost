@@ -316,7 +316,8 @@ tags:
 position: 700.6830902099609,395.89404296875
 colorID: 1
 ---
-Mince, il ne reste plus personne sur la piste. Tu ne vois plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Tu aperçois les premiers rayons de soleil filtrer à travers les fenêtres de la salle. Il est temps d'aller dormir.
+Mince, il ne reste plus personne sur la piste. Tu ne vois plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Il est temps d'aller dormir.
+// Tu aperçois les premiers rayons de soleil filtrer à travers les fenêtres de la salle. 
 D'un coup, tu te sens fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... ce matin...
 
 
@@ -324,7 +325,7 @@ D'un coup, tu te sens fatigué, très fatigué, très très fatigué. Vite ! Au 
 <<jump SeReposer>>
 ===
 title: SeReposer
-tags: bg|bedroom
+tags: bg|bedroom_night
 position: 927.2608032226562,397.54339599609375
 ---
 << music >>
