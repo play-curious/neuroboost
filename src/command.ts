@@ -58,7 +58,7 @@ export const commands: Record<string, Command> = {
       );
       minutesSinceMidnight += currentMinutesSinceMidnight * clock.dayMinutes;
     }
-    console.log("MinutesSinceMidnight", minutesSinceMidnight);
+    
     this.config.variableStorage.set("time", `${minutesSinceMidnight}`);
 
     this.config.clock.setTime(minutesSinceMidnight);
@@ -138,14 +138,12 @@ export const commands: Record<string, Command> = {
   saveGauges<VarName extends keyof variable.Gauges>(...names: VarName[]) {
     savedGauges.clear();
     names.forEach((name) => {
-      console.log(`save ${name}`);
       savedGauges.set(name, Number(this.config.variableStorage.get(name)));
     });
   },
 
   loadGauges() {
     savedGauges.forEach((id, key) => {
-      console.log(`load ${key}`);
       this.config.variableStorage.set(key, `${savedGauges.get(key)}`);
     });
   },
@@ -229,7 +227,6 @@ export const functions: Record<string, YarnFunction> = {
   visited(node: string): boolean {
     if (!node) throw new Error("Please give a valid node title in visited()");
     const visited = this.visited.has(node);
-    console.log(node, "visited?", visited);
     return visited;
   },
 

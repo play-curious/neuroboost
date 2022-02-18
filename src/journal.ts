@@ -158,7 +158,6 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         `<p>${options[this.option].closeQuestion.question}</h1>`
       );
       const answers = options[this.option].closeQuestion.answers;
-      console.log(answers);
       for (let i = 0; i < answers.length; i++) {
         leftElements.insertAdjacentHTML(
           "beforeend",

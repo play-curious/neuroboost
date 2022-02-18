@@ -192,7 +192,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             },
             onUpdate: (value) => {
               currentGauge.position.y = value;
-              console.log(i, value);
             },
             onTeardown: () => {
               currentGauge.visible = visibility;
@@ -692,8 +691,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public addCharacter(character?: string, mood?: string): void {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
-
-    console.log(this._lastCharacter, this._lastMood, "->", character, mood);
 
     // Remove characters
     const characterChanged = character !== this._lastCharacter;
