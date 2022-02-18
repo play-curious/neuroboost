@@ -354,13 +354,14 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const animationShifting = 120;
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
+    console.log("NodeOptions", nodeOptions);
     for (let i: number = 0; i < nodeOptions.length; i++) {
       if (subchoice === Number(nodeOptions[i].id)) continue;
 
       const choicebox = new PIXI.Container();
       choicebox.addChild(
         this.makeSprite(
-          i === 0
+          i === (subchoice ? 1 : 0)
             ? "images/ui/choicebox_contour_reversed.png"
             : i === nodeOptions.length - 1
             ? "images/ui/choicebox_contour.png"
