@@ -1,8 +1,7 @@
 import * as _ from "underscore";
 
 import * as PIXI from "pixi.js";
-import { GlitchFilter } from "@pixi/filter-glitch";
-import { CRTFilter } from "pixi-filters";
+import * as filter from "./graphics_filter";
 
 import * as entity from "booyah/src/entity";
 
@@ -10,8 +9,8 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 
 abstract class Popup extends extension.ExtendedCompositeEntity {
-  private _glitch: PIXI.Filter & GlitchFilter;
-  private _holo: PIXI.Filter & CRTFilter;
+  private _glitch: filter.Glitch;
+  private _holo: filter.Holograph;
 
   protected _container: PIXI.Container;
   protected _okButton: PIXI.Container;
@@ -64,79 +63,16 @@ abstract class Popup extends extension.ExtendedCompositeEntity {
 
     this.config.container.addChild(this._container);
 
-    this._glitchSetup();
+    this._glitch = filter.newGlitch();
+    this._holo = filter.newHolograph();
+    this._container.filters = [this._glitch, this._holo];
+    this._activateChildEntity(filter.wrapHolograph(this._holo));
+    this._activateChildEntity(filter.wrapGlitch(this._glitch));
   }
 
   _teardown(): void {
     this.config.container.removeChild(this._container);
     this._container = undefined;
-  }
-
-  _glitchSetup(): void {
-    this._glitch = new GlitchFilter({
-      red: [0, 0],
-      blue: [0, 0],
-      green: [0, 0],
-      offset: 0,
-      slices: 10,
-    }) as any;
-    this._holo = new CRTFilter({
-      curvature: 0,
-      lineWidth: 0.5,
-      lineContrast: 0.3,
-      noise: 0.15,
-    }) as any;
-
-    this._container.filters = [this._glitch, this._holo];
-
-    const shifting = 5;
-    const frequency = 2000;
-
-    this._activateChildEntity(
-      new entity.FunctionalEntity({
-        update: () => {
-          this._holo.seed = Math.random();
-          this._holo.time = (this._holo.time + 0.1) % 20;
-        },
-      })
-    );
-
-    this._activateChildEntity(
-      new entity.EntitySequence(
-        [
-          () =>
-            new entity.WaitingEntity(
-              Math.floor(10 + Math.random() * frequency)
-            ),
-          () =>
-            new entity.FunctionCallEntity(() => {
-              this._glitch.red = [
-                Math.floor(Math.random() * shifting),
-                Math.floor(Math.random() * shifting),
-              ];
-              this._glitch.green = [
-                Math.floor(Math.random() * shifting),
-                Math.floor(Math.random() * shifting),
-              ];
-              this._glitch.offset = Math.floor(1 + Math.random() * 2);
-              this._glitch.slices = Math.floor(10 + Math.random() * 15);
-            }),
-          () =>
-            new entity.WaitingEntity(
-              Math.floor(10 + Math.random() * (frequency / 4))
-            ),
-          () =>
-            new entity.FunctionCallEntity(() => {
-              this._glitch.red = [0, 0];
-              this._glitch.green = [0, 0];
-              this._glitch.offset = 0;
-            }),
-        ],
-        {
-          loop: true,
-        }
-      )
-    );
   }
 }
 
