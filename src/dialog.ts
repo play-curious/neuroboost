@@ -62,10 +62,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
-    save.save(
-      this.stateName,
-      this.config.variableStorage
-    );
+    save.save(this.stateName, this.config.variableStorage);
 
     this._initRunner();
 
@@ -90,9 +87,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.config.clock.minutesSinceMidnight = Number(
       this.config.variableStorage.get("time")
     );
-    
+
     this._parseFileTags();
-    
+
     this._advance(-1);
   }
 
@@ -154,7 +151,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     }
 
     this.graphics.hideNode();
-    this.graphics.showDialogLayer();
 
     // Check if the node data has changed
     if (this._lastNodeData?.title !== this.metadata.title) {
@@ -165,8 +161,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     const result = this.runner.currentResult;
 
     if (isText(result)) {
+      this.graphics.showDialogLayer();
       this._handleDialog();
     } else if (isOption(result)) {
+      this.graphics.showDialogLayer();
       if (this._hasTag(this.metadata, "freechoice")) {
         this._handleFreechoice();
       } else {
@@ -284,17 +282,33 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this._advance();
       return;
     }
-    
-    command.commands[commandParts[0]].bind(this)(
+
+    const resultEntity = command.commands[commandParts[0]].bind(this)(
       ...commandParts.slice(1).map((arg) => arg.trim())
     );
-    this._advance();
+
+    if (resultEntity) {
+      this._activateChildEntity(
+        new entity.EntitySequence([
+          resultEntity,
+          new entity.FunctionCallEntity(() => {
+            this._advance();
+          }),
+        ])
+      );
+    } else {
+      this._advance();
+    }
   }
 
   private _onChangeNodeData(
     oldNodeData: yarnBound.Metadata,
     newNodeData: yarnBound.Metadata
   ) {
+    if (!_.has(newNodeData, "tags")) {
+      this.emit("changeNodeData", oldNodeData, newNodeData);
+      return;
+    }
     // By default, autoshow is off
     this._autoshowOn = false;
     let noUi: boolean = false;

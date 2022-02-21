@@ -27,19 +27,19 @@ position: -1617.4276733398438,-825.2426147460938
 ---
 << stopFX PhoneRing_LOOP >>
 
-Fred_excited: Hello ! C'est Fred !
+Fred_shadow: Hello ! C'est Fred !
 You: Je sais, j'ai vu ton nom.
-Fred_smiling: Yes yes... Tu fais quoi là, maintenant ?
+Fred_shadow: Yes yes... Tu fais quoi là, maintenant ?
 You: Je viens de me réveiller.
-Fred_smiling: Tu sais qu'on a le partiel de cet aprèm ?
+Fred_shadow: Tu sais qu'on a le partiel de cet aprèm ?
 You: Heu... ouais... C'est sur quoi déjà ?
-Fred_smiling: La matière que tu n'aimes pas du tout : l'Atronometric Data Management
+Fred_shadow: La matière que tu n'aimes pas du tout : l'Atronometric Data Management
 You: Ouais... Le truc super long qui veut rien dire...
-Fred_happy: Tu rigoles, c'est super passionnant et super cool ! J'adore !
+Fred_shadow: Tu rigoles, c'est super passionnant et super cool ! J'adore !
 You: Facile à dire pour toi, tu révises jamais !
-Fred_smiling: C'est ça quand on est un génie.
+Fred_shadow: C'est ça quand on est un génie.
 You: Ouais ouais...
-Fred_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
+Fred_shadow: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
 You: Ouais...
 << hide >>
 Vous poussez un grand soupir avant de raccrocher
@@ -73,6 +73,7 @@ title: Action_List
 tags: bg|bedroom freechoice
 position: -847.2033081054688,-821.7307662963867
 ---
+<< fadeOut >>
 << if !visited("Action_List") >>
 Que faites-vous maintenant ?
 << endif >>
@@ -80,11 +81,14 @@ Que faites-vous maintenant ?
 << if isTimeOver("12:00") >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
+    << fadeIn >>
     <<jump Lunch>>
 << else>>
 -> Cuisine@cuisine
+    << fadeIn >>
     <<jump cuisine_subchoice>>
 -> Bureau@bureau
+    << fadeIn >>
     <<jump bureau_subchoice>>
 -> Salon@salon
     <<jump salon_subchoice>>
@@ -94,20 +98,24 @@ title: cuisine_subchoice
 tags: bg|kitchen subchoice
 position: -319.1514720916748,-55.38755989074707
 ---
+<< fadeOut >>
 -> Prendre le petit déjeuner#once
     <<jump Petit_dej>>
 -> back
+    << fadeIn >>
     <<jump Action_List>>
 ===
 title: bureau_subchoice
 tags: bg|desk subchoice
 position: -993.6492929458618,-75.37680292129517
 ---
+<< fadeOut >>
 -> Passer du temps sur le chat avec le pote d'une autre Université#once
     <<jump Chat>>
 -> Réviser cette fichue Astronometric Data Management#once
     <<jump Revision>>
 -> back
+    << fadeIn >>
     <<jump Action_List>>
 ===
 title: salon_subchoice
@@ -115,6 +123,7 @@ tags: bg|bedroom subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
 -> Binger votre série TV préférée#once
+    << fadeIn >>
     <<jump BingeTV>>
 -> back
     <<jump Action_List>>
@@ -131,6 +140,7 @@ De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le c
 
 Bon, ce n'est pas tout.
 
+<< fadeIn >>
 <<jump Action_List>>
 ===
 title: Chat
@@ -146,6 +156,7 @@ Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, pu
 
 Vous passez deux heures à discuter de tout, mais surtout de rien.
 
+<< fadeIn >>
 <<jump Action_List>>
 ===
 title: Revision
@@ -158,12 +169,14 @@ Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Manage
 
 Vous passez les 2 heures à potasser ce long pensum ennuyeux. C'est à vous dégoûter de devenir un jour astronaute. Vous qui êtes super fan de Star Mars, du corsaire Yann Salto et du Chevalier Laser Dude Highwalker...
 
+<< fadeIn >>
 <<jump Action_List>>
 ===
 title: BingeTV
 tags: bg|desk
 position: -1573.0745849609375,216.18408203125
 ---
+<< fadeOut >>
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
 << visit BingeTV >>
 Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
@@ -177,15 +190,17 @@ Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant.
 << advanceTime 4:00 13:00 1:00 >>
 << stopFX TVStarwars_LOOP >>
 
-Au final vous passez trop de temps à binger votre série préférée.
+Au final, vous passez trop de temps à binger votre série préférée.
 // ORIGINAL: Vous passez 4 heures à binger votre série préférée.
 
+<< fadeIn >>
 <<jump Action_List>>
 ===
 title: Lunch
 tags: bg|kitchen
 position: -1026.218994140625,513.7423095703125
 ---
+<< fadeOut >>
 << fx EatCook >>
 Yum Yum... Délicieux ce Burger Big Proteins Double Cheese !
 Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant l'examen !
@@ -195,6 +210,7 @@ Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et évit
 
 Et maintenant,
 -> Il est temps d'aller en classe
+    << fadeIn >>
     <<jump Test>>
 ===
 title: Test
@@ -202,7 +218,7 @@ tags: bg|class
 position: -666.0570068359375,500.580322265625
 ---
 << setTime 14:00 >>
-<< setTime 14:00 >>
+<< fadeOut >>
 
 Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b>, que le compteur se met en route.
 Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi.
@@ -254,6 +270,7 @@ You: Je sais pas...
 << advanceTime 0:15 >>
 
 -> Accepter l'offre de Fred
+    << fadeIn >>
     <<jump Fete_deprime>>
 -> Refuser l'offre de Fred
     <<jump Rester_Chambre_deprime>>
@@ -262,7 +279,7 @@ title: Fete_deprime
 tags: bg|party
 position: 402.3575134277344,484.3177490234375
 ---
-
+<< fadeOut >>
 << advanceTime 0:30 >>
 
 Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer...
@@ -273,6 +290,7 @@ Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais
 
 -> Rentrer dormir
     << advanceTime 0:30 >>
+    << fadeIn >>
     <<jump Chambre_Nuit>>
 ===
 title: Rester_Chambre_deprime
@@ -284,16 +302,19 @@ Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à cha
 << advanceTime 0:30 >>
 
 -> Rentrer dormir
+    << fadeIn >>
     <<jump Chambre_Nuit>>
 ===
 title: Chambre_Nuit
 tags: bg|bedroom_night
 position: -17.766727447509766,752.0414428710938
 ---
+<< fadeOut >>
 Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde...
 Demain est un autre jour, vivement demain...
 << fx Sleep_LOOP >>
 -> Faire un gros somme
+    << fadeIn >>
     <<jump Reveil_Sage>>
 ===
 title: Reveil_Sage
@@ -301,6 +322,7 @@ tags: bg|bedroom_night noUi
 position: -352.5212097167969,897.6408081054688
 ---
 << music Mysterious >>
+<< fadeOut >>
 
 Temde: Hello! Je te réveille?
 Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras...
@@ -312,7 +334,7 @@ Temde_smiling: Non non, je suis bien là, à côté de toi. Et je suis pas une v
 Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit :
 Temde_smiling: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ?
 
-<<prompt name Mon_nom: Steve>>
+<<prompt name Mon_nom_: Steve>>
 <<empty>>
 
 Temde_smiling: Enchantée { $name }. Lève-toi, on a du pain sur la planche !
@@ -329,6 +351,7 @@ Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute 
 -> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller
     <<jump Tenter_rester_chambre>>
 -> Se laisser guider par l'irréelle Miss Temdé
+    << fadeIn >>
     <<jump Assemblee_Sages>>
 ===
 title: Tenter_rester_chambre
@@ -340,18 +363,19 @@ Temde_thinking: Je vois, j'ai affaire à un client qui se prend pour un dur... T
 
 Miss Temdé lève la paume d'une de ses mains cybernétique...
 
-<<fadeIn 1000 12ea12 >>
+//<<fadeIn 1000 12ea12 >>
 
 Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente.
 
+<< fadeIn 1000 12ea12 >>
 <<jump Assemblee_Sages>>
 ===
 title: Assemblee_Sages
 tags: bg|circle autoshow noUi
 position: -562.1727294921875,1164.6718139648438
 ---
-<< fadeOut >>
 << music Tense >>
+<< fadeOut >>
 
 L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes.
 Temde_smiling: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }.
@@ -419,7 +443,9 @@ Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'appr
 Temde_thinking: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }.
 Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt...
 
+<< fadeIn 200 >>
 << setBackground schema >>
+<< fadeOut 200 >>
 
 Sapiens_thinking: En bref, la cartographie de la mémoire dans le cerveau se découpe en deux zones. Comme tes deux hémisphères.
 
@@ -446,7 +472,9 @@ Ledai_explaining: Sans compter que chaque élément de <b>la mémoire longue</b>
 Sapiens_thinking: En bref, le secret pour bien apprendre réside dans ta capacité à consolider tes nouvelles connaissances, les stocker de manière logique et efficace.
 Azul_happy: Tu as saisi ? Nos deux savants veulent te dire qu'ils vont t'aider à faire glisser tes nouveaux savoirs, de la mémoire courte à la mémoire longue.
 
+<< fadeIn 200 >>
 << setBackground circle >>
+<< fadeOut 200 >>
 
 You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions dans ma mémoire longue ?
 
@@ -467,12 +495,14 @@ Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacogn
 You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil. Comment faire ?
 Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> !
 
+<< fadeIn >>
 <<jump Journal_Rappel_libre>>
 ===
 title: Journal_Rappel_libre
 tags: bg|bedroom_night noUi
 position: 528.9749550819397,1406.2884521484375
 ---
+<< fadeOut >>
 Flash !!!
 Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Les 4 sages non plus ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée. Curieusement, vous ne vous sentez pas inquiet.
 En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof...

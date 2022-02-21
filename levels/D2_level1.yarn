@@ -8,6 +8,7 @@ colorID: 8
 
 << empty >>
 << setTime 18:20 >>
+<< music Neutral >>
 
 Vous êtes toujours avec Fred à contempler les résultats de ce premier examen de la semaine de sprint. Ce dernier se retourne vers vous.
 
@@ -20,14 +21,17 @@ You: Oui, mais faudra avoir l'esprit clair et sain.
 Fred_smiling: No worry, on s'en va avant l'aube, on fait une petite sieste et on sera nickel pour l'heure H.
 
 -> Accepter l'invitation
+    << fadeIn >>
     <<jump Cafeteria>>
 -> Refuser l'invitation
+    << fadeIn >>
     <<jump Retour_chambre>>
 ===
 title: Retour_chambre
 tags: bg|bedroom
 position: -1298.765380859375,-151.80938720703125
 ---
+<< fadeOut >>
 << advanceTime 00:15 >>
 
 Allongé tranquillement sur votre lit, vous vous replongez dans la lecture augmentée de l'atlas Ouiki_4D de Star Mars - The Lone Lightsaber... Quand...
@@ -41,11 +45,14 @@ Fred_happy: Steuplay...
 
 << if isTimeOver("19:30") >>
 -> Accepter l'invitation
+    << fadeIn >>
     <<jump Cafeteria>>
 -> Refuser l'invitation
+    << fadeIn >>
     <<jump Retour_chambre>>
 << else >>
 -> Accepter l'invitation
+    << fadeIn >>
     <<jump Cafeteria>>
 << endif >>
 ===
@@ -56,9 +63,9 @@ position: -1075.3348388671875,-37.09675598144531
 << showGauges food sleep >>
 << setGauge sleep 100 >>
 << setGauge food 80 >>
-//<< addToGauge sleep 100 >>
-//<< addToGauge food 70 >>
 << setTime 20:00 >>
+<< music Tense >>
+<< fadeOut >>
 
 Vous voilà donc à la cafétéria avec Fred. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer.
 Fred_smiling: Alors, tu vois qu'on peut étudier tout en s'amusant.
@@ -188,6 +195,7 @@ position: -184.85113525390625,-39.76994323730469
 ---
 Fred vous amène jusqu'à un large canapé-fauteuil. Vous vous effondrez dedans. C'est clair, vous avez besoin de reprendre des forces. Il vous dit deux ou trois choses, vous ne savez pas, vous n'écoutez pas, vous n'entendez pas. Vos paupières s'abaissent, vous glissez doucement dans une douce langueur...
 
+<< fadeIn >>
 << addToGauge sleep 10 >>
 << saveGauges sleep food >>
 << advanceTime 1:30 >>
@@ -201,6 +209,8 @@ title: Open_Eyes
 tags: autoshow
 position: 34.24329662322998,-36.5318603515625
 ---
+<< fadeOut >>
+
 Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
 You: ...Euh... Et toi ?
 Fred_happy: Moi je reste. Je te le répète.
@@ -306,21 +316,27 @@ tags:
 position: 700.6830902099609,395.89404296875
 colorID: 1
 ---
-Mince, il ne reste plus personne sur la piste. Tu ne vois plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Tu aperçois les premiers rayons de soleil filtrer à travers les fenêtres de la salle. Il est temps d'aller dormir.
+Mince, il ne reste plus personne sur la piste. Tu ne vois plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Il est temps d'aller dormir.
+// Tu aperçois les premiers rayons de soleil filtrer à travers les fenêtres de la salle. 
 D'un coup, tu te sens fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... ce matin...
 
+
+<< fadeIn >>
 <<jump SeReposer>>
 ===
 title: SeReposer
-tags: bg|bedroom
+tags: bg|bedroom_night
 position: 927.2608032226562,397.54339599609375
 ---
+<< music >>
 << hideGauges >>
+<< fadeOut >>
 << advanceTime 0:15 >>
 Vous filez dans votre chambre en quatrième vitesse. Mais vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent !
 Vous avez l'impression de rester coincé une heure dans ce cagibi. C'est pénible, surtout que votre vision se trouble, se dédouble. Vous avez vraiment dû un peu trop abuser...
 << advanceTime 0:20 >>
 Une fois votre corvée accomplie, vous rampez jusqu'à votre lit. Vous vous glissez dedans tout habillé et fermez les yeux. Malheureusement, vous avez la tête qui tourne et qui serre, vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité.
+<< fadeIn >>
 Non, décidément, rien à faire, vous n'arrivez pas à dormir. Et les heures s'égrènent... Jusqu'à ce que votre horloge connectée vous tire de votre léthargie...
 << advanceTime 8:00 8:00 0:05 >>
 <<jump Bip_Bip>>
@@ -329,17 +345,21 @@ title: Bip_Bip
 tags: bg|bedroom
 position: 1149.49072265625,399.1321105957031
 ---
+<< music Neutral >>
+<< fadeOut >>
 Argh... Il est encore trop tôt ! Vous ne vous êtes pas reposé. Vous aimeriez avoir une bonne nuit de sommeil... C'est trop tard maintenant, il faut aller au charbon...
 Vous vous levez sans grande conviction. Vous enlevez vos vêtements, ils sentent la sueur et d'autres mauvaises odeurs. Vous en enfilez de nouveaux et partez au front.
 Pas le temps d'avaler un petit déjeuner, pas envie de toute manière...
 
 -> Aller en cours
+    << fadeIn >>
     <<jump ExamenTP>>
 ===
 title: ExamenTP
 tags: bg|class autoshow
 position: 1372.3470306396484,399.1321716308594
 ---
+<< fadeOut >>
 << setTime 9:00 >>
 
 Ce matin, vous vous retrouvez noyé dans la masse, ou plutôt isolé dans la foule. Vous vous sentez léger, flottant, invisible. Heureusement, vous apercevez votre ami Fred.
@@ -357,15 +377,20 @@ Cependant, ce matin, vous êtes trop fatigué, trop barbouillé, trop peu concen
 C'est la cata, la bérézina, la défaite. Vous savez que vous avez foiré votre examen. Vous sortez de la salle juste après la fin du test, vous passez même devant Fred sans rien dire.
 
 -> Vous filez dans votre chambre
+    << fadeIn >>
     <<jump Dodo_Echec>>
 ===
 title: Dodo_Echec
 tags: bg|bedroom
 position: 1589.6320333480835,395.89398193359375
 ---
+<< fadeOut >>
 << advanceTime 0:15 >>
 Vous ouvrez la porte avec fracas, faites gicler vos fringues en l'air et vous vous glissez sous votre couette.
 Vous êtes défait et épuisé. Vous ne prenez même pas le temps de gémir ou de hurler votre rage, vous vous endormez presque comme un vaincu...
+
+<< fadeIn >>
+<< fadeOut >>
 
 C'est alors que vous sursautez d'agacement ! Quelqu'un vous chatouille et vous gratouille les pieds, les mains, le nez, les oreilles...
 
@@ -376,6 +401,7 @@ title: Miss_Temde
 tags: autoshow noUi
 position: 1807.6790771484375,395.8939208984375
 ---
+<< music Mysterious >>
 Temde_smiling: Hello { $name }.
 You: Quoi ?! Vous encore ?!
 Temde_cheerful: Yep, on n'a pas fini de t'embêter en effet.
@@ -384,6 +410,7 @@ Temde_cheerful: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retour
 You: Où ça ?
 Temde_smiling: À l'Assemblée des 4 sages
 
+<< fadeIn >>
 <<jump Four_Sages>>
 ===
 title: Four_Sages
@@ -391,6 +418,7 @@ tags: bg|circle autoshow noUi
 position: 2023.925796508789,396.5407409667969
 colorID: 1
 ---
+<< fadeOut >>
 Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre.
 Azul_happy: Un truc qui te servira également au quotidien.
 Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique!
@@ -530,13 +558,17 @@ position: 3341.1002807617188,392.2286071777344
 Sapiens_happy: Ah, je préfère ça. Ce qui me rappelle le temps où je...
 Temde_neutral: Non, on coupe ! Le temps presse !
 Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
+
+<< hide >>
+<< fadeIn 1000 ffffff>>
 <<jump journal_mental>>
 ===
 title: journal_mental
 tags: bg|bedroom_night noUi
 position: 3557.0534057617188,389.2486877441406
 ---
-Flash !!!
+<< fadeOut >>
+//Flash !!!
 Le carré de jardin tranquille des sages a disparu subitement !
 Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être.
 Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages...

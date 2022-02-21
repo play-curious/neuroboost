@@ -1,8 +1,10 @@
+import * as entity from "booyah/src/entity";
+
 import * as dialog from "./dialog";
 import * as variable from "./variable";
 import * as clock from "./clock";
 import * as save from "./save";
-import * as entity from "booyah/src/entity";
+import * as popup from "./popup";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (
@@ -30,33 +32,13 @@ export const commands: Record<string, Command> = {
     message: string,
     _default: variable.Variables[VarName]
   ) {
-    // TODO: replace this with HTML form
-
-    // {
-    //   // todo: use entity for waiting input
-    //   const form = document.createElement("form")
-    //   form.innerHTML = `
-    //     <label> ${message.replace(/_/g, " ")}
-    //       <input type=text name=name value="${_default.replace(/_/g, " ")}">
-    //     </label>
-    //     <input type=submit name=Ok >
-    //   `
-    //   form.styles.(todo: set position to absolute and place it on middle screen)
-    //   form.onsubmit = (event) => {
-    //     event.preventDefault()
-    //     if(ok) document.body.removeChild(form)
-    //   }
-    //   document.body.appendChild(form)
-    // }
-
-    const value = prompt(
-      message.replace(/_/g, " "),
-      _default.replace(/_/g, " ")
-    )?.trim();
-    this.config.variableStorage.set(
-      varName,
-      value || (_default.replace(/_/g, " ") as any)
-    );
+    const promptPopup = new popup.Prompt(message.replace(/_/g, " "), (text) => {
+      this.config.variableStorage.set(
+        varName,
+        text || (_default.replace(/_/g, " ") as any)
+      );
+    });
+    return promptPopup;
   },
 
   eval(code: string) {
@@ -68,12 +50,12 @@ export const commands: Record<string, Command> = {
 
   setTime(time: clock.ResolvableTime, day?: string) {
     let [, , minutesSinceMidnight] = clock.parseTime(time);
-    if(day){
+    if (day) {
       minutesSinceMidnight += Number(day) * clock.dayMinutes;
     } else {
-      const currentMinutesSinceMidnight = Math.floor(Number(
-        this.config.variableStorage.get("time")
-      ) / clock.dayMinutes);
+      const currentMinutesSinceMidnight = Math.floor(
+        Number(this.config.variableStorage.get("time")) / clock.dayMinutes
+      );
       minutesSinceMidnight += currentMinutesSinceMidnight * clock.dayMinutes;
     }
     console.log("MinutesSinceMidnight", minutesSinceMidnight);
@@ -94,12 +76,13 @@ export const commands: Record<string, Command> = {
       minutesToStop = clock.parseTime(maxTime)[2];
       minutesStep = clock.parseTime(stepTime)[2];
     }
-    
+
     const minutesSinceMidnight = Number(
       this.config.variableStorage.get("time")
     );
     let newMinutes = minutesSinceMidnight + minutesToAdvance;
-    minutesToStop += Math.floor(minutesSinceMidnight / clock.dayMinutes) * clock.dayMinutes;
+    minutesToStop +=
+      Math.floor(minutesSinceMidnight / clock.dayMinutes) * clock.dayMinutes;
 
     // Cut the time if it goes over restriction
     while (newMinutes - minutesStep >= minutesToStop) newMinutes -= minutesStep;
@@ -154,14 +137,14 @@ export const commands: Record<string, Command> = {
 
   saveGauges<VarName extends keyof variable.Gauges>(...names: VarName[]) {
     savedGauges.clear();
-    names.forEach( name => {
+    names.forEach((name) => {
       console.log(`save ${name}`);
       savedGauges.set(name, Number(this.config.variableStorage.get(name)));
     });
   },
 
   loadGauges() {
-    savedGauges.forEach( (id, key) => {
+    savedGauges.forEach((id, key) => {
       console.log(`load ${key}`);
       this.config.variableStorage.set(key, `${savedGauges.get(key)}`);
     });
@@ -169,7 +152,7 @@ export const commands: Record<string, Command> = {
 
   // MUSIC FX
 
-  music(musicName: string) {
+  music(musicName?: string) {
     this.config.jukebox.play(musicName);
   },
 
@@ -204,14 +187,19 @@ export const commands: Record<string, Command> = {
 
   // FADES
 
-  fadeIn(duration: `${number}` = "1000", hexColor: string = "#00000") {
+  fadeIn(duration: `${number}` = "500", hexColor: string = "#00000") {
     const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
-    this.activate(this.graphics.fadeIn(Number(duration), color));
+    return this.graphics.fadeIn(Number(duration), color);
   },
 
-  fadeOut(duration: `${number}` = "1000") {
-    this.activate(this.graphics.fadeOut(Number(duration)));
+  fadeOut(duration: `${number}` = "500") {
+    return this.graphics.fadeOut(Number(duration));
   },
+
+  // fade(duration: `${number}` = "1000", hexColor: string = "#00000") {
+  //   const color = "#" + hexColor.replace(/^(?:0x|#)/, "");
+  //   this.graphics.fade(Number(duration), color);
+  // },
 
   setBackground(name: string) {
     const [bg, mood] = name.split("_");
@@ -230,11 +218,11 @@ export const commands: Record<string, Command> = {
     this.visited.add(node);
   },
 
-  clearOnce(){
+  clearOnce() {
     this.selectedOptions = [];
   },
 
-  empty(){},
+  empty() {},
 };
 
 export const functions: Record<string, YarnFunction> = {
@@ -262,19 +250,18 @@ export const functions: Record<string, YarnFunction> = {
   },
 
   isTimeOver(time: clock.ResolvableTime, day?: string): boolean {
-    
     let [, , minutesSinceMidnight] = clock.parseTime(time);
-    const currentMinutesSinceMidnight = Math.floor(Number(
-      this.config.variableStorage.get("time")
-    ));
-    
+    const currentMinutesSinceMidnight = Math.floor(
+      Number(this.config.variableStorage.get("time"))
+    );
+
     let nbrDay = Number(day);
 
-    if(day === undefined){
+    if (day === undefined) {
       nbrDay = Math.floor(currentMinutesSinceMidnight / clock.dayMinutes);
     }
 
     minutesSinceMidnight += clock.dayMinutes * nbrDay;
     return currentMinutesSinceMidnight >= minutesSinceMidnight;
-  }
+  },
 };

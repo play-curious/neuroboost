@@ -34,141 +34,148 @@
   "excited": [
     {
       "model": "base_excited",
-      "x": 960,
-	    "y": 540
+      "x": 934,
+	    "y": 539
     },
     {
       "model": "eyes_b",
-      "x": 983,
-      "y": 103
+      "x": 957,
+      "y": 102
     },
     {
       "model": "hair_b",
-      "x": 976,
-      "y": 68
+      "x": 950,
+      "y": 67
     },
     {
       "model": "scarf_b",
-      "x": 1048,
-      "y": 576
+      "x": 1022,
+      "y": 575
     },
     {
       "model": "sleeves_b",
-      "x": 988,
-      "y": 307
+      "x": 962,
+      "y": 306
     }
   ],
   "smiling": [
     {
       "model": "base_smiling",
-      "x": 960,
-	    "y": 540
+      "x": 981,
+	    "y": 539
     },
     {
       "model": "eyes_e",
-      "x": 937,
-	    "y": 102
+      "x": 958,
+	    "y": 101
     },
     {
       "model": "hair_b",
-      "x": 928,
-      "y": 68
+      "x": 949,
+      "y": 67
     },
     {
       "model": "sleeves_e",
-      "x": 937,
-	    "y": 307
+      "x": 958,
+	    "y": 306
     },
     {
       "model": "scarf_b",
-      "x": 1002,
-      "y": 576
+      "x": 1023,
+      "y": 575
     }
   ],
   "surprised": [
     {
       "model": "base_surprised",
-      "x": 960,
+      "x": 963,
 	    "y": 540
     },
     {
       "model": "eyes_g",
-      "x": 954,
+      "x": 957,
 	    "y": 102
     },
     {
       "model": "hair_b",
-      "x": 946,
+      "x": 949,
       "y": 68
     },
     {
       "model": "scarf_b",
-      "x": 1018,
+      "x": 1021,
       "y": 576
     },
     {
       "model": "sleeves_g",
-      "x": 945,
+      "x": 948,
 	    "y": 307
     }
   ],
   "happy": [
     {
       "model": "base_happy",
-      "x": 960,
+      "x": 966,
 	    "y": 540
     },
     {
       "model": "eyes_f",
-      "x": 951,
+      "x": 957,
 	    "y": 101
     },
     {
       "model": "hair_b",
-      "x": 944,
+      "x": 951,
       "y": 68
     },
     {
       "model": "sleeves_f",
-      "x": 942,
+      "x": 948,
 	    "y": 307
     },
     {
       "model": "scarf_b",
-      "x": 1016,
+      "x": 1022,
       "y": 576
     },
     {
       "model": "arm_happy",
-      "x": 996,
+      "x": 1002,
       "y": 358
     }
   ],
   "sad": [
     {
       "model": "base_sad",
-      "x": 960,
+      "x": 956,
 	    "y": 540
     },
     {
       "model": "eyes_d",
-      "x": 963,
+      "x": 959,
 	    "y": 102
     },
     {
       "model": "hair_b",
-      "x": 954,
+      "x": 950,
       "y": 68
     },
     {
       "model": "sleeves_d",
-      "x": 958,
+      "x": 954,
 	    "y": 307
     },
     {
       "model": "scarf_b",
-      "x": 1027,
+      "x": 1023,
       "y": 576
+    }
+  ],
+  "shadow": [
+    {
+      "model": "b_fred",
+      "x": 960,
+      "y": 540
     }
   ],
   "default": "happy"

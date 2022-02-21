@@ -64,6 +64,7 @@ tags: bg|bedroom
 colorID: 0
 position: -342,363
 ---
+<< fadeOut >>
 Mais c'est quoi ce truc ?! On dirait que vous avez fait un bon en arrière dans le temps ! Vous allez pouvoir repasser le partiel d'Atronometric Data Management. C'est la chance du siècle !
 Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre !
 
@@ -77,6 +78,7 @@ tags: bg|bedroom freechoice
 colorID: 0
 position: -895,604
 ---
+<< fadeOut >>
 << if !visited("Action_List") >>
 Que faites-vous maintenant?
 << endif >>
@@ -84,31 +86,35 @@ Que faites-vous maintenant?
 << if isTimeOver("12:00") >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
+    << fadeIn >>
     <<jump Lunch_Rewind>>
 << else>>
 -> Cuisine@cuisine
+    << fadeIn >>
     <<jump cuisine_subchoice>>
 -> Bureau@bureau
+    << fadeIn >>
     <<jump bureau_subchoice>>
 -> Salon@salon
     <<jump salon_subchoice>>
 << endif>>
 ===
-
-
 title: cuisine_subchoice
 tags: bg|kitchen subchoice
 position: -319.1514720916748,-55.38755989074707
 ---
+<< fadeOut >>
 -> Prendre le petit déjeuner
     <<jump Petit_dej_Rewind>>
 -> back
+    << fadeIn >>
     <<jump Action_List_Rewind>>
 ===
 title: bureau_subchoice
 tags: bg|desk subchoice
 position: -993.6492929458618,-75.37680292129517
 ---
+<< fadeOut >>
 -> Passer du temps sur le chat avec le pote d'une autre Université
     <<jump Chat_Rewind>>
 -> Réviser cette fichue Astronometric Data Management
@@ -116,6 +122,7 @@ position: -993.6492929458618,-75.37680292129517
 -> Essayer le rappel libre
     <<jump Rappel_libre>>
 -> back
+    << fadeIn >>
     <<jump Action_List_Rewind>>
 ===
 title: salon_subchoice
@@ -123,6 +130,7 @@ tags: bg|bedroom subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
 -> Binger votre série TV préférée
+    << fadeIn >>
     <<jump BingeTV_Rewind>>
 -> back
     <<jump Action_List_Rewind>>
@@ -132,6 +140,7 @@ tags: bg|kitchen
 colorID: 7
 position: -1284,1084
 ---
+<< fadeOut >>
 << fx EatCook >>
 
 Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola...
@@ -141,6 +150,7 @@ Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route !
 << advanceTime 0:30 >>
 
 -> Il est temps de battre votre précédent score!
+    << fadeIn >>
     <<jump Test_Rewind>>
 ===
 title: Petit_dej_Rewind
@@ -155,6 +165,7 @@ Bon, ce n'est pas tout.
 
 << advanceTime 0:30 >>
 
+<< fadeIn >>
 <<jump Action_List_Rewind>>
 ===
 title: Chat_Rewind
@@ -179,6 +190,7 @@ Ensuite, c'est Dom, puis Lou, puis Cam...
 
 Vous passez deux heures à discuter de tout, mais surtout de rien.
 
+<< fadeIn >>
 <<jump Action_List_Rewind>>
 ===
 title: Revision_Rewind
@@ -194,6 +206,8 @@ Aujourd'hui, vous voulez réussir votre journée. Vous voulez coiffer Fred au po
 << addToGauge learning 45 >>
 
 Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à potasser ce long pensum ennuyeux ! Beuark !
+
+<< fadeIn >>
 <<jump Action_List_Rewind>>
 ===
 title: BingeTV_Rewind
@@ -201,6 +215,8 @@ tags: bg|desk
 colorID: 0
 position: -288,823
 ---
+<< fadeOut >>
+
 <bi>Pensez-vous vraiment que c'est ce que vous ont recommandé les 4 Sages de la Métacognition?</bi>
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés. Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
 
@@ -221,6 +237,7 @@ En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleur
 
 Au final vous passez trop de temps à binger votre série préférée.
 
+<< fadeIn >>
 <<jump Action_List_Rewind>>
 ===
 title: Rappel_libre
@@ -239,6 +256,7 @@ Vous prenez encore le temps de relire votre cours pour combler les lacunes qui v
 
 << advanceTime 2:00 >>
 
+<< fadeIn >>
 <<jump Action_List_Rewind>>
 ===
 title: Test_Rewind
@@ -247,6 +265,7 @@ colorID: 0
 position: -1007,1085
 ---
 << setTime 14:00 >>
+<< fadeOut >>
 
 Vous voilà désormais dans la grande salle. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b> que le compteur se met en route.
 
@@ -314,5 +333,6 @@ Tentez à nouveau de passer ce premier examen...
 
 << setTime 8:15 >>
 
+<< fadeIn >>
 <<jump Phone_off_Rewind>>
 ===

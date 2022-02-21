@@ -1,9 +1,14 @@
 import * as PIXI from "pixi.js";
-import * as extension from "./extension";
-import * as variable from "./variable";
 import * as entity from "booyah/src/entity";
 
-export function save(stateName?: string, variableStorage?: variable.VariableStorage) {
+import * as extension from "./extension";
+import * as variable from "./variable";
+import * as popup from "./popup";
+
+export function save(
+  stateName?: string,
+  variableStorage?: variable.VariableStorage
+) {
   if (!stateName) {
     console.log("removed save");
     localStorage.removeItem("save");
@@ -11,18 +16,24 @@ export function save(stateName?: string, variableStorage?: variable.VariableStor
   } else {
     console.log("saved game state:", stateName);
     localStorage.setItem("save", stateName);
-    localStorage.setItem("variableStorage", JSON.stringify(variableStorage.data));
+    localStorage.setItem(
+      "variableStorage",
+      JSON.stringify(variableStorage.data)
+    );
   }
 }
 
-export function loadSave(): {state: string, variableStorage: variable.VariableStorage} {
+export function loadSave(): {
+  state: string;
+  variableStorage: variable.VariableStorage;
+} {
   const state = localStorage.getItem("save");
   const varstorage = JSON.parse(localStorage.getItem("variableStorage"));
   const variableStorage = new variable.VariableStorage(varstorage);
   console.log("loaded game data:", state, variableStorage);
   return {
     state,
-    variableStorage
+    variableStorage,
   };
 }
 
@@ -108,12 +119,20 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
         this.container.addChild(it);
 
         this._on(it, "click", () => {
-          if(hasSave()){
-            if(!confirm("Vous avez une partie en cours. Êtes vous sûr de vouloir en commencer une nouvelle ?"))
-              return;
+          if (hasSave()) {
+            this._activateChildEntity(
+              new popup.Confirm(
+                "Vous avez une partie en cours. Êtes vous sûr de vouloir en commencer une nouvelle ?",
+                () => {
+                  save();
+                  this._transition = entity.makeTransition("D1_level1");
+                }
+              )
+            );
+          } else {
+            save();
+            this._transition = entity.makeTransition("D1_level1");
           }
-          save();
-          this._transition = entity.makeTransition("D1_level1");
         });
       }
     );

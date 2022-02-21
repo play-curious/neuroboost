@@ -6,17 +6,17 @@
       "y": 540.0
     },
     {
-      "model": "bp_armsCoHa",
+      "model": "p_armsCo",
       "x": 977.5,
       "y": 743.0
     },
     {
-      "model": "bp_eyesCoHa",
+      "model": "p_eyesCo",
       "x": 955.5,
       "y": 364.0
     },
     {
-      "model": "bp_brainCoHaTh",
+      "model": "p_brainThHaCoAn",
       "x": 960.5,
       "y": 242.0
     }
@@ -28,19 +28,19 @@
       "y": 540.0
     },
     {
-      "model": "bp_armsAn",
+      "model": "p_armsAn",
       "x": 966.5,
       "y": 471.0
     },
     {
-      "model": "bp_eyesAn",
+      "model": "p_eyesAn",
       "x": 948.0,
       "y": 362.0
     },
     {
-      "model": "bp_brainAn",
-      "x": 1024.5,
-      "y": 446.5
+      "model": "p_brainThHaCoAn",
+      "x": 960.5,
+      "y": 242.0
     }
   ],
   "thinking": [
@@ -50,7 +50,7 @@
       "y": 540.0
     },
     {
-      "model": "bp_brainCoHaTh",
+      "model": "p_brainThHaCoAn",
       "x": 960.5,
       "y": 242.0
     }
@@ -62,17 +62,17 @@
       "y": 540.0
     },
     {
-      "model": "bp_armsCoHa",
+      "model": "p_armsHa",
       "x": 977.5,
       "y": 743.0
     },
     {
-      "model": "bp_eyesCoHa",
+      "model": "p_eyesHa",
       "x": 955.5,
       "y": 364.0
     },
     {
-      "model": "bp_brainCoHaTh",
+      "model": "p_brainThHaCoAn",
       "x": 960.5,
       "y": 242.0
     }

@@ -34,7 +34,9 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     this._inverted = variable.InvertedGauges.includes(this.name);
 
     this._innerDisk = new PIXI.Sprite();
-    this._innerDisk.texture = this.makeSprite(this.colorByValue(this._value)).texture;
+    this._innerDisk.texture = this.makeSprite(
+      this.colorByValue(this._value)
+    ).texture;
     this._center = new PIXI.Point(
       this._innerDisk.width / 2,
       this._innerDisk.height / 2
@@ -80,16 +82,24 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   }
 
   colorByValue(value: number): StaticSpritePath {
-    if (value > 66) return this._inverted ? "images/ui/gauges/innerDisk_red.png" : "images/ui/gauges/innerDisk_green.png"
+    if (value > 66)
+      return this._inverted
+        ? "images/ui/gauges/innerDisk_red.png"
+        : "images/ui/gauges/innerDisk_green.png";
     else if (value > 33) return "images/ui/gauges/innerDisk_yellow.png";
-    else return this._inverted ? "images/ui/gauges/innerDisk_green.png" : "images/ui/gauges/innerDisk_red.png"
+    else
+      return this._inverted
+        ? "images/ui/gauges/innerDisk_green.png"
+        : "images/ui/gauges/innerDisk_red.png";
   }
 
   resetValue(value: number) {
     const torusOffset = -8;
     const torusWidth = 16;
 
-    this._innerDisk.texture = this.makeSprite(this.colorByValue(this._value)).texture;
+    this._innerDisk.texture = this.makeSprite(
+      this.colorByValue(this._value)
+    ).texture;
 
     this._outerDisk.clear();
     this._outerDisk.beginFill(0xffffff);

@@ -360,7 +360,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       const choicebox = new PIXI.Container();
       choicebox.addChild(
         this.makeSprite(
-          i === 0
+          i === (subchoice ? 1 : 0)
             ? "images/ui/choicebox_contour_reversed.png"
             : i === nodeOptions.length - 1
             ? "images/ui/choicebox_contour.png"
@@ -371,7 +371,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       currentY -= choicebox.height + 20;
       choicebox.pivot.set(choicebox.width / 2, choicebox.y);
 
-      choicebox.position.set(1920 * 2 * (i % 2 ? -1 : 1), currentY);
+      choicebox.position.set(1920 * 2 * (i % 2 ? 1 : -1), currentY);
 
       box_tweens.push(
         new entity.EntitySequence([
@@ -383,7 +383,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           new tween.Tween({
             duration: 800,
             easing: easing.easeOutQuint,
-            from: i % 2 ? -1920 / 2 : (3 * 1920) / 2,
+            from: !(i % 2) ? -1920 / 2 : (3 * 1920) / 2,
             to: 1920 / 2,
             onUpdate: (value) => {
               choicebox.position.x = value;
@@ -819,5 +819,38 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         }),
       ]);
     return new entity.FunctionCallEntity(() => null);
+  }
+
+  fade(duration: number = 1000, color: string = "#000000") {
+
+    this._activateChildEntity(new entity.EntitySequence([
+      new entity.FunctionCallEntity(() => {
+        this._fade.tint = eval(color.replace("#", "0x"));
+        this._fade.visible = true;
+        this._fade.alpha = 1;
+      }),
+      new entity.WaitingEntity(duration/4),
+      // new tween.Tween({
+      //   duration: duration,
+      //   from: 0,
+      //   to: 1,
+      //   onUpdate: (value) => {
+      //     this._fade.alpha = value;
+      //   },
+      // }),
+      new tween.Tween({
+        duration: duration,
+        from: 1,
+        to: 0,
+        onUpdate: (value) => {
+          this._fade.alpha = value;
+        },
+      }),
+      new entity.FunctionCallEntity(() => {
+        this._fade.visible = false;
+        this._fade.alpha = 0;
+      }),
+    ]));
+
   }
 }
