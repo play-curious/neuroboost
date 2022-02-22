@@ -234,7 +234,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     text: string,
     name: string,
     playerName: string,
-    autoShow: boolean,
     onBoxClick: () => unknown
   ) {
     // Use underscore template to interpolate variables
@@ -271,7 +270,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       const speakerLC = speaker.toLowerCase();
       const moodChanged = mood?.toLowerCase() !== this._lastMood;
-      if ((autoShow || moodChanged) && speakerLC !== "you") {
+      if (moodChanged && speakerLC !== "you") {
         this.addCharacter(speakerLC, mood?.toLowerCase());
       }
     } else {
