@@ -1,11 +1,11 @@
 # gauges: sleep food
 
 title: Start
-tags: bg|bedroom_night noUi
+tags: noUi
 position: -1391.4708251953125,85.48695087432861
 colorID: 8
 ---
-<< fadeIn 1 >>
+<< fadeIn >>
 Vous êtes lové dans une confortable et douce langueur... Quand...
 On vous secoue brusquement !!!
 
@@ -18,9 +18,10 @@ On vous secoue brusquement !!!
     <<jump Open_Eyes>>
 ===
 title: Open_Eyes
-tags: bg|party autoshow
+tags: 
 position: -1172.1470947265625,85.38811206817627
 ---
+<< setBackground party >>
 << fadeOut >>
 Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
 Et c'est reparti pour un tour... Fred répète comme un perroquet ce qu'il vous a déjà dit hier soir... Vous voilà revenu en arrière... En plein milieu de cette soirée de plaisir et de tentations... Certes, vous en avez trop fait, mais l'ambiance et le public étaient avec vous... Dur dur...
@@ -36,7 +37,7 @@ You: C'est pas faux.
 <<jump Que_Faire>>
 ===
 title: Que_Faire
-tags: bg|party
+tags:
 position: -950.9030456542969,86.7411298751831
 ---
 << if !visited("Que_Faire") >>
@@ -125,7 +126,7 @@ Vous êtes applaudi, encore et encore et encore... Bon joueur, vous accordez à 
     <<jump Que_Faire>>
 ===
 title: End_of_Party
-tags: autoshow
+tags: 
 position: -731.0557861328125,994.7333374023438
 ---
 << if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
@@ -161,9 +162,10 @@ En effet, vous vous sentez vraiment fatigué, la tête et l'estomac lourd. Il es
 << endif >>
 ===
 title: Go_To_Bed_Good
-tags: bg|bedroom_night autoshow
+tags: 
 position: -503.7049560546875,991.6459350585938
 ---
+<< setBackground bedroom night >>
 << music >>
 << fadeOut >>
 << advanceTime 0:15 >>
@@ -179,9 +181,10 @@ Sur ces mots, Fred s'éloigne et vous laisse.
     <<jump Se_Reposer_Good>>
 ===
 title: Go_To_Bed_VeryGood
-tags: bg|bedroom_night autoshow
+tags:  
 position: -502.02838134765625,1214.2044677734375
 ---
+<< setBackground bedroom night >>
 << music >>
 << fadeOut >>
 << advanceTime 0:15 >>
@@ -197,7 +200,7 @@ Sur ces confidences, ces louanges, Fred s'éloigne et vous laisse.
     <<jump Se_Reposer_Good>>
 ===
 title: Se_Reposer_Good
-tags: bg|bedroom_night
+tags:
 position: -281.2446746826172,1109.7478637695312
 ---
 << hideGauges >>
@@ -208,7 +211,7 @@ Vous entrez tranquillement dans votre chambre. Vous allez aux toilettes. Votre v
     <<jump Sieste_Good>>
 ===
 title: Sieste_Good
-tags: bg|bedroom_night
+tags:
 position: -62.58292770385742,1107.5968017578125
 ---
 La seconde où vous touchez votre lit, vous dormez déjà.
@@ -230,9 +233,10 @@ Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'h
     <<jump Petit_Dejeuner_Good>>
 ===
 title: Petit_Dejeuner_Good
-tags: bg|kitchen
+tags:
 position: 153.05007934570312,1108.568115234375
 ---
+<< setBackground kitchen >>
 << fadeOut >>
 Yum Yum... Un petit déjeuner bien riche quand on a fait un somme trop court, ça vous booste le corps et le système nerveux ! Vous sentez que votre organisme reprend du tonus et de la vigueur...
 << addToGauge food 40 >>
@@ -243,16 +247,15 @@ Yum Yum... Un petit déjeuner bien riche quand on a fait un somme trop court, ç
     <<jump ExamenTP_Good>>
 ===
 title: ExamenTP_Good
-tags: bg|class autoshow
+tags: 
 position: 375.0788269042969,1111.1724853515625
 ---
-
+<< setBackground class >>
 << fadeOut >>
 << setTime 9:00 >>
 
 Ce matin, vous retrouvez votre ami Fred, qui vous attend avec le sourire.
 
-<< show fred>>
 Fred_excited: Hey, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps...
 You: Ouais...
 Fred_smiling: Je vois ça. J'espère que tu as bien dormi.
@@ -268,7 +271,7 @@ Puis, vous sortez de la salle de classe.
 <<jump Sortir>>
 ===
 title: Sortir
-tags: bg|class autoshow
+tags: 
 position: 591.0426635742188,1112.3233642578125
 ---
 Dehors, vous rejoignez Fred.
@@ -285,9 +288,10 @@ Fred_smiling: Yes yes!
 << advanceTime 0:15 >>
 ===
 title: Replay
-tags: bg|circle
+tags:
 position: -1624.1019287109375,775.4595947265625
 ---
+<< setBackground circle >>
 << fadeOut >>
 Nonononoon... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition.
 Vous devez respecter votre cycle de sommeil et d'alimentation !
@@ -298,7 +302,7 @@ Vous allez devoir retourner à cette soirée festive...
     <<jump Start>>
 ===
 title: Go_To_Bed_Loose
-tags: bg|party
+tags:
 position: -286.4623107910156,765.6393432617188
 colorID: 1
 ---
@@ -310,9 +314,10 @@ Vous avez péché par ambition. Vous n'avez pas assez écouté votre corps. Vous
 <<jump SeReposer>>
 ===
 title: SeReposer
-tags: bg|bedroom_night
+tags:
 position: -73.00656509399414,765.8036499023438
 ---
+<< setBackground bedroom night >>
 << fadeOut >>
 << hideGauges >>
 << advanceTime 0:15 >>
@@ -327,9 +332,10 @@ Non, décidément, rien à faire, vous n'arrivez pas à vous endormir...
 <<jump Bip_Bip>>
 ===
 title: Bip_Bip
-tags: bg|bedroom
+tags:
 position: 139.57297730445862,766.5597534179688
 ---
+<< setBackground bedroom >>
 << loopFX AlarmClock_LOOP 2000 >>
 << advanceTime 8:00 8:00 0:05 >>
 << music Neutral >>
@@ -362,7 +368,7 @@ Tant pis, vous avez besoin d'un coup de pouce... Du moins, le pensez-vous...
     <<jump Que_Faire>>
 ===
 title: Eat_Bad
-tags: autoshow
+tags: 
 position: -505.91009521484375,303.20033264160156
 ---
 BarBot: Tenez.

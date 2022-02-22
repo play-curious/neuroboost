@@ -1,8 +1,9 @@
 title: Start
-tags: bg|bedroom
+tags: 
 position: -1979.929937362671,-817.3228759765625
 ---
 << empty >>
+<< setBackground bedroom >>
 << setTime 8:00 >>
 << loopFX Chime_LOOP 2000 >>
 
@@ -22,7 +23,7 @@ Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'
   << jump Rejet_Fred >>
 ===
 title: Appel_Fred
-tags: autoshow
+tags: 
 position: -1617.4276733398438,-825.2426147460938
 ---
 << stopFX PhoneRing_LOOP >>
@@ -70,9 +71,10 @@ Il y a de quoi faire pour montrer à Fred qui est le Big Winner de l'Académie !
 <<jump Action_List>>
 ===
 title: Action_List
-tags: bg|bedroom freechoice
+tags: freechoice
 position: -847.2033081054688,-821.7307662963867
 ---
+<< setBackground bedroom >>
 << fadeOut >>
 << if !visited("Action_List") >>
 Que faites-vous maintenant ?
@@ -95,9 +97,10 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
 << endif>>
 ===
 title: cuisine_subchoice
-tags: bg|kitchen subchoice
+tags: subchoice
 position: -319.1514720916748,-55.38755989074707
 ---
+<< setBackground kitchen >>
 << fadeOut >>
 -> Prendre le petit déjeuner#once
     <<jump Petit_dej>>
@@ -106,9 +109,10 @@ position: -319.1514720916748,-55.38755989074707
     <<jump Action_List>>
 ===
 title: bureau_subchoice
-tags: bg|desk subchoice
+tags: subchoice
 position: -993.6492929458618,-75.37680292129517
 ---
+<< setBackground desk >>
 << fadeOut >>
 -> Passer du temps sur le chat avec le pote d'une autre Université#once
     <<jump Chat>>
@@ -119,9 +123,10 @@ position: -993.6492929458618,-75.37680292129517
     <<jump Action_List>>
 ===
 title: salon_subchoice
-tags: bg|bedroom subchoice
+tags: subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
+<< setBackground bedroom >>
 -> Binger votre série TV préférée#once
     << fadeIn >>
     <<jump BingeTV>>
@@ -129,9 +134,10 @@ position: -1716.8310852050781,-38.99417304992676
     <<jump Action_List>>
 ===
 title: Petit_dej
-tags: bg|kitchen
+tags:
 position: -441.43939208984375,237.24887084960938
 ---
+<< setBackground kitchen >>
 << fx EatCook >>
 Yum Yum... Rien ne vaut une boîte de chimicookies et un synthécafé après le réveil.
 De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le café traditionnels. Heureusement que le génie génétique permet désormais de resynthétiser tout ce qui a poussé ou vécu sur la Terre originelle...
@@ -160,9 +166,10 @@ Vous passez deux heures à discuter de tout, mais surtout de rien.
 <<jump Action_List>>
 ===
 title: Revision
-tags: bg|desk
+tags:
 position: -1231.30712890625,224.80491638183594
 ---
+<< setBackground desk >>
 Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Management. Rien que le titre vous barbe. ça commence mal...
 
 << advanceTime 2:00 >>
@@ -173,9 +180,10 @@ Vous passez les 2 heures à potasser ce long pensum ennuyeux. C'est à vous dég
 <<jump Action_List>>
 ===
 title: BingeTV
-tags: bg|desk
+tags:
 position: -1573.0745849609375,216.18408203125
 ---
+<< setBackground desk >>
 << fadeOut >>
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
 << visit BingeTV >>
@@ -197,9 +205,10 @@ Au final, vous passez trop de temps à binger votre série préférée.
 <<jump Action_List>>
 ===
 title: Lunch
-tags: bg|kitchen
+tags:
 position: -1026.218994140625,513.7423095703125
 ---
+<< setBackground kitchen >>
 << fadeOut >>
 << fx EatCook >>
 Yum Yum... Délicieux ce Burger Big Proteins Double Cheese !
@@ -214,9 +223,10 @@ Et maintenant,
     <<jump Test>>
 ===
 title: Test
-tags: bg|class
+tags:
 position: -666.0570068359375,500.580322265625
 ---
+<< setBackground class >>
 << setTime 14:00 >>
 << fadeOut >>
 
@@ -230,7 +240,7 @@ Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fre
 <<jump Post_Test>>
 ===
 title: Post_Test
-tags: bg|class autoshow
+tags:
 position: -341.2677307128906,490.52679443359375
 ---
 Fred_excited: Alors, ça l'a fait ?
@@ -253,9 +263,10 @@ Les résultats du test viennent de tomber...
     <<jump Resultats_Bad>>
 ===
 title: Resultats_Bad
-tags: bg|class autoshow
+tags:
 position: -16.689138412475586,492.05352783203125
 ---
+
 Hélas... Fred n'avait pas tort... Les scores s'affichent sur l'écran de la porte principale. Vous êtes dans le peloton... de queue... La semaine de sprint commence mal...
 
 Fred_excited: Hé, ça va ? Tu as l'air tout blême d'un coup.
@@ -276,9 +287,10 @@ You: Je sais pas...
     <<jump Rester_Chambre_deprime>>
 ===
 title: Fete_deprime
-tags: bg|party
+tags:
 position: 402.3575134277344,484.3177490234375
 ---
+<< setBackground party >>
 << fadeOut >>
 << advanceTime 0:30 >>
 
@@ -306,9 +318,10 @@ Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à cha
     <<jump Chambre_Nuit>>
 ===
 title: Chambre_Nuit
-tags: bg|bedroom_night
+tags:
 position: -17.766727447509766,752.0414428710938
 ---
+<< setBackground bedroom night >>
 << fadeOut >>
 Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde...
 Demain est un autre jour, vivement demain...
@@ -318,9 +331,10 @@ Demain est un autre jour, vivement demain...
     <<jump Reveil_Sage>>
 ===
 title: Reveil_Sage
-tags: bg|bedroom_night noUi
+tags: noUi
 position: -352.5212097167969,897.6408081054688
 ---
+<< setBackground bedroom night >>
 << music Mysterious >>
 << fadeOut >>
 
@@ -329,7 +343,6 @@ Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre br
 
 <<show temde>>
 Temde_smiling: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse !
-
 
 Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit :
 Temde_smiling: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ?
@@ -355,25 +368,24 @@ Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute 
     <<jump Assemblee_Sages>>
 ===
 title: Tenter_rester_chambre
-tags: show|temde bg|bedroom_night noUi
+tags: show|temde noUi
 position: -719.885986328125,901.3107299804688
 ---
+<< setBackground bedroom night >>
 You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !!
 Temde_thinking: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
 
 Miss Temdé lève la paume d'une de ses mains cybernétique...
-
-//<<fadeIn 1000 12ea12 >>
-
 Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente.
 
 << fadeIn 1000 12ea12 >>
 <<jump Assemblee_Sages>>
 ===
 title: Assemblee_Sages
-tags: bg|circle autoshow noUi
+tags: noUi
 position: -562.1727294921875,1164.6718139648438
 ---
+<< setBackground circle >>
 << music Tense >>
 << fadeOut >>
 
@@ -402,7 +414,7 @@ Sapiens_thinking: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les ar
     <<jump Metacognition>>
 ===
 title: Metaconnexion
-tags: autoshow noUi
+tags: noUi
 position: -878.8255004882812,1170.7235107421875
 ---
 You: Heuuuuu... J'ai rien compris de ce vous avez dit. La métaconnexion ???
@@ -424,7 +436,7 @@ Azul_happy: C'est-à-dire comment apprendre... à apprendre !
 <<jump Metacognition>>
 ===
 title: Metacognition
-tags: autoshow noUi
+tags: noUi
 position: -730.5562744140625,1421.6199951171875
 ---
 You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage ?
@@ -436,7 +448,7 @@ Sapiens_thinking: Oui, la mémorisation.
     <<jump memorisation>>
 ===
 title: memorisation
-tags: bg|circle autoshow noUi
+tags: noUi
 position: -366.2418212890625,1422.0413818359375
 ---
 Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit.
@@ -461,7 +473,7 @@ Sapiens_thinking: Tout à fait, c'est le chaos ! La panique ! La catastrophe !..
     <<jump Memoire_Longue>>
 ===
 title: Memoire_Longue
-tags: autoshow noUi
+tags: noUi
 position: -63.20210266113281,1418.4576416015625
 ---
 << setBackground schema_shelf-organized >>
@@ -481,7 +493,7 @@ You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions 
 <<jump Routinisation>>
 ===
 title: Routinisation
-tags: bg|circle autoshow noUi
+tags: noUi
 position: 243.36883544921875,1410.058349609375
 ---
 Sapiens_thinking: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
@@ -499,9 +511,10 @@ Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental
 <<jump Journal_Rappel_libre>>
 ===
 title: Journal_Rappel_libre
-tags: bg|bedroom_night noUi
+tags: noUi
 position: 528.9749550819397,1406.2884521484375
 ---
+<< setBackground bedroom night >>
 << fadeOut >>
 Flash !!!
 Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Les 4 sages non plus ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée. Curieusement, vous ne vous sentez pas inquiet.
