@@ -7,6 +7,7 @@ export interface Variables extends Gauges {
   time: `${number}`;
   name: string;
   eval: string;
+  journalAnswers: any;
 }
 
 export interface Gauges {

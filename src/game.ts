@@ -42,6 +42,7 @@ const variableStorage = new variable.VariableStorage({
   name: "Moi",
   time: "540",
   eval: "",
+  journalAnswers: {},
   sleep: "100",
   food: "100",
   learning: "0",
@@ -63,7 +64,7 @@ export function installGameData(rootConfig: entity.EntityConfig) {
 const params = new URLSearchParams(window.location.search);
 const startingNode = params.get("startNode") || params.get("node") || "Start";
 const startingScene =
-  params.get("level") || params.get("scene") || "Start_Menu";
+  params.get("level") || params.get("scene") || "journal_method";
 
 // prettier-ignore
 const stateNames = [

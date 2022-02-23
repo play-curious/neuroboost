@@ -3,6 +3,8 @@ import * as PIXI from "pixi.js";
 import { GlitchFilter } from "@pixi/filter-glitch";
 import { CRTFilter } from "pixi-filters";
 
+import * as jsPdf from "jspdf";
+
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 
@@ -143,8 +145,10 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
     this._htmlContainer = document.createElement("div");
     htmlLayer.appendChild(this._htmlContainer);
 
+    const leftElements = document.createElement("div");
+    const answers = options[this.option].closeQuestion.answers;
+    const answersInputs: HTMLInputElement[] = []; 
     {
-      const leftElements = document.createElement("div");
       leftElements.style.position = "absolute";
       leftElements.style.left = "230px";
       leftElements.style.top = "180px";
@@ -157,20 +161,30 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         "beforeend",
         `<p>${options[this.option].closeQuestion.question}</h1>`
       );
-      const answers = options[this.option].closeQuestion.answers;
-      console.log(answers);
+
       for (let i = 0; i < answers.length; i++) {
-        leftElements.insertAdjacentHTML(
-          "beforeend",
-          `<br>
-        <input type="radio" name="closed-question" id="closed-question-${i}" value="${i}">
-        <label for="closed-question-${i}">${answers[i]}</label>`
-        );
+        const answer: HTMLInputElement = document.createElement("input");
+        answer.type = "radio";
+        answer.name = "closed-question";
+        answer.id = `closed-question-${i}`;
+        answer.value = `${i}`;
+        answersInputs[i] = answer;
+
+        const label: HTMLLabelElement = document.createElement("label");
+        label.innerText = `${answers[i]}`;
+        label.setAttribute("for", `closed-question-${i}`);
+
+        leftElements.append(
+          document.createElement("br"),
+          answer,
+          label
+        )
       }
     }
 
+    const rightElements = document.createElement("div");
+    const textArea = document.createElement("textArea");
     {
-      const rightElements = document.createElement("div");
       this._htmlContainer.appendChild(rightElements);
 
       const rightQuestion = document.createElement("p");
@@ -183,7 +197,6 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       rightQuestion.style.fontSize = "28px";
       rightElements.appendChild(rightQuestion);
 
-      const textArea = document.createElement("textArea");
       textArea.style.position = "absolute";
       textArea.style.left = "947px";
       textArea.style.top = "280px";
@@ -208,7 +221,21 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
           this._on(
             it,
             "pointerup",
-            () => (this._transition = entity.makeTransition())
+            () => {
+              const journalStorage = this.config.variableStorage.get("journalAnswers");
+              journalStorage[this.option] = {};
+              for(const answer of answersInputs){
+                if(answer.checked) {
+                  journalStorage[this.option].closeQuestion = answer.id.split("-")[2];
+                }
+              }
+              journalStorage[this.option].openQuestion = (textArea as HTMLInputElement).value;
+
+              const journalExport = new PrintableJournal();
+              journalExport.createDocument(journalStorage);
+
+              this._transition = entity.makeTransition();
+            }
           );
         })
       );
@@ -219,5 +246,29 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
     this.config.container.removeChild(this._container);
     this._htmlContainer.remove();
     this._container = null;
+  }
+}
+
+export class PrintableJournal extends extension.ExtendedCompositeEntity {
+  private document: HTMLElement;
+
+  public constructor(){
+    super();
+  }
+
+  public createDocument(journalStorage: any){
+    const doc = new jsPdf.jsPDF();
+
+    let page = 0;
+    for(const answer in journalStorage){
+      doc.setPage(page++);
+      let currentY = 15;
+
+      doc.addPage();
+    }
+
+    doc.deletePage(doc.getNumberOfPages()-1);
+
+    doc.save();
   }
 }
