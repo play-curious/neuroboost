@@ -9,6 +9,7 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import * as images from "./images";
 import * as gauge from "./gauge";
+import * as filter from "./graphics_filter";
 
 // Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
@@ -252,7 +253,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._dialogSpeaker.visible = true;
       this._nodeDisplay.addChild(
         this.makeText(
-          speaker.toLowerCase() === "you" ? playerName : speaker,
+          speaker.toLowerCase() === "you" ? playerName : speaker.split('@')[0],
           {
             fontFamily: "Jura",
             fill: "white",
@@ -692,7 +693,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
 
-    console.log(this._lastCharacter, this._lastMood, "->", character, mood);
+    //console.log(this._lastCharacter, this._lastMood, "->", character, mood);
 
     // Remove characters
     const characterChanged = character !== this._lastCharacter;
@@ -701,6 +702,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     // Register last character & mood
     this._lastCharacter = character;
     this._lastMood = mood;
+
+    let isHolo: string;
+    [character, isHolo] = character.split('@');
 
     // If character or character not you
     if (character && character !== "you") {
@@ -757,6 +761,17 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._characterLayer.addChild(characterCE.container);
       characterCE.container.setTransform(250, 80, 1.1, 1.1);
       //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
+
+      // Handle holographic filter
+      if(isHolo === "holo") {
+        const holo = filter.newHolograph();
+        const glitch = filter.newGlitch();
+        const adjust = filter.newAdjustment();
+        const glow = filter.newGlow();
+        characterCE.container.filters = [holo, glow, adjust, glitch];
+        this._activateChildEntity(filter.wrapHolograph(holo as any));
+        this._activateChildEntity(filter.wrapGlitchHolo(glitch as any));
+      }
 
       // If character changed, do animation
       if (characterChanged) {

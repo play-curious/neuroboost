@@ -1,10 +1,12 @@
 
 import { Filter } from "pixi.js";
-import { GlitchFilter, CRTFilter } from "pixi-filters";
+import { GlitchFilter, CRTFilter, GlowFilter, AdjustmentFilter } from "pixi-filters";
 import * as entity from "booyah/src/entity";
 
 export type Glitch = GlitchFilter & Filter;
 export type Holograph = CRTFilter & Filter;
+export type Adjustment = AdjustmentFilter & Filter;
+export type Glow = GlowFilter & Filter;
 
 /**
  * Create a new glitch effect
@@ -30,6 +32,22 @@ export function newHolograph() {
         lineContrast: 0.3,
         noise: 0.15
       }) as Holograph;
+}
+
+export function newGlow() {
+
+    return new GlowFilter({
+      outerStrength: 5.0,
+      color: 0x2cd2d2,
+    }) as Glow;
+}
+
+export function newAdjustment() {
+    return new AdjustmentFilter({
+      saturation: 0.0,
+      blue: 3.0,
+      alpha: 0.75,
+    }) as Adjustment;
 }
 
 /**
@@ -78,6 +96,44 @@ export function wrapGlitch(glitch: GlitchFilter) {
         }
       )
 }
+
+export function wrapGlitchHolo(glitch: GlitchFilter) {
+
+  const shifting = 5;
+  const frequency = 2000;
+
+  return new entity.EntitySequence(
+      [
+        () =>
+          new entity.WaitingEntity(
+            Math.floor(10 + Math.random() * frequency)
+          ),
+        () =>
+          new entity.FunctionCallEntity(() => {
+            glitch.blue = [
+              Math.floor(Math.random() * shifting),
+              Math.floor(Math.random() * shifting),
+            ];
+            glitch.offset = Math.floor(1 + Math.random() * 2);
+            glitch.slices = Math.floor(10 + Math.random() * 15);
+          }),
+        () =>
+          new entity.WaitingEntity(
+            Math.floor(10 + Math.random() * (frequency / 4))
+          ),
+        () =>
+          new entity.FunctionCallEntity(() => {
+            glitch.red = [0, 0];
+            glitch.green = [0, 0];
+            glitch.offset = 0;
+          }),
+      ],
+      {
+        loop: true,
+      }
+    )
+}
+
 
 export function wrapHolograph(holo: CRTFilter) {
 
