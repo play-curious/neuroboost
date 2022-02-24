@@ -70,7 +70,6 @@ position: -332,-642
 ---
 <<if !visited("Liste_Taches")>>
 Que faites-vous maintenant ?
-<<visit Liste_Taches>>
 <<endif>>
 
 // Matin//
@@ -84,7 +83,7 @@ Que faites-vous maintenant ?
 -> Binger votre série TV préférée#once
     <<jump BingeTV>>
 -> Faire une sieste#once
--> casser la croûte #once
+-> Casser la croûte #once
 // Oubli choix <<Lunch>>!!
     <<jump Sleep>>
 -> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction" 
@@ -289,7 +288,6 @@ position: -282,-1012
 ---
 <<if !visited("Liste_Taches_ZeroDistraction")>>
 Que faites-vous maintenant ?
-<<visit Liste_Taches_ZeroDistraction>>
 <<endif>>
 
 // Matin//
@@ -342,6 +340,8 @@ Allez, une nouvelle session encore, ce n'est pas encore fini. Cette fois, vous �
 
 << advanceTime 1:00 >>
 << increase $notesynthese +1>>
+
+<< jump Listes_Taches_ZeroDistraction >>
 
 //en mode immersif, Fred ne peut pas non plus déranger le
 ===

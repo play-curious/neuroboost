@@ -73,7 +73,6 @@ position: -328,-637
 ---
 <<if !visited("Liste_Taches")>>
 Que faites-vous maintenant ?
-<<visit Liste_Taches>>
 <<endif>>
 
 // Matin//
@@ -225,7 +224,7 @@ Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sente
 N'empêche, vous sentez votre tête penchez en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrer dans le noir...
 Puis, vous entendez une voix familière: 
 
-Azul: Tout va bien ( $name) ?
+Azul: Tout va bien { $name } ?
 You: Tais-toi, Miss Temdé !
 Azul: Raté, c'est moi, Azul.
 You: Zut...
@@ -251,7 +250,7 @@ You: Comment ça ?
 Sapiens: Si tu les surcharges.
 Ledai: Si tu les fais surchauffer. Comme ton ordinateur, il peut se bloquer, ne plus répondre.
 You: Ah bon ? 
-Sapiens: Il faut utiliser la technique
+Sapiens: Il faut utiliser la technique <i>pomodoro</i>
 <<jump pomodoro>>
 ===
 title: pomodoro
@@ -328,11 +327,11 @@ position: 701,260
 Sapiens: N'importe quoi ! Tu n'as rien compris de ce qu'on a dit. Je suis attristé de voir tout le mal que Miss Temdé s'est donné avec la parabole des balles de jonglage. Non, on ne peut pas gérer n'importe quelle tâche dans n'importe quel ordre ! Et surtout pas tout en même temps ! Ta charge cognitive encaisse, encaisse. Et elle finit par saturer.
 Ledai: Hélas. Le "mode multitâche" a la vie dure.
 Azul: Cessons de regarder le verre à moitié vide. Je pense que { $name } a compris la leçon cette fois.
-Ledai: bien parlé Azul.
+Ledai: Bien parlé Azul.
 Sapiens: J'espère. Continuons avec la deuxième affirmation test, laquelle est la bonne ?
-Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... 
-Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. Tu travailleras uniquement l'après-midi 
-Ou tu préfères travailler matin et après-midi afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement
+Sapiens: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. 
+Sapiens: Tu travailleras <b>uniquement l'après-midi</b> ?
+Sapiens: Ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ?
 -> Me ménager
     <<jump GestionTemps_No>>
 -> Travailler d'arrache-pied
@@ -348,9 +347,9 @@ Ledai: Que ce soit de manière linéaire ou itérative. On n'entame jamais une t
 Temde: Oui, enfin, grosso modo...
 Azul: Chut ! Ne commençons pas à nous chicaner. Comment voulez-vous que { $name } y comprenne quelque chose...
 Sapiens: Merci, Azul. Continuons avec la deuxième affirmation test, laquelle est la bonne ?
-Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... 
-Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. Tu travailleras uniquement l'après-midi 
-Ou tu préfères travailler matin et après-midi afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement
+Sapiens: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. 
+Sapiens: Tu travailleras <b>uniquement l'après-midi</b> ?
+Sapiens: Ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ?
 -> Me ménager
     <<jump GestionTemps_No>>
 -> Travailler d'arrache-pied
@@ -366,7 +365,7 @@ You: C'est quand le cerveau fatigue, il surchauffe.
 Ledai: Alors pourquoi as-tu cru cette affirmation ?
 You: Parce que mon pote, Fred, il bosse à la dernière minute et ça marche !
 Temde: Tu n'es pas ton pote.
-Azul: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil: Il faut travailler régulièrement, sans excès.
+Azul: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil : Il faut travailler régulièrement, sans excès.
 Temde: Surtout ne pas tout reporter au dernier moment.
 Ledai: Sinon, tu risques le court-circuit, le "system failure"...
 Sapiens: C'est enfin compris ?
