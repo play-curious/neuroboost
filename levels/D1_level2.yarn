@@ -28,19 +28,19 @@ tags:
 colorID: 0
 position: -592,376
 ---
-Fred_excited: Hello ! c'est Fred !
+Fred@holo_excited: Hello ! c'est Fred !
 You: Qu'est-ce que tu veux me dire cette fois-ci ?
-Fred_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin...
+Fred@holo_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin...
 You: Normal, j'ai foiré le partiel d'Atronometric Data Management.
-Fred_smiling: Yes, la bonne blague, c'est cet après-midi qu'on le passe !
+Fred@holo_smiling: Yes, la bonne blague, c'est cet après-midi qu'on le passe !
 You: Quoi ?!
-Fred_smiling: Yes, on est lundi matin. C'est ce qui est prévu.
+Fred@holo_smiling: Yes, on est lundi matin. C'est ce qui est prévu.
 You: Lundi ?! Mais c'était hier !!
-Fred_excited: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui.
+Fred@holo_happy: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui.
 You: C'est dingue ! Je rêve ou quoi ?
-Fred_smiling: No no, je t'assure que c'est la réalité, coco.
+Fred@holo_smiling: No no, je t'assure que c'est la réalité, coco.
 You: Euh...
-Fred_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
+Fred@holo_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
 You: Euh, ok...
 
 << hide >>
