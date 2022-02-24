@@ -159,7 +159,7 @@ tags: bg|class
 colorID: 0
 position: -507,380
 ---
-Vous êtes content de commander un lunch à la bibliothèque. Aujourd'hui, vous ne mangez pas un énième Burger Big Protéine Double Cheese, mais une salade gourmande, accompagné d'un grand verre de jus d'orange.C'est tout aussi copieux et vitaminé, et plus équilibré. 
+Vous êtes content de commander un lunch à la bibliothèque. Aujourd'hui, vous ne mangez pas un énième Burger Big Protéine Double Cheese, mais une salade gourmande, accompagné d'un grand verre de jus d'orange. C'est tout aussi copieux et vitaminé, et plus équilibré. 
 
 << addToGauge food 20 >>
 << addToGauge sleep 20 >>
@@ -323,8 +323,8 @@ colorID: 0
 position: -940,907
 ---
 Temde: Tu vas voir, c'est très simple. À chaque fois, tu nous demandes:
-Ce que nous aimons faire le plus.
-Ce que nous détestons faire.
+TemdeCe que nous aimons faire le plus.
+TemdeCe que nous détestons faire.
 
 -> Interroger Miss Temdé
     <<jump QuestionsTemde>>
@@ -452,7 +452,9 @@ tags: noUi
 colorID: 0
 position: -116,1177
 ---
-Azul: Bravo ! Tu as trouvé ! Je suis imaginatif et intuitif, comme ton ami Fred. Je suis capable de voir ce que les autres ne peuvent voir. Cependant, j'ai comme faiblesse de manquer de discipline. Je me disperse, je peine à développer et à figer noir sur blanc mes visions. Maintenant que tu as deviné quel est le profil d'apprentissage de Fred, je vais te donner quelques conseils pour t'aider à le motiver et l'impliquer dans ton projet. Si ça t'intéresse...
+Azul: Bravo ! Tu as trouvé ! Je suis imaginatif et intuitif, comme ton ami Fred. Je suis capable de voir ce que les autres ne peuvent voir. 
+Azul: Cependant, j'ai comme faiblesse de manquer de discipline. Je me disperse, je peine à développer et à figer noir sur blanc mes visions. 
+Azul: Maintenant que tu as deviné quel est le profil d'apprentissage de Fred, je vais te donner quelques conseils pour t'aider à le motiver et l'impliquer dans ton projet. Si ça t'intéresse...
 
 ->  Oui 
     <<jump Motiver_Fred>>
