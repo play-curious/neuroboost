@@ -79,7 +79,7 @@ You: Oui. Elle avait l'air en super forme.
 Maman: Tant mieux. Et toi ?
 You: Hum... ça va.
 Maman: Tu es sûr ? 
-You: Oui Oui ne t'inquiète pas.
+You: Oui oui ne t'inquiète pas.
 Maman: Bibi, ... 
 You: Et arrête de m'appeler Bibi ! Je n'ai plus 8 ans !
 Maman: Mais mon choux, c'est parce que je t'aime...
@@ -96,7 +96,9 @@ tags: bg|desk
 colorID: 0
 position: -1427,-347
 ---
-Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés. Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs... En direction de votre grand-mère, de son problème cardiaque, de son opération. Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond...
+Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés. 
+Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs... En direction de votre grand-mère, de son problème cardiaque, de son opération. 
+Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond...
 << addToGauge learning 20 >>
 <<advanceTime 2:00 >>
 
@@ -111,7 +113,9 @@ tags: bg|desk
 colorID: 0
 position: -1111,-338
 ---
-Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches. Vous passez les deux heures suivantes à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations. Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes...
+Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches. 
+Vous passez les deux heures suivantes à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations. 
+Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes...
 Franchement, ce n'est pas ce que les Sages vous avaient recommandé, non ?
 
 << addToGauge stress 20 >>
@@ -159,7 +163,9 @@ position: -559,-246
 Revêtu d'un exosquelette tout-terrain, Fred vous attend et vous balance un exosquelette que vous rattrapez in-extremis au vol. Vous enfilez la combinaison et rejoignez Fred sur la piste.
 Fred: Viens, on se fighte ! 
 You: Je suis pas sûr que...
-Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. La suite : vous la connaissez, vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! Heureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. Vous avez la langue sèche et les membres engourdis.
+Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. La suite : vous la connaissez, vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! H
+eureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. 
+Vous avez la langue sèche et les membres engourdis.
 
 << removeFromGauge sleep 40 >>
 // est-ce que l'impact fatigue pénalise le joueur dans ce Day5 ou pas. Je vous laisse décider
@@ -186,7 +192,9 @@ You: Naan.
 Fred: Attention, je te défie à Call of Study ! Tout le METAVERSE le saura !
 You: Tu fais chier, Fred...
 Fred: C'est pour ça que je suis ton pote... ah ah...
-Vous grognez et vous pestez, cependant, vous lancez le serveur GameStream. Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred. Son skin est aujourd'hui fuschia et orange fluo, c'est vraiment laid. Bon, c'est facile à repérer et viser. Vous respirez un bon coup et plongez dans Crawl of Study. C'est un MOBA, se situant dans une reconstitution 3D de l'Académie d'Omniscience et de Polytechnologie Universelle. Le gameplay mélange Plateformer en mode Parkour et TPS en mode athlète grec néo-antique. Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser. 
+Vous grognez et vous pestez, cependant, vous lancez le serveur GameStream. Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred. Son skin est aujourd'hui fuschia et orange fluo, c'est vraiment laid. 
+Bon, c'est facile à repérer et viser. Vous respirez un bon coup et plongez dans Crawl of Study. C'est un MOBA, se situant dans une reconstitution 3D de l'Académie d'Omniscience et de Polytechnologie Universelle. Le gameplay mélange Plateformer en mode Parkour et TPS en mode athlète grec néo-antique. 
+Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser. 
 <<advanceTime 2:00 >>
 <<addToGauge stress 20>>
 <<removeFromGauge sleep 20>>
@@ -281,7 +289,9 @@ tags:
 colorID: 0
 position: -1468,177
 ---
-C'est plus fort que vous. Vous avez envie de tout déballer devant Fred. Et c'est ce que vous faites. Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Elle a été hospitalisée d'urgence. Elle vient de subir une opération. Malheureusement, ça ne s'est pas bien passé. Elle a été transférée en réanimation. Elle est encore dans le coma... Vous êtes tellement stressé, vous monopolisez la parole. Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver des mots doux et réconfortants... L'horloge sonne ! C'est déjà l'heure d'entrer en salle d'examen. 
+C'est plus fort que vous. Vous avez envie de tout déballer devant Fred. Et c'est ce que vous faites. Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Elle a été hospitalisée d'urgence. Elle vient de subir une opération. 
+Malheureusement, ça ne s'est pas bien passé. Elle a été transférée en réanimation. Elle est encore dans le coma... Vous êtes tellement stressé, vous monopolisez la parole. 
+Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver des mots doux et réconfortants... L'horloge sonne ! C'est déjà l'heure d'entrer en salle d'examen. 
 Il semblerait que vous vous êtes laissé encore une fois submergé par les émotions négatives... 
 << AddToGauge stress 10 >>
 
@@ -356,7 +366,8 @@ tags:
 colorID: 0
 position: -2406,532
 ---
-Vous demandez à Room Mate, votre IA, de basculer en mode "Immersion Studieuse". Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même, face à vos questions et vos appréhensions. L'ambiance "studieuse" de votre chambre était une bonne idée, mais ça ne suffit pas. Ce soir, dans ce silence nocturne, vous ne vous sentez pas capable de pratiquer la méditation de pleine conscience. Il vous faut trouver autre chose.
+Vous demandez à Room Mate, votre IA, de basculer en mode "Immersion Studieuse". Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même, face à vos questions et vos appréhensions. 
+L'ambiance "studieuse" de votre chambre était une bonne idée, mais ça ne suffit pas. Ce soir, dans ce silence nocturne, vous ne vous sentez pas capable de pratiquer la méditation de pleine conscience. Il vous faut trouver autre chose.
 
 -> Quoi d'autre? 
     <<jump Choix_night>>
@@ -423,7 +434,9 @@ tags:
 colorID: 2
 position: -529,26
 ---
-Vous tenez tête à Fred. Il cède non sans maugréer. Il enlève son exosquelette et vous rejoint dehors, sur la piste d'athlétisme. Vous faites un premier tour de piste, puis un second, puis un troisième. Petit à petit, vous trouvez votre rythme de pas et votre cadence respiratoire. Vous sentez que vous brûlez vos calories et vos énergies négatives. Plus vous vous oxygénez, plus vous vous échauffez, plus vous vous détendez. Au bout d'une heure trente, vous décidez de vous arrêtez. Fred vous attend sur la piste d'arrivée depuis un moment. Il a le visage rouge comme un crabe ébouillanté. 
+Vous tenez tête à Fred. Il cède non sans maugréer. Il enlève son exosquelette et vous rejoint dehors, sur la piste d'athlétisme. Vous faites un premier tour de piste, puis un second, puis un troisième. 
+Petit à petit, vous trouvez votre rythme de pas et votre cadence respiratoire. Vous sentez que vous brûlez vos calories et vos énergies négatives. Plus vous vous oxygénez, plus vous vous échauffez, plus vous vous détendez. 
+Au bout d'une heure trente, vous décidez de vous arrêtez. Fred vous attend sur la piste d'arrivée depuis un moment. Il a le visage rouge comme un crabe ébouillanté. 
 <<removeFromGauge stress 40>>
 Vous le remerciez pour sa présence discrète mais nécessaire. Sans lui, vous n'auriez pas eu la force de vous lancer dans cette course d'endurance.
 Vous lui souhaitez bonne chance pour tout à l'heure et vous rejoignez votre chambre.
@@ -437,7 +450,9 @@ tags:
 colorID: 2
 position: -1457,401
 ---
-Vous filez au bout du couloir. Personne. Vous vous asseyez sur un banc. Vous fermez les yeux et vous commencez votre première séance de méditation en pleine conscience. Vous sentez vos poumons se gonfler puis se vider. Vous sentez l'air entrer dans votre bouche et descendre jusqu'au niveau du ventre avant de faire le chemin inverse à l'expiration. Votre corps se relâche peu à peu. Vos pensées se font moins bruyantes, moins oppressantes, moins nombreuses. Vous comprenez un peu mieux ce que veut dire : se connecter à l'instant présent.
+Vous filez au bout du couloir. Personne. Vous vous asseyez sur un banc. Vous fermez les yeux et vous commencez votre première séance de méditation en pleine conscience. Vous sentez vos poumons se gonfler puis se vider. 
+Vous sentez l'air entrer dans votre bouche et descendre jusqu'au niveau du ventre avant de faire le chemin inverse à l'expiration. Votre corps se relâche peu à peu. Vos pensées se font moins bruyantes, moins oppressantes, moins nombreuses. 
+Vous comprenez un peu mieux ce que veut dire : se connecter à l'instant présent.
 Puis, l'horloge sonne ! Il est l'heure d'entrer dans la salle. L'examen va commencer...
 <<removeFromGauge Stress 40>>
 
@@ -462,7 +477,8 @@ colorID: 2
 position: -2708,735
 ---
 Vous vous levez de votre lit et vous prenez votre cycloluth, une guitare archaïque de la planète Feudall. Les cordes sonnent juste, vous vous échauffez par une petit gigue traditionnelle d'Eirun VI. Puis, constatant que vos doigts sont souples et précis, vous enchaînez avec d'autres balades, d'autres gestes du répertoire médiéfull galactique. 
-La mélodie envahit votre chambre. Heureusement, vous avez demandé à Room Mate d'isoler votre pièce sur le plan sonore. Vous n'entendez aucun son venu de l'extérieur et aucun son de votre chambre ne peut en sortir. Vous pouvez faire tout le bruit que vous voulez, vous ne dérangez que vous. La musique vous emporte, elle vous illumine, elle vous enchante, elle vous distrait. Vous oubliez tous vos tracas, tous vos déboires, toutes vos peurs.
+La mélodie envahit votre chambre. Heureusement, vous avez demandé à Room Mate d'isoler votre pièce sur le plan sonore. Vous n'entendez aucun son venu de l'extérieur et aucun son de votre chambre ne peut en sortir. 
+Vous pouvez faire tout le bruit que vous voulez, vous ne dérangez que vous. La musique vous emporte, elle vous illumine, elle vous enchante, elle vous distrait. Vous oubliez tous vos tracas, tous vos déboires, toutes vos peurs.
 Deux heures après, quand vous reposez le cycloluth, vous vous sentez léger et joyeux.
 <<removeFromGauge stress 40>>
 

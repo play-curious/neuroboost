@@ -55,7 +55,9 @@ Mamie: Ah... Bien sûr...
 You: Quoi ?
 Mamie: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux... 
 You: Ton coeur ?! Mamie...
-Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire ! Du coup, votre aïeule coupe court à la conversation. Vous n'en saurez pas plus. Quel choc !! Votre grand-mère à l'hôpital, la connaissant dure comme du béton armé, c'est du sérieux. Vraiment, ça craint...
+Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire ! 
+Du coup, votre aïeule coupe court à la conversation. Vous n'en saurez pas plus. Quel choc !! 
+Votre grand-mère à l'hôpital, la connaissant dure comme du béton armé, c'est du sérieux. Vraiment, ça craint...
 Il y a des journées comme celle-ci qu'on préférerais zapper... Du coup, vous ne savez plus du tout par quoi vous allez commencer... 
 << addToGauge stress 40 >>
 << setTime: 8:30 >>
@@ -97,7 +99,7 @@ Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous 
 Maman: Bibi. Tu es au courant ?
 You: Oui. Mamie m'a appelé. Qu'a-t-elle ?
 Maman: Elle a fait une crise cardiaque. On l'a admise d'urgence à l'hôpital. Son état est stable mais on doit l'opérer.
-You: Pourquoi ne m'avoir rien dit.
+You: Pourquoi ne m'avoir rien dit ?
 Maman: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus.
 You: Merci. Du coup, je suis plus stressé..
 Maman: Bibi, je ne pensais pas te... 
@@ -114,7 +116,9 @@ tags: bg|desk
 colorID: 0
 position: -1423,-343
 ---
-Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés. Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs... En direction de votre grand-mère, de son problème cardiaque, de son opération. Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond...
+Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés. 
+Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs... En direction de votre grand-mère, de son problème cardiaque, de son opération. 
+Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond...
 << addToGauge learning 20 >>
 <<advanceTime 2:00 >>
 
@@ -126,7 +130,9 @@ tags: bg|desk
 colorID: 0
 position: -1108,-345
 ---
-Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches. Vous passez les deux heures suivantes à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations. Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes...
+Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches. 
+Vous passez les deux heures suivantes à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations. 
+Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes...
 Vous vous demandez si c'était une si bonne idée de vouloir s'informer tout seul sur un sujet aussi sensible...
 
 << addToGauge stress 20 >>
@@ -163,7 +169,8 @@ tags: bg|kitchen
 colorID: 1
 position: -2328,-127
 ---
-Zuuut !! Déjà l'heure de se préparer à sortir ! Pas le temps de faire dans le subtil et l'équilibré. Vous enfournez dans le four radio un Burger Big Proteins Double Cheese ! Le temps que votre plat réchauffe, vous videz une canette de Xeno Cola ! Cinq bouchées plus tard et un rapide coup de serviette pour enlever le ketchup, vous enfilez vos frustres et vous filez en salle...
+Zuuut !! Déjà l'heure de se préparer à sortir ! Pas le temps de faire dans le subtil et l'équilibré. Vous enfournez dans le four radio un Burger Big Proteins Double Cheese ! 
+Le temps que votre plat réchauffe, vous videz une canette de Xeno Cola ! Cinq bouchées plus tard et un rapide coup de serviette pour enlever le ketchup, vous enfilez vos frustres et vous filez en salle...
 
 -> Se rendre à l'examen 
     <<jump Salle_Examen>>
@@ -179,7 +186,9 @@ Il vous balance un exosquelette que vous rattrapez in-extremis au vol. Vous enfi
 You: Et qu'est-ce qu'on fait maintenant ?
 Fred: on se défoule autant qu'on peut ! 
 You: Heu...
-Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. Ravi de son coup, Fred vous tend la main pour vous redresser. Vous la saisissez, l'agrippez et la tirez pour le faire chuter à son tour ! Fred, beau joueur, se laisse tomber à vos côtés. La suite : vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! Vous imaginez que Fred incarne votre peur, votre frustration. Vous lui envoyez toute la colère et la rage contenue en vous ! Heureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. Vous avez la langue sèche et les membres engourdis.
+Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. Ravi de son coup, Fred vous tend la main pour vous redresser. Vous la saisissez, l'agrippez et la tirez pour le faire chuter à son tour ! 
+Fred, beau joueur, se laisse tomber à vos côtés. La suite : vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! Vous imaginez que Fred incarne votre peur, votre frustration. Vous lui envoyez toute la colère et la rage contenue en vous ! 
+Heureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. Vous avez la langue sèche et les membres engourdis.
 Fred: Alors ? Tu te sens mieux ?
 You: Crevé...
 Fred: Cool et...
@@ -210,7 +219,10 @@ You: Naan
 Fred: Attention, je te défie à Call of Study ! Tout le METAVERSE le saura !
 You: Tu fais chier, Fred...
 Fred: C'est pour ça que je suis ton pote... ah ah...
-Vous grognez et vous pestez, cependant, vous lancez le serveur GameStream. Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred. Son skin est aujourd'hui fuschia et orange fluo, c'est vraiment laid. Bon, c'est facile à repérer et viser. Vous respirez un bon coup et plongez dans Crawl of Study. C'est un MOBA, se situant dans une reconstitution 3D de l'Académie d'Omniscience et de Polytechnologie Universelle. Le gameplay mélange  Plateformer en mode Parkour et TPS en mode athlète grec néo-antique. Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser. Pour autant, cela ne réduit pas votre trouble. Vous êtes aussi énervé après deux bonnes heures de jeu qu'avant.
+Vous grognez et vous pestez, cependant, vous lancez le serveur GameStream. Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred. Son skin est aujourd'hui fuschia et orange fluo, c'est vraiment laid. 
+Bon, c'est facile à repérer et viser. Vous respirez un bon coup et plongez dans Crawl of Study. C'est un MOBA, se situant dans une reconstitution 3D de l'Académie d'Omniscience et de Polytechnologie Universelle. 
+Le gameplay mélange Plateformer en mode Parkour et TPS en mode athlète grec néo-antique. Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser. Pour autant, cela ne réduit pas votre trouble. 
+Vous êtes aussi énervé après deux bonnes heures de jeu qu'avant.
 <<advanceTime 2:00 >>
 <<addToGauge stress 20>>
 <<removeFromGauge sleep 20>>
@@ -306,7 +318,9 @@ position: -1478,261
 ---
 Fred: Dis-moi.
 You: Puisque tu veux savoir...
-Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Elle a été hospitalisée d'urgence. Elle vient de subir une opération. Malheureusement, ça n'est pas bien passé. Elle a été transféré en réanimation. Elle est encore dans le coma... Vous êtes tellement stressé, vous monopolisez la parole. Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver des mots doux et réconfortants... L'horloge automatique sonne! C'est déjà l'heure d'entrer en salle d'examen! Trop nul... 
+Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Elle a été hospitalisée d'urgence. Elle vient de subir une opération. 
+Malheureusement, ça n'est pas bien passé. Elle a été transféré en réanimation. Elle est encore dans le coma... Vous êtes tellement stressé, vous monopolisez la parole.
+ Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver des mots doux et réconfortants... L'horloge automatique sonne! C'est déjà l'heure d'entrer en salle d'examen! Trop nul... 
 << AddToGauge stress 10 >>
 
 -> Entrer dans la salle 
@@ -334,7 +348,7 @@ tags:
 colorID: 0
 position: -1140,98
 ---
-Vous vous asseyez devant votre pupitre. Vous avez l'esprit troublé. Et ce n'est pas un problème d'attention. Vous n'arrivez tout simplement pas à vous concentrer. Le sujet s'affiche à l'écran: [b]La loi de Murphy dans la GRH[/b]...
+Vous vous asseyez devant votre pupitre. Vous avez l'esprit troublé. Et ce n'est pas un problème d'attention. Vous n'arrivez tout simplement pas à vous concentrer. Le sujet s'affiche à l'écran: <b>La loi de Murphy dans la GRH</b>...
 Génial... Le sujet super cool. C'est plutôt vous qui subissez en ce moment la loi de Murphy... Il y avait une faible probabilité de recevoir une nouvelle désastreuse, vous l'avez reçue ce matin. Et depuis, ça ne fait qu'empirer...
 Vous répondez aux questions au hasard, sans trop savoir ce que l'on vous demande et ce qu'il faut indiquer. C'est un peu comme si votre corps était là, mais votre esprit ailleurs.
 Les quatre heures passent dans un espace-temps indéterminé. Vous validez sans conviction votre copie et quittez la salle, l'air hagard, agité parfois de légers tremblements.
@@ -378,7 +392,9 @@ tags:
 colorID: 0
 position: -2405,533
 ---
-Vous demandez à votre IA locale de basculer en mode Zéro-Distraction. Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même. Cependant, cette solitude ne vous renforce pas, elle vous met seul, face à vos idées noires. Vous continuez à tourber en boucle les mêmes pensées dramatiques. Impossible de trouver le sommeil. Vous demandez à votre IA de rebasculer en mode normal. Il faut essayer autre chose...
+Vous demandez à votre IA locale de basculer en mode Zéro-Distraction. Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même. 
+Cependant, cette solitude ne vous renforce pas, elle vous met seul, face à vos idées noires. Vous continuez à tourber en boucle les mêmes pensées dramatiques. Impossible de trouver le sommeil. 
+Vous demandez à votre IA de rebasculer en mode normal. Il faut essayer autre chose...
 
 -> Quoi d'autre? 
     <<jump Choix_night>>
@@ -404,7 +420,8 @@ tags:
 colorID: 0
 position: -2052,519
 ---
-Vous rappelez votre mère. Une fois... Deux fois... Elle ne répond pas. Vous lui laissez un message confus et maladroit avant de raccrocher. Pourquoi donc, elle ne décroche pas ? ... Serait-elle à l'hôpital avec votre grand-mère ? Elle ne peut pas vous répondre, ou elle ne veut pas vous répondre ?... Que se passe-t-il ? Comment se porte votre grand-mère ?...
+Vous rappelez votre mère. Une fois... Deux fois... Elle ne répond pas. Vous lui laissez un message confus et maladroit avant de raccrocher. Pourquoi donc, elle ne décroche pas ? ... 
+Serait-elle à l'hôpital avec votre grand-mère ? Elle ne peut pas vous répondre, ou elle ne veut pas vous répondre ?... Que se passe-t-il ? Comment se porte votre grand-mère ?...
 
 << addToGauge sleep 10>>
 << addToGauge stress 20>>
@@ -414,7 +431,8 @@ tags:
 colorID: 0
 position: -1421,606
 ---
-Vous broyez du noir dans le silence et l'obscurité relative de votre chambre connectée. Vous ne pouvez pas vous empêchez de fixer les différents curseurs lumineux qui scintillent ou clignotent dans la pièce. Vos paupières sont lourdes, elles refusent néanmoins de se refermer... Les minutes, les heures passent... Puis... le décompte du temps vous échappe... Quand...
+Vous broyez du noir dans le silence et l'obscurité relative de votre chambre connectée. Vous ne pouvez pas vous empêchez de fixer les différents curseurs lumineux qui scintillent ou clignotent dans la pièce. 
+Vos paupières sont lourdes, elles refusent néanmoins de se refermer... Les minutes, les heures passent... Puis... le décompte du temps vous échappe... Quand...
 << show Ledai>>
 Ledai: Bonsoir { $name }.
 You: Heiiiin...
@@ -430,7 +448,8 @@ tags:
 colorID: 0
 position: -1734,508
 ---
-La sieste est une technique efficace quand on éprouve une fatigue importante et relativement saine. En revanche, si le corps ou le mental est perturbé ou malade, ça ne marche pas... Vous avez beau fermer les yeux, rien ne se passe. Vos idées noires continuent de vous hanter.
+La sieste est une technique efficace quand on éprouve une fatigue importante et relativement saine. En revanche, si le corps ou le mental est perturbé ou malade, ça ne marche pas... Vous avez beau fermer les yeux, rien ne se passe. 
+Vos idées noires continuent de vous hanter.
 
 // Option "Essayer autre chose" moved to the end of this node
 -> Essayer autre chose
@@ -441,7 +460,8 @@ tags: bg|circle noUi
 colorID: 1
 position: -2849,698
 ---
-Vous voilà de nouveau à l'Assemblée des Sages. Cet endroit normalement si verdoyant et si paisible. Mais ce soir, vous voyez tout en gris, voire en noir. Même ce paradis vous semble triste et éteint. D'autant que vous ne voyez pas en quoi les experts de la métacognition pourraient aider votre grand-mère à sortir du coma.
+Vous voilà de nouveau à l'Assemblée des Sages. Cet endroit normalement si verdoyant et si paisible. Mais ce soir, vous voyez tout en gris, voire en noir. Même ce paradis vous semble triste et éteint. 
+D'autant que vous ne voyez pas en quoi les experts de la métacognition pourraient aider votre grand-mère à sortir du coma.
 You: Je vois pas ce que je fais là. C'est ma mamie qui va mal, pas moi.
 Ledai: Au contraire, tu ne raisonne pas positivement et rationnellement.
 You: Je suis surtout pas une machine comme vous !
@@ -502,13 +522,15 @@ tags:  noUi
 colorID: 0
 position: -1890,847
 ---
-Sapiens: Le stress est un carburant utile dans les situations de péril et de danger immédiat. Il permet de réagir vite et intensément. Toutefois, quand, comme toi, on se retrouve dans une configuration où l'on a aucune prise possible sur les paramètres et les variables... Cela devient insupportable. Tout ce carburant, cette énergie se retourne contre nous. Puisqu'on ne peut la brûler en agissant concrètement, elle nous consume de l'intérieur.
+Sapiens: Le stress est un carburant utile dans les situations de péril et de danger immédiat. Il permet de réagir vite et intensément. Toutefois, quand, comme toi, on se retrouve dans une configuration où l'on a aucune prise possible sur les paramètres et les variables... 
+Sapiens: Cela devient insupportable. Tout ce carburant, cette énergie se retourne contre nous. Puisqu'on ne peut la brûler en agissant concrètement, elle nous consume de l'intérieur.
 You: Vous voulez dire que le stress est une sorte de fuel ?
 Ledai: Tout à fait.
 You: Et c'est quoi le rapport avec l'apprentissage ?
 Azul: Ce carburant qu'est le stress fait monter la température dans ton esprit. Ton cerveau devient incapable de gérer le présent.
 You: Comment ça ?
-Azul: Imagine que tu roules sur une autoroute. Soudainement, ton accélérateur casse alors que tu appuies dessus. La vitesse augmente de plus en plus, sans but ni fin. Au début, tu peux encore arriver à contrôler ton véhicule. Mais plus celui-ci accélère, plus cela devient difficile. À un moment donné, cela devient même ingérable. Tu finis par perdre le contrôle de ton engin. 
+Azul: Imagine que tu roules sur une autoroute. Soudainement, ton accélérateur casse alors que tu appuies dessus. La vitesse augmente de plus en plus, sans but ni fin. Au début, tu peux encore arriver à contrôler ton véhicule. Mais plus celui-ci accélère, plus cela devient difficile. 
+Azul: À un moment donné, cela devient même ingérable. Tu finis par perdre le contrôle de ton engin. 
 You: C'est ça le stress ? 
 Ledai: Le temps semble s'écouler de plus en plus vite. Au point où tu n'arrives plus à traiter les informations.
 Sapiens: Tu ne peux plus à la fois analyser, décider et choisir ton mode d'action.
@@ -559,9 +581,9 @@ position: -1238,1170
 ---
 Sapiens: Je t'ai dit qu'il te faut pratiquer une activé qui mobilise ton attention... immédiate. Azul t'a énuméré quelques exemples d'actions utiles pour réduire le stress. Tu t'en souviens?
 You: Oui.
-Sapiens. Parfait. Alors, pour réduire ton stress, dois-tu:
+Sapiens: Parfait. Alors, pour réduire ton stress, dois-tu:
 
--> Te concentrer intensément et écraser à laide de ta volonté tes mauvaises pensées? 
+-> Te concentrer intensément et écraser à l'aide de ta volonté tes mauvaises pensées? 
     <<jump Meditation_No>>
 -> Pratiquer la médiation en pleine conscience? 
     <<jump Meditation_Yes>>
@@ -618,7 +640,7 @@ position: -2038,1180
 ---
 Sapiens: Choix malheureux et risqué. La boxe peut, certes, aider à se défouler. Il faut également veiller à ce que la boxe ne risque pas d'entretenir ta frustration ou ta colère. 
 You: Pourquoi ?
-Sapiens: Toute activité  physique ou sportive n'est pas forcément adaptée pour réduire le stress. La boxe est un sport de nature violente. Et si cette violence  n'est pas également évacuée à l'issue de la session, elle peut consolider le stress et la frustration initiale. Ce serait inefficace voire contre-productif.
+Sapiens: Toute activité  physique ou sportive n'est pas forcément adaptée pour réduire le stress. La boxe est un sport de nature violente. Et si cette violence n'est pas également évacuée à l'issue de la session, elle peut consolider le stress et la frustration initiale. Ce serait inefficace voire contre-productif.
 Azul: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité plus calme, qui consomme ton énergie en douceur, te détende, sans t'aigrir. 
 Sapiens: En conclusion, éviter une activité trop brutale, qui pourrait générer à son tour du stress ou de la tension. 
 You: Ah.
@@ -643,9 +665,9 @@ tags:  noUi
 colorID: 0
 position: -2326,1406
 ---
-Sapiens: Dernière question. Pour réduire ton stress, tu peux choisir de pratiquer une activité ludique, créative, artistique.  
-Qui fait écho à ton angoisse, comme visionner un film mélodramatique ou tragique. 
-Qui détourne ton attention de ton angoisse comme jouer des musiques joyeuses, radieuses, pleines de vie.
+Sapiens: Dernière question. Pour réduire ton stress, tu peux choisir de pratiquer une activité ludique, créative, artistique...  
+Sapiens: Qui fait écho à ton angoisse, comme visionner un film mélodramatique ou tragique ? 
+Sapiens: Ou qui détourne ton attention de ton angoisse comme jouer des musiques joyeuses, radieuses, pleines de vie ?
 
 -> Echo à l'angoisse
     <<jump Art_No>>
