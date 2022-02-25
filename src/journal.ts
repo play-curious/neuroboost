@@ -85,8 +85,10 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
     this._htmlContainer = document.createElement("div");
     htmlLayer.appendChild(this._htmlContainer);
 
+    const leftElements = document.createElement("div");
+    const answers = options[this.option].closeQuestion.answers;
+    const answersInputs: HTMLInputElement[] = []; 
     {
-      const leftElements = document.createElement("div");
       leftElements.style.position = "absolute";
       leftElements.style.left = "230px";
       leftElements.style.top = "180px";
@@ -99,20 +101,30 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         "beforeend",
         `<p>${options[this.option].closeQuestion.question}</h1>`
       );
-      const answers = options[this.option].closeQuestion.answers;
-      console.log(answers);
+
       for (let i = 0; i < answers.length; i++) {
-        leftElements.insertAdjacentHTML(
-          "beforeend",
-          `<br>
-        <input type="radio" name="closed-question" id="closed-question-${i}" value="${i}">
-        <label for="closed-question-${i}">${answers[i]}</label>`
-        );
+        const answer: HTMLInputElement = document.createElement("input");
+        answer.type = "radio";
+        answer.name = "closed-question";
+        answer.id = `closed-question-${i}`;
+        answer.value = `${i}`;
+        answersInputs[i] = answer;
+
+        const label: HTMLLabelElement = document.createElement("label");
+        label.innerText = `${answers[i]}`;
+        label.setAttribute("for", `closed-question-${i}`);
+
+        leftElements.append(
+          document.createElement("br"),
+          answer,
+          label
+        )
       }
     }
 
+    const rightElements = document.createElement("div");
+    const textArea = document.createElement("textArea");
     {
-      const rightElements = document.createElement("div");
       this._htmlContainer.appendChild(rightElements);
 
       const rightQuestion = document.createElement("p");
@@ -125,7 +137,6 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       rightQuestion.style.fontSize = "28px";
       rightElements.appendChild(rightQuestion);
 
-      const textArea = document.createElement("textArea");
       textArea.style.position = "absolute";
       textArea.style.left = "947px";
       textArea.style.top = "280px";
@@ -150,7 +161,10 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
           this._on(
             it,
             "pointerup",
-            () => (this._transition = entity.makeTransition())
+            () => {
+
+              this._transition = entity.makeTransition();
+            }
           );
         })
       );
