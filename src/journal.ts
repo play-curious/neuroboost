@@ -10,11 +10,12 @@ import * as tween from "booyah/src/tween";
 
 import * as variable from "./variable";
 import * as extension from "./extension";
+import { couldStartTrivia } from "typescript";
 
 const options: {[key: string]: any} = {
   method: {
     closeQuestion: {
-      question: "Lorsque tu as besoin de réviser, quelles techniques utilises-tu ?",
+      question: "Lorsque tu as besoin de réviser, quelle technique utilises-tu ?",
       answers: [
         "Rappel libre",
         "Lecture de notes",
@@ -230,9 +231,10 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
                 }
               }
               journalStorage[this.option].openQuestion = (textArea as HTMLInputElement).value;
-
-              const journalExport = new PrintableJournal();
-              journalExport.createDocument(journalStorage);
+console.log("A")
+              journalToPDF(journalStorage);
+console.log("B");
+              this.config.variableStorage.set("journalAnswers", journalStorage);
 
               this._transition = entity.makeTransition();
             }
@@ -249,26 +251,40 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
   }
 }
 
-export class PrintableJournal extends extension.ExtendedCompositeEntity {
-  private document: HTMLElement;
-
-  public constructor(){
-    super();
-  }
-
-  public createDocument(journalStorage: any){
-    const doc = new jsPdf.jsPDF();
-
-    let page = 0;
-    for(const answer in journalStorage){
-      doc.setPage(page++);
+export function journalToPDF(journalStorage: any) {
+  const doc = new jsPdf.jsPDF();
+    const offset = 7;
+    let page = 1;
+    for(const journal in journalStorage){
+      doc.setPage(page);
       let currentY = 15;
+      const textOptions: jsPdf.TextOptionsLight = {
+        maxWidth: 180,
+      };
+      
+      // CloseQuestion
+      const closeQuestion = options[journal].closeQuestion;
+      doc.setFontSize(16);
+      doc.text(`${closeQuestion.question}`, 15, currentY, textOptions)
+      doc.setFontSize(14);
+      let i = 0;
+      for(const answer of closeQuestion.answers){
+        doc.setFont(undefined, i == journalStorage[journal].closeQuestion ? "bold" : "normal");
+        doc.text(`    - ${answer}\n`, 15, currentY + offset * (i++ + 1), textOptions);
+      }
+
+      const openQuestionOffset = (2 * currentY) + (offset * (i + 1));
+      doc.setFontSize(16).setFont(undefined, "normal");
+      doc.text(`${options[journal].openQuestion.question}`, 15, openQuestionOffset, textOptions)
+      doc.setFontSize(14);
+      doc.text(`${journalStorage[journal].openQuestion}`, 15, openQuestionOffset + (offset*2), textOptions);
+
 
       doc.addPage();
+      page++;
     }
 
-    doc.deletePage(doc.getNumberOfPages()-1);
+    doc.deletePage(doc.getNumberOfPages());
 
-    doc.save();
-  }
+    doc.output("dataurlnewwindow");
 }
