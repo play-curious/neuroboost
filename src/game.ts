@@ -135,6 +135,7 @@ const fxAssets = [
   "TVStarwars_LOOP",
   "Work_LOOP",
   "Chime_LOOP",
+  "Spawn",
 ];
 
 const musicAssets = [

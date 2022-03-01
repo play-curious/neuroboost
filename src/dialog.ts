@@ -306,7 +306,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this.emit("changeNodeData", oldNodeData, newNodeData);
       return;
     }
-    
+
     let noUi: boolean = false;
 
     for (let tag of newNodeData.tags.split(/\s+/)) {

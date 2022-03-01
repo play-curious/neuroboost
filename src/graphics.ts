@@ -256,7 +256,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._dialogSpeaker.visible = true;
       this._nodeDisplay.addChild(
         this.makeText(
-          speaker.toLowerCase() === "you" ? playerName : speaker.split('@')[0],
+          speaker.toLowerCase() === "you" ? playerName : speaker.split("@")[0],
           {
             fontFamily: "Jura",
             fill: "white",
@@ -704,7 +704,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._lastMood = mood;
 
     let isHolo: string;
-    [character, isHolo] = character.split('@');
+    [character, isHolo] = character.split("@");
 
     // If character or character not you
     if (character && character !== "you") {
@@ -763,7 +763,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
 
       // Handle holographic filter
-      if(isHolo === "holo") {
+      if (isHolo === "holo") {
         const holo = filter.newHolograph();
         const glitch = filter.newGlitch();
         const adjust = filter.newAdjustment();
