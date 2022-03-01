@@ -139,11 +139,10 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
           it.interactive = true;
           it.buttonMode = true;
 
-          this._on(
-            it,
-            "pointerup",
-            () => (this._transition = entity.makeTransition())
-          );
+          this._on(it, "pointerup", () => {
+            this.config.fxMachine.play("Click");
+            this._transition = entity.makeTransition();
+          });
         })
       );
     }

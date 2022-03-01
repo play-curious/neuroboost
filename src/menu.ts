@@ -221,10 +221,10 @@ export class Menu extends extension.ExtendedCompositeEntity {
         this.popupBackground.width - 290;
       this.soundVolumeSwitcher.container.position.y -= 120;
       this.soundVolumeSwitcher.onStateChange((state) => {
-        this._entityConfig.playOptions.setOption("fxOn", state !== 0);
+        this.config.playOptions.setOption("fxOn", state !== 0);
         this.settings.fx = state as 0;
-        this._entityConfig.fxMachine.changeVolume(state);
-        this._entityConfig.fxMachine.play("Click");
+        this.config.fxMachine.changeVolume(state as 0);
+        this.config.fxMachine.play("Click");
         this.saveSettings();
       });
     }
