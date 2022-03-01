@@ -1,11 +1,11 @@
 #gauges: sleep food
 
 title: Start
-tags: bg|class autoshow
+tags: 
 position: -1523.9072265625,-40.47624206542969
 colorID: 8
 ---
-
+<< setBackground class >>
 << empty >>
 << setTime 18:20 >>
 << music Neutral >>
@@ -28,9 +28,10 @@ Fred_smiling: No worry, on s'en va avant l'aube, on fait une petite sieste et on
     <<jump Retour_chambre>>
 ===
 title: Retour_chambre
-tags: bg|bedroom
+tags:
 position: -1298.765380859375,-151.80938720703125
 ---
+<< setBackground bedroom >>
 << fadeOut >>
 << advanceTime 00:15 >>
 
@@ -57,9 +58,10 @@ Fred_happy: Steuplay...
 << endif >>
 ===
 title: Cafeteria
-tags: bg|party
+tags:
 position: -1075.3348388671875,-37.09675598144531
 ---
+<< setBackground party >>
 << showGauges food sleep >>
 << setGauge sleep 100 >>
 << setGauge food 80 >>
@@ -76,7 +78,7 @@ Fred a raison, l'ambiance est vivifiante et enivrante... Vous vous laissez gagne
     <<jump Choix_neutres>>
 ===
 title: Choix_neutres
-tags: bg|party
+tags:
 colorID: 0
 position: -850.2415771484375,-40.334877014160156
 ---
@@ -174,7 +176,7 @@ Peu importe, vous vous marrez bien tous les deux. Un peu d'imagination et vous v
     <<jump Choix_neutres>>
 ===
 title: TIRED
-tags: autoshow
+tags: 
 position: -403.5168056488037,-39.76996612548828
 colorID: 1
 ---
@@ -206,7 +208,7 @@ Puis, on vous secoue brusquement !!!
     <<jump Open_Eyes>>
 ===
 title: Open_Eyes
-tags: autoshow
+tags: 
 position: 34.24329662322998,-36.5318603515625
 ---
 << fadeOut >>
@@ -273,7 +275,7 @@ Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un 
     <<jump Que_Faire>>
 ===
 title: Medoc_Bot
-tags: autoshow
+tags: 
 position: 474.3383331298828,-40.58226013183594
 ---
 Vous vous dirigez vers le bar, toutefois, vous ne distinguez plus aucun snack de disponible. Vous vous tournez alors vers un BarBot.
@@ -325,9 +327,10 @@ D'un coup, tu te sens fatigué, très fatigué, très très fatigué. Vite ! Au 
 <<jump SeReposer>>
 ===
 title: SeReposer
-tags: bg|bedroom_night
+tags:
 position: 927.2608032226562,397.54339599609375
 ---
+<< setBackground bedroom night >>
 << music >>
 << hideGauges >>
 << fadeOut >>
@@ -342,9 +345,10 @@ Non, décidément, rien à faire, vous n'arrivez pas à dormir. Et les heures s'
 <<jump Bip_Bip>>
 ===
 title: Bip_Bip
-tags: bg|bedroom
+tags:
 position: 1149.49072265625,399.1321105957031
 ---
+<< setBackground bedroom >>
 << music Neutral >>
 << fadeOut >>
 Argh... Il est encore trop tôt ! Vous ne vous êtes pas reposé. Vous aimeriez avoir une bonne nuit de sommeil... C'est trop tard maintenant, il faut aller au charbon...
@@ -356,9 +360,10 @@ Pas le temps d'avaler un petit déjeuner, pas envie de toute manière...
     <<jump ExamenTP>>
 ===
 title: ExamenTP
-tags: bg|class autoshow
+tags: 
 position: 1372.3470306396484,399.1321716308594
 ---
+<< setBackground class >>
 << fadeOut >>
 << setTime 9:00 >>
 
@@ -381,9 +386,10 @@ C'est la cata, la bérézina, la défaite. Vous savez que vous avez foiré votre
     <<jump Dodo_Echec>>
 ===
 title: Dodo_Echec
-tags: bg|bedroom
+tags:
 position: 1589.6320333480835,395.89398193359375
 ---
+<< setBackground bedroom >>
 << fadeOut >>
 << advanceTime 0:15 >>
 Vous ouvrez la porte avec fracas, faites gicler vos fringues en l'air et vous vous glissez sous votre couette.
@@ -398,7 +404,7 @@ C'est alors que vous sursautez d'agacement ! Quelqu'un vous chatouille et vous g
     <<jump Miss_Temde>>
 ===
 title: Miss_Temde
-tags: autoshow noUi
+tags:  noUi
 position: 1807.6790771484375,395.8939208984375
 ---
 << music Mysterious >>
@@ -414,10 +420,11 @@ Temde_smiling: À l'Assemblée des 4 sages
 <<jump Four_Sages>>
 ===
 title: Four_Sages
-tags: bg|circle autoshow noUi
+tags:  noUi
 position: 2023.925796508789,396.5407409667969
 colorID: 1
 ---
+<< setBackground circle >>
 << fadeOut >>
 Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre.
 Azul_happy: Un truc qui te servira également au quotidien.
@@ -428,7 +435,7 @@ Sapiens_concerned: Tu m'écoutes { $name }?
     <<jump Revelation>>
 ===
 title: Revelation
-tags: autoshow noUi
+tags:  noUi
 position: 2242.7559814453125,395.5284118652344
 ---
 Sapiens_thinking: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Un appareil électronique a besoin d'électricité pour démarrer et fonctionner. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire !
@@ -444,7 +451,7 @@ Ledai_happy: Tout à fait.
 <<jump Sommeil>>
 ===
 title: Sommeil
-tags: autoshow noUi
+tags:  noUi
 position: 2464.5450744628906,392.3604736328125
 ---
 Sapiens_thinking: Ton système biologique, comme ton palmphone, a besoin chaque nuit de recharger sa batterie.
@@ -463,7 +470,7 @@ Azul_proud: Il y a une solution de dépannage
 <<jump Sieste>>
 ===
 title: Sieste
-tags: autoshow noUi
+tags:  noUi
 position: 2686.2007751464844,394.8099365234375
 ---
 Azul_happy: Si tu n'as pas eu le temps de profiter d'une bonne nuit de sommeil, tu fais un somme !
@@ -480,7 +487,7 @@ Sapiens_happy: Tu as compris cette nouvelle leçon ?
     <<jump QCM_Recues>>
 ===
 title: QCM_Recues
-tags: autoshow noUi
+tags:  noUi
 position: 2908.9466247558594,391.5020446777344
 colorID: 1
 ---
@@ -542,7 +549,7 @@ Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Apr
     <<jump journal_mental>>!
 ===
 title: huit_heures
-tags: autoshow noUi
+tags:  noUi
 position: 3125.9331665039062,286.40415954589844
 ---
 Azul_sad: C'est ton dernier mot ?
@@ -552,7 +559,7 @@ Azul_sad: C'est ton dernier mot ?
     <<jump six_10_heures>>
 ===
 title: six_10_heures
-tags: autoshow noUi
+tags:  noUi
 position: 3341.1002807617188,392.2286071777344
 ---
 Sapiens_happy: Ah, je préfère ça. Ce qui me rappelle le temps où je...
@@ -564,9 +571,10 @@ Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter
 <<jump journal_mental>>
 ===
 title: journal_mental
-tags: bg|bedroom_night noUi
+tags: noUi
 position: 3557.0534057617188,389.2486877441406
 ---
+<< setBackground bedroom night >>
 << fadeOut >>
 //Flash !!!
 Le carré de jardin tranquille des sages a disparu subitement !

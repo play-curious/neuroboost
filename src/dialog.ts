@@ -43,7 +43,6 @@ export function isOption(
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
   private _lastNodeData: yarnBound.Metadata;
-  private _autoshowOn: boolean;
 
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
@@ -68,7 +67,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     command.fxLoops.clear();
 
-    this._autoshowOn = false;
     this.selectedOptions = [];
     this.visited = new Set();
 
@@ -190,7 +188,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       text,
       speaker,
       this.config.variableStorage.get("name"),
-      this._autoshowOn,
       () => this._advance.bind(this)(id)
     );
   }
@@ -309,28 +306,14 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this.emit("changeNodeData", oldNodeData, newNodeData);
       return;
     }
-    // By default, autoshow is off
-    this._autoshowOn = false;
+    
     let noUi: boolean = false;
-    let bg: string;
-    let bg_mood: string;
-    let character: string;
 
     for (let tag of newNodeData.tags.split(/\s+/)) {
       tag = tag.trim();
       if (tag === "") continue;
 
-      if (tag.startsWith("bg|")) {
-        if (bg) console.warn("Trying to set background twice");
-
-        [bg, bg_mood] = tag.split("|")[1].trim().split("_");
-      } else if (tag.startsWith("show|")) {
-        if (character) console.warn("Trying to set character twice");
-
-        character = tag.split("|")[1].trim();
-      } else if (tag === "autoshow") {
-        this._autoshowOn = true;
-      } else if (tag === "noUi") {
+      if (tag === "noUi") {
         noUi = true;
       } else if (tag !== "freechoice" && tag !== "subchoice") {
         console.warn("Unknown tag in node data", tag);
@@ -339,9 +322,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     if (noUi) this.graphics.hideUi();
     else this.graphics.showUi();
-
-    if (bg) this.graphics.setBackground(bg, bg_mood);
-    this.graphics.addCharacter(character);
 
     this.emit("changeNodeData", oldNodeData, newNodeData);
   }

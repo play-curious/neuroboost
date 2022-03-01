@@ -1,10 +1,11 @@
 # gauges: learning
 
 title: Start
-tags: bg|bedroom
+tags:
 colorID: 0
 position: -893,370
 ---
+<< setBackground bedroom >>
 << setTime 8:00>>
 
 << loopFX Chime_LOOP 2000 >>
@@ -23,23 +24,23 @@ Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler
     <<jump Rejet_Fred_Rewind>>
 ===
 title: Appel_Fred_Rewind
-tags: autoshow
+tags: 
 colorID: 0
 position: -592,376
 ---
-Fred_excited: Hello ! c'est Fred !
+Fred@holo_excited: Hello ! c'est Fred !
 You: Qu'est-ce que tu veux me dire cette fois-ci ?
-Fred_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin...
+Fred@holo_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin...
 You: Normal, j'ai foiré le partiel d'Atronometric Data Management.
-Fred_smiling: Yes, la bonne blague, c'est cet après-midi qu'on le passe !
+Fred@holo_smiling: Yes, la bonne blague, c'est cet après-midi qu'on le passe !
 You: Quoi ?!
-Fred_smiling: Yes, on est lundi matin. C'est ce qui est prévu.
+Fred@holo_smiling: Yes, on est lundi matin. C'est ce qui est prévu.
 You: Lundi ?! Mais c'était hier !!
-Fred_excited: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui.
+Fred@holo_happy: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui.
 You: C'est dingue ! Je rêve ou quoi ?
-Fred_smiling: No no, je t'assure que c'est la réalité, coco.
+Fred@holo_smiling: No no, je t'assure que c'est la réalité, coco.
 You: Euh...
-Fred_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
+Fred@holo_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
 You: Euh, ok...
 
 << hide >>
@@ -60,10 +61,11 @@ Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais v
     <<jump Appel_Fred_Rewind>>
 ===
 title: Phone_off_Rewind
-tags: bg|bedroom
+tags:
 colorID: 0
 position: -342,363
 ---
+<< setBackground bedroom >>
 << fadeOut >>
 Mais c'est quoi ce truc ?! On dirait que vous avez fait un bon en arrière dans le temps ! Vous allez pouvoir repasser le partiel d'Atronometric Data Management. C'est la chance du siècle !
 Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre !
@@ -74,10 +76,11 @@ Il vous reste 6 heures avant l'heure H... Aujourd'hui, vous allez montrer à Fre
 <<jump Action_List_Rewind>>
 ===
 title: Action_List_Rewind
-tags: bg|bedroom freechoice
+tags: freechoice
 colorID: 0
 position: -895,604
 ---
+<< setBackground bedroom >>
 << fadeOut >>
 << if !visited("Action_List") >>
 Que faites-vous maintenant?
@@ -100,9 +103,10 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
 << endif>>
 ===
 title: cuisine_subchoice
-tags: bg|kitchen subchoice
+tags: subchoice
 position: -319.1514720916748,-55.38755989074707
 ---
+<< setBackground kitchen >>
 << fadeOut >>
 -> Prendre le petit déjeuner
     <<jump Petit_dej_Rewind>>
@@ -111,9 +115,10 @@ position: -319.1514720916748,-55.38755989074707
     <<jump Action_List_Rewind>>
 ===
 title: bureau_subchoice
-tags: bg|desk subchoice
+tags: subchoice
 position: -993.6492929458618,-75.37680292129517
 ---
+<< setBackground desk >>
 << fadeOut >>
 -> Passer du temps sur le chat avec le pote d'une autre Université
     <<jump Chat_Rewind>>
@@ -126,9 +131,10 @@ position: -993.6492929458618,-75.37680292129517
     <<jump Action_List_Rewind>>
 ===
 title: salon_subchoice
-tags: bg|bedroom subchoice
+tags: subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
+<< setBackground bedroom >>
 -> Binger votre série TV préférée
     << fadeIn >>
     <<jump BingeTV_Rewind>>
@@ -136,10 +142,11 @@ position: -1716.8310852050781,-38.99417304992676
     <<jump Action_List_Rewind>>
 ===
 title: Lunch_Rewind
-tags: bg|kitchen
+tags:
 colorID: 7
 position: -1284,1084
 ---
+<< setBackground kitchen >>
 << fadeOut >>
 << fx EatCook >>
 
@@ -154,7 +161,7 @@ Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route !
     <<jump Test_Rewind>>
 ===
 title: Petit_dej_Rewind
-tags: bg|kitchen
+tags:
 colorID: 0
 position: -1040,831
 ---
@@ -169,7 +176,7 @@ Bon, ce n'est pas tout.
 <<jump Action_List_Rewind>>
 ===
 title: Chat_Rewind
-tags: bg|bedroom
+tags:
 colorID: 0
 position: -755,827
 ---
@@ -194,7 +201,7 @@ Vous passez deux heures à discuter de tout, mais surtout de rien.
 <<jump Action_List_Rewind>>
 ===
 title: Revision_Rewind
-tags: bg|desk
+tags:
 colorID: 0
 position: -508,824
 ---
@@ -211,10 +218,11 @@ Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à pot
 <<jump Action_List_Rewind>>
 ===
 title: BingeTV_Rewind
-tags: bg|desk
+tags:
 colorID: 0
 position: -288,823
 ---
+<< setBackground desk >>
 << fadeOut >>
 
 <bi>Pensez-vous vraiment que c'est ce que vous ont recommandé les 4 Sages de la Métacognition?</bi>
@@ -241,7 +249,7 @@ Au final vous passez trop de temps à binger votre série préférée.
 <<jump Action_List_Rewind>>
 ===
 title: Rappel_libre
-tags: bg|desk
+tags:
 colorID: 0
 position: -42,822
 ---
@@ -260,10 +268,11 @@ Vous prenez encore le temps de relire votre cours pour combler les lacunes qui v
 <<jump Action_List_Rewind>>
 ===
 title: Test_Rewind
-tags: bg|class
+tags:
 colorID: 0
 position: -1007,1085
 ---
+<< setBackground class >>
 << setTime 14:00 >>
 << fadeOut >>
 
@@ -278,7 +287,7 @@ Euphorique, vous quittez la salle et retrouvez Fred, qui vous attend à l'entré
 <<jump Post_Test_Rewind>>
 ===
 title: Post_Test_Rewind
-tags: autoshow
+tags: 
 colorID: 0
 position: -742,1087
 ---
@@ -307,7 +316,7 @@ Les résultats du test viennent de tomber...
 << endif >>
 ===
 title: Resultats_Good
-tags: autoshow
+tags: 
 colorID: 0
 position: -529,1332
 ---

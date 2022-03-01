@@ -9,6 +9,7 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import * as images from "./images";
 import * as gauge from "./gauge";
+import * as filter from "./graphics_filter";
 
 // Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
@@ -16,6 +17,10 @@ const templateSettings = {
 };
 
 const dialogRegexp = /^([a-zA-Z]+)(_([a-zA-Z]+))?:(.+)/;
+
+const maxLineLength = 68;
+
+const defilementDurationPerLetter = 25;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
   private _lastBg: string;
@@ -170,11 +175,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
     const noName = gaugesName.length === 0;
     for (const gaugeName in this._gauges) {
-      if(noName || gaugesName.includes(gaugeName))
-        gaugesName.push(gaugeName);
+      if (noName || gaugesName.includes(gaugeName)) gaugesName.push(gaugeName);
     }
-    
-    let i=0;
+
+    let i = 0;
     const gaugesTween: entity.EntityBase[] = [];
     for (const gaugeName of gaugesName) {
       const currentGauge = this._gauges[gaugeName].getGauge();
@@ -196,8 +200,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             },
             onTeardown: () => {
               currentGauge.visible = visibility;
-            }
-          })
+            },
+          }),
         ])
       );
       i++;
@@ -234,14 +238,13 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     text: string,
     name: string,
     playerName: string,
-    autoShow: boolean,
     onBoxClick: () => unknown
   ) {
     // Use underscore template to interpolate variables
     const interpolatedText = _.template(
       text,
       templateSettings
-    )(this.config.variableStorage.data);
+    )(this.config.variableStorage.data).trim();
 
     let speaker: string, mood: string, dialog: string;
     if (name) [speaker, mood] = name.split("_");
@@ -253,7 +256,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._dialogSpeaker.visible = true;
       this._nodeDisplay.addChild(
         this.makeText(
-          speaker.toLowerCase() === "you" ? playerName : speaker,
+          speaker.toLowerCase() === "you" ? playerName : speaker.split('@')[0],
           {
             fontFamily: "Jura",
             fill: "white",
@@ -270,8 +273,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       );
 
       const speakerLC = speaker.toLowerCase();
-      const moodChanged = mood?.toLowerCase() !== this._lastMood;
-      if ((autoShow || moodChanged) && speakerLC !== "you") {
+      if (speakerLC !== "you") {
         this.addCharacter(speakerLC, mood?.toLowerCase());
       }
     } else {
@@ -295,8 +297,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           fontFamily: "Ubuntu",
           fontSize: 40,
           fontStyle: speaker ? "normal" : "italic",
-          wordWrap: true,
-          wordWrapWidth: 1325,
           leading: 10,
           isSpeaker: !!speaker,
         },
@@ -305,8 +305,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       this._nodeDisplay.addChild(dialogBox);
 
-      const defilementDurationPerLetter = 25;
-      const baseText = (text || interpolatedText).trim();
+      // Manually split text into lines to avoid words "jumping" from line to line
+      const baseText = splitIntoLines(interpolatedText, maxLineLength);
 
       const writer = this.makeFxLoop(
         `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
@@ -693,7 +693,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
 
-    console.log(this._lastCharacter, this._lastMood, "->", character, mood);
+    //console.log(this._lastCharacter, this._lastMood, "->", character, mood);
 
     // Remove characters
     const characterChanged = character !== this._lastCharacter;
@@ -702,6 +702,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     // Register last character & mood
     this._lastCharacter = character;
     this._lastMood = mood;
+
+    let isHolo: string;
+    [character, isHolo] = character.split('@');
 
     // If character or character not you
     if (character && character !== "you") {
@@ -758,6 +761,17 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._characterLayer.addChild(characterCE.container);
       characterCE.container.setTransform(250, 80, 1.1, 1.1);
       //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
+
+      // Handle holographic filter
+      if(isHolo === "holo") {
+        const holo = filter.newHolograph();
+        const glitch = filter.newGlitch();
+        const adjust = filter.newAdjustment();
+        const glow = filter.newGlow();
+        characterCE.container.filters = [holo, glow, adjust, glitch];
+        this._activateChildEntity(filter.wrapHolograph(holo as any));
+        this._activateChildEntity(filter.wrapGlitchHolo(glitch as any));
+      }
 
       // If character changed, do animation
       if (characterChanged) {
@@ -822,35 +836,61 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   fade(duration: number = 1000, color: string = "#000000") {
-
-    this._activateChildEntity(new entity.EntitySequence([
-      new entity.FunctionCallEntity(() => {
-        this._fade.tint = eval(color.replace("#", "0x"));
-        this._fade.visible = true;
-        this._fade.alpha = 1;
-      }),
-      new entity.WaitingEntity(duration/4),
-      // new tween.Tween({
-      //   duration: duration,
-      //   from: 0,
-      //   to: 1,
-      //   onUpdate: (value) => {
-      //     this._fade.alpha = value;
-      //   },
-      // }),
-      new tween.Tween({
-        duration: duration,
-        from: 1,
-        to: 0,
-        onUpdate: (value) => {
-          this._fade.alpha = value;
-        },
-      }),
-      new entity.FunctionCallEntity(() => {
-        this._fade.visible = false;
-        this._fade.alpha = 0;
-      }),
-    ]));
-
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        new entity.FunctionCallEntity(() => {
+          this._fade.tint = eval(color.replace("#", "0x"));
+          this._fade.visible = true;
+          this._fade.alpha = 1;
+        }),
+        new entity.WaitingEntity(duration / 4),
+        // new tween.Tween({
+        //   duration: duration,
+        //   from: 0,
+        //   to: 1,
+        //   onUpdate: (value) => {
+        //     this._fade.alpha = value;
+        //   },
+        // }),
+        new tween.Tween({
+          duration: duration,
+          from: 1,
+          to: 0,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new entity.FunctionCallEntity(() => {
+          this._fade.visible = false;
+          this._fade.alpha = 0;
+        }),
+      ])
+    );
   }
+}
+
+function splitIntoLines(input: string, lineLength: number): string {
+  // Manually split text into lines to avoid words "jumping" from line to line
+  let result = "";
+  let pos = 0;
+  while (pos < input.length) {
+    if (pos + lineLength >= input.length) {
+      // Just add the remaining text
+      result += input.slice(pos);
+      pos += lineLength;
+    } else {
+      // Find the last space before the end of the line
+      const lastSpacePos = input.lastIndexOf(" ", pos + lineLength);
+      if (lastSpacePos === -1) {
+        // No spaces (really big word?)
+        result += input.slice(pos, pos + lineLength);
+        pos += lineLength;
+      } else {
+        // Replace the last space with a newline, continue algorithm
+        result += input.slice(pos, lastSpacePos) + "\n";
+        pos = lastSpacePos + 1;
+      }
+    }
+  }
+  return result;
 }

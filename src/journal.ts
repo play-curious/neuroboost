@@ -1,13 +1,9 @@
 import * as PIXI from "pixi.js";
-
-import { GlitchFilter } from "@pixi/filter-glitch";
-import { CRTFilter } from "pixi-filters";
-
 import * as jsPdf from "jspdf";
 
 import * as entity from "booyah/src/entity";
-import * as tween from "booyah/src/tween";
 
+import * as filter from "./graphics_filter";
 import * as variable from "./variable";
 import * as extension from "./extension";
 import { couldStartTrivia } from "typescript";
@@ -60,8 +56,8 @@ const options: {[key: string]: any} = {
 };
 
 export class JournalScene extends extension.ExtendedCompositeEntity {
-  private _glitch: PIXI.Filter & GlitchFilter;
-  private _holo: PIXI.Filter & CRTFilter;
+  private _glitch: filter.Glitch;
+  private _holo: filter.Holograph;
   private _container: PIXI.Container;
   private _htmlContainer: HTMLElement;
 
@@ -72,76 +68,21 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
-    this._glitch = new GlitchFilter({
-      red: [0, 0],
-      blue: [0, 0],
-      green: [0, 0],
-      offset: 0,
-      slices: 10,
-    }) as any;
-    this._holo = new CRTFilter({
-      curvature: 0,
-      lineWidth: 0.5,
-      lineContrast: 0.3,
-      noise: 0.15
-    }) as any;
 
     this._container = new PIXI.Container();
-    this._container.filters = [this._glitch, this._holo];
     this.config.container.addChild(this._container);
 
     //this._graphics.setBackground("bedroom", "night")
     this._container.addChild(this.makeSprite("images/ui/journal_bg.png"));
 
-    const shifting = 5;
-    const frequency = 2000;
+    // Handle filters
+    this._holo = filter.newHolograph();
+    this._glitch = filter.newGlitch();
+    this._container.filters = [this._glitch, this._holo];
+    this._activateChildEntity(filter.wrapHolograph(this._holo as any));
+    this._activateChildEntity(filter.wrapGlitch(this._glitch as any));
 
-    this._activateChildEntity(
-      new entity.FunctionalEntity({
-        update: () => {
-          this._holo.seed = Math.random();
-          this._holo.time = (this._holo.time + 0.1) % 20;
-        }
-      })
-    )
-
-    this._activateChildEntity(
-      new entity.EntitySequence(
-        [
-          () =>
-            new entity.WaitingEntity(
-              Math.floor(10 + Math.random() * frequency)
-            ),
-          () =>
-            new entity.FunctionCallEntity(() => {
-              this._glitch.red = [
-                Math.floor(Math.random() * shifting),
-                Math.floor(Math.random() * shifting),
-              ];
-              this._glitch.green = [
-                Math.floor(Math.random() * shifting),
-                Math.floor(Math.random() * shifting),
-              ];
-              this._glitch.offset = Math.floor(1 + Math.random() * 2);
-              this._glitch.slices = Math.floor(10 + Math.random() * 15);
-            }),
-          () =>
-            new entity.WaitingEntity(
-              Math.floor(10 + Math.random() * (frequency / 4))
-            ),
-          () =>
-            new entity.FunctionCallEntity(() => {
-              this._glitch.red = [0, 0];
-              this._glitch.green = [0, 0];
-              this._glitch.offset = 0;
-            }),
-        ],
-        {
-          loop: true,
-        }
-      )
-    );
-
+    // Handle html
     const htmlLayer = document.getElementById("html-layer");
     this._htmlContainer = document.createElement("div");
     htmlLayer.appendChild(this._htmlContainer);
