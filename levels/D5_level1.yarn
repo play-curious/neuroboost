@@ -45,15 +45,15 @@ colorID: 0
 position: -2531,-441
 ---
 You: Bonjour mamie ! Pourquoi je ne te vois pas ?
-Mamie: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir...
+Mamie@holo_shadow: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir...
 You: ah bon ?
-Mamie: Je suis à l'hôpital et on m'a branchée sur des dizaines de câbles et de moniteurs. Je ressemble plus à une véhicule accidenté qu'à une grand-mère. 
+Mamie@holo_shadow: Je suis à l'hôpital et on m'a branchée sur des dizaines de câbles et de moniteurs. Je ressemble plus à une véhicule accidenté qu'à une grand-mère. 
 You: Qu'est-ce qui t'es arrivée ?
-Mamie: Rien de grave, chouchou. Tes parents t'ont rien dit ?
+Mamie@holo_shadow: Rien de grave, chouchou. Tes parents t'ont rien dit ?
 You: Heu non...
-Mamie: Ah... Bien sûr...
+Mamie@holo_shadow: Ah... Bien sûr...
 You: Quoi ?
-Mamie: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux... 
+Mamie@holo_shadow: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux... 
 You: Ton coeur ?! Mamie...
 Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire ! 
 Du coup, votre aïeule coupe court à la conversation. Vous n'en saurez pas plus. Quel choc !! 
@@ -96,13 +96,13 @@ position: -1710,-324
 ---
 Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous appuyez sur le bouton "appel". Votre mère décroche :
 
-Maman: Bibi. Tu es au courant ?
+Maman@holo_shadow: Bibi. Tu es au courant ?
 You: Oui. Mamie m'a appelé. Qu'a-t-elle ?
-Maman: Elle a fait une crise cardiaque. On l'a admise d'urgence à l'hôpital. Son état est stable mais on doit l'opérer.
+Maman@holo_shadow: Elle a fait une crise cardiaque. On l'a admise d'urgence à l'hôpital. Son état est stable mais on doit l'opérer.
 You: Pourquoi ne m'avoir rien dit ?
-Maman: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus.
+Maman@holo_shadow: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus.
 You: Merci. Du coup, je suis plus stressé..
-Maman: Bibi, je ne pensais pas te... 
+Maman@holo_shadow: Bibi, je ne pensais pas te... 
 You: J'ai compris. Bye !
 Vous raccrochez, encore plus énervé. Cette histoire sent de plus en plus mauvais...
 << addToGauge stress 10 >>
@@ -147,17 +147,17 @@ colorID: 0
 position: -826,-398
 ---
 Vous parcourez le journal d'appel de votre palmphone, vous y trouvez facilement son numéro et vous l'appeler.
-Fred: Hey ! C'est toi qui m'appelles for once !
+Fred@holo_excited: Hey ! C'est toi qui m'appelles for once !
 You: Ouais... Hum... Heu...
-Fred: Ça va pas ?
+Fred@holo_smiling: Ça va pas ?
 You: C'est ma grand-mère. Je viens d'apprendre qu'on va l'opérer du coeur...
-Fred: Gosh ! C'est pas nice comme nouvelle. Je comprends...
+Fred@holo_surprised: Gosh ! C'est pas nice comme nouvelle. Je comprends...
 You: Je pense plus qu'à ça.
-Fred: Il faut te vider la tête ! Trust me !
+Fred@holo_smiling: Il faut te vider la tête ! Trust me !
 You: En buvant des shots de wodga ?!
-Fred: Non, surtout pas d'alcool ! Viens avec moi, on va se défouler à la salle de sport !
+Fred@holo_excited: Non, surtout pas d'alcool ! Viens avec moi, on va se défouler à la salle de sport !
 You: Sais pas...
-Fred: Si, follow me...
+Fred@holo_excited: Si, follow me...
 
 -> Accepter la proposition de Fred 
     <<jump Sport_Stress>>
@@ -181,19 +181,19 @@ colorID: 0
 position: -554,-240
 ---
 Revêtu d'un exosquelette tout-terrain, Fred vous attend.
-Fred: Yes yes ! Te voilà. Mets ta combi !
+Fred_excited: Yes yes ! Te voilà. Mets ta combi !
 Il vous balance un exosquelette que vous rattrapez in-extremis au vol. Vous enfilez la combinaison et rejoignez Fred sur la piste.
 You: Et qu'est-ce qu'on fait maintenant ?
-Fred: on se défoule autant qu'on peut ! 
+Fred_smiling: on se défoule autant qu'on peut ! 
 You: Heu...
 Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. Ravi de son coup, Fred vous tend la main pour vous redresser. Vous la saisissez, l'agrippez et la tirez pour le faire chuter à son tour ! 
 Fred, beau joueur, se laisse tomber à vos côtés. La suite : vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! Vous imaginez que Fred incarne votre peur, votre frustration. Vous lui envoyez toute la colère et la rage contenue en vous ! 
 Heureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. Vous avez la langue sèche et les membres engourdis.
-Fred: Alors ? Tu te sens mieux ?
+Fred_smiling: Alors ? Tu te sens mieux ?
 You: Crevé...
-Fred: Cool et...
+Fred_smiling: Cool et...
 You: Toujours aussi véner...
-Fred: Damned.
+Fred_sad: Damned.
 
 << removeFromGauge sleep 40 >>
 
@@ -212,13 +212,13 @@ colorID: 0
 position: -593,-581
 ---
 You: Nan... Je crois pas... Je vais 
-Fred: Au contraire, faut que tu penses à autre chose !
+Fred@holo_excited: Au contraire, faut que tu penses à autre chose !
 You: Pas envie...
-Fred: D'accord, alors on joue en ligne !
+Fred@holo_happy: D'accord, alors on joue en ligne !
 You: Naan
-Fred: Attention, je te défie à Call of Study ! Tout le METAVERSE le saura !
+Fred@holo_smiling: Attention, je te défie à Call of Study ! Tout le METAVERSE le saura !
 You: Tu fais chier, Fred...
-Fred: C'est pour ça que je suis ton pote... ah ah...
+Fred@holo_smiling: C'est pour ça que je suis ton pote... ah ah...
 Vous grognez et vous pestez, cependant, vous lancez le serveur GameStream. Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred. Son skin est aujourd'hui fuschia et orange fluo, c'est vraiment laid. 
 Bon, c'est facile à repérer et viser. Vous respirez un bon coup et plongez dans Crawl of Study. C'est un MOBA, se situant dans une reconstitution 3D de l'Académie d'Omniscience et de Polytechnologie Universelle. 
 Le gameplay mélange Plateformer en mode Parkour et TPS en mode athlète grec néo-antique. Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser. Pour autant, cela ne réduit pas votre trouble. 
@@ -237,17 +237,17 @@ colorID: 0
 position: -2091,70
 ---
 Vous retrouvez devant l'entrée de la salle de classe, Fred. Ce dernier vous regarde avec perplexité.
-Fred: Damned, ça n'a pas l'air d'aller. Tu as le visage blême.
+Fred_surprised: Damned, ça n'a pas l'air d'aller. Tu as le visage blême.
 You: Ça va, ça va...
 //if le joueur n'a pas déjà joué avec Fred ce matin
 //Fred: Ah bon ? Hier, tu crachais le feu. Aujourd'hui, tu es glacé.
 // if le joueur a déjà joué Moba ou Boxe avec Fred
 <<if visited("Sport_Stress")>>
-Fred: Ah bon ? J'ai bien l'impression que notre séance de sport ne t'a pas réussi. 
+Fred_sad: Ah bon ? J'ai bien l'impression que notre séance de sport ne t'a pas réussi. 
 You: Ça va, je t'assure...
 <<endif>>
 Votre palmphone vibre. C'est votre mère qui tente de vous rejoindre. Fred vous fixe des yeux:
-Fred: T'es sûr ? Ça va ?
+Fred_sad: T'es sûr ? Ça va ?
 You: Attends...
 
 -> Prendre l'appel 
@@ -262,29 +262,29 @@ position: -1799,-1
 ---
 Vous collez le combiné à votre oreille:
 You: Maman ?
-Maman: Oui, Bibi
+Maman@holo_shadow: Oui, Bibi
 Heuah.... Manquait plus que votre mère vous appelle encore "Bibi". Vous n'êtes plus un nourisson !
 You: Dis-moi.
-Maman: C'est mamie.
+Maman@holo_shadow: C'est mamie.
 You: Quoi encore ?
-Maman: Elle est sortie du bloc.
+Maman@holo_shadow: Elle est sortie du bloc.
 You: Et alors ?
-Maman: Ça va... Mais...
+Maman@holo_shadow: Ça va... Mais...
 You: Mais ?
-Maman: On l'a transféré en salle de réanimation.
+Maman@holo_shadow: On l'a transféré en salle de réanimation.
 You: Ça veut dire quoi ?
-Maman: Elle n'est pas sortie du coma...
+Maman@holo_shadow: Elle n'est pas sortie du coma...
 You: Nom de....
-Maman: Rassure-toi { $name }, ta mamie est une personne forte. Dure comme du béton... armé... Elle s'en sortira..
+Maman@holo_shadow: Rassure-toi { $name }, ta mamie est une personne forte. Dure comme du béton... armé... Elle s'en sortira..
 You: Je te laisse, on va en examen !
-Maman: Courage, Bibi...
+Maman@holo_shadow: Courage, Bibi...
 En clair, les choses ne s'annoncent bien. Vraiment pas bien.  
-
+<< hide >>
 << addToGauge stress 40>>
 
-Fred: Alors? Tu as une figure de déterré...
+Fred_sad: Alors? Tu as une figure de déterré...
 You: Tu crois pas si bien dire...
-Fred: Pardon ?
+Fred_surprised: Pardon ?
 
 -> Tout raconter à Fred 
     <<jump Fred_implorer>>
@@ -297,12 +297,12 @@ colorID: 0
 position: -1813,229
 ---
 Vous balayez du doigt l'appel. 
-Fred: Mais qu'est-ce qui se passe ?
+Fred_surprised: Mais qu'est-ce qui se passe ?
 You: C'est compliqué.
 Votre palmphone gigote à nouveau ! Votre mère a laissé un message sur votre répondeur. Vous ne pouvez vous empêcher fixer votre appareil.
 Vous entrez dans le journal de messagerie et demandez la conversion textuelle du message :
 L'opération a été menée à bien, mais votre grand-mère a fait un malaise. Elle a été transférée en service de réanimation critique...
-Fred: Alors ?
+Fred_sad: Alors ?
 You: Heu...
 << addToGauge stress 30>>
 
@@ -316,11 +316,11 @@ tags:
 colorID: 0
 position: -1478,261
 ---
-Fred: Dis-moi.
+Fred_happy: Dis-moi.
 You: Puisque tu veux savoir...
 Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Elle a été hospitalisée d'urgence. Elle vient de subir une opération. 
 Malheureusement, ça n'est pas bien passé. Elle a été transféré en réanimation. Elle est encore dans le coma... Vous êtes tellement stressé, vous monopolisez la parole.
- Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver des mots doux et réconfortants... L'horloge automatique sonne! C'est déjà l'heure d'entrer en salle d'examen! Trop nul... 
+Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver des mots doux et réconfortants... L'horloge automatique sonne! C'est déjà l'heure d'entrer en salle d'examen! Trop nul... 
 << AddToGauge stress 10 >>
 
 -> Entrer dans la salle 
@@ -331,13 +331,13 @@ tags:
 colorID: 0
 position: -1459,-15
 ---
-Fred: Dis-moi.
+Fred_happy: Dis-moi.
 You: Rien.
-Fred: { $name}...
+Fred_smiling: { $name}...
 You: Noon...
-Fred: Yes Yes...
+Fred_smiling: Yes Yes...
 You: Tais-toi !
-Fred: Ok, si tu le prends comme ça...
+Fred_sad: Ok, si tu le prends comme ça...
 L'horloge automatique sonne! Il est l'heure d'entrer dans la salle. L'examen va commencer...
 
 -> Entrer dans la salle 
@@ -362,9 +362,9 @@ colorID: 0
 position: -1146,346
 ---
 Vous retrouvez dehors Fred. Il vous fixe d'un air encore plus ahuri.
-Fred: Damned de damned! Si tu voyais ta figure dans une glace...
+Fred_excited: Damned de damned! Si tu voyais ta figure dans une glace...
 You: Non merci...
-Fred: Tu as foiré toi aussi ?
+Fred_surprised: Tu as foiré toi aussi ?
 You: S'il n'y avait que ça...
 Fred vous avoue ne pas être content de sa performance... Hélas, ce n'est ni le jour ni l'heure. Vous vous fichez de votre score. De toute manière, vous êtes entré de plain-pied dans le cercle vicieux de la loi de Murphy. Tout ne peut aller que de mal en pis...
 Vous pensez à votre grand-mère. Vous ne pensez qu'à ça. Autant vous dire que vous n'avez même pas l'envie d'éclater de rire quand les résultats s'affichent au tableau. Vous n'avez pas la moyenne : un petit <b>D</b>. Fred n'a eu que <b>C+</b>. Il a l'air déçu.
@@ -434,11 +434,11 @@ position: -1421,606
 Vous broyez du noir dans le silence et l'obscurité relative de votre chambre connectée. Vous ne pouvez pas vous empêchez de fixer les différents curseurs lumineux qui scintillent ou clignotent dans la pièce. 
 Vos paupières sont lourdes, elles refusent néanmoins de se refermer... Les minutes, les heures passent... Puis... le décompte du temps vous échappe... Quand...
 << show Ledai>>
-Ledai: Bonsoir { $name }.
+Ledai_happy: Bonsoir { $name }.
 You: Heiiiin...
-Ledai: Suis-moi. On va te réparer ton moteur émotionnel...
+Ledai_explaining: Suis-moi. On va te réparer ton moteur émotionnel...
 You: Ahhhh... Heu...
-Ledai: Allez...
+Ledai_happy: Allez...
 
 -> Suivre Ledai 
     <<jump Assemblee_Sages>>
@@ -463,16 +463,16 @@ position: -2849,698
 Vous voilà de nouveau à l'Assemblée des Sages. Cet endroit normalement si verdoyant et si paisible. Mais ce soir, vous voyez tout en gris, voire en noir. Même ce paradis vous semble triste et éteint. 
 D'autant que vous ne voyez pas en quoi les experts de la métacognition pourraient aider votre grand-mère à sortir du coma.
 You: Je vois pas ce que je fais là. C'est ma mamie qui va mal, pas moi.
-Ledai: Au contraire, tu ne raisonne pas positivement et rationnellement.
+Ledai_explaining: Au contraire, tu ne raisonne pas positivement et rationnellement.
 You: Je suis surtout pas une machine comme vous !
-Azul: Ce n'est pas gentil pour Ledai. 
+Azul_sad: Ce n'est pas gentil pour Ledai. 
 You: Ah bon ?
-Azul: Il est sincère. Tu as besoin d'aide...
+Azul_sad: Il est sincère. Tu as besoin d'aide...
 You: Vous allez m'apprendre quoi cette fois ?
-Azul: À gérer tes émotions.
-Temde: À prévoir tout, même l'imprévisible.
-You: C'est ça ouais.
-Sapiens: Tss... Quel manque de confiance dans note sagesse et notre expertise... 
+Azul_happy: À gérer tes émotions.
+Temde_cheerful: À prévoir tout, même l'imprévisible.
+You: C'est ça, ouais.
+Sapiens_angry: Tss... Quel manque de confiance dans note sagesse et notre expertise... 
 
 -> Balivernes! 
     <<jump LeStress>>
@@ -482,17 +482,17 @@ tags:  noUi
 colorID: 0
 position: -2497,778
 ---
-Sapiens: Tu t'égares. L'émotion t'empêche de raisonner froidement. 
-Azul: Tu es stressé, énervé, angoissé, déboussolé.
-Sapiens: Tu dois reprendre le contrôle de ton système nerveux central !
-Temde: Tu dois surtout lâcher prise, laisser les choses se faire. Tu n'y peux rien. Tu ne contrôles rien.
-Azul: Tu dois te recentrer sur l'essentiel. Toi et le moment présent. C'est là-dessus que tu peux agir. Pas plus, pas moins.
+Sapiens_thinking: Tu t'égares. L'émotion t'empêche de raisonner froidement. 
+Azul_sad: Tu es stressé, énervé, angoissé, déboussolé.
+Sapiens_thinking: Tu dois reprendre le contrôle de ton système nerveux central !
+Temde_sad: Tu dois surtout lâcher prise, laisser les choses se faire. Tu n'y peux rien. Tu ne contrôles rien.
+Azul_happy: Tu dois te recentrer sur l'essentiel. Toi et le moment présent. C'est là-dessus que tu peux agir. Pas plus, pas moins.
 You: Quoi ?! Je comprends rien...
-Temde: Ta grand-mère traverse une épreuve difficile. C'est un fait. Malheureusement, c'est son épreuve, pas la tienne.
+Temde_smiling: Ta grand-mère traverse une épreuve difficile. C'est un fait. Malheureusement, c'est son épreuve, pas la tienne.
 You: Quoi ?! Vous me demandez de l'ignorer, d'agir en égoïste ?!
 Agacé, vous sautez sur place! Le sang vous monte à la tête...
-Sapiens: Suffit !
-Azul: Calme-toi et écoute. Fais-nous confiance 
+Sapiens_angry: Suffit !
+Azul_sad: Calme-toi et écoute. Fais-nous confiance 
 <<jump Frustration>>
 ===
 title: Frustration
@@ -501,18 +501,18 @@ colorID: 0
 position: -2241,797
 ---
 You: J'écoute...
-Azul: C'est normal et c'est bien que tu penses à elle. La médecine a fait tout ce qu'elle pouvait pour l'aider. Tes pensées et celles de tes parents sont à son chevet. Maintenant, c'est à ta grand-mère de faire le reste du chemin. Seule. Tu n'as aucune prise sur cet événement. 
+Azul_happy: C'est normal et c'est bien que tu penses à elle. La médecine a fait tout ce qu'elle pouvait pour l'aider. Tes pensées et celles de tes parents sont à son chevet. Maintenant, c'est à ta grand-mère de faire le reste du chemin. Seule. Tu n'as aucune prise sur cet événement. 
 You: Pardon ?
-Ledai: On ne peut pas tout contrôler dans une expérience de vie. Contente-toi de maîtriser ce que tu peux modifier. Tes émotions par exemple.
-Sapiens: Ton stress n'aidera pas ta grand-mère à aller mieux. Par contre il t'empêche de voir clair et de rester lucide.
+Ledai_explaining: On ne peut pas tout contrôler dans une expérience de vie. Contente-toi de maîtriser ce que tu peux modifier. Tes émotions par exemple.
+Sapiens_concerned: Ton stress n'aidera pas ta grand-mère à aller mieux. Par contre il t'empêche de voir clair et de rester lucide.
 You: C'est vous qui êtes malades !
-Azul: Détrompes-toi, j'ai vécu des événements difficiles comme toi. Ce que j'ai appris, c'est de ne pas me laisser envahir par ces idées noires qui me font du mal. 
-Ledai: Crois-tu que ton stress va guérir ta grand-mère ?
+Azul_sad: Détrompes-toi, j'ai vécu des événements difficiles comme toi. Ce que j'ai appris, c'est de ne pas me laisser envahir par ces idées noires qui me font du mal. 
+Ledai_doubtful: Crois-tu que ton stress va guérir ta grand-mère ?
 You: Heu... Ben...
-Ledai: Alors, cesse d'y penser !
-Temde: Ledai a raison. Tu ne peux pas faire plus. À part attendre la suite.
+Ledai_doubtful: Alors, cesse d'y penser !
+Temde_thinking: Ledai a raison. Tu ne peux pas faire plus. À part attendre la suite.
 You: Et si ?
-Azul: Arrête de voir les choses en noir. Tu verras bien.
+Azul_happy: Arrête de voir les choses en noir. Tu verras bien.
 
 -> Comment? 
     <<jump Stress_cognition>>
@@ -522,18 +522,18 @@ tags:  noUi
 colorID: 0
 position: -1890,847
 ---
-Sapiens: Le stress est un carburant utile dans les situations de péril et de danger immédiat. Il permet de réagir vite et intensément. Toutefois, quand, comme toi, on se retrouve dans une configuration où l'on a aucune prise possible sur les paramètres et les variables... 
-Sapiens: Cela devient insupportable. Tout ce carburant, cette énergie se retourne contre nous. Puisqu'on ne peut la brûler en agissant concrètement, elle nous consume de l'intérieur.
+Sapiens_thinking: Le stress est un carburant utile dans les situations de péril et de danger immédiat. Il permet de réagir vite et intensément. Toutefois, quand, comme toi, on se retrouve dans une configuration où l'on a aucune prise possible sur les paramètres et les variables... 
+Sapiens_thinking: Cela devient insupportable. Tout ce carburant, cette énergie se retourne contre nous. Puisqu'on ne peut la brûler en agissant concrètement, elle nous consume de l'intérieur.
 You: Vous voulez dire que le stress est une sorte de fuel ?
-Ledai: Tout à fait.
+Ledai_happy: Tout à fait.
 You: Et c'est quoi le rapport avec l'apprentissage ?
-Azul: Ce carburant qu'est le stress fait monter la température dans ton esprit. Ton cerveau devient incapable de gérer le présent.
+Azul_happy: Ce carburant qu'est le stress fait monter la température dans ton esprit. Ton cerveau devient incapable de gérer le présent.
 You: Comment ça ?
-Azul: Imagine que tu roules sur une autoroute. Soudainement, ton accélérateur casse alors que tu appuies dessus. La vitesse augmente de plus en plus, sans but ni fin. Au début, tu peux encore arriver à contrôler ton véhicule. Mais plus celui-ci accélère, plus cela devient difficile. 
-Azul: À un moment donné, cela devient même ingérable. Tu finis par perdre le contrôle de ton engin. 
+Azul_happy: Imagine que tu roules sur une autoroute. Soudainement, ton accélérateur casse alors que tu appuies dessus. La vitesse augmente de plus en plus, sans but ni fin. Au début, tu peux encore arriver à contrôler ton véhicule. Mais plus celui-ci accélère, plus cela devient difficile. 
+Azul_sad: À un moment donné, cela devient même ingérable. Tu finis par perdre le contrôle de ton engin. 
 You: C'est ça le stress ? 
-Ledai: Le temps semble s'écouler de plus en plus vite. Au point où tu n'arrives plus à traiter les informations.
-Sapiens: Tu ne peux plus à la fois analyser, décider et choisir ton mode d'action.
+Ledai_explaining: Le temps semble s'écouler de plus en plus vite. Au point où tu n'arrives plus à traiter les informations.
+Sapiens_thinking: Tu ne peux plus à la fois analyser, décider et choisir ton mode d'action.
 You: Et comment faire pour combattre le stress ?
 
 <<jump Destress>>
@@ -543,17 +543,17 @@ tags:  noUi
 colorID: 0
 position: -1609,900
 ---
-Azul: Réduire la vitesse.
-Ledai: Ramener ton stress à un niveau suffisamment bas pour qu'il ne t'empêche pas de raisonner.
+Azul_proud: Réduire la vitesse.
+Ledai_explaining: Ramener ton stress à un niveau suffisamment bas pour qu'il ne t'empêche pas de raisonner.
 You: Et concrètement ?
-Temde: Entreprendre des actions qui te permettent de reprendre le contrôle de tes pensées.
+Temde_smiling: Entreprendre des actions qui te permettent de reprendre le contrôle de tes pensées.
 You: C'est-à-dire ?
-Sapiens: Toute action qui mobilise activement et positivement ton attention.
-Azul: Et aussi toute action qui relâche la pression sur ton mental.
+Sapiens_happy: Toute action qui mobilise activement et positivement ton attention.
+Azul_happy: Et aussi toute action qui relâche la pression sur ton mental.
 You: Ouais. Tout ça reste très théorique.
-Temde: Par exemple toute activité agréable qui demande attention ou concentration.
+Temde_smiling: Par exemple toute activité agréable qui demande attention ou concentration.
 You: Lesquelles ?
-Azul: Jouer de la musique, chanter, dessiner, danser avec entrain. Le sport, quant il est pratiqué de manière sereine et consciente. La méditation...
+Azul_happy: Jouer de la musique, chanter, dessiner, danser avec entrain. Le sport, quant il est pratiqué de manière sereine et consciente. La méditation...
 
 -> C'est tout? 
     <<jump Lacher_prise>>
@@ -563,12 +563,12 @@ tags:  noUi
 colorID: 0
 position: -1289,866
 ---
-Sapiens: L'important est que ton engin cérébral évacue cette énergie négative d'une manière et d'une autre.
-Ledai: Et surtout qu'il arrête d'en produire à nouveau.
-Temde: Ces idées noires qui tournent en boucle te polluent la tête. Elles te rongent de l'intérieur.
-Azul: Il faut les laisser sortir de ta tête...
+Sapiens_thinking: L'important est que ton engin cérébral évacue cette énergie négative d'une manière et d'une autre.
+Ledai_explaining: Et surtout qu'il arrête d'en produire à nouveau.
+Temde_thinking: Ces idées noires qui tournent en boucle te polluent la tête. Elles te rongent de l'intérieur.
+Azul_happy: Il faut les laisser sortir de ta tête...
 You: OK. Ça a l'air si simple, à vous écouter. Pourtant, je me sens si mal... Et j'ai essayé des trucs, ça n'a rien donné.
-Sapiens: Ne t'inquiète pas. Nous n'en avons pas fini. Je vais encore quelques questions Quizz pour m'assurer que tu as bien compris.
+Sapiens_concerned: Ne t'inquiète pas. Nous n'en avons pas fini. Je vais encore quelques questions Quizz pour m'assurer que tu as bien compris.
 Azul: Comment répondre de manière consciente et sereine à la peur, à l'angoisse, au stress.
 
 -> Prêt? 
@@ -579,9 +579,9 @@ tags:  noUi
 colorID: 0
 position: -1238,1170
 ---
-Sapiens: Je t'ai dit qu'il te faut pratiquer une activé qui mobilise ton attention... immédiate. Azul t'a énuméré quelques exemples d'actions utiles pour réduire le stress. Tu t'en souviens?
+Sapiens_thinking: Je t'ai dit qu'il te faut pratiquer une activé qui mobilise ton attention... immédiate. Azul t'a énuméré quelques exemples d'actions utiles pour réduire le stress. Tu t'en souviens?
 You: Oui.
-Sapiens: Parfait. Alors, pour réduire ton stress, dois-tu:
+Sapiens_happy: Parfait. Alors, pour réduire ton stress, dois-tu:
 
 -> Te concentrer intensément et écraser à l'aide de ta volonté tes mauvaises pensées? 
     <<jump Meditation_No>>
@@ -593,14 +593,14 @@ tags:  noUi
 colorID: 0
 position: -1492,1185
 ---
-Sapiens: Mauvaise réponse ! S'il suffisait d'appuyer sur un bouton pour supprimer le stress, ça se saurait...
-Azul: Ce que dire Master Sapiens, c'est que la volonté, la pensée rationnelle n'est pas forcément la mieux à même de combattre les émotions, comme le stress.
+Sapiens_angry: Mauvaise réponse ! S'il suffisait d'appuyer sur un bouton pour supprimer le stress, ça se saurait...
+Azul_proud: Ce que veux dire Master Sapiens, c'est que la volonté, la pensée rationnelle n'est pas forcément la mieux à même de combattre les émotions, comme le stress.
 You: Je fais comment alors ?
-Master: La méditation en pleine conscience.
+Sapiens_thinking: La méditation en pleine conscience.
 You: Ça veut dire quoi au juste la pleine conscience ?
-Azul: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négative. Tu le fais en pleine conscience tu ne dors pas. Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental.
+Azul_happy: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négative. Tu le fais en pleine conscience tu ne dors pas. Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental.
 You: Ah bon ?
-Azul: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent...
+Azul_happy: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent...
 You: Ahhh. D'accord...
 
 -> Question suivante 
@@ -611,11 +611,11 @@ tags:  noUi
 colorID: 0
 position: -1337,1489
 ---
-Sapiens: Parfait! C'est la méditation en pleine conscience.
+Sapiens_happy: Parfait! C'est la méditation en pleine conscience.
 You: Ça veut dire quoi au juste la pleine conscience?
-Azul: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négative. Tu le fais en pleine conscience, tu ne dors pas. Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental.
+Azul_happy: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négative. Tu le fais en pleine conscience, tu ne dors pas. Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental.
 You: Ah bon ?
-Azul: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent...
+Azul_happy: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent...
 You: Ouaaah... ça a l'air bien...
 
 -> Question suivante 
@@ -626,7 +626,7 @@ tags:  noUi
 colorID: 0
 position: -1755,1393
 ---
-Sapiens: Voyons si tu vas trouver la bonne réponse. Pour réduire ton stress, tu peux également agir de manière physique et tangible.
+Sapiens_thinking: Voyons si tu vas trouver la bonne réponse. Pour réduire ton stress, tu peux également agir de manière physique et tangible.
 
 -> En imaginant que le sac de frappe sur lequel tu tapes représente la cause de ta frustration 
     <<jump Sport_No>>
@@ -638,11 +638,11 @@ tags:  noUi
 colorID: 0
 position: -2038,1180
 ---
-Sapiens: Choix malheureux et risqué. La boxe peut, certes, aider à se défouler. Il faut également veiller à ce que la boxe ne risque pas d'entretenir ta frustration ou ta colère. 
+Sapiens_angry: Choix malheureux et risqué. La boxe peut, certes, aider à se défouler. Il faut également veiller à ce que la boxe ne risque pas d'entretenir ta frustration ou ta colère. 
 You: Pourquoi ?
-Sapiens: Toute activité  physique ou sportive n'est pas forcément adaptée pour réduire le stress. La boxe est un sport de nature violente. Et si cette violence n'est pas également évacuée à l'issue de la session, elle peut consolider le stress et la frustration initiale. Ce serait inefficace voire contre-productif.
-Azul: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité plus calme, qui consomme ton énergie en douceur, te détende, sans t'aigrir. 
-Sapiens: En conclusion, éviter une activité trop brutale, qui pourrait générer à son tour du stress ou de la tension. 
+Sapiens_thinking: Toute activité  physique ou sportive n'est pas forcément adaptée pour réduire le stress. La boxe est un sport de nature violente. Et si cette violence n'est pas également évacuée à l'issue de la session, elle peut consolider le stress et la frustration initiale. Ce serait inefficace voire contre-productif.
+Azul_happy: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité plus calme, qui consomme ton énergie en douceur, te détende, sans t'aigrir. 
+Sapiens_thinking: En conclusion, éviter une activité trop brutale, qui pourrait générer à son tour du stress ou de la tension. 
 You: Ah.
 
 -> Dernière question 
@@ -653,9 +653,9 @@ tags:  noUi
 colorID: 0
 position: -2013,1534
 ---
-Sapiens: Bien répondu. Il faut également veiller à choisir une activité physique ou sportive qui ne risque pas d'entretenir ta frustration ou ta colère. Ce serait inefficace voire contre-productif.
-Azul: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité calme, qui consomme ton énergie en douceur, te détende. 
-Sapiens: En conclusion, éviter une activité trop violente, trop agressive, qui pourrait générer à son tour du stress ou de la tension. 
+Sapiens_happy: Bien répondu. Il faut également veiller à choisir une activité physique ou sportive qui ne risque pas d'entretenir ta frustration ou ta colère. Ce serait inefficace voire contre-productif.
+Azul_happy: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité calme, qui consomme ton énergie en douceur, te détende. 
+Sapiens_thinking: En conclusion, éviter une activité trop violente, trop agressive, qui pourrait générer à son tour du stress ou de la tension. 
 
 -> Dernière question 
     <<jump Quizz_Art>>
@@ -665,9 +665,8 @@ tags:  noUi
 colorID: 0
 position: -2326,1406
 ---
-Sapiens: Dernière question. Pour réduire ton stress, tu peux choisir de pratiquer une activité ludique, créative, artistique...  
-Sapiens: Qui fait écho à ton angoisse, comme visionner un film mélodramatique ou tragique ? 
-Sapiens: Ou qui détourne ton attention de ton angoisse comme jouer des musiques joyeuses, radieuses, pleines de vie ?
+Sapiens_thinking: Dernière question. Pour réduire ton stress, tu peux choisir de pratiquer une activité ludique, créative, artistique...  
+Sapiens_thinking: Qui fait écho à ton angoisse, comme visionner un film mélodramatique ou tragique ? Ou qui détourne ton attention de ton angoisse comme jouer des musiques joyeuses, radieuses, pleines de vie ?
 
 -> Echo à l'angoisse
     <<jump Art_No>>
@@ -679,19 +678,19 @@ tags:  noUi
 colorID: 0
 position: -2553,1159
 ---
-Sapiens: Mauvaise réponse ! Tu n'as pas compris qu'il faut éviter au maximum de maintenir ton mental dans cet environnement négatif et stérile !
-Azul: Ce qu'il veut dire c'est que tu dois te fier à cette règle de bon sens: "lâcher prise".
+Sapiens_angry: Mauvaise réponse ! Tu n'as pas compris qu'il faut éviter au maximum de maintenir ton mental dans cet environnement négatif et stérile !
+Azul_sad: Ce qu'il veut dire c'est que tu dois te fier à cette règle de bon sens: "lâcher prise".
 You: Ça veut dire quoi au juste, "lâcher prise" ?
-Azul: Faire le vide dans ta tête ! Ne plus entretenir ces idées noires, ne pas les ressasser, ne pas les contempler de trop près, ne pas les retenir, les laisser filer...  
-Sapiens: Seuls ceux qui ont une maîtrise émotionnelle élevée sont capables d'affronter leurs peurs et leurs angoisses en face.
-Azul: Quand on est encore débutant, il est préférable de se tenir le plus éloigné possible de ces mauvaises énergies.
-Sapiens: Elles sont plus fortes que toi.
-Azul: Il te faudra plus d'une nuit avant de pouvoir te protéger d'elles...
+Azul_sad: Faire le vide dans ta tête ! Ne plus entretenir ces idées noires, ne pas les ressasser, ne pas les contempler de trop près, ne pas les retenir, les laisser filer...  
+Sapiens_concerned: Seuls ceux qui ont une maîtrise émotionnelle élevée sont capables d'affronter leurs peurs et leurs angoisses en face.
+Azul_happy: Quand on est encore débutant, il est préférable de se tenir le plus éloigné possible de ces mauvaises énergies.
+Sapiens_concerned: Elles sont plus fortes que toi.
+Azul_happy: Il te faudra plus d'une nuit avant de pouvoir te protéger d'elles...
 You: Ah...
-Sapiens: N'hésite pas à recourir aux choix clairs et éprouvés.
-Azul: L'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent. 
+Sapiens_thinking: N'hésite pas à recourir aux choix clairs et éprouvés.
+Azul_happy: L'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent. 
 You: Je note tout ça dans mon "carnet d'ingénieur tout-terrain" ?
-Ledai: Oui !
+Ledai_happy: Oui !
 
 -> Note tout ça dans ton journal mental 
     <<jump Journal_Mental>>
@@ -701,17 +700,17 @@ tags:  noUi
 colorID: 0
 position: -2589,1474
 ---
-Sapiens: Bonne réponse ! Il ne faut pas sur-estimer sa capacité à faire face à ses peurs et ses angoisses. Seuls ceux qui ont une maîtrise émotionnelle élevée sont capables de le faire.
-Azul: Oui, il vaut mieux se fier à cette règle de bon sens: "lâcher prise".
+Sapiens_happy: Bonne réponse ! Il ne faut pas sur-estimer sa capacité à faire face à ses peurs et ses angoisses. Seuls ceux qui ont une maîtrise émotionnelle élevée sont capables de le faire.
+Azul_happy: Oui, il vaut mieux se fier à cette règle de bon sens: "lâcher prise".
 You: Ça veut dire quoi au juste, "lâcher prise" ?
-Azul: Faire le vide dans ta tête ! Ne plus entretenir ces idées noires, ne pas les ressasser, ne pas les contempler de trop près, ne pas les retenir, les laisser filer. 
-Sapiens: Ces mauvaises énergies sont plus fortes que toi. Il est préférable, au début, de se tenir le plus éloigné possible d'elles.
-Azul: Il te faudra plus d'une nuit avant de pouvoir les affronter face à face...
+Azul_happy: Faire le vide dans ta tête ! Ne plus entretenir ces idées noires, ne pas les ressasser, ne pas les contempler de trop près, ne pas les retenir, les laisser filer. 
+Sapiens_concerned: Ces mauvaises énergies sont plus fortes que toi. Il est préférable, au début, de se tenir le plus éloigné possible d'elles.
+Azul_happy: Il te faudra plus d'une nuit avant de pouvoir les affronter face à face...
 You: Ah...
-Sapiens: N'hésite pas à recourir aux choix clairs et éprouvés.
-Azul: L'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent. 
+Sapiens_concerned: N'hésite pas à recourir aux choix clairs et éprouvés.
+Azul_happy: L'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent. 
 You: Je note tout ça dans mon "carnet d'ingénieur tout-terrain"?
-Ledai: Oui !
+Ledai_happy: Oui !
 
 -> Note tout ça dans ton journal mental 
     <<jump Journal_Mental>>

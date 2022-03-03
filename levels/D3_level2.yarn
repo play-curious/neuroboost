@@ -15,20 +15,21 @@ tags:
 colorID: 0
 position: -634,-700
 ---
-Fred: Hello ! Je te dérange pas ?
+Fred@holo_excited: Hello ! Je te dérange pas ?
 You: Un peu...
-Fred: Ah bon ?
+Fred@holo_surprised: Ah bon ?
 You: Je finis mon petit déjeuner.
-Fred: Great ! Tu viens avec moi à la salle de gym ?
+Fred@holo_smiling: Great ! Tu viens avec moi à la salle de gym ?
 You: Naan... Je dois travailler en autonomie.
-Fred: Tu veux parler de la note de synthèse sur la PNLIAA ?
+Fred@holo_smiling: Tu veux parler de la note de synthèse sur la PNLIAA ?
 You: Ouais.
-Fred: No worry. On a juste qu'à minuit pour la déposer sur le FTP de l'Académie.
+Fred@holo_excited: No worry. On a juste qu'à minuit pour la déposer sur le FTP de l'Académie.
 You: Ouais. Mais l'autre fois, je n'y suis pas arrivé.
-Fred: Quoi ?!
+Fred@holo_surprised: Quoi ?!
 You: Laisse tomber.
-Fred: OK. Keep cool. Alors tu viens ?
-
+Fred@holo_smiling: OK. Keep cool. Alors tu viens ?
+// Ajouter des phrases pour finir la conversation (dans les choix)
+<< hide >>
 << advanceTime 1:00 >>
 
 -> Rejoindre Fred 
@@ -42,23 +43,26 @@ colorID: 0
 position: -27,-778
 ---
 Vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit.
-Fred: Je savais que tu allais venir.
+Fred_excited: Je savais que tu allais venir.
 You: Je savais que tu allais dire ça.
-Fred : What ?!
+Fred_surprised: What ?!
 You: Rien.
-Fred: Yolo ! Tu vas voir, après notre séance de gym, tu vas torcher cette note de synthèse !
+Fred_smiling: Yolo ! Tu vas voir, après notre séance de gym, tu vas torcher cette note de synthèse !
 You: Je n'en suis pas si sûr.
-Fred: No worry ! Allez viens !
+Fred_smiling: No worry ! Allez viens !
+<< hide >>
+
 Vous emboîtez le pas de Fred et vous éclatez tous les deux aux différentes activités proposées: cybersprint, electroskate, eBall, eJump...
 Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
-Fred: Tu pars déjà, lâcheur ?
-You: J'en peux plus. Et je dois m'y mettre.
-Fred: Lâcheur...
 
 << advanceTime 2:00 >>
 << addToGauge sleep 30 >>
 << addToGauge food 30 >>
 << addToGauge mentalLoad 30 >>
+
+Fred_smiling: Tu pars déjà, lâcheur ?
+You: J'en peux plus. Et je dois m'y mettre.
+Fred_sad: Lâcheur...
 
 -> Retourner dans votre chambre 
     <<jump Liste_Taches>>
@@ -195,9 +199,9 @@ tags: bg|desk
 colorID: 0
 position: 27,-87
 ---
-Fred: Alors ? Je t'attends toujours ? Quand viens-tu ?
+Fred@holo_excited: Alors ? Je t'attends toujours ? Quand viens-tu ?
 You: Je sais. Tu as décidé de ne pas me lâcher de la journée.
-Fred: Attention à ce que tu dis ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
+Fred@holo_happy: Attention à ce que tu dis ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
 Pitié... Vous savez que vous n'avez pas la force de décliner le défi de Fred. Le membre le plus populaire du Métaverse de la fraternité étudiante.
 
 -> Retrouver Fred 
@@ -208,16 +212,18 @@ tags: bg|sport
 colorID: 0
 position: 335,-186
 ---
-Résigné, Vous retrouvez Fred à la salle de gym. En fait, vous vous éclatez tous les deux comme des enfants; cybersprint, electroskate, eBall, eJump... Le moins que l'on puisse dire, c'est que vous vous donnez à fond. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
-Fred: Tu pars déjà, tu déclares forfait ?
-You: T'as encore gagné.
-Fred: Je gagne toujours.
-You: On verra bien...
+Résigné, Vous retrouvez Fred à la salle de gym. En fait, vous vous éclatez tous les deux comme des enfants; cybersprint, electroskate, eBall, eJump...
+Le moins que l'on puisse dire, c'est que vous vous donnez à fond. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
 
 << advanceTime 2:00 >>
 << addToGauge sleep 30 >>
 << addToGauge food 30 >>>
 << addToGauge mentalLoad 30 >>
+
+Fred_smiling: Tu pars déjà, tu déclares forfait ?
+You: T'as encore gagné.
+Fred_smiling: Je gagne toujours.
+You: On verra bien...
 
 -> Retourner dans votre chambre 
     <<jump Liste_Taches>>
@@ -257,7 +263,6 @@ Comme hier, le soir venu, vous avez la flemme de cuisiner, et vous n'avez pas au
 << advanceTime 0:30 >>
 << removeFromGauge sleep 20 >>
 << addToGauge food 20 >>
-
 
 -> La journée n'est pas encore finie ! 
     <<jump Liste_Taches>>
@@ -322,7 +327,8 @@ tags:
 colorID: 2
 position: 155,-1055
 ---
-Victoire ! Vous avez réussi ! Il n'est pas encore minuit et vous avez terminé la rédaction de la note de synthèse. Vous daignez prendre encore le temps de faire un vérification syntaxique par votre ordinateur avant d'expédier votre fichier final au serveur FTP de l'Académie d'Omniscience et de Polytechnologie Universelle.
+Victoire ! Vous avez réussi ! Il n'est pas encore minuit et vous avez terminé la rédaction de la note de synthèse.
+Vous daignez prendre encore le temps de faire un vérification syntaxique par votre ordinateur avant d'expédier votre fichier final au serveur FTP de l'Académie d'Omniscience et de Polytechnologie Universelle.
 Une bonne chose de faite. Vous pouvez désormais faire ce que vous voulez du reste de votre soirée...
 
 // FIN LEVEL2

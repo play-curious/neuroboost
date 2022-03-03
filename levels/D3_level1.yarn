@@ -17,18 +17,19 @@ tags:
 colorID: 0
 position: -631,-697
 ---
-Fred: Hello ! Je te dérange pas ?
+Fred@holo_excited: Hello ! Je te dérange pas ?
 You: Naaan...
-Fred: Tu fais quoi là, maintenant ?
+Fred@holo_smiling: Tu fais quoi là, maintenant ?
 You: Je finis mon petit déjeuner.
-Fred: Yes yes. Cool. Tu viens avec moi à la salle de gym ?
+Fred@holo_smiling: Yes yes. Cool. Tu viens avec moi à la salle de gym ?
 You: Naan... Je dois travailler en autonomie.
-Fred: Tu veux parler de la note de synthèse sur la PNLIAA ?
+Fred@holo_smiling: Tu veux parler de la note de synthèse sur la PNLIAA ?
 You: Ouais. La Programmation Neuro Linguistique des Intelligences Artifielles Analogiques.
-Fred: No worry. On a juste qu'à minuit pour la déposer sur le FTP de l'Académie.
+Fred@holo_excited: No worry. On a juste qu'à minuit pour la déposer sur le FTP de l'Académie.
 You: C'est vrai. C'est assez touffu ce truc de PNLIAA.
-Fred: Pfuuu. Tu prends trop les choses au sérieux. Alors tu viens ?
-
+Fred@holo_smiling: Pfuuu. Tu prends trop les choses au sérieux. Alors tu viens ?
+// Ajouter des phrases pour finir la conversation (dans les choix)
+<< hide >>
 << advanceTime 1:00 >>
 
 << setGauge sleep 100 >>
@@ -46,22 +47,27 @@ tags: bg|sport
 colorID: 0
 position: -23,-776
 ---
-Vous vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit.
-Fred: Je savais que tu allais venir.
+Vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit.
+Fred_excited: Je savais que tu allais venir.
 You: La preuve.
-Fred: Yes. Après notre séance de gym, tu vas voir, tu vas torcher cette note de synthèse !
+Fred_smiling: Yes. Après notre séance de gym, tu vas voir, tu vas torcher cette note de synthèse !
 You: On verra, je l'espère.
-Fred: No worry ! Allez viens !
+Fred_excited: No worry ! Allez viens !
+<< hide >>
+
 Vous emboîtez le pas de Fred et vous éclatez tous les deux aux différentes activités proposées: cybersprint, electroskate, eBall, eJump...
 Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
-Fred: Tu pars déjà, lâcheur ?
-You: J'en peux plus.
-Fred: Tant pis.
 
 << advanceTime 2:00 >>
 << removeFromGauge sleep 30 >>
 << removeFromGauge food 30 >>
 << addToGauge mentalLoad 30 >>
+
+Fred_smiling: Tu pars déjà, lâcheur ?
+You: J'en peux plus.
+Fred_sad: Tant pis.
+    textResult.
+<< hide >>
 
 -> Retourner dans votre chambre 
     <<jump Liste_Taches>>
@@ -187,9 +193,9 @@ tags: bg|desk
 colorID: 0
 position: 33,47
 ---
-Fred: Alors ? Je t'attends toujours ? Quand viens-tu ?
+Fred@holo_excited: Alors ? Je t'attends toujours ? Quand viens-tu ?
 You: Heu... Je sais pas.
-Fred: Beware ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
+Fred@holo_happy: Beware ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
 Nooon ! Si la communauté apprend que vous avez décliné le défi de Fred. Fred, le membre le plus populaire du Métaverse de la fraternité étudiante. Vous êtes grillé aux yeux de tous les camarades de l'Académie d'Omniscience et de Polytechnologie Universelle... Vous êtes piégé. quand faut y aller, faut y aller...
 
 -> Retrouver Fred 
@@ -202,15 +208,16 @@ position: 317,29
 ---
 Vous relevez le défi lancé par Fred. En fait, vous vous éclatez tous les deux comme des enfants; cybersprint, electroskate, eBall, eJump...
 Le moins que l'on puisse dire, c'est que vous êtes donné à fond. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
-Fred: Tu pars déjà, tu déclares forfait ?
-You: J'en peux plus.
-Fred: Alors, j'ai gagné.
-You: Pour une fois.
 
 << advanceTime 2:00 >>
 << addToGauge sleep 30 >>
 << addToGauge food 30 >>>
 << addToGauge mentalLoad 30 >>
+
+Fred_smiling: Tu pars déjà, tu déclares forfait ?
+You: J'en peux plus.
+Fred_smiling: Alors, j'ai gagné.
+You: Pour une fois.
 
 -> Retourner dans votre chambre 
     <<jump Liste_Taches>>
@@ -224,11 +231,11 @@ Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sente
 N'empêche, vous sentez votre tête penchez en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrer dans le noir...
 Puis, vous entendez une voix familière: 
 
-Azul: Tout va bien { $name } ?
+Azul_sad: Tout va bien { $name } ?
 You: Tais-toi, Miss Temdé !
-Azul: Raté, c'est moi, Azul.
+Azul_proud: Raté, c'est moi, Azul.
 You: Zut...
-Azul: Pas grave, viens, on a une nouveau truc à t'apprendre. 
+Azul_happy: Pas grave, viens, on a une nouveau truc à t'apprendre. 
 
 -> Suivre Azul 
     <<jump Assemblee_3>>
@@ -239,18 +246,18 @@ colorID: 1
 position: -1091,21
 ---
 Hop, la seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin exotique. Ce petit nid de verdure que vos hôtes nomment l'assemblée des Sages. C'est de la téléportation ou de la magie ? Et où se trouve ce fichu décor si criant de vérité... On dirait d'authentiques plantes exotiques...
-Temde: Yep, elles sont réelles, ce ne sont pas des végétaux synthétiques. C'est moi qui m'en occupe.
-Sapiens: Super Miss Temdé. Je ne crois pas que { $name } soit venu pour échanger sur cette question.
-Ledai: Tout à fait. Cette nouvelle session aura pour objet la surcharge cognitive.
+Temde_smiling: Yep, elles sont réelles, ce ne sont pas des végétaux synthétiques. C'est moi qui m'en occupe.
+Sapiens_concerned: Super Miss Temdé. Je ne crois pas que { $name } soit venu pour échanger sur cette question.
+Ledai_explaining: Tout à fait. Cette nouvelle session aura pour objet la surcharge cognitive.
 You: Quoi ?!
-Azul: On t'as appris à ménager ton corps.
-Temde: Bien dormir et manger équilibré.
-Sapiens: C'est la même chose avec tes capacités mentales. Elles ont besoin d'énergie et de recharger les batteries. Je te l'ai dit. Mais elles peuvent aussi tomber en panne.
+Azul_proud: On t'as appris à ménager ton corps.
+Temde_cheerful: Bien dormir et manger équilibré.
+Sapiens_thinking: C'est la même chose avec tes capacités mentales. Elles ont besoin d'énergie et de recharger les batteries. Je te l'ai dit. Mais elles peuvent aussi tomber en panne.
 You: Comment ça ?
-Sapiens: Si tu les surcharges.
-Ledai: Si tu les fais surchauffer. Comme ton ordinateur, il peut se bloquer, ne plus répondre.
+Sapiens_concerned: Si tu les surcharges.
+Ledai_explaining: Si tu les fais surchauffer. Comme ton ordinateur, il peut se bloquer, ne plus répondre.
 You: Ah bon ? 
-Sapiens: Il faut utiliser la technique <i>pomodoro</i>
+Sapiens_happy: Il faut utiliser la technique <i>pomodoro</i>
 <<jump pomodoro>>
 ===
 title: pomodoro
@@ -259,16 +266,16 @@ colorID: 0
 position: -750,149
 ---
 You: Et ça consiste en quoi ?
-Ledai: C'est très simple. Il faut fractionner ta tâche en plusieurs petites tâches. 
+Ledai_explaining: C'est très simple. Il faut fractionner ta tâche en plusieurs petites tâches. 
 You: Un exemple.
-Ledai: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir en une seule fois. Tu vas le couper en plus petit bouts que tu vas du premier au dernier morceau.
+Ledai_explaining: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir en une seule fois. Tu vas le couper en plus petit bouts que tu vas du premier au dernier morceau.
 You: Ouais... Et si je veux le dévorer ?
-Sapiens: Ah, jeunesse insouciante... Tu vas t'étouffer, tu vas faire exploser ton estomac jusqu'à régurgiter ce que tu auras péniblement avalé. 
-Ledai: Beuha... C'est dégoûtant.
-Azul: L'important n'est pas de s'élancer, mais de franchir le kilomètre suivant, et ainsi de suite jusqu'à la ligne d'arrivée.
-Temde: L'important est de tenir l'effort sur la durée, pas de sprinter.
+Sapiens_concerned: Ah, jeunesse insouciante... Tu vas t'étouffer, tu vas faire exploser ton estomac jusqu'à régurgiter ce que tu auras péniblement avalé. 
+Ledai_doubtful: Beuha... C'est dégoûtant.
+Azul_happy: L'important n'est pas de s'élancer, mais de franchir le kilomètre suivant, et ainsi de suite jusqu'à la ligne d'arrivée.
+Temde_smiling: L'important est de tenir l'effort sur la durée, pas de sprinter.
 You: Et c'est tout ?
-Sapiens: Non. Il y a autre chose. Le plus important... Éviter les distractions.
+Sapiens_thinking: Non. Il y a autre chose. Le plus important... Éviter les distractions.
 -> Les distractions  ?
     <<jump Les_distractions>>
 ===
@@ -277,14 +284,15 @@ tags:  noUi
 colorID: 0
 position: -370,280
 ---
-Sapiens: Les perturbations extérieures qui parasitent ta charge mentale et saturent tes processus de calcul cérébral.
+Sapiens_thinking: Les perturbations extérieures qui parasitent ta charge mentale et saturent tes processus de calcul cérébral.
 You: Hé, je suis pas une machine !
-Ledai: Tout à fait, l'erreur est humaine, pas informatique.
-Azul: Je la fais court. Plus on est concentré, moins on peut disperser son attention.
-Temde: Regarde-moi ! J'ai quatre bras ! Toi, tu n'en as que deux, je peux jongler avec plus de balles que toi ! Mais, moi aussi, j'ai mes limites. À un moment, je n'arriverai plus à lancer en l'air toutes ces balles.
+Ledai_happy: Tout à fait, l'erreur est humaine, pas informatique.
+Azul_proud: Je la fais court. Plus on est concentré, moins on peut disperser son attention.
+Temde_smiling: Regarde-moi ! J'ai quatre bras ! Toi, tu n'en as que deux, je peux jongler avec plus de balles que toi ! Mais, moi aussi, j'ai mes limites. À un moment, je n'arriverai plus à lancer en l'air toutes ces balles.
 You: C'est ça. Je te défie !
+<< hide >>
 Miss Temdé se lève tranquillement et étend ses mains. Des balles apparues de nulle part se matérialisent dans ses paumes. Miss Temdé jongle ainsi avec quatre, cinq, puis six balles...
-Temde: À ton tour, montre-nous tes limites.
+Temde_smiling: À ton tour, montre-nous tes limites.
 <<jump Quit_Mini_Game>>
 <<jump Jongler>>
 ===
@@ -308,12 +316,12 @@ tags:  noUi
 colorID: 0
 position: 342,320
 ---
-Sapiens: Je suis content de voir que tu te prends au jeu.
-Ledai: En effet, tout ce travail n'est pas mené en vain.
+Sapiens_angry: Je suis content de voir que tu te prends au jeu.
+Ledai_doubtful: En effet, tout ce travail n'est pas mené en vain.
 You: J'espère bien. C'est parfois barbant votre baratin...
-Ledai: Notre baratin ? Mais, nous essayons de t'améliorer...
+Ledai_doubtful: Notre baratin ? Mais, nous essayons de t'améliorer...
 You: Mouais...
-Sapiens: Commençons par cette question. La technique pomodoro consiste à fractionner une tâche en plusieurs tâches.
+Sapiens_thinking: Commençons par cette question. La technique pomodoro consiste à fractionner une tâche en plusieurs tâches.
 -> Pour pouvoir jongler avec chacune dans l'ordre que l'on veut, voire en même temps
     <<jump Pomodoro_No>>
 -> Pour pouvoir avancer méthodiquement, en respectant des étapes de concentration intenses mais courtes
@@ -324,14 +332,15 @@ tags:  noUi
 colorID: 0
 position: 701,260
 ---
-Sapiens: N'importe quoi ! Tu n'as rien compris de ce qu'on a dit. Je suis attristé de voir tout le mal que Miss Temdé s'est donné avec la parabole des balles de jonglage. Non, on ne peut pas gérer n'importe quelle tâche dans n'importe quel ordre ! Et surtout pas tout en même temps ! Ta charge cognitive encaisse, encaisse. Et elle finit par saturer.
-Ledai: Hélas. Le "mode multitâche" a la vie dure.
-Azul: Cessons de regarder le verre à moitié vide. Je pense que { $name } a compris la leçon cette fois.
-Ledai: Bien parlé Azul.
-Sapiens: J'espère. Continuons avec la deuxième affirmation test, laquelle est la bonne ?
-Sapiens: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. 
-Sapiens: Tu travailleras <b>uniquement l'après-midi</b> ?
-Sapiens: Ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ?
+Sapiens_angry: N'importe quoi ! Tu n'as rien compris de ce qu'on a dit.
+Sapiens_concerned: Je suis attristé de voir tout le mal que Miss Temdé s'est donné avec la parabole des balles de jonglage.
+Sapiens_concerned: Non, on ne peut pas gérer n'importe quelle tâche dans n'importe quel ordre ! Et surtout pas tout en même temps ! Ta charge cognitive encaisse, encaisse. Et elle finit par saturer.
+Ledai_doubtful: Hélas. Le "mode multitâche" a la vie dure.
+Azul_sad: Cessons de regarder le verre à moitié vide. Je pense que { $name } a compris la leçon cette fois.
+Ledai_explaining: Bien parlé Azul.
+Sapiens_thinking: J'espère. Continuons avec la deuxième affirmation test, laquelle est la bonne ?
+Sapiens_happy: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. 
+Sapiens_happy: Tu travailleras <b>uniquement l'après-midi</b> ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ?
 -> Me ménager
     <<jump GestionTemps_No>>
 -> Travailler d'arrache-pied
@@ -342,14 +351,13 @@ tags:  noUi
 colorID: 0
 position: 698,531
 ---
-Sapiens: Exactement ! On doit apprendre les tâches les unes après les autres de manière logique.
-Ledai: Que ce soit de manière linéaire ou itérative. On n'entame jamais une tâche importante si on ne sait pas d'où on vient ni on veut aller. 
-Temde: Oui, enfin, grosso modo...
-Azul: Chut ! Ne commençons pas à nous chicaner. Comment voulez-vous que { $name } y comprenne quelque chose...
-Sapiens: Merci, Azul. Continuons avec la deuxième affirmation test, laquelle est la bonne ?
-Sapiens: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. 
-Sapiens: Tu travailleras <b>uniquement l'après-midi</b> ?
-Sapiens: Ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ?
+Sapiens_happy: Exactement ! On doit apprendre les tâches les unes après les autres de manière logique.
+Ledai_explaining: Que ce soit de manière linéaire ou itérative. On n'entame jamais une tâche importante si on ne sait pas d'où on vient ni on veut aller. 
+Temde_smiling: Oui, enfin, grosso modo...
+Azul_sad: Chut ! Ne commençons pas à nous chicaner. Comment voulez-vous que { $name } y comprenne quelque chose...
+Sapiens_concerned: Merci, Azul. Continuons avec la deuxième affirmation test, laquelle est la bonne ?
+Sapiens_happy: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. 
+Sapiens_happy: Tu travailleras <b>uniquement l'après-midi</b> ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ?
 -> Me ménager
     <<jump GestionTemps_No>>
 -> Travailler d'arrache-pied
@@ -360,17 +368,17 @@ tags:  noUi
 colorID: 0
 position: 1042,297
 ---
-Sapiens: J'en perds ma barbe ! Quelle réponse idiote ! Tu as compris ce qu'est la surcharge cognitive ?
+Sapiens_angry: J'en perds ma barbe ! Quelle réponse idiote ! Tu as compris ce qu'est la surcharge cognitive ?
 You: C'est quand le cerveau fatigue, il surchauffe.
-Ledai: Alors pourquoi as-tu cru cette affirmation ?
+Ledai_doubtful: Alors pourquoi as-tu cru cette affirmation ?
 You: Parce que mon pote, Fred, il bosse à la dernière minute et ça marche !
-Temde: Tu n'es pas ton pote.
-Azul: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil : Il faut travailler régulièrement, sans excès.
-Temde: Surtout ne pas tout reporter au dernier moment.
-Ledai: Sinon, tu risques le court-circuit, le "system failure"...
-Sapiens: C'est enfin compris ?
+Temde_thinking: Tu n'es pas ton pote.
+Azul_sad: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil : Il faut travailler régulièrement, sans excès.
+Temde_thinking: Surtout ne pas tout reporter au dernier moment.
+Ledai_explaining: Sinon, tu risques le court-circuit, le "system failure"...
+Sapiens_concerned: C'est enfin compris ?
 You: Oui.
-Sapiens: Alors voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive... Choisis bien cette fois ta réponse.
+Sapiens_thinking: Alors voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive... Choisis bien cette fois ta réponse.
 -> Les distracteurs sont comme des bonbons qui récompensent les pauses entre chaque session de concentration intense
     <<jump Distracteurs_No>>
 -> Les distracteurs sont des tentations extérieures qui menacent et dérangent l'effort de concentration du cerveau
@@ -381,11 +389,11 @@ tags:  noUi
 colorID: 0
 position: 1048,579
 ---
-Sapiens: Tout à fait. Chaque chose en son temps. Comme tes ordinateurs, il faut les mettre en veille pour qu'ils cessent de computer sans fin, qu'ils puissent refroidir et récupérer en capacités de calcul.
-Azul: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil: Il faut travailler régulièrement, sans excès.
-Temde: Surtout ne pas tout reporter au dernier moment.
-Ledai: Sinon, tu risques le court-circuit, le "system failure"...
-Sapiens: C'est enfin compris ?
+Sapiens_happy: Tout à fait. Chaque chose en son temps. Comme tes ordinateurs, il faut les mettre en veille pour qu'ils cessent de computer sans fin, qu'ils puissent refroidir et récupérer en capacités de calcul.
+Azul_proud: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil: Il faut travailler régulièrement, sans excès.
+Temde_smiling: Surtout ne pas tout reporter au dernier moment.
+Ledai_explaining: Sinon, tu risques le court-circuit, le "system failure"...
+Sapiens_happy: C'est enfin compris ?
 You: Oui.
 Sapiens: Alors voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive... Choisis bien ta réponse.
 -> Les distracteurs sont comme des bonbons qui récompensent les pauses entre chaque session de concentration intense
@@ -398,20 +406,22 @@ tags:  noUi
 colorID: 0
 position: 1281,310
 ---
-Sapiens: Quelle horreur ! Quel non-sens ! Les distracteurs... Réseaux sociaux, notifications automatiques, connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport direct avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses ! Comme leur nom l'indique, ce sont des nuisances ! Ils t'empêchent d'être 100% concentré sur la tâche présente. Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Par conséquent les distracteurs affaiblissent ta capacité cognitive... 
+Sapiens_angry: Quelle horreur ! Quel non-sens ! Les distracteurs...
+Sapiens_angry: Réseaux sociaux, notifications automatiques, connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport direct avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses !
+Sapiens_angry: Comme leur nom l'indique, ce sont des nuisances ! Ils t'empêchent d'être 100% concentré sur la tâche présente. Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Par conséquent les distracteurs affaiblissent ta capacité cognitive... 
 You: Ah... zut...
-Sapiens: C'est tout ce que tu as à me dire ?
+Sapiens_angry: C'est tout ce que tu as à me dire ?
 You: Ben... Ouais...
-Sapiens: Quelle misère.
-Azul: Je pense que { $name } a compris cette fois-ci. N'est-ce pas ?
+Sapiens_concerned: Quelle misère.
+Azul_sad: Je pense que { $name } a compris cette fois-ci. N'est-ce pas ?
 You: Oui.
-Sapiens: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ?
+Sapiens_concerned: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ?
 You: Parce qu'il réduisent mon attention.
-Ledai: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites !
-Azul: Il faut se ménager un espace de calme et de paix, une bulle d'attention.
-Sapiens: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...
+Ledai_explaining: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites !
+Azul_happy: Il faut se ménager un espace de calme et de paix, une bulle d'attention.
+Sapiens_thinking: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...
 You: OK.
-Ledai: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !
+Ledai_happy: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !
 
 -> Journal mental 
     <<jump JournalMental>>
@@ -421,15 +431,16 @@ tags:  noUi
 colorID: 0
 position: 1384,604
 ---
-Sapiens: Bien entendu. Les Réseaux sociaux, les notifications automatiques, la connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport immédiat avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses ! Comme leur nom l'indique, ce sont des nuisances ! Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Les distracteurs affaiblissent ta capacité cognitive. Tu dois être 100% concentré sur la tâche présente, pas être distrait par d'autre choses ou d'autres personnes..
+Sapiens_happy: Bien entendu. Les Réseaux sociaux, les notifications automatiques, la connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport immédiat avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses ! Comme leur nom l'indique, ce sont des nuisances !
+Sapiens_happy: Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Les distracteurs affaiblissent ta capacité cognitive. Tu dois être 100% concentré sur la tâche présente, pas être distrait par d'autre choses ou d'autres personnes..
 You: Oui.
-Sapiens: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ?
+Sapiens_happy: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ?
 You: Parce qu'il réduisent mon attention.
-Ledai: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites !
-Azul: Il faut se ménager un espace de calme de paix une bulle d'attention.
-Sapiens: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...
+Ledai_happy: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites !
+Azul_happy: Il faut se ménager un espace de calme de paix une bulle d'attention.
+Sapiens_happy: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...
 You: OK.
-Ledai: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !
+Ledai_happy: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !
 
 -> Journal mental 
     <<jump JournalMental>>
@@ -477,21 +488,21 @@ tags: noUi
 colorID: 0
 position: 182,578
 ---
-Temde: Tu vois, toi aussi tu as tes limites. 
-Azul: Nous en avons tous... 
-Sapiens: On peut aussi apprendre à les repousser.
-Temde: Ou à les contourner. C'est selon.
-Ledai: Exactement, et c'est l'objet de cette session.
-Sapiens: Gérer ta charge cognitive. Ne surtout pas saturer ton processeur cérébral. 
-Ledai: S'isoler des éléments distracteurs. Ne pas abuser du "mode multitâches".
+Temde_smiling: Tu vois, toi aussi tu as tes limites. 
+Azul_happy: Nous en avons tous... 
+Sapiens_concerned: On peut aussi apprendre à les repousser.
+Temde_smiling: Ou à les contourner. C'est selon.
+Ledai_explaining: Exactement, et c'est l'objet de cette session.
+Sapiens_thinking: Gérer ta charge cognitive. Ne surtout pas saturer ton processeur cérébral. 
+Ledai_happy: S'isoler des éléments distracteurs. Ne pas abuser du "mode multitâches".
 You: C'est quoi le "mode multitâches" ?
-Temde: En "mode multitâches", tu commence une action, tu passes à une autre, puis à une troisième...
-Azul: Ou tu en mènes plusieurs de front.
-Ledai: Au lieu de focaliser ton processeur sur un calcul stratégique, tu fragmente ton attention.
-Sapiens: Cela réduit ta capacité cognitive. Et à un moment donnée, cette dernière sature ! Elle bloque ! Elle freeze !
-Ledai: Elle ne répond plus, c'est l'écran bleu.
+Temde_cheerful: En "mode multitâches", tu commence une action, tu passes à une autre, puis à une troisième...
+Azul_proud: Ou tu en mènes plusieurs de front.
+Ledai_explaining: Au lieu de focaliser ton processeur sur un calcul stratégique, tu fragmente ton attention.
+Sapiens_thinking: Cela réduit ta capacité cognitive. Et à un moment donnée, cette dernière sature ! Elle bloque ! Elle freeze !
+Ledai_explaining: Elle ne répond plus, c'est l'écran bleu.
 You: Ah.
-Sapiens: Un petit questionnaire pour conclure ?
+Sapiens_concerned: Un petit questionnaire pour conclure ?
 
 <<jump Le_Quizz_des_Sages>>
 ===

@@ -39,13 +39,13 @@ colorID: 0
 position: -2535,-447
 ---
 You: Bonjour mamie ! Tu vas bien ?
-Mamie: Bonjour chouchou. Oui, je vais bien ! Mais je ne suis pas belle à voir...
+Mamie@holo_shadow: Bonjour chouchou. Oui, je vais bien ! Mais je ne suis pas belle à voir...
 You: Ton coeur va bien ?
-Mamie: Tes parents t'ont tout dit ?
+Mamie@holo_shadow: Tes parents t'ont tout dit ?
 You: Presque.
-Mamie: Ah... Si tu me voyais. Ils ont branché mon corps à des dizaines de machines. On dirait que je suis un robot, pas un être vivant...
+Mamie@holo_shadow: Ah... Si tu me voyais. Ils ont branché mon corps à des dizaines de machines. On dirait que je suis un robot, pas un être vivant...
 You: Ils font ça pour veiller sur toi.
-Mamie: Si tu le dis. 
+Mamie@holo_shadow: Si tu le dis. 
 You: Je t'aime mamie...
 Vous n'avez pas le temps d'en dire plus. Le Paramedibot vient chercher votre grand-mère et l'emmène au bloc opératoire. Et c'est reparti pour un tour. Vous sentez l'adrénaline se répandre dans votre corps !
 << addToGauge stress 40 >>
@@ -72,17 +72,17 @@ colorID: 0
 position: -1714,-326
 ---
 Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous voulez la rassurer.
-Maman: Bibi, tu es au courant ?
+Maman@holo_shadow: Bibi, tu es au courant ?
 You: Oui. Mamie m'a appelé. On l'a emmenée au bloc opératoire.
-Maman: Déjà ?
+Maman@holo_shadow: Déjà ?
 You: Oui. Elle avait l'air en super forme.
-Maman: Tant mieux. Et toi ?
+Maman@holo_shadow: Tant mieux. Et toi ?
 You: Hum... ça va.
-Maman: Tu es sûr ? 
+Maman@holo_shadow: Tu es sûr ? 
 You: Oui oui ne t'inquiète pas.
-Maman: Bibi, ... 
+Maman@holo_shadow: Bibi, ... 
 You: Et arrête de m'appeler Bibi ! Je n'ai plus 8 ans !
-Maman: Mais mon choux, c'est parce que je t'aime...
+Maman@holo_shadow: Mais mon choux, c'est parce que je t'aime...
 Vous raccrochez encore plus énervé. Cette idée de passer un coup de fil pour détendre l'atmosphère était une fausse bonne idée.
 
 << addToGauge stress 10 >>
@@ -130,15 +130,15 @@ colorID: 0
 position: -831,-402
 ---
 Vous appelez Fred.
-Fred: Hey ! C'est toi qui m'appelles for once !
+Fred@holo_excited: Hey ! C'est toi qui m'appelles for once !
 You: Ouais. J'ai besoin de toi.
-Fred: C'est vrai ?
+Fred@holo_happy: C'est vrai ?
 You: Oui. Je dois me changer les idées et je pensais qu'une session de sport...
-Fred: Yes yes ! Du fight contact avec des exosquelettes ! C'est une excellente idée !
+Fred@holo_smiling: Yes yes ! Du fight contact avec des exosquelettes ! C'est une excellente idée !
 You: Non pas vraiment. J'avais plutôt pensé à un sport plus relaxant.
-Fred: Ah bon. Retrouve-moi à la salle de sport et on reparle de ça.
+Fred@holo_surprised: Ah bon. Retrouve-moi à la salle de sport et on reparle de ça.
 You: Hum...
-Fred: Allez, viens. Trust me...
+Fred@holo_excited: Allez, viens. Trust me...
 
 -> Accepter la proposition de Fred 
     << jump Salle_Sport >>
@@ -161,10 +161,10 @@ colorID: 0
 position: -559,-246
 ---
 Revêtu d'un exosquelette tout-terrain, Fred vous attend et vous balance un exosquelette que vous rattrapez in-extremis au vol. Vous enfilez la combinaison et rejoignez Fred sur la piste.
-Fred: Viens, on se fighte ! 
+Fred_excited: Viens, on se fighte ! 
 You: Je suis pas sûr que...
 Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. La suite : vous la connaissez, vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! H
-eureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. 
+Heureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. 
 Vous avez la langue sèche et les membres engourdis.
 
 << removeFromGauge sleep 40 >>
@@ -185,13 +185,13 @@ colorID: 0
 position: -597,-585
 ---
 You: Nan... Je crois pas... J'ai du boulot.
-Fred: No no, faut que tu penses à autre chose !
+Fred@holo_excited: No no, faut que tu penses à autre chose !
 You: Pas envie...
-Fred: D'accord, alors on joue en ligne !
+Fred@holo_happy: D'accord, alors on joue en ligne !
 You: Naan.
-Fred: Attention, je te défie à Call of Study ! Tout le METAVERSE le saura !
+Fred@holo_smiling: Attention, je te défie à Call of Study ! Tout le METAVERSE le saura !
 You: Tu fais chier, Fred...
-Fred: C'est pour ça que je suis ton pote... ah ah...
+Fred@holo_smiling: C'est pour ça que je suis ton pote... ah ah...
 Vous grognez et vous pestez, cependant, vous lancez le serveur GameStream. Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred. Son skin est aujourd'hui fuschia et orange fluo, c'est vraiment laid. 
 Bon, c'est facile à repérer et viser. Vous respirez un bon coup et plongez dans Crawl of Study. C'est un MOBA, se situant dans une reconstitution 3D de l'Académie d'Omniscience et de Polytechnologie Universelle. Le gameplay mélange Plateformer en mode Parkour et TPS en mode athlète grec néo-antique. 
 Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser. 
@@ -213,20 +213,20 @@ colorID: 0
 position: -2094,66
 ---
 Vous retrouvez devant l'entrée de la salle de classe, Fred. Ce dernier vous regarde avec perplexité.
-Fred: Damned, tu as l'air étrange.
+Fred_excited: Damned, tu as l'air étrange.
 You: Ça va, ça va...
 
 <<if visited("Sport_Stress")>>
-Fred: Ah bon ? J'ai bien l'impression que notre séance de fight ne t'a pas réussi. 
+Fred_surprised: Ah bon ? J'ai bien l'impression que notre séance de fight ne t'a pas réussi. 
 You: Ça va, je t'assure.
 <<elseif visited("Sport_Destress")>>
-Fred: Ah bon ? J'ai bien l'impression que ton idée de footing t'a plus réussi qu'à moi. 
+Fred_surprised: Ah bon ? J'ai bien l'impression que ton idée de footing t'a plus réussi qu'à moi. 
 You: Si tu le dis.
 <<else>>
-Fred: Ah bon ? Hier, tu crachais le feu. Aujourd'hui, tu es glacé.
+Fred_surprised: Ah bon ? Hier, tu crachais le feu. Aujourd'hui, tu es glacé.
 <<endif>>
 Votre palmphone vibre. C'est votre mère qui tente de vous rejoindre. Fred vous fixe des yeux :
-Fred: T'es sûr ? Ça va ?
+Fred_sad: T'es sûr ? Ça va ?
 You: Attends...
 
 -> Prendre l'appel 
@@ -241,20 +241,21 @@ position: -1803,-4
 ---
 Vous collez le combiné à votre oreille :
 You: Je sais. mamie est toujours dans le coma.
-Maman: C'est vrai Bibi ?
+Maman@holo_shadow: C'est vrai Bibi ?
 You: On m'a prévenu.
-Maman: Et tu te sens comment ?
+Maman@holo_shadow: Et tu te sens comment ?
 You: T'inquiète, maman, je gère.
-Maman: C'est bien { $name }. Ta mamie est une personne forte. Dure comme du béton... armé... Elle s'en sortira..
+Maman@holo_shadow: C'est bien { $name }. Ta mamie est une personne forte. Dure comme du béton... armé... Elle s'en sortira..
 You: Je te laisse, on va en examen !
-Maman: Courage, Bibi...
+Maman@holo_shadow: Courage, Bibi...
+<< hide >>
 Ce qu'elle vous énerve votre mère, à vous appeler "Bibi" !!! 
 
 << addToGauge stress 40>>
 
-Fred: Alors ? Mauvaises nouvelles ?
+Fred_sad: Alors ? Mauvaises nouvelles ?
 You: Non, faut juste lâcher prise.
-Fred: Pardon ?! Tu veux qu'on en parle ensemble ?
+Fred_surprised: Pardon ?! Tu veux qu'on en parle ensemble ?
 
 -> Tout raconter à Fred 
     <<jump Fred_implorer>>
@@ -269,11 +270,11 @@ colorID: 0
 position: -1815,227
 ---
 Vous balayez du doigt l'appel. 
-Fred: Mais qu'est-ce qui se passe ?
+Fred_surprised: Mais qu'est-ce qui se passe ?
 You: C'est compliqué.
 Votre palmphone gigote à nouveau ! Votre mère a laissé un message sur votre répondeur. Vous ne pouvez vous empêcher de fixer votre appareil.
 Vous entrez dans le journal de messagerie et demandez la conversion textuelle du message : "L'opération a été menée à bien, mais ta grand-mère a fait un malaise. Elle a été transférée en service de réanimation critique. Bisous. Maman."
-Fred: Alors ?
+Fred_sad: Alors ?
 L'information, que vous connaissiez déjà vous affecte de plein fouet ! C'est fou comme l'humain est une éponge...
 << addToGauge stress 30>>
 
@@ -303,13 +304,13 @@ tags:
 colorID: 0
 position: -1465,-73
 ---
-Fred: Dis-moi.
+Fred_happy: Dis-moi.
 You: Rien.
-Fred: { $name}...
+Fred_smiling: { $name}...
 You: Noon...
-Fred: Yes Yes...
+Fred_smiling: Yes Yes...
 You: C'est inutile !
-Fred: OK, si tu le prends comme ça...
+Fred_sad: OK, si tu le prends comme ça...
 L'horloge sonne ! Il est l'heure d'entrer dans la salle. L'examen va commencer...
 
 -> Entrer dans la salle 
@@ -337,9 +338,9 @@ colorID: 0
 position: -1152,340
 ---
 Vous retrouvez dehors Fred. Il vous fixe d'un air ahuri.
-Fred: Damned de damned ! On dirait que tu as dévoré un crocodile.
+Fred_excited: Damned de damned ! On dirait que tu as dévoré un crocodile.
 You: Ouais.
-Fred: Tu en as de la chance.
+Fred_smiling: Tu en as de la chance.
 You: Ouais.
 Fred vous avoue ne pas être content de sa performance... Vous l'écoutez d'un air distrait, vous êtes si content de vous. Soudain, les résultats s'affichent au tableau. Vous n'avez explosé votre score : <b>B+</b>. Alors que Fred n'a eu que <b>C+</b>. C'est lui qui blêmit, il est choqué.
 Vous dites au-revoir à votre pote et retournez à votre chambre.
@@ -415,13 +416,13 @@ colorID: 2
 position: -811,-151
 ---
 Vous retrouvez Fred à la salle de sport.
-Fred: Yes Yes ! Prêt pour une séance de fight contact ?
+Fred_excited: Yes Yes ! Prêt pour une séance de fight contact ?
 You: Naan. Je te le répète, je préfère quelque chose de plus soft.
-Fred: La valse ?
+Fred_surprised: La valse ?
 You: Imbécile... Une séance de footing.
-Fred: Du footing ?! Mais c'est chiant.
+Fred_sad: Du footing ?! Mais c'est chiant.
 You: Pas que. Le footing permet d'évacuer les toxines tout en stimulant les masses musculaires, lymphatiques et le système nerveux.
-Fred: Je vois que tu t'es renseigné.
+Fred_smiling: Je vois que tu t'es renseigné.
 Vous continuez la négociation avec Fred pendant plus de vingt minutes. Il n'est pas ravi par votre idée. Que décidez-vous ?
 
 -> Imposer l'option footing
