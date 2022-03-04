@@ -1,11 +1,15 @@
 # gauges: sleep food mentalLoad
 
 title: Start
-tags: bg|bedroom
+tags: 
 colorID: 0
 position: -941,-697
 ---
+<< fadeIn 1 >>
+<< setBackground bedroom >>
 << setTime 8:00 2 >>
+<< fadeOut >>
+
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie d'Omniscience et de Polytechnologie Universelle. Attention, ça ne veut pas dire jour de repos ! 
 Ronronron... Votre palmphone qui vibre. Sans suprise, vous voyez que l'appel vient de Fred.
 
@@ -39,14 +43,18 @@ Fred@holo_smiling: Pfuuu. Tu prends trop les choses au sérieux. Alors tu viens 
 
 -> Rejoindre Fred 
     <<jump Salle_Gym>>
--> Rester travailler 
+-> Rester travailler
     <<jump Liste_Taches>>
 ===
 title: Salle_Gym
-tags: bg|sport
+tags:
 colorID: 0
 position: -23,-776
 ---
+<< fadeIn >>
+<< setBackground sport >>
+<< fadeOut >>
+
 Vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit.
 Fred_excited: Je savais que tu allais venir.
 You: La preuve.
@@ -70,13 +78,17 @@ Fred_sad: Tant pis.
 << hide >>
 
 -> Retourner dans votre chambre 
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Liste_Taches
-tags: bg|bedroom
+tags: 
 colorID: 1
 position: -328,-637
 ---
+<< setBackground bedroom >>
+<< fadeOut >>
+
 <<if !visited("Liste_Taches")>>
 Que faites-vous maintenant ?
 <<endif>>
@@ -115,35 +127,49 @@ Que faites-vous maintenant ?
 <<endif>>
 ===
 title: Ranger
-tags: bg|desk
+tags: 
 colorID: 0
 position: -958,-443
 ---
+<< fadeIn >>
+<< setBackground desk >>
+<< fadeOut >>
+
 Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite votre le paper print de votre brief, les documents de référence que vous avez déjà en possession. Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document. Avant de commencer la rédaction de votre note, vous prenez le temps d'établir un plan de réflexion et de travail. Certes, cela vous prend du temps, mais ça va vous faciliter le processus de rédaction.
 << advanceTime 1:00 >>
 << removeFromGauge mentalLoad 10 >>
 
 -> Il ne reste plus qu'à s'y mettre maintenant 
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Chat
-tags: bg|desk
+tags: 
 colorID: 0
 position: -388,-306
 ---
+<< fadeIn >>
+<< setBackground desk >>
+<< fadeOut >>
+
 Vous cliquez sur l'icône ChatApp de votre Palmphone. Il y a encore plus de monde que lundi ! Vous êtes pingé par Fred ! Il vous demande si vous ne voulez pas le rejoindre à la salle de gym ! Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous ne pouvez ignorer son injonction ! Toute la communauté va apprendre que vous avez refusé un duel virtuel, que vous êtes un lâche...
 Vexé et décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait. Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.
 << advanceTime 2:00 >>
 << addToGauge mentalLoad 30 >>
 
 -> Et maintenant, il faut peut-être travailler sur cette note de synthèse ? 
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: BingeTV
-tags: bg|desk
+tags: 
 colorID: 0
 position: 326,-411
 ---
+<< fadeIn >>
+<< setBackground desk >>
+<< fadeOut >>
+
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber. 
 Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir ! Ils sont parvenu à décryogéniser Jaba Fett. Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de de Mana de toute la galaxie !
 Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran ! Vont-ils parvenir à arrêter Dude ? L'empêcher de libérer la galaxie du joug de l'Imperium Noir ? Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples: les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..
@@ -153,11 +179,12 @@ Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de s
 << addToGauge food 30>>
 << addToGauge mentalLoad 40>>
 
--> Vite, au travail ! 
+-> Vite, au travail !
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Sleep
-tags: bg|bedroom
+tags: 
 colorID: 0
 position: -706,-331
 ---
@@ -170,10 +197,14 @@ Vous vous rappelez ce que vous ont dit les 4 Sages. Dormir régulièrement, tous
     <<jump Liste_Taches>>
 ===
 title: Redaction_Note
-tags: bg|desk
+tags: 
 colorID: 0
 position: -22,-299
 ---
+<< fadeIn >>
+<< setBackground desk >>
+<< fadeOut >>
+
 << if isFirstTime() >>
 Vous vous retroussez les manches et vous attelez à la tâche. Mettre au propre cette note de synthèse, fruit de plusieurs jours de lecture, de prises de notes, de réflexions diverses et variées. Vous avez tellement de choses à dire et à coucher sur votre document, vous ne manquez pas d'idées, mais de concentration et productivité.
 << else >>
@@ -189,7 +220,7 @@ Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred ve
     <<jump Fred_again>>
 ===
 title: Fred_again
-tags: bg|desk
+tags: 
 colorID: 0
 position: 33,47
 ---
@@ -202,10 +233,14 @@ Nooon ! Si la communauté apprend que vous avez décliné le défi de Fred. Fred
     <<jump Salle_Gym2>>
 ===
 title: Salle_Gym2
-tags: bg|sport
+tags: 
 colorID: 0
 position: 317,29
 ---
+<< fadeIn >>
+<< setBackground sport >>
+<< fadeOut >>
+
 Vous relevez le défi lancé par Fred. En fait, vous vous éclatez tous les deux comme des enfants; cybersprint, electroskate, eBall, eJump...
 Le moins que l'on puisse dire, c'est que vous êtes donné à fond. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
 
@@ -220,14 +255,16 @@ Fred_smiling: Alors, j'ai gagné.
 You: Pour une fois.
 
 -> Retourner dans votre chambre 
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Surcharge_Cognitive
-tags: bg|bedroom
+tags: 
 colorID: 0
 position: -427,-43
 ---
-Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte. Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...
+Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte.
+Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...
 N'empêche, vous sentez votre tête penchez en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrer dans le noir...
 Puis, vous entendez une voix familière: 
 
@@ -241,10 +278,14 @@ Azul_happy: Pas grave, viens, on a une nouveau truc à t'apprendre.
     <<jump Assemblee_3>>
 ===
 title: Assemblee_3
-tags: bg|circle noUi
+tags: noUi
 colorID: 1
 position: -1091,21
 ---
+<< fadeIn >>
+<< setBackground circle >>
+<< fadeOut >>
+
 Hop, la seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin exotique. Ce petit nid de verdure que vos hôtes nomment l'assemblée des Sages. C'est de la téléportation ou de la magie ? Et où se trouve ce fichu décor si criant de vérité... On dirait d'authentiques plantes exotiques...
 Temde_smiling: Yep, elles sont réelles, ce ne sont pas des végétaux synthétiques. C'est moi qui m'en occupe.
 Sapiens_concerned: Super Miss Temdé. Je ne crois pas que { $name } soit venu pour échanger sur cette question.
@@ -450,37 +491,50 @@ tags:  noUi
 colorID: 1
 position: 1209,900
 ---
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+
 Flash !!! 
 Vous revoilà seul... Dans cet instant figé, dans cette parenthèse intime entre l'ombre et la lumière, le jour et la nuit. Votre "carnet d'ingénieur tout-terrain" est entre vos mains... 
 Qu'allez-vous noter dessus ?
 ===
 title: Lunch
-tags: bg|kitchen
+tags:
 colorID: 0
 position: 477,-702
 ---
+<< fadeIn >>
+<< setBackground kitchen >>
+<< fadeOut >>
+
 Yum Yum ! Il est temps de se faire une pause "manger équilibré", comme le recommande les Sages. Vous vous cuisinez un Green Burger Full Vegie. Franchement, c'est étrange, tant pour le goût que pour l'aspect. On dirait un burger à la viande et il n'y en a aucune. En outre, c'est vraiment copieux. Et les frites à base de riz croustillant... Dingue. C'est meilleur que les frites de chez Naz Do...
 
 << advanceTime 0:30 >>
 << removeFromGauge sleep 20 >>
 << addToGauge food 20 >>
 
--> C'est pas tout, il faut s'y remettre 
+-> C'est pas tout, il faut s'y remettre
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Diner
-tags: bg|kitchen
+tags:
 colorID: 0
 position: 684,-454
 ---
+<< fadeIn >>
+<< setBackground kitchen >>
+<< fadeOut >>
+
 À cette heure-ci, vous n'avez pas trop envie de cuire quelque chose de trop lourd. Un mix de ratatouilles de légumes du soleil d'Aldébaran, y a rien de mieux... Vous ouvrez votre boîte de plat-rouge-bio. Vous servez le tout avec une assiette de céréales complètes. C'est simple, chaud, nourrissant et franchement bon.
 
 << advanceTime 0:30 >>
 << removeFromGauge sleep 20 >>
 << addToGauge food 20 >>
 
-
 -> La journée n'est pas encore finie ! 
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Quit_Mini_Game

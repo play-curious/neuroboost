@@ -3,6 +3,10 @@ tags: bg|bedroom
 colorID: 0
 position: -1863,65
 ---
+<< fadeIn 1 >>
+<< setBackground bedroom >>
+<< fadeOut >>
+
 Après vous êtes réveillé en douceur... Vous prenez votre petit déjeuner tranquillement. Une boîte de biocookies et un thé décaféiné, rien de tel pour commencer une nouvelle journée. Vous débarrassez la cuisine, vous faites votre toilette, vous préparez vos affaires pour aller à la bibliothèque, quand votre palmphone vibre : c'est Fred!
 
 -> prendre l'appel 
@@ -19,9 +23,9 @@ Fred@holo_smiling: Cool, tu me retrouves ?
 You: Tu es déjà à la bibliothèque ?
 Fred@holo_happy: Non, je suis à la maison, je viens juste de recevoir le dernier GTR : Grand Thrill Rodéo 66 ! Une tuerie !
 You: Je te rappelle qu'on doit finir notre projet sur la théorie du chaos aujourd'hui, avant minuit.
-Fred_smiling: Yes, yes. Viens d'abord chez moi !
+Fred@holo_smiling: Yes, yes. Viens d'abord chez moi !
 You: Fred, on a encore du pain sur la planche.
-Fred_smiling: Yes, yes, on verra cet après-midi.
+Fred@holo_smiling: Yes, yes, on verra cet après-midi.
 Vous connaissez Fred, il est têtu. Vous n'avez que deux possibilités :
 
 -> Vous allez à la bibliothèque et vous espérez qu'il va vous rejoindre.
@@ -30,10 +34,14 @@ Vous connaissez Fred, il est têtu. Vous n'avez que deux possibilités :
     <<jump ChezFred>>
 ===
 title: Bibli_soloPM
-tags: bg|class
+tags: 
 colorID: 0
 position: -726,629
 ---
+<< fadeIn >>
+<< setBackground class >>
+<< fadeOut >>
+
 Vous retournez vous asseoir à la même table que ce matin. L'ambiance est toujours calme et propice à la l'étude. Vous textez Fred pour lui dire que vous l'attendez au même endroit.
 Le temps passe, les minutes et les heures s'écoulent. Mais que fait donc Fred ? Pas trop tôt, le voilà...
 
@@ -54,6 +62,10 @@ tags: bg|class
 colorID: 0
 position: -795,107
 ---
+<< fadeIn >>
+<< setBackground class >>
+<< fadeOut >>
+
 Dingue, Fred vous a suivi à la bibliothèque. C'est une première...
 Fred_happy: Au fait, { $name }, félicitations !
 You: Ah bon ?
@@ -74,7 +86,7 @@ Vous ne saisissez pas très bien le sens des paroles de Fred. Que veux-t-il dire
     <<jump Liste_taches>>
 ===
 title: Liste_taches
-tags: bg|class
+tags:
 colorID: 1
 position: -1322,330
 ---
@@ -157,7 +169,7 @@ Fred_sad: Dis donc, c'est vraiment pas top ta boule immersive...
     <<jump Liste_taches>>
 ===
 title: Lunch_bibli
-tags: bg|class
+tags: 
 colorID: 0
 position: -507,380
 ---
@@ -252,10 +264,14 @@ Satisfait de vos résolutions, confiant dans les capacité de Fred, habitué à 
 <<jump Bedroom>>
 ===
 title: Assemblee
-tags: bg|circle noUi
+tags: noUi
 colorID: 1
 position: -1913,850
 ---
+<< fadeIn >>
+<< setBackground circle >>
+<< fadeOut >>
+
 Sapiens_happy: Tu vois, nous étions impatients de te revoir.
 Azul_proud: C'est que derrière ses airs de maître inflexible, se cache un coeur tendre. N'est-ce pas Master Sapiens ?
 Sapiens_angry: Tu ne crois pas exagérer, Azul ?
@@ -524,6 +540,10 @@ tags:
 colorID: 0
 position: -1039,-48
 ---
+<< fadeIn >>
+//<< setBackground sport >> // Image chez Fred ?
+<< fadeOut >>
+
 Fred vous fait entrer à la première sonnerie. 
 Fred_excited: Tu vas voir, ce GTR, c'est de la giga-bombe!
 You: Fred, faut qu'on aille à la bibli, tu joueras ce week-end.
@@ -538,24 +558,31 @@ Ouf, vous avez touché la corde sensible de Fred, il accepte de vous suivre... �
 <<jump Bibli_binome>>
 ===
 title: Bedroom
-tags: bg|bedroom_night
+tags:
 colorID: 0
 position: -81,758
 ---
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+
 Vous demandez à l'IA de votre studio de passer en mode <b>Zero-Distraction</b>.  
 // y-a-t-il une animation son/visuelle? La jauge de la charge mentale est renforcée? Le joueur le voit? 
 // C'est une proposition, pas indispensable dans cette quête, juste possibilité que le joueur réutilise ce qu'il a débloqué
 <<setTime 21:30>>
 Vous ne vous accordez qu'une pause dîner. Une soupe de nouilles aux légumes et un sorbet multi-fruits. C'est finalement bien Yum yum... Vous mettez un point final à votre version. Il est 21h passé. Vous envoyez votre texte quasi définitif à Fred. Et vous attendez le sien. Rien... 
 Si Si ! Votre palmphone vibre:
-Fred_excited: Bien reçu ton texte. 
+Fred@holo_excited: Bien reçu ton texte. 
 You: Et toi?
-Fred_excited: Je suis en train de finir.
+Fred@holo_excited: Je suis en train de finir.
 You: Et on fait comment pour réassembler notre travail ?
-Fred_happy: No Worry. C'est moi qui suis en retard, je m'en occupe.
+Fred@holo_happy: No Worry. C'est moi qui suis en retard, je m'en occupe.
 You: Promis ?
-Fred_happy: Promis.
+Fred@holo_happy: Promis.
 Espérons que vous pourrez lui faire confiance. De toute manière, il est trop tard pour changer le cours des choses... À moins que...
+
+<< fadeIn >>
+<< fadeOut >>
 
 Sapiens_happy: Tu nous as appelé?
 You: Heu... Oui... J'ai pensé à vous... Enfin...

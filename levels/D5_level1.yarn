@@ -1,10 +1,14 @@
 # gauges: sleep food stress
 
 title: Start
-tags: bg|bedroom
+tags: 
 colorID: 8
 position: -2835,-498
 ---
+<< fadeIn 1 >>
+<< setBackground bedroom >>
+<< fadeOut >>
+
 Bip ! Bip ! Votre horloge connectée vous surprend en plein milieu d'un rêve merveilleux. Vous étiez attablé à un large plateau oblong, vous riiez. Vous étiez entouré de vos confrères et consoeurs : les 4 sages ! Vous aviez rejoint leur assemblée ! Vous étiez devenu un expert de la métacognition !...
 Hélas, ce ne sera pas pour aujourd'hui. Ce matin, vous devez réviser. Nous sommes jeudi, la semaine de partiels ne s'est pas achevée. Vous devez passer encore un examen cet après-midi. La GRH : la Gestion des Ressources Hybrides. C'est-à-dire les forces vives : biologiques, numériques, et biologinumériques...
 
@@ -16,10 +20,13 @@ Ronronron... Votre palmphone vibre. Pour la première fois de la semaine, ce n'e
     <<jump Rejet_Mamie>>
 ===
 title: Liste_Taches
-tags: bg|bedroom
+tags: 
 colorID: 1
 position: -2103,-617
 ---
+<< setBackground bedroom >>
+<< fadeOut >>
+
 Que voulez-vous faire?
 << if $time >= 810 >>
 C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
@@ -40,7 +47,7 @@ C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
 
 ===
 title: Appel_Mamie
-tags: bg|bedroom
+tags: 
 colorID: 0
 position: -2531,-441
 ---
@@ -79,10 +86,14 @@ Votre palmphone s'ébroue de nouveau ! C'est encore votre grand-mère ! Elle ins
     <<jump Rejet_Mamie>>
 ===
 title: Breakfast
-tags: bg|kitchen
+tags: 
 colorID: 0
 position: -1962,-316
 ---
+<< fadeIn >>
+<< setBackground kitchen >>
+<< fadeOut >>
+
 C'est vraiment pas yum yum ce matin... Votre muesli à la crème n'a pas de goût et votre jus d'orange reconstitué vous attaque l'estomac. C'est trop acide. Décidément, la nourriture biologcindus ne ne fait pas toujours des miracles. Surtout, quand le moral est bas... Au moins, vous vous sentez le corps moins vidé. 
 <<advanceTime 0:15>>
 
@@ -90,10 +101,11 @@ C'est vraiment pas yum yum ce matin... Votre muesli à la crème n'a pas de goû
     <<jump Liste_Taches>>
 ===
 title: Maman_Call
-tags: bg|bedroom
+tags: 
 colorID: 0
 position: -1710,-324
 ---
+
 Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous appuyez sur le bouton "appel". Votre mère décroche :
 
 Maman@holo_shadow: Bibi. Tu es au courant ?
@@ -112,10 +124,14 @@ Vous raccrochez, encore plus énervé. Cette histoire sent de plus en plus mauva
     <<jump Liste_Taches>>
 ===
 title: Rappel_libre
-tags: bg|desk
+tags: 
 colorID: 0
 position: -1423,-343
 ---
+<< fadeIn >>
+<< setBackground desk >>
+<< fadeOut >>
+
 Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés. 
 Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs... En direction de votre grand-mère, de son problème cardiaque, de son opération. 
 Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond...
@@ -126,10 +142,14 @@ Vous tentez régulièrement de revenir à votre matière à réviser, à relire 
     <<jump Liste_Taches>>
 ===
 title: Web_Info
-tags: bg|desk
+tags: 
 colorID: 0
 position: -1108,-345
 ---
+<< fadeIn >>
+<< setBackground desk >>
+<< fadeOut >>
+
 Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches. 
 Vous passez les deux heures suivantes à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations. 
 Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes...
@@ -165,10 +185,14 @@ Fred@holo_excited: Si, follow me...
     <<jump NoMove_Stress>>
 ===
 title: Lunch
-tags: bg|kitchen
+tags: 
 colorID: 1
 position: -2328,-127
 ---
+<< fadeIn >>
+<< setBackground kitchen >>
+<< fadeOut >>
+
 Zuuut !! Déjà l'heure de se préparer à sortir ! Pas le temps de faire dans le subtil et l'équilibré. Vous enfournez dans le four radio un Burger Big Proteins Double Cheese ! 
 Le temps que votre plat réchauffe, vous videz une canette de Xeno Cola ! Cinq bouchées plus tard et un rapide coup de serviette pour enlever le ketchup, vous enfilez vos frustres et vous filez en salle...
 
@@ -176,16 +200,21 @@ Le temps que votre plat réchauffe, vous videz une canette de Xeno Cola ! Cinq b
     <<jump Salle_Examen>>
 ===
 title: Sport_Stress
-tags: bg|sport
+tags: 
 colorID: 0
 position: -554,-240
 ---
+<< fadeIn >>
+<< setBackground sport >>
+<< fadeOut >>
+
 Revêtu d'un exosquelette tout-terrain, Fred vous attend.
 Fred_excited: Yes yes ! Te voilà. Mets ta combi !
 Il vous balance un exosquelette que vous rattrapez in-extremis au vol. Vous enfilez la combinaison et rejoignez Fred sur la piste.
 You: Et qu'est-ce qu'on fait maintenant ?
 Fred_smiling: on se défoule autant qu'on peut ! 
 You: Heu...
+<< hide >>
 Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. Ravi de son coup, Fred vous tend la main pour vous redresser. Vous la saisissez, l'agrippez et la tirez pour le faire chuter à son tour ! 
 Fred, beau joueur, se laisse tomber à vos côtés. La suite : vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! Vous imaginez que Fred incarne votre peur, votre frustration. Vous lui envoyez toute la colère et la rage contenue en vous ! 
 Heureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. Vous avez la langue sèche et les membres engourdis.
@@ -207,7 +236,7 @@ Hélas, cet exercice de frappe intense ne semble pas avoir évacué votre angois
     <<jump Liste_Taches>>
 ===
 title: NoMove_Stress
-tags: bg|desk
+tags:
 colorID: 0
 position: -593,-581
 ---
@@ -232,10 +261,14 @@ Vous êtes aussi énervé après deux bonnes heures de jeu qu'avant.
     <<jump Liste_Taches>>
 ===
 title: Salle_Examen
-tags: bg|class
+tags: 
 colorID: 0
 position: -2091,70
 ---
+<< fadeIn >>
+<< setBackground class >>
+<< fadeOut >>
+
 Vous retrouvez devant l'entrée de la salle de classe, Fred. Ce dernier vous regarde avec perplexité.
 Fred_surprised: Damned, ça n'a pas l'air d'aller. Tu as le visage blême.
 You: Ça va, ça va...
@@ -374,10 +407,14 @@ Et alors ? Vous auriez eu A tous les deux, ce n'est pas ça qui ferait sortir vo
     <<jump Bedroom_night>>
 ===
 title: Bedroom_night
-tags: bg|bedroom_night
+tags: 
 colorID: 1
 position: -2775,414
 ---
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+
 Vous rentrez dans votre chambre. Vous avez la tête compressée. Vous ressassez sans cesse les incidents de la journée. Vous n'osez rappelez votre mère. Vous attendez que celle-ci vous rappelle.
 Puis, le soir venu, vous vous efforcez  de manger mieux : une soupe bio mécanorganique. Mais le ventre et le coeur n'y sont pas. Vous êtes très, très énervé. Vous ne savez plus quoi penser, ni que faire pour vous calmer.
 Votre corps et votre instinct vous dit qu'il faut trouver le sommeil. Vous vous changez et vous glissez dans le lit. Mais vos pensées sont toujours là et vous agitent l'esprit.
@@ -433,7 +470,7 @@ position: -1421,606
 ---
 Vous broyez du noir dans le silence et l'obscurité relative de votre chambre connectée. Vous ne pouvez pas vous empêchez de fixer les différents curseurs lumineux qui scintillent ou clignotent dans la pièce. 
 Vos paupières sont lourdes, elles refusent néanmoins de se refermer... Les minutes, les heures passent... Puis... le décompte du temps vous échappe... Quand...
-<< show Ledai>>
+
 Ledai_happy: Bonsoir { $name }.
 You: Heiiiin...
 Ledai_explaining: Suis-moi. On va te réparer ton moteur émotionnel...
@@ -456,10 +493,14 @@ Vos idées noires continuent de vous hanter.
     <<jump Choix_night>>
 ===
 title: Assemblee_Sages
-tags: bg|circle noUi
+tags: noUi
 colorID: 1
 position: -2849,698
 ---
+<< fadeIn >>
+<< setBackground circle >>
+<< fadeOut >>
+
 Vous voilà de nouveau à l'Assemblée des Sages. Cet endroit normalement si verdoyant et si paisible. Mais ce soir, vous voyez tout en gris, voire en noir. Même ce paradis vous semble triste et éteint. 
 D'autant que vous ne voyez pas en quoi les experts de la métacognition pourraient aider votre grand-mère à sortir du coma.
 You: Je vois pas ce que je fais là. C'est ma mamie qui va mal, pas moi.

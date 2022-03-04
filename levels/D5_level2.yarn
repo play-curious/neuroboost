@@ -1,8 +1,12 @@
 title: Start
-tags: bg|bedroom
+tags:
 colorID: 8
 position: -2838,-501
 ---
+<< fadeIn 1 >>
+<< setBackground bedroom >>
+<< fadeOut >>
+
 Bip ! Bip ! Votre horloge connectée vous surprend en plein milieu d'un rêve. Vous étiez dans le jardin verdoyant des quatre Sages. Vous ouvrez l'oeil. Vous réalisez qu'il est de nouveau vendredi. Vous devez repasser l'épreuve de GRH : Gestion des Ressources Hybrides.
 Ronronron... Votre palmphone vibre. C'est votre grand-mère qui se rappelle à vous. Vous savez ce qu'elle va vous dire, mais vous devez prendre son appel. C'est mamie, et elle ne va pas très bien, quoi qu'elle en dise...
 
@@ -10,10 +14,13 @@ Ronronron... Votre palmphone vibre. C'est votre grand-mère qui se rappelle à v
     <<jump Appel_Mamie>>
 ===
 title: Liste_Taches
-tags: bg|bedroom
+tags:
 colorID: 1
 position: -2107,-622
 ---
+<< setBackground bedroom >>
+<< fadeOut >>
+
 Que voulez-vous faire?
 << if $time >= 810 >>
 C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
@@ -34,7 +41,7 @@ C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
 << endif>>
 ===
 title: Appel_Mamie
-tags: bg|bedroom
+tags:
 colorID: 0
 position: -2535,-447
 ---
@@ -56,10 +63,14 @@ Qu'est-ce que vous allez bien pouvoir faire pour éliminer ce stress ?
     <<jump Liste_Taches>>
 ===
 title: Breakfast
-tags: bg|kitchen
+tags: 
 colorID: 0
 position: -1966,-321
 ---
+<< fadeIn >>
+<< setBackground kitchen >>
+<< fadeOut >>
+
 Ce matin, l'important est moins de manger équilibré que de garder son calme. Vous gavez de chimicookies et vous buvez un synthécafé.
 <<advanceTime 0:15>>
 
@@ -67,10 +78,14 @@ Ce matin, l'important est moins de manger équilibré que de garder son calme. V
     <<jump Liste_Taches>>
 ===
 title: Maman_Call
-tags: bg|bedroom
+tags: 
 colorID: 0
 position: -1714,-326
 ---
+<< fadeIn >>
+<< setBackground bedroom >>
+<< fadeOut >>
+
 Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous voulez la rassurer.
 Maman@holo_shadow: Bibi, tu es au courant ?
 You: Oui. Mamie m'a appelé. On l'a emmenée au bloc opératoire.
@@ -92,10 +107,14 @@ Vous raccrochez encore plus énervé. Cette idée de passer un coup de fil pour 
     <<jump Liste_Taches>>
 ===
 title: Rappel_libre
-tags: bg|desk
+tags: 
 colorID: 0
 position: -1427,-347
 ---
+<< fadeIn >>
+<< setBackground desk >>
+<< fadeOut >>
+
 Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés. 
 Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs... En direction de votre grand-mère, de son problème cardiaque, de son opération. 
 Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond...
@@ -109,10 +128,14 @@ Vous tentez régulièrement de revenir à votre matière à réviser, à relire 
 // Pour réussir son test, le joueur doit valider plus que 20 dans sa jauge learning. Comme dis plus haut, une session de révision ne saura peut-être pas suffisant. Il faut que le joueur fasse descendre son stress avant = footing avec Fred
 ===
 title: Web_Info
-tags: bg|desk
+tags: 
 colorID: 0
 position: -1111,-338
 ---
+<< fadeIn >>
+<< setBackground desk >>
+<< fadeOut >>
+
 Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches. 
 Vous passez les deux heures suivantes à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations. 
 Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes...
@@ -146,20 +169,28 @@ Fred@holo_excited: Allez, viens. Trust me...
     <<jump NoMove_Stress>>
 ===
 title: Lunch
-tags: bg|kitchen
+tags: 
 colorID: 1
 position: -2332,-131
 ---
+<< fadeIn >>
+<< setBackground kitchen >>
+<< fadeOut >>
+
 Pas le temps !! Vous engloutissez fissa un Burger Big Proteins Double Cheese ! Vous videz une canette de Xeno Cola ! Voilà votre repas du midi. Ce n'est pas équilibré, mais en ce vendredi matin, ce n'est pas le plus important. Vous filez ensuite à la salle d'examen...
 
 -> Se rendre à l'examen 
     <<jump Salle_Examen>>
 ===
 title: Sport_Stress
-tags: bg|sport
+tags: 
 colorID: 0
 position: -559,-246
 ---
+<< fadeIn >>
+<< setBackground sport >>
+<< fadeOut >>
+
 Revêtu d'un exosquelette tout-terrain, Fred vous attend et vous balance un exosquelette que vous rattrapez in-extremis au vol. Vous enfilez la combinaison et rejoignez Fred sur la piste.
 Fred_excited: Viens, on se fighte ! 
 You: Je suis pas sûr que...
@@ -180,10 +211,14 @@ Hélas, cet exercice de sport violent n'a pas évacué votre angoisse. C'est ce 
     <<jump Liste_Taches>>
 ===
 title: NoMove_Stress
-tags: bg|desk
+tags: 
 colorID: 0
 position: -597,-585
 ---
+<< fadeIn >>
+<< setBackground desk >>
+<< fadeOut >>
+
 You: Nan... Je crois pas... J'ai du boulot.
 Fred@holo_excited: No no, faut que tu penses à autre chose !
 You: Pas envie...
@@ -208,10 +243,14 @@ Hélas, cela ne réduit pas votre trouble. Vous vous rappelez que les Sages vous
 // NB S'assurer que l'impact fatigue a une relle incidence sur les performances du joueur dans ce Day5 . Pas juste un simple effet visuel ??
 ===
 title: Salle_Examen
-tags: bg|class
+tags: 
 colorID: 0
 position: -2094,66
 ---
+<< fadeIn >>
+<< setBackground class >>
+<< fadeOut >>
+
 Vous retrouvez devant l'entrée de la salle de classe, Fred. Ce dernier vous regarde avec perplexité.
 Fred_excited: Damned, tu as l'air étrange.
 You: Ça va, ça va...
@@ -349,10 +388,14 @@ Vous dites au-revoir à votre pote et retournez à votre chambre.
     <<jump Bedroom_night>>
 ===
 title: Bedroom_night
-tags: bg|bedroom_night
+tags: 
 colorID: 1
 position: -2735,356
 ---
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+
 Vous rentrez dans votre chambre, soulagé. Vous avez réussi votre examen. Au dîner, vous vous efforcez  de manger mieux : une soupe bio métanorganique et un fromage frais.
 Cependant, vous pensez toujours à votre grand-mère. Que lui arrive-t-il ? Est-elle sur la voie de la guérison ou pas ?
 Votre corps et votre instinct vous dit qu'il faut trouver le sommeil. Vous vous changez et vous glissez dans le lit. Mais vos pensées sont toujours là et vous agitent l'esprit.
