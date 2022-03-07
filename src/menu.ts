@@ -8,14 +8,14 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 
 interface Settings {
-  fx: number;
-  music: number;
+  fx: 0 | 0.5 | 0.25 | 0.75 | 1;
+  music: 0 | 0.5 | 0.25 | 0.75 | 1;
   fullscreen: boolean;
 }
 
 const defaultSettings: Settings = {
-  fx: 1,
-  music: 1,
+  fx: 0.5,
+  music: 0.5,
   fullscreen: util.inFullscreen(),
 };
 
@@ -42,19 +42,15 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private blackBackground: PIXI.Graphics;
   private popupBackground: PIXI.Sprite;
   private menuButton: PIXI.Sprite;
-  private backButton: PIXI.Sprite;
+  //private backButton: PIXI.Sprite;
   private playCuriousLogo: PIXI.Sprite;
   private creditButton: PIXI.Text;
   private creditsEntity: booyah.CreditsEntity;
   private title: PIXI.Sprite;
 
   private fullscreenSwitcher: SpriteSwitcher;
-  private musicVolumeSwitcher: SpriteSwitcher<
-    Record<"0" | "0.5" | "1", string>
-  >;
-  private soundVolumeSwitcher: SpriteSwitcher<
-    Record<"0" | "0.5" | "1", string>
-  >;
+  private musicVolumeSwitcher: SpriteRangeSwitcher;
+  private soundVolumeSwitcher: SpriteRangeSwitcher;
 
   private debugPressCount: number;
 
@@ -183,77 +179,52 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
-      this.musicVolumeSwitcher = new SpriteSwitcher(
+      this.musicVolumeSwitcher = new SpriteRangeSwitcher(
         {
-          "0": "images/menu/music_range_disabled.png",
-          "0.5": "images/menu/music_range_middle.png",
-          "1": "images/menu/music_range_full.png",
+          0: "images/menu/music_range_0.png",
+          0.25: "images/menu/music_range_0.25.png",
+          0.5: "images/menu/music_range_0.5.png",
+          0.75: "images/menu/music_range_0.75.png",
+          1: "images/menu/music_range_1.png",
         },
-        this.settings.music ? "1" : "0",
-        function (event) {
-          const cursor = event.data.getLocalPosition(this.currentSprite);
-          if (
-            cursor.x + this.currentSprite.width / 2 <
-            this.currentSprite.width * 0.4
-          ) {
-            this.switch("0");
-          } else if (
-            cursor.x + this.currentSprite.width / 2 <
-            this.currentSprite.width * 0.75
-          ) {
-            this.switch("0.5");
-          } else {
-            this.switch("1");
-          }
-        }
+        this.settings.music ?? defaultSettings.music
       );
       this.musicVolumeSwitcher.container.position.x =
         this.popupBackground.width - 310;
       this.musicVolumeSwitcher.container.position.y += 40;
       this.musicVolumeSwitcher.onStateChange((state) => {
-        this._entityConfig.playOptions.setOption("musicOn", state !== "0");
-        // Set volume to be 0.5 max
-        const volume = Number(state) / 2;
-        this.settings.music = volume;
-        this._entityConfig.jukebox.changeVolume(volume);
+        this.config.playOptions.setOption("musicOn", state !== 0);
+        this.settings.music = state as 0;
+        this.config.jukebox.changeVolume(state as 0);
+        const initialFxVolume = this.config.fxMachine.volume;
+        this.config.fxMachine.changeVolume(state as 0);
+        this.config.fxMachine.play("Click");
+        setTimeout(() => {
+          this.config.fxMachine.changeVolume(initialFxVolume);
+        }, 500);
         this.saveSettings();
       });
     }
 
     {
-      this.soundVolumeSwitcher = new SpriteSwitcher(
+      this.soundVolumeSwitcher = new SpriteRangeSwitcher(
         {
-          "0": "images/menu/sound_range_disabled.png",
-          "0.5": "images/menu/sound_range_middle.png",
-          "1": "images/menu/sound_range_full.png",
+          0: "images/menu/fx_range_0.png",
+          0.25: "images/menu/fx_range_0.25.png",
+          0.5: "images/menu/fx_range_0.5.png",
+          0.75: "images/menu/fx_range_0.75.png",
+          1: "images/menu/fx_range_1.png",
         },
-        this.settings.fx ? "1" : "0",
-        function (event) {
-          const cursor = event.data.getLocalPosition(this.currentSprite);
-          if (
-            cursor.x + this.currentSprite.width / 2 <
-            this.currentSprite.width * 0.4
-          ) {
-            this.switch("0");
-          } else if (
-            cursor.x + this.currentSprite.width / 2 <
-            this.currentSprite.width * 0.75
-          ) {
-            this.switch("0.5");
-          } else {
-            this.switch("1");
-          }
-        }
+        this.settings.fx ?? defaultSettings.fx
       );
       this.soundVolumeSwitcher.container.position.x =
         this.popupBackground.width - 290;
       this.soundVolumeSwitcher.container.position.y -= 120;
       this.soundVolumeSwitcher.onStateChange((state) => {
-        this._entityConfig.playOptions.setOption("fxOn", state !== "0");
-        const volume = Number(state);
-        this.settings.fx = volume;
-        this._entityConfig.fxMachine.changeVolume(volume);
-        this._entityConfig.fxMachine.play("Click");
+        this.config.playOptions.setOption("fxOn", state !== 0);
+        this.settings.fx = state as 0;
+        this.config.fxMachine.changeVolume(state as 0);
+        this.config.fxMachine.play("Click");
         this.saveSettings();
       });
     }
@@ -328,6 +299,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   private _onOpen() {
     this.blackBackground.visible = true;
+    this.config.fxMachine.play("Spawn");
   }
 
   private _showCredits() {
@@ -353,7 +325,7 @@ export function makeInstallMenu(
  * - newState: keyof States
  */
 export class SpriteSwitcher<
-  States extends Record<string, string> = Record<"on" | "off", string>
+  States extends Record<string | number, string> = Record<"on" | "off", string>
 > extends entity.EntityBase {
   public currentSprite?: PIXI.Sprite;
   public currentState?: keyof States;
@@ -408,5 +380,39 @@ export class SpriteSwitcher<
     const newState =
       stateNames[stateNames.indexOf(this.currentState as string) + 1];
     this.switch(newState ?? stateNames[0]);
+  }
+}
+
+export interface SpriteRangeSwitcherStates
+  extends Record<string | number, string> {
+  0: string;
+  0.25: string;
+  0.5: string;
+  0.75: string;
+  1: string;
+}
+
+export class SpriteRangeSwitcher extends SpriteSwitcher<SpriteRangeSwitcherStates> {
+  constructor(
+    states: SpriteRangeSwitcherStates,
+    initialState?: keyof SpriteRangeSwitcherStates
+  ) {
+    super(states, initialState, function (event) {
+      const cursor = event.data.getLocalPosition(this.currentSprite);
+      const factor =
+        (cursor.x + this.currentSprite.width / 2) / this.currentSprite.width;
+
+      if (factor < 0.2) {
+        this.switch(0);
+      } else if (factor < 0.4) {
+        this.switch(0.25);
+      } else if (factor < 0.6) {
+        this.switch(0.5);
+      } else if (factor < 0.8) {
+        this.switch(0.75);
+      } else {
+        this.switch(1);
+      }
+    });
   }
 }

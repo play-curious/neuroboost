@@ -6,10 +6,11 @@ import * as filter from "./graphics_filter";
 import * as variable from "./variable";
 import * as extension from "./extension";
 
-const options: {[key: string]: any} = {
+const options: { [key: string]: any } = {
   method: {
     closeQuestion: {
-      question: "Lorsque tu as besoin de réviser, quelles techniques utilises-tu ?",
+      question:
+        "Lorsque tu as besoin de réviser, quelles techniques utilises-tu ?",
       answers: [
         "Rappel libre",
         "Lecture de notes",
@@ -19,38 +20,29 @@ const options: {[key: string]: any} = {
       ],
     },
     openQuestion: {
-      question: "Si tu pouvais apprendre plus facilement ou retenir des informations plus longtemps, qu'est-ce que cela pourrait changer à ta vie ?"
+      question:
+        "Si tu pouvais apprendre plus facilement ou retenir des informations plus longtemps, qu'est-ce que cela pourrait changer à ta vie ?",
     },
   },
   food: {
     closeQuestion: {
       question: "Penses-tu que ton alimentation est saine ?",
-      answers: [
-        "Oui",
-        "Souvent oui",
-        "Rarement oui",
-        "Non",
-      ],
+      answers: ["Oui", "Souvent oui", "Rarement oui", "Non"],
     },
     openQuestion: {
-      question: "Comment pourrais-tu améliorer ton alimentation pour mieux apprendre ?",
-    }
+      question:
+        "Comment pourrais-tu améliorer ton alimentation pour mieux apprendre ?",
+    },
   },
   sleep: {
     closeQuestion: {
       question: "De combien de temps de sommeil as tu besoin ?",
-      answers: [
-        "10h ou plus",
-        "9h",
-        "8h",
-        "7h",
-        "6h ou moins",
-      ],
+      answers: ["10h ou plus", "9h", "8h", "7h", "6h ou moins"],
     },
     openQuestion: {
       question: "Quels facteurs te permettent de bien dormir le soir ?",
-    }
-  }
+    },
+  },
 };
 
 export class JournalScene extends extension.ExtendedCompositeEntity {
@@ -61,12 +53,12 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
 
   constructor(
     private variableStorage: variable.VariableStorage,
-    private option: string) {
+    private option: string
+  ) {
     super();
   }
 
   _setup(): void {
-
     this._container = new PIXI.Container();
     this.config.container.addChild(this._container);
 
@@ -158,14 +150,10 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
           it.interactive = true;
           it.buttonMode = true;
 
-          this._on(
-            it,
-            "pointerup",
-            () => {
-
-              this._transition = entity.makeTransition();
-            }
-          );
+          this._on(it, "pointerup", () => {
+            this.config.fxMachine.play("Click");
+            this._transition = entity.makeTransition();
+          });
         })
       );
     }
