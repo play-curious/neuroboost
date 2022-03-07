@@ -8,12 +8,12 @@ import * as util from "booyah/src/util";
 
 import * as save from "./save";
 import * as menu from "./menu";
-
 import * as clock from "./clock";
 import * as images from "./images";
 import * as dialog from "./dialog";
 import * as journal from "./journal";
 import * as variable from "./variable";
+import * as miniGame from "./mini_game";
 
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
@@ -78,7 +78,7 @@ const stateNames = [
 ];
 
 const states: { [k: string]: entity.EntityResolvable } = {
-  Start_Menu: new save.StartMenu(),
+  Start_Menu: new miniGame.Juggling(), //new save.StartMenu(),
 };
 for (const stateName of stateNames) {
   if (stateName.includes("journal"))
