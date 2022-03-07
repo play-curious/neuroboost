@@ -7,18 +7,27 @@ export class MiniGame extends extension.ExtendedCompositeEntity {}
 
 export class Juggling extends MiniGame {
   private container: PIXI.Container;
+  private temde: { container: PIXI.Container; entity: entity.ParallelEntity };
   public balls: Ball[];
 
   _setup() {
     this.balls = [];
+    this.temde = this.makeCharacter("temde", "smiling", "", true);
     this.container = new PIXI.Container();
+    this.container.addChild(this.temde.container);
     // todo: add background and character ?
     this.config.container.addChild(this.container);
     this._activateChildEntity(
-      new entity.EntitySequence([
-        // todo: explain script
-        this.addBall(),
-      ])
+      new entity.ParallelEntity([
+        this.temde.entity,
+        new entity.EntitySequence([
+          // todo: explain script
+          this.addBall(),
+        ]),
+      ]),
+      entity.extendConfig({
+        container: this.container,
+      })
     );
   }
 
