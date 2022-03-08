@@ -2,6 +2,7 @@ import * as extension from "./extension";
 import * as PIXI from "pixi.js";
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
+import * as popup from "./popup";
 
 export abstract class MiniGame extends extension.ExtendedCompositeEntity {
   protected container: PIXI.Graphics;
@@ -17,23 +18,25 @@ export abstract class MiniGame extends extension.ExtendedCompositeEntity {
 }
 
 export class Juggling extends MiniGame {
-  private temde: { container: PIXI.Container; entity: entity.ParallelEntity };
-  private temdeArm: PIXI.Sprite;
+  // private temde: { container: PIXI.Container; entity: entity.ParallelEntity };
+  // private temdeArm: PIXI.Sprite;
   private hits: number;
-  private textScore: PIXI.Text;
+  private text: PIXI.Text;
   public balls: Ball[];
+  public stopped: boolean;
   public zone = {
-    x: 1920 / 2,
+    x: 500,
     y: 100,
-    width: 1920 / 2 - 100,
+    width: 1920 / 2,
     height: 1080 - 100,
   };
 
   _setup() {
     super._setup();
+    this.stopped = false;
     this.hits = 0;
     this.balls = [];
-    this.textScore = this.makeText(
+    this.text = this.makeText(
       "",
       {
         fontFamily: "Ubuntu",
@@ -47,22 +50,22 @@ export class Juggling extends MiniGame {
         this.container.addChild(it);
       }
     );
-    this.temde = this.makeCharacter("temde", "", "", false);
-    this.temde.container.scale.x = -1.1;
-    this.temde.container.position.x = 1500;
-    this.temdeArm = this.makeSprite("images/characters/temde/arm.png", (it) => {
-      it.position.set(-it.width, this.zone.height);
-      this.container.addChild(it);
-    });
-    this.container.addChild(this.temde.container);
+    // this.temde = this.makeCharacter("temde", "", "", false);
+    // this.temde.container.scale.x = -1.1;
+    // this.temde.container.position.x = 1500;
+    // this.temdeArm = this.makeSprite("images/characters/temde/arm.png", (it) => {
+    //   it.position.set(-it.width, this.zone.height);
+    //   this.container.addChild(it);
+    // });
+    // this.container.addChild(this.temde.container);
     // todo: add background and character ?
     this.config.container.addChild(this.container);
-    this._activateChildEntity(
-      this.temde.entity,
-      entity.extendConfig({
-        container: this.temde.container,
-      })
-    );
+    // this._activateChildEntity(
+    //   this.temde.entity,
+    //   entity.extendConfig({
+    //     container: this.temde.container,
+    //   })
+    // );
     this._activateChildEntity(
       new entity.EntitySequence([
         // todo: explain script
@@ -99,45 +102,58 @@ export class Juggling extends MiniGame {
       } else {
         // todo: Success script
         this.updateText();
-        alert("Success!");
-        this._transition = entity.makeTransition();
+        this.stop();
+        this.text.text = "Ouep, pas mal.";
+        this.text.interactive = true;
+        this._on(this.text, "click", () => {
+          this._transition = entity.makeTransition();
+        });
       }
     }
   }
 
   fail() {
+    this.stop();
     // todo: FAIL script
-    if (confirm("Retry?")) this.retry();
-    else this._transition = entity.makeTransition();
+    this._activateChildEntity(
+      new popup.Confirm("Réessayer ?", (retry) => {
+        if (retry) this.retry();
+        else this._transition = entity.makeTransition();
+      })
+    );
+  }
+
+  stop() {
+    this.stopped = true;
   }
 
   updateText() {
-    this.textScore.text = `${this.hits} / ${this.balls.length} / 5`;
+    //this.text.text = `${this.hits} / ${this.balls.length} / 5`;
   }
 
   addBall() {
     return new entity.EntitySequence([
-      // todo: animation with temde arm
-      new entity.ParallelEntity([
-        // arm opacity
-        new tween.Tween({
-          from: -this.temdeArm.width,
-          to: 0,
-          duration: 500,
-          onUpdate: (value) => {
-            this.temdeArm.position.x = value;
-          },
-        }),
-        // arm position
-        new tween.Tween({
-          from: 0,
-          to: 1,
-          duration: 500,
-          onUpdate: (value) => {
-            this.temdeArm.alpha = value;
-          },
-        }),
-      ]),
+      // todo: animation with temde arm?
+      // new entity.ParallelEntity([
+      //   // arm opacity
+      //   new tween.Tween({
+      //     from: -this.temdeArm.width,
+      //     to: 0,
+      //     duration: 500,
+      //     onUpdate: (value) => {
+      //       this.temdeArm.position.x = value;
+      //     },
+      //   }),
+      //   // arm position
+      //   new tween.Tween({
+      //     from: 0,
+      //     to: 1,
+      //     duration: 500,
+      //     onUpdate: (value) => {
+      //       this.temdeArm.alpha = value;
+      //     },
+      //   }),
+      // ]),
       new entity.FunctionCallEntity(() => {
         const ball = new Ball(this);
         this.balls.push(ball);
@@ -187,6 +203,8 @@ export class Ball extends extension.ExtendedCompositeEntity {
   }
 
   _update() {
+    if (this.game.stopped) return;
+
     this.speed += 0.2 - this.index * 0.05;
     this.sprite.rotation = Date.now() / 200;
     this.sprite.position.y += this.speed;

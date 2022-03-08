@@ -79,7 +79,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
 
     const leftElements = document.createElement("div");
     const answers = options[this.option].closeQuestion.answers;
-    const answersInputs: HTMLInputElement[] = []; 
+    const answersInputs: HTMLInputElement[] = [];
     {
       leftElements.style.position = "absolute";
       leftElements.style.left = "230px";
@@ -106,11 +106,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         label.innerText = `${answers[i]}`;
         label.setAttribute("for", `closed-question-${i}`);
 
-        leftElements.append(
-          document.createElement("br"),
-          answer,
-          label
-        )
+        leftElements.append(document.createElement("br"), answer, label);
       }
     }
 

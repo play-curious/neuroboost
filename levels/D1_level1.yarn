@@ -9,8 +9,6 @@ position: -1979.929937362671,-817.3228759765625
 
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.
 
-<< minigame Juggling >>
-
 << stopFX Chime_LOOP >>
 << music Neutral >>
 

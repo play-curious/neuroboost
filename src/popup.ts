@@ -82,7 +82,7 @@ export class Confirm extends Popup {
 
   public constructor(
     public readonly _message: string,
-    readonly _callback: () => unknown
+    readonly _callback: (validated: boolean) => unknown
   ) {
     super(_callback);
   }
@@ -139,11 +139,12 @@ export class Confirm extends Popup {
     }
     this._on(this._cancelButton, "pointerup", () => {
       this._transition = entity.makeTransition();
+      this._callback(false);
     });
 
     this._on(this._okButton, "pointerup", () => {
       this._transition = entity.makeTransition();
-      this._callback();
+      this._callback(true);
     });
   }
 }

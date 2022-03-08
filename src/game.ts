@@ -74,6 +74,12 @@ const stateNames = [
   "journal_food",
   "journal_sleep",
   "D2_level2",
+  "D3_level1",
+  "D3_level2",
+  "D4_level1",
+  "D4_level2",
+  "D5_level1",
+  "D5_level2",
   "End_Screen"
 ];
 
