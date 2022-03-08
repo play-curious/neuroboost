@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import * as pixiExtract from "@pixi/extract";
 import * as jsPdf from "jspdf";
 
 import * as entity from "booyah/src/entity";
@@ -6,10 +7,11 @@ import * as entity from "booyah/src/entity";
 import * as filter from "./graphics_filter";
 import * as variable from "./variable";
 import * as extension from "./extension";
-import { couldStartTrivia } from "typescript";
+import dayjs from "dayjs";
 
 const options: {[key: string]: any} = {
   method: {
+    title: "Méthode de révision",
     closeQuestion: {
       question: "Lorsque tu as besoin de réviser, quelle technique utilises-tu ?",
       answers: [
@@ -25,6 +27,7 @@ const options: {[key: string]: any} = {
     },
   },
   food: {
+    title: "Alimentation",
     closeQuestion: {
       question: "Penses-tu que ton alimentation est saine ?",
       answers: [
@@ -39,6 +42,7 @@ const options: {[key: string]: any} = {
     }
   },
   sleep: {
+    title: "Sommeil",
     closeQuestion: {
       question: "De combien de temps de sommeil as tu besoin ?",
       answers: [
@@ -73,7 +77,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
     this.config.container.addChild(this._container);
 
     //this._graphics.setBackground("bedroom", "night")
-    this._container.addChild(this.makeSprite("images/ui/journal_bg.png"));
+    this._container.addChild(this.makeSprite("images/ui/journal_bg.png"));;
 
     // Handle filters
     this._holo = filter.newHolograph();
@@ -172,9 +176,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
                 }
               }
               journalStorage[this.option].openQuestion = (textArea as HTMLInputElement).value;
-console.log("A")
-              journalToPDF(journalStorage);
-console.log("B");
+              
               this.config.variableStorage.set("journalAnswers", journalStorage);
 
               this._transition = entity.makeTransition();
@@ -192,40 +194,60 @@ console.log("B");
   }
 }
 
-export function journalToPDF(journalStorage: any) {
-  const doc = new jsPdf.jsPDF();
-    const offset = 7;
+const _options: any = {
+  margin: {
+    top: 15,
+    bottom: 15,
+    left: 15,
+    right: 15
+  }
+}
+
+export class JournalPDF extends extension.ExtendedCompositeEntity {
+
+  journalToPDF(journalStorage: any, bgImage: PIXI.Sprite) {
+    const doc = new jsPdf.jsPDF();
+
+    const textOptions: jsPdf.TextOptionsLight = {
+      maxWidth: 210 - (_options.margin.left + _options.margin.right),
+      baseline: "top"
+    };
+    
+    const bgBase64 = this.config.app.renderer.plugins.extract.image(bgImage).src;
+
     let page = 1;
     for(const journal in journalStorage){
       doc.setPage(page);
-      let currentY = 15;
-      const textOptions: jsPdf.TextOptionsLight = {
-        maxWidth: 180,
-      };
+      doc.addImage(bgBase64, "PNG", 0, 0, 210, 297);
       
+      // Title
+      doc.setFontSize(22);
+      doc.text(`${options[journal].title}`, _options.margin.left, 15, textOptions);
+
       // CloseQuestion
       const closeQuestion = options[journal].closeQuestion;
-      doc.setFontSize(16);
-      doc.text(`${closeQuestion.question}`, 15, currentY, textOptions)
-      doc.setFontSize(14);
+      doc.setFontSize(20);
+      doc.text(`${closeQuestion.question}`, _options.margin.left, 35, textOptions);
+      doc.setFontSize(17);
       let i = 0;
       for(const answer of closeQuestion.answers){
         doc.setFont(undefined, i == journalStorage[journal].closeQuestion ? "bold" : "normal");
-        doc.text(`    - ${answer}\n`, 15, currentY + offset * (i++ + 1), textOptions);
+        doc.text(`    - ${answer}\n`, _options.margin.left, 61 + (10 * i++), textOptions);
       }
 
-      const openQuestionOffset = (2 * currentY) + (offset * (i + 1));
-      doc.setFontSize(16).setFont(undefined, "normal");
-      doc.text(`${options[journal].openQuestion.question}`, 15, openQuestionOffset, textOptions)
-      doc.setFontSize(14);
-      doc.text(`${journalStorage[journal].openQuestion}`, 15, openQuestionOffset + (offset*2), textOptions);
-
+      // OpenQuestion
+      doc.setFontSize(19).setFont(undefined, "normal");
+      doc.text(`${options[journal].openQuestion.question}`, _options.margin.left, 148, textOptions)
+      doc.setFontSize(17);
+      doc.text(`    ${journalStorage[journal].openQuestion}`, _options.margin.left, 174, textOptions);
 
       doc.addPage();
       page++;
     }
 
     doc.deletePage(doc.getNumberOfPages());
+    
+    doc.save(`JournalMetacognition (${dayjs().format("DD-MM-YYYY HH-mm-ss")})`);
+  }
 
-    doc.output("dataurlnewwindow");
 }
