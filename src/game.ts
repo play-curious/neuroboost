@@ -64,7 +64,7 @@ export function installGameData(rootConfig: entity.EntityConfig) {
 const params = new URLSearchParams(window.location.search);
 const startingNode = params.get("startNode") || params.get("node") || "Start";
 const startingScene =
-  params.get("level") || params.get("scene") || "journal_method";
+  params.get("level") || params.get("scene") || "Start_Menu";
 
 // prettier-ignore
 const stateNames = [
