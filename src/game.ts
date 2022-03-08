@@ -8,12 +8,12 @@ import * as util from "booyah/src/util";
 
 import * as save from "./save";
 import * as menu from "./menu";
-
 import * as clock from "./clock";
 import * as images from "./images";
 import * as dialog from "./dialog";
 import * as journal from "./journal";
 import * as variable from "./variable";
+import * as miniGame from "./mini_game";
 
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
@@ -75,6 +75,12 @@ const stateNames = [
   "journal_food",
   "journal_sleep",
   "D2_level2",
+  "D3_level1",
+  "D3_level2",
+  "D4_level1",
+  "D4_level2",
+  "D5_level1",
+  "D5_level2",
   "End_Screen"
 ];
 

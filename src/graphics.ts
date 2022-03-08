@@ -42,6 +42,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _fxLayer: PIXI.Container;
   private _characterLayer: PIXI.Container;
   private _closeupLayer: PIXI.Container;
+  private _miniGameLayer: PIXI.Container;
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
   private _dialogSpeaker: PIXI.Container;
@@ -70,6 +71,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._backgroundLayer = new PIXI.Container();
     this._characterLayer = new PIXI.Container();
     this._closeupLayer = new PIXI.Container();
+    this._miniGameLayer = new PIXI.Container();
     this._uiLayer = new PIXI.Container();
     this._dialogLayer = new PIXI.Container();
     this._fxLayer = new PIXI.Container();
@@ -80,7 +82,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._closeupLayer,
       this._uiLayer,
       this._dialogLayer,
-      this._fxLayer
+      this._fxLayer,
+      this._miniGameLayer
     );
 
     this._dialogSpeaker = new PIXI.Container();
@@ -689,7 +692,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    * @param character if null or undefined, it will remove current character
    * @param mood
    */
-  public addCharacter(character?: string, mood?: string): void {
+  public addCharacter(character?: string, mood?: string) {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
 
@@ -703,16 +706,19 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._lastCharacter = character;
     this._lastMood = mood;
 
-    let isHolo: string;
-    [character, isHolo] = character.split("@");
+    let displayMode: string;
+    [character, displayMode] = character.split("@");
 
     // If character or character not you
     if (character && character !== "you") {
       // Create container & Entity
-      const characterCE = {
-        container: new PIXI.Container(),
-        entity: new entity.ParallelEntity(),
-      };
+      const characterCE = this.makeCharacter(
+        character,
+        mood,
+        displayMode,
+        characterChanged
+      );
+
       // Add new container/entity to a map
       this._characters.set(character, characterCE);
       // Activate entity
@@ -721,72 +727,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         entity.extendConfig({ container: characterCE.container })
       );
 
-      // Set directory to access resources
-      const baseDir = `images/characters/${character}`;
-      const baseJson = require(`../${baseDir}/base.json`);
-
-      // If mood is incorrect, get default one
-      if (!_.has(baseJson, mood)) mood = baseJson["default"];
-
-      // For each part
-      for (const bodyPart of baseJson[mood]) {
-        if (
-          _.has(
-            this.config.app.loader.resources,
-            `${baseDir}/${bodyPart.model}.json`
-          )
-        ) {
-          // Create animated sprite and set properties
-          const animatedSpriteEntity = this.makeAnimatedSprite(
-            `${baseDir}/${bodyPart.model}.json` as any,
-            (it) => {
-              it.anchor.set(0.5);
-              it.position.copyFrom(bodyPart);
-              it.animationSpeed = 0.33;
-
-              if (_.has(bodyPart, "scale")) {
-                it.scale.set(bodyPart.scale);
-              }
-            }
-          );
-
-          // Add animated sprite to entity
-          characterCE.entity.addChildEntity(animatedSpriteEntity);
-        } else {
-          console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
-        }
-      }
+      //
 
       // Place character on screen
       this._characterLayer.addChild(characterCE.container);
-      characterCE.container.setTransform(250, 80, 1.1, 1.1);
       //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
-
-      // Handle holographic filter
-      if (isHolo === "holo") {
-        const holo = filter.newHolograph();
-        const glitch = filter.newGlitch();
-        const adjust = filter.newAdjustment();
-        const glow = filter.newGlow();
-        characterCE.container.filters = [holo, glow, adjust, glitch];
-        this._activateChildEntity(filter.wrapHolograph(holo as any));
-        this._activateChildEntity(filter.wrapGlitchHolo(glitch as any));
-      }
-
-      // If character changed, do animation
-      if (characterChanged) {
-        this._activateChildEntity(
-          new tween.Tween({
-            duration: 1500,
-            easing: easing.easeOutQuint,
-            from: 1500,
-            to: 250,
-            onUpdate: (value) => {
-              characterCE.container.position.x = value;
-            },
-          })
-        );
-      }
     }
   }
 
