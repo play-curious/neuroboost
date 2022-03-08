@@ -39,7 +39,7 @@ colorID: 0
 position: -726,629
 ---
 << fadeIn >>
-<< setBackground class >>
+<< setBackground librairy >>
 << fadeOut >>
 
 Vous retournez vous asseoir à la même table que ce matin. L'ambiance est toujours calme et propice à la l'étude. Vous textez Fred pour lui dire que vous l'attendez au même endroit.
@@ -63,7 +63,7 @@ colorID: 0
 position: -795,107
 ---
 << fadeIn >>
-<< setBackground class >>
+<< setBackground librairy >>
 << fadeOut >>
 
 Dingue, Fred vous a suivi à la bibliothèque. C'est une première...

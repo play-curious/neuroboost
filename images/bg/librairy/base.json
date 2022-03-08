@@ -1,0 +1,10 @@
+{
+  "background": [
+    {
+      "model": "b_background",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "default": "background"
+}

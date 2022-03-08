@@ -60,7 +60,7 @@ tags:
 position: -1840.7229614257812,139.0914535522461
 ---
 << fadeIn >>
-<< setBackground class >>
+<< setBackground librairy >>
 << fadeOut >>
 
 Vous voilà à la bibliothèque avec Fred.
