@@ -1,6 +1,6 @@
 {"frames": {
 
-"b_woman.png":
+"b_shadow.png":
 {
 	"frame": {"x":1,"y":1,"w":335,"h":1022},
 	"rotated": false,
@@ -11,10 +11,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "b_woman.png",
+	"image": "b_shadow.png",
 	"format": "RGBA8888",
 	"size": {"w":337,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:6aa965d986f5412d41e6c82b72f50058:fbd8d4240316298d1d60fe6db52addea:2be43d8ffb565fa913561de47f0ce098$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a344e9f2ec4c9c3a53556885a3c13196:fbd8d4240316298d1d60fe6db52addea:41df6a1434d44e424d0e3e1ac6d63a5c$"
 }
 }
