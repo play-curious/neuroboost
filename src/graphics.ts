@@ -42,6 +42,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _fxLayer: PIXI.Container;
   private _characterLayer: PIXI.Container;
   private _closeupLayer: PIXI.Container;
+  private _miniGameLayer: PIXI.Container;
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
   private _dialogSpeaker: PIXI.Container;
@@ -70,6 +71,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._backgroundLayer = new PIXI.Container();
     this._characterLayer = new PIXI.Container();
     this._closeupLayer = new PIXI.Container();
+    this._miniGameLayer = new PIXI.Container();
     this._uiLayer = new PIXI.Container();
     this._dialogLayer = new PIXI.Container();
     this._fxLayer = new PIXI.Container();
@@ -80,7 +82,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._closeupLayer,
       this._uiLayer,
       this._dialogLayer,
-      this._fxLayer
+      this._fxLayer,
+      this._miniGameLayer
     );
 
     this._dialogSpeaker = new PIXI.Container();

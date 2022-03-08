@@ -2,6 +2,7 @@ import * as entity from "booyah/src/entity";
 
 import * as dialog from "./dialog";
 import * as variable from "./variable";
+import * as miniGame from "./mini_game";
 import * as clock from "./clock";
 import * as save from "./save";
 import * as popup from "./popup";
@@ -220,6 +221,23 @@ export const commands: Record<string, Command> = {
 
   clearOnce() {
     this.selectedOptions = [];
+  },
+
+  minigame(className: string) {
+    this.disable();
+    this.activate(
+      new entity.EntitySequence([
+        // @ts-ignore
+        new miniGame[className](),
+        new entity.FunctionCallEntity(() => {
+          this.enable();
+        }),
+      ]),
+      entity.extendConfig({
+        // @ts-ignore
+        container: this.graphics._miniGameLayer,
+      })
+    );
   },
 
   empty() {},

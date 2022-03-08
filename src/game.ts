@@ -78,7 +78,7 @@ const stateNames = [
 ];
 
 const states: { [k: string]: entity.EntityResolvable } = {
-  Start_Menu: new miniGame.Juggling(), //new save.StartMenu(),
+  Start_Menu: new save.StartMenu(),
 };
 for (const stateName of stateNames) {
   if (stateName.includes("journal"))

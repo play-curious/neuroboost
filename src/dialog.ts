@@ -48,6 +48,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   public graphics: graphics.Graphics;
   public visited: Set<string>;
   public selectedOptions: string[];
+  public enabled: boolean;
 
   constructor(
     public readonly stateName: string,
@@ -61,6 +62,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
+    this.enabled = true;
+
     save.save(this.stateName, this.config.variableStorage);
 
     this._initRunner();
@@ -134,6 +137,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(selectId?: number): void {
+    if (!this.enabled) return;
+
     // If result is undefined, stop here
     if (this.metadata.hasOwnProperty("isDialogueEnd")) {
       this._transition = entity.makeTransition();
@@ -336,5 +341,16 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   deactivate(e: entity.EntityBase) {
     this._deactivateChildEntity(e);
+  }
+
+  disable() {
+    this.enabled = false;
+    this.graphics.hideNode();
+  }
+
+  enable() {
+    this.enabled = true;
+    this.graphics.showNode();
+    this._advance();
   }
 }

@@ -1,27 +1,38 @@
 import * as extension from "./extension";
 import * as PIXI from "pixi.js";
 import * as entity from "booyah/src/entity";
+import * as tween from "booyah/src/tween";
 
-export class MiniGame extends extension.ExtendedCompositeEntity {}
+export abstract class MiniGame extends extension.ExtendedCompositeEntity {
+  protected container: PIXI.Graphics;
+
+  _setup() {
+    this.container = new PIXI.Graphics();
+    this.container.interactive = true;
+    this.container
+      .beginFill(0x000000, 0.5)
+      .drawRect(0, 0, 1920, 1080)
+      .endFill();
+  }
+}
 
 export class Juggling extends MiniGame {
-  private container: PIXI.Container;
   private temde: { container: PIXI.Container; entity: entity.ParallelEntity };
   private temdeArm: PIXI.Sprite;
   private hits: number;
   private textScore: PIXI.Text;
   public balls: Ball[];
   public zone = {
-    x: 100,
+    x: 1920 / 2,
     y: 100,
-    width: 1920 / 2,
+    width: 1920 / 2 - 100,
     height: 1080 - 100,
   };
 
   _setup() {
+    super._setup();
     this.hits = 0;
     this.balls = [];
-    this.container = new PIXI.Container();
     this.textScore = this.makeText(
       "",
       {
@@ -30,13 +41,15 @@ export class Juggling extends MiniGame {
         fill: 0xffffff,
       },
       (it) => {
+        it.scale.set(3);
         it.anchor.set(0.5);
-        it.position.set(1920 / 3, 1080 - 200);
+        it.position.set(1920 / 2, 1080 - 200);
         this.container.addChild(it);
       }
     );
-    this.temde = this.makeCharacter("temde", "", "", true);
-    this.temde.container.position.x += 300;
+    this.temde = this.makeCharacter("temde", "", "", false);
+    this.temde.container.scale.x = -1.1;
+    this.temde.container.position.x = 1500;
     this.temdeArm = this.makeSprite("images/characters/temde/arm.png", (it) => {
       it.position.set(-it.width, this.zone.height);
       this.container.addChild(it);
@@ -45,12 +58,15 @@ export class Juggling extends MiniGame {
     // todo: add background and character ?
     this.config.container.addChild(this.container);
     this._activateChildEntity(
-      new entity.ParallelEntity([
-        this.temde.entity,
-        new entity.EntitySequence([
-          // todo: explain script
-          this.addBall(),
-        ]),
+      this.temde.entity,
+      entity.extendConfig({
+        container: this.temde.container,
+      })
+    );
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        // todo: explain script
+        this.addBall(),
       ]),
       entity.extendConfig({
         container: this.container,
@@ -58,16 +74,15 @@ export class Juggling extends MiniGame {
     );
   }
 
-  _update() {}
-
   _teardown() {
-    this.config.container.removeChild(this.container);
+    this.config.container.removeChildren();
     this.balls = [];
     this.container = null;
   }
 
   retry() {
     this.hits = 0;
+    this._teardown();
     this._deactivateAllChildEntities();
     this._off();
     this._setup();
@@ -103,6 +118,26 @@ export class Juggling extends MiniGame {
   addBall() {
     return new entity.EntitySequence([
       // todo: animation with temde arm
+      new entity.ParallelEntity([
+        // arm opacity
+        new tween.Tween({
+          from: -this.temdeArm.width,
+          to: 0,
+          duration: 500,
+          onUpdate: (value) => {
+            this.temdeArm.position.x = value;
+          },
+        }),
+        // arm position
+        new tween.Tween({
+          from: 0,
+          to: 1,
+          duration: 500,
+          onUpdate: (value) => {
+            this.temdeArm.alpha = value;
+          },
+        }),
+      ]),
       new entity.FunctionCallEntity(() => {
         const ball = new Ball(this);
         this.balls.push(ball);
