@@ -6,6 +6,8 @@ import * as util from "booyah/src/util";
 
 import * as extension from "./extension";
 import * as variable from "./variable";
+import * as journal from "./journal";
+import * as popup from "./popup";
 
 interface Settings {
   fx: 0 | 0.5 | 0.25 | 0.75 | 1;
@@ -47,6 +49,8 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private creditButton: PIXI.Text;
   private creditsEntity: booyah.CreditsEntity;
   private title: PIXI.Sprite;
+  private journal: PIXI.Text;
+  private journalUpdated: boolean;
 
   private fullscreenSwitcher: SpriteSwitcher;
   private musicVolumeSwitcher: SpriteRangeSwitcher;
@@ -124,6 +128,23 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
+      this.journal = this.makeText("Journal", {
+        fontFamily: "Ubuntu",
+        fill: "grey",
+        fontSize: 50,
+      });
+      this.journal.anchor.set(0.5);
+      this.journal.position.set(
+        this.popupBackground.width / 2,
+        this.popupBackground.height * 0.31
+      );
+      this.journal.interactive = true;
+      this.journal.buttonMode = false;
+      this.popupBackground.addChild(this.journal);
+      this.journalUpdated = false;
+    }
+
+    {
       this.creditButton = this.makeText("credits", {
         fontFamily: "Ubuntu",
         fill: "white",
@@ -132,7 +153,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.creditButton.anchor.set(0.5);
       this.creditButton.position.set(
         this.popupBackground.width / 2,
-        this.popupBackground.height * 0.37
+        this.popupBackground.height * 0.40
       );
       this.creditButton.interactive = true;
       this.creditButton.buttonMode = true;
@@ -263,6 +284,33 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     booyah.changeGameState("paused");
     this.debugPressCount = 0;
+
+    if(!this.journalUpdated
+    && Object.keys(this.config.variableStorage.get("journalAnswers")).length > 0){
+      this.popupBackground.removeChild(this.journal);
+      this.journal = this.makeText("Journal", {
+        fontFamily: "Ubuntu",
+        fill: "white",
+        fontSize: 50,
+      });
+      this.journal.anchor.set(0.5);
+      this.journal.position.set(
+        this.popupBackground.width / 2,
+        this.popupBackground.height * 0.31
+      );
+      this.journal.interactive = true;
+      this.journal.buttonMode = true;
+      this._on(this.journal, "pointerup", () => {
+        this._activateChildEntity(new popup.Confirm("Téléchargement du journal de la métacognition", () => {
+          const journalDownload = new journal.JournalPDF();
+          this._activateChildEntity(journalDownload);
+          journalDownload.journalToPDF(this.config.variableStorage.get("journalAnswers"), this.makeSprite("images/journalPDF/background.png"));
+          this._deactivateChildEntity(journalDownload);
+        }));
+      });
+      this.popupBackground.addChild(this.journal);
+      this.journalUpdated = true;
+    }
 
     // Displaying the menu will be done in _onSignal()
   }

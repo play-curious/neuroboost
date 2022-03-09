@@ -1,5 +1,5 @@
 title: Start
-tags: 
+tags:
 position: -1979.929937362671,-817.3228759765625
 ---
 << empty >>
@@ -23,7 +23,7 @@ Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'
   << jump Rejet_Fred >>
 ===
 title: Appel_Fred
-tags: 
+tags:
 position: -1617.4276733398438,-825.2426147460938
 ---
 << stopFX PhoneRing_LOOP >>

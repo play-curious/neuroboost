@@ -123,9 +123,11 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
             this._activateChildEntity(
               new popup.Confirm(
                 "Vous avez une partie en cours. Êtes vous sûr de vouloir en commencer une nouvelle ?",
-                () => {
-                  save();
-                  this._transition = entity.makeTransition("D1_level1");
+                (ok) => {
+                  if (ok) {
+                    save();
+                    this._transition = entity.makeTransition("D1_level1");
+                  }
                 }
               )
             );
