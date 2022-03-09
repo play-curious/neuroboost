@@ -6,7 +6,7 @@ colorID: 8
 // N'ayant pas encore le script du D6 complet, avec le level2. Je laisse un blanc pour ajouter un texte de transition entre les deux "sessions/niveaux"
 
 Vous avez pulvérisé votre score! Vous êtes un winner de chez winner! Vous brûlez d'envie de le clamer haut et fort...
-Vous cherchez Fred du regard. Rien. Intrigué, vous demandez autour de vous. On ne sait pas où iel est. Comment est-il possible qu'autant de personne de sache pas où se trouve la star de l'Académie d'Omniscience et de Polytechnologie Universelle.
+Vous cherchez Fred du regard. Rien. Intrigué, vous demandez autour de vous. On ne sait pas où iel est. Comment est-il possible qu'autant de personne ne sache pas où se trouve la star de l'Académie d'Omniscience et de Polytechnologie Universelle.
 Heureusement, vous tombez enfin sur quelqu'un qui a entendu quelqu'un qui a entendu quelqu'un qui a entendu que... Iel aurait disparu.
 Disparu, Fred ?! Ce n'est pas possible !... Apparemment si. Iel aurait demandé à aller aux toilettes avant que les jurés ne prennent la parole et ne lui posent des questions sur sa prestation au Grand Oral. Depuis, personne ne l'a revu.
 Vous n'en revenez pas. Fred aurait fui comme un lâche. Non, ce n'est pas possible. Et pourtant... Vous jetez un oeil au tableau des notes: sur la ligne correspondant à Fred, vous distinguez un [b]F[/b]. Mince ! C'est une note éliminatoire.
@@ -360,7 +360,8 @@ title: Toilettes_No
 tags:
 position: -1969.8092041015625,-190.40352630615234
 ---
-Il faut bien commencer par quelque part. Vous foncez dans les toilettes qui donnent sur l'amphithéâtre du Grand Oral. L'oeil aux aguets, vous inspectez le moindre recoin : il y a des badauds, mais pas de Fred. Les regards courroucés de ceux-ci ne vous découragent pas. Vous prenez ensuite sur vous de taper à la porte de chaque compartiment, histoire de vous assurer qu'il ne se serait pas enfermé dans l'un d'entre-eux. C'était bien tenté, mais, ce n'est pas ici que se cache Fred.
+Il faut bien commencer par quelque part. Vous foncez dans les toilettes qui donnent sur l'amphithéâtre du Grand Oral. L'oeil aux aguets, vous inspectez le moindre recoin : il y a des badauds, mais pas de Fred. Les regards courroucés de ceux-ci ne vous découragent pas.
+Vous prenez ensuite sur vous de taper à la porte de chaque compartiment, histoire de vous assurer qu'il ne se serait pas enfermé dans l'un d'entre-eux. C'était bien tenté, mais, ce n'est pas ici que se cache Fred.
 Dépité, vous ressortez des toilettes sous les yeux accusateurs de ceux que vous avez dérangés pour rien...
 
 -> Chercher Fred ailleurs
@@ -370,7 +371,9 @@ title: Salle_Sport_No
 tags:
 position: -1968.4114990234375,29.55572509765625
 ---
-Vous savez que Fred passe beaucoup de temps à la salle de sport. Alors, vous vous dites qu'il y a une chance, même petite, qu'iel soit allé là-bas pour se défouler, vider sa frustration en tapant sur des sacs de frappe. C'est le coeur plein d'espoir que vous entrez dans la salle de sport. Hélas, après avoir examiné les environs, posé des questions au personnes présentes... Force est de reconnaître que vous avez fait choux blanc. Fred n'a pas mis les pieds ici ce matin. Vous vous demandez bien où iel se planque...
+Vous savez que Fred passe beaucoup de temps à la salle de sport. Alors, vous vous dites qu'il y a une chance, même petite, qu'iel soit allé là-bas pour se défouler, vider sa frustration en tapant sur des sacs de frappe.
+C'est le coeur plein d'espoir que vous entrez dans la salle de sport. Hélas, après avoir examiné les environs, posé des questions au personnes présentes...
+Force est de reconnaître que vous avez fait choux blanc. Fred n'a pas mis les pieds ici ce matin. Vous vous demandez bien où iel se planque...
 
 -> Chercher Fred ailleurs
     << jump Finding_Fred >>
@@ -379,7 +382,8 @@ title: Cafeteria_No
 tags:
 position: -1964.2073974609375,249.321533203125
 ---
-La cafétéria est un second foyer pour Fred. Iel y traîne souvent. Pour boire un coup, grignoter quelque chose, papoter avec des amis, et surtout pour faire la fête. Aujourd'hui, pourtant, la cafétéria est bien calme. Il n'y a personne ou presque. En tout cas, aucun signe de Fred. Vous demandez à tout hasard à un Bar Bot s'il a servi Fred. Il vous répond que non.
+La cafétéria est un second foyer pour Fred. Iel y traîne souvent. Pour boire un coup, grignoter quelque chose, papoter avec des amis, et surtout pour faire la fête. Aujourd'hui, pourtant, la cafétéria est bien calme.
+Il n'y a personne ou presque. En tout cas, aucun signe de Fred. Vous demandez à tout hasard à un Bar Bot s'il a servi Fred. Il vous répond que non.
 Mauvaise pioche : Fred se niche ailleurs. Où donc ?
 
 -> Chercher Fred ailleurs
@@ -498,6 +502,7 @@ position: 2468.0347595214844,466.08001708984375
 Sapiens_concerned: Fred ne pourra surmonter son problème que s'iel se fixe un objectif. Une fois, et une fois seulement, son objectif fixé, Fred pourra réfléchir, avec ton soutien, à une solution lui permettant de contourner ses limites.
 You: Oui. J'ai compris.
 Sapiens: Mais plus précisément. L'objectif de Fred doit être :
+
 -> Universel, spatial et verbal
     << jump Objectif_Personnel_Bad >>
 -> Personnel, spécifique et réalisable.
