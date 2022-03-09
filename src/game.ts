@@ -68,27 +68,26 @@ const startingScene =
 
 // prettier-ignore
 const stateNames = [
-  "D3_level1",
-  "D3_level2",
-  "D4_level1",
-  "D4_level2",
-  "D5_level1",
-  "D5_level2",
-
   "D1_level1",
-  "journal_method",
   "D1_level2",
   "D2_level1",
-  "journal_food",
-  "journal_sleep",
   "D2_level2",
   "D3_level1",
   "D3_level2",
   "D4_level1",
   "D4_level2",
+  "D3_level1",
+  "D3_level2",
+  "D4_level1",
+  "D4_level2",
   "D5_level1",
   "D5_level2",
-  "End_Screen"
+  "D6_level1",
+  "D7_level1",
+  "End_Screen",
+  "journal_food",
+  "journal_sleep",
+  "journal_method"
 ];
 
 const states: { [k: string]: entity.EntityResolvable } = {
