@@ -34,7 +34,7 @@ You: C'est vrai. C'est assez touffu ce truc de PNLIAA.
 Fred@holo_smiling: Pfuuu. Tu prends trop les choses au sérieux. Alors tu viens ?
 // Ajouter des phrases pour finir la conversation (dans les choix)
 << hide >>
-<< advanceTime 1:00 >>
+<< advanceTime 0:40 >>
 
 << setGauge sleep 100 >>
 << setGauge food 100 >>
@@ -53,6 +53,7 @@ position: -23,-776
 ---
 << fadeIn >>
 << setBackground sport >>
+<< advanceTime 0:20 >>
 << fadeOut >>
 
 Vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit.
@@ -74,7 +75,6 @@ Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vo
 Fred_smiling: Tu pars déjà, lâcheur ?
 You: J'en peux plus.
 Fred_sad: Tant pis.
-    textResult.
 << hide >>
 
 -> Retourner dans votre chambre 
@@ -93,8 +93,23 @@ position: -328,-637
 Que faites-vous maintenant ?
 <<endif>>
 
-// Matin//
-<< if $time <= 840 >> 
+<< if getGauge("mentalLoad") >= 100 >>
+-> Faire un somme
+    <<jump Surcharge_Cognitive>>
+<< endif >>
+
+<< if !isTimeOver("14:00") >>
+<< jump Liste_Taches_AM >>
+<< endif >>
+
+<< jump Liste_Taches_PM >>
+
+===
+title: Liste_Taches_AM
+tags: 
+colorID: 1
+position: -328,-637
+---
 -> Préparer son bureau avant de se mettre à travailler#once
     <<jump Ranger>>
 -> Ouvrir le chat histoire de se détendre#once
@@ -105,9 +120,12 @@ Que faites-vous maintenant ?
     <<jump BingeTV>>
 -> Faire une sieste#once
     <<jump Sleep>>
-
-// Après Midi//
-<<elseif $time < 1200 >>
+===
+title: Liste_Taches_PM
+tags: 
+colorID: 1
+position: -328,-637
+---
 -> Se détendre sur le chat#once
     <<jump Chat>>
 -> Continuer la rédaction de la note de synthèse#once
@@ -118,13 +136,6 @@ Que faites-vous maintenant ?
     <<jump Sleep>>
 -> Manger#once
     <<jump Diner>>
-
-// Soirée//
-<< elseif getGauge("mentalLoad") >= 100 >>
--> Faire un somme
-    <<jump Surcharge_Cognitive>>
-
-<<endif>>
 ===
 title: Ranger
 tags: 
@@ -136,7 +147,7 @@ position: -958,-443
 << fadeOut >>
 
 Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite votre le paper print de votre brief, les documents de référence que vous avez déjà en possession. Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document. Avant de commencer la rédaction de votre note, vous prenez le temps d'établir un plan de réflexion et de travail. Certes, cela vous prend du temps, mais ça va vous faciliter le processus de rédaction.
-<< advanceTime 1:00 >>
+<< advanceTime 0:20 >>
 << removeFromGauge mentalLoad 10 >>
 
 -> Il ne reste plus qu'à s'y mettre maintenant 
@@ -152,8 +163,11 @@ position: -388,-306
 << setBackground desk >>
 << fadeOut >>
 
-Vous cliquez sur l'icône ChatApp de votre Palmphone. Il y a encore plus de monde que lundi ! Vous êtes pingé par Fred ! Il vous demande si vous ne voulez pas le rejoindre à la salle de gym ! Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous ne pouvez ignorer son injonction ! Toute la communauté va apprendre que vous avez refusé un duel virtuel, que vous êtes un lâche...
-Vexé et décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait. Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Il y a encore plus de monde que lundi ! Vous êtes pingé par Fred ! Il vous demande si vous ne voulez pas le rejoindre à la salle de gym !
+Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous ne pouvez ignorer son injonction !
+Toute la communauté va apprendre que vous avez refusé un duel virtuel, que vous êtes un lâche...
+Vexé et décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait. Cependant, Fred se montre un adversaire particulièrement retord et surprenant.
+Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.
 << advanceTime 2:00 >>
 << addToGauge mentalLoad 30 >>
 
@@ -205,7 +219,7 @@ position: -22,-299
 << setBackground desk >>
 << fadeOut >>
 
-<< if isFirstTime() >>
+<< if visited("Redaction_Note") >>
 Vous vous retroussez les manches et vous attelez à la tâche. Mettre au propre cette note de synthèse, fruit de plusieurs jours de lecture, de prises de notes, de réflexions diverses et variées. Vous avez tellement de choses à dire et à coucher sur votre document, vous ne manquez pas d'idées, mais de concentration et productivité.
 << else >>
 Allez, encore une fois, vous respirez un grand coup avant de replonger dans le grand bain. Vous êtes loin d'avoir fini et les heures ne cessent de filer. Il faut terminer cette note de synthèse coûte que coûte avant la deadline...
@@ -227,6 +241,7 @@ position: 33,47
 Fred@holo_excited: Alors ? Je t'attends toujours ? Quand viens-tu ?
 You: Heu... Je sais pas.
 Fred@holo_happy: Beware ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
+<< hide >>
 Nooon ! Si la communauté apprend que vous avez décliné le défi de Fred. Fred, le membre le plus populaire du Métaverse de la fraternité étudiante. Vous êtes grillé aux yeux de tous les camarades de l'Académie d'Omniscience et de Polytechnologie Universelle... Vous êtes piégé. quand faut y aller, faut y aller...
 
 -> Retrouver Fred 
@@ -246,13 +261,14 @@ Le moins que l'on puisse dire, c'est que vous êtes donné à fond. Au final, vo
 
 << advanceTime 2:00 >>
 << addToGauge sleep 30 >>
-<< addToGauge food 30 >>>
+<< addToGauge food 30 >>
 << addToGauge mentalLoad 30 >>
 
 Fred_smiling: Tu pars déjà, tu déclares forfait ?
 You: J'en peux plus.
 Fred_smiling: Alors, j'ai gagné.
 You: Pour une fois.
+<< hide >>
 
 -> Retourner dans votre chambre 
     << fadeIn >>
@@ -275,6 +291,7 @@ You: Zut...
 Azul_happy: Pas grave, viens, on a une nouveau truc à t'apprendre. 
 
 -> Suivre Azul 
+    << hide >>
     <<jump Assemblee_3>>
 ===
 title: Assemblee_3
@@ -290,6 +307,7 @@ Hop, la seconde d'après, vous retrouvez Azul et ses collègues dans cet étrang
 Temde_smiling: Yep, elles sont réelles, ce ne sont pas des végétaux synthétiques. C'est moi qui m'en occupe.
 Sapiens_concerned: Super Miss Temdé. Je ne crois pas que { $name } soit venu pour échanger sur cette question.
 Ledai_explaining: Tout à fait. Cette nouvelle session aura pour objet la surcharge cognitive.
+<< hide >>
 You: Quoi ?!
 Azul_proud: On t'as appris à ménager ton corps.
 Temde_cheerful: Bien dormir et manger équilibré.
@@ -463,7 +481,7 @@ Azul_happy: Il faut se ménager un espace de calme et de paix, une bulle d'atten
 Sapiens_thinking: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...
 You: OK.
 Ledai_happy: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !
-
+<< hide >>
 -> Journal mental 
     <<jump JournalMental>>
 ===
@@ -482,7 +500,7 @@ Azul_happy: Il faut se ménager un espace de calme de paix une bulle d'attention
 Sapiens_happy: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...
 You: OK.
 Ledai_happy: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !
-
+<< hide >>
 -> Journal mental 
     <<jump JournalMental>>
 ===

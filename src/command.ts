@@ -201,9 +201,8 @@ export const commands: Record<string, Command> = {
   //   this.graphics.fade(Number(duration), color);
   // },
 
-  setBackground(name: string) {
-    const [bg, mood] = name.split("_");
-    this.graphics.setBackground(bg, mood);
+  setBackground(name: string, mood?: string) {
+    this.graphics.setBackground(name, mood);
   },
 
   // NODE INFO
