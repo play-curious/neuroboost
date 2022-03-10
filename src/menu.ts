@@ -153,7 +153,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.creditButton.anchor.set(0.5);
       this.creditButton.position.set(
         this.popupBackground.width / 2,
-        this.popupBackground.height * 0.40
+        this.popupBackground.height * 0.4
       );
       this.creditButton.interactive = true;
       this.creditButton.buttonMode = true;
@@ -285,8 +285,10 @@ export class Menu extends extension.ExtendedCompositeEntity {
     booyah.changeGameState("paused");
     this.debugPressCount = 0;
 
-    if(!this.journalUpdated
-    && Object.keys(this.config.variableStorage.get("journalAnswers")).length > 0){
+    if (
+      !this.journalUpdated &&
+      Object.keys(this.config.variableStorage.get("journalAnswers")).length > 0
+    ) {
       this.popupBackground.removeChild(this.journal);
       this.journal = this.makeText("Journal", {
         fontFamily: "Ubuntu",
@@ -301,12 +303,20 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.journal.interactive = true;
       this.journal.buttonMode = true;
       this._on(this.journal, "pointerup", () => {
-        this._activateChildEntity(new popup.Confirm("Téléchargement du journal de la métacognition", () => {
-          const journalDownload = new journal.JournalPDF();
-          this._activateChildEntity(journalDownload);
-          journalDownload.journalToPDF(this.config.variableStorage.get("journalAnswers"), this.makeSprite("images/journalPDF/background.png"));
-          this._deactivateChildEntity(journalDownload);
-        }));
+        this._activateChildEntity(
+          new popup.Confirm(
+            "Téléchargement du journal de la métacognition",
+            () => {
+              const journalDownload = new journal.JournalPDF();
+              this._activateChildEntity(journalDownload);
+              journalDownload.journalToPDF(
+                this.config.variableStorage.get("journalAnswers"),
+                this.makeSprite("images/journalPDF/background.png")
+              );
+              this._deactivateChildEntity(journalDownload);
+            }
+          )
+        );
       });
       this.popupBackground.addChild(this.journal);
       this.journalUpdated = true;

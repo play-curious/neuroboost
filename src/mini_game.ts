@@ -1,8 +1,8 @@
-import * as extension from "./extension";
 import * as PIXI from "pixi.js";
+import * as popup from "./popup";
+import * as extension from "./extension";
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
-import * as popup from "./popup";
 
 export abstract class MiniGame extends extension.ExtendedCompositeEntity {
   protected container: PIXI.Graphics;
@@ -44,7 +44,7 @@ export class Juggling extends MiniGame {
         fill: 0xffffff,
       },
       (it) => {
-        it.scale.set(3);
+        it.scale.set(1);
         it.anchor.set(0.5);
         it.position.set(1920 / 2, 1080 - 200);
         this.container.addChild(it);
