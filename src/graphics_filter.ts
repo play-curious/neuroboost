@@ -36,10 +36,10 @@ export function newHolograph() {
   }) as Holograph;
 }
 
-export function newGlow() {
+export function newGlow(color = 0x2cd2d2) {
   return new GlowFilter({
     outerStrength: 5.0,
-    color: 0x2cd2d2,
+    color,
   }) as Glow;
 }
 

@@ -6,12 +6,15 @@ import * as easing from "booyah/src/easing";
 
 import * as extension from "./extension";
 import * as variable from "./variable";
-import { StaticSpritePath } from "./images";
+import * as images from "./images";
+
+import { newGlow } from "./graphics_filter";
 
 export class Gauge extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
   private _innerDisk: PIXI.Sprite;
   private _outerDisk: PIXI.Graphics;
+  private _popup: PIXI.Container;
 
   private _center: PIXI.Point;
   private _radius: number;
@@ -50,9 +53,34 @@ export class Gauge extends extension.ExtendedCompositeEntity {
 
     this._outerDisk = new PIXI.Graphics();
 
+    this._popup = new PIXI.Container();
+    this._popup.position.set(600, 200);
+    this._popup.filters = [newGlow(0xffffff)];
+    this._popup.addChild(
+      this.makeText(
+        this.displayName,
+        { fontFamily: "Jura", fontStyle: "bolder" },
+        (it) => {
+          it.anchor.set(0, 1);
+          it.scale.set(5);
+        }
+      ),
+      this.makeText(this.displayDescription, { fontFamily: "Ubuntu" }, (it) => {
+        it.anchor.set(0, 0);
+        it.scale.set(3);
+      }),
+      this.makeText(`%`, { fontFamily: "Ubuntu" }, (it) => {
+        it.anchor.set(1, 0.5);
+        it.scale.set(7);
+      })
+    );
+
     this._container = new PIXI.Container();
+    this._container.interactive = true;
+    this._container.interactiveChildren = true;
     this._container.position.copyFrom(this._position);
     this._container.addChild(this._innerDisk, this._image, this._outerDisk);
+
     this.config.container.addChild(this._container);
 
     this._currentTween = {
@@ -61,15 +89,33 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     };
 
     this._container.scale.set(0.4);
+    this._container.cursor = "info";
 
     this.resetValue(Number(this.config.variableStorage.get(this.name)));
 
     this.config.variableStorage.listen(`change:${this.name}`, (value) =>
       this.changeValue(Number(value))
     );
+
+    let timeout: any;
+
+    this._on(this._container, "mouseover", () => {
+      console.log("over");
+      timeout = window.setTimeout(() => {
+        console.log("open");
+        this._container.addChild(this._popup);
+        (this._popup.children[2] as PIXI.Text).text = `${this.getValue()}%`;
+      }, 500);
+    });
+    this._on(this._container, "mouseout", () => {
+      console.log("out");
+      clearTimeout(timeout);
+      this._container.removeChild(this._popup);
+    });
   }
 
   _teardown() {
+    this.config.container.removeChild(this._container);
     this.config.variableStorage.off(`change:${this.name}`);
     this._container = undefined;
   }
@@ -83,7 +129,7 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     return this._value;
   }
 
-  colorByValue(value: number): StaticSpritePath {
+  colorByValue(value: number): images.StaticSpritePath {
     if (value > 66)
       return this._inverted
         ? "images/ui/gauges/innerDisk_red.png"

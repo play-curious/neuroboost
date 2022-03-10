@@ -125,7 +125,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             `images/ui/gauges/${_gauge}.png`
           ].texture
         ),
-        _gauge
+        _gauge,
+        `${_gauge[0].toUpperCase()}${_gauge.slice(1)}`,
+        "[description]"
       );
       this._activateChildEntity(
         this._gauges[_gauge],
