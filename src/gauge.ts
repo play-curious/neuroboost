@@ -24,7 +24,9 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   constructor(
     private _position: PIXI.Point,
     private _image: PIXI.Sprite,
-    public readonly name: keyof variable.Gauges
+    public readonly name: keyof variable.Gauges,
+    private readonly displayName: string,
+    private readonly displayDescription: string
   ) {
     super();
   }
