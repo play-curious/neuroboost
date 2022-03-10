@@ -69,8 +69,11 @@ const startingScene =
 // prettier-ignore
 const stateNames = [
   "D1_level1",
+  "journal_method",
   "D1_level2",
   "D2_level1",
+  "journal_food",
+  "journal_sleep",
   "D2_level2",
   "D3_level1",
   "D3_level2",
@@ -85,10 +88,16 @@ const stateNames = [
   "D6_level1",
   "D7_level1",
   "End_Screen",
-  "journal_food",
-  "journal_sleep",
-  "journal_method"
 ];
+
+/*
+  missing journal after
+  - D3_level1
+  - D4_level1
+  - D5_level1
+  - D6_level1
+  - D7_level1
+ */
 
 const states: { [k: string]: entity.EntityResolvable } = {
   Start_Menu: new save.StartMenu(),
