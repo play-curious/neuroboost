@@ -3,8 +3,6 @@ tags: Fred_Disparu
 position: -2407.69775390625,128.14415740966797
 colorID: 8
 ---
-// N'ayant pas encore le script du D6 complet, avec le level2. Je laisse un blanc pour ajouter un texte de transition entre les deux "sessions/niveaux"
-
 Vous avez pulvérisé votre score! Vous êtes un winner de chez winner! Vous brûlez d'envie de le clamer haut et fort...
 Vous cherchez Fred du regard. Rien. Intrigué, vous demandez autour de vous. On ne sait pas où iel est. Comment est-il possible qu'autant de personne ne sache pas où se trouve la star de l'Académie d'Omniscience et de Polytechnologie Universelle.
 Heureusement, vous tombez enfin sur quelqu'un qui a entendu quelqu'un qui a entendu quelqu'un qui a entendu que... Iel aurait disparu.
@@ -94,8 +92,6 @@ Fred_sad: Un imposteur, un poseur, un fanfaron, un flambeur. Je ne mérite pas d
 You: Attends !
 
 << jump Fred_Evitement >>
-
-//croyance fixiste = toujours réussir sans adaptation, il n'imagine pas surmonter cet obstacle imprévu et insurmontable pour lui
 ===
 title: Fred_Evitement
 tags:
@@ -300,8 +296,6 @@ Sapiens_thinking: Non...
 
 -> Fred doit se trouver un objectif
     << jump Self_Motivation >>
-
-//NB les fiches de révision, c'est la solution ultime qui permet au joueur d'atteindre son objectif au Day6 level2, et même d'exploser son score
 ===
 title: Self_Motivation
 tags:
