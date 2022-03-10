@@ -108,6 +108,8 @@ You: Attends !
 
 << advanceTime 0:15 >>
 << jump Fred_Evitement >>
+
+//croyance fixiste = toujours réussir sans adaptation, il n'imagine pas surmonter cet obstacle imprévu et insurmontable pour lui
 ===
 title: Fred_Evitement
 tags:
@@ -160,7 +162,7 @@ Vous vous mordez la langue encore une fois. Vous vous en voulez d'avoir douté d
     << jump Joueur_Bedroom >>
 ===
 title: Joueur_Bedroom
-tags: bg|bedroom
+tags:
 position: -838.7797698974609,460.3569030761719
 ---
 << fadeIn >>
@@ -332,6 +334,8 @@ Sapiens_thinking: Non...
 
 -> Fred doit se trouver un objectif
     << jump Self_Motivation >>
+
+//NB les fiches de révision, c'est la solution ultime qui permet au joueur d'atteindre son objectif au Day6 level2, et même d'exploser son score
 ===
 title: Self_Motivation
 tags:
