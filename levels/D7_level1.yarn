@@ -1,9 +1,11 @@
 title: Start_D7
-tags: Fred_Disparu
+tags:
 position: -2407.69775390625,128.14415740966797
 colorID: 8
 ---
-// N'ayant pas encore le script du D6 complet, avec le level2. Je laisse un blanc pour ajouter un texte de transition entre les deux "sessions/niveaux"
+<< fadeIn >>
+<< setBackground class >>
+<< fadeOut >>
 
 Vous avez pulvérisé votre score! Vous êtes un winner de chez winner! Vous brûlez d'envie de le clamer haut et fort...
 Vous cherchez Fred du regard. Rien. Intrigué, vous demandez autour de vous. On ne sait pas où iel est. Comment est-il possible qu'autant de personne ne sache pas où se trouve la star de l'Académie d'Omniscience et de Polytechnologie Universelle.
@@ -12,6 +14,8 @@ Disparu, Fred ?! Ce n'est pas possible !... Apparemment si. Iel aurait demandé 
 Vous n'en revenez pas. Fred aurait fui comme un lâche. Non, ce n'est pas possible. Et pourtant... Vous jetez un oeil au tableau des notes: sur la ligne correspondant à Fred, vous distinguez un [b]F[/b]. Mince ! C'est une note éliminatoire.
 Son année est fichue. Son diplôme aussi. Vous ne pouvez abandonner Fred dans un tel moment. Après tout ce qu'iel a fait pour vous.
 
+<< advanceTime 0:15 >>
+
 -> Retrouver Fred
     << jump Finding_Fred >>
 ===
@@ -19,6 +23,9 @@ title: Finding_Fred
 tags:
 position: -2189.6949462890625,126.72453308105469
 ---
+<< setBackground bedroom >>
+<< fadeOut >>
+
 Où diable se trouve Fred ?
 
 -> Fouiller les toilettes
@@ -34,6 +41,11 @@ title: Bedroom_Fred
 tags:
 position: -1962.5316162109375,468.0980529785156
 ---
+<< fadeIn >>
+<< setBackground bedroom >>
+<< fadeOut >>
+<< advanceTime 0:30 >>
+
 Et si Fred s'était claquemuré chez lui, dans sa chambre ?... Vous retournez dans la zone résidentielle de l'Académie. Vous sonnez à la porte de votre pote. Une fois, deux fois, trois fois !
 Vous criez son nom. Vous entendez le verrou se débloquer, vous pénétrez dans sa chambre. Fred, vous tourne le dos, iel est très occupé à remplir ses valises.
 
@@ -69,6 +81,7 @@ You: Et alors. Tu balances tout parce que t'as qu'un seul ami ?
 Fred_sad: Non ! J'ai fini par comprendre que tout ça, c'était pas pour moi.
 You: De quoi tu parles ?
 
+<< advanceTime 0:15 >>
 << jump Fred_Echec >>
 ===
 title: Fred_Echec
@@ -93,6 +106,7 @@ You: Un fake ?!
 Fred_sad: Un imposteur, un poseur, un fanfaron, un flambeur. Je ne mérite pas d'être ici. C'est pour ça que je me casse.
 You: Attends !
 
+<< advanceTime 0:15 >>
 << jump Fred_Evitement >>
 
 //croyance fixiste = toujours réussir sans adaptation, il n'imagine pas surmonter cet obstacle imprévu et insurmontable pour lui
@@ -111,6 +125,8 @@ You: Mais si tu t'étais pas barré avant qu'il te pose les questions d'usage, t
 Fred_sad: No no. Les dés étaient jetés. J'avais déjà perdu.
 You: T'exagères.
 Fred_sad: Je voulais pas me faire tailler en pièce. Je ne voulais pas leur faire ce plaisir là.
+
+<< advanceTime 0:15 >>
 
 -> Essayer encore de le raisonner
     << jump Raisonner_Fred >>
@@ -134,7 +150,12 @@ Là encore, vous vous sentez obligé de tricher avec la réalité. Vous ne pouve
 You: Naan, t'es parano.
 Fred_sad: La preuve, même toi, tu ne me crois pas. Alors, à quoi bon revenir dessus. Ce qui est fait est fait.
 You: T'exagère ! Je te reconnais plus ! Tu n'es plus un winner, t'es un looser ! C'est pas possible.
-Fred_smiling: Tu vois bien. Mon seul et meilleur pote me traite de "looser". Je ne crois plus en mon "don". Et toi non plus.
+Fred_smiling: Tu vois bien. Mon seul et meilleur pote me traite de "looser". Je ne crois plus en mon "don".
+Fred_sad: Et toi non plus.
+
+<< advanceTime 0:15 >>
+<< hide >>
+
 Vous vous mordez la langue encore une fois. Vous vous en voulez d'avoir douté de Fred. Vous êtes venu pour le secourir, le soutenir. Et que faites-vous à la place ? Vous l'enfoncez... Inutile d'insister, vous ne le ferez pas revenir sur sa décision, surtout après les boulettes que vous avez commises. Vous vous éclipsez discrètement de sa chambre.
 
 -> Quitter la chambre en silence
@@ -144,10 +165,14 @@ title: Joueur_Bedroom
 tags:
 position: -838.7797698974609,460.3569030761719
 ---
+<< fadeIn >>
+<< setBackground bedroom >>
+<< fadeOut >>
+
 De retour dans votre chambre, vous êtes découragé, frustré, en colère. Le monde n'est décidément pas juste. Vous, vous avez la chance de revivre vos journées et d'apprendre de vos erreurs. Pourquoi pas Fred ? Fred dit qu'iel n'est pas l'élu. Qu'est-ce qui fait que vous, vous l'êtes ? En quoi êtes-vous plus méritant que lui ? Pourquoi n'a-t-il pas, lui aussi, droit à une seconde chance ?
 Tout ça finit par vous exaspérer. Vous grognez, vous pestez, vous râlez. Vous brandissez les poings et vous interpellez les Sages. Vous avez beau ne pas les voir, vous savez qu'ils vous entendent.
 You: J'en ai assez de cette comédie ! Ce qui arrive à Fred est injuste ! Je ne comprends pas. C'est ça votre plan ? Iel doit payer pour que moi, je réussisse ? C'est minable !
-Ledai: { $Name}. Tu n'y es pas du tout.
+Ledai: { $name }. Tu n'y es pas du tout.
 You: Ah bon ? Alors expliquez-moi ce que vous tramez !
 Ledai: C'est très simple.
 
@@ -167,13 +192,20 @@ Ledai_explaining: Pas du tout. C'est ta dernière leçon. La plus importante. Su
 Vous comprenez que si vous désirez avoir le fin mot de l'histoire, vous devez suivre Ledai.
 Ce que vous acceptez, non sans rechigner.
 
+<< advanceTime 0:15 >>
+<< hide >>
+
 -> Suivre Ledai
     << jump Assemble_Sages >>
 ===
 title: Assemble_Sages
-tags:
+tags: noUi
 position: -395.6365661621094,463.4656677246094
 ---
+<< fadeIn >>
+<< setBackground circle >>
+<< fadeOut >>
+
 Vous retrouvez à l'assemblée les trois autres sages : Miss Temdé, Master Sapiens et Azul.
 You: Maître Azul, dites-moi tout, je ne comprends plus rien de ce qui se passe.
 Azul_sad: Patience { $name }. Tout va s'éclaircir.
@@ -268,7 +300,7 @@ position: 1140.1434326171875,459.3251953125
 Sapiens_concerned: Ton ami, nous en avons déjà parlé, a un profil "divergent", comme celui d'Azul.
 Azul_cheerful: Je suis probablement celui qui comprend mieux Fred. Son point fort, c'est l'originalité, l'intuition, l'imagination, l'échange verbal avec ses pairs.
 You: Chouette ! Ça ne m'explique pas pourquoi il est en échec.
-Azu_sad: J'y viens. Ses points faibles sont : la mise en forme par écrit, l'apprentissage par coeur, et le manque de structure.
+Azul_sad: J'y viens. Ses points faibles sont : la mise en forme par écrit, l'apprentissage par coeur, et le manque de structure.
 You : Ça me fait une belle jambe.
 Ledai_doubtful: Au contraire, nous cernons désormais les difficultés que rencontrent Fred.
 Sapiens_thinking: Difficultés qu'il n'a pas appris à identifier et à surmonter.
@@ -298,6 +330,8 @@ Temde_smiling: Si si... Désormais, il est temps d'apprendre à partager ce que 
 You: Heu... C'est tout?
 Sapiens_thinking: Non...
 
+<< hide >>
+
 -> Fred doit se trouver un objectif
     << jump Self_Motivation >>
 
@@ -317,6 +351,8 @@ Temde_smiling: Mais si. Tu es presque l'un des nôtres. Tu es un expert de la m�
 You: Comment ça ?
 Sapiens: En lui expliquant ce que nous t'avons présenté et expliqué...
 
+<< hide >>
+
 -> Pour réussir en tout, il faut savoir "apprendre à apprendre".
     << jump Apprendre_Apprendre >>
 ===
@@ -332,7 +368,7 @@ You: Ouais. Et alors ?
 Sapiens: Tu n'as plus qu'une marche à monter avant de devenir un [b]Apprenant Universel[/b] !
 You: Heu... ça veut dire quoi ?
 Azul_happy: Une fois que tu auras permis à Fred de surmonter ses obstacles d'apprentissage...
-Temde_cheerful:... les stratégies d'apprentissage n'auront plus de secret pour toi.
+Temde_cheerful: ... les stratégies d'apprentissage n'auront plus de secret pour toi.
 Sapiens_happy: Tu sauras les exploiter au mieux, selon le but que tu te seras fixé.
 Ledai: Tu sauras comment "apprendre à apprendre".
 You: Cool.
@@ -341,6 +377,8 @@ Ledai_explaining: Aider Fred à se fixer un objectif personnel et l'atteindre.
 Azul: Souviens-toi. Fred a perdu confiance en lui. Il doit redéfinir sa stratégie affective.
 Temde_sad: Fred ne sait plus ce qu'il fiche à l'Académie, ce qu'il en attend. Il doit aussi revoir sa stratégie métacognitive.
 Sapiens: Un petit QCM pour finir ?
+
+<< hide >>
 
 -> Va pour un QCM
     << jump QCM >>
@@ -360,9 +398,15 @@ title: Toilettes_No
 tags:
 position: -1969.8092041015625,-190.40352630615234
 ---
+<< fadeIn >>
+<< setBackground wc >>
+<< fadeOut >>
+
 Il faut bien commencer par quelque part. Vous foncez dans les toilettes qui donnent sur l'amphithéâtre du Grand Oral. L'oeil aux aguets, vous inspectez le moindre recoin : il y a des badauds, mais pas de Fred. Les regards courroucés de ceux-ci ne vous découragent pas.
 Vous prenez ensuite sur vous de taper à la porte de chaque compartiment, histoire de vous assurer qu'il ne se serait pas enfermé dans l'un d'entre-eux. C'était bien tenté, mais, ce n'est pas ici que se cache Fred.
 Dépité, vous ressortez des toilettes sous les yeux accusateurs de ceux que vous avez dérangés pour rien...
+
+<< fadeIn >>
 
 -> Chercher Fred ailleurs
     << jump Finding_Fred >>
@@ -371,9 +415,15 @@ title: Salle_Sport_No
 tags:
 position: -1968.4114990234375,29.55572509765625
 ---
+<< fadeIn >>
+<< setBackground sport >>
+<< fadeOut >>
+
 Vous savez que Fred passe beaucoup de temps à la salle de sport. Alors, vous vous dites qu'il y a une chance, même petite, qu'iel soit allé là-bas pour se défouler, vider sa frustration en tapant sur des sacs de frappe.
 C'est le coeur plein d'espoir que vous entrez dans la salle de sport. Hélas, après avoir examiné les environs, posé des questions au personnes présentes...
 Force est de reconnaître que vous avez fait choux blanc. Fred n'a pas mis les pieds ici ce matin. Vous vous demandez bien où iel se planque...
+
+<< fadeIn >>
 
 -> Chercher Fred ailleurs
     << jump Finding_Fred >>
@@ -382,9 +432,15 @@ title: Cafeteria_No
 tags:
 position: -1964.2073974609375,249.321533203125
 ---
+<< fadeIn >>
+<< setBackground kitchen >>
+<< fadeOut >>
+
 La cafétéria est un second foyer pour Fred. Iel y traîne souvent. Pour boire un coup, grignoter quelque chose, papoter avec des amis, et surtout pour faire la fête. Aujourd'hui, pourtant, la cafétéria est bien calme.
 Il n'y a personne ou presque. En tout cas, aucun signe de Fred. Vous demandez à tout hasard à un Bar Bot s'il a servi Fred. Il vous répond que non.
 Mauvaise pioche : Fred se niche ailleurs. Où donc ?
+
+<< fadeIn >>
 
 -> Chercher Fred ailleurs
     << jump Finding_Fred >>
@@ -459,7 +515,11 @@ title: Journal_Mental
 tags:
 position: 2903.8995971679688,471.1633605957031
 ---
-Flashhh... Tu te retrouves dans cette bulle de sérénité, propice à la méditation. C'est étrange, aujourd'hui, ce n'est pas ta journée que vas tenter de rectifier, ça tu l'as déjà fait. Non, pour la première fois, tu vas tenter de corriger la trajectoire d'une autre personne : ton super pote Fred.
+<< fadeIn 200 ffffff >>
+<< setBackground bedroom night >>
+<< fadeOut 200 >>
+
+Tu te retrouves dans cette bulle de sérénité, propice à la méditation. C'est étrange, aujourd'hui, ce n'est pas ta journée que vas tenter de rectifier, ça tu l'as déjà fait. Non, pour la première fois, tu vas tenter de corriger la trajectoire d'une autre personne : ton super pote Fred.
 
 Pense à bien noter dans ton "carnet d'ingénieur tout-terrain" tout ce qui te sera utile pour cette dernière épreuve.
 ===
