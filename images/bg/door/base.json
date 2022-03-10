@@ -1,0 +1,17 @@
+{
+  "night": [
+    {
+      "model": "b_night",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "day": [
+    {
+      "model": "b_day",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "default": "night"
+}
