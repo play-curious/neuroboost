@@ -7,14 +7,15 @@ colorID: 8
 << setBackground bedroom >>
 << fadeOut >>
 
-Vous vous réveillez dans votre chambre. Il est jeudi matin, encore une fois. Vous mangez votre petit déjeuner tout en pensant à ce que vous allez bien pouvoir faire pour ce projet de mémoire sur la théorie du chaos en macrobiologie post-darwinienne. Motiver et guider Fred : c'est bien joli à dire, c'est plus difficile à faire. 
+Vous vous dans votre chambre. Il est jeudi matin, encore une fois. Vous mangez votre petit déjeuner tout en pensant à ce que vous allez bien pouvoir faire pour ce projet de mémoire sur la théorie du chaos en macrobiologie post-darwinienne. Motiver et guider Fred : c'est bien joli à dire, c'est plus difficile à faire. 
 Fred... Vous attendez son appel d'ailleurs : Dring Dring. Vous décrochez.
 
 -> prendre l'appel 
     <<jump Appel_Fred>>
 ===
 title: Appel_Fred
-tags: 
+tags:
+colorID: 0
 position: -2287.7581787109375,43.895751953125
 ---
 Fred@holo_excited: Hello, { $name }, la forme ? Motivé ? 
@@ -30,16 +31,17 @@ You: Fred, sérieux...
 Fred@holo_smiling: Je te dis, viens !
 Tant pis, vous avez essayé de le raisonner par téléphone, ça ne marche pas. Il faut essayer autre chose :
 
--> Vous allez à la bibliothèque et vous le harcelez jusqu'à ce qu'il vous rejoigne.
+-> Vous allez à la bibliothèque et vous le harcelez jusqu'à ce qu'iel vous rejoigne.
     <<jump Bibli_soloAM>>
 -> Vous allez chez lui et vous l'obligez à venir à la bibliothèque.
     <<jump ChezFred>>
 ===
 title: Bibli_soloPM
 tags: 
+colorID: 0
 position: -949.32763671875,1219.6046142578125
 ---
-Vous retournez vous asseoir à la même table que ce matin. Vous textez Fred pour lui dire que vous l'attendez au même endroit. Vous ajoutez une condition de renvoi automatique du texto. S'il ne répond pas dans les 10 minutes, le message lui est renvoyé de nouveau. Le temps passe, les minutes et les heures s'écoulent. Enfin, Fred revient en salle...
+Vous retournez vous asseoir à la même table que ce matin. Vous textez Fred pour lui dire que vous l'attendez au même endroit. Vous ajoutez une condition de renvoi automatique du texto. S'iel ne répond pas dans les 10 minutes, le message lui est renvoyé de nouveau. Le temps passe, les minutes et les heures s'écoulent. Enfin, Fred revient en salle...
 
 << fadeIn >>
 << advanceTime 2:00 >>
@@ -57,6 +59,7 @@ Fred_smiling: Je t'écoute.
 ===
 title: Bibli_binome
 tags: 
+colorID: 0
 position: -1840.7229614257812,139.0914535522461
 ---
 << fadeIn >>
@@ -113,6 +116,7 @@ Fred_happy: Alors, on attaque quoi maintenant, boss ?
 ===
 title: Redaction
 tags: 
+colorID: 0
 position: -1391.3614501953125,446.9007568359375
 ---
 You: On reprend la rédaction détaillée du mémoire ? 
@@ -126,10 +130,11 @@ You: Heu...
 ===
 title: lunch
 tags: 
+colorID: 0
 position: -1389.5840454101562,1321.8181457519531
 ---
 You: Tu n'as pas faim?
-Fred_smiling: Yes, je manque clairement de fuel là.
+Fred_smiling: Si, je manque clairement de fuel là.
 You: On va manger à la cafeteria de la bibli?
 Fred_smiling: yes yes !
 
@@ -138,6 +143,7 @@ Fred_smiling: yes yes !
 ===
 title: Zero_distraction
 tags: 
+colorID: 0
 position: -1396.09326171875,1672.4146423339844
 ---
 Vous demandez au récepteur de l'IA de la bibliothèque de déployer une "Sphère de Travail Immersive". Aussitôt un dôme de lumière opaque se referme sur votre table et vous isole du reste de la bibliothèque et des étudiants qui y sont. Le son devient net et réverbéré, comme dans un studio d'enregistrement. 
@@ -161,6 +167,7 @@ Fred_smiling: C'est vrai.
 ===
 title: Lunch_bibli
 tags: bg|class
+colorID: 0
 position: -1167.3054809570312,1321.2256164550781
 ---
 Vous êtes content de commander un lunch à la bibliothèque. C'est jour de relâche, vous commandez un Burger Big Protéine Double Cheese. C'est pas équilibré mais vous avez assez d'effort à faire par ailleurs. 
@@ -183,6 +190,7 @@ Fred_smiling: Please...
 ===
 title: Notes_You
 tags: 
+colorID: 0
 position: -1399.2734375,-394.30879974365234
 ---
 << advanceTime 2:00 >>
@@ -200,9 +208,10 @@ You: Heu.
 ===
 title: Bibli_soloAM
 tags: 
+colorID: 0
 position: -2066.117431640625,-90.2164535522461
 ---
-Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez. Vous y ajoutez un paramètre. Et toutes les dix minutes, votre palmphone renvoit votre texto à Fred. Vous espérez ainsi le forcer à vous retrouver. Le temps passe, les minutes et les heures s'écoulent. Mais que fait donc Fred ? Le voilà enfin.
+Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez. Vous y ajoutez un paramètre. Et toutes les dix minutes, votre palmphone renvoie votre texto à Fred. Vous espérez ainsi le forcer à vous retrouver. Le temps passe, les minutes et les heures s'écoulent. Mais que fait donc Fred ? Le voilà enfin.
 
 << advanceTime 8:00 13:00 >>
 
@@ -224,6 +233,7 @@ Vous vous rappelez des paroles d'Azul, c'est vous le capitaine de ce projet. C'e
 ===
 title: Fred_goesback_towork
 tags: 
+colorID: 0
 position: -949.209098815918,1430.5440979003906
 ---
 Fred_sad: T'es vraiment pas drôle.
@@ -257,16 +267,18 @@ C'est drôle. C'est Fred désormais qui vous pilote et vous rassure sur votre ca
 
 // Sinon, joueur n'a pas réussi toutes ses conditions de victoire
 
-<<else>>
+<< else >>
 Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux. 
 You: Non, on est loin d'avoir fini !!
 Vous criez, vous paniquez complètement, vous vous mettez à suer à grosses gouttes, votre vue se trouble, votre ouïe sature, parasité par un effet de larsen. Vous avez encore échoué ! 
 -> Vous allez devoir recommencer cette journée épuisante à la bibliothèque
-    [[Start]]
-<<endif>>
+[[Start]]
+
+<< endif >>
 ===
 title: Notes_Fred
 tags: 
+colorID: 0
 position: -1393.3150634765625,24.101524353027344
 ---
 << advanceTime 3:00 >>
@@ -284,12 +296,13 @@ You: Heu... C'est plus facile pour moi de les lire.
 ===
 title: ChezFred
 tags: 
+colorID: 0
 position: -2067.0577392578125,138.21179962158203
 ---
-Fred vous fait entrer à la première sonnerie. 
+Fred vous fait entrer à la première sonnerie.
 
 << advanceTime 0:05 >>
-
+ 
 Fred_excited: Tu vas voir, ce GTR, c'est de la giga-bombe !
 You: Fred, faut qu'on aille à la bibli, tu joueras ce week-end.
 Fred_smiling: T'es pas drôle. Viens, juste pour 5 minutes.
@@ -302,12 +315,13 @@ Fred_sad: Haaaan, t'es relou parfois.
 You: Je veux l'avoir mon diplôme.
 Fred_sad: D'accord...
 
-Bien joué, vous avez touché la corde sensible de Fred, il accepte de vous suivre... À la bibliothèque. 
+Bien joué, vous avez touché la corde sensible de Fred, iel accepte de vous suivre... À la bibliothèque. 
 
 <<jump Bibli_binome>>
 ===
 title: Bedroom
 tags: 
+colorID: 0
 position: -1178.4630126953125,1891.7039794921875
 ---
 << fadeIn >>
@@ -330,6 +344,7 @@ Fred raccroche. Vous recevez dans votre boîte mail sa contribution. Vous l'int�
 ===
 title: Plan
 tags: 
+colorID: 0
 position: -1390.7283935546875,891.5607299804688
 ---
 You: Tu te souviens du plan ?
@@ -343,7 +358,7 @@ Fred_happy: Oui, plein, y a l'embarras du choix.
 You: On n'a plus le temps.
 Fred_smiling: On a toujours le temps.
 
--> Vous prenez le temps de discuter avec Fred de tous les plans possibles  
+-> Vous prenez le temps de discuter avec Fred de tous les plans possibles
     << jump Plan_Good >>
 -> Vous présentez votre plan à Fred
     << jump Plan_Bad >>
@@ -361,8 +376,11 @@ Fred_smiling: Cool.
 You: C'est une première pour moi. J'espère que je ne serai pas confus.
 Fred_happy: Pas grave.
 You: Merci.
-Ne sachant pas par quoi commencer, vous dites la première remarque qui vous vient en tête. Et puis, de fil en aiguille, une remarque en amène une autre, qui en amène une autre. Fred est un auditeur très bienveillant. En outre, il rebondit sur certaines de vos idées et vous incite à les clarifier, les critiquer, les nuancer.
-Au final, ce n'est pas vous qui avez présenté votre travail à Fred. C'est Fred qui a revu vos notes et a corrigé ce qui n'allait pas. C'est génial. 
+Ne sachant pas par quoi commencer, vous dites la première remarque qui vous vient en tête. Et puis, de fil en aiguille, une remarque en amène une autre, qui en amène une autre. Fred est un auditeur très bienveillant. En outre, iel rebondit sur certaines de vos idées et vous incite à les clarifier, les critiquer, les nuancer.
+Au final, ce n'est pas vous qui avez présenté votre travail à Fred. C'est Fred qui a revu vos notes et a corrigé ce qui n'allait pas. C'est génial.
+
+<<advanceTime 2:00>> 
+
 Enfin, comble de joie : l'IA vous informe qu'elle a enregistré toute la conversation et qu'elle vous transfère le fichier audio sur votre ordinateur !
 
 -> Et maintenant ? 
@@ -387,7 +405,8 @@ You: On dérange le travail des autres étudiants.
 Fred_sad: C'est stupide...
 
 Vous envoyez vos documents de travail à Fred. Vous voyez votre ami grincer des dents.
-Il peine à lire et relire vos docs. Il n'arrête pas de faire des pauses, de vous interpeller, mais vous ne pouvez le laisser parler. Le règlement intérieur précise bien que vous ne devez pas parler, sous peine de déranger les autres étudiants, qui travaillent eux aussi.
+Iel peine à lire et relire vos docs. Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous ne pouvez le laisser parler. Le règlement intérieur précise bien que vous ne devez pas parler, sous peine de déranger les autres étudiants, qui travaillent eux aussi.
+<<advanceTime 2:00>>
 Avez-vous fait le bon choix ?
 
 -> Et maintenant? 
@@ -405,7 +424,7 @@ Fred_happy: Tout est dans ma tête. Tu veux que je commence par quoi ?
 << advanceTime 2:00 >>
 
 Vous comprenez que c'est à vous de questionner Fred et, en quelque sorte, de lui tirer les vers du nez. Vous passez les deux heures suivantes à lui poser des questions, à écouter ses réponses, à rebondir sur ces idées, ces commentaires.
-C'est vraiment super stimulant et super enrichissant. Fred a vu des trucs que vous n'aviez pas remarqué. Ce type a un don, c'est certain. Après, il ne correspond pas totalement aux standards académiques. C'est sa force et sa faiblesse.  
+C'est vraiment super stimulant et super enrichissant. Fred a vu des trucs que vous n'aviez pas remarqué. Cette personne a un don, c'est certain. Après, iel ne correspond pas totalement aux standards académiques. C'est sa force et sa faiblesse.  
 Quand vous pensez avoir fait le tour de la question avec lui, l'IA vous informe qu'elle a enregistré toute la conversation. Elle vous transfère le fichier audio sur votre ordinateur. Génial !
 
 // Option "Et maintenant, que faire? " moved to the end of this node
@@ -434,6 +453,7 @@ Vous voyez à son air pincé que Fred se fait violence pour vous faire plaisir. 
 Fred: J'ai fait un effort. J'ai écrit des vraies phrases.
 En effet, c'est mieux, mais ça reste laconique. Il reste encore beaucoup à faire mais vous n'obtiendrez pas plus de Fred de cette manière.
 Avez-vous fait le bon choix ?
+<<advanceTime 3:00>>
 
 // Option "Et maintenant, que faire? " moved to the end of this node
 -> Et maintenant, que faire ? 
@@ -450,10 +470,9 @@ You: C'est le dernier jour, on doit choisir un plan et s'y tenir.
 Fred_happy: Très bien. Dis-moi ce que tu as retenu et je te dirai ce que j'en pense.
 You: OK. 
 Vous farfouillez dans vos dossier et vous ouvrez le fichier qui contient le plan détaillé du mémoire sur la théorie du chaos en macrobiologie post-darwinienne.
-Vous commencez ensuite à lui présentez vos trois grandes parties, vos sections et sous-sections. Fred se révèle un infatigable représentant du jury. Il ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions.
-En clair, il vous déstabilise, il vous secoue. Il vous fait douter de votre problématique et de vous. Sauf que, c'est là le génie de Fred. Il ne se contente pas de vous perturber, il vous propose des pistes alternatives, des questions et des arguments auxquels vous n'aviez pas pensés.
-En fait, il secoue l'arbre de votre argumentation pour vous aider à cueillir tous les fruits qu'il a produit. Grâce à la contribution de Fred, vous comprenez que vous avez un plan en béton armé.
-
+Vous commencez ensuite à lui présentez vos trois grandes parties, vos sections et sous-sections. Fred se révèle un infatigable représentant du jury. Iel ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions.
+En clair, iel vous déstabilise, iel vous secoue. Iel vous fait douter de votre problématique et de vous. Sauf que, c'est là le génie de Fred. Fred ne se contente pas de vous perturber, iel vous propose des pistes alternatives, des questions et des arguments auxquels vous n'aviez pas pensés.
+En fait, iel secoue l'arbre de votre argumentation pour vous aider à cueillir tous les fruits qu'il a produit. Grâce à la contribution de Fred, vous comprenez que vous avez un plan en béton armé.
 << advanceTime 2:00 >>
 
 // Option "Avancer dans le travail " moved to the end of this node
@@ -474,7 +493,7 @@ colorID: 2
 You: Ben c'est le problème. On n'a plus le temps d'hésiter. On doit choisir un plan et s'y tenir. 
 Fred_sad: C'est vraiment dommage.
 You: Je te rappelle qu'on doit le rendre ce soir ce mémoire. C'est maintenant trop tard pour changer d'avis. Je te renvoie le plan et on le valide. Un point, c'est tout.
-Vous sentez que vous n'avez peut-être pas pris la bonne décision. Fred se révèle un infatigable avocat de l'accusation. Il ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions. Commentaires qui ne font que fragiliser votre problématique et douter de vous.
+Vous sentez que vous n'avez peut-être pas pris la bonne décision. Fred se révèle un infatigable avocat de l'accusation. Iel ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions. Commentaires qui ne font que fragiliser votre problématique et douter de vous.
 Si Fred avait raison... Vous allez devoir revivre encore une fois cette journée de jeudi. Pourvu que non...
 
 << advanceTime 1:30 >>
@@ -491,9 +510,11 @@ colorID: 2
 << if visited("Zero_Distraction") >>
 
 Vous vous rappelez des conseils d'Azul. Il faut solliciter Fred, sur ses connaissances et ses opinions. De manière verbale. 
-Vous prenez le temps de lui résumer oralement ce que vous avez déjà sur la question des modèles chaotiques, déterministes dont le degré d'erreur croît de manière exponentielle. Votre présentation n'ennuie pas Fred, au contraire, il se trouve être une source inépuisable d'idées et de référence pour étayer cette partie. Vous enchaînez avec la portée de l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme. Là encore, échanger avec Fred vous permet de consolider vos arguments et de donner plus de profondeur à cette question. Enfin, vous énumérez brièvement les éléments que vous avez déjà intégrés dans la troisième partie sur la macrobiologie et la remise en question du postulat darwinien de l'évolution comme un schéma linéaire et donc prévisible. Fred se montre encore généreux et vous propose des réflexions, des idées, des hypothèses auxquelles vous n'aviez pas pensées.
+Vous prenez le temps de lui résumer oralement ce que vous avez déjà sur la question des modèles chaotiques, déterministes dont le degré d'erreur croît de manière exponentielle. Votre présentation n'ennuie pas Fred, au contraire, votre pote se trouve être une source inépuisable d'idées et de référence pour étayer cette partie.
+Vous enchaînez avec la portée de l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme. Là encore, échanger avec Fred vous permet de consolider vos arguments et de donner plus de profondeur à cette question.
+Enfin, vous énumérez brièvement les éléments que vous avez déjà intégrés dans la troisième partie sur la macrobiologie et la remise en question du postulat darwinien de l'évolution comme un schéma linéaire et donc prévisible. Fred se montre encore généreux et vous propose des réflexions, des idées, des hypothèses auxquelles vous n'aviez pas pensées.
 Au final, vous constatez qu'avec le concours de Fred, votre rédaction s'est considérablement étoffée. Elle est vraiment solide et bien charpentée. Il ne vous reste plus qu'à arranger votre démonstration de manière plus académique et plus littéraire et le tour sera joué. 
-Alors que vous terminez de noter un truc dans votre agenda, l'IA vous informe qu'elle a enregistré toute la conversation. Elle vous expédie le fichier audio sur votre ordinateur. Parfait ! Si j'avais oublié un truc, vous n'aurez qu'à réécouter l'enregistrement...
+Alors que vous terminez de noter un truc dans votre agenda, l'IA vous informe qu'elle a enregistré toute la conversation. Elle vous expédie le fichier audio sur votre ordinateur. Parfait ! Si vous avez oublié un truc, vous n'aurez qu'à réécouter l'enregistrement...
 << advanceTime 4:00 >>
 
 -> Reprendre le travail 
