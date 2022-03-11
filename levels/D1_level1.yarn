@@ -1,3 +1,5 @@
+#gauges: food sleep
+
 title: Start
 tags:
 position: -1979.929937362671,-817.3228759765625
@@ -6,7 +8,7 @@ position: -1979.929937362671,-817.3228759765625
 << setBackground bedroom >>
 << setTime 8:00 >>
 << loopFX Chime_LOOP 2000 >>
-
+<< showGauges >>
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.
 
 << stopFX Chime_LOOP >>

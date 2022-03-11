@@ -12,6 +12,8 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
   private _innerDisk: PIXI.Sprite;
   private _outerDisk: PIXI.Graphics;
+  
+  
 
   private _center: PIXI.Point;
   private _radius: number;
@@ -65,6 +67,15 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     this.config.variableStorage.listen(`change:${this.name}`, (value) =>
       this.changeValue(Number(value))
     );
+
+    this._container.hitArea = new PIXI.Circle(this._center.x, this._center.y, this._radius);
+    this._container.interactive = true;
+    this._on(this._container, "pointerover", () => {
+      console.log("IN");
+    })
+    this._on(this._container, "pointerout", () => {
+      console.log("OUT");
+    })
   }
 
   _teardown() {
