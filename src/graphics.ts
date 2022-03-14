@@ -199,7 +199,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             },
             onUpdate: (value) => {
               currentGauge.position.y = value;
-              console.log(i, value);
             },
             onTeardown: () => {
               currentGauge.visible = visibility;
