@@ -32,9 +32,9 @@ You: Ouais. La Programmation Neuro Linguistique des Intelligences Artifielles An
 Fred@holo_excited: No worry. On a juste qu'à minuit pour la déposer sur le FTP de l'Académie.
 You: C'est vrai. C'est assez touffu ce truc de PNLIAA.
 Fred@holo_smiling: Pfuuu. Tu prends trop les choses au sérieux. Alors tu viens ?
-// Ajouter des phrases pour finir la conversation (dans les choix)
+
 << hide >>
-<< advanceTime 0:40 >>
+<< advanceTime 1:00 >>
 
 << setGauge sleep 100 >>
 << setGauge food 100 >>
@@ -91,6 +91,7 @@ position: -328,-637
 
 <<if !visited("Liste_Taches")>>
 Que faites-vous maintenant ?
+<<visit Liste_Taches>>
 <<endif>>
 
 << if getGauge("mentalLoad") >= 100 >>
@@ -106,47 +107,114 @@ Que faites-vous maintenant ?
 
 ===
 title: Liste_Taches_AM
-tags: 
+tags: freechoice
 colorID: 1
 position: -328,-637
 ---
+-> Lit@lit
+    <<jump lit_subchoice_am>>
+-> Bureau@bureau
+    <<jump bureau_subchoice_am>>
+-> Salon@salon
+    <<jump salon_subchoice_am>>
+===
+title: lit_subchoice_am
+tags: subchoice
+---
+<< setBackground bed >>
+
+-> Faire une sieste#once
+    <<jump Sleep>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: bureau_subchoice_am
+tags: subchoice
+---
+<< setBackground desk >>
+
 -> Préparer son bureau avant de se mettre à travailler#once
     <<jump Ranger>>
 -> Ouvrir le chat histoire de se détendre#once
     <<jump Chat>>
 -> Débuter la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: salon_subchoice_am
+tags: subchoice
+---
+<< setBackground detente >>
+
 -> Binger votre série TV préférée#once
     <<jump BingeTV>>
--> Faire une sieste#once
-    <<jump Sleep>>
+-> back
+    <<jump Liste_Taches>>
 ===
 title: Liste_Taches_PM
-tags: 
+tags: freechoice
 colorID: 1
 position: -328,-637
 ---
+-> Lit@lit
+    <<jump lit_subchoice_pm>>
+-> Bureau@bureau
+    <<jump bureau_subchoice_pm>>
+-> Salon@salon
+    <<jump salon_subchoice_pm>>
+-> Cuisine@cuisine
+    <<jump cuisine_subchoice_pm>>
+===
+title: lit_subchoice_pm
+tags: subchoice
+---
+<< setBackground bed >>
+
+-> Faire une sieste#once
+    <<jump Sleep>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: bureau_subchoice_pm
+tags: subchoice
+---
+<< setBackground desk >>
+
 -> Se détendre sur le chat#once
     <<jump Chat>>
 -> Continuer la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: salon_subchoice_pm
+tags: subchoice
+---
+<< setBackground detente >>
+
 -> Binger votre série TV préférée#once
     <<jump BingeTV>>
--> Faire une sieste#once
-    <<jump Sleep>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: cuisine_subchoice_pm
+tags: subchoice
+---
+<< setBackground kitchen >>
+
 -> Manger#once
     <<jump Diner>>
+-> back
+    <<jump Liste_Taches>>
 ===
 title: Ranger
 tags:
 colorID: 0
 position: -958,-443
 ---
-<< fadeIn >>
-<< setBackground desk >>
-<< fadeOut >>
-
-Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite votre le paper print de votre brief, les documents de référence que vous avez déjà en possession. Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document. Avant de commencer la rédaction de votre note, vous prenez le temps d'établir un plan de réflexion et de travail. Certes, cela vous prend du temps, mais ça va vous faciliter le processus de rédaction.
+Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite votre le paper print de votre brief, les documents de référence que vous avez déjà en possession.
+Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document. Avant de commencer la rédaction de votre note, vous prenez le temps d'établir un plan de réflexion et de travail. Certes, cela vous prend du temps, mais ça va vous faciliter le processus de rédaction.
 << advanceTime 0:20 >>
 << removeFromGauge mentalLoad 10 >>
 
@@ -159,15 +227,11 @@ tags:
 colorID: 0
 position: -388,-306
 ---
-<< fadeIn >>
-<< setBackground desk >>
-<< fadeOut >>
-
 Vous cliquez sur l'icône ChatApp de votre Palmphone. Il y a encore plus de monde que lundi ! Vous êtes pingé par Fred ! Il vous demande si vous ne voulez pas le rejoindre à la salle de gym !
 Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous ne pouvez ignorer son injonction !
 Toute la communauté va apprendre que vous avez refusé un duel virtuel, que vous êtes un lâche...
-Vexé et décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait. Cependant, Fred se montre un adversaire particulièrement retord et surprenant.
-Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.
+Vexé et décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait.
+Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.
 << advanceTime 2:00 >>
 << addToGauge mentalLoad 30 >>
 
@@ -180,13 +244,11 @@ tags:
 colorID: 0
 position: 326,-411
 ---
-<< fadeIn >>
-<< setBackground desk >>
-<< fadeOut >>
-
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber.
-Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir ! Ils sont parvenu à décryogéniser Jaba Fett. Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de de Mana de toute la galaxie !
-Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran ! Vont-ils parvenir à arrêter Dude ? L'empêcher de libérer la galaxie du joug de l'Imperium Noir ? Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples: les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..
+Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir !
+Ils sont parvenu à décryogéniser Jaba Fett. Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de de Mana de toute la galaxie !
+Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran ! Vont-ils parvenir à arrêter Dude ? L'empêcher de libérer la galaxie du joug de l'Imperium Noir ?
+Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples: les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..
 Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse...
 
 << advanceTime 3:00 >>
@@ -202,7 +264,8 @@ tags:
 colorID: 0
 position: -706,-331
 ---
-Vous vous rappelez ce que vous ont dit les 4 Sages. Dormir régulièrement, tous les jours. Toutefois, si le temps manque, un petit somme, ça fait du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux. Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
+Vous vous rappelez ce que vous ont dit les 4 Sages. Dormir régulièrement, tous les jours. Toutefois, si le temps manque, un petit somme, ça fait du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux.
+Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
 
 << removeFromGauge sleep 20 >>
 << removeFromGauge mentalLoad 10 >>
@@ -215,14 +278,12 @@ tags:
 colorID: 0
 position: -22,-299
 ---
-<< fadeIn >>
-<< setBackground desk >>
-<< fadeOut >>
-
 << if visited("Redaction_Note") >>
-Vous vous retroussez les manches et vous attelez à la tâche. Mettre au propre cette note de synthèse, fruit de plusieurs jours de lecture, de prises de notes, de réflexions diverses et variées. Vous avez tellement de choses à dire et à coucher sur votre document, vous ne manquez pas d'idées, mais de concentration et productivité.
+Vous vous retroussez les manches et vous attelez à la tâche. Mettre au propre cette note de synthèse, fruit de plusieurs jours de lecture, de prises de notes, de réflexions diverses et variées.
+Vous avez tellement de choses à dire et à coucher sur votre document, vous ne manquez pas d'idées, mais de concentration et productivité.
 << else >>
-Allez, encore une fois, vous respirez un grand coup avant de replonger dans le grand bain. Vous êtes loin d'avoir fini et les heures ne cessent de filer. Il faut terminer cette note de synthèse coûte que coûte avant la deadline...
+Allez, encore une fois, vous respirez un grand coup avant de replonger dans le grand bain. Vous êtes loin d'avoir fini et les heures ne cessent de filer.
+Il faut terminer cette note de synthèse coûte que coûte avant la deadline...
 <<endif>>
 
 << advanceTime 1:00 >>
@@ -242,7 +303,8 @@ Fred@holo_excited: Alors ? Je t'attends toujours ? Quand viens-tu ?
 You: Heu... Je sais pas.
 Fred@holo_happy: Beware ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
 << hide >>
-Nooon ! Si la communauté apprend que vous avez décliné le défi de Fred. Fred, le membre le plus populaire du Métaverse de la fraternité étudiante. Vous êtes grillé aux yeux de tous les camarades de l'Académie d'Omniscience et de Polytechnologie Universelle... Vous êtes piégé. quand faut y aller, faut y aller...
+Nooon ! Si la communauté apprend que vous avez décliné le défi de Fred. Fred, le membre le plus populaire du Métaverse de la fraternité étudiante.
+Vous êtes grillé aux yeux de tous les camarades de l'Académie d'Omniscience et de Polytechnologie Universelle... Vous êtes piégé. quand faut y aller, faut y aller...
 
 -> Retrouver Fred
     <<jump Salle_Gym2>>
@@ -279,7 +341,8 @@ tags:
 colorID: 0
 position: -427,-43
 ---
-Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte.
+Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec.
+Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte.
 Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...
 N'empêche, vous sentez votre tête penchez en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrer dans le noir...
 Puis, vous entendez une voix familière:
@@ -303,7 +366,8 @@ position: -1091,21
 << setBackground circle >>
 << fadeOut >>
 
-Hop, la seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin exotique. Ce petit nid de verdure que vos hôtes nomment l'assemblée des Sages. C'est de la téléportation ou de la magie ? Et où se trouve ce fichu décor si criant de vérité... On dirait d'authentiques plantes exotiques...
+Hop, la seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin exotique.
+Ce petit nid de verdure que vos hôtes nomment l'assemblée des Sages. C'est de la téléportation ou de la magie ? Et où se trouve ce fichu décor si criant de vérité... On dirait d'authentiques plantes exotiques...
 Temde_smiling: Yep, elles sont réelles, ce ne sont pas des végétaux synthétiques. C'est moi qui m'en occupe.
 Sapiens_concerned: Super Miss Temdé. Je ne crois pas que { $name } soit venu pour échanger sur cette question.
 Ledai_explaining: Tout à fait. Cette nouvelle session aura pour objet la surcharge cognitive.
@@ -506,11 +570,10 @@ tags:  noUi
 colorID: 1
 position: 1209,900
 ---
-<< fadeIn >>
+<< fadeIn 200 0xFFFFFF >>
 << setBackground bedroom night >>
-<< fadeOut >>
+<< fadeOut 200 >>
 
-Flash !!!
 Vous revoilà seul... Dans cet instant figé, dans cette parenthèse intime entre l'ombre et la lumière, le jour et la nuit. Votre "carnet d'ingénieur tout-terrain" est entre vos mains...
 Qu'allez-vous noter dessus ?
 ===
@@ -523,7 +586,8 @@ position: 477,-702
 << setBackground kitchen >>
 << fadeOut >>
 
-Yum Yum ! Il est temps de se faire une pause "manger équilibré", comme le recommande les Sages. Vous vous cuisinez un Green Burger Full Vegie. Franchement, c'est étrange, tant pour le goût que pour l'aspect. On dirait un burger à la viande et il n'y en a aucune. En outre, c'est vraiment copieux. Et les frites à base de riz croustillant... Dingue. C'est meilleur que les frites de chez Naz Do...
+Yum Yum ! Il est temps de se faire une pause "manger équilibré", comme le recommande les Sages. Vous vous cuisinez un Green Burger Full Vegie. Franchement, c'est étrange, tant pour le goût que pour l'aspect.
+On dirait un burger à la viande et il n'y en a aucune. En outre, c'est vraiment copieux. Et les frites à base de riz croustillant... Dingue. C'est meilleur que les frites de chez Naz Do...
 
 << advanceTime 0:30 >>
 << removeFromGauge sleep 20 >>
