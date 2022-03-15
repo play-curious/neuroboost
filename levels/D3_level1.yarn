@@ -9,6 +9,7 @@ position: -941,-697
 << setBackground bedroom >>
 << setTime 8:00 2 >>
 << fadeOut >>
+<< music Neutral >>
 
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie d'Omniscience et de Polytechnologie Universelle. Attention, ça ne veut pas dire jour de repos !
 Ronronron... Votre palmphone qui vibre. Sans suprise, vous voyez que l'appel vient de Fred.
@@ -410,12 +411,13 @@ position: -370,280
 Sapiens_thinking: Les perturbations extérieures qui parasitent ta charge mentale et saturent tes processus de calcul cérébral.
 You: Hé, je suis pas une machine !
 Ledai_happy: Tout à fait, l'erreur est humaine, pas informatique.
-Azul_proud: Je la fais court. Plus on est concentré, moins on peut disperser son attention.
-Temde_smiling: Regarde-moi ! J'ai quatre bras ! Toi, tu n'en as que deux, je peux jongler avec plus de balles que toi ! Mais, moi aussi, j'ai mes limites. À un moment, je n'arriverai plus à lancer en l'air toutes ces balles.
+Azul_proud: Je la fais court. Plus on est concentré, moins on peut disperser son attention. C'est comme le jonglage...
+
+Temde_smiling: Exactement. Regarde-moi ! J'ai quatre bras ! Toi, tu n'en as que deux, je peux jongler avec plus de balles que toi ! 
 You: C'est ça. Je te défie !
 << hide >>
 Miss Temdé se lève tranquillement et étend ses mains. Des balles apparues de nulle part se matérialisent dans ses paumes. Miss Temdé jongle ainsi avec quatre, cinq, puis six balles...
-Temde_smiling: À ton tour, montre-nous tes limites.
+Temde_smiling: À ton tour, montre-nous ce que tu peux faire.
 <<jump Jongler>>
 ===
 title: Jongler
@@ -423,13 +425,26 @@ tags:  noUi
 colorID: 0
 position: -184,504
 ---
+<< empty >> 
+<< hideDialog >>
+<< music Tense >>
 << minigame Juggling >>
+<< music Neutral >>
+<< showDialog >>
+// Necessary so that Yarn evaluates the variable correctly
+<< empty >> 
 
-// When the player loose, too many balls//
+<< if $ballsJuggled < 6 >>
+Temde_smiling: Tu vois, tu ne peux pas jongler autant de balles que moi.
+Temde_thinking: Mais, moi aussi, j'ai mes limites. J'ai beau jonglé 6 balles, mais je ne pourrais pas jonger 7, ou 8, ou 12 !  
+Azul_happy: Nous en avons tous des limites...
+<< else >>
+Temde_smiling: Bravo ! Tu a réussi à jongler autant de balles que moi.
+Temde_thinking: Mais est-ce que tu aurais pu jongler le double ? Le triple ? 
+Azul_happy: Nous en avons tous des limites...
+<< endif>>
 
-// Option "Quitter le mini-jeu " moved to the end of this node
--> Quitter le mini-jeu
-    <<jump Quit_Mini_Game>>
+<<jump Quit_Mini_Game>>
 ===
 title: Le_Quizz_des_Sages
 tags:  noUi
@@ -621,8 +636,6 @@ tags: noUi
 colorID: 0
 position: 182,578
 ---
-Temde_smiling: Tu vois, toi aussi tu as tes limites.
-Azul_happy: Nous en avons tous...
 Sapiens_concerned: On peut aussi apprendre à les repousser.
 Temde_smiling: Ou à les contourner. C'est selon.
 Ledai_explaining: Exactement, et c'est l'objet de cette session.

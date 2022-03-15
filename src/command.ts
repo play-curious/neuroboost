@@ -24,7 +24,6 @@ export const commands: Record<string, Command> = {
 
   // Shortcut for _changeCharacter()
   hide(instantaneous?): void {
-
     this.graphics.removeCharacters(instantaneous === undefined);
   },
 
@@ -40,6 +39,22 @@ export const commands: Record<string, Command> = {
       );
     });
     return promptPopup;
+  },
+
+  hideUi() {
+    this.graphics.hideUi();
+  },
+
+  showUi() {
+    this.graphics.showUi();
+  },
+
+  hideDialog() {
+    this.graphics.hideDialogLayer();
+  },
+
+  showDialog() {
+    this.graphics.hideDialogLayer();
   },
 
   eval(code: string) {

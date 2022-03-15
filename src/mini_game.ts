@@ -37,11 +37,12 @@ export class Juggling extends MiniGame {
     this.hits = 0;
     this.balls = [];
     this.text = this.makeText(
-      "",
+      "Click or tap a ball to juggle it",
       {
         fontFamily: "Ubuntu",
         align: "center",
         fill: 0xffffff,
+        fontSize: 50,
       },
       (it) => {
         it.scale.set(1);
@@ -50,27 +51,11 @@ export class Juggling extends MiniGame {
         this.container.addChild(it);
       }
     );
-    // this.temde = this.makeCharacter("temde", "", "", false);
-    // this.temde.container.scale.x = -1.1;
-    // this.temde.container.position.x = 1500;
-    // this.temdeArm = this.makeSprite("images/characters/temde/arm.png", (it) => {
-    //   it.position.set(-it.width, this.zone.height);
-    //   this.container.addChild(it);
-    // });
-    // this.container.addChild(this.temde.container);
-    // todo: add background and character ?
+
     this.config.container.addChild(this.container);
-    // this._activateChildEntity(
-    //   this.temde.entity,
-    //   entity.extendConfig({
-    //     container: this.temde.container,
-    //   })
-    // );
+
     this._activateChildEntity(
-      new entity.EntitySequence([
-        // todo: explain script
-        this.addBall(),
-      ]),
+      new entity.EntitySequence([this.addBall()]),
       entity.extendConfig({
         container: this.container,
       })
@@ -93,33 +78,37 @@ export class Juggling extends MiniGame {
 
   hit() {
     this.hits++;
-    this.updateText();
     if (this.hits > this.balls.length) {
       this.hits = 0;
       if (this.balls.length < 5) {
         this._activateChildEntity(this.addBall());
-        this.updateText();
       } else {
-        // todo: Success script
-        this.updateText();
+        this.config.fxMachine.play("Success");
         this.stop();
-        this.text.text = "Ouep, pas mal.";
-        this.text.interactive = true;
-        this._on(this.text, "click", () => {
-          this._transition = entity.makeTransition();
-        });
+        this.config.variableStorage.set("ballsJuggled", this.balls.length);
+        this._transition = entity.makeTransition();
       }
     }
   }
 
   fail() {
+    this.config.fxMachine.play("Failure");
     this.stop();
-    // todo: FAIL script
+
     this._activateChildEntity(
-      new popup.Confirm("Réessayer ?", (retry) => {
-        if (retry) this.retry();
-        else this._transition = entity.makeTransition();
-      })
+      new popup.Confirm(
+        `Tu as jonglé ${this.balls.length - 1} balles.\n\nRéessayer ?`,
+        (retry) => {
+          if (retry) this.retry();
+          else {
+            this.config.variableStorage.set(
+              "ballsJuggled",
+              this.balls.length - 1
+            );
+            this._transition = entity.makeTransition();
+          }
+        }
+      )
     );
   }
 
@@ -127,33 +116,8 @@ export class Juggling extends MiniGame {
     this.stopped = true;
   }
 
-  updateText() {
-    //this.text.text = `${this.hits} / ${this.balls.length} / 5`;
-  }
-
   addBall() {
     return new entity.EntitySequence([
-      // todo: animation with temde arm?
-      // new entity.ParallelEntity([
-      //   // arm opacity
-      //   new tween.Tween({
-      //     from: -this.temdeArm.width,
-      //     to: 0,
-      //     duration: 500,
-      //     onUpdate: (value) => {
-      //       this.temdeArm.position.x = value;
-      //     },
-      //   }),
-      //   // arm position
-      //   new tween.Tween({
-      //     from: 0,
-      //     to: 1,
-      //     duration: 500,
-      //     onUpdate: (value) => {
-      //       this.temdeArm.alpha = value;
-      //     },
-      //   }),
-      // ]),
       new entity.FunctionCallEntity(() => {
         const ball = new Ball(this);
         this.balls.push(ball);
@@ -196,6 +160,7 @@ export class Ball extends extension.ExtendedCompositeEntity {
         this._on(it, "pointerdown", () => {
           if (this.speed < 0) return;
           this.speed *= -1;
+          this.config.fxMachine.play("Click");
           this.game.hit();
         });
       }
@@ -216,7 +181,6 @@ export class Ball extends extension.ExtendedCompositeEntity {
       this.game.zone.y + this.game.zone.height + this.sprite.height / 2
     ) {
       this.game.fail();
-      this._transition = entity.makeTransition();
     }
   }
 
