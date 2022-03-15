@@ -5,9 +5,9 @@ tags:
 position: -1523.9072265625,-40.47624206542969
 colorID: 8
 ---
-<< setBackground class >>
 << empty >>
-<< setTime 18:20 >>
+<< setBackground door class-screen >>
+<< setTime 18:15 >>
 << music Neutral >>
 
 Vous êtes toujours avec Fred à contempler les résultats de ce premier examen de la semaine de sprint. Ce dernier se retourne vers vous.
