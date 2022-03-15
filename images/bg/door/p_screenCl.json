@@ -1,0 +1,20 @@
+{"frames": {
+
+"screenCl0001.png":
+{
+	"frame": {"x":1,"y":1,"w":340,"h":186},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":340,"h":186},
+	"sourceSize": {"w":340,"h":186}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "p_screenCl.png",
+	"format": "RGBA8888",
+	"size": {"w":342,"h":188},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6bac28712472ca6e414a5485fe8846c4:fe333c92e1fdfc8beb65e5ff7c4216e0:2dc57bd73a636dad34084703b126a431$"
+}
+}
