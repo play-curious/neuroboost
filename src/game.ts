@@ -168,6 +168,10 @@ const musicAssets = [
   "Neutral",
   "Tense",
   "Victory",
+  "Danse",
+  "DanseQuiet",
+  "Solo1",
+  "Solo2",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];

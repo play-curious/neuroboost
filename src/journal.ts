@@ -153,6 +153,8 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
           it.buttonMode = true;
 
           this._on(it, "pointerup", () => {
+            this.config.fxMachine.play("Click");
+
             const journalStorage =
               this.config.variableStorage.get("journalAnswers");
             journalStorage[this.option] = {};

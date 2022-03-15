@@ -8,7 +8,7 @@ colorID: 8
 << empty >>
 << setBackground door class-screen >>
 << setTime 18:15 >>
-<< music Neutral >>
+<< music Victory >>
 
 Vous êtes toujours avec Fred à contempler les résultats de ce premier examen de la semaine de sprint. Ce dernier se retourne vers vous.
 
@@ -61,12 +61,13 @@ title: Cafeteria
 tags:
 position: -1075.3348388671875,-37.09675598144531
 ---
+<< empty >>
 << setBackground party >>
 << showGauges food sleep >>
 << setGauge sleep 100 >>
 << setGauge food 80 >>
 << setTime 20:00 >>
-<< music Tense >>
+<< music Danse >>
 << fadeOut >>
 
 Vous voilà donc à la cafétéria avec Fred. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer.
@@ -149,11 +150,16 @@ tags:
 position: -627.0029144287109,-472.9125061035156
 ---
 Vous vous approchez tranquillement de la guitare posée près de l'enceinte murale. On dirait une cithare classique, sauf qu'elle possède une carte-son HD 4K. Génial ! Un vrai bijoux de technologie HiFi !
-Vous posez l'instrument sur vos genoux, vous allumez l'amplificateur. Vous gratouillez les cordes, à la mano, tout simplement. Dingue, le rugissement cybersonique qu'elle envoie ! Ça déchire l'air ambiant et ça réveille la foule !
+Vous posez l'instrument sur vos genoux, vous allumez l'amplificateur. Vous gratouillez les cordes, à la mano, tout simplement. 
+
+<< music Solo1 >>
+
+Dingue, le rugissement cybersonique qu'elle envoie ! Ça déchire l'air ambiant et ça réveille la foule !
 Tous les yeux se tournent vers vous. Quelqu'un coupe la musique. Vous voilà seul sur la grande scène. À vous de jouer ! Vous vous lancez dans une improvisation à cordes cybermétalliques.
 Le temps file, la foule boit vos notes. Vous ne vous en souciez plus, absorbé que vous êtes dans votre oeuvre sonore.
 Quand vous daignez enfin vous arrêter et relever les yeux, vous êtes salué par un concert d'applaudissements ! Vous remarquez Fred qui vous contemple, tout sourire, et qui lève le pouce en signe d'acquiescement.
 
+<< music Danse >>
 << removeFromGauge sleep 30 >>
 << removeFromGauge food 10 >>
 << advanceTime 2:00 >>
@@ -180,6 +186,9 @@ tags:
 position: -403.5168056488037,-39.76996612548828
 colorID: 1
 ---
+
+<< music DanseQuiet >>
+
 Tout d'un coup, le son de la musique s'affaiblit, les voix deviennent des murmures inaudibles. Vous vous sentez mou, très mou, très très mou...
 
 Fred_drunk: Hé, ça va ?
@@ -226,6 +235,9 @@ title: Que_Faire
 tags: 
 position: 256.4327850341797,-39.769962310791016
 ---
+
+<< music Danse >>
+
 << if !visited("Que_Faire") >>
 La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la piste de danse. Vous allez lui montrer que vous aussi, vous n'êtes pas un looser ! Alors ? quel est votre plan d'attaque ?
 << endif >>
@@ -304,7 +316,11 @@ tags:
 position: 470.79235076904297,-256.9925937652588
 ---
 Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota, c'est qu'elle vous attendait. Vous réactivez sa carte-son HD 4K. Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête à vous écouter. On dirait que la star de la soirée, c'est vous. À vous de le prouver, à vous de jouer !
+
+<< music Solo2 >>
 Vous repartez dans un concert solo d'improvisation, où les riffs électriques et les accords cybermétalliques s'accordent pour composer une symphonie post-électronique. C'est à nouveau un show d'enfer ! Vous êtes applaudi, encore et encore. Au point où vous accordez à votre public un morceau bonus.
+
+<< music Danse >>
 
 << removeFromGauge sleep 20 >>
 << removeFromGauge food 10 >>
@@ -416,6 +432,7 @@ Temde_cheerful: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retour
 You: Où ça ?
 Temde_smiling: À l'Assemblée des 4 sages
 
+<< fx Warp >>
 << fadeIn >>
 <<jump Four_Sages>>
 ===
@@ -537,7 +554,7 @@ Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Apr
     Sapiens_angry: Non-sens ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière !
     Azul_sad: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment.
     Sapiens_thinking: Je profite de la remarque d'Azul pour poser une question subsidiaire. Pour recharger ton métabolisme, combien d'heures tu dois dormir chaque jour ?
-    -> 8heures
+    -> 8 heures
         <<jump huit_heures>>
     -> Ça dépend, 6 à 10 heures
         <<jump six_10_heures>>
@@ -567,6 +584,7 @@ Temde_neutral: Non, on coupe ! Le temps presse !
 Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
 
 << hide >>
+<< fx Warp >>
 << fadeIn 1000 ffffff>>
 <<jump journal_mental>>
 ===

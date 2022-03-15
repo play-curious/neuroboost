@@ -19,6 +19,7 @@ Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.
 
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
 
+<< loopFX PhoneRing_LOOP 5000 >>
 Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler.
 -> Prendre l'appel
     <<jump Appel_Fred_Rewind>>
@@ -30,6 +31,8 @@ tags:
 colorID: 0
 position: -592,376
 ---
+<< stopFX PhoneRing_LOOP >>
+
 Fred@holo_excited: Hello ! c'est Fred !
 You: Qu'est-ce que tu veux me dire cette fois-ci ?
 Fred@holo_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin...
@@ -310,6 +313,8 @@ You: Ouais !
 << advanceTime 0:15 >>
 
 Fred s'apprête à vous répondre quand la sonnerie retentit.
+<< fx Notification >>
+
 << hide >>
 << setBackground door class-screen >>
 Les résultats du test viennent de tomber...
@@ -327,7 +332,9 @@ tags:
 colorID: 0
 position: -529,1332
 ---
+<< empty >>
 << music Victory >>
+<< fx Success >>
 
 Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore...
 
@@ -336,7 +343,6 @@ You: Facile à dire pour toi. Tu as eu <b>A+</b>
 Fred_happy: Et alors ? Tu feras mieux la prochaine fois.
 << hide >>
 
-<< music Neutral >>
 << advanceTime 0:05 >>
 ===
 title: Resultats_Bad_Again
