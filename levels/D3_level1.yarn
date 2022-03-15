@@ -9,6 +9,7 @@ position: -941,-697
 << setBackground bedroom >>
 << setTime 8:00 2 >>
 << fadeOut >>
+<< music Neutral >>
 
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie d'Omniscience et de Polytechnologie Universelle. Attention, ça ne veut pas dire jour de repos !
 Ronronron... Votre palmphone qui vibre. Sans suprise, vous voyez que l'appel vient de Fred.
@@ -426,7 +427,9 @@ position: -184,504
 ---
 << empty >> 
 << hideDialog >>
+<< music Tense >>
 << minigame Juggling >>
+<< music Neutral >>
 << showDialog >>
 // Necessary so that Yarn evaluates the variable correctly
 << empty >> 
