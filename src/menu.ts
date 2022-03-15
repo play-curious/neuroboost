@@ -282,6 +282,8 @@ export class Menu extends extension.ExtendedCompositeEntity {
   open() {
     if (this.opened) return;
 
+    this.config.fxMachine.play("Spawn");
+
     booyah.changeGameState("paused");
     this.debugPressCount = 0;
 
@@ -357,7 +359,6 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   private _onOpen() {
     this.blackBackground.visible = true;
-    this.config.fxMachine.play("Spawn");
   }
 
   private _showCredits() {
