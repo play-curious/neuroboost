@@ -32,7 +32,7 @@ You: Ouais. Mais l'autre fois, je n'y suis pas arrivé.
 Fred@holo_surprised: Quoi ?!
 You: Laisse tomber.
 Fred@holo_smiling: OK. Keep cool. Alors tu viens ?
-// Ajouter des phrases pour finir la conversation (dans les choix)
+
 << hide >>
 << advanceTime 1:00 >>
 
