@@ -236,6 +236,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._dialogLayer.visible = true;
   }
 
+  public hideDialogLayer() {
+    this._dialogLayer.visible = false;
+  }
+
   public showDialog(
     text: string,
     name: string,
