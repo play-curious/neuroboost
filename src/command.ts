@@ -23,9 +23,9 @@ export const commands: Record<string, Command> = {
   },
 
   // Shortcut for _changeCharacter()
-  hide(): void {
-    this.graphics.removeCharacters();
-    //this.graphics.addCharacter();
+  hide(instantaneous?): void {
+
+    this.graphics.removeCharacters(instantaneous === undefined);
   },
 
   prompt<VarName extends keyof variable.Variables>(

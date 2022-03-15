@@ -709,7 +709,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     [character, displayMode] = character.split("@");
 
     // If character or character not you
-    if (character && character !== "you") {
+    if (character && character !== "you" && character !== "???") {
       // Create container & Entity
       const characterCE = this.makeCharacter(
         character,
