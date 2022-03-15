@@ -4,7 +4,37 @@
       "model": "b_night",
       "x": 961.0,
       "y": 541.0
-    }
+    },
+	{
+	    "model": "bocal",
+	    "x": 80,
+	    "y": 803
+	},
+	{
+	    "model": "fleurs",
+	    "x": 112,
+	    "y": 370
+	},
+	{
+	    "model": "plants",
+	    "x": 1846,
+	    "y": 925
+	},
+	{
+	    "model": "smoke",
+	    "x": 1680,
+	    "y": 802
+	},
+	{
+	    "model": "vapeur",
+	    "x": 277,
+	    "y": 645
+	},
+	{
+	    "model": "nightShade",
+	    "x": 960,
+	    "y": 540
+	}
   ],
   "kitchen": [
     {
@@ -25,7 +55,32 @@
       "model": "b_day",
       "x": 961.0,
       "y": 541.0
-    }
+    },
+        {
+            "model": "bocal",
+            "x": 80,
+            "y": 803
+        },
+        {
+            "model": "fleurs",
+            "x": 112,
+            "y": 370
+        },
+        {
+            "model": "plants",
+            "x": 1846,
+            "y": 925
+        },
+        {
+            "model": "smoke",
+            "x": 1680,
+            "y": 802
+        },
+        {
+            "model": "vapeur",
+            "x": 277,
+            "y": 645
+        }
   ],
   "chill": [
     {
