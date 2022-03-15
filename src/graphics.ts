@@ -236,6 +236,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._dialogLayer.visible = true;
   }
 
+  public hideDialogLayer() {
+    this._dialogLayer.visible = false;
+  }
+
   public showDialog(
     text: string,
     name: string,
@@ -709,7 +713,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     [character, displayMode] = character.split("@");
 
     // If character or character not you
-    if (character && character !== "you") {
+    if (character && character !== "you" && character !== "???") {
       // Create container & Entity
       const characterCE = this.makeCharacter(
         character,

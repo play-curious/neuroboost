@@ -87,14 +87,11 @@ Que faites-vous maintenant ?
 << if isTimeOver("12:00") >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
-    << fadeIn >>
     <<jump Lunch>>
 << else>>
 -> Cuisine@cuisine
-    << fadeIn >>
     <<jump cuisine_subchoice>>
 -> Bureau@bureau
-    << fadeIn >>
     <<jump bureau_subchoice>>
 -> Salon@salon
     <<jump salon_subchoice>>
@@ -104,8 +101,10 @@ title: cuisine_subchoice
 tags: subchoice
 position: -319.1514720916748,-55.38755989074707
 ---
-<< setBackground kitchen >>
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
+
 -> Prendre le petit déjeuner#once
     <<jump Petit_dej>>
 -> back
@@ -116,8 +115,10 @@ title: bureau_subchoice
 tags: subchoice
 position: -993.6492929458618,-75.37680292129517
 ---
-<< setBackground desk >>
+<< fadeIn >>
+<< setBackground bedroom desk >>
 << fadeOut >>
+
 -> Passer du temps sur le chat avec le pote d'une autre Université#once
     <<jump Chat>>
 -> Réviser cette fichue Astronometric Data Management#once
@@ -130,18 +131,23 @@ title: salon_subchoice
 tags: subchoice
 position: -1716.8310852050781,-38.99417304992676
 ---
-<< setBackground bedroom >>
+<< fadeIn >>
+<< setBackground bedroom chill>>
+<< fadeOut >>
+
 -> Binger votre série TV préférée#once
-    << fadeIn >>
     <<jump BingeTV>>
 -> back
+    << fadeIn >>
     <<jump Action_List>>
 ===
 title: Petit_dej
 tags:
 position: -441.43939208984375,237.24887084960938
 ---
-<< setBackground kitchen >>
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
 << fx EatCook >>
 Yum Yum... Rien ne vaut une boîte de chimicookies et un synthécafé après le réveil.
 De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le café traditionnels. Heureusement que le génie génétique permet désormais de resynthétiser tout ce qui a poussé ou vécu sur la Terre originelle...
@@ -173,7 +179,6 @@ title: Revision
 tags:
 position: -1231.30712890625,224.80491638183594
 ---
-<< setBackground desk >>
 Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Management. Rien que le titre vous barbe. ça commence mal...
 
 << advanceTime 2:00 >>
@@ -187,8 +192,8 @@ title: BingeTV
 tags:
 position: -1573.0745849609375,216.18408203125
 ---
-<< setBackground desk >>
-<< fadeOut >>
+
+Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
 << visit BingeTV >>
 
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
@@ -212,7 +217,8 @@ title: Lunch
 tags:
 position: -1026.218994140625,513.7423095703125
 ---
-<< setBackground kitchen >>
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 << fx EatCook >>
 Yum Yum... Délicieux ce Burger Big Proteins Double Cheese !
@@ -223,13 +229,13 @@ Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et évit
 
 Et maintenant,
 -> Il est temps d'aller en classe
-    << fadeIn >>
     <<jump Test>>
 ===
 title: Test
 tags:
 position: -666.0570068359375,500.580322265625
 ---
+<< fadeIn >>
 << setBackground class >>
 << setTime 14:00 >>
 << fadeOut >>
@@ -247,6 +253,10 @@ title: Post_Test
 tags:
 position: -341.2677307128906,490.52679443359375
 ---
+<< fadeIn >>
+<< setBackground door class >>
+<< fadeOut >>
+
 Fred_excited: Alors, ça l'a fait ?
 You: Je pense oui. C'était basique.
 Fred_smiling: Yes, je m'attendais à plus tordu que ça.
@@ -261,8 +271,10 @@ You: Heuuuu...
 << advanceTime 0:15 >>
 
 Fred s'apprête à vous répondre quand la sonnerie retentit.
-Les résultats du test viennent de tomber...
+<< setBackground door class-screen>>
 << hide >>
+Les résultats du test viennent de tomber...
+
 -> Consulter les résultats
     <<jump Resultats_Bad>>
 ===
@@ -285,18 +297,20 @@ You: Je sais pas...
 << advanceTime 0:15 >>
 
 -> Accepter l'offre de Fred
-    << fadeIn >>
+    << hide >>
     <<jump Fete_deprime>>
 -> Refuser l'offre de Fred
+    << hide >>
     <<jump Rester_Chambre_deprime>>
 ===
 title: Fete_deprime
 tags:
 position: 402.3575134277344,484.3177490234375
 ---
+<< fadeIn >>
 << setBackground party >>
-<< fadeOut >>
 << advanceTime 0:30 >>
+<< fadeOut >>
 
 Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer...
 
@@ -306,7 +320,6 @@ Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais
 
 -> Rentrer dormir
     << advanceTime 0:30 >>
-    << fadeIn >>
     <<jump Chambre_Nuit>>
 ===
 title: Rester_Chambre_deprime
@@ -318,34 +331,36 @@ Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à cha
 << advanceTime 0:30 >>
 
 -> Rentrer dormir
-    << fadeIn >>
     <<jump Chambre_Nuit>>
 ===
 title: Chambre_Nuit
 tags:
 position: -17.766727447509766,752.0414428710938
 ---
+<< fadeIn >>
 << setBackground bedroom night >>
 << fadeOut >>
 Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde...
 Demain est un autre jour, vivement demain...
 << fx Sleep_LOOP >>
 -> Faire un gros somme
-    << fadeIn >>
     <<jump Reveil_Sage>>
 ===
 title: Reveil_Sage
 tags: noUi
 position: -352.5212097167969,897.6408081054688
 ---
+<< fadeIn >>
 << setBackground bedroom night >>
 << music Mysterious >>
-<< fadeOut >>
 
-Temde: Hello! Je te réveille?
-Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras...
+???: Hello! Je te réveille?
 
 <<show temde>>
+<< fadeOut >>
+
+Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras...
+
 Temde_smiling: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse !
 
 Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit :
@@ -382,7 +397,9 @@ Temde_thinking: Je vois, j'ai affaire à un client qui se prend pour un dur... T
 Miss Temdé lève la paume d'une de ses mains cybernétique...
 Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente.
 
+<<<<<<< HEAD
 << fadeIn 1500 12ea12 >>
+<< hide ! >>
 
 You: <i>Wow...</i>
 
@@ -503,6 +520,8 @@ title: Routinisation
 tags: noUi
 position: 243.36883544921875,1410.058349609375
 ---
+<< empty >>
+<< setBackground circle >>
 Sapiens_thinking: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
 Ledai_explaining: Il faut surtout pratiquer ! Répéter et répéter et encore répéter ! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement.
 Azul_happy: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis pas la maîtriser.
@@ -514,15 +533,16 @@ Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacogn
 You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil. Comment faire ?
 Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> !
 
-<< fadeIn >>
 <<jump Journal_Rappel_libre>>
 ===
 title: Journal_Rappel_libre
 tags: noUi
 position: 528.9749550819397,1406.2884521484375
 ---
+<< fadeIn 100 ffffff >>
+<< hide ! >>
 << setBackground bedroom night >>
-<< fadeOut >>
+<< fadeOut 400 >>
 
 Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Les 4 sages non plus ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée. Curieusement, vous ne vous sentez pas inquiet.
 En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof...

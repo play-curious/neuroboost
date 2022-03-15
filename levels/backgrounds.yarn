@@ -9,18 +9,26 @@ Astronomy
 Bedroom
 << setBackground bedroom night >>
 Bedroom night
+<< setBackground bedroom bed >>
+Bedroom bed
+<< setBackground bedroom chill >>
+Bedroom chill
+<< setBackground bedroom desk >>
+Bedroom desk
+<< setBackground bedroom kitchen >>
+Bedroom kitchen
 
 << setBackground circle >>
 Circle
 
-<< setBackground class >>
-Class
-
-<< setBackground desk >>
-Desk
-
-<< setBackground kitchen >>
-Kitchen
+<< setBackground door day >>
+Door day
+<< setBackground door night >>
+Door night
+<< setBackground door class >>
+Door class
+<< setBackground door class-screen >>
+Door class screen
 
 << setBackground librairy >>
 Librairy
