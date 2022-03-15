@@ -266,6 +266,7 @@ You: Heuuuu...
 << advanceTime 0:15 >>
 
 Fred s'apprête à vous répondre quand la sonnerie retentit.
+<< fx Notification >>
 << setBackground door class-screen>>
 << hide >>
 Les résultats du test viennent de tomber...
@@ -277,6 +278,8 @@ title: Resultats_Bad
 tags:
 position: -16.689138412475586,492.05352783203125
 ---
+
+<< music NegativeSad >>
 
 Hélas... Fred n'avait pas tort... Les scores s'affichent sur l'écran de la porte principale. Vous êtes dans le peloton... de queue... La semaine de sprint commence mal...
 
@@ -373,8 +376,6 @@ Temde_smiling: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre
 You: Qui m'attend ? Où là-bas ?
 Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit quand même !
 
-<< music Neutral >>
-
 -> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller
     <<jump Tenter_rester_chambre>>
 -> Se laisser guider par l'irréelle Miss Temdé
@@ -390,8 +391,10 @@ You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me la
 Temde_thinking: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
 
 Miss Temdé lève la paume d'une de ses mains cybernétique...
+
 Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente.
 
+<< fx Warp >>
 << fadeIn 1000 12ea12 >>
 << hide ! >>
 <<jump Assemblee_Sages>>
@@ -530,6 +533,7 @@ title: Journal_Rappel_libre
 tags: noUi
 position: 528.9749550819397,1406.2884521484375
 ---
+<< fx Warp >>
 << fadeIn 100 ffffff >>
 << hide ! >>
 << setBackground bedroom night >>

@@ -48,6 +48,7 @@ const variableStorage = new variable.VariableStorage({
   learning: "0",
   mentalLoad: "0",
   stress: "0",
+  ballsJuggled: 0,
 });
 const globalHistory: yarnBound.Result[] = [];
 
@@ -158,6 +159,7 @@ const fxAssets = [
   "Work_LOOP",
   "Chime_LOOP",
   "Spawn",
+  "Warp",
 ];
 
 const musicAssets = [
