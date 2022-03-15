@@ -8,10 +8,21 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import { StaticSpritePath } from "./images";
 
+const gaugesNames = {
+  sleep: `Énergie`,
+  food: `Nutrition`,
+  learning: `Apprentissage`,
+  mentalLoad: `Charge Mentale`,
+  stress: `Stress`
+}
+
 export class Gauge extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
   private _innerDisk: PIXI.Sprite;
   private _outerDisk: PIXI.Graphics;
+
+  private _tooltip: PIXI.Text;
+  private _tooltipBg: PIXI.Graphics;
 
   private _center: PIXI.Point;
   private _radius: number;
@@ -65,6 +76,37 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     this.config.variableStorage.listen(`change:${this.name}`, (value) =>
       this.changeValue(Number(value))
     );
+
+    this._container.hitArea = new PIXI.Circle(this._center.x, this._center.y, this._radius);
+    this._container.interactive = true;
+    const margin = 15;
+    this._on(this._container, "pointerover", () => {
+      this._tooltip = this.makeText(
+        `${gaugesNames[this.name]}\n${this._value} %`,
+        {
+          fill: "0xFFF",
+          fontFamily: "Ubuntu",
+          fontSize: 80,
+          align: "center"
+        },
+        (it) => {
+          it.anchor.set(0.5, 0);
+          it.position.set(this._center.x, (2 * this._radius) + 50);
+        }
+      );
+      this._tooltipBg = new PIXI.Graphics();
+      this._tooltipBg.beginFill(0x373737, 0.7);
+      this._tooltipBg.drawRoundedRect(
+        this._center.x - (this._tooltip.width/2) - margin, this._tooltip.position.y - margin,
+        this._tooltip.width + (margin*2), this._tooltip.height + (margin*2),
+        30
+      );
+      this._container.addChild(this._tooltipBg, this._tooltip);
+    })
+    this._on(this._container, "pointerout", () => {
+      this._container.removeChild(this._tooltip, this._tooltipBg);
+      this._tooltip = undefined;
+    })
   }
 
   _teardown() {
