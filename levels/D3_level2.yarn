@@ -5,10 +5,17 @@ position: -947,-707
 ---
 << fadeIn 1 >>
 << setBackground bedroom >>
-<< setTime 8:00 >>
+<< setTime 8:00 2 >>
 << fadeOut >>
 
+<< loopFX Chime_LOOP 2000 >>
+
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Vous voilà revenu dans votre chambre. On est à nouveau mercredi matin. Et c'est reparti pour un tour. Cette-fois, il va falloir la réussir cette note de synthèse en Programmation Neuro Linguistique des Intelligences Artificielles Analogiques.
+
+<< stopFX Chime_LOOP >>
+<< music Neutral >>
+
+<< loopFX PhoneRing_LOOP 5000 >>
 Ronronron... Votre palmphone qui vibre. Fred vous relance.
 
 -> Prendre l'appel
@@ -19,6 +26,8 @@ tags:
 colorID: 0
 position: -634,-700
 ---
+<< stopFX PhoneRing_LOOP >>
+
 Fred@holo_excited: Hello ! Je te dérange pas ?
 You: Un peu...
 Fred@holo_surprised: Ah bon ?
@@ -60,9 +69,12 @@ You: Je n'en suis pas si sûr.
 Fred_smiling: No worry ! Allez viens !
 << hide >>
 
+<< loopFX Sports_LOOP 16000 >>
+
 Vous emboîtez le pas de Fred et vous éclatez tous les deux aux différentes activités proposées: cybersprint, electroskate, eBall, eJump...
 Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
 
+<< stopFX Sports_LOOP >>
 << advanceTime 2:00 >>
 << addToGauge sleep 30 >>
 << addToGauge food 30 >>
@@ -154,7 +166,11 @@ position: -345,-406
 << setBackground desk >>
 << fadeOut >>
 
-Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes pingé par Fred ! Il vous demande encore si vous ne voulez pas le rejoindre à la salle de gym ! Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous savez que ne pouvez ignorer son injonction ! Si toute la communauté apprenait que vous aviez refusé un duel virtuel, que vous êtes un lâche...
+<< fx Notification >>
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes pingé par Fred ! 
+<< fx Notification >>
+Il vous demande encore si vous ne voulez pas le rejoindre à la salle de gym ! Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous savez que ne pouvez ignorer son injonction ! Si toute la communauté apprenait que vous aviez refusé un duel virtuel, que vous êtes un lâche...
+<< fx Notification >>
 Décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait. Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.
 << advanceTime 2:00 >>
 << addToGauge mentalLoad 30 >>
@@ -172,11 +188,13 @@ position: 311,-466
 << fadeOut >>
 
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber. 
+<< loopFX TVStarwars_LOOP 10000 >>
 Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir ! Ils sont parvenus à décryogéniser Jaba Fett. Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de Mana de toute la galaxie ! Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran ! 
 Vous avez l'impression que vous avez déjà vu cet épisode... Hier ? Possible. Peu importe. Vous ne vous lassez jamais de Star Mars, même les rediffusions...
 Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples : les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..
 Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse...
 
+<< stopFX TVStarwars_LOOP >>
 << advanceTime 3:00 >>
 << addToGauge food 30>>
 << addToGauge mentalLoad 40>>
@@ -189,7 +207,10 @@ tags:
 colorID: 0
 position: -709,-337
 ---
-Vous n'avez pas oublié ce que vous ont dit les quatre Sages. Si vous avez sommeil et si le temps manque, un petit somme, ça fait toujours du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux. Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
+Vous n'avez pas oublié ce que vous ont dit les quatre Sages. Si vous avez sommeil et si le temps manque, un petit somme, ça fait toujours du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux. 
+<< loopFX Sleep_LOOP 5000 >>
+Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
+<< stopFX Sleep >>
 
 << removeFromGauge sleep 20 >>
 << removeFromGauge mentalLoad 10 >> 
@@ -215,6 +236,7 @@ Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cett
 << advanceTime 1:00 >>
 << increase $notesynthese +1>>
 // Il faut valider 3 ou 4 sessions pour finir la sythèse. Objectif irréalisable en level1 mais à atteindre en level2 : detail utile pour le rewind...//
+<< loopFX PhoneRing_LOOP 5000 >>
 Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
 
 -> Prendre l'appel 
@@ -227,6 +249,8 @@ tags:
 colorID: 0
 position: 27,-87
 ---
+<< stopFX PhoneRing_LOOP >>
+
 Fred@holo_excited: Alors ? Je t'attends toujours ? Quand viens-tu ?
 You: Je sais. Tu as décidé de ne pas me lâcher de la journée.
 Fred@holo_happy: Attention à ce que tu dis ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
@@ -281,7 +305,9 @@ position: 476,-704
 << setBackground kitchen >>
 << fadeOut >>
 
-Votre ventre gargouille. Vous décidez de vous refaire ce surprenant Green Burger Full Vegie. C'est dingue ce que burger sans viande ni pain ni frites vous cale l'estomac. Il faudrait vraiment que Naz Do l'ajoute à ses menus dans ses restaurants...
+Votre ventre gargouille. Vous décidez de vous refaire ce surprenant Green Burger Full Vegie. 
+<< fx EatCook >>
+C'est dingue ce que burger sans viande ni pain ni frites vous cale l'estomac. Il faudrait vraiment que Naz Do l'ajoute à ses menus dans ses restaurants...
 
 << advanceTime 0:30 >>
 << removeFromGauge sleep 20 >>
@@ -299,7 +325,9 @@ position: 684,-454
 << setBackground kitchen >>
 << fadeOut >>
 
-Comme hier, le soir venu, vous avez la flemme de cuisiner, et vous n'avez pas aussi faim. Le mix de ratatouilles de légumes du soleil d'Aldébaran avec son assiette de céréales complètes, ça vous va très bien. 
+Comme hier, le soir venu, vous avez la flemme de cuisiner, et vous n'avez pas aussi faim. 
+<< fx EatCook >>
+Le mix de ratatouilles de légumes du soleil d'Aldébaran avec son assiette de céréales complètes, ça vous va très bien. 
 
 << advanceTime 0:30 >>
 << removeFromGauge sleep 20 >>
