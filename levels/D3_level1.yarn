@@ -9,9 +9,14 @@ position: -941,-697
 << setBackground bedroom >>
 << setTime 8:00 2 >>
 << fadeOut >>
+<< loopFX Chime_LOOP 2000 >>
+Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. 
+<< stopFX Chime_LOOP >>
 << music Neutral >>
 
-Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie d'Omniscience et de Polytechnologie Universelle. Attention, ça ne veut pas dire jour de repos !
+Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie d'Omniscience et de Polytechnologie Universelle. Attention, ça ne veut pas dire jour de repos !
+
+<< loopFX PhoneRing_LOOP 5000 >>
 Ronronron... Votre palmphone qui vibre. Sans suprise, vous voyez que l'appel vient de Fred.
 
 -> Prendre l'appel
@@ -22,6 +27,8 @@ tags:
 colorID: 0
 position: -631,-697
 ---
+<< stopFX PhoneRing_LOOP >>
+
 Fred@holo_excited: Hello ! Je te dérange pas ?
 You: Naaan...
 Fred@holo_smiling: Tu fais quoi là, maintenant ?
@@ -65,8 +72,13 @@ You: On verra, je l'espère.
 Fred_excited: No worry ! Allez viens !
 << hide >>
 
+<< loopFX Sports_LOOP 16000 >>
+
 Vous emboîtez le pas de Fred et vous éclatez tous les deux aux différentes activités proposées: cybersprint, electroskate, eBall, eJump...
+
 Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
+
+<< stopFX Sports_LOOP >>
 
 << advanceTime 2:00 >>
 << removeFromGauge sleep 30 >>
@@ -132,7 +144,7 @@ tags: subchoice
 title: bureau_subchoice_am
 tags: subchoice
 ---
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 
 -> Préparer son bureau avant de se mettre à travailler#once
     <<jump Ranger>>
@@ -228,7 +240,11 @@ tags:
 colorID: 0
 position: -388,-306
 ---
-Vous cliquez sur l'icône ChatApp de votre Palmphone. Il y a encore plus de monde que lundi ! Vous êtes pingé par Fred ! Il vous demande si vous ne voulez pas le rejoindre à la salle de gym !
+<< fx Notification >>
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Il y a encore plus de monde que lundi ! 
+<< fx Notification >>
+Vous êtes pingé par Fred ! Il vous demande si vous ne voulez pas le rejoindre à la salle de gym !
+<< fx Notification >>
 Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous ne pouvez ignorer son injonction !
 Toute la communauté va apprendre que vous avez refusé un duel virtuel, que vous êtes un lâche...
 Vexé et décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait.
@@ -246,15 +262,18 @@ colorID: 0
 position: 326,-411
 ---
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber.
+<< loopFX TVStarwars_LOOP 10000 >>
 Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir !
 Ils sont parvenu à décryogéniser Jaba Fett. Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de de Mana de toute la galaxie !
 Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran ! Vont-ils parvenir à arrêter Dude ? L'empêcher de libérer la galaxie du joug de l'Imperium Noir ?
 Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples: les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..
-Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse...
-
+<< stopFX TVStarwars_LOOP >>
 << advanceTime 3:00 >>
 << addToGauge food 30>>
 << addToGauge mentalLoad 40>>
+
+Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse...
+
 
 -> Vite, au travail !
     << fadeIn >>
@@ -266,7 +285,12 @@ colorID: 0
 position: -706,-331
 ---
 Vous vous rappelez ce que vous ont dit les 4 Sages. Dormir régulièrement, tous les jours. Toutefois, si le temps manque, un petit somme, ça fait du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux.
-Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
+
+<< loopFX Sleep 5000 >>
+Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. 
+<< stopFX Sleep >>
+
+Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
 
 << removeFromGauge sleep 20 >>
 << removeFromGauge mentalLoad 10 >>
@@ -318,9 +342,11 @@ position: 317,29
 << fadeIn >>
 << setBackground sport >>
 << fadeOut >>
+<< loopFX Sports_LOOP 16000 >>
 
 Vous relevez le défi lancé par Fred. En fait, vous vous éclatez tous les deux comme des enfants; cybersprint, electroskate, eBall, eJump...
 Le moins que l'on puisse dire, c'est que vous êtes donné à fond. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
+<< stopFX Sports_LOOP  >>
 
 << advanceTime 2:00 >>
 << addToGauge sleep 30 >>
@@ -342,13 +368,15 @@ tags:
 colorID: 0
 position: -427,-43
 ---
+
+<< music NegativeSad >>
 Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec.
 Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte.
 Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...
 N'empêche, vous sentez votre tête penchez en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrer dans le noir...
 Puis, vous entendez une voix familière:
 
-Azul_sad: Tout va bien { $name } ?
+Azul_sad: Tout va bien, { $name } ?
 You: Tais-toi, Miss Temdé !
 Azul_proud: Raté, c'est moi, Azul.
 You: Zut...
@@ -363,6 +391,7 @@ tags: noUi
 colorID: 1
 position: -1091,21
 ---
+<< fx Warp >>
 << fadeIn >>
 << setBackground circle >>
 << fadeOut >>
@@ -389,6 +418,8 @@ tags:  noUi
 colorID: 0
 position: -750,149
 ---
+<< music Neutal >>
+
 You: Et ça consiste en quoi ?
 Ledai_explaining: C'est très simple. Il faut fractionner ta tâche en plusieurs petites tâches.
 You: Un exemple.
@@ -467,6 +498,8 @@ tags:  noUi
 colorID: 0
 position: 701,260
 ---
+<< fx Failure >>
+
 Sapiens_angry: N'importe quoi ! Tu n'as rien compris de ce qu'on a dit.
 Sapiens_concerned: Je suis attristé de voir tout le mal que Miss Temdé s'est donné avec la parabole des balles de jonglage.
 Sapiens_concerned: Non, on ne peut pas gérer n'importe quelle tâche dans n'importe quel ordre ! Et surtout pas tout en même temps ! Ta charge cognitive encaisse, encaisse. Et elle finit par saturer.
@@ -486,6 +519,8 @@ tags:  noUi
 colorID: 0
 position: 698,531
 ---
+<< fx Success >>
+
 Sapiens_happy: Exactement ! On doit apprendre les tâches les unes après les autres de manière logique.
 Ledai_explaining: Que ce soit de manière linéaire ou itérative. On n'entame jamais une tâche importante si on ne sait pas d'où on vient ni on veut aller.
 Temde_smiling: Oui, enfin, grosso modo...
@@ -503,6 +538,8 @@ tags:  noUi
 colorID: 0
 position: 1042,297
 ---
+<< fx Failure >>
+
 Sapiens_angry: J'en perds ma barbe ! Quelle réponse idiote ! Tu as compris ce qu'est la surcharge cognitive ?
 You: C'est quand le cerveau fatigue, il surchauffe.
 Ledai_doubtful: Alors pourquoi as-tu cru cette affirmation ?
@@ -524,6 +561,8 @@ tags:  noUi
 colorID: 0
 position: 1048,579
 ---
+<< fx Success >>
+
 Sapiens_happy: Tout à fait. Chaque chose en son temps. Comme tes ordinateurs, il faut les mettre en veille pour qu'ils cessent de computer sans fin, qu'ils puissent refroidir et récupérer en capacités de calcul.
 Azul_proud: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil: Il faut travailler régulièrement, sans excès.
 Temde_smiling: Surtout ne pas tout reporter au dernier moment.
@@ -541,6 +580,8 @@ tags:  noUi
 colorID: 0
 position: 1281,310
 ---
+<< fx Failure >>
+
 Sapiens_angry: Quelle horreur ! Quel non-sens ! Les distracteurs...
 Sapiens_angry: Réseaux sociaux, notifications automatiques, connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport direct avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses !
 Sapiens_angry: Comme leur nom l'indique, ce sont des nuisances ! Ils t'empêchent d'être 100% concentré sur la tâche présente. Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Par conséquent les distracteurs affaiblissent ta capacité cognitive...
@@ -566,6 +607,8 @@ tags:  noUi
 colorID: 0
 position: 1384,604
 ---
+<< fx Success >>
+
 Sapiens_happy: Bien entendu. Les Réseaux sociaux, les notifications automatiques, la connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport immédiat avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses ! Comme leur nom l'indique, ce sont des nuisances !
 Sapiens_happy: Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Les distracteurs affaiblissent ta capacité cognitive. Tu dois être 100% concentré sur la tâche présente, pas être distrait par d'autre choses ou d'autres personnes..
 You: Oui.
@@ -585,6 +628,7 @@ tags:  noUi
 colorID: 1
 position: 1209,900
 ---
+<< fx Warp >>
 << fadeIn 200 0xFFFFFF >>
 << setBackground bedroom night >>
 << fadeOut 200 >>
@@ -601,7 +645,9 @@ position: 477,-702
 << setBackground kitchen >>
 << fadeOut >>
 
-Yum Yum ! Il est temps de se faire une pause "manger équilibré", comme le recommande les Sages. Vous vous cuisinez un Green Burger Full Vegie. Franchement, c'est étrange, tant pour le goût que pour l'aspect.
+Yum Yum ! Il est temps de se faire une pause "manger équilibré", comme le recommande les Sages. 
+<< fx EatCook >>
+Vous vous cuisinez un Green Burger Full Vegie. Franchement, c'est étrange, tant pour le goût que pour l'aspect.
 On dirait un burger à la viande et il n'y en a aucune. En outre, c'est vraiment copieux. Et les frites à base de riz croustillant... Dingue. C'est meilleur que les frites de chez Naz Do...
 
 << advanceTime 0:30 >>
@@ -621,7 +667,9 @@ position: 684,-454
 << setBackground kitchen >>
 << fadeOut >>
 
-À cette heure-ci, vous n'avez pas trop envie de cuire quelque chose de trop lourd. Un mix de ratatouilles de légumes du soleil d'Aldébaran, y a rien de mieux... Vous ouvrez votre boîte de plat-rouge-bio. Vous servez le tout avec une assiette de céréales complètes. C'est simple, chaud, nourrissant et franchement bon.
+À cette heure-ci, vous n'avez pas trop envie de cuire quelque chose de trop lourd. Un mix de ratatouilles de légumes du soleil d'Aldébaran, y a rien de mieux... 
+<< fx EatCook >>
+Vous ouvrez votre boîte de plat-rouge-bio. Vous servez le tout avec une assiette de céréales complètes. C'est simple, chaud, nourrissant et franchement bon.
 
 << advanceTime 0:30 >>
 << removeFromGauge sleep 20 >>
