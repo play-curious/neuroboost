@@ -287,11 +287,15 @@ tags:
 colorID: 0
 position: -403,-130
 ---
+<< music NegativeSad >>
 Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte. Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...
-N'empêche, vous sentez votre tête pencher en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrez dans le noir...
+N'empêche, vous sentez votre tête pencher en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. 
+<< fadeIn >>
+Vous finissez par céder. Vous sombrez dans le noir...
 
 -> Réveillez-vous ! Il faut recommencer ! 
-    << jump Start_Mercredi >>
+    << fadeOut >>
+    << jump Start >>
 ===
 title: Lunch
 tags: 
@@ -393,6 +397,7 @@ tags:
 colorID: 2
 position: 155,-1055
 ---
+<< music Victory >>
 Victoire ! Vous avez réussi ! Il n'est pas encore minuit et vous avez terminé la rédaction de la note de synthèse.
 Vous daignez prendre encore le temps de faire un vérification syntaxique par votre ordinateur avant d'expédier votre fichier final au serveur FTP de l'Académie d'Omniscience et de Polytechnologie Universelle.
 Une bonne chose de faite. Vous pouvez désormais faire ce que vous voulez du reste de votre soirée...
