@@ -134,7 +134,7 @@ position: -328,-637
 title: lit_subchoice_am
 tags: subchoice
 ---
-<< setBackground bed >>
+<< setBackground bedroom bed >>
 
 -> Faire une sieste#once
     <<jump Sleep>>
@@ -158,7 +158,7 @@ tags: subchoice
 title: salon_subchoice_am
 tags: subchoice
 ---
-<< setBackground detente >>
+<< setBackground bedroom detente >>
 
 -> Binger votre série TV préférée#once
     <<jump BingeTV>>
@@ -182,7 +182,7 @@ position: -328,-637
 title: lit_subchoice_pm
 tags: subchoice
 ---
-<< setBackground bed >>
+<< setBackground bedroom bed >>
 
 -> Faire une sieste#once
     <<jump Sleep>>
@@ -192,7 +192,7 @@ tags: subchoice
 title: bureau_subchoice_pm
 tags: subchoice
 ---
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 
 -> Se détendre sur le chat#once
     <<jump Chat>>
@@ -204,7 +204,7 @@ tags: subchoice
 title: salon_subchoice_pm
 tags: subchoice
 ---
-<< setBackground detente >>
+<< setBackground bedroom detente >>
 
 -> Binger votre série TV préférée#once
     <<jump BingeTV>>
@@ -214,7 +214,7 @@ tags: subchoice
 title: cuisine_subchoice_pm
 tags: subchoice
 ---
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 
 -> Manger#once
     <<jump Diner>>
@@ -286,7 +286,7 @@ position: -706,-331
 ---
 Vous vous rappelez ce que vous ont dit les 4 Sages. Dormir régulièrement, tous les jours. Toutefois, si le temps manque, un petit somme, ça fait du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux.
 
-<< loopFX Sleep 5000 >>
+<< loopFX Sleep_LOOP 5000 >>
 Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. 
 << stopFX Sleep >>
 
@@ -314,6 +314,7 @@ Il faut terminer cette note de synthèse coûte que coûte avant la deadline...
 << advanceTime 1:00 >>
 << increase $notesynthese +1>>
 // Il faut valider 3 ou 4 sessions pour finir la sythèse. Objectif irréalisable en level1 mais à atteindre en level2 : detail utile pour le rewind...//
+<< loopFX PhoneRing_LOOP 5000 >>
 Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
 
 -> Prendre l'appel
@@ -324,6 +325,8 @@ tags:
 colorID: 0
 position: 33,47
 ---
+<< stopFX PhoneRing_LOOP >>
+
 Fred@holo_excited: Alors ? Je t'attends toujours ? Quand viens-tu ?
 You: Heu... Je sais pas.
 Fred@holo_happy: Beware ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
@@ -368,16 +371,20 @@ tags:
 colorID: 0
 position: -427,-43
 ---
-
+<< empty >>
+<< setBackground bedroom >>
 << music NegativeSad >>
 Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec.
 Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte.
 Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...
 N'empêche, vous sentez votre tête penchez en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrer dans le noir...
+<< fadeIn >>
+
 Puis, vous entendez une voix familière:
 
-Azul_sad: Tout va bien, { $name } ?
+???: Tout va bien, { $name } ?
 You: Tais-toi, Miss Temdé !
+<< fadeOut >>
 Azul_proud: Raté, c'est moi, Azul.
 You: Zut...
 Azul_happy: Pas grave, viens, on a une nouveau truc à t'apprendre.
@@ -418,7 +425,7 @@ tags:  noUi
 colorID: 0
 position: -750,149
 ---
-<< music Neutal >>
+<< music Neutral >>
 
 You: Et ça consiste en quoi ?
 Ledai_explaining: C'est très simple. Il faut fractionner ta tâche en plusieurs petites tâches.
@@ -642,7 +649,7 @@ colorID: 0
 position: 477,-702
 ---
 << fadeIn >>
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 
 Yum Yum ! Il est temps de se faire une pause "manger équilibré", comme le recommande les Sages. 
@@ -664,7 +671,7 @@ colorID: 0
 position: 684,-454
 ---
 << fadeIn >>
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 
 À cette heure-ci, vous n'avez pas trop envie de cuire quelque chose de trop lourd. Un mix de ratatouilles de légumes du soleil d'Aldébaran, y a rien de mieux... 
