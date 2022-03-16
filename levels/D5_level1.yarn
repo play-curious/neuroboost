@@ -91,7 +91,7 @@ colorID: 0
 position: -1962,-316
 ---
 << fadeIn >>
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 
 C'est vraiment pas yum yum ce matin... Votre muesli à la crème n'a pas de goût et votre jus d'orange reconstitué vous attaque l'estomac. C'est trop acide. Décidément, la nourriture biologcindus ne ne fait pas toujours des miracles. Surtout, quand le moral est bas... Au moins, vous vous sentez le corps moins vidé. 
@@ -129,7 +129,7 @@ colorID: 0
 position: -1423,-343
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés. 
@@ -147,7 +147,7 @@ colorID: 0
 position: -1108,-345
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches. 
@@ -190,7 +190,7 @@ colorID: 1
 position: -2328,-127
 ---
 << fadeIn >>
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 
 Zuuut !! Déjà l'heure de se préparer à sortir ! Pas le temps de faire dans le subtil et l'équilibré. Vous enfournez dans le four radio un Burger Big Proteins Double Cheese ! 

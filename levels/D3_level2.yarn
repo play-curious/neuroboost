@@ -1,4 +1,4 @@
-title: Start_Mercredi
+title: Start
 tags: 
 colorID: 0
 position: -947,-707
@@ -10,10 +10,12 @@ position: -947,-707
 
 << loopFX Chime_LOOP 2000 >>
 
-Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Vous voilà revenu dans votre chambre. On est à nouveau mercredi matin. Et c'est reparti pour un tour. Cette-fois, il va falloir la réussir cette note de synthèse en Programmation Neuro Linguistique des Intelligences Artificielles Analogiques.
-
+Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Vous voilà revenu dans votre chambre. On est à nouveau mercredi matin. Et c'est reparti pour un tour. 
 << stopFX Chime_LOOP >>
 << music Neutral >>
+
+Cette-fois, il va falloir la réussir cette note de synthèse en Programmation Neuro Linguistique des Intelligences Artificielles Analogiques.
+
 
 << loopFX PhoneRing_LOOP 5000 >>
 Ronronron... Votre palmphone qui vibre. Fred vous relance.
@@ -100,7 +102,6 @@ position: -332,-642
 Que faites-vous maintenant ?
 <<endif>>
 
-// Matin//
 << if $time <= 840 >> 
 -> Préparer son bureau avant de se mettre à travailler#once
     <<jump Ranger>>
@@ -112,13 +113,10 @@ Que faites-vous maintenant ?
     <<jump BingeTV>>
 -> Faire une sieste#once
 -> Casser la croûte #once
-// Oubli choix <<Lunch>>!!
     <<jump Sleep>>
 -> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction" 
-// le joueur le fait soit la matin, s'il est malin, soit l'après midi s'il est présomptueux. Une fois activé le mode reste !!
     << jump Zero_Distraction>>
 
-// Après Midi//
 <<elseif $time < 1200 >>
 -> Se détendre sur le chat#once
     <<jump Chat>>
@@ -133,7 +131,6 @@ Que faites-vous maintenant ?
 -> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction"
     << jump Zero_Distraction >>
 
-// Soirée//
 << elseif getGauge("mentalLoad") >= 100 >>
 -> Faire un somme
     <<jump Surcharge_Cognitive>>
@@ -146,7 +143,7 @@ colorID: 0
 position: -961,-447
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 Vous ne savez pas si cette tâche est indispensable. Les Sages n'ont pas été clair à ce sujet. Mais ça ne vous fera pas de mal, jugez-vous.
@@ -163,7 +160,7 @@ colorID: 0
 position: -345,-406
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 << fx Notification >>
@@ -184,7 +181,7 @@ colorID: 0
 position: 311,-466
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber. 
@@ -224,7 +221,7 @@ colorID: 0
 position: -21,-367
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 << if isFirstTime() >>
@@ -302,7 +299,7 @@ colorID: 0
 position: 476,-704
 ---
 << fadeIn >>
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 
 Votre ventre gargouille. Vous décidez de vous refaire ce surprenant Green Burger Full Vegie. 
@@ -322,7 +319,7 @@ colorID: 0
 position: 684,-454
 ---
 << fadeIn >>
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 
 Comme hier, le soir venu, vous avez la flemme de cuisiner, et vous n'avez pas aussi faim. 

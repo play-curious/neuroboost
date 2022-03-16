@@ -68,7 +68,7 @@ colorID: 0
 position: -1966,-321
 ---
 << fadeIn >>
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 
 Ce matin, l'important est moins de manger équilibré que de garder son calme. Vous gavez de chimicookies et vous buvez un synthécafé.
@@ -112,7 +112,7 @@ colorID: 0
 position: -1427,-347
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés. 
@@ -133,7 +133,7 @@ colorID: 0
 position: -1111,-338
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches. 
@@ -174,7 +174,7 @@ colorID: 1
 position: -2332,-131
 ---
 << fadeIn >>
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 
 Pas le temps !! Vous engloutissez fissa un Burger Big Proteins Double Cheese ! Vous videz une canette de Xeno Cola ! Voilà votre repas du midi. Ce n'est pas équilibré, mais en ce vendredi matin, ce n'est pas le plus important. Vous filez ensuite à la salle d'examen...
@@ -216,7 +216,7 @@ colorID: 0
 position: -597,-585
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 You: Nan... Je crois pas... J'ai du boulot.
