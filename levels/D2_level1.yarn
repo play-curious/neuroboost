@@ -84,8 +84,9 @@ position: -850.2415771484375,-40.334877014160156
 ---
 << if !visited("Choix_neutres") >>
 Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
-<< endif >>
 << visit Choix_neutres >>
+<< endif >>
+
 << if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
 -> Aller swinguer sur le Dance Floor#once
     <<jump DanceFloor>>
@@ -105,6 +106,7 @@ title: DanceFloor
 tags: 
 position: -626.3383646011353,-256.5753173828125
 ---
+On va voir, qui de vous ou de Fred, est la superstar de l'Académie... 
 Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffer doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous.
 C'est comme si vous vous étiez calé sur l'orbite de la Planète Disco. Vous vous trémoussez, vous vous déhanchez, vous sautez, vous virevoltez, vous tournoyez comme un globe scintillant ou une boule disco radieuse !
 Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public !
@@ -148,6 +150,7 @@ title: Guitar_Jam
 tags: 
 position: -627.0029144287109,-472.9125061035156
 ---
+Entre Fred et vous, celui qui touche sa corde en guitare, c'est bien vous. Et vous allez le prouver... 
 Vous vous approchez tranquillement de la guitare posée près de l'enceinte murale. On dirait une cithare classique, sauf qu'elle possède une carte-son HD 4K. Génial ! Un vrai bijoux de technologie HiFi !
 Vous posez l'instrument sur vos genoux, vous allumez l'amplificateur. Vous gratouillez les cordes, à la mano, tout simplement. Dingue, le rugissement cybersonique qu'elle envoie ! Ça déchire l'air ambiant et ça réveille la foule !
 Tous les yeux se tournent vers vous. Quelqu'un coupe la musique. Vous voilà seul sur la grande scène. À vous de jouer ! Vous vous lancez dans une improvisation à cordes cybermétalliques.
@@ -231,13 +234,13 @@ La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la pist
 << endif >>
 << visit Que_Faire >>
 << if getGauge("sleep") >= 25 && getGauge("food") >= 25 >>
--> Retourner swinguer sur le Dance Floor#once
+-> Retourner défier le Body Beat sur le Dance Floor#once
     <<jump DanceFloor2>>
 -> Se rafraîchir au bar#once
     <<jump Cafe_ou_Alcool>>
 -> Grignoter quelque chose#once
     <<jump Medoc_Bot>>
--> Refaire un solo de guitare en criant tout votre saoul#once
+-> Improviser un solo de guitare encore plus glam grooovy#once
     <<jump Metal_Jam>>
 << else >>
 -> Vite ! Au lit
@@ -318,10 +321,13 @@ tags:
 position: 700.6830902099609,395.89404296875
 colorID: 1
 ---
-Mince, il ne reste plus personne sur la piste. Tu ne vois plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Il est temps d'aller dormir.
-// Tu aperçois les premiers rayons de soleil filtrer à travers les fenêtres de la salle. 
-D'un coup, tu te sens fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... ce matin...
-
+<<if isTimeOver("6:30")>>
+Mince, il ne reste plus beaucoup de monde sur la piste. Vous ne voyez plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Vous apercevez les premiers rayons de soleil filtrer à travers les fenêtres de la salle.
+Il est temps d'aller dormir. D'un coup, vous vous sentez fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... tout à l'heure...
+<<else>>
+Dingue, il  encore pas mal d'étudiants sur la piste. Vous ne savez pas si Fred est parmi eux. Tout ce que vous voyez à cette heure de la nuit, ce sont des silhouettes floues et indistinctes. Il est temps d'aller dormir.
+D'ailleurs, vous vous sentez soudainement fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... enfin... ce matin...
+<<endif>>
 
 << fadeIn >>
 <<jump SeReposer>>
@@ -428,9 +434,9 @@ colorID: 1
 << fadeOut >>
 Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre.
 Azul_happy: Un truc qui te servira également au quotidien.
-Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique!
-Temde_smiling: Yep, un tuyau qui sonne juste, tellement c'est évident!
-Sapiens_concerned: Tu m'écoutes { $name }?
+Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique !
+Temde_smiling: Yep, un tuyau qui sonne juste, tellement c'est évident !
+Sapiens_concerned: Tu m'écoutes { $name } ?
 -> Oui
     <<jump Revelation>>
 ===
@@ -576,7 +582,7 @@ position: 3557.0534057617188,389.2486877441406
 ---
 << setBackground bedroom night >>
 << fadeOut >>
-//Flash !!!
+
 Le carré de jardin tranquille des sages a disparu subitement !
 Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être.
 Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages...
