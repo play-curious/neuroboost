@@ -6,10 +6,10 @@ position: -1391.4708251953125,85.48695087432861
 colorID: 8
 ---
 << fadeIn >>
+
 Vous êtes lové dans une confortable et douce langueur... Quand...
 On vous secoue brusquement !!!
 
-<< music Tense >>
 << loadGauges >>
 << showGauges >>
 << setTime 1:30 >>
@@ -22,7 +22,9 @@ tags:
 position: -1172.1470947265625,85.38811206817627
 ---
 << setBackground party >>
+<< music DanseQuiet >>
 << fadeOut >>
+
 Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
 Et c'est reparti pour un tour... Fred répète comme un perroquet ce qu'il vous a déjà dit hier soir... Vous voilà revenu en arrière... En plein milieu de cette soirée de plaisir et de tentations... Certes, vous en avez trop fait, mais l'ambiance et le public étaient avec vous... Dur dur...
 You: ...Hum... Tu fais quoi toi ?
@@ -40,6 +42,8 @@ title: Que_Faire
 tags:
 position: -950.9030456542969,86.7411298751831
 ---
+<< music Danse >>
+
 << if !visited("Que_Faire") >>
 On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses...
 << visit Que_Faire >>
@@ -117,6 +121,9 @@ position: -729.2131729125977,85.79140090942383
 ---
 Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota depuis hier. Elle vous attend, elle vous réclame. Vous réactivez sa carte-son HD 4K.
 Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête une nouvelle fois à vous écouter. Vous savez que la star de la soirée, c'est vous. Et vous allez le leur prouver, à eux et à Fred ! À vous de jouer !
+
+<< music Solo2 >>
+
 Vous repartez dans un concert solo d'improvisation, où les riffs électriques et les accords cybermétalliques s'accordent pour composer une symphonie post-électronique. Vous vous surpassez par rapport à hier soir ! Vous avez le flow, vous avez le fuel, vous avez la soul rock teinté de métal !
 Vous êtes applaudi, encore et encore et encore... Bon joueur, vous accordez à votre public un morceau bonus. Et un deuxième, parce qu'ils le réclament, et le méritent.
 
@@ -294,12 +301,15 @@ position: 591.0426635742188,1112.3233642578125
 Dehors, vous rejoignez Fred.
 Fred_smiling: C'était easy, non?
 You: Ouais.
-Fred_happy: Je pense avoir cartonné. Et toi.
+Fred_happy: Je pense avoir cartonné. Et toi ?
 You: Ça devrait aller.
 
+C'est à ce moment que les résultats tombent. 
 << setBackground door class-screen >>
-
-C'est à ce moment que les résultats tombent. Fred décroche un <b>A</b> et vous un <b>B</b>
+<< fx Notification >>
+Fred décroche un <b>A</b> et vous un <b>B</b>
+<< fx Success >>
+<< music Victory >>
 Fred_smiling: Hey ! Attention, hein ! Tu serais pas en train de vouloir me dépasser ?...
 You: Bien entendu.
 Fred_smiling: Je t'adore, tu as toujours la phrase qui tue. Allez, on va manger un petit truc et on file au cinoche. On est libre maintenant jusqu'à demain.
