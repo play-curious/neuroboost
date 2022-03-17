@@ -1,8 +1,11 @@
 title: Start
-tags: bg|party
+tags: 
 ---
+<< fadeIn >>
+<< setBackground party >>
 << music Victory >>
 << show fred >>
+<< fadeOut >>
 
 Fred_smiling: Merci d'avoir joué !
 Fred_smiling: J'espère que tu en as apris plus sur la métacognition.

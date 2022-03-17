@@ -146,7 +146,6 @@ Fred_smiling: OK. T'as raison. Je te suis.
 Fred dit bonne nuit à ses interlocuteurs. Vous aussi. Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle.
 
 -> Vite ! Au lit
-    << fadeIn >>
     <<jump Go_To_Bed_Good>>
 
 << elseif getGauge("sleep") >= 25 && getGauge("food") >= 50 >>
@@ -159,7 +158,6 @@ Fred_smiling: Cool...
 Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle.
 
 -> Vite ! Au lit
-    << fadeIn >>
     <<jump Go_To_Bed_VeryGood>>
 
 << else >>
@@ -174,6 +172,7 @@ title: Go_To_Bed_Good
 tags: 
 position: -503.7049560546875,991.6459350585938
 ---
+<< fadeIn >>
 << setBackground door night >>
 << music >>
 << fadeOut >>
@@ -194,6 +193,7 @@ title: Go_To_Bed_VeryGood
 tags:  
 position: -502.02838134765625,1214.2044677734375
 ---
+<< fadeIn >>
 << setBackground door night >>
 << music >>
 << fadeOut >>
@@ -321,6 +321,7 @@ title: Replay
 tags:
 position: -1624.1019287109375,775.4595947265625
 ---
+<< fadeIn >>
 << setBackground circle >>
 << fadeOut >>
 Nonononoon... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition.
@@ -382,7 +383,6 @@ Vous avez encore raté votre soirée. Vous avez voulu battre Fred à son propre 
 Au final, vous avez encore perdu...
 
 -> Recommencer
-    << fadeIn >>
     <<jump Replay>>
 ===
 title: Drink_Bad

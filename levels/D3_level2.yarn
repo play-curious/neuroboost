@@ -55,7 +55,7 @@ Fred@holo_smiling: OK. Keep cool. Alors tu viens ?
     <<jump Liste_Taches>>
 ===
 title: Salle_Gym
-tags: bg|sport
+tags:
 colorID: 0
 position: -27,-778
 ---
@@ -93,7 +93,7 @@ Fred_sad: Lâcheur...
     <<jump Liste_Taches>>
 ===
 title: Liste_Taches
-tags: bg|bedroom
+tags:
 colorID: 1
 position: -332,-642
 ---
@@ -241,7 +241,8 @@ Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous 
 << removeFromGauge mentalLoad 10 >>
 
 -> Il ne reste plus qu'à s'y mettre maintenant 
-    <<jump Liste_Taches>>
+    << fadeIn >>
+    << jump Liste_Taches >>
 ===
 title: Chat
 tags: 
@@ -262,7 +263,8 @@ Décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaM
 << addToGauge mentalLoad 30 >>
 
 -> Et maintenant, il faut peut-être travailler sur cette note de synthèse ? 
-    <<jump Liste_Taches>>
+    << fadeIn >>
+    << jump Liste_Taches >>
 ===
 title: BingeTV
 tags: 
@@ -286,13 +288,18 @@ Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de s
 << addToGauge mentalLoad 40>>
 
 -> Vite, au travail ! 
-    <<jump Liste_Taches>>
+    << fadeIn >>
+    << jump Liste_Taches >>
 ===
 title: Sleep
 tags: 
 colorID: 0
 position: -709,-337
 ---
+<< fadeIn >>
+<< setBackground bedroom bed >>
+<< fadeOut >>
+
 Vous n'avez pas oublié ce que vous ont dit les quatre Sages. Si vous avez sommeil et si le temps manque, un petit somme, ça fait toujours du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux. 
 << loopFX Sleep_LOOP 5000 >>
 Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
@@ -301,7 +308,8 @@ Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste m
 << removeFromGauge sleep 20 >>
 << removeFromGauge mentalLoad 10 >> 
 
--> Maintenant, il faut s'y remettre 
+-> Maintenant, il faut s'y remettre
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Redaction_Note
@@ -325,7 +333,7 @@ Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cett
 << loopFX PhoneRing_LOOP 5000 >>
 Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
 
--> Prendre l'appel 
+-> Prendre l'appel
     <<jump Fred_again>>
 
 // cette action est encore possible, tant que le joueur n'a pas basculé sa chambre en mode Zero Distraction. Ce qu'il doit faire s'il veut terminer sa journée!
@@ -403,7 +411,8 @@ C'est dingue ce que burger sans viande ni pain ni frites vous cale l'estomac. Il
 << removeFromGauge sleep 20 >>
 << addToGauge food 20 >>
 
--> C'est pas tout, il faut s'y remettre 
+-> C'est pas tout, il faut s'y remettre
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Diner
@@ -424,6 +433,7 @@ Le mix de ratatouilles de légumes du soleil d'Aldébaran avec son assiette de c
 << addToGauge food 20 >>
 
 -> La journée n'est pas encore finie ! 
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Zero_Distraction

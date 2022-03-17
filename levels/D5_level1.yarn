@@ -266,7 +266,7 @@ colorID: 0
 position: -2091,70
 ---
 << fadeIn >>
-<< setBackground class >>
+<< setBackground door class >>
 << fadeOut >>
 
 Vous retrouvez devant l'entrée de la salle de classe, Fred. Ce dernier vous regarde avec perplexité.
@@ -381,6 +381,10 @@ tags:
 colorID: 0
 position: -1140,98
 ---
+<< fadeIn >>
+<< setBackground class >>
+<< fadeOut >>
+
 Vous vous asseyez devant votre pupitre. Vous avez l'esprit troublé. Et ce n'est pas un problème d'attention. Vous n'arrivez tout simplement pas à vous concentrer. Le sujet s'affiche à l'écran: <b>La loi de Murphy dans la GRH</b>...
 Génial... Le sujet super cool. C'est plutôt vous qui subissez en ce moment la loi de Murphy... Il y avait une faible probabilité de recevoir une nouvelle désastreuse, vous l'avez reçue ce matin. Et depuis, ça ne fait qu'empirer...
 Vous répondez aux questions au hasard, sans trop savoir ce que l'on vous demande et ce qu'il faut indiquer. C'est un peu comme si votre corps était là, mais votre esprit ailleurs.
@@ -394,13 +398,19 @@ tags:
 colorID: 0
 position: -1146,346
 ---
+<< fadeIn >>
+<< setBackground door class >>
+<< fadeOut >>
+
 Vous retrouvez dehors Fred. Il vous fixe d'un air encore plus ahuri.
 Fred_excited: Damned de damned! Si tu voyais ta figure dans une glace...
 You: Non merci...
 Fred_surprised: Tu as foiré toi aussi ?
 You: S'il n'y avait que ça...
 Fred vous avoue ne pas être content de sa performance... Hélas, ce n'est ni le jour ni l'heure. Vous vous fichez de votre score. De toute manière, vous êtes entré de plain-pied dans le cercle vicieux de la loi de Murphy. Tout ne peut aller que de mal en pis...
-Vous pensez à votre grand-mère. Vous ne pensez qu'à ça. Autant vous dire que vous n'avez même pas l'envie d'éclater de rire quand les résultats s'affichent au tableau. Vous n'avez pas la moyenne : un petit <b>D</b>. Fred n'a eu que <b>C+</b>. Il a l'air déçu.
+Vous pensez à votre grand-mère. Vous ne pensez qu'à ça. Autant vous dire que vous n'avez même pas l'envie d'éclater de rire quand les résultats s'affichent au tableau.
+<< setBackground door class-screen >>
+Vous n'avez pas la moyenne : un petit <b>D</b>. Fred n'a eu que <b>C+</b>. Il a l'air déçu.
 Et alors ? Vous auriez eu A tous les deux, ce n'est pas ça qui ferait sortir votre grand-mère de son coma. Vous dites au-revoir à votre pote et retournez à votre chambre.
 
 -> Chambre 

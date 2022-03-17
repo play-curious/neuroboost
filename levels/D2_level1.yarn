@@ -360,6 +360,7 @@ title: SeReposer
 tags:
 position: 927.2608032226562,397.54339599609375
 ---
+<< fadeIn >>
 << setBackground bedroom night >>
 << music >>
 << hideGauges >>

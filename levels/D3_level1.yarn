@@ -134,17 +134,22 @@ position: -328,-637
 title: lit_subchoice_am
 tags: subchoice
 ---
+<< fadeIn >>
 << setBackground bedroom bed >>
+<< fadeOut >>
 
 -> Faire une sieste#once
     <<jump Sleep>>
 -> back
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: bureau_subchoice_am
 tags: subchoice
 ---
+<< fadeIn >>
 << setBackground bedroom desk >>
+<< fadeOut >>
 
 -> Préparer son bureau avant de se mettre à travailler#once
     <<jump Ranger>>
@@ -153,16 +158,20 @@ tags: subchoice
 -> Débuter la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
 -> back
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: salon_subchoice
 tags: subchoice
 ---
+<< fadeIn >>
 << setBackground bedroom detente >>
+<< fadeOut >>
 
 -> Binger votre série TV préférée#once
     <<jump BingeTV>>
 -> back
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Liste_Taches_PM
@@ -182,33 +191,42 @@ position: -328,-637
 title: lit_subchoice_pm
 tags: subchoice
 ---
+<< fadeIn >>
 << setBackground bedroom bed >>
+<< fadeOut >>
 
 -> Faire une sieste#once
     <<jump Sleep>>
 -> back
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: bureau_subchoice_pm
 tags: subchoice
 ---
+<< fadeIn >>
 << setBackground bedroom desk >>
+<< fadeOut >>
 
 -> Se détendre sur le chat#once
     <<jump Chat>>
 -> Continuer la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
 -> back
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: cuisine_subchoice_pm
 tags: subchoice
 ---
+<< fadeIn >>
 << setBackground bedroom kitchen >>
+<< fadeOut >>
 
 -> Manger#once
     <<jump Diner>>
 -> back
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Ranger
@@ -264,7 +282,6 @@ Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heur
 
 Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse...
 
-
 -> Vite, au travail !
     << fadeIn >>
     <<jump Liste_Taches>>
@@ -286,6 +303,7 @@ Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
 << removeFromGauge mentalLoad 10 >>
 
 -> Maintenant, il faut s'y remettre
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Redaction_Note
@@ -362,8 +380,9 @@ tags:
 colorID: 0
 position: -427,-43
 ---
-<< empty >>
+<< fadeIn >>
 << setBackground bedroom >>
+<< fadeOut >>
 << music NegativeSad >>
 Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec.
 Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte.
