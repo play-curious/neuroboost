@@ -1,0 +1,19 @@
+{
+  "one": [
+    {
+      "model": "p_roommateOn",
+      "x": 962.5,
+      "y": 398.0,
+      "scale": 0.5
+    }
+  ],
+  "big": [
+    {
+      "model": "p_roommateOn",
+      "x": 962.5,
+      "y": 398.0,
+      "scale": 2.0
+    }
+  ],
+  "default": "one"
+}

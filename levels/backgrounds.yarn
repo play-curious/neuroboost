@@ -7,6 +7,8 @@ Astronomy
 
 << setBackground bedroom >>
 Bedroom
+<< setBackground bedroom bodybeat >>
+Bedroom body beat
 << setBackground bedroom night >>
 Bedroom night
 << setBackground bedroom bed >>
@@ -30,8 +32,8 @@ Door class
 << setBackground door class-screen >>
 Door class screen
 
-<< setBackground librairy >>
-Librairy
+<< setBackground library >>
+Library
 
 << setBackground oral >>
 Oral
