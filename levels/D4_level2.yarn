@@ -42,6 +42,7 @@ colorID: 0
 position: -949.32763671875,1219.6046142578125
 ---
 << fadeIn >>
+<< setBackground library >>
 << advanceTime 2:00 >>
 << fadeOut >>
 

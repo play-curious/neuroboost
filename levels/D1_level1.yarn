@@ -398,11 +398,9 @@ Miss Temdé lève la paume d'une de ses mains cybernétique...
 
 Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente.
 
-<< fadeIn 1500 12ea12 >>
 << fx Warp >>
+<< fadeIn 1500 12ea12 >>
 << hide ! >>
-
-You: <i>Wow...</i>
 
 <<jump Assemblee_Sages>>
 ===
