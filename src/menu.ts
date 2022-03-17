@@ -10,8 +10,8 @@ import * as journal from "./journal";
 import * as popup from "./popup";
 
 interface Settings {
-  fx: 0 | 0.5 | 0.25 | 0.75 | 1;
-  music: 0 | 0.5 | 0.25 | 0.75 | 1;
+  fx: number;
+  music: number;
   fullscreen: boolean;
 }
 
@@ -213,16 +213,12 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.musicVolumeSwitcher.container.position.x =
         this.popupBackground.width - 310;
       this.musicVolumeSwitcher.container.position.y += 40;
-      this.musicVolumeSwitcher.onStateChange((state) => {
+      this.musicVolumeSwitcher.onStateChange((state: number) => {
         this.config.playOptions.setOption("musicOn", state !== 0);
-        this.settings.music = state as 0;
-        this.config.jukebox.changeVolume(state as 0);
-        const initialFxVolume = this.config.fxMachine.volume;
-        this.config.fxMachine.changeVolume(state as 0);
-        this.config.fxMachine.play("Click");
-        setTimeout(() => {
-          this.config.fxMachine.changeVolume(initialFxVolume);
-        }, 500);
+        this.settings.music = state;
+
+        // The actual music volume is cut in half
+        this.config.jukebox.changeVolume(state * 0.5);
         this.saveSettings();
       });
     }
@@ -241,10 +237,10 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.soundVolumeSwitcher.container.position.x =
         this.popupBackground.width - 290;
       this.soundVolumeSwitcher.container.position.y -= 120;
-      this.soundVolumeSwitcher.onStateChange((state) => {
+      this.soundVolumeSwitcher.onStateChange((state: number) => {
         this.config.playOptions.setOption("fxOn", state !== 0);
-        this.settings.fx = state as 0;
-        this.config.fxMachine.changeVolume(state as 0);
+        this.settings.fx = state;
+        this.config.fxMachine.changeVolume(state);
         this.config.fxMachine.play("Click");
         this.saveSettings();
       });
