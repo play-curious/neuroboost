@@ -1,14 +1,23 @@
-title: Start_Mercredi
+title: Start
 tags: 
 colorID: 0
 position: -947,-707
 ---
 << fadeIn 1 >>
 << setBackground bedroom >>
-<< setTime 8:00 >>
+<< setTime 8:00 2 >>
 << fadeOut >>
 
-Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Vous voilà revenu dans votre chambre. On est à nouveau mercredi matin. Et c'est reparti pour un tour. Cette-fois, il va falloir la réussir cette note de synthèse en Programmation Neuro Linguistique des Intelligences Artificielles Analogiques.
+<< loopFX Chime_LOOP 2000 >>
+
+Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Vous voilà revenu dans votre chambre. On est à nouveau mercredi matin. Et c'est reparti pour un tour. 
+<< stopFX Chime_LOOP >>
+<< music Neutral >>
+
+Cette-fois, il va falloir la réussir cette note de synthèse en Programmation Neuro Linguistique des Intelligences Artificielles Analogiques.
+
+
+<< loopFX PhoneRing_LOOP 5000 >>
 Ronronron... Votre palmphone qui vibre. Fred vous relance.
 
 -> Prendre l'appel
@@ -19,6 +28,8 @@ tags:
 colorID: 0
 position: -634,-700
 ---
+<< stopFX PhoneRing_LOOP >>
+
 Fred@holo_excited: Hello ! Je te dérange pas ?
 You: Un peu...
 Fred@holo_surprised: Ah bon ?
@@ -60,9 +71,12 @@ You: Je n'en suis pas si sûr.
 Fred_smiling: No worry ! Allez viens !
 << hide >>
 
+<< loopFX Sports_LOOP 16000 >>
+
 Vous emboîtez le pas de Fred et vous éclatez tous les deux aux différentes activités proposées: cybersprint, electroskate, eBall, eJump...
 Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
 
+<< stopFX Sports_LOOP >>
 << advanceTime 2:00 >>
 << addToGauge sleep 30 >>
 << addToGauge food 30 >>
@@ -88,7 +102,6 @@ position: -332,-642
 Que faites-vous maintenant ?
 <<endif>>
 
-// Matin//
 << if $time <= 840 >> 
 -> Préparer son bureau avant de se mettre à travailler#once
     <<jump Ranger>>
@@ -100,13 +113,10 @@ Que faites-vous maintenant ?
     <<jump BingeTV>>
 -> Faire une sieste#once
 -> Casser la croûte #once
-// Oubli choix <<Lunch>>!!
     <<jump Sleep>>
 -> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction" 
-// le joueur le fait soit la matin, s'il est malin, soit l'après midi s'il est présomptueux. Une fois activé le mode reste !!
     << jump Zero_Distraction>>
 
-// Après Midi//
 <<elseif $time < 1200 >>
 -> Se détendre sur le chat#once
     <<jump Chat>>
@@ -121,7 +131,6 @@ Que faites-vous maintenant ?
 -> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction"
     << jump Zero_Distraction >>
 
-// Soirée//
 << elseif getGauge("mentalLoad") >= 100 >>
 -> Faire un somme
     <<jump Surcharge_Cognitive>>
@@ -134,7 +143,7 @@ colorID: 0
 position: -961,-447
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 Vous ne savez pas si cette tâche est indispensable. Les Sages n'ont pas été clair à ce sujet. Mais ça ne vous fera pas de mal, jugez-vous.
@@ -151,10 +160,14 @@ colorID: 0
 position: -345,-406
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
-Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes pingé par Fred ! Il vous demande encore si vous ne voulez pas le rejoindre à la salle de gym ! Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous savez que ne pouvez ignorer son injonction ! Si toute la communauté apprenait que vous aviez refusé un duel virtuel, que vous êtes un lâche...
+<< fx Notification >>
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes pingé par Fred ! 
+<< fx Notification >>
+Il vous demande encore si vous ne voulez pas le rejoindre à la salle de gym ! Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous savez que ne pouvez ignorer son injonction ! Si toute la communauté apprenait que vous aviez refusé un duel virtuel, que vous êtes un lâche...
+<< fx Notification >>
 Décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait. Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.
 << advanceTime 2:00 >>
 << addToGauge mentalLoad 30 >>
@@ -168,15 +181,17 @@ colorID: 0
 position: 311,-466
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber. 
+<< loopFX TVStarwars_LOOP 10000 >>
 Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir ! Ils sont parvenus à décryogéniser Jaba Fett. Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de Mana de toute la galaxie ! Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran ! 
 Vous avez l'impression que vous avez déjà vu cet épisode... Hier ? Possible. Peu importe. Vous ne vous lassez jamais de Star Mars, même les rediffusions...
 Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples : les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..
 Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse...
 
+<< stopFX TVStarwars_LOOP >>
 << advanceTime 3:00 >>
 << addToGauge food 30>>
 << addToGauge mentalLoad 40>>
@@ -189,7 +204,10 @@ tags:
 colorID: 0
 position: -709,-337
 ---
-Vous n'avez pas oublié ce que vous ont dit les quatre Sages. Si vous avez sommeil et si le temps manque, un petit somme, ça fait toujours du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux. Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
+Vous n'avez pas oublié ce que vous ont dit les quatre Sages. Si vous avez sommeil et si le temps manque, un petit somme, ça fait toujours du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux. 
+<< loopFX Sleep_LOOP 5000 >>
+Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
+<< stopFX Sleep >>
 
 << removeFromGauge sleep 20 >>
 << removeFromGauge mentalLoad 10 >> 
@@ -203,7 +221,7 @@ colorID: 0
 position: -21,-367
 ---
 << fadeIn >>
-<< setBackground desk >>
+<< setBackground bedroom desk >>
 << fadeOut >>
 
 << if isFirstTime() >>
@@ -215,6 +233,7 @@ Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cett
 << advanceTime 1:00 >>
 << increase $notesynthese +1>>
 // Il faut valider 3 ou 4 sessions pour finir la sythèse. Objectif irréalisable en level1 mais à atteindre en level2 : detail utile pour le rewind...//
+<< loopFX PhoneRing_LOOP 5000 >>
 Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
 
 -> Prendre l'appel 
@@ -227,6 +246,8 @@ tags:
 colorID: 0
 position: 27,-87
 ---
+<< stopFX PhoneRing_LOOP >>
+
 Fred@holo_excited: Alors ? Je t'attends toujours ? Quand viens-tu ?
 You: Je sais. Tu as décidé de ne pas me lâcher de la journée.
 Fred@holo_happy: Attention à ce que tu dis ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
@@ -266,11 +287,15 @@ tags:
 colorID: 0
 position: -403,-130
 ---
+<< music NegativeSad >>
 Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte. Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...
-N'empêche, vous sentez votre tête pencher en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrez dans le noir...
+N'empêche, vous sentez votre tête pencher en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. 
+<< fadeIn >>
+Vous finissez par céder. Vous sombrez dans le noir...
 
 -> Réveillez-vous ! Il faut recommencer ! 
-    << jump Start_Mercredi >>
+    << fadeOut >>
+    << jump Start >>
 ===
 title: Lunch
 tags: 
@@ -278,10 +303,12 @@ colorID: 0
 position: 476,-704
 ---
 << fadeIn >>
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 
-Votre ventre gargouille. Vous décidez de vous refaire ce surprenant Green Burger Full Vegie. C'est dingue ce que burger sans viande ni pain ni frites vous cale l'estomac. Il faudrait vraiment que Naz Do l'ajoute à ses menus dans ses restaurants...
+Votre ventre gargouille. Vous décidez de vous refaire ce surprenant Green Burger Full Vegie. 
+<< fx EatCook >>
+C'est dingue ce que burger sans viande ni pain ni frites vous cale l'estomac. Il faudrait vraiment que Naz Do l'ajoute à ses menus dans ses restaurants...
 
 << advanceTime 0:30 >>
 << removeFromGauge sleep 20 >>
@@ -296,10 +323,12 @@ colorID: 0
 position: 684,-454
 ---
 << fadeIn >>
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 
-Comme hier, le soir venu, vous avez la flemme de cuisiner, et vous n'avez pas aussi faim. Le mix de ratatouilles de légumes du soleil d'Aldébaran avec son assiette de céréales complètes, ça vous va très bien. 
+Comme hier, le soir venu, vous avez la flemme de cuisiner, et vous n'avez pas aussi faim. 
+<< fx EatCook >>
+Le mix de ratatouilles de légumes du soleil d'Aldébaran avec son assiette de céréales complètes, ça vous va très bien. 
 
 << advanceTime 0:30 >>
 << removeFromGauge sleep 20 >>
@@ -368,6 +397,7 @@ tags:
 colorID: 2
 position: 155,-1055
 ---
+<< music Victory >>
 Victoire ! Vous avez réussi ! Il n'est pas encore minuit et vous avez terminé la rédaction de la note de synthèse.
 Vous daignez prendre encore le temps de faire un vérification syntaxique par votre ordinateur avant d'expédier votre fichier final au serveur FTP de l'Académie d'Omniscience et de Polytechnologie Universelle.
 Une bonne chose de faite. Vous pouvez désormais faire ce que vous voulez du reste de votre soirée...

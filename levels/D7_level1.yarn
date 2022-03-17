@@ -433,7 +433,7 @@ tags:
 position: -1964.2073974609375,249.321533203125
 ---
 << fadeIn >>
-<< setBackground kitchen >>
+<< setBackground bedroom kitchen >>
 << fadeOut >>
 
 La cafétéria est un second foyer pour Fred. Iel y traîne souvent. Pour boire un coup, grignoter quelque chose, papoter avec des amis, et surtout pour faire la fête. Aujourd'hui, pourtant, la cafétéria est bien calme.

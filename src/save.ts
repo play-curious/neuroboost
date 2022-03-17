@@ -85,7 +85,9 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
 
           this.container.addChild(it);
 
-          this._on(it, "click", () => {
+          this._on(it, "pointerup", () => {
+            this.config.fxMachine.play("Click");
+
             const saveData = loadSave();
             this.config.variableStorage = saveData.variableStorage;
             this._transition = entity.makeTransition(saveData.state);
@@ -118,7 +120,9 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
 
         this.container.addChild(it);
 
-        this._on(it, "click", () => {
+        this._on(it, "pointerup", () => {
+          this.config.fxMachine.play("Click");
+
           if (hasSave()) {
             this._activateChildEntity(
               new popup.Confirm(

@@ -83,6 +83,7 @@ export class Juggling extends MiniGame {
       if (this.balls.length < 5) {
         this._activateChildEntity(this.addBall());
       } else {
+        this.config.fxMachine.play("Success");
         this.stop();
         this.config.variableStorage.set("ballsJuggled", this.balls.length);
         this._transition = entity.makeTransition();
@@ -91,6 +92,7 @@ export class Juggling extends MiniGame {
   }
 
   fail() {
+    this.config.fxMachine.play("Failure");
     this.stop();
 
     this._activateChildEntity(
@@ -158,6 +160,7 @@ export class Ball extends extension.ExtendedCompositeEntity {
         this._on(it, "pointerdown", () => {
           if (this.speed < 0) return;
           this.speed *= -1;
+          this.config.fxMachine.play("Click");
           this.game.hit();
         });
       }

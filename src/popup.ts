@@ -138,11 +138,15 @@ export class Confirm extends Popup {
       this._container.addChild(this._cancelButton);
     }
     this._on(this._cancelButton, "pointerup", () => {
+      this.config.fxMachine.play("Click");
+
       this._transition = entity.makeTransition();
       this._callback(false);
     });
 
     this._on(this._okButton, "pointerup", () => {
+      this.config.fxMachine.play("Click");
+
       this._transition = entity.makeTransition();
       this._callback(true);
     });
