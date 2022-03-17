@@ -41,11 +41,11 @@ tags:
 colorID: 0
 position: -949.32763671875,1219.6046142578125
 ---
-Vous retournez vous asseoir à la même table que ce matin. Vous textez Fred pour lui dire que vous l'attendez au même endroit. Vous ajoutez une condition de renvoi automatique du texto. S'iel ne répond pas dans les 10 minutes, le message lui est renvoyé de nouveau. Le temps passe, les minutes et les heures s'écoulent. Enfin, Fred revient en salle...
-
 << fadeIn >>
 << advanceTime 2:00 >>
 << fadeOut >>
+
+Vous retournez vous asseoir à la même table que ce matin. Vous textez Fred pour lui dire que vous l'attendez au même endroit. Vous ajoutez une condition de renvoi automatique du texto. S'iel ne répond pas dans les 10 minutes, le message lui est renvoyé de nouveau. Le temps passe, les minutes et les heures s'écoulent. Enfin, Fred revient en salle...
 
 You: Tu te fous de moi ou quoi ?
 Fred_smiling: C'est trop de la bombe nucléaire GTR 66 !
@@ -63,7 +63,7 @@ colorID: 0
 position: -1840.7229614257812,139.0914535522461
 ---
 << fadeIn >>
-<< setBackground librairy >>
+<< setBackground library >>
 << fadeOut >>
 
 Vous voilà à la bibliothèque avec Fred.
@@ -170,7 +170,9 @@ tags:
 colorID: 0
 position: -1167.3054809570312,1321.2256164550781
 ---
-// Fond cafette 
+<< fadeIn >>
+<< setBackground cafeteria >>
+<< fadeOut >>
 
 Vous êtes content de commander un lunch à la bibliothèque. C'est jour de relâche, vous commandez un Burger Big Protéine Double Cheese. C'est pas équilibré mais vous avez assez d'effort à faire par ailleurs. 
 
@@ -214,7 +216,7 @@ colorID: 0
 position: -2066.117431640625,-90.2164535522461
 ---
 << fadeIn >>
-<< setBackground librairy >>
+<< setBackground library >>
 << fadeOut >>
 
 Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez. Vous y ajoutez un paramètre. Et toutes les dix minutes, votre palmphone renvoie votre texto à Fred. Vous espérez ainsi le forcer à vous retrouver. Le temps passe, les minutes et les heures s'écoulent. Mais que fait donc Fred ? Le voilà enfin.
@@ -251,6 +253,9 @@ You: Laisse tomber.
 Vous retournez au travail à la bibliothèque.
 
 -> Se remettre au travail 
+    << fadeIn >>
+    << setBackground library >>
+    << fadeOut >>
     <<jump Liste_taches>>
 ===
 title: Exit_Bibli

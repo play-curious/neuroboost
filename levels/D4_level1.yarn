@@ -39,7 +39,7 @@ colorID: 0
 position: -726,629
 ---
 << fadeIn >>
-<< setBackground librairy >>
+<< setBackground library >>
 << fadeOut >>
 
 Vous retournez vous asseoir à la même table que ce matin. L'ambiance est toujours calme et propice à la l'étude. Vous textez Fred pour lui dire que vous l'attendez au même endroit.
@@ -63,7 +63,7 @@ colorID: 0
 position: -795,107
 ---
 << fadeIn >>
-<< setBackground librairy >>
+<< setBackground library >>
 << fadeOut >>
 
 Dingue, Fred vous a suivi à la bibliothèque. C'est une première...
@@ -173,18 +173,22 @@ tags:
 colorID: 0
 position: -507,380
 ---
+<< fadeIn >>
+<< setBackground cafeteria >>
+<< fadeOut >>
+
 Vous êtes content de commander un lunch à la bibliothèque. Aujourd'hui, vous ne mangez pas un énième Burger Big Protéine Double Cheese, mais une salade gourmande, accompagné d'un grand verre de jus d'orange. C'est tout aussi copieux et vitaminé, et plus équilibré. 
 
 << addToGauge food 20 >>
 << addToGauge sleep 20 >>
 
 Vous êtes content de voir que vos efforts payent. C'est dommage que Fred ne suive pas votre exemple. Il engloutit un Tacos Tex-Mex XXXL et un Xeno Cola double-sugar ! Vous avez mal pour son estomac.
+<< advanceTime 1:00 >>
 Le temps de faire un petit tour aux toilettes, vous retrouvez Fred en train de jouer avec un étudiant sur une Nanontedo à GTR 66 ! 
 You: Plus tard, Fred, on y retourne. 
 Fred_smiling: Yes, yes, attends 5 minutes encore.
 You: Non Fred !
 Fred_happy: Please...
-<<advanceTime 1:00>>
 -> Retourner en salle et laisser Fred jouer quelques minutes
     <<jump Bibli_soloPM >>
 -> Insister pour que Fred vienne avec vous 
@@ -218,6 +222,10 @@ tags:
 colorID: 0
 position: -1265,73
 ---
+<< fadeIn >>
+<< setBackground library >>
+<< fadeOut >>
+
 Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez.
 Vous relisez tranquillement tout ce que vous avez déjà noté. Vous en profitez pour revoir certaines références, approfondir d'autres. C'est passionnant la théorie du chaos. La macrobiologie également. Le temps passe, les minutes et les heures s'écoulent. Mais que fait donc Fred ? Le voilà enfin.
 You: Mais qu'est-ce que tu foutais ?
@@ -245,8 +253,11 @@ Fred_sad: Ça, j'ai bien entendu. Et si j'avais besoin de toi aussi ?
 You: Tu plaisantes, tu es le meilleur de la promo. C'est moi qui ai de la chance de t'avoir comme partenaire.
 Vous retournez au travail à la bibliothèque.
 
--> Se remettre au travail 
-    <<jump Liste_taches>>
+-> Se remettre au travail
+    << fadeIn >>
+    << setBackground library>>
+    << fadeOut >>
+    <<jump Liste_taches >>
 ===
 title: Exit_Bibli
 tags: 
