@@ -9,7 +9,11 @@ position: -947,-707
 << setBackground bedroom >>
 << setTime 8:00 2 >>
 << fadeOut >>
-
+<< setGauge learning 0 >>
+<< setGauge sleep 100 >>
+<< setGauge food 100 >>
+<< setGauge mentalLoad 0 >>
+<< showGauges >>
 << loopFX Chime_LOOP 2000 >>
 
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Vous voilà revenu dans votre chambre. On est à nouveau mercredi matin. Et c'est reparti pour un tour. 
@@ -153,7 +157,7 @@ tags: subchoice
     <<jump Chat>>
 -> Débuter la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
--> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction" 
+-> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction"#once
     << jump Zero_Distraction>>
 -> back
     <<jump Liste_Taches>>
@@ -323,22 +327,25 @@ position: -21,-367
 << setBackground bedroom desk >>
 << fadeOut >>
 
-<< if isFirstTime() >>
+<< if !visited("Redaction_Note") >>
 Vous vous retroussez les manches et vous recommencez ce travail fastidieux mais indispensable pour décrocher une bonne note... Mettre au propre cette note de synthèse. Cela vous demande une attention, une concentration et une motivation inimaginable. Comment ont fait les Sages pour arriver à ce rang si convoité d'expert en métacognition, dites-vous. 
+<< addToGauge learning 30 >>
+<< visit Redaction_Note >>
 << else >>
 Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cette note de synthèse avant la deadline...
 <<endif>>
 
 << advanceTime 1:00 >>
-<< increase $notesynthese +1>>
-// Il faut valider 3 ou 4 sessions pour finir la sythèse. Objectif irréalisable en level1 mais à atteindre en level2 : detail utile pour le rewind...//
-<< loopFX PhoneRing_LOOP 5000 >>
-Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
 
+<< loopFX PhoneRing_LOOP 5000 >>
+
+<< if !visited("Zero_Distraction") >>
+Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
 -> Prendre l'appel
     <<jump Fred_again>>
-
-// cette action est encore possible, tant que le joueur n'a pas basculé sa chambre en mode Zero Distraction. Ce qu'il doit faire s'il veut terminer sa journée!
+<<else>>
+<<jump Liste_Taches>>
+<<endif>>
 ===
 title: Fred_again
 tags: 
@@ -453,7 +460,7 @@ RoomMate: Des simulations dans lesquelles vous voyez travailler un étudiant en 
 You: Parfait ! thème : rédaction de note de synthèse. Ambiance cool. Durée: 60 minutes, intégrant des pauses toutes les 20 minutes.
 L'IA vous affiche alors la vidéo d'un étudiant paisible mais sérieux, qui entame la rédaction de sa composition. C'est incroyable, mais c'est vrai que de voir un camarade virtuel besogner comme vous, sans fléchir... ça vous rassure, ça vous détend, ça vous inspire. 
 
-// effet positif sur la charge mentale
+<< removeFromGauge mentalLoad 20 >>
 
 Et maintenant, comme on dit : "y a plus qu'à"...
 << jump Liste_Taches_ZeroDistraction >>

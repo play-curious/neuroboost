@@ -10,6 +10,7 @@ position: -893,370
 << setBackground bedroom >>
 << setTime 8:00>>
 << loopFX Chime_LOOP 2000 >>
+<< showGauges >>
 << fadeOut >>
 
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. 
