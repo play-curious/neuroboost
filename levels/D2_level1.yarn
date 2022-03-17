@@ -39,7 +39,7 @@ position: -1298.765380859375,-151.80938720703125
 << fadeOut >>
 
 Allongé tranquillement sur votre lit, vous vous replongez dans la lecture augmentée de l'atlas Ouiki_4D de Star Mars - The Lone Lightsaber... Quand...
-DRING ! DRING ! DRIIIIIING !... Inutile d'allumer le téléscreen de votre porte. Vous vous doutez qui sonne comme dératé... FRED !!
+DRING ! DRING ! DRIIIIIING !... Inutile d'allumer le téléscreen de votre porte. Vous vous doutez qui sonne comme un dératé... FRED !!
 
 Fred_excited: Allez, tu peux pas me laisser tout seul.
 You: Et si.
@@ -349,7 +349,7 @@ colorID: 1
 Mince, il ne reste plus beaucoup de monde sur la piste. Vous ne voyez plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Vous apercevez les premiers rayons de soleil filtrer à travers les fenêtres de la salle.
 Il est temps d'aller dormir. D'un coup, vous vous sentez fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... tout à l'heure...
 <<else>>
-Dingue, il  encore pas mal d'étudiants sur la piste. Vous ne savez pas si Fred est parmi eux. Tout ce que vous voyez à cette heure de la nuit, ce sont des silhouettes floues et indistinctes. Il est temps d'aller dormir.
+Dingue, il reste encore pas mal d'étudiants sur la piste. Vous ne savez pas si Fred est parmi eux. Tout ce que vous voyez à cette heure de la nuit, ce sont des silhouettes floues et indistinctes. Il est temps d'aller dormir.
 D'ailleurs, vous vous sentez soudainement fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... enfin... ce matin...
 <<endif>>
 
@@ -363,7 +363,6 @@ position: 927.2608032226562,397.54339599609375
 << fadeIn >>
 << setBackground bedroom night >>
 << music >>
-<< hideGauges >>
 << fadeOut >>
 << advanceTime 0:15 >>
 Vous filez dans votre chambre en quatrième vitesse. Mais vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent !
