@@ -17,6 +17,8 @@ Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'
 
 << loopFX PhoneRing_LOOP 5000 >>
 
+Ronronron... Cette fois, c'est votre palmphone qui vibre : Fred veut vous parler.
+
 -> Prendre l'appel
   << jump Appel_Fred >>
 -> Rejeter l'appel
@@ -76,10 +78,12 @@ position: -847.2033081054688,-821.7307662963867
 ---
 << setBackground bedroom >>
 << fadeOut >>
+
 << if !visited("Action_List") >>
 Que faites-vous maintenant ?
-<< endif >>
 << visit Action_List >>
+<< endif >>
+
 << if isTimeOver("12:00") >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
@@ -191,6 +195,8 @@ position: -1573.0745849609375,216.18408203125
 
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
 << visit BingeTV >>
+
+Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
 Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
 
 << loopFX TVStarwars_LOOP 10000 >>
@@ -203,7 +209,6 @@ Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant.
 << stopFX TVStarwars_LOOP >>
 
 Au final, vous passez trop de temps à binger votre série préférée.
-// ORIGINAL: Vous passez 4 heures à binger votre série préférée.
 
 << fadeIn >>
 <<jump Action_List>>
@@ -393,9 +398,12 @@ Miss Temdé lève la paume d'une de ses mains cybernétique...
 
 Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente.
 
+<< fadeIn 1500 12ea12 >>
 << fx Warp >>
-<< fadeIn 1000 12ea12 >>
 << hide ! >>
+
+You: <i>Wow...</i>
+
 <<jump Assemblee_Sages>>
 ===
 title: Assemblee_Sages
@@ -480,7 +488,7 @@ Sapiens_thinking: En bref, la cartographie de la mémoire dans le cerveau se dé
 
 << setBackground schema shelf-disorganized >>
 
-Sapiens_thinking: Il y a tout d'abord <b>La mémoire courte</b>. Elle est utilisé quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas... Et elle stocke ça dans un énorme container.
+Sapiens_thinking: Il y a tout d'abord <b>La mémoire courte</b>. Elle est utilisée quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas... Et elle stocke ça dans un énorme container.
 Sapiens_thinking: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sans ordre précis. Elle les empile en vrac, les unes sur les autres, à gauche à droite. En bref, elle range ça n'importe comment, comme un amateur, un dilettante !
 
 Ledai_explaining: Oui. Ce qui fait que quand tu es à la recherche d'une référence particulière, tu ne sais plus où elle se trouve, ni si tous les documents sont rangés au même endroit.

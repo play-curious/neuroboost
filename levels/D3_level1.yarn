@@ -1,4 +1,4 @@
-# gauges: sleep food mentalLoad
+# gauges: learning sleep food mentalLoad
 
 title: Start
 tags:
@@ -129,7 +129,7 @@ position: -328,-637
 -> Bureau@bureau
     <<jump bureau_subchoice_am>>
 -> Salon@salon
-    <<jump salon_subchoice_am>>
+    <<jump salon_subchoice>>
 ===
 title: lit_subchoice_am
 tags: subchoice
@@ -161,7 +161,7 @@ tags: subchoice
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
-title: salon_subchoice_am
+title: salon_subchoice
 tags: subchoice
 ---
 << fadeIn >>
@@ -184,7 +184,7 @@ position: -328,-637
 -> Bureau@bureau
     <<jump bureau_subchoice_pm>>
 -> Salon@salon
-    <<jump salon_subchoice_pm>>
+    <<jump salon_subchoice>>
 -> Cuisine@cuisine
     <<jump cuisine_subchoice_pm>>
 ===
@@ -212,19 +212,6 @@ tags: subchoice
     <<jump Chat>>
 -> Continuer la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
--> back
-    << fadeIn >>
-    <<jump Liste_Taches>>
-===
-title: salon_subchoice_pm
-tags: subchoice
----
-<< fadeIn >>
-<< setBackground bedroom detente >>
-<< fadeOut >>
-
--> Binger votre série TV préférée#once
-    <<jump BingeTV>>
 -> back
     << fadeIn >>
     <<jump Liste_Taches>>
@@ -327,6 +314,7 @@ position: -22,-299
 << if visited("Redaction_Note") >>
 Vous vous retroussez les manches et vous attelez à la tâche. Mettre au propre cette note de synthèse, fruit de plusieurs jours de lecture, de prises de notes, de réflexions diverses et variées.
 Vous avez tellement de choses à dire et à coucher sur votre document, vous ne manquez pas d'idées, mais de concentration et productivité.
+<< visit Redaction_Note >>
 << else >>
 Allez, encore une fois, vous respirez un grand coup avant de replonger dans le grand bain. Vous êtes loin d'avoir fini et les heures ne cessent de filer.
 Il faut terminer cette note de synthèse coûte que coûte avant la deadline...
@@ -501,7 +489,7 @@ Azul_happy: Nous en avons tous des limites...
 << else >>
 Temde_smiling: Bravo ! Tu a réussi à jongler autant de balles que moi.
 Temde_thinking: Mais est-ce que tu aurais pu jongler le double ? Le triple ? 
-Azul_happy: Nous en avons tous des limites...
+Azul_happy: Nous avons tous des limites...
 << endif>>
 
 <<jump Quit_Mini_Game>>

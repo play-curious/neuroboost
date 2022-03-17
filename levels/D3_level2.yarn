@@ -1,3 +1,5 @@
+# gauges: learning sleep food mentalLoad
+
 title: Start
 tags: 
 colorID: 0
@@ -43,7 +45,7 @@ You: Ouais. Mais l'autre fois, je n'y suis pas arrivé.
 Fred@holo_surprised: Quoi ?!
 You: Laisse tomber.
 Fred@holo_smiling: OK. Keep cool. Alors tu viens ?
-// Ajouter des phrases pour finir la conversation (dans les choix)
+
 << hide >>
 << advanceTime 1:00 >>
 
@@ -86,6 +88,8 @@ Fred_smiling: Tu pars déjà, lâcheur ?
 You: J'en peux plus. Et je dois m'y mettre.
 Fred_sad: Lâcheur...
 
+<< hide>>
+
 -> Retourner dans votre chambre 
     << fadeIn >>
     <<jump Liste_Taches>>
@@ -100,42 +104,129 @@ position: -332,-642
 
 <<if !visited("Liste_Taches")>>
 Que faites-vous maintenant ?
+<<visit Liste_Taches>>
 <<endif>>
 
-<< if $time <= 840 >> 
+<< if getGauge("mentalLoad") >= 100 >>
+-> Faire un somme
+    <<jump Surcharge_Cognitive>>
+<< endif >>
+
+<< if !isTimeOver("14:00") >>
+<< jump Liste_Taches_AM >>
+<< endif >>
+
+<< jump Liste_Taches_PM >>
+===
+title: Liste_Taches_AM
+tags: freechoice
+colorID: 1
+position: -328,-637
+---
+-> Lit@lit
+    <<jump lit_subchoice_am>>
+-> Bureau@bureau
+    <<jump bureau_subchoice_am>>
+-> Salon@salon
+    <<jump salon_subchoice>>
+-> Cuisine@cuisine
+    <<jump cuisine_subchoice_am>>
+===
+title: lit_subchoice_am
+tags: subchoice
+---
+<< setBackground bedroom bed >>
+
+-> Faire une sieste#once
+    <<jump Sleep>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: bureau_subchoice_am
+tags: subchoice
+---
+<< setBackground bedroom desk >>
+
 -> Préparer son bureau avant de se mettre à travailler#once
     <<jump Ranger>>
 -> Ouvrir le chat histoire de se détendre#once
     <<jump Chat>>
 -> Débuter la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
--> Binger votre série TV préférée#once
-    <<jump BingeTV>>
--> Faire une sieste#once
--> Casser la croûte #once
-    <<jump Sleep>>
 -> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction" 
     << jump Zero_Distraction>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: salon_subchoice
+tags: subchoice
+---
+<< setBackground bedroom detente >>
 
-<<elseif $time < 1200 >>
+-> Binger votre série TV préférée#once
+    <<jump BingeTV>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: cuisine_subchoice_am
+tags: subchoice
+---
+<< setBackground bedroom kitchen >>
+
+-> Casser la croûte#once
+    <<jump Lunch>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: Liste_Taches_PM
+tags: freechoice
+colorID: 1
+position: -328,-637
+---
+-> Lit@lit
+    <<jump lit_subchoice_pm>>
+-> Bureau@bureau
+    <<jump bureau_subchoice_pm>>
+-> Salon@salon
+    <<jump salon_subchoice>>
+-> Cuisine@cuisine
+    <<jump cuisine_subchoice_pm>>
+===
+title: lit_subchoice_pm
+tags: subchoice
+---
+<< setBackground bedroom bed >>
+
+-> Faire une sieste#once
+    <<jump Sleep>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: bureau_subchoice_pm
+tags: subchoice
+---
+<< setBackground bedroom desk >>
+
 -> Se détendre sur le chat#once
     <<jump Chat>>
 -> Continuer la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
--> Binger votre série TV préférée#once
-    <<jump BingeTV>>
--> Faire une sieste#once
-    <<jump Sleep>>
+<<if !visited("Zero_Distraction")>>
+-> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction" 
+    << jump Zero_Distraction>>
+<<endif>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: cuisine_subchoice_pm
+tags: subchoice
+---
+<< setBackground bedroom kitchen >>
+
 -> Manger#once
     <<jump Diner>>
--> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction"
-    << jump Zero_Distraction >>
-
-<< elseif getGauge("mentalLoad") >= 100 >>
--> Faire un somme
-    <<jump Surcharge_Cognitive>>
-
-<<endif>>
+-> back
+    <<jump Liste_Taches>>
 ===
 title: Ranger
 tags: 
@@ -352,6 +443,7 @@ tags:
 colorID: 2
 position: -573,-1011
 ---
+<<visit Zero_Distraction>>
 You: Room Mate, peux-tu désactiver tous les messages entrants. Je dois rester concentré pour travailler.
 RoomMate: Entendu, je place votre chambre en mode "Immersion Studieuse".
 Votre IA ne fait pas les choses à moitié. Elle vous choisit un musique d'ambiance discrète et sympathique.

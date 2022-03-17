@@ -1,4 +1,4 @@
-# gauges: sleep food stress
+# gauges: learning sleep food mentalLoad stress
 
 title: Start
 tags: 
@@ -7,7 +7,13 @@ position: -2835,-498
 ---
 << fadeIn 1 >>
 << setBackground bedroom >>
+<< setGauge learning 100 >>
+<< setGauge sleep 100 >>
+<< setGauge food 100 >>
+<< setGauge mentalLoad 0 >>
+<< setGauge stress 0 >>
 << fadeOut >>
+<< showGauges learning sleep food mentalLoad >>
 
 Bip ! Bip ! Votre horloge connectée vous surprend en plein milieu d'un rêve merveilleux. Vous étiez attablé à un large plateau oblong, vous riiez. Vous étiez entouré de vos confrères et consoeurs : les 4 sages ! Vous aviez rejoint leur assemblée ! Vous étiez devenu un expert de la métacognition !...
 Hélas, ce ne sera pas pour aujourd'hui. Ce matin, vous devez réviser. Nous sommes jeudi, la semaine de partiels ne s'est pas achevée. Vous devez passer encore un examen cet après-midi. La GRH : la Gestion des Ressources Hybrides. C'est-à-dire les forces vives : biologiques, numériques, et biologinumériques...

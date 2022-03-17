@@ -81,6 +81,7 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     this._container.interactive = true;
     const margin = 15;
     this._on(this._container, "pointerover", () => {
+      let tooltipX = this._center.x;
       this._tooltip = this.makeText(
         `${gaugesNames[this.name]}\n${this._value} %`,
         {
@@ -91,13 +92,17 @@ export class Gauge extends extension.ExtendedCompositeEntity {
         },
         (it) => {
           it.anchor.set(0.5, 0);
-          it.position.set(this._center.x, (2 * this._radius) + 50);
+          
+          const tooltipCurrentPos = this._position.x + this._radius - (it.width/2) - margin;
+          if(tooltipCurrentPos < 10)
+            tooltipX += 10 - tooltipCurrentPos;
+          it.position.set(tooltipX, (2 * this._radius) + 50);
         }
       );
       this._tooltipBg = new PIXI.Graphics();
       this._tooltipBg.beginFill(0x373737, 0.7);
       this._tooltipBg.drawRoundedRect(
-        this._center.x - (this._tooltip.width/2) - margin, this._tooltip.position.y - margin,
+        tooltipX - (this._tooltip.width/2) - margin, this._tooltip.position.y - margin,
         this._tooltip.width + (margin*2), this._tooltip.height + (margin*2),
         30
       );

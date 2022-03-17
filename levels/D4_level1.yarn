@@ -1,3 +1,5 @@
+# gauges: learning sleep food mentalLoad
+
 title: Start
 tags:
 colorID: 8
@@ -5,6 +7,10 @@ position: -1863,65
 ---
 << fadeIn 1 >>
 << setBackground bedroom >>
+<< setGauge learning 80 >>
+<< setGauge sleep 100 >>
+<< setGauge food 100 >>
+<< setGauge mentalLoad 0 >>
 << fadeOut >>
 
 Après vous êtes réveillé en douceur... Vous prenez votre petit déjeuner tranquillement. Une boîte de biocookies et un thé décaféiné, rien de tel pour commencer une nouvelle journée. Vous débarrassez la cuisine, vous faites votre toilette, vous préparez vos affaires pour aller à la bibliothèque, quand votre palmphone vibre : c'est Fred!
@@ -164,7 +170,7 @@ Fred_sad: Dis donc, c'est vraiment pas top ta boule immersive...
 
 // augmente la concentration = charge mentale mais pas trouvé d'effet utile concret?? Une idée? 
 // Dans le level2 ça permettra de parler sans problème avec Fred!
-// Option " Reprendre le travail " moved to the end of this node
+
 ->  Reprendre le travail 
     <<jump Liste_taches>>
 ===
@@ -345,7 +351,6 @@ Fred_smiling: J'ai fait un effort. J'ai écrit des vraies phrases.
 En effet, c'est mieux, mais ça reste laconique. On dirait plus des diapositives de présentation qu'une argumentation ou un mémoire. Et les sources et les références ne sont pas correctement indiquées.   
 <<advanceTime 3:00>>
 
-// Option "Et maintenant, que faire? " moved to the end of this node
 -> Et maintenant, que faire? 
     <<jump Liste_taches>>
 ===
@@ -541,8 +546,11 @@ tags: noUi
 colorID: 0
 position: -1002,1672
 ---
-<< hide UI>>
-Flash!!!
+<< fx Warp >>
+<< fadeIn 200 0xFFFFFF >>
+<< setBackground bedroom night >>
+<< fadeOut 200 >>
+
 Vous voilà encore dans cette parenthèse de douce pénombre maternelle... ou astrale... Qui sait... En tout cas, vous êtes au calme, seul avec vous-même. Ou presque. Vous avez un compagnon qui ne vous quitte jamais : votre journal mental. Ce magnifique "carnet d'ingénieur tout-terrain". 
 Qu'allez-vous notez dedans cette fois ?
 ===
