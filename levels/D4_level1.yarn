@@ -1,5 +1,5 @@
 title: Start
-tags: bg|bedroom
+tags:
 colorID: 8
 position: -1863,65
 ---
@@ -58,7 +58,7 @@ Fred_smiling: Je t'écoute.
     <<jump Liste_taches>>
 ===
 title: Bibli_binome
-tags: bg|class
+tags:
 colorID: 0
 position: -795,107
 ---
@@ -541,7 +541,7 @@ colorID: 0
 position: -1039,-48
 ---
 << fadeIn >>
-//<< setBackground sport >> // Image chez Fred ?
+<< setBackground bedroom_fred >>
 << fadeOut >>
 
 Fred vous fait entrer à la première sonnerie. 

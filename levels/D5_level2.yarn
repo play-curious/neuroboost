@@ -248,7 +248,7 @@ colorID: 0
 position: -2094,66
 ---
 << fadeIn >>
-<< setBackground class >>
+<< setBackground door class >>
 << fadeOut >>
 
 Vous retrouvez devant l'entrée de la salle de classe, Fred. Ce dernier vous regarde avec perplexité.
@@ -360,6 +360,10 @@ tags:
 colorID: 0
 position: -1148,91
 ---
+<< fadeIn >>
+<< setBackground class >>
+<< fadeOut >>
+
 Vous vous asseyez devant votre pupitre. Vous êtes anxieux. Vous devez le réussir cet examen cette fois. Le sujet s'affiche à l'écran: [b]La loi de Murphy dans la GRH[/b]...
 
 << if getGauge("stress") <= 20 or getGauge("learning") <= 20 >>
@@ -376,6 +380,10 @@ tags:
 colorID: 0
 position: -1152,340
 ---
+<< fadeIn >>
+<< setBackground door class >>
+<< fadeOut >>
+
 Vous retrouvez dehors Fred. Il vous fixe d'un air ahuri.
 Fred_excited: Damned de damned ! On dirait que tu as dévoré un crocodile.
 You: Ouais.
@@ -509,6 +517,10 @@ tags:
 colorID: 2
 position: -868,256
 ---
+<< fadeIn >>
+<< setBackground circle >>
+<< fadeOut >>
+
 C'est raté ! Vous n'avez pas suivi les instructions et les conseils des Sages. Vous avez encore échoué à votre épreuve. Tant pis pour vous, vous allez devoir revivre à nouveau cette journée infernale !
 Cessez d'être le jouet de vos émotions et vos peurs ! Soyez lucide et présent !
 

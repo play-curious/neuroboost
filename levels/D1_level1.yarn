@@ -383,10 +383,9 @@ Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute 
     <<jump Assemblee_Sages>>
 ===
 title: Tenter_rester_chambre
-tags: show|temde noUi
+tags: noUi
 position: -719.885986328125,901.3107299804688
 ---
-<< setBackground bedroom night >>
 You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !!
 Temde_thinking: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
 
@@ -514,8 +513,6 @@ title: Routinisation
 tags: noUi
 position: 243.36883544921875,1410.058349609375
 ---
-<< empty >>
-<< setBackground circle >>
 Sapiens_thinking: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
 Ledai_explaining: Il faut surtout pratiquer ! Répéter et répéter et encore répéter ! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement.
 Azul_happy: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis pas la maîtriser.

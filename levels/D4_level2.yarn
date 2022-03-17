@@ -1,5 +1,5 @@
 title: Start
-tags: bg|bedroom
+tags:
 position: -2504.752685546875,43.17276573181152
 colorID: 8
 ---
@@ -166,10 +166,12 @@ Fred_smiling: C'est vrai.
     <<jump Liste_taches>>
 ===
 title: Lunch_bibli
-tags: bg|class
+tags:
 colorID: 0
 position: -1167.3054809570312,1321.2256164550781
 ---
+// Fond cafette 
+
 Vous êtes content de commander un lunch à la bibliothèque. C'est jour de relâche, vous commandez un Burger Big Protéine Double Cheese. C'est pas équilibré mais vous avez assez d'effort à faire par ailleurs. 
 
 << addToGauge food ?? >>
@@ -211,6 +213,10 @@ tags:
 colorID: 0
 position: -2066.117431640625,-90.2164535522461
 ---
+<< fadeIn >>
+<< setBackground librairy >>
+<< fadeOut >>
+
 Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez. Vous y ajoutez un paramètre. Et toutes les dix minutes, votre palmphone renvoie votre texto à Fred. Vous espérez ainsi le forcer à vous retrouver. Le temps passe, les minutes et les heures s'écoulent. Mais que fait donc Fred ? Le voilà enfin.
 
 << advanceTime 8:00 13:00 >>
