@@ -1,4 +1,4 @@
-#gauges: sleep food
+#gauges: learning sleep food
 
 title: Start
 tags: 
@@ -6,6 +6,8 @@ position: -1523.9072265625,-40.47624206542969
 colorID: 8
 ---
 << empty >>
+<< addToGauge learning 100 >>
+<< showGauges learning >>
 << setBackground door class-screen >>
 << setTime 18:15 >>
 << music Neutral >>
@@ -62,7 +64,6 @@ tags:
 position: -1075.3348388671875,-37.09675598144531
 ---
 << setBackground party >>
-<< showGauges food sleep >>
 << setGauge sleep 100 >>
 << setGauge food 80 >>
 << setTime 20:00 >>
