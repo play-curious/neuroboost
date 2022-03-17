@@ -88,6 +88,8 @@ Fred_smiling: Tu pars déjà, lâcheur ?
 You: J'en peux plus. Et je dois m'y mettre.
 Fred_sad: Lâcheur...
 
+<< hide>>
+
 -> Retourner dans votre chambre 
     << fadeIn >>
     <<jump Liste_Taches>>
