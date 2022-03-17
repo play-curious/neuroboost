@@ -186,6 +186,7 @@ tags:
 colorID: 0
 position: -507,380
 ---
+<< hide >>
 << fadeIn >>
 << setBackground cafeteria >>
 << fadeOut >>
@@ -201,6 +202,7 @@ Vous êtes content de voir que vos efforts payent. C'est dommage que Fred ne sui
 << advanceTime 1:00 >>
 Le temps de faire un petit tour aux toilettes, vous retrouvez Fred en train de jouer avec un étudiant sur une Nanontedo à GTR 66 ! 
 
+<< show fred >>
 You: Plus tard, Fred, on y retourne. 
 Fred_smiling: Yes, yes, attends 5 minutes encore.
 You: Non Fred !
