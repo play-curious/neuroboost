@@ -1,3 +1,5 @@
+# gauges: learning sleep food mentalLoad
+
 title: Start
 tags: 
 colorID: 0
@@ -161,6 +163,16 @@ tags: subchoice
 
 -> Binger votre série TV préférée#once
     <<jump BingeTV>>
+-> back
+    <<jump Liste_Taches>>
+===
+title: cuisine_subchoice_am
+tags: subchoice
+---
+<< setBackground bedroom kitchen >>
+
+-> Casser la croûte#once
+    <<jump Lunch>>
 -> back
     <<jump Liste_Taches>>
 ===
