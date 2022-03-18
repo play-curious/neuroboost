@@ -2,33 +2,39 @@
 
 title: Start
 tags: 
+position: -3225.656982421875,-730.2088012695312
 colorID: 8
-position: -2835,-498
 ---
 << fadeIn 1 >>
+<< hideGauges stress >>
 << setBackground bedroom >>
 << setGauge learning 100 >>
 << setGauge sleep 100 >>
 << setGauge food 100 >>
 << setGauge mentalLoad 0 >>
 << setGauge stress 0 >>
+<< loopFX Chime_LOOP 2000 >>
 << fadeOut >>
-<< showGauges learning sleep food mentalLoad >>
 
 Bip ! Bip ! Votre horloge connectée vous surprend en plein milieu d'un rêve merveilleux. Vous étiez attablé à un large plateau oblong, vous riiez. Vous étiez entouré de vos confrères et consoeurs : les 4 sages ! Vous aviez rejoint leur assemblée ! Vous étiez devenu un expert de la métacognition !...
+<< stopFX Chime_LOOP >>
+
 Hélas, ce ne sera pas pour aujourd'hui. Ce matin, vous devez réviser. Nous sommes jeudi, la semaine de partiels ne s'est pas achevée. Vous devez passer encore un examen cet après-midi. La GRH : la Gestion des Ressources Hybrides. C'est-à-dire les forces vives : biologiques, numériques, et biologinumériques...
 
+<< loopFX PhoneRing_LOOP 5000 >>
 Ronronron... Votre palmphone vibre. Pour la première fois de la semaine, ce n'est pas Fred, mais votre grand-mère. Qu'est-ce qui lui prend de vous appeler à cette heure-ci ?
 
--> Prendre l'appel 
+-> Prendre l'appel
+    << stopFX PhoneRing_LOOP >>
     <<jump Appel_Mamie>>
 -> Rejeter l'appel 
+    << stopFX PhoneRing_LOOP >>
     <<jump Rejet_Mamie>>
 ===
 title: Liste_Taches
 tags: 
+position: -2542.83056640625,-729.0065307617188
 colorID: 1
-position: -2103,-617
 ---
 << setBackground bedroom >>
 << fadeOut >>
@@ -50,12 +56,10 @@ C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
 -> Appeler Fred#once
     <<jump Fred_Call>>
 << endif>>
-
 ===
 title: Appel_Mamie
 tags: 
-colorID: 0
-position: -2531,-441
+position: -2765.9404296875,-727.8461608886719
 ---
 You: Bonjour mamie ! Pourquoi je ne te vois pas ?
 Mamie@holo_shadow: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir...
@@ -68,7 +72,8 @@ Mamie@holo_shadow: Ah... Bien sûr...
 You: Quoi ?
 Mamie@holo_shadow: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux... 
 You: Ton coeur ?! Mamie...
-Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire ! 
+Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire !
+<< hide >> 
 Du coup, votre aïeule coupe court à la conversation. Vous n'en saurez pas plus. Quel choc !! 
 Votre grand-mère à l'hôpital, la connaissant dure comme du béton armé, c'est du sérieux. Vraiment, ça craint...
 Il y a des journées comme celle-ci qu'on préférerais zapper... Du coup, vous ne savez plus du tout par quoi vous allez commencer... 
@@ -80,21 +85,20 @@ Il y a des journées comme celle-ci qu'on préférerais zapper... Du coup, vous 
 ===
 title: Rejet_Mamie
 tags: 
-colorID: 0
-position: -2511,-712
+position: -2994.54052734375,-829.4703369140625
 ---
 Ce n'est pas une heure pour appeler ses enfants ! Vous pourriez être en cours ou en examen ! Vraiment, les grands-parents, il faut leur imposer une mise à jour du manuel du savoir-vivre !...
+
+<< loopFX PhoneRing_LOOP 5000 >>
 Votre palmphone s'ébroue de nouveau ! C'est encore votre grand-mère ! Elle insiste, ce n'est pas son genre. En général, elle laisse un message sur votre répondeur. C'est peut-être sérieux...
 
 -> Prendre l'appel 
+    << stopFX PhoneRing_LOOP >>
     <<jump Appel_Mamie>>
--> Rejeter l'appel 
-    <<jump Rejet_Mamie>>
 ===
 title: Breakfast
 tags: 
-colorID: 0
-position: -1962,-316
+position: -2317.142822265625,-611.0417175292969
 ---
 << fadeIn >>
 << setBackground bedroom kitchen >>
@@ -108,10 +112,8 @@ C'est vraiment pas yum yum ce matin... Votre muesli à la crème n'a pas de goû
 ===
 title: Maman_Call
 tags: 
-colorID: 0
-position: -1710,-324
+position: -2316.4747314453125,-392.2966613769531
 ---
-
 Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous appuyez sur le bouton "appel". Votre mère décroche :
 
 Maman@holo_shadow: Bibi. Tu es au courant ?
@@ -124,15 +126,14 @@ Maman@holo_shadow: Bibi, je ne pensais pas te...
 You: J'ai compris. Bye !
 Vous raccrochez, encore plus énervé. Cette histoire sent de plus en plus mauvais...
 << addToGauge stress 10 >>
-<<advanceTime 0:20>>
+<<advanceTime 0:15>>
 
 -> Il faut se ressaisir et agir 
     <<jump Liste_Taches>>
 ===
 title: Rappel_libre
 tags: 
-colorID: 0
-position: -1423,-343
+position: -2316.32080078125,-826.5406799316406
 ---
 << fadeIn >>
 << setBackground bedroom desk >>
@@ -149,28 +150,26 @@ Vous tentez régulièrement de revenir à votre matière à réviser, à relire 
 ===
 title: Web_Info
 tags: 
-colorID: 0
-position: -1108,-345
+position: -2315.4857177734375,-1041.6263732910156
 ---
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
 
 Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches. 
-Vous passez les deux heures suivantes à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations. 
+Vous passez l'heures suivante à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations. 
 Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes...
 Vous vous demandez si c'était une si bonne idée de vouloir s'informer tout seul sur un sujet aussi sensible...
 
 << addToGauge stress 20 >>
-<<advanceTime 2:00>>
+<<advanceTime 1:00>>
 
 -> Et maintenant, que faire? 
     <<jump Liste_Taches>>
 ===
 title: Fred_Call
 tags: 
-colorID: 0
-position: -826,-398
+position: -2314.8681030273438,-1255.8064575195312
 ---
 Vous parcourez le journal d'appel de votre palmphone, vous y trouvez facilement son numéro et vous l'appeler.
 Fred@holo_excited: Hey ! C'est toi qui m'appelles for once !
@@ -192,8 +191,8 @@ Fred@holo_excited: Si, follow me...
 ===
 title: Lunch
 tags: 
+position: -2317.072509765625,-176.1736297607422
 colorID: 1
-position: -2328,-127
 ---
 << fadeIn >>
 << setBackground bedroom kitchen >>
@@ -207,8 +206,7 @@ Le temps que votre plat réchauffe, vous videz une canette de Xeno Cola ! Cinq b
 ===
 title: Sport_Stress
 tags: 
-colorID: 0
-position: -554,-240
+position: -2089.3095703125,-1152.4438781738281
 ---
 << fadeIn >>
 << setBackground sport >>
@@ -242,16 +240,15 @@ Hélas, cet exercice de frappe intense ne semble pas avoir évacué votre angois
     <<jump Liste_Taches>>
 ===
 title: NoMove_Stress
-tags:
-colorID: 0
-position: -593,-581
+tags: 
+position: -2090.0635375976562,-1362.3141479492188
 ---
 You: Nan... Je crois pas... Je vais 
 Fred@holo_excited: Au contraire, faut que tu penses à autre chose !
 You: Pas envie...
 Fred@holo_happy: D'accord, alors on joue en ligne !
 You: Naan
-Fred@holo_smiling: Attention, je te défie à Call of Study ! Tout le METAVERSE le saura !
+Fred@holo_smiling: Attention, je te défie à Crawl of Study ! Tout le METAVERSE le saura !
 You: Tu fais chier, Fred...
 Fred@holo_smiling: C'est pour ça que je suis ton pote... ah ah...
 Vous grognez et vous pestez, cependant, vous lancez le serveur GameStream. Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred. Son skin est aujourd'hui fuschia et orange fluo, c'est vraiment laid. 
@@ -268,8 +265,7 @@ Vous êtes aussi énervé après deux bonnes heures de jeu qu'avant.
 ===
 title: Salle_Examen
 tags: 
-colorID: 0
-position: -2091,70
+position: -2093.731689453125,-175.86810302734375
 ---
 << fadeIn >>
 << setBackground door class >>
@@ -296,8 +292,7 @@ You: Attends...
 ===
 title: Maman_blabla
 tags: 
-colorID: 0
-position: -1799,-1
+position: -1867.2967529296875,-290.57797050476074
 ---
 Vous collez le combiné à votre oreille:
 You: Maman ?
@@ -332,8 +327,7 @@ Fred_surprised: Pardon ?
 ===
 title: Maman_message
 tags: 
-colorID: 0
-position: -1813,229
+position: -1867.6373291015625,-74.23734378814697
 ---
 Vous balayez du doigt l'appel. 
 Fred_surprised: Mais qu'est-ce qui se passe ?
@@ -352,8 +346,7 @@ You: Heu...
 ===
 title: Fred_implorer
 tags: 
-colorID: 0
-position: -1478,261
+position: -1641.912109375,-72.28788757324219
 ---
 Fred_happy: Dis-moi.
 You: Puisque tu veux savoir...
@@ -367,8 +360,7 @@ Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver 
 ===
 title: Fred_silence
 tags: 
-colorID: 0
-position: -1459,-15
+position: -1642.03515625,-290.9186429977417
 ---
 Fred_happy: Dis-moi.
 You: Rien.
@@ -384,8 +376,7 @@ L'horloge automatique sonne! Il est l'heure d'entrer dans la salle. L'examen va 
 ===
 title: Examen
 tags: 
-colorID: 0
-position: -1140,98
+position: -1418.6505126953125,-180.65052032470703
 ---
 << fadeIn >>
 << setBackground class >>
@@ -401,8 +392,7 @@ Les quatre heures passent dans un espace-temps indéterminé. Vous validez sans 
 ===
 title: Resultats_bad
 tags: 
-colorID: 0
-position: -1146,346
+position: -1192.441650390625,-181.25050354003906
 ---
 << fadeIn >>
 << setBackground door class >>
@@ -424,8 +414,8 @@ Et alors ? Vous auriez eu A tous les deux, ce n'est pas ça qui ferait sortir vo
 ===
 title: Bedroom_night
 tags: 
+position: -967.5899658203125,-181.2113037109375
 colorID: 1
-position: -2775,414
 ---
 << fadeIn >>
 << setBackground bedroom night >>
@@ -442,8 +432,7 @@ Votre corps et votre instinct vous dit qu'il faut trouver le sommeil. Vous vous 
 ===
 title: Zero_Distraction
 tags: 
-colorID: 0
-position: -2405,533
+position: -515.970947265625,-294.2797546386719
 ---
 Vous demandez à votre IA locale de basculer en mode Zéro-Distraction. Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même. 
 Cependant, cette solitude ne vous renforce pas, elle vous met seul, face à vos idées noires. Vous continuez à tourber en boucle les mêmes pensées dramatiques. Impossible de trouver le sommeil. 
@@ -454,8 +443,7 @@ Vous demandez à votre IA de rebasculer en mode normal. Il faut essayer autre ch
 ===
 title: Choix_night
 tags: 
-colorID: 0
-position: -2405,261
+position: -742.7636108398438,-181.77914428710938
 ---
 Vous examinez votre palmphone: aucun appel ou message. Ce silence est angoissant. Comment parviendrez-vous à vous endormir?
 
@@ -470,19 +458,20 @@ Vous examinez votre palmphone: aucun appel ou message. Ce silence est angoissant
 ===
 title: Maman_callnight
 tags: 
-colorID: 0
-position: -2052,519
+position: -516.8872985839844,-64.96220397949219
 ---
 Vous rappelez votre mère. Une fois... Deux fois... Elle ne répond pas. Vous lui laissez un message confus et maladroit avant de raccrocher. Pourquoi donc, elle ne décroche pas ? ... 
 Serait-elle à l'hôpital avec votre grand-mère ? Elle ne peut pas vous répondre, ou elle ne veut pas vous répondre ?... Que se passe-t-il ? Comment se porte votre grand-mère ?...
 
 << addToGauge sleep 10>>
 << addToGauge stress 20>>
+
+-> Essayer autre chose
+    <<jump Choix_night>>
 ===
 title: Rien
 tags: 
-colorID: 0
-position: -1421,606
+position: -518.512939453125,-517.6847839355469
 ---
 Vous broyez du noir dans le silence et l'obscurité relative de votre chambre connectée. Vous ne pouvez pas vous empêchez de fixer les différents curseurs lumineux qui scintillent ou clignotent dans la pièce. 
 Vos paupières sont lourdes, elles refusent néanmoins de se refermer... Les minutes, les heures passent... Puis... le décompte du temps vous échappe... Quand...
@@ -498,20 +487,18 @@ Ledai_happy: Allez...
 ===
 title: Sieste_dontwork
 tags: 
-colorID: 0
-position: -1734,508
+position: -517.4120788574219,154.08353424072266
 ---
 La sieste est une technique efficace quand on éprouve une fatigue importante et relativement saine. En revanche, si le corps ou le mental est perturbé ou malade, ça ne marche pas... Vous avez beau fermer les yeux, rien ne se passe. 
 Vos idées noires continuent de vous hanter.
 
-// Option "Essayer autre chose" moved to the end of this node
 -> Essayer autre chose
     <<jump Choix_night>>
 ===
 title: Assemblee_Sages
 tags: noUi
+position: -296.3774108886719,-523.0119018554688
 colorID: 1
-position: -2849,698
 ---
 << fadeIn >>
 << setBackground circle >>
@@ -536,8 +523,7 @@ Sapiens_angry: Tss... Quel manque de confiance dans note sagesse et notre expert
 ===
 title: LeStress
 tags:  noUi
-colorID: 0
-position: -2497,778
+position: -76.09030151367188,-524.0838012695312
 ---
 Sapiens_thinking: Tu t'égares. L'émotion t'empêche de raisonner froidement. 
 Azul_sad: Tu es stressé, énervé, angoissé, déboussolé.
@@ -554,8 +540,7 @@ Azul_sad: Calme-toi et écoute. Fais-nous confiance
 ===
 title: Frustration
 tags:  noUi
-colorID: 0
-position: -2241,797
+position: 139.20672988891602,-521.7066955566406
 ---
 You: J'écoute...
 Azul_happy: C'est normal et c'est bien que tu penses à elle. La médecine a fait tout ce qu'elle pouvait pour l'aider. Tes pensées et celles de tes parents sont à son chevet. Maintenant, c'est à ta grand-mère de faire le reste du chemin. Seule. Tu n'as aucune prise sur cet événement. 
@@ -576,8 +561,7 @@ Azul_happy: Arrête de voir les choses en noir. Tu verras bien.
 ===
 title: Stress_cognition
 tags:  noUi
-colorID: 0
-position: -1890,847
+position: 355.3255420923233,-521.4594421386719
 ---
 Sapiens_thinking: Le stress est un carburant utile dans les situations de péril et de danger immédiat. Il permet de réagir vite et intensément. Toutefois, quand, comme toi, on se retrouve dans une configuration où l'on a aucune prise possible sur les paramètres et les variables... 
 Sapiens_thinking: Cela devient insupportable. Tout ce carburant, cette énergie se retourne contre nous. Puisqu'on ne peut la brûler en agissant concrètement, elle nous consume de l'intérieur.
@@ -597,8 +581,7 @@ You: Et comment faire pour combattre le stress ?
 ===
 title: Destress
 tags:  noUi
-colorID: 0
-position: -1609,900
+position: 572.5399280786514,-522.0587158203125
 ---
 Azul_proud: Réduire la vitesse.
 Ledai_explaining: Ramener ton stress à un niveau suffisamment bas pour qu'il ne t'empêche pas de raisonner.
@@ -617,8 +600,7 @@ Azul_happy: Jouer de la musique, chanter, dessiner, danser avec entrain. Le spor
 ===
 title: Lacher_prise
 tags:  noUi
-colorID: 0
-position: -1289,866
+position: 793.904296875,-520.1957778930664
 ---
 Sapiens_thinking: L'important est que ton engin cérébral évacue cette énergie négative d'une manière et d'une autre.
 Ledai_explaining: Et surtout qu'il arrête d'en produire à nouveau.
@@ -633,8 +615,7 @@ Azul: Comment répondre de manière consciente et sereine à la peur, à l'angoi
 ===
 title: Quizz_Meditation
 tags:  noUi
-colorID: 0
-position: -1238,1170
+position: 1016.406005859375,-521.5471496582031
 ---
 Sapiens_thinking: Je t'ai dit qu'il te faut pratiquer une activé qui mobilise ton attention... immédiate. Azul t'a énuméré quelques exemples d'actions utiles pour réduire le stress. Tu t'en souviens?
 You: Oui.
@@ -647,8 +628,7 @@ Sapiens_happy: Parfait. Alors, pour réduire ton stress, dois-tu:
 ===
 title: Meditation_No
 tags:  noUi
-colorID: 0
-position: -1492,1185
+position: 1234.60498046875,-412.95176696777344
 ---
 Sapiens_angry: Mauvaise réponse ! S'il suffisait d'appuyer sur un bouton pour supprimer le stress, ça se saurait...
 Azul_proud: Ce que veux dire Master Sapiens, c'est que la volonté, la pensée rationnelle n'est pas forcément la mieux à même de combattre les émotions, comme le stress.
@@ -665,8 +645,7 @@ You: Ahhh. D'accord...
 ===
 title: Meditation_Yes
 tags:  noUi
-colorID: 0
-position: -1337,1489
+position: 1235.787353515625,-625.0085754394531
 ---
 Sapiens_happy: Parfait! C'est la méditation en pleine conscience.
 You: Ça veut dire quoi au juste la pleine conscience?
@@ -680,8 +659,7 @@ You: Ouaaah... ça a l'air bien...
 ===
 title: Quizz_sport
 tags:  noUi
-colorID: 0
-position: -1755,1393
+position: 1450.59033203125,-520.900390625
 ---
 Sapiens_thinking: Voyons si tu vas trouver la bonne réponse. Pour réduire ton stress, tu peux également agir de manière physique et tangible.
 
@@ -692,8 +670,7 @@ Sapiens_thinking: Voyons si tu vas trouver la bonne réponse. Pour réduire ton 
 ===
 title: Sport_No
 tags:  noUi
-colorID: 0
-position: -2038,1180
+position: 1664.98046875,-415.6497802734375
 ---
 Sapiens_angry: Choix malheureux et risqué. La boxe peut, certes, aider à se défouler. Il faut également veiller à ce que la boxe ne risque pas d'entretenir ta frustration ou ta colère. 
 You: Pourquoi ?
@@ -707,8 +684,7 @@ You: Ah.
 ===
 title: Sport_Yes
 tags:  noUi
-colorID: 0
-position: -2013,1534
+position: 1666.5789794921875,-631.7974548339844
 ---
 Sapiens_happy: Bien répondu. Il faut également veiller à choisir une activité physique ou sportive qui ne risque pas d'entretenir ta frustration ou ta colère. Ce serait inefficace voire contre-productif.
 Azul_happy: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité calme, qui consomme ton énergie en douceur, te détende. 
@@ -719,8 +695,7 @@ Sapiens_thinking: En conclusion, éviter une activité trop violente, trop agres
 ===
 title: Quizz_Art
 tags:  noUi
-colorID: 0
-position: -2326,1406
+position: 1890.22265625,-521.7122497558594
 ---
 Sapiens_thinking: Dernière question. Pour réduire ton stress, tu peux choisir de pratiquer une activité ludique, créative, artistique...  
 Sapiens_thinking: Qui fait écho à ton angoisse, comme visionner un film mélodramatique ou tragique ? Ou qui détourne ton attention de ton angoisse comme jouer des musiques joyeuses, radieuses, pleines de vie ?
@@ -732,8 +707,7 @@ Sapiens_thinking: Qui fait écho à ton angoisse, comme visionner un film mélod
 ===
 title: Art_No
 tags:  noUi
-colorID: 0
-position: -2553,1159
+position: 2105.76904296875,-416.95750427246094
 ---
 Sapiens_angry: Mauvaise réponse ! Tu n'as pas compris qu'il faut éviter au maximum de maintenir ton mental dans cet environnement négatif et stérile !
 Azul_sad: Ce qu'il veut dire c'est que tu dois te fier à cette règle de bon sens: "lâcher prise".
@@ -754,8 +728,7 @@ Ledai_happy: Oui !
 ===
 title: Art_Yes
 tags:  noUi
-colorID: 0
-position: -2589,1474
+position: 2107.091552734375,-635.6663513183594
 ---
 Sapiens_happy: Bonne réponse ! Il ne faut pas sur-estimer sa capacité à faire face à ses peurs et ses angoisses. Seuls ceux qui ont une maîtrise émotionnelle élevée sont capables de le faire.
 Azul_happy: Oui, il vaut mieux se fier à cette règle de bon sens: "lâcher prise".
@@ -774,8 +747,7 @@ Ledai_happy: Oui !
 ===
 title: Journal_Mental
 tags:  noUi
-colorID: 0
-position: -2880,1290
+position: 2327.053466796875,-530.3265838623047
 ---
 Flash!!! 
 Vous êtes de nouveau transporté dans cette bulle de pénombre, de calme et de sérénité. Serait-ce un lieu dédié à ce que le sage Azul nomme le "lâcher prise". Vous contemplez votre "carnet d'ingénieur tout-terrain". Est-il garanti stressproof, anti idées noires ?...
