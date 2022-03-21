@@ -335,9 +335,12 @@ position: -21,-367
 << fadeOut >>
 
 << if !visited("Redaction_Note") >>
-Vous vous retroussez les manches et vous recommencez ce travail fastidieux mais indispensable pour décrocher une bonne note... Mettre au propre cette note de synthèse. Cela vous demande une attention, une concentration et une motivation inimaginable. Comment ont fait les Sages pour arriver à ce rang si convoité d'expert en métacognition, dites-vous. 
+Vous vous retroussez les manches et vous recommencez ce travail fastidieux mais indispensable pour décrocher une bonne note... Mettre au propre cette note de synthèse. Cela vous demande une attention, une concentration et une motivation inimaginable. 
+Comment ont fait les Sages pour arriver à ce rang si convoité d'expert en métacognition, dites-vous. 
 << addToGauge learning 30 >>
+<< advanceTime 2:00 >>
 << visit Redaction_Note >>
+
 << elseif !visited("Zero_Distraction") >>
 Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cette note de synthèse avant la deadline...
 
@@ -348,13 +351,14 @@ Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cett
 Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
 -> Prendre l'appel
     <<jump Fred_again>>
+
 << else >>
 Vous inspirez un bon coup et vous vous y remettez. Sauf que, vu que vous n'êtes dérangé par aucun bip bip, aucune notification, que la musique est sympa, que votre camarade virtuel vous semble lui aussi sympa... Hé ben, ça vient beaucoup plus facilement.
 Vous êtes vous même surpris par la rapidité avec laquelle vous enchaînez les mots, les lignes, les paragraphes, les pages... Ces Sages, ce ne sont pas des savants, mais des magiciens, des enchanteurs... 
 Cette fois, vous êtes certain de terminer votre note de synthèse avant minuit, et même avant...
 
 << advanceTime 3:00 >>
-<< addToGauge 70 >>
+<< addToGauge learning 70 >>
 <<endif>>
 
 <<jump Liste_Taches>>
