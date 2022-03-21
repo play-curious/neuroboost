@@ -10,7 +10,7 @@ position: -941,-697
 << setGauge sleep 100 >>
 << setGauge food 100 >>
 << setGauge mentalLoad 0 >>
-<< showGauges learning sleep food mentalLoad >>
+<< showGauges >>
 << setBackground bedroom >>
 << setTime 8:00 2 >>
 << fadeOut >>

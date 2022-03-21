@@ -176,9 +176,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
-    const noName = gaugesName.length === 0;
-    for (const gaugeName in this._gauges) {
-      if (noName && gaugesName.includes(gaugeName)) gaugesName.push(gaugeName);
+    if(gaugesName.length === 0){
+      for (const gaugeName in this._gauges) {
+        gaugesName.push(gaugeName);
+      }
     }
     console.log(gaugesName);
     let i = 0;
