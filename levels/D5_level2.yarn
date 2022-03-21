@@ -22,7 +22,7 @@ colorID: 1
 << fadeOut >>
 
 Que voulez-vous faire?
-<< if $time >= 810 >>
+<< if isTimeOver("12:00") >>
 C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
 -> Manger
     <<jump Lunch>>

@@ -6,11 +6,11 @@ position: -3225.656982421875,-730.2088012695312
 colorID: 8
 ---
 << fadeIn 1 >>
-<< hideGauges stress >>
+<< showGauges learning sleep food mentalLoad >>
 << setBackground bedroom >>
-<< setGauge learning 100 >>
+<< setGauge learning 20 >>
 << setGauge sleep 100 >>
-<< setGauge food 100 >>
+<< setGauge food 30 >>
 << setGauge mentalLoad 0 >>
 << setGauge stress 0 >>
 << loopFX Chime_LOOP 2000 >>
@@ -40,7 +40,7 @@ colorID: 1
 << fadeOut >>
 
 Que voulez-vous faire?
-<< if $time >= 810 >>
+<< if isTimeOver("12:00") >>
 C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
 -> Manger
     <<jump Lunch>>
@@ -78,6 +78,7 @@ Du coup, votre aïeule coupe court à la conversation. Vous n'en saurez pas plus
 Votre grand-mère à l'hôpital, la connaissant dure comme du béton armé, c'est du sérieux. Vraiment, ça craint...
 Il y a des journées comme celle-ci qu'on préférerais zapper... Du coup, vous ne savez plus du tout par quoi vous allez commencer... 
 << addToGauge stress 40 >>
+<< addToGauge mentalLoad 50 >>
 << setTime: 8:30 >>
 
 -> Pourtant, il faut choisir 
