@@ -64,7 +64,7 @@ colorID: 0
 position: -27,-778
 ---
 << fadeIn >>
-<< setBackground sport >>
+<< setBackground repetition >>
 << fadeOut >>
 
 Vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit.
@@ -379,7 +379,7 @@ colorID: 0
 position: 335,-186
 ---
 << fadeIn >>
-<< setBackground sport >>
+<< setBackground repetition >>
 << fadeOut >>
 
 Résigné, Vous retrouvez Fred à la salle de gym. En fait, vous vous éclatez tous les deux comme des enfants; cybersprint, electroskate, eBall, eJump...

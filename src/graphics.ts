@@ -141,7 +141,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public setGauge(name: string, value: number) {
-    if (this._gauges.hasOwnProperty(name)) this._gauges[name].resetValue(value);
+    if (this._gauges.hasOwnProperty(name)) {
+      this._gauges[name].resetValue(value);
+    } else {
+      console.error(`Missing gauge: "${name}"`);
+    }
   }
 
   public getUi(): PIXI.Container {
@@ -176,7 +180,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
-    if(gaugesName.length === 0){
+    if (gaugesName.length === 0) {
       for (const gaugeName in this._gauges) {
         gaugesName.push(gaugeName);
       }
