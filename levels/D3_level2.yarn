@@ -284,7 +284,7 @@ colorID: 0
 position: 311,-466
 ---
 << fadeIn >>
-<< setBackground bedroom desk >>
+<< setBackground bedroom detente >>
 << fadeOut >>
 
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber. 
