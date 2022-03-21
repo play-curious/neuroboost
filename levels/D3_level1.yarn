@@ -6,6 +6,11 @@ colorID: 0
 position: -941,-697
 ---
 << fadeIn 1 >>
+<< setGauge learning 0 >>
+<< setGauge sleep 100 >>
+<< setGauge food 100 >>
+<< setGauge mentalLoad 0 >>
+<< showGauges learning sleep food mentalLoad >>
 << setBackground bedroom >>
 << setTime 8:00 2 >>
 << fadeOut >>
@@ -43,11 +48,6 @@ Fred@holo_smiling: Pfuuu. Tu prends trop les choses au sérieux. Alors tu viens 
 
 << hide >>
 << advanceTime 1:00 >>
-
-<< setGauge sleep 100 >>
-<< setGauge food 100 >>
-<< setGauge mentalLoad 0 >>
-<< showGauges >>
 
 -> Rejoindre Fred
     <<jump Salle_Gym>>
@@ -314,16 +314,19 @@ position: -22,-299
 << if visited("Redaction_Note") >>
 Vous vous retroussez les manches et vous attelez à la tâche. Mettre au propre cette note de synthèse, fruit de plusieurs jours de lecture, de prises de notes, de réflexions diverses et variées.
 Vous avez tellement de choses à dire et à coucher sur votre document, vous ne manquez pas d'idées, mais de concentration et productivité.
+<< addToGauge learning 30 >>
 << visit Redaction_Note >>
 << else >>
 Allez, encore une fois, vous respirez un grand coup avant de replonger dans le grand bain. Vous êtes loin d'avoir fini et les heures ne cessent de filer.
 Il faut terminer cette note de synthèse coûte que coûte avant la deadline...
+
+<< addToGauge learning 20 >>
+
 <<endif>>
 
 << advanceTime 1:00 >>
-<< increase $notesynthese +1>>
-// Il faut valider 3 ou 4 sessions pour finir la sythèse. Objectif irréalisable en level1 mais à atteindre en level2 : detail utile pour le rewind...//
 << loopFX PhoneRing_LOOP 5000 >>
+
 Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
 
 -> Prendre l'appel
@@ -482,7 +485,7 @@ position: -184,504
 // Necessary so that Yarn evaluates the variable correctly
 << empty >> 
 
-<< if $ballsJuggled < 6 >>
+<< if $ballsJuggled < 5 >>
 Temde_smiling: Tu vois, tu ne peux pas jongler autant de balles que moi.
 Temde_thinking: Mais, moi aussi, j'ai mes limites. J'ai beau jonglé 6 balles, mais je ne pourrais pas jonger 7, ou 8, ou 12 !  
 Azul_happy: Nous en avons tous des limites...

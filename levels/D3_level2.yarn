@@ -9,7 +9,11 @@ position: -947,-707
 << setBackground bedroom >>
 << setTime 8:00 2 >>
 << fadeOut >>
-
+<< setGauge learning 0 >>
+<< setGauge sleep 100 >>
+<< setGauge food 100 >>
+<< setGauge mentalLoad 0 >>
+<< showGauges >>
 << loopFX Chime_LOOP 2000 >>
 
 Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Vous voilà revenu dans votre chambre. On est à nouveau mercredi matin. Et c'est reparti pour un tour. 
@@ -102,6 +106,11 @@ position: -332,-642
 << setBackground bedroom >>
 << fadeOut >>
 
+<< if getGauge("learning") >= 100 >>
+-> Envoyer la note de synthèse sur le FTP de l'Académie
+    << jump Envoi_Note_Synthese >>
+<< endif >>
+
 <<if !visited("Liste_Taches")>>
 Que faites-vous maintenant ?
 <<visit Liste_Taches>>
@@ -153,7 +162,7 @@ tags: subchoice
     <<jump Chat>>
 -> Débuter la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
--> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction" 
+-> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction"#once
     << jump Zero_Distraction>>
 -> back
     <<jump Liste_Taches>>
@@ -324,22 +333,30 @@ position: -21,-367
 << setBackground bedroom desk >>
 << fadeOut >>
 
-<< if isFirstTime() >>
+<< if !visited("Redaction_Note") >>
 Vous vous retroussez les manches et vous recommencez ce travail fastidieux mais indispensable pour décrocher une bonne note... Mettre au propre cette note de synthèse. Cela vous demande une attention, une concentration et une motivation inimaginable. Comment ont fait les Sages pour arriver à ce rang si convoité d'expert en métacognition, dites-vous. 
-<< else >>
+<< addToGauge learning 30 >>
+<< visit Redaction_Note >>
+<< elseif !visited("Zero_Distraction") >>
 Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cette note de synthèse avant la deadline...
-<<endif>>
 
 << advanceTime 1:00 >>
-<< increase $notesynthese +1>>
-// Il faut valider 3 ou 4 sessions pour finir la sythèse. Objectif irréalisable en level1 mais à atteindre en level2 : detail utile pour le rewind...//
+<< addToGauge learning 20 >>
 << loopFX PhoneRing_LOOP 5000 >>
-Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
 
+Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
 -> Prendre l'appel
     <<jump Fred_again>>
+<< else >>
+Vous inspirez un bon coup et vous vous y remettez. Sauf que, vu que vous n'êtes dérangé par aucun bip bip, aucune notification, que la musique est sympa, que votre camarade virtuel vous semble lui aussi sympa... Hé ben, ça vient beaucoup plus facilement.
+Vous êtes vous même surpris par la rapidité avec laquelle vous enchaînez les mots, les lignes, les paragraphes, les pages... Ces Sages, ce ne sont pas des savants, mais des magiciens, des enchanteurs... 
+Cette fois, vous êtes certain de terminer votre note de synthèse avant minuit, et même avant...
 
-// cette action est encore possible, tant que le joueur n'a pas basculé sa chambre en mode Zero Distraction. Ce qu'il doit faire s'il veut terminer sa journée!
+<< advanceTime 3:00 >>
+<< addToGauge 70 >>
+<<endif>>
+
+<<jump Liste_Taches>>
 ===
 title: Fred_again
 tags: 
@@ -454,46 +471,10 @@ RoomMate: Des simulations dans lesquelles vous voyez travailler un étudiant en 
 You: Parfait ! thème : rédaction de note de synthèse. Ambiance cool. Durée: 60 minutes, intégrant des pauses toutes les 20 minutes.
 L'IA vous affiche alors la vidéo d'un étudiant paisible mais sérieux, qui entame la rédaction de sa composition. C'est incroyable, mais c'est vrai que de voir un camarade virtuel besogner comme vous, sans fléchir... ça vous rassure, ça vous détend, ça vous inspire. 
 
-// effet positif sur la charge mentale
+<< removeFromGauge mentalLoad 20 >>
 
 Et maintenant, comme on dit : "y a plus qu'à"...
-<< jump Liste_Taches_ZeroDistraction >>
-===
-title: Listes_Taches_ZeroDistraction
-tags: 
-colorID: 2
-position: -282,-1012
----
-<<if !visited("Liste_Taches_ZeroDistraction")>>
-Que faites-vous maintenant ?
-<<endif>>
-
-// Matin//
-<< if $time <= 840 >> 
--> Préparer son bureau avant de s'y mettre#once
-    <<jump Ranger>>
--> Rédiger sa note de synthèse
-    << jump Redaction_Note_ZeroDistraction >>
-// temps de le faire deux fois
--> Faire une sieste#once
-    <<jump Sleep>>
-
-// Après Midi//
-<<elseif $time < 1200 >>
--> Continuer la rédaction de la note de synthèse
-    << jump Redaction_Note_ZeroDistraction >>
-// temps de le faire deux fois
--> Faire une sieste#once
-    <<jump Sleep>>
--> Manger#once
-    <<jump Diner>>
-
-// Soirée //
-// <<quand variable $notesynthese >= 4 ou 5, je vous laisse voir combien d'itérations sont possibles >>
--> Envoyer la note de synthèse sur le FTP de l'Académie
-    << jump Envoi_Note_Synthese >>
-
-<<endif>>
+<< jump Liste_Taches >>
 ===
 title: Envoi_Note_Synthese
 tags: 
@@ -506,22 +487,4 @@ Vous daignez prendre encore le temps de faire un vérification syntaxique par vo
 Une bonne chose de faite. Vous pouvez désormais faire ce que vous voulez du reste de votre soirée...
 
 // FIN LEVEL2
-===
-title: Redaction_Note_ZeroDistraction
-tags: 
-colorID: 2
-position: -121,-1260
----
-<< if isFirstTime() >>
-Vous inspirez un bon coup et vous recommencez ce travail qui s'apparente à une corvée. Sauf que, vu que vous n'êtes dérangé par aucun bip bip, aucune notification, que la musique est sympa, que votre camarade virtuel vous semble lui aussi sympa... Hé ben, ça vient beaucoup plus facilement. Vous êtes vous même surpris par la rapidité avec laquelle vous enchaînez les mots, les lignes, les paragraphes, les pages... Ces Sages, ce ne sont pas des savants, mais des magiciens, des enchanteurs... 
-<< else >>
-Allez, une nouvelle session encore, ce n'est pas encore fini. Cette fois, vous êtes certain de terminer votre note de synthèse avant minuit, et même avant...
-<<endif>>
-
-<< advanceTime 1:00 >>
-<< increase $notesynthese +1>>
-
-<< jump Listes_Taches_ZeroDistraction >>
-
-//en mode immersif, Fred ne peut pas non plus déranger le
 ===

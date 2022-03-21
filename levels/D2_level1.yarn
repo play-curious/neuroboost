@@ -539,11 +539,11 @@ Sapiens_thinking: C'est ce que nous allons voir.
 Sapiens_thinking: Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos réserves, on peut continuer à agir, à travailler. On n'a pas besoin de dormir et de recharger les batteries tant qu'elles ne sont pas à plat.
 -> Vrai
     << fx Failure >>
-    Sapiens_angry: Grossière erreur, jeune novice ! On ne stoque pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures !
+    Sapiens_angry: Grossière erreur, jeune novice ! On ne stocke pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures !
     Ledai_explaining: Certes, Master Sapiens, mais laissons une chance à { $name }.
 -> Faux
     << fx Success >>
-    Sapiens_happy: Bravo ! Le sommeil ne se stoque pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain.
+    Sapiens_happy: Bravo ! Le sommeil ne se stocke pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain.
     Ledai_happy: Une autre phrase quiz, Master Sapiens ?
 
 Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
@@ -577,7 +577,7 @@ Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Apr
 
 -> Vrai
     << fx Failure >>
-    Sapiens_angry: Non-sens ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière !
+    Sapiens_angry: Non-sens ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière !
     Azul_sad: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment.
     Sapiens_thinking: Je profite de la remarque d'Azul pour poser une question subsidiaire. Pour recharger ton métabolisme, combien d'heures tu dois dormir chaque jour ?
     -> 8 heures
@@ -586,7 +586,7 @@ Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Apr
         <<jump six_10_heures>>
 -> Faux
     << fx Success >>
-    Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que...
+    Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que...
     Temde_neutral: Non non, on coupe ! Le temps presse !
     Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
     <<jump journal_mental>>!
