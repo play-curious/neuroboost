@@ -84,8 +84,8 @@ Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vo
 
 << stopFX Sports_LOOP >>
 << advanceTime 2:00 >>
-<< addToGauge sleep 30 >>
-<< addToGauge food 30 >>
+<< removeFromGauge sleep 30 >>
+<< removeFromGauge food 30 >>
 << addToGauge mentalLoad 30 >>
 
 Fred_smiling: Tu pars déjà, lâcheur ?
