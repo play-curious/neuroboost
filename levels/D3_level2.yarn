@@ -113,7 +113,6 @@ position: -332,-642
 
 <<if !visited("Liste_Taches")>>
 Que faites-vous maintenant ?
-<<visit Liste_Taches>>
 <<endif>>
 
 << if getGauge("mentalLoad") >= 100 >>
@@ -339,7 +338,6 @@ Vous vous retroussez les manches et vous recommencez ce travail fastidieux mais 
 Comment ont fait les Sages pour arriver à ce rang si convoité d'expert en métacognition, dites-vous. 
 << addToGauge learning 30 >>
 << advanceTime 2:00 >>
-<< visit Redaction_Note >>
 
 << elseif !visited("Zero_Distraction") >>
 Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cette note de synthèse avant la deadline...

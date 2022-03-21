@@ -46,7 +46,6 @@ position: -950.9030456542969,86.7411298751831
 
 << if !visited("Que_Faire") >>
 On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses...
-<< visit Que_Faire >>
 << endif >>
 
 << if getGauge("sleep") >= 50 || getGauge("food") >= 50 >>
