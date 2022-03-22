@@ -1180,7 +1180,7 @@ Vous vous refusez de vous laisser dominer par la colère et la frustration. Vous
 Vous avez besoin de purifier votre esprit, accablé par le doute et l'incompréhension. Vous vous asseyez sur le sol, en position du lotus et vous fermez les yeux. Ah, ça vous fait du bien...
 
 << advanceTime 0:55 >>
-<< visited("Sonner_Chez_Fred") >>
+<< visit Sonner_Chez_Fred >>
 
 -> Vous vous y remettez
     << jump Liste_Taches_DIM >>

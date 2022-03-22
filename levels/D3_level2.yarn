@@ -64,7 +64,7 @@ colorID: 0
 position: -27,-778
 ---
 << fadeIn >>
-<< setBackground sport >>
+<< setBackground repetition >>
 << fadeOut >>
 
 Vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit.
@@ -84,8 +84,8 @@ Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vo
 
 << stopFX Sports_LOOP >>
 << advanceTime 2:00 >>
-<< addToGauge sleep 30 >>
-<< addToGauge food 30 >>
+<< removeFromGauge sleep 30 >>
+<< removeFromGauge food 30 >>
 << addToGauge mentalLoad 30 >>
 
 Fred_smiling: Tu pars déjà, lâcheur ?
@@ -113,7 +113,6 @@ position: -332,-642
 
 <<if !visited("Liste_Taches")>>
 Que faites-vous maintenant ?
-<<visit Liste_Taches>>
 <<endif>>
 
 << if getGauge("mentalLoad") >= 100 >>
@@ -247,7 +246,8 @@ position: -961,-447
 << fadeOut >>
 
 Vous ne savez pas si cette tâche est indispensable. Les Sages n'ont pas été clair à ce sujet. Mais ça ne vous fera pas de mal, jugez-vous.
-Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite le paper print de votre brief, les documents de référence que vous avez déjà en possession. Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document. Vous prenez ensuite plusieurs minutes pour établir un plan de réflexion et de travail. Vous êtes content de vous, ça va vous faciliter le processus de rédaction.
+Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite le paper print de votre brief, les documents de référence que vous avez déjà en possession. Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document. 
+Vous prenez ensuite plusieurs minutes pour établir un plan de réflexion et de travail. Vous êtes content de vous, ça va vous faciliter le processus de rédaction.
 << advanceTime 1:00 >>
 << removeFromGauge mentalLoad 10 >>
 
@@ -334,9 +334,11 @@ position: -21,-367
 << fadeOut >>
 
 << if !visited("Redaction_Note") >>
-Vous vous retroussez les manches et vous recommencez ce travail fastidieux mais indispensable pour décrocher une bonne note... Mettre au propre cette note de synthèse. Cela vous demande une attention, une concentration et une motivation inimaginable. Comment ont fait les Sages pour arriver à ce rang si convoité d'expert en métacognition, dites-vous. 
+Vous vous retroussez les manches et vous recommencez ce travail fastidieux mais indispensable pour décrocher une bonne note... Mettre au propre cette note de synthèse. Cela vous demande une attention, une concentration et une motivation inimaginable. 
+Comment ont fait les Sages pour arriver à ce rang si convoité d'expert en métacognition, dites-vous. 
 << addToGauge learning 30 >>
-<< visit Redaction_Note >>
+<< advanceTime 2:00 >>
+
 << elseif !visited("Zero_Distraction") >>
 Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cette note de synthèse avant la deadline...
 
@@ -347,13 +349,14 @@ Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cett
 Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
 -> Prendre l'appel
     <<jump Fred_again>>
+
 << else >>
 Vous inspirez un bon coup et vous vous y remettez. Sauf que, vu que vous n'êtes dérangé par aucun bip bip, aucune notification, que la musique est sympa, que votre camarade virtuel vous semble lui aussi sympa... Hé ben, ça vient beaucoup plus facilement.
 Vous êtes vous même surpris par la rapidité avec laquelle vous enchaînez les mots, les lignes, les paragraphes, les pages... Ces Sages, ce ne sont pas des savants, mais des magiciens, des enchanteurs... 
 Cette fois, vous êtes certain de terminer votre note de synthèse avant minuit, et même avant...
 
 << advanceTime 3:00 >>
-<< addToGauge 70 >>
+<< addToGauge learning 70 >>
 <<endif>>
 
 <<jump Liste_Taches>>
@@ -379,7 +382,7 @@ colorID: 0
 position: 335,-186
 ---
 << fadeIn >>
-<< setBackground sport >>
+<< setBackground repetition >>
 << fadeOut >>
 
 Résigné, Vous retrouvez Fred à la salle de gym. En fait, vous vous éclatez tous les deux comme des enfants; cybersprint, electroskate, eBall, eJump...
@@ -387,7 +390,7 @@ Le moins que l'on puisse dire, c'est que vous vous donnez à fond. Au final, vou
 
 << advanceTime 2:00 >>
 << addToGauge sleep 30 >>
-<< addToGauge food 30 >>>
+<< addToGauge food 30 >>
 << addToGauge mentalLoad 30 >>
 
 Fred_smiling: Tu pars déjà, tu déclares forfait ?
@@ -405,13 +408,15 @@ colorID: 0
 position: -403,-130
 ---
 << music NegativeSad >>
-Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte. Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...
+Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte. Vous auriez peut-être abusé de votre temps de travail. 
+Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...
 N'empêche, vous sentez votre tête pencher en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. 
 << fadeIn >>
 Vous finissez par céder. Vous sombrez dans le noir...
 
 -> Réveillez-vous ! Il faut recommencer ! 
     << fadeOut >>
+    << clearOnce >>
     << jump Start >>
 ===
 title: Lunch
@@ -469,6 +474,7 @@ RoomMate: Voulez-vous que je projette sur votre screencast un module work-with-m
 You: Ça consiste en quoi ?
 RoomMate: Des simulations dans lesquelles vous voyez travailler un étudiant en 3D ultra High Rez. Il travaille dans une situation correspondant exactement à la vôtre. Vous pouvez choisir le thème, le cadre et la durée, tout ce que vous souhaitez.
 You: Parfait ! thème : rédaction de note de synthèse. Ambiance cool. Durée: 60 minutes, intégrant des pauses toutes les 20 minutes.
+<< hide>>
 L'IA vous affiche alors la vidéo d'un étudiant paisible mais sérieux, qui entame la rédaction de sa composition. C'est incroyable, mais c'est vrai que de voir un camarade virtuel besogner comme vous, sans fléchir... ça vous rassure, ça vous détend, ça vous inspire. 
 
 << removeFromGauge mentalLoad 20 >>

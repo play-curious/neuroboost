@@ -10,7 +10,7 @@ position: -941,-697
 << setGauge sleep 100 >>
 << setGauge food 100 >>
 << setGauge mentalLoad 0 >>
-<< showGauges learning sleep food mentalLoad >>
+<< showGauges >>
 << setBackground bedroom >>
 << setTime 8:00 2 >>
 << fadeOut >>
@@ -104,7 +104,6 @@ position: -328,-637
 
 <<if !visited("Liste_Taches")>>
 Que faites-vous maintenant ?
-<<visit Liste_Taches>>
 <<endif>>
 
 << if getGauge("mentalLoad") >= 100 >>
@@ -315,7 +314,6 @@ position: -22,-299
 Vous vous retroussez les manches et vous attelez à la tâche. Mettre au propre cette note de synthèse, fruit de plusieurs jours de lecture, de prises de notes, de réflexions diverses et variées.
 Vous avez tellement de choses à dire et à coucher sur votre document, vous ne manquez pas d'idées, mais de concentration et productivité.
 << addToGauge learning 30 >>
-<< visit Redaction_Note >>
 << else >>
 Allez, encore une fois, vous respirez un grand coup avant de replonger dans le grand bain. Vous êtes loin d'avoir fini et les heures ne cessent de filer.
 Il faut terminer cette note de synthèse coûte que coûte avant la deadline...

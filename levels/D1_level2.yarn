@@ -91,7 +91,6 @@ position: -895,604
 << if !visited("Action_List") >>
 Que faites-vous maintenant?
 << endif >>
-<< visit Action_List >>
 << if isTimeOver("12:00") >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)
@@ -197,7 +196,6 @@ Ensuite, c'est Dom, puis Lou, puis Cam...
 << if visited("Chat") >>
 <bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi>
 << endif >>
-<< visit Chat >>
 
 << advanceTime 2:00 >>
 
@@ -240,7 +238,6 @@ Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. 
 << if visited("BingeTV") >>
 <bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi>
 << endif >>
-<< visit BingeTV >>
 
 En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait amocher son vaisseau ! Il est obligé d'atterrir en catastrophe sur Tortuga.  Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite.
 

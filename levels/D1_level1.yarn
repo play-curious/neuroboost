@@ -81,7 +81,6 @@ position: -847.2033081054688,-821.7307662963867
 
 << if !visited("Action_List") >>
 Que faites-vous maintenant ?
-<< visit Action_List >>
 << endif >>
 
 << if isTimeOver("12:00") >>

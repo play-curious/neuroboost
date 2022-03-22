@@ -261,7 +261,7 @@ export const functions: Record<string, YarnFunction> = {
   visited(node: string): boolean {
     if (!node) throw new Error("Please give a valid node title in visited()");
     const visited = this.visited.has(node);
-    console.log(node, "visited?", visited);
+    this.visited.add(node);
     return visited;
   },
 
