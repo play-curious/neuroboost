@@ -1,0 +1,1226 @@
+title: Start
+tags: 
+colorID: 8
+position: -4533,-1961
+---
+<< fadeIn 1 >>
+<< setBackground bedroom >>
+<< setTime 10:10>>
+<< fadeOut >>
+
+Vous ouvrez les yeux. Il est déjà 10 heures. C'est à nouveau samedi et vous savez combien votre emploi du temps est chargé. 
+Vous constatez que, si vous n'avez pas perdu le souvenir des jours précédents, les connaissances que vous aviez déjà mémorisées en matière de philosophie quantique ont été comme effacées. C'est un tour de ces sorciers de la métacognition ! C'est vraiment pas sympa ! 
+Pour réussir l'épreuve du Grand Oral, vous devez tout réapprendre !
+
+Néanmoins, vous prenez le temps de commencer ce week-end par un petit-déjeuner copieux : chocolat organique, crêpes au caramel beurré, jus d'oranges organiques compressées. 
+
+<< advanceTime 0:30 >>
+
+C'est alors que, sans surprise, votre palmphone vibre, c'est votre mère. Vous devez lui répondre...
+
+-> Répondre
+    << jump Appel_Maman >>
+===
+title: Liste_Taches_SAM
+tags: 
+colorID: 1
+position: -3620,-1957
+---
+<< if !visited("Liste_Taches_SAM") >>
+Ce repas vous a revivifié. c'est maintenant qu'il faut se remettre à travailler. Sans se disperser ni se surcharger. 
+Que décidez-vous de faire ?
+<< endif >>
+
+<< if isTimeOver("20.00") >>
+Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories.
+<< jump Diner_Sam >>
+<< endif >>
+
+Vous êtes toujours dans votre chambre, un samedi après-midi. Qu'allez-vous entreprendre désormais ?
+
+-> Faire un petit retour sur les réseaux sociaux#once
+    << jump Reseaux_Soc >>
+-> Appeler Fred#once
+    << jump Appel_Fred_JeuVideo >>
+-> Ranger la table du bureau#once
+    << jump Ranger_Bureau >>
+-> Se plonger dans les révisions#once
+    << jump reviser_session1 >>
+-> Faire une pause sieste#once
+    << jump Sieste_Sam >>
+-> Entamer son planning de révision#once
+[[Planning_Samedi]]
+    << jump Planning_Samedi >>
+-> Basculer la chambre en mode immersion studieuse#once
+[[Samedi_Zero_Distraction]]
+    << jump Samedi_Zero_Distraction >>
+===
+title: Appel_Fred_JeuVideo
+tags: 
+colorID: 0
+position: -3399,-1524
+---
+Vous appelez Fred. Il décroche à la première sonnerie:
+Fred@holo_excited: Hello { $name }. Comment va ?
+You: Bof. Je commence à fatiguer.
+Fred: Toi aussi ? Je suis au petit-déjeuner et je suis déjà épuisé.
+You: Arrête tes blagues nulles !
+Fred: Damned ! Tu m'as pas cru. Et ça ne t'a pas fait rire.
+// Il peut être 18h ici, manque de cohérence si l'on a fait tous les autres choix avant. 
+You: Mouais. Y a des jours sans.
+Fred: Tu veux que je te montre les nouveaux features de GTR ?
+You: Tu sais. GTR, c'est pas trop mon truc. Je préfère Crawl of Study.
+Fred: Please...
+You: T'es relou.
+Fred: Please.
+You: N'insiste pas.
+Fred: Ne m'oblige pas à te défier sur l'AlphaMégaRing...
+
+-> prier Fred de ne pas vous défier
+    << jump Duel_GTR >>
+// choix qui devrait être fatal à mon sens, comme les réseaux sociaux
+===
+title: reviser_session1
+tags: Erreur_PasEncoreFatale
+colorID: 0
+position: -3395,-1967
+---
+La philosophie quantique. Pourquoi avez-vous choisi un sujet aussi dense et vaste. Comment allez-vous vous organiser ? Qu'ont-dit les Sages déjà ? Par quoi allez-vous commencer ? Vous n'en savez pas trop. Vous n'avez pas pris le temps d'y réfléchir.
+Tant pis. Vous faites confiance à la méthode du "rappel libre". Vous sortez des stylos de différentes couleurs et plusieurs pages blanches. Vous commencez à notez dessus les titres, les mots-clés, les concepts, les théories, les définitions et les arguments qui vous viennent à l'esprit..
+
+<< advanceTime 1:00 >>
+Pfouu. En effet, il y en a de la matière. Cela vous prend au bas mot une heure pour faire un première passe des thèmes qui vous paraissent essentiels.
+// increase mémorisation
+// increase charge mentale, du genre 40/100 par exemple?
+
+-> Faire une pause
+    << jump Pomodoro_Session2 >>
+===
+title: Reviser_session2
+tags: choix_dieandretry
+colorID: 0
+position: -765,-1544
+---
+// Si c'est le premier clic du joueur. Il révise le thème 3 : le chat de Schrödinger
+Vous rejoignez votre bureau. Vous vous replongez dans vos cours et vos notes.
+Vous abordez cette fois le paradoxe du chat de Schrödinger et la superpositions d'états différents. Ce qui est matériellement impossible.
+Soit, le monde des phénomènes n'est pas la réalité mais seulement ce que nous en percevons. 
+Soit, on admet la coexistence de plusieurs états possibles, la cohabitation de plusieurs univers parallèles, comme le stipule Everett. 
+Vous travaillez sur ce thème de manière studieuse mais détendue. Vous respectez des sessions d'une heure, conformément aux règles de la méthode "pomodoro". Vous réviser dans votre "bulle d'immersion studieuse", déconnecté de tout distracteur, et en compagnie de votre camarade virtuel, proposé par le module vidéo "work with me".
+Enfin. Vous n'oubliez pas de ménager des pauses entre chaque session, en grattant les cordes de votre cycloluth de Feudall. Ce qui vous permet de maintenir une attention utile et soutenue.
+
+// hausse jauge mémorisation efficace mais pas durable comme hier
+<< advanceTime 3:00 >>
+// moins de 4 heures en tout cas!
+
+
+-> Que faire après ?
+    << jump Liste_Taches_DIM >>
+===
+title: Diner_Sam
+tags: 
+colorID: 0
+position: -3396,-1301
+---
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+
+La journée est finie. Il est temps de clore votre samedi par un dîner bien mérité. Vous avez faim et vous avez le temps de vous préparer un petit plat sympa et exotique : des lasagnes vénusiennes. C'est délicieux, riches en nutriments essentiels.
+Vous soufflez un grand coup : vous êtes fatigué. Soudain, quelqu'un sonne à la porte... C'est Fred !
+C'est vrai ! La Fièvre du samedi soir va enflammer votre nuit !
+
+-> Accueillir Fred
+    << jump Fred_Soiree >>
+===
+title: Cafeteria_Samedi
+tags: 
+colorID: 0
+position: -2952,-1303
+---
+Vous l'avez déjà vécu, mais ça fait tellement plaisir de le revivre. On vous applaudit à tout crin. Vous êtes les stars de la soirée. Enfin, c'est surtout vous qu'on admire et qu'on dévore des yeux.
+Maintenant, il va falloir défendre votre réputation.
+
+-> Que faire ?
+    << jump You_Fievre_Samedi_Soir >>
+// juste corrigé le nom du node. C'est samedi, pas vendredi
+===
+title: Lunch_Sam
+tags: 
+colorID: 0
+position: -3844,-1959
+---
+<< advanceTime 0:15 >>
+
+De retour dans votre chambre. Vous n'avez plus qu'une chose en tête : engloutir rapidement quelque chose de copieux !
+
+-> Un burger Big Proteins Double Cheese
+    C'est très rapide à cuisiner, il n'y a plus qu'à le mettre dans le four microwave et une minute plus tard, il est en ressort chaud et croustillant !
+// bouffe rapide mais moins saine = bon effet sur jauge Sleep mais mauvais effet sur jauge Food? 
+//Choix vraiment utile?? 
+
+-> Un plat de nouilles de soja aux légumes
+    Il faut mettre l'eau à bouillir, tremper les pâtes dedans. Et, ensuite, faire sauter les pâtes avec des lamelles de légumes frais finement tranchées.  
+
+// bouffe saine  = bon effet sur jauge Food & Sleep.  Meme question.
+// ON GARDE les deux options de bouffe OU PAS?????
+
+<< setTime 13:00 >>
+<< jump Liste_Taches_SAM >>
+===
+title: Liste_Taches_DIM
+tags: 
+colorID: 1
+position: -512,-1312
+---
+//if first time the player clicks on this node:
+<< if visited("Liste_Taches_DIM") >>
+Vous retournez sur votre bureau. Vous reprenez votre journal Bullet Point. Vous regardez quelles priorités n'ont pas encore été réalisées ce week-end. 
+- Le paradoxe du chat de Schrödinger et les différentes théories qui tentent de le résoudre. 
+- Et la fameuse "décohérence quantique", qui vous a valu ce long retour dans le temps.
+Pas une seconde à perdre, il faut y arriver cette fois !
+<< endif >>
+
+<< if isTimeOver("20:00") >>
+Déjà 20 heures. Vous sentez que votre estomac se rebelle. Il est temps de le remplir.
+<< jump Diner_Dim >>
+<< else>>
+-> Reprendre les révisions#once
+    << jump Reviser_session2 >>
+-> Vous remarquez un message de Fred sur votre palmphone#once
+    << jump Fred_Message >> 
+-> Pause Sieste#once
+    << jump Sieste_Dim >>
+-> Mettre à jour votre planning de révision#once
+[[Planning_Dimanche]]
+    << jump Planning_Dimanche >>
+<< endif>>
+
+//Dans le level2, le joueur aura la possibilité de mettre sa chambre en mode zero distraction.
+===
+title: You_Fievre_Samedi_Soir
+tags: 
+colorID: 0
+position: -2729,-1303
+---
+C'est la fièvre du samedi soir, et vous êtes la star de la soirée. À vous de jouer !
+Vous le savez, vous n'avez qu'à mettre en application la chorégraphie, de votre séance de Jungle Body Beat de ce matin.
+Habité par l'esprit du Jungle Body Beat, vous déchaînez les passions et les mouvements des autres danseurs ! Vous mettez une ambiance de malade à cette soirée à la cafétéria.
+Cette fête porte bien son nom : "la Fièvre du samedi soir". Vous transmettez à toute l'audience votre fièvre du mouvement.
+Votre énergie est miraculeusement virale. Tout le monde se souviendra de votre intervention. Vous êtes le soleil de ce samedi soir de folie, l'astre de la danse et du Body Beat.
+
+Quand vous quittez la piste de danse, un vrombissement sourd s'élève peu à peu et finit par envahir l'atmosphère de toute la salle. Vous êtes la star de la soirée.
+On vous applaudit, on vous acclame, on vous hèle, on vous salue, on vous interpelle. C'est galvanisant ! Vous connaissez leur attente. Ils vous réclament pour un second tour, une autre prouesse, une autre performance...
+
+-> Le solo de Métal !
+    << jump Metal_Jam >>
+===
+title: Reseaux_Soc
+tags: 
+colorID: 0
+position: -3397,-1739
+---
+// Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
+Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est samedi : il n'y a pas grand monde en ligne. Beaucoup sont dehors : avec leurs amis, au cinéma, à faire du shopping, à suer durant leur séance hebdo de muscu.... 
+Heureusement, quelques amis sont bien présents sur le réseau. Loulou vous pinge, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses... Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à votre grand-mère. Cela vous réchauffe encore plus le coeur. Votre grand-mère s'est enfin réveillée, les choses suivent leur cours, et désormais d'autres personnes pensent à elle.
+Vous êtes satisfait. Vous vous êtes offert une récompense. C'est ce que les Sages vous ont dit : ne pas bouder votre plaisir et vos envies.
+Hum hum... La pause "réseaux sociaux"... Correspond-elle vraiment aux recommandations des Sages ?... Vous hésitez à répondre oui... comme non... Tant pis...
+
+<< advanceTime 2:00 >>
+// decrease stress 20/100 ?
+// increase charge mentale?
+
+-> Et ensuite ?
+    << jump Liste_Taches_SAM >>
+// choix qui devrait être fatal => rewind samedi matin comme pour Pomodo SAM Session3. Est-ce le cas, termes de gaspillage de temps?? je le visualise mal sur l'éditeur yarn
+===
+title: Sieste_Sam
+tags: 
+colorID: 0
+position: -3390,-2466
+---
+// si joueur vient << Liste_Taches_SAM >>
+Vous avez fait une grasse matinée. Toutefois, après la séance de Jungle Body Break, vous êtes bien à plat. Et puis cette semaine d'examens est très éprouvante. Vous ne cesser de la revivre en boucle. Ce week-end, c'est la cerise sur le gâteau. Vous n'avez pas le droit à l'erreur.
+Trêve de paroles, vous vous asseyez sur votre lit et vous tombez presqu'aussitôt dans un doux sommeil réparateur. Bien entendu, vous gardez à l'esprit de ne pas vous endormir trop profondément. Il s'agit de faire une sieste, pas de passer l'après-midi à ronfler...
+
+<< fadeIn 250 >>
+<< decrease sleep need 40/100 >>
+<< advanceTime 0:45 >>
+<< fadeOut 250>>
+
+Ce n'est seulement qu'après plus d'une demi-heure que vous rouvrez les yeux.
+Ce somme, vous en aviez bien besoin...
+-> Allez, on s'y remet !
+    << jump Liste_Taches_SAM >>
+
+// si joueur vient << Liste_Taches_SAM_ZenTD >>
+Vous avez fait une grasse matinée. Toutefois, après la séance de Jungle Body Break, vous êtes bien à plat. Et puis cette semaine d'examens est très éprouvante. Vous ne cesser de la revivre en boucle. Ce week-end, c'est la cerise sur le gâteau. Vous n'avez pas le droit à l'erreur.
+Trêve de paroles, vous vous asseyez sur votre lit et vous tombez presqu'aussitôt dans un doux sommeil réparateur. Bien entendu, vous gardez à l'esprit de ne pas vous endormir trop profondément. Il s'agit de faire une sieste, pas de passer l'après-midi à ronfler...
+
+<< fadeIn 250 >>
+<< decrease sleep need 40/100 >>
+<< advanceTime 0:45 >>
+<< fadeOut 250>>
+
+Ce n'est seulement qu'après plus d'une demi-heure que vous rouvrez les yeux.
+Ce somme, vous en aviez bien besoin...
+-> Allez, on s'y remet !
+    << jump Liste_Taches_SAM_ZenTD >>
+// les renvois de LIST sont différents, c'est tout!
+===
+title: Reveil_Dimanche
+tags: 
+colorID: 8
+position: -2076,-1303
+---
+<< setTime 11:00 6 >>
+
+Vous vous réveillez le lendemain avec des étoiles plein les yeux. Ce fut une super fièvre du samedi soir. Vous étiez le soleil de cette galaxie festive. Hélas, toute bonne chose a une fin.
+Maintenant, vous allez devoir passer une autre journée à bosser, réviser, plancher, mémoriser.
+Allez ! Debout ! Il est déjà 11 heures, on se lève et on prend son...
+
+-> Petit déjeuner
+    << jump Breakfast_Dim >>
+// persistance impact soirée sur la jauge sleep? yep on peut faire ça
+===
+title: Sport_Entrainement
+tags: 
+colorID: 0
+position: -4069,-1959
+---
+<< advanceTime 0:15 >>
+
+Comme la fois précédente, vous arrivez dans les derniers. Pas de stress, vous savez que votre coach vous attend avec impatience. 
+La preuve, il vous adresse un léger sourire quand il vous aperçoit. Il lance la musique et commence ses mouvements d'échauffement, il se tourne vers vous. Les autres stagiaires également.
+Vous entrez à votre tour dans la "danse" et, comme d'habitude, vous vous lâchez. Vous fusionnez avec la musique, le rythme, la direction du coach, la chorégraphie du groupe. C'est à peine si vous vous rendez compte que les minutes s'égrènent, une heure s'écoule, puis une seconde.
+
+<< increase sleep 20 >>
+<< increase food 40 >>
+<< advanceTime 2:00 >>
+// impact jauge food utile? pour l'immersion, oui
+
+Le coach tape des mains, signifiant la fin de la séance. Il remercie tout le monde et surtout vous, pour donner chair et souffle à sa troupe.
+Quand vous retournez aux vestiaires, vous êtes épuisé. Fatigué mais heureux, euphorique, satisfait. On vous félicite, on vous encourage. Vraiment, ces séances de Jungle Body Break vous font font un bien fou : au corps et au mental. 
+Ce week-end va être fatigant et stressant, mais il faut également se faire du bien, se faire plaisir.
+Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous avez une faim de loup...
+
+-> Retourner manger
+    << jump Lunch_Sam >>
+===
+title: Tricher
+tags: BAD
+colorID: 2
+position: 1418,-346
+---
+Franchement, pourquoi vous vous prenez la tête. Il suffit de se focaliser sur la révision des fiches consacrées au thème maudit : la décohérence quantique. C'est le sujet sur lequel on vous a interrogé. Il y a pas de raison que cela change, non ? 
+
+Vous retournez à votre bureau. Vous passez plus d'une heure dessus. Vous n'oubliez pas de vous accorder une pause avec votre cycloluth de la planète Feudall. Comme la fois précédente, vous sentez que vous avez l'esprit moins archaïque et analogique. Vous raccordez l'amplificateur à votre cycloluth, que vous reliez ensuite à un casque stéréo. Vous lâchez toute votre stress dans des accords rageurs de Trash Steel Metal ! L'effet est garanti. Vous vous sentez décrispé.
+Vous retournez ensuite à votre bachotage sur la décohérence quantique. Vous remerciez les Sages de vous avoir enseigné le truc du "plan B", et du "plan C". Cette technique est efficace et pas du tout chronophage. Au contraire, vous voilà prêt pour le Grand Oral.
+
+<<advanceTime 2:30>>
+// increase jauge mémorisation genre 100/100 mais illusoire???
+// reste encore du stress?? si le joueur n'a pas encore médité
+
+-> Et maintenant ?
+    << jump Liste_Taches_LUN >>
+===
+title: Appel_Maman
+tags: 
+colorID: 0
+position: -4299,-1955
+---
+Maman@holo: Je te réveille pas, Bibi ?
+You: Non. Je n'ai pas encore démarré mes révisions.
+Maman@holo: Comment peux-tu penser à tes cours alors que mamie est à l'hôpital.
+You: Tout va bien pour mamie, non ?
+Maman@holo: Oui. Elle s'est réveillée. Elle est encore fatiguée, confuse, elle a du mal à trouver ses mots. Mais elle va bien.
+You: Alors. Pas de raison de s'en faire pour elle, non ?
+Maman@holo: C'est vrai. Tu connais ta grand-mère.
+You: Ouais.
+Maman@holo: C'est une dure-à-cuire. Elle va s'en sortir. Comme toujours. 
+You: Ouais.
+Maman@holo: Tu révises quoi ?
+You: Mon Grand Oral. C'est l'épreuve à ne pas rater.
+Maman@holo: Je vois. Stressé alors ?
+You: Un peu mais ça va. Je vais d'abord à ma séance d'entraînement de Jungle Body Beat. 
+Maman@holo: Tu continues le Jungle Body Beat ?
+You: Ouais. Ça me fait du bien, c'est tonique, vivifiant et gracieux.
+Maman@holo: Ah. Et ça impressionne tes camarades ?
+You: Un peu. Quand je me lance sur le Dance Floor, je ne passe pas inaperçu. Bon, je vais devoir y aller. Je te laisse. Ciao !
+Maman@holo: Ciao.
+<< hide >>
+<< advanceTime 0:05 >>
+
+Bigre ! Il est temps de vous habiller et de partir à la séance de répétition ! Elle commence dans 15 minutes.
+
+-> Aller à votre séance de Jungle Body Beat
+    << jump Sport_Entrainement >>
+===
+title: Ranger_Bureau
+tags: 
+colorID: 0
+position: -3382,-2208
+---
+Vous vous dites qu'il n'est pas inutile de mettre de l'ordre dans vos affaires. Est-ce vraiment nécessaire ? Peu importe, ça ne vous fera pas de mal non plus.
+Vous passez l'heure suivante à nettoyer votre bureau et ne laissez en évidence que ce qui vous servira dans votre travail de révision.
+// donne un bonus en performance? en attention (baisse la charge mentale)?
+
+<< advanceTime 1:00 >>
+
+-> Et maintenant, on s'y met 
+    << jump Liste_Taches_SAM >>
+===
+title: Fred_Soiree
+tags: 
+colorID: 0
+position: -3176,-1300
+---
+Fred pénètre dans votre chambre. Iel a sorti ses plus beaux atours hologrammiques : un costume de cavalier salsatronique.
+Fred: Alors ? C'est quoi ces frusques ?
+You: Heu. J'ai pas arrêté...
+Fred: Et tu as aussi arrêté de t'amuser ? 
+You: C'est vrai. Tu as raison.
+Fred: C'est la fièvre du samedi soir !
+You: Oui.
+Fred: Je t'attends. Et je suis pas le seul. Rappelle-toi comment tu as assuré mardi soir. 
+You: Oui
+Vous débarrassez la table et vous vous précipitez vers votre armoire. Aiguillé par les conseils de Fred, vous optez pour un Holodress Rock Glam de malade. Vous resplendissez dans cette tenue scintillante et clinquante !
+Fred: Parfait ! On y va à cette fête ?
+
+-> Suivre Fred
+    << jump Cafeteria_Samedi >>
+// juste corrigé le nom du node. C'est samedi, pas vendredi
+===
+title: GotoBed
+tags: 
+colorID: 0
+position: -2291,-1302
+---
+Le concert des "hourra" et "bravo" ne désenfle pas. Votre corps, lui, vous informe qu'il se fait tard. 
+
+Il est grand temps de s'en aller. Vous dites au revoir à Fred, qui vous assure qu'iel ne va pas tarder à faire de même. Vous n'avez pas la patience de l'attendre. 
+Vous levez le bras et saluez l'assemblée qui vous applaudit une dernière fois sans modération. Pas de doute, la star de cette fièvre du samedi soir, c'est vous et cela restera vous... 
+Vous quittez la cafétéria et rejoignez votre chambre. Vous vous déshabillez fissa, un petit tour aux toilettes et vous vous glissez dans votre lit.
+
+-> Au dodo !
+    << jump Reveil_Dimanche >>
+===
+title: Breakfast_Dim
+tags: 
+colorID: 0
+position: -1861,-1307
+---
+Vous vous préparez un solide petit déjeuner sucré salé. Un jus de fruit, un maxi café, des viennoiseries, des tartines, du beurre, de la confiture, un oeuf de Mégaloodinde brouillé fumé, des néotomates cerises et quelques feuilles de salade. C'est riche, délicieux, copieux et varié. Vous êtes rassasié.
+Votre porte sonne à nouveau. C'est Fred, vous vous en rappelez. Il fait partie, comme le disent les Sages, des imprévus, des impondérables, des imprédictibles... 
+
+// effet nourriture sur jauge food positif
+// effet nourriture sur jauge sleep? dès le matin ça doit pas être nécessaire
+
+-> Vous faites entrez Fred
+    << jump Fred_sport >>
+===
+title: Fred_sport
+tags: 
+colorID: 0
+position: -1643,-1307
+---
+Fred pénètre dans votre chambre. Iel pète la forme. Comme hier.
+You: Hello Fred ! C'est pour me proposer de se tirer dessus en mode Splashballs ?
+Fred_excited: Cool ! Tu as lu dans mes pensées ?
+You: T'es pas loin de la vérité.
+Fred_excited: Yolo ! Change-toi, il est bientôt midi, il est temps d'y aller ! 
+You: Attends, je viens juste de manger, j'ai le ventre lourd.
+Fred_smiling: Tss Tss. Pas de fausses excuses. On y va !
+You: Laisse-moi réfléchir...
+
+<< show fred smiling >>
+<< advanceTime 0:45 >>
+
+-> Suggérer de pratiquer une séance de footing
+    << jump Footing >>
+// supprimé option stupide splashballs. Le PJ sait bien dimanche faut éviter les choix chronophages et fatigants.
+===
+title: Footing
+tags: 
+colorID: 0
+position: -1424,-1404
+---
+You: Sympa l'idée de Splashballs. Mais dans ce cas, faudrait attendre que j'ai digéré mon repas. 
+Fred_surprised: Tu te dégonfles ?
+You: Naan. Je te propose à la place de faire une séance de footing. On prend le temps de s'échauffer avant de brûler les graisses qu'on a pu accumuler. 
+Fred_sad: C'est pas fun ton idée.
+You: À prendre ou à laisser.
+Fred_smiling: Tu es dur en affaire.
+Votre ami ne cache pas sa déception, néanmoins, iel vous suit, quand sortez de la chambre...
+
+-> Démarrer la séance de footing
+    << jump Footing_Stade >>
+===
+title: Sieste_Dim
+tags: 
+colorID: 0
+position: -538,-1543
+---
+// si joueur vient << Liste_Taches_DIM >>
+C'est une sage décision. Votre corps a besoin de recharger ses batteries, comme le disent les Sages. Vous vous allongez sur le lit et vous piquez un petit somme réparateur.
+Vous vous réveillez ensuite, de bonne humeur et le corps détendu.
+// effet positif sur la jauge sleep 30/100?
+
+<< advanceTime 0:30 >>
+
+-> Et ensuite, que faire ? 
+    << jump Liste_Taches_DIM >>
+
+// si joueur vient << Liste_Taches_DIM_ZenTD >>
+C'est une sage décision. Votre corps a besoin de recharger ses batteries, comme le disent les Sages. Vous vous allongez sur le lit et vous piquez un petit somme réparateur.
+Vous vous réveillez ensuite, de bonne humeur et le corps détendu.
+// effet positif sur la jauge sleep 30/100?
+
+<< advanceTime 0:30 >>
+
+-> Et ensuite, que faire ? 
+    << jump Liste_Taches_DIM_ZenTD >>
+===
+title: Lunch_DIM
+tags: 
+colorID: 0
+position: -980,-1320
+---
+<< advanceTime 0:30 >>
+Après avoir dit au revoir à Fred dans le couloir, vous retournez dans votre chambre. Fred avait raison. Il se fait faim. Vous vous cuisinez un plat de pâtes à la carnobara. Autant dire que ça vous remet d'aplomb.
+C'est dimanche, jour de repos. Cependant, il serait judicieux continuer à vous préparer à votre grand oral de demain.
+
+-> Choisir que faire ce dimanche 
+    << jump Liste_Taches_DIM >>
+// pas d'effet positif sur jauge food
+// réduit impact sur jauge sommeil après effort physique?
+===
+title: Fred_Message
+tags: 
+colorID: 0
+position: -543,-1779
+---
+// si joueur vient << Liste_Taches_DIM >>
+Fred vous a appelé sur son palmphone sans laisser de message. Ce n'est pas son genre. C'est bizarre. 
+Cependant, vous avez un planning très chargé. En outre, vous n'êtes pas le parent de Fred. Iel est assez grand pour faire ce qu'iel veut. Fred est un battant, le meilleur étudiant de l'Académie. Iel s'en sortira, tout seul, comme d'habitude. Pourquoi s'en faire ?... 
+<<advanceTime 0:15>>
+
+-> Trêve de stress, on s'y remet !
+    << jump Liste_Taches_DIM >>
+
+// si joueur vient << Liste_Taches_DIM_ZenTD >>
+Fred vous a appelé sur son palmphone sans laisser de message. Ce n'est pas son genre. C'est bizarre. 
+Cependant, vous avez un planning très chargé. En outre, vous n'êtes pas le parent de Fred. Iel est assez grand pour faire ce qu'iel veut. Fred est un battant, le meilleur étudiant de l'Académie. Iel s'en sortira, tout seul, comme d'habitude. Pourquoi s'en faire ?... 
+<<advanceTime 0:15>>
+
+-> Trêve de stress, on s'y remet !
+    << jump Liste_Taches_DIM >>
+
+// les renvois de LIST sont différents, c'est tout!
+// En level2, le joueur est obsédé par son programme de révison. Il pense moins à Fred, il stresse moins, il passe moins de temps sur ce noeud.
+===
+title: Diner_Dim
+tags: 
+colorID: 0
+position: -306,-743
+---
+// si le joueur vient << Reviser_session2 >>
+Il est 20 heures ?! Il est temps de se préparer un petit dîner. Vous enfournez dans votre autocuiseur une brandade de moquerue, accompagné de son riz blanchi.
+Vous l'avez déjà goûté une fois, au moins. Mais ça nourrit bien son étudiant. Vous débarrassez la table et retournez à votre bureau. 
+<< advanceTime 0:30 >>
+
+-> Il est temps de se remettre aux révisions !
+    << jump Revision_session3 >>
+
+// si joueur a visité << Revisions_ZenTD2 >>
+Il est 20 heures ?! Il est temps de se préparer un petit dîner. Vous enfournez dans votre autocuiseur une brandade de moquerue, accompagné de son riz blanchi.
+Vous l'avez déjà goûté une fois, au moins. Mais ça nourrit bien son étudiant. Vous débarrassez la table et retournez à votre bureau. 
+<< advanceTime 0:30 >>
+
+-> Il est temps de finir les fiches de révision !
+    << jump Revisions_ZenTD3 >>
+[[Revisions_ZenTD3]]
+===
+title: Mamie_Call
+tags: 
+colorID: 0
+position: -90,-656
+---
+Votre grand-mère décroche dès la première sonnerie:
+------------
+Mamie@holo_shadow: Coucou mon chouchou ! C'est gentil de m'appeler. 
+You: C'est normal mamie. 
+Mamie@holo_shadow: Tu as une petite voix. Tu es fatigué ?
+You: Naan, ça va, ça va. Et toi, comment vas-tu ?
+Mamie@holo_shadow: Très bien. Mieux que toi, je pense. Je suis sorti du coma et j'ai repris tous mes esprits.
+
+<<advanceTime 1:15>>
+
+Votre grand-mère vous garde encore plus d'une heure. Elle vous berce avec ses paroles affectueuses. Vous manquez de lui dire bye bye, mais vous tenez bon... Enfin, elle vous dit au revoir et vous lui répondez de même. Sincèrement. Vous êtes fier d'avoir fait l'effort d'appeler et de parler avec votre grand-mère.
+
+-> Reprendre les révisions
+    << jump Fin_Appel >>
+    
+// effet négatif sévère sur jauge sleep?
+// when level2 le joueur aura pris le temps de noter des trucs avant de prendre appel? et coupera la conversation plus vite se replongera tout de suite dans ses révisions à la fin de l'appel
+===
+title: Fin_Appel
+tags: 
+colorID: 0
+position: 132,-662
+---
+Vous raccrochez, heureux d'avoir pris le temps de papoter avec "mamie". Elle avait besoin de vous entendre et de vous parler. C'est fait. 
+Quelle femme, elle n'a rien perdu de son énergie. Vous vous en doutiez. Vous en avez désormais la preuve. Les pharmaceutiques y sont sûrement pour quelque chose. Mais pas que : votre grand-mère est réellement une dure-à-cuire, une personne d'exception...
+
+Vous retournez à votre bureau et à vos fiches de révision. Vous attaquez en priorité le sujet maudit : la décohérence quantique. 
+Finalement, ce sujet de la décohérence est simple à comprendre. Grâce à cette théorie révolutionnaire, la métaphysique quantique règle le paradoxe des états superposés. Le postulat de réduction du paquet d'onde n'entre pas en contradiction avec celui d'unité (le fameux paradoxe de Schrödinger). Tout simplement parce que la réduction des différentes possibilités d'états est une conséquence du postulat de Schrödinger. Ils n'entrent pas en contradiction l'un avec l'autre.
+La décohérence repose sur le fait qu'un système quantique ne doit pas être considéré comme isolé, mais en interaction avec un environnement flexible et agile. Et ce sont ces interactions qui provoquent l'effondrement de ces états superposés.
+
+Comme ce thème est nouveau, vous passez deux heures à le travailler. Soit deux sessions "pomodoro". Car, bien entendu, vous n'oubliez pas de vous accorder une pause instrumentale entre chaque session "pomodoro". Vous pouvez remercier votre cycloluth. Il est devenu votre outil indispensable pour mener à bien vos séances de travail intense. 
+// effet sur jauge mémorisation à afficher genre 100 mais ça va quand même chuter demain matin fortement = piqûre de rappel!
+Vous sentez le poids de la fatigue accumulée. Il est temps d'aller se coucher. Un petit tour aux toilettes pour se laver les dents. On échange ses vêtements pour sa tenue de nuit. Et voilà !
+// nécessaire faire saturer jauge sommeil ou ça se fait automatiquement par les effets déjà paramétrés des actions?
+-> Au dodo !
+    << jump Repos_Dim >>
+===
+title: Repos_Dim
+tags: 
+colorID: 0
+position: 375,-659
+---
+<< fadeIn 250 >>
+<<setTime 8:00 7 >>
+// 8 heures en replay ! Je sais pas ce signifie le "7" à côté, je l'ai laissé
+<< fadeOut 250>>
+
+Vous vous allongez sur le lit épuisé mais serein.
+Vous fermez les yeux et vous plongez illico dans un sommeil profond et durable... 
+Vous rouvrez les yeux quand la sonnerie de votre horloge connectée sonne. Il est huit heures. 
+Il est temps de se lever et de se préparer un petit-déjeuner avant d'utiliser le reste de la matinée à réviser vos fiches !
+
+<< jump Reveil_Lundi >>
+===
+title: Reveil_Lundi
+tags: 
+colorID: 8
+position: 622,-657
+---
+Vous avalez fissa, un petit déjeuner, simple mais pas trop équilibré : une boîte de chimicookies et un synthécafé ! 
+Vous redemandez à Room Mate de lancer le mode "immersion studieuse" et de vous programmez des sessions de travail d'une heure, avec le soutien de votre compagnon virtuel des modules "work with me". 
+Vous voilà prêt pour la dernière ligne droite ! 
+Enfin, vous l'espérez. Cet examen de Grand Oral est quand même stressant...
+// penser à faire monter la jauge stress au réveil, après le petit-déjeuner!!!!
+
+-> Au travail !
+<< jump Liste_Taches_LUN >>
+===
+title: Liste_Taches_LUN
+tags: 
+colorID: 1
+position: 872,-347
+---
+<< if visited("Liste_taches_LUN") >>
+L'examen a lieu cet après-midi. Vous avez encore le temps de vous préparer... Mais à quoi ? Dans quel ordre ?
+
+<< else>>
+-> Se détendre
+    << jump Meditation >>
+-> Mettre à jour votre planning de révision
+    << jump Planning_Lundi >>
+[[Planning_Lundi]]
+<< endif>>
+===
+title: Planetarium_Bad
+tags: 
+colorID: 0
+position: 1923,-341
+---
+<< fadeIn >>
+<< setBackground astronomy >>
+<< fadeOut >>
+
+Vous entrez dans l'immense salle du Planétarium. Vous vous sentez à nouveau minuscule face à ces répliques géantes d'astres. Vous êtes au centre de la pièce, entouré par les membres du jury. 
+Vous reprenez votre souffle. Tout le monde semble vous dévisager, c'est pesant.
+Vous vous présentez au jury, ce dernier vous salue en retour. Vous leur rappelez que vous avez choisi comme matière : [b]la Philosophie quantique[/b].
+L'un des jurés enfile des lunettes d'amplification de lumière, d'infravision... Il vous fixe un moment avant de s'écrier : "Le paradoxe de Schrödinger"...
+// la jauge stress augmente considérablement, genre 60/100
+Non !!!! Les lunettes de détection neurocérébrale !!! Les jurés ont inspecté votre cerveau et choisi délibérément le thème que vous maîtrisez le moins. Vous vous sentez tellement mal que vous perdez tous vos moyens et vos connaissances. Déjà très fagiles...
+En clair, c'est encore un nouvelle séance de torture. Le jury vous achève lors de la séance de questions. Vous sortez de la salle en tremblant. Vous redoutez la réaction des Sages. Ils ne vont pas être contents..
+
+-> Sortir
+    << jump Sortie_Grand_Oral_Bad >>
+===
+title: Lunch_Lundi_Bad
+tags: 
+colorID: 0
+position: 1683,-348
+---
+Vite, vous n'avez que trente minutes pour manger avant d'aller devant le jury ! Là encore, vous ne faites pas dans la nourriture organique et équilibrée. Un Burger Big Proteins Double Cheese et un Xeno Cola ! Et hop, vous filez à la salle d'examen du grand oral, au pas de course !
+
+<< jump Planetarium_Bad >>
+===
+title: Sortie_Grand_Oral_Bad
+tags: 
+colorID: 0
+position: 2237,-348
+---
+Et vous n'aviez pas tort. Les Sages de la métacognition sont très, très, très mécontents...
+Vous avez fait le malin. Vous avez choisi la voie de la facilité, de celui qui profite de ce don exceptionnel et éphémère de revenir dans le temps. Alors qu'ils attendent de vous que vous tiriez les leçons de vos erreurs et que vous rectifiez et améliorez en conséquence votre technique d'[b]apprendre à apprendre[/b].  
+Les Sages sont furieux : vous avez tenté de tricher en ne révisant que le sujet qui devait tomber ! Ils vous renvoient aussitôt en arrière dans le temps !
+
+-> Vous n'avez plus qu'à tout recommencer, encore une fois !
+[[Start]]
+    << jump Start >>
+
+// le joueur est-il renvoyé (puni) à samedi matin: deux jours à rejouer? Ou juste LUNDI matin: un jour seulement à rejouer? C'est une question.
+===
+title: Meditation
+tags: 
+colorID: 0
+position: 876,-653
+---
+Vous vous asseyez dans un coin. Vous adoptez la posture du lotus, posture idéale pour s'enraciner dans une pause méditative. Vous fermez les yeux, vous vous concentrez sur votre respiration.
+Certes, vous avez le cerveau encore agité, vous appréhendez de vous retrouver de nouveau devant le jury et de vous retrouvez à nouveau piégé par leur proposition de sujet. Cependant, vous savez désormais que vous avez toutes les cartes en votre possession. Vous pouvez gagner, et vous allez tout entreprendre pour réaliser ce voeu, qui vous est si cher... 
+
+// la jauge stress tombe à zéro, réduit stress du matin
+-> Que pouvez-vous encore faire ?
+<< jump Liste_Taches_LUN >>
+// j'ai ajouté un lien cliquable, je n'aime pas quand il n'y a pas de choix explicité
+===
+title: Footing_Stade
+tags: 
+colorID: 0
+position: -1203,-1407
+---
+<< setBackground sport >>
+
+Une fois au stade, vous commencez par réaliser quelques tours de piste, à pas mesurés. Puis, quand vous estimez que votre corps est suffisamment chauffé et stimulé, vous accélérez la cadence. De plus en plus, jusqu'à atteindre un rythme plus soutenu. Vous maintenez ensuite l'effort pendant plus d'une heure. Vous constatez que Fred peine à vous suivre. Quand vous finissez par vous arrêter, Fred vous rejoint en nage. Iel souffle, iel tire la langue, iel toussote...
+Fred: Rough Rough.
+// Vous n'avez pas un expression de type fatigué, exhausted?
+You: Tu vois, c'était cool ?
+Fred: Bof bof.. Suis explosé...
+You: Je vois. Encore un tour de piste ou deux ?
+Fred: Noooo !
+You: On rentre.
+Fred_happy: Yes yes, je suis affamé !
+
+-> Aller manger
+    << jump Lunch_DIM >>
+//Bon choix bon effet sur jauge sleep (baisse?) ou autre effet positif? 
+//et bon effet sur food : rappel nécessite manger?
+===
+title: Revision_session3
+tags: 
+colorID: 0
+position: -296,-999
+---
+Vous retournez à votre bureau. Il vous reste à réviser le quatrième et dernier thème. La décohérence quantique. Vous commencez à vous imprégner de ce dernier thème que vous n'aviez pas eu le temps d'aborder jusque-là. Votre première session de révision se déroule sans problème.
+// effet sur jauge mémorisation à afficher sur UI?
+Vous faites votre pause musicale avec votre cycloluth. Cependant, quand vous reposez votre instrument archaïque de la planète Feudall, vous voyez un appel manqué sur votre palmphone. Mamie a tenté de vous joindre... 
+Non, hors de question de la rappeler. Vous n'avez pas fini d'apprendre votre dernier thème. Vous ne reproduirez pas deux fois la bêtise de faire une impasse dans vos révisions !  
+
+-> Rejeter l'appel
+[[Mamie_Rejet]]
+    << jump Mamie_Rejet >>
+===
+title: Planning_Update_Non
+tags: 
+colorID: 0
+position: 4601,-456
+---
+Sapiens_angry: N'importe quoi ! Nous avons pourtant bien insisté.
+Ledai_explaining: S'observer et s'auto-réguler !
+You: Ah oui. J'avais oublié.
+Sapiens_angry: Non ! Tu ne dois pas oublier !
+Ledai_explaining: Tu dois appliquer les bonnes méthodes !
+Sapiens_concerned: Et les consigner dans ton journal mental !
+Azul_proud: Mais avant de retourner à ton journal mental. Souviens-toi. Sois souple et agile !
+Temde_smiling: Si tu te sens pris au piège, pense au "plan B" ! Simplifie !
+Azul_happy: Il y a toujours un autre moyen !
+You: Les fiches de révision ?
+Azul_proud: En ce qui concerne ton Grand Oral, oui, c'est un bonne voie alternative.
+
+<< jump Journal_Mental >>
+===
+title: Planning_Update_Yes
+tags: 
+colorID: 0
+position: 4603,-241
+---
+Sapiens_happy: Bonne réponse !
+Ledai_explaining: S'observer et s'auto-réguler !
+Sapiens_happy: Ce sont des méthodes éprouvées !
+Ledai_explaining: Et tu dois les consigner dans ton journal mental !
+Azul_happy: Mais avant de retourner à ton journal mental. Souviens-toi. Sois souple et agile !
+Temde_smiling: Si tu te sens pris au piège, pense au "plan B" ! Simplifie !
+Azul_happy: Il y a toujours un autre moyen !
+You: Les fiches de révision ?
+Azul_proud: En ce qui concerne ton Grand Oral, oui, c'est un bonne voie alternative.
+
+<< jump Journal_Mental >>
+===
+title: Journal_Mental
+tags: 
+colorID: 0
+position: 4832,-350
+---
+<< fadeIn 200 ffffff >>
+<< setBackground bedroom night >>
+<< fadeOut 200 >>
+
+Vous êtes de nouveau seul. Dans un espace-temps indéfini. Il ne fait ni chaud ni froid, ni vraiment jour ni vraiment nuit. 
+Vous avez entre les mains votre "carnet d'ingénieur tout-terrain". Vous avez plein de choses à noter dedans. Ce truc de planification des tâches, ça demande un sacré sens de l'organisation...
+===
+title: Duel_GTR
+tags: 
+colorID: 0
+position: -3179,-1523
+---
+You: S'il-te plaît, arrête de me faire chanter !  
+Fred: Tu me laisses pas le choix.
+You: T'es vraiment relou...
+Vous raccrochez en grognant. Impossible de refuser un défi sur l'arène virtuelle du Métaverse. Surtout s'il a été lancé par Fred, la star de l'Académie d'Omniscience et de Polytechnologie Universelle. 
+Vous allumez votre ordinateur et vous lancez le serveur GameStream. Vous répondez à l'invitation de Fred et vous rejoignez la map du jeu GTR 66. Franchement, ce n'est pas votre terrain de jeu préféré, C'est beaucoup trop speed, brutal et urbain. Là, vous pénétrez dans le royaume de Fred... Pour autant, après quelques minutes fastidieuses et hasardeuses, vous vous prenez au jeu. C'est bien pour cela que vous êtes le meilleur ami de Fred. Vous êtes si différents et pourtant si proches. Vous vous surprenez même à sniper Fred comme un pro à deux ou trois reprises. Après deux heures d'un duel urbain et effréné, vous déclarez forfait. Fred rigole encore quand vous quittez le jeu...
+
+<< advanceTime 2:00 >>
+// increase stress 20/100 ?
+// increase charge mentale?
+
+-> Et maintenant ?
+    << jump Liste_Taches_SAM >>
+===
+title: Pomodoro_SAM_Session2
+tags: Choix_Win_possible
+colorID: 0
+position: -3160,-1977
+---
+Vous prenez votre première pause, suivant en cela la méthode "pomodoro" que vous a transmise les Sages.
+Vous vous lancez dans une petite improvisation de cycloluth, votre cithare analogique de la planète Feudall. Le son brut et archaïque de cet instrument vous détend, vous apaise, vous nettoie l'esprit d'informations superflues et pesantes.
+// decrease charge mentale de 50%, genre de 20/100 : si hausse avant de 40/100
+Alors que vous reposez votre cycloluth, vous êtes traversé par un doute. Que vous ont martelé les Sages déjà ? Comment devez-vous organiser votre week-end de révision ?
+On s'en fiche ! Vous avez 4 thèmes à réviser ! Il faut rentrer ça coûte que coûte dans votre cerveau !
+-> Vous reprenez votre session de révision 
+[[Pomodoro_SAM_Session3]]
+C'est vrai. Les Sages vous ont dit d'employer un nouveau truc, super utile...
+-> C'est quoi déjà ?
+[[Rappel_Planning]]
+<< jump Rappel_Planning >>
+// J'aimerais vraiment donner une chance au joueur de se rattraper, mais le temps disponible trop juste. Ca rend ce premier mauvais choix fatal. Qu'en pensez-vous?
+===
+title: Metal_Jam
+tags: 
+colorID: 0
+position: -2513,-1303
+---
+Vous vous retournez vers votre public. Vous levez les bras en signe d'acquiescement. C'est encore une salve tonitruante qui vous répond. 
+Vous vous dirigez ensuite vers la cyber-guitare. Vous vous emparez de cet instrument magique. Vous réactivez sa carte-son HD 4K. 
+
+Vous dégainez votre médiator et vous entamez une nouvelle session de concert solo improvisé !... Après votre performance rythmique, vous êtes totalement imprégné du Jungle Groove et du Glam Metal Beat ! Les riffs électriques et les accords cybermétalliques fusionnent, s'entremêlent, s'entrechoquent et composent une nouvelle symphonie à nul autre pareil. C'est un authentique show d'enfer, digne de ce samedi enfiévré ! 
+
+Vous êtes à nouveau applaudi, célébré, adoubé, encensé. Pas de doute, c'est vous la star de ce samedi de folie ! Vous avez mis le feu à la cafétéria ce soir ! 
+Vous avez donné toute votre énergie, votre âme, votre inspiration, votre sueur. Vous vous sentez vidé, pressuré, exténué. Pas grave, vous avez assuré le show.
+
+// montrer effet des deux performances sur la jauge sommeil? juste pour le principe, la visualisation sign/feedback?
+
+-> Il est temps de tirer le rideau.
+    << jump GotoBed >>
+===
+title: Planning_Samedi
+tags: 
+colorID: 2
+position: -3626,-2209
+---
+Vous vous installez sur votre bureau. Vous ranger un minimum et sortez votre journal Bullet Point. Vous savez que ce week-end, il va diablement servir. Vous tournez les pages jusqu'à arriver à une page blanche. Vous pensez à la parabole du sceau : [i]d'abord les pierres, ensuite les cailloux, enfin le sable[/i].
+D'abord les pierres. Vous notez les tâches obligatoires et prioritaires du week-end. [u]Les quatre thèmes de la philosophie quantique[/u]. 
+Vous énumérez ensuite les tâches importantes ou utiles : les cailloux. [u]Le samedi soir enfiévré à la cafétéria, la séance de détox sportive du lendemain, le coup de fil de mamie[/u]. 
+Enfin, vous vous attardez sur les tâches plus accessoires : [u]sieste et éventuellement d'autres pauses fun[/u].
+
+Vous tournez encore la page. Nouvelle feuille vierge. 
+Vous y notez en haut et en gras : Samedi. 
+Vous listez ensuite tous les événements de ce jour. Vous commencez par les grosses pierres. Réviser deux thèmes de la philosophie quantique. 
+[b]- D'abord le principe d'incertitude ou d'indétermination.
+- Et, en second, le phénomène d'intrication quantique.[/b]
+Ensuite vous passez aux petits cailloux.  
+[b]- La soirée à la cafétéria : la soirée qui va faire remontrer votre niveau de fun
+- Diner : avant d'aller à la "Fièvre du samedi soir". On ne peut faire bien la fête le ventre vide.[/b]
+Enfin, vous vous attardez sur le sable.
+[b]- Une pause sieste et tout le reste...[/b]
+
+-> Le planning est fait, on s'y met !
+[[Liste_Taches_SAM_ZenTD]]
+    << jump Liste_Taches_SAM_ZenTD >>
+===
+title: Revisions_ZenTD1
+tags: 
+colorID: 2
+position: -3225,-2782
+---
+// Si premier clic: reviser premier thème = incertitude quantique
+Vous entamez votre première session de révision de philosophie quantique. Au menu, la problématique de l'incertitude quantique.
+Aidé par l'ambiance "studieuse" et encouragé par votre camarade virtuel de "work-with-me", vous vous immergez profondément dans les enjeux de l'indétermination quantique.
+La première heure passe à une vitesse de folie... Vous refaites une pause d'harmoniques avec votre cycloluth. Que c'est agréable de se faire juste plaisir entre deux séances. 
+Vous enchaînez ensuite avec votre deuxième session sur l'incertitude quantique, tout aussi studieuse, étonnante qu'enrichissante.
+Après une nouvelle pause musicale enchanteresse, vous reprenez votre exploration des enjeux de l'indétermination quantique.
+
+Plus de trois heures se sont écoulées. Vous estimez avoir fait le tour de la question.
+<<advanceTime 3:00>>
+
+-> Que reste-t-il à faire ?
+[[Liste_Taches_SAM_ZenTD]]
+    << jump Liste_Taches_SAM_ZenTD >>
+
+// Si deuxième clic: reviser second thème = intrication quantique
+
+Vous démarrez une nouvelle session de révision de philosophie quantique. Le deuxième thème que vous avez prévu d'apprendre est : l'intrication quantique. Encore un sujet passionnant et inspirant. 
+
+Toujours connecté à l'ambiance studieuse et encouragé par l'infatigable camarade 3D des vidéos  "work-with-me", vous vous immergez dans cette nouvelle problématique. Vous avez l'impression de nager en pleine science fiction. L'enchevêtrement quantique et les phénomènes quantiques de non-localisation ouvrent la voie à la synchronicité, l'ubiquité, la téléportation physique, mentale, astrale... C'est complètement métaphysique.
+Bien entendu, vous n'oubliez pas de vous ménager une pause récréative entre chaque session d'une heure, comme le stipule la méthode "pomodoro". 
+
+Vous passez encore plus de trois heures sur ce sujet, avoir d'avoir épuisé toutes les grandes questions et les grands débats. 
+<<advanceTime 3:00>>
+
+-> Que reste-t-il à faire ?
+[[Liste_Taches_SAM_ZenTD]]
+    << jump Liste_Taches_SAM_ZenTD >>
+===
+title: Pomodoro_SAM_Session3
+tags: choix_DieAndRetry
+colorID: 2
+position: -2921,-1983
+---
+Maintenant que vous avez allégé votre esprit, vous reprenez votre travail de révision. Vous avez désormais choisi le premier thème à réviser. Ce sera le principe de Heisenberg, appliqué à la philosophie quantique. Vous vous replongez vaillamment dans le concept d'indétermination quantique. Indétermination ou incertitude dans la pensée quantique. Car l'observateur influe, sans le vouloir, sur l'objet observé et réciproquement. Il est donc impossible d'observer ou de mesurer des valeurs objectives, dénuées de toute influence.
+
+<< advanceTime 1:00 >>
+
+Au bout d'une heure, vous faites une nouvelle pause musicale avant de vous replonger dans la problématique de l'incertitude d'Heisenberg... Vous finissez par bien intégrer le principe d'incertitude. Dingue ! C'est à la fois simple à dire, à première vue, mais pas si évident à digérer et à défendre. 
+Vous vous demandez quand même si c'est ainsi que vous devez réviser vos cours de philosophie quantique pour le Grand Oral de lundi.
+<<advanceTime 1:30>>
+// nouvelle hausse charge mentale, genre de 40/100 encore car le joueur a refait une pause 
+// increase mémorisation, genre 20/100 mais cela ne va pas durer. 
+// Why? Effet temporaire? La Mémorisation retombe à zéro ou seulement à 10/100 le lendemain matin? Avez vous d'autres idées?
+// On a une idée sur le fait que ça soit temporaire, yep
+
+-> Assez pour cette fois
+    << jump Liste_Taches_SAM >>
+===
+title: Samedi_Zero_Distraction
+tags: 
+colorID: 2
+position: -3625,-2512
+---
+Vous demandez à votre IA locale : Room Mate, de basculer votre chambre en mode "immersion studieuse".
+Room Mate s'exécute et vous projette sur votre screencast un module vidéo "work-with-me" d'une durée de 60 minutes. Ce qui correspond au temps total d'une session de révision "pomodoro".
+Vous avez beau être cerné par une ambiance de travail, vous vous sentez détendu, inspiré, motivé. Probablement parce que vous ne vous sentez plus vraiment tout seul. Vous avez votre camarade virtuel qui travaille comme vous, sans se plaindre.
+
+// effet sur jauges?????
+-> Allez, au boulot !
+[[Liste_Taches_SAM_ZenTD]]
+    << jump Liste_Taches_SAM_ZenTD >>
+===
+title: Liste_Taches_SAM_ZenTD
+tags: 
+colorID: 2
+position: -3623,-2774
+---
+<< if isTimeOver("21.00") >>
+Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories.
+<< jump Diner_Sam >>
+<< endif >>
+//NECESSITE DE DECALER LE DINER SI REVISION SERIEUSE CA PREND BEAUCOUP TROP DE TEMPS A TRAVAILLER = 6H !!!!
+
+Vous êtes toujours dans votre chambre, un samedi après-midi. Qu'allez-vous entreprendre désormais ?
+
+-> Basculer la chambre en mode "immersion studieuse"#once
+[[Samedi_Zero_Distraction]]
+    << jump Samedi_Zero_Distraction >>
+-> Faire une pause sieste#once
+    << jump Sieste_Sam >>
+-> Réviser La notion d'indétermination quantique
+[[Revisions_ZenTD1]]
+    << jump Revisions_ZenTD1 >>
+===
+title: Planning_Dimanche
+tags: 
+colorID: 2
+position: -511,-1015
+---
+Vous retournez sur votre bureau. Vous reprenez votre journal Bullet Point. Vous regardez ce que vous avez déjà accompli hier. Vous avez travaillé deux sujets sur les quatre que comportent la philosophie quantique. A priori. Rien qu'aujourd'hui, vous pouvez terminer d'apprendre les deux derniers thèmes. Cependant, vous sentez qu'il y anguille sous roche...
+Vous décidez de prendre une feuille volante et de noter dessus tout ce que vous vous rappelez concernant le principe d'intrication quantique, que vous avez revu hier. Le résultat est sympathique mais inquiétant. Vous réalisez que vous avez déjà oublié pas mal d'élément. En tout cas, certaines notions ou affirmations ne sont plus aussi limpides qu'hier. 
+C'est le choc ! Vous comprenez que c'est votre mémoire courte qui bosse en ce moment. Il faut consolider ça au plus vite !
+Comment faire ? Oui, bien entendu, le "plan B" : simplifier !
+ -> Vite, il faut changer de plan !
+[[Liste_Taches_DIM_ZenTD]]
+    << jump Liste_Taches_DIM_ZenTD >>
+===
+title: Dimanche_Zero_Distraction
+tags: 
+colorID: 2
+position: -760,-1313
+---
+Comme hier, vous redemandez à Room Mate de basculer votre chambre en mode "Immersion Studieuse".
+Que cette musique paisible et sérieuse vous fait du bien. Et puis, vous n'êtes pas seul. Vous voilà de nouveau en compagnie de votre camarade virtuel des modules vidéos de "work-with-me" 
+Tous les ingrédients sont réunis pour réaliser vos session de révision selon la méthode "pomodoro".
+
+// effet sur jauges?
+-> Il est temps de s'y mettre maintenant !
+[[Liste_Taches_DIM]]
+    << jump Liste_Taches_DIM >>
+===
+title: Liste_Taches_DIM_ZenTD
+tags: 
+colorID: 2
+position: -516,-759
+---
+<< if visited("Liste_Taches_DIM_ZenTD") >>
+Il vous reste encore tout l'après-midi et même la soirée pour travailler. Vous y arriverez, il faudra juste gérer votre temps de travail.
+Allez, au boulot !
+<< endif >>
+
+<< if isTimeOver("20:00") >>
+Déjà 20 heures. Vous sentez que votre estomac se rebelle. Il est temps de le remplir.
+<< jump Diner_Dim >>
+<< else>>
+
+-> Vous remarquez un message de Fred sur votre palmphone#once
+    << jump Fred_Message >> 
+-> Passer au plan B#once
+[[Revisions_ZenTD2]]
+    << jump Revisions_ZenTD2 >>
+-> Pause Sieste#once
+    << jump Sieste_Dim >>
+<< endif>>
+===
+title: Revisions_ZenTD2
+tags: 
+colorID: 2
+position: -514,-454
+---
+Vous n'avez pas le temps de mémoriser durablement autant de savoirs en si peu temps. Vous vous rappelez de ce que maître Azul vous dit. Il faut alors passer au "plan B". Vous décidez de rédiger une série de fiches de révision sur toutes les notions, les théories, les paradigmes, les problématiques soulevées par les 4 thèmes de la philosophie quantique. Thèmes que vous devez maîtriser à fond pour réussir votre Grand Oral, demain après-midi.
+Vous y passez un temps conséquent. Vous travaillez de manière intense mais détendue. 
+Détendue, car vous respectez des sessions d'une heure, conformément aux règles de la méthode "pomodoro". Vous rédigez dans votre "bulle d'immersion studieuse", déconnecté de tout distracteur, et en compagnie de votre camarade virtuel, proposé par le module vidéo "work with me".
+Enfin. Vous n'oubliez pas de ménager des pauses entre chaque session, en grattant les cordes de votre cycloluth de Feudall. Ce qui vous permet de maintenir une attention utile et soutenue.
+L'après-midi défile à vitesse grand "V". Vous n'avez pas fini de rédiger vos fiches. Mais vous gardez bon espoir de les terminer avant d'aller vous coucher.
+<< advanceTime 4:00 >>
+// Je fais cette boucle en un seul bloc. Je vous laisse ajuster le temps pour mieux se rapprocher de 20h = 4H ou 5H? mais laisser le PJ faire une sieste par exemple?
+-> Que vous reste-t-il à faire ? 
+    <<jump Liste_Taches_DIM_ZenTD>>
+// effet sur jauge mémorisation efficace mais effet provisoire = piqûre de rappel lundi!
+// effet négatif sur charge mentale???
+<<else>>
+<<endif>>
+===
+title: Dim_GameOver
+tags: 
+colorID: 2
+position: 220,-983
+---
+// Choix SPlashballs fatal ou on l'élimine???
+
+Après ce dimanche bien rempli, vous vous couchez, fatigué, mais satisfait. Selon vous, vous méritez une médaille. Du moins, un sommeil profond et réparateur. Vous fermez les yeux...
+Hélas... Ce n'est pas l'avis des maîtres de la métacognition. Vous avez cumulé les mauvais choix. Vous n'avez pas pris le temps d'échanger avec votre grand-mère. Ce n'est pas digne d'un petit-enfant bien dans sa tête et bien dans son corps. En outre, vos "acquis" en termes de philosophie quantique sont illusoires, éphémères. Demain, vous n'aurez pas le temps de consolider vos connaissances ! 
+Les Sages sont déçus : vous n'avez pas suivi leur enseignement ! Ils vous renvoient dare dare en arrière dans le temps.
+
+-> Vous n'avez plus qu'à tout recommencer, encore !
+[[Start]]
+    << jump Start >>
+
+// le joueur est-il renvoyé (puni) à samedi matin: deux jours à rejouer? Ou juste dimanche matin: un jour seulement à rejouer? C'est une question.
+===
+title: SAM_GameOver
+tags: 
+colorID: 2
+position: -2291,-1527
+---
+// Rewind automatique si joueur visité les noeuds : Reseaux_Soc OU Appel_Fred_JeuVideo OU Pomodoro_SAM_Session3 OU Ranger_Bureau
+// VOIRE PLUS. CF. LE SOUCI DE MANQUE DE TEMPS POUR REVISER DEUX THEMES DANS LA JOURNEE
+
+Vous avez cumulé les choix superflus et énergivores. Vous avez fichu en l'air votre travail de planification et de révision  ! 
+Les Sages sont furieux : vous n'avez pas suivi leurs apprentissage ! Ils vous renvoient illico en arrière dans le temps !
+
+-> Vous n'avez plus qu'à recommencer votre week-end !
+[[Start]]
+    << jump Start >>
+===
+title: Mamie_Rejet
+tags: 
+colorID: 2
+position: -36,-987
+---
+Finalement, ce sujet de la décohérence est simple à comprendre. Grâce à cette théorie révolutionnaire, la métaphysique quantique règle le paradoxe des états superposés. Le postulat de réduction du paquet d'onde n'entre pas en contradiction avec celui d'unité (le fameux paradoxe de Schrödinger). Tout simplement parce que la réduction des différentes possibilités d'états est une conséquence du postulat de Schrödinger. les deux postulats n'entrent pas en contradiction l'un avec l'autre.
+La décohérence repose sur le fait qu'un système quantique ne doit pas être considéré comme isolé, mais en interaction avec un environnement flexible et agile. Et ce sont ces interactions qui provoquent l'effondrement de ces états superposés.
+Vous passez bien encore deux heures sur la question. En respectant les pauses musicales entre chaque session "pomodoro" pour éviter de saturer votre précieux cerveau.
+<<advanceTime 2:30>>
+Il est temps maintenant d'aller recharger votre batterie cognitive : dormir !
+
+// effet sur jauge mémorisation efficace mais insuffisant et pas adapté =  provisoire
+
+-> Au dodo ! 
+    <<jump Dim_GameOver >>
+[[Dim_GameOver]]
+===
+title: Lunch_Lundi_Good
+tags: 
+colorID: 2
+position: 1692,-611
+---
+Vite, vous n'avez que trente minutes pour manger avant d'aller devant le jury ! Là encore, vous ne faites pas dans la nourriture organique et équilibrée. Un Burger Big Proteins Double Cheese et un Xeno Cola ! Et hop, vous filez à la salle d'examen du grand oral, au pas de course !
+-> Le Planétarium
+<< jump Planetarium_Good >>
+[[Planetarium_Good]]
+===
+title: Planetarium_Good
+tags: 
+colorID: 2
+position: 1924,-613
+---
+<< fadeIn >>
+<< setBackground astronomy >>
+<< fadeOut >>
+
+Vous entrez dans l'immense salle du Planétarium. Vous vous trouvez toujours ridicule et minuscule. Face à ces répliques géantes d'astres. Au centre de la pièce, seul devant les jurés. Examiné, scruté par les membres du public, assis sur les gradins de l'amphithéâtre...
+Vous prenez une grande inspiration avant de prendre la parole. Vous vous présentez au jury, ce dernier vous remercie. Vous leur rappelez la matière retenue : [b]la Philosophie quantique[/b].
+L'un des jurés enfile à nouveau ces lunettes étrange... Des lunettes de détection neurocérébrale. Il vous fixe un moment avant de s'écrier : "L'incertitude quantique"...
+// pas de hausse stress!!!!
+Pfouu.... Vous soufflez un grand coup. Bien entendu, l'incertitude quantique n'est pas votre thème préféré. Malgré tout, vous avez des arguments, des concepts, des débats, des problématiques, des polémiques qui vous viennent aussitôt en tête.
+Vous ne vous rappelez pas trop bien la suite de votre présentation. En tous les cas, votre intervention s'est bien déroulée. Vous leur avez déroulé une argumentation cohérente, bien structurée, et suffisamment complète de la question. La phase des questions des jurés s'est également très bien passée. Vous êtes toujours parvenu à leur répondre de manière précise et juste.
+Vous les saluez et les remerciez avant de quitter la salle. 
+
+-> Sortir
+    << jump Sortie_Grand_Oral >>
+[[Sortie_Grand_Oral_Good]]
+===
+title: Sortie_Grand_Oral_Good
+tags: 
+colorID: 2
+position: 2247,-619
+---
+En attendant l'affichage des résultats en fin de journée, vous vous retournez dans votre chambre. 
+// show: bedroom
+Vous ouvrez le frigo et prenez une cannette de Xeno Cola. Vous demandez ensuite à votre IA : Room Mate de vous diffuser une ambiance musicale de type Jungle Body Beat. Ce qu'il fait immédiatement.
+Vous entrez en transe et vous êtes emporté par le flux et le reflux de cette musique "électro-picale", comme disent certains. Assurément, ce rythme puissant, mécanique et électronique vous fait un bien fou. Vous sentez toute la pression de la longue semaine sortir des pores de votre peau. Vous vous défoulez avec joie et bonheur...
+// IL EST MAINTENANT GENRE 18 HEURES!
+Déjà 18 heures ?!
+Les résultats doivent être dévoilés. Vous quittez votre chambre en sifflant, le pas léger. Vous retournez devant la salle d'examen, là où tous les résultats de cette semaine de sprint.
+// même décor que lorsque affichage résultats examen jour 1, jour 2...
+En effet, les résultats s'affichent sur l'écran. Vous cherchez votre nom sur l'écran. Vous découvrez avec stupeur que vous avez eu [b]A+[/b] au Grand Oral. C'est un succès sur toute la ligne ! Vous criez ! Vous sautez sur place en brandissant les bras ! 
+Victoire ! Victoire !...
+
+Hum... Est-ce vraiment la fin ?...
+===
+title: Planning_Lundi
+tags: 
+colorID: 2
+position: 1137,-344
+---
+Vous analysez votre journal Bullet Point. Vous avez rédigé toutes les fiches de révision. Vous avez appris au moins une fois chaque sujet possible du Grand Oral. Maintenant, vous savez, vous l'avez expérimenté déjà dimanche. Les connaissances que votre cerveau a enregistrées sont encore provisoires. Elles sont stockées dans la mémoire courte.
+Vous devez consolidez vos savoirs en les transférant dans la mémoire longue. Pour cela, il faut réactualiser vos connaissances ! Il faut recourir à la technique de la "piqûre de rappel" !
+Pitié ! Cela va vous prendre au minimum 4 heures. Probablement plus. Vous n'aurez sûrement pas le temps de tout repasser au crible. 
+Il y a probablement un moyen plus simple d'y arriver. Oui, il faut toujours simplifier, comme disent les Sages. Vous avez déjà recouru au plan B. Et si vous aviez encore besoin d'une autre roue de secours. Disons, un [b]plan C[/b] ?...
+Vous n'avez que la matinée pour vous administrer vos quatre "piqûres de rappel". Le timing est très étroit. Vous n'avez pas le droit à l'erreur. C'est quitte ou double !
+Vous simplifiez encore et réfléchissez à un [b]plan C[/b] ? 
+Ou vous conservez le cadre du plan B : les "piqûres de rappel" ? 
+
+-> Chercher un plan C
+    << jump Tricher >>
+[[Tricher]]
+-> Conserver le plan B
+    << jump Pas_Tricher >>
+[[Pas_Tricher]]
+===
+title: Piqure_de_Rappel
+tags: 
+colorID: 2
+position: 1409,-615
+---
+Vous reprenez vos fiches de révision. Conformément à votre planning de révision, vous choisissez de démarrer votre séance de "piqûre de rappel" par le sujet que vous appris en dernier, celui dont la mémorisation est encore la plus fragile : la décohérence quantique. Vous respectez le format "pomodoro". Vous passez l'heure suivante à raviver vos connaissances, en vous aidant, si nécessaire, de vos fiches de révision.
+Suite à quoi, vous insérez une pause détente. Vous empoignez votre cycloluth venu de l'astre lointain de Feudall. Cependant, ce matin, à la veille de repasser ce Grand Oral. Vous êtes un peu plus nerveux. Vous branchez l'amplificateur à votre cycloluth, que vous reliez ensuite à un casque stéréo. Vous lâchez ensuite toute cette énergie survoltée et électrique dans vos accords de Trash Steel Metal ! Autant dire, cela vous fait bien fou !
+Vous enchaînez avec la "piqûre de rappel" suivante : Le paradoxe du chat de Schrödinger. Vous réactivez vos acquis en une heure. Nouvelle pause de Trash Steel Metal. 
+Vous passez les deux heures suivantes à consolider vos savoirs sur les sujets d'indétermination et d'intrication quantiques. 
+<<advanceTime 4:00>>
+// Environ 4h si on doit ajouter les pauses musique, 3h15 sinon??
+Après cette longue et intense séance de "piqûres de rappel", votre "réservoir neurocérébral" est rempli à ras bord.
+// Ici, la jauge mémorisation est réellement et durablement à 100/100, pas de trous de souvenirs fragiles
+Il ne vous reste plus qu'à attendre l'heure de manger votre déjeuner.
+-> Manger
+    << jump Lunch_Lundi_Good >>
+[[Lunch_Lundi_Good]]
+Si vous n'avez pas encore pensé à faire retomber le stress qui encombre encore vos pensées. C'est le moment.
+-> Pause méditative
+    << jump Meditation_Good >>
+[[Meditation_Good]]
+===
+title: Meditation_Good
+tags: 
+colorID: 2
+position: 1707,-839
+---
+Vous vous asseyez dans un coin. Vous adoptez la posture du lotus, posture idéale pour s'enraciner dans une pause méditative. Vous fermez les yeux, vous vous concentrez sur votre respiration.
+Certes, vous avez le cerveau encore agité, vous appréhendez de vous retrouver de nouveau devant le jury et de vous retrouvez à nouveau piégé par leur proposition de sujet. Cependant, vous savez désormais que vous avez toutes les cartes en votre possession. Vous pouvez gagner, et vous allez tout entreprendre pour réaliser ce voeu, qui vous est si cher... 
+
+// la jauge stress tombe à zéro, réduit stress du matin
+Maintenant, il est grand temps de...
+-> Manger
+<< jump Lunch_Lundi_Good >>
+[[Lunch_Lundi_Good]]
+===
+title: Pas_Tricher
+tags: 
+colorID: 2
+position: 1137,-620
+---
+Non dites-vous ! Hors de question de tricher en ne révisant que le sujet déjà sorti la fois d'avant ! Le truc ne marchera pas ! Les jurés disposent d'un détecteur neurocérébral. Ils vont sonder votre mémoire et vous interrogeront sur le sujet que vous n'avez pas appris ou que vous connaissez mal. 
+Impossible d'avoir de grosses lacunes ! Vous devez stimuler votre mémoire en la "piquant" sur les quatre thèmes possibles, pas plus, mais surtout pas moins !  
+Tant pis, le timing est serré mais c'est faisable.
+-> En avant pour la séance de "piqûre mémorielle" !
+    << jump Piqure_de_Rappel >>
+[[Piqure_de_Rappel]]
+===
+title: Rappel_Planning
+tags: 
+colorID: 2
+position: -3155,-2203
+---
+C'est ça ! Vous vous en rappelez ! 
+Vous devez établir un planning de vos révisions  de tout le week-end ! 
+Le fameux sceau et les grosses pierres !
+
+-> Définir votre planning
+<< jump Planning_Samedi >>
+[[Planning_Samedi]]
+===
+title: Revisions_ZenTD3
+tags: 
+colorID: 2
+position: -296,-447
+---
+Vous retournez à votre bureau. Vous n'avez pas fini de rédiger vos fiches de révision. Il vous faut une heure pour achever cette tâche. Et comme le veut la méthode "pomodoro". Après chaque session d'une heure, vous devez vous ménager une pause musicale.
+Ce que vous faites avec grand plaisir. Vous vous détendre en jouant de votre cycloluth. 
+Cependant, quand vous reposez votre instrument archaïque de la planète Feudall, vous voyez un appel manqué sur votre palmphone. Mamie a tenté de vous joindre... 
+Vous savez qu'elle va bien. Vous l'avez déjà écouté vous parler. Elle va même trop bien. Cependant, votre mamie revit cette scène comme une "première fois". 
+Que faites-vous ?
+
+-> Rappeler mamie
+    << jump Mamie_Call >>
+-> Ignorer son appel
+[[Rejet_Call_ZTD]]
+    << Rejet_Call_ZTD >>
+===
+title: Rejet_Call_ZTD
+tags: Choix_fatal
+colorID: 2
+position: 212,-446
+---
+Vous prenez le temps de potasser vos fiches. En commençant bien entendu par celles concernant ce sujet maudit qu'est la décohérence quantique. Votre première session de révision se déroule sans problème. 
+Finalement, ce sujet de la décohérence est simple à comprendre. Grâce à cette théorie révolutionnaire, la métaphysique quantique règle le paradoxe des états superposés. Le postulat de réduction du paquet d'onde n'entre pas en contradiction avec celui d'unité (le fameux paradoxe de Schrödinger). Tout simplement parce que la réduction des différentes possibilités d'états est une conséquence du postulat de Schrödinger. Les deux postulats n'entrent pas en contradiction l'un avec l'autre.
+La décohérence repose sur le fait qu'un système quantique ne doit pas être considéré comme isolé, mais en interaction avec un environnement flexible et agile. Et ce sont ces interactions qui provoquent l'effondrement de ces états superposés.
+Cela vous prend plus de deux heures, c'est-à-dire deux sessions "pomodoro."
+
+Vous réétudiez ensuite les deux thèmes étudiés hier : incertitude quantique et intrication quantique. Vous passez environ une heure pour vous remettre ces sujets en mémoire. 
+
+Bien entendu, vous n'oubliez pas de vous accorder une pause instrumentale entre les vos deux sessions "pomodoro". Vous pouvez remercier votre cycloluth. Il est devenu votre outil indispensable pour mener à bien vos séances de travail intense. 
+
+Vous sentez le poids de la fatigue accumulée. Il est temps d'aller se coucher. Un petit tour aux toilettes pour se laver les dents. On échange ses vêtements pour sa tenue de nuit. Et voilà !
+-> Au dodo !
+    << jump Dim_GameOver >>
+[[Dim_GameOver]]
+===
