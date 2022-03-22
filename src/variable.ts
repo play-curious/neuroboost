@@ -9,6 +9,7 @@ export interface Variables extends Gauges {
   eval: string;
   journalAnswers: any;
   ballsJuggled: number;
+  isDebugMode: boolean
 }
 
 export interface Gauges {
