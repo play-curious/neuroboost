@@ -164,8 +164,14 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     const result = this.runner.currentResult;
 
     if (isText(result)) {
-      this.graphics.showDialogLayer();
-      this._handleDialog();
+      if(this.config.variableStorage.get("isDebugMode")) {
+        console.log("SKIPPED", result);
+        this._advance();
+      }
+      else {
+        this.graphics.showDialogLayer();
+        this._handleDialog();
+      }
     } else if (isOption(result)) {
       this.graphics.showDialogLayer();
       if (this._hasTag(this.metadata, "freechoice")) {
@@ -202,7 +208,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     if (!isOption(result))
       throw new Error("Called _handleChoice for unknown result");
-
     this.metadata.choiceId
       ? this.metadata.choiceId++
       : (this.metadata.choiceId = 0);
@@ -226,7 +231,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       if (option.text === "back") indexOfBack = i;
     }
-
     if (
       this._hasTag(this.metadata, "subchoice") &&
       options.length === 1 &&

@@ -163,7 +163,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       // Credits entity starts null, and is created only when the button is pressed
       this.creditsEntity = null;
     }
-
+    
     {
       this.title = this.makeSprite("images/menu/title.png", (it) => {
         it.anchor.set(0.5);
@@ -171,6 +171,15 @@ export class Menu extends extension.ExtendedCompositeEntity {
           this.popupBackground.width / 2,
           -this.popupBackground.height / 3
         );
+        it.interactive = true;
+        this.debugPressCount = 0;
+        this._on(it, "pointerup", () => {
+          if(++this.debugPressCount == 7) {
+            this.debugPressCount = 0;
+            this.config.variableStorage.set("isDebugMode", !this.config.variableStorage.get("isDebugMode"));
+            console.log("Debug: ", this.config.variableStorage.get("isDebugMode"));
+          }
+        });
       });
       this.popupBackground.addChild(this.title);
     }

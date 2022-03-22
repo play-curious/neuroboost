@@ -43,12 +43,13 @@ const variableStorage = new variable.VariableStorage({
   time: "540",
   eval: "",
   journalAnswers: {},
+  ballsJuggled: 0,
+  isDebugMode: false,
   sleep: "100",
   food: "100",
   learning: "0",
   mentalLoad: "0",
   stress: "0",
-  ballsJuggled: 0,
 });
 const globalHistory: yarnBound.Result[] = [];
 
@@ -60,6 +61,7 @@ export function installGameData(rootConfig: entity.EntityConfig) {
   rootConfig.globalHistory = globalHistory;
   rootConfig.clock = _clock;
   rootConfig.app.renderer.plugins.interaction.mouseOverRenderer = true;
+  rootConfig.debug = false;
 }
 
 const params = new URLSearchParams(window.location.search);
