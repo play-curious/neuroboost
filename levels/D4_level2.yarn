@@ -1,10 +1,19 @@
+# gauges: learning sleep food mentalLoad
+
 title: Start
 tags:
 position: -2504.752685546875,43.17276573181152
 colorID: 8
 ---
 << fadeIn 1 >>
+<< setTime 8:00 >>
 << setBackground bedroom >>
+<< setGauge learning 0 >>
+<< setGauge sleep 100 >>
+<< setGauge food 100 >>
+<< setGauge mentalLoad 0 >>
+<< showGauges >>
+<< music Victory >>
 << fadeOut >>
 
 Vous vous dans votre chambre. Il est jeudi matin, encore une fois. Vous mangez votre petit déjeuner tout en pensant à ce que vous allez bien pouvoir faire pour ce projet de mémoire sur la théorie du chaos en macrobiologie post-darwinienne. Motiver et guider Fred : c'est bien joli à dire, c'est plus difficile à faire. 
@@ -42,6 +51,38 @@ Tant pis, vous avez essayé de le raisonner par téléphone, ça ne marche pas. 
 -> Vous allez chez lui et vous l'obligez à venir à la bibliothèque.
     <<jump ChezFred>>
 ===
+title: Bibli_soloAM
+tags: 
+colorID: 0
+position: -2066.117431640625,-90.2164535522461
+---
+<< fadeIn >>
+<< setBackground library >>
+<< setTime 8:15 >>
+<< fadeOut >>
+
+Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez. 
+Vous y ajoutez un paramètre. Et toutes les dix minutes, votre palmphone renvoie votre texto à Fred. Vous espérez ainsi le forcer à vous retrouver. Le temps passe, les minutes et les heures s'écoulent. 
+<< advanceTime 4:45 >>
+Mais que fait donc Fred ? Le voilà enfin.
+<< show fred >>
+
+You: J'ai pas arrêté de te relancer, tu foutais quoi ?
+Fred_smiling: Je jouais à GTR 66 ! C'est trop de la bombe nucléaire !
+You: Et mes textos ? Je t'en ai balancé des centaines ! Tu les as bien reçus ?
+Fred_smiling: Je les ai pas entendu, j'avais le casque sur la tête.
+You: T'as vu l'heure ? La bibliothèque ferme à 20h !
+Fred_happy: No worry, j'ai tout dans la tête.
+You: J'espère bien.
+Fred_excited: On commence par quoi ?
+You: Heu.
+Fred_smiling: C'est toi le chef de projet, non ?..
+
+Vous vous rappelez des paroles d'Azul, c'est vous le capitaine de ce projet. C'est à vous de mener la barque.
+
+-> Se mettre au travail 
+    <<jump Liste_taches>>
+===
 title: Bibli_soloPM
 tags: 
 colorID: 0
@@ -49,10 +90,12 @@ position: -949.32763671875,1219.6046142578125
 ---
 << fadeIn >>
 << setBackground library >>
-<< advanceTime 2:00 >>
 << fadeOut >>
 
 Vous retournez vous asseoir à la même table que ce matin. Vous textez Fred pour lui dire que vous l'attendez au même endroit. Vous ajoutez une condition de renvoi automatique du texto. S'iel ne répond pas dans les 10 minutes, le message lui est renvoyé de nouveau. Le temps passe, les minutes et les heures s'écoulent. Enfin, Fred revient en salle...
+
+<< show fred >>
+<< advanceTime 2:00 >>
 
 You: Tu te fous de moi ou quoi ?
 Fred_smiling: C'est trop de la bombe nucléaire GTR 66 !
@@ -99,25 +142,28 @@ tags:
 position: -1617.8306884765625,24.821166694164276
 colorID: 1
 ---
+<<empty>>
+<< if !visited("Liste_taches") >>
 Fred_happy: Alors, on attaque quoi maintenant, boss ?
+<< visit Liste_taches >>
+<< endif >>
 
-// l'idée est que le joueur doit valider 4 tâches : notes_Fred/notes_you/plan/rédaction qui lui prennent 11h + bulle d'immersion (rien) + lunch 1h = 12h au total si j'ai bien calculé c'est bon?
-
-<< if $time <= 1200 >>
--> Montrer vos notes à Fred#once
-    <<jump Notes_You>>
--> Demander à Fred ses notes#once
-    <<jump Notes_Fred>>
--> Reprendre la rédaction du mémoire#once
-    <<jump Redaction>>
--> Faire la pause lunch#once
-    <<jump lunch>>
--> Valider le plan du mémoire#once 
-    <<jump Plan>>
+<< if !isTimeOver("20:00") >>
+-> Travailler avec Fred sur le mémoire
+    <<empty>>
+    -> Montrer vos notes à Fred#once
+        <<jump Notes_You>>
+    -> Demander à Fred ses notes#once
+        <<jump Notes_Fred>>
+    -> Reprendre la rédaction du mémoire#once
+        <<jump Redaction>>
+    -> Valider le plan du mémoire#once 
+        <<jump Plan>>
 -> Générer une bulle d'immersion studieuse#once
     <<jump Zero_distraction>>
+-> Faire la pause lunch#once
+    <<jump lunch>>
 << else >>
--> Quitter la bibliothèque 
     <<jump Exit_Bibli>>
 << endif>>
 
@@ -131,10 +177,15 @@ You: On reprend la rédaction détaillée du mémoire ?
 Fred: Yes. On se répartit la tâche comment ?
 You: Heu... 
 
+<< if visited("Zero_Distraction") >>
 -> Demander l'avis de Fred
     << jump Redaction_Good >>
 -> Donner les ordres à Fred
     << jump Redaction_Bad >>
+<<else>>
+-> Donner les ordres à Fred
+    << jump Redaction_Bad >>
+<<endif>>
 ===
 title: lunch
 tags: 
@@ -167,9 +218,8 @@ Fred_sad: Ah.
 You: Rappelle-toi qu'on a un diplôme à décrocher.
 Fred_smiling: C'est vrai.
 
-// augmente la concentration = charge mentale mais pas trouvé d'effet utile concret?? Une idée? 
-// Dans le level2 ça permet de parler sans problème avec Fred!
-// Option " Reprendre le travail " moved to the end of this node
+<< visit Zero_Distraction >>
+
 ->  Reprendre le travail 
     <<jump Liste_taches>>
 ===
@@ -219,42 +269,15 @@ You: On commence par les miennes ?
 Fred_smiling: Yeeees. Je t'écoute !
 You: Heu.
 
+<< if visited("Zero_Distraction") >>
 -> Vous lui lisez vos notes
     << jump Notes_You_Good >>
 -> C'est à lui de lire vos notes
     << jump Notes_You_Bad >>
-===
-title: Bibli_soloAM
-tags: 
-colorID: 0
-position: -2066.117431640625,-90.2164535522461
----
-<< fadeIn >>
-<< setBackground library >>
-<< fadeOut >>
-
-Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez. 
-Vous y ajoutez un paramètre. Et toutes les dix minutes, votre palmphone renvoie votre texto à Fred. Vous espérez ainsi le forcer à vous retrouver. Le temps passe, les minutes et les heures s'écoulent. 
-
-Mais que fait donc Fred ? Le voilà enfin.
-<< show fred >>
-<< advanceTime 8:00 13:00 0:05>>
-
-You: J'ai pas arrêté de te relancer, tu foutais quoi ?
-Fred_smiling: Je jouais à GTR 66 ! C'est trop de la bombe nucléaire !
-You: Et mes textos ? Je t'en ai balancé des centaines ! Tu les as bien reçus ?
-Fred_smiling: Je les ai pas entendu, j'avais le casque sur la tête.
-You: T'as vu l'heure ? La bibliothèque ferme à 20h !
-Fred_happy: No worry, j'ai tout dans la tête.
-You: J'espère bien.
-Fred_excited: On commence par quoi ?
-You: Heu.
-Fred_smiling: C'est toi le chef de projet, non ?..
-
-Vous vous rappelez des paroles d'Azul, c'est vous le capitaine de ce projet. C'est à vous de mener la barque.
-
--> Se mettre au travail 
-    <<jump Liste_taches>>
+<<else>>
+-> C'est à lui de lire vos notes
+    << jump Notes_You_Bad >>
+<<endif>>
 ===
 title: Fred_goesback_towork
 tags: 
@@ -279,7 +302,7 @@ tags:
 position: -1396.7598876953125,1892.27099609375
 colorID: 1
 ---
-// if le joueur a validé: Zero_Distraction + Notes_Fred_Good + Notes_You_Good + Plan_Good + Redaction_Good
+<< if getGauge("learning") >= 70 >>
 
 Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux. C'est à regret que Fred et vous, sortez de l'établissement.
 You: Non, on a presque fini.
@@ -299,7 +322,7 @@ Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omnisc
 You: Non, on est loin d'avoir fini !!
 Vous criez, vous paniquez complètement, vous vous mettez à suer à grosses gouttes, votre vue se trouble, votre ouïe sature, parasité par un effet de larsen. Vous avez encore échoué ! 
 -> Vous allez devoir recommencer cette journée épuisante à la bibliothèque
-[[Start]]
+    << jump Start>>
 
 << endif >>
 ===
@@ -315,11 +338,15 @@ Fred_smiling: Bien sûr.
 You: Tu as tes notes avec toi ?
 Fred_happy: Tu veux pas plutôt qu'on en parle de vive voix ?
 You: Heu... C'est plus facile pour moi de les lire.
-
+<<if visited("Zero_Distraction")>>
 -> Écouter Fred présenter ses notes
     << jump Notes_Fred_Good >>
 -> Demander à Fred de vous envoyer ses notes écrites
     << jump Notes_Fred_Bad >>
+<<else>>
+-> Demander à Fred de vous envoyer ses notes écrites
+    << jump Notes_Fred_Bad >>
+<<endif>>
 ===
 title: ChezFred
 tags: 
@@ -389,17 +416,21 @@ Fred_happy: Oui, plein, y a l'embarras du choix.
 You: On n'a plus le temps.
 Fred_smiling: On a toujours le temps.
 
+<< if visited("Zero_Distraction") >>
 -> Vous prenez le temps de discuter avec Fred de tous les plans possibles
     << jump Plan_Good >>
 -> Vous présentez votre plan à Fred
     << jump Plan_Bad >>
+<<else>>
+-> Vous présentez votre plan à Fred
+    << jump Plan_Bad >>
+<<endif>>
 ===
 title: Notes_You_Good
 tags: 
 position: -1171.1915283203125,-520.5768127441406
 colorID: 2
 ---
-<< if visited("Zero_Distraction") >>
 You: Tu sais, moi, j'échange par écrit. C'est plus simple.
 Fred_surprised: Ah. Pour moi...
 You: Ouais, je sais. C'est le contraire. Exceptionnellement, je fais l'effort de te présenter oralement ce que j'ai accumulé de mon côté.
@@ -411,16 +442,11 @@ Ne sachant pas par quoi commencer, vous dites la première remarque qui vous vie
 Au final, ce n'est pas vous qui avez présenté votre travail à Fred. C'est Fred qui a revu vos notes et a corrigé ce qui n'allait pas. C'est génial.
 
 <<advanceTime 2:00>> 
+<< addToGauge learning 20 >>
 
 Enfin, comble de joie : l'IA vous informe qu'elle a enregistré toute la conversation et qu'elle vous transfère le fichier audio sur votre ordinateur !
 
 <<jump Liste_taches>>
-
-<<else>>
-Avant de parler à voix haute, vous devez d'abord demander à l'IA d'activer la "Sphère de Travail Immersive"
--> Activer la sphère immersive 
-    <<jump Liste_taches>>
-<<endif>>
 ===
 title: Notes_You_Bad
 tags: 
@@ -437,6 +463,7 @@ Fred_sad: C'est stupide...
 Vous envoyez vos documents de travail à Fred. Vous voyez votre ami grincer des dents.
 Iel peine à lire et relire vos docs. Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous ne pouvez le laisser parler. Le règlement intérieur précise bien que vous ne devez pas parler, sous peine de déranger les autres étudiants, qui travaillent eux aussi.
 <<advanceTime 2:00>>
+<< addToGauge learning 10 >>
 Avez-vous fait le bon choix ?
 
 <<jump Liste_taches>>
@@ -446,23 +473,16 @@ tags:
 position: -1169.795654296875,-90.88680267333984
 colorID: 2
 ---
-<< if visited("Zero_Distraction") >>
-
 Fred_happy: Tout est dans ma tête. Tu veux que je commence par quoi ?
 
 << advanceTime 2:00 >>
+<< addToGauge learning 20 >>
 
 Vous comprenez que c'est à vous de questionner Fred et, en quelque sorte, de lui tirer les vers du nez. Vous passez les deux heures suivantes à lui poser des questions, à écouter ses réponses, à rebondir sur ces idées, ces commentaires.
 C'est vraiment super stimulant et super enrichissant. Fred a vu des trucs que vous n'aviez pas remarqué. Cette personne a un don, c'est certain. Après, iel ne correspond pas totalement aux standards académiques. C'est sa force et sa faiblesse.  
 Quand vous pensez avoir fait le tour de la question avec lui, l'IA vous informe qu'elle a enregistré toute la conversation. Elle vous transfère le fichier audio sur votre ordinateur. Génial !
 
 <<jump Liste_taches>>
-
-<<else>>
-Avant de parler à voix haute, vous devez d'abord demander à l'IA d'activer la "Sphère de Travail Immersive"
--> Activer la sphère immersive 
-    <<jump Liste_taches>>
-<<endif>>
 ===
 title: Notes_Fred_Bad
 tags: 
@@ -481,8 +501,8 @@ Fred: J'ai fait un effort. J'ai écrit des vraies phrases.
 En effet, c'est mieux, mais ça reste laconique. Il reste encore beaucoup à faire mais vous n'obtiendrez pas plus de Fred de cette manière.
 Avez-vous fait le bon choix ?
 <<advanceTime 3:00>>
+<< addToGauge learning 10 >>
 
-// Option "Et maintenant, que faire? " moved to the end of this node
 <<jump Liste_taches>>
 ===
 title: Plan_Good
@@ -490,8 +510,6 @@ tags:
 position: -1171.308837890625,773.103515625
 colorID: 2
 ---
-<< if visited("Zero_Distraction") >>
-
 You: C'est le dernier jour, on doit choisir un plan et s'y tenir. 
 Fred_happy: Très bien. Dis-moi ce que tu as retenu et je te dirai ce que j'en pense.
 You: OK. 
@@ -500,15 +518,9 @@ Vous commencez ensuite à lui présentez vos trois grandes parties, vos sections
 En clair, iel vous déstabilise, iel vous secoue. Iel vous fait douter de votre problématique et de vous. Sauf que, c'est là le génie de Fred. Fred ne se contente pas de vous perturber, iel vous propose des pistes alternatives, des questions et des arguments auxquels vous n'aviez pas pensés.
 En fait, iel secoue l'arbre de votre argumentation pour vous aider à cueillir tous les fruits qu'il a produit. Grâce à la contribution de Fred, vous comprenez que vous avez un plan en béton armé.
 << advanceTime 2:00 >>
+<< addToGauge learning 20 >>
 
-// Option "Avancer dans le travail " moved to the end of this node
 << jump Liste_taches >>
-
-<<else>>
-Avant de parler à voix haute, vous devez d'abord demander à l'IA d'activer la "Sphère de Travail Immersive"
--> Activer la sphère immersive 
-    << jump Liste_taches >>
-<<endif>>
 ===
 title: Plan_Bad
 tags: 
@@ -522,6 +534,7 @@ Vous sentez que vous n'avez peut-être pas pris la bonne décision. Fred se rév
 Si Fred avait raison... Vous allez devoir revivre encore une fois cette journée de jeudi. Pourvu que non...
 
 << advanceTime 1:30 >>
+<< addToGauge learning 10 >>
 
 // Option "Avancer dans le travail " moved to the end of this node
 <<jump Liste_taches>>
@@ -531,8 +544,6 @@ tags:
 position: -1168.8485107421875,337.4625244140625
 colorID: 2
 ---
-<< if visited("Zero_Distraction") >>
-
 Vous vous rappelez des conseils d'Azul. Il faut solliciter Fred, sur ses connaissances et ses opinions. De manière verbale. 
 Vous prenez le temps de lui résumer oralement ce que vous avez déjà sur la question des modèles chaotiques, déterministes dont le degré d'erreur croît de manière exponentielle. Votre présentation n'ennuie pas Fred, au contraire, votre pote se trouve être une source inépuisable d'idées et de référence pour étayer cette partie.
 Vous enchaînez avec la portée de l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme. Là encore, échanger avec Fred vous permet de consolider vos arguments et de donner plus de profondeur à cette question.
@@ -540,14 +551,9 @@ Enfin, vous énumérez brièvement les éléments que vous avez déjà intégré
 Au final, vous constatez qu'avec le concours de Fred, votre rédaction s'est considérablement étoffée. Elle est vraiment solide et bien charpentée. Il ne vous reste plus qu'à arranger votre démonstration de manière plus académique et plus littéraire et le tour sera joué. 
 Alors que vous terminez de noter un truc dans votre agenda, l'IA vous informe qu'elle a enregistré toute la conversation. Elle vous expédie le fichier audio sur votre ordinateur. Parfait ! Si vous avez oublié un truc, vous n'aurez qu'à réécouter l'enregistrement...
 << advanceTime 4:00 >>
+<< addToGauge learning 20 >>
 
 <<jump Liste_taches>>
-
-<<else>>
-Avant de parler à voix haute, vous devez d'abord demander à l'IA d'activer la "Sphère de Travail Immersive"
--> Activer la sphère immersive 
-    <<jump Liste_taches>>
-<<endif>>
 ===
 title: Redaction_Bad
 tags: 
@@ -564,6 +570,7 @@ Vous reprenez vos brouillons et vos notes et vous commencez à mettre au propre 
 << hide >>
 << fadeIn >>
 << advanceTime 3:00 >>
+<< addToGauge learning 10 >>
 << fadeOut >>
 
 Quand vous relevez la tête, vous voyez Fred, qui vous sourit.

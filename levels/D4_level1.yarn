@@ -6,11 +6,13 @@ colorID: 8
 position: -1863,65
 ---
 << fadeIn 1 >>
+<< setTime 8:00 >>
 << setBackground bedroom >>
-<< setGauge learning 80 >>
+<< setGauge learning 0 >>
 << setGauge sleep 100 >>
 << setGauge food 100 >>
 << setGauge mentalLoad 0 >>
+<< showGauges >>
 << music Victory >>
 << fadeOut >>
 
@@ -40,12 +42,40 @@ Fred@holo_smiling: Yes, yes. Viens d'abord chez moi !
 You: Fred, on a encore du pain sur la planche.
 Fred@holo_smiling: Yes yes, on verra cet après-midi.
 << hide >>
+<< advanceTime 0:05 >>
 Vous connaissez Fred, iel est têtu. Vous n'avez que deux possibilités :
 
 -> Vous allez à la bibliothèque et vous espérez qu'il vous rejoindra.
     <<jump Bibli_soloAM>>
 -> Vous allez chez lui et vous l'obligez à venir à la bibliothèque.
     <<jump ChezFred>>
+===
+title: Bibli_soloAM
+tags: 
+colorID: 0
+position: -1265,73
+---
+<< fadeIn >>
+<< setBackground library >>
+<< setTime 8:15 >>
+<< fadeOut >>
+
+Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez.
+Vous relisez tranquillement tout ce que vous avez déjà noté. Vous en profitez pour revoir certaines références, approfondir d'autres. C'est passionnant la théorie du chaos. La macrobiologie également. Le temps passe, les minutes et les heures s'écoulent... 
+<< advanceTime 4:45 >>
+Mais que fait donc Fred ? Le voilà enfin.
+<< show fred >>
+You: Mais qu'est-ce que tu foutais ?
+Fred_smiling: C'est trop de la bombe nucléaire GTR 66!
+You: T'as vu l'heure ? La bibliothèque ferme à 20h !
+Fred_happy: No worry, j'ai tout dans la tête.
+You: J'espère bien.
+Fred_smiling: On commence par quoi ?
+You: Heu.
+Fred_smiling: C'est toi le chef de projet, non ?..
+Vous ne saisissez pas très bien le sens des paroles de Fred. Que veux-t-iel dire ?
+
+<<jump Liste_taches>>
 ===
 title: Bibli_soloPM
 tags:
@@ -103,23 +133,25 @@ tags:
 colorID: 1
 position: -1322,330
 ---
-Fred_smiling: Alors, on attaque quoi maintenant, boss?
+<< if !visited("Liste_taches") >>
+Fred_happy: Alors, on attaque quoi maintenant, boss ?
+<< visit Liste_taches >>
+<< endif >>
 
-<< if $time <= 1200 >>
+<< if !isTimeOver("20:00") >>
 -> Montrer vos notes à Fred#once
     <<jump Notes_You>>
 -> Demander à Fred ses notes#once
     <<jump Notes_Fred>>
 -> Reprendre la rédaction du mémoire#once
     <<jump Redaction>>
--> Faire la pause lunch#once
-    <<jump lunch>>
 -> Valider le plan du mémoire#once 
     <<jump Plan>>
 -> Générer une bulle d'attention#once
     <<jump Zero_distraction>>
+-> Faire la pause lunch#once
+    <<jump lunch>>
 << else >>
--> Quitter la bibliothèque 
     <<jump Exit_Bibli>>
 << endif>>
 ===
@@ -139,6 +171,8 @@ Fred: Si tu le dis.
 Vous reprenez vos brouillons et vos notes et vous commencez à mettre au propre vos idées. Vous vous voulez bien faire les choses. Vous prenez le temps de contrôler régulièrement vos sources et de réutiliser dans votre argumentation les données que vous avez glanées. 
 
 << advanceTime 3:00 >>
+<< addToGauge learning 10 >>
+
 Quand vous relevez la tête, vous voyez Fred, qui vous sourit.
 Fred_smiling: Tu avais l'air méga-sérieux. T'as pas arrêté de taper sur l'ordi.
 You: Et toi tu as avancé ?
@@ -176,7 +210,8 @@ Fred_smiling: Yes Yes...  Et si je te montrais ce qu'on peut faire dans le derni
 You: Naaan... De toute manière, ça ne marcherait pas. Nos connexions sont limitées aux sites académiques.
 Fred_sad: Dis donc, c'est vraiment pas top ta boule immersive...
 
-// augmente la concentration = charge mentale mais pas trouvé d'effet utile concret?? Une idée? 
+<< advanceTime 1:00 >>
+
 // Dans le level2 ça permettra de parler sans problème avec Fred!
 
 <<jump Liste_taches>>
@@ -235,32 +270,7 @@ Fred_sad: C'est stupide...
 Vous envoyez la mise à jour de vos documents de travail à Fred. Vous voyez votre ami grincer des dents. Iel ne semble pas très heureux de travailler ainsi. D'ailleurs, iel prend son temps à lire et relire vos docs.
 Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous coupez court. Il faut faire silence dans ce "sanctuaire de l'étude". Vous n'y pouvez rien, vous ne faites qu'appliquer le règlement intérieur.  
 <<advanceTime 2:00>>
-
-<<jump Liste_taches>>
-===
-title: Bibli_soloAM
-tags: 
-colorID: 0
-position: -1265,73
----
-<< fadeIn >>
-<< setBackground library >>
-<< fadeOut >>
-
-Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez.
-Vous relisez tranquillement tout ce que vous avez déjà noté. Vous en profitez pour revoir certaines références, approfondir d'autres. C'est passionnant la théorie du chaos. La macrobiologie également. Le temps passe, les minutes et les heures s'écoulent... 
-Mais que fait donc Fred ? Le voilà enfin.
-<< show fred >>
-You: Mais qu'est-ce que tu foutais ?
-Fred_smiling: C'est trop de la bombe nucléaire GTR 66!
-You: T'as vu l'heure ? La bibliothèque ferme à 20h !
-Fred_happy: No worry, j'ai tout dans la tête.
-You: J'espère bien.
-Fred_smiling: On commence par quoi ?
-You: Heu.
-Fred_smiling: C'est toi le chef de projet, non ?..
-<< setTime 13:00 >>
-Vous ne saisissez pas très bien le sens des paroles de Fred. Que veux-t-iel dire ?
+<< addToGauge learning 10 >>
 
 <<jump Liste_taches>>
 ===
@@ -369,6 +379,7 @@ Après un bon moment, Fred, vous renvoie les fichiers mis à jour...
 Fred_smiling: J'ai fait un effort. J'ai écrit des vraies phrases.
 En effet, c'est mieux, mais ça reste laconique. On dirait plus des diapositives de présentation qu'une argumentation ou un mémoire. Et les sources et les références ne sont pas correctement indiquées.   
 <<advanceTime 3:00>>
+<< addToGauge learning 10 >>
 
 <<jump Liste_taches>>
 ===
@@ -663,6 +674,7 @@ You: Je te rappelle qu'on doit le rendre ce soir ce mémoire. C'est maintenant t
 En réalité, c'est plus facile à dire qu'à faire. Fred se révèle un infatigable avocat de l'accusation. Iel ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions. Commentaires qui ne font que fragiliser votre problématique et douter de vous.
 Si Fred a raison, il va falloir revoir le plan de votre mémoire sur cette fichue théorie du chaos post-darwinienne...
 << advanceTime 1:30 >>
+<< addToGauge learning 10 >>
 
 <<jump Liste_taches>>
 ===
