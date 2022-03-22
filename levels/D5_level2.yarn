@@ -1,10 +1,19 @@
+# gauges: learning sleep food mentalLoad stress
+
 title: Start
-tags:
+tags: 
+position: -2636.1220703125,-498.444580078125
 colorID: 8
-position: -2838,-501
 ---
 << fadeIn 1 >>
+<< showGauges learning sleep food mentalLoad >>
 << setBackground bedroom >>
+<< setGauge learning 20 >>
+<< setGauge sleep 100 >>
+<< setGauge food 30 >>
+<< setGauge mentalLoad 0 >>
+<< setGauge stress 0 >>
+<< loopFX Chime_LOOP 2000 >>
 << fadeOut >>
 
 Bip ! Bip ! Votre horloge connectée vous surprend en plein milieu d'un rêve. Vous étiez dans le jardin verdoyant des quatre Sages. Vous ouvrez l'oeil. Vous réalisez qu'il est de nouveau vendredi. Vous devez repasser l'épreuve de GRH : Gestion des Ressources Hybrides.
@@ -14,15 +23,19 @@ Ronronron... Votre palmphone vibre. C'est votre grand-mère qui se rappelle à v
     <<jump Appel_Mamie>>
 ===
 title: Liste_Taches
-tags:
+tags: 
+position: -2191.1474609375,-502.1535949707031
 colorID: 1
-position: -2107,-622
 ---
 << setBackground bedroom >>
 << fadeOut >>
 
+<< if visited("Liste_Taches")>>
+<< visit Liste_Taches >>
 Que voulez-vous faire?
-<< if $time >= 810 >>
+<< endif >>
+
+<< if isTimeOver("12:00") >>
 C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
 -> Manger
     <<jump Lunch>>
@@ -33,7 +46,6 @@ C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
     <<jump Maman_Call>>
 -> Réviser votre cours, façon "rappel libre"
     <<jump Rappel_libre>>
-// peut être nécessaire pour le joueur de le faire deux fois. s'il n'a pas encore fait baisser son niveau de stress
 -> Vous informer en ligne sur les causes et les effets des pathologies cardiaques#once
     <<jump Web_Info>>
 -> Appeler Fred#once
@@ -41,31 +53,33 @@ C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
 << endif>>
 ===
 title: Appel_Mamie
-tags:
-colorID: 0
-position: -2535,-447
+tags: 
+position: -2415.153564453125,-500.54840087890625
 ---
-You: Bonjour mamie ! Tu vas bien ?
-Mamie@holo_shadow: Bonjour chouchou. Oui, je vais bien ! Mais je ne suis pas belle à voir...
-You: Ton coeur va bien ?
-Mamie@holo_shadow: Tes parents t'ont tout dit ?
-You: Presque.
-Mamie@holo_shadow: Ah... Si tu me voyais. Ils ont branché mon corps à des dizaines de machines. On dirait que je suis un robot, pas un être vivant...
-You: Ils font ça pour veiller sur toi.
-Mamie@holo_shadow: Si tu le dis. 
-You: Je t'aime mamie...
-Vous n'avez pas le temps d'en dire plus. Le Paramedibot vient chercher votre grand-mère et l'emmène au bloc opératoire. Et c'est reparti pour un tour. Vous sentez l'adrénaline se répandre dans votre corps !
+You: Bonjour mamie ! Pourquoi je ne te vois pas ?
+Mamie@holo_shadow: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir...
+You: ah bon ?
+Mamie@holo_shadow: Je suis à l'hôpital et on m'a branchée sur des dizaines de câbles et de moniteurs. Je ressemble plus à une véhicule accidenté qu'à une grand-mère. 
+You: Qu'est-ce qui t'es arrivée ?
+Mamie@holo_shadow: Rien de grave, chouchou. Tes parents t'ont rien dit ?
+You: Heu non...
+Mamie@holo_shadow: Ah... Bien sûr...
+You: Quoi ?
+Mamie@holo_shadow: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux... 
+You: Ton coeur ?! Mamie...
+Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire !
+<< hide >> 
+Du coup, votre aïeule coupe court à la conversation. Vous n'en saurez pas plus. Quel choc !! 
+Votre grand-mère à l'hôpital, la connaissant dure comme du béton armé, c'est du sérieux. Vraiment, ça craint...
+Il y a des journées comme celle-ci qu'on préférerais zapper... Du coup, vous ne savez plus du tout par quoi vous allez commencer... 
 << addToGauge stress 40 >>
-<< setTime: 8:30 >>
-Qu'est-ce que vous allez bien pouvoir faire pour éliminer ce stress ? 
 
 -> Pourtant, il faut choisir 
     <<jump Liste_Taches>>
 ===
 title: Breakfast
 tags: 
-colorID: 0
-position: -1966,-321
+position: -1962.2679443359375,-630.7632751464844
 ---
 << fadeIn >>
 << setBackground bedroom kitchen >>
@@ -75,41 +89,34 @@ Ce matin, l'important est moins de manger équilibré que de garder son calme. V
 <<advanceTime 0:15>>
 
 -> Passons aux choses sérieuses !
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Maman_Call
 tags: 
-colorID: 0
-position: -1714,-326
+position: -1961.7620849609375,-407.4986267089844
 ---
-<< fadeIn >>
-<< setBackground bedroom >>
-<< fadeOut >>
+Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous appuyez sur le bouton "appel". Votre mère décroche :
 
-Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous voulez la rassurer.
-Maman@holo_shadow: Bibi, tu es au courant ?
-You: Oui. Mamie m'a appelé. On l'a emmenée au bloc opératoire.
-Maman@holo_shadow: Déjà ?
-You: Oui. Elle avait l'air en super forme.
-Maman@holo_shadow: Tant mieux. Et toi ?
-You: Hum... ça va.
-Maman@holo_shadow: Tu es sûr ? 
-You: Oui oui ne t'inquiète pas.
-Maman@holo_shadow: Bibi, ... 
-You: Et arrête de m'appeler Bibi ! Je n'ai plus 8 ans !
-Maman@holo_shadow: Mais mon choux, c'est parce que je t'aime...
-Vous raccrochez encore plus énervé. Cette idée de passer un coup de fil pour détendre l'atmosphère était une fausse bonne idée.
-
+Maman@holo_shadow: Bibi. Tu es au courant ?
+You: Oui. Mamie m'a appelé. Qu'a-t-elle ?
+Maman@holo_shadow: Elle a fait une crise cardiaque. On l'a admise d'urgence à l'hôpital. Son état est stable mais on doit l'opérer.
+You: Pourquoi ne m'avoir rien dit ?
+Maman@holo_shadow: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus.
+You: Merci. Du coup, je suis plus stressé..
+Maman@holo_shadow: Bibi, je ne pensais pas te... 
+You: J'ai compris. Bye !
+<< hide >>
+Vous raccrochez, encore plus énervé. Cette histoire sent de plus en plus mauvais...
 << addToGauge stress 10 >>
-<<advanceTime 0:20>>
+<<advanceTime 0:15>>
 
 -> Il faut se ressaisir et agir 
     <<jump Liste_Taches>>
 ===
 title: Rappel_libre
 tags: 
-colorID: 0
-position: -1427,-347
+position: -1960.6885986328125,-850.8318481445312
 ---
 << fadeIn >>
 << setBackground bedroom desk >>
@@ -119,9 +126,10 @@ Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la
 Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs... En direction de votre grand-mère, de son problème cardiaque, de son opération. 
 Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond...
 << addToGauge learning 20 >>
-<<advanceTime 2:00 >>
+<<advanceTime 2:00 13:00 0:30 >>
 
 -> Qu'est-ce que vous allez bien faire ?
+    << fadeIn >>
     <<jump Liste_Taches>>
 
 // prévoir que l'impact learning est plus fort si la jauge stress en dessous d'un certain seuil. Je vous laisse voir ça
@@ -129,30 +137,29 @@ Vous tentez régulièrement de revenir à votre matière à réviser, à relire 
 ===
 title: Web_Info
 tags: 
-colorID: 0
-position: -1111,-338
+position: -1958.0101318359375,-185.41468811035156
 ---
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
 
 Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches. 
-Vous passez les deux heures suivantes à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations. 
+Vous passez l'heures suivante à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations. 
 Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes...
-Franchement, ce n'est pas ce que les Sages vous avaient recommandé, non ?
+Vous vous demandez si c'était une si bonne idée de vouloir s'informer tout seul sur un sujet aussi sensible...
 
 << addToGauge stress 20 >>
-<<advanceTime 2:00>>
+<<advanceTime 2:00 13:00 0:30 >>
 
 -> Et maintenant, que faire? 
+    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 title: Fred_Call
 tags: 
-colorID: 0
-position: -831,-402
+position: -1961.8226318359375,-1066.3115539550781
 ---
-Vous appelez Fred.
+Vous parcourez le journal d'appel de votre palmphone, vous y trouvez facilement son numéro et vous l'appeler.
 Fred@holo_excited: Hey ! C'est toi qui m'appelles for once !
 You: Ouais. J'ai besoin de toi.
 Fred@holo_happy: C'est vrai ?
@@ -170,30 +177,27 @@ Fred@holo_excited: Allez, viens. Trust me...
 ===
 title: Lunch
 tags: 
+position: -1960.6490478515625,36.015036821365356
 colorID: 1
-position: -2332,-131
 ---
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
 Pas le temps !! Vous engloutissez fissa un Burger Big Proteins Double Cheese ! Vous videz une canette de Xeno Cola ! Voilà votre repas du midi. Ce n'est pas équilibré, mais en ce vendredi matin, ce n'est pas le plus important. Vous filez ensuite à la salle d'examen...
-
+<< advanceTime 0:30 >>
 -> Se rendre à l'examen 
     <<jump Salle_Examen>>
 ===
 title: Sport_Stress
 tags: 
-colorID: 0
-position: -559,-246
+position: -1511.5962524414062,-1073.5313262939453
 ---
-<< fadeIn >>
-<< setBackground sport >>
-<< fadeOut >>
 
 Revêtu d'un exosquelette tout-terrain, Fred vous attend et vous balance un exosquelette que vous rattrapez in-extremis au vol. Vous enfilez la combinaison et rejoignez Fred sur la piste.
 Fred_excited: Viens, on se fighte ! 
 You: Je suis pas sûr que...
+<< hide >>
 Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. La suite : vous la connaissez, vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! H
 Heureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. 
 Vous avez la langue sèche et les membres engourdis.
@@ -203,22 +207,19 @@ Vous avez la langue sèche et les membres engourdis.
 
 Hélas, cet exercice de sport violent n'a pas évacué votre angoisse. C'est ce que vous avaient dit les Sages.
 
-<<advanceTime 1:30 >>
+<<advanceTime 1:00 >>
 <<addToGauge stress 20>>
 <<visit Sport_Stress>>
 
 -> Qu'est-ce que vous allez bien pouvoir faire ?
+    << fadeIn >>
+    << advanceTime 0:15 >>
     <<jump Liste_Taches>>
 ===
 title: NoMove_Stress
 tags: 
-colorID: 0
-position: -597,-585
+position: -1742.7509155273438,-954.4766845703125
 ---
-<< fadeIn >>
-<< setBackground bedroom desk >>
-<< fadeOut >>
-
 You: Nan... Je crois pas... J'ai du boulot.
 Fred@holo_excited: No no, faut que tu penses à autre chose !
 You: Pas envie...
@@ -227,28 +228,36 @@ You: Naan.
 Fred@holo_smiling: Attention, je te défie à Call of Study ! Tout le METAVERSE le saura !
 You: Tu fais chier, Fred...
 Fred@holo_smiling: C'est pour ça que je suis ton pote... ah ah...
+
+<< fadeIn >>
+<< hide ! >>
+<< setBackground bedroom desk >>
+<< fadeOut >>
+
 Vous grognez et vous pestez, cependant, vous lancez le serveur GameStream. Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred. Son skin est aujourd'hui fuschia et orange fluo, c'est vraiment laid. 
 Bon, c'est facile à repérer et viser. Vous respirez un bon coup et plongez dans Crawl of Study. C'est un MOBA, se situant dans une reconstitution 3D de l'Académie d'Omniscience et de Polytechnologie Universelle. Le gameplay mélange Plateformer en mode Parkour et TPS en mode athlète grec néo-antique. 
-Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser. 
-<<advanceTime 2:00 >>
-<<addToGauge stress 20>>
-<<removeFromGauge sleep 20>>
-<<visit NoMove_Stress>>
+Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser.
+
+<< advanceTime 1:30 >>
+<< addToGauge stress 20 >>
+<< removeFromGauge sleep 20 >>
+<< visit NoMove_Stress >>
 
 Hélas, cela ne réduit pas votre trouble. Vous vous rappelez que les Sages vous ont déconseillé les activités physiques trop violentes et trop intenses. Ils avaient raison.
 
 -> Qu'est-ce que vous allez bien pouvoir faire ?
-    <<jump Liste_Taches>>
+    << fadeIn >>
+    << jump Liste_Taches >>
 
 // NB S'assurer que l'impact fatigue a une relle incidence sur les performances du joueur dans ce Day5 . Pas juste un simple effet visuel ??
 ===
 title: Salle_Examen
 tags: 
-colorID: 0
-position: -2094,66
+position: -1740.800537109375,32.3619499206543
 ---
 << fadeIn >>
 << setBackground door class >>
+<< advanceTime 0:15 >>
 << fadeOut >>
 
 Vous retrouvez devant l'entrée de la salle de classe, Fred. Ce dernier vous regarde avec perplexité.
@@ -264,9 +273,11 @@ You: Si tu le dis.
 <<else>>
 Fred_surprised: Ah bon ? Hier, tu crachais le feu. Aujourd'hui, tu es glacé.
 <<endif>>
+
 Votre palmphone vibre. C'est votre mère qui tente de vous rejoindre. Fred vous fixe des yeux :
 Fred_sad: T'es sûr ? Ça va ?
 You: Attends...
+<< hide >>
 
 -> Prendre l'appel 
     <<jump Maman_blabla>>
@@ -275,8 +286,7 @@ You: Attends...
 ===
 title: Maman_blabla
 tags: 
-colorID: 0
-position: -1803,-4
+position: -1519.879638671875,130.5521855354309
 ---
 Vous collez le combiné à votre oreille :
 You: Je sais. mamie est toujours dans le coma.
@@ -290,6 +300,8 @@ Maman@holo_shadow: Courage, Bibi...
 << hide >>
 Ce qu'elle vous énerve votre mère, à vous appeler "Bibi" !!! 
 
+<< hide >>
+<< advanceTime 0:05 >>
 << addToGauge stress 40>>
 
 Fred_sad: Alors ? Mauvaises nouvelles ?
@@ -305,15 +317,16 @@ Fred_surprised: Pardon ?! Tu veux qu'on en parle ensemble ?
 ===
 title: Maman_message
 tags: 
-colorID: 0
-position: -1815,227
+position: -1520.6671142578125,-86.95511627197266
 ---
 Vous balayez du doigt l'appel. 
 Fred_surprised: Mais qu'est-ce qui se passe ?
 You: C'est compliqué.
+<< hide >>
 Votre palmphone gigote à nouveau ! Votre mère a laissé un message sur votre répondeur. Vous ne pouvez vous empêcher de fixer votre appareil.
 Vous entrez dans le journal de messagerie et demandez la conversion textuelle du message : "L'opération a été menée à bien, mais ta grand-mère a fait un malaise. Elle a été transférée en service de réanimation critique. Bisous. Maman."
 Fred_sad: Alors ?
+<< hide >>
 L'information, que vous connaissiez déjà vous affecte de plein fouet ! C'est fou comme l'humain est une éponge...
 << addToGauge stress 30>>
 
@@ -326,22 +339,20 @@ L'information, que vous connaissiez déjà vous affecte de plein fouet ! C'est f
 ===
 title: Fred_implorer
 tags: 
-colorID: 0
-position: -1468,177
+position: -1305.4161376953125,22.825618743896484
 ---
 C'est plus fort que vous. Vous avez envie de tout déballer devant Fred. Et c'est ce que vous faites. Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Elle a été hospitalisée d'urgence. Elle vient de subir une opération. 
 Malheureusement, ça ne s'est pas bien passé. Elle a été transférée en réanimation. Elle est encore dans le coma... Vous êtes tellement stressé, vous monopolisez la parole. 
 Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver des mots doux et réconfortants... L'horloge sonne ! C'est déjà l'heure d'entrer en salle d'examen. 
 Il semblerait que vous vous êtes laissé encore une fois submergé par les émotions négatives... 
 << AddToGauge stress 10 >>
-
+<< advanceTime 0:10 >>
 -> Entrer dans la salle 
     <<jump Examen>>
 ===
 title: Fred_silence
 tags: 
-colorID: 0
-position: -1465,-73
+position: -1302.416015625,-193.53632354736328
 ---
 Fred_happy: Dis-moi.
 You: Rien.
@@ -357,8 +368,7 @@ L'horloge sonne ! Il est l'heure d'entrer dans la salle. L'examen va commencer..
 ===
 title: Examen
 tags: 
-colorID: 0
-position: -1148,91
+position: -1080.7238159179688,23.723904609680176
 ---
 << fadeIn >>
 << setBackground class >>
@@ -367,18 +377,21 @@ position: -1148,91
 Vous vous asseyez devant votre pupitre. Vous êtes anxieux. Vous devez le réussir cet examen cette fois. Le sujet s'affiche à l'écran: [b]La loi de Murphy dans la GRH[/b]...
 
 << if getGauge("stress") <= 20 or getGauge("learning") <= 20 >>
-Vous répondez aux questions au hasard, sans trop savoir ce que l'on vous demande et ce qu'il faut indiquer. C'est un peu comme si votre corps était là, mais votre esprit ailleurs. Les quatre heures passent dans un espace-temps indéterminé. Vous comprenez que vous avez à nouveau foiré l'examen.
+Vous répondez aux questions au hasard, sans trop savoir ce que l'on vous demande et ce qu'il faut indiquer. C'est un peu comme si votre corps était là, mais votre esprit ailleurs.
+<< advanceTime 4:00 >>
+Les quatre heures passent dans un espace-temps indéterminé. Vous comprenez que vous avez à nouveau foiré l'examen.
     << jump Replay >>
 <<else>>
-Vous sentez qu'enfin, votre corps et votre esprit sont présents et unis. Vous répondez aux questions, en prenant soin de peaufiner vos arguments. les quatre heures passent très vite. Vous validez votre copie et vous sortez de la salle en sifflotant.
+Vous sentez qu'enfin, votre corps et votre esprit sont présents et unis. Vous répondez aux questions, en prenant soin de peaufiner vos arguments.
+<< advanceTime 4:00 >>
+Les quatre heures passent très vite. Vous validez votre copie et vous sortez de la salle en sifflotant.
 -> Sortir 
     <<jump Resultats_Good>>
 << endif >>
 ===
 title: Resultats_Good
 tags: 
-colorID: 0
-position: -1152,340
+position: -860.4701538085938,-91.68829345703125
 ---
 << fadeIn >>
 << setBackground door class >>
@@ -397,15 +410,19 @@ Vous dites au-revoir à votre pote et retournez à votre chambre.
 ===
 title: Bedroom_night
 tags: 
+position: -642.2051391601562,-92.162353515625
 colorID: 1
-position: -2735,356
 ---
 << fadeIn >>
-<< setBackground bedroom night >>
+<< advanceTime 0:15 >>
+<< setBackground bedroom >>
 << fadeOut >>
 
 Vous rentrez dans votre chambre, soulagé. Vous avez réussi votre examen. Au dîner, vous vous efforcez  de manger mieux : une soupe bio métanorganique et un fromage frais.
 Cependant, vous pensez toujours à votre grand-mère. Que lui arrive-t-il ? Est-elle sur la voie de la guérison ou pas ?
+<< fadeIn >>
+<< setBackground bedroom bed >>
+<< fadeOut>>
 Votre corps et votre instinct vous dit qu'il faut trouver le sommeil. Vous vous changez et vous glissez dans le lit. Mais vos pensées sont toujours là et vous agitent l'esprit.
 
 << addToGauge sleep 80 >>
@@ -415,57 +432,60 @@ Votre corps et votre instinct vous dit qu'il faut trouver le sommeil. Vous vous 
 ===
 title: Zero_Distraction
 tags: 
-colorID: 0
-position: -2406,532
+position: -206.2401123046875,-420.8869934082031
 ---
 Vous demandez à Room Mate, votre IA, de basculer en mode "Immersion Studieuse". Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même, face à vos questions et vos appréhensions. 
-L'ambiance "studieuse" de votre chambre était une bonne idée, mais ça ne suffit pas. Ce soir, dans ce silence nocturne, vous ne vous sentez pas capable de pratiquer la méditation de pleine conscience. Il vous faut trouver autre chose.
+L'ambiance "studieuse" de votre chambre était une bonne idée, mais ça ne suffit pas. Ce soir, dans ce silence, vous ne vous sentez pas capable de pratiquer la méditation de pleine conscience. Il vous faut trouver autre chose.
 
 -> Quoi d'autre? 
     <<jump Choix_night>>
 ===
 title: Choix_night
 tags: 
+position: -422.9385681152344,-93.66145324707031
 colorID: 1
-position: -2438,291
 ---
 Vous examinez votre palmphone : aucun appel ou message. Ce silence vous agresse une nouvelle fois.
 
--> Couper toute distraction mentale 
+-> Couper toute distraction mentale #once
     <<jump Zero_Distraction>>
--> Appeler votre mère 
+-> Appeler votre mère #once
     <<jump Maman_callnight>>
--> Attendre que ça vienne 
-    <<jump Rien>>
--> Faire une sieste
+-> Faire une sieste #once
     << jump SiesteCrossroad >>
--> Jouer de la musique
+-> Jouer de la musique #once
     << jump Play_Luth >>
 ===
 title: Maman_callnight
 tags: 
-colorID: 0
-position: -2282,784
+position: -207.03941345214844,222.318359375
 ---
 Vous rappelez votre mère. Elle ne répond pas. Vous ne laissez aucun message. Vous raccrochez et vous regrettez votre geste. Vous avez encore cédé aux émotions nuisibles...
+<< advanceTime 0:15 >>
 
 << addToGauge sleep 10>>
 << addToGauge stress 20>>
 ===
 title: Sieste_dontwork
 tags: 
-colorID: 0
-position: -1739,532
+position: 15.54185676574707,-325.25396728515625
 ---
 La sieste est une technique efficace quand on éprouve une fatigue importante et relativement saine. En revanche, si le corps ou le mental est perturbé ou malade, ça ne marche pas... Vous avez beau fermer les yeux, rien ne se passe. Vos idées noires continuent de vous hanter.
+<< advanceTime 0:30 >>
 -> Essayer autre chose
     <<jump Choix_night>>
 ===
 title: Salle_Sport
 tags: 
+position: -1740.2898559570312,-1177.3241653442383
 colorID: 2
-position: -811,-151
 ---
+<< fadeIn >>
+<< hide ! >>
+<< setBackground sport >>
+<< advanceTime 0:15 >>
+<< fadeOut >>
+
 Vous retrouvez Fred à la salle de sport.
 Fred_excited: Yes Yes ! Prêt pour une séance de fight contact ?
 You: Naan. Je te le répète, je préfère quelque chose de plus soft.
@@ -474,7 +494,8 @@ You: Imbécile... Une séance de footing.
 Fred_sad: Du footing ?! Mais c'est chiant.
 You: Pas que. Le footing permet d'évacuer les toxines tout en stimulant les masses musculaires, lymphatiques et le système nerveux.
 Fred_smiling: Je vois que tu t'es renseigné.
-Vous continuez la négociation avec Fred pendant plus de vingt minutes. Il n'est pas ravi par votre idée. Que décidez-vous ?
+<< hide >>
+Vous continuez la négociation avec Fred pendant. Il n'est pas ravi par votre idée. Que décidez-vous ?
 
 -> Imposer l'option footing
     << jump Sport_Destress >>
@@ -483,8 +504,8 @@ Vous continuez la négociation avec Fred pendant plus de vingt minutes. Il n'est
 ===
 title: Sport_Destress
 tags: 
+position: -1513.0153198242188,-1294.5526456832886
 colorID: 2
-position: -529,26
 ---
 Vous tenez tête à Fred. Il cède non sans maugréer. Il enlève son exosquelette et vous rejoint dehors, sur la piste d'athlétisme. Vous faites un premier tour de piste, puis un second, puis un troisième. 
 Petit à petit, vous trouvez votre rythme de pas et votre cadence respiratoire. Vous sentez que vous brûlez vos calories et vos énergies négatives. Plus vous vous oxygénez, plus vous vous échauffez, plus vous vous détendez. 
@@ -492,30 +513,33 @@ Au bout d'une heure trente, vous décidez de vous arrêtez. Fred vous attend sur
 <<removeFromGauge stress 40>>
 Vous le remerciez pour sa présence discrète mais nécessaire. Sans lui, vous n'auriez pas eu la force de vous lancer dans cette course d'endurance.
 Vous lui souhaitez bonne chance pour tout à l'heure et vous rejoignez votre chambre.
-<<advanceTime 1:30 >>
+<<advanceTime 1:00 >>
 
 -> Qu'est-ce que vous allez faire ?
+    << fadeIn >>
+    << advanceTime 0:15 >>
     <<jump Liste_Taches>>
 ===
 title: Mediter
 tags: 
+position: -1302.82568359375,241.21925354003906
 colorID: 2
-position: -1457,401
 ---
 Vous filez au bout du couloir. Personne. Vous vous asseyez sur un banc. Vous fermez les yeux et vous commencez votre première séance de méditation en pleine conscience. Vous sentez vos poumons se gonfler puis se vider. 
 Vous sentez l'air entrer dans votre bouche et descendre jusqu'au niveau du ventre avant de faire le chemin inverse à l'expiration. Votre corps se relâche peu à peu. Vos pensées se font moins bruyantes, moins oppressantes, moins nombreuses. 
 Vous comprenez un peu mieux ce que veut dire : se connecter à l'instant présent.
+<< advanceTime 1:00 14:00 0:05>>
 Puis, l'horloge sonne ! Il est l'heure d'entrer dans la salle. L'examen va commencer...
-<<removeFromGauge Stress 40>>
+<< removeFromGauge Stress 40>>
 
 
 -> Entrer dans la salle 
     <<jump Examen>>
 ===
 title: Replay
-tags: 
+tags:  noUi
+position: -862.3936767578125,129.8573226928711
 colorID: 2
-position: -868,256
 ---
 << fadeIn >>
 << setBackground circle >>
@@ -529,13 +553,15 @@ Cessez d'être le jouet de vos émotions et vos peurs ! Soyez lucide et présent
 ===
 title: Play_Luth
 tags: 
+position: -206.0557403564453,8.654794692993164
 colorID: 2
-position: -2708,735
 ---
-Vous vous levez de votre lit et vous prenez votre cycloluth, une guitare archaïque de la planète Feudall. Les cordes sonnent juste, vous vous échauffez par une petit gigue traditionnelle d'Eirun VI. Puis, constatant que vos doigts sont souples et précis, vous enchaînez avec d'autres balades, d'autres gestes du répertoire médiéfull galactique. 
+Vous vous levez de votre lit et vous prenez votre cycloluth, une guitare archaïque de la planète Feudall. Les cordes sonnent juste, vous vous échauffez par une petit gigue traditionnelle d'Eirun VI.
+Puis, constatant que vos doigts sont souples et précis, vous enchaînez avec d'autres balades, d'autres gestes du répertoire médiéfull galactique. 
 La mélodie envahit votre chambre. Heureusement, vous avez demandé à Room Mate d'isoler votre pièce sur le plan sonore. Vous n'entendez aucun son venu de l'extérieur et aucun son de votre chambre ne peut en sortir. 
 Vous pouvez faire tout le bruit que vous voulez, vous ne dérangez que vous. La musique vous emporte, elle vous illumine, elle vous enchante, elle vous distrait. Vous oubliez tous vos tracas, tous vos déboires, toutes vos peurs.
-Deux heures après, quand vous reposez le cycloluth, vous vous sentez léger et joyeux.
+Une heure après, quand vous reposez le cycloluth, vous vous sentez léger et joyeux.
+<< advanceTime 1:00 >>
 <<removeFromGauge stress 40>>
 
 -> Et maintenant ?
@@ -543,16 +569,16 @@ Deux heures après, quand vous reposez le cycloluth, vous vous sentez léger et 
 ===
 title: Sleep_End
 tags: 
+position: 17.857994079589844,-106.2800350189209
 colorID: 2
-position: -1723,797
 ---
 Votre esprit est suffisamment détendu. Vous fermez les yeux, vous relâchez votre corps, vous glissez dans le sommeil. Vous dites enfin bye bye à ce vendredi stressant...
 Victoire !! Vous avez combattu le stress et vous l'avez repoussé, vous l'avez vaincu !
 ===
 title: SiesteCrossroad
 tags: 
+position: -206.29251098632812,-205.34332275390625
 colorID: 2
-position: -1977,721
 ---
 << if getGauge("stress") <= 20 >>
 -> tentez de sommeiller
