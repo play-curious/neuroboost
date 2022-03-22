@@ -208,9 +208,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     if (!isOption(result))
       throw new Error("Called _handleChoice for unknown result");
-    this.metadata.choiceId
+      
+    this.metadata.choiceId !== undefined
       ? this.metadata.choiceId++
       : (this.metadata.choiceId = 0);
+      
     const options: Record<string, string>[] = [];
 
     let indexOfBack = 0;
@@ -231,6 +233,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       if (option.text === "back") indexOfBack = i;
     }
+    
     if (
       this._hasTag(this.metadata, "subchoice") &&
       options.length === 1 &&
