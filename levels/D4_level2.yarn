@@ -304,6 +304,7 @@ colorID: 1
 ---
 << if getGauge("learning") >= 70 >>
 
+<< fx Notification >>
 Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux. C'est à regret que Fred et vous, sortez de l'établissement.
 You: Non, on a presque fini.
 Fred_happy: Cool, tu as tout dans les mains : le plan, les idées fortes. Tu n'as plus qu'à développer tout ce qu'on a dit. No worry, ça va le faire, je te fais confiance.
@@ -311,17 +312,21 @@ You: Et toi ?
 Fred_happy: Je m'occupe de la conclusion et de l'intro.
 You: OK.
 Fred_smiling: Keep faith.
+<< hide >>
 C'est drôle. C'est Fred désormais qui vous pilote et vous rassure sur votre capacité à finir dans les temps. Troublé, un peu hésitant, vous retournez dans votre chambre.
 
 <<jump Bedroom>>
 
 // Sinon, joueur n'a pas réussi toutes ses conditions de victoire
 << else >>
+<< fx Notification >>
+
 Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux. 
 You: Non, on est loin d'avoir fini !!
 Vous criez, vous paniquez complètement, vous vous mettez à suer à grosses gouttes, votre vue se trouble, votre ouïe sature, parasité par un effet de larsen. Vous avez encore échoué ! 
 -> Vous allez devoir recommencer cette journée épuisante à la bibliothèque
     << resetLevel >>
+    << hide >>
     << jump Start>>
 
 << endif >>
