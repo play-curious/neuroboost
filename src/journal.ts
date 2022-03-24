@@ -72,6 +72,22 @@ const options: { [key: string]: any } = {
         "As-tu déjà recontré des problèmes en travaillant avec des personnes de profil différents ?",
     },
   },
+  stress: {
+    title: "Stress",
+    closeQuestion: {
+      question: "A quelle fréquence te trouves-tu en situation de stresse ?",
+      answers: [
+        "Tout les jours",
+        "Toutes les semaines",
+        "Tout les mois",
+        "Rarement",
+      ],
+    },
+    openQuestion: {
+      question:
+        "Lorsqu'il tu es stressé, que fais-tu comme activité pour lâcher prise ? ",
+    },
+  },
 };
 
 export class JournalScene extends extension.ExtendedCompositeEntity {

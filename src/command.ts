@@ -234,10 +234,6 @@ export const commands: Record<string, Command> = {
     this.visited.add(node);
   },
 
-  clearOnce() {
-    this.selectedOptions = [];
-  },
-
   resetLevel() {
     this.selectedOptions = [];
     this.visited = new Set();
