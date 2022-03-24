@@ -1,7 +1,10 @@
+import * as _ from "underscore";
+
 import * as entity from "booyah/src/entity";
 
 import * as dialog from "./dialog";
 import * as variable from "./variable";
+import * as miniGame from "./mini_game";
 import * as clock from "./clock";
 import * as save from "./save";
 import * as popup from "./popup";
@@ -22,9 +25,8 @@ export const commands: Record<string, Command> = {
   },
 
   // Shortcut for _changeCharacter()
-  hide(): void {
-    this.graphics.removeCharacters();
-    //this.graphics.addCharacter();
+  hide(instantaneous?): void {
+    this.graphics.removeCharacters(instantaneous === undefined);
   },
 
   prompt<VarName extends keyof variable.Variables>(
@@ -39,6 +41,22 @@ export const commands: Record<string, Command> = {
       );
     });
     return promptPopup;
+  },
+
+  hideUi() {
+    this.graphics.hideUi();
+  },
+
+  showUi() {
+    this.graphics.showUi();
+  },
+
+  hideDialog() {
+    this.graphics.hideDialogLayer();
+  },
+
+  showDialog() {
+    this.graphics.hideDialogLayer();
   },
 
   eval(code: string) {
@@ -58,7 +76,7 @@ export const commands: Record<string, Command> = {
       );
       minutesSinceMidnight += currentMinutesSinceMidnight * clock.dayMinutes;
     }
-    
+
     this.config.variableStorage.set("time", `${minutesSinceMidnight}`);
 
     this.config.clock.setTime(minutesSinceMidnight);
@@ -114,6 +132,7 @@ export const commands: Record<string, Command> = {
     gaugeName: VarName,
     value: variable.Gauges[VarName]
   ) {
+    this.config.variableStorage.set(gaugeName, `${value}`);
     this.graphics.setGauge(gaugeName, Number(value));
   },
 
@@ -199,9 +218,8 @@ export const commands: Record<string, Command> = {
   //   this.graphics.fade(Number(duration), color);
   // },
 
-  setBackground(name: string) {
-    const [bg, mood] = name.split("_");
-    this.graphics.setBackground(bg, mood);
+  setBackground(name: string, mood?: string) {
+    this.graphics.setBackground(name, mood);
   },
 
   // NODE INFO
@@ -220,14 +238,37 @@ export const commands: Record<string, Command> = {
     this.selectedOptions = [];
   },
 
+  resetLevel() {
+    this.selectedOptions = [];
+    this.visited = new Set();
+  },
+
+  minigame(className: string) {
+    this.disable();
+    this.activate(
+      new entity.EntitySequence([
+        // @ts-ignore
+        new miniGame[className](),
+        new entity.FunctionCallEntity(() => {
+          this.enable();
+        }),
+      ]),
+      entity.extendConfig({
+        // @ts-ignore
+        container: this.graphics._miniGameLayer,
+      })
+    );
+  },
+
   empty() {},
 };
 
 export const functions: Record<string, YarnFunction> = {
-  visited(node: string): boolean {
-    if (!node) throw new Error("Please give a valid node title in visited()");
-    const visited = this.visited.has(node);
-    return visited;
+  visited(...nodes: string[]): boolean {
+    if (nodes.length === 0)
+      throw new Error("Please give valid nodes titles in visited()");
+
+    return _.every(nodes, (node) => this.visited.has(node));
   },
 
   getGauge(gauge: string): number {

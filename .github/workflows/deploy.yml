@@ -1,4 +1,3 @@
-# inside .github/workflows/action.yml
 name: Deploy to DigitalOcean
 on:
   push:

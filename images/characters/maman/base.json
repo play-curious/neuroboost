@@ -1,0 +1,10 @@
+{
+  "shadow": [
+    {
+      "model": "b_shadow",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "default": "shadow"
+}

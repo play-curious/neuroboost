@@ -1,0 +1,20 @@
+{"frames": {
+
+"b_day.png":
+{
+	"frame": {"x":1,"y":1,"w":1920,"h":1080},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1920,"h":1080},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "b_day.png",
+	"format": "RGBA8888",
+	"size": {"w":1922,"h":1082},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ba8adb778c2e1033f1e725dbb48f2dbf:bd1fc9d7664d4fb339d7ab4b1c816b92:0c065af360fd31d83bd9b9dbedab1516$"
+}
+}

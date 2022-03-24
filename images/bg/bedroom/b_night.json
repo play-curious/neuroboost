@@ -1,0 +1,20 @@
+{"frames": {
+
+"b_night.png":
+{
+	"frame": {"x":1,"y":1,"w":1922,"h":1082},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1922,"h":1082},
+	"sourceSize": {"w":1922,"h":1082}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "b_night.png",
+	"format": "RGBA8888",
+	"size": {"w":1924,"h":1084},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:94174fbda7aa3a81e0b14e0c9c6571cd:2f6361f8beec3af44bf1a272dc8db29e:4609cac7ed7c344b0706226d8f55f89e$"
+}
+}

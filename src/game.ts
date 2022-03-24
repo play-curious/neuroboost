@@ -8,12 +8,12 @@ import * as util from "booyah/src/util";
 
 import * as save from "./save";
 import * as menu from "./menu";
-
 import * as clock from "./clock";
 import * as images from "./images";
 import * as dialog from "./dialog";
 import * as journal from "./journal";
 import * as variable from "./variable";
+import * as miniGame from "./mini_game";
 
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
@@ -42,6 +42,9 @@ const variableStorage = new variable.VariableStorage({
   name: "Moi",
   time: "540",
   eval: "",
+  journalAnswers: {},
+  ballsJuggled: 0,
+  isDebugMode: false,
   sleep: "100",
   food: "100",
   learning: "0",
@@ -58,6 +61,7 @@ export function installGameData(rootConfig: entity.EntityConfig) {
   rootConfig.globalHistory = globalHistory;
   rootConfig.clock = _clock;
   rootConfig.app.renderer.plugins.interaction.mouseOverRenderer = true;
+  rootConfig.debug = false;
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -74,8 +78,31 @@ const stateNames = [
   "journal_food",
   "journal_sleep",
   "D2_level2",
-  "End_Screen"
+  "D3_level1",
+  "journal_mentalWorkload",
+  "D3_level2",
+  "D4_level1",
+  "journal_profiles",
+  // "D4_level2",
+  // "D3_level1",
+  // "D3_level2",
+  // "D4_level1",
+  // "D4_level2",
+  // "D5_level1",
+  // "D5_level2",
+  // "D6_level1",
+  // "D7_level1",
+  "End_Screen",
 ];
+
+/*
+  missing journal after
+  - D3_level1
+  - D4_level1
+  - D5_level1
+  - D6_level1
+  - D7_level1
+ */
 
 const states: { [k: string]: entity.EntityResolvable } = {
   Start_Menu: new save.StartMenu(),
@@ -135,6 +162,8 @@ const fxAssets = [
   "TVStarwars_LOOP",
   "Work_LOOP",
   "Chime_LOOP",
+  "Spawn",
+  "Warp",
 ];
 
 const musicAssets = [
@@ -143,6 +172,10 @@ const musicAssets = [
   "Neutral",
   "Tense",
   "Victory",
+  "Danse",
+  "DanseQuiet",
+  "Solo1",
+  "Solo2",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];

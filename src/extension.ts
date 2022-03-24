@@ -12,10 +12,92 @@ import * as images from "./images";
 import * as clock from "./clock";
 import * as util from "booyah/src/util";
 import * as yarnBound from "yarn-bound";
+import * as _ from "underscore";
+import * as filter from "./graphics_filter";
+import * as tween from "booyah/src/tween";
+import * as easing from "booyah/src/easing";
 
 export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
   get config(): ExtendedEntityConfig {
     return this._entityConfig as ExtendedEntityConfig;
+  }
+
+  makeCharacter(
+    character: string,
+    mood: string,
+    displayMode: string,
+    animate: boolean
+  ): { container: PIXI.Container; entity: entity.ParallelEntity } {
+    const CE = {
+      container: new PIXI.Container(),
+      entity: new entity.ParallelEntity(),
+    };
+
+    CE.container.setTransform(250, 80, 1.1, 1.1);
+
+    // Set directory to access resources
+    const baseDir = `images/characters/${character}`;
+    const baseJson = require(`../${baseDir}/base.json`);
+
+    // If mood is incorrect, get default one
+    if (!_.has(baseJson, mood)) mood = baseJson["default"];
+
+    // For each part
+    for (const bodyPart of baseJson[mood]) {
+      if (
+        _.has(
+          this.config.app.loader.resources,
+          `${baseDir}/${bodyPart.model}.json`
+        )
+      ) {
+        // Create animated sprite and set properties
+        const animatedSpriteEntity = this.makeAnimatedSprite(
+          `${baseDir}/${bodyPart.model}.json` as any,
+          (it) => {
+            it.anchor.set(0.5);
+            it.position.copyFrom(bodyPart);
+            it.animationSpeed = 0.33;
+
+            if (_.has(bodyPart, "scale")) {
+              it.scale.set(bodyPart.scale);
+            }
+          }
+        );
+
+        // Add animated sprite to entity
+        CE.entity.addChildEntity(animatedSpriteEntity);
+      } else {
+        console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
+      }
+    }
+
+    // Handle holographic filter
+    if (displayMode === "holo") {
+      const holo = filter.newHolograph();
+      const glitch = filter.newGlitch();
+      const adjust = filter.newAdjustment();
+      const glow = filter.newGlow();
+      CE.container.filters = [holo, glow, adjust, glitch];
+      this._activateChildEntity(filter.wrapHolograph(holo as any));
+      this._activateChildEntity(filter.wrapGlitchHolo(glitch as any));
+    }
+
+    // If character changed, do animation
+    if (animate) {
+      this._activateChildEntity(
+        new tween.Tween({
+          duration: 1500,
+          easing: easing.easeOutQuint,
+          from: 1500,
+          to: 250,
+          onUpdate: (value) => {
+            CE.container.position.x = value;
+          },
+        })
+      );
+    }
+
+    return CE;
   }
 
   makeFxLoop(

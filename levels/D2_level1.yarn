@@ -1,14 +1,16 @@
-#gauges: sleep food
+#gauges: learning sleep food
 
 title: Start
-tags: bg|class autoshow
+tags: 
 position: -1523.9072265625,-40.47624206542969
 colorID: 8
 ---
-
 << empty >>
-<< setTime 18:20 >>
-<< music Neutral >>
+<< addToGauge learning 100 >>
+<< showGauges learning >>
+<< setBackground door class-screen >>
+<< setTime 18:15 >>
+<< music Victory >>
 
 Vous êtes toujours avec Fred à contempler les résultats de ce premier examen de la semaine de sprint. Ce dernier se retourne vers vous.
 
@@ -21,22 +23,24 @@ You: Oui, mais faudra avoir l'esprit clair et sain.
 Fred_smiling: No worry, on s'en va avant l'aube, on fait une petite sieste et on sera nickel pour l'heure H.
 
 -> Accepter l'invitation
-    << fadeIn >>
+    << hide >>
     <<jump Cafeteria>>
 -> Refuser l'invitation
-    << fadeIn >>
+    << hide >>
     <<jump Retour_chambre>>
 ===
 title: Retour_chambre
-tags: bg|bedroom
+tags:
 position: -1298.765380859375,-151.80938720703125
 ---
-<< fadeOut >>
+<< fadeIn >>
+<< setBackground bedroom >>
 << advanceTime 00:15 >>
+<< fadeOut >>
 
 Allongé tranquillement sur votre lit, vous vous replongez dans la lecture augmentée de l'atlas Ouiki_4D de Star Mars - The Lone Lightsaber... Quand...
-DRING ! DRING ! DRIIIIIING !... Inutile d'allumer le téléscreen de votre porte. Vous vous doutez qui sonne comme dératé... FRED !!
-<< show fred >>
+DRING ! DRING ! DRIIIIIING !... Inutile d'allumer le téléscreen de votre porte. Vous vous doutez qui sonne comme un dératé... FRED !!
+
 Fred_excited: Allez, tu peux pas me laisser tout seul.
 You: Et si.
 Fred_happy: On n'est plus potes ? À la vie, à la mort ?
@@ -46,25 +50,30 @@ Fred_happy: Steuplay...
 << if isTimeOver("19:30") >>
 -> Accepter l'invitation
     << fadeIn >>
+    << hide ! >>
     <<jump Cafeteria>>
--> Refuser l'invitation
-    << fadeIn >>
-    <<jump Retour_chambre>>
 << else >>
 -> Accepter l'invitation
     << fadeIn >>
+    << hide ! >>
     <<jump Cafeteria>>
+-> Refuser l'invitation
+    << fadeIn >>
+    << hide ! >>
+    <<jump Retour_chambre>>
 << endif >>
 ===
 title: Cafeteria
-tags: bg|party
+tags:
 position: -1075.3348388671875,-37.09675598144531
 ---
-<< showGauges food sleep >>
+<< empty >>
+<< fadeIn >>
+<< setBackground party >>
 << setGauge sleep 100 >>
 << setGauge food 80 >>
 << setTime 20:00 >>
-<< music Tense >>
+<< music Danse >>
 << fadeOut >>
 
 Vous voilà donc à la cafétéria avec Fred. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer.
@@ -73,17 +82,18 @@ You: Oui ! J'espère juste ne pas le regretter demain matin.
 Fred_happy: No worry. Faut juste savoir gérer.
 Fred a raison, l'ambiance est vivifiante et enivrante... Vous vous laissez gagner par le flow et par les good vibes...
 -> The show must go on
+    << hide >>
     <<jump Choix_neutres>>
 ===
 title: Choix_neutres
-tags: bg|party
+tags:
 colorID: 0
 position: -850.2415771484375,-40.334877014160156
 ---
 << if !visited("Choix_neutres") >>
 Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << endif >>
-<< visit Choix_neutres >>
+
 << if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
 -> Aller swinguer sur le Dance Floor#once
     <<jump DanceFloor>>
@@ -103,6 +113,7 @@ title: DanceFloor
 tags: 
 position: -626.3383646011353,-256.5753173828125
 ---
+On va voir, qui de vous ou de Fred, est la superstar de l'Académie... 
 Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffer doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous.
 C'est comme si vous vous étiez calé sur l'orbite de la Planète Disco. Vous vous trémoussez, vous vous déhanchez, vous sautez, vous virevoltez, vous tournoyez comme un globe scintillant ou une boule disco radieuse !
 Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public !
@@ -146,12 +157,18 @@ title: Guitar_Jam
 tags: 
 position: -627.0029144287109,-472.9125061035156
 ---
+Entre Fred et vous, celui qui touche sa corde en guitare, c'est bien vous. Et vous allez le prouver... 
 Vous vous approchez tranquillement de la guitare posée près de l'enceinte murale. On dirait une cithare classique, sauf qu'elle possède une carte-son HD 4K. Génial ! Un vrai bijoux de technologie HiFi !
-Vous posez l'instrument sur vos genoux, vous allumez l'amplificateur. Vous gratouillez les cordes, à la mano, tout simplement. Dingue, le rugissement cybersonique qu'elle envoie ! Ça déchire l'air ambiant et ça réveille la foule !
+Vous posez l'instrument sur vos genoux, vous allumez l'amplificateur. Vous gratouillez les cordes, à la mano, tout simplement. 
+
+<< music Solo1 >>
+
+Dingue, le rugissement cybersonique qu'elle envoie ! Ça déchire l'air ambiant et ça réveille la foule !
 Tous les yeux se tournent vers vous. Quelqu'un coupe la musique. Vous voilà seul sur la grande scène. À vous de jouer ! Vous vous lancez dans une improvisation à cordes cybermétalliques.
 Le temps file, la foule boit vos notes. Vous ne vous en souciez plus, absorbé que vous êtes dans votre oeuvre sonore.
 Quand vous daignez enfin vous arrêter et relever les yeux, vous êtes salué par un concert d'applaudissements ! Vous remarquez Fred qui vous contemple, tout sourire, et qui lève le pouce en signe d'acquiescement.
 
+<< music Danse >>
 << removeFromGauge sleep 30 >>
 << removeFromGauge food 10 >>
 << advanceTime 2:00 >>
@@ -174,10 +191,13 @@ Peu importe, vous vous marrez bien tous les deux. Un peu d'imagination et vous v
     <<jump Choix_neutres>>
 ===
 title: TIRED
-tags: autoshow
+tags: 
 position: -403.5168056488037,-39.76996612548828
 colorID: 1
 ---
+
+<< music DanseQuiet >>
+
 Tout d'un coup, le son de la musique s'affaiblit, les voix deviennent des murmures inaudibles. Vous vous sentez mou, très mou, très très mou...
 
 Fred_drunk: Hé, ça va ?
@@ -187,6 +207,7 @@ You: Et toi ?
 Fred_drunk: Je t'accompagne. Je reste encore, j'ai la pêche !
 You: OK.
 -> Se reposer
+    << hide >>
     <<jump Sofa>>
 ===
 title: Sofa
@@ -206,7 +227,7 @@ Puis, on vous secoue brusquement !!!
     <<jump Open_Eyes>>
 ===
 title: Open_Eyes
-tags: autoshow
+tags: 
 position: 34.24329662322998,-36.5318603515625
 ---
 << fadeOut >>
@@ -224,18 +245,20 @@ title: Que_Faire
 tags: 
 position: 256.4327850341797,-39.769962310791016
 ---
+
+<< music Danse >>
+
 << if !visited("Que_Faire") >>
 La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la piste de danse. Vous allez lui montrer que vous aussi, vous n'êtes pas un looser ! Alors ? quel est votre plan d'attaque ?
 << endif >>
-<< visit Que_Faire >>
 << if getGauge("sleep") >= 25 && getGauge("food") >= 25 >>
--> Retourner swinguer sur le Dance Floor#once
+-> Retourner défier le Body Beat sur le Dance Floor#once
     <<jump DanceFloor2>>
 -> Se rafraîchir au bar#once
     <<jump Cafe_ou_Alcool>>
 -> Grignoter quelque chose#once
     <<jump Medoc_Bot>>
--> Refaire un solo de guitare en criant tout votre saoul#once
+-> Improviser un solo de guitare encore plus glam grooovy#once
     <<jump Metal_Jam>>
 << else >>
 -> Vite ! Au lit
@@ -273,7 +296,7 @@ Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un 
     <<jump Que_Faire>>
 ===
 title: Medoc_Bot
-tags: autoshow
+tags: 
 position: 474.3383331298828,-40.58226013183594
 ---
 Vous vous dirigez vers le bar, toutefois, vous ne distinguez plus aucun snack de disponible. Vous vous tournez alors vers un BarBot.
@@ -302,7 +325,11 @@ tags:
 position: 470.79235076904297,-256.9925937652588
 ---
 Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota, c'est qu'elle vous attendait. Vous réactivez sa carte-son HD 4K. Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête à vous écouter. On dirait que la star de la soirée, c'est vous. À vous de le prouver, à vous de jouer !
+
+<< music Solo2 >>
 Vous repartez dans un concert solo d'improvisation, où les riffs électriques et les accords cybermétalliques s'accordent pour composer une symphonie post-électronique. C'est à nouveau un show d'enfer ! Vous êtes applaudi, encore et encore. Au point où vous accordez à votre public un morceau bonus.
+
+<< music Danse >>
 
 << removeFromGauge sleep 20 >>
 << removeFromGauge food 10 >>
@@ -316,20 +343,24 @@ tags:
 position: 700.6830902099609,395.89404296875
 colorID: 1
 ---
-Mince, il ne reste plus personne sur la piste. Tu ne vois plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Il est temps d'aller dormir.
-// Tu aperçois les premiers rayons de soleil filtrer à travers les fenêtres de la salle. 
-D'un coup, tu te sens fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... ce matin...
-
+<<if isTimeOver("6:30")>>
+Mince, il ne reste plus beaucoup de monde sur la piste. Vous ne voyez plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Vous apercevez les premiers rayons de soleil filtrer à travers les fenêtres de la salle.
+Il est temps d'aller dormir. D'un coup, vous vous sentez fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... tout à l'heure...
+<<else>>
+Dingue, il reste encore pas mal d'étudiants sur la piste. Vous ne savez pas si Fred est parmi eux. Tout ce que vous voyez à cette heure de la nuit, ce sont des silhouettes floues et indistinctes. Il est temps d'aller dormir.
+D'ailleurs, vous vous sentez soudainement fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... enfin... ce matin...
+<<endif>>
 
 << fadeIn >>
 <<jump SeReposer>>
 ===
 title: SeReposer
-tags: bg|bedroom_night
+tags:
 position: 927.2608032226562,397.54339599609375
 ---
+<< fadeIn >>
+<< setBackground bedroom night >>
 << music >>
-<< hideGauges >>
 << fadeOut >>
 << advanceTime 0:15 >>
 Vous filez dans votre chambre en quatrième vitesse. Mais vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent !
@@ -338,13 +369,14 @@ Vous avez l'impression de rester coincé une heure dans ce cagibi. C'est pénibl
 Une fois votre corvée accomplie, vous rampez jusqu'à votre lit. Vous vous glissez dedans tout habillé et fermez les yeux. Malheureusement, vous avez la tête qui tourne et qui serre, vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité.
 << fadeIn >>
 Non, décidément, rien à faire, vous n'arrivez pas à dormir. Et les heures s'égrènent... Jusqu'à ce que votre horloge connectée vous tire de votre léthargie...
-<< advanceTime 8:00 8:00 0:05 >>
+<< setTime 8:00 >>
 <<jump Bip_Bip>>
 ===
 title: Bip_Bip
-tags: bg|bedroom
+tags:
 position: 1149.49072265625,399.1321105957031
 ---
+<< setBackground bedroom >>
 << music Neutral >>
 << fadeOut >>
 Argh... Il est encore trop tôt ! Vous ne vous êtes pas reposé. Vous aimeriez avoir une bonne nuit de sommeil... C'est trop tard maintenant, il faut aller au charbon...
@@ -352,15 +384,16 @@ Vous vous levez sans grande conviction. Vous enlevez vos vêtements, ils sentent
 Pas le temps d'avaler un petit déjeuner, pas envie de toute manière...
 
 -> Aller en cours
-    << fadeIn >>
     <<jump ExamenTP>>
 ===
 title: ExamenTP
-tags: bg|class autoshow
+tags: 
 position: 1372.3470306396484,399.1321716308594
 ---
+<< fadeIn >>
+<< setBackground door class >>
+<< setTime 8:58 >>
 << fadeOut >>
-<< setTime 9:00 >>
 
 Ce matin, vous vous retrouvez noyé dans la masse, ou plutôt isolé dans la foule. Vous vous sentez léger, flottant, invisible. Heureusement, vous apercevez votre ami Fred.
 
@@ -371,37 +404,47 @@ You: Muuuh...
 Fred_happy: Fingers crossed ! Tout peut encore arriver.
 << hide >>
 
-Hagard, vous quittez Fred et vous vous rendez à votre poste. Vous vous calez difficilement sur votre siège et tentez de suivre les instructions qui défilent sur l'écran. Ce n'est pas la première fois que vous pilotez un drone d'ingénierie. Vous êtes même assez doué à ce jeu.
+Hagard, vous quittez Fred et vous vous rendez à votre poste.
+
+<< fadeIn >>
+<< setBackground class >>
+<< setTime 9:00 >>
+<< fadeOut >>
+
+Vous vous calez difficilement sur votre siège et tentez de suivre les instructions qui défilent sur l'écran. Ce n'est pas la première fois que vous pilotez un drone d'ingénierie. Vous êtes même assez doué à ce jeu.
 Cependant, ce matin, vous êtes trop fatigué, trop barbouillé, trop peu concentré. Vous avez du mal à décrypter les consignes, pourtant classiques. Vous avez du mal à guider votre appareil. Vous commettez trop d'erreurs, vous frôlez même le crash.
 << advanceTime 3:00 >>
 C'est la cata, la bérézina, la défaite. Vous savez que vous avez foiré votre examen. Vous sortez de la salle juste après la fin du test, vous passez même devant Fred sans rien dire.
 
 -> Vous filez dans votre chambre
-    << fadeIn >>
     <<jump Dodo_Echec>>
 ===
 title: Dodo_Echec
-tags: bg|bedroom
+tags:
 position: 1589.6320333480835,395.89398193359375
 ---
-<< fadeOut >>
+<< fadeIn >>
+<< setBackground bedroom >>
 << advanceTime 0:15 >>
+<< fadeOut >>
 Vous ouvrez la porte avec fracas, faites gicler vos fringues en l'air et vous vous glissez sous votre couette.
 Vous êtes défait et épuisé. Vous ne prenez même pas le temps de gémir ou de hurler votre rage, vous vous endormez presque comme un vaincu...
 
 << fadeIn >>
+<< jump Miss_Temde >>
+
+===
+title: Miss_Temde
+tags:  noUi
+position: 1807.6790771484375,395.8939208984375
+---
+<< music Mysterious >>
 << fadeOut >>
 
 C'est alors que vous sursautez d'agacement ! Quelqu'un vous chatouille et vous gratouille les pieds, les mains, le nez, les oreilles...
 
 -> Qui ose m'embêter dans mon lit ?
-    <<jump Miss_Temde>>
-===
-title: Miss_Temde
-tags: autoshow noUi
-position: 1807.6790771484375,395.8939208984375
----
-<< music Mysterious >>
+
 Temde_smiling: Hello { $name }.
 You: Quoi ?! Vous encore ?!
 Temde_cheerful: Yep, on n'a pas fini de t'embêter en effet.
@@ -410,25 +453,30 @@ Temde_cheerful: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retour
 You: Où ça ?
 Temde_smiling: À l'Assemblée des 4 sages
 
+<< fx Warp >>
 << fadeIn >>
 <<jump Four_Sages>>
 ===
 title: Four_Sages
-tags: bg|circle autoshow noUi
+tags:  noUi
 position: 2023.925796508789,396.5407409667969
 colorID: 1
 ---
+<< fadeIn >>
+<< hide ! >>
+<< setBackground circle >>
 << fadeOut >>
+
 Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre.
 Azul_happy: Un truc qui te servira également au quotidien.
-Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique!
-Temde_smiling: Yep, un tuyau qui sonne juste, tellement c'est évident!
-Sapiens_concerned: Tu m'écoutes { $name }?
+Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique !
+Temde_smiling: Yep, un tuyau qui sonne juste, tellement c'est évident !
+Sapiens_concerned: Tu m'écoutes { $name } ?
 -> Oui
     <<jump Revelation>>
 ===
 title: Revelation
-tags: autoshow noUi
+tags:  noUi
 position: 2242.7559814453125,395.5284118652344
 ---
 Sapiens_thinking: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Un appareil électronique a besoin d'électricité pour démarrer et fonctionner. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire !
@@ -444,7 +492,7 @@ Ledai_happy: Tout à fait.
 <<jump Sommeil>>
 ===
 title: Sommeil
-tags: autoshow noUi
+tags:  noUi
 position: 2464.5450744628906,392.3604736328125
 ---
 Sapiens_thinking: Ton système biologique, comme ton palmphone, a besoin chaque nuit de recharger sa batterie.
@@ -463,7 +511,7 @@ Azul_proud: Il y a une solution de dépannage
 <<jump Sieste>>
 ===
 title: Sieste
-tags: autoshow noUi
+tags:  noUi
 position: 2686.2007751464844,394.8099365234375
 ---
 Azul_happy: Si tu n'as pas eu le temps de profiter d'une bonne nuit de sommeil, tu fais un somme !
@@ -480,7 +528,7 @@ Sapiens_happy: Tu as compris cette nouvelle leçon ?
     <<jump QCM_Recues>>
 ===
 title: QCM_Recues
-tags: autoshow noUi
+tags:  noUi
 position: 2908.9466247558594,391.5020446777344
 colorID: 1
 ---
@@ -489,11 +537,11 @@ Sapiens_thinking: C'est ce que nous allons voir.
 Sapiens_thinking: Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos réserves, on peut continuer à agir, à travailler. On n'a pas besoin de dormir et de recharger les batteries tant qu'elles ne sont pas à plat.
 -> Vrai
     << fx Failure >>
-    Sapiens_angry: Grossière erreur, jeune novice ! On ne stoque pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures !
+    Sapiens_angry: Grossière erreur, jeune novice ! On ne stocke pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures !
     Ledai_explaining: Certes, Master Sapiens, mais laissons une chance à { $name }.
 -> Faux
     << fx Success >>
-    Sapiens_happy: Bravo ! Le sommeil ne se stoque pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain.
+    Sapiens_happy: Bravo ! Le sommeil ne se stocke pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain.
     Ledai_happy: Une autre phrase quiz, Master Sapiens ?
 
 Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
@@ -527,22 +575,22 @@ Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Apr
 
 -> Vrai
     << fx Failure >>
-    Sapiens_angry: Non-sens ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière !
+    Sapiens_angry: Non-sens ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière !
     Azul_sad: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment.
     Sapiens_thinking: Je profite de la remarque d'Azul pour poser une question subsidiaire. Pour recharger ton métabolisme, combien d'heures tu dois dormir chaque jour ?
-    -> 8heures
+    -> 8 heures
         <<jump huit_heures>>
     -> Ça dépend, 6 à 10 heures
         <<jump six_10_heures>>
 -> Faux
     << fx Success >>
-    Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stoque du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que...
+    Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que...
     Temde_neutral: Non non, on coupe ! Le temps presse !
     Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
     <<jump journal_mental>>!
 ===
 title: huit_heures
-tags: autoshow noUi
+tags:  noUi
 position: 3125.9331665039062,286.40415954589844
 ---
 Azul_sad: C'est ton dernier mot ?
@@ -552,7 +600,7 @@ Azul_sad: C'est ton dernier mot ?
     <<jump six_10_heures>>
 ===
 title: six_10_heures
-tags: autoshow noUi
+tags:  noUi
 position: 3341.1002807617188,392.2286071777344
 ---
 Sapiens_happy: Ah, je préfère ça. Ce qui me rappelle le temps où je...
@@ -560,15 +608,19 @@ Temde_neutral: Non, on coupe ! Le temps presse !
 Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
 
 << hide >>
+<< fx Warp >>
 << fadeIn 1000 ffffff>>
 <<jump journal_mental>>
 ===
 title: journal_mental
-tags: bg|bedroom_night noUi
+tags: noUi
 position: 3557.0534057617188,389.2486877441406
 ---
-<< fadeOut >>
-//Flash !!!
+<< fadeIn 100 ffffff>>
+<< hide ! >>
+<< setBackground bedroom night >>
+<< fadeOut 400 >>
+
 Le carré de jardin tranquille des sages a disparu subitement !
 Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être.
 Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages...

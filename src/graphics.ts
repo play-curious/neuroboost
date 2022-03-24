@@ -9,6 +9,7 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import * as images from "./images";
 import * as gauge from "./gauge";
+import * as filter from "./graphics_filter";
 
 // Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
@@ -16,6 +17,10 @@ const templateSettings = {
 };
 
 const dialogRegexp = /^([a-zA-Z]+)(_([a-zA-Z]+))?:(.+)/;
+
+const maxLineLength = 68;
+
+const defilementDurationPerLetter = 25;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
   private _lastBg: string;
@@ -37,6 +42,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _fxLayer: PIXI.Container;
   private _characterLayer: PIXI.Container;
   private _closeupLayer: PIXI.Container;
+  private _miniGameLayer: PIXI.Container;
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
   private _dialogSpeaker: PIXI.Container;
@@ -65,6 +71,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._backgroundLayer = new PIXI.Container();
     this._characterLayer = new PIXI.Container();
     this._closeupLayer = new PIXI.Container();
+    this._miniGameLayer = new PIXI.Container();
     this._uiLayer = new PIXI.Container();
     this._dialogLayer = new PIXI.Container();
     this._fxLayer = new PIXI.Container();
@@ -75,7 +82,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._closeupLayer,
       this._uiLayer,
       this._dialogLayer,
-      this._fxLayer
+      this._fxLayer,
+      this._miniGameLayer
     );
 
     this._dialogSpeaker = new PIXI.Container();
@@ -111,7 +119,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     for (let i = 0; i < gaugesList.length; i++) {
       const _gauge = gaugesList[i];
       this._gauges[_gauge] = new gauge.Gauge(
-        new PIXI.Point(140 * i + 15, 15),
+        new PIXI.Point(140 * i + 30, 15),
         new PIXI.Sprite(
           this.entityConfig.app.loader.resources[
             `images/ui/gauges/${_gauge}.png`
@@ -133,7 +141,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public setGauge(name: string, value: number) {
-    if (this._gauges.hasOwnProperty(name)) this._gauges[name].resetValue(value);
+    if (this._gauges.hasOwnProperty(name)) {
+      this._gauges[name].resetValue(value);
+    } else {
+      console.error(`Missing gauge: "${name}"`);
+    }
   }
 
   public getUi(): PIXI.Container {
@@ -168,13 +180,13 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
-    const noName = gaugesName.length === 0;
-    for (const gaugeName in this._gauges) {
-      if(noName || gaugesName.includes(gaugeName))
+    if (gaugesName.length === 0) {
+      for (const gaugeName in this._gauges) {
         gaugesName.push(gaugeName);
+      }
     }
-    
-    let i=0;
+    console.log(gaugesName);
+    let i = 0;
     const gaugesTween: entity.EntityBase[] = [];
     for (const gaugeName of gaugesName) {
       const currentGauge = this._gauges[gaugeName].getGauge();
@@ -195,8 +207,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             },
             onTeardown: () => {
               currentGauge.visible = visibility;
-            }
-          })
+            },
+          }),
         ])
       );
       i++;
@@ -229,18 +241,21 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._dialogLayer.visible = true;
   }
 
+  public hideDialogLayer() {
+    this._dialogLayer.visible = false;
+  }
+
   public showDialog(
     text: string,
     name: string,
     playerName: string,
-    autoShow: boolean,
     onBoxClick: () => unknown
   ) {
     // Use underscore template to interpolate variables
     const interpolatedText = _.template(
       text,
       templateSettings
-    )(this.config.variableStorage.data);
+    )(this.config.variableStorage.data).trim();
 
     let speaker: string, mood: string, dialog: string;
     if (name) [speaker, mood] = name.split("_");
@@ -252,7 +267,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._dialogSpeaker.visible = true;
       this._nodeDisplay.addChild(
         this.makeText(
-          speaker.toLowerCase() === "you" ? playerName : speaker,
+          speaker.toLowerCase() === "you" ? playerName : speaker.split("@")[0],
           {
             fontFamily: "Jura",
             fill: "white",
@@ -269,8 +284,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       );
 
       const speakerLC = speaker.toLowerCase();
-      const moodChanged = mood?.toLowerCase() !== this._lastMood;
-      if ((autoShow || moodChanged) && speakerLC !== "you") {
+      if (speakerLC !== "you") {
         this.addCharacter(speakerLC, mood?.toLowerCase());
       }
     } else {
@@ -294,8 +308,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           fontFamily: "Ubuntu",
           fontSize: 40,
           fontStyle: speaker ? "normal" : "italic",
-          wordWrap: true,
-          wordWrapWidth: 1325,
           leading: 10,
           isSpeaker: !!speaker,
         },
@@ -304,8 +316,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       this._nodeDisplay.addChild(dialogBox);
 
-      const defilementDurationPerLetter = 25;
-      const baseText = (text || interpolatedText).trim();
+      // Manually split text into lines to avoid words "jumping" from line to line
+      const baseText = splitIntoLines(interpolatedText, maxLineLength);
 
       const writer = this.makeFxLoop(
         `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
@@ -688,9 +700,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    * @param character if null or undefined, it will remove current character
    * @param mood
    */
-  public addCharacter(character?: string, mood?: string): void {
+  public addCharacter(character?: string, mood?: string) {
     // Check if character or mood change
     if (character === this._lastCharacter && mood === this._lastMood) return;
+
+    //console.log(this._lastCharacter, this._lastMood, "->", character, mood);
 
     // Remove characters
     const characterChanged = character !== this._lastCharacter;
@@ -700,13 +714,19 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._lastCharacter = character;
     this._lastMood = mood;
 
+    let displayMode: string;
+    [character, displayMode] = character.split("@");
+
     // If character or character not you
-    if (character && character !== "you") {
+    if (character && character !== "you" && character !== "???") {
       // Create container & Entity
-      const characterCE = {
-        container: new PIXI.Container(),
-        entity: new entity.ParallelEntity(),
-      };
+      const characterCE = this.makeCharacter(
+        character,
+        mood,
+        displayMode,
+        characterChanged
+      );
+
       // Add new container/entity to a map
       this._characters.set(character, characterCE);
       // Activate entity
@@ -715,61 +735,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         entity.extendConfig({ container: characterCE.container })
       );
 
-      // Set directory to access resources
-      const baseDir = `images/characters/${character}`;
-      const baseJson = require(`../${baseDir}/base.json`);
-
-      // If mood is incorrect, get default one
-      if (!_.has(baseJson, mood)) mood = baseJson["default"];
-
-      // For each part
-      for (const bodyPart of baseJson[mood]) {
-        if (
-          _.has(
-            this.config.app.loader.resources,
-            `${baseDir}/${bodyPart.model}.json`
-          )
-        ) {
-          // Create animated sprite and set properties
-          const animatedSpriteEntity = this.makeAnimatedSprite(
-            `${baseDir}/${bodyPart.model}.json` as any,
-            (it) => {
-              it.anchor.set(0.5);
-              it.position.copyFrom(bodyPart);
-              it.animationSpeed = 0.33;
-
-              if (_.has(bodyPart, "scale")) {
-                it.scale.set(bodyPart.scale);
-              }
-            }
-          );
-
-          // Add animated sprite to entity
-          characterCE.entity.addChildEntity(animatedSpriteEntity);
-        } else {
-          console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
-        }
-      }
+      //
 
       // Place character on screen
       this._characterLayer.addChild(characterCE.container);
-      characterCE.container.setTransform(250, 80, 1.1, 1.1);
       //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
-
-      // If character changed, do animation
-      if (characterChanged) {
-        this._activateChildEntity(
-          new tween.Tween({
-            duration: 1500,
-            easing: easing.easeOutQuint,
-            from: 1500,
-            to: 250,
-            onUpdate: (value) => {
-              characterCE.container.position.x = value;
-            },
-          })
-        );
-      }
     }
   }
 
@@ -819,35 +789,61 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   fade(duration: number = 1000, color: string = "#000000") {
-
-    this._activateChildEntity(new entity.EntitySequence([
-      new entity.FunctionCallEntity(() => {
-        this._fade.tint = eval(color.replace("#", "0x"));
-        this._fade.visible = true;
-        this._fade.alpha = 1;
-      }),
-      new entity.WaitingEntity(duration/4),
-      // new tween.Tween({
-      //   duration: duration,
-      //   from: 0,
-      //   to: 1,
-      //   onUpdate: (value) => {
-      //     this._fade.alpha = value;
-      //   },
-      // }),
-      new tween.Tween({
-        duration: duration,
-        from: 1,
-        to: 0,
-        onUpdate: (value) => {
-          this._fade.alpha = value;
-        },
-      }),
-      new entity.FunctionCallEntity(() => {
-        this._fade.visible = false;
-        this._fade.alpha = 0;
-      }),
-    ]));
-
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        new entity.FunctionCallEntity(() => {
+          this._fade.tint = eval(color.replace("#", "0x"));
+          this._fade.visible = true;
+          this._fade.alpha = 1;
+        }),
+        new entity.WaitingEntity(duration / 4),
+        // new tween.Tween({
+        //   duration: duration,
+        //   from: 0,
+        //   to: 1,
+        //   onUpdate: (value) => {
+        //     this._fade.alpha = value;
+        //   },
+        // }),
+        new tween.Tween({
+          duration: duration,
+          from: 1,
+          to: 0,
+          onUpdate: (value) => {
+            this._fade.alpha = value;
+          },
+        }),
+        new entity.FunctionCallEntity(() => {
+          this._fade.visible = false;
+          this._fade.alpha = 0;
+        }),
+      ])
+    );
   }
+}
+
+function splitIntoLines(input: string, lineLength: number): string {
+  // Manually split text into lines to avoid words "jumping" from line to line
+  let result = "";
+  let pos = 0;
+  while (pos < input.length) {
+    if (pos + lineLength >= input.length) {
+      // Just add the remaining text
+      result += input.slice(pos);
+      pos += lineLength;
+    } else {
+      // Find the last space before the end of the line
+      const lastSpacePos = input.lastIndexOf(" ", pos + lineLength);
+      if (lastSpacePos === -1) {
+        // No spaces (really big word?)
+        result += input.slice(pos, pos + lineLength);
+        pos += lineLength;
+      } else {
+        // Replace the last space with a newline, continue algorithm
+        result += input.slice(pos, lastSpacePos) + "\n";
+        pos = lastSpacePos + 1;
+      }
+    }
+  }
+  return result;
 }

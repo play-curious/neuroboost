@@ -1,0 +1,17 @@
+{
+  "normal": [
+    {
+      "model": "b_normal",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "messy": [
+    {
+      "model": "b_messy",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "default": "normal"
+}

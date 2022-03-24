@@ -43,12 +43,12 @@ export function isOption(
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
   private _lastNodeData: yarnBound.Metadata;
-  private _autoshowOn: boolean;
 
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
   public visited: Set<string>;
   public selectedOptions: string[];
+  public enabled: boolean;
 
   constructor(
     public readonly stateName: string,
@@ -62,13 +62,14 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
+    this.enabled = true;
+
     save.save(this.stateName, this.config.variableStorage);
 
     this._initRunner();
 
     command.fxLoops.clear();
 
-    this._autoshowOn = false;
     this.selectedOptions = [];
     this.visited = new Set();
 
@@ -136,6 +137,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(selectId?: number): void {
+    if (!this.enabled) return;
+
     // If result is undefined, stop here
     if (this.metadata.hasOwnProperty("isDialogueEnd")) {
       this._transition = entity.makeTransition();
@@ -161,8 +164,14 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     const result = this.runner.currentResult;
 
     if (isText(result)) {
-      this.graphics.showDialogLayer();
-      this._handleDialog();
+      if(this.config.variableStorage.get("isDebugMode")) {
+        console.log("SKIPPED", result);
+        this._advance();
+      }
+      else {
+        this.graphics.showDialogLayer();
+        this._handleDialog();
+      }
     } else if (isOption(result)) {
       this.graphics.showDialogLayer();
       if (this._hasTag(this.metadata, "freechoice")) {
@@ -190,7 +199,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       text,
       speaker,
       this.config.variableStorage.get("name"),
-      this._autoshowOn,
       () => this._advance.bind(this)(id)
     );
   }
@@ -200,10 +208,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     if (!isOption(result))
       throw new Error("Called _handleChoice for unknown result");
-
-    this.metadata.choiceId
+      
+    this.metadata.choiceId !== undefined
       ? this.metadata.choiceId++
       : (this.metadata.choiceId = 0);
+      
     const options: Record<string, string>[] = [];
 
     let indexOfBack = 0;
@@ -212,8 +221,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
       if (
-        option.hashtags.includes("once") &&
-        this.selectedOptions.includes(selectedOptionId)
+        (option.hashtags.includes("once") &&
+        this.selectedOptions.includes(selectedOptionId)) ||
+        !option.isAvailable
       )
         continue;
 
@@ -224,7 +234,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       if (option.text === "back") indexOfBack = i;
     }
-
+    
     if (
       this._hasTag(this.metadata, "subchoice") &&
       options.length === 1 &&
@@ -309,28 +319,14 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this.emit("changeNodeData", oldNodeData, newNodeData);
       return;
     }
-    // By default, autoshow is off
-    this._autoshowOn = false;
+
     let noUi: boolean = false;
-    let bg: string;
-    let bg_mood: string;
-    let character: string;
 
     for (let tag of newNodeData.tags.split(/\s+/)) {
       tag = tag.trim();
       if (tag === "") continue;
 
-      if (tag.startsWith("bg|")) {
-        if (bg) console.warn("Trying to set background twice");
-
-        [bg, bg_mood] = tag.split("|")[1].trim().split("_");
-      } else if (tag.startsWith("show|")) {
-        if (character) console.warn("Trying to set character twice");
-
-        character = tag.split("|")[1].trim();
-      } else if (tag === "autoshow") {
-        this._autoshowOn = true;
-      } else if (tag === "noUi") {
+      if (tag === "noUi") {
         noUi = true;
       } else if (tag !== "freechoice" && tag !== "subchoice") {
         console.warn("Unknown tag in node data", tag);
@@ -339,9 +335,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     if (noUi) this.graphics.hideUi();
     else this.graphics.showUi();
-
-    if (bg) this.graphics.setBackground(bg, bg_mood);
-    this.graphics.addCharacter(character);
 
     this.emit("changeNodeData", oldNodeData, newNodeData);
   }
@@ -356,5 +349,16 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   deactivate(e: entity.EntityBase) {
     this._deactivateChildEntity(e);
+  }
+
+  disable() {
+    this.enabled = false;
+    this.graphics.hideNode();
+  }
+
+  enable() {
+    this.enabled = true;
+    this.graphics.showNode();
+    this._advance();
   }
 }

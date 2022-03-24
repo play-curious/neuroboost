@@ -1,0 +1,36 @@
+{
+  "night": [
+    {
+      "model": "b_night",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "day": [
+    {
+      "model": "b_day",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "class": [
+    {
+      "model": "b_class",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "class-screen": [
+    {
+      "model": "b_class",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "p_screenCl",
+      "x": 359.0,
+      "y": 409.0
+    }
+  ],
+  "default": "day"
+}

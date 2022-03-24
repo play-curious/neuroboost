@@ -1,18 +1,20 @@
 import * as PIXI from "pixi.js";
-
-import { GlitchFilter } from "@pixi/filter-glitch";
-import { CRTFilter } from "pixi-filters";
+import * as pixiExtract from "@pixi/extract";
+import * as jsPdf from "jspdf";
 
 import * as entity from "booyah/src/entity";
-import * as tween from "booyah/src/tween";
 
+import * as filter from "./graphics_filter";
 import * as variable from "./variable";
 import * as extension from "./extension";
+import dayjs from "dayjs";
 
-const options: {[key: string]: any} = {
+const options: { [key: string]: any } = {
   method: {
+    title: "Méthode de révision",
     closeQuestion: {
-      question: "Lorsque tu as besoin de réviser, quelles techniques utilises-tu ?",
+      question:
+        "Lorsque tu as besoin de réviser, quelle technique utilises-tu ?",
       answers: [
         "Rappel libre",
         "Lecture de notes",
@@ -22,129 +24,92 @@ const options: {[key: string]: any} = {
       ],
     },
     openQuestion: {
-      question: "Si tu pouvais apprendre plus facilement ou retenir des informations plus longtemps, qu'est-ce que cela pourrait changer à ta vie ?"
+      question:
+        "Si tu pouvais apprendre plus facilement ou retenir des informations plus longtemps, qu'est-ce que cela pourrait changer à ta vie ?",
     },
   },
   food: {
+    title: "Alimentation",
     closeQuestion: {
       question: "Penses-tu que ton alimentation est saine ?",
-      answers: [
-        "Oui",
-        "Souvent oui",
-        "Rarement oui",
-        "Non",
-      ],
+      answers: ["Oui", "Souvent oui", "Rarement oui", "Non"],
     },
     openQuestion: {
-      question: "Comment pourrais-tu améliorer ton alimentation pour mieux apprendre ?",
-    }
+      question:
+        "Comment pourrais-tu améliorer ton alimentation pour mieux apprendre ?",
+    },
   },
   sleep: {
+    title: "Sommeil",
     closeQuestion: {
       question: "De combien de temps de sommeil as tu besoin ?",
-      answers: [
-        "10h ou plus",
-        "9h",
-        "8h",
-        "7h",
-        "6h ou moins",
-      ],
+      answers: ["10h ou plus", "9h", "8h", "7h", "6h ou moins"],
     },
     openQuestion: {
       question: "Quels facteurs te permettent de bien dormir le soir ?",
-    }
-  }
+    },
+  },
+  mentalWorkload: {
+    title: "Charge mentale",
+    closeQuestion: {
+      question: "Combien de balles sais-tu jongler ?",
+      answers: ["1", "2", "3", "4", "5 ou plus"],
+    },
+    openQuestion: {
+      question:
+        "Comment pourrais-tu faire pour réduire les distracteurs dans ton travail ?",
+    },
+  },
+  profiles: {
+    title: "Profils d'apprentissage",
+    closeQuestion: {
+      question:
+        "De quel sage est-tu le plus proche en tant que profil d'apprentissage ?",
+      answers: ["Tembde", "Azul", "Sapiens", "LedAI"],
+    },
+    openQuestion: {
+      question:
+        "As-tu déjà recontré des problèmes en travaillant avec des personnes de profil différents ?",
+    },
+  },
 };
 
 export class JournalScene extends extension.ExtendedCompositeEntity {
-  private _glitch: PIXI.Filter & GlitchFilter;
-  private _holo: PIXI.Filter & CRTFilter;
+  private _glitch: filter.Glitch;
+  private _holo: filter.Holograph;
   private _container: PIXI.Container;
   private _htmlContainer: HTMLElement;
 
   constructor(
     private variableStorage: variable.VariableStorage,
-    private option: string) {
+    private option: string
+  ) {
     super();
   }
 
   _setup(): void {
-    this._glitch = new GlitchFilter({
-      red: [0, 0],
-      blue: [0, 0],
-      green: [0, 0],
-      offset: 0,
-      slices: 10,
-    }) as any;
-    this._holo = new CRTFilter({
-      curvature: 0,
-      lineWidth: 0.5,
-      lineContrast: 0.3,
-      noise: 0.15
-    }) as any;
-
     this._container = new PIXI.Container();
-    this._container.filters = [this._glitch, this._holo];
     this.config.container.addChild(this._container);
 
     //this._graphics.setBackground("bedroom", "night")
     this._container.addChild(this.makeSprite("images/ui/journal_bg.png"));
 
-    const shifting = 5;
-    const frequency = 2000;
+    // Handle filters
+    this._holo = filter.newHolograph();
+    this._glitch = filter.newGlitch();
+    this._container.filters = [this._glitch, this._holo];
+    this._activateChildEntity(filter.wrapHolograph(this._holo as any));
+    this._activateChildEntity(filter.wrapGlitch(this._glitch as any));
 
-    this._activateChildEntity(
-      new entity.FunctionalEntity({
-        update: () => {
-          this._holo.seed = Math.random();
-          this._holo.time = (this._holo.time + 0.1) % 20;
-        }
-      })
-    )
-
-    this._activateChildEntity(
-      new entity.EntitySequence(
-        [
-          () =>
-            new entity.WaitingEntity(
-              Math.floor(10 + Math.random() * frequency)
-            ),
-          () =>
-            new entity.FunctionCallEntity(() => {
-              this._glitch.red = [
-                Math.floor(Math.random() * shifting),
-                Math.floor(Math.random() * shifting),
-              ];
-              this._glitch.green = [
-                Math.floor(Math.random() * shifting),
-                Math.floor(Math.random() * shifting),
-              ];
-              this._glitch.offset = Math.floor(1 + Math.random() * 2);
-              this._glitch.slices = Math.floor(10 + Math.random() * 15);
-            }),
-          () =>
-            new entity.WaitingEntity(
-              Math.floor(10 + Math.random() * (frequency / 4))
-            ),
-          () =>
-            new entity.FunctionCallEntity(() => {
-              this._glitch.red = [0, 0];
-              this._glitch.green = [0, 0];
-              this._glitch.offset = 0;
-            }),
-        ],
-        {
-          loop: true,
-        }
-      )
-    );
-
+    // Handle html
     const htmlLayer = document.getElementById("html-layer");
     this._htmlContainer = document.createElement("div");
     htmlLayer.appendChild(this._htmlContainer);
 
+    const leftElements = document.createElement("div");
+    const answers = options[this.option].closeQuestion.answers;
+    const answersInputs: HTMLInputElement[] = [];
     {
-      const leftElements = document.createElement("div");
       leftElements.style.position = "absolute";
       leftElements.style.left = "230px";
       leftElements.style.top = "180px";
@@ -157,19 +122,28 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         "beforeend",
         `<p>${options[this.option].closeQuestion.question}</h1>`
       );
+
       const answers = options[this.option].closeQuestion.answers;
+
       for (let i = 0; i < answers.length; i++) {
-        leftElements.insertAdjacentHTML(
-          "beforeend",
-          `<br>
-        <input type="radio" name="closed-question" id="closed-question-${i}" value="${i}">
-        <label for="closed-question-${i}">${answers[i]}</label>`
-        );
+        const answer: HTMLInputElement = document.createElement("input");
+        answer.type = "radio";
+        answer.name = "closed-question";
+        answer.id = `closed-question-${i}`;
+        answer.value = `${i}`;
+        answersInputs[i] = answer;
+
+        const label: HTMLLabelElement = document.createElement("label");
+        label.innerText = `${answers[i]}`;
+        label.setAttribute("for", `closed-question-${i}`);
+
+        leftElements.append(document.createElement("br"), answer, label);
       }
     }
 
+    const rightElements = document.createElement("div");
+    const textArea = document.createElement("textArea");
     {
-      const rightElements = document.createElement("div");
       this._htmlContainer.appendChild(rightElements);
 
       const rightQuestion = document.createElement("p");
@@ -182,7 +156,6 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       rightQuestion.style.fontSize = "28px";
       rightElements.appendChild(rightQuestion);
 
-      const textArea = document.createElement("textArea");
       textArea.style.position = "absolute";
       textArea.style.left = "947px";
       textArea.style.top = "280px";
@@ -204,11 +177,26 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
           it.interactive = true;
           it.buttonMode = true;
 
-          this._on(
-            it,
-            "pointerup",
-            () => (this._transition = entity.makeTransition())
-          );
+          this._on(it, "pointerup", () => {
+            this.config.fxMachine.play("Click");
+
+            const journalStorage =
+              this.config.variableStorage.get("journalAnswers");
+            journalStorage[this.option] = {};
+            for (const answer of answersInputs) {
+              if (answer.checked) {
+                journalStorage[this.option].closeQuestion =
+                  answer.id.split("-")[2];
+              }
+            }
+            journalStorage[this.option].openQuestion = (
+              textArea as HTMLInputElement
+            ).value;
+
+            this.config.variableStorage.set("journalAnswers", journalStorage);
+
+            this._transition = entity.makeTransition();
+          });
         })
       );
     }
@@ -218,5 +206,90 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
     this.config.container.removeChild(this._container);
     this._htmlContainer.remove();
     this._container = null;
+  }
+}
+
+const _options: any = {
+  margin: {
+    top: 15,
+    bottom: 15,
+    left: 15,
+    right: 15,
+  },
+};
+
+export class JournalPDF extends extension.ExtendedCompositeEntity {
+  journalToPDF(journalStorage: any, bgImage: PIXI.Sprite) {
+    const doc = new jsPdf.jsPDF();
+
+    const textOptions: jsPdf.TextOptionsLight = {
+      maxWidth: 210 - (_options.margin.left + _options.margin.right),
+      baseline: "top",
+    };
+
+    const bgBase64 =
+      this.config.app.renderer.plugins.extract.image(bgImage).src;
+
+    let page = 1;
+    for (const journal in journalStorage) {
+      doc.setPage(page);
+      doc.addImage(bgBase64, "PNG", 0, 0, 210, 297);
+
+      // Title
+      doc.setFontSize(22);
+      doc.text(
+        `${options[journal].title}`,
+        _options.margin.left,
+        15,
+        textOptions
+      );
+
+      // CloseQuestion
+      const closeQuestion = options[journal].closeQuestion;
+      doc.setFontSize(20);
+      doc.text(
+        `${closeQuestion.question}`,
+        _options.margin.left,
+        35,
+        textOptions
+      );
+      doc.setFontSize(17);
+      let i = 0;
+      for (const answer of closeQuestion.answers) {
+        doc.setFont(
+          undefined,
+          i == journalStorage[journal].closeQuestion ? "bold" : "normal"
+        );
+        doc.text(
+          `    - ${answer}\n`,
+          _options.margin.left,
+          61 + 10 * i++,
+          textOptions
+        );
+      }
+
+      // OpenQuestion
+      doc.setFontSize(19).setFont(undefined, "normal");
+      doc.text(
+        `${options[journal].openQuestion.question}`,
+        _options.margin.left,
+        148,
+        textOptions
+      );
+      doc.setFontSize(17);
+      doc.text(
+        `    ${journalStorage[journal].openQuestion}`,
+        _options.margin.left,
+        174,
+        textOptions
+      );
+
+      doc.addPage();
+      page++;
+    }
+
+    doc.deletePage(doc.getNumberOfPages());
+
+    doc.save(`JournalMetacognition (${dayjs().format("DD-MM-YYYY HH-mm-ss")})`);
   }
 }
