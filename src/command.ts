@@ -130,6 +130,7 @@ export const commands: Record<string, Command> = {
     gaugeName: VarName,
     value: variable.Gauges[VarName]
   ) {
+    this.config.variableStorage.set(gaugeName, `${value}`);
     this.graphics.setGauge(gaugeName, Number(value));
   },
 
@@ -237,6 +238,11 @@ export const commands: Record<string, Command> = {
     this.selectedOptions = [];
   },
 
+  resetLevel() {
+    this.selectedOptions = [];
+    this.visited = new Set();
+  },
+
   minigame(className: string) {
     this.disable();
     this.activate(
@@ -258,10 +264,11 @@ export const commands: Record<string, Command> = {
 };
 
 export const functions: Record<string, YarnFunction> = {
-  visited(node: string): boolean {
-    if (!node) throw new Error("Please give a valid node title in visited()");
-    const visited = this.visited.has(node);
-    this.visited.add(node);
+  visited(...nodes: string[]): boolean {
+    if (nodes.length === 0) throw new Error("Please give a valid node title in visited()");
+    let visited = true;
+    for(const node of nodes)
+      visited = visited && this.visited.has(node);
     return visited;
   },
 
