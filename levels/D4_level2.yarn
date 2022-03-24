@@ -185,15 +185,10 @@ You: Heu...
 
 <<visit Redaction>>
 
-<< if visited("Zero_Distraction") >>
--> Demander l'avis de Fred
+-> Demander l'avis de Fred << if visited("Zero_Distraction") >>
     << jump Redaction_Good >>
 -> Donner les ordres à Fred
     << jump Redaction_Bad >>
-<<else>>
--> Donner les ordres à Fred
-    << jump Redaction_Bad >>
-<<endif>>
 ===
 title: lunch
 tags: 
@@ -279,15 +274,10 @@ You: Heu.
 
 <<visit Notes_You>>
 
-<< if visited("Zero_Distraction") >>
--> Vous lui lisez vos notes
+-> Vous lui lisez vos notes << if visited("Zero_Distraction") >>
     << jump Notes_You_Good >>
 -> C'est à lui de lire vos notes
     << jump Notes_You_Bad >>
-<<else>>
--> C'est à lui de lire vos notes
-    << jump Notes_You_Bad >>
-<<endif>>
 ===
 title: Fred_goesback_towork
 tags: 
@@ -351,15 +341,10 @@ You: Heu... C'est plus facile pour moi de les lire.
 
 <<visit Notes_Fred>>
 
-<<if visited("Zero_Distraction")>>
--> Écouter Fred présenter ses notes
+-> Écouter Fred présenter ses notes <<if visited("Zero_Distraction")>>
     << jump Notes_Fred_Good >>
 -> Demander à Fred de vous envoyer ses notes écrites
     << jump Notes_Fred_Bad >>
-<<else>>
--> Demander à Fred de vous envoyer ses notes écrites
-    << jump Notes_Fred_Bad >>
-<<endif>>
 ===
 title: ChezFred
 tags: 
@@ -434,15 +419,10 @@ Fred_smiling: On a toujours le temps.
 
 << visit Plan >>
 
-<< if visited("Zero_Distraction") >>
--> Vous prenez le temps de discuter avec Fred de tous les plans possibles
+-> Vous prenez le temps de discuter avec Fred de tous les plans possibles << if visited("Zero_Distraction") >>
     << jump Plan_Good >>
 -> Vous présentez votre plan à Fred
     << jump Plan_Bad >>
-<<else>>
--> Vous présentez votre plan à Fred
-    << jump Plan_Bad >>
-<<endif>>
 ===
 title: Notes_You_Good
 tags: 
