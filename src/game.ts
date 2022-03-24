@@ -173,6 +173,7 @@ const musicAssets = [
   "DanseQuiet",
   "Solo1",
   "Solo2",
+  "AcousticGuitar",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];

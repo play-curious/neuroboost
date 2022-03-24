@@ -585,12 +585,15 @@ colorID: 2
 ---
 << empty >>
 << setBackground bedroom detente >>
-Vous vous levez de votre lit et vous prenez votre cycloluth, une guitare archaïque de la planète Feudall. Les cordes sonnent juste, vous vous échauffez par une petit gigue traditionnelle d'Eirun VI.
+Vous vous levez de votre lit et vous prenez votre cycloluth, une guitare archaïque de la planète Feudall.
+<< music AcousticGuitar >>
+Les cordes sonnent juste, vous vous échauffez par une petit gigue traditionnelle d'Eirun VI.
 Puis, constatant que vos doigts sont souples et précis, vous enchaînez avec d'autres balades, d'autres gestes du répertoire médiéfull galactique. 
 La mélodie envahit votre chambre. Heureusement, vous avez demandé à Room Mate d'isoler votre pièce sur le plan sonore. Vous n'entendez aucun son venu de l'extérieur et aucun son de votre chambre ne peut en sortir. 
 Vous pouvez faire tout le bruit que vous voulez, vous ne dérangez que vous. La musique vous emporte, elle vous illumine, elle vous enchante, elle vous distrait. Vous oubliez tous vos tracas, tous vos déboires, toutes vos peurs.
 Une heure après, quand vous reposez le cycloluth, vous vous sentez léger et joyeux.
 << advanceTime 1:00 >>
+<< music Neutral >>
 <<removeFromGauge stress 40>>
 
 -> Et maintenant ?
@@ -602,6 +605,7 @@ position: 17.857994079589844,-106.2800350189209
 colorID: 2
 ---
 Votre esprit est suffisamment détendu. Vous fermez les yeux, vous relâchez votre corps, vous glissez dans le sommeil. Vous dites enfin bye bye à ce vendredi stressant...
+<< music Victory >>
 Victoire !! Vous avez combattu le stress et vous l'avez repoussé, vous l'avez vaincu !
 ===
 title: SiesteCrossroad
