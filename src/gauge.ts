@@ -87,7 +87,7 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     this._on(this._container, "pointerover", () => {
       let tooltipX = this._center.x;
       this._tooltip = this.makeText(
-        `${gaugesNames[this.name]}\n${this._value} %`,
+        `${gaugesNames[this.name]}\n${this._value.toFixed(1)} %`,
         {
           fill: "0xFFF",
           fontFamily: "Ubuntu",
