@@ -49,6 +49,29 @@ const options: { [key: string]: any } = {
       question: "Quels facteurs te permettent de bien dormir le soir ?",
     },
   },
+  mentalWorkload: {
+    title: "Charge mentale",
+    closeQuestion: {
+      question: "Combien de balles sais-tu jongler ?",
+      answers: ["1", "2", "3", "4", "5 ou plus"],
+    },
+    openQuestion: {
+      question:
+        "Comment pourrais-tu faire pour réduire les distracteurs dans ton travail ?",
+    },
+  },
+  profiles: {
+    title: "Profils d'apprentissage",
+    closeQuestion: {
+      question:
+        "De quel sage est-tu le plus proche en tant que profil d'apprentissage ?",
+      answers: ["Tembde", "Azul", "Sapiens", "LedAI"],
+    },
+    openQuestion: {
+      question:
+        "As-tu déjà recontré des problèmes en travaillant avec des personnes de profil différents ?",
+    },
+  },
 };
 
 export class JournalScene extends extension.ExtendedCompositeEntity {
@@ -99,6 +122,8 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         "beforeend",
         `<p>${options[this.option].closeQuestion.question}</h1>`
       );
+
+      const answers = options[this.option].closeQuestion.answers;
 
       for (let i = 0; i < answers.length; i++) {
         const answer: HTMLInputElement = document.createElement("input");

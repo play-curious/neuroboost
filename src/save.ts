@@ -10,11 +10,9 @@ export function save(
   variableStorage?: variable.VariableStorage
 ) {
   if (!stateName) {
-    console.log("removed save");
     localStorage.removeItem("save");
     localStorage.removeItem("variableStorage");
   } else {
-    console.log("saved game state:", stateName);
     localStorage.setItem("save", stateName);
     localStorage.setItem(
       "variableStorage",
@@ -30,7 +28,6 @@ export function loadSave(): {
   const state = localStorage.getItem("save");
   const varstorage = JSON.parse(localStorage.getItem("variableStorage"));
   const variableStorage = new variable.VariableStorage(varstorage);
-  console.log("loaded game data:", state, variableStorage);
   return {
     state,
     variableStorage,

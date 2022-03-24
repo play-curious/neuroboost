@@ -185,7 +185,7 @@ You: Heu...
 
 <<visit Redaction>>
 
--> Demander l'avis de Fred << if visited("Zero_Distraction") >>
+-> Demander l'avis de Fred 
     << jump Redaction_Good >>
 -> Donner les ordres à Fred
     << jump Redaction_Bad >>
@@ -270,9 +270,12 @@ You: Je sais que tu as avancé depuis la dernière fois.
 Fred_happy: Yes yes. On échange à nouveau nos commentaires et nos notes ?
 You: On commence par les miennes ?
 Fred_smiling: Yeeees. Je t'écoute !
-You: Heu.
 
 <<visit Notes_You>>
+
+<< if !visited("Zero_Distraction") >>
+You: Non, mais je ne peux pas te lire à haute voix, on est à la bibliothèque !
+<< endif >> 
 
 -> Vous lui lisez vos notes << if visited("Zero_Distraction") >>
     << jump Notes_You_Good >>
@@ -342,7 +345,10 @@ You: Je sais que toi aussi, tu as avancé sur le travail de rédaction du mémoi
 Fred_smiling: Bien sûr.
 You: Tu as tes notes avec toi ?
 Fred_happy: Tu veux pas plutôt qu'on en parle de vive voix ?
-You: Heu... C'est plus facile pour moi de les lire.
+
+<< if !visited("Zero_Distraction") >>
+You: Heu... C'est plus facile pour moi de les lire. Surtout qu'on est à la bibliothèque, il ne faut pas faire du bruit.
+<< endif >> 
 
 <<visit Notes_Fred>>
 
@@ -424,7 +430,7 @@ Fred_smiling: On a toujours le temps.
 
 << visit Plan >>
 
--> Vous prenez le temps de discuter avec Fred de tous les plans possibles << if visited("Zero_Distraction") >>
+-> Vous prenez le temps de discuter avec Fred de tous les plans possibles 
     << jump Plan_Good >>
 -> Vous présentez votre plan à Fred
     << jump Plan_Bad >>
@@ -456,15 +462,13 @@ tags:
 position: -1169.79443359375,-313.6395568847656
 colorID: 2
 ---
-You: Non, on fait ça par écrit.
+You: On fait ça par écrit.
 Fred_surprised: Pourquoi ?
-You: On est dans une bibliothèque, on ne doit pas parler.
-Fred_surprised: Pourquoi ?
-You: On dérange le travail des autres étudiants.
-Fred_sad: C'est stupide...
+You: Parce que ! T'as dit que c'est moi le chef, non ?
+Fred_sad: Oui, chef...
 
 Vous envoyez vos documents de travail à Fred. Vous voyez votre ami grincer des dents.
-Iel peine à lire et relire vos docs. Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous ne pouvez le laisser parler. Le règlement intérieur précise bien que vous ne devez pas parler, sous peine de déranger les autres étudiants, qui travaillent eux aussi.
+Iel peine à lire et relire vos docs. Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous limitez les discussions pour vous concentrez sur votre travail.
 <<advanceTime 1:00>>
 << addToGauge learning 10 >>
 Avez-vous fait le bon choix ?

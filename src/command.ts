@@ -1,3 +1,5 @@
+import * as _ from "underscore";
+
 import * as entity from "booyah/src/entity";
 
 import * as dialog from "./dialog";
@@ -74,7 +76,7 @@ export const commands: Record<string, Command> = {
       );
       minutesSinceMidnight += currentMinutesSinceMidnight * clock.dayMinutes;
     }
-    console.log("MinutesSinceMidnight", minutesSinceMidnight);
+
     this.config.variableStorage.set("time", `${minutesSinceMidnight}`);
 
     this.config.clock.setTime(minutesSinceMidnight);
@@ -155,14 +157,12 @@ export const commands: Record<string, Command> = {
   saveGauges<VarName extends keyof variable.Gauges>(...names: VarName[]) {
     savedGauges.clear();
     names.forEach((name) => {
-      console.log(`save ${name}`);
       savedGauges.set(name, Number(this.config.variableStorage.get(name)));
     });
   },
 
   loadGauges() {
     savedGauges.forEach((id, key) => {
-      console.log(`load ${key}`);
       this.config.variableStorage.set(key, `${savedGauges.get(key)}`);
     });
   },
@@ -265,11 +265,10 @@ export const commands: Record<string, Command> = {
 
 export const functions: Record<string, YarnFunction> = {
   visited(...nodes: string[]): boolean {
-    if (nodes.length === 0) throw new Error("Please give a valid node title in visited()");
-    let visited = true;
-    for(const node of nodes)
-      visited = visited && this.visited.has(node);
-    return visited;
+    if (nodes.length === 0)
+      throw new Error("Please give valid nodes titles in visited()");
+
+    return _.every(nodes, (node) => this.visited.has(node));
   },
 
   getGauge(gauge: string): number {
