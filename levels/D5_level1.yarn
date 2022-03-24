@@ -141,7 +141,7 @@ You: Oui. Mamie m'a appelé. Qu'a-t-elle ?
 Maman@holo_shadow: Elle a fait une crise cardiaque. On l'a admise d'urgence à l'hôpital. Son état est stable mais on doit l'opérer.
 You: Pourquoi ne m'avoir rien dit ?
 Maman@holo_shadow: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus.
-You: Merci. Du coup, je suis plus stressé..
+You: Merci. Du coup, je suis plus stressé...
 Maman@holo_shadow: Bibi, je ne pensais pas te... 
 You: J'ai compris. Bye !
 << hide >>
@@ -232,7 +232,7 @@ tags:
 position: -2089.3095703125,-1152.4438781738281
 ---
 << fadeIn >>
-<< hide ! >>
+<< hide >>
 << setBackground sport >>
 << advanceTime 0:15 >>
 << fadeOut >>
@@ -244,9 +244,11 @@ You: Et qu'est-ce qu'on fait maintenant ?
 Fred_smiling: on se défoule autant qu'on peut ! 
 You: Heu...
 << hide >>
+<< loopFX Sports_LOOP 16000 >>
 Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. Ravi de son coup, Fred vous tend la main pour vous redresser. Vous la saisissez, l'agrippez et la tirez pour le faire chuter à son tour ! 
 Fred, beau joueur, se laisse tomber à vos côtés. La suite : vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! Vous imaginez que Fred incarne votre peur, votre frustration. Vous lui envoyez toute la colère et la rage contenue en vous ! 
 Heureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. Vous avez la langue sèche et les membres engourdis.
+<< stopFX Sports_LOOP >>
 Fred_smiling: Alors ? Tu te sens mieux ?
 You: Crevé...
 Fred_smiling: Cool et...
