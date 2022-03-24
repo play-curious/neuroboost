@@ -88,6 +88,37 @@ const options: { [key: string]: any } = {
         "Lorsqu'il tu es stressé, que fais-tu comme activité pour lâcher prise ? ",
     },
   },
+  organisation: {
+    title: "Organisation",
+    closeQuestion: {
+      question: "Est-ce que tu étudies le weekend ?",
+      answers: [
+        "Non, le weekend est sacré",
+        "Seulement si je ne peux pas faire autrement",
+        "Le weekend, le soir, la journée... ils sont tout pareil",
+      ],
+    },
+    openQuestion: {
+      question:
+        "Comment fais-tu pour organiser tes priorités, lorsque tu as beaucoup de tâches à jongler ?",
+    },
+  },
+  success: {
+    title: "Success",
+    closeQuestion: {
+      question: "Quel est ton rapport à la réussite ?",
+      answers: [
+        "Stratégique - Je fais tout pour obtenir les meilleurs résultats",
+        "Compréhensive - C'est l'apprentissage qui compte, pas le diplôme",
+        "Instrumentale - Je dois juste valider mon année",
+        "Relative - Mon but est de faire aussi bien que mes amis",
+      ],
+    },
+    openQuestion: {
+      question:
+        "En dehors du travail et des études, quels objectifs fixes-tu pour la vie ?",
+    },
+  },
 };
 
 export class JournalScene extends extension.ExtendedCompositeEntity {
