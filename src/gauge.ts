@@ -150,14 +150,14 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   resetValue(value: number) {
     const torusOffset = -8;
     const torusWidth = 16;
-    const scale = 16;
+    const scale = 4;
 
     this._innerDisk.texture = this.makeSprite(this.colorByValue(value)).texture;
 
     this._outerDisk.cacheAsBitmap = false;
     this._outerDisk.clear();
     // Black torus background
-    this._outerDisk.beginFill(0x000000);
+    this._outerDisk.beginFill(0x666666);
     this._outerDisk.drawTorus(
       scale * this._center.x,
       scale * this._center.y,
