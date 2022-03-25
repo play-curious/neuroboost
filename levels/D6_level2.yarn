@@ -1,30 +1,27 @@
 title: Start
 tags: 
+position: -4531.113037109375,-1956.2740478515625
 colorID: 8
-position: -4533,-1961
 ---
 << fadeIn 1 >>
 << setBackground bedroom >>
-<< setTime 10:10>>
+<< setTime 10:10 5>>
 << fadeOut >>
 
-Vous ouvrez les yeux. Il est déjà 10 heures. C'est à nouveau samedi et vous savez combien votre emploi du temps est chargé. 
-Vous constatez que, si vous n'avez pas perdu le souvenir des jours précédents, les connaissances que vous aviez déjà mémorisées en matière de philosophie quantique ont été comme effacées. C'est un tour de ces sorciers de la métacognition ! C'est vraiment pas sympa ! 
-Pour réussir l'épreuve du Grand Oral, vous devez tout réapprendre !
-
-Néanmoins, vous prenez le temps de commencer ce week-end par un petit-déjeuner copieux : chocolat organique, crêpes au caramel beurré, jus d'oranges organiques compressées. 
+C'est le matin, vous vous réveillez... naturellement, normalement, sans sonnerie. Logique, nous sommes samedi, c'est le week-end, synonyme de repos, du moins de relâche. Il est 10 heures passées.
+Vous vous levez tranquillement et prenez un petit-déjeuner copieux : chocolat organique, crêpes au caramel beurré, jus d'oranges organiques compressées. Vous avez bien dormi: pas d'insomnie, pas de stress étouffant, pas de pensées angoissantes, pas de cauchemar.
 
 << advanceTime 0:30 >>
 
-C'est alors que, sans surprise, votre palmphone vibre, c'est votre mère. Vous devez lui répondre...
+Vous pensez à votre grand-mère, mais vous avez l'esprit serein et optimiste. Le sort aurait-il perçu vos pensées : votre palmphone vibre, c'est votre mère. Elle veut vous parler...
 
 -> Répondre
     << jump Appel_Maman >>
 ===
 title: Liste_Taches_SAM
 tags: 
-colorID: 1
 position: -3620,-1957
+colorID: 1
 ---
 << if !visited("Liste_Taches_SAM") >>
 Ce repas vous a revivifié. c'est maintenant qu'il faut se remettre à travailler. Sans se disperser ni se surcharger. 
@@ -49,16 +46,13 @@ Vous êtes toujours dans votre chambre, un samedi après-midi. Qu'allez-vous ent
 -> Faire une pause sieste#once
     << jump Sieste_Sam >>
 -> Entamer son planning de révision#once
-[[Planning_Samedi]]
     << jump Planning_Samedi >>
 -> Basculer la chambre en mode immersion studieuse#once
-[[Samedi_Zero_Distraction]]
     << jump Samedi_Zero_Distraction >>
 ===
 title: Appel_Fred_JeuVideo
 tags: 
-colorID: 0
-position: -3399,-1524
+position: -3401.550048828125,-2176.818115234375
 ---
 Vous appelez Fred. Il décroche à la première sonnerie:
 Fred@holo_excited: Hello { $name }. Comment va ?
@@ -83,39 +77,57 @@ Fred: Ne m'oblige pas à te défier sur l'AlphaMégaRing...
 title: reviser_session1
 tags: Erreur_PasEncoreFatale
 colorID: 0
-position: -3395,-1967
+title: reviser_session1
+tags: 
+position: -3397.07958984375,-1741.4505615234375
 ---
-La philosophie quantique. Pourquoi avez-vous choisi un sujet aussi dense et vaste. Comment allez-vous vous organiser ? Qu'ont-dit les Sages déjà ? Par quoi allez-vous commencer ? Vous n'en savez pas trop. Vous n'avez pas pris le temps d'y réfléchir.
+<< fadeIn >>
+<< setBackground bedroom desk >>
+<< fadeOut >>
+
+La philosophie quantique. Un beau et riche sujet. Vous en avez lu des livres sur la question. Vous en avez écrit des pages sur les différents thèmes que cette noble matière aborde. Par quoi allez-vous commencer ce matin ? Vous n'en savez pas trop. Vous n'avez pas vraiment réfléchi à la question.
 Tant pis. Vous faites confiance à la méthode du "rappel libre". Vous sortez des stylos de différentes couleurs et plusieurs pages blanches. Vous commencez à notez dessus les titres, les mots-clés, les concepts, les théories, les définitions et les arguments qui vous viennent à l'esprit..
 
 << advanceTime 1:00 >>
+
 Pfouu. En effet, il y en a de la matière. Cela vous prend au bas mot une heure pour faire un première passe des thèmes qui vous paraissent essentiels.
-// increase mémorisation
-// increase charge mentale, du genre 40/100 par exemple?
 
--> Faire une pause
-    << jump Pomodoro_Session2 >>
-===
-title: Reviser_session2
-tags: choix_dieandretry
-colorID: 0
-position: -765,-1544
+<< if isTimeOver("20.00") >>
+Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le pleine de calories.
+<< jump Diner_Sam >>
+<< endif >>
+
+Vous faites ensuite une première pause, suivant en cela la méthode "pomodoro" que vous a transmise les Sages.
+Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare analogique de la planète Feudall. Le son brut et archaïque de cet instrument vous détend, vous apaise, vous nettoie l'esprit d'informations superflues et pesantes.
+
+<< advanceTime 0:30 >>
+
+Maintenant que vous avez allégé votre esprit, vous reprenez votre travail de révision. Vous avez désormais choisi le premier thème à réviser. Ce sera le principe de Heisenberg, appliqué à la philosophie quantique.
+Lorsque la philosophie, la sociologie ou la psychologie, cherche à valider des théories déterministes du comportement de foule à partir de la somme d'actions individuelles. Elle se heurte à ce problème que la physique newtonienne rencontre dans la mesure des valeurs atomiques.
+L'indétermination ou plus précisément, l'interdépendance entre l'observateur et l'objet observé.
+
+<< advanceTime 1:00 >>
+
+<< if isTimeOver("20.00") >>
+Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le pleine de calories.
+<< jump Diner_Sam >>
+<< endif >>
+
+Au bout d'une heure, vous faites une nouvelle pause musicale avant de vous replonger dans la problématique de l'inceritude d'Heisenberg...
+title: Diner_Sam
+tags: 
+position: -3396,-1301
 ---
-// Si c'est le premier clic du joueur. Il révise le thème 3 : le chat de Schrödinger
-Vous rejoignez votre bureau. Vous vous replongez dans vos cours et vos notes.
-Vous abordez cette fois le paradoxe du chat de Schrödinger et la superpositions d'états différents. Ce qui est matériellement impossible.
-Soit, le monde des phénomènes n'est pas la réalité mais seulement ce que nous en percevons. 
-Soit, on admet la coexistence de plusieurs états possibles, la cohabitation de plusieurs univers parallèles, comme le stipule Everett. 
-Vous travaillez sur ce thème de manière studieuse mais détendue. Vous respectez des sessions d'une heure, conformément aux règles de la méthode "pomodoro". Vous réviser dans votre "bulle d'immersion studieuse", déconnecté de tout distracteur, et en compagnie de votre camarade virtuel, proposé par le module vidéo "work with me".
-Enfin. Vous n'oubliez pas de ménager des pauses entre chaque session, en grattant les cordes de votre cycloluth de Feudall. Ce qui vous permet de maintenir une attention utile et soutenue.
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
 
-// hausse jauge mémorisation efficace mais pas durable comme hier
-<< advanceTime 3:00 >>
-// moins de 4 heures en tout cas!
+La journée est finie. Il est temps de clore votre samedi par un dîner bien mérité. Vous avez faim et vous avez le temps de vous préparer un petit plat sympa et exotique : des lasagnes vénusiennes. C'est délicieux, riches en nutriments essentiels.
+Vous soufflez un grand coup : vous êtes fatigué. Soudain, quelqu'un sonne à la porte... C'est Fred !
+C'est vrai ! La Fièvre du samedi soir va enflammer votre nuit !
 
-
--> Que faire après ?
-    << jump Liste_Taches_DIM >>
+-> Accueillir Fred
+    << jump Fred_Soiree >>
 ===
 title: Diner_Sam
 tags: 
@@ -217,8 +229,7 @@ On vous applaudit, on vous acclame, on vous hèle, on vous salue, on vous interp
 ===
 title: Reseaux_Soc
 tags: 
-colorID: 0
-position: -3397,-1739
+position: -3397.000244140625,-1955.756103515625
 ---
 // Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
 Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est samedi : il n'y a pas grand monde en ligne. Beaucoup sont dehors : avec leurs amis, au cinéma, à faire du shopping, à suer durant leur séance hebdo de muscu.... 
@@ -236,8 +247,7 @@ Hum hum... La pause "réseaux sociaux"... Correspond-elle vraiment aux recommand
 ===
 title: Sieste_Sam
 tags: 
-colorID: 0
-position: -3390,-2466
+position: -3397.650390625,-2397.147705078125
 ---
 // si joueur vient << Liste_Taches_SAM >>
 Vous avez fait une grasse matinée. Toutefois, après la séance de Jungle Body Break, vous êtes bien à plat. Et puis cette semaine d'examens est très éprouvante. Vous ne cesser de la revivre en boucle. Ce week-end, c'est la cerise sur le gâteau. Vous n'avez pas le droit à l'erreur.
@@ -358,8 +368,7 @@ Bigre ! Il est temps de vous habiller et de partir à la séance de répétition
 ===
 title: Ranger_Bureau
 tags: 
-colorID: 0
-position: -3382,-2208
+position: -3393.8388671875,-1521.2393798828125
 ---
 Vous vous dites qu'il n'est pas inutile de mettre de l'ordre dans vos affaires. Est-ce vraiment nécessaire ? Peu importe, ça ne vous fera pas de mal non plus.
 Vous passez l'heure suivante à nettoyer votre bureau et ne laissez en évidence que ce qui vous servira dans votre travail de révision.
@@ -773,8 +782,7 @@ Vous avez entre les mains votre "carnet d'ingénieur tout-terrain". Vous avez pl
 ===
 title: Duel_GTR
 tags: 
-colorID: 0
-position: -3179,-1523
+position: -3181.550048828125,-2178.3682861328125
 ---
 You: S'il-te plaît, arrête de me faire chanter !  
 Fred: Tu me laisses pas le choix.
@@ -791,8 +799,7 @@ Vous allumez votre ordinateur et vous lancez le serveur GameStream. Vous répond
 ===
 title: Pomodoro_SAM_Session2
 tags: Choix_Win_possible
-colorID: 0
-position: -3160,-1977
+position: -2499.531494140625,-2989.3785400390625
 ---
 Vous prenez votre première pause, suivant en cela la méthode "pomodoro" que vous a transmise les Sages.
 Vous vous lancez dans une petite improvisation de cycloluth, votre cithare analogique de la planète Feudall. Le son brut et archaïque de cet instrument vous détend, vous apaise, vous nettoie l'esprit d'informations superflues et pesantes.
@@ -827,8 +834,8 @@ Vous avez donné toute votre énergie, votre âme, votre inspiration, votre sueu
 ===
 title: Planning_Samedi
 tags: 
+position: -3520.61865234375,-3166.666015625
 colorID: 2
-position: -3626,-2209
 ---
 Vous vous installez sur votre bureau. Vous ranger un minimum et sortez votre journal Bullet Point. Vous savez que ce week-end, il va diablement servir. Vous tournez les pages jusqu'à arriver à une page blanche. Vous pensez à la parabole du sceau : [i]d'abord les pierres, ensuite les cailloux, enfin le sable[/i].
 D'abord les pierres. Vous notez les tâches obligatoires et prioritaires du week-end. [u]Les quatre thèmes de la philosophie quantique[/u]. 
@@ -852,10 +859,12 @@ Enfin, vous vous attardez sur le sable.
 ===
 title: Revisions_ZenTD1
 tags: 
+position: -2954.692626953125,-2825.351318359375
 colorID: 2
-position: -3225,-2782
 ---
-// Si premier clic: reviser premier thème = incertitude quantique
+<< if visited("Revisions_ZenTD1")>>
+<< visit Revisions_ZenTD1 >>
+
 Vous entamez votre première session de révision de philosophie quantique. Au menu, la problématique de l'incertitude quantique.
 Aidé par l'ambiance "studieuse" et encouragé par votre camarade virtuel de "work-with-me", vous vous immergez profondément dans les enjeux de l'indétermination quantique.
 La première heure passe à une vitesse de folie... Vous refaites une pause d'harmoniques avec votre cycloluth. Que c'est agréable de se faire juste plaisir entre deux séances. 
@@ -865,11 +874,7 @@ Après une nouvelle pause musicale enchanteresse, vous reprenez votre exploratio
 Plus de trois heures se sont écoulées. Vous estimez avoir fait le tour de la question.
 <<advanceTime 3:00>>
 
--> Que reste-t-il à faire ?
-[[Liste_Taches_SAM_ZenTD]]
-    << jump Liste_Taches_SAM_ZenTD >>
-
-// Si deuxième clic: reviser second thème = intrication quantique
+<< else >>
 
 Vous démarrez une nouvelle session de révision de philosophie quantique. Le deuxième thème que vous avez prévu d'apprendre est : l'intrication quantique. Encore un sujet passionnant et inspirant. 
 
@@ -879,14 +884,15 @@ Bien entendu, vous n'oubliez pas de vous ménager une pause récréative entre c
 Vous passez encore plus de trois heures sur ce sujet, avoir d'avoir épuisé toutes les grandes questions et les grands débats. 
 <<advanceTime 3:00>>
 
+<< endif >>
+
 -> Que reste-t-il à faire ?
-[[Liste_Taches_SAM_ZenTD]]
     << jump Liste_Taches_SAM_ZenTD >>
 ===
 title: Pomodoro_SAM_Session3
 tags: choix_DieAndRetry
+position: -2663.442626953125,-2727.620849609375
 colorID: 2
-position: -2921,-1983
 ---
 Maintenant que vous avez allégé votre esprit, vous reprenez votre travail de révision. Vous avez désormais choisi le premier thème à réviser. Ce sera le principe de Heisenberg, appliqué à la philosophie quantique. Vous vous replongez vaillamment dans le concept d'indétermination quantique. Indétermination ou incertitude dans la pensée quantique. Car l'observateur influe, sans le vouloir, sur l'objet observé et réciproquement. Il est donc impossible d'observer ou de mesurer des valeurs objectives, dénuées de toute influence.
 
@@ -905,8 +911,8 @@ Vous vous demandez quand même si c'est ainsi que vous devez réviser vos cours 
 ===
 title: Samedi_Zero_Distraction
 tags: 
+position: -3400.593505859375,-2726.206298828125
 colorID: 2
-position: -3625,-2512
 ---
 Vous demandez à votre IA locale : Room Mate, de basculer votre chambre en mode "immersion studieuse".
 Room Mate s'exécute et vous projette sur votre screencast un module vidéo "work-with-me" d'une durée de 60 minutes. Ce qui correspond au temps total d'une session de révision "pomodoro".
@@ -914,15 +920,14 @@ Vous avez beau être cerné par une ambiance de travail, vous vous sentez déten
 
 // effet sur jauges?????
 -> Allez, au boulot !
-[[Liste_Taches_SAM_ZenTD]]
     << jump Liste_Taches_SAM_ZenTD >>
 ===
 title: Liste_Taches_SAM_ZenTD
 tags: 
+position: -3174.1875,-2722.998779296875
 colorID: 2
-position: -3623,-2774
 ---
-<< if isTimeOver("21.00") >>
+<< if isTimeOver("21:00") >>
 Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories.
 << jump Diner_Sam >>
 << endif >>
@@ -930,13 +935,9 @@ Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoir
 
 Vous êtes toujours dans votre chambre, un samedi après-midi. Qu'allez-vous entreprendre désormais ?
 
--> Basculer la chambre en mode "immersion studieuse"#once
-[[Samedi_Zero_Distraction]]
-    << jump Samedi_Zero_Distraction >>
 -> Faire une pause sieste#once
     << jump Sieste_Sam >>
 -> Réviser La notion d'indétermination quantique
-[[Revisions_ZenTD1]]
     << jump Revisions_ZenTD1 >>
 ===
 title: Planning_Dimanche
@@ -1177,8 +1178,8 @@ Tant pis, le timing est serré mais c'est faisable.
 ===
 title: Rappel_Planning
 tags: 
+position: -2777.58935546875,-3299.530517578125
 colorID: 2
-position: -3155,-2203
 ---
 C'est ça ! Vous vous en rappelez ! 
 Vous devez établir un planning de vos révisions  de tout le week-end ! 
