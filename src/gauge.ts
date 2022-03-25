@@ -150,33 +150,34 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   resetValue(value: number) {
     const torusOffset = -8;
     const torusWidth = 16;
+    const scale = 16;
 
     this._innerDisk.texture = this.makeSprite(this.colorByValue(value)).texture;
 
     this._outerDisk.cacheAsBitmap = false;
     this._outerDisk.clear();
     // Black torus background
-    this._outerDisk.beginFill(0x666666);
+    this._outerDisk.beginFill(0x000000);
     this._outerDisk.drawTorus(
-      2*this._center.x,
-      2*this._center.y,
-      2*(this._radius + torusOffset - (torusWidth + 14) / 2),
-      2*(this._radius + torusOffset + (torusWidth + 14) / 2),
+      scale * this._center.x,
+      scale * this._center.y,
+      scale * (this._radius + torusOffset - (torusWidth + 14) / 2),
+      scale * (this._radius + torusOffset + (torusWidth + 14) / 2),
       -(PIXI.PI_2 / 4) + PIXI.PI_2 / 150,
       -(PIXI.PI_2 / 4) + PIXI.PI_2 * ((value > 0.8 ? value + 0.8 : 0.8) / 100)
     );
     // White torus foreground
     this._outerDisk.beginFill(0xffffff);
     this._outerDisk.drawTorus(
-      2*this._center.x,
-      2*this._center.y,
-      2*(this._radius + torusOffset - torusWidth / 2),
-      2*(this._radius + torusOffset + torusWidth / 2),
+      scale * this._center.x,
+      scale * this._center.y,
+      scale * (this._radius + torusOffset - torusWidth / 2),
+      scale * (this._radius + torusOffset + torusWidth / 2),
       -(PIXI.PI_2 / 4) + PIXI.PI_2 / 150,
       -(PIXI.PI_2 / 4) + PIXI.PI_2 * ((value > 0.8 ? value : 0.8) / 100)
     );
     this._outerDisk.cacheAsBitmap = true;
-    this._outerDisk.scale.set(0.5);
+    this._outerDisk.scale.set(1 / scale);
 
     this._value = value;
   }
