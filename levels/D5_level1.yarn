@@ -1,7 +1,7 @@
 # gauges: learning sleep food mentalLoad stress
 
 title: Start
-tags: 
+tags: noUi
 position: -3225.656982421875,-730.2088012695312
 colorID: 8
 ---
@@ -19,11 +19,17 @@ Vous avez rejoint leur assemblée ! Vous êtes devenu un expert de la métacogni
 << loopFX Chime_LOOP 2000 >>
 
 Bip ! Bip ! Votre horloge connectée vous surprend en plein milieu d'un rêve merveilleux. 
-
+<<jump Reveil>>
+===
+title: Reveil
+tags:
+position: 0,0
+---
 << stopFX Chime_LOOP >>
 << setBackground bedroom >>
 << fadeOut >>
 
+<< setTime 8:00>>
 << showGauges learning sleep food mentalLoad >>
 << setGauge learning 20 >>
 << setGauge sleep 100 >>
@@ -106,7 +112,7 @@ title: Rejet_Mamie
 tags: 
 position: -2994.54052734375,-829.4703369140625
 ---
-Ce n'est pas une heure pour appeler ses enfants ! Vous pourriez être en cours ou en examen ! Vraiment, les grands-parents, il faut leur imposer une mise à jour du manuel du savoir-vivre !...
+Ce n'est pas une heure pour appeler ses petits-enfants ! Vous pourriez être en cours ou en examen ! Vraiment, les grands-parents, il faut leur imposer une mise à jour du manuel du savoir-vivre !...
 
 << loopFX PhoneRing_LOOP 5000 >>
 Votre palmphone s'ébroue de nouveau ! C'est encore votre grand-mère ! Elle insiste, ce n'est pas son genre. En général, elle laisse un message sur votre répondeur. C'est peut-être sérieux...
