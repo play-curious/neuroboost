@@ -213,7 +213,6 @@ tags:
 position: -3838.213134765625,-1955.470458984375
 ---
 << fadeIn >>
-<< setTime 12:30 5 >>
 << advanceTime 0:15 >>
 << setBackground bedroom kitchen >>
 << fadeOut >>

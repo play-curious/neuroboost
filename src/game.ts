@@ -89,7 +89,9 @@ const stateNames = [
   "D5_level1",
   "D5_level2",
   "D6_level1",
+  "D6_level2",
   "D7_level1",
+  "D7_level2",
   "End_Screen",
 ];
 
