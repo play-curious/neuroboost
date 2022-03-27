@@ -49,6 +49,76 @@ const options: { [key: string]: any } = {
       question: "Quels facteurs te permettent de bien dormir le soir ?",
     },
   },
+  mentalWorkload: {
+    title: "Charge mentale",
+    closeQuestion: {
+      question: "Combien de balles sais-tu jongler ?",
+      answers: ["1", "2", "3", "4", "5 ou plus"],
+    },
+    openQuestion: {
+      question:
+        "Comment pourrais-tu faire pour réduire les distracteurs dans ton travail ?",
+    },
+  },
+  profiles: {
+    title: "Profils d'apprentissage",
+    closeQuestion: {
+      question:
+        "De quel sage est-tu le plus proche en tant que profil d'apprentissage ?",
+      answers: ["Tembde", "Azul", "Sapiens", "LedAI"],
+    },
+    openQuestion: {
+      question:
+        "As-tu déjà recontré des problèmes en travaillant avec des personnes de profil différents ?",
+    },
+  },
+  stress: {
+    title: "Stress",
+    closeQuestion: {
+      question: "A quelle fréquence te trouves-tu en situation de stresse ?",
+      answers: [
+        "Tout les jours",
+        "Toutes les semaines",
+        "Tout les mois",
+        "Rarement",
+      ],
+    },
+    openQuestion: {
+      question:
+        "Lorsqu'il tu es stressé, que fais-tu comme activité pour lâcher prise ? ",
+    },
+  },
+  organisation: {
+    title: "Organisation",
+    closeQuestion: {
+      question: "Est-ce que tu étudies le weekend ?",
+      answers: [
+        "Non, le weekend est sacré",
+        "Seulement si je ne peux pas faire autrement",
+        "Le weekend, le soir, la journée... ils sont tout pareil",
+      ],
+    },
+    openQuestion: {
+      question:
+        "Comment fais-tu pour organiser tes priorités, lorsque tu as beaucoup de tâches à jongler ?",
+    },
+  },
+  success: {
+    title: "Success",
+    closeQuestion: {
+      question: "Quel est ton rapport à la réussite ?",
+      answers: [
+        "Stratégique - Je fais tout pour obtenir les meilleurs résultats",
+        "Compréhensive - C'est l'apprentissage qui compte, pas le diplôme",
+        "Instrumentale - Je dois juste valider mon année",
+        "Relative - Mon but est de faire aussi bien que mes amis",
+      ],
+    },
+    openQuestion: {
+      question:
+        "En dehors du travail et des études, quels objectifs fixes-tu pour la vie ?",
+    },
+  },
 };
 
 export class JournalScene extends extension.ExtendedCompositeEntity {
@@ -99,6 +169,8 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         "beforeend",
         `<p>${options[this.option].closeQuestion.question}</h1>`
       );
+
+      const answers = options[this.option].closeQuestion.answers;
 
       for (let i = 0; i < answers.length; i++) {
         const answer: HTMLInputElement = document.createElement("input");

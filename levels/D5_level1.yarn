@@ -1,25 +1,46 @@
 # gauges: learning sleep food mentalLoad stress
 
 title: Start
-tags: 
+tags: noUi
 position: -3225.656982421875,-730.2088012695312
 colorID: 8
 ---
 << fadeIn >>
-<< showGauges learning sleep food mentalLoad >>
+<< setBackground circle >>
+<< music Victory >>
+<< fadeOut >>
+
+Vous êtes attablé à un large plateau oblong, vous riez. Vous êtes entouré de vos confrères et consoeurs : les 4 sages ! 
+
+Vous avez rejoint leur assemblée ! Vous êtes devenu un expert de la métacognition !...
+
+<< fadeIn >>
+<< music >>
+<< loopFX Chime_LOOP 2000 >>
+
+Bip ! Bip ! Votre horloge connectée vous surprend en plein milieu d'un rêve merveilleux. 
+<<jump Reveil>>
+===
+title: Reveil
+tags:
+position: 0,0
+---
+<< stopFX Chime_LOOP >>
 << setBackground bedroom >>
+<< fadeOut >>
+
+<< setTime 8:00>>
+<< showGauges learning sleep food mentalLoad >>
 << setGauge learning 20 >>
 << setGauge sleep 100 >>
 << setGauge food 30 >>
 << setGauge mentalLoad 0 >>
 << setGauge stress 0 >>
-<< loopFX Chime_LOOP 2000 >>
-<< fadeOut >>
+<< music Neutral >>
 
-Bip ! Bip ! Votre horloge connectée vous surprend en plein milieu d'un rêve merveilleux. Vous étiez attablé à un large plateau oblong, vous riiez. Vous étiez entouré de vos confrères et consoeurs : les 4 sages ! Vous aviez rejoint leur assemblée ! Vous étiez devenu un expert de la métacognition !...
-<< stopFX Chime_LOOP >>
+Hélas, ce ne sera pas pour aujourd'hui. Ce matin, vous devez réviser. Nous sommes jeudi, la semaine de partiels ne s'est pas achevée. Vous devez passer encore un examen cet après-midi. 
 
-Hélas, ce ne sera pas pour aujourd'hui. Ce matin, vous devez réviser. Nous sommes jeudi, la semaine de partiels ne s'est pas achevée. Vous devez passer encore un examen cet après-midi. La GRH : la Gestion des Ressources Hybrides. C'est-à-dire les forces vives : biologiques, numériques, et biologinumériques...
+La GRH : la Gestion des Ressources Hybrides. C'est-à-dire les forces vives : biologiques, numériques, et biologinumériques...
 
 << loopFX PhoneRing_LOOP 5000 >>
 Ronronron... Votre palmphone vibre. Pour la première fois de la semaine, ce n'est pas Fred, mais votre grand-mère. Qu'est-ce qui lui prend de vous appeler à cette heure-ci ?
@@ -67,7 +88,7 @@ position: -2765.9404296875,-727.8461608886719
 ---
 You: Bonjour mamie ! Pourquoi je ne te vois pas ?
 Mamie@holo_shadow: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir...
-You: ah bon ?
+You: Ah bon ?
 Mamie@holo_shadow: Je suis à l'hôpital et on m'a branchée sur des dizaines de câbles et de moniteurs. Je ressemble plus à une véhicule accidenté qu'à une grand-mère. 
 You: Qu'est-ce qui t'es arrivée ?
 Mamie@holo_shadow: Rien de grave, chouchou. Tes parents t'ont rien dit ?
@@ -78,6 +99,7 @@ Mamie@holo_shadow: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux...
 You: Ton coeur ?! Mamie...
 Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire !
 << hide >> 
+<< music NegativeSad >>
 Du coup, votre aïeule coupe court à la conversation. Vous n'en saurez pas plus. Quel choc !! 
 Votre grand-mère à l'hôpital, la connaissant dure comme du béton armé, c'est du sérieux. Vraiment, ça craint...
 Il y a des journées comme celle-ci qu'on préférerais zapper... Du coup, vous ne savez plus du tout par quoi vous allez commencer... 
@@ -90,7 +112,7 @@ title: Rejet_Mamie
 tags: 
 position: -2994.54052734375,-829.4703369140625
 ---
-Ce n'est pas une heure pour appeler ses enfants ! Vous pourriez être en cours ou en examen ! Vraiment, les grands-parents, il faut leur imposer une mise à jour du manuel du savoir-vivre !...
+Ce n'est pas une heure pour appeler ses petits-enfants ! Vous pourriez être en cours ou en examen ! Vraiment, les grands-parents, il faut leur imposer une mise à jour du manuel du savoir-vivre !...
 
 << loopFX PhoneRing_LOOP 5000 >>
 Votre palmphone s'ébroue de nouveau ! C'est encore votre grand-mère ! Elle insiste, ce n'est pas son genre. En général, elle laisse un message sur votre répondeur. C'est peut-être sérieux...
@@ -125,7 +147,7 @@ You: Oui. Mamie m'a appelé. Qu'a-t-elle ?
 Maman@holo_shadow: Elle a fait une crise cardiaque. On l'a admise d'urgence à l'hôpital. Son état est stable mais on doit l'opérer.
 You: Pourquoi ne m'avoir rien dit ?
 Maman@holo_shadow: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus.
-You: Merci. Du coup, je suis plus stressé..
+You: Merci. Du coup, je suis plus stressé...
 Maman@holo_shadow: Bibi, je ne pensais pas te... 
 You: J'ai compris. Bye !
 << hide >>
@@ -216,7 +238,7 @@ tags:
 position: -2089.3095703125,-1152.4438781738281
 ---
 << fadeIn >>
-<< hide ! >>
+<< hide >>
 << setBackground sport >>
 << advanceTime 0:15 >>
 << fadeOut >>
@@ -228,9 +250,11 @@ You: Et qu'est-ce qu'on fait maintenant ?
 Fred_smiling: on se défoule autant qu'on peut ! 
 You: Heu...
 << hide >>
+<< loopFX Sports_LOOP 16000 >>
 Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. Ravi de son coup, Fred vous tend la main pour vous redresser. Vous la saisissez, l'agrippez et la tirez pour le faire chuter à son tour ! 
 Fred, beau joueur, se laisse tomber à vos côtés. La suite : vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! Vous imaginez que Fred incarne votre peur, votre frustration. Vous lui envoyez toute la colère et la rage contenue en vous ! 
 Heureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. Vous avez la langue sèche et les membres engourdis.
+<< stopFX Sports_LOOP >>
 Fred_smiling: Alors ? Tu te sens mieux ?
 You: Crevé...
 Fred_smiling: Cool et...
@@ -291,7 +315,8 @@ position: -2093.731689453125,-175.86810302734375
 << advanceTime 0:15 >>
 << fadeOut >>
 
-Vous retrouvez devant l'entrée de la salle de classe, Fred. Ce dernier vous regarde avec perplexité.
+<< show fred surprised >>
+Vous retrouvez Fred devant l'entrée de la salle de classe. Ce dernier vous regarde avec perplexité.
 Fred_surprised: Damned, ça n'a pas l'air d'aller. Tu as le visage blême.
 You: Ça va, ça va...
 //if le joueur n'a pas déjà joué avec Fred ce matin
@@ -302,13 +327,16 @@ Fred_sad: Ah bon ? J'ai bien l'impression que notre séance de sport ne t'a pas 
 You: Ça va, je t'assure...
 <<endif>>
 
+<< loopFX Chime_LOOP 2000 >>
 Votre palmphone vibre. C'est votre mère qui tente de vous rejoindre. Fred vous fixe des yeux:
 Fred_sad: T'es sûr ? Ça va ?
 You: Attends...
 
 -> Prendre l'appel 
+    << stopFX Chime_LOOP >>
     <<jump Maman_blabla>>
 -> Rejeter l'appel 
+    << stopFX Chime_LOOP >>
     <<jump Maman_message>>
 ===
 title: Maman_blabla
@@ -355,9 +383,10 @@ position: -1867.6373291015625,-74.23734378814697
 Vous balayez du doigt l'appel. 
 Fred_surprised: Mais qu'est-ce qui se passe ?
 You: C'est compliqué.
+<< fx Notification >>
 Votre palmphone gigote à nouveau ! Votre mère a laissé un message sur votre répondeur. Vous ne pouvez vous empêcher fixer votre appareil.
 Vous entrez dans le journal de messagerie et demandez la conversion textuelle du message :
-L'opération a été menée à bien, mais votre grand-mère a fait un malaise. Elle a été transférée en service de réanimation critique...
+"L'opération a été menée à bien, mais votre grand-mère a fait un malaise. Elle a été transférée en service de réanimation critique..."
 Fred_sad: Alors ?
 You: Heu...
 << addToGauge stress 30>>
@@ -373,10 +402,13 @@ position: -1641.912109375,-72.28788757324219
 ---
 Fred_happy: Dis-moi.
 You: Puisque tu veux savoir...
-<< hide >>
 Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Elle a été hospitalisée d'urgence. Elle vient de subir une opération. 
+<< show fred sad >>
 Malheureusement, ça n'est pas bien passé. Elle a été transféré en réanimation. Elle est encore dans le coma... Vous êtes tellement stressé, vous monopolisez la parole.
-Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver des mots doux et réconfortants... L'horloge automatique sonne! C'est déjà l'heure d'entrer en salle d'examen! Trop nul... 
+Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver des mots doux et réconfortants...
+<< fx Notification >>
+L'horloge automatique sonne! C'est déjà l'heure d'entrer en salle d'examen! Trop nul... 
+<< hide >>
 << AddToGauge stress 10 >>
 << advanceTime 0:10 >>
 -> Entrer dans la salle 
@@ -432,11 +464,13 @@ You: S'il n'y avait que ça...
 << hide >>
 Fred vous avoue ne pas être content de sa performance... Hélas, ce n'est ni le jour ni l'heure. Vous vous fichez de votre score. De toute manière, vous êtes entré de plain-pied dans le cercle vicieux de la loi de Murphy. Tout ne peut aller que de mal en pis...
 Vous pensez à votre grand-mère. Vous ne pensez qu'à ça. Autant vous dire que vous n'avez même pas l'envie d'éclater de rire quand les résultats s'affichent au tableau.
+
+<< fx Notification >>
 << setBackground door class-screen >>
 Vous n'avez pas la moyenne : un petit <b>D</b>. Fred n'a eu que <b>C+</b>. Il a l'air déçu.
-Et alors ? Vous auriez eu A tous les deux, ce n'est pas ça qui ferait sortir votre grand-mère de son coma. Vous dites au-revoir à votre pote et retournez à votre chambre.
+Et alors ? Vous auriez eu A tous les deux, ce n'est pas ça qui ferait sortir votre grand-mère de son coma. Vous dites au-revoir à votre pote.
 
--> Chambre 
+-> Retournez à votre chambre 
     <<jump Bedroom_night>>
 ===
 title: Bedroom_night
@@ -533,6 +567,8 @@ tags: noUi
 position: -296.3774108886719,-523.0119018554688
 colorID: 1
 ---
+<< empty >>
+<< music Mysterious >>
 
 Ledai_happy: Bonsoir { $name }.
 You: Heiiiin...
@@ -543,6 +579,7 @@ Ledai_happy: Allez...
 -> Suivre Ledai
     << hide >>
 
+<< fx Warp >>
 << fadeIn >>
 << setBackground circle >>
 << fadeOut >>
@@ -650,8 +687,8 @@ Ledai_explaining: Et surtout qu'il arrête d'en produire à nouveau.
 Temde_thinking: Ces idées noires qui tournent en boucle te polluent la tête. Elles te rongent de l'intérieur.
 Azul_happy: Il faut les laisser sortir de ta tête...
 You: OK. Ça a l'air si simple, à vous écouter. Pourtant, je me sens si mal... Et j'ai essayé des trucs, ça n'a rien donné.
-Sapiens_concerned: Ne t'inquiète pas. Nous n'en avons pas fini. Je vais encore quelques questions Quizz pour m'assurer que tu as bien compris.
-Azul: Comment répondre de manière consciente et sereine à la peur, à l'angoisse, au stress.
+Sapiens_concerned: Ne t'inquiète pas. Nous n'en avons pas fini. Je vais encore quelques questions Quizz pour m'assurer que tu as bien compris...
+Azul: ... comment répondre de manière consciente et sereine à la peur, à l'angoisse, au stress.
 
 -> Prêt? 
     <<jump Quizz_Meditation>>
@@ -673,12 +710,15 @@ title: Meditation_No
 tags:  noUi
 position: 1234.60498046875,-412.95176696777344
 ---
+<< fx Failure >>
+
 Sapiens_angry: Mauvaise réponse ! S'il suffisait d'appuyer sur un bouton pour supprimer le stress, ça se saurait...
 Azul_proud: Ce que veux dire Master Sapiens, c'est que la volonté, la pensée rationnelle n'est pas forcément la mieux à même de combattre les émotions, comme le stress.
 You: Je fais comment alors ?
 Sapiens_thinking: La méditation en pleine conscience.
 You: Ça veut dire quoi au juste la pleine conscience ?
-Azul_happy: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négative. Tu le fais en pleine conscience tu ne dors pas. Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental.
+Azul_happy: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négative. Tu le fais en pleine conscience tu ne dors pas. 
+Azul_cheerful: Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental.
 You: Ah bon ?
 Azul_happy: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent...
 You: Ahhh. D'accord...
@@ -690,9 +730,12 @@ title: Meditation_Yes
 tags:  noUi
 position: 1235.787353515625,-625.0085754394531
 ---
+<< fx Success >>
+
 Sapiens_happy: Parfait! C'est la méditation en pleine conscience.
 You: Ça veut dire quoi au juste la pleine conscience?
-Azul_happy: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négative. Tu le fais en pleine conscience, tu ne dors pas. Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental.
+Azul_happy: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négative. Tu le fais en pleine conscience, tu ne dors pas. 
+Azul_cheerful: Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental.
 You: Ah bon ?
 Azul_happy: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent...
 You: Ouaaah... ça a l'air bien...
@@ -715,6 +758,8 @@ title: Sport_No
 tags:  noUi
 position: 1664.98046875,-415.6497802734375
 ---
+<< fx Failure >>
+
 Sapiens_angry: Choix malheureux et risqué. La boxe peut, certes, aider à se défouler. Il faut également veiller à ce que la boxe ne risque pas d'entretenir ta frustration ou ta colère. 
 You: Pourquoi ?
 Sapiens_thinking: Toute activité  physique ou sportive n'est pas forcément adaptée pour réduire le stress. La boxe est un sport de nature violente. Et si cette violence n'est pas également évacuée à l'issue de la session, elle peut consolider le stress et la frustration initiale. Ce serait inefficace voire contre-productif.
@@ -729,6 +774,8 @@ title: Sport_Yes
 tags:  noUi
 position: 1666.5789794921875,-631.7974548339844
 ---
+<< fx Success >>
+
 Sapiens_happy: Bien répondu. Il faut également veiller à choisir une activité physique ou sportive qui ne risque pas d'entretenir ta frustration ou ta colère. Ce serait inefficace voire contre-productif.
 Azul_happy: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité calme, qui consomme ton énergie en douceur, te détende. 
 Sapiens_thinking: En conclusion, éviter une activité trop violente, trop agressive, qui pourrait générer à son tour du stress ou de la tension. 
@@ -752,6 +799,8 @@ title: Art_No
 tags:  noUi
 position: 2105.76904296875,-416.95750427246094
 ---
+<< fx Failure >>
+
 Sapiens_angry: Mauvaise réponse ! Tu n'as pas compris qu'il faut éviter au maximum de maintenir ton mental dans cet environnement négatif et stérile !
 Azul_sad: Ce qu'il veut dire c'est que tu dois te fier à cette règle de bon sens: "lâcher prise".
 You: Ça veut dire quoi au juste, "lâcher prise" ?
@@ -773,6 +822,8 @@ title: Art_Yes
 tags:  noUi
 position: 2107.091552734375,-635.6663513183594
 ---
+<< fx Success >>
+
 Sapiens_happy: Bonne réponse ! Il ne faut pas sur-estimer sa capacité à faire face à ses peurs et ses angoisses. Seuls ceux qui ont une maîtrise émotionnelle élevée sont capables de le faire.
 Azul_happy: Oui, il vaut mieux se fier à cette règle de bon sens: "lâcher prise".
 You: Ça veut dire quoi au juste, "lâcher prise" ?
@@ -793,6 +844,7 @@ tags:  noUi
 position: 2327.053466796875,-530.3265838623047
 ---
 << fx Warp >>
+<< music Neutral >>
 << fadeIn 100 ffffff >>
 << setBackground bedroom night >>
 << fadeOut 400 >>

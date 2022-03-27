@@ -329,6 +329,7 @@ Vous devez respecter votre cycle de sommeil et d'alimentation !
 Vous allez devoir retourner à cette soirée festive...
 
 -> Retourner à la fête
+    << resetLevel >>
     <<jump Start>>
 ===
 title: Go_To_Bed_Loose

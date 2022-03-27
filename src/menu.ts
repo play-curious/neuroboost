@@ -57,6 +57,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private soundVolumeSwitcher: SpriteRangeSwitcher;
 
   private debugPressCount: number;
+  private debugText: PIXI.Text;
 
   private saveSettings() {
     localStorage.setItem("settings", JSON.stringify(this.settings));
@@ -172,16 +173,33 @@ export class Menu extends extension.ExtendedCompositeEntity {
           -this.popupBackground.height / 3
         );
         it.interactive = true;
+
+        this.debugText = this.makeText("DEBUG", {
+          fontFamily: "Ubuntu",
+          fontSize: 70,
+          fill: "white",
+          fontWeight: "bolder"
+        }, (itt) => {
+          itt.anchor.set(0.5);
+          itt.position = it.position;
+          itt.rotation -= PIXI.PI_2 / 8;
+          itt.visible = false;
+        })
+
         this.debugPressCount = 0;
         this._on(it, "pointerup", () => {
           if(++this.debugPressCount == 7) {
             this.debugPressCount = 0;
-            this.config.variableStorage.set("isDebugMode", !this.config.variableStorage.get("isDebugMode"));
-            console.log("Debug: ", this.config.variableStorage.get("isDebugMode"));
+            const newState = !this.config.variableStorage.get("isDebugMode")
+            this.config.variableStorage.set("isDebugMode", newState);
+            this.debugText.visible = newState;
+            this.config.fxMachine.play("Spawn");
+            console.log("Debug: ", newState);
           }
         });
       });
       this.popupBackground.addChild(this.title);
+      this.popupBackground.addChild(this.debugText);
     }
 
     if (util.supportsFullscreen()) {

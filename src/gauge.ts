@@ -28,6 +28,7 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   private _radius: number;
 
   private _currentTween: { animation: tween.Tween; to: number };
+  private _alphaTween: tween.Tween;
 
   private _value: number;
   private _inverted: boolean;
@@ -87,7 +88,7 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     this._on(this._container, "pointerover", () => {
       let tooltipX = this._center.x;
       this._tooltip = this.makeText(
-        `${gaugesNames[this.name]}\n${this._value} %`,
+        `${gaugesNames[this.name]}\n${this._value.toFixed(0)} %`,
         {
           fill: "0xFFF",
           fontFamily: "Ubuntu",
@@ -149,19 +150,34 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   resetValue(value: number) {
     const torusOffset = -8;
     const torusWidth = 16;
+    const scale = 4;
 
     this._innerDisk.texture = this.makeSprite(this.colorByValue(value)).texture;
 
+    this._outerDisk.cacheAsBitmap = false;
     this._outerDisk.clear();
+    // Black torus background
+    this._outerDisk.beginFill(0x666666);
+    this._outerDisk.drawTorus(
+      scale * this._center.x,
+      scale * this._center.y,
+      scale * (this._radius + torusOffset - (torusWidth + 14) / 2),
+      scale * (this._radius + torusOffset + (torusWidth + 14) / 2),
+      -(PIXI.PI_2 / 4) + PIXI.PI_2 / 150,
+      -(PIXI.PI_2 / 4) + PIXI.PI_2 * ((value > 0.8 ? value + 0.8 : 0.8) / 100)
+    );
+    // White torus foreground
     this._outerDisk.beginFill(0xffffff);
     this._outerDisk.drawTorus(
-      this._center.x,
-      this._center.y,
-      this._radius + torusOffset - torusWidth / 2,
-      this._radius + torusOffset + torusWidth / 2,
+      scale * this._center.x,
+      scale * this._center.y,
+      scale * (this._radius + torusOffset - torusWidth / 2),
+      scale * (this._radius + torusOffset + torusWidth / 2),
       -(PIXI.PI_2 / 4) + PIXI.PI_2 / 150,
       -(PIXI.PI_2 / 4) + PIXI.PI_2 * ((value > 0.8 ? value : 0.8) / 100)
     );
+    this._outerDisk.cacheAsBitmap = true;
+    this._outerDisk.scale.set(1 / scale);
 
     this._value = value;
   }
@@ -170,19 +186,35 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     if (newValue === this._value) return;
     if (this._currentTween.animation)
       this._deactivateChildEntity(this._currentTween.animation);
-
+    
     this._currentTween.to = newValue;
     this._currentTween.animation = new tween.Tween({
       duration: 1200,
       easing: easing.easeInOutQuart,
       from: this._value,
       to: newValue,
+      onSetup: () => {
+        this._alphaTween = new tween.Tween({
+          duration: 1200,
+          easing: easing.linear,
+          from: 0,
+          to: 2 * PIXI.PI_2,
+          onUpdate: (value) => {
+            this._innerDisk.alpha = (((Math.cos(value) + 1) / 2) * 0.4) + 0.4
+          },
+          onTeardown: () => {
+            this._innerDisk.alpha = 1;
+          }
+        });
+        this._activateChildEntity(this._alphaTween);
+      },
       onUpdate: (value) => {
         this.resetValue(value);
       },
       onTeardown: () => {
         this.resetValue(newValue);
         this._currentTween.animation = null;
+        this._deactivateChildEntity(this._alphaTween);
       },
     });
     this._activateChildEntity(this._currentTween.animation);

@@ -79,18 +79,19 @@ const stateNames = [
   "journal_sleep",
   "D2_level2",
   "D3_level1",
+  "journal_mentalWorkload",
   "D3_level2",
   "D4_level1",
-  "D4_level2",
-  "D3_level1",
-  "D3_level2",
-  "D4_level1",
+  "journal_profiles",
   "D4_level2",
   "D5_level1",
+  "journal_stress",
   "D5_level2",
   "D6_level1",
+  "journal_organisation",
   "D6_level2",
   "D7_level1",
+  "journal_success",
   "D7_level2",
   "End_Screen",
 ];
@@ -176,6 +177,7 @@ const musicAssets = [
   "DanseQuiet",
   "Solo1",
   "Solo2",
+  "AcousticGuitar",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];

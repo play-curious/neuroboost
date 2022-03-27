@@ -143,6 +143,12 @@ position: -1617.8306884765625,24.821166694164276
 colorID: 1
 ---
 <<empty>>
+
+<< if visited("Notes_You", "Notes_Fred", "Redaction", "Plan") >>
+<<advanceTime 5:00 20:00 0:05>>
+<<jump Exit_Bibli>>
+<< endif >>
+
 << if !visited("Liste_taches") >>
 Fred_happy: Alors, on attaque quoi maintenant, boss ?
 << visit Liste_taches >>
@@ -163,7 +169,7 @@ Fred_happy: Alors, on attaque quoi maintenant, boss ?
     <<jump Zero_distraction>>
 -> Faire la pause lunch#once
     <<jump lunch>>
-<< else >>
+<<else>>
     <<jump Exit_Bibli>>
 << endif>>
 
@@ -177,15 +183,12 @@ You: On reprend la rédaction détaillée du mémoire ?
 Fred: Yes. On se répartit la tâche comment ?
 You: Heu... 
 
-<< if visited("Zero_Distraction") >>
--> Demander l'avis de Fred
+<<visit Redaction>>
+
+-> Demander l'avis de Fred 
     << jump Redaction_Good >>
 -> Donner les ordres à Fred
     << jump Redaction_Bad >>
-<<else>>
--> Donner les ordres à Fred
-    << jump Redaction_Bad >>
-<<endif>>
 ===
 title: lunch
 tags: 
@@ -261,23 +264,23 @@ tags:
 colorID: 0
 position: -1399.2734375,-394.30879974365234
 ---
-<< advanceTime 2:00 >>
+<< advanceTime 1:00 >>
 
 You: Je sais que tu as avancé depuis la dernière fois. 
 Fred_happy: Yes yes. On échange à nouveau nos commentaires et nos notes ?
 You: On commence par les miennes ?
 Fred_smiling: Yeeees. Je t'écoute !
-You: Heu.
 
-<< if visited("Zero_Distraction") >>
--> Vous lui lisez vos notes
+<<visit Notes_You>>
+
+<< if !visited("Zero_Distraction") >>
+You: Non, mais je ne peux pas te lire à haute voix, on est à la bibliothèque !
+<< endif >> 
+
+-> Vous lui lisez vos notes << if visited("Zero_Distraction") >>
     << jump Notes_You_Good >>
 -> C'est à lui de lire vos notes
     << jump Notes_You_Bad >>
-<<else>>
--> C'est à lui de lire vos notes
-    << jump Notes_You_Bad >>
-<<endif>>
 ===
 title: Fred_goesback_towork
 tags: 
@@ -304,6 +307,7 @@ colorID: 1
 ---
 << if getGauge("learning") >= 70 >>
 
+<< fx Notification >>
 Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux. C'est à regret que Fred et vous, sortez de l'établissement.
 You: Non, on a presque fini.
 Fred_happy: Cool, tu as tout dans les mains : le plan, les idées fortes. Tu n'as plus qu'à développer tout ce qu'on a dit. No worry, ça va le faire, je te fais confiance.
@@ -311,17 +315,21 @@ You: Et toi ?
 Fred_happy: Je m'occupe de la conclusion et de l'intro.
 You: OK.
 Fred_smiling: Keep faith.
+<< hide >>
 C'est drôle. C'est Fred désormais qui vous pilote et vous rassure sur votre capacité à finir dans les temps. Troublé, un peu hésitant, vous retournez dans votre chambre.
 
 <<jump Bedroom>>
 
 // Sinon, joueur n'a pas réussi toutes ses conditions de victoire
-
 << else >>
+<< fx Notification >>
+
 Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux. 
 You: Non, on est loin d'avoir fini !!
 Vous criez, vous paniquez complètement, vous vous mettez à suer à grosses gouttes, votre vue se trouble, votre ouïe sature, parasité par un effet de larsen. Vous avez encore échoué ! 
 -> Vous allez devoir recommencer cette journée épuisante à la bibliothèque
+    << resetLevel >>
+    << hide >>
     << jump Start>>
 
 << endif >>
@@ -331,22 +339,23 @@ tags:
 colorID: 0
 position: -1393.3150634765625,24.101524353027344
 ---
-<< advanceTime 3:00 >>
+<< advanceTime 2:00 >>
 
 You: Je sais que toi aussi, tu as avancé sur le travail de rédaction du mémoire.
 Fred_smiling: Bien sûr.
 You: Tu as tes notes avec toi ?
 Fred_happy: Tu veux pas plutôt qu'on en parle de vive voix ?
-You: Heu... C'est plus facile pour moi de les lire.
-<<if visited("Zero_Distraction")>>
--> Écouter Fred présenter ses notes
+
+<< if !visited("Zero_Distraction") >>
+You: Heu... C'est plus facile pour moi de les lire. Surtout qu'on est à la bibliothèque, il ne faut pas faire du bruit.
+<< endif >> 
+
+<<visit Notes_Fred>>
+
+-> Écouter Fred présenter ses notes <<if visited("Zero_Distraction")>>
     << jump Notes_Fred_Good >>
 -> Demander à Fred de vous envoyer ses notes écrites
     << jump Notes_Fred_Bad >>
-<<else>>
--> Demander à Fred de vous envoyer ses notes écrites
-    << jump Notes_Fred_Bad >>
-<<endif>>
 ===
 title: ChezFred
 tags: 
@@ -389,8 +398,11 @@ position: -1178.4630126953125,1891.7039794921875
 Vous demandez à l'IA de votre studio de passer en mode "Immersion Studieuse".  
 // y-a-t-il une animation son/visuelle? La jauge de la charge mentale est renforcée? Le joueur le voit? 
 // C'est une proposition, pas indispensable dans cette quête, juste possibilité que le joueur réutilise ce qu'il a débloqué
+Vous ne vous accordez qu'une pause dîner. Une soupe de nouilles aux légumes et un sorbet multi-fruits. Vous vous attaquez ensuite à la rédaction finale de votre mémoire. Les échanges avec Fred sont encore frais dans votre tête. Vous n'hésitez pas à convertir ses paroles en texte pour enrichir vos propres paragraphes. 
+Heureusement que l'IA de la bibliothèque a enregistré tous les échanges que vous avez eu avec lui aujourd'hui : ça vous fait gagner un temps fou.
 <<setTime 21:30>>
-Vous ne vous accordez qu'une pause dîner. Une soupe de nouilles aux légumes et un sorbet multi-fruits. Vous vous attaquez ensuite à la rédaction finale de votre mémoire. Les échanges avec Fred sont encore frais dans votre tête. Vous n'hésitez pas à convertir ses paroles en texte pour enrichir vos propres paragraphes. Heureusement que l'IA de la bibliothèque a enregistré tous les échanges que vous avez eu avec lui aujourd'hui : ça vous fait gagner un temps fou. Une fois que vous estimez avoir fini, vous annulez le mode "Immersion Studieuse" et vous contactez Fred.
+<< addToGauge learning 20 >>
+Une fois que vous estimez avoir fini, vous annulez le mode "Immersion Studieuse" et vous contactez Fred.
 Fred@holo_excited: T'as fini ?
 You: Oui. Et toi ?
 Fred@holo_happy: Je t'envoie ma participation à mon tour. Désolé, c'est modeste.
@@ -416,15 +428,12 @@ Fred_happy: Oui, plein, y a l'embarras du choix.
 You: On n'a plus le temps.
 Fred_smiling: On a toujours le temps.
 
-<< if visited("Zero_Distraction") >>
--> Vous prenez le temps de discuter avec Fred de tous les plans possibles
+<< visit Plan >>
+
+-> Vous prenez le temps de discuter avec Fred de tous les plans possibles 
     << jump Plan_Good >>
 -> Vous présentez votre plan à Fred
     << jump Plan_Bad >>
-<<else>>
--> Vous présentez votre plan à Fred
-    << jump Plan_Bad >>
-<<endif>>
 ===
 title: Notes_You_Good
 tags: 
@@ -441,7 +450,7 @@ You: Merci.
 Ne sachant pas par quoi commencer, vous dites la première remarque qui vous vient en tête. Et puis, de fil en aiguille, une remarque en amène une autre, qui en amène une autre. Fred est un auditeur très bienveillant. En outre, iel rebondit sur certaines de vos idées et vous incite à les clarifier, les critiquer, les nuancer.
 Au final, ce n'est pas vous qui avez présenté votre travail à Fred. C'est Fred qui a revu vos notes et a corrigé ce qui n'allait pas. C'est génial.
 
-<<advanceTime 2:00>> 
+<<advanceTime 1:00>> 
 << addToGauge learning 20 >>
 
 Enfin, comble de joie : l'IA vous informe qu'elle a enregistré toute la conversation et qu'elle vous transfère le fichier audio sur votre ordinateur !
@@ -453,16 +462,14 @@ tags:
 position: -1169.79443359375,-313.6395568847656
 colorID: 2
 ---
-You: Non, on fait ça par écrit.
+You: On fait ça par écrit.
 Fred_surprised: Pourquoi ?
-You: On est dans une bibliothèque, on ne doit pas parler.
-Fred_surprised: Pourquoi ?
-You: On dérange le travail des autres étudiants.
-Fred_sad: C'est stupide...
+You: Parce que ! T'as dit que c'est moi le chef, non ?
+Fred_sad: Oui, chef...
 
 Vous envoyez vos documents de travail à Fred. Vous voyez votre ami grincer des dents.
-Iel peine à lire et relire vos docs. Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous ne pouvez le laisser parler. Le règlement intérieur précise bien que vous ne devez pas parler, sous peine de déranger les autres étudiants, qui travaillent eux aussi.
-<<advanceTime 2:00>>
+Iel peine à lire et relire vos docs. Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous limitez les discussions pour vous concentrez sur votre travail.
+<<advanceTime 1:00>>
 << addToGauge learning 10 >>
 Avez-vous fait le bon choix ?
 
@@ -475,7 +482,7 @@ colorID: 2
 ---
 Fred_happy: Tout est dans ma tête. Tu veux que je commence par quoi ?
 
-<< advanceTime 2:00 >>
+<< advanceTime 1:00 >>
 << addToGauge learning 20 >>
 
 Vous comprenez que c'est à vous de questionner Fred et, en quelque sorte, de lui tirer les vers du nez. Vous passez les deux heures suivantes à lui poser des questions, à écouter ses réponses, à rebondir sur ces idées, ces commentaires.
@@ -500,7 +507,7 @@ Vous voyez à son air pincé que Fred se fait violence pour vous faire plaisir. 
 Fred: J'ai fait un effort. J'ai écrit des vraies phrases.
 En effet, c'est mieux, mais ça reste laconique. Il reste encore beaucoup à faire mais vous n'obtiendrez pas plus de Fred de cette manière.
 Avez-vous fait le bon choix ?
-<<advanceTime 3:00>>
+<<advanceTime 1:00>>
 << addToGauge learning 10 >>
 
 <<jump Liste_taches>>
@@ -536,7 +543,6 @@ Si Fred avait raison... Vous allez devoir revivre encore une fois cette journée
 << advanceTime 1:30 >>
 << addToGauge learning 10 >>
 
-// Option "Avancer dans le travail " moved to the end of this node
 <<jump Liste_taches>>
 ===
 title: Redaction_Good
@@ -550,7 +556,7 @@ Vous enchaînez avec la portée de l'effet papillon et l'imprévisibilité des s
 Enfin, vous énumérez brièvement les éléments que vous avez déjà intégrés dans la troisième partie sur la macrobiologie et la remise en question du postulat darwinien de l'évolution comme un schéma linéaire et donc prévisible. Fred se montre encore généreux et vous propose des réflexions, des idées, des hypothèses auxquelles vous n'aviez pas pensées.
 Au final, vous constatez qu'avec le concours de Fred, votre rédaction s'est considérablement étoffée. Elle est vraiment solide et bien charpentée. Il ne vous reste plus qu'à arranger votre démonstration de manière plus académique et plus littéraire et le tour sera joué. 
 Alors que vous terminez de noter un truc dans votre agenda, l'IA vous informe qu'elle a enregistré toute la conversation. Elle vous expédie le fichier audio sur votre ordinateur. Parfait ! Si vous avez oublié un truc, vous n'aurez qu'à réécouter l'enregistrement...
-<< advanceTime 4:00 >>
+<< advanceTime 3:30 >>
 << addToGauge learning 20 >>
 
 <<jump Liste_taches>>

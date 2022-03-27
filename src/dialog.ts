@@ -221,8 +221,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
       if (
-        option.hashtags.includes("once") &&
-        this.selectedOptions.includes(selectedOptionId)
+        (option.hashtags.includes("once") &&
+        this.selectedOptions.includes(selectedOptionId)) ||
+        !option.isAvailable
       )
         continue;
 

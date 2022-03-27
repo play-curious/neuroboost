@@ -355,5 +355,6 @@ Tentez à nouveau de passer ce premier examen...
 << setTime 8:15 >>
 
 << fadeIn >>
+<< resetLevel >>
 <<jump Phone_off_Rewind>>
 ===

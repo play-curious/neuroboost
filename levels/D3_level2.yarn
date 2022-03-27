@@ -416,7 +416,7 @@ Vous finissez par céder. Vous sombrez dans le noir...
 
 -> Réveillez-vous ! Il faut recommencer ! 
     << fadeOut >>
-    << clearOnce >>
+    << resetLevel >>
     << jump Start >>
 ===
 title: Lunch
