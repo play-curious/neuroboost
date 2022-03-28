@@ -29,6 +29,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _lastBgMood: string;
   private _lastCharacter: string;
   private _lastMood: string;
+  private _lastMusic: string;
   private _characters: Map<
     string,
     {
@@ -67,6 +68,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       lastBgMood: this._lastBgMood,
       lastCharacter: this._lastCharacter,
       lastMood: this._lastMood,
+      lastMusic: this._lastMusic,
     };
   }
 
@@ -131,6 +133,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       this.setBackground(last.lastBg, last.lastBgMood);
       this.addCharacter(last.lastCharacter, last.lastMood);
+
+      if (last.lastMusic != null) {
+        this.config.jukebox.play(last.lastMusic);
+      }
     }
   }
 

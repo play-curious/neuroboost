@@ -170,6 +170,8 @@ export const commands: Record<string, Command> = {
   // MUSIC FX
 
   music(musicName?: string) {
+    //@ts-ignore
+    this._lastMusic = musicName;
     this.config.jukebox.play(musicName);
   },
 
