@@ -121,6 +121,17 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._fade.alpha = 0;
     this._fade.visible = false;
     this._fxLayer.addChild(this._fade);
+
+    //@ts-ignore
+    if (window.loadedEnvironment) {
+      //@ts-ignore
+      const last = window.loadedEnvironment;
+      //@ts-ignore
+      window.loadedEnvironment = undefined;
+
+      this.setBackground(last.lastBg, last.lastBgMood);
+      this.addCharacter(last.lastCharacter, last.lastMood);
+    }
   }
 
   _teardown() {

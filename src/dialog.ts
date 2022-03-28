@@ -83,13 +83,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     this.config.dialogScene = this;
 
-    save.save(
-      this.stateName,
-      this.startNode,
-      this.visited,
-      this.config.variableStorage
-    );
-
     this._initRunner();
 
     command.fxLoops.clear();
@@ -159,12 +152,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _advance(selectId?: number): void {
     if (this.lastNodeData && !this._hasTag(this.lastNodeData, "nosave")) {
-      save.save(
-        this.stateName,
-        this.lastNodeData.title,
-        this.visited,
-        this.config.variableStorage
-      );
+      save.save(this);
     }
 
     if (!this.enabled) return;

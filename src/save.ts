@@ -3,32 +3,26 @@ import * as entity from "booyah/src/entity";
 
 import * as extension from "./extension";
 import * as variable from "./variable";
+import * as dialog from "./dialog";
 import * as popup from "./popup";
 
-export function save(): void;
-export function save(
-  level: string,
-  node: string,
-  visited: Set<string>,
-  variableStorage: variable.VariableStorage
-): void;
-export function save(
-  level?: string,
-  node?: string,
-  visited?: Set<string>,
-  variableStorage?: variable.VariableStorage
-) {
-  if (!level) {
+export function save(ctx?: dialog.DialogScene) {
+  if (!ctx) {
     localStorage.removeItem("save");
     localStorage.removeItem("visited");
+    localStorage.removeItem("environment");
     localStorage.removeItem("variableStorage");
   } else {
-    localStorage.setItem("save", `${level}@${node}`);
-    localStorage.setItem("visited", JSON.stringify([...visited]));
+    localStorage.setItem(
+      "save",
+      `${ctx.stateName}@${ctx.lastNodeData?.title ?? "Start"}`
+    );
+    localStorage.setItem("visited", JSON.stringify([...ctx.visited]));
     localStorage.setItem(
       "variableStorage",
-      JSON.stringify(variableStorage.data)
+      JSON.stringify(ctx.config.variableStorage.data)
     );
+    localStorage.setItem("environment", JSON.stringify(ctx.graphics.last));
   }
 }
 
@@ -36,11 +30,13 @@ export function loadSave() {
   const [level, node] = localStorage.getItem("save").split("@");
   const visited = new Set(JSON.parse(localStorage.getItem("visited")));
   const data = JSON.parse(localStorage.getItem("variableStorage"));
+  const environment = JSON.parse(localStorage.getItem("environment"));
   const variableStorage = new variable.VariableStorage(data);
   return {
     level,
     node,
     visited,
+    environment,
     variableStorage,
   };
 }
@@ -106,6 +102,8 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
             window.loadedNode = saveData.node;
             //@ts-ignore
             window.loadedVisited = saveData.visited;
+            //@ts-ignore
+            window.loadedEnvironment = saveData.environment;
           });
         }
       );

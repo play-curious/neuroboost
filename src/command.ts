@@ -272,12 +272,7 @@ export const functions: Record<string, YarnFunction> = {
   },
 
   save() {
-    save.save(
-      this.stateName,
-      this.lastNodeData.title,
-      this.visited,
-      this.config.variableStorage
-    );
+    save.save(this);
   },
 
   resetSave() {
