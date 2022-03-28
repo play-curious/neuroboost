@@ -654,9 +654,9 @@ colorID: 1
 L'examen a lieu cet après-midi. Vous avez encore le temps de vous préparer... Mais à quoi ? Dans quel ordre ?
 
 << else>>
--> Se détendre
+-> Se détendre #once
     << jump Meditation >>
--> Mettre à jour votre planning de révision
+-> Mettre à jour votre planning de révision #once
     << jump Planning_Lundi >>
 << endif>>
 ===

@@ -798,13 +798,13 @@ colorID: 1
 L'examen a lieu cet après-midi. Vous avez encore le temps de vous préparer... Mais à quoi ? Dans quel ordre ?
 
 << else>>
--> Trouver des résumés sur le web
+-> Trouver des résumés sur le web #once
     << jump Cours_En_Ligne >>
--> Se détendre
+-> Se détendre #once
     << jump Meditation >>
--> Nouvelle session de révision
+-> Nouvelle session de révision #once
     << jump reviser_session4 >>
--> Allez voir Fred
+-> Allez voir Fred #once
     << jump Fred_Lost >>
 << endif>>
 
