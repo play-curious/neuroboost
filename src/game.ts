@@ -39,17 +39,17 @@ function resizeHtmlLayer(appSize: PIXI.Point): void {
 //   - VariableStorage
 //   - Clock
 const variableStorage = new variable.VariableStorage({
-  name: "Moi",
-  time: "540",
-  eval: "",
   journalAnswers: {},
   ballsJuggled: 0,
   isDebugMode: false,
-  sleep: "100",
-  food: "100",
-  learning: "0",
   mentalLoad: "0",
+  learning: "0",
   stress: "0",
+  sleep: "100",
+  name: "Moi",
+  time: "540",
+  eval: "",
+  food: "100",
 });
 const globalHistory: yarnBound.Result[] = [];
 
@@ -148,37 +148,37 @@ for (const state in states) {
 transitions[previousState] = entity.makeTransition("end");
 
 const fxAssets = [
-  "AlarmClock_LOOP",
-  "Bell_Meditation",
-  "Click",
+  "Narration_TypeWriter_LOOP",
   "Dialog_TypeWriter_LOOP",
+  "AlarmClock_LOOP",
+  "TVStarwars_LOOP",
+  "Bell_Meditation",
+  "PhoneRing_LOOP",
+  "Teleportation",
+  "Notification",
+  "Sports_LOOP",
+  "Sleep_LOOP",
+  "Chime_LOOP",
+  "Work_LOOP",
+  "Success",
   "EatCook",
   "Failure",
-  "Narration_TypeWriter_LOOP",
-  "Notification",
-  "PhoneRing_LOOP",
-  "Sleep_LOOP",
-  "Sports_LOOP",
-  "Success",
-  "Teleportation",
-  "TVStarwars_LOOP",
-  "Work_LOOP",
-  "Chime_LOOP",
+  "Click",
   "Spawn",
   "Warp",
 ];
 
 const musicAssets = [
-  "Mysterious",
+  "AcousticGuitar",
   "NegativeSad",
+  "Mysterious",
+  "DanseQuiet",
+  "Victory",
   "Neutral",
   "Tense",
-  "Victory",
   "Danse",
-  "DanseQuiet",
   "Solo1",
   "Solo2",
-  "AcousticGuitar",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
