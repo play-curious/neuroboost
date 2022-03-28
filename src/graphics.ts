@@ -604,7 +604,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
                   })
                 );
               });
-              console.log("FREECHOICE Animation DONE");
             },
           }),
         ])
