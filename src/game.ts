@@ -71,6 +71,7 @@ const startingScene =
 
 // prettier-ignore
 const stateNames = [
+  "characters",
   "D1_level1",
   "journal_method",
   "D1_level2",
@@ -183,9 +184,9 @@ const musicAssets = [
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
 
-const screenSize = new PIXI.Point(1920, 1080);
+export const screenSize = new PIXI.Point(1920, 1080);
 
-const splashScreen = "images/bg/outside/background.png";
+const splashScreen = "images/splash_screen.png";
 
 booyah.go({
   startingScene,

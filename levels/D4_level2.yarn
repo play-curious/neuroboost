@@ -305,7 +305,7 @@ tags:
 position: -1396.7598876953125,1892.27099609375
 colorID: 1
 ---
-<< if getGauge("learning") >= 70 >>
+<< if getGauge("learning") > 66 >>
 
 << fx Notification >>
 Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux. C'est à regret que Fred et vous, sortez de l'établissement.

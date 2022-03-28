@@ -1,7 +1,11 @@
 title: Start
 tags:
 ---
-<< setBackground bedroom >>
+<<empty>>
+<< setBackground bedroom chill >>
+
+<< show lightsaber>>
+Film
 
 Roommate: Hey !
 << hide >>
