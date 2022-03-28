@@ -97,15 +97,6 @@ const stateNames = [
   "End_Screen",
 ];
 
-/*
-  missing journal after
-  - D3_level1
-  - D4_level1
-  - D5_level1
-  - D6_level1
-  - D7_level1
- */
-
 const states: { [k: string]: entity.EntityResolvable } = {
   Start_Menu: new save.StartMenu(),
 };
@@ -179,6 +170,7 @@ const musicAssets = [
   "Solo1",
   "Solo2",
   "AcousticGuitar",
+  "JungleBodyBeat",
 ];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];

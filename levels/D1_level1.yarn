@@ -198,7 +198,7 @@ Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affich
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
 Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
 
-<< show lightsaber>>
+<< show lightsaber@holo>>
 << loopFX TVStarwars_LOOP 10000 >>
 
 Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable et séduisant corsaire Yann Salto. Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse.
