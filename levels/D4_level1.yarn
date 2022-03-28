@@ -22,7 +22,7 @@ Vous débarrassez la cuisine, vous faites votre toilette, vous préparez vos aff
 << loopFX PhoneRing_LOOP 5000 >>
 C'est Fred!
 
--> Prendre l'appel 
+-> Prendre l'appel
     <<jump Appel_Fred>>
 ===
 title: Appel_Fred
