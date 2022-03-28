@@ -186,7 +186,7 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     if (newValue === this._value) return;
     if (this._currentTween.animation)
       this._deactivateChildEntity(this._currentTween.animation);
-    
+
     this._currentTween.to = newValue;
     this._currentTween.animation = new tween.Tween({
       duration: 1200,
@@ -200,11 +200,11 @@ export class Gauge extends extension.ExtendedCompositeEntity {
           from: 0,
           to: 2 * PIXI.PI_2,
           onUpdate: (value) => {
-            this._innerDisk.alpha = (((Math.cos(value) + 1) / 2) * 0.4) + 0.4
+            this._innerDisk.alpha = ((Math.cos(value) + 1) / 2) * 0.4 + 0.4;
           },
           onTeardown: () => {
             this._innerDisk.alpha = 1;
-          }
+          },
         });
         this._activateChildEntity(this._alphaTween);
       },

@@ -164,7 +164,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       // Credits entity starts null, and is created only when the button is pressed
       this.creditsEntity = null;
     }
-    
+
     {
       this.title = this.makeSprite("images/menu/title.png", (it) => {
         it.anchor.set(0.5);
@@ -174,23 +174,27 @@ export class Menu extends extension.ExtendedCompositeEntity {
         );
         it.interactive = true;
 
-        this.debugText = this.makeText("DEBUG", {
-          fontFamily: "Ubuntu",
-          fontSize: 70,
-          fill: "white",
-          fontWeight: "bolder"
-        }, (itt) => {
-          itt.anchor.set(0.5);
-          itt.position = it.position;
-          itt.rotation -= PIXI.PI_2 / 8;
-          itt.visible = false;
-        })
+        this.debugText = this.makeText(
+          "DEBUG",
+          {
+            fontFamily: "Ubuntu",
+            fontSize: 70,
+            fill: "white",
+            fontWeight: "bolder",
+          },
+          (itt) => {
+            itt.anchor.set(0.5);
+            itt.position = it.position;
+            itt.rotation -= PIXI.PI_2 / 8;
+            itt.visible = false;
+          }
+        );
 
         this.debugPressCount = 0;
         this._on(it, "pointerup", () => {
-          if(++this.debugPressCount == 7) {
+          if (++this.debugPressCount == 7) {
             this.debugPressCount = 0;
-            const newState = !this.config.variableStorage.get("isDebugMode")
+            const newState = !this.config.variableStorage.get("isDebugMode");
             this.config.variableStorage.set("isDebugMode", newState);
             this.debugText.visible = newState;
             this.config.fxMachine.play("Spawn");

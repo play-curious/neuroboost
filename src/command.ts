@@ -170,6 +170,8 @@ export const commands: Record<string, Command> = {
   // MUSIC FX
 
   music(musicName?: string) {
+    //@ts-ignore
+    this._lastMusic = musicName;
     this.config.jukebox.play(musicName);
   },
 
@@ -272,7 +274,7 @@ export const functions: Record<string, YarnFunction> = {
   },
 
   save() {
-    save.save(this.stateName);
+    save.save(this);
   },
 
   resetSave() {

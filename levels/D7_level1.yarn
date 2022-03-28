@@ -22,7 +22,7 @@ Son année est fichue. Son diplôme aussi. Vous ne pouvez abandonner Fred dans u
     << jump Finding_Fred >>
 ===
 title: Finding_Fred
-tags:
+tags: 
 position: -2189.6949462890625,126.72453308105469
 ---
 << setBackground outside >>
@@ -33,23 +33,31 @@ Où diable se trouve Fred ?
 << visit Finding_Fred >>
 << endif >>
 
+<< if visited("Toilettes_No") and visited("Salle_Sport_No") and visited("Cafeteria_No") >>
+Rien de tout.
+Une dernière idée vous vient à l'esprit...
+-> Rendre visite à sa chambre
+    << jump Bedroom_Fred >>
+<< else >>
 -> Fouiller les toilettes #once
+    << visit Toilettes_No >>
     << jump Toilettes_No >>
 -> Aller faire un tour à la salle de sport #once
+    << visit Salle_Sport_No >>
     << jump Salle_Sport_No >>
 -> Inspecter la cafétéria #once
+    << visit Cafeteria_No >>
     << jump Cafeteria_No >>
--> Rendre visite à sa chambre 
-    << jump Bedroom_Fred >>
+<< endif >>
 ===
 title: Bedroom_Fred
-tags:
+tags: 
 position: -1962.5316162109375,468.0980529785156
 ---
 << fadeIn >>
 << setBackground door >>
+<< advanceTime 0:15 >>
 << fadeOut >>
-<< advanceTime 0:30 >>
 
 Et si Fred s'était claquemuré chez lui, dans sa chambre ?... Vous retournez dans la zone résidentielle de l'Académie. Vous sonnez à la porte de votre pote. Une fois, deux fois, trois fois !
 Vous criez son nom. Vous entendez le verrou se débloquer, vous pénétrez dans sa chambre. 
@@ -60,7 +68,6 @@ Vous criez son nom. Vous entendez le verrou se débloquer, vous pénétrez dans 
 << fadeOut >>
 
 Fred, vous tourne le dos, iel est très occupé à remplir ses valises.
-
 
 You: Qu'est-ce que tu fais ?
 Fred_sad: Tu vois bien.
@@ -79,7 +86,7 @@ Fred_surprised: Yes yes. T'as raison. C'est pas fair play...
     << jump Fred_confesse >>
 ===
 title: Fred_confesse
-tags:
+tags: 
 position: -1735.787841796875,467.32421875
 ---
 You: T'es le winner, tu es le gars le plus populaire de l'Académie.
@@ -94,11 +101,10 @@ You: Et alors. Tu balances tout parce que t'as qu'un seul ami ?
 Fred_sad: Non ! J'ai fini par comprendre que tout ça, c'était pas pour moi.
 You: De quoi tu parles ?
 
-<< advanceTime 0:15 >>
 << jump Fred_Echec >>
 ===
 title: Fred_Echec
-tags:
+tags: 
 position: -1515.0112915039062,464.32421875
 ---
 Fred_sad: J'ai toujours eu de la chance. C'était trop facile.
@@ -119,13 +125,12 @@ You: Un fake ?!
 Fred_sad: Un imposteur, un poseur, un fanfaron, un flambeur. Je ne mérite pas d'être ici. C'est pour ça que je me casse.
 You: Attends !
 
-<< advanceTime 0:15 >>
 << jump Fred_Evitement >>
 
 //croyance fixiste = toujours réussir sans adaptation, il n'imagine pas surmonter cet obstacle imprévu et insurmontable pour lui
 ===
 title: Fred_Evitement
-tags:
+tags: 
 position: -1289.0086059570312,463.9372863769531
 ---
 You: T'as des capacités exceptionnelles, bien sûr que tu peux rattraper ça.
@@ -139,13 +144,11 @@ Fred_sad: No no. Les dés étaient jetés. J'avais déjà perdu.
 You: T'exagères.
 Fred_sad: Je voulais pas me faire tailler en pièce. Je ne voulais pas leur faire ce plaisir là.
 
-<< advanceTime 0:15 >>
-
 -> Essayer encore de le raisonner
     << jump Raisonner_Fred >>
 ===
 title: Raisonner_Fred
-tags:
+tags: 
 position: -1064.6189880371094,464.7111511230469
 ---
 You: Arrête, tu es un caïd à l'oral, tu t'en sors toujours !
@@ -163,11 +166,11 @@ Là encore, vous vous sentez obligé de tricher avec la réalité. Vous ne pouve
 You: Naan, t'es parano.
 Fred_sad: La preuve, même toi, tu ne me crois pas. Alors, à quoi bon revenir dessus. Ce qui est fait est fait.
 You: T'exagère ! Je te reconnais plus ! Tu n'es plus un winner, t'es un looser ! C'est pas possible.
-Fred_smiling: Tu vois bien. Mon seul et meilleur pote me traite de "looser". Je ne crois plus en mon "don".
+Fred_sad: Tu vois bien. Mon seul et meilleur pote me traite de "looser". Je ne crois plus en mon "don".
 Fred_sad: Et toi non plus.
 
-<< advanceTime 0:15 >>
 << hide >>
+<< advanceTime 0:15 >>
 
 Vous vous mordez la langue encore une fois. Vous vous en voulez d'avoir douté de Fred. Vous êtes venu pour le secourir, le soutenir. Et que faites-vous à la place ? Vous l'enfoncez... 
 Inutile d'insister, vous ne le ferez pas revenir sur sa décision, surtout après les boulettes que vous avez commises. Vous vous éclipsez discrètement de sa chambre.
@@ -176,26 +179,26 @@ Inutile d'insister, vous ne le ferez pas revenir sur sa décision, surtout aprè
     << jump Joueur_Bedroom >>
 ===
 title: Joueur_Bedroom
-tags:
+tags: 
 position: -838.7797698974609,460.3569030761719
 ---
 << fadeIn >>
 << setBackground bedroom >>
 << fadeOut >>
 
-De retour dans votre chambre, vous êtes découragé, frustré, en colère. Le monde n'est décidément pas juste. Vous, vous avez la chance de revivre vos journées et d'apprendre de vos erreurs. 
-Pourquoi pas Fred ? Fred dit qu'iel n'est pas l'élu. Qu'est-ce qui fait que vous, vous l'êtes ? En quoi êtes-vous plus méritant que lui ? Pourquoi n'a-t-il pas, lui aussi, droit à une seconde chance ?
+De retour dans votre chambre, vous êtes découragé, frustré, en colère. Le monde n'est décidément pas juste. Vous, vous avez la chance de revivre vos journées et d'apprendre de vos erreurs. Pourquoi pas Fred ? Fred dit qu'iel n'est pas l'élu.
+Qu'est-ce qui fait que vous, vous l'êtes ? En quoi êtes-vous plus méritant que lui ? Pourquoi n'a-t-il pas, lui aussi, droit à une seconde chance ?
 Tout ça finit par vous exaspérer. Vous grognez, vous pestez, vous râlez. Vous brandissez les poings et vous interpellez les Sages. Vous avez beau ne pas les voir, vous savez qu'ils vous entendent.
 You: J'en ai assez de cette comédie ! Ce qui arrive à Fred est injuste ! Je ne comprends pas. C'est ça votre plan ? Iel doit payer pour que moi, je réussisse ? C'est minable !
-Ledai: { $name }. Tu n'y es pas du tout.
+Ledai_doubtful: { $name }. Tu n'y es pas du tout.
 You: Ah bon ? Alors expliquez-moi ce que vous tramez !
-Ledai: C'est très simple.
+Ledai_explaining: C'est très simple.
 
 -> Écouter ses explications
     << jump Ledai >>
 ===
 title: Ledai
-tags:
+tags: 
 position: -614.25244140625,460.4302978515625
 colorID: 1
 ---
@@ -204,11 +207,10 @@ You: Alors, racontez-moi la version courte.
 Ledai_explaining: C'est encore long. Tout ce que je peux te dire, c'est que cela fait partie du processus d'apprentissage.
 You: C'est tout, c'est une blague ?!
 Ledai_explaining: Pas du tout. C'est ta dernière leçon. La plus importante. Suis-moi à l'Assemblée des Sages.
+<< hide >>
+
 Vous comprenez que si vous désirez avoir le fin mot de l'histoire, vous devez suivre Ledai.
 Ce que vous acceptez, non sans rechigner.
-
-<< advanceTime 0:15 >>
-<< hide >>
 
 -> Suivre Ledai
     << fx Warp >>
@@ -412,11 +414,12 @@ Sapiens_concerned: Reprenons l'exercice pour conclure. Ta mission va être d'acc
     << jump Strategie_Metacognitive_Good >>
 ===
 title: Toilettes_No
-tags:
+tags: 
 position: -1969.8092041015625,-190.40352630615234
 ---
 << fadeIn >>
 << setBackground door class >>
+<< advanceTime 0:05 >>
 << fadeOut >>
 
 Il faut bien commencer par quelque part. Vous foncez dans les toilettes qui donnent sur l'amphithéâtre du Grand Oral. L'oeil aux aguets, vous inspectez le moindre recoin : il y a des badauds, mais pas de Fred. Les regards courroucés de ceux-ci ne vous découragent pas.
@@ -424,14 +427,16 @@ Vous prenez ensuite sur vous de taper à la porte de chaque compartiment, histoi
 Dépité, vous ressortez des toilettes sous les yeux accusateurs de ceux que vous avez dérangés pour rien...
 
 -> Chercher Fred ailleurs
+    << fadeIn >>
     << jump Finding_Fred >>
 ===
 title: Salle_Sport_No
-tags:
+tags: 
 position: -1968.4114990234375,29.55572509765625
 ---
 << fadeIn >>
 << setBackground sport >>
+<< advanceTime 0:10 >>
 << fadeOut >>
 
 Vous savez que Fred passe beaucoup de temps à la salle de sport. Alors, vous vous dites qu'il y a une chance, même petite, qu'iel soit allé là-bas pour se défouler, vider sa frustration en tapant sur des sacs de frappe.
@@ -439,14 +444,16 @@ C'est le coeur plein d'espoir que vous entrez dans la salle de sport. Hélas, ap
 Force est de reconnaître que vous avez fait choux blanc. Fred n'a pas mis les pieds ici ce matin. Vous vous demandez bien où iel se planque...
 
 -> Chercher Fred ailleurs
+    << fadeIn >>
     << jump Finding_Fred >>
 ===
 title: Cafeteria_No
-tags:
+tags: 
 position: -1964.2073974609375,249.321533203125
 ---
 << fadeIn >>
 << setBackground cafeteria >>
+<< advanceTime 0:10 >>
 << fadeOut >>
 
 La cafétéria est un second foyer pour Fred. Iel y traîne souvent. Pour boire un coup, grignoter quelque chose, papoter avec des amis, et surtout pour faire la fête. Aujourd'hui, pourtant, la cafétéria est bien calme.
@@ -454,6 +461,7 @@ Il n'y a personne ou presque. En tout cas, aucun signe de Fred. Vous demandez à
 Mauvaise pioche : Fred se niche ailleurs. Où donc ?
 
 -> Chercher Fred ailleurs
+    << fadeIn >>
     << jump Finding_Fred >>
 ===
 title: Strategies_Affectives
