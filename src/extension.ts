@@ -1,21 +1,22 @@
+import * as _ from "underscore";
 import * as PIXI from "pixi.js";
 import * as howler from "howler";
+import * as yarnBound from "yarn-bound";
 import MultiStyleText from "pixi-multistyle-text";
 
 import * as narration from "booyah/src/narration";
 import * as entity from "booyah/src/entity";
 import * as booyah from "booyah/src/booyah";
 import * as audio from "booyah/src/audio";
+import * as tween from "booyah/src/tween";
+import * as easing from "booyah/src/easing";
+import * as util from "booyah/src/util";
 
+import * as filter from "./graphics_filter";
 import * as variable from "./variable";
 import * as images from "./images";
 import * as clock from "./clock";
-import * as util from "booyah/src/util";
-import * as yarnBound from "yarn-bound";
-import * as _ from "underscore";
-import * as filter from "./graphics_filter";
-import * as tween from "booyah/src/tween";
-import * as easing from "booyah/src/easing";
+import * as dialog from "./dialog";
 
 export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
   get config(): ExtendedEntityConfig {
@@ -193,6 +194,7 @@ interface ExtendedEntityConfig extends entity.EntityConfig {
   jukebox: audio.Jukebox;
   narrator: narration.SubtitleNarrator;
   fxMachine: audio.FxMachine;
+  dialogScene: dialog.DialogScene;
 }
 
 export interface TextOptions {
