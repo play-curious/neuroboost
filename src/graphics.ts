@@ -772,6 +772,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         boxHeight: 1080,
       });
       this._history.interactive = true;
+      // @ts-ignore
       this._history.content.addChild(
         this.makeText(
           this.config.dialogScene.history
