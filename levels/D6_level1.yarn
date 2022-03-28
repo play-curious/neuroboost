@@ -5,7 +5,7 @@ colorID: 8
 ---
 << fadeIn 1 >>
 << setBackground bedroom >>
-<< setTime 10:10>>
+<< setTime 10:10 5 >>
 << fadeOut >>
 
 C'est le matin, vous vous réveillez... naturellement, normalement, sans sonnerie. Logique, nous sommes samedi, c'est le week-end, synonyme de repos, du moins de relâche. Il est 10 heures passées.
