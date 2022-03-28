@@ -541,8 +541,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         new entity.EntitySequence([
           new entity.WaitingEntity(Math.min(i, 1) * animationShifting * i),
           new tween.Tween({
-            duration: 1000,
-            easing: easing.easeOutBack,
+            duration: 900,
+            easing: easing.easeInSine,
             from: 0,
             to: baseAlpha,
             onUpdate: (value) => {
@@ -582,6 +582,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
                   })
                 );
               });
+              console.log("FREECHOICE Animation DONE");
             },
           }),
         ])
