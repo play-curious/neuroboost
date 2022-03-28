@@ -6,6 +6,8 @@ tags:
 
 << show lightsaber>>
 Film
+<< show lightsaber@holo>>
+Film Holo
 
 Roommate: Hey !
 << hide >>
