@@ -185,7 +185,7 @@ const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 const screenSize = new PIXI.Point(1920, 1080);
 
-const splashScreen = "images/bg/outside/background.png";
+const splashScreen = "images/splash_screen.png";
 
 booyah.go({
   startingScene,
