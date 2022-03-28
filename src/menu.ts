@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js";
 
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
+import * as scroll from "booyah/src/scroll";
 import * as util from "booyah/src/util";
 
 import * as extension from "./extension";
@@ -49,6 +50,9 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private creditButton: PIXI.Text;
   private creditsEntity: booyah.CreditsEntity;
   private title: PIXI.Sprite;
+  private history: PIXI.Text;
+  private historyText: PIXI.Text;
+  private historyContainer: scroll.Scrollbox;
   private journal: PIXI.Text;
   private journalUpdated: boolean;
 
@@ -146,7 +150,24 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
-      this.creditButton = this.makeText("credits", {
+      this.history = this.makeText("History", {
+        fontFamily: "Ubuntu",
+        fill: "white",
+        fontSize: 50,
+      });
+      this.history.anchor.set(0.5);
+      this.history.position.set(
+        this.popupBackground.width / 2,
+        this.popupBackground.height * 0.35
+      );
+      this.history.interactive = true;
+      this.history.buttonMode = true;
+      this._on(this.history, "pointertap", this._showHistory);
+      this.popupBackground.addChild(this.history);
+    }
+
+    {
+      this.creditButton = this.makeText("Credits", {
         fontFamily: "Ubuntu",
         fill: "white",
         fontSize: 50,
@@ -164,7 +185,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       // Credits entity starts null, and is created only when the button is pressed
       this.creditsEntity = null;
     }
-    
+
     {
       this.title = this.makeSprite("images/menu/title.png", (it) => {
         it.anchor.set(0.5);
@@ -174,23 +195,27 @@ export class Menu extends extension.ExtendedCompositeEntity {
         );
         it.interactive = true;
 
-        this.debugText = this.makeText("DEBUG", {
-          fontFamily: "Ubuntu",
-          fontSize: 70,
-          fill: "white",
-          fontWeight: "bolder"
-        }, (itt) => {
-          itt.anchor.set(0.5);
-          itt.position = it.position;
-          itt.rotation -= PIXI.PI_2 / 8;
-          itt.visible = false;
-        })
+        this.debugText = this.makeText(
+          "DEBUG",
+          {
+            fontFamily: "Ubuntu",
+            fontSize: 70,
+            fill: "white",
+            fontWeight: "bolder",
+          },
+          (itt) => {
+            itt.anchor.set(0.5);
+            itt.position = it.position;
+            itt.rotation -= PIXI.PI_2 / 8;
+            itt.visible = false;
+          }
+        );
 
         this.debugPressCount = 0;
         this._on(it, "pointerup", () => {
-          if(++this.debugPressCount == 7) {
+          if (++this.debugPressCount == 7) {
             this.debugPressCount = 0;
-            const newState = !this.config.variableStorage.get("isDebugMode")
+            const newState = !this.config.variableStorage.get("isDebugMode");
             this.config.variableStorage.set("isDebugMode", newState);
             this.debugText.visible = newState;
             this.config.fxMachine.play("Spawn");
@@ -294,6 +319,36 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     this._entityConfig.container.addChild(this.container);
     this._entityConfig.container.addChild(this.menuButton);
+
+    this.historyContainer = new scroll.Scrollbox({
+      overflowX: "none",
+      overflowY: "scroll",
+      boxWidth: 1920,
+      boxHeight: 1080,
+    });
+
+    this.historyText = this.makeText("", {
+      fontFamily: "Ubuntu",
+      fontSize: 30,
+      fill: 0xffffff,
+    });
+
+    this._activateChildEntity(
+      this.historyContainer,
+      entity.extendConfig({
+        container: this.popupBackground,
+      })
+    );
+
+    this.historyContainer.content.interactive = true;
+    this.historyContainer.content.addChild(this.historyText);
+    this.historyContainer.refresh();
+
+    this._once(this.historyContainer.content, "click", () => {
+      this.historyContainer.content.visible = false;
+    });
+
+    this.historyContainer.content.visible = false;
   }
 
   _teardown() {
@@ -387,6 +442,12 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private _showCredits() {
     this.creditsEntity = new booyah.CreditsEntity(creditsOptions);
     this._activateChildEntity(this.creditsEntity);
+  }
+
+  private _showHistory() {
+    //@ts-ignore
+    this.historyText.text = window.dialogScene.getHistoryText();
+    this.historyContainer.container.visible = true;
   }
 
   private _onTapPCLogo() {

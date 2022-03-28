@@ -62,8 +62,22 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     return this.runner.currentResult.metadata;
   }
 
+  getHistoryText(): string {
+    return this.history
+      .map(([type, text]) => {
+        return type.includes("choice")
+          ? `[${text}]`
+          : !type
+          ? `<i>${text}</i>`
+          : `<b>${type.split("@")[0].split("_")[0]}</b>: ${text}`;
+      })
+      .join("\n\n");
+  }
+
   _setup(): void {
-    this.config.dialogScene = this;
+    //@ts-ignore
+    window.dialogScene = this;
+    this._entityConfig.dialogScene = this;
 
     this.history = [];
     this.enabled = true;

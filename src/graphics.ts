@@ -1,9 +1,9 @@
 import * as _ from "underscore";
 import * as PIXI from "pixi.js";
-import * as scroll from "pixi-scrollbox";
 
 import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
+import * as scroll from "booyah/src/scroll";
 import * as tween from "booyah/src/tween";
 
 import * as filter from "./graphics_filter";
@@ -771,34 +771,29 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         boxWidth: 1920,
         boxHeight: 1080,
       });
-      this._history.interactive = true;
-      this._history.content.addChild(
-        this.makeText(
-          this.config.dialogScene.history
-            .map(([type, text]) => {
-              return type.includes("choice")
-                ? `[${text}]`
-                : !type
-                ? `<i>${text}</i>`
-                : `<b>${type.split("@")[0]}</b>: ${text}`;
-            })
-            .join("\n\n"),
-          {
-            fontFamily: "Ubuntu",
-            fontSize: 30,
-            fill: 0xffffff,
-          }
-        )
+
+      this._historyLayer.visible = true;
+      this._activateChildEntity(
+        this._history,
+        entity.extendConfig({
+          container: this._historyLayer,
+        })
       );
-      this._history.update();
-      this._once(this._history, "click", () => {
+      this._history.content.interactive = true;
+      this._once(this._history.content, "click", () => {
         this.toggleHistory();
       });
-      this._historyLayer.visible = true;
-      this._historyLayer.addChild(this._history);
+      this._history.content.addChild(
+        this.makeText(this.config.dialogScene.getHistoryText(), {
+          fontFamily: "Ubuntu",
+          fontSize: 30,
+          fill: 0xffffff,
+        })
+      );
+      this._history.refresh();
     } else {
       this._historyLayer.visible = false;
-      this._historyLayer.removeChild(this._history);
+      this._deactivateChildEntity(this._history);
       this._history = null;
     }
   }
