@@ -29,6 +29,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _lastBgMood: string;
   private _lastCharacter: string;
   private _lastMood: string;
+  private _lastMusic: string;
   private _characters: Map<
     string,
     {
@@ -67,6 +68,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       lastBgMood: this._lastBgMood,
       lastCharacter: this._lastCharacter,
       lastMood: this._lastMood,
+      lastMusic: this._lastMusic,
     };
   }
 
@@ -121,6 +123,21 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._fade.alpha = 0;
     this._fade.visible = false;
     this._fxLayer.addChild(this._fade);
+
+    //@ts-ignore
+    if (window.loadedEnvironment) {
+      //@ts-ignore
+      const last = window.loadedEnvironment;
+      //@ts-ignore
+      window.loadedEnvironment = undefined;
+
+      this.setBackground(last.lastBg, last.lastBgMood);
+      this.addCharacter(last.lastCharacter, last.lastMood);
+
+      if (last.lastMusic != null) {
+        this.config.jukebox.play(last.lastMusic);
+      }
+    }
   }
 
   _teardown() {
@@ -772,6 +789,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         boxHeight: 1080,
       });
       this._history.interactive = true;
+      // @ts-ignore
       this._history.content.addChild(
         this.makeText(
           this.config.dialogScene.history
