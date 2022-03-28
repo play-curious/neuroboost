@@ -1,0 +1,10 @@
+{
+  "normal": [
+    {
+      "model": "p_animNo",
+      "x": 720.0,
+      "y": 462.5
+    }
+  ],
+  "default": "normal"
+}
