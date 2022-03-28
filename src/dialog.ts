@@ -44,6 +44,7 @@ export function isOption(
 export class DialogScene extends extension.ExtendedCompositeEntity {
   private _lastNodeData: yarnBound.Metadata;
 
+  public history: [author: string, text: string][];
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
   public visited: Set<string>;
@@ -62,6 +63,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
+    this.config.dialogScene = this;
+
+    this.history = [];
     this.enabled = true;
 
     save.save(this.stateName, this.config.variableStorage);
@@ -164,11 +168,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     const result = this.runner.currentResult;
 
     if (isText(result)) {
-      if(this.config.variableStorage.get("isDebugMode")) {
+      if (this.config.variableStorage.get("isDebugMode")) {
         console.log("SKIPPED", result);
         this._advance();
-      }
-      else {
+      } else {
         this.graphics.showDialogLayer();
         this._handleDialog();
       }
@@ -199,7 +202,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       text,
       speaker,
       this.config.variableStorage.get("name"),
-      () => this._advance.bind(this)(id)
+      () => {
+        this.history.push([speaker, text]);
+        this._advance.bind(this)(id);
+      }
     );
   }
 
@@ -208,11 +214,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     if (!isOption(result))
       throw new Error("Called _handleChoice for unknown result");
-      
+
     this.metadata.choiceId !== undefined
       ? this.metadata.choiceId++
       : (this.metadata.choiceId = 0);
-      
+
     const options: Record<string, string>[] = [];
 
     let indexOfBack = 0;
@@ -221,8 +227,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
       if (
-        (option.hashtags.includes("once") &&
-        this.selectedOptions.includes(selectedOptionId)) ||
+        (option.hashtags.includes("once" as never) &&
+          this.selectedOptions.includes(selectedOptionId)) ||
         !option.isAvailable
       )
         continue;
@@ -234,7 +240,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       if (option.text === "back") indexOfBack = i;
     }
-    
+
     if (
       this._hasTag(this.metadata, "subchoice") &&
       options.length === 1 &&

@@ -6,7 +6,7 @@ position: -2504.752685546875,43.17276573181152
 colorID: 8
 ---
 << fadeIn 1 >>
-<< setTime 8:00 >>
+<< setTime 8:00 3 >>
 << setBackground bedroom >>
 << setGauge learning 0 >>
 << setGauge sleep 100 >>

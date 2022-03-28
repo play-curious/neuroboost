@@ -164,7 +164,7 @@ title: salon_subchoice
 tags: subchoice
 ---
 << fadeIn >>
-<< setBackground bedroom detente >>
+<< setBackground bedroom chill >>
 << fadeOut >>
 
 -> Binger votre série TV préférée#once

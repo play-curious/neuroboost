@@ -169,7 +169,7 @@ tags: subchoice
 title: salon_subchoice
 tags: subchoice
 ---
-<< setBackground bedroom detente >>
+<< setBackground bedroom chill >>
 
 -> Binger votre série TV préférée#once
     <<jump BingeTV>>
