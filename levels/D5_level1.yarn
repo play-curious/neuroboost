@@ -29,7 +29,7 @@ position: 0,0
 << setBackground bedroom >>
 << fadeOut >>
 
-<< setTime 8:00>>
+<< setTime 8:00 4 >>
 << showGauges learning sleep food mentalLoad >>
 << setGauge learning 20 >>
 << setGauge sleep 100 >>
@@ -53,7 +53,7 @@ Ronronron... Votre palmphone vibre. Pour la première fois de la semaine, ce n'e
     <<jump Rejet_Mamie>>
 ===
 title: Liste_Taches
-tags: 
+tags: freechoice
 position: -2542.83056640625,-729.0065307617188
 colorID: 1
 ---
@@ -70,17 +70,56 @@ C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !
 -> Manger
     <<jump Lunch>>
 << else>>
--> Prendre votre petit déjeuner#once
-    <<jump Breakfast>>
--> Appeler vos parents#once
-    <<jump Maman_Call>>
+-> Bureau@bureau
+    <<jump bureau_subchoice>>
+-> Salon@salon
+    <<jump salon_subchoice>>
+-> Cuisine@cuisine
+    <<jump cuisine_subchoice>>
+<< endif>>
+===
+title: bureau_subchoice
+tags: subchoice
+---
+<< fadeIn >>
+<< setBackground bedroom desk >>
+<< fadeOut >>
+
 -> Réviser votre cours, façon "rappel libre" #once
     <<jump Rappel_libre>>
 -> Vous informer en ligne sur les causes et les effets des pathologies cardiaques#once
     <<jump Web_Info>>
+-> back
+    << fadeIn >>
+    <<jump Liste_Taches>>
+===
+title: cuisine_subchoice
+tags: subchoice
+---
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+
+-> Prendre votre petit déjeuner#once
+    <<jump Breakfast>>
+-> back
+    << fadeIn >>
+    <<jump Liste_Taches>>
+===
+title: salon_subchoice
+tags: subchoice
+---
+<< fadeIn >>
+<< setBackground bedroom chill >>
+<< fadeOut >>
+
+-> Appeler vos parents#once
+    <<jump Maman_Call>>
 -> Appeler Fred#once
     <<jump Fred_Call>>
-<< endif>>
+-> back
+    << fadeIn >>
+    <<jump Liste_Taches>>
 ===
 title: Appel_Mamie
 tags: 
