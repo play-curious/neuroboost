@@ -120,11 +120,13 @@ Que faites-vous maintenant ?
     <<jump Surcharge_Cognitive>>
 << endif >>
 
-<< if !isTimeOver("14:00") >>
+<< if !isTimeOver("13:00") >>
 << jump Liste_Taches_AM >>
-<< endif >>
-
+<< elseif !isTimeOver("22:00") >>
 << jump Liste_Taches_PM >>
+<<endif>>
+
+<< jump Time_Over >>
 ===
 title: Liste_Taches_AM
 tags: freechoice
@@ -219,10 +221,8 @@ tags: subchoice
     <<jump Chat>>
 -> Continuer la rédaction de la note de synthèse#once
     <<jump Redaction_Note>>
-<<if !visited("Zero_Distraction")>>
--> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction" 
+-> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction" <<if !visited("Zero_Distraction")>>
     << jump Zero_Distraction>>
-<<endif>>
 -> back
     <<jump Liste_Taches>>
 ===
@@ -334,6 +334,7 @@ position: -21,-367
 << fadeOut >>
 
 << if !visited("Redaction_Note") >>
+<< visit Redaction_Note >>
 Vous vous retroussez les manches et vous recommencez ce travail fastidieux mais indispensable pour décrocher une bonne note... Mettre au propre cette note de synthèse. Cela vous demande une attention, une concentration et une motivation inimaginable. 
 Comment ont fait les Sages pour arriver à ce rang si convoité d'expert en métacognition, dites-vous. 
 << addToGauge learning 30 >>
@@ -481,6 +482,23 @@ L'IA vous affiche alors la vidéo d'un étudiant paisible mais sérieux, qui ent
 
 Et maintenant, comme on dit : "y a plus qu'à"...
 << jump Liste_Taches >>
+===
+title: Time_Over
+tags: 
+colorID: 2
+position: 155,-1055
+---
+<<empty>>
+
+<< if getGauge("learning") > 66 >>
+<<jump Envoi_Note_Synthese>>
+<< endif >>
+
+Vous n'avez malheureusement pas fini votre rédaction à temps, vous allez encore devoir recommencer cette journée...
+-> Il faut recommencer ! 
+    << fadeOut >>
+    << resetLevel >>
+    << jump Start >>
 ===
 title: Envoi_Note_Synthese
 tags: 
