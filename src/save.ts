@@ -5,15 +5,26 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import * as popup from "./popup";
 
+export function save(): void;
 export function save(
-  stateName?: string,
+  level: string,
+  node: string,
+  visited: Set<string>,
+  variableStorage: variable.VariableStorage
+): void;
+export function save(
+  level?: string,
+  node?: string,
+  visited?: Set<string>,
   variableStorage?: variable.VariableStorage
 ) {
-  if (!stateName) {
+  if (!level) {
     localStorage.removeItem("save");
+    localStorage.removeItem("visited");
     localStorage.removeItem("variableStorage");
   } else {
-    localStorage.setItem("save", stateName);
+    localStorage.setItem("save", `${level}@${node}`);
+    localStorage.setItem("visited", JSON.stringify([...visited]));
     localStorage.setItem(
       "variableStorage",
       JSON.stringify(variableStorage.data)
@@ -21,15 +32,15 @@ export function save(
   }
 }
 
-export function loadSave(): {
-  state: string;
-  variableStorage: variable.VariableStorage;
-} {
-  const state = localStorage.getItem("save");
-  const varstorage = JSON.parse(localStorage.getItem("variableStorage"));
-  const variableStorage = new variable.VariableStorage(varstorage);
+export function loadSave() {
+  const [level, node] = localStorage.getItem("save").split("@");
+  const visited = new Set(JSON.parse(localStorage.getItem("visited")));
+  const data = JSON.parse(localStorage.getItem("variableStorage"));
+  const variableStorage = new variable.VariableStorage(data);
   return {
-    state,
+    level,
+    node,
+    visited,
     variableStorage,
   };
 }
@@ -87,7 +98,14 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
 
             const saveData = loadSave();
             this.config.variableStorage = saveData.variableStorage;
-            this._transition = entity.makeTransition(saveData.state);
+
+            // load saved node from saveData.node
+            this._transition = entity.makeTransition(saveData.level);
+
+            // @ts-ignore
+            window.loadedNode = saveData.node;
+            //@ts-ignore
+            window.loadedVisited = saveData.visited;
           });
         }
       );

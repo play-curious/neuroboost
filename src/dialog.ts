@@ -42,8 +42,7 @@ export function isOption(
 }
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
-  private _lastNodeData: yarnBound.Metadata;
-
+  public lastNodeData: yarnBound.Metadata;
   public history: [author: string, text: string][];
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
@@ -51,10 +50,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   public selectedOptions: string[];
   public enabled: boolean;
 
-  constructor(
-    public readonly stateName: string,
-    public readonly startNode: string
-  ) {
+  constructor(public readonly stateName: string, public startNode: string) {
     super();
   }
 
@@ -63,19 +59,40 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
-    this.config.dialogScene = this;
-
     this.history = [];
     this.enabled = true;
+    this.selectedOptions = [];
 
-    save.save(this.stateName, this.config.variableStorage);
+    //@ts-ignore
+    if (window.loadedVisited) {
+      //@ts-ignore
+      this.visited = window.loadedVisited;
+      //@ts-ignore
+      window.loadedVisited = undefined;
+    } else {
+      this.visited = new Set();
+    }
+
+    //@ts-ignore
+    if (window.loadedNode) {
+      //@ts-ignore
+      this.startNode = window.loadedNode;
+      //@ts-ignore
+      window.loadedNode = undefined;
+    }
+
+    this.config.dialogScene = this;
+
+    save.save(
+      this.stateName,
+      this.startNode,
+      this.visited,
+      this.config.variableStorage
+    );
 
     this._initRunner();
 
     command.fxLoops.clear();
-
-    this.selectedOptions = [];
-    this.visited = new Set();
 
     // Setup graphics
     this.graphics = new graphics.Graphics();
@@ -141,6 +158,15 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(selectId?: number): void {
+    if (this.lastNodeData && !this._hasTag(this.lastNodeData, "nosave")) {
+      save.save(
+        this.stateName,
+        this.lastNodeData.title,
+        this.visited,
+        this.config.variableStorage
+      );
+    }
+
     if (!this.enabled) return;
 
     // If result is undefined, stop here
@@ -160,9 +186,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.graphics.hideNode();
 
     // Check if the node data has changed
-    if (this._lastNodeData?.title !== this.metadata.title) {
-      this._onChangeNodeData(this._lastNodeData, this.metadata);
-      this._lastNodeData = this.metadata;
+    if (this.lastNodeData?.title !== this.metadata.title) {
+      this._onChangeNodeData(this.lastNodeData, this.metadata);
+      this.lastNodeData = this.metadata;
     }
 
     const result = this.runner.currentResult;
