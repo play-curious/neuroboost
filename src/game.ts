@@ -183,7 +183,7 @@ const musicAssets = [
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
 
-const screenSize = new PIXI.Point(1920, 1080);
+export const screenSize = new PIXI.Point(1920, 1080);
 
 const splashScreen = "images/splash_screen.png";
 
