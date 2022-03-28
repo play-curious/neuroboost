@@ -9,7 +9,6 @@ module.exports = merge(common, {
     contentBase: "./dist",
     allowedHosts: [".playcurious.games"],
     port: portFinderSync.getPort(8080),
-    host: "192.168.10.100",
   },
   watchOptions: {
     ignored: [".git", ".github", "node_modules", "images"],
