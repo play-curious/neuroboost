@@ -3,7 +3,7 @@ tags:
 position: -4531.113037109375,-1956.2740478515625
 colorID: 8
 ---
-<< fadeIn 1 >>
+<< fadeIn >>
 << music Neutral >>
 << setBackground bedroom >>
 << setTime 10:10 5 >>

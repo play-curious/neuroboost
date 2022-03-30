@@ -5,7 +5,7 @@ tags:
 colorID: 0
 position: -941,-697
 ---
-<< fadeIn 1 >>
+<< fadeIn >>
 << setGauge learning 0 >>
 << setGauge sleep 100 >>
 << setGauge food 100 >>

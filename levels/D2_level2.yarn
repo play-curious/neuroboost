@@ -5,7 +5,7 @@ tags: noUi
 position: -1391.4708251953125,85.48695087432861
 colorID: 8
 ---
-<< fadeIn >>
+<< fadeIn 1 >>
 
 Vous êtes lové dans une confortable et douce langueur... Quand...
 On vous secoue brusquement !!!
