@@ -71,7 +71,7 @@ position: -1075.3348388671875,-37.09675598144531
 << fadeIn >>
 << setBackground party >>
 << setGauge sleep 100 >>
-<< setGauge food 100 >>
+<< setGauge food 80 >>
 << setTime 20:00 >>
 << music Danse >>
 << fadeOut >>
@@ -91,6 +91,7 @@ colorID: 0
 position: -850.2415771484375,-40.334877014160156
 ---
 << if !visited("Choix_neutres") >>
+<< visit Choix_neutres >>
 Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
 << endif >>
 

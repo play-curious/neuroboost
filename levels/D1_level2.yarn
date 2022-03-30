@@ -88,9 +88,12 @@ position: -895,604
 ---
 << setBackground bedroom >>
 << fadeOut >>
+
 << if !visited("Action_List") >>
+<< visit Action_List >>
 Que faites-vous maintenant?
 << endif >>
+
 << if isTimeOver("12:00") >>
 Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
 -> Manger (à midi)

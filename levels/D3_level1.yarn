@@ -103,6 +103,7 @@ position: -328,-637
 << fadeOut >>
 
 <<if !visited("Liste_Taches")>>
+<< visit Liste_Taches >>
 Que faites-vous maintenant ?
 <<endif>>
 

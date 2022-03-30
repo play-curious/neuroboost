@@ -79,6 +79,7 @@ position: -847.2033081054688,-821.7307662963867
 << fadeOut >>
 
 << if !visited("Action_List") >>
+<< visit Action_List >>
 Que faites-vous maintenant ?
 << endif >>
 
