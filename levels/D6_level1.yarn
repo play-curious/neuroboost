@@ -71,6 +71,8 @@ Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de b
 
 << advanceTime 4:00 20:00 1:00 >>
 << stopFX TVStarwars_LOOP >>
+<< hide >>
+
 
 Après votre pause Star Mars...
 -> Que faites-vous?
