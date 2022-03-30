@@ -296,6 +296,7 @@ Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heur
 Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse...
 
 << stopFX TVStarwars_LOOP >>
+<< hide >>
 << advanceTime 3:00 >>
 << addToGauge food 30>>
 << addToGauge mentalLoad 40>>
