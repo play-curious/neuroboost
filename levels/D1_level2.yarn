@@ -244,6 +244,7 @@ En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleur
 
 << advanceTime 4:00 13:00 1:00 >>
 << stopFX TVStarwars_LOOP >>
+<< hide >>
 
 Au final vous passez trop de temps à binger votre série préférée.
 

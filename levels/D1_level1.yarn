@@ -206,6 +206,7 @@ Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant.
 
 << advanceTime 4:00 13:00 1:00 >>
 << stopFX TVStarwars_LOOP >>
+<< hide >>
 
 Au final, vous passez trop de temps à binger votre série préférée.
 
