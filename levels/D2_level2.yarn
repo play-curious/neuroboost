@@ -10,7 +10,9 @@ colorID: 8
 Vous êtes lové dans une confortable et douce langueur... Quand...
 On vous secoue brusquement !!!
 
-<< loadGauges >>
+<< setGauge learning 80 >>
+<< setGauge food 70 >>
+<< setGauge sleep 70 >>
 << showGauges >>
 << setTime 1:30 >>
 
