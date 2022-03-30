@@ -147,7 +147,7 @@ Fred dit bonne nuit à ses interlocuteurs. Vous aussi. Vous quittez tous les deu
 -> Vite ! Au lit
     <<jump Go_To_Bed_Good>>
 
-<< elseif getGauge("sleep") >= 25 && getGauge("food") >= 50 >>
+<< elseif getGauge("sleep") >= 33 && getGauge("food") >= 33 >>
 Fred_sad: Hey, j'en peux plus. J'y vais.
 You: Déjà ? Tu déclares forfait ?
 Fred_smiling: Yes yes.
