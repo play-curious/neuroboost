@@ -10,7 +10,7 @@ colorID: 8
 Vous êtes lové dans une confortable et douce langueur... Quand...
 On vous secoue brusquement !!!
 
-<< setGauge learning 80 >>
+<< setGauge learning 100 >>
 << setGauge food 70 >>
 << setGauge sleep 70 >>
 << showGauges >>
@@ -47,6 +47,7 @@ position: -950.9030456542969,86.7411298751831
 << music Danse >>
 
 << if !visited("Que_Faire") >>
+<< visit Que_Faire >>
 On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses...
 << endif >>
 

@@ -54,6 +54,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _nodeDisplay: PIXI.Container;
 
   private _gauges: Record<string, gauge.Gauge>;
+  public currentGauges: string[];
 
   constructor() {
     super();
@@ -212,7 +213,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
     if (gaugesName.length === 0) {
-      for (const gaugeName in this._gauges) {
+      for (const gaugeName of this.currentGauges) {
         gaugesName.push(gaugeName);
       }
     }

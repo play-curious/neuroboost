@@ -135,8 +135,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         if (tag.startsWith("gauges")) {
           const values = tag.split(":")[1].trim();
           const gauges = values.split(" ");
-          this.graphics.toggleGauges(true, ...gauges);
-          // this.graphics.initGauges(gauges as (keyof variable.Gauges)[]);
+          debugger;
+          this.graphics.currentGauges = gauges;
         }
       }
     }
