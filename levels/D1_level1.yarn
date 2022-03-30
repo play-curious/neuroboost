@@ -2,7 +2,6 @@ title: Start
 tags:
 position: -1979.929937362671,-817.3228759765625
 ---
-<< empty >>
 << setBackground bedroom >>
 << setTime 8:00 >>
 << loopFX Chime_LOOP 2000 >>
