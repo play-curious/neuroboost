@@ -5,54 +5,17 @@ position: -2447,977
 ---
 << fadeIn 1 >>
 << setBackground bedroom >>
-<< setTime 10:10>>
+<< setTime 10:10 6 >>
 << fadeOut >>
 
-Vous rouvrez les yeux. L'horloge connectée vous informe que vous êtes de nouveau samedi matin. Il est 10 heures passé. Vous allez devoir recommencer tout votre travail de révision pour le Grand Oral... Sauf que cette fois, vous n'entreprenez pas ce labeur pour vous, mais pour Fred. Revivre encore ce week-end, ça va être pénible... Vous regrettez d'avoir insisté auprès des Sages pour sauver Fred... 
-Non, Fred est votre meilleur pote. Iel le mérite...
+Vous rouvrez les yeux. L'horloge connectée vous informe que vous êtes de nouveau dimanche matin.
+Vous allez devoir reprendre à nouveau votre travail de révision pour le Grand Oral... Sauf que cette fois, vous n'entreprenez pas ce labeur pour vous, mais pour Fred. 
 
-Vous entamez cette journée par un petit-déjeuner copieux avant de répondre à votre mère et de filer à votre séance d'entraînement de Jungle Body Beat. Cette séance de dance vous fait un bien fou. Elle vous nettoie l'esprit et le corps. Vous voià motivé pour recommencer votre tâche de révision.
-Avant de vous mettre au travail, vous décidez de vous manger votre déjeuner. Vous choisissez quelque chose de simple, rapide et consistant. Un burger Big Proteins Double Cheese !
+Fred est votre meilleur pote. Iel le mérite...
 
-Enfin, vous rejoignez votre bureau. Même si vous avez presque tout oublié en matière de philosophie quantique, vous savez désormais qu'il faut appliquer le "plan B. Vous attaquez d'emblée ce fameux plan : les fiches de révision. Cela vous fera gagner un temps fou : toute une journée de révision !
+Mais tout d'abord, il faut faire sortir Fred de sa chambre !  
 
--> Le "Plan B".
-[[Fiches_Revision]]
-    << jump Fiches_Revision >>
-===
-title: Fiches_Revision
-tags: 
-colorID: 0
-position: -2142,978
----
-Vous demandez à Room Mate de basculer la pièce en mode "immersion studieuse". Accompagné de votre camarade virtuel des modules "work with me", vous entamez la rédaction de vos fiches de révision. 
-Bien entendu, Vous respectez une pause entre chaque session de travail d'une heure. Vous agrippez votre cycloluth de Feudall et vous vous laissez emporter par les notes archaïques de cet instrument subtilement analogique. 
-Vous n'oubliez pas non plus de vous ménager une pause sieste entre deux sessions, afin de recharger votre corps et votre mental.
-Vous passez tout le reste de la journée à rédiger vos fiches de révision. Fiches dont vous réalisez ensuite une copie, que vous pourrez transmettre à Fred. 
-En effet, alors que vous terminez la rédaction de la dernière fiche, votre horloge connectée vous annonce qu'il est 20 heures. Il est temps de dîner si vous voulez propager [b]la fièvre du samedi soir[/b] à la cafétéria !
-
-Vous avez à peine terminé votre repas que Fred débarque chez vous. Dans sa superbe tenue de cavalier salsatronique. Vous vous empressez d'enfiler votre Holodress Rock Glam et vous filez tous les deux à la fête !
-
--> La soirée à la caféréria !
-[[Fievre_Samedi_Soir]]
-    << jump Fievre_Samedi_Soir >>
-===
-title: Fievre_Samedi_Soir
-tags: 
-colorID: 0
-position: -1846,977
----
-Vous en avez la certitude. Ce samedi soir, la star de la soirée, c'est vous. Vous ne boudez pas votre plaisir, pas plus que celui de la foule. Vous vous laissez envahir par l'esprit du Jungle Body Beat et diffusez cette énergie de joie et de fête à tout le public !
-
-Après votre démonstration de danse, un raz-de-marée d'applaudissements envahit la salle. Le public en veut plus et vous devinez quoi. Vous vous dirigez vers la cyber-guitare. Et, acclamé par une foule en délire, vous lâchez une nouvelle salve de solo métal improvisé !
-
-C'est encore un succès unanime ! Vous savez que vous avez tout donné pour votre public. Il est temps d'aller se coucher, de "recharger vos batteries", comme le disent les Sages.
-
-Vous donnez rendez-vous à Fred. Demain matin, vous irez ensemble faire du footing. Surpris, Fred, vous regarde avec étonnement. Vous n'insistez pas. Ce n'est ni le lieu ni le moment. Vous rejoignez votre chambre. Vous vous déshabillez. Un petit tour aux toilettes et vous vous glissez dans votre lit.
-
--> Au dodo !
-[[Dimanche_Matin]]
-    << jump Dimanche_Matin >>
+<< jump Dimanche_Matin >>
 ===
 title: Dimanche_Matin
 tags: 

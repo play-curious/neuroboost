@@ -1,0 +1,381 @@
+title: Start
+tags: 
+colorID: 0
+position: 564,219
+---
+[[...|Appel_Maman]]
+===
+title: Appel_Maman
+tags: 
+colorID: 0
+position: 807,219
+---
+[[...|Taches_S]]
+===
+title: Taches_S
+tags: 
+colorID: 0
+position: 1038,219
+---
+>><< if isTimeOver("21:00") >>
+
+[[...|Cuisine_S]]
+[[...|Bureau_S]]
+[[...|Lit_S]]
+[[...|Porte_S]]
+[[...|Detente_S]]
+
+<< else >>
+
+[[...|Soir_S]]
+
+<< endif >>
+===
+title: Cuisine_S
+tags: 
+colorID: 0
+position: 1362,245
+---
+[[...|Manger_S]]
+===
+title: Bureau_S
+tags: 
+colorID: 0
+position: 1362,-303
+---
+[[...|Zero_Distraction_S]]
+[[...|Planning_S]]
+[[...|Reviser_S]]
+[[...|Ranger_S]]
+===
+title: Lit_S
+tags: 
+colorID: 0
+position: 1362,490
+---
+[[...|Sieste_S]]
+===
+title: Detente_S
+tags: 
+colorID: 0
+position: 1362,947
+---
+[[...|BingeTV_S]]
+[[...|Musique_S]]
+[[...|Reseaux_S]]
+===
+title: Zero_Distraction_S
+tags: 
+colorID: 0
+position: 1755,-217
+---
+
+===
+title: Planning_S
+tags: 
+colorID: 0
+position: 1755,-437
+---
+
+===
+title: Reviser_S
+tags: 
+colorID: 0
+position: 1755,-662
+---
+
+===
+title: Ranger_S
+tags: 
+colorID: 0
+position: 1755,7
+---
+
+===
+title: Sieste_S
+tags: 
+colorID: 0
+position: 1755,490
+---
+
+===
+title: BingeTV_S
+tags: 
+colorID: 0
+position: 1755,946
+---
+
+===
+title: Musique_S
+tags: 
+colorID: 0
+position: 1755,730
+---
+
+===
+title: Porte_S
+tags: 
+colorID: 0
+position: 1362,1421
+---
+[[...|Sport_S]]
+===
+title: Sport_S
+tags: 
+colorID: 0
+position: 1755,1421
+---
+
+===
+title: Manger_S
+tags: 
+colorID: 0
+position: 1755,245
+---
+
+===
+title: Reseaux_S
+tags: 
+colorID: 0
+position: 1755,1179
+---
+
+===
+title: Soir_S
+tags: 
+colorID: 0
+position: 2013,1992
+---
+// Manger
+
+// Fred débarque
+
+[[Refuser|ReviserSoir_S]]
+[[Suivre Fred|Soiree_S]]
+===
+title: ReviserSoir_S
+tags: 
+colorID: 0
+position: 2291,1843
+---
+[[...|Dormir_S]]
+===
+title: Soiree_S
+tags: 
+colorID: 0
+position: 2292,2176
+---
+<< if visited("Sport_S") >>
+
+// Concours gagné
+
+<< else >>
+
+// Concours perdu
+
+<< endif >>
+
+[[...|Dormir_S]]
+===
+title: Dormir_S
+tags: 
+colorID: 0
+position: 2615,2003
+---
+[[...|Reveil_D]]
+===
+title: Reveil_D
+tags: 
+colorID: 0
+position: 2870,2004
+---
+[[...|Fred_D]]
+===
+title: Fred_D
+tags: 
+colorID: 0
+position: 3122,2000
+---
+[[...|Taches_D]]
+===
+title: Taches_D
+tags: 
+colorID: 0
+position: 3366,2002
+---
+>><< if isTimeOver("20:00") >>
+[[...|Diner_D]]
+<< endif >>
+
+[[...|Cuisine_D]]
+[[...|Lit_D]]
+[[...|Bureau_D]]
+[[...|Detente_D]]
+[[...|Porte_D]]
+===
+title: Cuisine_D
+tags: 
+colorID: 0
+position: 3626,1558
+---
+[[...|Manger_D]]
+===
+title: Lit_D
+tags: 
+colorID: 0
+position: 3631,1788
+---
+[[...|Sieste_D]]
+===
+title: Bureau_D
+tags: 
+colorID: 0
+position: 3631,2111
+---
+[[...|Reviser_D]]
+[[...|Planning_D]]
+===
+title: Detente_D
+tags: 
+colorID: 0
+position: 3635,2864
+---
+[[...|Musique_D]]
+[[...|Reseaux_D]]
+===
+title: Porte_D
+tags: 
+colorID: 0
+position: 3639,2506
+---
+[[...|Courses_D]]
+===
+title: Sieste_D
+tags: 
+colorID: 0
+position: 3899,1786
+---
+
+===
+title: Manger_D
+tags: 
+colorID: 0
+position: 3902,1556
+---
+
+===
+title: Reviser_D
+tags: 
+colorID: 0
+position: 3895,2010
+---
+[[...|AppelMamie_D]]
+===
+title: Planning_D
+tags: 
+colorID: 0
+position: 3898,2248
+---
+
+===
+title: Courses_D
+tags: 
+colorID: 0
+position: 3893,2506
+---
+
+===
+title: Musique_D
+tags: 
+colorID: 0
+position: 3885,2756
+---
+
+===
+title: Reseaux_D
+tags: 
+colorID: 0
+position: 3886,2994
+---
+
+===
+title: AppelMamie_D
+tags: 
+colorID: 0
+position: 4144,2014
+---
+>><< if visited("Planning") >>
+
+-> Appel long
+-> Appel court
+
+<< else >>
+
+-> Appel long
+
+<< endif >>
+===
+title: Diner_D
+tags: 
+colorID: 0
+position: 4352,3295
+---
+[[...|BingeTV_D]]
+===
+title: BingeTV_D
+tags: 
+colorID: 0
+position: 4621,3291
+---
+[[...|Dormir_D]]
+===
+title: Dormir_D
+tags: 
+colorID: 0
+position: 4894,3287
+---
+[[...|Reveil_L]]
+===
+title: Reveil_L
+tags: 
+colorID: 0
+position: 5156,3284
+---
+[[...|Fred_L]]
+===
+title: Fred_L
+tags: 
+colorID: 0
+position: 5408,3271
+---
+[[...|Examen_L]]
+===
+title: Examen_L
+tags: 
+colorID: 0
+position: 5654,3274
+---
+>><< if <winCondition> >>
+
+[[...|SageVictoire]]
+
+<< else >>
+
+[[...|SageDefaite]]
+
+<< endif >>
+===
+title: SageVictoire
+tags: 
+colorID: 0
+position: 5969,3442
+---
+
+===
+title: SageDefaite
+tags: 
+colorID: 0
+position: 5964,3123
+---
+
+===

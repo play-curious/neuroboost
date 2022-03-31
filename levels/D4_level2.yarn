@@ -142,8 +142,6 @@ tags:
 position: -1617.8306884765625,24.821166694164276
 colorID: 1
 ---
-<<empty>>
-
 << if visited("Notes_You", "Notes_Fred", "Redaction", "Plan") >>
 <<advanceTime 5:00 20:00 0:05>>
 <<jump Exit_Bibli>>

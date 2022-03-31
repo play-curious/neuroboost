@@ -71,7 +71,6 @@ const startingScene =
 
 // prettier-ignore
 const stateNames = [
-  "characters",
   "D1_level1",
   "journal_method",
   "D1_level2",
@@ -88,12 +87,6 @@ const stateNames = [
   "D5_level1",
   "journal_stress",
   "D5_level2",
-  "D6_level1",
-  "journal_organisation",
-  "D6_level2",
-  "D7_level1",
-  "journal_success",
-  "D7_level2",
   "End_Screen",
 ];
 
@@ -202,3 +195,4 @@ booyah.go({
 // Resize now, and force the resize to happen when the window size changes
 resizeHtmlLayer(screenSize);
 window.addEventListener("resize", () => resizeHtmlLayer(screenSize));
+document.addEventListener("fullscreenchange", () => resizeHtmlLayer(screenSize));

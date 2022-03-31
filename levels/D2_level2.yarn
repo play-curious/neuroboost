@@ -5,7 +5,7 @@ tags: noUi
 position: -1391.4708251953125,85.48695087432861
 colorID: 8
 ---
-<< fadeIn >>
+<< fadeIn 1 >>
 
 Vous êtes lové dans une confortable et douce langueur... Quand...
 On vous secoue brusquement !!!
@@ -108,6 +108,7 @@ You: Oui, c'est ça.
 BarBot: Une boule magique alors.
 You: Il y a quoi au juste dedans ?
 BarBot: Des molécules actives de synthèse. C'est un stupéfiant de catégorie 1, banal, à consommer sans modération.
+<< hide >>
 
 -> Vous préférez ne pas avaler ce truc
     <<jump Que_Faire>>
@@ -147,7 +148,7 @@ Fred dit bonne nuit à ses interlocuteurs. Vous aussi. Vous quittez tous les deu
 -> Vite ! Au lit
     <<jump Go_To_Bed_Good>>
 
-<< elseif getGauge("sleep") >= 25 && getGauge("food") >= 50 >>
+<< elseif getGauge("sleep") >= 33 && getGauge("food") >= 33 >>
 Fred_sad: Hey, j'en peux plus. J'y vais.
 You: Déjà ? Tu déclares forfait ?
 Fred_smiling: Yes yes.

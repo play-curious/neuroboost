@@ -99,8 +99,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     this.config.dialogScene = this;
 
-    this._initRunner();
-
     command.fxLoops.clear();
 
     // Setup graphics
@@ -109,6 +107,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this.graphics,
       entity.extendConfig({ container: this.config.container })
     );
+
+    // Init gauges
+    this.graphics.initGauges(["learning", "sleep", "food", "mentalLoad", "stress"]); 
 
     // Setup clock
     this._activateChildEntity(
@@ -119,8 +120,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this.config.variableStorage.get("time")
     );
 
+    this._initRunner();
     this._parseFileTags();
-
     this._advance(-1);
   }
 
@@ -150,7 +151,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         if (tag.startsWith("gauges")) {
           const values = tag.split(":")[1].trim();
           const gauges = values.split(" ");
-          this.graphics.initGauges(gauges as (keyof variable.Gauges)[]);
+          this.graphics.toggleGauges(true, ...gauges);
+          // this.graphics.initGauges(gauges as (keyof variable.Gauges)[]);
         }
       }
     }

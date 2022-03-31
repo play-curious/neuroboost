@@ -5,7 +5,7 @@ tags:
 colorID: 8
 position: -1863,65
 ---
-<< fadeIn 1 >>
+<< fadeIn >>
 << setTime 8:00 3 >>
 << setBackground bedroom >>
 << setGauge learning 0 >>
