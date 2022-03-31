@@ -50,9 +50,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private creditButton: PIXI.Text;
   private creditsEntity: booyah.CreditsEntity;
   private title: PIXI.Sprite;
-  private history: PIXI.Text;
-  private historyText: PIXI.Text;
-  private historyContainer: scroll.Scrollbox;
+  private historyButton: PIXI.Text;
   private journal: PIXI.Text;
   private journalUpdated: boolean;
 
@@ -141,7 +139,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.journal.anchor.set(0.5);
       this.journal.position.set(
         this.popupBackground.width / 2,
-        this.popupBackground.height * 0.31
+        this.popupBackground.height * 0.29
       );
       this.journal.interactive = true;
       this.journal.buttonMode = false;
@@ -150,20 +148,20 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
-      this.history = this.makeText("History", {
+      this.historyButton = this.makeText("History", {
         fontFamily: "Ubuntu",
         fill: "white",
         fontSize: 50,
       });
-      this.history.anchor.set(0.5);
-      this.history.position.set(
+      this.historyButton.anchor.set(0.5);
+      this.historyButton.position.set(
         this.popupBackground.width / 2,
-        this.popupBackground.height * 0.35
+        this.popupBackground.height * 0.34
       );
-      this.history.interactive = true;
-      this.history.buttonMode = true;
-      this._on(this.history, "pointertap", this._showHistory);
-      this.popupBackground.addChild(this.history);
+      this.historyButton.interactive = true;
+      this.historyButton.buttonMode = true;
+      this._on(this.historyButton, "pointertap", this._showHistory);
+      this.popupBackground.addChild(this.historyButton);
     }
 
     {
@@ -319,36 +317,6 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     this._entityConfig.container.addChild(this.container);
     this._entityConfig.container.addChild(this.menuButton);
-
-    this.historyContainer = new scroll.Scrollbox({
-      overflowX: "none",
-      overflowY: "scroll",
-      boxWidth: 1920,
-      boxHeight: 1080,
-    });
-
-    this.historyText = this.makeText("", {
-      fontFamily: "Ubuntu",
-      fontSize: 30,
-      fill: 0xffffff,
-    });
-
-    this._activateChildEntity(
-      this.historyContainer,
-      entity.extendConfig({
-        container: this.popupBackground,
-      })
-    );
-
-    this.historyContainer.content.interactive = true;
-    this.historyContainer.content.addChild(this.historyText);
-    this.historyContainer.refresh();
-
-    this._once(this.historyContainer.content, "click", () => {
-      this.historyContainer.content.visible = false;
-    });
-
-    this.historyContainer.content.visible = false;
   }
 
   _teardown() {
@@ -445,9 +413,46 @@ export class Menu extends extension.ExtendedCompositeEntity {
   }
 
   private _showHistory() {
-    //@ts-ignore
-    this.historyText.text = window.dialogScene.getHistoryText();
-    this.historyContainer.container.visible = true;
+    const background = new PIXI.Graphics()
+      .beginFill(0x000000, 0.8)
+      .drawRect(0, 0, 1920, 1080)
+      .endFill();
+
+    background.interactive = true;
+    background.buttonMode = true;
+
+    this.container.addChild(background);
+
+    const scrollBox = new scroll.Scrollbox({
+      overflowX: "none",
+      overflowY: "scroll",
+      boxWidth: 1720,
+      boxHeight: 880,
+    });
+
+    this._activateChildEntity(
+      scrollBox,
+      entity.extendConfig({
+        container: this.container,
+      })
+    );
+
+    scrollBox.container.position.set(100);
+    scrollBox.content.addChild(
+      // @ts-ignore
+      this.makeText(dialogScene.getHistoryText(), {
+        fontFamily: "Ubuntu",
+        fontSize: 30,
+        fill: 0xffffff,
+      })
+    );
+
+    scrollBox.refresh();
+
+    background.once("click", () => {
+      this.container.removeChild(background);
+      this._deactivateChildEntity(scrollBox);
+    });
   }
 
   private _onTapPCLogo() {
