@@ -5,7 +5,7 @@ tags:
 colorID: 0
 position: -941,-697
 ---
-<< fadeIn 1 >>
+<< fadeIn >>
 << setGauge learning 0 >>
 << setGauge sleep 100 >>
 << setGauge food 100 >>
@@ -277,6 +277,7 @@ Ils sont parvenu à décryogéniser Jaba Fett. Ils en besoin car lui seul sait o
 Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran ! Vont-ils parvenir à arrêter Dude ? L'empêcher de libérer la galaxie du joug de l'Imperium Noir ?
 Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples: les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..
 << stopFX TVStarwars_LOOP >>
+<< hide >>
 << advanceTime 3:00 >>
 << addToGauge food 30>>
 << addToGauge mentalLoad 40>>
