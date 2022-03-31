@@ -212,6 +212,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
+    if(this.currentGauges === undefined) return;
+
     if (gaugesName.length === 0) {
       for (const gaugeName of this.currentGauges) {
         gaugesName.push(gaugeName);
