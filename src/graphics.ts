@@ -1,9 +1,9 @@
 import * as _ from "underscore";
 import * as PIXI from "pixi.js";
-import * as scroll from "pixi-scrollbox";
 
 import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
+import * as scroll from "booyah/src/scroll";
 import * as tween from "booyah/src/tween";
 
 import * as filter from "./graphics_filter";
@@ -24,7 +24,6 @@ const maxLineLength = 68;
 const defilementDurationPerLetter = 25;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
-  private _history: scroll.Scrollbox | null;
   private _lastBg: string;
   private _lastBgMood: string;
   private _lastCharacter: string;
@@ -45,7 +44,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _fxLayer: PIXI.Container;
   private _characterLayer: PIXI.Container;
   private _closeupLayer: PIXI.Container;
-  private _historyLayer: PIXI.Container;
   private _miniGameLayer: PIXI.Container;
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
@@ -74,7 +72,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
-    this._history = null;
     this._container = new PIXI.Container();
     this.config.container.addChild(this._container);
 
@@ -85,12 +82,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._uiLayer = new PIXI.Container();
     this._dialogLayer = new PIXI.Container();
     this._fxLayer = new PIXI.Container();
-    this._historyLayer = new PIXI.Container();
-
-    this._historyLayer.visible = false;
-    this._historyLayer.addChild(
-      new PIXI.Graphics().beginFill(0, 0.8).drawRect(0, 0, 1920, 1080).endFill()
-    );
 
     this._container.addChild(
       this._backgroundLayer,
@@ -99,8 +90,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._uiLayer,
       this._dialogLayer,
       this._fxLayer,
-      this._miniGameLayer,
-      this._historyLayer
+      this._miniGameLayer
     );
 
     this._dialogSpeaker = new PIXI.Container();
@@ -780,47 +770,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       // Place character on screen
       this._characterLayer.addChild(characterCE.container);
       //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
-    }
-  }
-
-  toggleHistory() {
-    if (this._history === null) {
-      this._history = new scroll.Scrollbox({
-        overflowX: "none",
-        overflowY: "scroll",
-        boxWidth: 1920,
-        boxHeight: 1080,
-      });
-      this._history.interactive = true;
-      // @ts-ignore
-      this._history.content.addChild(
-        this.makeText(
-          this.config.dialogScene.history
-            .map(([type, text]) => {
-              return type.includes("choice")
-                ? `[${text}]`
-                : !type
-                ? `<i>${text}</i>`
-                : `<b>${type.split("@")[0]}</b>: ${text}`;
-            })
-            .join("\n\n"),
-          {
-            fontFamily: "Ubuntu",
-            fontSize: 30,
-            fill: 0xffffff,
-          }
-        )
-      );
-      this._history.update();
-      this._once(this._history, "click", () => {
-        this.toggleHistory();
-      });
-      this._historyLayer.visible = true;
-      this._historyLayer.addChild(this._history);
-    } else {
-      this._historyLayer.visible = false;
-      this._historyLayer.removeChild(this._history);
-      this._history = null;
     }
   }
 
