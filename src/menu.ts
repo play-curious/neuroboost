@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js";
 
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
+import * as scroll from "booyah/src/scroll";
 import * as util from "booyah/src/util";
 
 import * as extension from "./extension";
@@ -49,6 +50,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private creditButton: PIXI.Text;
   private creditsEntity: booyah.CreditsEntity;
   private title: PIXI.Sprite;
+  private historyButton: PIXI.Text;
   private journal: PIXI.Text;
   private journalUpdated: boolean;
 
@@ -137,7 +139,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.journal.anchor.set(0.5);
       this.journal.position.set(
         this.popupBackground.width / 2,
-        this.popupBackground.height * 0.31
+        this.popupBackground.height * 0.29
       );
       this.journal.interactive = true;
       this.journal.buttonMode = false;
@@ -146,7 +148,24 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
-      this.creditButton = this.makeText("credits", {
+      this.historyButton = this.makeText("History", {
+        fontFamily: "Ubuntu",
+        fill: "white",
+        fontSize: 50,
+      });
+      this.historyButton.anchor.set(0.5);
+      this.historyButton.position.set(
+        this.popupBackground.width / 2,
+        this.popupBackground.height * 0.34
+      );
+      this.historyButton.interactive = true;
+      this.historyButton.buttonMode = true;
+      this._on(this.historyButton, "pointertap", this._showHistory);
+      this.popupBackground.addChild(this.historyButton);
+    }
+
+    {
+      this.creditButton = this.makeText("Credits", {
         fontFamily: "Ubuntu",
         fill: "white",
         fontSize: 50,
@@ -391,6 +410,49 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private _showCredits() {
     this.creditsEntity = new booyah.CreditsEntity(creditsOptions);
     this._activateChildEntity(this.creditsEntity);
+  }
+
+  private _showHistory() {
+    const background = new PIXI.Graphics()
+      .beginFill(0x000000, 0.8)
+      .drawRect(0, 0, 1920, 1080)
+      .endFill();
+
+    background.interactive = true;
+    background.buttonMode = true;
+
+    this.container.addChild(background);
+
+    const scrollBox = new scroll.Scrollbox({
+      overflowX: "none",
+      overflowY: "scroll",
+      boxWidth: 1720,
+      boxHeight: 880,
+    });
+
+    this._activateChildEntity(
+      scrollBox,
+      entity.extendConfig({
+        container: this.container,
+      })
+    );
+
+    scrollBox.container.position.set(100);
+    scrollBox.content.addChild(
+      // @ts-ignore
+      this.makeText(dialogScene.getHistoryText(), {
+        fontFamily: "Ubuntu",
+        fontSize: 30,
+        fill: 0xffffff,
+      })
+    );
+
+    scrollBox.refresh();
+
+    background.once("click", () => {
+      this.container.removeChild(background);
+      this._deactivateChildEntity(scrollBox);
+    });
   }
 
   private _onTapPCLogo() {
