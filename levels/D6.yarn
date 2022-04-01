@@ -23,7 +23,9 @@ Vous pensez à votre grand-mère, mais vous avez l'esprit serein et optimiste.
 << loopFX PhoneRing_LOOP 5000 >>
 
 Le sort aurait-il perçu vos pensées : votre palmphone vibre, c'est votre mère. Elle veut vous parler...
-[[Répondre|Appel_Maman]]
+// Option "Répondre" moved to the end of this node
+-> Répondre
+    <<jump Appel_Maman>>
 ===
 title: Appel_Maman
 tags: 
@@ -52,7 +54,7 @@ Maman@holo: Ciao.
 
 Bon, il est temps de s'y mettre. C'est qu'il y a beaucoup a réviser, même pour un week-end entier.
 
-[[Taches_S]]
+<<jump Taches_S>>
 ===
 title: Taches_S
 tags: freechoice
@@ -64,15 +66,27 @@ position: 1036,139
 << fadeOut >>
 
 << if !isTimeOver("20:00") >>
-[[Cuisine@cuisine|Cuisine_S]]
-[[Bureau@bureau|Bureau_S]]
-[[Lit@lit|Lit_S]]
-[[Porte@porte|Porte_S]]
-[[Salon@salon|Detente_S]]
+// Option "Cuisine@cuisine" moved to the end of this node
+// Option "Bureau@bureau" moved to the end of this node
+// Option "Lit@lit" moved to the end of this node
+// Option "Porte@porte" moved to the end of this node
+// Option "Salon@salon" moved to the end of this node
 << else >>
 Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories.
-[[Aller dîner|Soir_S]]
+// Option "Aller dîner" moved to the end of this node
 << endif >>
+-> Cuisine@cuisine <<if (!isTimeOver("20:00"))>>
+    <<jump Cuisine_S>>
+-> Bureau@bureau <<if (!isTimeOver("20:00"))>>
+    <<jump Bureau_S>>
+-> Lit@lit <<if (!isTimeOver("20:00"))>>
+    <<jump Lit_S>>
+-> Porte@porte <<if (!isTimeOver("20:00"))>>
+    <<jump Porte_S>>
+-> Salon@salon <<if (!isTimeOver("20:00"))>>
+    <<jump Detente_S>>
+-> Aller dîner <<if !(!isTimeOver("20:00"))>>
+    <<jump Soir_S>>
 ===
 title: Cuisine_S
 tags: subchoice
@@ -84,9 +98,13 @@ position: 1371,274
 << fadeOut >>
 
 << if !visited("MangerMidi_S") >>
-[[Manger saînement|MangerSain_S]]
-[[Manger vite|MangerVite_S]]
+// Option "Manger saînement" moved to the end of this node
+// Option "Manger vite" moved to the end of this node
 << end >>
+-> Manger saînement <<if (!visited("MangerMidi_S"))>>
+    <<jump MangerSain_S>>
+-> Manger vite <<if (!visited("MangerMidi_S"))>>
+    <<jump MangerVite_S>>
 ===
 title: Bureau_S
 tags: subchoice
@@ -97,10 +115,18 @@ position: 1371,-438
 << setBackground bedroom desk >>
 << fadeOut >>
 
-[[Demander au Roommate de couper les distractions|Zero_Distraction_S]]
-[[Plannifier le travail à faire|Planning_S]]
-[[Réviser la Philosophie Quantique|Reviser_S]]
-[[Ranger le bureau|Ranger_S]]
+// Option "Demander au Roommate de couper les distractions" moved to the end of this node
+// Option "Plannifier le travail à faire" moved to the end of this node
+// Option "Réviser la Philosophie Quantique" moved to the end of this node
+// Option "Ranger le bureau" moved to the end of this node
+-> Demander au Roommate de couper les distractions
+    <<jump Zero_Distraction_S>>
+-> Plannifier le travail à faire
+    <<jump Planning_S>>
+-> Réviser la Philosophie Quantique
+    <<jump Reviser_S>>
+-> Ranger le bureau
+    <<jump Ranger_S>>
 ===
 title: Lit_S
 tags: subchoice
@@ -111,7 +137,9 @@ position: 1371,621
 << setBackground bedroom bed >>
 << fadeOut >>
 
-[[Faire une sieste|Sieste_S]]
+// Option "Faire une sieste" moved to the end of this node
+-> Faire une sieste
+    <<jump Sieste_S>>
 ===
 title: Detente_S
 tags: subchoice
@@ -122,9 +150,15 @@ position: 1371,1082
 << setBackground bedroom chill >>
 << fadeOut >>
 
-[[Regarder Star Mars|BingeTV_S]]
-[[Jouer du Cycloluth|Musique_S]]
-[[Chatter en ligne|Reseaux_S]]
+// Option "Regarder Star Mars" moved to the end of this node
+// Option "Jouer du Cycloluth" moved to the end of this node
+// Option "Chatter en ligne" moved to the end of this node
+-> Regarder Star Mars
+    <<jump BingeTV_S>>
+-> Jouer du Cycloluth
+    <<jump Musique_S>>
+-> Chatter en ligne
+    <<jump Reseaux_S>>
 ===
 title: Zero_Distraction_S
 tags: 
@@ -134,7 +168,7 @@ position: 1744,-797
 Vous demandez à votre RoomMate de basculer votre chambre en mode "immersion studieuse".
 RoomMate s'exécute, et empêche les distraction extérieures de pouvoir vous perturber, en ne vous laissant accès qu'au strict minimum pour réviser dans les meilleures condiditions.
 
-[[Taches_S]]
+<<jump Taches_S>>
 ===
 title: Planning_S
 tags: 
@@ -155,7 +189,7 @@ Ensuite vous passez aux tâches secondaires: Votre entraînement de Jungle Body 
 Puis, la soirée à la cafétéria, celle qui va faire remonter votre niveau de fun et vous permettre de vous lacher au concours de danse.
 Et en plus petites tâches, une pause sieste, et tout les autres éléments de détente à votre disposition.
 
-[[Taches_S]]
+<<jump Taches_S>>
 ===
 title: Reviser_S
 tags: 
@@ -185,7 +219,7 @@ Vous êtes satisfait de votre rangement, vous vous sentez tout de suite plus à 
 
 << advanceTime 0:30 >>
 
-[[Taches_S]]
+<<jump Taches_S>>
 ===
 title: Sieste_S
 tags: 
@@ -202,7 +236,7 @@ Trêve de paroles, vous vous asseyez sur votre lit et vous tombez presqu'aussit�
 Ce n'est seulement qu'après plus d'une demi-heure que vous rouvrez les yeux.
 Ce somme, vous en aviez bien besoin...
 
-[[Taches_S]]
+<<jump Taches_S>>
 ===
 title: BingeTV_S
 tags: 
@@ -222,7 +256,7 @@ Hé oui, ce ne sont pas les commandos de choc de l'Impérium Noir qui ont fini p
 Vous avez déjà passer 2 heures devant votre série, mais vous voulez vraiment voir la suite...
 -> Continuez à regarder
 -> Retournez à vos occupations
-    [[Taches_S]]
+    <<jump Taches_S>>
 
 Est-ce la fin pour Dude ? Vous vous doutiez que non. Et vous aviez raison... 
 L'ignoble pirate des sables, et vous-même, ignoriez que Dude avait été immergé dans le chaudron de Mana, juste après sa naissance. Le corps et l'esprit de Dude Highwalker sont saturés de récepteurs de Mana.
@@ -237,7 +271,7 @@ Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de b
 
 Après votre pause Star Mars...
 
-[[Taches_S]]
+<<jump Taches_S>>
 ===
 title: Musique_S
 tags: 
@@ -253,14 +287,16 @@ Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare
 << advanceTime 0:30 >>
 << music Neutral >>
 
-[[Taches_S]]
+<<jump Taches_S>>
 ===
 title: Porte_S
 tags: subchoice
 colorID: 6
 position: 1371,1548
 ---
-[[Aller au club de Jungle Body Beat|Sport_S]]
+// Option "Aller au club de Jungle Body Beat" moved to the end of this node
+-> Aller au club de Jungle Body Beat
+    <<jump Sport_S>>
 ===
 title: Sport_S
 tags: 
@@ -298,7 +334,7 @@ Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous a
 
 << music Neutral >>
 
-[[Taches_S]]
+<<jump Taches_S>>
 ===
 title: Reseaux_S
 tags: 
@@ -313,7 +349,7 @@ Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à vo
 Vous vous sentez calme et confiant.
 << advanceTime 2:00 20:00 0:30 >>
 
-[[Taches_S]]
+<<jump Taches_S>>
 ===
 title: Soir_S
 tags: 
@@ -344,15 +380,21 @@ Fred: Arrête. Tu m'as promis. Et rappelle-toi comment tu as assuré mardi soir.
 You: Heu...
 Fred: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller !
 
-[[Refuser|ReviserSoir_S]]
-[[Suivre Fred|Soiree_S]]
+// Option "Refuser" moved to the end of this node
+// Option "Suivre Fred" moved to the end of this node
+-> Refuser
+    <<jump ReviserSoir_S>>
+-> Suivre Fred
+    <<jump Soiree_S>>
 ===
 title: ReviserSoir_S
 tags: 
 colorID: 0
 position: 2201,1707
 ---
-[[Aller se coucher|Dormir_S]]
+// Option "Aller se coucher" moved to the end of this node
+-> Aller se coucher
+    <<jump Dormir_S>>
 ===
 title: Soiree_S
 tags: 
@@ -385,7 +427,9 @@ Maintenant, il va falloir défendre votre réputation.
 
 << endif >>
 
-[[Aller se coucher|Dormir_S]]
+// Option "Aller se coucher" moved to the end of this node
+-> Aller se coucher
+    <<jump Dormir_S>>
 ===
 title: Dormir_S
 tags: 
@@ -407,7 +451,9 @@ Vous quittez la cafétéria et rejoignez votre chambre.
 
 Vous vous déshabillez fissa, un petit tour aux toilettes et vous vous glissez dans votre lit.
 
-[[Dodo|Reveil_D]]
+// Option "Dodo" moved to the end of this node
+-> Dodo
+    <<jump Reveil_D>>
 ===
 title: Reveil_D
 tags: 
@@ -434,7 +480,7 @@ Mais vous vous rendez compte qu'il ne vous reste plus rien pour manger...
 
 << advanceTime 0:30 >>
 
-[[Fred_D]]
+<<jump Fred_D>>
 ===
 title: Fred_D
 tags: 
@@ -443,7 +489,9 @@ position: 3122,1884
 ---
 // Aller chercher fred
 
-[[Retourner à votre journée|Taches_D]]
+// Option "Retourner à votre journée" moved to the end of this node
+-> Retourner à votre journée
+    <<jump Taches_D>>
 ===
 title: Taches_D
 tags: 
@@ -455,14 +503,26 @@ position: 3366,1884
 << fadeOut >>
 
 << if isTimeOver("20:00") >>
-[[...|Diner_D]]
+// Option "..." moved to the end of this node
 << endif >>
 
-[[Cuisine@cuisine|Cuisine_D]]
-[[Lit@lit|Lit_D]]
-[[Bureau@bureau|Bureau_D]]
-[[Detente@detente|Detente_D]]
-[[Porte@porte|Porte_D]]
+// Option "Cuisine@cuisine" moved to the end of this node
+// Option "Lit@lit" moved to the end of this node
+// Option "Bureau@bureau" moved to the end of this node
+// Option "Detente@detente" moved to the end of this node
+// Option "Porte@porte" moved to the end of this node
+-> ... <<if (isTimeOver("20:00"))>>
+    <<jump Diner_D>>
+-> Cuisine@cuisine
+    <<jump Cuisine_D>>
+-> Lit@lit
+    <<jump Lit_D>>
+-> Bureau@bureau
+    <<jump Bureau_D>>
+-> Detente@detente
+    <<jump Detente_D>>
+-> Porte@porte
+    <<jump Porte_D>>
 ===
 title: Cuisine_D
 tags: subchoice
@@ -473,8 +533,10 @@ position: 3699,1779
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
-[[Manger un petit plat|Manger_D]]
+// Option "Manger un petit plat" moved to the end of this node
 // Long/Court ? (comme Cuisine_S)
+-> Manger un petit plat
+    <<jump Manger_D>>
 ===
 title: Lit_D
 tags: subchoice
@@ -485,7 +547,9 @@ position: 3699,2059
 << setBackground bedroom bed >>
 << fadeOut >>
 
-[[Se reposer un peu|Sieste_D]]
+// Option "Se reposer un peu" moved to the end of this node
+-> Se reposer un peu
+    <<jump Sieste_D>>
 ===
 title: Bureau_D
 tags: subchoice
@@ -497,15 +561,21 @@ position: 3699,1466
 << fadeOut >>
 
 << if !visited("revision4") >>
-[[Continuer les révisions|Reviser_D]]
+// Option "Continuer les révisions" moved to the end of this node
 << endif >>
 
 // Both #once
 << if !visited("Planning_S") >>
-[[Préparer le planning|Planning_D]]
+// Option "Préparer le planning" moved to the end of this node
 << else >>
-[[Revoir le planning|Planning_D]]
+// Option "Revoir le planning" moved to the end of this node
 << endif >>
+-> Continuer les révisions <<if (!visited("revision4"))>>
+    <<jump Reviser_D>>
+-> Préparer le planning <<if (!visited("Planning_S"))>>
+    <<jump Planning_D>>
+-> Revoir le planning <<if !(!visited("Planning_S"))>>
+    <<jump Planning_D>>
 ===
 title: Detente_D
 tags: subchoice
@@ -516,15 +586,21 @@ position: 3699,2359
 << setBackground bedroom chill >>
 << fadeOut >>
 
-[[Faire de la cycloluthe|Musique_D]]
-[[Chatter en ligne|Reseaux_D]]
+// Option "Faire de la cycloluthe" moved to the end of this node
+// Option "Chatter en ligne" moved to the end of this node
+-> Faire de la cycloluthe
+    <<jump Musique_D>>
+-> Chatter en ligne
+    <<jump Reseaux_D>>
 ===
 title: Porte_D
 tags: subchoice
 colorID: 6
 position: 3699,2650
 ---
-[[Aller faire les courses|Courses_D]]
+// Option "Aller faire les courses" moved to the end of this node
+-> Aller faire les courses
+    <<jump Courses_D>>
 ===
 title: Sieste_D
 tags: 
@@ -540,7 +616,7 @@ Vous vous réveillez ensuite, de bonne humeur et le corps détendu.
 
 << advanceTime 0:30 >>
 
-[[Taches_D]]
+<<jump Taches_D>>
 ===
 title: Manger_D
 tags: 
@@ -555,7 +631,7 @@ Vous vous cuisinez un plat de pâtes à la carnobara. Autant dire que ça vous r
 
 C'est dimanche, jour de repos. Cependant, il serait judicieux continuer à vous préparer à votre grand oral de demain.
 
-[[Taches_D]]
+<<jump Taches_D>>
 ===
 title: Reviser_D
 tags: 
@@ -575,10 +651,12 @@ position: 4011,1275
 
 << if !visited("reviser_D") >>
 << visit reviser_D >>
-[[Répondre|AppelMamie_D]]
+// Option "Répondre" moved to the end of this node
 << endif >>
 
 [[|Taches_D]]
+-> Répondre <<if (!visited("reviser_D"))>>
+    <<jump AppelMamie_D>>
 ===
 title: Planning_D
 tags: 
@@ -591,7 +669,7 @@ position: 4011,1524
 
 << endif >>
 
-[[Taches_D]]
+<<jump Taches_D>>
 ===
 title: Courses_D
 tags: 
@@ -604,7 +682,7 @@ position: 4011,2838
 
 // YText courses
 
-[[Taches_D]]
+<<jump Taches_D>>
 ===
 title: Musique_D
 tags: 
@@ -620,7 +698,7 @@ Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare
 << advanceTime 0:30 >>
 << music Neutral >>
 
-[[Taches_D]]
+<<jump Taches_D>>
 ===
 title: Reseaux_D
 tags: 
@@ -635,7 +713,7 @@ Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à vo
 Vous vous sentez calme et confiant.
 << advanceTime 2:00 20:00 0:30 >>
 
-[[Taches_D]]
+<<jump Taches_D>>
 ===
 title: AppelMamie_D
 tags: 
@@ -648,7 +726,7 @@ position: 4297,1275
 -> Appel long
 
 
-[[Taches_D]]
+<<jump Taches_D>>
 ===
 title: Diner_D
 tags: 
@@ -667,7 +745,7 @@ C'est fin et ça nourrit bien son étudiant. Vous débarrassez la table et vous 
 
 << advanceTime 0:30 >>
 
-[[BingeTV_D]]
+<<jump BingeTV_D>>
 ===
 title: BingeTV_D
 tags: 
@@ -691,7 +769,9 @@ Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de b
 << stopFX TVStarwars_LOOP >>
 << hide >>
 
-[[Au dodo !|Dormir_D]]
+// Option "Au dodo !" moved to the end of this node
+-> Au dodo !
+    <<jump Dormir_D>>
 ===
 title: Dormir_D
 tags: 
@@ -700,7 +780,7 @@ position: 4142,3911
 ---
 Vous vous allongez sur le lit pour une courte pause. Vous mettez un réveil pour vous empêchez de sombrer dans le sommeil profond. Vous fermez les yeux... 
 
-[[Reveil_L]]
+<<jump Reveil_L>>
 ===
 title: Reveil_L
 tags: 
@@ -724,13 +804,13 @@ Vous prenez le temps de petit-déjeuner, pour mettre toutes les chances de votre
 
 Une fois terminé, vous essayez d'appeler Fred pour votre séance de sport, mais il semblerait qu'il n'ait toujours pas envie de répondre. Il doit sûrement être concentré dans ses révisions.
 
-[[Jogging_L]]
+<<jump Jogging_L>>
 
 << else >>
 
 Une fois terminé, vous vous assayez à votre bureau, vous sentez qu'il vous manque encore des notions.
 
-[[RevisionWeb_L]]
+<<jump RevisionWeb_L>>
 
 << endif >>
 ===
@@ -741,7 +821,7 @@ position: 5223,3741
 ---
 // TODO: Dire ce que le joueur a bien fait
 
-[[JournalMental]]
+<<jump JournalMental>>
 ===
 title: MangerSain_S
 tags: 
@@ -756,7 +836,7 @@ C'est prêt à manger !
 
 Vous vous sentez tout de suite mieux et d'attaque pour la suite.
 << visit MangerMidi_S >>
-[[Taches_S]]
+<<jump Taches_S>>
 ===
 title: MangerVite_S
 tags: 
@@ -771,7 +851,7 @@ Un burger Big Proteins Double Cheese, c'est très rapide à cuisiner, il n'y a p
 Vous rangez rapidement la vaisselle, et vous y retournez.
 
 << visit MangerMidi_S >>
-[[Taches_S]]
+<<jump Taches_S>>
 ===
 title: Jogging_L
 tags: 
@@ -786,7 +866,7 @@ Tant pis, vous allez en profiter pour repenser à tout ce que vous avez révisé
 
 // Direction l'EXAM1
 
-[[ExamenVictoire_L]]
+<<jump ExamenVictoire_L>>
 ===
 title: RevisionWeb_L
 tags: 
@@ -800,7 +880,7 @@ Soit, elles ne détaillent pas assez les mécanismes et les courants philosophiq
 Soit, elles se veulent exhaustives et finissent par devenir trop longue, trop soporifiques. Pire qu'un cours magistral avec un professeur IRL.
 Vous arrêtez la torture. Vous avez perdu votre temps à papillonner sur le web. Pour un résultat finalement décevant. Stop !
 
-[[ExamenDefaite_L]]
+<<jump ExamenDefaite_L>>
 ===
 title: ExamenDefaite_L
 tags: 
@@ -861,11 +941,11 @@ You: Vous êtes un pervers ?!
 Sapiens_happy: Non, un Sage de la métacognition. Pour apprendre à apprendre, il faut d'abord observer ses échecs. Ensuite, seulement, on peut en tirer des leçons. Et corriger ses erreurs.
 You: Ah.
 Sapiens_happy: C'est ce que nous allons faire de ce pas !
-[[Suivre maitre Sapiens|SagesDefaite_L]]
+// Option "Suivre maitre Sapiens" moved to the end of this node
     << fx Warp >>
     << fadeIn >>
 << else >>
-[[Recommencer le week-end|Start]]
+// Option "Recommencer le week-end" moved to the end of this node
 << endif
 ===
 title: ExamenVictoire_L
@@ -896,8 +976,12 @@ Vous les saluez et les remerciez avant de quitter la salle et de rentrer dans vo
 Vous mangez un bout et allez vous coucher. Ce week-end aura été épuisant, même en ayant appris à bien gérer votre temps. Il faut dire que vous aviez beaucoup à rattrapper, mais vous vous en êtes sorti avec brio !
 
 << if !visited("sages") >>
-[[SagesVictoire_L]]
+<<jump SagesVictoire_L>>
 << endif >>
+-> Suivre maitre Sapiens <<if (!visited("sages"))>>
+    <<jump SagesDefaite_L>>
+-> Recommencer le week-end <<if !(!visited("sages"))>>
+    <<jump Start>>
 ===
 title: SagesDefaite_L
 tags: 
@@ -1099,7 +1183,7 @@ Sapiens: Sur ton planning, tu indiques toutes les tâches de ta journée. En ce 
     You: Les fiches de révision ?
     Azul_proud: En ce qui concerne ton Grand Oral, oui, c'est un bonne voie alternative.
 
-[[JournalMental]]
+<<jump JournalMental>>
 ===
 title: JournalMental
 tags: 
