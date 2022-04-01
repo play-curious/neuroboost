@@ -444,6 +444,8 @@ export class Menu extends extension.ExtendedCompositeEntity {
         fontFamily: "Ubuntu",
         fontSize: 30,
         fill: 0xffffff,
+        wordWrap: true,
+        wordWrapWidth: 1700
       })
     );
 
