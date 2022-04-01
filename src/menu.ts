@@ -450,6 +450,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
     );
 
     scrollBox.refresh();
+    scrollBox.scrollBy(new PIXI.Point(0, -20000));
 
     background.once("click", () => {
       this.container.removeChild(background);
