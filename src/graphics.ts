@@ -122,12 +122,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       //@ts-ignore
       window.loadedEnvironment = undefined;
 
-      this.setBackground(last.lastBg, last.lastBgMood);
-      this.addCharacter(last.lastCharacter, last.lastMood);
-
-      if (last.lastMusic != null) {
-        this.config.jukebox.play(last.lastMusic);
-      }
+      if (last.lastBg) this.setBackground(last.lastBg, last.lastBgMood);
+      if (last.lastCharacter)
+        this.addCharacter(last.lastCharacter, last.lastMood);
+      if (last.lastMusic) this.config.jukebox.play(last.lastMusic);
     }
   }
 
@@ -202,7 +200,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
-    if(this.currentGauges === undefined) return;
+    if (this.currentGauges === undefined) return;
 
     if (gaugesName.length === 0) {
       for (const gaugeName of this.currentGauges) {

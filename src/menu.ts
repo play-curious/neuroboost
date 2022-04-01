@@ -445,7 +445,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         fontSize: 30,
         fill: 0xffffff,
         wordWrap: true,
-        wordWrapWidth: 1700
+        wordWrapWidth: 1700,
       })
     );
 

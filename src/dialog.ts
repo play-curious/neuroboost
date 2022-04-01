@@ -109,7 +109,13 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     );
 
     // Init gauges
-    this.graphics.initGauges(["learning", "sleep", "food", "mentalLoad", "stress"]); 
+    this.graphics.initGauges([
+      "learning",
+      "sleep",
+      "food",
+      "mentalLoad",
+      "stress",
+    ]);
 
     // Setup clock
     this._activateChildEntity(
@@ -151,7 +157,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         if (tag.startsWith("gauges")) {
           const values = tag.split(":")[1].trim();
           const gauges = values.split(" ");
-          debugger;
           this.graphics.currentGauges = gauges;
         }
       }
