@@ -199,4 +199,6 @@ booyah.go({
 // Resize now, and force the resize to happen when the window size changes
 resizeHtmlLayer(screenSize);
 window.addEventListener("resize", () => resizeHtmlLayer(screenSize));
-document.addEventListener("fullscreenchange", () => resizeHtmlLayer(screenSize));
+document.addEventListener("fullscreenchange", () =>
+  resizeHtmlLayer(screenSize)
+);
