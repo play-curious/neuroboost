@@ -354,7 +354,8 @@ export class Menu extends extension.ExtendedCompositeEntity {
         this._activateChildEntity(
           new popup.Confirm(
             "Téléchargement du journal de la métacognition",
-            () => {
+            (validated: boolean) => {
+              if(!validated) return;
               const journalDownload = new journal.JournalPDF();
               this._activateChildEntity(journalDownload);
               journalDownload.journalToPDF(
@@ -438,19 +439,16 @@ export class Menu extends extension.ExtendedCompositeEntity {
     );
 
     scrollBox.container.position.set(100);
-    scrollBox.content.addChild(
-      // @ts-ignore
-      this.makeText(dialogScene.getHistoryText(), {
-        fontFamily: "Ubuntu",
-        fontSize: 30,
-        fill: 0xffffff,
-        wordWrap: true,
-        wordWrapWidth: 1700
-      })
-    );
+    let currentY = 0;
+    // @ts-ignore
+    dialogScene.getHistoryText().forEach((text) => {
+      text.position.set(0, currentY);
+      scrollBox.content.addChild(text);
+      currentY += text.height + 30;
+    });
 
     scrollBox.refresh();
-    scrollBox.scrollBy(new PIXI.Point(0, -20000));
+    scrollBox.scrollBy(new PIXI.Point(0, -(currentY + 200)));
 
     background.once("click", () => {
       this.container.removeChild(background);

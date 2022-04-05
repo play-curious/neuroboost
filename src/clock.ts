@@ -108,6 +108,10 @@ export class Clock extends extension.ExtendedCompositeEntity {
     this._updateText();
   }
 
+  get text(): string {
+    return this._textBox.text;
+  }
+
   setTime(newMinutes: number) {
     if (this._clockTween) this._deactivateChildEntity(this._clockTween);
 

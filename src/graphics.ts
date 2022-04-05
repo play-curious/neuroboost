@@ -209,7 +209,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         gaugesName.push(gaugeName);
       }
     }
-    console.log(gaugesName);
+    
     let i = 0;
     const gaugesTween: entity.EntityBase[] = [];
     for (const gaugeName of gaugesName) {
@@ -428,10 +428,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               choicebox.buttonMode = true;
 
               this._on(choicebox, "pointerup", () => {
-                this.config.dialogScene.history.push([
+                this.config.dialogScene.addToHistory(
                   "[choice]",
                   nodeOptions[i].text,
-                ]);
+                );
                 onBoxClick(Number(nodeOptions[i].id));
               });
 
@@ -581,10 +581,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               highlight.buttonMode = true;
 
               this._on(highlight, "pointerup", () => {
-                this.config.dialogScene.history.push([
+                this.config.dialogScene.addToHistory(
                   "[freechoice]",
                   choiceText,
-                ]);
+                );
                 onBoxClick(i);
               });
 

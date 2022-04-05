@@ -9,6 +9,7 @@ import * as popup from "./popup";
 export function save(ctx?: dialog.DialogScene) {
   if (!ctx) {
     localStorage.removeItem("save");
+    localStorage.removeItem("history");
     localStorage.removeItem("visited");
     localStorage.removeItem("environment");
     localStorage.removeItem("variableStorage");
@@ -17,6 +18,7 @@ export function save(ctx?: dialog.DialogScene) {
       "save",
       `${ctx.stateName}@${ctx.lastNodeData?.title ?? "Start"}`
     );
+    localStorage.setItem("history", JSON.stringify(ctx.config.history));
     localStorage.setItem("visited", JSON.stringify([...ctx.visited]));
     localStorage.setItem(
       "variableStorage",
@@ -27,7 +29,8 @@ export function save(ctx?: dialog.DialogScene) {
 }
 
 export function loadSave() {
-  const [level, node] = localStorage.getItem("save").split("@");
+  const [level, node] = localStorage.getItem("save").split("@");debugger;
+  const history = JSON.parse(localStorage.getItem("history"));
   const visited = new Set(JSON.parse(localStorage.getItem("visited")));
   const data = JSON.parse(localStorage.getItem("variableStorage"));
   const environment = JSON.parse(localStorage.getItem("environment"));
@@ -35,6 +38,7 @@ export function loadSave() {
   return {
     level,
     node,
+    history,
     visited,
     environment,
     variableStorage,
@@ -94,6 +98,7 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
 
             const saveData = loadSave();
             this.config.variableStorage = saveData.variableStorage;
+            this.config.history = saveData.history;
 
             // load saved node from saveData.node
             this._transition = entity.makeTransition(saveData.level);
