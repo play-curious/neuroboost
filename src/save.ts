@@ -29,7 +29,7 @@ export function save(ctx?: dialog.DialogScene) {
 }
 
 export function loadSave() {
-  const [level, node] = localStorage.getItem("save").split("@");debugger;
+  const [level, node] = localStorage.getItem("save").split("@");
   const history = JSON.parse(localStorage.getItem("history"));
   const visited = new Set(JSON.parse(localStorage.getItem("visited")));
   const data = JSON.parse(localStorage.getItem("variableStorage"));
