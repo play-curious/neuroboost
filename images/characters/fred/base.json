@@ -178,5 +178,19 @@
       "y": 540
     }
   ],
+  "angry": [
+    {
+      "model": "b_angry",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "angry2": [
+    {
+      "model": "b_angry2",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
   "default": "happy"
 }
