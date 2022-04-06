@@ -43,8 +43,6 @@ export function isOption(
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
   public lastNodeData: yarnBound.Metadata;
-  //public history: [type: string, text: string][];
-  // private lastHistory: number;
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
   public visited: Set<string>;
@@ -219,10 +217,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(selectId?: number): void {
-    if (this.lastNodeData && !this._hasTag(this.lastNodeData, "nosave")) {
-      save.save(this);
-    }
-
     if (!this.enabled) return;
 
     // If result is undefined, stop here
@@ -245,6 +239,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     if (this.lastNodeData?.title !== this.metadata.title) {
       this._onChangeNodeData(this.lastNodeData, this.metadata);
       this.lastNodeData = this.metadata;
+
+      if (!this._hasTag(this.lastNodeData, "nosave")) {
+        save.save(this);
+      }  
     }
 
     const result = this.runner.currentResult;
