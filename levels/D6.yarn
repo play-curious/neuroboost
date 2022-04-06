@@ -877,23 +877,24 @@ Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de b
 << hide >>
 
 -> Au dodo !
-    <<jump Dormir_D>>
+    << jump Dormir_D >>
 ===
 title: Dormir_D
 tags: 
 colorID: 0
 position: 4142,3911
 ---
-Vous vous allongez sur le lit pour une courte pause. Vous mettez un réveil pour vous empêchez de sombrer dans le sommeil profond. Vous fermez les yeux... 
+Vous vous allongez sur le lit pour une courte pause. Vous mettez un réveil pour vous empêchez de sombrer dans le sommeil profond.
+Vous fermez les yeux... 
+<< fadeIn >>
 
-<<jump Reveil_L>>
+<< jump Reveil_L >>
 ===
 title: Reveil_L
 tags: 
 colorID: 1
 position: 4404,3911
 ---
-<< fadeIn >>
 << setBackground bedroom >>
 << setTime 8:00 7 >>
 << loopFX Sleep_LOOP 5000 >>
@@ -906,7 +907,7 @@ Vous prenez le temps de petit-déjeuner, pour mettre toutes les chances de votre
 
 << advanceTime 0:30 >>
 
-<< if <winCondition> >>
+<< if 1 >>
 
 Une fois terminé, vous essayez d'appeler Fred pour votre séance de sport, mais il semblerait qu'il n'ait toujours pas envie de répondre. Il doit sûrement être concentré dans ses révisions.
 
@@ -925,7 +926,8 @@ tags:
 colorID: 0
 position: 5223,3741
 ---
-// TODO: Dire ce que le joueur a bien fait
+
+<<empty>> // TODO: Dire ce que le joueur a bien fait
 
 <<jump JournalMental>>
 ===
@@ -966,11 +968,11 @@ position: 4678,3731
 ---
 Tant pis, vous allez en profiter pour repenser à tout ce que vous avez révisé ce week-end pendant votre jogging. Il vous reste un peu plus d'une heure avant votre passage.
 << advanceTime 1:00 >>
-// Jogging tranquillou
+<<empty>> // Jogging tranquillou
 
-// Petite picure de rappel (dédidace à toi, Cuantin)
+<<empty>> // Petite picure de rappel (dédidace à toi, Cuantin)
 
-// Direction l'EXAM1
+<<empty>> // Direction l'EXAM1
 
 <<jump ExamenVictoire_L>>
 ===
@@ -1047,11 +1049,11 @@ You: Vous êtes un pervers ?!
 Sapiens_happy: Non, un Sage de la métacognition. Pour apprendre à apprendre, il faut d'abord observer ses échecs. Ensuite, seulement, on peut en tirer des leçons. Et corriger ses erreurs.
 You: Ah.
 Sapiens_happy: C'est ce que nous allons faire de ce pas !
-// Option "Suivre maitre Sapiens" moved to the end of this node
+<<empty>> // Option "Suivre maitre Sapiens" moved to the end of this node
     << fx Warp >>
     << fadeIn >>
 << else >>
-// Option "Recommencer le week-end" moved to the end of this node
+<<empty>> // Option "Recommencer le week-end" moved to the end of this node
 << endif >>
 ===
 title: ExamenVictoire_L
