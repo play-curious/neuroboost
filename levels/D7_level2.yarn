@@ -128,11 +128,11 @@ Fred_surprised: Quoi ?! Sky is the limit ?
 You: C'est ça, ouais. Même toi, tu n'es la perfection. Sinon, tu ne serais pas à l'Académie.
 Fred_surprised: Tu veux dire quoi ?
 You: Tu détestes apprendre par coeur.
-Fred_smiling: Beuark ! Qui peut aimer ça ?
+Fred_angry: Beuark ! Qui peut aimer ça ?
 You: Certains en raffolent... Tu n'aimes pas non plus écrire. Je l'ai bien vu jeudi, à la bibliothèque.
 Fred_surprised:...
 You: Et tu détestes qu'on te donne un cadre trop précis, trop rigide, trop contraignant... Mais la contrainte peut stimuler la créativité. Et elle est parfois nécessaire   
-Fred_sad: C'est bon ? T'as fini ton speech ?
+Fred_angry2: C'est bon ? T'as fini ton speech ?
 You: Heu. Ouais.
 Fred_sad: Merci pour ta leçon de savoir vivre...
 
@@ -207,7 +207,7 @@ Fred_surprised: What ?! Que veux-tu dire ?
 You: Nous avons tous nos limites. Même toi, qui est pourtant l'étudiant le plus brillant de l'Académie. 
 Fred_surprised: Mais tu veux dire quoi ?
 You: Il y a des choses du n'aimes pas faire, ou que tu ne fais pas à fond. Et cela te porte préjudice.
-Fred_surprised: Lesquelles ?
+Fred_angry: Lesquelles ?
 You: Tu détestes apprendre par coeur.
 Fred_happy: Ah Ah ! Apprendre par coeur ?! Je suis pas un robot ! Et toi ?
 You: Moi non plus, mais certains en raffolent... Et puis, tu n'aimes pas non plus écrire. Je l'ai bien vu jeudi, à la bibliothèque.
@@ -216,9 +216,9 @@ You: C'est pour ton bien...
 // A partir de là = Fred mécontent, sarcastique, agacé...
 Fred_surprised: Vraiment ?
 You: Crois-moi. Enfin, tu détestes qu'on te donne un cadre trop précis, trop rigide, trop contraignant... Mais la contrainte peut stimuler la créativité. Et elle est parfois nécessaire   
-Fred_sad: C'est bon ? T'as d'autres "fleurs" à me balancer ?
+Fred_angry: C'est bon ? T'as d'autres "fleurs" à me balancer ?
 You: Heu... naan...
-Fred_surprised: Et je dois te remercier en plus ?
+Fred_angry2: Et je dois te remercier en plus ?
 You: Heu... 
 
 Manifestement, ce n'était pas la bonne manière de s'y prendre. Fred s'arrête de courir et vous balance un regard noir et froid. Vous avez heurté sa sensibilité. 
@@ -247,7 +247,7 @@ You: C'est important, tu sais ! Si tu veux redevenir le killer de l'Académie...
 Le visage de Fred se durcit.
 Fred: Qui es-tu, toi, pour juger de ce qui est bien pour moi ?
 You: Heu...
-Malheureusement, vous comprendez que avez été malgré tout trop direct. Ce n'est pas en lui révélant clairement ses limites que vous allez le convaincre de changer son attitude, pour le mieux...
+Malheureusement, vous comprenez que avez été malgré tout trop direct. Ce n'est pas en lui révélant clairement ses limites que vous allez le convaincre de changer son attitude, pour le mieux...
 
 -> Comment s'y prendre alors ?
   << jump Fred_Faiblesses >>
@@ -271,7 +271,7 @@ Fred_sad: OK. Je comprends mieux pourquoi mes performances ne sont plus aussi é
 You: C'est là où tu te trompes. Il y a toujours une solution !
 Fred_happy: Vraiment ?
 You: Bien sûr. Et je la connais. Il faut un "plan B" !
-Fred_surprised: Arrête de te moquer de moi !
+Fred_angry: Arrête de te moquer de moi !
 You: Pas du tout. J'ai la solution. Moi aussi, j'en ai besoin de ce "plan B".
 Vous lui expliquez que vous avez passé votre samedi après-midi à rédiger des fiches de révision. Un exemplaire pour vous et un autre pour lui. Fred sourit et vous prend dans ses bras !
 Fred_smiling: Gosh ! Tu as fait ça pour moi ?
@@ -352,7 +352,7 @@ Fred: C'est gentil. Merci.
 You: Tu veux les regarder de plus près.
 Fred:...
 Vous lui tendez alors vos fiches de révision. Fred les prend, puis, se ravise et les balance en l'air ! Il répand vos magnifiques fiches dans toute la pièce ! 
-Fred: Hey, Boss ! Je suis pas une marionette ! Suffit pas d'appuyer sur un bouton pour que je fasse ce qu'on attende de moi !
+Fred_angry: Hey, Boss ! Je suis pas une marionette ! Suffit pas d'appuyer sur un bouton pour que je fasse ce qu'on attende de moi !
 
 //Vous vous dites à ce moment que vous n'avez probablement pas choisi la méthode la plus efficace pour le convaincre de travailler.
 Vous avez été un peu trop frontal...
@@ -380,9 +380,9 @@ Fred_smiling: Tu as lu ça dans le hors série de Student Herald Mag ?!
 Honnêtement, votre intervention n'est pas aisée. 
 //Fred n'est franchement pas convaincu par vos arguments. Au fur et à mesure que vous déroulez votre raisonnement, vous sentez que vous perdez l'attention et la confiance de Fred. Vous le voyez s'agiter, gesticuler, rigoler, grimacer, réfuter vos propos... 
 Le moins qu'on puisse dire est qu'iel n'a pas l'air convaincu. À tel point qu'iel finit par exploser :
-Fred_surprised: Hey, ça va pas, non ? Je me fixe un but, si j'en ai envie ! Et ce n'est pas toi qui va me dire comment faire !
+Fred_angry2: Hey, ça va pas, non ? Je me fixe un but, si j'en ai envie ! Et ce n'est pas toi qui va me dire comment faire !
 You: Attends... C'est pour ton bien...
-Fred_surprised: Qu'est-ce que tu en sais ? Tu es devin ?
+Fred_angry: Qu'est-ce que tu en sais ? Tu es devin ?
 You: Heu...
 Hélas, au lieu d'inciter Fred à se définir un but, vous l'avez piégé, acculé contre un mur. 
 Résultat : iel s'est replié sur lui même. Il va falloir regagner sa confiance...
@@ -533,340 +533,107 @@ colorID: 0
 position: 1107,1011
 ---
 You: Voilà ce que je te propose. En s'aidant de mes fiches, on se pose des questions sur la philosophie quantique.
-Fred: OK. Tu commences ?
+Fred_happy: OK. Tu commences ?
 You: Non non, à toi l'honneur.
-Fred: Merci.
-Rien qu'à observer l'attitude tout à la fois complice et engagée de votre pote, vous devinez que vous avez trouvé la bonne solution. Fred se prend au jeu. Iel inspecte vos fiches de révision. Vous pose une question. Vous tentez d'y répondre en sollicitant vos connaissances, imparfaites mais plus solides que les siennes. Iel vous corrige votre erreur à l'aide de vos fiches, iel approfondit vos arguments. 
+Fred_smiling: Merci.
+// Rien qu'à observer l'attitude tout à la fois complice et engagée de votre pote, vous devinez que vous avez trouvé la bonne solution. 
+Fred se prend au jeu. Iel inspecte vos fiches de révision. Vous pose une question. Vous tentez d'y répondre en sollicitant vos connaissances, imparfaites mais plus solides que les siennes. 
+Iel vous corrige votre erreur à l'aide de vos fiches, iel approfondit vos arguments. 
 You: À mon tour.
-Fred: Ce sera plus facile de me piéger.
+Fred_smiling: Ce sera plus facile de me piéger.
 You: C'est pas le but. Le but est de réviser de manière ludique et interactive.
-Fred: Comme dans un jeu ?
+Fred_happy: Comme dans un jeu ?
 You: Ouais.
-Vous vous plongez dans vos fiches. Vous choisissez un concept ou une notion précise. Vous lui posez à votre tour une question. Iel répond avec sa verve habituelle. Vous devez, vous aussi, rectifier son argumentaire. Fred ne maîtrise pas encore bien ses sujets. Surtout au début de la séance. C'est encore très vague et parcellaire.
-Vous n'oubliez pas pour autant de ménager des pauses régulières en musique avec votre cycloluth de Feudall. Connaissant assez bien les goûts de Fred, vous optez pour des improvisations à sonorité plus métalliques. Vous branchez votre instrument sur un amplificateur. 
+Vous vous plongez dans vos fiches. Vous choisissez un concept ou une notion précise. Vous lui posez à votre tour une question. Iel répond avec sa verve habituelle. 
+Vous devez, vous aussi, rectifier son argumentaire. Fred ne maîtrise pas encore bien ses sujets. Surtout au début de la séance. C'est encore très vague et parcellaire.
+Vous n'oubliez pas pour autant de ménager des pauses régulières en musique avec votre cycloluth de Feudall. 
+Connaissant assez bien les goûts de Fred, vous optez pour des improvisations à sonorité plus métalliques. Vous branchez votre instrument sur un amplificateur.
+<< music Solo2 >> 
 Fred: Gosh ! Je te savais pas aussi doué en guitare.
 You: C'est un de mes dons cachés.
 
 Et le jeu de ping pong entrecoupé d'interludes métalleux continue ainsi pendant des heures. Un vrai moment de délice et de partage. 
 
-Puis, votre horloge connectée vous informe qu'il est plus de 20 heures. Il serait peut-être temps de dîner. Vous proposez à Fred de rester manger avec vous. Proposition qu'iel accepte.
+<< advanceTime 20:00 >>
+
+Puis, votre horloge connectée vous informe qu'il est plus de 20 heures.
+//  Il serait peut-être temps de dîner. Vous proposez à Fred de rester manger avec vous. Proposition qu'iel accepte.
+
+You: Tu veux manger ici avec moi ?
+Fred: Yes, j'ai mega faim !
 
 -> Dîner avec Fred.
-[[Diner_Dim]]
+  << jump Diner_Dim >>
 
-===
-title: Fred_Faiblesses
-tags: 
-colorID: 0
-position: -758,970
----
-// si premiere fois dans ce noeud:
-Maintenant que Fred vous a entendu lister ses points forts, vous devez l'aider à encore mieux se connaître. En prenant conscience de ses points faibles. Car, c'est en reconnaissant ses limites qu'il pourra trouver un moyen de les contourner. 
-Comment allez-vous y prendre cette fois ?
-
-//sinon:
-Comment faire prendre conscience à Fred de ses limites, de ses faiblesses ?
-
-Maintenant que vous lui avez énoncé ses points forts. Vous pouvez lui avouer quels sont ses points faibles.
--> Lui énumérer ses points faibles
-[[Balancer_Faiblesses]]
-
-Vous pensez quand même que ce n'est pas agréable de dire à quelqu'un ce qui ne va pas. Peut-être faut-il d'abord commencer par quelque chose de plus positif. En rappelant d'abord ses points forts ?
--> Commencer par les points forts
-[[Rappeler_Forces]]
-
-Une troisième voie, plus imprécise, serait de questionner l'air de rien Fred. Pour l'inciter à révéler lui-même ses faiblesses. Comme cela se fait en psychologie ou en Programmation Neuro Linguistique des Intelligences Artificielles et Analogiques. La PNLIAA s'applique aussi aux cerveaux humains.
--> Aider Fred à trouver ses faiblesses
-[[Guider_Fred_Faiblesses]]
-===
-title: Balancer_Faiblesses
-tags: 
-colorID: 0
-position: -475,1335
----
-Puisque vous avez ravivé l'estime de soi de Fred en lui listant ses points forts, vous estimez que vous pouvez lui avouer quelles sont ses limites. Il en a besoin pour avancer dans son chemin d'apprentissage.
-Maître Azul vous a redonné le portrait métacognitif de Fred. Les points faibles d'un apprenant "divergent" sont : la mise en forme par écrit, l'apprentissage par coeur, et le manque de structure.
-Tandis que longez au trot la piste, vous lui dites, avec le plus de tact possible quelles sont ces limites. Limites qui ne lui ont pour l'instant pas trop posé de problème. Hélas, ces derniers jours et surtout pour le Grand Oral, ça sera un frein majeur. Si Fred veut continuer à apprendre et à rester dans l'académie, il va devoir apprendre à les prendre en compte.
-Manifestement, ce n'était pas la bonne manière de s'y prendre. Fred s'arrête de courir et vous balance un regard noir et froid. Vous avez heurté sa sensibilité. Alors que votre l'esprit de votre pote s'était ouvert comme une huître, il se referme aussitôt dans sa coquille. Vous avez manqué de tact et de psychologie. 
-Vous vous dites que vous n'avez pas le droit à une autre erreur. Vous devez trouvez comment lui faire prendre conscience de ses erreurs et ses échecs sans le brusquer.  
-
--> Comment aborder ses faiblesses ?
-[[Fred_Faiblesses]]
-
-// A votre avis, juste un choix erroné renvoi à la liste d'action comme je le fais
-// ou un choix fatal = Retour direct à Samedi matin?
-===
-title: Rappeler_Forces
-tags: 
-colorID: 0
-position: -443,728
----
-Avant d'avouer à Fred ses faiblesses, vous pensez plus prudent de commencer par lui rappeler combien il est brillant, disruptif, intuitif. Bref, vous lui répétez les qualités qu'il possède et qui font la force d'un apprenant "divergent". 
-Fred: Arrête de me flatter. Tu m'as déjà dit tout ça.
-You: Oui, mais c'est important de comprendre qu'on a tous nos points forts et nos points faibles.
-Fred: C'est pour ça. D'abord les bonnes nouvelles. Ensuite, les mauvaises. Que veux-tu m'apprendre ?
-You: T'inquiète. C'est pas grave.
-Vous lui expliquez avec les mots les plus respectueux quelles sont ces limites.
-You: C'est important, tu sais ! Si tu veux redevenir le killer de l'Académie... Tu dois prendre conscience de tes faiblesses. Tu ne peux t'améliorer qu'en prenant en compte tes propres limites.
-Le visage de Fred se durcit.
-Fred: Qui es-tu, toi, pour juger de ce qui est bien pour toi ?
-You: Heu...
-Malheureusement, vous comprendez que avez été malgré tout trop direct. Ce n'est pas en lui révélant clairement ses limites que vous allez le convaincre de changer son attitude, pour le mieux...
-
--> Comment s'y prendre alors ?
-[[Fred_Faiblesses]]
-
-// A votre avis, juste un choix erroné renvoi à la liste d'action comme je le fais
-// ou un là aussi comme énoncer de but en blanc ses faiblesses = choix fatal = Retour direct à Samedi matin?
-===
-title: Guider_Fred_Faiblesses
-tags: 
-colorID: 0
-position: -446,976
----
-Vous vous rappelez ce que maître Azul vous a dit. Fred, comme tous les profils divergents, préfère qu'on respecte son libre-arbitre. Mieux vaut ne pas lui dire vous-même quelles sont ses faiblesses. Pour qu'iel en prenne véritablement conscience. Iel doit lui-même les découvrir. 
-Vous choisissez bien vos mots et votre manière d'aborder ce thème sensible. Pour bien faire, vous suivez la méthode PNLIAA, que vous avez apprises en cours. Simplement, au lieu de l'appliquer aux IA, vous l'appliquez à un humain. 
-Vous aiguillez Fred en lui posant des questions en apparence anodine, qui le pousse à réfléchir par lui-même et à révéler ses freins, ses obstacles intérieurs. Notamment en lui demandant quels étaient, selon lui, les problèmes qu'il a rencontré lors de la rédaction du mémoire à la bibliothèque. L'exercice porte ses fruits. L'air de rien, grâce à vos questions, Fred parvient à énoncer ses faiblesses. Vous l'aidez, bien entendu, à mieux les formuler et les cerner. Mais, le premier jet est indiscutablement le sien. Et c'est ça, le truc. Vous voyez à sa mine pensive et éclairée qu'iel a enfin mis le doigt sur quelque chose d'essentiel. 
-Fred: OK. Je comprends mieux pourquoi mes performances ne sont plus aussi élevées... Mais... Que puis-je y faire ?
-You: C'est là où tu te trompes. Il y a toujours une solution !
-Fred: Vraiment ?
-You: Bien sûr. Et je la connais. Il faut un "plan B" !
-Fred: Arrête de te moquer de moi !
-You: Pas du tout. J'ai la solution. Moi aussi, j'en ai besoin de ce "plan B".
-Vous lui expliquez que vous avez passé votre samedi après-midi à rédiger des fiches de révision. Un exemplaire pour vous et un autre pour lui. Fred sourit et vous prend dans ses bras !
-Fred: Gosh ! Tu as fait ça pour moi ?
-You: Pour moi aussi, je te le rappelle !
-Fred: T'es vraiment mon meilleur pote !
-You: Toi aussi. On se retrouve après déjeuner ?
-Fred: Yes yes.
-
--> Manger
-[[Dimanche_Lunch]]
-===
-title: Dimanche_Lunch
-tags: 
-colorID: 0
-position: -146,977
----
-La séance de footing et de remotivation est achevée. Vous quittez Fred et vous retournez à votre chambre manger. Vous vous cuisinez un plat de pâtes à la carnobara. C'est riche et copieux. Tant mieux, vous allez en avoir besoin, de calories...
-
-Vous avez aidé Fred à reprendre confiance en lui, en ses capacités d'apprentissage. Maintenant, il faut le convaincre de réviser la philosophie quantique en s'aidant de vos fiches de révision.
-Vous allez sonner à la porte de Fred. Iel vous fait entrer chez lui.
-
--> Motiver Fred à réviser
-[[Motiver_Fred_Reviser]]
-===
-title: Motiver_Fred_Reviser
-tags: 
-colorID: 0
-position: 131,978
----
-// si premiere fois dans ce noeud:
-Fred vous accueille avec un grand sourire. C'est un signe qui ne trompe pas. Vous avez regonflé son enthousiasme. Votre meilleur pote a repris confiance en lui. Maintenant, iel faut le motiver à réviser. De quelle manière vous allez pouvoir le convaincre de travailler avec vos fiches de révision ?
-
-//sinon:
-Vous devez le persuader d'utiliser vos fiches de révision pour travailler. Comment s'y prendre ?
-
-Vous lui montrez les fiches de révision que vous avez déjà imprimées. Vous lui expliquez combien elles font gagner du temps, comment s'en servir. Il ne pourra être que séduit par votre proposition.
--> Lui montrer vos fiches.
-[[Sortir_Fiches_Trop_Vite]]
-
-Vous harcelez Fred pour qu'il se dote d'un but, précis et réalisable. C'est le seul moyen de le motiver à travailler tout l'après-midi sur vos fiches de révision.
--> Pousser Fred à se définir son objectif.
-[[Forcer_Fred_But]]
-
-Vous préférez discuter avec Fred de sa situation à l'université. Vous espérez ainsi l'inciter à trouver lui-même son but, en recourant aux techniques de PNLIAA que vous apprises en cours.
--> Aider Fred à formaliser son objectif personnel.
-[[Guider_Fred_But]]
-===
-title: Forcer_Fred_But
-tags: 
-colorID: 0
-position: 516,747
----
-Vous décidez de prendre le taureau par les cornes. Vous interpellez Fred. Vous lui expliquez avec calme mais détermination que le seul moyen pour passer la journée sur vos fiches de révision. C'est de se fixer un but. Un objectif clair, réalisable, que l'on peut segmenter en différentes étapes.
-Sans ça, votre pote ne tiendra jamais la distance. Iel décrochera avant la ligne d'arrivée. Et vous allez devoir tout recommencer, depuis le début. Enfin, cette partie du voyage dans le temps, Fred ne peut le comprendre... 
-Honnêtement, votre intervention n'est pas aisée. Fred ne cesse de vouloir vous interrompre. Vous lui accordez le temps de placer quelques arguments que vous refutez aisément avant de reprendre votre démonstration implacable. 
-Au fur et à mesure que vous déroulez votre raisonnement, vous sentez que vous perdez l'attention et la confiance de Fred. Vous le voyez s'agiter, gesticuler, grimacer, réfuter vos propos... Le moins qu'on puisse dire est qu'iel n'a pas l'air convaincu. À tel point qu'iel finit par exploser :
-Fred: Hey, ça va pas, non ? Je me fixe un but, si j'en ai envie ! Et ce n'est pas toi qui va me dire comment faire !
-You: Attends... C'est pour ton bien...
-Fred: Qu'est-ce que tu en sais ? Tu es devin ?
-You; Heu...
-Hélas, vous n'avez manifestement pas choisi la bonne voie. Au lieu d'inciter Fred à se définir un but, vous l'avez piégé, acculé contre un mur. Résultat : iel s'est replié sur lui même. Il va falloir regagner sa confiance...
-
--> S'y prendre autrement
-[[Motiver_Fred_Reviser]]
-
-// A votre avis, juste un choix erroné renvoi à la liste d'action comme je le fais
-// ou un choix fatal = Retour direct à Samedi matin?
-===
-title: Sortir_Fiches_Trop_Vite
-tags: 
-colorID: 0
-position: 497,1263
----
-Vous décidez de jouer le rôle d'un magicien, d'un illusioniste. Vous improvisez un tour de passe avec vos fiches de révision. Elles font alors office de cartes. Votre tour n'est pas trop au point. Ce n'est pas grave, c'est surtout pour l'ambiance. Histoire de susciter un climat positif et ludique. Fred se prête d'ailleurs facilement au jeu. Vous n'arrivez pas vraiment à faire disparaître la fiche qu'a choisie Fred. Vous vous en excusez. Fred en rigole.   
-Vous décidez que c'est le moment. vous passez au choses sérieuses. Vous étalez tout le tas de fiches. Vous lui expliquez comment vous vous y êtes pris pour les rédiger. Comment on peut s'en servir pour réviser. Vous insistez sur le temps que cela a pris pour les faire et le temps que cela va lui faire gagner. Lui qui déteste le "par-coeur". 
-Fred vous écoute. Iel ne place aucune blague, aucun argument disruptif. A priori, iel semble d'accord. Vous lui tendez alors vos fiches de révision. 
-Fred les prend, puis, se ravise et les balance en l'air ! Il répand vos magnifiques fiches dans toute la pièce ! 
-Fred: Hey, Boss ! Je suis pas une marionette ! Suffit pas d'appuyer sur un bouton pour que je fasse ce qu'on attende de moi !
-Vous vous dites à ce moment que vous n'avez probablement pas choisi la méthode la plus efficace pour le convaincre de travailler. Vous avez été un peu trop frontal...
-
--> S'y prendre autrement
-[[Motiver_Fred_Reviser]]
-
-// A votre avis, juste un choix erroné renvoi à la liste d'action comme je le fais
-// ou un choix fatal = Retour direct à Samedi matin?
-===
-title: Guider_Fred_But
-tags: 
-colorID: 0
-position: 513,1006
----
-Vous préférez la méthode la plus indirecte, la plus incertaine. Vous ne savez pas si vous allez trouver les mots adaptés pour que Fred formule de lui-même son objectif. Mais, vous tentez le coup.
-You: Pourquoi as-tu intégré l'Académie d'Omniscience et de Polytechnologie Universelle ?
-Fred: Je ne sais pas trop. J'étais pris partout. J'aimais bien le site, l'ambiance, le public.
-You: C'est vrai qu'on s'amuse bien ici.
-Fred: Yes yes.
-You: Qu'est-ce que tu attends de ton diplôme ?
-Fred: Je sais pas non plus. C'est un diplôme, quoi. 
-You: C'est important, un diplôme ?
-Fred: Yes, ça fait partie du jeu. 
-You: Et si tu n'avais pas ce diplôme ?
-Fred: Faudrait que je recommence tout à zéro. Ailleurs.
-You: Est-ce nécessaire de tout recommencer depuis le début ? 
-Fred: Je comprends pas ta question.
-You: Tu peux changer de voie, ou compléter ton apprentissage par un autre cursus.
-Fred vous regarde avec de grands yeux.
-Fred: Oui ! Bien sûr ! J'aurai dû y penser plus tôt ! Rien n'est perdu, tout est encore possible !
-Fred bredouille tellement iel est excité. Iel sait ce qu'il va faire maintenant. Iel va aller au bout de ce premier diplôme de l'Académie d'Omniscience et de Polytechnologie Universelle. Après, iel verra bien s'iel continue dans cette voie ou s'iel choisit un autre chemin.
-
-Vous êtes heureux pour lui, et vous aussi. Vous lui dites qu'il est temps de se servir des fiches de révision que vous avez réalisées samedi.
-
--> Utiliser les fiches de révision
-[[Reviser_Fiches1]]
-===
-title: Reviser_Fiches1
-tags: 
-colorID: 0
-position: 783,1004
----
-// si premiere fois dans ce noeud:
-Vous demandez à Fred de le suivre dans votre chambre. Ce qu'iel fait. Une fois là-bas, vous demandez à Room Mate de basculer la pièce en mode "immersion studieuse". Cependant, vous précisez à votre IA que vous ne souhaitez pas activer les modules vidéos "work with me". Puisqu'aujourd'hui, vous ne travaillez pas seul mais en duo. Fred vous observe, émerveillé:
-Fred: Yolo ! T'es vraiment un pro du business universitaire.
-You: Ouais. Bon, c'est pas tout, on a du pain sur la planche.
-Fred: Yolo ! Comment on s'y prend? C'est toi le big boss !
-Fred a raison. C'est vous qui devez animer cette tâche d'apprentissage à l'aide des fiches de révision. 
-Comment allez-vous faire ?
-
-//sinon:
-Pour utiliser ses fiches de révision, plusieurs choix s'offrent à vous. Lequel serait le plus judicieux ?
-
-C'est vous qui lisez vos fiches de révision à Fred. Vous lui demandez par contre de ne pas vous interrompre. Sinon, la lecture risque d'être trop partielle et confuse.  
--> Vous lisez les fiches.
-[[PJ_Lit_Fiches]]
-
-Vous donnez les fiches à Fred. Vous lui demandez ensuite de vous les lire à haute voix. Comme vous possédez les doubles avec vous, vous pouvez le corrigez s'iel se trompe dans sa lecture. Vous laissez donc la parole à Fred, c'est lui qui prend la main.
--> Fred lit les fiches.
-[[Fred_Lit_Fiches]]
-
-Troisième et dernière possibilité. Vous donnez à Fred son paquet de fiches de révision, vous gardez le vôtre. Il les examine, vous faites de même. Vous vous posez ensuite des questions à tour de rôle. L'un doit y répondre. L'autre, celui qui a posé la question, a les fiches comme anti-sèches et peut ainsi rectifier, si la réponse est incorrecte ou incomplète. 
--> Vous lisez tous les deux les fiches.
-[[Duo_Echange_Fiches]]
-===
-title: PJ_Lit_Fiches
-tags: 
-colorID: 0
-position: 1123,746
----
-Vous avez conscience du manque de préparation de Fred. Contrairement à vous qui avez dû relire les cours, iel n'a pas pris le temps raviver ses connaissances en matière de "philosophie quantique". Ces lacunes sont importantes. C'est pourquoi, vous préférez lui lire vous-même vos fiches. Vous lui faites un séance de révision accélérée. 
-Cependant, c'est mal connaître Fred. Iel adore échanger oralement avec ses camarades. Fred n'arrête pas de vous interpeller. Vous tentez de lui répondre le plus brièvement possible. Mais iel ne cesse de vous poser d'autres questions, qui entraînent d'autres questions. C'est vous qui finissez par perdre votre sang froid. Vous lui intimez l'odre de cesser de vous interrompre. Ce qu'iel fait de mauvais gré. 
-Votre lecture de vos fiches de révision se transforme en soporifique cours magistral. Vous constatez que l'attention de Fred faiblit en même temps que la fréquence de ses interventions. 
-Vous réalisez que vous avez extrait Fred de sa zone de comfort. Vous l'empêchez d'interagir avec vous, de manière spontanée et informelle. Hors, si vous désirez qu'iel garde confiance en lui et reste motivé, vous devez lui ménager un espace de travail rassurant et fiable. Tout le contraire de ce que vous faites actuellement.
-
-C'est normal qu'iel finisse par perdre patience et balancer vos fiches de révision aux quatre coins de la pièce. 
-Le verdict est clair et sans appel : vous avez fait fausse route.  
-
--> Choisir une autre méthode.
-[[Reviser_Fiches1]]
-
-// A votre avis, juste un choix erroné renvoi à la liste d'action comme je le fais
-// ou un choix fatal = Retour direct à Samedi matin?
-===
-title: Fred_Lit_Fiches
-tags: 
-colorID: 0
-position: 1117,1294
----
-Vous pensez bien faire en favorisant l'autonomie de Fred dans ses révisions. C'est lui qui parcourt vos fiches et vous les lit à haute voix. 
-Cependant, ce n'est pas une si bonne idée. Contrairement à vous qui avez dû relire les cours, Fred ne s'est pas replongé dans ses cours de "philosophie quantique". Ces lacunes sont bien plus importantes que les vôtres. Iel peine à développer les mots ou les phrases clés que contiennent vos fiches, qui ne sont que des synthèses. 
-En outre, vous l'obligez à vous lire à haute voix des textes, des écrits qu'iel n'a même pas produit. Alors que maître Azul l'a bien précisé : un profil "divergent" préfère raisonner oralement, sans filet. Vous réalisez que vous avez extrait Fred de sa zone de comfort. Hors, si vous désirez qu'iel garde confiance en lui et reste motivé, vous ne devez pas le brusquer. Ce que vous faites actuellement.
-
-C'est normal qu'iel finisse par perdre patience et balancer vos fiches de révision aux quatre coins de la pièce. Le verdict est clair et sans appel : vous vous êtes planté.  
-
--> Choisir une autre méthode.
-[[Reviser_Fiches1]]
-
-// A votre avis, juste un choix erroné renvoi à la liste d'action comme je le fais
-// ou un choix fatal = Retour direct à Samedi matin?
-===
-title: Duo_Echange_Fiches
-tags: 
-colorID: 0
-position: 1154,995
----
-Rien qu'à observer l'attitude tout à la fois complice et engagée de votre pote, vous devinez que vous avez trouvé la bonne solution. Fred se prend au jeu. Iel inspecte vos fiches de révision. Vous pose une question. Vous tentez d'y répondre en sollicitant vos connaissances, imparfaites mais plus solides que les siennes. Iel vous corrige votre erreur à l'aide de vos fiches, iel approfondit vos arguments. 
-Puis, c'est votre tour. Vous vous plongez dans vos fiches. Vous choisissez un concept ou une notion précise. Vous lui posez à votre tour une question. Iel répond avec sa verve habituelle. Vous devez, vous aussi, rectifier son argumentaire. Fred ne maîtrise pas encore bien ses sujets. Surtout au début de la séance. C'est encore très vaguer et parcellaire.
-Vous n'oubliez pas pour autant de ménager des pauses régulières en musique avec votre cycloluth de Feudall. Connaissant assez bien les goûts de Fred, vous optez pour des improvisations à sonorité plus métallique, en branchant votre instrument sur un amplificateur. 
-Fred: Gosh ! Je te savais pas aussi doué en guitare.
-You: C'est un de mes dons cachés.
-
-Et le jeu de ping pong entrecoupé d'interludes métalleux continue ainsi pendant des heures. Un vrai moment de délice et de partage. 
-
-Puis, votre horloge connectée vous informe qu'il est plus de 20 heures. Il serait peut-être temps de dîner. Vous proposez à Fred de rester manger avec vous. Proposition qu'iel accepte.
-
--> Dîner avec Fred.
-[[Diner_Dim]]
-// hausse à 100% de mémorisation??
 ===
 title: Diner_Dim
 tags: 
 colorID: 0
-position: 1445,1000
+position: 1444,999
 ---
-Ce dimanche soir, vous faites encore une exception. Vous n'avez pas le temps, vous avez un invité. Vous enfournez deux maxi pizzas congelées dans le four. Deux maxi plats cuisinés que vous dévorez, Fred et vous, avec bonheur... En vous remémorant les moments les plus incroyables de votre journée de révision...
-C'est alors que vous vous souvenez de votre grand-mère. En effet, vous voyez un appel manqué sur votre palmphone. Vous savez qu'il est important, tant pour elle que pour vous, de la rappeler.
+<< fadeIn >>
+<< music Neutral >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+
+// Ce dimanche soir, vous faites encore une exception. Vous n'avez pas le temps, vous avez un invité. 
+Vous enfournez deux maxi pizzas congelées dans le four. Deux maxi plats cuisinés que vous dévorez, Fred et vous, avec bonheur... 
+En vous remémorant les moments les plus incroyables de votre journée de révision...
+
+C'est alors que vous vous souvenez de votre grand-mère...
+// En effet, vous voyez un appel manqué sur votre palmphone. Vous savez qu'il est important, tant pour elle que pour vous, de la rappeler.
 You: Désolé, j'ai oublié. Je dois rappeler ma grand-mère. Elle est à l'hôpital.
 Fred: No worry. Je te laisse. 
 You: T'es pas obligé de partir.
-Fred: Normal, c'est un family business. Je suis que ton... meilleur pote.
+Fred_happy: Normal, c'est un family business. Je suis que ton... meilleur pote.
 Fred éclate de rire avant de se lever et de vous laisser seul avec votre palmphone.
+<< hide >>
 
-Votre grand-mère décroche dès la première sonnerie. Elle vous garde plus d'une heure. Elle vous arrose à nouveau de ses paroles sucrées et affectueuses. Vous l'écoutez avec patience. Puis, elle vous dit au revoir. Vous raccrochez, heureux d'avoir pris le temps de papoter avec "mamie". 
+Votre grand-mère décroche dès la première sonnerie. 
+Elle vous arrose à nouveau de ses paroles sucrées et affectueuses. 
 Les pharmaceutiques y sont pour quelque chose. N'empêche. Quelle femme, une authentique dure-à-cuire...
+// Vous l'écoutez avec patience. Puis, elle vous dit au revoir. Vous raccrochez, heureux d'avoir pris le temps de papoter avec "mamie". 
+// Elle vous garde plus d'une heure.
+<< advanceTime 21:00 >>
 
 Vous sentez le poids de la fatigue accumulée. Un petit tour aux toilettes pour se laver les dents. On enfile sa tenue pour la nuit.
 
 -> Au dodo !
-[[Dodo_Dim_Lun]]
+  << jump Dodo_Dim_Lun >>
+
 ===
 title: Dodo_Dim_Lun
 tags: 
 colorID: 0
 position: 1738,999
 ---
-Vous vous allongez sur le lit. Vous avez fait du bon boulot avec Fred dimanche. Vous fermez les yeux et plongez dans un sommeil profond et durable...
-Vous rouvrez les yeux quand votre horloge connectée sonne. Il est huit heures. Vous avalez un petit déjeuner, simple et rapide : une boîte de chimicookies et un synthécafé.
+<< fadeIn >>
+<< setBackground bedroom bed >>
+<< fadeOut  >>
 
+Vous avez fait du bon boulot avec Fred dimanche.
+
+<< fadeIn>>
+Vous fermez les yeux et plongez dans un sommeil profond et durable...
+
+<< setTime 8:00 >>
+<< loopFX Chime_LOOP 2000 >>
+
+<< fadeOut>>
+
+Vous rouvrez les yeux quand votre horloge connectée sonne. Il est huit heures. 
+<< stopFX Chime_LOOP >>
+Vous avalez un petit déjeuner, simple et rapide : une boîte de chimicookies et un synthécafé.
 Maintenant, il va falloir se remettre à retravailler vos fiches de révision...
 
-Vous appelez Fred et lui demandez de revenir réviser avec vous ?
--> Appeler Fred.
-[[Call_Fred]]
+<< advanceTime 0:45 >>
 
-Vous allez chercher Fred directement chez lui ?
--> Aller chez Fred !
-[[Sonner_Fred]]
+Vous appelez Fred et lui demandez de revenir réviser avec vous, ou vous allez chercher Fred directement chez lui ?
+
+-> Appeler Fred
+  << jump Call_Fred >>
+-> Aller chez Fred
+  << jump Sonner_Fred >>
 
 // penser à faire monter la jauge stress au réveil, après le petit-déjeuner???????
 // Je n'ai pas réintégré l'action déstresser avec pause méditation???
@@ -874,165 +641,235 @@ Vous allez chercher Fred directement chez lui ?
 title: Call_Fred
 tags: 
 colorID: 0
-position: 1734,1246
+position: 1733,1245
 ---
-Vous téléphonez chez Fred. La sonnerie sonne dans le vide. Ce n'est pas son genre. Vous laissez un message avant de raccrocher. Vous lui dites bien qu'il est important qu'il retravaille ses fiches de révision. Pour l'avoir vécu, vous savez combien le travail de mémorisation est encore fragile et instable.
-Les minutes passent. Fred ne vous rappelle pas. 
-Que décidez-vous de faire ?
+Vous téléphonez chez Fred. La sonnerie sonne dans le vide. 
+Ce n'est pas son genre. Vous laissez un message avant de raccrocher. Vous lui dites bien qu'il est important qu'il retravaille ses fiches de révision. Pour l'avoir vécu, vous savez combien le travail de mémorisation est encore fragile et instable.
 
--> Attendre son rappel.
-[[Attendre_Fred]]
+<< advanceTime 1:00 >>
 
--> Aller chez lui.
-[[Sonner_Fred]]
+Les minutes passent. Fred ne vous rappelle pas. Que décidez-vous de faire ?
+
+-> Attendre son rappel
+  << jump Attendre_Fred >>
+-> Aller chez lui
+  << jump Sonner_Fred >>
 ===
 title: Sonner_Fred
 tags: 
 colorID: 0
-position: 2033,1004
+position: 2032,1003
 ---
+<< fadeIn >>
+<< setBackground door >>
+<< fadeOut >>
 Vous sonnez chez Fred. Une fois, deux fois, trois fois... Vous ne vous découragez pas. Il en va de son sort universitaire...
-Finalement, Fred vous ouvre. Vous entrez. Tout est encore plongé dans le noir. Il suffit de l'observer pour constater qu'iel est fatigué.
+
+<< show fred >>
+Finalement, Fred vous ouvre. Vous entrez. Il suffit de l'observer pour constater qu'iel est fatigué.
+
+<< setBackground bedroom_fred >>
 You: Fred, habille-toi et suis-moi !
-Fred: Baaaah........ Pourquoi ?
+Fred_surprised: Baaaah........ Pourquoi ?
 You: On doit encore réviser les fiches !
-Fred: Mais on a pas cessé de le faire hier ?!
+Fred_surprised: Mais on a pas cessé de le faire hier ?!
 You: Ce n'est pas suffisant. C'est comme la peinture, il faut remettre une couche !
-Fred: Ha Ha ! J'adore ta blague !
+Fred_happy: Ha Ha ! J'adore ta blague !
 You: Ce n'est pas une blague ! Tu sais que les jurés possèdent un détecteur neurocérébral !
-Fred: Un quoi ?
+Fred_surprised: Un quoi ?
 You: Un détecteur neurocérébral : ils vont fouiller dans ton cerveau et ils t'interrogeront sur ce que tu connais le moins !
-Fred: Tu délires, c'est de la science fiction !
+Fred_angry: Tu délires, c'est de la science fiction !
 You: Crois-moi, nous sommes dans un univers de science fiction. 
-Fred: Sérieux ?
+Fred_surprised: Sérieux ?
 You: Sérieux. 
-Fred: C'est génial ce que tu dis. Je voudrais avoir le même.
+Fred_smiling: C'est génial ce que tu dis. Je voudrais avoir le même.
 You: En attendant, il faut s'en prémunir. Il faut se remettre à réviser. Suis-moi
 Fred: OK, Boss.
 Fred s'habille, prend un petit-déjeuner éclair et vous rejoint dans votre chambre.
 
 -> Retour dans la chambre.
-[[Reviser_Fiches2]]
+  << jump Reviser_Fiches2 >>
 ===
 title: Attendre_Fred
 tags: 
 colorID: 0
-position: 2029,1233
+position: 2028,1231
 ---
-Vous attendez Fred... Encore et encore... Manifestement, iel pense qu'une seule séance de révision avec vos fiches lui suffit. Vous avez oublié que Fred n'a pris toute la mesure de ses limites. Soit, iel se surestime, soit iel se sous-estime. Vous ne pouvez encore le laisser seul, sans le guider jusqu'au Grand Oral.
-Vous avez enore foiré. Il faut tout recommencer !
+Vous attendez Fred... 
+<< advanceTime 1:00 >>
+
+Encore et encore... 
+<< advanceTime 1:00 >>
+
+Manifestement, iel pense qu'une seule séance de révision avec vos fiches lui suffit. Vous avez oublié que Fred n'a pris toute la mesure de ses limites. 
+Soit, iel se surestime, soit iel se sous-estime. Vous ne pouvez encore le laisser seul, sans le guider jusqu'au Grand Oral.
+
+<< fx Failure >>
+Vous avez encore foiré. Il faut tout recommencer !
 
 -> Retour à samedi matin
-[[Start]]
+  << resetLevel >>
+  << jump Start >>
 // A mon sens, c'est un choix très imprudent pour le joueur de laisser Fred en roue libre lundi matin. Pour moi, c'est game over. Qu'en pensez-vous?
 ===
 title: Reviser_Fiches2
 tags: 
 colorID: 0
-position: 2320,998
+position: 2319,996
 ---
-Vous redemandez à Room Mate de lancer le mode "immersion studieuse" dans votre chambre. Comme vous êtes de nouveau en duo, vous n'utilisez pas le module "work with me". 
-C'est vous qui démarrez la session. Le jeu de ping pong reprend, entrecoupé d'interludes métalleux entre chaque session "pomodoro". C'est encore un pur moment de complicité, de délire, de bonheur et de partage enrichissant. 
-Fred: Yolo ! Tu avais raison, j'en avais besoin de cette séance de rafraîchissement. 
+<< fadeIn >>
+<< setBackground bedroom >>
+<< fadeOut>>
+
+Vous redemandez à Room Mate de lancer le mode "immersion studieuse" dans votre chambre. 
+// Comme vous êtes de nouveau en duo, vous n'utilisez pas le module "work with me". 
+<< music Solo1 >>
+C'est vous qui démarrez la session. Le jeu de ping pong reprend, entrecoupé d'interludes métalleux entre chaque session "pomodoro". 
+C'est encore un pur moment de complicité, de délire, de bonheur et de partage enrichissant. 
+Fred: Yoooo ! Tu avais raison, j'en avais besoin de cette séance de rafraîchissement. 
 You: Je sais, je sais. On appelle ces séances des "piqûres de rappel".
-Fred: Damned, ça me pique rien que de t'entendre le dire.
+Fred_happy: Damned, ça me pique rien que de t'entendre le dire.
 You: Ouais.
-Fred: Yes yes. En tout cas, tu es vraiment un master de l'apprentissage ! 
+Fred_smiling: Yes yes. En tout cas, tu es vraiment un master de l'apprentissage ! 
 You: Merci.
 
-C'est alors que votre horloge connectée vous informe qu'il est plus de 13 heures. Il faut manger avant de partir au planétarium ! 
-Vous proposez un repas rapide et basique, pour vous et votre pote. Burger Big Proteins Double Cheese et Xeno Cola ! Vous avalez tous les deux votre sandwich, vite fait bien fait, et vous vous précipitez au Planétarium !
+<< setTime 13:00 >>
+C'est alors que votre horloge connectée vous informe qu'il est plus de 13 heures. Il faut manger avant de partir à l'oral ! 
 
--> Au Planétarium !
-[[Grand_Oral]]
+<< fx EatCook >>
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut>>
+
+Vous proposez un repas rapide et basique, pour vous et votre pote. Burger Big Proteins Double Cheese et Xeno Cola ! Vous avalez tous les deux votre sandwich, vite fait bien fait !
+
+-> Au Grand Oral !
+  << jump Grand_Oral >>
 ===
 title: Grand_Oral
 tags: 
 colorID: 0
 position: 2563,996
 ---
+<< fadeIn >>
+<< setBackground door class >>
+<< music Tense >>
+<< fadeOut >>
+
 Avant d'entrer dans la salle, Fred et vous vous souhaitez bonne chance. 
-Le reste... se déroule sans réelle encombre. Vous êtes de nouveau inspecté par les lunettes de détection neurocérébrale. Le jury vous interroge cette fois sur "l'intrication quantique". Vous parvenez encore à présenter une argumentation cohérente, solide, qui résiste aux questions des jurés.
+
+<< fadeIn >>
+<< setBackground oral >>
+<< fadeOut >>
+
+Le reste... se déroule sans réelle encombre. Vous êtes de nouveau inspecté par les lunettes de détection neurocérébrale. 
+Le jury vous interroge cette fois sur "l'intrication quantique". Vous parvenez encore à présenter une argumentation cohérente, solide, qui résiste aux questions des jurés.
+<< fx Success >>
+
+<< fadeIn >>
+<< setBackground door class >>
+<< fadeOut >>
+
+<< advanceTime 3:00 >>
+
 Quand vous sortez de là, vous devez attendre quelques heures avant de voir sortir à son tour Fred.
+<< show fred >>
 You: Alors ? 
 Fred: Je pense que c'est bon.
 You: Je suis tombé sur le sujet de l'intrication quantique. Et toi ?
 Fred: Celui de la décohérence quantique.
 You: Suspense...
-Fred: T'inquiète, j'ai géré.
+Fred_happy: T'inquiète, j'ai géré.
 Vous restez là, à discutez, le temps que les résultats s'affichent sur l'écran. 
+
+<< fx Notification >>
+<< music Victory >>
+<< setBackground door class-screen >>
+
 You: Super, Fred! T'es trop fort ! Tu as eu [b]A+[/b] !
-Fred: Merci. Mais c'est grâce à toi tout ça, mon pote. Et toi ? Tu as eu combien ?
+Fred_happy: Merci. Mais c'est grâce à toi tout ça, mon pote. Et toi ? Tu as eu combien ?
 You: Heu... [b]B+[/b]. C'est pas aussi bling que toi...
-Fred: Cesse de te rabaisser, { $name }. Tu mérites amplement d'avoir un [b]A+[/b].
+Fred_surprised: Cesse de te rabaisser, { $name }. Tu mérites amplement d'avoir un [b]A+[/b].
 You: Ouais... L'important, c'est que tu restes ici.
-Fred: Quoi ?!
+Fred_surprised: Quoi ?!
 You: Tu te demandais pas si tu allais quitter la fac ?
 Fred: Damned, tu l'avais senti ?
 You: Si l'on veut.
-Fred: Maintenant qu'on a les résultats et qu'ils sont bons... On peut aller fêter ça à la cafétéria ?
+Fred_excited: Maintenant qu'on a les résultats et qu'ils sont bons... On peut aller fêter ça à la cafétéria ?
 You: Yes !
 
--> Fêter à la cafétéria.
-[[Feter_Cafeteria]]
+<< jump Feter_Cafeteria >>
 ===
 title: Feter_Cafeteria
 tags: 
 colorID: 0
-position: 2825,986
+position: 2824,985
 ---
+
+<< fadeIn >>
+<< setBackground party >>
+<< fadeOut >>
+
 Vous vous installez à la cafétéria. Les étudiants présents dans la salle vous fixent des yeux.
 You: Tu as vu ? Les gens ont remarqué que la star de l'Académie est à la cafétéria en ce moment.
 Fred: Pas seulement { $name }. Ils ont aussi reconnu la star du glam rock : toi !
 You: Naan, tu plaisantes.
-Fred: Yes yes. Tu vaux plus que tu ne le crois.
+Fred_smiling: Yes yes. Tu vaux plus que tu ne le crois.
 You: Merci. De ta part, c'est un sacré compliment.
 Fred: Tu le mérites. Sans toi, j'allais dans le mur.
 You: Tu sais. c'est grâce à toi aussi que je suis devenu un killer de la métacognition. 
-Fred: La métacognition ?! C'est quoi ça ?
+Fred_surprised: La métacognition ?! C'est quoi ça ?
 You: Pour faire simple : l'art d'apprendre à apprendre.
 Fred: Yes yes. Je confirme. Allez, c'est mon tour de jouer le boss, c'est moi qui commande et paye !
 Fred commande à boire. C'est l'heure de l'apéro. On vous sert des pintes de cyberbière bien mousseusses. Vous trinquez et goûtez le breuvage. Pas mal. Vous sentez que c'est le moment de le dire à Fred...
 You: Je t'avoue même que, grâce à toi, j'ai mieux compris mes erreurs. 
-Fred: Quelles erreurs ?
+Fred_surprised: Quelles erreurs ?
 
--> Avouer à Fred un secret.
-[[Avouer_Fred_Secret]]
+-> Avouer à Fred un secret
+  << jump Avouer_Fred_Secret >>
 ===
 title: Avouer_Fred_Secret
 tags: 
 colorID: 0
-position: 3054,985
+position: 3053,984
 ---
 You: Tu l'as dis. Je ne me faisais pas assez confiance. Je me sentais tellement en-dessous de toi. 
 Fred: T'exagères.
 You: Naan. Tu me semblais indépassable. Je voulais tant être ton égal.
-Fred: Rien que ça ?
+Fred_happy: Rien que ça ?
 You: Voire plus ! Je rêvais d'être meilleur que la star de l'Académie !
 Fred: Sans blague ! Tu es aussi une star à l'Académie, je te le redis.
 You: Ouais. Mais c'est pas le plus important. 
-Fred: OK.
-You: Ce qui compte, c'est ce que je veux, moi. Te dépasser dans le classement, j'en ai rien à foutre ! Cela ne m'aide pas à mieux me connaître. Et c'est ça ce qui compte : savoir qui l'on est vraiment, ce que l'on veut dans la vie, dans les études.
-Fred: Yes yes. T'as 100% raison.
-You: Quand j'ai compris que tu projettais de quitter l'Académie, j'ai paniqué !
+Fred_smiling: OK.
+You: Ce qui compte, c'est ce que je veux, moi. Te dépasser dans le classement, j'en ai rien à foutre ! You: Cela ne m'aide pas à mieux me connaître. Et c'est ça ce qui compte : savoir qui l'on est vraiment, ce que l'on veut dans la vie, dans les études.
+Fred_happy: Yes yes. T'as 100% raison.
+You: Quand j'ai compris que tu projetais de quitter l'Académie, j'ai paniqué !
 Fred: Sérieux ?
 You: Tu es mon meilleur pote.
 Fred: Je vois ça.
 You: Mais, je comprends là encore que je me suis trompé. Le plus important c'est que, quoiqu'il se passe, nous restions amis.
-Fred: Yes yes. Tu es un vrai sage.
+Fred_smiling: Yes yes. Tu es un vrai sage.
 You: J'espère en tout cas le devenir un jour.
-La soirée continue un moment. Vous payez la seconde tournée. Fred en commande une troisième. Vous en profitez également pour grignotter une salade ou un chill and chisps. L'heure tourne. Il est grand temps de rentrer. Vous reprenez les cours demain matin.
+La soirée continue un moment. Vous payez la seconde tournée. Fred en commande une troisième. Vous en profitez également pour grignotter une salade ou un chill and chips. 
+
+<< advanceTime 4:00 >>
+L'heure tourne. Il est grand temps de rentrer. Vous reprenez les cours demain matin.
 Vous vous faites l'accolade et vous vous dites à demain !
 
--> Dormir !
-[[Dormir]]
+-> Rentez dormir
+  << jump Dormir >>
 ===
 title: Dormir
 tags: 
 colorID: 0
 position: 3314,987
 ---
-Dans votre chambre, vous vous déshabillez, allez faire un petit tour aux toilettes et vous gagnez le lit. Fatigué, repu, mais content d'être parvenu à remplir cette dernière mission... La dernière mission... Il n'y en aura plus d'autre après ?...
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+
+Dans votre chambre, vous vous déshabillez, allez faire un petit tour aux toilettes et vous gagnez le lit. 
+Fatigué, repu, mais content d'être parvenu à remplir cette dernière mission... La dernière mission... Il n'y en aura plus d'autre après ?...
 Temde: Yep, c'est ta dernière épreuve et tu l'as réussie.
 You: Je vous verrai plus ?
 Temde: Presque plus.
@@ -1040,14 +877,21 @@ You: Comment ça, presque plus ?
 Temde: Viens { $name }, rejoins-nous, ça sera plus facile de te l'expliquer...
 
 -> Suivre Miss Temdé.
-[[AuRevoir_Sages]]
+  << fx Warp >>
+  << fadeIn 1500 >>
+  << hide >>
+  << jump AuRevoir_Sages >>
 ===
 title: AuRevoir_Sages
 tags: 
 colorID: 0
 position: 3571,983
 ---
-Vous vous retrouvez encore dans ce verdoyant écrin de calme et de sérénité. Les quatre Sages sont assis autour de la table. Ils vous apppaudit, le sourire aux lèvres.
+<< setBackground circle >>
+<< music Victory >>
+<< fadeOut >>
+
+Vous vous retrouvez encore dans ce verdoyant écrin de calme et de sérénité. Les quatre Sages vous applaudit, le sourire aux lèvres.
 Sapiens: Bravo ! Tu utilises avec brio les quatre stratégies d'apprentissage. En aidant Fred à surmonter ses propres obstacles, tu as su exploiter au mieux les techniques et les secrets que nous t'avons enseignés. 
 Ledai: Parfait ! Tu as franchi la dernière marche. Tu as [b]appris à apprendre[/b]. 
 Azul_happy: Félicitations ! Tu es devenu un [b]Apprenant Universel[/b] !
