@@ -62,6 +62,10 @@ export function installGameData(rootConfig: entity.EntityConfig) {
   rootConfig.clock = _clock;
   rootConfig.app.renderer.plugins.interaction.mouseOverRenderer = true;
   rootConfig.debug = false;
+  rootConfig.history = {
+    texts: [],
+    lastTime: 0
+  };
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -196,4 +200,6 @@ booyah.go({
 // Resize now, and force the resize to happen when the window size changes
 resizeHtmlLayer(screenSize);
 window.addEventListener("resize", () => resizeHtmlLayer(screenSize));
-document.addEventListener("fullscreenchange", () => resizeHtmlLayer(screenSize));
+document.addEventListener("fullscreenchange", () =>
+  resizeHtmlLayer(screenSize)
+);

@@ -156,7 +156,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.historyButton.anchor.set(0.5);
       this.historyButton.position.set(
         this.popupBackground.width / 2,
-        this.popupBackground.height * 0.34
+        this.journal.position.y + this.journal.height + 10
       );
       this.historyButton.interactive = true;
       this.historyButton.buttonMode = true;
@@ -173,7 +173,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.creditButton.anchor.set(0.5);
       this.creditButton.position.set(
         this.popupBackground.width / 2,
-        this.popupBackground.height * 0.4
+        this.historyButton.position.y + this.historyButton.height + 10
       );
       this.creditButton.interactive = true;
       this.creditButton.buttonMode = true;
@@ -346,7 +346,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.journal.anchor.set(0.5);
       this.journal.position.set(
         this.popupBackground.width / 2,
-        this.popupBackground.height * 0.31
+        this.popupBackground.height * 0.29
       );
       this.journal.interactive = true;
       this.journal.buttonMode = true;
@@ -354,7 +354,8 @@ export class Menu extends extension.ExtendedCompositeEntity {
         this._activateChildEntity(
           new popup.Confirm(
             "Téléchargement du journal de la métacognition",
-            () => {
+            (validated: boolean) => {
+              if(!validated) return;
               const journalDownload = new journal.JournalPDF();
               this._activateChildEntity(journalDownload);
               journalDownload.journalToPDF(
@@ -438,16 +439,16 @@ export class Menu extends extension.ExtendedCompositeEntity {
     );
 
     scrollBox.container.position.set(100);
-    scrollBox.content.addChild(
-      // @ts-ignore
-      this.makeText(dialogScene.getHistoryText(), {
-        fontFamily: "Ubuntu",
-        fontSize: 30,
-        fill: 0xffffff,
-      })
-    );
+    let currentY = 0;
+    // @ts-ignore
+    dialogScene.getHistoryText().forEach((text) => {
+      text.position.set(0, currentY);
+      scrollBox.content.addChild(text);
+      currentY += text.height + 30;
+    });
 
     scrollBox.refresh();
+    scrollBox.scrollBy(new PIXI.Point(0, -(currentY + 200)));
 
     background.once("click", () => {
       this.container.removeChild(background);

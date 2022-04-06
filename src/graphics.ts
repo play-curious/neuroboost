@@ -123,12 +123,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       //@ts-ignore
       window.loadedEnvironment = undefined;
 
-      this.setBackground(last.lastBg, last.lastBgMood);
-      this.addCharacter(last.lastCharacter, last.lastMood);
-
-      if (last.lastMusic != null) {
-        this.config.jukebox.play(last.lastMusic);
-      }
+      if (last.lastBg) this.setBackground(last.lastBg, last.lastBgMood);
+      if (last.lastCharacter)
+        this.addCharacter(last.lastCharacter, last.lastMood);
+      if (last.lastMusic) this.config.jukebox.play(last.lastMusic);
     }
   }
 
@@ -203,14 +201,14 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
-    if(this.currentGauges === undefined) return;
+    if (this.currentGauges === undefined) return;
 
     if (gaugesName.length === 0) {
       for (const gaugeName of this.currentGauges) {
         gaugesName.push(gaugeName);
       }
     }
-    console.log(gaugesName);
+    
     let i = 0;
     const gaugesTween: entity.EntityBase[] = [];
     for (const gaugeName of gaugesName) {
@@ -429,10 +427,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               choicebox.buttonMode = true;
 
               this._on(choicebox, "pointerup", () => {
-                this.config.dialogScene.history.push([
+                this.config.dialogScene.addToHistory(
                   "[choice]",
                   nodeOptions[i].text,
-                ]);
+                );
                 onBoxClick(Number(nodeOptions[i].id));
               });
 
@@ -582,10 +580,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               highlight.buttonMode = true;
 
               this._on(highlight, "pointerup", () => {
-                this.config.dialogScene.history.push([
+                this.config.dialogScene.addToHistory(
                   "[freechoice]",
                   choiceText,
-                ]);
+                );
                 onBoxClick(i);
               });
 
