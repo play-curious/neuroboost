@@ -64,7 +64,6 @@ tags: freechoice
 position: 1036,139
 colorID: 2
 ---
-<< fadeIn >>
 << setBackground bedroom >>
 << fadeOut >>
 
@@ -72,12 +71,12 @@ colorID: 2
 
 -> Cuisine@cuisine
     <<jump Cuisine_S >>
+-> Porte@porte
+    <<jump Porte_S>>
 -> Bureau@bureau
     <<jump Bureau_S>>
 -> Lit@lit
     <<jump Lit_S>>
--> Porte@porte
-    <<jump Porte_S>>
 -> Salon@salon
     <<jump Detente_S>>
 
@@ -106,11 +105,13 @@ colorID: 6
 -> Manger vite
     <<jump MangerVite_S>>
 -> back
+    << fadeIn >>
     <<jump Taches_S>>
     
 << else >>
 
 -> back
+    << fadeIn >>
     <<jump Taches_S>>
 
 << endif >>
@@ -133,6 +134,7 @@ colorID: 6
 -> Ranger le bureau #once
     <<jump Ranger_S>>
 -> back
+    << fadeIn >>
     <<jump Taches_S>>
 ===
 title: Lit_S
@@ -147,6 +149,7 @@ colorID: 6
 -> Faire une sieste #once
     <<jump Sieste_S>>
 -> back
+    << fadeIn >>
     <<jump Taches_S>>
 ===
 title: Detente_S
@@ -165,6 +168,7 @@ colorID: 6
 -> Chatter en ligne #once
     <<jump Reseaux_S>>
 -> back
+    << fadeIn >>
     <<jump Taches_S>>
 ===
 title: Zero_Distraction_S
@@ -175,6 +179,7 @@ position: 1744,-797
 Vous demandez à votre RoomMate de basculer votre chambre en mode "immersion studieuse".
 RoomMate s'exécute, et empêche les distraction extérieures de pouvoir vous perturber, en ne vous laissant accès qu'au strict minimum pour réviser dans les meilleures condiditions.
 
+<< fadeIn >>
 <<jump Taches_S>>
 ===
 title: Planning_S
@@ -197,6 +202,7 @@ Et en plus petites tâches, une pause sieste, et tout les autres éléments de d
 
 << advanceTime 0:15 >>
 
+<< fadeIn >>
 <<jump Taches_S>>
 ===
 title: Reviser_S
@@ -207,20 +213,34 @@ position: 1744,-328
 << visit revision1 >>
 
 Première revision
+<< advanceTime 1:00 >>
+Pause
+<< advanceTime 0:15 >>
+Revision suite
+<< advanceTime 1:00 >>
 
 << elseif !visited("revision2") >>
 << visit revision2 >>
 
 Seconde revision
+<< advanceTime 1:00 >>
+Pause
+<< advanceTime 0:15 >>
+Revision suite
+<< advanceTime 1:00 >>
 
 << else >>
 
 Troisieme revision, possible défaite
+<< advanceTime 1:00 >>
+Pause
+<< advanceTime 0:15 >>
+Revision suite
+<< advanceTime 1:00 >>
 
 << endif >>
 
-<< advanceTime 1:00 >>
-
+<< fadeIn >>
 << jump Taches_S >>
 ===
 title: Ranger_S
@@ -234,6 +254,7 @@ Vous êtes satisfait de votre rangement, vous vous sentez tout de suite plus à 
 
 << advanceTime 0:30 >>
 
+<< fadeIn >>
 <<jump Taches_S>>
 ===
 title: Sieste_S
@@ -251,6 +272,7 @@ Trêve de paroles, vous vous asseyez sur votre lit et vous tombez presqu'aussit�
 Ce n'est seulement qu'après plus d'une demi-heure que vous rouvrez les yeux.
 Ce somme, vous en aviez bien besoin...
 
+<< fadeIn >>
 <<jump Taches_S>>
 ===
 title: BingeTV_S
@@ -272,6 +294,7 @@ Vous avez déjà passer 2 heures devant votre série, mais vous voulez vraiment 
 -> Continuez à regarder
 -> Retournez à vos occupations
     << hide >>
+    << fadeIn >>
     <<jump Taches_S>>
 
 Est-ce la fin pour Dude ? Vous vous doutiez que non. Et vous aviez raison... 
@@ -286,6 +309,7 @@ Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de b
 
 Après votre pause Star Mars...
 
+<< fadeIn >>
 <<jump Taches_S>>
 ===
 title: Musique_S
@@ -302,6 +326,7 @@ Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare
 << advanceTime 0:30 >>
 << music Neutral >>
 
+<< fadeIn >>
 <<jump Taches_S>>
 ===
 title: Porte_S
@@ -358,6 +383,7 @@ Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous a
 
 << music Neutral >>
 
+<< fadeIn >>
 <<jump Taches_S>>
 ===
 title: Reseaux_S
@@ -374,6 +400,7 @@ Vous vous sentez calme et confiant.
 
 << advanceTime 2:00 >>
 
+<< fadeIn >>
 << jump Taches_S >>
 ===
 title: Soir_S
@@ -521,10 +548,15 @@ title: Fred_D
 tags: 
 position: 3122,1884
 ---
+<< fadeIn >>
+<< setBackground door >>
+<< fadeOut >>
+
 << empty >> // Aller chercher fred, il n'est pas là
 Vous vous rendez chez fred et toquez à ça porte, cependant il ne répond pas, peut-être qu'il avait une urgence. Il va falloir s'occuper sans lui.
 
 -> Retourner à votre journée
+    << fadeIn >>
     <<jump Taches_D>>
 ===
 title: Taches_D
@@ -532,7 +564,6 @@ tags: freechoice
 position: 3366,1884
 colorID: 2
 ---
-<< fadeIn >>
 << setBackground bedroom >>
 << fadeOut >>
 
@@ -544,14 +575,14 @@ colorID: 2
 
 -> Cuisine@cuisine
     <<jump Cuisine_D>>
+-> Porte@porte
+    <<jump Porte_D>>
 -> Lit@lit
     <<jump Lit_D>>
 -> Bureau@bureau
     <<jump Bureau_D>>
 -> Salon@salon
     <<jump Detente_D>>
--> Porte@porte
-    <<jump Porte_D>>
 
 << endif >>
 
@@ -566,8 +597,11 @@ colorID: 6
 << fadeOut >>
 
 <<empty>> // Long/Court ? (comme Cuisine_S)
--> Manger un petit plat << !visited("Manger_D")>>
-    <<jump Manger_D>>
+-> Manger un petit plat << if !visited("Manger_D") >>
+    << jump Manger_D >>
+-> back
+    << fadeIn >>
+    << jump Taches_D >>
 ===
 title: Lit_D
 tags: subchoice
@@ -580,6 +614,9 @@ colorID: 6
 
 -> Se reposer un peu #once
     <<jump Sieste_D>>
+-> back
+    << fadeIn >>
+    << jump Taches_D >>
 ===
 title: Bureau_D
 tags: subchoice
@@ -590,8 +627,6 @@ colorID: 6
 << setBackground bedroom desk >>
 << fadeOut >>
 
-
-
 -> Continuer les révisions << if !visited("revision4") >>
     <<jump Reviser_D>>
     
@@ -600,6 +635,9 @@ colorID: 6
 
 -> Revoir le planning << if visited("Planning_S") >> #once
     <<jump Planning_D>>
+-> back
+    << fadeIn >>
+    << jump Taches_D >>
 ===
 title: Detente_D
 tags: subchoice
@@ -614,6 +652,9 @@ colorID: 6
     <<jump Musique_D>>
 -> Chatter en ligne
     <<jump Reseaux_D>>
+-> back
+    << fadeIn >>
+    << jump Taches_D >>
 ===
 title: Porte_D
 tags: subchoice
@@ -622,6 +663,8 @@ colorID: 6
 ---
 -> Aller faire les courses #once
     <<jump Courses_D>>
+-> back
+    << jump Taches_D >>
 ===
 title: Sieste_D
 tags: 
@@ -637,6 +680,7 @@ Vous vous réveillez ensuite, de bonne humeur et le corps détendu.
 
 << advanceTime 0:30 >>
 
+<< fadeIn >>
 <<jump Taches_D>>
 ===
 title: Manger_D
@@ -652,6 +696,7 @@ Vous vous cuisinez un plat de pâtes à la carnobara. Autant dire que ça vous r
 
 C'est dimanche, jour de repos. Cependant, il serait judicieux continuer à vous préparer à votre grand oral de demain.
 
+<< fadeIn >>
 <<jump Taches_D>>
 ===
 title: Reviser_D
@@ -663,28 +708,49 @@ position: 4011,1275
 << visit revision2 >>
 <<empty>> // Continuer si qu'une révision samedi (tendu un peu)
 Revision 2
+<< advanceTime 1:00 >>
+Pause
+<< advanceTime 0:15 >>
+Revision 2 Suite
+<< advanceTime 1:00 >>
 
 << elseif !visited("revision3") >>
 
 << visit revision3 >>
 <<empty>> // Les révisions avancent pénards
 Revision 3
+<< advanceTime 1:00 >>
+Pause
+<< advanceTime 0:15 >>
+Revision 3 Suite
+<< advanceTime 1:00 >>
 
 << else >>
 
 << visit revision4 >>
 <<empty>> // ENFIN ! TU SAIS TOUT
 Revision 4
+<< advanceTime 1:00 >>
+Pause
+<< advanceTime 0:15 >>
+Revision 4 Suite
+<< advanceTime 1:00 >>
 
 << endif >>
 
 << if !visited("reviser_D") >>
 
 << visit reviser_D >>
--> Répondre <<if (!visited("reviser_D"))>>
+
+Vous recevez un appel de votre mamie
+-> Répondre
     <<jump AppelMamie_D>>
 
 << endif >>
+
+<< fadeIn >>
+<< jump Taches_D >>
+
 ===
 title: Planning_D
 tags: 
@@ -702,6 +768,7 @@ Vous revoyez votre planning, il y a quelques petits changement à faire.
 
 << endif >>
 
+<< fadeIn >>
 <<jump Taches_D>>
 ===
 title: Courses_D
@@ -716,6 +783,7 @@ position: 4011,2838
 Vous allez faire vos courses.
 << advanceTime 1:00 >>
 
+<< fadeIn >>
 <<jump Taches_D>>
 ===
 title: Musique_D
@@ -731,6 +799,7 @@ Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare
 << advanceTime 0:30 >>
 << music Neutral >>
 
+<< fadeIn >>
 <<jump Taches_D>>
 ===
 title: Reseaux_D
@@ -745,6 +814,7 @@ Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à vo
 Vous vous sentez calme et confiant.
 << advanceTime 2:00 >>
 
+<< fadeIn >>
 <<jump Taches_D>>
 ===
 title: AppelMamie_D
@@ -759,10 +829,10 @@ position: 4297,1275
 
 -> Appel long
     Vous prennez le temps d'écouter votre mamie
-    << advanceTime 1:00 s>>
+    << advanceTime 1:00 >>
     L'appel dur trop longtemps
 
-
+<< fadeIn >>
 <<jump Taches_D>>
 ===
 title: Diner_D
@@ -806,25 +876,25 @@ Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de b
 << stopFX TVStarwars_LOOP >>
 << hide >>
 
-// Option "Au dodo !" moved to the end of this node
 -> Au dodo !
-    <<jump Dormir_D>>
+    << jump Dormir_D >>
 ===
 title: Dormir_D
 tags: 
 colorID: 0
 position: 4142,3911
 ---
-Vous vous allongez sur le lit pour une courte pause. Vous mettez un réveil pour vous empêchez de sombrer dans le sommeil profond. Vous fermez les yeux... 
+Vous vous allongez sur le lit pour une courte pause. Vous mettez un réveil pour vous empêchez de sombrer dans le sommeil profond.
+Vous fermez les yeux... 
+<< fadeIn >>
 
-<<jump Reveil_L>>
+<< jump Reveil_L >>
 ===
 title: Reveil_L
 tags: 
 colorID: 1
 position: 4404,3911
 ---
-<< fadeIn >>
 << setBackground bedroom >>
 << setTime 8:00 7 >>
 << loopFX Sleep_LOOP 5000 >>
@@ -837,7 +907,7 @@ Vous prenez le temps de petit-déjeuner, pour mettre toutes les chances de votre
 
 << advanceTime 0:30 >>
 
-<< if <winCondition> >>
+<< if 1 >>
 
 Une fois terminé, vous essayez d'appeler Fred pour votre séance de sport, mais il semblerait qu'il n'ait toujours pas envie de répondre. Il doit sûrement être concentré dans ses révisions.
 
@@ -856,7 +926,9 @@ tags:
 colorID: 0
 position: 5223,3741
 ---
-// TODO: Dire ce que le joueur a bien fait
+
+Sapiens_happy: Bravo !
+<<empty>> // TODO: Dire ce que le joueur a bien fait
 
 <<jump JournalMental>>
 ===
@@ -897,11 +969,11 @@ position: 4678,3731
 ---
 Tant pis, vous allez en profiter pour repenser à tout ce que vous avez révisé ce week-end pendant votre jogging. Il vous reste un peu plus d'une heure avant votre passage.
 << advanceTime 1:00 >>
-// Jogging tranquillou
+<<empty>> // Jogging tranquillou
 
-// Petite picure de rappel (dédidace à toi, Cuantin)
+<<empty>> // Petite picure de rappel (dédidace à toi, Cuantin)
 
-// Direction l'EXAM1
+<<empty>> // Direction l'EXAM1
 
 <<jump ExamenVictoire_L>>
 ===
@@ -964,6 +1036,7 @@ Pas la peine d'attendre les résultats pour savoir que vous avez royalement rât
 << fadeOut >>
 
 << if !visited("sages") >>
+
 << visit sages >>
 À peine de retour dans votre chambre, vous vous écriez :
 You: Hé, messieurs les Sages ! Vous êtes là ? Parce que j'aurais besoin de vous... Ça va pas, mais pas du tout ! J'ai raté le Grand Oral...
@@ -978,12 +1051,21 @@ You: Vous êtes un pervers ?!
 Sapiens_happy: Non, un Sage de la métacognition. Pour apprendre à apprendre, il faut d'abord observer ses échecs. Ensuite, seulement, on peut en tirer des leçons. Et corriger ses erreurs.
 You: Ah.
 Sapiens_happy: C'est ce que nous allons faire de ce pas !
-// Option "Suivre maitre Sapiens" moved to the end of this node
+
+<<empty>> // Option "Suivre maitre Sapiens" moved to the end of this node
+-> Suivre maitre Sapiens
     << fx Warp >>
     << fadeIn >>
+    << jump SagesDefaite_L >>
+
 << else >>
-// Option "Recommencer le week-end" moved to the end of this node
-<< endif
+
+<<empty>> // Option "Recommencer le week-end" moved to the end of this node
+-> Recommencer le week-end
+    << fadeIn >>
+    << jump Start >>
+
+<< endif >>
 ===
 title: ExamenVictoire_L
 tags: 

@@ -1,0 +1,20 @@
+{"frames": {
+
+"b_angry.png":
+{
+	"frame": {"x":1,"y":1,"w":591,"h":1080},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":689,"y":0,"w":591,"h":1080},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "b_angry.png",
+	"format": "RGBA8888",
+	"size": {"w":593,"h":1082},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:898a1221382db4be785f01cfe518b325:9f0ccf88b829ab68f216defcb1a103b5:b2078d408fc45250293f61fd9b33b696$"
+}
+}
