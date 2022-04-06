@@ -126,9 +126,13 @@ async function levelLoader(entityConfig: entity.EntityConfig) {
 }
 
 const transitions: Record<string, entity.Transition> = {};
-let i = 1;
+let i = 0;
 let previousState = "";
 for (const state in states) {
+  if (i === 0){
+    i++;
+    continue;
+  }
   if (i !== 1) transitions[previousState] = entity.makeTransition(state);
   previousState = state;
   i++;

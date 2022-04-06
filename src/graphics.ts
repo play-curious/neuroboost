@@ -29,6 +29,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _lastCharacter: string;
   private _lastMood: string;
   private _lastMusic: string;
+  private _lastGauges: string[];
   private _characters: Map<
     string,
     {
@@ -68,6 +69,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       lastCharacter: this._lastCharacter,
       lastMood: this._lastMood,
       lastMusic: this._lastMusic,
+      lastGauges: this._lastGauges,
     };
   }
 
@@ -126,6 +128,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       if (last.lastCharacter)
         this.addCharacter(last.lastCharacter, last.lastMood);
       if (last.lastMusic) this.config.jukebox.play(last.lastMusic);
+      if (last.gauges) this.toggleGauges(true, last.gauges);
     }
   }
 
@@ -208,6 +211,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       }
     }
     
+    
+    this._lastGauges = JSON.parse(JSON.stringify(gaugesName));
     let i = 0;
     const gaugesTween: entity.EntityBase[] = [];
     for (const gaugeName of gaugesName) {

@@ -86,7 +86,6 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
               (txt) => {
                 txt.anchor.set(0.5);
                 txt.scale.set(2);
-                //txt.position.set(it.width / 2, it.height / 2);
               }
             )
           );

@@ -43,8 +43,6 @@ export function isOption(
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
   public lastNodeData: yarnBound.Metadata;
-  //public history: [type: string, text: string][];
-  // private lastHistory: number;
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
   public visited: Set<string>;

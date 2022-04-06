@@ -216,7 +216,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
             const newState = !this.config.variableStorage.get("isDebugMode");
             this.config.variableStorage.set("isDebugMode", newState);
             this.debugText.visible = newState;
-            this.config.fxMachine.play("Spawn");
+            this.config.fxMachine.play("Notification");
             console.log("Debug: ", newState);
           }
         });
