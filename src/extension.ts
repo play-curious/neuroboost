@@ -28,13 +28,14 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
     mood: string,
     displayMode: string,
     animate: boolean
-  ): { container: PIXI.Container; entity: entity.ParallelEntity } {
+  ): { container: PIXI.Container; entity: entity.ParallelEntity; holo: boolean } {
     const CE = {
       container: new PIXI.Container(),
       entity: new entity.ParallelEntity(),
+      holo: displayMode === "holo",
     };
 
-    CE.container.setTransform(250, 80, 1.1, 1.1);
+    CE.container.setTransform(250, 80, 1, 1);
 
     // Set directory to access resources
     const baseDir = `images/characters/${character}`;
@@ -85,17 +86,36 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
 
     // If character changed, do animation
     if (animate) {
-      this._activateChildEntity(
-        new tween.Tween({
-          duration: 1500,
-          easing: easing.easeOutQuint,
-          from: 1500,
-          to: 250,
-          onUpdate: (value) => {
-            CE.container.position.x = value;
-          },
-        })
-      );
+
+      if(displayMode === "holo") {
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 500,
+            easing: easing.easeInCubic,
+            from: 0,
+            to: 100,
+            onUpdate: (value: number) => {
+              CE.container.position.y = (100-value) * 5.4 +80;
+              CE.container.scale.y = value/100;
+              CE.container.position.x = -(100-value) * 9.6 +250;
+              CE.container.scale.x = (100-value)/100 +1;
+            },
+          })
+        );
+      }
+      else {
+        this._activateChildEntity(
+          new tween.Tween({
+            duration: 1500,
+            easing: easing.easeOutQuint,
+            from: 1500,
+            to: 250,
+            onUpdate: (value: number) => {
+              CE.container.position.x = value;
+            },
+          })
+        );
+      }
     }
 
     return CE;
