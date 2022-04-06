@@ -240,8 +240,6 @@ Revision suite
 
 << endif >>
 
-<< advanceTime 1:00 >>
-
 << fadeIn >>
 << jump Taches_S >>
 ===
@@ -550,10 +548,15 @@ title: Fred_D
 tags: 
 position: 3122,1884
 ---
+<< fadeIn >>
+<< setBackground door >>
+<< fadeOut >>
+
 << empty >> // Aller chercher fred, il n'est pas là
 Vous vous rendez chez fred et toquez à ça porte, cependant il ne répond pas, peut-être qu'il avait une urgence. Il va falloir s'occuper sans lui.
 
 -> Retourner à votre journée
+    << fadeIn >>
     <<jump Taches_D>>
 ===
 title: Taches_D
