@@ -88,6 +88,7 @@ const stateNames = [
   "journal_stress",
   "D5_level2",
   "End_Screen",
+  "D6"
 ];
 
 const states: { [k: string]: entity.EntityResolvable } = {

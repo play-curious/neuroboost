@@ -1,15 +1,18 @@
+#gauges: learning sleep food mentalLoad stress
+
 title: Start
 tags: freechoice
-colorID: 1
 position: 560,139
+colorID: 1
 ---
 << fadeIn 1 >>
 << music Neutral >>
 << setBackground bedroom >>
-<< setTime 9:00 5 >>
+<< showGauges learning sleep food mentalLoad stress >>
+<< setTime 10:00 5 >>
 << fadeOut >>
 
-C'est le matin, vous vous réveillez... naturellement, normalement, sans sonnerie. Logique, nous sommes samedi, c'est le week-end, synonyme de repos, du moins de relâche. Il est 9 heures passées.
+C'est le matin, vous vous réveillez... naturellement, normalement, sans sonnerie. Logique, nous sommes samedi, c'est le week-end, synonyme de repos, du moins de relâche. Il est dix heures passées.
 
 << fx EatCook >>
 Vous vous levez tranquillement et prenez un petit-déjeuner copieux : chocolat organique, crêpes au caramel beurré, jus d'oranges organiques compressées.
@@ -23,7 +26,7 @@ Vous pensez à votre grand-mère, mais vous avez l'esprit serein et optimiste.
 << loopFX PhoneRing_LOOP 5000 >>
 
 Le sort aurait-il perçu vos pensées : votre palmphone vibre, c'est votre mère. Elle veut vous parler...
-// Option "Répondre" moved to the end of this node
+
 -> Répondre
     <<jump Appel_Maman>>
 ===
@@ -58,107 +61,111 @@ Bon, il est temps de s'y mettre. C'est qu'il y a beaucoup a réviser, même pour
 ===
 title: Taches_S
 tags: freechoice
-colorID: 2
 position: 1036,139
+colorID: 2
 ---
 << fadeIn >>
 << setBackground bedroom >>
 << fadeOut >>
 
 << if !isTimeOver("20:00") >>
-// Option "Cuisine@cuisine" moved to the end of this node
-// Option "Bureau@bureau" moved to the end of this node
-// Option "Lit@lit" moved to the end of this node
-// Option "Porte@porte" moved to the end of this node
-// Option "Salon@salon" moved to the end of this node
-<< else >>
-Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories.
-// Option "Aller dîner" moved to the end of this node
-<< endif >>
--> Cuisine@cuisine <<if (!isTimeOver("20:00"))>>
-    <<jump Cuisine_S>>
--> Bureau@bureau <<if (!isTimeOver("20:00"))>>
+
+-> Cuisine@cuisine
+    <<jump Cuisine_S >>
+-> Bureau@bureau
     <<jump Bureau_S>>
--> Lit@lit <<if (!isTimeOver("20:00"))>>
+-> Lit@lit
     <<jump Lit_S>>
--> Porte@porte <<if (!isTimeOver("20:00"))>>
+-> Porte@porte
     <<jump Porte_S>>
--> Salon@salon <<if (!isTimeOver("20:00"))>>
+-> Salon@salon
     <<jump Detente_S>>
--> Aller dîner <<if !(!isTimeOver("20:00"))>>
+
+<< else >>
+
+Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories.
+
+-> Aller dîner
     <<jump Soir_S>>
+
+<< endif >>
 ===
 title: Cuisine_S
 tags: subchoice
-colorID: 6
 position: 1371,274
+colorID: 6
 ---
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
 << if !visited("MangerMidi_S") >>
-// Option "Manger saînement" moved to the end of this node
-// Option "Manger vite" moved to the end of this node
-<< end >>
--> Manger saînement <<if (!visited("MangerMidi_S"))>>
+
+-> Manger saînement
     <<jump MangerSain_S>>
--> Manger vite <<if (!visited("MangerMidi_S"))>>
+-> Manger vite
     <<jump MangerVite_S>>
+-> back
+    <<jump Taches_S>>
+    
+<< else >>
+
+-> back
+    <<jump Taches_S>>
+
+<< endif >>
 ===
 title: Bureau_S
 tags: subchoice
-colorID: 6
 position: 1371,-438
+colorID: 6
 ---
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
 
-// Option "Demander au Roommate de couper les distractions" moved to the end of this node
-// Option "Plannifier le travail à faire" moved to the end of this node
-// Option "Réviser la Philosophie Quantique" moved to the end of this node
-// Option "Ranger le bureau" moved to the end of this node
--> Demander au Roommate de couper les distractions
+-> Demander au Roommate de couper les distractions #once
     <<jump Zero_Distraction_S>>
--> Plannifier le travail à faire
+-> Plannifier le travail à faire #once
     <<jump Planning_S>>
 -> Réviser la Philosophie Quantique
     <<jump Reviser_S>>
--> Ranger le bureau
+-> Ranger le bureau #once
     <<jump Ranger_S>>
+-> back
+    <<jump Taches_S>>
 ===
 title: Lit_S
 tags: subchoice
-colorID: 6
 position: 1371,621
+colorID: 6
 ---
 << fadeIn >>
 << setBackground bedroom bed >>
 << fadeOut >>
 
-// Option "Faire une sieste" moved to the end of this node
--> Faire une sieste
+-> Faire une sieste #once
     <<jump Sieste_S>>
+-> back
+    <<jump Taches_S>>
 ===
 title: Detente_S
 tags: subchoice
-colorID: 6
 position: 1371,1082
+colorID: 6
 ---
 << fadeIn >>
 << setBackground bedroom chill >>
 << fadeOut >>
 
-// Option "Regarder Star Mars" moved to the end of this node
-// Option "Jouer du Cycloluth" moved to the end of this node
-// Option "Chatter en ligne" moved to the end of this node
--> Regarder Star Mars
+-> Regarder Star Mars #once
     <<jump BingeTV_S>>
--> Jouer du Cycloluth
+-> Jouer du Cycloluth #once
     <<jump Musique_S>>
--> Chatter en ligne
+-> Chatter en ligne #once
     <<jump Reseaux_S>>
+-> back
+    <<jump Taches_S>>
 ===
 title: Zero_Distraction_S
 tags: 
@@ -172,15 +179,14 @@ RoomMate s'exécute, et empêche les distraction extérieures de pouvoir vous pe
 ===
 title: Planning_S
 tags: 
-colorID: 0
 position: 1744,-551
 ---
 << visit Planning_S >>
 
 Vous vous installez sur votre bureau. Vous rangez un minimum et sortez votre journal Bullet Point. Vous savez que ce week-end, il va diablement servir. Vous tournez les pages jusqu'à arriver à une page blanche.
-Vous notez les tâches obligatoires et prioritaires du week-end. <u>Les quatre thèmes de la philosophie quantique</u>.
-Vous énumérez ensuite les tâches importantes ou utiles : <u>Le samedi soir enfiévré à la cafétéria, la séance de détox sportive du lendemain, le coup de fil de mamie</u>.
-Enfin, vous vous attardez sur les tâches plus accessoires : <u>Sieste et éventuellement d'autres pauses fun</u>.
+Vous notez les tâches obligatoires et prioritaires du week-end. <b>Les quatre thèmes de la philosophie quantique</b>.
+Vous énumérez ensuite les tâches importantes ou utiles : <b>Le samedi soir enfiévré à la cafétéria, la séance de détox sportive du lendemain, le coup de fil de mamie</b>.
+Enfin, vous vous attardez sur les tâches plus accessoires : <b>Sieste et éventuellement d'autres pauses fun</b>.
 
 Vous tournez encore la page. Nouvelle feuille vierge. 
 Vous y notez en haut et en gras : Samedi. 
@@ -189,24 +195,33 @@ Ensuite vous passez aux tâches secondaires: Votre entraînement de Jungle Body 
 Puis, la soirée à la cafétéria, celle qui va faire remonter votre niveau de fun et vous permettre de vous lacher au concours de danse.
 Et en plus petites tâches, une pause sieste, et tout les autres éléments de détente à votre disposition.
 
+<< advanceTime 0:15 >>
+
 <<jump Taches_S>>
 ===
 title: Reviser_S
 tags: 
-colorID: 0
 position: 1744,-328
 ---
 << if !visited("revision1") >>
 << visit revision1 >>
-// tu réviz un peu, genr trql
+
+Première revision
+
 << elseif !visited("revision2") >>
 << visit revision2 >>
-// la, tu check les BASES
+
+Seconde revision
+
 << else >>
-// T MOR BATAR
+
+Troisieme revision, possible défaite
+
 << endif >>
 
-[[|Taches_S]]
+<< advanceTime 1:00 >>
+
+<< jump Taches_S >>
 ===
 title: Ranger_S
 tags: 
@@ -240,7 +255,6 @@ Ce somme, vous en aviez bien besoin...
 ===
 title: BingeTV_S
 tags: 
-colorID: 0
 position: 1744,853
 ---
 Nous sommes un jour de week-end, un jour férié. Vous méritez bien une pause TV. Vous n'avez pas encore entamé la saison 8 de Star Mars - The Lone Lightsaber.
@@ -253,9 +267,11 @@ La huitième saison reprend là où s'était arrêtée la précédente à savoir
 Hé oui, ce ne sont pas les commandos de choc de l'Impérium Noir qui ont fini par attraper le Chevalier Laser mais les Touarogs de l'infâme pirate : Jara the Hun, qui l'a sacrifié au Métavers des sables...
 
 << advanceTime 2:00 >>
+
 Vous avez déjà passer 2 heures devant votre série, mais vous voulez vraiment voir la suite...
 -> Continuez à regarder
 -> Retournez à vos occupations
+    << hide >>
     <<jump Taches_S>>
 
 Est-ce la fin pour Dude ? Vous vous doutiez que non. Et vous aviez raison... 
@@ -267,7 +283,6 @@ Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de b
 << advanceTime 2:00 >>
 << stopFX TVStarwars_LOOP >>
 << hide >>
-
 
 Après votre pause Star Mars...
 
@@ -291,16 +306,25 @@ Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare
 ===
 title: Porte_S
 tags: subchoice
-colorID: 6
 position: 1371,1548
+colorID: 6
 ---
-// Option "Aller au club de Jungle Body Beat" moved to the end of this node
--> Aller au club de Jungle Body Beat
+<< if !isTimeOver("14:00") >>
+<< if isTimeOver("13:15") >>
+
+-> Aller au club de Jungle Body Beat #once
     <<jump Sport_S>>
+-> back
+    <<jump Taches_S>>
+    
+<< endif >>
+<< endif >>
+
+-> back
+    <<jump Taches_S>>
 ===
 title: Sport_S
 tags: 
-colorID: 0
 position: 1744,1551
 ---
 << fadeIn >>
@@ -313,9 +337,9 @@ position: 1744,1551
 Vous arrivez dans les derniers, cependant, le cours n'a pas encore commencé. Plus exactement, votre coach vous attendait. 
 Il vous adresse un léger sourire quand il vous voit surgir sur la piste. Vous savez qu'il vous apprécie et que vous êtes rarement en retard. Sans compter que vous vous donnez à fond.
 << else >>
-// Text en avance : méditer ?
+<<empty>> // Text en avance : méditer ?
 << advanceTime 0:30 14:00 0:05 >>
-// Session commence
+<<empty>> // Session commence
 << endif >>
 
 << music JungleBodyBeat >>
@@ -326,7 +350,7 @@ Vous entrez à votre tour dans la séance et, comme d'habitude, vous vous lâche
 << increase sleep 20 >>
 << increase food 40 >>
 << advanceTime 1:30 >>
-// impact jauge food utile? pour l'immersion, oui
+<<empty>> // impact jauge food utile? pour l'immersion, oui
 
 Le coach tape des mains, signifiant la fin de la séance. Il remercie tout le monde et surtout vous, pour donner chair et souffle à sa troupe.
 Quand vous retournez aux vestiaires, vous êtes épuisé. Fatigué mais heureux, euphorique, satisfait. On vous félicite, on vous encourage. Vraiment, ces séances de Jungle Body Break vous font font un bien fou : au corps et au mental. 
@@ -338,25 +362,26 @@ Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous a
 ===
 title: Reseaux_S
 tags: 
-colorID: 0
 position: 1744,1313
 ---
 Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est le samedi matin : il n'y a pas grand monde en ligne. Ils sont encore en train de dormir. Et puis, petit à petit, les amis se connectent au réseau. 
 // Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
 << fx Notification >>
+
 Loulou vous pinge, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses... 
 Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à votre grand-mère. Cela vous réchauffe encore plus le coeur. Votre grand-mère s'est enfin réveillée, les choses suivent leur cours, et désormais d'autres personnes pensent à elle.
 Vous vous sentez calme et confiant.
-<< advanceTime 2:00 20:00 0:30 >>
 
-<<jump Taches_S>>
+<< advanceTime 2:00 >>
+
+<< jump Taches_S >>
 ===
 title: Soir_S
 tags: 
-colorID: 4
 position: 1130,1880
+colorID: 4
 ---
-// Manger
+<< empty >> // Manger
 << fadeIn >>
 << setBackground bedroom night >>
 << fadeOut >>
@@ -368,7 +393,7 @@ Vous faites le bilan de votre première journée. C'est un début, mais il en re
 Soudain, quelqu'un sonne à la porte... 
 Zut ! Vous aviez complètement oublié. Fred vous en a parlé dimanche dernier...
 
-// Fred débarque
+<< empty >> // Fred débarque
 Fred pénètre dans votre chambre. Il a sorti ses plus beaux habits : celui d'un cavalier de salsatronique.
 Fred: Alors ? C'est quoi ces frusques ?
 You: Heu... J'y pensais plus...
@@ -380,8 +405,8 @@ Fred: Arrête. Tu m'as promis. Et rappelle-toi comment tu as assuré mardi soir.
 You: Heu...
 Fred: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller !
 
-// Option "Refuser" moved to the end of this node
-// Option "Suivre Fred" moved to the end of this node
+<< empty >> // Option "Refuser" moved to the end of this node
+<< empty >> // Option "Suivre Fred" moved to the end of this node
 -> Refuser
     <<jump ReviserSoir_S>>
 -> Suivre Fred
@@ -389,16 +414,21 @@ Fred: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller !
 ===
 title: ReviserSoir_S
 tags: 
-colorID: 0
 position: 2201,1707
 ---
-// Option "Aller se coucher" moved to the end of this node
+<< empty >> // Option "Aller se coucher" moved to the end of this node
+
+Révision, encore et encore
+<< advanceTime 1:00>>
+
+Vous avez du mal à dormir dû à la quantité de travail que vous avez ingéré.
+<< advanceTime 0:30 >>
+
 -> Aller se coucher
     <<jump Dormir_S>>
 ===
 title: Soiree_S
 tags: 
-colorID: 0
 position: 2197,2040
 ---
 Il a raison. Vous débarrassez la table et vous vous précipitez vers votre armoire. Aiguillé par les conseils de Fred, vous enfilez une tenue Rock Glam de malade. Vous resplendissez dans cette tenue scintillante et clinquante !
@@ -419,21 +449,26 @@ Maintenant, il va falloir défendre votre réputation.
 
 << if visited("Sport_S") >>
 
-// Concours gagné
+<< empty >> // Concours gagné
+Vous gagner le concours de dance.
 
 << else >>
 
-// Concours perdu
+<< empty >> // Concours perdu
+Vous vous êtes pas entraîner aujourd'hui, vous manquez de tomber sur un faux pas, la première place ne sera pas pour vous.
 
 << endif >>
 
-// Option "Aller se coucher" moved to the end of this node
+<< empty >> // Option "Aller se coucher" moved to the end of this node
+
+<< advanceTime 3:00 >>
+Cela fait maintenant plus de 3h que le conpète à commencer et vous êtes crevé.
+
 -> Aller se coucher
     <<jump Dormir_S>>
 ===
 title: Dormir_S
 tags: 
-colorID: 0
 position: 2615,1884
 ---
 votre corps, lui, vous signale qu'il a quasiment donné tout ce qu'il pouvait. Il se fait tard. Vous vous sentez fatigué.
@@ -451,7 +486,7 @@ Vous quittez la cafétéria et rejoignez votre chambre.
 
 Vous vous déshabillez fissa, un petit tour aux toilettes et vous vous glissez dans votre lit.
 
-// Option "Dodo" moved to the end of this node
+<< empty >> // Option "Dodo" moved to the end of this node
 -> Dodo
     <<jump Reveil_D>>
 ===
@@ -484,35 +519,29 @@ Mais vous vous rendez compte qu'il ne vous reste plus rien pour manger...
 ===
 title: Fred_D
 tags: 
-colorID: 0
 position: 3122,1884
 ---
-// Aller chercher fred
+<< empty >> // Aller chercher fred, il n'est pas là
+Vous vous rendez chez fred et toquez à ça porte, cependant il ne répond pas, peut-être qu'il avait une urgence. Il va falloir s'occuper sans lui.
 
-// Option "Retourner à votre journée" moved to the end of this node
 -> Retourner à votre journée
     <<jump Taches_D>>
 ===
 title: Taches_D
-tags: 
-colorID: 2
+tags: freechoice
 position: 3366,1884
+colorID: 2
 ---
 << fadeIn >>
 << setBackground bedroom >>
 << fadeOut >>
 
 << if isTimeOver("20:00") >>
-// Option "..." moved to the end of this node
-<< endif >>
-
-// Option "Cuisine@cuisine" moved to the end of this node
-// Option "Lit@lit" moved to the end of this node
-// Option "Bureau@bureau" moved to the end of this node
-// Option "Detente@detente" moved to the end of this node
-// Option "Porte@porte" moved to the end of this node
--> ... <<if (isTimeOver("20:00"))>>
+-> ...
     <<jump Diner_D>>
+
+<< else >>
+
 -> Cuisine@cuisine
     <<jump Cuisine_D>>
 -> Lit@lit
@@ -523,71 +552,64 @@ position: 3366,1884
     <<jump Detente_D>>
 -> Porte@porte
     <<jump Porte_D>>
+
+<< endif >>
+
 ===
 title: Cuisine_D
 tags: subchoice
-colorID: 6
 position: 3699,1779
+colorID: 6
 ---
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
-// Option "Manger un petit plat" moved to the end of this node
-// Long/Court ? (comme Cuisine_S)
--> Manger un petit plat
+<<empty>> // Long/Court ? (comme Cuisine_S)
+-> Manger un petit plat << !visited("Manger_D")>>
     <<jump Manger_D>>
 ===
 title: Lit_D
 tags: subchoice
-colorID: 6
 position: 3699,2059
+colorID: 6
 ---
 << fadeIn >>
 << setBackground bedroom bed >>
 << fadeOut >>
 
-// Option "Se reposer un peu" moved to the end of this node
--> Se reposer un peu
+-> Se reposer un peu #once
     <<jump Sieste_D>>
 ===
 title: Bureau_D
 tags: subchoice
-colorID: 6
 position: 3699,1466
+colorID: 6
 ---
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
 
-<< if !visited("revision4") >>
-// Option "Continuer les révisions" moved to the end of this node
-<< endif >>
 
-// Both #once
-<< if !visited("Planning_S") >>
-// Option "Préparer le planning" moved to the end of this node
-<< else >>
-// Option "Revoir le planning" moved to the end of this node
-<< endif >>
--> Continuer les révisions <<if (!visited("revision4"))>>
+
+-> Continuer les révisions << if !visited("revision4") >>
     <<jump Reviser_D>>
--> Préparer le planning <<if (!visited("Planning_S"))>>
+    
+-> Préparer le planning << if !visited("Planning_S") >> #once
     <<jump Planning_D>>
--> Revoir le planning <<if !(!visited("Planning_S"))>>
+
+-> Revoir le planning << if visited("Planning_S") >> #once
     <<jump Planning_D>>
 ===
 title: Detente_D
 tags: subchoice
-colorID: 6
 position: 3699,2359
+colorID: 6
 ---
 << fadeIn >>
 << setBackground bedroom chill >>
 << fadeOut >>
 
-// Option "Faire de la cycloluthe" moved to the end of this node
-// Option "Chatter en ligne" moved to the end of this node
 -> Faire de la cycloluthe
     <<jump Musique_D>>
 -> Chatter en ligne
@@ -595,11 +617,10 @@ position: 3699,2359
 ===
 title: Porte_D
 tags: subchoice
-colorID: 6
 position: 3699,2650
+colorID: 6
 ---
-// Option "Aller faire les courses" moved to the end of this node
--> Aller faire les courses
+-> Aller faire les courses #once
     <<jump Courses_D>>
 ===
 title: Sieste_D
@@ -620,10 +641,10 @@ Vous vous réveillez ensuite, de bonne humeur et le corps détendu.
 ===
 title: Manger_D
 tags: 
-colorID: 0
 position: 4011,1798
 ---
 << fx EatCook >>
+<< visit Manger_D >>
 
 Vous vous cuisinez un plat de pâtes à la carnobara. Autant dire que ça vous remet d'aplomb.
 
@@ -635,37 +656,49 @@ C'est dimanche, jour de repos. Cependant, il serait judicieux continuer à vous 
 ===
 title: Reviser_D
 tags: 
-colorID: 0
 position: 4011,1275
 ---
 << if !visited("revision2") >>
+
 << visit revision2 >>
-// Continuer si qu'une révision samedi (tendu un peu)
+<<empty>> // Continuer si qu'une révision samedi (tendu un peu)
+Revision 2
+
 << elseif !visited("revision3") >>
+
 << visit revision3 >>
-// Les révisions avancent pénards
+<<empty>> // Les révisions avancent pénards
+Revision 3
+
 << else >>
+
 << visit revision4 >>
-// ENFIN ! TU SAIS TOUT
+<<empty>> // ENFIN ! TU SAIS TOUT
+Revision 4
+
 << endif >>
 
 << if !visited("reviser_D") >>
-<< visit reviser_D >>
-// Option "Répondre" moved to the end of this node
-<< endif >>
 
-[[|Taches_D]]
+<< visit reviser_D >>
 -> Répondre <<if (!visited("reviser_D"))>>
     <<jump AppelMamie_D>>
+
+<< endif >>
 ===
 title: Planning_D
 tags: 
-colorID: 0
 position: 4011,1524
 ---
 << if !visited("Planning_S") >>
 
+Vous préparez votre planning.
+<< advanceTime 0:15 >>
+
 << else >>
+
+Vous revoyez votre planning, il y a quelques petits changement à faire.
+<< advanceTime 0:15 >>
 
 << endif >>
 
@@ -673,27 +706,27 @@ position: 4011,1524
 ===
 title: Courses_D
 tags: 
-colorID: 0
 position: 4011,2838
 ---
 << fadeIn >>
 << setBackground outside >>
 << fadeOut >>
 
-// YText courses
+<<empty>> // YText courses
+Vous allez faire vos courses.
+<< advanceTime 1:00 >>
 
 <<jump Taches_D>>
 ===
 title: Musique_D
 tags: 
-colorID: 0
 position: 4009,2358
 ---
 << music AcousticGuitar >>
 
 Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare analogique de la planète Feudall. Le son brut et archaïque de cet instrument vous détend, vous apaise, vous nettoie l'esprit d'informations superflues et pesantes.
 
-// decrease charge mentale de 50%, genre de 20/100 : si hausse avant de 40/100 
+<<empty>> // decrease charge mentale de 50%, genre de 20/100 : si hausse avant de 40/100 
 
 << advanceTime 0:30 >>
 << music Neutral >>
@@ -702,28 +735,32 @@ Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare
 ===
 title: Reseaux_D
 tags: 
-colorID: 0
 position: 4011,2602
 ---
 Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est le samedi matin : il n'y a pas grand monde en ligne. Ils sont encore en train de dormir. Et puis, petit à petit, les amis se connectent au réseau. 
-// Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
+<<empty>> // Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
 << fx Notification >>
 Loulou vous pinge, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses... 
 Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à votre grand-mère. Cela vous réchauffe encore plus le coeur. Votre grand-mère s'est enfin réveillée, les choses suivent leur cours, et désormais d'autres personnes pensent à elle.
 Vous vous sentez calme et confiant.
-<< advanceTime 2:00 20:00 0:30 >>
+<< advanceTime 2:00 >>
 
 <<jump Taches_D>>
 ===
 title: AppelMamie_D
 tags: 
-colorID: 0
 position: 4297,1275
 ---
-<< if visited("Planning") >>
--> Appel court 
-<< endif >>
+-> Appel court << if visited("Planning") >>
+    Vous expliquez à votre mamie qu'il vous reste beaucoup de travail.
+    << advanceTime 0:15 >>
+    L'appel dur peut de temps
+    
+
 -> Appel long
+    Vous prennez le temps d'écouter votre mamie
+    << advanceTime 1:00 s>>
+    L'appel dur trop longtemps
 
 
 <<jump Taches_D>>
@@ -825,7 +862,6 @@ position: 5223,3741
 ===
 title: MangerSain_S
 tags: 
-colorID: 0
 position: 1744,139
 ---
 Vous décidez de vous préparer un plat sain pour être en forme pour vos révisions : Un plat de nouilles de soja aux légumes.
@@ -835,12 +871,13 @@ C'est prêt à manger !
 << advanceTime 0:45 >>
 
 Vous vous sentez tout de suite mieux et d'attaque pour la suite.
+
 << visit MangerMidi_S >>
+
 <<jump Taches_S>>
 ===
 title: MangerVite_S
 tags: 
-colorID: 0
 position: 1744,391
 ---
 Vous voulez manger vite pour perdre le moins de temps possible.
@@ -851,15 +888,15 @@ Un burger Big Proteins Double Cheese, c'est très rapide à cuisiner, il n'y a p
 Vous rangez rapidement la vaisselle, et vous y retournez.
 
 << visit MangerMidi_S >>
+
 <<jump Taches_S>>
 ===
 title: Jogging_L
 tags: 
-colorID: 0
 position: 4678,3731
 ---
 Tant pis, vous allez en profiter pour repenser à tout ce que vous avez révisé ce week-end pendant votre jogging. Il vous reste un peu plus d'une heure avant votre passage.
-
+<< advanceTime 1:00 >>
 // Jogging tranquillou
 
 // Petite picure de rappel (dédidace à toi, Cuantin)
@@ -870,7 +907,6 @@ Tant pis, vous allez en profiter pour repenser à tout ce que vous avez révisé
 ===
 title: RevisionWeb_L
 tags: 
-colorID: 0
 position: 4678,4094
 ---
 Vous ouvrez votre navigateur et vous tapez quelques mots clés dans votre moteur de recherche. Vous optez plutôt pour des vidéos d'apprentissage. 
@@ -880,11 +916,12 @@ Soit, elles ne détaillent pas assez les mécanismes et les courants philosophiq
 Soit, elles se veulent exhaustives et finissent par devenir trop longue, trop soporifiques. Pire qu'un cours magistral avec un professeur IRL.
 Vous arrêtez la torture. Vous avez perdu votre temps à papillonner sur le web. Pour un résultat finalement décevant. Stop !
 
+<< advanceTime 1:00 >>
+
 <<jump ExamenDefaite_L>>
 ===
 title: ExamenDefaite_L
 tags: 
-colorID: 0
 position: 4945,4092
 ---
 << fadeIn >>
@@ -922,7 +959,7 @@ Vous êtes dégoûté par votre prestation devant le grand jury. Vous n'étiez p
 Pas la peine d'attendre les résultats pour savoir que vous avez royalement râté. Vous retournez dans votre chambre sans vraiment voir le trajet, ressassant sans cesse tout ce que vous avez mal fait...
 
 << fadeIn >>
-<< advanceTime 0:10 >>
+<< advanceTime 0:15 >>
 << setBackground bedroom >>
 << fadeOut >>
 
@@ -950,11 +987,11 @@ Sapiens_happy: C'est ce que nous allons faire de ce pas !
 ===
 title: ExamenVictoire_L
 tags: 
-colorID: 0
 position: 4945,3735
 ---
 << fadeIn >>
 << setBackground oral >>
+<< advanceTime 0:15 >>
 << fadeOut >>
 
 Vous entrez dans la salle de théatre. Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus.
@@ -965,23 +1002,22 @@ Vous prenez une grande inspiration avant de prendre la parole. Vous vous présen
 L'un des jurés enfile à nouveau ces lunettes étrange... Des lunettes de détection neurocérébrale. Il vous fixe un moment avant de s'écrier : "L'incertitude quantique"...
 
 Pfouu.... Vous soufflez un grand coup. Bien entendu, l'incertitude quantique n'est pas votre thème préféré. Malgré tout, vous avez des arguments, des concepts, des débats, des problématiques, des polémiques qui vous viennent aussitôt en tête.
+<< advanceTime 0:30 >>
 Vous ne vous rappelez pas trop bien la suite de votre présentation. En tous les cas, votre intervention s'est bien déroulée. Vous leur avez déroulé une argumentation cohérente, bien structurée, et suffisamment complète de la question. La phase des questions des jurés s'est également très bien passée. Vous êtes toujours parvenu à leur répondre de manière précise et juste.
 Vous les saluez et les remerciez avant de quitter la salle et de rentrer dans votre chambre en attendant les résultats.
 
 << fadeIn >>
 << setBackground bedroom >>
-<< setTime 12:00 >>
+<< advanceTime 0:15 >>
 << fadeOut >>
 
-Vous mangez un bout et allez vous coucher. Ce week-end aura été épuisant, même en ayant appris à bien gérer votre temps. Il faut dire que vous aviez beaucoup à rattrapper, mais vous vous en êtes sorti avec brio !
+Vous mangez un bout et allez dans votre lit, vous êtes exténué. Ce week-end aura été épuisant, même en ayant appris à bien gérer votre temps. Il faut dire que vous aviez beaucoup à rattrapper, mais vous vous en êtes sorti avec brio !
 
 << if !visited("sages") >>
+
 <<jump SagesVictoire_L>>
+
 << endif >>
--> Suivre maitre Sapiens <<if (!visited("sages"))>>
-    <<jump SagesDefaite_L>>
--> Recommencer le week-end <<if !(!visited("sages"))>>
-    <<jump Start>>
 ===
 title: SagesDefaite_L
 tags: 

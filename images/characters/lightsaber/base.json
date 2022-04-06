@@ -2,8 +2,9 @@
   "normal": [
     {
       "model": "p_animNo",
-      "x": 720.0,
-      "y": 462.5
+      "x": 740.0,
+      "y": 502.5,
+      "scale": 1.1
     }
   ],
   "default": "normal"
