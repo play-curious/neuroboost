@@ -548,7 +548,7 @@ colorID: 2
     <<jump Lit_D>>
 -> Bureau@bureau
     <<jump Bureau_D>>
--> Detente@detente
+-> Salon@salon
     <<jump Detente_D>>
 -> Porte@porte
     <<jump Porte_D>>
