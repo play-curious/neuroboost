@@ -927,6 +927,7 @@ colorID: 0
 position: 5223,3741
 ---
 
+Sapiens_happy: Bravo !
 <<empty>> // TODO: Dire ce que le joueur a bien fait
 
 <<jump JournalMental>>
@@ -1035,6 +1036,7 @@ Pas la peine d'attendre les résultats pour savoir que vous avez royalement rât
 << fadeOut >>
 
 << if !visited("sages") >>
+
 << visit sages >>
 À peine de retour dans votre chambre, vous vous écriez :
 You: Hé, messieurs les Sages ! Vous êtes là ? Parce que j'aurais besoin de vous... Ça va pas, mais pas du tout ! J'ai raté le Grand Oral...
@@ -1049,11 +1051,20 @@ You: Vous êtes un pervers ?!
 Sapiens_happy: Non, un Sage de la métacognition. Pour apprendre à apprendre, il faut d'abord observer ses échecs. Ensuite, seulement, on peut en tirer des leçons. Et corriger ses erreurs.
 You: Ah.
 Sapiens_happy: C'est ce que nous allons faire de ce pas !
+
 <<empty>> // Option "Suivre maitre Sapiens" moved to the end of this node
+-> Suivre maitre Sapiens
     << fx Warp >>
     << fadeIn >>
+    << jump SagesDefaite_L >>
+
 << else >>
+
 <<empty>> // Option "Recommencer le week-end" moved to the end of this node
+-> Recommencer le week-end
+    << fadeIn >>
+    << jump Start >>
+
 << endif >>
 ===
 title: ExamenVictoire_L
