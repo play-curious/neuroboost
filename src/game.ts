@@ -93,6 +93,8 @@ const stateNames = [
   "D5_level2",
   "D6",
   "journal_organisation",
+  "D7_level1",
+  "D7_level2",
   "End_Screen"
 ];
 
