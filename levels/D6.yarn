@@ -239,7 +239,7 @@ Pfouu. En effet, il y en a de la matière. Cela vous prend au bas mot une heure 
 << elseif !visited("revision2") >>
 << visit revision2 >>
 
-Pas de question, il est l'heure d'attaquer l'intruige de l'intrication quantique !
+Pas de question, il est l'heure d'attaquer l'intrigue de l'intrication quantique !
 
 Vous avancer à un bon rythme.
 
@@ -390,9 +390,10 @@ position: 1744,1551
 Vous arrivez dans les derniers, cependant, le cours n'a pas encore commencé. Plus exactement, votre coach vous attendait. 
 Il vous adresse un léger sourire quand il vous voit surgir sur la piste. Vous savez qu'il vous apprécie et que vous êtes rarement en retard. Sans compter que vous vous donnez à fond.
 << else >>
-<<empty>> // Text en avance : méditer ?
+
+Vous êtes un peu en avance, donc vous profitez pour tchatter avec les autres étudiants.  
+
 << advanceTime 0:30 14:00 0:05 >>
-<<empty>> // Session commence
 << endif >>
 
 << music JungleBodyBeat >>
@@ -473,11 +474,16 @@ position: 2201,1707
 ---
 << empty >> // Option "Aller se coucher" moved to the end of this node
 
-Révision, encore et encore
+Qui a dit "Le monde appartient à ceux qui se lèvent tôt" ?
+
+Ben, vous croyez plutôt à l'inverse ! S'il faut travailler le soir pour réussir, alors voilà ce que vous allez faire. 
 << advanceTime 1:00>>
 
-Vous avez du mal à dormir dû à la quantité de travail que vous avez ingéré.
+Vous baillez malgré vous... Et votre attention semble du moins et moins clair. 
+
 << advanceTime 0:30 >>
+
+OK ca suffit, au lit !
 
 -> Aller se coucher
     <<jump Dormir_S>>
@@ -510,7 +516,9 @@ Quand vous quittez la piste de danse, un vrombissement sourd s'élève peu à pe
 Dommage que vous vous êtes pas entraîné aujourd'hui ! Vous vous sentez tout lourd sur la piste, et vous manquez de tomber sur un faux pas. 
 << endif >>
 
-<< empty >> // Option "Aller se coucher" moved to the end of this node
+Il est grand temps de s'en aller. Vous dites au revoir à Fred, qui vous assure qu'il ne va pas tarder à faire de même. Vous n'avez pas la patience de l'attendre. 
+// Vous levez le bras et saluez l'assemblée qui vous applaudit une dernière fois sans modération. Pas de doute, la star de cette fièvre du samedi soir, c'est vous et cela restera vous... 
+Vous quittez la cafétéria et rejoignez votre chambre.
 
 << advanceTime 3:00 >>
 <<jump Dormir_S>>
@@ -520,11 +528,7 @@ tags:
 position: 2615,1884
 ---
 Votre corps, lui, vous signale qu'il a quasiment donné tout ce qu'il pouvait. Il se fait tard. Vous vous sentez fatigué.
-Votre corps se raidit et s'alourdit. Vos paupières s'affaissent. Votre esprit s'embrume et s'égare. Vous avez répondu aux attentes de votre public. Il comprendra bien qu'il y a une fin à tout.
-<< advanceTime 0:15 >>
-Il est grand temps de s'en aller. Vous dites au revoir à Fred, qui vous assure qu'il ne va pas tarder à faire de même. Vous n'avez pas la patience de l'attendre. 
-Vous levez le bras et saluez l'assemblée qui vous applaudit une dernière fois sans modération. Pas de doute, la star de cette fièvre du samedi soir, c'est vous et cela restera vous... 
-Vous quittez la cafétéria et rejoignez votre chambre.
+
 
 << fadeIn >>
 << advanceTime 0:15 >>
@@ -533,6 +537,11 @@ Vous quittez la cafétéria et rejoignez votre chambre.
 << fadeOut >>
 
 Vous vous déshabillez fissa, un petit tour aux toilettes et vous vous glissez dans votre lit.
+
+<< if visited("ReviserSoir_S") >>
+Vous avez du mal à dormir dû à la quantité de travail que vous avez ingéré.
+// TODO: reduce sleep
+<< endif >>
 
 << empty >> // Option "Dodo" moved to the end of this node
 -> Dodo
@@ -778,11 +787,12 @@ Il vous reste à réviser le quatrième et dernier thème. La décohérence quan
 
 Tout d'en coup, vous vous rendez compte que ce que vous a dérangé en établissant le planning tout à l'heure..
 Vous prenez une feuille volante et vous noter=z dessus tout ce que vous vous rappelez concernant le principe d'intrication quantique, que vous avez revu hier. 
-Le résultat est sympathique mais inquiétant. Vous réalisez que vous avez déjà oublié pas mal d'élément. En tout cas, certaines notions ou affirmations ne sont plus aussi limpides qu'hier. 
+Le résultat est franchement inquiétant. Vous réalisez que vous avez déjà oublié pas mal d'élément. En tout cas, certaines notions ou affirmations ne sont plus aussi limpides qu'hier. 
 C'est le choc ! Vous comprenez que c'est votre mémoire courte qui bosse en ce moment. Il faut consolider ça au plus vite !
 Comment faire ? Vous vous rappelez de ce que maître Azul vous dit. Il faut alors passer au "plan B" : simplifier !
 
-Vous n'avez pas le temps de mémoriser durablement autant de savoirs en si peu temps.  Vous décidez de rédiger une série de fiches de révision sur toutes les notions, les théories, les paradigmes, les problématiques soulevées par les 4 thèmes de la philosophie quantique. Thèmes que vous devez maîtriser à fond pour réussir votre Grand Oral, demain après-midi.
+Vous n'avez pas le temps de mémoriser durablement autant de savoirs en si peu temps.  Vous décidez de rédiger une série de fiches de révision sur toutes les notions, les théories, les paradigmes, les problématiques soulevées.
+// Thèmes que vous devez maîtriser à fond pour réussir votre Grand Oral, demain après-midi.
 
 Vous y passez un temps conséquent. Vous travaillez de manière intense mais détendue. 
 
