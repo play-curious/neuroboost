@@ -384,6 +384,7 @@ Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous a
 << music Neutral >>
 
 << fadeIn >>
+<< advanceTime 0:15 >>
 <<jump Taches_S>>
 ===
 title: Reseaux_S
