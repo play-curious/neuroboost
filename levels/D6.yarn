@@ -197,7 +197,7 @@ Vous tournez encore la page. Nouvelle feuille vierge.
 Vous y notez en haut et en gras : Samedi. 
 Vous listez ensuite tous les événements de ce jour. Réviser deux thèmes de la philosophie quantique. D'abord le <b>principe d'incertitude ou d'indétermination</b>, et en second, le <b>phénomène d'intrication quantique</b>.
 Ensuite vous passez aux tâches secondaires: Votre entraînement de Jungle Body Beat à 14 h.
-Puis, la soirée à la cafétéria, celle qui va faire remonter votre niveau de fun et vous permettre de vous lacher au concours de danse.
+Puis, la soirée à la cafétéria, celle qui va faire remonter votre niveau de fun et vous permettre de vous lâcher au concours de danse.
 Et en plus petites tâches, une pause sieste, et tout les autres éléments de détente à votre disposition.
 
 << advanceTime 0:15 >>
@@ -212,28 +212,56 @@ position: 1744,-328
 << if !visited("revision1") >>
 << visit revision1 >>
 
-Première revision
+La philosophie quantique. Un beau et riche sujet. Vous en avez lu des livres sur la question. Vous en avez écrit des pages sur les différents thèmes que cette noble matière aborde. 
+
+<< if visited("Planning_S")>>
+<< fx Success >>
+Heureusement vous avez pris le temps d'établir un planning ce matin, donc vous savez exactement où commencer : le principe d'incertitude ou d'indétermination.
+<< else >>
+<< fx Failure >>
+Par quoi allez-vous commencer ce matin ? Vous n'en savez pas trop. Vous n'avez pas vraiment réfléchi à la question.
+Tant pis. 
+// TODO: penalize learning 
+<< endif >>
+
+Vous faites confiance à la méthode du "rappel libre". Vous sortez des stylos de différentes couleurs et plusieurs pages blanches. Vous commencez à notez dessus les titres, les mots-clés, les concepts, les théories, les définitions et les arguments qui vous viennent à l'esprit..
+
 << advanceTime 1:00 >>
-Pause
+
+Ding ding ! Vous vous accordez une pause de 15 minutes, histoire de ne pas surcharger le cerveau.
+
 << advanceTime 0:15 >>
-Revision suite
+
+Pfouu. En effet, il y en a de la matière. Cela vous prend au bas mot une heure pour faire un première passe des concepts qui vous paraissent essentiels.
+
 << advanceTime 1:00 >>
 
 << elseif !visited("revision2") >>
 << visit revision2 >>
 
-Seconde revision
+Pas de question, il est l'heure d'attaquer l'intruige de l'intrication quantique !
+
+Vous avancer à un bon rythme.
+
 << advanceTime 1:00 >>
-Pause
+
+Vous n'oubliez pas de ménager des pauses entre chaque session, en grattant les cordes de votre cycloluth de Feudall. Ce qui vous permet de maintenir une attention utile et soutenue.
+
 << advanceTime 0:15 >>
-Revision suite
+
+Vous travaillez sur ce thème de manière studieuse mais détendue. 
+
 << advanceTime 1:00 >>
 
 << else >>
 
-Troisieme revision, possible défaite
+//TODO on peut pas faire 3 revisions, si ?
+
 << advanceTime 1:00 >>
-Pause
+
+//TODO on peut pas faire 3 revisions, si ?
+
+
 << advanceTime 0:15 >>
 Revision suite
 << advanceTime 1:00 >>
@@ -710,33 +738,75 @@ position: 4011,1275
 
 << visit revision2 >>
 <<empty>> // Continuer si qu'une révision samedi (tendu un peu)
-Revision 2
+Alors, quoi encore ? Ah oui, il faut traiter l'intrication quantique !
+
+Vous vous stressez, il aurait fallu faire cela hier déjà !
 << advanceTime 1:00 >>
-Pause
+Un petit pause, histoire de souffler un coup. 
 << advanceTime 0:15 >>
-Revision 2 Suite
+
+Révision ! Révision !
 << advanceTime 1:00 >>
 
 << elseif !visited("revision3") >>
 
 << visit revision3 >>
+
+Vous vous replongez dans vos cours et vos notes. Vous abordez cette fois le paradoxe du chat de Schrödinger et la superpositions d'états différents. Ce qui est matériellement impossible.
+Soit, le monde des phénomènes n'est pas la réalité mais seulement ce que nous en percevons. 
+Soit, on admet la coexistence de plusieurs états possibles, la cohabitation de plusieurs univers parallèles, comme le stipule Everett. 
+
 <<empty>> // Les révisions avancent pénards
-Revision 3
+
+
 << advanceTime 1:00 >>
-Pause
+Vous faites votre pause musicale avec votre cycloluth. 
+
+//Cependant, quand vous reposez votre instrument archaïque de la planète Feudall, vous voyez un appel manqué sur votre palmphone. Mamie a tenté de vous joindre...
+
 << advanceTime 0:15 >>
-Revision 3 Suite
+Ca bosse !
 << advanceTime 1:00 >>
 
 << else >>
 
 << visit revision4 >>
-<<empty>> // ENFIN ! TU SAIS TOUT
-Revision 4
+
+Il vous reste à réviser le quatrième et dernier thème. La décohérence quantique. Vous commencez à vous imprégner de ce dernier thème que vous n'aviez pas eu le temps d'aborder jusque-là. 
+
+<< if visited("PlanningD") >>
+
+Tout d'en coup, vous vous rendez compte que ce que vous a dérangé en établissant le planning tout à l'heure..
+Vous prenez une feuille volante et vous noter=z dessus tout ce que vous vous rappelez concernant le principe d'intrication quantique, que vous avez revu hier. 
+Le résultat est sympathique mais inquiétant. Vous réalisez que vous avez déjà oublié pas mal d'élément. En tout cas, certaines notions ou affirmations ne sont plus aussi limpides qu'hier. 
+C'est le choc ! Vous comprenez que c'est votre mémoire courte qui bosse en ce moment. Il faut consolider ça au plus vite !
+Comment faire ? Vous vous rappelez de ce que maître Azul vous dit. Il faut alors passer au "plan B" : simplifier !
+
+Vous n'avez pas le temps de mémoriser durablement autant de savoirs en si peu temps.  Vous décidez de rédiger une série de fiches de révision sur toutes les notions, les théories, les paradigmes, les problématiques soulevées par les 4 thèmes de la philosophie quantique. Thèmes que vous devez maîtriser à fond pour réussir votre Grand Oral, demain après-midi.
+
+Vous y passez un temps conséquent. Vous travaillez de manière intense mais détendue. 
+
 << advanceTime 1:00 >>
-Pause
+
+Détendue, car vous respectez des sessions d'une heure, conformément aux règles de la méthode "pomodoro".
+
 << advanceTime 0:15 >>
-Revision 4 Suite
+L'après-midi défile à vitesse grand "V". Vous n'avez pas fini de rédiger vos fiches. Mais vous gardez bon espoir de les terminer avant d'aller vous coucher.
+<< advanceTime 1:00 >>
+
+<< else >>
+
+Il vous reste à réviser le quatrième et dernier thème. La décohérence quantique. Vous commencez à vous imprégner de ce dernier thème que vous n'aviez pas eu le temps d'aborder jusque-là. Votre première session de révision se déroule sans problème.
+
+<< advanceTime 1:00 >>
+
+Un petit pause musicale...
+
+<< advanceTime 0:15 >>
+
+Et c'est reparti pour une dernière session. 
+
+// TODO: penalize learning as compared to "planning" oath
 << advanceTime 1:00 >>
 
 << endif >>
@@ -775,16 +845,13 @@ Enfin, vous vous attardez sur les tâches plus accessoires : [u]sieste et évent
 
 << else >>
 
-Vous reprenez votre journal Bullet Point. Vous regardez ce que vous avez déjà accompli hier. Vous avez travaillé deux sujets sur les quatre que comportent la philosophie quantique. A priori. 
-Rien qu'aujourd'hui, vous pouvez terminer d'apprendre les deux derniers thèmes. Cependant, vous sentez qu'il y anguille sous roche...
-Vous décidez de prendre une feuille volante et de noter dessus tout ce que vous vous rappelez concernant le principe d'intrication quantique, que vous avez revu hier. 
-Le résultat est sympathique mais inquiétant. Vous réalisez que vous avez déjà oublié pas mal d'élément. En tout cas, certaines notions ou affirmations ne sont plus aussi limpides qu'hier. 
-C'est le choc ! Vous comprenez que c'est votre mémoire courte qui bosse en ce moment. Il faut consolider ça au plus vite !
-Comment faire ? Oui, bien entendu, le "plan B" : simplifier !
+Vous reprenez votre journal Bullet Point. Vous regardez ce que vous avez déjà accompli hier. Vous avez travaillé deux sujets sur les quatre que comportent la philosophie quantique. 
 
 << advanceTime 0:15 >>
 
 << endif >>
+
+A priori, rien qu'aujourd'hui, vous pouvez terminer d'apprendre les deux derniers thèmes. Cependant, vous sentez qu'il y anguille sous roche...
 
 Ah, et une chose très important : faire des courses le matin, avant que le marché ferme.
 
