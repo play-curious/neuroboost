@@ -241,6 +241,8 @@ Pfouu. En effet, il y en a de la matière. Cela vous prend au bas mot une heure 
 
 Pas de question, il est l'heure d'attaquer l'intrigue de l'intrication quantique !
 
+La notion d'intrication est passionnante. Elle stipule et justifie que des éléments peuvent être intriqués, enchevêtrés l'un à l'autre. Et ce, quel que soit la distance qui les sépare. 
+
 Vous avancer à un bon rythme.
 
 << advanceTime 1:00 >>
@@ -249,22 +251,30 @@ Vous n'oubliez pas de ménager des pauses entre chaque session, en grattant les 
 
 << advanceTime 0:15 >>
 
+L'intrication quantique est une théorie révolutionnaire qui expliquerait les phénomènes d'ubiquité, de synchronicité, de coïncidences. C'est dingue !
+
 Vous travaillez sur ce thème de manière studieuse mais détendue. 
 
 << advanceTime 1:00 >>
 
 << else >>
 
-//TODO on peut pas faire 3 revisions, si ?
+<< visit revision3 >>
+
+Malgré votre fatigue mental, vous vous replongez dans vos cours et vos notes. Vous abordez cette fois le paradoxe du chat de Schrödinger et la superpositions d'états différents. Ce qui est matériellement impossible. Ou c'est le contraire ? 
 
 << advanceTime 1:00 >>
 
-//TODO on peut pas faire 3 revisions, si ?
+Soit, le monde des phénomènes n'est pas la réalité, ou bien la réalité n'existe pas pour les chats. Non, attend, c'est pas ça, ...
+
+// TODO: le charges mental explose
+
+<< jump MentalOverload >>
 
 
-<< advanceTime 0:15 >>
-Revision suite
-<< advanceTime 1:00 >>
+// << advanceTime 0:15 >>
+// Revision suite
+// << advanceTime 1:00 >>
 
 << endif >>
 
@@ -473,6 +483,8 @@ tags:
 position: 2201,1707
 ---
 << empty >> // Option "Aller se coucher" moved to the end of this node
+<< visit ReviserSoir_S >>
+
 
 Qui a dit "Le monde appartient à ceux qui se lèvent tôt" ?
 
@@ -750,11 +762,14 @@ position: 4011,1275
 Alors, quoi encore ? Ah oui, il faut traiter l'intrication quantique !
 
 Vous vous stressez, il aurait fallu faire cela hier déjà !
+
+La notion d'intrication est passionnante. Elle stipule et justifie que des éléments peuvent être intriqués, enchevêtrés l'un à l'autre. Et ce, quel que soit la distance qui les sépare. 
+
 << advanceTime 1:00 >>
 Un petit pause, histoire de souffler un coup. 
 << advanceTime 0:15 >>
 
-Révision ! Révision !
+L'intrication quantique est une théorie révolutionnaire qui expliquerait les phénomènes d'ubiquité, de synchronicité, de coïncidences. C'est dingue !
 << advanceTime 1:00 >>
 
 << elseif !visited("revision3") >>
@@ -762,8 +777,6 @@ Révision ! Révision !
 << visit revision3 >>
 
 Vous vous replongez dans vos cours et vos notes. Vous abordez cette fois le paradoxe du chat de Schrödinger et la superpositions d'états différents. Ce qui est matériellement impossible.
-Soit, le monde des phénomènes n'est pas la réalité mais seulement ce que nous en percevons. 
-Soit, on admet la coexistence de plusieurs états possibles, la cohabitation de plusieurs univers parallèles, comme le stipule Everett. 
 
 <<empty>> // Les révisions avancent pénards
 
@@ -774,10 +787,12 @@ Vous faites votre pause musicale avec votre cycloluth.
 //Cependant, quand vous reposez votre instrument archaïque de la planète Feudall, vous voyez un appel manqué sur votre palmphone. Mamie a tenté de vous joindre...
 
 << advanceTime 0:15 >>
-Ca bosse !
+
+Soit, le monde des phénomènes n'est pas la réalité mais seulement ce que nous en percevons. 
+Soit, on admet la coexistence de plusieurs états possibles, la cohabitation de plusieurs univers parallèles, comme le stipule Everett. 
 << advanceTime 1:00 >>
 
-<< else >>
+<< elseif !visited("revision4")  >>
 
 << visit revision4 >>
 
@@ -786,7 +801,7 @@ Il vous reste à réviser le quatrième et dernier thème. La décohérence quan
 << if visited("PlanningD") >>
 
 Tout d'en coup, vous vous rendez compte que ce que vous a dérangé en établissant le planning tout à l'heure..
-Vous prenez une feuille volante et vous noter=z dessus tout ce que vous vous rappelez concernant le principe d'intrication quantique, que vous avez revu hier. 
+Vous prenez une feuille volante et vous notez dessus tout ce que vous vous rappelez concernant le principe d'intrication quantique, que vous avez revu hier. 
 Le résultat est franchement inquiétant. Vous réalisez que vous avez déjà oublié pas mal d'élément. En tout cas, certaines notions ou affirmations ne sont plus aussi limpides qu'hier. 
 C'est le choc ! Vous comprenez que c'est votre mémoire courte qui bosse en ce moment. Il faut consolider ça au plus vite !
 Comment faire ? Vous vous rappelez de ce que maître Azul vous dit. Il faut alors passer au "plan B" : simplifier !
@@ -804,7 +819,7 @@ Détendue, car vous respectez des sessions d'une heure, conformément aux règle
 L'après-midi défile à vitesse grand "V". Vous n'avez pas fini de rédiger vos fiches. Mais vous gardez bon espoir de les terminer avant d'aller vous coucher.
 << advanceTime 1:00 >>
 
-<< else >>
+<< else >> // if visited("PlanningD")
 
 Il vous reste à réviser le quatrième et dernier thème. La décohérence quantique. Vous commencez à vous imprégner de ce dernier thème que vous n'aviez pas eu le temps d'aborder jusque-là. Votre première session de révision se déroule sans problème.
 
@@ -816,9 +831,19 @@ Un petit pause musicale...
 
 Et c'est reparti pour une dernière session. 
 
-// TODO: penalize learning as compared to "planning" oath
+// TODO: penalize learning as compared to "planning" path
 << advanceTime 1:00 >>
 
+<< endif >>
+
+<< else >> // elseif !visited("revision4")
+
+A vrai dire, vous ne savez même plus ce que vous êtes censé apprendre. Vous ouvrez vos livres, vous tournez les pages, vous jouez avec le stylo dans votre main, ... 
+
+Mais avez très mal à la tête, surtout !
+
+// TODO: charge mental explose
+<< jump MentalOverload >>
 << endif >>
 
 << if !visited("reviser_D") >>
@@ -1537,4 +1562,21 @@ position: 5536,3911
 
 Vous êtes de nouveau seul. Dans un espace-temps indéfini. Il ne fait ni chaud ni froid, ni vraiment jour ni vraiment nuit. 
 Vous avez entre les mains votre "carnet d'ingénieur tout-terrain". Vous avez plein de choses à noter dedans. Ce truc de planification des tâches, ça demande un sacré sens de l'organisation...
+===
+title: MentalOverload
+tags: 
+colorID: 0
+position: 5536,3911
+---
+<< music >>
+Soudain, vous vous ne sentez pas de tout bien.
+
+<< fadeIn >>
+Tout devient flou. Votre tête est très lourde.
+
+Vous avez trop tiré sur la corde. 
+
+-> Try try again?
+    << resetLevel >>
+    << jump Atart >>
 ===
