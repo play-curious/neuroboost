@@ -478,6 +478,7 @@ Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous a
 << music Neutral >>
 
 << fadeIn >>
+<< advanceTime 0:15 >>
 <<jump Taches_S>>
 ===
 title: Reseaux_S
@@ -637,13 +638,17 @@ Vous avez du mal à dormir dû à la quantité de travail que vous avez ingéré
 ===
 title: Reveil_D
 tags: 
-colorID: 1
 position: 2870,1884
+colorID: 1
 ---
 << fadeIn >>
 << setTime 9:00 6 >>
 << setBackground bedroom >>
 << music Neutral >>
+<< removeFromGauge learning 20 >>
+<< addToGauge sleep 100 >>
+<< addToGauge food 100 >>
+<< removeFromGauge 10 >>
 << fadeOut >>
 
 Vous vous réveillez le lendemain avec des étoiles plein les yeux. Ce fut une super fièvre du samedi soir. Vous étiez le soleil de cette galaxie festive. Dommage que la partie soit finie.
@@ -800,7 +805,6 @@ colorID: 6
 ===
 title: Sieste_D
 tags: 
-colorID: 0
 position: 4011,2083
 ---
 C'est une sage décision. Votre corps a besoin de recharger ses batteries, comme le disent les Sages. 
@@ -810,6 +814,9 @@ Vous vous allongez sur le lit et vous piquez un petit somme réparateur.
 
 Vous vous réveillez ensuite, de bonne humeur et le corps détendu.
 
+<< addToGauge sleep 70 >>
+<< removeFromGauge food 20 >>
+<< removeFromGauge mentalLoad 30 >>
 << advanceTime 0:30 >>
 
 << fadeIn >>
@@ -824,6 +831,9 @@ position: 4011,1798
 
 Vous vous cuisinez un plat de pâtes à la carnobara. Autant dire que ça vous remet d'aplomb.
 
+<< removeFromGauge sleep 10 >>
+<< addToGauge food 70 >>
+<< removeFromGauge mentalLoad 30 >>
 << advanceTime 0:30 >>
 
 C'est dimanche, jour de repos. Cependant, il serait judicieux continuer à vous préparer à votre grand oral de demain.
@@ -836,44 +846,51 @@ tags:
 position: 4011,1275
 ---
 << if !visited("revision2") >>
-
 << visit revision2 >>
 <<empty>> // Continuer si qu'une révision samedi (tendu un peu)
+
 Alors, quoi encore ? Ah oui, il faut traiter l'intrication quantique !
-
 Vous vous stressez, il aurait fallu faire cela hier déjà !
-
 La notion d'intrication est passionnante. Elle stipule et justifie que des éléments peuvent être intriqués, enchevêtrés l'un à l'autre. Et ce, quel que soit la distance qui les sépare. 
+
+<< if visited("Planning_D")>>
+<< addToGauge learning 10 >>
+<< endif >>
 
 << advanceTime 1:00 >>
 Un petit pause, histoire de souffler un coup. 
 << advanceTime 0:15 >>
 
 L'intrication quantique est une théorie révolutionnaire qui expliquerait les phénomènes d'ubiquité, de synchronicité, de coïncidences. C'est dingue !
+
+<< addToGauge learning 10 >>
+<< removeFromGauge sleep -15 >>
+<< removeFromGauge food -25 >>
+<< addToGauge mentalLoad 50 >>
 << advanceTime 1:00 >>
-
 << elseif !visited("revision3") >>
-
 << visit revision3 >>
 
 Vous vous replongez dans vos cours et vos notes. Vous abordez cette fois le paradoxe du chat de Schrödinger et la superpositions d'états différents. Ce qui est matériellement impossible.
 
-<<empty>> // Les révisions avancent pénards
-
+<< if visited("Planning_D")>>
+<< addToGauge learning 10 >>
+<< endif >>
 
 << advanceTime 1:00 >>
-Vous faites votre pause musicale avec votre cycloluth. 
-
-//Cependant, quand vous reposez votre instrument archaïque de la planète Feudall, vous voyez un appel manqué sur votre palmphone. Mamie a tenté de vous joindre...
-
+Vous faites votre pause musicale avec votre cycloluth.
+<<empty>> // Cependant, quand vous reposez votre instrument archaïque de la planète Feudall, vous voyez un appel manqué sur votre palmphone. Mamie a tenté de vous joindre...
 << advanceTime 0:15 >>
 
 Soit, le monde des phénomènes n'est pas la réalité mais seulement ce que nous en percevons. 
 Soit, on admet la coexistence de plusieurs états possibles, la cohabitation de plusieurs univers parallèles, comme le stipule Everett. 
+
+<< addToGauge learning 10 >>
+<< removeFromGauge sleep -15 >>
+<< removeFromGauge food -25 >>
+<< addToGauge mentalLoad 50 >>
 << advanceTime 1:00 >>
-
 << elseif !visited("revision4")  >>
-
 << visit revision4 >>
 
 Il vous reste à réviser le quatrième et dernier thème. La décohérence quantique. Vous commencez à vous imprégner de ce dernier thème que vous n'aviez pas eu le temps d'aborder jusque-là. 
@@ -891,18 +908,29 @@ Vous n'avez pas le temps de mémoriser durablement autant de savoirs en si peu t
 
 Vous y passez un temps conséquent. Vous travaillez de manière intense mais détendue. 
 
+<< if visited("Planning_D")>>
+<< addToGauge learning 10 >>
+<< endif >>
 << advanceTime 1:00 >>
 
 Détendue, car vous respectez des sessions d'une heure, conformément aux règles de la méthode "pomodoro".
 
 << advanceTime 0:15 >>
-L'après-midi défile à vitesse grand "V". Vous n'avez pas fini de rédiger vos fiches. Mais vous gardez bon espoir de les terminer avant d'aller vous coucher.
-<< advanceTime 1:00 >>
 
+L'après-midi défile à vitesse grand "V". Vous n'avez pas fini de rédiger vos fiches. Mais vous gardez bon espoir de les terminer avant d'aller vous coucher.
+
+<< addToGauge learning 10 >>
+<< removeFromGauge sleep -15 >>
+<< removeFromGauge food -25 >>
+<< addToGauge mentalLoad 50 >>
+<< advanceTime 1:00 >>
 << else >> // if visited("PlanningD")
 
 Il vous reste à réviser le quatrième et dernier thème. La décohérence quantique. Vous commencez à vous imprégner de ce dernier thème que vous n'aviez pas eu le temps d'aborder jusque-là. Votre première session de révision se déroule sans problème.
 
+<< if visited("Planning_D")>>
+<< addToGauge learning 10 >>
+<< endif >>
 << advanceTime 1:00 >>
 
 Un petit pause musicale...
@@ -912,15 +940,22 @@ Un petit pause musicale...
 Et c'est reparti pour une dernière session. 
 
 // TODO: penalize learning as compared to "planning" path
+<< addToGauge learning 10 >>
+<< removeFromGauge sleep -15 >>
+<< removeFromGauge food -25 >>
+<< addToGauge mentalLoad 50 >>
 << advanceTime 1:00 >>
-
 << endif >>
 
 << else >> // elseif !visited("revision4")
 
 A vrai dire, vous ne savez même plus ce que vous êtes censé apprendre. Vous ouvrez vos livres, vous tournez les pages, vous jouez avec le stylo dans votre main, ... 
+Vous passez une bonne heure à vous relire, sans vraiment améliorer votre travail précédent.
 
-Mais avez très mal à la tête, surtout !
+<< removeFromGauge sleep -10 >>
+<< removeFromGauge food -10 >>
+<< addToGauge mentalLoad 30 >>
+<< advanceTime 1:00 >>
 
 // TODO: charge mental explose
 << jump MentalOverload >>
@@ -940,13 +975,13 @@ Vous recevez un appel de votre mamie
 
 << fadeIn >>
 << jump Taches_D >>
-
 ===
 title: Planning_D
 tags: 
 position: 4011,1524
 ---
 << if !visited("Planning_S") >>
+
 Ah oui, le planning ! 
 Si Master Sapiens était là, il vous aurait certainement dit qu'il aurait fallu commencer hier. Mais bon, plus tard que jamais !
 Vous ranger un minimum et sortez votre journal Bullet Point. 
@@ -956,15 +991,17 @@ D'abord les pierres. Vous notez les tâches obligatoires et prioritaires du week
 Vous énumérez ensuite les tâches importantes ou utiles : les cailloux. [u]Le samedi soir enfiévré à la cafétéria, la séance de détox sportive du lendemain, le coup de fil de mamie[/u]. 
 Enfin, vous vous attardez sur les tâches plus accessoires : [u]sieste et éventuellement d'autres pauses fun[/u].
 
-<< advanceTime 0:15 >>
-
 << else >>
 
 Vous reprenez votre journal Bullet Point. Vous regardez ce que vous avez déjà accompli hier. Vous avez travaillé deux sujets sur les quatre que comportent la philosophie quantique. 
 
-<< advanceTime 0:15 >>
-
 << endif >>
+
+<< visit Planning_D >>
+<< removeFromGauge sleep 10 >>
+<< removeFromGauge food 10 >>
+<< addToGauge mentalLoad 20 >>
+<< advanceTime 0:15 >>
 
 A priori, rien qu'aujourd'hui, vous pouvez terminer d'apprendre les deux derniers thèmes. Cependant, vous sentez qu'il y anguille sous roche...
 
@@ -992,14 +1029,19 @@ Quel boulet !
 << setBackground outside >>
 << fadeOut >>
 
-Vous remplissez votre caddy virtuel avec vos ingrédients préférés. 
+Vous remplissez votre caddy avec vos ingrédients préférés. 
 
 Un peu de grains, des pâtes, des chimicookies, du synthécafé bien sûr... 
 
 Ah, et il ne faut pas oublier du Xeno Cola !
 
+<< removeFromGauge sleep 10 >>
+<< removeFromGauge food 15 >>
+<< removeFromGauge mentalLoad 20 >>
 << advanceTime 1:00 >>
+
 -> C'est fait !
+
 << endif >>
 
 << fadeIn >>
@@ -1015,6 +1057,9 @@ Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare
 
 <<empty>> // decrease charge mentale de 50%, genre de 20/100 : si hausse avant de 40/100 
 
+<< removeFromGauge sleep 25 >>
+<< removeFromGauge food 20 >>
+<< removeFromGauge mentalLoad 25 >>
 << advanceTime 0:30 >>
 << music Neutral >>
 
@@ -1031,6 +1076,10 @@ Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est le samedi 
 Loulou vous pinge, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses... 
 Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à votre grand-mère. Cela vous réchauffe encore plus le coeur. Votre grand-mère s'est enfin réveillée, les choses suivent leur cours, et désormais d'autres personnes pensent à elle.
 Vous vous sentez calme et confiant.
+
+<< removeFromGauge sleep 15 >>
+<< removeFromGauge food 15 >>
+<< removeFromGauge mentalLoad 20 >>
 << advanceTime 2:00 >>
 
 << fadeIn >>
@@ -1047,8 +1096,11 @@ Mamie@holo_shadow: Je te dérange ?
     Mamie@holo_shadow: Ah bon ?
     You: Je suis content d'avoir de tes nouvelles. Mais j'ai établi un planning très strict pour aujourd'hui, afin de réussir mes examens !
     Mamie@holo_shadow: D'accord, je comprends ! Je suis fier de toi, mon chouchou...
-    Ouf ! Vous avez réussi à ne rester parler que 15 min au téléphone, tout en gardant le lien avec ta grand-mère. 
     << advanceTime 0:15 >>
+    << removeFromGauge sleep 5 >>
+    << removeFromGauge food 10 >>
+    << removeFromGauge mentalLoad 5 >>
+    Ouf ! Vous avez réussi à ne rester parler que 15 min au téléphone, tout en gardant le lien avec ta grand-mère. 
 -> Heu...
     Mamie@holo_shadow: Tant que ça ?
     You: Naan... Mais...
@@ -1056,6 +1108,9 @@ Mamie@holo_shadow: Je te dérange ?
     You: Heu, si. Comment vas-tu ?
     Mamie@holo_shadow: Très bien. Mieux que toi apparemment. Je suis sorti du coma et j'ai repris tous mes esprits.
     << advanceTime 1:00 >>
+    << removeFromGauge sleep 15 >>
+    << removeFromGauge food 15 >>
+    << removeFromGauge mentalLoad 20 >>
     Ouf ! Même au bout d'une heure au téléphone, vous ne saviez pas comment raccrocher.  
 
 << fadeIn >>
@@ -1063,8 +1118,8 @@ Mamie@holo_shadow: Je te dérange ?
 ===
 title: Diner_D
 tags: 
-colorID: 4
 position: 3600,3911
+colorID: 4
 ---
 << fadeIn >>
 << setBackground bedroom night >>
@@ -1084,6 +1139,9 @@ Vous consultez à nouveau les réserves dans votre cuisine. Vous enfournez dans 
 
 C'est fin et ça nourrit bien son étudiant. Vous débarrassez la table et vous vous accordez une pause devant votre série préférée.
 
+<< removeFromGauge sleep 5 >>
+<< addToGauge food 60 >>
+<< removeFromGauge mentalLoad 25 >>
 << advanceTime 0:30 >>
 
 << endif >>
@@ -1092,7 +1150,6 @@ C'est fin et ça nourrit bien son étudiant. Vous débarrassez la table et vous 
 ===
 title: BingeTV_D
 tags: 
-colorID: 0
 position: 3869,3911
 ---
 Nous sommes un jour de week-end, un jour férié. Vous méritez bien une pause TV. Vous n'avez pas encore entamé la saison 8 de Star Mars - The Lone Lightsaber.
@@ -1108,6 +1165,9 @@ L'ignoble pirate des sables, et vous-même, ignoriez que Dude avait été immerg
 Or, le Métavers des sables est en réalité la créature qui produit la Mana. Ce sont ces déjections ! Pensez-vous vraiment que le Métavers des sables dévore ces excréments ?! Non, il les traite avec respect ! Après une digestion spirituellement difficile, le monstre des sables recrache sa proie. 
 Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de bile manachique...  La suite de l'histoire est tout aussi palpitante et surprenante. Vous ne pouvez pas vous empêchez d'enchaîner les épisodes l'un derrière l'autre. Si bien que plus de quatre heures s'écoulent en un rayon d'épée laser.
 
+<< removeFromGauge sleep 15 >>
+<< removeFromGauge food 10 >>
+<< removeFromGauge mentalLoad 25 >>
 << advanceTime 2:00 >>
 << stopFX TVStarwars_LOOP >>
 << hide >>
@@ -1135,6 +1195,9 @@ colorID: 1
 << setTime 8:00 7 >>
 << loopFX Sleep_LOOP 5000 >>
 << fadeOut 2000 >>
+<< removeFromGauge learning 15 >>
+<< addToGauge sleep 100 >>
+<< addToGauge food 100 >>
 << stopFX Sleep_LOOP >>
 
 Vous ne rouvrez les yeux que le lendemain matin, à l'aube. Vous vous sentez requinqué et d'attaque pour le Grand Oral !
@@ -1281,7 +1344,7 @@ tags:
 position: 4678,3731
 ---
 Il vous reste un peu plus d'une heure avant votre passage.
-Vous allez en profiter pour faire un petit jogging pour bien se reveiller le corps, suivi par un dernier piqûre de rappel.
+Vous allez en profiter pour faire un petit jogging pour bien se reveiller le corps, suivi par une dernière piqûre de rappel.
 
 << fadeIn >>
 << setBackground sport >>
@@ -1290,18 +1353,21 @@ Vous allez en profiter pour faire un petit jogging pour bien se reveiller le cor
 
 Une fois au stade, vous commencez par réaliser quelques tours de piste, à pas mesurés. Puis, quand vous estimez que votre corps est suffisamment chauffé et stimulé, vous accélérez la cadence. 
 
+<< fromToGauge sleep 35 >>
+<< fromToGauge food 25 >>
 << advanceTime 0:30 >>
 
--> Allez à la salle 
+-> Allez à l'oral 
 
 << stopFX Sports_LOOP >>
 
 << fadeIn >>
 << setBackground door class >>
 << fadeOut >>
+<< addToGauge learning 10 >>
 << advanceTime 0:15 >>
 
-Vous arrivez avec un bon quart d'heure d'avance. Parfait pour un petit piqûre de rappel sur la philosophie quantique.
+Vous arrivez avec un bon quart d'heure d'avance. Parfait pour une petite piqûre de rappel sur la philosophie quantique.
 
 << advanceTime 0:15 >>
 << fx Notification >>
@@ -1320,6 +1386,10 @@ Soit, elles ne détaillent pas assez les mécanismes et les courants philosophiq
 Soit, elles se veulent exhaustives et finissent par devenir trop longue, trop soporifiques. Pire qu'un cours magistral avec un professeur IRL.
 Vous arrêtez la torture. Vous avez perdu votre temps à papillonner sur le web. Pour un résultat finalement décevant. Stop !
 
+<< removeFromGauge sleep -15 >>
+<< removeFromGauge food -15 >>
+<< addToGauge mentalLoad 40 >>
+<< addToGauge stress 35 >>
 << advanceTime 1:00 >>
 
 <<jump ExamenDefaite_L>>
@@ -1336,18 +1406,19 @@ position: 4945,4092
 Vous entrez dans la salle de théatre. Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus.
 Une foix l'éxecution publique terminée, c'est votre tour. Vous angoissez, peu rassuré par ce que vous venez de voir...
 
-<< addToGauge stress 30 >>
+<< addToGauge stress 20 >>
 
 Vous commencez par vous présenter au jury, ce dernier vous salue. Vous leur rappelez ce que vous avez choisi comme matière de Grand Oral : <b>la Philosophie quantique</b>.
 L'un des jurés enfile des lunettes d'amplification de lumière, d'infravision... Vous ne savez pas vraiment pourquoi... Il vous fixe un moment avant de s'écrier : "La décohérence quantique"...
 
-<< fx Failure >>
+<< addToGauge stress 20 >>
 
 Vous déglutissez difficilement. Vous avez soudainement chaud. Très chaud. Vous dégoulinez... De sueur...
 Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la réviser, même pas de la survoler. Vous n'avez que de vagues notions confuses, quelques bribes de connaissance qui ont du mal à s'emboîter, voire se contredisent...
 La superposition des différents états au niveau microphilosophique s'effondre quand le penseur les analyse au niveau macrophilosophique. C'est un truc comme ça. Sauf que les postulats s'ordonnent mal et se contredisent. 
 
 << advanceTime 0:20 >>
+<< addToGauge stress 25 >>
 << music NegativeSad >>
 
 Fichtre ! Vous vous sentez mal. Très mal...
@@ -1417,6 +1488,8 @@ L'un des jurés enfile à nouveau ces lunettes étrange... Des lunettes de déte
 
 Pfouu.... Vous soufflez un grand coup. Bien entendu, l'incertitude quantique n'est pas votre thème préféré. Malgré tout, vous avez des arguments, des concepts, des débats, des problématiques, des polémiques qui vous viennent aussitôt en tête.
 << advanceTime 0:30 >>
+<< removeFromGauge sleep -25 >>
+<< removeFromGauge food -20 >>
 Vous ne vous rappelez pas trop bien la suite de votre présentation. En tous les cas, votre intervention s'est bien déroulée. Vous leur avez déroulé une argumentation cohérente, bien structurée, et suffisamment complète de la question. La phase des questions des jurés s'est également très bien passée. Vous êtes toujours parvenu à leur répondre de manière précise et juste.
 Vous les saluez et les remerciez avant de quitter la salle et de rentrer dans votre chambre en attendant les résultats.
 
@@ -1432,7 +1505,6 @@ Vous mangez un bout et allez dans votre lit, vous êtes exténué. Ce week-end a
 <<jump SagesVictoire_L>>
 
 // << endif >>
-
 ===
 title: SagesDefaite_L
 tags: 
