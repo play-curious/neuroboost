@@ -608,7 +608,6 @@ Il est grand temps de s'en aller. Vous dites au revoir à Fred, qui vous assure 
 Vous quittez la cafétéria et rejoignez votre chambre.
 
 << advanceTime 3:00 >>
-<< >>
 
 <<jump Dormir_S>>
 ===
