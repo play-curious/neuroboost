@@ -8,7 +8,12 @@ colorID: 1
 << fadeIn 1 >>
 << music Neutral >>
 << setBackground bedroom >>
-<< showGauges learning sleep food mentalLoad stress >>
+<< showGauges >>
+<< setGauge learning 0 >>
+<< setGauge sleep 100 >>
+<< setGauge food 60 >>
+<< setGauge mentalLoad 0 >>
+<< setGauge stress 0 >>
 << setTime 10:00 5 >>
 << fadeOut >>
 
@@ -16,6 +21,8 @@ C'est le matin, vous vous réveillez... naturellement, normalement, sans sonneri
 
 << fx EatCook >>
 Vous vous levez tranquillement et prenez un petit-déjeuner copieux : chocolat organique, crêpes au caramel beurré, jus d'oranges organiques compressées.
+
+<< addToGauge food 100 >>
 
 Vous avez bien dormi: pas d'insomnie, pas de stress étouffant, pas de pensées angoissantes, pas de cauchemar.
 
@@ -32,7 +39,6 @@ Le sort aurait-il perçu vos pensées : votre palmphone vibre, c'est votre mère
 ===
 title: Appel_Maman
 tags: 
-colorID: 0
 position: 807,139
 ---
 Maman@holo: Je te réveille pas, Bibi ?
@@ -118,7 +124,7 @@ colorID: 6
 ===
 title: Bureau_S
 tags: subchoice
-position: 1371,-438
+position: 1371,-439
 colorID: 6
 ---
 << fadeIn >>
@@ -173,18 +179,19 @@ colorID: 6
 ===
 title: Zero_Distraction_S
 tags: 
-colorID: 0
 position: 1744,-797
 ---
 Vous demandez à votre RoomMate de basculer votre chambre en mode "immersion studieuse".
 RoomMate s'exécute, et empêche les distraction extérieures de pouvoir vous perturber, en ne vous laissant accès qu'au strict minimum pour réviser dans les meilleures condiditions.
+
+<<visit Zero_Distraction_S >>
 
 << fadeIn >>
 <<jump Taches_S>>
 ===
 title: Planning_S
 tags: 
-position: 1744,-551
+position: 1744,-552
 ---
 << visit Planning_S >>
 
@@ -201,6 +208,9 @@ Puis, la soirée à la cafétéria, celle qui va faire remonter votre niveau de 
 Et en plus petites tâches, une pause sieste, et tout les autres éléments de détente à votre disposition.
 
 << advanceTime 0:15 >>
+<< removeFromGauge sleep 15 >>
+<< removeFromGauge food 10 >>
+<< addToGauge mentalLoad 20 >>
 
 << fadeIn >>
 <<jump Taches_S>>
@@ -267,24 +277,39 @@ Malgré votre fatigue mental, vous vous replongez dans vos cours et vos notes. V
 
 Soit, le monde des phénomènes n'est pas la réalité, ou bien la réalité n'existe pas pour les chats. Non, attend, c'est pas ça, ...
 
-// TODO: le charges mental explose
+//<< jump MentalOverload >>
 
-<< jump MentalOverload >>
-
-
-// << advanceTime 0:15 >>
-// Revision suite
-// << advanceTime 1:00 >>
+<< advanceTime 0:15 >>
+Revision suite
+<< advanceTime 1:00 >>
 
 << endif >>
+
+<< removeFromGauge sleep 15 >>
+<< removeFromGauge food 25 >>
+
+<<if visited("Planning_S", "Zero_Distraction_S", "Ranger_S")>>
+<< addToGauge learning 30 >>
+<<elseif visited("Planning_S", "Zero_Distraction_S")>>
+<< addToGauge learning 25 >>
+<<elseif visited("Planning_S") || visited("Zero_Distraction_S") >>
+<< addToGauge learning 20 >>
+<<else>>
+<< addToGauge learning 10 >>
+<<endif>>
+
+<<if visited("Ranger_S")>>
+<< addToGauge mentalLoad 50 >>
+<<else>>
+<< addToGauge mentalLoad 60 >>
+<<endif>>
 
 << fadeIn >>
 << jump Taches_S >>
 ===
 title: Ranger_S
 tags: 
-colorID: 0
-position: 1744,-111
+position: 1740.0482177734375,-111
 ---
 Vous vous dites qu'il n'est pas inutile de mettre de l'ordre dans vos affaires.
 Vous passez la demi-heure suivante à nettoyer votre bureau et ne laissez en évidence que ce qui vous servira dans votre travail de révision.
@@ -292,12 +317,17 @@ Vous êtes satisfait de votre rangement, vous vous sentez tout de suite plus à 
 
 << advanceTime 0:30 >>
 
+<< removeFromGauge sleep 15 >>
+<< removeFromGauge food 10 >>
+<< removeFromGauge mentalLoad 20 >>
+
+<< visit Ranger_S >>
+
 << fadeIn >>
 <<jump Taches_S>>
 ===
 title: Sieste_S
 tags: 
-colorID: 0
 position: 1744,621
 ---
 Vous avez fait une grasse matinée. Toutefois, après la séance de Jungle Body Break, vous êtes bien à plat. Et puis cette semaine d'examens est très éprouvante. Vous ne cesser de la revivre en boucle. Ce week-end, c'est la cerise sur le gâteau. Vous n'avez pas le droit à l'erreur.
@@ -306,6 +336,10 @@ Trêve de paroles, vous vous asseyez sur votre lit et vous tombez presqu'aussit�
 << fadeIn >>
 << advanceTime 0:30 >>
 << fadeOut >>
+
+<< addToGauge sleep 70 >>
+<< removeFromGauge food 15 >>
+<< removeFromGauge mentalLoad 40 >>
 
 Ce n'est seulement qu'après plus d'une demi-heure que vous rouvrez les yeux.
 Ce somme, vous en aviez bien besoin...
@@ -328,6 +362,10 @@ Hé oui, ce ne sont pas les commandos de choc de l'Impérium Noir qui ont fini p
 
 << advanceTime 2:00 >>
 
+<< removeFromGauge sleep 15 >>
+<< removeFromGauge food 10 >>
+<< removeFromGauge mentalLoad 20 >>
+
 Vous avez déjà passer 2 heures devant votre série, mais vous voulez vraiment voir la suite...
 -> Continuez à regarder
 -> Retournez à vos occupations
@@ -342,6 +380,11 @@ Or, le Métavers des sables est en réalité la créature qui produit la Mana. C
 Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de bile manachique...  La suite de l'histoire est tout aussi palpitante et surprenante. Vous ne pouvez pas vous empêchez d'enchaîner les épisodes l'un derrière l'autre. Si bien que plus de quatre heures s'écoulent en un rayon d'épée laser.
 
 << advanceTime 2:00 >>
+
+<< removeFromGauge sleep 10 >>
+<< removeFromGauge food 10 >>
+<< removeFromGauge mentalLoad 15 >>
+
 << stopFX TVStarwars_LOOP >>
 << hide >>
 
@@ -352,7 +395,6 @@ Après votre pause Star Mars...
 ===
 title: Musique_S
 tags: 
-colorID: 0
 position: 1744,1082
 ---
 << music AcousticGuitar >>
@@ -362,6 +404,11 @@ Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare
 // decrease charge mentale de 50%, genre de 20/100 : si hausse avant de 40/100 
 
 << advanceTime 0:30 >>
+
+<< removeFromGauge sleep 10 >>
+<< removeFromGauge food 15 >>
+<< removeFromGauge mentalLoad 25 >>
+
 << music Neutral >>
 
 << fadeIn >>
@@ -411,9 +458,12 @@ Vous êtes un peu en avance, donc vous profitez pour tchatter avec les autres é
 Quand votre coach lance la musique et commence ses mouvements d'échauffement, il se tourne vers vous. Les autres stagiaires également. Curieusement, cela ne vous déroute pas. Vous êtes dans votre élément. Leur regard, leur attention glissent sur vous comme la pluie sur les plumes d'un cygne.
 Vous entrez à votre tour dans la séance et, comme d'habitude, vous vous lâchez. Vous fusionnez avec la musique, le rythme, la direction du coach, la chorégraphie du groupe. C'est à peine si vous vous rendez compte que les minutes s'égrènent, une heure s'écoule, puis une seconde.
 
-<< increase sleep 20 >>
-<< increase food 40 >>
 << advanceTime 1:30 >>
+
+<< removeFromGauge sleep 30 >>
+<< removeFromGauge food 35 >>
+<< removeFromGauge mentalLoad 40 >>
+
 <<empty>> // impact jauge food utile? pour l'immersion, oui
 
 Le coach tape des mains, signifiant la fin de la séance. Il remercie tout le monde et surtout vous, pour donner chair et souffle à sa troupe.
@@ -440,12 +490,16 @@ Vous vous sentez calme et confiant.
 
 << advanceTime 2:00 >>
 
+<< removeFromGauge sleep 20 >>
+<< removeFromGauge food 15 >>
+<< removeFromGauge mentalLoad 20 >>
+
 << fadeIn >>
 << jump Taches_S >>
 ===
 title: Soir_S
 tags: 
-position: 1130,1880
+position: 1130,1878.6827392578125
 colorID: 4
 ---
 << empty >> // Manger
@@ -454,7 +508,12 @@ colorID: 4
 << fadeOut >>
 
 Le soleil s'est couché, il est temps de clore votre journée par un dîner bien mérité. Vous avez faim et vous avez le temps de vous préparer un petit plat sympa et exotique : des lasagnes vénusiennes. C'est délicieux, riches en nutriments essentiels.
+
 << advanceTime 0:30 >>
+
+<< addToGauge food 45 >>
+<< removeFromGauge mentalLoad 45 >>
+
 Vous faites le bilan de votre première journée. C'est un début, mais il en reste du travail à faire. Pas grave vous avez encore toute la journée de dimanche. Et même ce soir. Peut-être que...
 << fx Notification >>
 Soudain, quelqu'un sonne à la porte... 
@@ -496,6 +555,11 @@ Vous baillez malgré vous... Et votre attention semble du moins et moins clair.
 
 << advanceTime 0:30 >>
 
+<< addToGauge learning 10 >>
+<< removeFromGauge sleep 10 >>
+<< removeFromGauge food 10 >>
+<< addToGauge mentalLoad 35 >>
+
 OK ca suffit, au lit !
 
 -> Aller se coucher
@@ -525,15 +589,22 @@ Maintenant, il va falloir défendre votre réputation.
 Vous transmettez à toute l'audience votre pep's, votre enthousiasme, votre passion, votre fièvre du mouvement.
 // Tout le monde se souviendra de votre intervention. Vous êtes le soleil de ce samedi soir de folie, l'astre de la danse et du Body Beat.
 Quand vous quittez la piste de danse, un vrombissement sourd s'élève peu à peu et finit par envahir l'atmosphère de toute la salle. Vous êtes la star de la soirée.
+<< removeFromGauge mentalLoad 50 >>
 << else >> // Concours perdu
 Dommage que vous vous êtes pas entraîné aujourd'hui ! Vous vous sentez tout lourd sur la piste, et vous manquez de tomber sur un faux pas. 
+<< removeFromGauge mentalLoad 15 >>
 << endif >>
+
+<< removeFromGauge sleep 30 >>
+<< removeFromGauge food 20 >>
 
 Il est grand temps de s'en aller. Vous dites au revoir à Fred, qui vous assure qu'il ne va pas tarder à faire de même. Vous n'avez pas la patience de l'attendre. 
 // Vous levez le bras et saluez l'assemblée qui vous applaudit une dernière fois sans modération. Pas de doute, la star de cette fièvre du samedi soir, c'est vous et cela restera vous... 
 Vous quittez la cafétéria et rejoignez votre chambre.
 
 << advanceTime 3:00 >>
+<< >>
+
 <<jump Dormir_S>>
 ===
 title: Dormir_S
@@ -1232,6 +1303,9 @@ C'est prêt à manger !
 
 << advanceTime 0:45 >>
 
+<< addToGauge food 70 >>
+<< removeFromGauge mentalLoad 20 >>
+
 Vous vous sentez tout de suite mieux et d'attaque pour la suite.
 
 << visit MangerMidi_S >>
@@ -1240,12 +1314,15 @@ Vous vous sentez tout de suite mieux et d'attaque pour la suite.
 ===
 title: MangerVite_S
 tags: 
-position: 1744,391
+position: 1744,389.6827697753906
 ---
 Vous voulez manger vite pour perdre le moins de temps possible.
 Un burger Big Proteins Double Cheese, c'est très rapide à cuisiner, il n'y a plus qu'à le mettre dans le four microwave et une minute plus tard, il est en ressort chaud et croustillant !
 
 << advanceTime 0:15 >>
+
+<< addToGauge food 40 >>
+<< removeFromGauge mentalLoad 15 >>
 
 Vous rangez rapidement la vaisselle, et vous y retournez.
 
@@ -1283,6 +1360,7 @@ Une fois au stade, vous commencez par réaliser quelques tours de piste, à pas 
 
 Vous arrivez avec un bon quart d'heure d'avance. Parfait pour une petite piqûre de rappel sur la philosophie quantique.
 
+<< advanceTime 0:15 >>
 << fx Notification >>
 -> C'est le moment de vérité 
 
