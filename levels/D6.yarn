@@ -71,6 +71,11 @@ position: 1036,139
 colorID: 2
 ---
 << setBackground bedroom >>
+
+<<if getGauge("sleep") <= 0 || getGauge("food") <= 0 || getGauge("mentalLoad") >= 100 >>
+<< jump FailGauge >>
+<< endif >>
+
 << fadeOut >>
 
 << if !isTimeOver("20:00") >>
@@ -678,6 +683,11 @@ position: 3366,1884
 colorID: 2
 ---
 << setBackground bedroom >>
+
+<<if getGauge("sleep") <= 0 || getGauge("food") <= 0 || getGauge("mentalLoad") >= 100 >>
+<< jump FailGauge >>
+<< endif >>
+
 << fadeOut >>
 
 << if isTimeOver("20:00") >>
@@ -698,7 +708,6 @@ colorID: 2
     <<jump Detente_D>>
 
 << endif >>
-
 ===
 title: Cuisine_D
 tags: subchoice
@@ -1119,8 +1128,8 @@ Vous fermez les yeux...
 ===
 title: Reveil_L
 tags: 
-colorID: 1
 position: 4404,3911
+colorID: 1
 ---
 << setBackground bedroom >>
 << setTime 8:00 7 >>
@@ -1134,7 +1143,7 @@ Vous prenez le temps de petit-déjeuner, pour mettre toutes les chances de votre
 
 << advanceTime 0:30 >>
 
-<< if 1 >>
+<< if getGauge("learning") >= 66 >>
 
 Une fois terminé, vous essayez d'appeler Fred pour votre séance de sport, mais il semblerait qu'il n'ait toujours pas envie de répondre. Il doit sûrement être concentré dans ses révisions.
 
@@ -1657,4 +1666,27 @@ Vous avez trop tiré sur la corde.
 -> Try try again?
     << resetLevel >>
     << jump Atart >>
+===title: FailGauge
+tags: 
+---
+
+===
+title: FailGauge
+tags: 
+position: 3098.1564586891755,337.5780662387326
+---
+<<if getGauge("sleep") >>
+Vous vous sentez beaucoup trop fatigué...
+<<endif>>
+
+<<if getGauge("food") >>
+Vous avez trop faim pour faire quoi que ce soit...
+<<endif>>
+
+<<if getGauge("mentalLoad") >>
+Vous vous petes trop donner aux révisions, votre cerveau n'enregistre plus rien...
+<<endif>>
+
+-> Recommencer le week-end
+    <<jump Start>>
 ===
