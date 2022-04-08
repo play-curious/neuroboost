@@ -70,15 +70,14 @@ tags: freechoice
 position: 1036,139
 colorID: 2
 ---
-<< setBackground bedroom >>
-
 <<if getGauge("sleep") <= 0 || getGauge("food") <= 0 || getGauge("mentalLoad") >= 100 >>
 << jump FailGauge >>
 << endif >>
 
-<< fadeOut >>
-
 << if !isTimeOver("20:00") >>
+
+<< setBackground bedroom >>
+<< fadeOut >>
 
 -> Cuisine@cuisine
     <<jump Cuisine_S >>
@@ -92,6 +91,9 @@ colorID: 2
     <<jump Detente_S>>
 
 << else >>
+
+<< setBackground bedroom night >>
+<< fadeOut >>
 
 Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories.
 
@@ -236,7 +238,7 @@ Heureusement vous avez pris le temps d'établir un planning ce matin, donc vous 
 << fx Failure >>
 Par quoi allez-vous commencer ce matin ? Vous n'en savez pas trop. Vous n'avez pas vraiment réfléchi à la question.
 Tant pis. 
-// TODO: penalize learning 
+<<empty>> // TODO: penalize learning 
 << endif >>
 
 Vous faites confiance à la méthode du "rappel libre". Vous sortez des stylos de différentes couleurs et plusieurs pages blanches. Vous commencez à notez dessus les titres, les mots-clés, les concepts, les théories, les définitions et les arguments qui vous viennent à l'esprit..
@@ -282,7 +284,7 @@ Malgré votre fatigue mental, vous vous replongez dans vos cours et vos notes. V
 
 Soit, le monde des phénomènes n'est pas la réalité, ou bien la réalité n'existe pas pour les chats. Non, attend, c'est pas ça, ...
 
-//<< jump MentalOverload >>
+<<empty>> //<< jump MentalOverload >>
 
 << advanceTime 0:15 >>
 Revision suite
@@ -406,7 +408,7 @@ position: 1744,1082
 
 Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare analogique de la planète Feudall. Le son brut et archaïque de cet instrument vous détend, vous apaise, vous nettoie l'esprit d'informations superflues et pesantes.
 
-// decrease charge mentale de 50%, genre de 20/100 : si hausse avant de 40/100 
+<<empty>> // decrease charge mentale de 50%, genre de 20/100 : si hausse avant de 40/100 
 
 << advanceTime 0:30 >>
 
@@ -486,7 +488,7 @@ tags:
 position: 1744,1313
 ---
 Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est le samedi matin : il n'y a pas grand monde en ligne. Ils sont encore en train de dormir. Et puis, petit à petit, les amis se connectent au réseau. 
-// Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
+<<empty>> // Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
 << fx Notification >>
 
 Loulou vous pinge, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses... 
@@ -508,10 +510,6 @@ position: 1130,1878.6827392578125
 colorID: 4
 ---
 << empty >> // Manger
-<< fadeIn >>
-<< setBackground bedroom night >>
-<< fadeOut >>
-
 Le soleil s'est couché, il est temps de clore votre journée par un dîner bien mérité. Vous avez faim et vous avez le temps de vous préparer un petit plat sympa et exotique : des lasagnes vénusiennes. C'est délicieux, riches en nutriments essentiels.
 
 << advanceTime 0:30 >>
@@ -536,12 +534,13 @@ Fred: Arrête. Tu m'as promis. Et rappelle-toi comment tu as assuré mardi soir.
 You: Heu...
 Fred: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller !
 
-<< empty >> // Option "Refuser" moved to the end of this node
-<< empty >> // Option "Suivre Fred" moved to the end of this node
 -> Refuser
     <<jump ReviserSoir_S>>
 -> Suivre Fred
-    <<jump Soiree_S>>
+    Il a raison. Vous débarrassez la table et vous vous précipitez vers votre armoire. Aiguillé par les conseils de Fred, vous enfilez une tenue Rock Glam de malade. Vous resplendissez dans cette tenue scintillante et clinquante !
+    Fred: Parfait ! Allez, on y va !
+    << hide >>
+    << jump Soiree_S >>
 ===
 title: ReviserSoir_S
 tags: 
@@ -574,11 +573,6 @@ title: Soiree_S
 tags: 
 position: 2197,2040
 ---
-Il a raison. Vous débarrassez la table et vous vous précipitez vers votre armoire. Aiguillé par les conseils de Fred, vous enfilez une tenue Rock Glam de malade. Vous resplendissez dans cette tenue scintillante et clinquante !
-Fred: Parfait ! Allez, on y va !
--> Suivre Fred
-    << hide >>
-
 << fadeIn >>
 << advanceTime 0:15 >>
 << setBackground party >>
@@ -590,21 +584,27 @@ On vous applaudit à tout crin. Fred avait raison, votre performance de mardi n'
 Fred est probablement la star la plus populaire de l'Académie. Vous, vous êtes la star des soirées organisées à la cafétéria...
 Maintenant, il va falloir défendre votre réputation.
 
-<< if visited("Sport_S") >> // Concours gagné
+<<empty>> // Concours gagné
+<< if visited("Sport_S") >> 
+
 Vous transmettez à toute l'audience votre pep's, votre enthousiasme, votre passion, votre fièvre du mouvement.
-// Tout le monde se souviendra de votre intervention. Vous êtes le soleil de ce samedi soir de folie, l'astre de la danse et du Body Beat.
+<<empty>> // Tout le monde se souviendra de votre intervention. Vous êtes le soleil de ce samedi soir de folie, l'astre de la danse et du Body Beat.
 Quand vous quittez la piste de danse, un vrombissement sourd s'élève peu à peu et finit par envahir l'atmosphère de toute la salle. Vous êtes la star de la soirée.
 << removeFromGauge mentalLoad 50 >>
-<< else >> // Concours perdu
+
+<< empty >> // Concours perdu
+<< else >> 
+
 Dommage que vous vous êtes pas entraîné aujourd'hui ! Vous vous sentez tout lourd sur la piste, et vous manquez de tomber sur un faux pas. 
 << removeFromGauge mentalLoad 15 >>
+
 << endif >>
 
 << removeFromGauge sleep 30 >>
 << removeFromGauge food 20 >>
 
 Il est grand temps de s'en aller. Vous dites au revoir à Fred, qui vous assure qu'il ne va pas tarder à faire de même. Vous n'avez pas la patience de l'attendre. 
-// Vous levez le bras et saluez l'assemblée qui vous applaudit une dernière fois sans modération. Pas de doute, la star de cette fièvre du samedi soir, c'est vous et cela restera vous... 
+<<empty>>  // Vous levez le bras et saluez l'assemblée qui vous applaudit une dernière fois sans modération. Pas de doute, la star de cette fièvre du samedi soir, c'est vous et cela restera vous... 
 Vous quittez la cafétéria et rejoignez votre chambre.
 
 << advanceTime 3:00 >>
@@ -628,7 +628,7 @@ Vous vous déshabillez fissa, un petit tour aux toilettes et vous vous glissez d
 
 << if visited("ReviserSoir_S") >>
 Vous avez du mal à dormir dû à la quantité de travail que vous avez ingéré.
-// TODO: reduce sleep
+<<empty>> // TODO: reduce sleep
 << endif >>
 
 << empty >> // Option "Dodo" moved to the end of this node
@@ -645,9 +645,9 @@ colorID: 1
 << setBackground bedroom >>
 << music Neutral >>
 << removeFromGauge learning 20 >>
-<< addToGauge sleep 100 >>
-<< addToGauge food 100 >>
-<< removeFromGauge 10 >>
+<< setGauge sleep 100 >>
+<< setGauge food 10 >>
+<< removeFromGauge mentalLoad 10 >>
 << fadeOut >>
 
 Vous vous réveillez le lendemain avec des étoiles plein les yeux. Ce fut une super fièvre du samedi soir. Vous étiez le soleil de cette galaxie festive. Dommage que la partie soit finie.
@@ -659,6 +659,7 @@ Dommage aussi que le jour se soit levé depuis un moment. Vous seriez bien rest�
 
 << fx EatCook >>
 Vous vérifiez ce que votre cuisine a en stock et vous vous préparez un solide petit déjeuner sucré salé. Un jus de fruit, un maxi café, des viennoiseries, des tartines, du beurre, de la confiture, un oeuf de Mégaloodinde brouillé fumé, des néotomates cerises et quelques feuilles de salade. 
+<< addToGauge food 100 >>
 C'est riche, délicieux, copieux et varié. Vous êtes rassasié.
 Mais vous vous rendez compte qu'il ne vous reste plus rien pour manger...
 
@@ -675,7 +676,7 @@ position: 3122,1884
 << fadeOut >>
 
 << empty >> // Aller chercher fred, il n'est pas là
-Vous vous rendez chez fred et toquez à ça porte, cependant il ne répond pas, peut-être qu'il avait une urgence. Il va falloir s'occuper sans lui.
+Vous vous rendez chez fred et toquez à sa porte, cependant il ne répond pas, peut-être qu'il avait une urgence. Il va falloir s'occuper sans lui.
 
 -> Retourner à votre journée
     << fadeIn >>
@@ -686,19 +687,25 @@ tags: freechoice
 position: 3366,1884
 colorID: 2
 ---
-<< setBackground bedroom >>
 
 <<if getGauge("sleep") <= 0 || getGauge("food") <= 0 || getGauge("mentalLoad") >= 100 >>
 << jump FailGauge >>
 << endif >>
 
+<< if isTimeOver("20:00") >>
+
+<< setBackground bedroom night >>
 << fadeOut >>
 
-<< if isTimeOver("20:00") >>
--> ...
+Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories.
+
+-> Aller dîner
     <<jump Diner_D>>
 
 << else >>
+
+<< setBackground bedroom >>
+<< fadeOut >>
 
 -> Cuisine@cuisine
     <<jump Cuisine_D>>
@@ -727,12 +734,15 @@ colorID: 6
 Vous ouvrez le frigo et admirez les étagères vides.
 Il en reste vraiment rien de rien.
 
+<< fadeIn >>
+<< jump Taches_D >>
+
 << else >>
 
 <<empty>> // Long/Court ? (comme Cuisine_S)
 -> Manger un petit plat << if !visited("Manger_D") >>
     << jump Manger_D >>
--> Back
+-> back
     << fadeIn >>
     << jump Taches_D >>
 
@@ -796,11 +806,15 @@ tags: subchoice
 position: 3699,2650
 colorID: 6
 ---
-
+<< if !isTimeOver("12:00")>>
 -> Aller faire les courses #once
     <<jump Courses_D>>
--> Back
+-> back
     << jump Taches_D >>
+<< else >>
+-> back
+    << jump Taches_D >>
+<< endif >>
 ===
 title: Sieste_D
 tags: 
@@ -863,8 +877,8 @@ Un petit pause, histoire de souffler un coup.
 L'intrication quantique est une théorie révolutionnaire qui expliquerait les phénomènes d'ubiquité, de synchronicité, de coïncidences. C'est dingue !
 
 << addToGauge learning 10 >>
-<< removeFromGauge sleep -15 >>
-<< removeFromGauge food -25 >>
+<< removeFromGauge sleep 15 >>
+<< removeFromGauge food 25 >>
 << addToGauge mentalLoad 50 >>
 << advanceTime 1:00 >>
 << elseif !visited("revision3") >>
@@ -885,8 +899,8 @@ Soit, le monde des phénomènes n'est pas la réalité mais seulement ce que nou
 Soit, on admet la coexistence de plusieurs états possibles, la cohabitation de plusieurs univers parallèles, comme le stipule Everett. 
 
 << addToGauge learning 10 >>
-<< removeFromGauge sleep -15 >>
-<< removeFromGauge food -25 >>
+<< removeFromGauge sleep 15 >>
+<< removeFromGauge food 25 >>
 << addToGauge mentalLoad 50 >>
 << advanceTime 1:00 >>
 << elseif !visited("revision4")  >>
@@ -903,7 +917,7 @@ C'est le choc ! Vous comprenez que c'est votre mémoire courte qui bosse en ce m
 Comment faire ? Vous vous rappelez de ce que maître Azul vous dit. Il faut alors passer au "plan B" : simplifier !
 
 Vous n'avez pas le temps de mémoriser durablement autant de savoirs en si peu temps.  Vous décidez de rédiger une série de fiches de révision sur toutes les notions, les théories, les paradigmes, les problématiques soulevées.
-// Thèmes que vous devez maîtriser à fond pour réussir votre Grand Oral, demain après-midi.
+<<empty>> // Thèmes que vous devez maîtriser à fond pour réussir votre Grand Oral, demain après-midi.
 
 Vous y passez un temps conséquent. Vous travaillez de manière intense mais détendue. 
 
@@ -919,11 +933,12 @@ Détendue, car vous respectez des sessions d'une heure, conformément aux règle
 L'après-midi défile à vitesse grand "V". Vous n'avez pas fini de rédiger vos fiches. Mais vous gardez bon espoir de les terminer avant d'aller vous coucher.
 
 << addToGauge learning 10 >>
-<< removeFromGauge sleep -15 >>
-<< removeFromGauge food -25 >>
+<< removeFromGauge sleep 15 >>
+<< removeFromGauge food 25 >>
 << addToGauge mentalLoad 50 >>
 << advanceTime 1:00 >>
-<< else >> // if visited("PlanningD")
+<< empty >> // if visited("PlanningD")
+<< else >> 
 
 Il vous reste à réviser le quatrième et dernier thème. La décohérence quantique. Vous commencez à vous imprégner de ce dernier thème que vous n'aviez pas eu le temps d'aborder jusque-là. Votre première session de révision se déroule sans problème.
 
@@ -938,25 +953,26 @@ Un petit pause musicale...
 
 Et c'est reparti pour une dernière session. 
 
-// TODO: penalize learning as compared to "planning" path
+<<empty>> // TODO: penalize learning as compared to "planning" path
 << addToGauge learning 10 >>
-<< removeFromGauge sleep -15 >>
-<< removeFromGauge food -25 >>
+<< removeFromGauge sleep 15 >>
+<< removeFromGauge food 25 >>
 << addToGauge mentalLoad 50 >>
 << advanceTime 1:00 >>
 << endif >>
 
-<< else >> // elseif !visited("revision4")
+<< empty >> // elseif !visited("revision4")
+<< else >>
 
 A vrai dire, vous ne savez même plus ce que vous êtes censé apprendre. Vous ouvrez vos livres, vous tournez les pages, vous jouez avec le stylo dans votre main, ... 
 Vous passez une bonne heure à vous relire, sans vraiment améliorer votre travail précédent.
 
-<< removeFromGauge sleep -10 >>
-<< removeFromGauge food -10 >>
+<< removeFromGauge sleep 10 >>
+<< removeFromGauge food 10 >>
 << addToGauge mentalLoad 30 >>
 << advanceTime 1:00 >>
 
-// TODO: charge mental explose
+<<empty>> // TODO: charge mental explose
 << jump MentalOverload >>
 << endif >>
 
@@ -1022,7 +1038,7 @@ Quel boulet !
 
 << else >>
 
-<< visiter Courses_D >>
+<< visit Courses_D >>
 
 << fadeIn >>
 << setBackground outside >>
@@ -1059,7 +1075,7 @@ Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare
 << removeFromGauge sleep 25 >>
 << removeFromGauge food 20 >>
 << removeFromGauge mentalLoad 25 >>
-<< advanceTime 0:30 >>
+<< advanceTime 1:00 >>
 << music Neutral >>
 
 << fadeIn >>
@@ -1091,7 +1107,7 @@ position: 4297,1275
 Mamie@holo_shadow: Coucou mon chouchou ! 
 You: Salut mamie !
 Mamie@holo_shadow: Je te dérange ? 
--> Je ne peux pas parler très longtemps << if visited("Planning") >>
+-> Je ne peux pas parler très longtemps << if visited("Planning_D") >>
     Mamie@holo_shadow: Ah bon ?
     You: Je suis content d'avoir de tes nouvelles. Mais j'ai établi un planning très strict pour aujourd'hui, afin de réussir mes examens !
     Mamie@holo_shadow: D'accord, je comprends ! Je suis fier de toi, mon chouchou...
@@ -1099,6 +1115,7 @@ Mamie@holo_shadow: Je te dérange ?
     << removeFromGauge sleep 5 >>
     << removeFromGauge food 10 >>
     << removeFromGauge mentalLoad 5 >>
+    << hide >>
     Ouf ! Vous avez réussi à ne rester parler que 15 min au téléphone, tout en gardant le lien avec ta grand-mère. 
 -> Heu...
     Mamie@holo_shadow: Tant que ça ?
@@ -1110,6 +1127,7 @@ Mamie@holo_shadow: Je te dérange ?
     << removeFromGauge sleep 15 >>
     << removeFromGauge food 15 >>
     << removeFromGauge mentalLoad 20 >>
+    << hide >>
     Ouf ! Même au bout d'une heure au téléphone, vous ne saviez pas comment raccrocher.  
 
 << fadeIn >>
@@ -1120,9 +1138,6 @@ tags:
 position: 3600,3911
 colorID: 4
 ---
-<< fadeIn >>
-<< setBackground bedroom night >>
-<< fadeOut >>
 
 Il est plus de 20 heures ?! Il est temps de se préparer un petit dîner.
 
@@ -1192,18 +1207,19 @@ colorID: 1
 ---
 << setBackground bedroom >>
 << setTime 8:00 7 >>
-<< loopFX Sleep_LOOP 5000 >>
-<< fadeOut 2000 >>
 << removeFromGauge learning 15 >>
-<< addToGauge sleep 100 >>
-<< addToGauge food 100 >>
-<< stopFX Sleep_LOOP >>
+<< setGauge sleep 100 >>
+<< setGauge food 10 >>
+<<empty>> // << stopFX Sleep_LOOP >>
+<<empty>> // << loopFX Sleep_LOOP 5000 >>
+<< fadeOut 2000 >>
 
 Vous ne rouvrez les yeux que le lendemain matin, à l'aube. Vous vous sentez requinqué et d'attaque pour le Grand Oral !
 
 Vous prenez le temps de petit-déjeuner, pour mettre toutes les chances de votre côté.
 
 << advanceTime 0:30 >>
+<< addToGauge food 90 >>
 
 << if getGauge("learning") >= 66 >>
 
@@ -1499,11 +1515,11 @@ Vous les saluez et les remerciez avant de quitter la salle et de rentrer dans vo
 
 Vous mangez un bout et allez dans votre lit, vous êtes exténué. Ce week-end aura été épuisant, même en ayant appris à bien gérer votre temps. Il faut dire que vous aviez beaucoup à rattrapper, mais vous vous en êtes sorti avec brio !
 
-// << if !visitedPermenant("sages") >>
+<<empty>> // << if !visitedPermenant("sages") >>
 
 <<jump SagesVictoire_L>>
 
-// << endif >>
+<<empty>> // << endif >>
 ===
 title: SagesDefaite_L
 tags: 
@@ -1737,25 +1753,24 @@ Vous avez trop tiré sur la corde.
 -> Try try again?
     << resetLevel >>
     << jump Atart >>
-===title: FailGauge
-tags: 
----
-
 ===
 title: FailGauge
 tags: 
 position: 3098.1564586891755,337.5780662387326
 ---
-<<if getGauge("sleep") >>
+<< fadeOut >>
+<< fadeIn 1000 >>
+
+<<if getGauge("sleep") <= 0 >>
 Vous vous sentez beaucoup trop fatigué...
 <<endif>>
 
-<<if getGauge("food") >>
+<<if getGauge("food") <= 0 >>
 Vous avez trop faim pour faire quoi que ce soit...
 <<endif>>
 
-<<if getGauge("mentalLoad") >>
-Vous vous petes trop donner aux révisions, votre cerveau n'enregistre plus rien...
+<<if getGauge("mentalLoad") >= 100 >>
+Vous vous êtes trop donner aux révisions, votre cerveau n'enregistre plus rien...
 <<endif>>
 
 -> Recommencer le week-end
