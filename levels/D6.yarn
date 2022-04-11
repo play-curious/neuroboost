@@ -1237,8 +1237,7 @@ Une fois terminé, vous vous asseyez à votre bureau, vous sentez qu'il vous man
 ===
 title: SagesVictoire_L
 tags: 
-colorID: 0
-position: 5223,3741
+position: 5220.361328125,3741
 ---
 Sapiens_happy: Bravo ! Viens avec moi...
 You: Mais j'ai réussi ! 
@@ -1411,7 +1410,7 @@ Vous arrêtez la torture. Vous avez perdu votre temps à papillonner sur le web.
 ===
 title: ExamenDefaite_L
 tags: 
-position: 4945,4092
+position: 4945,4087.5556640625
 ---
 << fadeIn >>
 << advanceTime 0:15 >>
@@ -1523,8 +1522,7 @@ Vous mangez un bout et allez dans votre lit, vous êtes exténué. Ce week-end a
 ===
 title: SagesDefaite_L
 tags: 
-colorID: 0
-position: 5226,4095
+position: 5229.60986328125,4095
 ---
 << setBackground circle >>
 << fadeOut >>
@@ -1721,11 +1719,13 @@ Sapiens: Sur ton planning, tu indiques toutes les tâches de ta journée. En ce 
     You: Les fiches de révision ?
     Azul_proud: En ce qui concerne ton Grand Oral, oui, c'est un bonne voie alternative.
 
-<<jump JournalMental>>
+
+-> Reommencer le week-end
+    << resetLevel >>
+    << jump Start>>
 ===
 title: JournalMental
 tags: 
-colorID: 0
 position: 5536,3911
 ---
 << hide >>
@@ -1737,23 +1737,7 @@ position: 5536,3911
 Vous êtes de nouveau seul. Dans un espace-temps indéfini. Il ne fait ni chaud ni froid, ni vraiment jour ni vraiment nuit. 
 Vous avez entre les mains votre "carnet d'ingénieur tout-terrain". Vous avez plein de choses à noter dedans. Ce truc de planification des tâches, ça demande un sacré sens de l'organisation...
 ===
-title: MentalOverload
-tags: 
-colorID: 0
-position: 5536,3911
----
-<< music >>
-Soudain, vous vous ne sentez pas de tout bien.
 
-<< fadeIn >>
-Tout devient flou. Votre tête est très lourde.
-
-Vous avez trop tiré sur la corde. 
-
--> Try try again?
-    << resetLevel >>
-    << jump Atart >>
-===
 title: FailGauge
 tags: 
 position: 3098.1564586891755,337.5780662387326
@@ -1774,5 +1758,6 @@ Vous vous êtes trop donner aux révisions, votre cerveau n'enregistre plus rien
 <<endif>>
 
 -> Recommencer le week-end
+    << resetLevel >>
     <<jump Start>>
 ===
