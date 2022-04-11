@@ -46,6 +46,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
   public visited: Set<string>;
+  public visitedPermanent: Set<string>;
   public selectedOptions: string[];
   public enabled: boolean;
 
@@ -129,6 +130,16 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       window.loadedVisited = undefined;
     } else {
       this.visited = new Set();
+    }
+
+    //@ts-ignore
+    if (window.loadedVisitedPerm) {
+      //@ts-ignore
+      this.visitedPermanent = window.loadedVisitedPerm;
+      //@ts-ignore
+      window.loadedVisitedPerm = undefined;
+    } else {
+      this.visitedPermanent = new Set();
     }
 
     //@ts-ignore

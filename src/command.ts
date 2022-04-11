@@ -229,11 +229,15 @@ export const commands: Record<string, Command> = {
   /**
    * Mark a node as visited
    * @param node Node to mark as visited
+   * @param permanent Mark node as permanently visited (true|flse)
    */
-  visit(node: string) {
+  visit(node: string, permanent?: string) {
     if (!node || node.includes('"'))
       throw new Error("Please give a valid node title in << visit >>");
     this.visited.add(node);
+
+    if (permanent && /^(?:true|1)$/i.test(permanent))
+      this.visitedPermanent.add(node);
   },
 
   resetLevel() {

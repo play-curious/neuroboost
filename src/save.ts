@@ -24,6 +24,10 @@ export function save(ctx?: dialog.DialogScene) {
     localStorage.setItem("history", JSON.stringify(ctx.config.history));
     localStorage.setItem("visited", JSON.stringify([...ctx.visited]));
     localStorage.setItem(
+      "visitedPermanent",
+      JSON.stringify([...ctx.visitedPermanent])
+    );
+    localStorage.setItem(
       "variableStorage",
       JSON.stringify(ctx.config.variableStorage.data)
     );
@@ -37,6 +41,9 @@ export function loadSave() {
   const [level, node] = localStorage.getItem("save").split("@");
   const history = JSON.parse(localStorage.getItem("history"));
   const visited = new Set(JSON.parse(localStorage.getItem("visited")));
+  const visitedPermanent = new Set(
+    JSON.parse(localStorage.getItem("visitedPermanent"))
+  );
   const data = JSON.parse(localStorage.getItem("variableStorage"));
   const environment = JSON.parse(localStorage.getItem("environment"));
   const variableStorage = new variable.VariableStorage(data);
@@ -45,6 +52,7 @@ export function loadSave() {
     node,
     history,
     visited,
+    visitedPermanent,
     environment,
     variableStorage,
   };
@@ -104,15 +112,17 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
             this.config.variableStorage = saveData.variableStorage;
             this.config.history = saveData.history;
 
-            // load saved node from saveData.node
-            this._transition = entity.makeTransition(saveData.level);
-
-            // @ts-ignore
+            //@ts-ignore
             window.loadedNode = saveData.node;
             //@ts-ignore
             window.loadedVisited = saveData.visited;
             //@ts-ignore
             window.loadedEnvironment = saveData.environment;
+            //@ts-ignore
+            window.loadedVisitedPerm = saveData.visitedPermanent;
+
+            // load saved node from saveData.node
+            this._transition = entity.makeTransition(saveData.level);
           });
         }
       );
