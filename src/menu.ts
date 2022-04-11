@@ -355,7 +355,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
           new popup.Confirm(
             "Téléchargement du journal de la métacognition",
             (validated: boolean) => {
-              if(!validated) return;
+              if (!validated) return;
               const journalDownload = new journal.JournalPDF();
               this._activateChildEntity(journalDownload);
               journalDownload.journalToPDF(

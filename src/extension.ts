@@ -28,7 +28,11 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
     mood: string,
     displayMode: string,
     animate: boolean
-  ): { container: PIXI.Container; entity: entity.ParallelEntity; holo: boolean } {
+  ): {
+    container: PIXI.Container;
+    entity: entity.ParallelEntity;
+    holo: boolean;
+  } {
     const CE = {
       container: new PIXI.Container(),
       entity: new entity.ParallelEntity(),
@@ -86,8 +90,7 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
 
     // If character changed, do animation
     if (animate) {
-
-      if(displayMode === "holo") {
+      if (displayMode === "holo") {
         this._activateChildEntity(
           new tween.Tween({
             duration: 500,
@@ -95,15 +98,14 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
             from: 0,
             to: 100,
             onUpdate: (value: number) => {
-              CE.container.position.y = (100-value) * 5.4 +80;
-              CE.container.scale.y = value/100;
-              CE.container.position.x = -(100-value) * 9.6 +250;
-              CE.container.scale.x = (100-value)/100 +1;
+              CE.container.position.y = (100 - value) * 5.4 + 80;
+              CE.container.scale.y = value / 100;
+              CE.container.position.x = -(100 - value) * 9.6 + 250;
+              CE.container.scale.x = (100 - value) / 100 + 1;
             },
           })
         );
-      }
-      else {
+      } else {
         this._activateChildEntity(
           new tween.Tween({
             duration: 1500,

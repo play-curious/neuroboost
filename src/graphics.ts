@@ -123,7 +123,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       //@ts-ignore
       const last = window.loadedEnvironment;
       //@ts-ignore
-      window.loadedEnvironment = undefined;
+      delete window.loadedEnvironment;
 
       if (last.lastBg) this.setBackground(last.lastBg, last.lastBgMood);
       if (last.lastCharacter)
@@ -211,8 +211,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         gaugesName.push(gaugeName);
       }
     }
-    
-    
+
     this._lastGauges = JSON.parse(JSON.stringify(gaugesName));
     let i = 0;
     const gaugesTween: entity.EntityBase[] = [];
@@ -434,7 +433,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               this._on(choicebox, "pointerup", () => {
                 this.config.dialogScene.addToHistory(
                   "[choice]",
-                  nodeOptions[i].text,
+                  nodeOptions[i].text
                 );
                 onBoxClick(Number(nodeOptions[i].id));
               });
@@ -587,7 +586,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               this._on(highlight, "pointerup", () => {
                 this.config.dialogScene.addToHistory(
                   "[freechoice]",
-                  choiceText,
+                  choiceText
                 );
                 onBoxClick(i);
               });
@@ -706,8 +705,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._characters.delete(id);
 
       if (withAnimation) {
-
-        if(character.holo) {
+        if (character.holo) {
           this._activateChildEntity(
             new tween.Tween({
               duration: 500,
@@ -715,15 +713,14 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               from: 100,
               to: 0,
               onUpdate: (value: number) => {
-                character.container.position.y = (100-value) * 5.4 +80;
-                character.container.scale.y = value/100;
-                character.container.position.x = -(100-value) * 9.6 +250;
-                character.container.scale.x = (100-value)/100 +1;
+                character.container.position.y = (100 - value) * 5.4 + 80;
+                character.container.scale.y = value / 100;
+                character.container.position.x = -(100 - value) * 9.6 + 250;
+                character.container.scale.x = (100 - value) / 100 + 1;
               },
             })
           );
-        }
-        else {
+        } else {
           this._activateChildEntity(
             new tween.Tween({
               duration: 1500,

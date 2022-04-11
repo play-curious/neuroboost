@@ -8,7 +8,7 @@ import * as popup from "./popup";
 
 /** When called with a dialog scene, saves the scene in local storage.
  *  When called with null or undefined, removes save.
-*/
+ */
 export function save(ctx?: dialog.DialogScene) {
   if (!ctx) {
     localStorage.removeItem("save");
@@ -32,8 +32,8 @@ export function save(ctx?: dialog.DialogScene) {
 }
 
 export function loadSave() {
-  if(!hasSave()) throw new Error("No save to load");
-  
+  if (!hasSave()) throw new Error("No save to load");
+
   const [level, node] = localStorage.getItem("save").split("@");
   const history = JSON.parse(localStorage.getItem("history"));
   const visited = new Set(JSON.parse(localStorage.getItem("visited")));

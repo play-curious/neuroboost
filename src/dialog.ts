@@ -57,30 +57,29 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     return this.runner.currentResult.metadata;
   }
 
-  get history(): [type: string, text: string][]{
+  get history(): [type: string, text: string][] {
     return this.config.history.texts;
   }
 
-  get lastHistory(){
+  get lastHistory() {
     return this.config.history.lastTime;
   }
 
-  set lastHistory(val){
+  set lastHistory(val) {
     this.config.history.lastTime = val;
   }
 
-  addToHistory(type: string, text: string){
-    if(this.config.clock.minutesSinceMidnight !== this.lastHistory){
+  addToHistory(type: string, text: string) {
+    if (this.config.clock.minutesSinceMidnight !== this.lastHistory) {
       this.lastHistory = this.config.clock.minutesSinceMidnight;
       this.history.push(["time", this.config.clock.text]);
     }
     this.history.push([type, text]);
 
-    if(this.history.length > 149){
-      if(this.history[2][0] === "time"){
+    if (this.history.length > 149) {
+      if (this.history[2][0] === "time") {
         this.history.splice(0, 2);
-      }
-      else {
+      } else {
         this.history.splice(1, 1);
       }
     }
@@ -90,11 +89,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     let texts: PIXI.Text[] = [];
     this.history.forEach((val, i) => {
       let txt;
-      if(val[0].includes("choice")){
+      if (val[0].includes("choice")) {
         txt = `[${val[1]}]`;
-      } else if(val[0].includes("time")){
+      } else if (val[0].includes("time")) {
         txt = `----------------\n${val[1]}\n----------------`;
-      } else if(val[0]){
+      } else if (val[0]) {
         txt = `<b>${val[0].split("@")[0].split("_")[0]}</b>: ${val[1]}`;
       } else {
         txt = `<i>${val[1]}</i>`;
@@ -105,7 +104,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         fontSize: 30,
         fill: 0xffffff,
         wordWrap: true,
-        wordWrapWidth: 1700
+        wordWrapWidth: 1700,
       });
     });
 
@@ -242,7 +241,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       if (!this._hasTag(this.lastNodeData, "nosave")) {
         save.save(this);
-      }  
+      }
     }
 
     const result = this.runner.currentResult;

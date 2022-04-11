@@ -11,7 +11,7 @@ import dayjs from "dayjs";
 
 const options: { [key: string]: any } = {
   // Journal jour 1
-  method: { 
+  method: {
     title: "Méthode de révision",
     closeQuestion: {
       question:
