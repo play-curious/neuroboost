@@ -35,6 +35,7 @@ Vous pensez à votre grand-mère, mais vous avez l'esprit serein et optimiste.
 Le sort aurait-il perçu vos pensées : votre palmphone vibre, c'est votre mère. Elle veut vous parler...
 
 -> Répondre
+    << stopFX PhoneRing_LOOP >>
     <<jump Appel_Maman>>
 ===
 title: Appel_Maman
@@ -111,23 +112,15 @@ colorID: 6
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
-<< if !visited("MangerMidi_S") >>
-
--> Manger saînement
+-> Manger saînement <<if !visited("MangerMidi_S")>>
     <<jump MangerSain_S>>
--> Manger vite
+-> Manger vite <<if !visited("MangerMidi_S")>>
     <<jump MangerVite_S>>
+-> Grignoter un petit quelque chose <<if !visited("Grignoter_S")>>
+    <<jump Grignoter_S>>
 -> back
     << fadeIn >>
     <<jump Taches_S>>
-    
-<< else >>
-
--> back
-    << fadeIn >>
-    <<jump Taches_S>>
-
-<< endif >>
 ===
 title: Bureau_S
 tags: subchoice
@@ -142,7 +135,7 @@ colorID: 6
     <<jump Zero_Distraction_S>>
 -> Plannifier le travail à faire #once
     <<jump Planning_S>>
--> Réviser la Philosophie Quantique
+-> Réviser la Philosophie Quantique <<if !visited("revision3")>>
     <<jump Reviser_S>>
 -> Ranger le bureau #once
     <<jump Ranger_S>>
@@ -152,7 +145,7 @@ colorID: 6
 ===
 title: Lit_S
 tags: subchoice
-position: 1371,621
+position: 1371,706.7680053710938
 colorID: 6
 ---
 << fadeIn >>
@@ -186,7 +179,7 @@ colorID: 6
 ===
 title: Zero_Distraction_S
 tags: 
-position: 1744,-797
+position: 1737.40234375,-800.2987670898438
 ---
 Vous demandez à votre RoomMate de basculer votre chambre en mode "immersion studieuse".
 RoomMate s'exécute, et empêche les distraction extérieures de pouvoir vous perturber, en ne vous laissant accès qu'au strict minimum pour réviser dans les meilleures condiditions.
@@ -238,7 +231,6 @@ Heureusement vous avez pris le temps d'établir un planning ce matin, donc vous 
 << fx Failure >>
 Par quoi allez-vous commencer ce matin ? Vous n'en savez pas trop. Vous n'avez pas vraiment réfléchi à la question.
 Tant pis. 
-<<empty>> // TODO: penalize learning 
 << endif >>
 
 Vous faites confiance à la méthode du "rappel libre". Vous sortez des stylos de différentes couleurs et plusieurs pages blanches. Vous commencez à notez dessus les titres, les mots-clés, les concepts, les théories, les définitions et les arguments qui vous viennent à l'esprit..
@@ -260,7 +252,7 @@ Pas de question, il est l'heure d'attaquer l'intrigue de l'intrication quantique
 
 La notion d'intrication est passionnante. Elle stipule et justifie que des éléments peuvent être intriqués, enchevêtrés l'un à l'autre. Et ce, quel que soit la distance qui les sépare. 
 
-Vous avancer à un bon rythme.
+Vous avancez à un bon rythme.
 
 << advanceTime 1:00 >>
 
@@ -278,19 +270,20 @@ Vous travaillez sur ce thème de manière studieuse mais détendue.
 
 << visit revision3 >>
 
-Malgré votre fatigue mental, vous vous replongez dans vos cours et vos notes. Vous abordez cette fois le paradoxe du chat de Schrödinger et la superpositions d'états différents. Ce qui est matériellement impossible. Ou c'est le contraire ? 
+Vous vous replongez dans vos cours et vos notes. Vous abordez cette fois le paradoxe du chat de Schrödinger et la superpositions d'états différents. Ce qui est matériellement impossible. Ou c'est le contraire ?
 
 << advanceTime 1:00 >>
 
 Soit, le monde des phénomènes n'est pas la réalité, ou bien la réalité n'existe pas pour les chats. Non, attend, c'est pas ça, ...
-
-<<empty>> //<< jump MentalOverload >>
-
+Vous faites une pause pour vous remettre les idées en place.
 << advanceTime 0:15 >>
-Revision suite
+Vous continuez tranquillement vos révisions
+<<empty>> //TODO: Revision suite
 << advanceTime 1:00 >>
 
 << endif >>
+
+
 
 << removeFromGauge sleep 15 >>
 << removeFromGauge food 25 >>
@@ -335,7 +328,7 @@ Vous êtes satisfait de votre rangement, vous vous sentez tout de suite plus à 
 ===
 title: Sieste_S
 tags: 
-position: 1744,621
+position: 1744,835.4756469726562
 ---
 Vous avez fait une grasse matinée. Toutefois, après la séance de Jungle Body Break, vous êtes bien à plat. Et puis cette semaine d'examens est très éprouvante. Vous ne cesser de la revivre en boucle. Ce week-end, c'est la cerise sur le gâteau. Vous n'avez pas le droit à l'erreur.
 Trêve de paroles, vous vous asseyez sur votre lit et vous tombez presqu'aussitôt dans un doux sommeil réparateur. Bien entendu, vous gardez à l'esprit de ne pas vous endormir trop profondément. Il s'agit de faire une sieste, pas de passer l'après-midi à ronfler...
@@ -356,7 +349,7 @@ Ce somme, vous en aviez bien besoin...
 ===
 title: BingeTV_S
 tags: 
-position: 1744,853
+position: 1748.352783203125,1088.048583984375
 ---
 Nous sommes un jour de week-end, un jour férié. Vous méritez bien une pause TV. Vous n'avez pas encore entamé la saison 8 de Star Mars - The Lone Lightsaber.
 
@@ -402,7 +395,7 @@ Après votre pause Star Mars...
 ===
 title: Musique_S
 tags: 
-position: 1744,1082
+position: 1744,1338.8123779296875
 ---
 << music AcousticGuitar >>
 
@@ -442,7 +435,7 @@ colorID: 6
 ===
 title: Sport_S
 tags: 
-position: 1744,1551
+position: 1748.352783203125,1925.3367919921875
 ---
 << fadeIn >>
 << advanceTime 0:15 >>
@@ -485,7 +478,7 @@ Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous a
 ===
 title: Reseaux_S
 tags: 
-position: 1744,1313
+position: 1752.7054443359375,1678.6312255859375
 ---
 Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est le samedi matin : il n'y a pas grand monde en ligne. Ils sont encore en train de dormir. Et puis, petit à petit, les amis se connectent au réseau. 
 <<empty>> // Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
@@ -631,7 +624,6 @@ Vous avez du mal à dormir dû à la quantité de travail que vous avez ingéré
 <<empty>> // TODO: reduce sleep
 << endif >>
 
-<< empty >> // Option "Dodo" moved to the end of this node
 -> Dodo
     <<jump Reveil_D>>
 ===
@@ -650,8 +642,12 @@ colorID: 1
 << removeFromGauge mentalLoad 10 >>
 << fadeOut >>
 
+<<if visited("Soiree_S")>>
 Vous vous réveillez le lendemain avec des étoiles plein les yeux. Ce fut une super fièvre du samedi soir. Vous étiez le soleil de cette galaxie festive. Dommage que la partie soit finie.
 Dommage aussi que le jour se soit levé depuis un moment. Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps de se lever et de prendre son:
+<<else>>
+Vous vous réveillez le lendemain,
+<<endif>>
 
 << fadeIn >>
 << setBackground bedroom kitchen >>
@@ -742,6 +738,8 @@ Il en reste vraiment rien de rien.
 <<empty>> // Long/Court ? (comme Cuisine_S)
 -> Manger un petit plat << if !visited("Manger_D") >>
     << jump Manger_D >>
+-> Grignoter un encas << if !visited("Grignoter_D") >>
+    << jump Grignoter_D >>
 -> back
     << fadeIn >>
     << jump Taches_D >>
@@ -818,7 +816,7 @@ colorID: 6
 ===
 title: Sieste_D
 tags: 
-position: 4011,2083
+position: 4004.470947265625,2259.968505859375
 ---
 C'est une sage décision. Votre corps a besoin de recharger ses batteries, comme le disent les Sages. 
 << loopFX Sleep_LOOP 5000 >>
@@ -837,7 +835,7 @@ Vous vous réveillez ensuite, de bonne humeur et le corps détendu.
 ===
 title: Manger_D
 tags: 
-position: 4011,1798
+position: 4009.564208984375,1753.488037109375
 ---
 << fx EatCook >>
 << visit Manger_D >>
@@ -1027,7 +1025,7 @@ Ah, et une chose très important : faire des courses le matin, avant que le marc
 ===
 title: Courses_D
 tags: 
-position: 4011,2838
+position: 4018.20703125,3028.9892578125
 ---
 << if isTimeOver("12:00") >>
 
@@ -1064,7 +1062,7 @@ Ah, et il ne faut pas oublier du Xeno Cola !
 ===
 title: Musique_D
 tags: 
-position: 4009,2358
+position: 4006.07470703125,2510.563720703125
 ---
 << music AcousticGuitar >>
 
@@ -1083,7 +1081,7 @@ Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare
 ===
 title: Reseaux_D
 tags: 
-position: 4011,2602
+position: 4003.721923828125,2777.754638671875
 ---
 Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est le samedi matin : il n'y a pas grand monde en ligne. Ils sont encore en train de dormir. Et puis, petit à petit, les amis se connectent au réseau. 
 <<empty>> // Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
@@ -1318,7 +1316,7 @@ Azul_happy: C'est tout
 ===
 title: MangerSain_S
 tags: 
-position: 1744,139
+position: 1735.29443359375,125.94174194335938
 ---
 Vous décidez de vous préparer un plat sain pour être en forme pour vos révisions : Un plat de nouilles de soja aux légumes.
 Il faut mettre l'eau à bouillir, tremper les pâtes dedans. Et, ensuite, faire sauter les pâtes avec des lamelles de légumes frais finement tranchées.
@@ -1337,7 +1335,7 @@ Vous vous sentez tout de suite mieux et d'attaque pour la suite.
 ===
 title: MangerVite_S
 tags: 
-position: 1744,389.6827697753906
+position: 1736.690673828125,356.5582580566406
 ---
 Vous voulez manger vite pour perdre le moins de temps possible.
 Un burger Big Proteins Double Cheese, c'est très rapide à cuisiner, il n'y a plus qu'à le mettre dans le four microwave et une minute plus tard, il est en ressort chaud et croustillant !
@@ -1760,4 +1758,30 @@ Vous vous êtes trop donner aux révisions, votre cerveau n'enregistre plus rien
 -> Recommencer le week-end
     << resetLevel >>
     <<jump Start>>
+===
+title: Grignoter_D
+tags: 
+position: 4006.7754821777344,2008.7506103515625
+---
+<<visit Grignoter_D>>
+
+Vous mangez un petit encas pour vous remettre en forme.
+
+<< advanceTime 0:15 >>
+<< addToGauge food 30 >>
+
+<<jump Taches_D>>
+===
+title: Grignoter_S
+tags: 
+position: 1742.1867031989302,580.8256842017254
+---
+<<visit Grignoter_S>>
+
+Vous grignotez un petit quelque chose
+
+<< advanceTime 0:15 >>
+<< addToGauge food 30 >>
+
+<<jump Taches_S>>
 ===
