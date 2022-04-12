@@ -27,13 +27,12 @@ position: -1962.5316162109375,468.0980529785156
 << advanceTime 0:15 >>
 << fadeOut >>
 
-Vous sonnez à la porte de votre pote. 
+Vous vous rendez chez Fred et toquez à sa porte, cependant iel ne répond pas.
 
-<< show fred >>
-
-Fred_sad: Mais { $name }, qu'est-ce que tu fais là ? Je suis fatigué, je vais rester tranquille ce matin
+You: Je sais que tu es là !
+Fred_empty: Laisse moi tranquille. Je suis fatigué, je vais rester tranquille ce matin.
 You: Arrête de faire tes valises et viens avec moi !
-Fred_surprised: Mes valises ? Mais comment...
+Fred_empty: Mes valises ? Mais comment...
 You: Je t'explique tout ca sur la piste de footing. On y va !
 
 << jump Dimanche_Matin >>
@@ -130,7 +129,7 @@ position: -1010,1294
 //Vous vous rappelez ce que vous a dit maître Azul. Fred est un apprenant "divergent". Vous connaissez ses faiblesses. Pendant que vous parcourez tranquillement la piste, vous lui avouez franchement qu'aussi intelligent et brillant qu'il est, il accuse néanmoins des limites. 
 You: Tu dois comprendre, Fred. Les arbres ne montent pas jusqu'au ciel.
 Fred_surprised: Quoi ?! Sky is the limit ?
-You: C'est ça, ouais. Même toi, tu n'es la perfection. Sinon, tu ne serais pas à l'Académie.
+You: C'est ça, ouais. Même toi, tu n'es pas la perfection. Sinon, tu ne serais pas à l'Académie.
 Fred_surprised: Tu veux dire quoi ?
 You: Tu détestes apprendre par coeur.
 Fred_angry: Beuark ! Qui peut aimer ça ?
@@ -641,7 +640,7 @@ colorID: 0
 position: 1738,999
 ---
 << fadeIn >>
-<< setTime 8:00 >>
+<< setTime 8:00 7 >>
 << loopFX Chime_LOOP 2000 >>
 
 << setBackground bedroom bed >>
@@ -769,7 +768,7 @@ Fred_smiling: Yes yes. En tout cas, tu es vraiment un master de l'apprentissage 
 You: Merci.
 
 << setTime 13:00 >>
-C'est alors que votre horloge connectée vous informe qu'il est plus de 13 heures. Il faut manger avant de partir à l'oral ! 
+C'est alors que votre horloge connectée vous informe qu'il est 13 heures. Il faut manger avant de partir à l'oral ! 
 
 << fx EatCook >>
 << fadeIn >>

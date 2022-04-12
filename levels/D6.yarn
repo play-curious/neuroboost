@@ -674,7 +674,7 @@ position: 3122,1884
 << fadeOut >>
 
 << empty >> // Aller chercher fred, il n'est pas là
-Vous vous rendez chez fred et toquez à sa porte, cependant il ne répond pas, peut-être qu'il avait une urgence. Il va falloir s'occuper sans lui.
+Vous vous rendez chez Fred et toquez à sa porte, cependant iel ne répond pas, peut-être qu'iel avait une urgence. Il va falloir s'occuper sans ellui.
 
 -> Retourner à votre journée
     << fadeIn >>
