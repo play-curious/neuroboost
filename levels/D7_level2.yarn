@@ -63,6 +63,7 @@ Vous devez le motiver à travailler cette épreuve difficile qu'est le Grand Ora
 << fx Failure >>
 Mais comme Fred a perdu confiance en lui, vous devez d'abord le remotiver.
 
+<< stopFX Sports_LOOP >>
 << jump Rassurer_Fred >>
 ===
 title: Rassurer_Fred
