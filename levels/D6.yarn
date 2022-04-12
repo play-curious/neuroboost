@@ -644,9 +644,11 @@ colorID: 1
 
 <<if visited("Soiree_S")>>
 Vous vous réveillez le lendemain avec des étoiles plein les yeux. Ce fut une super fièvre du samedi soir. Vous étiez le soleil de cette galaxie festive. Dommage que la partie soit finie.
-Dommage aussi que le jour se soit levé depuis un moment. Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps de se lever et de prendre son:
+Dommage aussi que le jour se soit levé depuis un moment. Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps de se lever et de prendre son petit-déjeuner.
 <<else>>
-Vous vous réveillez le lendemain,
+Vous vous réveillez le lendemain, fatigué d'avoir autant révisé. Vous n'avez pas l'impression d'avoir avancé tant que ça malgrès la quantité d'information que vous avez ingéré.
+Dommage que la partie soit finie.
+Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps de se lever et de prendre son petit-déjeuner.
 <<endif>>
 
 << fadeIn >>
