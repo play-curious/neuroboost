@@ -170,8 +170,7 @@ export const commands: Record<string, Command> = {
   // MUSIC FX
 
   music(musicName?: string) {
-    //@ts-ignore
-    this._lastMusic = musicName;
+    this.graphics.last.lastMusic = musicName;
     this.config.jukebox.play(musicName);
   },
 
@@ -229,11 +228,15 @@ export const commands: Record<string, Command> = {
   /**
    * Mark a node as visited
    * @param node Node to mark as visited
+   * @param permanent Mark node as permanently visited (true|flse)
    */
-  visit(node: string) {
+  visit(node: string, permanent?: string) {
     if (!node || node.includes('"'))
       throw new Error("Please give a valid node title in << visit >>");
     this.visited.add(node);
+
+    if (permanent && /^(?:true|1)$/i.test(permanent))
+      this.visitedPermanent.add(node);
   },
 
   resetLevel() {
@@ -266,7 +269,9 @@ export const functions: Record<string, YarnFunction> = {
     if (nodes.length === 0)
       throw new Error("Please give valid nodes titles in visited()");
 
-    return _.every(nodes, (node) => this.visited.has(node));
+    return nodes.every(
+      (node) => this.visited.has(node) || this.visitedPermanent.has(node)
+    );
   },
 
   getGauge(gauge: string): number {
@@ -278,7 +283,7 @@ export const functions: Record<string, YarnFunction> = {
   },
 
   resetSave() {
-    save.save();
+    save.deleteSave();
   },
 
   hasSave(): boolean {

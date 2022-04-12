@@ -64,7 +64,7 @@ export function installGameData(rootConfig: entity.EntityConfig) {
   rootConfig.debug = false;
   rootConfig.history = {
     texts: [],
-    lastTime: 0
+    lastTime: 0,
   };
 }
 
@@ -133,7 +133,7 @@ const transitions: Record<string, entity.Transition> = {};
 let i = 0;
 let previousState = "";
 for (const state in states) {
-  if (i === 0){
+  if (i === 0) {
     i++;
     continue;
   }

@@ -46,10 +46,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
   public visited: Set<string>;
+  public visitedPermanent: Set<string>;
   public selectedOptions: string[];
   public enabled: boolean;
 
-  constructor(public readonly stateName: string, public startNode: string) {
+  constructor(public levelName: string, public startNode: string) {
     super();
   }
 
@@ -57,30 +58,29 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     return this.runner.currentResult.metadata;
   }
 
-  get history(): [type: string, text: string][]{
+  get history(): [type: string, text: string][] {
     return this.config.history.texts;
   }
 
-  get lastHistory(){
+  get lastHistory() {
     return this.config.history.lastTime;
   }
 
-  set lastHistory(val){
+  set lastHistory(val) {
     this.config.history.lastTime = val;
   }
 
-  addToHistory(type: string, text: string){
-    if(this.config.clock.minutesSinceMidnight !== this.lastHistory){
+  addToHistory(type: string, text: string) {
+    if (this.config.clock.minutesSinceMidnight !== this.lastHistory) {
       this.lastHistory = this.config.clock.minutesSinceMidnight;
       this.history.push(["time", this.config.clock.text]);
     }
     this.history.push([type, text]);
 
-    if(this.history.length > 149){
-      if(this.history[2][0] === "time"){
+    if (this.history.length > 149) {
+      if (this.history[2][0] === "time") {
         this.history.splice(0, 2);
-      }
-      else {
+      } else {
         this.history.splice(1, 1);
       }
     }
@@ -90,11 +90,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     let texts: PIXI.Text[] = [];
     this.history.forEach((val, i) => {
       let txt;
-      if(val[0].includes("choice")){
+      if (val[0].includes("choice")) {
         txt = `[${val[1]}]`;
-      } else if(val[0].includes("time")){
+      } else if (val[0].includes("time")) {
         txt = `----------------\n${val[1]}\n----------------`;
-      } else if(val[0]){
+      } else if (val[0]) {
         txt = `<b>${val[0].split("@")[0].split("_")[0]}</b>: ${val[1]}`;
       } else {
         txt = `<i>${val[1]}</i>`;
@@ -105,7 +105,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         fontSize: 30,
         fill: 0xffffff,
         wordWrap: true,
-        wordWrapWidth: 1700
+        wordWrapWidth: 1700,
       });
     });
 
@@ -123,21 +123,27 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.selectedOptions = [];
 
     //@ts-ignore
-    if (window.loadedVisited) {
+    let loadSaveTriggered = !!window.loadSave;
+
+    if (loadSaveTriggered) {
       //@ts-ignore
-      this.visited = window.loadedVisited;
-      //@ts-ignore
-      window.loadedVisited = undefined;
+      delete window.loadSave;
+
+      const saveData: save.SaveData = JSON.parse(localStorage.getItem("save"));
+
+      this.startNode = saveData.nodeName;
+      this.levelName = saveData.levelName;
+
+      this.visited = new Set(saveData.visited);
+      this.visitedPermanent = new Set(saveData.visitedPermanent);
+
+      this.config.history = saveData.history;
+      this.config.variableStorage = new variable.VariableStorage(
+        saveData.variableStorage
+      );
     } else {
       this.visited = new Set();
-    }
-
-    //@ts-ignore
-    if (window.loadedNode) {
-      //@ts-ignore
-      this.startNode = window.loadedNode;
-      //@ts-ignore
-      window.loadedNode = undefined;
+      this.visitedPermanent = new Set();
     }
 
     this.config.dialogScene = this;
@@ -160,6 +166,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       "stress",
     ]);
 
+    if (loadSaveTriggered) this.graphics.loadSave();
+
     // Setup clock
     this._activateChildEntity(
       this.config.clock,
@@ -176,7 +184,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _initRunner() {
     this.runner = new yarnBound.YarnBound({
-      dialogue: this.config.levels[this.stateName],
+      dialogue: this.config.levels[this.levelName],
       startAt: this.startNode,
       variableStorage: this.config.variableStorage,
       functions: {},
@@ -242,7 +250,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       if (!this._hasTag(this.lastNodeData, "nosave")) {
         save.save(this);
-      }  
+      }
     }
 
     const result = this.runner.currentResult;
