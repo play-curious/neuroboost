@@ -219,12 +219,12 @@ You: Alors, racontez-moi la version courte.
 Ledai_explaining: C'est encore long. Tout ce que je peux te dire, c'est que cela fait partie du processus d'apprentissage.
 You: C'est tout, c'est une blague ?!
 Ledai_explaining: Pas du tout. C'est ta dernière leçon. La plus importante. Suis-moi à l'Assemblée des Sages.
-<< hide >>
 
 // Vous comprenez que si vous désirez avoir le fin mot de l'histoire, vous devez suivre Ledai.
 // Ce que vous acceptez, non sans rechigner.
 
 -> Suivre Ledai
+    << hide >>
     << fx Warp >>
     << jump Assemble_Sages >>
 ===

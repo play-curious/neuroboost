@@ -286,6 +286,7 @@ Fred_excited: T'es vraiment mon meilleur pote !
 You: Toi aussi. On se retrouve après déjeuner ?
 Fred: Yes yes.
 
+<< advanceTime 1:15 >>
 La séance de footing et de remotivation est achevée.
 
 -> Rentrez manger
@@ -304,9 +305,15 @@ position: -146,975
 
 Vous quittez Fred et vous retournez à votre chambre manger. Vous vous cuisinez un plat de pâtes à la carbonara. C'est riche et copieux. Tant mieux, vous allez en avoir besoin, de calories...
 
+<< advanceTime 0:45 >>
+
 Vous avez aidé Fred à reprendre confiance en lui, en ses capacités d'apprentissage. Maintenant, il faut le convaincre de réviser la philosophie quantique en s'aidant de vos fiches de révision.
 
-Vous allez sonner à la porte de Fred. Iel vous fait entrer chez lui.
+Vous devez maintenant vous rendre chez Fred.
+
+<< fadeIn >>
+<< setBackground door >>
+<< fadeOut >>
 
 -> Sonner à la porte de Fred
   << jump Motiver_Fred_Reviser >>
@@ -325,10 +332,9 @@ position: 131,978
 << visit Motiver_Fred_Reviser >>
 // Fred vous accueille avec un grand sourire. C'est un signe qui ne trompe pas. Vous avez regonflé son enthousiasme. Votre meilleur pote a repris confiance en lui. Maintenant, iel faut le motiver à réviser. 
 
-De quelle manière vous allez pouvoir convaincre Fred de travailler avec vos fiches de révision ?
+Fred vous accueille, de quelle manière vous allez pouvoir convaincre Fred de travailler avec vos fiches de révision ?
 
-Vous pourrez lui montrez les fiches de révision que vous avez déjà imprimées. Vo
-us lui expliquez combien elles font gagner du temps, comment s'en servir...
+Vous pourrez lui montrez les fiches de révision que vous avez déjà imprimées. Vous lui expliquez combien elles font gagner du temps, comment s'en servir...
 
 Ou, vous pourrez discuter avec Fred de sa situation à l'université, en espérant ainsi l'inciter à trouver lui-même son but.
 
@@ -381,7 +387,7 @@ position: 514,745
 Vous décidez de prendre le taureau par les cornes. 
 You: Il faut que je t'avoue encore une chose, Fred. Mes fiches de révision ne feront pas tout le travail pour toi.
 Fred: Noooo, ça je m'en doutais.
-You: Peut-être, mais apprends que je connais le moyen de t'aider à exploser ton score au Grand Oral !
+You: Peut-être, mais sache que je connais le moyen de t'aider à exploser ton score au Grand Oral !
 Fred_smiling: Sérieux ? Tu es devenu coach professionnel spécialisé en performances universitaires ?
 You: Naan... Reconnais quand même que j'ai augmenté ma moyenne.
 Fred: C'est vrai.
@@ -426,7 +432,7 @@ Fred_surprised: Je comprends pas ta question.
 You: Tu peux changer de voie, ou compléter ton apprentissage par un autre cursus.
 Fred vous regarde avec de grands yeux.
 Fred_excited: Oui ! Bien sûr ! J'aurai dû y penser plus tôt ! Rien n'est perdu, tout est encore possible !
-Fred bredouille tellement iel est excité. 
+Fred bredouille tellement iel est excité.
 //Iel sait ce qu'il va faire maintenant. Iel va aller au bout de ce premier diplôme de l'Académie d'Omniscience et de Polytechnologie Universelle. Après, iel verra bien s'iel continue dans cette voie ou s'iel choisit un autre chemin.
 
 //Vous êtes heureux pour lui, et vous aussi. Vous lui dites qu'il est temps de se servir des fiches de révision que vous avez réalisées samedi.
@@ -566,11 +572,13 @@ Vous n'oubliez pas pour autant de ménager des pauses régulières en musique av
 << music Solo2 >> 
 Connaissant assez bien les goûts de Fred, vous optez pour des improvisations à sonorité plus métalliques. Vous branchez votre instrument sur un amplificateur.
 Fred: Gosh ! T'es vraiment doué en guitare.
+<< hide >>
 // You: C'est un de mes dons cachés.
 
 Et le jeu de ping pong entrecoupé d'interludes métalleux continue ainsi pendant des heures. Un vrai moment de délice et de partage. 
 
-<< advanceTime 20:00 >>
+<< music Neutral >>
+<< advanceTime 10:00 20:00 0:15 >>
 
 Puis, votre horloge connectée vous informe qu'il est plus de 20 heures.
 //  Il serait peut-être temps de dîner. Vous proposez à Fred de rester manger avec vous. Proposition qu'iel accepte.
