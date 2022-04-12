@@ -6,56 +6,53 @@ import * as variable from "./variable";
 import * as dialog from "./dialog";
 import * as popup from "./popup";
 
+export interface SaveData {
+  levelName: string;
+  nodeName: string;
+  history: {
+    texts: [type: string, text: string][];
+    lastTime: number;
+  };
+  /** Set<string> */
+  visited: string[];
+  /** Set<string> */
+  visitedPermanent: string[];
+  lastGraphics: Partial<{
+    lastBg: string;
+    lastBgMood: string;
+    lastCharacter: string;
+    lastMood: string;
+    lastMusic: string;
+    lastGauges: string[];
+  }>;
+  variableStorage: variable.Variables;
+}
+
+export function deleteSave() {
+  localStorage.removeItem("save");
+}
+
 /** When called with a dialog scene, saves the scene in local storage.
  *  When called with null or undefined, removes save.
  */
 export function save(ctx?: dialog.DialogScene) {
   if (!ctx) {
-    localStorage.removeItem("save");
-    localStorage.removeItem("history");
-    localStorage.removeItem("visited");
-    localStorage.removeItem("environment");
-    localStorage.removeItem("variableStorage");
+    deleteSave();
   } else {
-    localStorage.setItem(
-      "save",
-      `${ctx.stateName}@${ctx.lastNodeData?.title ?? "Start"}`
-    );
-    localStorage.setItem("history", JSON.stringify(ctx.config.history));
-    localStorage.setItem("visited", JSON.stringify([...ctx.visited]));
-    localStorage.setItem(
-      "visitedPermanent",
-      JSON.stringify([...ctx.visitedPermanent])
-    );
-    localStorage.setItem(
-      "variableStorage",
-      JSON.stringify(ctx.config.variableStorage.data)
-    );
-    localStorage.setItem("environment", JSON.stringify(ctx.graphics.last));
+    const data: SaveData = {
+      levelName: ctx.levelName,
+      nodeName: ctx.lastNodeData?.title ?? "Start",
+      lastGraphics: ctx.graphics.last,
+      variableStorage: ctx.config.variableStorage.data,
+      visited: [...ctx.visited],
+      visitedPermanent: [...ctx.visitedPermanent],
+      history: ctx.config.history,
+    };
+
+    console.log("save.ts debug", JSON.stringify(data.lastGraphics, null, 2));
+
+    localStorage.setItem("save", JSON.stringify(data));
   }
-}
-
-export function loadSave() {
-  if (!hasSave()) throw new Error("No save to load");
-
-  const [level, node] = localStorage.getItem("save").split("@");
-  const history = JSON.parse(localStorage.getItem("history"));
-  const visited = new Set(JSON.parse(localStorage.getItem("visited")));
-  const visitedPermanent = new Set(
-    JSON.parse(localStorage.getItem("visitedPermanent"))
-  );
-  const data = JSON.parse(localStorage.getItem("variableStorage"));
-  const environment = JSON.parse(localStorage.getItem("environment"));
-  const variableStorage = new variable.VariableStorage(data);
-  return {
-    level,
-    node,
-    history,
-    visited,
-    visitedPermanent,
-    environment,
-    variableStorage,
-  };
 }
 
 export function hasSave(): boolean {
@@ -108,21 +105,12 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
           this._on(it, "pointerup", () => {
             this.config.fxMachine.play("Click");
 
-            const saveData = loadSave();
-            this.config.variableStorage = saveData.variableStorage;
-            this.config.history = saveData.history;
-
             //@ts-ignore
-            window.loadedNode = saveData.node;
-            //@ts-ignore
-            window.loadedVisited = saveData.visited;
-            //@ts-ignore
-            window.loadedEnvironment = saveData.environment;
-            //@ts-ignore
-            window.loadedVisitedPerm = saveData.visitedPermanent;
+            window.loadSave = true;
 
             // load saved node from saveData.node
-            this._transition = entity.makeTransition(saveData.level);
+            const saveData: SaveData = JSON.parse(localStorage.getItem("save"));
+            this._transition = entity.makeTransition(saveData.levelName);
           });
         }
       );
@@ -161,14 +149,14 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
                 "Vous avez une partie en cours. Êtes vous sûr de vouloir en commencer une nouvelle ?",
                 (ok) => {
                   if (ok) {
-                    save();
+                    deleteSave();
                     this._transition = entity.makeTransition("D1_level1");
                   }
                 }
               )
             );
           } else {
-            save();
+            deleteSave();
             this._transition = entity.makeTransition("D1_level1");
           }
         });

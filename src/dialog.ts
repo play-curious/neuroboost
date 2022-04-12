@@ -13,6 +13,7 @@ import * as graphics from "./graphics";
 import * as extension from "./extension";
 
 import * as yarnBound from "yarn-bound";
+import { SaveData } from "./save";
 
 declare module "yarn-bound" {
   interface Metadata {
@@ -50,7 +51,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   public selectedOptions: string[];
   public enabled: boolean;
 
-  constructor(public readonly stateName: string, public startNode: string) {
+  constructor(public levelName: string, public startNode: string) {
     super();
   }
 
@@ -123,31 +124,27 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.selectedOptions = [];
 
     //@ts-ignore
-    if (window.loadedVisited) {
+    let loadSaveTriggered = !!window.loadSave;
+
+    if (loadSaveTriggered) {
       //@ts-ignore
-      this.visited = window.loadedVisited;
-      //@ts-ignore
-      window.loadedVisited = undefined;
+      delete window.loadSave;
+
+      const saveData: SaveData = JSON.parse(localStorage.getItem("save"));
+
+      this.startNode = saveData.nodeName;
+      this.levelName = saveData.levelName;
+
+      this.visited = new Set(saveData.visited);
+      this.visitedPermanent = new Set(saveData.visitedPermanent);
+
+      this.config.history = saveData.history;
+      this.config.variableStorage = new variable.VariableStorage(
+        saveData.variableStorage
+      );
     } else {
       this.visited = new Set();
-    }
-
-    //@ts-ignore
-    if (window.loadedVisitedPerm) {
-      //@ts-ignore
-      this.visitedPermanent = window.loadedVisitedPerm;
-      //@ts-ignore
-      window.loadedVisitedPerm = undefined;
-    } else {
       this.visitedPermanent = new Set();
-    }
-
-    //@ts-ignore
-    if (window.loadedNode) {
-      //@ts-ignore
-      this.startNode = window.loadedNode;
-      //@ts-ignore
-      window.loadedNode = undefined;
     }
 
     this.config.dialogScene = this;
@@ -170,6 +167,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       "stress",
     ]);
 
+    if (loadSaveTriggered) {
+      this.graphics.loadSave();
+    }
+
     // Setup clock
     this._activateChildEntity(
       this.config.clock,
@@ -186,7 +187,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _initRunner() {
     this.runner = new yarnBound.YarnBound({
-      dialogue: this.config.levels[this.stateName],
+      dialogue: this.config.levels[this.levelName],
       startAt: this.startNode,
       variableStorage: this.config.variableStorage,
       functions: {},

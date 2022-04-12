@@ -217,6 +217,10 @@ interface ExtendedEntityConfig extends entity.EntityConfig {
   narrator: narration.SubtitleNarrator;
   fxMachine: audio.FxMachine;
   dialogScene: dialog.DialogScene;
+  history: {
+    texts: [type: string, text: string][];
+    lastTime: number;
+  };
 }
 
 export interface TextOptions {

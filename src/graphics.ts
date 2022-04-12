@@ -11,6 +11,8 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import * as images from "./images";
 import * as gauge from "./gauge";
+import * as save from "./save";
+import { SaveData } from "./save";
 
 // Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
@@ -24,12 +26,8 @@ const maxLineLength = 68;
 const defilementDurationPerLetter = 25;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
-  private _lastBg: string;
-  private _lastBgMood: string;
-  private _lastCharacter: string;
-  private _lastMood: string;
-  private _lastMusic: string;
-  private _lastGauges: string[];
+  public last: save.SaveData["lastGraphics"];
+
   private _characters: Map<
     string,
     {
@@ -63,18 +61,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     window.graphics = this;
   }
 
-  get last() {
-    return {
-      lastBg: this._lastBg,
-      lastBgMood: this._lastBgMood,
-      lastCharacter: this._lastCharacter,
-      lastMood: this._lastMood,
-      lastMusic: this._lastMusic,
-      lastGauges: this._lastGauges,
-    };
-  }
-
   _setup(): void {
+    this.last = {};
+
     this._container = new PIXI.Container();
     this.config.container.addChild(this._container);
 
@@ -117,25 +106,23 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._fade.alpha = 0;
     this._fade.visible = false;
     this._fxLayer.addChild(this._fade);
-
-    //@ts-ignore
-    if (window.loadedEnvironment) {
-      //@ts-ignore
-      const last = window.loadedEnvironment;
-      //@ts-ignore
-      delete window.loadedEnvironment;
-
-      if (last.lastBg) this.setBackground(last.lastBg, last.lastBgMood);
-      if (last.lastCharacter)
-        this.addCharacter(last.lastCharacter, last.lastMood);
-      if (last.lastMusic) this.config.jukebox.play(last.lastMusic);
-      if (last.gauges) this.toggleGauges(true, last.gauges);
-    }
   }
 
   _teardown() {
     this.config.container.removeChild(this._container);
     this._container = null;
+  }
+
+  public loadSave() {
+    const saveData: SaveData = JSON.parse(localStorage.getItem("save"));
+
+    this.last = saveData.lastGraphics;
+    if (this.last.lastBg)
+      this.setBackground(this.last.lastBg, this.last.lastBgMood);
+    if (this.last.lastCharacter)
+      this.addCharacter(this.last.lastCharacter, this.last.lastMood);
+    if (this.last.lastGauges) this.toggleGauges(true, ...this.last.lastGauges);
+    if (this.last.lastMusic) this.config.jukebox.play(this.last.lastMusic);
   }
 
   public initGauges(gaugesList: (keyof variable.Gauges)[]) {
@@ -212,7 +199,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       }
     }
 
-    this._lastGauges = JSON.parse(JSON.stringify(gaugesName));
+    this.last.lastGauges = JSON.parse(JSON.stringify(gaugesName));
     let i = 0;
     const gaugesTween: entity.EntityBase[] = [];
     for (const gaugeName of gaugesName) {
@@ -652,11 +639,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    */
   public setBackground(bg: string, mood?: string) {
     // Check if background change
-    if (bg === this._lastBg && mood === this._lastBgMood) return;
+    if (bg === this.last.lastBg && mood === this.last.lastBgMood) return;
 
     // Register last background
-    this._lastBg = bg;
-    this._lastBgMood = mood;
+    this.last.lastBg = bg;
+    this.last.lastBgMood = mood;
 
     // Remove background
     this._backgroundLayer.removeChildren();
@@ -742,8 +729,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       }
     }
 
-    this._lastCharacter = undefined;
-    this._lastMood = undefined;
+    this.last.lastCharacter = undefined;
+    this.last.lastMood = undefined;
   }
 
   /**
@@ -754,17 +741,20 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    */
   public addCharacter(character?: string, mood?: string) {
     // Check if character or mood change
-    if (character === this._lastCharacter && mood === this._lastMood) return;
+    if (character === this.last.lastCharacter && mood === this.last.lastMood)
+      return;
 
     //console.log(this._lastCharacter, this._lastMood, "->", character, mood);
 
     // Remove characters
-    const characterChanged = character !== this._lastCharacter;
+    const characterChanged = character !== this.last.lastCharacter;
     this.removeCharacters(characterChanged);
 
     // Register last character & mood
-    this._lastCharacter = character;
-    this._lastMood = mood;
+    this.last.lastCharacter = character;
+    this.last.lastMood = mood;
+
+    save.save(this.config.dialogScene);
 
     let displayMode: string;
     [character, displayMode] = character.split("@");
