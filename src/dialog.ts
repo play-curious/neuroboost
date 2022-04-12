@@ -13,7 +13,6 @@ import * as graphics from "./graphics";
 import * as extension from "./extension";
 
 import * as yarnBound from "yarn-bound";
-import { SaveData } from "./save";
 
 declare module "yarn-bound" {
   interface Metadata {
@@ -130,7 +129,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       //@ts-ignore
       delete window.loadSave;
 
-      const saveData: SaveData = JSON.parse(localStorage.getItem("save"));
+      const saveData: save.SaveData = JSON.parse(localStorage.getItem("save"));
 
       this.startNode = saveData.nodeName;
       this.levelName = saveData.levelName;
@@ -167,9 +166,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       "stress",
     ]);
 
-    if (loadSaveTriggered) {
-      this.graphics.loadSave();
-    }
+    if (loadSaveTriggered) this.graphics.loadSave();
 
     // Setup clock
     this._activateChildEntity(

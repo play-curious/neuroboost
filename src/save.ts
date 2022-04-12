@@ -32,27 +32,18 @@ export function deleteSave() {
   localStorage.removeItem("save");
 }
 
-/** When called with a dialog scene, saves the scene in local storage.
- *  When called with null or undefined, removes save.
- */
-export function save(ctx?: dialog.DialogScene) {
-  if (!ctx) {
-    deleteSave();
-  } else {
-    const data: SaveData = {
-      levelName: ctx.levelName,
-      nodeName: ctx.lastNodeData?.title ?? "Start",
-      lastGraphics: ctx.graphics.last,
-      variableStorage: ctx.config.variableStorage.data,
-      visited: [...ctx.visited],
-      visitedPermanent: [...ctx.visitedPermanent],
-      history: ctx.config.history,
-    };
+export function save(ctx: dialog.DialogScene) {
+  const data: SaveData = {
+    levelName: ctx.levelName,
+    nodeName: ctx.lastNodeData?.title ?? "Start",
+    lastGraphics: ctx.graphics.last,
+    variableStorage: ctx.config.variableStorage.data,
+    visited: [...ctx.visited],
+    visitedPermanent: [...ctx.visitedPermanent],
+    history: ctx.config.history,
+  };
 
-    console.log("save.ts debug", JSON.stringify(data.lastGraphics, null, 2));
-
-    localStorage.setItem("save", JSON.stringify(data));
-  }
+  localStorage.setItem("save", JSON.stringify(data));
 }
 
 export function hasSave(): boolean {
