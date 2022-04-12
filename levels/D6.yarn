@@ -480,11 +480,9 @@ title: Reseaux_S
 tags: 
 position: 1752.7054443359375,1678.6312255859375
 ---
-Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est le samedi matin : il n'y a pas grand monde en ligne. Ils sont encore en train de dormir. Et puis, petit à petit, les amis se connectent au réseau. 
-<<empty>> // Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
+Vous prenez votre palmphone. Vous cliquez sur l'icône ChatApp. 
 << fx Notification >>
-
-Loulou vous pinge, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses... 
+Loulou vous ping, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses... 
 Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à votre grand-mère. Cela vous réchauffe encore plus le coeur. Votre grand-mère s'est enfin réveillée, les choses suivent leur cours, et désormais d'autres personnes pensent à elle.
 Vous vous sentez calme et confiant.
 
@@ -1085,12 +1083,11 @@ title: Reseaux_D
 tags: 
 position: 4003.721923828125,2777.754638671875
 ---
-Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est le samedi matin : il n'y a pas grand monde en ligne. Ils sont encore en train de dormir. Et puis, petit à petit, les amis se connectent au réseau. 
-<<empty>> // Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
+Vous prenez votre palmphone et vous cliquez sur l'icône ChatApp. 
 << fx Notification >>
-Loulou vous pinge, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses... 
-Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à votre grand-mère. Cela vous réchauffe encore plus le coeur. Votre grand-mère s'est enfin réveillée, les choses suivent leur cours, et désormais d'autres personnes pensent à elle.
-Vous vous sentez calme et confiant.
+Bob a envoyé un quiz : "quel personnage de Star Mars êtes-vous" ? Vous vous lancez sans hésitation dans les questions à choix multiples... 
+Vous êtes satisfait. Vous vous êtes offert une récompense. C'est ce que les Sages vous ont dit : ne pas bouder votre plaisir et vos envies.
+Hum hum... La pause "réseaux sociaux"... Correspond-elle vraiment aux recommandations des Sages ?... Vous hésitez à répondre oui... comme non... Tant pis...
 
 << removeFromGauge sleep 15 >>
 << removeFromGauge food 15 >>
