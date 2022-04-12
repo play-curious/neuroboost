@@ -1,0 +1,20 @@
+{"frames": {
+
+"b_veille.png":
+{
+	"frame": {"x":1,"y":1,"w":337,"h":1076},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":810,"y":4,"w":337,"h":1076},
+	"sourceSize": {"w":1920,"h":1080}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "b_veille.png",
+	"format": "RGBA8888",
+	"size": {"w":339,"h":1078},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:99d7557bc37369e3cfbc935ae96348d4:3e6dfecc2bc9072dfe6962d85584fbfd:f11dea4608cf6075e85efbb67141c78b$"
+}
+}
