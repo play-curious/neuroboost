@@ -491,8 +491,7 @@ tags:
 position: 1945.437255859375,2178.48876953125
 colorID: 4
 ---
-<< empty >> // Manger
-Le soleil s'est couché, il est temps de clore votre journée par un dîner bien mérité. Vous avez faim et vous avez le temps de vous préparer un petit plat sympa et exotique : des lasagnes vénusiennes. C'est délicieux, riches en nutriments essentiels.
+Le soleil s'est couché, il est temps de clore votre journée par un dîner bien mérité. Vous avez faim et vous avez le temps de vous préparer un petit plat sympa et exotique : des lasagnes vénusiennes. C'est délicieux et riches en nutriments essentiels.
 
 << advanceTime 0:30 >>
 
@@ -517,6 +516,7 @@ You: Heu...
 Fred: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller !
 
 -> Refuser
+    <<hide>>
     <<jump ReviserSoir_S>>
 -> Suivre Fred
     Il a raison. Vous débarrassez la table et vous vous précipitez vers votre armoire. Aiguillé par les conseils de Fred, vous enfilez une tenue Rock Glam de malade. Vous resplendissez dans cette tenue scintillante et clinquante !
@@ -528,16 +528,14 @@ title: ReviserSoir_S
 tags: 
 position: 2219.883544921875,2013.747802734375
 ---
-<< empty >> // Option "Aller se coucher" moved to the end of this node
 << visit ReviserSoir_S >>
-
 
 Qui a dit "Le monde appartient à ceux qui se lèvent tôt" ?
 
 Ben, vous croyez plutôt à l'inverse ! S'il faut travailler le soir pour réussir, alors voilà ce que vous allez faire. 
 << advanceTime 1:00>>
 
-Vous baillez malgré vous... Et votre attention semble du moins et moins clair. 
+Vous baillez malgré vous... Et votre attention semble de moins et moins clair. 
 
 << advanceTime 0:30 >>
 
@@ -562,24 +560,23 @@ position: 2238.941650390625,2380.453369140625
 << fadeOut >>
 
 Le moins qu'on puisse dire c'est que vous ne passez pas inaperçus. Tant Fred avec son look de tombeur de salsatronique, que vous avec votre costume de Rock Glam Star. 
-On vous applaudit à tout crin. Fred avait raison, votre performance de mardi n'est pas passé inaperçu sur les réseaux sociaux.
+On vous applaudit à tout crin. Fred avait raison, votre performance de mardi n'est pas passée inaperçue sur les réseaux sociaux.
 Fred est probablement la star la plus populaire de l'Académie. Vous, vous êtes la star des soirées organisées à la cafétéria...
 Maintenant, il va falloir défendre votre réputation.
 
 <<empty>> // Concours gagné
 << if visited("Sport_S") >> 
-
 Vous transmettez à toute l'audience votre pep's, votre enthousiasme, votre passion, votre fièvre du mouvement.
-<<empty>> // Tout le monde se souviendra de votre intervention. Vous êtes le soleil de ce samedi soir de folie, l'astre de la danse et du Body Beat.
+Tout le monde se souviendra de votre intervention. Vous êtes le soleil de ce samedi soir de folie, l'astre de la danse et du Body Beat.
 Quand vous quittez la piste de danse, un vrombissement sourd s'élève peu à peu et finit par envahir l'atmosphère de toute la salle. Vous êtes la star de la soirée.
+
 << removeFromGauge mentalLoad 50 >>
 
 << empty >> // Concours perdu
 << else >> 
-
-Dommage que vous vous êtes pas entraîné aujourd'hui ! Vous vous sentez tout lourd sur la piste, et vous manquez de tomber sur un faux pas. 
+Dommage que vous ne vous êtes pas entraîné aujourd'hui ! Vous vous sentez tout lourd sur la piste, et vous manquez de tomber sur un faux pas.
+Malheureusement, ce sera une erreur fatale, et ça vous a coûté le grand prix. Vous êtes déçu de ne pas avoir pris le temps d'aller vous entraîner quand vous le pouviez...
 << removeFromGauge mentalLoad 15 >>
-
 << endif >>
 
 << removeFromGauge sleep 30 >>
@@ -634,8 +631,7 @@ colorID: 1
 Vous vous réveillez le lendemain avec des étoiles plein les yeux. Ce fut une super fièvre du samedi soir. Vous étiez le soleil de cette galaxie festive. Dommage que la partie soit finie.
 Dommage aussi que le jour se soit levé depuis un moment. Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps de se lever et de prendre son petit-déjeuner.
 <<else>>
-Vous vous réveillez le lendemain, fatigué d'avoir autant révisé. Vous n'avez pas l'impression d'avoir avancé tant que ça malgré la quantité d'information que vous avez ingéré.
-Dommage que la partie soit finie.
+Vous vous réveillez le lendemain, fatigué d'avoir autant révisé. Vous n'avez pas l'impression d'avoir avancé tant que ça malgré la quantité d'informations que vous avez ingéré.
 Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps de se lever et de prendre son petit-déjeuner.
 <<endif>>
 
@@ -644,7 +640,7 @@ Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps 
 << fadeOut >>
 
 << fx EatCook >>
-Vous vérifiez ce que votre cuisine a en stock et vous vous préparez un solide petit déjeuner sucré salé. Un jus de fruit, un maxi café, des viennoiseries, des tartines, du beurre, de la confiture, un œuf de Mégaloodinde brouillé fumé, des néotomates cerises et quelques feuilles de salade. 
+Vous vérifiez ce que votre cuisine a en stock et vous vous préparez un solide petit-déjeuner sucré salé. Un jus de fruit, un maxi café, des viennoiseries, des tartines, du beurre, de la confiture, un œuf de Mégaloodinde brouillé fumé, des néotomates cerises et quelques feuilles de salade. 
 << addToGauge food 100 >>
 C'est riche, délicieux, copieux et varié. Vous êtes rassasié.
 Mais vous vous rendez compte qu'il ne vous reste plus rien pour manger...
@@ -718,7 +714,7 @@ colorID: 6
 << if !visited("Courses_D") >>
 
 Vous ouvrez le frigo et admirez les étagères vides.
-Il en reste vraiment rien de rien.
+Il ne reste vraiment rien de rien...
 
 << fadeIn >>
 << jump Taches_D >>
@@ -726,9 +722,9 @@ Il en reste vraiment rien de rien.
 << else >>
 
 <<empty>> // Long/Court ? (comme Cuisine_S)
--> Manger un petit plat << if !visited("Manger_D") >>
+-> Manger un petit plat #once
     << jump Manger_D >>
--> Grignoter un encas << if !visited("Grignoter_D") >>
+-> Grignoter un encas #once
     << jump Grignoter_D >>
 -> back
     << fadeIn >>
@@ -762,10 +758,8 @@ colorID: 6
 
 -> Continuer les révisions << if !visited("revision4") >>
     <<jump Reviser_D>>
-    
 -> Préparer le planning << if !visited("Planning_S") >> #once
     <<jump Planning_D>>
-
 -> Revoir le planning << if visited("Planning_S") >> #once
     <<jump Planning_D>>
 -> back
@@ -794,15 +788,11 @@ tags: subchoice
 position: 3699,2650
 colorID: 6
 ---
-<< if !isTimeOver("12:00")>>
--> Aller faire les courses #once
+
+-> Aller faire les courses << if !isTimeOver("12:00")>> #once
     <<jump Courses_D>>
 -> back
     << jump Taches_D >>
-<< else >>
--> back
-    << jump Taches_D >>
-<< endif >>
 ===
 title: Sieste_D
 tags: 
@@ -896,7 +886,7 @@ Soit, on admet la coexistence de plusieurs états possibles, la cohabitation de 
 
 Il vous reste à réviser le quatrième et dernier thème. La décohérence quantique. Vous commencez à vous imprégner de ce dernier thème que vous n'aviez pas eu le temps d'aborder jusque-là. 
 
-<< if visited("PlanningD") >>
+<< if visited("Planning_D") >>
 
 Tout d'en coup, vous vous rendez compte que ce que vous a dérangé en établissant le planning tout à l'heure..
 Vous prenez une feuille volante et vous notez dessus tout ce que vous vous rappelez concernant le principe d'intrication quantique, que vous avez revu hier. 
@@ -909,9 +899,9 @@ Vous n'avez pas le temps de mémoriser durablement autant de savoirs en si peu t
 
 Vous y passez un temps conséquent. Vous travaillez de manière intense mais détendue. 
 
-<< if visited("Planning_D")>>
 << addToGauge learning 10 >>
 << endif >>
+
 << advanceTime 1:00 >>
 
 Détendue, car vous respectez des sessions d'une heure, conformément aux règles de la méthode "pomodoro".
