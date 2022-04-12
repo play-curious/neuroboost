@@ -24,7 +24,7 @@ Vous vous levez tranquillement et prenez un petit-déjeuner copieux : chocolat o
 
 << addToGauge food 100 >>
 
-Vous avez bien dormi: pas d'insomnie, pas de stress étouffant, pas de pensées angoissantes, pas de cauchemar.
+Vous avez bien dormi : pas d'insomnie, pas de stress étouffant, pas de pensées angoissantes, pas de cauchemar.
 
 << advanceTime 0:30 >>
 
@@ -32,7 +32,7 @@ Vous pensez à votre grand-mère, mais vous avez l'esprit serein et optimiste.
 
 << loopFX PhoneRing_LOOP 5000 >>
 
-Le sort aurait-il perçu vos pensées : votre palmphone vibre, c'est votre mère. Elle veut vous parler...
+Votre palmphone vibre, c'est votre mère. Le sort aurait-il perçu vos pensées ?
 
 -> Répondre
     << stopFX PhoneRing_LOOP >>
@@ -44,7 +44,7 @@ position: 807,139
 ---
 Maman@holo: Je te réveille pas, Bibi ?
 You: Non. Je viens de finir mon petit-déjeuner.
-Maman@holo: Parfait. Tu as des nouvelles de l'Hôpital ?
+Maman@holo: Parfait. Tu as des nouvelles de l'hôpital ?
 You: Non, toujours rien. Comment va Mamie ?
 Maman@holo: Tout va bien. Elle s'est réveillée. Elle est encore fatiguée, confuse, elle a du mal à trouver ses mots. Mais elle va bien.
 You: Ouf !
@@ -112,7 +112,7 @@ colorID: 6
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
--> Manger saînement <<if !visited("MangerMidi_S")>>
+-> Manger sainement <<if !visited("MangerMidi_S")>>
     <<jump MangerSain_S>>
 -> Manger vite <<if !visited("MangerMidi_S")>>
     <<jump MangerVite_S>>
@@ -133,7 +133,7 @@ colorID: 6
 
 -> Demander au Roommate de couper les distractions #once
     <<jump Zero_Distraction_S>>
--> Plannifier le travail à faire #once
+-> Planifier le travail à faire #once
     <<jump Planning_S>>
 -> Réviser la Philosophie Quantique <<if !visited("revision3")>>
     <<jump Reviser_S>>
@@ -182,7 +182,7 @@ tags:
 position: 1737.40234375,-800.2987670898438
 ---
 Vous demandez à votre RoomMate de basculer votre chambre en mode "immersion studieuse".
-RoomMate s'exécute, et empêche les distraction extérieures de pouvoir vous perturber, en ne vous laissant accès qu'au strict minimum pour réviser dans les meilleures condiditions.
+RoomMate s'exécute, et empêche les distractions extérieures de pouvoir vous perturber, en ne vous laissant accès qu'au strict minimum pour réviser dans les meilleures conditions.
 
 <<visit Zero_Distraction_S >>
 
@@ -205,7 +205,7 @@ Vous y notez en haut et en gras : Samedi.
 Vous listez ensuite tous les événements de ce jour. Réviser deux thèmes de la philosophie quantique. D'abord le <b>principe d'incertitude ou d'indétermination</b>, et en second, le <b>phénomène d'intrication quantique</b>.
 Ensuite vous passez aux tâches secondaires: Votre entraînement de Jungle Body Beat à 14 h.
 Puis, la soirée à la cafétéria, celle qui va faire remonter votre niveau de fun et vous permettre de vous lâcher au concours de danse.
-Et en plus petites tâches, une pause sieste, et tout les autres éléments de détente à votre disposition.
+Et en plus petites tâches, une pause sieste, et tous les autres éléments de détente à votre disposition.
 
 << advanceTime 0:15 >>
 << removeFromGauge sleep 15 >>
@@ -229,11 +229,10 @@ La philosophie quantique. Un beau et riche sujet. Vous en avez lu des livres sur
 Heureusement vous avez pris le temps d'établir un planning ce matin, donc vous savez exactement où commencer : le principe d'incertitude ou d'indétermination.
 << else >>
 << fx Failure >>
-Par quoi allez-vous commencer ce matin ? Vous n'en savez pas trop. Vous n'avez pas vraiment réfléchi à la question.
-Tant pis. 
+Par quoi allez-vous commencer ce matin ? Vous n'e savez pas trop. Vous n'avez pas vraiment réfléchi à la question. Tant pis. 
 << endif >>
 
-Vous faites confiance à la méthode du "rappel libre". Vous sortez des stylos de différentes couleurs et plusieurs pages blanches. Vous commencez à notez dessus les titres, les mots-clés, les concepts, les théories, les définitions et les arguments qui vous viennent à l'esprit..
+Vous faites confiance à la méthode du "rappel libre". Vous sortez des stylos de différentes couleurs et plusieurs pages blanches. Vous commencez à noter dessus les titres, les mots-clés, les concepts, les théories, les définitions et les arguments qui vous viennent à l'esprit..
 
 << advanceTime 1:00 >>
 
@@ -248,20 +247,17 @@ Pfouu. En effet, il y en a de la matière. Cela vous prend au bas mot une heure 
 << elseif !visited("revision2") >>
 << visit revision2 >>
 
-Pas de question, il est l'heure d'attaquer l'intrigue de l'intrication quantique !
-
+Pas de questions, il est l'heure d'attaquer l'intrigue de l'intrication quantique !
 La notion d'intrication est passionnante. Elle stipule et justifie que des éléments peuvent être intriqués, enchevêtrés l'un à l'autre. Et ce, quel que soit la distance qui les sépare. 
-
 Vous avancez à un bon rythme.
 
 << advanceTime 1:00 >>
 
-Vous n'oubliez pas de ménager des pauses entre chaque session, en grattant les cordes de votre cycloluth de Feudall. Ce qui vous permet de maintenir une attention utile et soutenue.
+Vous n'oubliez pas de vous ménager avec des pauses entre chaque session, en grattant les cordes de votre cycloluth de Feudall. Ce qui vous permet de maintenir une attention utile et soutenue.
 
 << advanceTime 0:15 >>
 
 L'intrication quantique est une théorie révolutionnaire qui expliquerait les phénomènes d'ubiquité, de synchronicité, de coïncidences. C'est dingue !
-
 Vous travaillez sur ce thème de manière studieuse mais détendue. 
 
 << advanceTime 1:00 >>
@@ -330,6 +326,7 @@ title: Sieste_S
 tags: 
 position: 1744,835.4756469726562
 ---
+<<empty>> //TODO: if avec jungle body beat
 Vous avez fait une grasse matinée. Toutefois, après la séance de Jungle Body Break, vous êtes bien à plat. Et puis cette semaine d'examens est très éprouvante. Vous ne cesser de la revivre en boucle. Ce week-end, c'est la cerise sur le gâteau. Vous n'avez pas le droit à l'erreur.
 Trêve de paroles, vous vous asseyez sur votre lit et vous tombez presqu'aussitôt dans un doux sommeil réparateur. Bien entendu, vous gardez à l'esprit de ne pas vous endormir trop profondément. Il s'agit de faire une sieste, pas de passer l'après-midi à ronfler...
 
@@ -375,9 +372,9 @@ Vous avez déjà passer 2 heures devant votre série, mais vous voulez vraiment 
 
 Est-ce la fin pour Dude ? Vous vous doutiez que non. Et vous aviez raison... 
 L'ignoble pirate des sables, et vous-même, ignoriez que Dude avait été immergé dans le chaudron de Mana, juste après sa naissance. Le corps et l'esprit de Dude Highwalker sont saturés de récepteurs de Mana.
-Or, le Métavers des sables est en réalité la créature qui produit la Mana. Ce sont ces déjections ! Pensez-vous vraiment que le Métavers des sables dévore ces excréments ?! Non, il les traite avec respect ! Après une digestion spirituellement difficile, le monstre des sables recrache sa proie. 
+Or, le Métavers des sables est en réalité la créature qui produit la Mana. Ce sont ces déjections ! Pensez-vous vraiment que le Métavers des sables dévore ses excréments ?! Non, il les traite avec respect ! Après une digestion spirituellement difficile, le monstre des sables recrache sa proie. 
 
-Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de bile manachique...  La suite de l'histoire est tout aussi palpitante et surprenante. Vous ne pouvez pas vous empêchez d'enchaîner les épisodes l'un derrière l'autre. Si bien que plus de quatre heures s'écoulent en un rayon d'épée laser.
+Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de bile manachique...  La suite de l'histoire est tout aussi palpitante et surprenante. Vous ne pouvez pas vous empêcher d'enchaîner les épisodes l'un derrière l'autre. Si bien que plus de quatre heures s'écoulent en un rayon d'épée laser.
 
 << advanceTime 2:00 >>
 
@@ -400,8 +397,6 @@ position: 1744,1338.8123779296875
 << music AcousticGuitar >>
 
 Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare analogique de la planète Feudall. Le son brut et archaïque de cet instrument vous détend, vous apaise, vous nettoie l'esprit d'informations superflues et pesantes.
-
-<<empty>> // decrease charge mentale de 50%, genre de 20/100 : si hausse avant de 40/100 
 
 << advanceTime 0:30 >>
 
@@ -435,7 +430,7 @@ colorID: 6
 ===
 title: Sport_S
 tags: 
-position: 1748.352783203125,1925.3367919921875
+position: 1722.236328125,1864.398193359375
 ---
 << fadeIn >>
 << advanceTime 0:15 >>
@@ -447,9 +442,7 @@ position: 1748.352783203125,1925.3367919921875
 Vous arrivez dans les derniers, cependant, le cours n'a pas encore commencé. Plus exactement, votre coach vous attendait. 
 Il vous adresse un léger sourire quand il vous voit surgir sur la piste. Vous savez qu'il vous apprécie et que vous êtes rarement en retard. Sans compter que vous vous donnez à fond.
 << else >>
-
 Vous êtes un peu en avance, donc vous profitez pour tchatter avec les autres étudiants.  
-
 << advanceTime 0:30 14:00 0:05 >>
 << endif >>
 
@@ -464,11 +457,9 @@ Vous entrez à votre tour dans la séance et, comme d'habitude, vous vous lâche
 << removeFromGauge food 35 >>
 << removeFromGauge mentalLoad 40 >>
 
-<<empty>> // impact jauge food utile? pour l'immersion, oui
-
 Le coach tape des mains, signifiant la fin de la séance. Il remercie tout le monde et surtout vous, pour donner chair et souffle à sa troupe.
-Quand vous retournez aux vestiaires, vous êtes épuisé. Fatigué mais heureux, euphorique, satisfait. On vous félicite, on vous encourage. Vraiment, ces séances de Jungle Body Break vous font font un bien fou : au corps et au mental. 
-Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous avez une faim de loup...
+Quand vous retournez aux vestiaires, vous êtes épuisé. Fatigué mais heureux, euphorique, satisfait. On vous félicite, on vous encourage. Vraiment, ces séances de Jungle Body Break vous font un bien fou : au corps et au mental. 
+Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous avez encore des choses à faire aujourd'hui.
 
 << music Neutral >>
 
@@ -478,14 +469,14 @@ Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous a
 ===
 title: Reseaux_S
 tags: 
-position: 1752.7054443359375,1678.6312255859375
+position: 1739.647216796875,1595.928955078125
 ---
-Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est le samedi matin : il n'y a pas grand monde en ligne. Ils sont encore en train de dormir. Et puis, petit à petit, les amis se connectent au réseau. 
+Vous prenez votre palmphone. Vous cliquez sur l'icône ChatApp. On est le samedi matin : il n'y a pas grand monde en ligne. Ils sont encore en train de dormir. Et puis, petit à petit, les amis se connectent au réseau. 
 <<empty>> // Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
 << fx Notification >>
 
 Loulou vous pinge, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses... 
-Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à votre grand-mère. Cela vous réchauffe encore plus le coeur. Votre grand-mère s'est enfin réveillée, les choses suivent leur cours, et désormais d'autres personnes pensent à elle.
+Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à votre grand-mère. Cela vous réchauffe encore plus le cœur. Votre grand-mère s'est enfin réveillée, les choses suivent leur cours, et désormais d'autres personnes pensent à elle.
 Vous vous sentez calme et confiant.
 
 << advanceTime 2:00 >>
@@ -499,7 +490,7 @@ Vous vous sentez calme et confiant.
 ===
 title: Soir_S
 tags: 
-position: 1130,1878.6827392578125
+position: 1945.437255859375,2178.48876953125
 colorID: 4
 ---
 << empty >> // Manger
@@ -537,7 +528,7 @@ Fred: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller !
 ===
 title: ReviserSoir_S
 tags: 
-position: 2201,1707
+position: 2219.883544921875,2013.747802734375
 ---
 << empty >> // Option "Aller se coucher" moved to the end of this node
 << visit ReviserSoir_S >>
@@ -564,7 +555,7 @@ OK ca suffit, au lit !
 ===
 title: Soiree_S
 tags: 
-position: 2197,2040
+position: 2238.941650390625,2380.453369140625
 ---
 << fadeIn >>
 << advanceTime 0:15 >>
@@ -606,7 +597,7 @@ Vous quittez la cafétéria et rejoignez votre chambre.
 ===
 title: Dormir_S
 tags: 
-position: 2615,1884
+position: 2493.123046875,2179.9873046875
 ---
 Votre corps, lui, vous signale qu'il a quasiment donné tout ce qu'il pouvait. Il se fait tard. Vous vous sentez fatigué.
 
@@ -621,7 +612,6 @@ Vous vous déshabillez fissa, un petit tour aux toilettes et vous vous glissez d
 
 << if visited("ReviserSoir_S") >>
 Vous avez du mal à dormir dû à la quantité de travail que vous avez ingéré.
-<<empty>> // TODO: reduce sleep
 << endif >>
 
 -> Dodo
@@ -629,7 +619,7 @@ Vous avez du mal à dormir dû à la quantité de travail que vous avez ingéré
 ===
 title: Reveil_D
 tags: 
-position: 2870,1884
+position: 2784.88671875,2086.99365234375
 colorID: 1
 ---
 << fadeIn >>
@@ -646,7 +636,7 @@ colorID: 1
 Vous vous réveillez le lendemain avec des étoiles plein les yeux. Ce fut une super fièvre du samedi soir. Vous étiez le soleil de cette galaxie festive. Dommage que la partie soit finie.
 Dommage aussi que le jour se soit levé depuis un moment. Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps de se lever et de prendre son petit-déjeuner.
 <<else>>
-Vous vous réveillez le lendemain, fatigué d'avoir autant révisé. Vous n'avez pas l'impression d'avoir avancé tant que ça malgrès la quantité d'information que vous avez ingéré.
+Vous vous réveillez le lendemain, fatigué d'avoir autant révisé. Vous n'avez pas l'impression d'avoir avancé tant que ça malgré la quantité d'information que vous avez ingéré.
 Dommage que la partie soit finie.
 Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps de se lever et de prendre son petit-déjeuner.
 <<endif>>
@@ -656,7 +646,7 @@ Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps 
 << fadeOut >>
 
 << fx EatCook >>
-Vous vérifiez ce que votre cuisine a en stock et vous vous préparez un solide petit déjeuner sucré salé. Un jus de fruit, un maxi café, des viennoiseries, des tartines, du beurre, de la confiture, un oeuf de Mégaloodinde brouillé fumé, des néotomates cerises et quelques feuilles de salade. 
+Vous vérifiez ce que votre cuisine a en stock et vous vous préparez un solide petit déjeuner sucré salé. Un jus de fruit, un maxi café, des viennoiseries, des tartines, du beurre, de la confiture, un œuf de Mégaloodinde brouillé fumé, des néotomates cerises et quelques feuilles de salade. 
 << addToGauge food 100 >>
 C'est riche, délicieux, copieux et varié. Vous êtes rassasié.
 Mais vous vous rendez compte qu'il ne vous reste plus rien pour manger...
@@ -667,7 +657,7 @@ Mais vous vous rendez compte qu'il ne vous reste plus rien pour manger...
 ===
 title: Fred_D
 tags: 
-position: 3122,1884
+position: 3077.35595703125,1999.9384765625
 ---
 << fadeIn >>
 << setBackground door >>
@@ -1027,7 +1017,7 @@ Ah, et une chose très important : faire des courses le matin, avant que le marc
 ===
 title: Courses_D
 tags: 
-position: 4018.20703125,3028.9892578125
+position: 4013.854248046875,3028.9892578125
 ---
 << if isTimeOver("12:00") >>
 
@@ -1085,11 +1075,11 @@ title: Reseaux_D
 tags: 
 position: 4003.721923828125,2777.754638671875
 ---
-Vous prenez votre palmphone. Vous cliquez sur l'icone ChatApp. On est le samedi matin : il n'y a pas grand monde en ligne. Ils sont encore en train de dormir. Et puis, petit à petit, les amis se connectent au réseau. 
+Vous prenez votre palmphone. Vous cliquez sur l'icône ChatApp. On est le samedi matin : il n'y a pas grand monde en ligne. Ils sont encore en train de dormir. Et puis, petit à petit, les amis se connectent au réseau. 
 <<empty>> // Il peut être 18:00 quand on fait ce choix, on va donc manquer des cohérences ici
 << fx Notification >>
 Loulou vous pinge, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses... 
-Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à votre grand-mère. Cela vous réchauffe encore plus le coeur. Votre grand-mère s'est enfin réveillée, les choses suivent leur cours, et désormais d'autres personnes pensent à elle.
+Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à votre grand-mère. Cela vous réchauffe encore plus le cœur. Votre grand-mère s'est enfin réveillée, les choses suivent leur cours, et désormais d'autres personnes pensent à elle.
 Vous vous sentez calme et confiant.
 
 << removeFromGauge sleep 15 >>
@@ -1135,10 +1125,9 @@ Mamie@holo_shadow: Je te dérange ?
 ===
 title: Diner_D
 tags: 
-position: 3600,3911
+position: 3655,3471
 colorID: 4
 ---
-
 Il est plus de 20 heures ?! Il est temps de se préparer un petit dîner.
 
 << if !visited("Courses_D") >>
@@ -1164,7 +1153,7 @@ C'est fin et ça nourrit bien son étudiant. Vous débarrassez la table et vous 
 ===
 title: BingeTV_D
 tags: 
-position: 3869,3911
+position: 3914,3606
 ---
 Nous sommes un jour de week-end, un jour férié. Vous méritez bien une pause TV. Vous n'avez pas encore entamé la saison 8 de Star Mars - The Lone Lightsaber.
 
@@ -1191,8 +1180,7 @@ Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de b
 ===
 title: Dormir_D
 tags: 
-colorID: 0
-position: 4142,3911
+position: 4157,3756
 ---
 Vous vous allongez sur le lit pour une courte pause. Vous mettez un réveil pour vous empêchez de sombrer dans le sommeil profond.
 Vous fermez les yeux... 
@@ -1358,7 +1346,7 @@ tags:
 position: 4678,3731
 ---
 Il vous reste un peu plus d'une heure avant votre passage.
-Vous allez en profiter pour faire un petit jogging pour bien se reveiller le corps, suivi par une dernière piqûre de rappel.
+Vous allez en profiter pour faire un petit jogging pour bien se réveiller le corps, suivi par une dernière piqûre de rappel.
 
 << fadeIn >>
 << setBackground sport >>
@@ -1417,8 +1405,8 @@ position: 4945,4087.5556640625
 << setBackground oral >>
 << fadeOut >>
 
-Vous entrez dans la salle de théatre. Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus.
-Une foix l'éxecution publique terminée, c'est votre tour. Vous angoissez, peu rassuré par ce que vous venez de voir...
+Vous entrez dans la salle de théâtre. Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus.
+Une foix l'exécution publique terminée, c'est votre tour. Vous angoissez, peu rassuré par ce que vous venez de voir...
 
 << addToGauge stress 20 >>
 
@@ -1445,7 +1433,7 @@ Vous sortez de la salle en tremblant. C'est à peine si vous vous rappelez qui v
 
 Vous êtes dégoûté par votre prestation devant le grand jury. Vous n'étiez pas du tout prêt. Vous êtes tombé sur un sujet que vous ne maîtrisiez pas, que vous ne connaissiez pas.
 
-Pas la peine d'attendre les résultats pour savoir que vous avez royalement râté. Vous retournez dans votre chambre sans vraiment voir le trajet, ressassant sans cesse tout ce que vous avez mal fait...
+Pas la peine d'attendre les résultats pour savoir que vous avez royalement raté. Vous retournez dans votre chambre sans vraiment voir le trajet, ressassant sans cesse tout ce que vous avez mal fait...
 
 << fadeIn >>
 << advanceTime 0:15 >>
@@ -1493,12 +1481,12 @@ position: 4945,3735
 << advanceTime 0:15 >>
 << fadeOut >>
 
-Vous entrez dans la salle de théatre. Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus.
-Une foix l'éxecution publique terminée, c'est votre tour. Vous vous relaxez, conscient que vous avez mieux révisé que votre compère.
+Vous entrez dans la salle de théâtre. Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus.
+Une foix l'exécution publique terminée, c'est votre tour. Vous vous relaxez, conscient que vous avez mieux révisé que votre compère.
 
 Vous entrez dans l'immense salle du Planétarium. Au centre de l'estrade, seul devant les jurés, examiné, scruté par les membres du public, assis derrière eux...
 Vous prenez une grande inspiration avant de prendre la parole. Vous vous présentez au jury, ce dernier vous remercie. Vous leur rappelez la matière retenue : <b>la Philosophie quantique</b>.
-L'un des jurés enfile à nouveau ces lunettes étrange... Des lunettes de détection neurocérébrale. Il vous fixe un moment avant de s'écrier : "L'incertitude quantique"...
+L'un des jurés enfile à nouveau ces lunettes étrange... Des lunettes de détection neurocérébral. Il vous fixe un moment avant de s'écrier : "L'incertitude quantique"...
 
 Pfouu.... Vous soufflez un grand coup. Bien entendu, l'incertitude quantique n'est pas votre thème préféré. Malgré tout, vous avez des arguments, des concepts, des débats, des problématiques, des polémiques qui vous viennent aussitôt en tête.
 << advanceTime 0:30 >>
@@ -1512,7 +1500,7 @@ Vous les saluez et les remerciez avant de quitter la salle et de rentrer dans vo
 << advanceTime 0:15 >>
 << fadeOut >>
 
-Vous mangez un bout et allez dans votre lit, vous êtes exténué. Ce week-end aura été épuisant, même en ayant appris à bien gérer votre temps. Il faut dire que vous aviez beaucoup à rattrapper, mais vous vous en êtes sorti avec brio !
+Vous mangez un bout et allez dans votre lit, vous êtes exténué. Ce week-end aura été épuisant, même en ayant appris à bien gérer votre temps. Il faut dire que vous aviez beaucoup à rattraper, mais vous vous en êtes sorti avec brio !
 
 <<empty>> // << if !visitedPermenant("sages") >>
 
@@ -1581,7 +1569,7 @@ Ledai_explaining: Dans le cas présent, tu notes ton planning du week-end. Bien 
 Sapiens_thinking: Ensuite, tu planifies tes priorités. Ici, tes révisions sur la philosophie quantique. Les différents thèmes à aborder.
 Ledai_explaining: Après, tu révises chaque thème, en respectant des sessions d'une heure environ. Tu te rappelle de la méthode "pomodoro" ?
 You: Bien sûr.
-Ledai_explaining: Tu réalises tes tâches. Une par une ! Pas de distracteurs ! Pas de multitâche ! Ton attention doit être totale, compris ?
+Ledai_explaining: Tu réalises tes tâches. Une par une ! Pas de distractions ! Pas de multitâche ! Ton attention doit être totale, compris ?
 You: Ouais.
 Sapiens_happy: Chaque nouveau jour, pense à revoir ton planning. Qu'as-tu accompli ? Que reste-t-il à faire ? Es-tu dans les temps ?
 Ledai_explaining: Pour tes révisions, favorise des actions que tu as bien intégrées. Cela te fait gagner du temps.
@@ -1656,7 +1644,7 @@ Azul_sad: Calmons-nous les amis. Nous sommes des Sages. Quelle image lamentable 
 Ledai_explaining: C'est vrai.
 Sapiens_angry: Nous réglerons ça plus tard. Entre nous...
 You: C'est bon, je peux y aller ?
-Sapiens_happy: Preque. Prêt à répondre à quelques questions ?
+Sapiens_happy: Presque. Prêt à répondre à quelques questions ?
 You: Ai-je le choix ?
 Sapiens: Sur ton planning, tu indiques toutes les tâches de ta journée. En ce qui concerne la session de révision. Tu la met où ?
 
@@ -1665,14 +1653,14 @@ Sapiens: Sur ton planning, tu indiques toutes les tâches de ta journée. En ce 
     Sapiens_happy: Exactement ! Réviser est ta tâche prioritaire ! Elle doit donc être tout en haut de ton agenda !
     Azul_happy: Rappelle-toi l'image du sceau. Les pierres, ce sont tes séances de révision. 
     Temde_smiling: Tu dois commencer par les mettre dans le sceau avant de t'occuper du reste !
-    Sapiens: Voyons ce que tu répondras à ce second quizz. Une fois que tu as entamé ta tâche prioritaire. Acceptes-tu d'être dérangé par un ami, un appel, un message ?
+    Sapiens: Voyons ce que tu répondras à ce second quiz. Une fois que tu as entamé ta tâche prioritaire. Acceptes-tu d'être dérangé par un ami, un appel, un message ?
 -> Plus loin. Tu t'en occuperas, quand tu auras le temps ?
     << fx Failure >>
     Sapiens_angry: Enfin ! Quelle ineptie ! Réviser est ta tâche prioritaire ! Elle doit donc être en tout en haut de ton agenda !
     Azul_sad: Rappelle-toi l'image du sceau. Les pierres, ce sont tes séances de révision. 
     Temde_thinking: Tu dois commencer par les mettre dans le sceau avant de t'occuper du reste !
     You: Oui. C'est vrai.
-    Sapiens_thinking: Voyons si tu répondras mieux à ce second quizz. Une fois que tu as entamé ta tâche prioritaire. Acceptes-tu d'être dérangé par un ami, un appel, un message ?
+    Sapiens_thinking: Voyons si tu répondras mieux à ce second quiz. Une fois que tu as entamé ta tâche prioritaire. Acceptes-tu d'être dérangé par un ami, un appel, un message ?
 
 << empty >>
 
@@ -1720,7 +1708,7 @@ Sapiens: Sur ton planning, tu indiques toutes les tâches de ta journée. En ce 
     Azul_proud: En ce qui concerne ton Grand Oral, oui, c'est un bonne voie alternative.
 
 
--> Reommencer le week-end
+-> Recommencer le week-end
     << resetLevel >>
     << jump Start>>
 ===
