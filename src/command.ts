@@ -269,7 +269,7 @@ export const functions: Record<string, YarnFunction> = {
     if (nodes.length === 0)
       throw new Error("Please give valid nodes titles in visited()");
 
-    return _.every(nodes, (node) => this.visited.has(node));
+    return nodes.every((node) => this.visited.has(node) || this.visitedPermanent.has(node));
   },
 
   getGauge(gauge: string): number {
