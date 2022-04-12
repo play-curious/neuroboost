@@ -114,15 +114,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public loadSave() {
-    const saveData: SaveData = JSON.parse(localStorage.getItem("save"));
+    const { lastGraphics: last } = JSON.parse(localStorage.getItem("save"));
 
-    this.last = saveData.lastGraphics;
-    if (this.last.lastBg)
-      this.setBackground(this.last.lastBg, this.last.lastBgMood);
-    if (this.last.lastCharacter)
-      this.addCharacter(this.last.lastCharacter, this.last.lastMood);
-    if (this.last.lastGauges) this.toggleGauges(true, ...this.last.lastGauges);
-    if (this.last.lastMusic) this.config.jukebox.play(this.last.lastMusic);
+    if (last.lastBg) this.setBackground(last.lastBg, last.lastBgMood);
+    if (last.lastCharacter)
+      this.addCharacter(last.lastCharacter, last.lastMood);
+    if (last.lastGauges) this.toggleGauges(true, ...last.lastGauges);
+    if (last.lastMusic) this.config.jukebox.play(last.lastMusic);
+
+    this.last = last;
   }
 
   public initGauges(gaugesList: (keyof variable.Gauges)[]) {
@@ -729,8 +729,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       }
     }
 
-    this.last.lastCharacter = undefined;
-    this.last.lastMood = undefined;
+    delete this.last.lastCharacter;
+    delete this.last.lastMood;
   }
 
   /**
