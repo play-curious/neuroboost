@@ -114,7 +114,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public loadSave() {
-    const { lastGraphics: last } = JSON.parse(localStorage.getItem("save"));
+    const { lastGraphics: last } = save.getSave()
 
     if (last.lastBg) this.setBackground(last.lastBg, last.lastBgMood);
     if (last.lastCharacter)

@@ -46,6 +46,10 @@ export function save(ctx: dialog.DialogScene) {
   localStorage.setItem("save", JSON.stringify(data));
 }
 
+export function getSave(): SaveData {
+  return JSON.parse(localStorage.getItem("save"))
+}
+
 export function hasSave(): boolean {
   return !!localStorage.getItem("save");
 }
@@ -100,8 +104,7 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
             window.loadSave = true;
 
             // load saved node from saveData.node
-            const saveData: SaveData = JSON.parse(localStorage.getItem("save"));
-            this._transition = entity.makeTransition(saveData.levelName);
+            this._transition = entity.makeTransition(getSave().levelName);
           });
         }
       );
