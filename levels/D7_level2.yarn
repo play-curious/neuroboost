@@ -34,6 +34,7 @@ Fred_empty: Laisse moi tranquille. Je suis fatigué, je vais rester tranquille c
 You: Arrête de faire tes valises et viens avec moi !
 Fred_empty: Mes valises ? Mais comment...
 You: Je t'explique tout ca sur la piste de footing. On y va !
+<< hide >>
 
 << jump Dimanche_Matin >>
 ===
@@ -587,6 +588,7 @@ You: Tu veux manger ici avec moi ?
 Fred: Yes, j'ai mega faim !
 
 -> Dîner avec Fred.
+  << hide >>
   << jump Diner_Dim >>
 
 ===
@@ -644,7 +646,6 @@ Vous fermez les yeux et plongez dans un sommeil profond et durable...
 ===
 title: Lundi_matin
 tags: 
-colorID: 0
 position: 1738,999
 ---
 << fadeIn >>
@@ -661,7 +662,7 @@ Vous rouvrez les yeux quand votre horloge connectée sonne. Il est huit heures.
 Vous avalez un petit déjeuner, simple et rapide : une boîte de chimicookies et un synthécafé.
 Maintenant, il va falloir se remettre à retravailler vos fiches de révision...
 
-<< advanceTime 0:45 >>
+<< advanceTime 0:30 >>
 
 << fadeIn >>
 << setBackground bedroom >>
@@ -679,29 +680,28 @@ Vous appelez Fred et lui demandez de revenir réviser avec vous, ou vous allez c
 ===
 title: Call_Fred
 tags: 
-colorID: 0
 position: 1733,1245
 ---
 Vous téléphonez chez Fred. La sonnerie sonne dans le vide. 
 Ce n'est pas son genre. Vous laissez un message avant de raccrocher. Vous lui dites bien qu'il est important qu'il retravaille ses fiches de révision. Pour l'avoir vécu, vous savez combien le travail de mémorisation est encore fragile et instable.
 
-<< advanceTime 1:00 >>
+<< advanceTime 0:05 >>
 
-Les minutes passent. Fred ne vous rappelle pas. Que décidez-vous de faire ?
+Fred ne vous rappelle pas. Que décidez-vous de faire ?
 
--> Attendre son rappel
-  << jump Attendre_Fred >>
+//-> Attendre son rappel
+//  << jump Attendre_Fred >>
 -> Aller chez lui
   << jump Sonner_Fred >>
 ===
 title: Sonner_Fred
 tags: 
-colorID: 0
 position: 2032,1003
 ---
 << fadeIn >>
 << setBackground door >>
 << fadeOut >>
+
 Vous sonnez chez Fred. Une fois, deux fois, trois fois... Vous ne vous découragez pas. Il en va de son sort universitaire...
 Finalement, Fred vous ouvre. 
 
@@ -716,7 +716,7 @@ You: On doit encore réviser les fiches !
 Fred_surprised: Mais on a pas cessé de le faire hier ?!
 You: Ce n'est pas suffisant. C'est comme la peinture, il faut remettre une couche !
 Fred_happy: Ha Ha ! J'adore ta blague !
-You: Ce n'est pas une blague ! Tu sais que les jurés possèdent un détecteur neurocérébral !
+You: Ce n'est pas une blague ! Tu sais, les jurés possèdent un détecteur neurocérébral !
 Fred_surprised: Un quoi ?
 You: Un détecteur neurocérébral : ils vont fouiller dans ton cerveau et ils t'interrogeront sur ce que tu connais le moins !
 Fred_angry: Tu délires, c'est de la science fiction !
@@ -724,12 +724,13 @@ You: Crois-moi, nous sommes dans un univers de science fiction.
 Fred_surprised: Sérieux ?
 You: Sérieux. 
 Fred_smiling: C'est génial ce que tu dis. Je voudrais avoir le même.
-You: En attendant, il faut s'en prémunir. Il faut se remettre à réviser. Suis-moi
+You: En attendant, il faut s'en prémunir. Il faut se remettre à réviser. Suis-moi !
 Fred: OK, Boss.
 Fred s'habille, prend un petit-déjeuner éclair et vous rejoint dans votre chambre.
 
 -> Retour dans la chambre.
   << hide >>
+  << advanceTime 0:05 >>
   << jump Reviser_Fiches2 >>
 ===
 title: Attendre_Fred
@@ -756,18 +757,19 @@ Vous avez encore foiré. Il faut tout recommencer !
 ===
 title: Reviser_Fiches2
 tags: 
-colorID: 0
 position: 2319,996
 ---
 << fadeIn >>
 << setBackground bedroom >>
 << fadeOut>>
 
-Vous redemandez à Room Mate de lancer le mode "immersion studieuse" dans votre chambre. 
+Vous redemandez à Room Mate de lancer le mode "immersion studieuse" dans votre chambre pour une heure. 
 // Comme vous êtes de nouveau en duo, vous n'utilisez pas le module "work with me". 
 << music Solo1 >>
-C'est vous qui démarrez la session. Le jeu de ping pong reprend, entrecoupé d'interludes métalleux entre chaque session "pomodoro". 
-C'est encore un pur moment de complicité, de délire, de bonheur et de partage enrichissant. 
+C'est vous qui démarrez la session.
+C'est encore un pur moment de complicité, de délire, de bonheur et de partage enrichissant.
+<< advanceTime 2:00 9:30 0:05 >>
+Malheureusement, le Room Mate vous coupe, il est l'heure d'aller à l'oral.
 Fred: Yoooo ! Tu avais raison, j'en avais besoin de cette séance de rafraîchissement. 
 You: Je sais, je sais. On appelle ces séances des "piqûres de rappel".
 Fred_happy: Damned, ça me pique rien que de t'entendre le dire.
@@ -775,34 +777,25 @@ You: Ouais.
 Fred_smiling: Yes yes. En tout cas, tu es vraiment un master de l'apprentissage ! 
 You: Merci.
 
-<< setTime 13:00 >>
-C'est alors que votre horloge connectée vous informe qu'il est 13 heures. Il faut manger avant de partir à l'oral ! 
-
-<< fx EatCook >>
-<< fadeIn >>
-<< setBackground bedroom kitchen >>
-<< fadeOut>>
-
-Vous proposez un repas rapide et basique, pour vous et votre pote. Burger Big Proteins Double Cheese et Xeno Cola ! Vous avalez tous les deux votre sandwich, vite fait bien fait !
-
 -> Au Grand Oral !
+  << hide >>
   << jump Grand_Oral >>
 ===
 title: Grand_Oral
 tags: 
-colorID: 0
 position: 2563,996
 ---
 << fadeIn >>
 << setBackground door class >>
+<< advanceTime 0:10 >>
 << music Tense >>
 << fadeOut >>
 
 Avant d'entrer dans la salle, Fred et vous vous souhaitez bonne chance. 
 
-<< hide >>
 << fadeIn >>
 << setBackground oral >>
+<< advanceTime 0:05 >>
 << fadeOut >>
 
 Le reste... se déroule sans réelle encombre. Vous êtes de nouveau inspecté par les lunettes de détection neurocérébrale. 
@@ -813,14 +806,15 @@ Le jury vous interroge cette fois sur "l'intrication quantique". Vous parvenez e
 << setBackground door class >>
 << fadeOut >>
 
-<< advanceTime 3:00 >>
+<< advanceTime 0:30 >>
 
-Quand vous sortez de là, vous devez attendre quelques heures avant de voir sortir à son tour Fred.
+Quand vous sortez de là, vous devez attendre quelques temps avant de voir sortir à son tour Fred.
+<< advanceTime 0:45 >>
 << show fred >>
 You: Alors ? 
 Fred_smiling: Je pense que c'est bon.
 You: Je suis tombé sur le sujet de l'intrication quantique. Et toi ?
-Fred: Celui de la décohérence quantique.
+Fred_happy: Celui de la décohérence quantique.
 You: Suspense...
 Fred_smiling: T'inquiète, j'ai géré.
 Vous restez là, à discutez, le temps que les résultats s'affichent sur l'écran. 
@@ -846,11 +840,11 @@ You: Yes !
 ===
 title: Feter_Cafeteria
 tags: 
-colorID: 0
 position: 2824,985
 ---
 << fadeIn >>
-<< setBackground party >>
+<< setBackground cafeteria >>
+<< advanceTime 0:15 >>
 << fadeOut >>
 
 Vous vous installez à la cafétéria. Les étudiants présents dans la salle vous fixent des yeux.
@@ -873,7 +867,6 @@ Fred_surprised: Quelles erreurs ?
 ===
 title: Avouer_Fred_Secret
 tags: 
-colorID: 0
 position: 3053,984
 ---
 You: Tu l'as dis. Je ne me faisais pas assez confiance. Je me sentais tellement en-dessous de toi. 
@@ -894,27 +887,27 @@ Fred: Je vois ça.
 You: Mais, je comprends là encore que je me suis trompé. Le plus important c'est que, quoiqu'il se passe, nous restions amis.
 Fred_smiling: Yes yes. Tu es un vrai sage.
 You: J'espère en tout cas le devenir un jour.
-La soirée continue un moment. Vous payez la seconde tournée. Fred en commande une troisième. Vous en profitez également pour grignotter une salade ou un chill and chips. 
+La journée continue un moment. Vous payez la seconde tournée. Fred en commande une troisième. Vous en profitez également pour grignotter une salade ou un chill and chips. 
 
-<< advanceTime 4:00 >>
+<< advanceTime 2:00 >>
 L'heure tourne. Il est grand temps de rentrer. Vous reprenez les cours demain matin.
 Vous vous faites l'accolade et vous vous dites à demain !
 
--> Rentez dormir
+-> Rentez se reposer
   << hide >>
   << jump Dormir >>
 ===
 title: Dormir
 tags: 
-colorID: 0
 position: 3314,987
 ---
 << fadeIn >>
-<< setBackground bedroom night >>
+<< setBackground bedroom >>
 << fadeOut >>
 
-Dans votre chambre, vous vous déshabillez, allez faire un petit tour aux toilettes et vous gagnez le lit. 
+Dans votre chambre, vous vous posez sur votre lit.
 Fatigué, repu, mais content d'être parvenu à remplir cette dernière mission... La dernière mission... Il n'y en aura plus d'autre après ?...
+
 Temde_cheerful: Yep, c'est ta dernière épreuve et tu l'as réussie.
 You: Je vous verrai plus ?
 Temde_smiling: Presque plus.

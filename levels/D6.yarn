@@ -1367,13 +1367,14 @@ Vidéos réalisées par des professeurs ou des étudiants en thèse. Voire même
 Oui, les vidéos sont courtes et sympathiques. Hélas, elles ne répondent pas vraiment à vos attentes. La plupart du temps, elles ne font que survoler des notions que vous avez déjà plus ou moins en tête. 
 Soit, elles ne détaillent pas assez les mécanismes et les courants philosophiques sous-jacents. Si les membres du jury vous posent des questions dessus, vous n'êtes pas sûr d'être capable de répondre de manière scientifique et rigoureuse.
 Soit, elles se veulent exhaustives et finissent par devenir trop longue, trop soporifiques. Pire qu'un cours magistral avec un professeur IRL.
-Vous arrêtez la torture. Vous avez perdu votre temps à papillonner sur le web. Pour un résultat finalement décevant. Stop !
 
 << removeFromGauge sleep 15 >>
 << removeFromGauge food 15 >>
 << addToGauge mentalLoad 40 >>
 << addToGauge stress 35 >>
 << advanceTime 1:00 >>
+
+Vous arrêtez la torture. Vous avez perdu votre temps à papillonner sur le web. Pour un résultat finalement décevant. Stop !
 
 <<jump ExamenDefaite_L>>
 ===

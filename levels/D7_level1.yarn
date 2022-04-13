@@ -427,7 +427,7 @@ tags:
 position: -1969.8092041015625,-190.40352630615234
 ---
 << fadeIn >>
-<< setBackground door class >>
+<< setBackground door toilet >>
 << advanceTime 0:05 >>
 << fadeOut >>
 
