@@ -778,6 +778,10 @@ colorID: 6
 << setBackground bedroom chill >>
 << fadeOut >>
 
+-> Finir la journée << if visited("revision4")>>
+    Vous avez fini toutes vos révisions ! Vous en profitez pour vous détendre, en jouant un peu de cycloluthe et en chattant avec vos amis.
+    << advanceTime 14:00 20:00 0:30 >>
+    << jump Taches_D >>
 -> Faire de la cycloluthe
     <<jump Musique_D>>
 -> Chatter en ligne
@@ -1449,7 +1453,7 @@ Pas la peine d'attendre les résultats pour savoir que vous avez royalement rat�
 
 << if !visited("sages") >>
 
-<< visit sages >>
+<< visit sages true >>
 À peine de retour dans votre chambre, vous vous écriez :
 You: Hé, messieurs les Sages ! Vous êtes là ? Parce que j'aurais besoin de vous... Ça va pas, mais pas du tout ! J'ai raté le Grand Oral...
 Sapiens_concerned: Oui. Nous le savons.
@@ -1470,7 +1474,10 @@ Sapiens_happy: C'est ce que nous allons faire de ce pas !
     << jump SagesDefaite_L >>
 
 << else >>
+Vous allez dans votre lit et fermez les yeux, déprimés...
+
 -> Recommencer le week-end
+    <<resetLevel>>
     << fadeIn >>
     << jump Start >>
 << endif >>
