@@ -1,4 +1,73 @@
 {
+  "empty": [
+
+  ],
+  "sarcasme": [
+    {
+      "model": "b_sarcasme",
+      "x": 959.0,
+      "y": 540.0
+    },
+    {
+      "model": "hair_b",
+      "x": 949,
+      "y": 68
+    },
+    {
+      "model": "scarf_b",
+      "x": 1021,
+      "y": 576
+    },
+    {
+      "model": "sleeves_g",
+      "x": 948,
+	    "y": 307
+    }
+  ],
+  "bored": [
+    {
+      "model": "b_bored",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "hair_b",
+      "x": 949,
+      "y": 67
+    },
+    {
+      "model": "sleeves_e",
+      "x": 958,
+	    "y": 306
+    },
+    {
+      "model": "scarf_b",
+      "x": 1023,
+      "y": 575
+    }
+  ],
+  "veille": [
+    {
+      "model": "b_veille",
+      "x": 959.0,
+      "y": 540.0
+    },
+    {
+      "model": "hair_b",
+      "x": 949,
+      "y": 68
+    },
+    {
+      "model": "scarf_b",
+      "x": 1021,
+      "y": 576
+    },
+    {
+      "model": "sleeves_g",
+      "x": 948,
+	    "y": 307
+    }
+  ],
   "drunk": [
     {
       "model": "base_drunk",
@@ -176,6 +245,20 @@
       "model": "b_fred",
       "x": 960,
       "y": 540
+    }
+  ],
+  "angry": [
+    {
+      "model": "b_angry",
+      "x": 960.0,
+      "y": 540.0
+    }
+  ],
+  "angry2": [
+    {
+      "model": "b_angry2",
+      "x": 960.0,
+      "y": 540.0
     }
   ],
   "default": "happy"

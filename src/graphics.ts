@@ -1,9 +1,9 @@
 import * as _ from "underscore";
 import * as PIXI from "pixi.js";
-import * as scroll from "pixi-scrollbox";
 
 import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
+import * as scroll from "booyah/src/scroll";
 import * as tween from "booyah/src/tween";
 
 import * as filter from "./graphics_filter";
@@ -11,6 +11,8 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import * as images from "./images";
 import * as gauge from "./gauge";
+import * as save from "./save";
+import { SaveData } from "./save";
 
 // Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
@@ -24,17 +26,14 @@ const maxLineLength = 68;
 const defilementDurationPerLetter = 25;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
-  private _history: scroll.Scrollbox | null;
-  private _lastBg: string;
-  private _lastBgMood: string;
-  private _lastCharacter: string;
-  private _lastMood: string;
-  private _lastMusic: string;
+  public last: save.SaveData["lastGraphics"];
+
   private _characters: Map<
     string,
     {
       container: PIXI.Container;
       entity: entity.ParallelEntity;
+      holo: boolean;
     }
   >;
 
@@ -45,7 +44,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _fxLayer: PIXI.Container;
   private _characterLayer: PIXI.Container;
   private _closeupLayer: PIXI.Container;
-  private _historyLayer: PIXI.Container;
   private _miniGameLayer: PIXI.Container;
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
@@ -63,18 +61,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     window.graphics = this;
   }
 
-  get last() {
-    return {
-      lastBg: this._lastBg,
-      lastBgMood: this._lastBgMood,
-      lastCharacter: this._lastCharacter,
-      lastMood: this._lastMood,
-      lastMusic: this._lastMusic,
-    };
-  }
-
   _setup(): void {
-    this._history = null;
+    this.last = {};
+
     this._container = new PIXI.Container();
     this.config.container.addChild(this._container);
 
@@ -85,12 +74,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._uiLayer = new PIXI.Container();
     this._dialogLayer = new PIXI.Container();
     this._fxLayer = new PIXI.Container();
-    this._historyLayer = new PIXI.Container();
-
-    this._historyLayer.visible = false;
-    this._historyLayer.addChild(
-      new PIXI.Graphics().beginFill(0, 0.8).drawRect(0, 0, 1920, 1080).endFill()
-    );
 
     this._container.addChild(
       this._backgroundLayer,
@@ -99,8 +82,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._uiLayer,
       this._dialogLayer,
       this._fxLayer,
-      this._miniGameLayer,
-      this._historyLayer
+      this._miniGameLayer
     );
 
     this._dialogSpeaker = new PIXI.Container();
@@ -124,26 +106,23 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._fade.alpha = 0;
     this._fade.visible = false;
     this._fxLayer.addChild(this._fade);
-
-    //@ts-ignore
-    if (window.loadedEnvironment) {
-      //@ts-ignore
-      const last = window.loadedEnvironment;
-      //@ts-ignore
-      window.loadedEnvironment = undefined;
-
-      this.setBackground(last.lastBg, last.lastBgMood);
-      this.addCharacter(last.lastCharacter, last.lastMood);
-
-      if (last.lastMusic != null) {
-        this.config.jukebox.play(last.lastMusic);
-      }
-    }
   }
 
   _teardown() {
     this.config.container.removeChild(this._container);
     this._container = null;
+  }
+
+  public loadSave() {
+    const { lastGraphics: last } = save.getSave()
+
+    if (last.lastBg) this.setBackground(last.lastBg, last.lastBgMood);
+    if (last.lastCharacter)
+      this.addCharacter(last.lastCharacter, last.lastMood);
+    if (last.lastGauges) this.toggleGauges(true, ...last.lastGauges);
+    if (last.lastMusic) this.config.jukebox.play(last.lastMusic);
+
+    this.last = last;
   }
 
   public initGauges(gaugesList: (keyof variable.Gauges)[]) {
@@ -212,14 +191,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public toggleGauges(visibility: boolean, ...gaugesName: string[]) {
-    if(this.currentGauges === undefined) return;
-    
+    if (this.currentGauges === undefined) return;
+
     if (gaugesName.length === 0) {
       for (const gaugeName of this.currentGauges) {
         gaugesName.push(gaugeName);
       }
     }
-    console.log(gaugesName);
+
+    this.last.lastGauges = JSON.parse(JSON.stringify(gaugesName));
     let i = 0;
     const gaugesTween: entity.EntityBase[] = [];
     for (const gaugeName of gaugesName) {
@@ -438,10 +418,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               choicebox.buttonMode = true;
 
               this._on(choicebox, "pointerup", () => {
-                this.config.dialogScene.history.push([
+                this.config.dialogScene.addToHistory(
                   "[choice]",
-                  nodeOptions[i].text,
-                ]);
+                  nodeOptions[i].text
+                );
                 onBoxClick(Number(nodeOptions[i].id));
               });
 
@@ -591,10 +571,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               highlight.buttonMode = true;
 
               this._on(highlight, "pointerup", () => {
-                this.config.dialogScene.history.push([
+                this.config.dialogScene.addToHistory(
                   "[freechoice]",
-                  choiceText,
-                ]);
+                  choiceText
+                );
                 onBoxClick(i);
               });
 
@@ -659,11 +639,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    */
   public setBackground(bg: string, mood?: string) {
     // Check if background change
-    if (bg === this._lastBg && mood === this._lastBgMood) return;
+    if (bg === this.last.lastBg && mood === this.last.lastBgMood) return;
 
     // Register last background
-    this._lastBg = bg;
-    this._lastBgMood = mood;
+    this.last.lastBg = bg;
+    this.last.lastBgMood = mood;
 
     // Remove background
     this._backgroundLayer.removeChildren();
@@ -712,28 +692,45 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._characters.delete(id);
 
       if (withAnimation) {
-        this._activateChildEntity(
-          new tween.Tween({
-            duration: 1500,
-            easing: easing.easeOutQuint,
-            from: 250,
-            to: 1500,
-            onUpdate: (value) => {
-              character.container.position.x = value;
-            },
-            onTeardown: () => {
-              this._characterLayer.removeChild(character.container);
-              // this._deactivateChildEntity(character.entity);
-            },
-          })
-        );
+        if (character.holo) {
+          this._activateChildEntity(
+            new tween.Tween({
+              duration: 500,
+              easing: easing.easeInCubic,
+              from: 100,
+              to: 0,
+              onUpdate: (value: number) => {
+                character.container.position.y = (100 - value) * 5.4 + 80;
+                character.container.scale.y = value / 100;
+                character.container.position.x = -(100 - value) * 9.6 + 250;
+                character.container.scale.x = (100 - value) / 100 + 1;
+              },
+            })
+          );
+        } else {
+          this._activateChildEntity(
+            new tween.Tween({
+              duration: 1500,
+              easing: easing.easeOutQuint,
+              from: 250,
+              to: 1500,
+              onUpdate: (value) => {
+                character.container.position.x = value;
+              },
+              onTeardown: () => {
+                this._characterLayer.removeChild(character.container);
+                // this._deactivateChildEntity(character.entity);
+              },
+            })
+          );
+        }
       } else {
         this._characterLayer.removeChild(character.container);
       }
     }
 
-    this._lastCharacter = undefined;
-    this._lastMood = undefined;
+    delete this.last.lastCharacter;
+    delete this.last.lastMood;
   }
 
   /**
@@ -744,17 +741,20 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    */
   public addCharacter(character?: string, mood?: string) {
     // Check if character or mood change
-    if (character === this._lastCharacter && mood === this._lastMood) return;
+    if (character === this.last.lastCharacter && mood === this.last.lastMood)
+      return;
 
     //console.log(this._lastCharacter, this._lastMood, "->", character, mood);
 
     // Remove characters
-    const characterChanged = character !== this._lastCharacter;
+    const characterChanged = character !== this.last.lastCharacter;
     this.removeCharacters(characterChanged);
 
     // Register last character & mood
-    this._lastCharacter = character;
-    this._lastMood = mood;
+    this.last.lastCharacter = character;
+    this.last.lastMood = mood;
+
+    save.save(this.config.dialogScene);
 
     let displayMode: string;
     [character, displayMode] = character.split("@");
@@ -779,48 +779,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       // Place character on screen
       this._characterLayer.addChild(characterCE.container);
-      //characterContainer.setTransform(0, 0, 1, 1); // For test, do not remove
-    }
-  }
-
-  toggleHistory() {
-    if (this._history === null) {
-      this._history = new scroll.Scrollbox({
-        overflowX: "none",
-        overflowY: "scroll",
-        boxWidth: 1920,
-        boxHeight: 1080,
-      });
-      this._history.interactive = true;
-      // @ts-ignore
-      this._history.content.addChild(
-        this.makeText(
-          this.config.dialogScene.history
-            .map(([type, text]) => {
-              return type.includes("choice")
-                ? `[${text}]`
-                : !type
-                ? `<i>${text}</i>`
-                : `<b>${type.split("@")[0]}</b>: ${text}`;
-            })
-            .join("\n\n"),
-          {
-            fontFamily: "Ubuntu",
-            fontSize: 30,
-            fill: 0xffffff,
-          }
-        )
-      );
-      this._history.update();
-      this._once(this._history, "click", () => {
-        this.toggleHistory();
-      });
-      this._historyLayer.visible = true;
-      this._historyLayer.addChild(this._history);
-    } else {
-      this._historyLayer.visible = false;
-      this._historyLayer.removeChild(this._history);
-      this._history = null;
     }
   }
 

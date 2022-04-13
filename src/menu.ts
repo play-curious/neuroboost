@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js";
 
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
+import * as scroll from "booyah/src/scroll";
 import * as util from "booyah/src/util";
 
 import * as extension from "./extension";
@@ -49,6 +50,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private creditButton: PIXI.Text;
   private creditsEntity: booyah.CreditsEntity;
   private title: PIXI.Sprite;
+  private historyButton: PIXI.Text;
   private journal: PIXI.Text;
   private journalUpdated: boolean;
 
@@ -137,7 +139,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.journal.anchor.set(0.5);
       this.journal.position.set(
         this.popupBackground.width / 2,
-        this.popupBackground.height * 0.31
+        this.popupBackground.height * 0.29
       );
       this.journal.interactive = true;
       this.journal.buttonMode = false;
@@ -146,7 +148,24 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
-      this.creditButton = this.makeText("credits", {
+      this.historyButton = this.makeText("History", {
+        fontFamily: "Ubuntu",
+        fill: "white",
+        fontSize: 50,
+      });
+      this.historyButton.anchor.set(0.5);
+      this.historyButton.position.set(
+        this.popupBackground.width / 2,
+        this.journal.position.y + this.journal.height + 10
+      );
+      this.historyButton.interactive = true;
+      this.historyButton.buttonMode = true;
+      this._on(this.historyButton, "pointertap", this._showHistory);
+      this.popupBackground.addChild(this.historyButton);
+    }
+
+    {
+      this.creditButton = this.makeText("Credits", {
         fontFamily: "Ubuntu",
         fill: "white",
         fontSize: 50,
@@ -154,7 +173,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.creditButton.anchor.set(0.5);
       this.creditButton.position.set(
         this.popupBackground.width / 2,
-        this.popupBackground.height * 0.4
+        this.historyButton.position.y + this.historyButton.height + 10
       );
       this.creditButton.interactive = true;
       this.creditButton.buttonMode = true;
@@ -197,7 +216,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
             const newState = !this.config.variableStorage.get("isDebugMode");
             this.config.variableStorage.set("isDebugMode", newState);
             this.debugText.visible = newState;
-            this.config.fxMachine.play("Spawn");
+            this.config.fxMachine.play("Notification");
             console.log("Debug: ", newState);
           }
         });
@@ -327,7 +346,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.journal.anchor.set(0.5);
       this.journal.position.set(
         this.popupBackground.width / 2,
-        this.popupBackground.height * 0.31
+        this.popupBackground.height * 0.29
       );
       this.journal.interactive = true;
       this.journal.buttonMode = true;
@@ -335,7 +354,8 @@ export class Menu extends extension.ExtendedCompositeEntity {
         this._activateChildEntity(
           new popup.Confirm(
             "Téléchargement du journal de la métacognition",
-            () => {
+            (validated: boolean) => {
+              if (!validated) return;
               const journalDownload = new journal.JournalPDF();
               this._activateChildEntity(journalDownload);
               journalDownload.journalToPDF(
@@ -391,6 +411,49 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private _showCredits() {
     this.creditsEntity = new booyah.CreditsEntity(creditsOptions);
     this._activateChildEntity(this.creditsEntity);
+  }
+
+  private _showHistory() {
+    const background = new PIXI.Graphics()
+      .beginFill(0x000000, 0.8)
+      .drawRect(0, 0, 1920, 1080)
+      .endFill();
+
+    background.interactive = true;
+    background.buttonMode = true;
+
+    this.container.addChild(background);
+
+    const scrollBox = new scroll.Scrollbox({
+      overflowX: "none",
+      overflowY: "scroll",
+      boxWidth: 1720,
+      boxHeight: 880,
+    });
+
+    this._activateChildEntity(
+      scrollBox,
+      entity.extendConfig({
+        container: this.container,
+      })
+    );
+
+    scrollBox.container.position.set(100);
+    let currentY = 0;
+    // @ts-ignore
+    dialogScene.getHistoryText().forEach((text) => {
+      text.position.set(0, currentY);
+      scrollBox.content.addChild(text);
+      currentY += text.height + 30;
+    });
+
+    scrollBox.refresh();
+    scrollBox.scrollBy(new PIXI.Point(0, -(currentY + 200)));
+
+    background.once("click", () => {
+      this.container.removeChild(background);
+      this._deactivateChildEntity(scrollBox);
+    });
   }
 
   private _onTapPCLogo() {

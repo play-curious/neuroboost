@@ -43,14 +43,14 @@ export function isOption(
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
   public lastNodeData: yarnBound.Metadata;
-  public history: [author: string, text: string][];
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
   public visited: Set<string>;
+  public visitedPermanent: Set<string>;
   public selectedOptions: string[];
   public enabled: boolean;
 
-  constructor(public readonly stateName: string, public startNode: string) {
+  constructor(public levelName: string, public startNode: string) {
     super();
   }
 
@@ -58,27 +58,90 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     return this.runner.currentResult.metadata;
   }
 
+  get history(): [type: string, text: string][] {
+    return this.config.history.texts;
+  }
+
+  get lastHistory() {
+    return this.config.history.lastTime;
+  }
+
+  set lastHistory(val) {
+    this.config.history.lastTime = val;
+  }
+
+  addToHistory(type: string, text: string) {
+    if (this.config.clock.minutesSinceMidnight !== this.lastHistory) {
+      this.lastHistory = this.config.clock.minutesSinceMidnight;
+      this.history.push(["time", this.config.clock.text]);
+    }
+    this.history.push([type, text]);
+
+    if (this.history.length > 149) {
+      if (this.history[2][0] === "time") {
+        this.history.splice(0, 2);
+      } else {
+        this.history.splice(1, 1);
+      }
+    }
+  }
+
+  getHistoryText(): PIXI.Text[] {
+    let texts: PIXI.Text[] = [];
+    this.history.forEach((val, i) => {
+      let txt;
+      if (val[0].includes("choice")) {
+        txt = `[${val[1]}]`;
+      } else if (val[0].includes("time")) {
+        txt = `----------------\n${val[1]}\n----------------`;
+      } else if (val[0]) {
+        txt = `<b>${val[0].split("@")[0].split("_")[0]}</b>: ${val[1]}`;
+      } else {
+        txt = `<i>${val[1]}</i>`;
+      }
+
+      texts[i] = this.makeText(txt, {
+        fontFamily: "Ubuntu",
+        fontSize: 30,
+        fill: 0xffffff,
+        wordWrap: true,
+        wordWrapWidth: 1700,
+      });
+    });
+
+    return texts;
+  }
+
   _setup(): void {
-    this.history = [];
+    //@ts-ignore
+    window.dialogScene = this;
+    this._entityConfig.dialogScene = this;
+
+    // this.history = [];
+    // this.lastHistory = 0;
     this.enabled = true;
     this.selectedOptions = [];
 
     //@ts-ignore
-    if (window.loadedVisited) {
-      //@ts-ignore
-      this.visited = window.loadedVisited;
-      //@ts-ignore
-      window.loadedVisited = undefined;
-    } else {
-      this.visited = new Set();
-    }
+    const saveData = window.loadSave ?save.getSave():undefined ;
 
     //@ts-ignore
-    if (window.loadedNode) {
-      //@ts-ignore
-      this.startNode = window.loadedNode;
-      //@ts-ignore
-      window.loadedNode = undefined;
+    delete window.loadSave;
+
+    if (saveData) {
+      this.startNode = saveData.nodeName;
+      this.levelName = saveData.levelName;
+
+      this.visited = new Set(saveData.visited);
+      this.visitedPermanent = new Set(saveData.visitedPermanent);
+
+      this.config.history = saveData.history;
+      this.config.variableStorage = new variable.VariableStorage(
+        saveData.variableStorage
+      );
+    } else {
+      this.visited = new Set();
+      this.visitedPermanent = new Set();
     }
 
     this.config.dialogScene = this;
@@ -93,7 +156,15 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     );
 
     // Init gauges
-    this.graphics.initGauges(["learning", "sleep", "food", "mentalLoad", "stress"]); 
+    this.graphics.initGauges([
+      "learning",
+      "sleep",
+      "food",
+      "mentalLoad",
+      "stress",
+    ]);
+
+    if (saveData) this.graphics.loadSave();
 
     // Setup clock
     this._activateChildEntity(
@@ -111,7 +182,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _initRunner() {
     this.runner = new yarnBound.YarnBound({
-      dialogue: this.config.levels[this.stateName],
+      dialogue: this.config.levels[this.levelName],
       startAt: this.startNode,
       variableStorage: this.config.variableStorage,
       functions: {},
@@ -135,7 +206,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         if (tag.startsWith("gauges")) {
           const values = tag.split(":")[1].trim();
           const gauges = values.split(" ");
-          debugger;
           this.graphics.currentGauges = gauges;
         }
       }
@@ -153,10 +223,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _advance(selectId?: number): void {
-    if (this.lastNodeData && !this._hasTag(this.lastNodeData, "nosave")) {
-      save.save(this);
-    }
-
     if (!this.enabled) return;
 
     // If result is undefined, stop here
@@ -179,18 +245,17 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     if (this.lastNodeData?.title !== this.metadata.title) {
       this._onChangeNodeData(this.lastNodeData, this.metadata);
       this.lastNodeData = this.metadata;
+
+      if (!this._hasTag(this.lastNodeData, "nosave")) {
+        save.save(this);
+      }
     }
 
     const result = this.runner.currentResult;
 
     if (isText(result)) {
-      if (this.config.variableStorage.get("isDebugMode")) {
-        console.log("SKIPPED", result);
-        this._advance();
-      } else {
-        this.graphics.showDialogLayer();
-        this._handleDialog();
-      }
+      this.graphics.showDialogLayer();
+      this._handleDialog();
     } else if (isOption(result)) {
       this.graphics.showDialogLayer();
       if (this._hasTag(this.metadata, "freechoice")) {
@@ -214,12 +279,20 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     if (!placeholder && textResult.markup[0]?.name === "character") {
       speaker = textResult.markup[0].properties["name"];
     }
+
+    if (this.config.variableStorage.get("isDebugMode")) {
+      console.log("SKIPPED", textResult);
+      this.addToHistory(speaker, text);
+      this._advance(id);
+      return;
+    }
+
     this.graphics.showDialog(
       text,
       speaker,
       this.config.variableStorage.get("name"),
       () => {
-        this.history.push([speaker, text]);
+        this.addToHistory(speaker, text);
         this._advance.bind(this)(id);
       }
     );

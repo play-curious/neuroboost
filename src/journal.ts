@@ -10,6 +10,7 @@ import * as extension from "./extension";
 import dayjs from "dayjs";
 
 const options: { [key: string]: any } = {
+  // Journal jour 1
   method: {
     title: "Méthode de révision",
     closeQuestion: {
@@ -28,6 +29,7 @@ const options: { [key: string]: any } = {
         "Si tu pouvais apprendre plus facilement ou retenir des informations plus longtemps, qu'est-ce que cela pourrait changer à ta vie ?",
     },
   },
+  // Journal jour 2
   food: {
     title: "Alimentation",
     closeQuestion: {
@@ -39,6 +41,7 @@ const options: { [key: string]: any } = {
         "Comment pourrais-tu améliorer ton alimentation pour mieux apprendre ?",
     },
   },
+  // Journal jour 2
   sleep: {
     title: "Sommeil",
     closeQuestion: {
@@ -49,6 +52,7 @@ const options: { [key: string]: any } = {
       question: "Quels facteurs te permettent de bien dormir le soir ?",
     },
   },
+  // Journal jour 3
   mentalWorkload: {
     title: "Charge mentale",
     closeQuestion: {
@@ -60,6 +64,7 @@ const options: { [key: string]: any } = {
         "Comment pourrais-tu faire pour réduire les distracteurs dans ton travail ?",
     },
   },
+  // Journal jour 4
   profiles: {
     title: "Profils d'apprentissage",
     closeQuestion: {
@@ -72,6 +77,7 @@ const options: { [key: string]: any } = {
         "As-tu déjà recontré des problèmes en travaillant avec des personnes de profil différents ?",
     },
   },
+  // Journal jour 5
   stress: {
     title: "Stress",
     closeQuestion: {
@@ -88,6 +94,7 @@ const options: { [key: string]: any } = {
         "Lorsqu'il tu es stressé, que fais-tu comme activité pour lâcher prise ? ",
     },
   },
+  // Journal jour 6
   organisation: {
     title: "Organisation",
     closeQuestion: {
@@ -103,6 +110,7 @@ const options: { [key: string]: any } = {
         "Comment fais-tu pour organiser tes priorités, lorsque tu as beaucoup de tâches à jongler ?",
     },
   },
+  // Journal jour 7
   success: {
     title: "Success",
     closeQuestion: {
