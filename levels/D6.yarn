@@ -274,11 +274,12 @@ Soit, le monde des phénomènes n'est pas la réalité, ou bien la réalité n'e
 Vous faites une pause pour vous remettre les idées en place.
 << advanceTime 0:15 >>
 Vous continuez tranquillement vos révisions
-<<empty>> //TODO: Revision suite
+
 << advanceTime 1:00 >>
 
-<< endif >>
+L'idée est da la cohabitation de plusieurs univers parallèles, comme le stipule Everett, est simplement fascinante ! 
 
+<< endif >>
 
 
 << removeFromGauge sleep 15 >>
