@@ -31,6 +31,8 @@ Door night
 Door class
 << setBackground door class-screen >>
 Door class screen
+<< setBackground door toilet >>
+Door toilet
 
 << setBackground library >>
 Library
