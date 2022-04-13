@@ -274,11 +274,12 @@ Soit, le monde des phénomènes n'est pas la réalité, ou bien la réalité n'e
 Vous faites une pause pour vous remettre les idées en place.
 << advanceTime 0:15 >>
 Vous continuez tranquillement vos révisions
-<<empty>> //TODO: Revision suite
+
 << advanceTime 1:00 >>
 
-<< endif >>
+L'idée est da la cohabitation de plusieurs univers parallèles, comme le stipule Everett, est simplement fascinante ! 
 
+<< endif >>
 
 
 << removeFromGauge sleep 15 >>
@@ -347,6 +348,7 @@ title: BingeTV_S
 tags: 
 position: 1748.352783203125,1088.048583984375
 ---
+<<visit StarMars1>>
 Nous sommes un jour de week-end, un jour férié. Vous méritez bien une pause TV. Vous n'avez pas encore entamé la saison 8 de Star Mars - The Lone Lightsaber.
 
 << loopFX TVStarwars_LOOP 10000 >>
@@ -368,6 +370,8 @@ Vous avez déjà passer 2 heures devant votre série, mais vous voulez vraiment 
     << hide >>
     << fadeIn >>
     <<jump Taches_S>>
+
+<<visit StarMars2>>
 
 Est-ce la fin pour Dude ? Vous vous doutiez que non. Et vous aviez raison... 
 L'ignoble pirate des sables, et vous-même, ignoriez que Dude avait été immergé dans le chaudron de Mana, juste après sa naissance. Le corps et l'esprit de Dude Highwalker sont saturés de récepteurs de Mana.
@@ -774,6 +778,10 @@ colorID: 6
 << setBackground bedroom chill >>
 << fadeOut >>
 
+-> Finir la journée << if visited("revision4")>>
+    Vous avez fini toutes vos révisions ! Vous en profitez pour vous détendre, en jouant un peu de cycloluthe et en chattant avec vos amis.
+    << advanceTime 14:00 20:00 0:30 >>
+    << jump Taches_D >>
 -> Faire de la cycloluthe
     <<jump Musique_D>>
 -> Chatter en ligne
@@ -1135,12 +1143,14 @@ title: BingeTV_D
 tags: 
 position: 3914,3606
 ---
-Nous sommes un jour de week-end, un jour férié. Vous méritez bien une pause TV. Vous n'avez pas encore entamé la saison 8 de Star Mars - The Lone Lightsaber.
+Nous sommes un jour de week-end, un jour férié. Vous méritez bien une pause TV. 
+
+<<if !visited("StarMars1")>>
+Vous n'avez pas encore entamé la saison 8 de Star Mars - The Lone Lightsaber.
 
 << loopFX TVStarwars_LOOP 10000 >>
 << show lightsaber@holo>>
 
-<<empty>> //TODO: if seen samedi, rewatch old episodes
 Vous lancez l'application Screencast, elle vous affiche alors l'écran d'accueil Webflix. Vous pointez votre doigt sur Star Mars. Le générique démarre dans un roulement de fanfare.
 La huitième saison reprend là où s'était arrêtée la précédente à savoir : la disparition de Dude Highwalker, aspiré par un Métavers des sables.
 Hé oui, ce ne sont pas les commandos de choc de l'Impérium Noir qui ont fini par attraper le Chevalier Laser mais les Touarogs de l'infâme pirate : Jara the Hun, qui l'a sacrifié au Métavers des sables...
@@ -1148,6 +1158,28 @@ Est-ce la fin pour Dude ? Vous vous doutiez que non. Et vous aviez raison...
 L'ignoble pirate des sables, et vous-même, ignoriez que Dude avait été immergé dans le chaudron de Mana, juste après sa naissance. Le corps et l'esprit de Dude Highwalker sont saturés de récepteurs de Mana.
 Or, le Métavers des sables est en réalité la créature qui produit la Mana. Ce sont ces déjections ! Pensez-vous vraiment que le Métavers des sables dévore ces excréments ?! Non, il les traite avec respect ! Après une digestion spirituellement difficile, le monstre des sables recrache sa proie. 
 Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de bile manachique...  La suite de l'histoire est tout aussi palpitante et surprenante. Vous ne pouvez pas vous empêchez d'enchaîner les épisodes l'un derrière l'autre. Si bien que plus de quatre heures s'écoulent en un rayon d'épée laser.
+<< advanceTime 4:00 >>
+<<elseif !visited("StarMars2")>>
+Vous continuez là où vous vous étiez arrêté samedi, et recommencez à suivre les aventures de Dude Highwalker
+
+<< loopFX TVStarwars_LOOP 10000 >>
+<< show lightsaber@holo>>
+
+Est-ce la fin pour Dude ? Vous vous doutiez que non. Et vous aviez raison... 
+L'ignoble pirate des sables, et vous-même, ignoriez que Dude avait été immergé dans le chaudron de Mana, juste après sa naissance. Le corps et l'esprit de Dude Highwalker sont saturés de récepteurs de Mana.
+Or, le Métavers des sables est en réalité la créature qui produit la Mana. Ce sont ces déjections ! Pensez-vous vraiment que le Métavers des sables dévore ses excréments ?! Non, il les traite avec respect ! Après une digestion spirituellement difficile, le monstre des sables recrache sa proie. 
+
+Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de bile manachique...  La suite de l'histoire est tout aussi palpitante et surprenante. Vous ne pouvez pas vous empêcher d'enchaîner les épisodes l'un derrière l'autre. Si bien que plus de deux heures s'écoulent en un rayon d'épée laser.
+<< advanceTime 2:00 >>
+<<else>>
+Vous avez déjà fini la dernière saison de Star Mars. Vous êtes impatient que la suite sorte, tellement que rien d'autre ne vous fait envie.
+
+<< loopFX TVStarwars_LOOP 10000 >>
+<< show lightsaber@holo>>
+
+Tant pis, vous retournez regarder vos moments favoris de la série, et vous y passez deux heures.
+<< advanceTime 2:00 >>
+<<endif>>
 
 << removeFromGauge sleep 15 >>
 << removeFromGauge food 10 >>
@@ -1422,7 +1454,7 @@ Pas la peine d'attendre les résultats pour savoir que vous avez royalement rat�
 
 << if !visited("sages") >>
 
-<< visit sages >>
+<< visit sages true >>
 À peine de retour dans votre chambre, vous vous écriez :
 You: Hé, messieurs les Sages ! Vous êtes là ? Parce que j'aurais besoin de vous... Ça va pas, mais pas du tout ! J'ai raté le Grand Oral...
 Sapiens_concerned: Oui. Nous le savons.
@@ -1443,7 +1475,10 @@ Sapiens_happy: C'est ce que nous allons faire de ce pas !
     << jump SagesDefaite_L >>
 
 << else >>
+Vous allez dans votre lit et fermez les yeux, déprimés...
+
 -> Recommencer le week-end
+    <<resetLevel>>
     << fadeIn >>
     << jump Start >>
 << endif >>

@@ -123,14 +123,12 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.selectedOptions = [];
 
     //@ts-ignore
-    let loadSaveTriggered = !!window.loadSave;
+    const saveData = window.loadSave ?save.getSave():undefined ;
 
-    if (loadSaveTriggered) {
-      //@ts-ignore
-      delete window.loadSave;
+    //@ts-ignore
+    delete window.loadSave;
 
-      const saveData: save.SaveData = JSON.parse(localStorage.getItem("save"));
-
+    if (saveData) {
       this.startNode = saveData.nodeName;
       this.levelName = saveData.levelName;
 
@@ -166,7 +164,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       "stress",
     ]);
 
-    if (loadSaveTriggered) this.graphics.loadSave();
+    if (saveData) this.graphics.loadSave();
 
     // Setup clock
     this._activateChildEntity(
