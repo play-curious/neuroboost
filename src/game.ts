@@ -105,7 +105,6 @@ const stateNames = [
   "journal_organisation",
   "D7_level1",
   "D7_level2",
-  "End_Screen"
 ];
 
 const states: { [k: string]: entity.EntityResolvable } = {
@@ -210,6 +209,7 @@ booyah.go({
   musicAssets,
   screenSize,
   splashScreen,
+  videoAssets,
   extraLoaders: [levelLoader],
   entityInstallers: [
     audio.installJukebox,
