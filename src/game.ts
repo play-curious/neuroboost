@@ -16,15 +16,6 @@ import * as journal from "./journal";
 import * as variable from "./variable";
 import * as miniGame from "./mini_game";
 
-const outroVideoScene = new narration.VideoScene({
-  video: "game-by-play-curious",
-  videoOptions: { scale: 2 },
-  musicVolume: 2,
-  skipButtonOptions: {
-    position: { x: 150, y: 150 },
-  },
-});
-
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
   const canvasBbox = document
@@ -105,6 +96,7 @@ const stateNames = [
   "journal_organisation",
   "D7_level1",
   "D7_level2",
+  "End_Screen"
 ];
 
 const states: { [k: string]: entity.EntityResolvable } = {
@@ -123,8 +115,6 @@ for (const stateName of stateNames) {
       stateName === startingScene ? startingNode : "Start"
     );
 }
-
-states["End_Screen"] = outroVideoScene;
 
 async function levelLoader(entityConfig: entity.EntityConfig) {
   const levels: Record<string, string> = {};
@@ -191,8 +181,6 @@ const musicAssets = [
   "JungleBodyBeat",
 ];
 
-const videoAssets = ["game-by-play-curious"]
-
 const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 export const screenSize = new PIXI.Point(1920, 1080);
@@ -209,7 +197,6 @@ booyah.go({
   musicAssets,
   screenSize,
   splashScreen,
-  videoAssets,
   extraLoaders: [levelLoader],
   entityInstallers: [
     audio.installJukebox,
