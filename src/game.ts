@@ -224,4 +224,4 @@ resizeHtmlLayer(screenSize);
 window.addEventListener("resize", () => resizeHtmlLayer(screenSize));
 document.addEventListener("fullscreenchange", () =>
   resizeHtmlLayer(screenSize)
-);
+);//
