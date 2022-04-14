@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 import * as yarnBound from "yarn-bound";
 
+import * as narration from "booyah/src/narration";
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 import * as audio from "booyah/src/audio";
@@ -14,6 +15,15 @@ import * as dialog from "./dialog";
 import * as journal from "./journal";
 import * as variable from "./variable";
 import * as miniGame from "./mini_game";
+
+const outroVideoScene = new narration.VideoScene({
+  video: "game-by-play-curious",
+  videoOptions: { scale: 2 },
+  musicVolume: 2,
+  skipButtonOptions: {
+    position: { x: 150, y: 150 },
+  },
+});
 
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
@@ -101,6 +111,7 @@ const stateNames = [
 const states: { [k: string]: entity.EntityResolvable } = {
   Start_Menu: new save.StartMenu(),
 };
+
 for (const stateName of stateNames) {
   if (stateName.includes("journal"))
     states[`${stateName}`] = new journal.JournalScene(
@@ -113,6 +124,8 @@ for (const stateName of stateNames) {
       stateName === startingScene ? startingNode : "Start"
     );
 }
+
+states["End_Screen"] = outroVideoScene;
 
 async function levelLoader(entityConfig: entity.EntityConfig) {
   const levels: Record<string, string> = {};
@@ -178,6 +191,8 @@ const musicAssets = [
   "AcousticGuitar",
   "JungleBodyBeat",
 ];
+
+const videoAssets = ["game-by-play-curious"]
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
 
