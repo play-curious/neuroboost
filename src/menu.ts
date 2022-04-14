@@ -419,9 +419,6 @@ export class Menu extends extension.ExtendedCompositeEntity {
       .drawRect(0, 0, 1920, 1080)
       .endFill();
 
-    background.interactive = true;
-    background.buttonMode = true;
-
     this.container.addChild(background);
 
     const scrollBox = new scroll.Scrollbox({
@@ -450,10 +447,26 @@ export class Menu extends extension.ExtendedCompositeEntity {
     scrollBox.refresh();
     scrollBox.scrollBy(new PIXI.Point(0, -(currentY + 200)));
 
-    background.once("click", () => {
-      this.container.removeChild(background);
-      this._deactivateChildEntity(scrollBox);
-    });
+    const closeButton = new PIXI.Sprite(
+      this._entityConfig.app.loader.resources[
+        "booyah/images/button-back.png"
+      ].texture
+    );
+    
+    closeButton.anchor.set(0.5);
+    closeButton.position.set(50);
+    closeButton.interactive = true;
+    closeButton.buttonMode = true;
+    this._on(
+      closeButton,
+      "pointertap",
+      () => {
+        this.container.removeChild(background);
+        this.container.removeChild(closeButton);
+        this._deactivateChildEntity(scrollBox);
+      }
+    );
+    this.container.addChild(closeButton);
   }
 
   private _onTapPCLogo() {
