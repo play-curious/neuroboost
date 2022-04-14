@@ -1,0 +1,82 @@
+LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?
+en	0282b9b	Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.	D1_level2	Start	8	2ad5fd4d
+en	00aae49	Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.	D1_level2	Start	9	0abfbc40
+en	0c10bcd	Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler.	D1_level2	Start	10	1bef82cd
+en	0c4a7b0	-> Prendre l'appel	D1_level2	Start	11	4ee62c7c
+en	062f62e	-> Rejeter l'appel	D1_level2	Start	12	2a0a44c1
+en	0fb4525	Fred@holo_excited: Hello ! c'est Fred !	D1_level2	Appel_Fred_Rewind	19	c59a13de
+en	0d1a13b	You: Qu'est-ce que tu veux me dire cette fois-ci ?	D1_level2	Appel_Fred_Rewind	20	858bcdbe
+en	039d35b	Fred@holo_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin...	D1_level2	Appel_Fred_Rewind	21	1227c7fb
+en	09b04e6	You: Normal, j'ai foiré le partiel d'Atronometric Data Management.	D1_level2	Appel_Fred_Rewind	22	15e2ab94
+en	057105b	Fred@holo_smiling: Yes, la bonne blague, c'est cet après-midi qu'on le passe !	D1_level2	Appel_Fred_Rewind	23	3000fb11
+en	080aa84	You: Quoi ?!	D1_level2	Appel_Fred_Rewind	24	0e92be16
+en	0af11a5	Fred@holo_smiling: Yes, on est lundi matin. C'est ce qui est prévu.	D1_level2	Appel_Fred_Rewind	25	24a55ba8
+en	0f2a881	You: Lundi ?! Mais c'était hier !!	D1_level2	Appel_Fred_Rewind	26	105048f1
+en	03aa008	Fred@holo_happy: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui.	D1_level2	Appel_Fred_Rewind	27	68f873ab
+en	0b5f597	You: C'est dingue ! Je rêve ou quoi ?	D1_level2	Appel_Fred_Rewind	28	6da111dc
+en	0c6db74	Fred@holo_smiling: No no, je t'assure que c'est la réalité, coco.	D1_level2	Appel_Fred_Rewind	29	e84e427f
+en	007c5ec	You: Euh...	D1_level2	Appel_Fred_Rewind	30	3335b6e1
+en	03c1f6b	Fred@holo_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?	D1_level2	Appel_Fred_Rewind	31	035b660d
+en	03e0c76	You: Euh, ok...	D1_level2	Appel_Fred_Rewind	32	dddc1993
+en	077b761	Vous raccrochez sans vous en rendre compte	D1_level2	Appel_Fred_Rewind	33	00bd12cf
+en	064cdc3	Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais vaincu. Il vous rappelle aussitôt !	D1_level2	Rejet_Fred_Rewind	40	8a092f3d
+en	04b2664	-> Prendre l'appel	D1_level2	Rejet_Fred_Rewind	41	4ee62c7c
+en	0d751d6	Mais c'est quoi ce truc ?! On dirait que vous avez fait un bon en arrière dans le temps ! Vous allez pouvoir repasser le partiel d'Atronometric Data Management. C'est la chance du siècle !	D1_level2	Phone_off_Rewind	48	dc745e12
+en	020bca4	Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre !	D1_level2	Phone_off_Rewind	49	cc96e6a4
+en	0cfadf9	Il vous reste 6 heures avant l'heure H... Aujourd'hui, vous allez montrer à Fred qui est le Big Winner de l'Académie !	D1_level2	Phone_off_Rewind	50	33d20891
+en	03f3124	Que faites-vous maintenant?	D1_level2	Action_List_Rewind	57	82bd5b9a
+en	0424ed0	Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.	D1_level2	Action_List_Rewind	58	8ea948aa
+en	0526b3b	-> Manger (à midi)	D1_level2	Action_List_Rewind	59	bb08f2f6
+en	079d0ff	-> Prendre le petit déjeuner	D1_level2	cuisine_subchoice	65	6a6b43a9
+en	026de4e	-> Passer du temps sur le chat avec le pote d'une autre Université	D1_level2	bureau_subchoice	71	240d2057
+en	070f359	-> Réviser cette fichue Astronometric Data Management	D1_level2	bureau_subchoice	72	7c7bdd5a
+en	0310da3	-> Essayer le rappel libre	D1_level2	bureau_subchoice	73	0aaa8ef4
+en	0f2e31c	-> Binger votre série TV préférée	D1_level2	salon_subchoice	79	1926ecf9
+en	046846a	Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola...	D1_level2	Lunch_Rewind	86	ed2f742f
+en	0e88c64	D'accord, ce repas est bien chargé en calories et en caféine, mais vous avez mangé le même hier. Ça commence à bien faire ces sensations de "déjà-vu"...	D1_level2	Lunch_Rewind	87	3410dc20
+en	0f21e5a	Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route !	D1_level2	Lunch_Rewind	88	0b41216e
+en	02b7a89	-> Il est temps de battre votre précédent score!	D1_level2	Lunch_Rewind	89	0e094d17
+en	0ac0772	Encore un petit déjeuner chimicookies arrosé d'un synthécafé. C'est clair que ce matin dégage un étrange air de "déjà-vu"...	D1_level2	Petit_dej_Rewind	96	edac0bff
+en	0d01fa8	Bon, ce n'est pas tout.	D1_level2	Petit_dej_Rewind	97	c6f6227d
+en	0349739	<b>Pensez-vous vraiment que c'est ce que vous a recommandé les 4 Sages de la Métacognition?</b>	D1_level2	Chat_Rewind	104	30282259
+en	0ecf0bf	Peu importe, il est trop tard maintenant, vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. Vous êtes pingé par Alex, vous engagez la conversation.	D1_level2	Chat_Rewind	105	4de97c0b
+en	008f37e	Ensuite, c'est Dom, puis Lou, puis Cam...	D1_level2	Chat_Rewind	106	6a06f4aa
+en	0cd34ae	<bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi>	D1_level2	Chat_Rewind	107	834fb840
+en	06ab06b	Vous passez deux heures à discuter de tout, mais surtout de rien.	D1_level2	Chat_Rewind	108	c21a36b9
+en	0ca527e	Vous ouvrez une nouvelle fois votre dossier Astrometric Data Management. Qu'est-ce que c'est barbant... Mais cette fois, vous ravalez votre bile.	D1_level2	Revision_Rewind	115	62068367
+en	04765d7	Aujourd'hui, vous voulez réussir votre journée. Vous voulez coiffer Fred au poteau! Vous aussi, vous aurez un <i>A+</i>	D1_level2	Revision_Rewind	116	1372b4c9
+en	0cd60f9	Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à potasser ce long pensum ennuyeux ! Beuark !	D1_level2	Revision_Rewind	117	256784a2
+en	04a07cf	<bi>Pensez-vous vraiment que c'est ce que vous ont recommandé les 4 Sages de la Métacognition?</bi>	D1_level2	BingeTV_Rewind	124	521d9ca0
+en	0ff050f	Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés. Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.	D1_level2	BingeTV_Rewind	125	bf0abfc4
+en	0dd0537	Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable corsaire Yann Salto.	D1_level2	BingeTV_Rewind	126	588ab321
+en	0335c72	Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse...	D1_level2	BingeTV_Rewind	127	0ae3b2ae
+en	0a04f28	<bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi>	D1_level2	BingeTV_Rewind	128	834fb840
+en	0f4f9b7	En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait amocher son vaisseau ! Il est obligé d'atterrir en catastrophe sur Tortuga.  Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite.	D1_level2	BingeTV_Rewind	129	844ba1b9
+en	023c509	Au final vous passez trop de temps à binger votre série préférée.	D1_level2	BingeTV_Rewind	130	07cb70d6
+en	0b8f655	Il est temps d'appliquer la méthode miracle que vous ont enseignée ces esprits qui vous ont parlé durant votre sommeil.	D1_level2	Rappel_libre	137	89309085
+en	07f35ff	Vous essayez de vous souvenir de ce que vous avez retenu en cours. Ce n'est pas brillant. Vous vous ne que souvenez de très peu de choses. Pas étonnant, vous n'aimez pas cette matière.	D1_level2	Rappel_libre	138	2f4e149d
+en	080fdf4	Mais lorsque vous replongez dans la lecture pour verifier vos réponses, vous constatez que ça vous aide vraiment à mettre de l'ordre dans votre esprit. Il y a encore du travail à faire, mais ça sort plus facilement de votre tête !	D1_level2	Rappel_libre	139	aaa5cea1
+en	0988ada	Vous prenez encore le temps de relire votre cours pour combler les lacunes qui vous gênent encore. Résultat, vous vous sentez bien plus prêt à attaquer l'examen cette fois.	D1_level2	Rappel_libre	140	a8ad04d8
+en	0352286	Vous voilà désormais dans la grande salle. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b> que le compteur se met en route.	D1_level2	Test_Rewind	147	1ed2ad74
+en	006d985	Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Ce coup-ci, vous êtes sûr de vous. Bingo ! Vous allez y arriver !!	D1_level2	Test_Rewind	148	f8f06b0d
+en	0b43c25	Euphorique, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe.	D1_level2	Test_Rewind	149	ba8c3324
+en	0cbca32	Fred_excited: Alors, ça l'a fait ?	D1_level2	Post_Test_Rewind	156	3b5f2019
+en	0c9acae	You: Ouais ! Trop facile !	D1_level2	Post_Test_Rewind	157	701fa359
+en	084e7f4	Fred_happy: Yes, je suis content pour toi. Toi qui n'aimais pas cette matière.	D1_level2	Post_Test_Rewind	158	61ebe4a3
+en	0266bbe	You: Ouais, mais ce coup-ci, j'ai mis le paquet !	D1_level2	Post_Test_Rewind	159	13082269
+en	014e2cf	Fred_smiling: Ahhhh... Génial !	D1_level2	Post_Test_Rewind	160	2f066624
+en	00808f8	You: Je vais avoir <b>A</b> !	D1_level2	Post_Test_Rewind	161	a83cbd0e
+en	0f7880c	Fred_happy: No... Pas moins ?	D1_level2	Post_Test_Rewind	162	56b6d9a3
+en	08f2afc	You: Je te le dis !	D1_level2	Post_Test_Rewind	163	81670695
+en	072af68	Fred_smiling: C'est génial ! Je t'ai encore jamais vu comme ça.	D1_level2	Post_Test_Rewind	164	f8a068b2
+en	01fabda	You: Ouais !	D1_level2	Post_Test_Rewind	165	99213961
+en	02b4a63	Fred s'apprête à vous répondre quand la sonnerie retentit.	D1_level2	Post_Test_Rewind	166	fa7ce5bd
+en	0509cfb	Les résultats du test viennent de tomber...	D1_level2	Post_Test_Rewind	167	8cff8081
+en	09b16c0	-> Consulter les résultats	D1_level2	Post_Test_Rewind	168	ec400f16
+en	0524065	-> Consulter les résultats	D1_level2	Post_Test_Rewind	169	ec400f16
+en	0395b52	Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore...	D1_level2	Resultats_Good	176	733668f3
+en	085368d	Fred_smiling: Hé, C'est vachement bien pour une matière que tu détestes.	D1_level2	Resultats_Good	177	ab9cf81c
+en	04e24fc	You: Facile à dire pour toi. Tu as eu <b>A+</b>	D1_level2	Resultats_Good	178	9e770072
+en	038278d	Fred_happy: Et alors ? Tu feras mieux la prochaine fois.	D1_level2	Resultats_Good	179	4b2a26fe
+en	0da87fe	TaTaTaTa... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition.	D1_level2	Resultats_Bad_Again	186	9ca9d284
+en	0ac7005	Tentez à nouveau de passer ce premier examen...	D1_level2	Resultats_Bad_Again	187	243287d6

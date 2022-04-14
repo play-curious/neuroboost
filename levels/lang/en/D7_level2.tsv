@@ -1,0 +1,398 @@
+LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?
+en	00df494	Vous rouvrez les yeux. L'horloge connectée vous informe que vous êtes de nouveau dimanche matin.	D7_level2	Start	6	f1d194d2
+en	061130e	Vous allez devoir reprendre à nouveau votre travail de révision pour le Grand Oral... Sauf que cette fois, vous n'entreprenez pas ce labeur pour vous, mais pour Fred.	D7_level2	Start	7	375dff62
+en	047693c	Fred est votre meilleur pote. Iel le mérite...	D7_level2	Start	8	9b81f684
+en	0f9506a	Mais tout d'abord, il faut faire sortir Fred de sa chambre !	D7_level2	Start	9	f67abfde
+en	03c7e41	Vous vous rendez chez Fred et toquez à sa porte, cependant iel ne répond pas.	D7_level2	Bedroom_Fred	15	260ab885
+en	093ba26	You: Je sais que tu es là !	D7_level2	Bedroom_Fred	16	f2309f60
+en	0f059d6	Fred_empty: Laisse moi tranquille. Je suis fatigué, je vais rester tranquille ce matin.	D7_level2	Bedroom_Fred	17	f9613a05
+en	045d18a	You: Arrête de faire tes valises et viens avec moi !	D7_level2	Bedroom_Fred	18	4c5e2cc6
+en	0611843	Fred_empty: Mes valises ? Mais comment...	D7_level2	Bedroom_Fred	19	afa653d3
+en	06696e4	You: Je t'explique tout ca sur la piste de footing. On y va !	D7_level2	Bedroom_Fred	20	1f8c0048
+en	0e34c90	Vous voilà dehors à courir doucement sur la piste. Aujourd'hui, vous calez délibérément votre pas sur celui de Fred. Car, vous avez besoin de lui parler pendant votre course.	D7_level2	Dimanche_Matin	27	30f6fd16
+en	0dc437b	Vous devez le convaincre de persévérer dans son parcours académique.	D7_level2	Dimanche_Matin	28	ccf2e3e0
+en	03d40a5	Vous devez le persuader de réviser, de manière intelligente et agile.	D7_level2	Dimanche_Matin	29	ec424aa9
+en	0f60ced	Vous devez le motiver à travailler cette épreuve difficile qu'est le Grand Oral.	D7_level2	Dimanche_Matin	30	e71d0189
+en	08ef50b	Mais comme Fred a perdu confiance en lui, vous devez d'abord le remotiver.	D7_level2	Dimanche_Matin	31	40901d16
+en	0d679c5	Vous devez trouver comment l'aider à reprendre confiance en lui, en ses capacités d'apprentissage et d'auto-correction.	D7_level2	Rassurer_Fred	38	55398b3f
+en	07f8088	Vous pourriez regonfler son ego en lui rappelant à quel point iel est la star de l'Académie, l'étudiant le plus intelligent et le plus disruptif...	D7_level2	Rassurer_Fred	39	41219d2a
+en	02c1ba2	Vous pourriez aller droit au but en lui disant pourquoi iel estime ne plus pouvoir obtenir de bonnes notes... à moins de changer de revoir ses méthodes de travail...	D7_level2	Rassurer_Fred	40	d99b4acf
+en	00d58c1	Enfin, vous pouvez tout simplement lui dire, car vous le savez, quels sont ses points forts. Pourquoi il est un étudiant aussi brillant et disruptif.	D7_level2	Rassurer_Fred	41	6759fddd
+en	0b6b777	Que dire à Fred pour le persuader de vous écouter et de vous suivre ?	D7_level2	Rassurer_Fred	42	92daa69e
+en	0f8f09f	-> Flatter Fred #once	D7_level2	Rassurer_Fred	43	b172f8b6
+en	03c876b	-> Énoncer les faiblesses de Fred #once	D7_level2	Rassurer_Fred	44	9b191f10
+en	031eb15	-> Énumérer les points forts de Fred #once	D7_level2	Rassurer_Fred	45	492902ee
+en	0f8daf7	You: Tu est lae star la plus populaire de l'Académie d'Omniscience et de Polytechnologie Universelle ! Beaucoup d'étudiants t'admirent, t'envient, tu sais.	D7_level2	Flatter_Fred	52	406a5cd5
+en	0e54dac	Fred_smiling: Tu rigoles ! Donne-moi le nom d'une personne qui m'envie.	D7_level2	Flatter_Fred	53	20b06b7c
+en	00aa7c4	You: Moi.	D7_level2	Flatter_Fred	54	4aaf3c1e
+en	045c2b7	Fred_surprised: Pour du vrai ?	D7_level2	Flatter_Fred	55	c285781b
+en	0d2372b	You: Pour du vrai.	D7_level2	Flatter_Fred	56	5e64d2a0
+en	00c7721	Fred_happy: Merci de me confier tout ça. Mais où veux-tu en venir ?	D7_level2	Flatter_Fred	57	0ac670eb
+en	0b5aa9b	You: Tu es le meilleur, l'étudiant le plus disruptif ! Les étudiants et moi-même ne pouvons nous passer de toi.	D7_level2	Flatter_Fred	58	ea041ce5
+en	0165eb6	Fred_surprised: Ah bon ? Et si demain, on me renvoyait ?	D7_level2	Flatter_Fred	59	7334badf
+en	0c7dc86	You: Impossible, tu es le meilleur d'entre-nous !	D7_level2	Flatter_Fred	60	89e98a0a
+en	092619a	Fred_sad: Je ne sais pas si le collège des professeurs est de ton avis.	D7_level2	Flatter_Fred	61	486cc72f
+en	0d1ee7f	You: Fred, tu ne dois pas douter de toi ! Tu es irremplaçable !	D7_level2	Flatter_Fred	62	69a09ac6
+en	03cb4f9	Fred_sad: C'est gentil de me le dire. Mais je doute vraiment que ton avis soit partagé par tout le monde.	D7_level2	Flatter_Fred	63	273e54cd
+en	00b5fa2	Mince ! Vos propos n'ont pas eu l'effet escompté. Fred reste sceptique, dubitatif. Il doute de lui-même, comme de son avenir au sein de l'académie.	D7_level2	Flatter_Fred	64	94feb2b2
+en	04e1f63	-> Essayer autre chose ?	D7_level2	Flatter_Fred	65	dfee76e7
+en	0e3710b	You: Tu dois comprendre, Fred. Les arbres ne montent pas jusqu'au ciel.	D7_level2	Faiblesses_Fred_Bad	72	b7cfb6f6
+en	06534db	Fred_surprised: Quoi ?! Sky is the limit ?	D7_level2	Faiblesses_Fred_Bad	73	1e7742ba
+en	0fa2e5e	You: C'est ça, ouais. Même toi, tu n'es pas la perfection. Sinon, tu ne serais pas à l'Académie.	D7_level2	Faiblesses_Fred_Bad	74	72dca94a
+en	0001b51	Fred_surprised: Tu veux dire quoi ?	D7_level2	Faiblesses_Fred_Bad	75	50bd9cee
+en	014b52a	You: Tu détestes apprendre par coeur.	D7_level2	Faiblesses_Fred_Bad	76	1157dc8e
+en	0cdfb0f	Fred_angry: Beuark ! Qui peut aimer ça ?	D7_level2	Faiblesses_Fred_Bad	77	4a3f332d
+en	012c4b8	You: Certains en raffolent... Tu n'aimes pas non plus écrire. Je l'ai bien vu jeudi, à la bibliothèque.	D7_level2	Faiblesses_Fred_Bad	78	f1fc8a9e
+en	0f08c62	Fred_surprised: ...	D7_level2	Faiblesses_Fred_Bad	79	85fffbf0
+en	051f61d	You: Et tu détestes qu'on te donne un cadre trop précis, trop rigide, trop contraignant... Mais la contrainte peut stimuler la créativité. Et elle est parfois nécessaire	D7_level2	Faiblesses_Fred_Bad	80	b75a8ebf
+en	05c03e4	Fred_angry2: C'est bon ? T'as fini ton speech ?	D7_level2	Faiblesses_Fred_Bad	81	4375f1d3
+en	0f5c253	You: Heu. Ouais.	D7_level2	Faiblesses_Fred_Bad	82	b46aaa1f
+en	0310eb7	Fred_sad: Merci pour ta leçon de savoir vivre...	D7_level2	Faiblesses_Fred_Bad	83	d2b6a894
+en	08f9dc0	Il n'a pas l'air ravi par vos propos. Vous l'avez froissé. Vous avez clairement manqué de diplomatie.	D7_level2	Faiblesses_Fred_Bad	84	fc57a4be
+en	0506013	Vous devez trouvez les paroles positives qui vont l'ouvrir à votre proposition de l'aider à réviser, avec vos fiches.	D7_level2	Faiblesses_Fred_Bad	85	3ec0be05
+en	0fdf9de	-> Que lui dire pour rassurer ?	D7_level2	Faiblesses_Fred_Bad	86	bc9d968a
+en	03e17e5	You: Tu sais Fred, tu es l'étudiant le plus créatif, le plus disruptif de l'université !	D7_level2	Fred_Forces	93	41f4544c
+en	0a02d89	Fred_surprised: Ah bon ? Et alors ?	D7_level2	Fred_Forces	94	a8009b6b
+en	049a5f2	You: Tu es le meilleur d'entre-nous ! Tu as une imagination, une originalité !	D7_level2	Fred_Forces	95	5741efd9
+en	0d16d29	Fred_happy: Vraiment ?	D7_level2	Fred_Forces	96	781c2a62
+en	02f27f8	You: Si si, je te l'assure. Tu es unique ! Tu vois ce que les autres ne voient pas !	D7_level2	Fred_Forces	97	685a655c
+en	04e8e45	Fred_surprised: Tsss... Tu dis ça pour me flatter...	D7_level2	Fred_Forces	98	290fac61
+en	01402be	You: Pas du tout. Je le pense. Et je ne suis pas le seul.	D7_level2	Fred_Forces	99	33b977e7
+en	031d67c	Fred_sad: Te moque pas de moi.	D7_level2	Fred_Forces	100	e363b620
+en	04df76f	You: C'est pour cela que tu es l'étudiant le plus populaire ! Sans compter que tu adores échanger avec les autres ! Et tu le fais avec brio !	D7_level2	Fred_Forces	101	19e7e598
+en	01e22aa	Fred_surprised: C'est vrai ?	D7_level2	Fred_Forces	102	4df5f931
+en	0395a68	You: Si je te le dis.	D7_level2	Fred_Forces	103	d1afd686
+en	0ab6da8	Vous vous rendez compte que vos paroles lui font énormément de bien. Vous avez touché juste !	D7_level2	Fred_Forces	104	176243da
+en	050382d	C'est bien, vous avez franchi le premier obstacle. Cependant, il faut continuer. Fred a encore du chemin à faire pour reprendre sa vie en main.	D7_level2	Fred_Forces	105	87343f77
+en	01b7009	Iel doit également prendre conscience de ses limites.	D7_level2	Fred_Forces	106	c85a053e
+en	049e1e1	-> Comment lui parler de ses faiblesses ?	D7_level2	Fred_Forces	107	5d45c9d9
+en	06b5226	Maintenant que vous lui avez énoncé ses points forts. Vous pouvez lui avouer quels sont ses points faibles. Car, c'est en reconnaissant ses limites qu'il pourra trouver un moyen de les contourner.	D7_level2	Fred_Faiblesses	114	4b1ffaa6
+en	0b957f3	Mais, peut-être faut-il d'abord commencer par quelque chose de plus positif. En rappelant d'abord ses points forts ?	D7_level2	Fred_Faiblesses	115	c90ad475
+en	0839569	Une troisième voie, plus imprécise, serait de questionner l'air de rien Fred. Pour l'inciter à révéler lui-même ses faiblesses.	D7_level2	Fred_Faiblesses	116	0b3212c3
+en	0885a62	-> Lui énumérer ses points faibles  #once	D7_level2	Fred_Faiblesses	117	294841a3
+en	09c0f7d	-> Commencer par les points forts  #once	D7_level2	Fred_Faiblesses	118	52cdf70b
+en	0c6e6c6	-> Questionner Fred #once	D7_level2	Fred_Faiblesses	119	930c41a8
+en	0132a62	You: Combien de balles tu sais jongler, Fred ?	D7_level2	Balancer_Faiblesses	126	35c969a2
+en	0b69c25	Fred_surprised: Heu... 3, parfois 4. Pourquoi ?	D7_level2	Balancer_Faiblesses	127	5d7ba8f2
+en	0e43b74	You: Voilà ! Tu peux pas en jongler 8, par exemple. C'est que t'es limité !	D7_level2	Balancer_Faiblesses	128	377e0fc2
+en	06e8c5b	Fred_surprised: Et alors ? Je ne cherche pas à rejoindre un cirque !	D7_level2	Balancer_Faiblesses	129	0364b7bf
+en	01f265c	You: Oui, certes. Mais c'est pareil avec l'école. Tu n'aime pas respecter un plan méthodique.  Je l'ai bien vu jeudi, à la bibliothèque.	D7_level2	Balancer_Faiblesses	130	de3aed6d
+en	0084e94	Fred_angry: Je suis pas un robot ! Je sais pas pourquoi tu me racontes tout ça.	D7_level2	Balancer_Faiblesses	131	309e8764
+en	093578f	You: C'est pour ton bien...	D7_level2	Balancer_Faiblesses	132	3ec295e4
+en	0aea3df	Fred_surprised: Vraiment ?	D7_level2	Balancer_Faiblesses	133	b1498a10
+en	0500064	You: Crois-moi. Enfin, tu détestes qu'on te donne un cadre trop précis, trop rigide, trop contraignant... Mais la contrainte peut stimuler la créativité. Et elle est parfois nécessaire	D7_level2	Balancer_Faiblesses	134	3a44f285
+en	0a12873	Fred_angry: C'est bon ? T'as d'autres "fleurs" à me balancer ?	D7_level2	Balancer_Faiblesses	135	cb1884b7
+en	07cd961	You: Heu... naan...	D7_level2	Balancer_Faiblesses	136	06e64ef0
+en	0654a87	Fred_angry2: Et je dois te remercier en plus ?	D7_level2	Balancer_Faiblesses	137	1d8bd6e7
+en	01864d7	You: Heu...	D7_level2	Balancer_Faiblesses	138	94d39185
+en	089c4a1	Manifestement, ce n'était pas la bonne manière de s'y prendre. Vous avez heurté sa sensibilité.	D7_level2	Balancer_Faiblesses	139	0f5fc78a
+en	0f23410	Alors que votre l'esprit de votre pote s'était ouvert comme une huître, il se referme aussitôt dans sa coquille.	D7_level2	Balancer_Faiblesses	140	e875506f
+en	088488d	-> Comment aborder ses faiblesses ?	D7_level2	Balancer_Faiblesses	141	55da511c
+en	06b47d0	Avant d'avouer à Fred ses faiblesses, vous pensez plus prudent de commencer par lui rappeler combien il est brillant, disruptif, intuitif.	D7_level2	Rappeler_Forces	148	5d5e0f61
+en	0dc37a9	Bref, vous lui répétez les qualités qu'il possède et qui font la force d'un apprenant "divergent".	D7_level2	Rappeler_Forces	149	a976be4c
+en	0ff911e	Fred_surprised: Arrête de me flatter. Tu m'as déjà dit tout ça.	D7_level2	Rappeler_Forces	150	86a38209
+en	0cf6e4d	You: Oui, mais c'est important de comprendre qu'on a tous nos points forts et nos points faibles.	D7_level2	Rappeler_Forces	151	0ac19aae
+en	0335e5e	Fred_surprised: C'est pour ça. D'abord les bonnes nouvelles. Ensuite, les mauvaises. Que veux-tu m'apprendre ?	D7_level2	Rappeler_Forces	152	1afcaa8b
+en	0ac36ee	You: T'inquiète. C'est pas grave.	D7_level2	Rappeler_Forces	153	bd9505f1
+en	0e1f8a7	Vous lui expliquez avec les mots les plus respectueux quelles sont ces limites.	D7_level2	Rappeler_Forces	154	6cdc9d8d
+en	0db5ac2	You: C'est important, tu sais ! Si tu veux redevenir le killer de l'Académie... Tu dois prendre conscience de tes faiblesses. Tu ne peux t'améliorer qu'en prenant en compte tes propres limites.	D7_level2	Rappeler_Forces	155	1456cb31
+en	0228d67	Fred_angry: Qui es-tu, toi, pour juger de ce qui est bien pour moi ?	D7_level2	Rappeler_Forces	156	1dedc146
+en	0c28c8a	You: Heu...	D7_level2	Rappeler_Forces	157	94d39185
+en	0d51c59	Malheureusement, vous comprenez que avez été malgré tout trop direct. Ce n'est pas en lui révélant clairement ses limites que vous allez le convaincre de changer son attitude, pour le mieux...	D7_level2	Rappeler_Forces	158	7392f60b
+en	008143b	-> Comment s'y prendre alors ?	D7_level2	Rappeler_Forces	159	b0cf0b1b
+en	0f0b1be	You: Au fait, Fred. Tu te rappelles le super travail qu'on a fait à la bibliothèque ?	D7_level2	Guider_Fred_Faiblesses	166	9e1beb96
+en	03c6a5f	Fred_smiling: À propos du mémoire sur la théorie du chaos, appliquée à la macrobiologie post-darwinienne ?	D7_level2	Guider_Fred_Faiblesses	167	6736f1df
+en	0ad794e	You: Exactement.	D7_level2	Guider_Fred_Faiblesses	168	91ae3f8f
+en	007435d	Vous aiguillez Fred en lui posant des questions concernant les difficultés rencontrées lors de la rédaction de ce mémoire. L'idée est de le pousser à réfléchir par lui-même et à révéler ses freins, ses obstacles intérieurs.	D7_level2	Guider_Fred_Faiblesses	169	95e2d22f
+en	0b45096	L'exercice porte ses fruits. L'air de rien, grâce à vos questions, Fred parvient à énoncer ses faiblesses. Vous l'aidez, bien entendu, à mieux les formuler et les cerner. Mais, le premier jet est indiscutablement le sien.	D7_level2	Guider_Fred_Faiblesses	170	5966c22c
+en	0371317	Et c'est ça, le truc. Vous voyez à sa mine pensive et éclairée qu'iel a enfin mis le doigt sur quelque chose d'essentiel.	D7_level2	Guider_Fred_Faiblesses	171	f5a678e4
+en	02aed82	Fred_sad: OK. Je comprends mieux pourquoi mes performances ne sont plus aussi élevées... Mais... Que puis-je y faire ?	D7_level2	Guider_Fred_Faiblesses	172	cf661304
+en	0e99163	You: C'est là où tu te trompes. Il y a toujours une solution !	D7_level2	Guider_Fred_Faiblesses	173	06171837
+en	0656a7d	Fred_happy: Vraiment ?	D7_level2	Guider_Fred_Faiblesses	174	781c2a62
+en	062e0cd	You: Bien sûr. Et je la connais. Il faut un "plan B" !	D7_level2	Guider_Fred_Faiblesses	175	0448a3e3
+en	010019c	Fred_angry: Arrête de te moquer de moi !	D7_level2	Guider_Fred_Faiblesses	176	7f15b416
+en	0463fb0	You: Pas du tout. J'ai la solution. Moi aussi, j'en ai besoin de ce "plan B".	D7_level2	Guider_Fred_Faiblesses	177	9e690e6b
+en	080ab2e	Vous lui expliquez que vous avez passé votre samedi après-midi à rédiger des fiches de révision. Un exemplaire pour vous et un autre pour lui. Fred sourit et vous prend dans ses bras !	D7_level2	Guider_Fred_Faiblesses	178	8e59fc6c
+en	083329d	Fred_smiling: Gosh ! Tu as fait ça pour moi ?	D7_level2	Guider_Fred_Faiblesses	179	2fa8c339
+en	0fdf70b	You: Pour moi aussi, je te le rappelle !	D7_level2	Guider_Fred_Faiblesses	180	67642d32
+en	07cfa37	Fred_excited: T'es vraiment mon meilleur pote !	D7_level2	Guider_Fred_Faiblesses	181	03d82354
+en	0bc8107	You: Toi aussi. On se retrouve après déjeuner ?	D7_level2	Guider_Fred_Faiblesses	182	1a89eaf3
+en	0462320	Fred: Yes yes.	D7_level2	Guider_Fred_Faiblesses	183	c7f0bb9e
+en	037d355	La séance de footing et de remotivation est achevée.	D7_level2	Guider_Fred_Faiblesses	184	86b8a5b6
+en	091ab68	-> Rentrez manger	D7_level2	Guider_Fred_Faiblesses	185	39a5b009
+en	057add0	Vous quittez Fred et vous retournez à votre chambre manger. Vous vous cuisinez un plat de pâtes à la carbonara. C'est riche et copieux. Tant mieux, vous allez en avoir besoin, de calories...	D7_level2	Dimanche_Lunch	192	6e65c3cc
+en	0e30998	Vous avez aidé Fred à reprendre confiance en lui, en ses capacités d'apprentissage. Maintenant, il faut le convaincre de réviser la philosophie quantique en s'aidant de vos fiches de révision.	D7_level2	Dimanche_Lunch	193	6017ef08
+en	04e1023	Vous devez maintenant vous rendre chez Fred.	D7_level2	Dimanche_Lunch	194	be46bca4
+en	0a75dbf	-> Sonner à la porte de Fred	D7_level2	Dimanche_Lunch	195	bd861599
+en	088c944	Fred vous accueille, de quelle manière vous allez pouvoir convaincre Fred de travailler avec vos fiches de révision ?	D7_level2	Motiver_Fred_Reviser	202	09f65c25
+en	0cca12f	Vous pourrez lui montrez les fiches de révision que vous avez déjà imprimées. Vous lui expliquez combien elles font gagner du temps, comment s'en servir...	D7_level2	Motiver_Fred_Reviser	203	328fd462
+en	0938868	Ou, vous pourrez discuter avec Fred de sa situation à l'université, en espérant ainsi l'inciter à trouver lui-même son but.	D7_level2	Motiver_Fred_Reviser	204	0d9d239a
+en	066f374	Enfin, vous pourrez poussez Fred pour qu'il se dote d'un but, précis et réalisable.	D7_level2	Motiver_Fred_Reviser	205	7cd498b4
+en	0d4a37e	De quelle manière vous allez pouvoir le convaincre de travailler avec vos fiches de révision ?	D7_level2	Motiver_Fred_Reviser	206	1e417fe8
+en	008e0b2	-> Lui montrer vos fiches #once	D7_level2	Motiver_Fred_Reviser	207	6ad7ebbe
+en	04bfef4	-> Discuter avec Fred sur sa situation #once	D7_level2	Motiver_Fred_Reviser	208	c6f5c746
+en	05c99d1	-> Pousser Fred à se définir son objectif #once	D7_level2	Motiver_Fred_Reviser	209	bca57642
+en	033323b	Vous décidez de jouer le rôle d'un magicien, d'un illusionniste. Vous improvisez un tour de passe avec vos fiches de révision. Elles font alors office de cartes.	D7_level2	Sortir_Fiches_Trop_Vite	216	e5a736a5
+en	08b4354	Votre tour n'est pas trop au point. Ce n'est pas grave, c'est surtout pour l'ambiance. Histoire de susciter un climat positif et ludique.	D7_level2	Sortir_Fiches_Trop_Vite	217	1e659c2e
+en	0bdf221	Fred se prête d'ailleurs facilement au jeu. Vous n'arrivez pas vraiment à faire disparaître la fiche qu'a choisie Fred. Vous vous en excusez. Fred en rigole.	D7_level2	Sortir_Fiches_Trop_Vite	218	028e1839
+en	0139604	Vous décidez que c'est le moment. vous passez au choses sérieuses. Vous étalez le tas de fiches devant vous. Vous lui expliquez comment vous vous y êtes pris pour les rédiger. Comment on peut s'en servir pour réviser.	D7_level2	Sortir_Fiches_Trop_Vite	219	9c7b9e3f
+en	0f3af25	You: Tu sais, j'ai passé tout un après-midi à les créer.	D7_level2	Sortir_Fiches_Trop_Vite	220	7f8d4a14
+en	0759603	Fred_smiling: Félicitations.	D7_level2	Sortir_Fiches_Trop_Vite	221	cd96c13c
+en	0b0f9f1	You: Je les ai faites pour toi.	D7_level2	Sortir_Fiches_Trop_Vite	222	b0466bd9
+en	0e151c0	Fred: Pour toi aussi, non ?	D7_level2	Sortir_Fiches_Trop_Vite	223	7922cd37
+en	05ed71e	You: Si bien sûr. Mais je les ai vraiment repensées pour toi.  Toi qui déteste l'écrit et le "par-coeur".	D7_level2	Sortir_Fiches_Trop_Vite	224	4c932e59
+en	008a2ad	Fred: C'est gentil. Merci.	D7_level2	Sortir_Fiches_Trop_Vite	225	2c7d167a
+en	022de0f	You: Tu veux les regarder de plus près.	D7_level2	Sortir_Fiches_Trop_Vite	226	8e015f14
+en	0086702	Fred: ...	D7_level2	Sortir_Fiches_Trop_Vite	227	cad8b512
+en	0cc360d	Vous lui tendez alors vos fiches de révision. Fred les prend, puis, se ravise et les balance en l'air ! Il répand vos magnifiques fiches dans toute la pièce !	D7_level2	Sortir_Fiches_Trop_Vite	228	a3755aa5
+en	0b9516d	Fred_angry: Hey, Boss ! Je suis pas une marionette ! Suffit pas d'appuyer sur un bouton pour que je fasse ce qu'on attende de moi !	D7_level2	Sortir_Fiches_Trop_Vite	229	fe985b7c
+en	04ec31e	Vous avez été un peu trop frontal...	D7_level2	Sortir_Fiches_Trop_Vite	230	83f11767
+en	0b02bc1	-> S'y prendre autrement	D7_level2	Sortir_Fiches_Trop_Vite	231	0acde129
+en	0ae3fe3	Vous décidez de prendre le taureau par les cornes.	D7_level2	Forcer_Fred_But	238	02ab3c07
+en	064fe70	You: Il faut que je t'avoue encore une chose, Fred. Mes fiches de révision ne feront pas tout le travail pour toi.	D7_level2	Forcer_Fred_But	239	614c758d
+en	01ed9bb	Fred: Noooo, ça je m'en doutais.	D7_level2	Forcer_Fred_But	240	26e30414
+en	0dc6a46	You: Peut-être, mais sache que je connais le moyen de t'aider à exploser ton score au Grand Oral !	D7_level2	Forcer_Fred_But	241	b057c6b5
+en	08ab934	Fred_smiling: Sérieux ? Tu es devenu coach professionnel spécialisé en performances universitaires ?	D7_level2	Forcer_Fred_But	242	ca49c3fa
+en	04370f0	You: Naan... Reconnais quand même que j'ai augmenté ma moyenne.	D7_level2	Forcer_Fred_But	243	19b5ba6d
+en	0b0666a	Fred: C'est vrai.	D7_level2	Forcer_Fred_But	244	4a693130
+en	00da826	You: Alors crois-moi. Si tu veux y arriver, il te faut définir un objectif clair, réalisable et que tu peux segmenter en plusieurs étapes !	D7_level2	Forcer_Fred_But	245	635ab940
+en	0ee5a3b	Fred: Sans déconner ?!	D7_level2	Forcer_Fred_But	246	5c5e6013
+en	0061b8e	You: Je te jure !	D7_level2	Forcer_Fred_But	247	5402d90d
+en	07e7a19	Fred_smiling: Tu as lu ça dans le hors série de Student Herald Mag ?!	D7_level2	Forcer_Fred_But	248	1f239978
+en	0e7af66	Honnêtement, votre intervention n'est pas aisée.	D7_level2	Forcer_Fred_But	249	4f5abacb
+en	0a38aaf	Le moins qu'on puisse dire est qu'iel n'a pas l'air convaincu.	D7_level2	Forcer_Fred_But	250	57eaf079
+en	0c3fa0d	Fred_angry2: Hey, ça va pas, non ? Je me fixe un but, si j'en ai envie ! Et ce n'est pas toi qui va me dire comment faire !	D7_level2	Forcer_Fred_But	251	1cf30339
+en	014ede5	You: Attends... C'est pour ton bien...	D7_level2	Forcer_Fred_But	252	f14e4e0d
+en	05c89cb	Fred_angry: Qu'est-ce que tu en sais ? Tu es devin ?	D7_level2	Forcer_Fred_But	253	43927eb6
+en	016e1d9	You: Heu...	D7_level2	Forcer_Fred_But	254	94d39185
+en	0b367ca	Hélas, au lieu d'inciter Fred à se définir un but, vous l'avez piégé, acculé contre un mur.	D7_level2	Forcer_Fred_But	255	24612e1f
+en	0130d75	Résultat : iel s'est replié sur lui même. Il va falloir regagner sa confiance...	D7_level2	Forcer_Fred_But	256	453b7654
+en	0f567da	-> S'y prendre autrement	D7_level2	Forcer_Fred_But	257	0acde129
+en	0c5407b	Vous préférez la méthode la plus indirecte, la plus incertaine. Vous ne savez pas si vous allez trouver les mots adaptés pour que Fred formule de lui-même son objectif.	D7_level2	Guider_Fred_But	264	c8da4e95
+en	0ea6106	Mais, vous tentez le coup.	D7_level2	Guider_Fred_But	265	1e8b26e4
+en	0894b11	You: Pourquoi as-tu intégré l'Académie d'Omniscience et de Polytechnologie Universelle ?	D7_level2	Guider_Fred_But	266	70c9d7a7
+en	046eb03	Fred_smiling: Je ne sais pas trop. J'étais pris partout. J'aimais bien le site, l'ambiance, le public.	D7_level2	Guider_Fred_But	267	98702dbe
+en	095292f	You: C'est vrai qu'on s'amuse bien ici.	D7_level2	Guider_Fred_But	268	8d08f85e
+en	0568195	Fred: Yes yes.	D7_level2	Guider_Fred_But	269	c7f0bb9e
+en	032d44a	You: Qu'est-ce que tu attends de ton diplôme ?	D7_level2	Guider_Fred_But	270	2d5f2517
+en	04f0b23	Fred_surprised: Je sais pas non plus. C'est un diplôme, quoi.	D7_level2	Guider_Fred_But	271	3e6e0733
+en	0c02b89	You: C'est important, un diplôme ?	D7_level2	Guider_Fred_But	272	d0520145
+en	045a921	Fred: Yes, ça fait partie du jeu.	D7_level2	Guider_Fred_But	273	bcf87705
+en	0db27b1	You: Et si tu n'avais pas ce diplôme ?	D7_level2	Guider_Fred_But	274	2710a266
+en	0cf77d6	Fred_sad: Faudrait que je recommence tout à zéro. Ailleurs.	D7_level2	Guider_Fred_But	275	696d6a08
+en	07dde10	You: Est-ce nécessaire de tout recommencer depuis le début ?	D7_level2	Guider_Fred_But	276	4217c7b0
+en	0e35ca7	Fred_surprised: Je comprends pas ta question.	D7_level2	Guider_Fred_But	277	d38674e8
+en	0b8b391	You: Tu peux changer de voie, ou compléter ton apprentissage par un autre cursus.	D7_level2	Guider_Fred_But	278	09dd7771
+en	06fa50e	Fred vous regarde avec de grands yeux.	D7_level2	Guider_Fred_But	279	e8e91a2f
+en	0ea06f6	Fred_excited: Oui ! Bien sûr ! J'aurai dû y penser plus tôt ! Rien n'est perdu, tout est encore possible !	D7_level2	Guider_Fred_But	280	a94bf42d
+en	06f94ae	Fred bredouille tellement iel est excité.	D7_level2	Guider_Fred_But	281	f70e8551
+en	0d1e09d	You: Viens avec moi ...	D7_level2	Guider_Fred_But	282	b987d524
+en	0efc14b	-> Il est temps de se servir des fiches de révision	D7_level2	Guider_Fred_But	283	9982f127
+en	0dadce9	Vous demandez à Room Mate de basculer la pièce en mode "immersion studieuse". Cependant, vous précisez à votre IA que vous ne souhaitez pas activer les modules vidéos "work with me".	D7_level2	Reviser_Fiches1	290	423b223c
+en	0b049fb	Puisqu'aujourd'hui, vous ne travaillez pas seul mais en duo. Fred vous observe, émerveillé:	D7_level2	Reviser_Fiches1	291	f1d992b3
+en	0253bc9	Fred_happy: T'es vraiment un pro du business universitaire.	D7_level2	Reviser_Fiches1	292	d4044f5a
+en	0ed9396	You: Ouais. Bon, c'est pas tout, on a du pain sur la planche.	D7_level2	Reviser_Fiches1	293	b5933531
+en	0f71be9	Fred: Comment on s'y prend? C'est toi le big boss !	D7_level2	Reviser_Fiches1	294	9552b648
+en	0c94a8a	-> C'est vous qui lisez vos fiches de révision à Fred. #once	D7_level2	Reviser_Fiches1	295	9c0381a2
+en	03dc710	-> Vous donnez les fiches à Fred. Vous lui demandez ensuite de vous les lire à haute voix. #once	D7_level2	Reviser_Fiches1	296	89cca36d
+en	09add10	-> Vous lisez tous les deux les fiches. #once	D7_level2	Reviser_Fiches1	297	3a50c9ee
+en	0f3b4c8	Vous avez conscience du manque de préparation de Fred.	D7_level2	PJ_Lit_Fiches	304	f90ac038
+en	0c65443	You: Je sais que tu n'as pas encore mis le nez dans tes cours. Moi si.	D7_level2	PJ_Lit_Fiches	305	8483a227
+en	0f18529	Fred_surprised: Et alors ? C'est une compétition ?	D7_level2	PJ_Lit_Fiches	306	3eeea7a3
+en	018ce43	You: Naan, mais je pense préférable de commencer par te lire mes fiches.	D7_level2	PJ_Lit_Fiches	307	e4361e68
+en	0a643f8	Fred_angry: Tu plaisantes ?	D7_level2	PJ_Lit_Fiches	308	b4918ea3
+en	0595b44	You: Pas du tout. Cela va te servir de séance de révision accélérée.	D7_level2	PJ_Lit_Fiches	309	a1a18d2d
+en	0eaeb45	Fred_surprised: C'est trop généreux de ta part.	D7_level2	PJ_Lit_Fiches	310	9cade646
+en	0c3dedc	You: Merci.	D7_level2	PJ_Lit_Fiches	311	167ab86b
+en	0dbb35e	Fred_surprised: Tu es une mère pour moi.	D7_level2	PJ_Lit_Fiches	312	b741e37c
+en	0d7eeb7	You: En plus, tu peux suivre en regardant les doubles que je t'ai données.	D7_level2	PJ_Lit_Fiches	313	b8762647
+en	0474116	Fred_surprised: Surtout moi qui adore lire...	D7_level2	PJ_Lit_Fiches	314	724f9ae1
+en	034379f	Vous réalisez trop tard votre erreur. Fred adore échanger oralement avec ses camarades. Iel n'arrête pas de vous interpeller. Vous tentez de lui répondre le plus brièvement possible.	D7_level2	PJ_Lit_Fiches	315	2a736911
+en	0109ca6	Mais iel ne cesse de vous poser d'autres questions, qui entraînent d'autres questions. Vous lui intimez l'ordre de cesser de vous interrompre. Ce qu'iel fait de mauvais gré.	D7_level2	PJ_Lit_Fiches	316	37036edb
+en	0615b47	Votre lecture de vos fiches de révision se transforme en soporifique cours magistral. Vous constatez que l'attention de Fred faiblit en même temps que la fréquence de ses interventions.	D7_level2	PJ_Lit_Fiches	317	a43b5718
+en	04d7c9d	C'est normal qu'iel finisse par perdre patience et balancer vos fiches de révision aux quatre coins de la pièce.	D7_level2	PJ_Lit_Fiches	318	b17a7f67
+en	0a8b119	-> Choisir une autre méthode.	D7_level2	PJ_Lit_Fiches	319	1efa2ae2
+en	02af3dd	You: Je sais que tu n'as pas encore mis le nez dans tes cours.	D7_level2	Fred_Lit_Fiches	326	9de610a9
+en	0af0242	Fred: Je vois que tu lis dans mes pensées.	D7_level2	Fred_Lit_Fiches	327	4994abbb
+en	069d155	You: Naan, mais je te connais bien. Et c'est parce que je te connais bien que je te demande de les lire, à ma place.	D7_level2	Fred_Lit_Fiches	328	3347b2b1
+en	0c02e08	Fred_surprised: À ta place ?	D7_level2	Fred_Lit_Fiches	329	c8bd4e85
+en	00b467c	You: Contrairement à toi, je me suis déjà replongé dans la philosophie quantique. Mes souvenirs sont plus frais. C'est moi qui devrait lire ces fiches.	D7_level2	Fred_Lit_Fiches	330	f8d99ebf
+en	0a548d6	Fred_angry2: Alors, fais-le ! Ce sont les tiennes après tout !	D7_level2	Fred_Lit_Fiches	331	0971fbde
+en	07282d4	You: Non merci. Il faut que tu te les appropries ! Je t'en prie, lis-les...	D7_level2	Fred_Lit_Fiches	332	c9e2fbad
+en	0a74d2a	Fred_angry: Tu déconnes ?!	D7_level2	Fred_Lit_Fiches	333	3b69086e
+en	0e1872d	You: Naan, je le fais pour toi.	D7_level2	Fred_Lit_Fiches	334	cee000a2
+en	0234c29	Fred_sad: Arrête de me prendre pour ton petit frère.	D7_level2	Fred_Lit_Fiches	335	66aedad0
+en	01a8af1	De mauvais gré, Fred se force à lire vos fiches. Vous constatez qu'iel peine à développer les mots ou les phrases clés qu'elles contiennent.	D7_level2	Fred_Lit_Fiches	336	e7ff3ecd
+en	014f680	Et ce n'est pas seulement parce qu'il semble mécontent. Vos fiches ne sont que des synthèses, des résumés succincts.	D7_level2	Fred_Lit_Fiches	337	2373ac5a
+en	0c5253c	Le verdict est clair et sans appel : vous vous êtes planté.	D7_level2	Fred_Lit_Fiches	338	47968d55
+en	09bb77b	-> Choisir une autre méthode.	D7_level2	Fred_Lit_Fiches	339	1efa2ae2
+en	04fcf19	You: Voilà ce que je te propose. En s'aidant de mes fiches, on se pose des questions sur la philosophie quantique.	D7_level2	Duo_Echange_Fiches	346	5e83032a
+en	0cbdea5	Fred_happy: OK. Tu commences ?	D7_level2	Duo_Echange_Fiches	347	0f19939c
+en	018ba85	You: Non non, à toi l'honneur.	D7_level2	Duo_Echange_Fiches	348	71d29f06
+en	097f739	Fred_smiling: Merci.	D7_level2	Duo_Echange_Fiches	349	a0a14bc0
+en	05b565b	Fred se prend au jeu. Iel inspecte vos fiches de révision. Vous pose une question. Vous tentez d'y répondre en sollicitant vos connaissances, imparfaites mais plus solides que les siennes.	D7_level2	Duo_Echange_Fiches	350	47a2b78c
+en	0f9d745	Iel vous corrige votre erreur à l'aide de vos fiches, iel approfondit vos arguments.	D7_level2	Duo_Echange_Fiches	351	a495e02a
+en	05423f8	You: À mon tour.	D7_level2	Duo_Echange_Fiches	352	f76a8e18
+en	0c2596d	Fred_smiling: Ce sera plus facile de me piéger.	D7_level2	Duo_Echange_Fiches	353	69a928f7
+en	02933de	You: C'est pas le but. Le but est de réviser de manière ludique et interactive.	D7_level2	Duo_Echange_Fiches	354	0a7fcca6
+en	02482cc	Fred_happy: Comme dans un jeu ?	D7_level2	Duo_Echange_Fiches	355	c547526a
+en	0f87161	You: Ouais.	D7_level2	Duo_Echange_Fiches	356	825adff7
+en	0f4d4b4	Vous vous plongez dans vos fiches. Vous choisissez un concept ou une notion précise. Vous lui posez à votre tour une question. Iel répond avec sa verve habituelle.	D7_level2	Duo_Echange_Fiches	357	ed0d2295
+en	093f1b0	Vous devez, vous aussi, rectifier son argumentaire. Fred ne maîtrise pas encore bien ses sujets. Surtout au début de la séance. C'est encore très vague et parcellaire.	D7_level2	Duo_Echange_Fiches	358	bf51c1b7
+en	012183f	Vous n'oubliez pas pour autant de ménager des pauses régulières en musique avec votre cycloluth de Feudall.	D7_level2	Duo_Echange_Fiches	359	9d70de6f
+en	0285397	Connaissant assez bien les goûts de Fred, vous optez pour des improvisations à sonorité plus métalliques. Vous branchez votre instrument sur un amplificateur.	D7_level2	Duo_Echange_Fiches	360	5c6b2b9c
+en	09da8fe	Fred: Gosh ! T'es vraiment doué en guitare.	D7_level2	Duo_Echange_Fiches	361	30d11c5e
+en	0df24a5	Et le jeu de ping pong entrecoupé d'interludes métalleux continue ainsi pendant des heures. Un vrai moment de délice et de partage.	D7_level2	Duo_Echange_Fiches	362	0a582d78
+en	07981a2	Puis, votre horloge connectée vous informe qu'il est plus de 20 heures.	D7_level2	Duo_Echange_Fiches	363	d915f2a9
+en	062cd5e	You: Tu veux manger ici avec moi ?	D7_level2	Duo_Echange_Fiches	364	304d1563
+en	07c8aaf	Fred: Yes, j'ai mega faim !	D7_level2	Duo_Echange_Fiches	365	f4fff51b
+en	0c29fb9	-> Dîner avec Fred.	D7_level2	Duo_Echange_Fiches	366	db8a3ab0
+en	04819a7	Vous enfournez deux maxi pizzas congelées dans le four. Deux maxi plats cuisinés que vous dévorez, Fred et vous, avec bonheur...	D7_level2	Diner_Dim	373	98c9097f
+en	05f7934	En vous remémorant les moments les plus incroyables de votre journée de révision...	D7_level2	Diner_Dim	374	e06c9c1c
+en	07d9908	C'est alors que vous vous souvenez de votre grand-mère...	D7_level2	Diner_Dim	375	685dc7fc
+en	08f9694	You: Désolé, j'ai oublié. Je dois rappeler ma grand-mère. Elle est à l'hôpital.	D7_level2	Diner_Dim	376	73716e39
+en	04e6bf1	Fred_smiling: No worry. Je te laisse.	D7_level2	Diner_Dim	377	0fd1ca9e
+en	053d16e	You: T'es pas obligé de partir.	D7_level2	Diner_Dim	378	6a988a7d
+en	04a37fe	Fred_excited: Normal, c'est un family business. Je suis que ton... meilleur pote.	D7_level2	Diner_Dim	379	f6e94279
+en	0374716	Fred éclate de rire avant de se lever et de vous laisser seul avec votre palmphone.	D7_level2	Diner_Dim	380	5067717d
+en	082f7ce	Votre grand-mère décroche dès la première sonnerie.	D7_level2	Diner_Dim	381	b50f2754
+en	03ed053	Elle vous arrose à nouveau de ses paroles sucrées et affectueuses.	D7_level2	Diner_Dim	382	3ec9b8c0
+en	0d5f4c4	Les pharmaceutiques y sont pour quelque chose. N'empêche. Quelle femme, une authentique dure-à-cuire...	D7_level2	Diner_Dim	383	b75b8699
+en	0feb99f	Vous sentez le poids de la fatigue accumulée. Un petit tour aux toilettes pour se laver les dents. On enfile sa tenue pour la nuit.	D7_level2	Diner_Dim	384	8f652caf
+en	03ffbe3	-> Au dodo !	D7_level2	Diner_Dim	385	22401f91
+en	0881f9d	Vous avez fait du bon boulot avec Fred dimanche.	D7_level2	Dodo_Dim_Lun	392	249fc678
+en	07b6271	Vous fermez les yeux et plongez dans un sommeil profond et durable...	D7_level2	Dodo_Dim_Lun	393	90ac5a97
+en	01b7d19	Vous rouvrez les yeux quand votre horloge connectée sonne. Il est huit heures.	D7_level2	Lundi_matin	400	421b3f94
+en	078a56c	Vous avalez un petit déjeuner, simple et rapide : une boîte de chimicookies et un synthécafé.	D7_level2	Lundi_matin	401	0872e3a6
+en	00604eb	Maintenant, il va falloir se remettre à retravailler vos fiches de révision...	D7_level2	Lundi_matin	402	1beb563e
+en	053a557	Vous appelez Fred et lui demandez de revenir réviser avec vous, ou vous allez chercher Fred directement chez lui ?	D7_level2	Lundi_matin	403	92ae9611
+en	0548d21	-> Appeler Fred	D7_level2	Lundi_matin	404	effafd30
+en	0689a6f	-> Aller chez Fred	D7_level2	Lundi_matin	405	1fa0b0b6
+en	085ce64	Vous téléphonez chez Fred. La sonnerie sonne dans le vide.	D7_level2	Call_Fred	412	00825863
+en	0454e89	Ce n'est pas son genre. Vous laissez un message avant de raccrocher. Vous lui dites bien qu'il est important qu'il retravaille ses fiches de révision. Pour l'avoir vécu, vous savez combien le travail de mémorisation est encore fragile et instable.	D7_level2	Call_Fred	413	9441e5b2
+en	0c7bca6	Les minutes passent. Fred ne vous rappelle pas. Que décidez-vous de faire ?	D7_level2	Call_Fred	414	13f7f7d5
+en	01671c7	-> Attendre son rappel	D7_level2	Call_Fred	415	ba8c32be
+en	0115726	-> Aller chez lui	D7_level2	Call_Fred	416	f3444805
+en	0606a95	Vous sonnez chez Fred. Une fois, deux fois, trois fois... Vous ne vous découragez pas. Il en va de son sort universitaire...	D7_level2	Sonner_Fred	423	9cbb0276
+en	07ef993	Finalement, Fred vous ouvre.	D7_level2	Sonner_Fred	424	858799f7
+en	043de2f	You: Fred, habille-toi et suis-moi !	D7_level2	Sonner_Fred	425	420f284c
+en	0442784	Fred_surprised: Baaaah........ Pourquoi ?	D7_level2	Sonner_Fred	426	c46648a1
+en	0a1094f	You: On doit encore réviser les fiches !	D7_level2	Sonner_Fred	427	0c02d340
+en	0b22922	Fred_surprised: Mais on a pas cessé de le faire hier ?!	D7_level2	Sonner_Fred	428	c724b4d4
+en	0489a8d	You: Ce n'est pas suffisant. C'est comme la peinture, il faut remettre une couche !	D7_level2	Sonner_Fred	429	6f6bca10
+en	0d917c1	Fred_happy: Ha Ha ! J'adore ta blague !	D7_level2	Sonner_Fred	430	a507820a
+en	007b572	You: Ce n'est pas une blague ! Tu sais que les jurés possèdent un détecteur neurocérébral !	D7_level2	Sonner_Fred	431	2ef41120
+en	06c6570	Fred_surprised: Un quoi ?	D7_level2	Sonner_Fred	432	8afd5b8b
+en	09b217c	You: Un détecteur neurocérébral : ils vont fouiller dans ton cerveau et ils t'interrogeront sur ce que tu connais le moins !	D7_level2	Sonner_Fred	433	be354792
+en	00860a4	Fred_angry: Tu délires, c'est de la science fiction !	D7_level2	Sonner_Fred	434	d42e0af3
+en	00cea69	You: Crois-moi, nous sommes dans un univers de science fiction.	D7_level2	Sonner_Fred	435	c21d3cf7
+en	0a605d6	Fred_surprised: Sérieux ?	D7_level2	Sonner_Fred	436	1626e57f
+en	009ebfa	You: Sérieux.	D7_level2	Sonner_Fred	437	878ebb7b
+en	08b1257	Fred_smiling: C'est génial ce que tu dis. Je voudrais avoir le même.	D7_level2	Sonner_Fred	438	7e24b35a
+en	0a63c0f	You: En attendant, il faut s'en prémunir. Il faut se remettre à réviser. Suis-moi	D7_level2	Sonner_Fred	439	988a2e49
+en	0e5b278	Fred: OK, Boss.	D7_level2	Sonner_Fred	440	4f14b0c3
+en	0227c9d	Fred s'habille, prend un petit-déjeuner éclair et vous rejoint dans votre chambre.	D7_level2	Sonner_Fred	441	67ef1675
+en	0f61b15	-> Retour dans la chambre.	D7_level2	Sonner_Fred	442	9b08907a
+en	053f5cc	Vous attendez Fred...	D7_level2	Attendre_Fred	449	74e59e38
+en	089f8a2	Encore et encore...	D7_level2	Attendre_Fred	450	e82bd84f
+en	0acf125	Manifestement, iel pense qu'une seule séance de révision avec vos fiches lui suffit. Vous avez oublié que Fred n'a pris toute la mesure de ses limites.	D7_level2	Attendre_Fred	451	73e1d7c0
+en	0822be4	Soit, iel se surestime, soit iel se sous-estime. Vous ne pouvez encore le laisser seul, sans le guider jusqu'au Grand Oral.	D7_level2	Attendre_Fred	452	05a29996
+en	0667f38	Vous avez encore foiré. Il faut tout recommencer !	D7_level2	Attendre_Fred	453	924917a9
+en	0737cb6	-> Retour à lundi matin!	D7_level2	Attendre_Fred	454	f299c3e2
+en	00f2806	Vous redemandez à Room Mate de lancer le mode "immersion studieuse" dans votre chambre.	D7_level2	Reviser_Fiches2	461	fbc0bc02
+en	027fd8e	C'est vous qui démarrez la session. Le jeu de ping pong reprend, entrecoupé d'interludes métalleux entre chaque session "pomodoro".	D7_level2	Reviser_Fiches2	462	0f09f58d
+en	05a054a	C'est encore un pur moment de complicité, de délire, de bonheur et de partage enrichissant.	D7_level2	Reviser_Fiches2	463	01d5aed0
+en	0c24b42	Fred: Yoooo ! Tu avais raison, j'en avais besoin de cette séance de rafraîchissement.	D7_level2	Reviser_Fiches2	464	3958b08b
+en	01a2aaa	You: Je sais, je sais. On appelle ces séances des "piqûres de rappel".	D7_level2	Reviser_Fiches2	465	f153b3e8
+en	0b5dc62	Fred_happy: Damned, ça me pique rien que de t'entendre le dire.	D7_level2	Reviser_Fiches2	466	970f66f8
+en	07924cd	You: Ouais.	D7_level2	Reviser_Fiches2	467	825adff7
+en	03d14cb	Fred_smiling: Yes yes. En tout cas, tu es vraiment un master de l'apprentissage !	D7_level2	Reviser_Fiches2	468	4c122954
+en	0f366d9	You: Merci.	D7_level2	Reviser_Fiches2	469	167ab86b
+en	0cb3e6b	C'est alors que votre horloge connectée vous informe qu'il est 13 heures. Il faut manger avant de partir à l'oral !	D7_level2	Reviser_Fiches2	470	ee436346
+en	0f368e7	Vous proposez un repas rapide et basique, pour vous et votre pote. Burger Big Proteins Double Cheese et Xeno Cola ! Vous avalez tous les deux votre sandwich, vite fait bien fait !	D7_level2	Reviser_Fiches2	471	a692056e
+en	03ed049	-> Au Grand Oral !	D7_level2	Reviser_Fiches2	472	9ddf980a
+en	09dc704	Avant d'entrer dans la salle, Fred et vous vous souhaitez bonne chance.	D7_level2	Grand_Oral	479	bfc14859
+en	023cba1	Le reste... se déroule sans réelle encombre. Vous êtes de nouveau inspecté par les lunettes de détection neurocérébrale.	D7_level2	Grand_Oral	480	17a117a7
+en	0b61f12	Le jury vous interroge cette fois sur "l'intrication quantique". Vous parvenez encore à présenter une argumentation cohérente, solide, qui résiste aux questions des jurés.	D7_level2	Grand_Oral	481	d59bb4b0
+en	066e421	Quand vous sortez de là, vous devez attendre quelques heures avant de voir sortir à son tour Fred.	D7_level2	Grand_Oral	482	e3d5d1d4
+en	0806a2a	You: Alors ?	D7_level2	Grand_Oral	483	16010311
+en	00efd00	Fred_smiling: Je pense que c'est bon.	D7_level2	Grand_Oral	484	af30942a
+en	0805b9d	You: Je suis tombé sur le sujet de l'intrication quantique. Et toi ?	D7_level2	Grand_Oral	485	c03f61da
+en	07044c8	Fred: Celui de la décohérence quantique.	D7_level2	Grand_Oral	486	06bf1aa8
+en	0f91a81	You: Suspense...	D7_level2	Grand_Oral	487	55c006a4
+en	0ad9f81	Fred_smiling: T'inquiète, j'ai géré.	D7_level2	Grand_Oral	488	5eebaa7c
+en	04aa127	Vous restez là, à discutez, le temps que les résultats s'affichent sur l'écran.	D7_level2	Grand_Oral	489	7d5acc0d
+en	0dd8817	You: Super, Fred! T'es trop fort ! Tu as eu [b]A+[/b] !	D7_level2	Grand_Oral	490	c159cdeb
+en	0df9254	Fred_happy: Merci. Mais c'est grâce à toi tout ça, mon pote. Et toi ? Tu as eu combien ?	D7_level2	Grand_Oral	491	b995e5e7
+en	05f9c10	You: Heu... [b]B+[/b]. C'est pas aussi bling que toi...	D7_level2	Grand_Oral	492	ead793ac
+en	0a54008	Fred_surprised: Cesse de te rabaisser, { $name }. Tu mérites amplement d'avoir un [b]A+[/b].	D7_level2	Grand_Oral	493	d64c2255
+en	02056b2	You: Ouais... L'important, c'est que tu restes ici.	D7_level2	Grand_Oral	494	112374cf
+en	0bd6159	Fred_surprised: Quoi ?!	D7_level2	Grand_Oral	495	324ac829
+en	0d671f3	You: Tu te demandais pas si tu allais quitter la fac ?	D7_level2	Grand_Oral	496	2d8dbc60
+en	0d2086d	Fred: Damned, tu l'avais senti ?	D7_level2	Grand_Oral	497	7b52ba77
+en	0c1b24a	You: Si l'on veut.	D7_level2	Grand_Oral	498	062ec2ee
+en	0dda84c	Fred_excited: Maintenant qu'on a les résultats et qu'ils sont bons... On peut aller fêter ça à la cafétéria ?	D7_level2	Grand_Oral	499	06073cbd
+en	02d8c98	You: Yes !	D7_level2	Grand_Oral	500	0e75079e
+en	0a3011c	Vous vous installez à la cafétéria. Les étudiants présents dans la salle vous fixent des yeux.	D7_level2	Feter_Cafeteria	507	9a07e0cd
+en	0209cff	You: Tu as vu ? Les gens ont remarqué que la star de l'Académie est à la cafétéria en ce moment.	D7_level2	Feter_Cafeteria	508	ef35d605
+en	07f1277	Fred: Pas seulement { $name }. Ils ont aussi reconnu la star du glam rock : toi !	D7_level2	Feter_Cafeteria	509	e2a50d2c
+en	0456a2f	You: Naan, tu plaisantes.	D7_level2	Feter_Cafeteria	510	eecbbf92
+en	0523ac6	Fred_smiling: Yes yes. Tu vaux plus que tu ne le crois.	D7_level2	Feter_Cafeteria	511	04d50621
+en	0e5451a	You: Merci. De ta part, c'est un sacré compliment.	D7_level2	Feter_Cafeteria	512	a4ae7b3a
+en	08f3bd7	Fred: Tu le mérites. Sans toi, j'allais dans le mur.	D7_level2	Feter_Cafeteria	513	e3139d2f
+en	0cfd59e	You: Tu sais. c'est grâce à toi aussi que je suis devenu un killer de la métacognition.	D7_level2	Feter_Cafeteria	514	ecca0933
+en	0b29efd	Fred_surprised: La métacognition ?! C'est quoi ça ?	D7_level2	Feter_Cafeteria	515	a2bff221
+en	03ead8e	You: Pour faire simple : l'art d'apprendre à apprendre.	D7_level2	Feter_Cafeteria	516	0b5a1693
+en	097a96f	Fred: Yes yes. Je confirme. Allez, c'est mon tour de jouer le boss, c'est moi qui commande et paye !	D7_level2	Feter_Cafeteria	517	f4a71d4f
+en	0676bc6	Fred commande à boire. C'est l'heure de l'apéro. On vous sert des pintes de cyberbière bien mousseusses. Vous trinquez et goûtez le breuvage. Pas mal. Vous sentez que c'est le moment de le dire à Fred...	D7_level2	Feter_Cafeteria	518	d79352c4
+en	047eb74	You: Je t'avoue même que, grâce à toi, j'ai mieux compris mes erreurs.	D7_level2	Feter_Cafeteria	519	de84c81c
+en	0feb0fb	Fred_surprised: Quelles erreurs ?	D7_level2	Feter_Cafeteria	520	e9cfd346
+en	03ffc02	-> Avouer à Fred un secret	D7_level2	Feter_Cafeteria	521	176207a5
+en	0ed11ab	You: Tu l'as dis. Je ne me faisais pas assez confiance. Je me sentais tellement en-dessous de toi.	D7_level2	Avouer_Fred_Secret	528	6bfd00c0
+en	0098e77	Fred: T'exagères.	D7_level2	Avouer_Fred_Secret	529	f364ded4
+en	09df424	You: Naan. Tu me semblais indépassable. Je voulais tant être ton égal.	D7_level2	Avouer_Fred_Secret	530	655c2d75
+en	001d046	Fred_happy: Rien que ça ?	D7_level2	Avouer_Fred_Secret	531	81b5e102
+en	0f63a70	You: Voire plus ! Je rêvais d'être meilleur que la star de l'Académie !	D7_level2	Avouer_Fred_Secret	532	9dd91002
+en	07a6234	Fred: Sans blague ! Tu es aussi une star à l'Académie, je te le redis.	D7_level2	Avouer_Fred_Secret	533	5690ff8e
+en	0618885	You: Ouais. Mais c'est pas le plus important.	D7_level2	Avouer_Fred_Secret	534	77e5c869
+en	0dd5c66	Fred_smiling: OK.	D7_level2	Avouer_Fred_Secret	535	d41a34ba
+en	07c7d32	You: Ce qui compte, c'est ce que je veux, moi. Te dépasser dans le classement, j'en ai rien à foutre !	D7_level2	Avouer_Fred_Secret	536	e8d5bcf7
+en	0e2b8ee	You: Cela ne m'aide pas à mieux me connaître. Et c'est ça ce qui compte : savoir qui l'on est vraiment, ce que l'on veut dans la vie, dans les études.	D7_level2	Avouer_Fred_Secret	537	447ab8ac
+en	0ba8e99	Fred_happy: Yes yes. T'as 100% raison.	D7_level2	Avouer_Fred_Secret	538	5aea6c45
+en	0109c59	You: Quand j'ai compris que tu projetais de quitter l'Académie, j'ai paniqué !	D7_level2	Avouer_Fred_Secret	539	112e4c27
+en	058ce1a	Fred: Sérieux ?	D7_level2	Avouer_Fred_Secret	540	a5cfcc4b
+en	07fb371	You: Tu es mon meilleur pote.	D7_level2	Avouer_Fred_Secret	541	8111c9b6
+en	01cf4e6	Fred: Je vois ça.	D7_level2	Avouer_Fred_Secret	542	1563ad60
+en	0f935fe	You: Mais, je comprends là encore que je me suis trompé. Le plus important c'est que, quoiqu'il se passe, nous restions amis.	D7_level2	Avouer_Fred_Secret	543	e3aa7027
+en	031b69c	Fred_smiling: Yes yes. Tu es un vrai sage.	D7_level2	Avouer_Fred_Secret	544	70cdbb7c
+en	06127fc	You: J'espère en tout cas le devenir un jour.	D7_level2	Avouer_Fred_Secret	545	5f0f636a
+en	0703a6b	La soirée continue un moment. Vous payez la seconde tournée. Fred en commande une troisième. Vous en profitez également pour grignotter une salade ou un chill and chips.	D7_level2	Avouer_Fred_Secret	546	24919634
+en	080ca85	L'heure tourne. Il est grand temps de rentrer. Vous reprenez les cours demain matin.	D7_level2	Avouer_Fred_Secret	547	3e3790a3
+en	0958213	Vous vous faites l'accolade et vous vous dites à demain !	D7_level2	Avouer_Fred_Secret	548	0839fa48
+en	0e7d1a9	-> Rentez dormir	D7_level2	Avouer_Fred_Secret	549	0a399b4a
+en	03afffb	Dans votre chambre, vous vous déshabillez, allez faire un petit tour aux toilettes et vous gagnez le lit.	D7_level2	Dormir	556	a20a05d5
+en	0bcc23a	Fatigué, repu, mais content d'être parvenu à remplir cette dernière mission... La dernière mission... Il n'y en aura plus d'autre après ?...	D7_level2	Dormir	557	4d2bb5a3
+en	09b1682	Temde_cheerful: Yep, c'est ta dernière épreuve et tu l'as réussie.	D7_level2	Dormir	558	390590bd
+en	0e108f0	You: Je vous verrai plus ?	D7_level2	Dormir	559	a25dd9f3
+en	02944e3	Temde_smiling: Presque plus.	D7_level2	Dormir	560	1f334d8f
+en	0fb0084	You: Comment ça, presque plus ?	D7_level2	Dormir	561	f554086e
+en	00bf398	Temde: Viens { $name }, rejoins-nous, ça sera plus facile de te l'expliquer...	D7_level2	Dormir	562	dee4ef6c
+en	045dea8	-> Suivre Miss Temdé.	D7_level2	Dormir	563	4c2c0dde
+en	078268e	Vous vous retrouvez encore dans ce verdoyant écrin de calme et de sérénité. Les quatre Sages vous applaudit, le sourire aux lèvres.	D7_level2	AuRevoir_Sages	570	137b27e7
+en	017b09c	Sapiens_happy: Bravo ! Tu utilises avec brio les quatre stratégies d'apprentissage. En aidant Fred à surmonter ses propres obstacles, tu as su exploiter au mieux les techniques et les secrets que nous t'avons enseignés.	D7_level2	AuRevoir_Sages	571	c5343f27
+en	0a68f0c	Ledai_happy: Parfait ! Tu as franchi la dernière marche. Tu as [b]appris à apprendre[/b].	D7_level2	AuRevoir_Sages	572	69abfbb0
+en	0e05aaf	Azul_happy: Félicitations ! Tu es devenu un [b]Apprenant Universel[/b] !	D7_level2	AuRevoir_Sages	573	9393cdb6
+en	0d04fae	Temde_happy: Yep ! Je te l'ai dit. Tu es autonome. Tu n'as plus besoin de nous.	D7_level2	AuRevoir_Sages	574	fc5252c2
+en	0cce37c	You: Vous voulez dire que je ne vous verrai plus ?	D7_level2	AuRevoir_Sages	575	e0238f17
+en	0341448	Temde_sad: Non, ce n'est pas ça.	D7_level2	AuRevoir_Sages	576	4dc20f52
+en	0bfe203	Ledai_explaining: Nous ne viendrons plus te réveiller tous les soirs.	D7_level2	AuRevoir_Sages	577	69912759
+en	0e76ddc	Azul_proud: Mais nous serons toujours présents à tes côtés.	D7_level2	AuRevoir_Sages	578	c69b94a7
+en	0b32a64	Temde_smiling: Dans ton coeur et dans tes pensées.	D7_level2	AuRevoir_Sages	579	dfcbfb5b
+en	0417897	Sapiens_happy: Dans tes lectures et tes écrits.	D7_level2	AuRevoir_Sages	580	4022aba8
+en	0434098	You: Un peu comme des anges ?	D7_level2	AuRevoir_Sages	581	5761be75
+en	0029545	Azul_cheerful: Oui. Nous sommes devenus tes Anges de la métacognition.	D7_level2	AuRevoir_Sages	582	a223de3e
+en	062b141	You: Cool ! C'est chouette !	D7_level2	AuRevoir_Sages	583	8ee79d6c
+en	097ac2c	Sapiens_angry: Suffit. Il est tard. Il te faut dormir.	D7_level2	AuRevoir_Sages	584	3081cc23
+en	0d4a8c1	Ledai_happy: Bonne nuit { $name }.	D7_level2	AuRevoir_Sages	585	b02e6ffb
+en	0366dbd	Azul_happy: Que tes songes soient créatifs et originaux.	D7_level2	AuRevoir_Sages	586	a4c01ba6
+en	050222d	Temde_cheerful: N'oublie pas de rêver à nous de temps en temps...	D7_level2	AuRevoir_Sages	587	1858672a
