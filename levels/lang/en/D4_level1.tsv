@@ -1,0 +1,293 @@
+LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?
+en	08d6679	Après vous êtes réveillé en douceur... Vous prenez votre petit déjeuner tranquillement. Une boîte de biocookies et un thé décaféiné, rien de tel pour commencer une nouvelle journée.	D4_level1	Start	8	392da85c
+en	0b2008b	Vous débarrassez la cuisine, vous faites votre toilette, vous préparez vos affaires pour aller à la bibliothèque, quand votre palmphone vibre :	D4_level1	Start	9	72d67485
+en	07aa125	C'est Fred!	D4_level1	Start	10	989081df
+en	0b9f6c3	-> Prendre l'appel	D4_level1	Start	11	4ee62c7c
+en	053256a	Fred@holo_excited: Hello, { $name }, la forme ? Motivé ?	D4_level1	Appel_Fred	18	45fa2a07
+en	0269dec	You: Oui, on travaille en binôme aujourd'hui sur notre mémoire. La théorie du chaos dans la macrobiologie post-darwinienne.	D4_level1	Appel_Fred	19	1e52a103
+en	03d8889	Fred@holo_smiling: Cool, tu me retrouves ?	D4_level1	Appel_Fred	20	5c14265d
+en	0cc96ad	You: Tu es déjà à la bibliothèque ?	D4_level1	Appel_Fred	21	da9bea4d
+en	025ef02	Fred@holo_happy: Non, je suis à la maison, je viens juste de recevoir le dernier GTR : Grand Thrill Rodéo 66 ! Une tuerie !	D4_level1	Appel_Fred	22	4aea521a
+en	0504f52	You: Je te rappelle qu'on doit finir notre projet sur la théorie du chaos aujourd'hui, avant minuit.	D4_level1	Appel_Fred	23	f3d5823e
+en	084a465	Fred@holo_smiling: Yes, yes. Viens d'abord chez moi !	D4_level1	Appel_Fred	24	8310210e
+en	088ed24	You: Fred, on a encore du pain sur la planche.	D4_level1	Appel_Fred	25	e57aa77f
+en	081da26	Fred@holo_smiling: Yes yes, on verra cet après-midi.	D4_level1	Appel_Fred	26	7769510c
+en	0197eed	Vous connaissez Fred, iel est têtu. Vous n'avez que deux possibilités :	D4_level1	Appel_Fred	27	8fcddc67
+en	0208632	-> Vous allez à la bibliothèque et vous espérez qu'il vous rejoindra.	D4_level1	Appel_Fred	28	0d79f065
+en	0265d1b	-> Vous allez chez lui et vous l'obligez à venir à la bibliothèque.	D4_level1	Appel_Fred	29	8d31355d
+en	0fa8535	Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez.	D4_level1	Bibli_soloAM	36	69e6b7ba
+en	0d36258	Vous relisez tranquillement tout ce que vous avez déjà noté. Vous en profitez pour revoir certaines références, approfondir d'autres. C'est passionnant la théorie du chaos. La macrobiologie également. Le temps passe, les minutes et les heures s'écoulent...	D4_level1	Bibli_soloAM	37	32d6c925
+en	0acef83	Mais que fait donc Fred ? Le voilà enfin.	D4_level1	Bibli_soloAM	38	5e9e44b7
+en	01537ff	You: Mais qu'est-ce que tu foutais ?	D4_level1	Bibli_soloAM	39	aa3ae785
+en	04e5547	Fred_smiling: C'est trop de la bombe nucléaire GTR 66!	D4_level1	Bibli_soloAM	40	67f65268
+en	0e8fc30	You: T'as vu l'heure ? La bibliothèque ferme à 20h !	D4_level1	Bibli_soloAM	41	4b5e08e9
+en	0657129	Fred_happy: No worry, j'ai tout dans la tête.	D4_level1	Bibli_soloAM	42	7a4dafad
+en	057c3d1	You: J'espère bien.	D4_level1	Bibli_soloAM	43	d9aa3674
+en	0fec0a5	Fred_smiling: On commence par quoi ?	D4_level1	Bibli_soloAM	44	83787d8c
+en	0de0a6f	You: Heu.	D4_level1	Bibli_soloAM	45	bcc06bf1
+en	0bf3676	Fred_smiling: C'est toi le chef de projet, non ?..	D4_level1	Bibli_soloAM	46	019e757a
+en	0039505	Vous ne saisissez pas très bien le sens des paroles de Fred. Que veux-t-iel dire ?	D4_level1	Bibli_soloAM	47	63867e1a
+en	0f40937	Vous retournez vous asseoir à la même table que ce matin. L'ambiance est toujours calme et propice à la l'étude. Vous textez Fred pour lui dire que vous l'attendez au même endroit.	D4_level1	Bibli_soloPM	54	ac3e14d7
+en	07e6097	Le temps passe, les minutes et les heures s'écoulent. Mais que fait donc Fred ? Pas trop tôt, le voilà...	D4_level1	Bibli_soloPM	55	8cf8054a
+en	00f0da3	You: Tu te fous de moi ou quoi ?	D4_level1	Bibli_soloPM	56	02ada88d
+en	0c06b57	Fred_smiling: C'est trop de la bombe nucléaire GTR 66 !	D4_level1	Bibli_soloPM	57	a2ce3047
+en	0b50035	You: Je te rappelle que la bibliothèque ferme à 20h !	D4_level1	Bibli_soloPM	58	d7a0775c
+en	0d33be5	Fred_happy: No worry, j'ai tout dans la tête, faut juste que je me pose un moment.	D4_level1	Bibli_soloPM	59	88212bf2
+en	0c8be11	You: Il est temps.	D4_level1	Bibli_soloPM	60	3ffb57eb
+en	0b84038	Fred_smiling: Je t'écoute.	D4_level1	Bibli_soloPM	61	a1bfd07d
+en	05fe603	Dingue, Fred vous a suivi à la bibliothèque. C'est une première...	D4_level1	Bibli_binome	68	22c9ede5
+en	0cae9e4	Fred_happy: Au fait, { $name }, félicitations !	D4_level1	Bibli_binome	69	485761cb
+en	0b60bb0	You: Ah bon ?	D4_level1	Bibli_binome	70	285d20be
+en	0c398ee	Fred_smiling: T'as eu [b]B-[/b] à ta note de synthèse sur la PNLIAA	D4_level1	Bibli_binome	71	4d5a5986
+en	0d49155	You: C'est déjà tombé ?	D4_level1	Bibli_binome	72	19ffb5b9
+en	0d71eda	Fred_smiling: Yes, yes.	D4_level1	Bibli_binome	73	61fd180f
+en	0575073	You: Génial! Et toi ?	D4_level1	Bibli_binome	74	19bda726
+en	0a4c759	Fred_happy: Pareil. [b]B-[/b]	D4_level1	Bibli_binome	75	f0dbab48
+en	00775f4	You: C'est pas mal.	D4_level1	Bibli_binome	76	9ce4c75d
+en	0a0862d	Fred_smiling: Oui, vu la vitesse à laquelle j'ai torché ma rédaction.	D4_level1	Bibli_binome	77	fc1a0bfb
+en	056ebc7	You: Justement, on va prendre le temps nécessaire pour rendre un dossier sur la théorie du chaos en macrobiologie post-darwinienne qui mérite A !	D4_level1	Bibli_binome	78	2f0cb593
+en	08dd8d1	Fred_happy: Yes yes... j'espère bien. On commence par quoi ?	D4_level1	Bibli_binome	79	5346ba1d
+en	046f5de	You: Heu...	D4_level1	Bibli_binome	80	94d39185
+en	039ffc7	Fred_smiling: C'est toi le chef de projet, non ? Tu es passé maître en théorie du chaos...	D4_level1	Bibli_binome	81	d7f24c19
+en	0b9dba6	Vous ne saisissez pas très bien le sens des paroles de Fred. Que veux-t-iel dire ?	D4_level1	Bibli_binome	82	63867e1a
+en	07e8242	Fred_happy: Alors, on attaque quoi maintenant, boss ?	D4_level1	Liste_taches	89	265e529c
+en	0b6a071	-> Montrer vos notes à Fred#once	D4_level1	Liste_taches	90	83070153
+en	04da5f6	-> Demander à Fred ses notes#once	D4_level1	Liste_taches	91	2ff7ff17
+en	0d4f0e0	-> Reprendre la rédaction du mémoire#once	D4_level1	Liste_taches	92	a143f8ff
+en	0a46a48	-> Valider le plan du mémoire#once	D4_level1	Liste_taches	93	83abec4f
+en	04c8f62	-> Générer une bulle d'attention#once	D4_level1	Liste_taches	94	f22985a6
+en	022dd53	-> Faire la pause lunch#once	D4_level1	Liste_taches	95	4ecd30a7
+en	0bb361e	You: On se met à la rédaction du mémoire?	D4_level1	Redaction	102	bc59a047
+en	0751afa	Fred_smiling: Yes. On se répartit la tâche comment?	D4_level1	Redaction	103	9ec588bd
+en	0676776	You: Heu... Comme on a dit au début. Je fais la première partie sur le problème des modèles déterministes mais dont le degré d'erreur croît de manière exponentielle.	D4_level1	Redaction	104	205caf4d
+en	039f383	You: Toi, tu fais la seconde, sur l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme.	D4_level1	Redaction	105	4b65bd62
+en	0d88d76	You: Pour la troisième partie sur la macrobiologie, je m'occupe de la section sur la théorie de l'évolution et les équilibres macrobiologiques et toi de la deuxième section sur la révolution du paradigme post-darwinien..	D4_level1	Redaction	106	82548f76
+en	0a78e6a	Fred_happy: OK. Et qui fait la conclusion appliquée à la macrobiologie post-darwinienne ?	D4_level1	Redaction	107	d4eee35f
+en	04141ae	You: Je ferai la conclusion et toi l'intro, avec le problème à 3 corps de Poincaré ?	D4_level1	Redaction	108	f235cc1d
+en	0c4390d	Fred: Si tu le dis.	D4_level1	Redaction	109	44b74954
+en	0d3ecee	Vous reprenez vos brouillons et vos notes et vous commencez à mettre au propre vos idées. Vous vous voulez bien faire les choses. Vous prenez le temps de contrôler régulièrement vos sources et de réutiliser dans votre argumentation les données que vous avez glanées.	D4_level1	Redaction	110	390f1273
+en	0ae9e41	Quand vous relevez la tête, vous voyez Fred, qui vous sourit.	D4_level1	Redaction	111	d3d1b67b
+en	050c0dc	Fred_smiling: Tu avais l'air méga-sérieux. T'as pas arrêté de taper sur l'ordi.	D4_level1	Redaction	112	27d9e456
+en	06845fa	You: Et toi tu as avancé ?	D4_level1	Redaction	113	79ced138
+en	0c67717	Fred_happy: Yes, j'ai tout un monde d'idées, de thèmes et d'arguments dans ma tête. J'ai plein de remarques à faire. On lit et on voit tellement de conneries.	D4_level1	Redaction	114	583d3d47
+en	02f9b50	You: Quoi ?! T'as rien rédigé ?	D4_level1	Redaction	115	61a75a35
+en	01d56a8	Fred_smiling: Si... J'ai commencé à réfléchir à la conclusion.	D4_level1	Redaction	116	00e0f5b5
+en	0e95694	You: Noon!	D4_level1	Redaction	117	85da6781
+en	040a6aa	You: Tu n'as pas faim?	D4_level1	lunch	124	33bd3d9a
+en	077366d	Fred_happy: Si, je manque clairement de fuel là.	D4_level1	lunch	125	1d5a99a7
+en	091abbd	You: On va manger à la cafeteria de la bibli?	D4_level1	lunch	126	243b9461
+en	0c0a9cf	Fred_smiling: yes yes!	D4_level1	lunch	127	e8882f18
+en	0504ddd	-> Cafeteria de la bibliothèque	D4_level1	lunch	128	4f79bf6f
+en	05e3a77	Vous demandez au récepteur de l'IA de la bibliothèque de déployer une "Sphère de Travail Immersive". Aussitôt un dôme de lumière opaque se referme sur votre table et vous isole du reste de la bibliothèque et des étudiants qui y sont. Le son devient net et réverbéré, comme dans un studio d'enregistrement.	D4_level1	Zero_distraction	135	8224682f
+en	0871ea7	Fred_happy: Great, ta bulle de silence. On va pouvoir parler tous les deux sans honte !	D4_level1	Zero_distraction	136	4c55f880
+en	0315da5	You: Pas du tout. C'est pas un environnement pensé pour hurler à gogo, mais pour faciliter la concentration et l'étude.	D4_level1	Zero_distraction	137	40296122
+en	0bc9f26	Fred_sad: Finalement, c'est pas fun ta bulle.	D4_level1	Zero_distraction	138	4de250f9
+en	0ba096f	You: On n'est pas au café, Fred. On doit finir la rédaction du mémoire aujourd'hui.	D4_level1	Zero_distraction	139	1377b7a9
+en	0c484f1	Fred_smiling: Yes Yes...  Et si je te montrais ce qu'on peut faire dans le dernier GTR, y a déjà plein de playthrough sur Zootud ?	D4_level1	Zero_distraction	140	bf18626c
+en	0908b61	You: Naaan... De toute manière, ça ne marcherait pas. Nos connexions sont limitées aux sites académiques.	D4_level1	Zero_distraction	141	720ff9f5
+en	009cae6	Fred_sad: Dis donc, c'est vraiment pas top ta boule immersive...	D4_level1	Zero_distraction	142	6cab4397
+en	0675a3f	Vous êtes content de commander un lunch à la bibliothèque.	D4_level1	Lunch_bibli	149	25c67bce
+en	0fe4b04	Aujourd'hui, vous ne mangez pas un énième Burger Big Protéine Double Cheese, mais une salade gourmande, accompagné d'un grand verre de jus d'orange. C'est tout aussi copieux et vitaminé, et plus équilibré.	D4_level1	Lunch_bibli	150	ddd14e2b
+en	02453c8	Vous êtes content de voir que vos efforts payent. C'est dommage que Fred ne suive pas votre exemple. Il engloutit un Tacos Tex-Mex XXXL et un Xeno Cola double-sugar ! Vous avez mal pour son estomac.	D4_level1	Lunch_bibli	151	9b0a0b7c
+en	06bb0d5	Le temps de faire un petit tour aux toilettes, vous retrouvez Fred en train de jouer avec un étudiant sur une Nanontedo à GTR 66 !	D4_level1	Lunch_bibli	152	f8989c53
+en	03d08b0	You: Plus tard, Fred, on y retourne.	D4_level1	Lunch_bibli	153	a8f4346a
+en	00fb3c6	Fred_smiling: Yes, yes, attends 5 minutes encore.	D4_level1	Lunch_bibli	154	21090e4d
+en	040f0b5	You: Non Fred !	D4_level1	Lunch_bibli	155	c6c36b43
+en	05c3178	Fred_happy: Please...	D4_level1	Lunch_bibli	156	534e63de
+en	09a9dd1	-> Retourner en salle et laisser Fred jouer quelques minutes	D4_level1	Lunch_bibli	157	4713643f
+en	0fe9164	-> Insister pour que Fred vienne avec vous	D4_level1	Lunch_bibli	158	ea98e994
+en	0afc209	You: Tu as dû avancer depuis la dernière fois.	D4_level1	Notes_You	165	00f0aeeb
+en	06385ab	Fred_happy: Yes yes. On échange à nouveau nos commentaires et nos notes ?	D4_level1	Notes_You	166	dd9aca37
+en	0433ce7	You: On commence par les miennes ?	D4_level1	Notes_You	167	71461b91
+en	0cc993e	Fred_excited: Yeeees. Je t'écoute !	D4_level1	Notes_You	168	79228dfb
+en	0a84d86	You: Non, on fait ça par écrit.	D4_level1	Notes_You	169	64a20357
+en	03d17f4	Fred_surprised: Pourquoi ?	D4_level1	Notes_You	170	ce05a667
+en	0deafe4	You: On est dans une bibliothèque, on ne doit pas parler.	D4_level1	Notes_You	171	5c1380e5
+en	07388b0	Fred_surprised: Pourquoi ?	D4_level1	Notes_You	172	ce05a667
+en	08a4055	You: On dérange les travail des autres étudiants.	D4_level1	Notes_You	173	5390ddd9
+en	0612b99	Fred_sad: C'est stupide...	D4_level1	Notes_You	174	9cec009a
+en	0cd49dd	Vous envoyez la mise à jour de vos documents de travail à Fred. Vous voyez votre ami grincer des dents. Iel ne semble pas très heureux de travailler ainsi. D'ailleurs, iel prend son temps à lire et relire vos docs.	D4_level1	Notes_You	175	809cedef
+en	00cff4c	Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous coupez court. Il faut faire silence dans ce "sanctuaire de l'étude". Vous n'y pouvez rien, vous ne faites qu'appliquer le règlement intérieur.	D4_level1	Notes_You	176	a418e4a7
+en	05dba73	Fred_sad: T'es vraiment pas drôle.	D4_level1	Fred_goesback_towork	183	66d63ba2
+en	012be8b	You: J'ai besoin de toi.	D4_level1	Fred_goesback_towork	184	73868b93
+en	08be592	Fred_sad: Ça, j'ai bien entendu. Et si j'avais besoin de toi aussi ?	D4_level1	Fred_goesback_towork	185	35ef3207
+en	0d28f76	You: Tu plaisantes, tu es le meilleur de la promo. C'est moi qui ai de la chance de t'avoir comme partenaire.	D4_level1	Fred_goesback_towork	186	c6bbaafa
+en	05cfba6	Vous retournez au travail à la bibliothèque.	D4_level1	Fred_goesback_towork	187	687e8ff9
+en	0edfc52	-> Se remettre au travail	D4_level1	Fred_goesback_towork	188	9474dca3
+en	03609d0	Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux. C'est à regret que Fred et vous, sortez de l'établissement.	D4_level1	Exit_Bibli	195	af085309
+en	07d545c	You: Merde, on est loin d'avoir fini.	D4_level1	Exit_Bibli	196	92368082
+en	01e8406	Fred_smiling: No worry. Tu termines la rédaction de la partie 1 et de la section 1 de la partie 3. Je m'occupe de la partie 2 et de la section 2 de la partie 3.	D4_level1	Exit_Bibli	197	c3195114
+en	0e30978	You: Et je fais la conclusion et toi...	D4_level1	Exit_Bibli	198	5e4596a2
+en	0b0b64d	Fred_happy: Non, je m'occupes de la conclusion, tu te charges de l'intro.	D4_level1	Exit_Bibli	199	a966904e
+en	0ba6e27	You: OK. On échange nos rendus à 21h, on compile et on valide.	D4_level1	Exit_Bibli	200	ceb3bc66
+en	06c92af	Fred_smiling: No worry.	D4_level1	Exit_Bibli	201	a882a090
+en	0b0533d	Satisfait de vos résolutions, confiant dans les capacité de Fred, habitué à livrer ses rendus à la dernière minute, vous retournez dans votre chambre.	D4_level1	Exit_Bibli	202	19f738eb
+en	02c6d14	Sapiens_happy: Tu vois, nous étions impatients de te revoir.	D4_level1	Assemblee	209	0558cbf6
+en	0fc9524	Azul_proud: C'est que derrière ses airs de maître inflexible, se cache un coeur tendre. N'est-ce pas Master Sapiens ?	D4_level1	Assemblee	210	e210aebc
+en	0896e67	Sapiens_angry: Tu ne crois pas exagérer, Azul ?	D4_level1	Assemblee	211	a1e9ed36
+en	01fe789	Temde_thinking: À peine.	D4_level1	Assemblee	212	76499fa4
+en	0dc65f3	Ledai_explaining: Nous connaissons ton problème, { $name }. Fred te laisse gérer ce projet seul.	D4_level1	Assemblee	213	e615584b
+en	08d251c	You: Ouais, et il ne fait rien pour m'aider.	D4_level1	Assemblee	214	6c71ad21
+en	0a608d8	Sapiens_concerned: Penses-tu ? Il t'a désigné chef de projet. Penses-tu mériter cet honneur ?	D4_level1	Assemblee	215	aed41145
+en	078a509	You: Heu...	D4_level1	Assemblee	216	94d39185
+en	0e1e9b4	Azul_sad: Rassure-toi, on est tous passé par là. Moi, le premier.	D4_level1	Assemblee	217	ff6dfc54
+en	05d2424	Temde_smiling: Je confirme.	D4_level1	Assemblee	218	0d43e99e
+en	00d10f6	Sapiens_thinking: On ne naît pas chef de projet. On le devient.	D4_level1	Assemblee	219	179967ff
+en	091a138	Ledai_explaining: On apprend notamment de nos dysfonctionnements. Et de ceux des autres. Ton erreur a été de ne pas distinguer le profil de Fred. Ce qu'il sait bien faire, ce qu'il ne sait pas faire.	D4_level1	Assemblee	220	ab4622ca
+en	0ded121	Sapiens_thinking: Et c'est justement l'objet de cette quatrième session : déterminer le profil cognitif de ton partenaire.	D4_level1	Assemblee	221	f1741fe2
+en	0f445b0	Azul_happy: Ce qui t'aidera à mieux comprendre le tien.	D4_level1	Assemblee	222	a9c94886
+en	0ddef42	You: Comment faire ?	D4_level1	Assemblee	223	f017be52
+en	04680bf	Sapiens_happy: D'abord, regarde-nous. Nous sommes tous des Sages, des experts de la connaissance. Sommes-nous pour autant semblables ?	D4_level1	Learning_styles	230	0b6b1490
+en	03a449c	You: Pas du tout.	D4_level1	Learning_styles	231	4bf6342e
+en	02f5fc7	Sapiens_happy: Tu le vois bien. La sagesse et la connaissance ont plusieurs visages. Certes, j'estime que certains sages sont plus experts que...	D4_level1	Learning_styles	232	3dc6801f
+en	03c8108	Temde_thinking: Tu va trop loin là !	D4_level1	Learning_styles	233	81c9f759
+en	05a5af3	Sapiens_thinking: Disons que nos cerveaux ne sont pas rigoureusement identiques.	D4_level1	Learning_styles	234	c6ed89fa
+en	0a09090	Ledai_explaining: Tout à fait, nous n'avons pas tous les mêmes processeurs, les mêmes composants, les mêmes câblages, les mêmes réactions.	D4_level1	Learning_styles	235	0d684ac4
+en	011953d	You: Et en quoi ça va m'aider pour mon projet ?	D4_level1	Learning_styles	236	6028f919
+en	0dfcb43	Azul_sad: Tu sembles agacé.	D4_level1	Learning_styles	237	f1bdfe03
+en	06a7939	You: Je suis surtout perdu.	D4_level1	Learning_styles	238	c58e4a33
+en	0b2b81f	Temde_cheerful: C'est pourtant simple. L'un d'entre nous correspond au profil de ton ami Fred. Il ne te reste plus qu'à trouver qui, et surtout pourquoi.	D4_level1	Learning_styles	239	55c3f9e6
+en	052f462	Ledai_happy: Après, tu n'as plus qu'à appuyer sur les boutons que tu as identifiés.	D4_level1	Learning_styles	240	a0405e09
+en	02627a7	Azul_happy: Et Fred sera ravi et très réactif dans la production de votre projet.	D4_level1	Learning_styles	241	9b2c06e6
+en	01d4974	You: Fred n'est pas un robot !	D4_level1	Learning_styles	242	c3d60880
+en	0e00d5d	Ledai_explaining: Nous non plus ! Mais nous avons besoin de recevoir les bons signaux.	D4_level1	Learning_styles	243	0b2ee528
+en	0ccb890	Temde_smiling: Yep, dans le cas contraire, tu n'aidera pas Fred, et toi non plus.	D4_level1	Learning_styles	244	0d217cac
+en	0b2cf5e	You: Sérieux ?	D4_level1	Learning_styles	245	d3397576
+en	088cebf	Azul_proud: Sérieux. C'est ça le travail collaboratif : comprendre et valoriser les forces vives de chacun.	D4_level1	Learning_styles	246	6ddb9dc3
+en	060068f	You: OK.	D4_level1	Learning_styles	247	f0bab017
+en	0f7fa48	-> Interroger les Sages	D4_level1	Learning_styles	248	4065405b
+en	010aae0	You: Tu peux m'envoyer les notes que tu as rédigées. Enfin, tout ce que tu as pu noter ?	D4_level1	Notes_Fred	255	12ed12ad
+en	0e21ac0	Fred_happy: Bien sûr.	D4_level1	Notes_Fred	256	1b7fe40e
+en	0ea1a49	Fred pianote sur son ordinateur, l'instant d'après, vous réceptionnez ses documents... Incroyable, il n'y a pas grand chose d'exploitable. Que des bouts de phrases, de mots et quelques commentaires en annexe.	D4_level1	Notes_Fred	257	36926d07
+en	06a58cb	You: C'est tout ce que tu as pondu ?	D4_level1	Notes_Fred	258	a6bc01a8
+en	084c5a6	Fred_smiling: No worry, le reste est dans ma tête.	D4_level1	Notes_Fred	259	7cf3b938
+en	04024c1	You: Je suis pas dans ta tête !	D4_level1	Notes_Fred	260	ecbda07f
+en	066f673	Fred_sad: Bon, d'accord. Je m'y remets...	D4_level1	Notes_Fred	261	39212b6f
+en	0e5156a	Vous voyez à son air pincé que Fred n'a pas l'air intimement convaincu par vos arguments. Vous vous replongez dans vos notes et vos documents.	D4_level1	Notes_Fred	262	b4b2f495
+en	030d4d6	Après un bon moment, Fred, vous renvoie les fichiers mis à jour...	D4_level1	Notes_Fred	263	d4748c74
+en	02ec16d	Fred_smiling: J'ai fait un effort. J'ai écrit des vraies phrases.	D4_level1	Notes_Fred	264	96cd2bfc
+en	0c57e80	En effet, c'est mieux, mais ça reste laconique. On dirait plus des diapositives de présentation qu'une argumentation ou un mémoire. Et les sources et les références ne sont pas correctement indiquées.	D4_level1	Notes_Fred	265	bdb5dcfc
+en	0cb5a6e	-> Interroger Miss Temdé	D4_level1	Questions_Sages	272	921883d3
+en	00f2b31	-> Interroger Master Sapiens	D4_level1	Questions_Sages	273	65495380
+en	041c420	-> Interroger Ledai	D4_level1	Questions_Sages	274	c36a3d02
+en	09f651a	-> Interroger Azul	D4_level1	Questions_Sages	275	0ca14d7e
+en	0d80347	You: Qu'est-ce que tu aimes faire le plus, Miss Temdé ?	D4_level1	QuestionsTemde	282	80d1b146
+en	0a8c4db	Temde_smiling: Agir dans le feu de l'action, se trouver face à un problème concret et devoir trouver une solution.	D4_level1	QuestionsTemde	283	a6852044
+en	0815685	You: Qu'est-ce que tu n'aimes pas du tout faire ?	D4_level1	QuestionsTemde	284	30f6a392
+en	07ded1f	Temde_thinking: La théorie, la routine, suivre les consignes de quelqu'un d'autre.	D4_level1	QuestionsTemde	285	46f6f5a2
+en	01237bb	You: Et comment tu te définirais ?	D4_level1	QuestionsTemde	286	aa9ad134
+en	00fc2ad	Temde_cheerful: J'aime prendre des risques, j'avance à tâtons, mes erreurs m'aident à progresser.	D4_level1	QuestionsTemde	287	91da7e79
+en	01ad7d6	You: Merci.	D4_level1	QuestionsTemde	288	167ab86b
+en	01cc9e0	-> Interroger un autre sage	D4_level1	QuestionsTemde	289	5b54ac43
+en	01ef52d	-> Révéler lequel ressemble à Fred	D4_level1	QuestionsTemde	290	f49450d4
+en	06d2f6a	You: Qu'est-ce que tu aimes faire le plus, Master Sapiens ?	D4_level1	QuestionsSapiens	297	b40059c8
+en	0897191	Sapiens_happy: Accumuler des données, des théories, des concepts.	D4_level1	QuestionsSapiens	298	2d6198d8
+en	066fd74	You: Qu'est-ce que tu n'aimes pas du tout faire ?	D4_level1	QuestionsSapiens	299	30f6a392
+en	088bf63	Sapiens_concerned: Qu'on ne me laisse pas le temps de raisonner avant de donner ma réponse. Qu'on me harcèle de questions sans préavis.	D4_level1	QuestionsSapiens	300	2460e9a9
+en	09897ab	You: Et comment tu te définirais ?	D4_level1	QuestionsSapiens	301	aa9ad134
+en	0153123	Sapiens_thinking: J'ai soif de savoir et d'informations. Plus je sais et plus je maîtrise la moindre situation, le moindre imprévu.	D4_level1	QuestionsSapiens	302	df20e191
+en	0aa54c6	You: Merci.	D4_level1	QuestionsSapiens	303	167ab86b
+en	0844236	-> Interroger un autre sage	D4_level1	QuestionsSapiens	304	5b54ac43
+en	0319aa8	-> Révéler lequel ressemble à Fred	D4_level1	QuestionsSapiens	305	f49450d4
+en	0e6d6d8	You: C'est ton tour, Ledai. Qu'est-ce que tu aimes faire le plus ?	D4_level1	QuestionsLedai	312	aa54c299
+en	0e39ad0	Ledai_happy: Appliquer un process qu'on m'a confié, étape par étape, avec rigueur et discernement.	D4_level1	QuestionsLedai	313	9529a53a
+en	0fbd481	You: Qu'est-ce que tu n'aimes pas du tout faire ?	D4_level1	QuestionsLedai	314	30f6a392
+en	05c6676	Ledai_doubtful: Ne pas avoir de plan d'action préalable, ou ne pas avoir de priorité claire dans ma liste de tâches.	D4_level1	QuestionsLedai	315	23ebe873
+en	0cfebd1	You: Et comment tu te définirais ?	D4_level1	QuestionsLedai	316	aa9ad134
+en	0aa9a21	Ledai_explaining: Je suis une machine de précision. J'aime agir selon un protocole que j'ai eu le temps de valider.	D4_level1	QuestionsLedai	317	f611b623
+en	0fc5c47	You: Merci.	D4_level1	QuestionsLedai	318	167ab86b
+en	0f3647f	-> Interroger un autre sage	D4_level1	QuestionsLedai	319	5b54ac43
+en	0bb7b25	-> Révéler lequel ressemble à Fred	D4_level1	QuestionsLedai	320	f49450d4
+en	0e0c066	You: À ton tour, Azul. Qu'est-ce que tu aimes faire le plus ?	D4_level1	QuestionsAzul	327	e87f6015
+en	0b109d5	Azul_happy: J'aime réfléchir, discuter avec les autres, imaginer une solution.	D4_level1	QuestionsAzul	328	22b7a196
+en	0a4fab9	You: Qu'est-ce que tu n'aimes pas du tout faire ?	D4_level1	QuestionsAzul	329	30f6a392
+en	0e75db1	Azul_sad: Perdre du temps à rédiger ou à mettre sur papier un plan bien propre sur soi qui découle d'une problématique bien creusée, dérouler un raisonnement sans donner tout de suite mon opinion.	D4_level1	QuestionsAzul	330	bf1fff13
+en	043c930	You: Enfin, comment tu te définirais ?	D4_level1	QuestionsAzul	331	c7de2f2a
+en	0e46387	Azul_proud: Je suis un créatif, un inspiré, j'aime déceler une piste que personne n'a encore explorée.	D4_level1	QuestionsAzul	332	4cbed6de
+en	07de45a	You: Merci.	D4_level1	QuestionsAzul	333	167ab86b
+en	0080a15	-> Interroger un autre sage	D4_level1	QuestionsAzul	334	5b54ac43
+en	023f3b4	-> Révéler lequel ressemble à Fred	D4_level1	QuestionsAzul	335	f49450d4
+en	03178d8	Sapiens_happy: Alors, tu as trouvé qui a le profil correspondant à celui de ton ami ?	D4_level1	Trouver_Fred	342	6e0b258b
+en	00ae19f	You: Oui, je crois.	D4_level1	Trouver_Fred	343	caa0cc69
+en	04dced3	Sapiens_happy: Nous t'écoutons.	D4_level1	Trouver_Fred	344	d191e611
+en	0e8379b	-> C'est vous, Master Sapiens	D4_level1	Trouver_Fred	345	1bdd412f
+en	0f5d309	-> C'est vous, Miss Temdé	D4_level1	Trouver_Fred	346	a2363776
+en	0c550df	-> C'est vous, Azul	D4_level1	Trouver_Fred	347	de67dfec
+en	0cb251b	-> C'est vous, Ledai	D4_level1	Trouver_Fred	348	daddd44a
+en	0fd2961	-> Je ne suis plus si sûr...	D4_level1	Trouver_Fred	349	8999e841
+en	0fb5414	Sapiens_angry: Sûrement pas ! Contrairement à ton ami et aux apparences, je ne suis pas qu'une boîte à idées. Je suis un grand cerveau, moi ! Je t'aurais transmis une bibliographie étendue, le plan de travail et un premier jet de l'introduction et de la conclusion. Avec moi, tu aurais eu le squelette de ton mémoire dès la première heure...	D4_level1	SapiensNo	356	fed0ed52
+en	0d9274c	->  Une autre idée?	D4_level1	SapiensNo	357	be3d79d7
+en	0de3710	Temde_thinking: Pas loin. Mais ton ami et moi, nous ne sommes pas si proches. Moi, j'adore le concret, me servir de mes mains. C'est bien pour cela que j'en ai quatre !... Cherche encore.	D4_level1	TemdeNo	364	4841739e
+en	04c7dbe	->  Trouver le profil de Fred	D4_level1	TemdeNo	365	efc614f5
+en	01ba3b3	Azul_happy: Bravo ! Tu as trouvé ! Je suis imaginatif et intuitif, comme ton ami Fred. Je suis capable de voir ce que les autres ne peuvent voir.	D4_level1	AzulYes	372	0a145a62
+en	0846ca7	Azul_sad: Cependant, j'ai comme faiblesse de manquer de discipline. Je me disperse, je peine à développer et à figer noir sur blanc mes visions.	D4_level1	AzulYes	373	5eddd5e8
+en	0413c49	Azul_proud: Maintenant que tu as deviné quel est le profil d'apprentissage de Fred, je vais te donner quelques conseils pour t'aider à le motiver et à l'impliquer dans votre projet. Si ça t'intéresse...	D4_level1	AzulYes	374	3c6493d3
+en	099bfc5	->  Oui	D4_level1	AzulYes	375	791af337
+en	0285458	Ledai_doubtful: Hélas non. Ton ami et moi sommes opposés en presque tout. Ce Fred a l'esprit chaotique, qui ne cesse de bouillir et de se disperser. Il préfère le monde des hypothèses plutôt que la confrontation mécanique ou schématique. Il préfère observer et discuter avec tout le monde que le démontage méthodique d'un problème technique.	D4_level1	LedaiNo	382	dabe9e67
+en	05e2950	->  Qui d'autre alors?	D4_level1	LedaiNo	383	be8971ff
+en	0a39098	Azul_happy: Fred et moi, comme mes Master Sapiens, Miss Temdé, Ledai, nous avons nos faiblesses.	D4_level1	Motiver_Fred	390	acffc8fb
+en	07b9cd1	Azul_sad: En ce qui me concerne, je perds facilement mes moyens quand il s'agit de mettre par écrit mes idées et mes arguments. Je peine à respecter un plan rigide et méthodique, c'est fastidieux et démotivant.	D4_level1	Motiver_Fred	391	322de65e
+en	0d8d90a	Azul_happy: Je ne peux pas m'empêcher de donner mon avis plutôt que présenter une idée ou un concept. J'ai besoin d'échanger avec les autres, de confronter mon ressenti avec ceux des autres, ça m'aide à fixer mon jugement.	D4_level1	Motiver_Fred	392	a9f3b53f
+en	0d6bc64	You: Ouais, mais concrètement, je fais quoi ?	D4_level1	Motiver_Fred	393	56aa0f0d
+en	08190d7	Azul_proud: Tu ne le laisses pas seul, sans pistes à explorer.	D4_level1	Motiver_Fred	394	b30e61a8
+en	01ed33c	You: C'est-à-dire ?	D4_level1	Motiver_Fred	395	4e52e8f4
+en	0544787	Azul_happy: Tu le guides pas-à-pas jusqu'à la finalisation du projet. C'est toi qui pilotes la conception. Lui, il te fournira des idées, des pistes de réflexion en pagaille. Tu n'auras plus qu'à trier.	D4_level1	Motiver_Fred	396	53f800a3
+en	03a1770	You: OK.	D4_level1	Motiver_Fred	397	f0bab017
+en	06bc00a	Azul_happy: N'oublie pas non plus de le solliciter régulièrement. Verbalement !	D4_level1	Guider_Fred	404	23d5e5ca
+en	079fa73	You: Quoi ?!	D4_level1	Guider_Fred	405	0e92be16
+en	085d1b8	Azul_happy: Tu lui rapportes tout ce que tu as trouvé. Et tu lui demandes ce qu'il a noté ou retenu.	D4_level1	Guider_Fred	406	5ccca21b
+en	045a860	You: Sérieusement ?	D4_level1	Guider_Fred	407	a7e2ddea
+en	08299ed	Azul_happy: Sérieux ! Verbalement aussi. C'est comme ça qu'un esprit divergent fonctionne.	D4_level1	Guider_Fred	408	c1717793
+en	00adb08	You: Un esprit "divergent" ?!	D4_level1	Guider_Fred	409	b64a35cd
+en	0908d96	Azul_proud: C'est ce que moi et Fred sommes.	D4_level1	Guider_Fred	410	d9bf7fca
+en	0f13d6e	You: Ah... Et moi ? Je suis quoi ?	D4_level1	Guider_Fred	411	3e27325a
+en	078dbed	Azul_cheerful: À toi de trouver. Ah... Une dernière chose. N'oublie pas de noter tout ça dans ton journal mental.	D4_level1	Guider_Fred	412	55c55993
+en	0796097	You: J'y penserai. Merci pour le coup de pouce, à bientôt !	D4_level1	Guider_Fred	413	253bcc3b
+en	0e3cbd5	->  Quitter l'Assemblée des Sages	D4_level1	Guider_Fred	414	9e6dca3a
+en	0fe9f3c	Vous voilà encore dans cette parenthèse de douce pénombre maternelle... ou astrale... Qui sait... En tout cas, vous êtes au calme, seul avec vous-même. Ou presque. Vous avez un compagnon qui ne vous quitte jamais : votre journal mental. Ce magnifique "carnet d'ingénieur tout-terrain".	D4_level1	Journal_Mental	421	c364ad17
+en	0edc7c6	Qu'allez-vous notez dedans cette fois ?	D4_level1	Journal_Mental	422	e5c5ca93
+en	03683a1	Fred vous fait entrer à la première sonnerie.	D4_level1	ChezFred	429	d7d5c15c
+en	091415a	Fred_excited: Tu vas voir, ce GTR, c'est de la giga-bombe!	D4_level1	ChezFred	430	bac1bff3
+en	0d2c26f	You: Fred, faut qu'on aille à la bibli, tu joueras ce week-end.	D4_level1	ChezFred	431	04266a54
+en	0af460c	Fred_sad: T'es pas drôle. Viens, juste pour 5 minutes.	D4_level1	ChezFred	432	031acc24
+en	02334fb	You: Non, Fred. On a du travail.	D4_level1	ChezFred	433	86bdb365
+en	0152d6f	Fred_sad: Je le ferai plus tard.	D4_level1	ChezFred	434	8b326460
+en	06efd66	You: J'ai besoin de toi, s'il-te-plaît.	D4_level1	ChezFred	435	462cfd56
+en	0c51cb3	Fred_sad: Haaaan, t'es relou parfois.	D4_level1	ChezFred	436	bc138581
+en	02c9d2e	You: Je veux l'avoir mon diplôme.	D4_level1	ChezFred	437	50cfabbe
+en	063be70	Fred_sad: D'accord...	D4_level1	ChezFred	438	a2150a53
+en	04d9deb	Ouf, vous avez touché la corde sensible de Fred, iel accepte de vous suivre... À la bibliothèque.	D4_level1	ChezFred	439	e5adcf52
+en	01b74d7	Vous demandez à l'IA de votre studio de passer en mode "Immersion Studieuse".	D4_level1	Bedroom	446	42032fe3
+en	0863a36	Vous ne vous accordez qu'une pause dîner. Une soupe de nouilles aux légumes et un sorbet multi-fruits. C'est finalement bien Yum yum... Vous mettez un point final à votre version. Il est 21h passé. Vous envoyez votre texte quasi définitif à Fred. Et vous attendez le sien. Rien...	D4_level1	Bedroom	447	4a758cf0
+en	0da53c2	Si Si ! Votre palmphone vibre:	D4_level1	Bedroom	448	55f47ada
+en	08c6d43	Fred@holo_excited: Bien reçu ton texte.	D4_level1	Bedroom	449	71305f21
+en	04b1aaa	You: Et toi?	D4_level1	Bedroom	450	b4804e51
+en	05abc74	Fred@holo_excited: Je suis en train de finir.	D4_level1	Bedroom	451	5bef6e25
+en	08950c8	You: Et on fait comment pour réassembler notre travail ?	D4_level1	Bedroom	452	65d5a972
+en	02efb97	Fred@holo_happy: No Worry. C'est moi qui suis en retard, je m'en occupe.	D4_level1	Bedroom	453	1fa4a256
+en	093f014	You: Promis ?	D4_level1	Bedroom	454	f5854b34
+en	0bbbb99	Fred@holo_happy: Promis.	D4_level1	Bedroom	455	bfecd6e8
+en	05990d5	Espérons que vous pourrez lui faire confiance. De toute manière, il est trop tard pour changer le cours des choses... À moins que...	D4_level1	Bedroom	456	d3df2b1f
+en	0512aa7	Sapiens_happy: Tu nous as appelé?	D4_level1	Bedroom	457	7f70e8c7
+en	07757a8	You: Heu... Oui... J'ai pensé à vous... Enfin...	D4_level1	Bedroom	458	aff73e33
+en	0b5abb4	Sapiens_happy: Je sais, c'est moi qui t'ai entendu le premier. Allez, suis-moi.	D4_level1	Bedroom	459	6f731026
+en	0568d5f	-> Suivre Master Sapiens	D4_level1	Bedroom	460	90304aac
+en	0d35c07	You: Tu te souviens du plan ?	D4_level1	Plan	467	433b232e
+en	0bbf028	Fred_smiling: Ton plan ?	D4_level1	Plan	468	3197fa8f
+en	02a6644	You: Oui, je t'ai demandé d'en proposer un, t'as refusé.	D4_level1	Plan	469	a6354cd9
+en	00b90ba	Fred_excited: Le plan, ça vient avec les idées, les breakthrough.	D4_level1	Plan	470	68cdf271
+en	0c7dbb2	You: Sans plan, on ne peut pas avancer dans la rédaction. Et on en est là, la rédaction, la dernière ligne droite.	D4_level1	Plan	471	60f6472d
+en	0b5f3f0	Fred_sad: Mais pourquoi on doit suivre l'axe que tu as proposé ?	D4_level1	Plan	472	ac96a390
+en	029b51b	You: T'en vois d'autre,	D4_level1	Plan	473	89e7d75f
+en	0706189	Fred_happy: Oui, plein, y a l'embarras du choix.	D4_level1	Plan	474	2379a763
+en	06d0cf6	You: Ben c'est le problème. On n'a plus le temps d'hésiter. On doit choisir un plan et s'y tenir.	D4_level1	Plan	475	1b96045b
+en	0ea5b77	Fred_sad: C'est vraiment dommage.	D4_level1	Plan	476	fa382496
+en	006169a	You: Je te rappelle qu'on doit le rendre ce soir ce mémoire. C'est maintenant trop tard pour changer d'avis. Je te renvoie le plan et on le valide. Un point, c'est tout.	D4_level1	Plan	477	e48b6378
+en	0277657	En réalité, c'est plus facile à dire qu'à faire. Fred se révèle un infatigable avocat de l'accusation. Iel ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions. Commentaires qui ne font que fragiliser votre problématique et douter de vous.	D4_level1	Plan	478	d0205ee8
+en	05e5bdc	Si Fred a raison, il va falloir revoir le plan de votre mémoire sur cette fichue théorie du chaos post-darwinienne...	D4_level1	Plan	479	4d6798e4
+en	009a5cc	Temde_cheerful: On va jouer à une sorte de jeu. Tu vas nous poser les mêmes questions. Et nous répondrons chacun le plus honnêtement possible.	D4_level1	Test_Sages	486	eab3e637
+en	0e54a20	You: D'accord.	D4_level1	Test_Sages	487	8d4c4a44
+en	074fabd	Temde_smiling: Tu vas voir, c'est très simple. À chaque fois, tu nous demandes :	D4_level1	Test_Sages	488	dfe0cfba
+en	03f22dc	Temde_smiling: Ce que nous aimons faire le plus.	D4_level1	Test_Sages	489	a42e4075
+en	0163c03	Temde_thinking: Ce que nous détestons faire.	D4_level1	Test_Sages	490	81e2e7e3
+en	03833cc	-> Commencer le jeu	D4_level1	Test_Sages	491	087de883

@@ -8,6 +8,7 @@
     "watch": "gulp watch",
     "serve": "yarn watch",
     "start": "yarn serve",
+    "translate": "gulp yarnToCSV",
     "build": "yarn images && webpack --config webpack.dev.js",
     "dist": "yarn images && webpack --config webpack.prod.js",
     "format": "prettier --write src gulpfile.js README.md"
@@ -38,6 +39,7 @@
     "gulp-transform": "^3.0.5",
     "gulp-uglify": "^3.0.2",
     "gulp-useref": "^5.0.0",
+    "hash.js": "^1.1.7",
     "jspdf": "^2.5.1",
     "pixi-filters": "^4.1.2",
     "pixi-multistyle-text": "^0.10.0",

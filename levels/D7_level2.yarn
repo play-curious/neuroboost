@@ -1,4 +1,4 @@
-title: Start
+﻿title: Start
 tags: 
 colorID: 8
 position: -2447,977
@@ -9,12 +9,12 @@ position: -2447,977
 << setTime 10:10 6 >>
 << fadeOut >>
 
-Vous rouvrez les yeux. L'horloge connectée vous informe que vous êtes de nouveau dimanche matin.
-Vous allez devoir reprendre à nouveau votre travail de révision pour le Grand Oral... Sauf que cette fois, vous n'entreprenez pas ce labeur pour vous, mais pour Fred. 
+Vous rouvrez les yeux. L'horloge connectée vous informe que vous êtes de nouveau dimanche matin. #line:00df494 
+Vous allez devoir reprendre à nouveau votre travail de révision pour le Grand Oral... Sauf que cette fois, vous n'entreprenez pas ce labeur pour vous, mais pour Fred.  #line:061130e 
 
-Fred est votre meilleur pote. Iel le mérite...
+Fred est votre meilleur pote. Iel le mérite... #line:047693c 
 
-Mais tout d'abord, il faut faire sortir Fred de sa chambre !  
+Mais tout d'abord, il faut faire sortir Fred de sa chambre !   #line:0f9506a 
 
 << jump Bedroom_Fred >>
 ===
@@ -27,14 +27,13 @@ position: -1962.5316162109375,468.0980529785156
 << advanceTime 0:15 >>
 << fadeOut >>
 
-Vous vous rendez chez Fred et toquez à sa porte, cependant iel ne répond pas.
+Vous vous rendez chez Fred et toquez à sa porte, cependant iel ne répond pas. #line:03c7e41 
 
-You: Je sais que tu es là !
-Fred_empty: Laisse moi tranquille. Je suis fatigué, je vais rester tranquille ce matin.
-You: Arrête de faire tes valises et viens avec moi !
-Fred_empty: Mes valises ? Mais comment...
-You: Je t'explique tout ca sur la piste de footing. On y va !
-<< hide >>
+You: Je sais que tu es là ! #line:093ba26 
+Fred_empty: Laisse moi tranquille. Je suis fatigué, je vais rester tranquille ce matin. #line:0f059d6 
+You: Arrête de faire tes valises et viens avec moi ! #line:045d18a 
+Fred_empty: Mes valises ? Mais comment... #line:0611843 
+You: Je t'explique tout ca sur la piste de footing. On y va ! #line:06696e4 
 
 << jump Dimanche_Matin >>
 ===
@@ -50,19 +49,19 @@ position: -1557,981
 << fadeOut >>
 << loopFX Sports_LOOP 16000 >>
 
-Vous voilà dehors à courir doucement sur la piste. Aujourd'hui, vous calez délibérément votre pas sur celui de Fred. Car, vous avez besoin de lui parler pendant votre course. 
+Vous voilà dehors à courir doucement sur la piste. Aujourd'hui, vous calez délibérément votre pas sur celui de Fred. Car, vous avez besoin de lui parler pendant votre course.  #line:0e34c90 
 
 << fx Notification >>
-Vous devez le convaincre de persévérer dans son parcours académique. 
+Vous devez le convaincre de persévérer dans son parcours académique.  #line:0dc437b 
 
 << fx Notification >>
-Vous devez le persuader de réviser, de manière intelligente et agile. 
+Vous devez le persuader de réviser, de manière intelligente et agile.  #line:03d40a5 
 
 << fx Notification >>
-Vous devez le motiver à travailler cette épreuve difficile qu'est le Grand Oral. 
+Vous devez le motiver à travailler cette épreuve difficile qu'est le Grand Oral.  #line:0f60ced 
 
 << fx Failure >>
-Mais comme Fred a perdu confiance en lui, vous devez d'abord le remotiver.
+Mais comme Fred a perdu confiance en lui, vous devez d'abord le remotiver. #line:08ef50b 
 
 << stopFX Sports_LOOP >>
 << jump Rassurer_Fred >>
@@ -77,22 +76,22 @@ position: -1308,971
 
 << if !visited("Rassurer_Fred") >>
 << visit Rassurer_Fred >>
-Vous devez trouver comment l'aider à reprendre confiance en lui, en ses capacités d'apprentissage et d'auto-correction.
+Vous devez trouver comment l'aider à reprendre confiance en lui, en ses capacités d'apprentissage et d'auto-correction. #line:0d679c5 
 
-Vous pourriez regonfler son ego en lui rappelant à quel point iel est la star de l'Académie, l'étudiant le plus intelligent et le plus disruptif...
+Vous pourriez regonfler son ego en lui rappelant à quel point iel est la star de l'Académie, l'étudiant le plus intelligent et le plus disruptif... #line:07f8088 
 
-Vous pourriez aller droit au but en lui disant pourquoi iel estime ne plus pouvoir obtenir de bonnes notes... à moins de changer de revoir ses méthodes de travail... 
+Vous pourriez aller droit au but en lui disant pourquoi iel estime ne plus pouvoir obtenir de bonnes notes... à moins de changer de revoir ses méthodes de travail...  #line:02c1ba2 
 
-Enfin, vous pouvez tout simplement lui dire, car vous le savez, quels sont ses points forts. Pourquoi il est un étudiant aussi brillant et disruptif.
+Enfin, vous pouvez tout simplement lui dire, car vous le savez, quels sont ses points forts. Pourquoi il est un étudiant aussi brillant et disruptif. #line:00d58c1 
 << else >>
-Que dire à Fred pour le persuader de vous écouter et de vous suivre ?
+Que dire à Fred pour le persuader de vous écouter et de vous suivre ? #line:0b6b777 
 << endif >>
 
--> Flatter Fred #once
+-> Flatter Fred #once #line:0f8f09f 
   << jump Flatter_Fred >>
--> Énoncer les faiblesses de Fred #once
+-> Énoncer les faiblesses de Fred #once #line:03c876b 
   << jump Faiblesses_Fred_Bad >>
--> Énumérer les points forts de Fred #once
+-> Énumérer les points forts de Fred #once #line:031eb15 
   << jump Fred_Forces >>
 ===
 title: Flatter_Fred
@@ -102,22 +101,22 @@ position: -1017,717
 ---
 << empty >>
 //Vous profitez de cette course lente pour redonner confiance en Fred, en le valorisant, en le flattant. Vous lui rappelez un fait incontestable. Iel est la star la plus populaire de l'Académie d'Omniscience et de Polytechnologie Universelle. Beaucoup d'étudiants l'admirent, l'envient. Vous le premier. Fred en rigole.
-You: Tu est lae star la plus populaire de l'Académie d'Omniscience et de Polytechnologie Universelle ! Beaucoup d'étudiants t'admirent, t'envient, tu sais.
-Fred_smiling: Tu rigoles ! Donne-moi le nom d'une personne qui m'envie.  
-You: Moi. 
-Fred_surprised: Pour du vrai ?  
-You: Pour du vrai.
-Fred_happy: Merci de me confier tout ça. Mais où veux-tu en venir ?
-You: Tu es le meilleur, l'étudiant le plus disruptif ! Les étudiants et moi-même ne pouvons nous passer de toi.
-Fred_surprised: Ah bon ? Et si demain, on me renvoyait ?
-You: Impossible, tu es le meilleur d'entre-nous !
-Fred_sad: Je ne sais pas si le collège des professeurs est de ton avis.
-You: Fred, tu ne dois pas douter de toi ! Tu es irremplaçable !
-Fred_sad: C'est gentil de me le dire. Mais je doute vraiment que ton avis soit partagé par tout le monde.
+You: Tu est lae star la plus populaire de l'Académie d'Omniscience et de Polytechnologie Universelle ! Beaucoup d'étudiants t'admirent, t'envient, tu sais. #line:0f8daf7 
+Fred_smiling: Tu rigoles ! Donne-moi le nom d'une personne qui m'envie.   #line:0e54dac 
+You: Moi.  #line:00aa7c4 
+Fred_surprised: Pour du vrai ?   #line:045c2b7 
+You: Pour du vrai. #line:0d2372b 
+Fred_happy: Merci de me confier tout ça. Mais où veux-tu en venir ? #line:00c7721 
+You: Tu es le meilleur, l'étudiant le plus disruptif ! Les étudiants et moi-même ne pouvons nous passer de toi. #line:0b5aa9b 
+Fred_surprised: Ah bon ? Et si demain, on me renvoyait ? #line:0165eb6 
+You: Impossible, tu es le meilleur d'entre-nous ! #line:0c7dc86 
+Fred_sad: Je ne sais pas si le collège des professeurs est de ton avis. #line:092619a 
+You: Fred, tu ne dois pas douter de toi ! Tu es irremplaçable ! #line:0d1ee7f 
+Fred_sad: C'est gentil de me le dire. Mais je doute vraiment que ton avis soit partagé par tout le monde. #line:03cb4f9 
 
-Mince ! Vos propos n'ont pas eu l'effet escompté. Fred reste sceptique, dubitatif. Il doute de lui-même, comme de son avenir au sein de l'académie.
+Mince ! Vos propos n'ont pas eu l'effet escompté. Fred reste sceptique, dubitatif. Il doute de lui-même, comme de son avenir au sein de l'académie. #line:00b5fa2 
 
--> Essayer autre chose ?
+-> Essayer autre chose ? #line:04e1f63 
   << jump Rassurer_Fred >>
 
 ===
@@ -128,23 +127,23 @@ position: -1010,1294
 ---
 << empty >>
 //Vous vous rappelez ce que vous a dit maître Azul. Fred est un apprenant "divergent". Vous connaissez ses faiblesses. Pendant que vous parcourez tranquillement la piste, vous lui avouez franchement qu'aussi intelligent et brillant qu'il est, il accuse néanmoins des limites. 
-You: Tu dois comprendre, Fred. Les arbres ne montent pas jusqu'au ciel.
-Fred_surprised: Quoi ?! Sky is the limit ?
-You: C'est ça, ouais. Même toi, tu n'es pas la perfection. Sinon, tu ne serais pas à l'Académie.
-Fred_surprised: Tu veux dire quoi ?
-You: Tu détestes apprendre par coeur.
-Fred_angry: Beuark ! Qui peut aimer ça ?
-You: Certains en raffolent... Tu n'aimes pas non plus écrire. Je l'ai bien vu jeudi, à la bibliothèque.
-Fred_surprised: ...
-You: Et tu détestes qu'on te donne un cadre trop précis, trop rigide, trop contraignant... Mais la contrainte peut stimuler la créativité. Et elle est parfois nécessaire   
-Fred_angry2: C'est bon ? T'as fini ton speech ?
-You: Heu. Ouais.
-Fred_sad: Merci pour ta leçon de savoir vivre...
+You: Tu dois comprendre, Fred. Les arbres ne montent pas jusqu'au ciel. #line:0e3710b 
+Fred_surprised: Quoi ?! Sky is the limit ? #line:06534db 
+You: C'est ça, ouais. Même toi, tu n'es pas la perfection. Sinon, tu ne serais pas à l'Académie. #line:0fa2e5e 
+Fred_surprised: Tu veux dire quoi ? #line:0001b51 
+You: Tu détestes apprendre par coeur. #line:014b52a 
+Fred_angry: Beuark ! Qui peut aimer ça ? #line:0cdfb0f 
+You: Certains en raffolent... Tu n'aimes pas non plus écrire. Je l'ai bien vu jeudi, à la bibliothèque. #line:012c4b8 
+Fred_surprised: ... #line:0f08c62 
+You: Et tu détestes qu'on te donne un cadre trop précis, trop rigide, trop contraignant... Mais la contrainte peut stimuler la créativité. Et elle est parfois nécessaire    #line:051f61d 
+Fred_angry2: C'est bon ? T'as fini ton speech ? #line:05c03e4 
+You: Heu. Ouais. #line:0f5c253 
+Fred_sad: Merci pour ta leçon de savoir vivre... #line:0310eb7 
 
-Il n'a pas l'air ravi par vos propos. Vous l'avez froissé. Vous avez clairement manqué de diplomatie. 
-Vous devez trouvez les paroles positives qui vont l'ouvrir à votre proposition de l'aider à réviser, avec vos fiches.
+Il n'a pas l'air ravi par vos propos. Vous l'avez froissé. Vous avez clairement manqué de diplomatie.  #line:08f9dc0 
+Vous devez trouvez les paroles positives qui vont l'ouvrir à votre proposition de l'aider à réviser, avec vos fiches. #line:0506013 
 
--> Que lui dire pour rassurer ?
+-> Que lui dire pour rassurer ? #line:0fdf9de 
   << jump Rassurer_Fred >>
 
 ===
@@ -155,24 +154,24 @@ position: -1035,970
 ---
 << empty >>
 //Vous vous rappelez ce que vous a dit maître Azul. Fred est un apprenant "divergent". Alors que vous trottez sur la piste avec Fred, vous lui en parlez. 
-You: Tu sais Fred, tu es l'étudiant le plus créatif, le plus disruptif de l'université ! 
-Fred_surprised: Ah bon ? Et alors ?
-You: Tu es le meilleur d'entre-nous ! Tu as une imagination, une originalité !
-Fred_happy: Vraiment ?
-You: Si si, je te l'assure. Tu es unique ! Tu vois ce que les autres ne voient pas !
-Fred_surprised: Tsss... Tu dis ça pour me flatter...
-You: Pas du tout. Je le pense. Et je ne suis pas le seul.
-Fred_sad: Te moque pas de moi.
-You: C'est pour cela que tu es l'étudiant le plus populaire ! Sans compter que tu adores échanger avec les autres ! Et tu le fais avec brio !
-Fred_surprised: C'est vrai ?
-You: Si je te le dis.
+You: Tu sais Fred, tu es l'étudiant le plus créatif, le plus disruptif de l'université !  #line:03e17e5 
+Fred_surprised: Ah bon ? Et alors ? #line:0a02d89 
+You: Tu es le meilleur d'entre-nous ! Tu as une imagination, une originalité ! #line:049a5f2 
+Fred_happy: Vraiment ? #line:0d16d29 
+You: Si si, je te l'assure. Tu es unique ! Tu vois ce que les autres ne voient pas ! #line:02f27f8 
+Fred_surprised: Tsss... Tu dis ça pour me flatter... #line:04e8e45 
+You: Pas du tout. Je le pense. Et je ne suis pas le seul. #line:01402be 
+Fred_sad: Te moque pas de moi. #line:031d67c 
+You: C'est pour cela que tu es l'étudiant le plus populaire ! Sans compter que tu adores échanger avec les autres ! Et tu le fais avec brio ! #line:04df76f 
+Fred_surprised: C'est vrai ? #line:01e22aa 
+You: Si je te le dis. #line:0395a68 
 
 //Vous vous rendez compte que vos paroles lui font énormément de bien. Vous le remarquez sur le visage de Fred. Ses yeux s'illuminent, il sourit, ses joues se teintent d'une auréole rouge. Vous avez touché juste !
-Vous vous rendez compte que vos paroles lui font énormément de bien. Vous avez touché juste !
-C'est bien, vous avez franchi le premier obstacle. Cependant, il faut continuer. Fred a encore du chemin à faire pour reprendre sa vie en main. 
-Iel doit également prendre conscience de ses limites.
+Vous vous rendez compte que vos paroles lui font énormément de bien. Vous avez touché juste ! #line:0ab6da8 
+C'est bien, vous avez franchi le premier obstacle. Cependant, il faut continuer. Fred a encore du chemin à faire pour reprendre sa vie en main.  #line:050382d 
+Iel doit également prendre conscience de ses limites. #line:01b7009 
 
--> Comment lui parler de ses faiblesses ?
+-> Comment lui parler de ses faiblesses ? #line:049e1e1 
   << jump Fred_Faiblesses >>
 ===
 title: Fred_Faiblesses
@@ -185,19 +184,19 @@ position: -759,969
 // Maintenant que Fred vous a entendu lister ses points forts, vous devez l'aider à encore mieux se connaître. En prenant conscience de ses points faibles. 
 // Car, c'est en reconnaissant ses limites qu'il pourra trouver un moyen de les contourner. 
 
-Maintenant que vous lui avez énoncé ses points forts. Vous pouvez lui avouer quels sont ses points faibles. Car, c'est en reconnaissant ses limites qu'il pourra trouver un moyen de les contourner. 
+Maintenant que vous lui avez énoncé ses points forts. Vous pouvez lui avouer quels sont ses points faibles. Car, c'est en reconnaissant ses limites qu'il pourra trouver un moyen de les contourner.  #line:06b5226 
 
-Mais, peut-être faut-il d'abord commencer par quelque chose de plus positif. En rappelant d'abord ses points forts ?
+Mais, peut-être faut-il d'abord commencer par quelque chose de plus positif. En rappelant d'abord ses points forts ? #line:0b957f3 
 
-Une troisième voie, plus imprécise, serait de questionner l'air de rien Fred. Pour l'inciter à révéler lui-même ses faiblesses. 
+Une troisième voie, plus imprécise, serait de questionner l'air de rien Fred. Pour l'inciter à révéler lui-même ses faiblesses.  #line:0839569 
 // Comme cela se fait en psychologie ou en Programmation Neuro Linguistique des Intelligences Artificielles et Analogiques. La PNLIAA s'applique aussi aux cerveaux humains.
 << endif >>
 
--> Lui énumérer ses points faibles  #once
+-> Lui énumérer ses points faibles  #once #line:0885a62 
   << jump Balancer_Faiblesses >>
--> Commencer par les points forts  #once
+-> Commencer par les points forts  #once #line:09c0f7d 
   << jump Rappeler_Forces >>
--> Questionner Fred #once
+-> Questionner Fred #once #line:0c6e6c6 
   << jump Guider_Fred_Faiblesses >>
 
 ===
@@ -209,30 +208,30 @@ position: -477,1332
 << empty >>
 //Puisque vous avez ravivé l'estime de soi de Fred en lui listant ses points forts, vous estimez que vous pouvez lui avouer quelles sont ses limites. Il en a besoin pour avancer dans son chemin d'apprentissage. Vous connaissez les points faibles de Fred. Tandis que longez au trot la piste, vous les lui dites, avec le plus de tact possible.
 
-You: Combien de balles tu sais jongler, Fred ?
-Fred_surprised: Heu... 3, parfois 4. Pourquoi ?
-You: Voilà ! Tu peux pas en jongler 8, par exemple. C'est que t'es limité !
-Fred_surprised: Et alors ? Je ne cherche pas à rejoindre un cirque !
-You: Oui, certes. Mais c'est pareil avec l'école. Tu n'aime pas respecter un plan méthodique.  Je l'ai bien vu jeudi, à la bibliothèque.
-Fred_angry: Je suis pas un robot ! Je sais pas pourquoi tu me racontes tout ça.
-You: C'est pour ton bien... 
+You: Combien de balles tu sais jongler, Fred ? #line:0132a62 
+Fred_surprised: Heu... 3, parfois 4. Pourquoi ? #line:0b69c25 
+You: Voilà ! Tu peux pas en jongler 8, par exemple. C'est que t'es limité ! #line:0e43b74 
+Fred_surprised: Et alors ? Je ne cherche pas à rejoindre un cirque ! #line:06e8c5b 
+You: Oui, certes. Mais c'est pareil avec l'école. Tu n'aime pas respecter un plan méthodique.  Je l'ai bien vu jeudi, à la bibliothèque. #line:01f265c 
+Fred_angry: Je suis pas un robot ! Je sais pas pourquoi tu me racontes tout ça. #line:0084e94 
+You: C'est pour ton bien...  #line:093578f 
 // A partir de là = Fred mécontent, sarcastique, agacé...
-Fred_surprised: Vraiment ?
-You: Crois-moi. Enfin, tu détestes qu'on te donne un cadre trop précis, trop rigide, trop contraignant... Mais la contrainte peut stimuler la créativité. Et elle est parfois nécessaire   
-Fred_angry: C'est bon ? T'as d'autres "fleurs" à me balancer ?
-You: Heu... naan...
-Fred_angry2: Et je dois te remercier en plus ?
-You: Heu... 
+Fred_surprised: Vraiment ? #line:0aea3df 
+You: Crois-moi. Enfin, tu détestes qu'on te donne un cadre trop précis, trop rigide, trop contraignant... Mais la contrainte peut stimuler la créativité. Et elle est parfois nécessaire    #line:0500064 
+Fred_angry: C'est bon ? T'as d'autres "fleurs" à me balancer ? #line:0a12873 
+You: Heu... naan... #line:07cd961 
+Fred_angry2: Et je dois te remercier en plus ? #line:0654a87 
+You: Heu...  #line:01864d7 
 
 << show fred sad >>
 
-Manifestement, ce n'était pas la bonne manière de s'y prendre. Vous avez heurté sa sensibilité. 
-Alors que votre l'esprit de votre pote s'était ouvert comme une huître, il se referme aussitôt dans sa coquille. 
+Manifestement, ce n'était pas la bonne manière de s'y prendre. Vous avez heurté sa sensibilité.  #line:089c4a1 
+Alors que votre l'esprit de votre pote s'était ouvert comme une huître, il se referme aussitôt dans sa coquille.  #line:0f23410 
 
 // Manifestement, ce n'était pas la bonne manière de s'y prendre. Fred s'arrête de courir et vous balance un regard noir et froid. Vous avez heurté sa sensibilité. Alors que votre l'esprit de votre pote s'était ouvert comme une huître, il se referme aussitôt dans sa coquille. Vous avez manqué de tact et de psychologie. 
 // Vous vous dites que vous n'avez pas le droit à une autre erreur. Vous devez trouvez comment lui faire prendre conscience de ses erreurs et ses échecs sans le brusquer.  
 
--> Comment aborder ses faiblesses ?
+-> Comment aborder ses faiblesses ? #line:088488d 
   << jump Fred_Faiblesses >>
 
 ===
@@ -241,20 +240,20 @@ tags:
 colorID: 0
 position: -444,727
 ---
-Avant d'avouer à Fred ses faiblesses, vous pensez plus prudent de commencer par lui rappeler combien il est brillant, disruptif, intuitif. 
-Bref, vous lui répétez les qualités qu'il possède et qui font la force d'un apprenant "divergent". 
-Fred_surprised: Arrête de me flatter. Tu m'as déjà dit tout ça.
-You: Oui, mais c'est important de comprendre qu'on a tous nos points forts et nos points faibles.
-Fred_surprised: C'est pour ça. D'abord les bonnes nouvelles. Ensuite, les mauvaises. Que veux-tu m'apprendre ?
-You: T'inquiète. C'est pas grave.
-Vous lui expliquez avec les mots les plus respectueux quelles sont ces limites.
-You: C'est important, tu sais ! Si tu veux redevenir le killer de l'Académie... Tu dois prendre conscience de tes faiblesses. Tu ne peux t'améliorer qu'en prenant en compte tes propres limites.
-Fred_angry: Qui es-tu, toi, pour juger de ce qui est bien pour moi ?
-You: Heu...
+Avant d'avouer à Fred ses faiblesses, vous pensez plus prudent de commencer par lui rappeler combien il est brillant, disruptif, intuitif.  #line:06b47d0 
+Bref, vous lui répétez les qualités qu'il possède et qui font la force d'un apprenant "divergent".  #line:0dc37a9 
+Fred_surprised: Arrête de me flatter. Tu m'as déjà dit tout ça. #line:0ff911e 
+You: Oui, mais c'est important de comprendre qu'on a tous nos points forts et nos points faibles. #line:0cf6e4d 
+Fred_surprised: C'est pour ça. D'abord les bonnes nouvelles. Ensuite, les mauvaises. Que veux-tu m'apprendre ? #line:0335e5e 
+You: T'inquiète. C'est pas grave. #line:0ac36ee 
+Vous lui expliquez avec les mots les plus respectueux quelles sont ces limites. #line:0e1f8a7 
+You: C'est important, tu sais ! Si tu veux redevenir le killer de l'Académie... Tu dois prendre conscience de tes faiblesses. Tu ne peux t'améliorer qu'en prenant en compte tes propres limites. #line:0db5ac2 
+Fred_angry: Qui es-tu, toi, pour juger de ce qui est bien pour moi ? #line:0228d67 
+You: Heu... #line:0c28c8a 
 << show fred sad >>
-Malheureusement, vous comprenez que avez été malgré tout trop direct. Ce n'est pas en lui révélant clairement ses limites que vous allez le convaincre de changer son attitude, pour le mieux...
+Malheureusement, vous comprenez que avez été malgré tout trop direct. Ce n'est pas en lui révélant clairement ses limites que vous allez le convaincre de changer son attitude, pour le mieux... #line:0d51c59 
 
--> Comment s'y prendre alors ?
+-> Comment s'y prendre alors ? #line:008143b 
   << jump Fred_Faiblesses >>
 
 ===
@@ -266,31 +265,31 @@ position: -450,973
 << empty >>
 // Vous vous rappelez ce que maître Azul vous a dit. Fred, comme tous les profils divergents, préfère qu'on respecte son libre-arbitre. Mieux vaut ne pas lui dire vous-même quelles sont ses faiblesses. Pour qu'iel en prenne véritablement conscience. Iel doit lui-même les découvrir. 
 // Vous choisissez bien vos mots et votre manière d'aborder ce thème sensible. Pour bien faire, vous suivez la méthode PNLIAA, que vous avez apprises en cours. Simplement, au lieu de l'appliquer aux IA, vous l'appliquez à un humain. 
-You: Au fait, Fred. Tu te rappelles le super travail qu'on a fait à la bibliothèque ?
-Fred_smiling: À propos du mémoire sur la théorie du chaos, appliquée à la macrobiologie post-darwinienne ?
-You: Exactement.
-Vous aiguillez Fred en lui posant des questions concernant les difficultés rencontrées lors de la rédaction de ce mémoire. L'idée est de le pousser à réfléchir par lui-même et à révéler ses freins, ses obstacles intérieurs. 
-L'exercice porte ses fruits. L'air de rien, grâce à vos questions, Fred parvient à énoncer ses faiblesses. Vous l'aidez, bien entendu, à mieux les formuler et les cerner. Mais, le premier jet est indiscutablement le sien. 
-Et c'est ça, le truc. Vous voyez à sa mine pensive et éclairée qu'iel a enfin mis le doigt sur quelque chose d'essentiel. 
+You: Au fait, Fred. Tu te rappelles le super travail qu'on a fait à la bibliothèque ? #line:0f0b1be 
+Fred_smiling: À propos du mémoire sur la théorie du chaos, appliquée à la macrobiologie post-darwinienne ? #line:03c6a5f 
+You: Exactement. #line:0ad794e 
+Vous aiguillez Fred en lui posant des questions concernant les difficultés rencontrées lors de la rédaction de ce mémoire. L'idée est de le pousser à réfléchir par lui-même et à révéler ses freins, ses obstacles intérieurs.  #line:007435d 
+L'exercice porte ses fruits. L'air de rien, grâce à vos questions, Fred parvient à énoncer ses faiblesses. Vous l'aidez, bien entendu, à mieux les formuler et les cerner. Mais, le premier jet est indiscutablement le sien.  #line:0b45096 
+Et c'est ça, le truc. Vous voyez à sa mine pensive et éclairée qu'iel a enfin mis le doigt sur quelque chose d'essentiel.  #line:0371317 
 << music Victory >>
-Fred_sad: OK. Je comprends mieux pourquoi mes performances ne sont plus aussi élevées... Mais... Que puis-je y faire ?
-You: C'est là où tu te trompes. Il y a toujours une solution !
-Fred_happy: Vraiment ?
-You: Bien sûr. Et je la connais. Il faut un "plan B" !
-Fred_angry: Arrête de te moquer de moi !
-You: Pas du tout. J'ai la solution. Moi aussi, j'en ai besoin de ce "plan B".
+Fred_sad: OK. Je comprends mieux pourquoi mes performances ne sont plus aussi élevées... Mais... Que puis-je y faire ? #line:02aed82 
+You: C'est là où tu te trompes. Il y a toujours une solution ! #line:0e99163 
+Fred_happy: Vraiment ? #line:0656a7d 
+You: Bien sûr. Et je la connais. Il faut un "plan B" ! #line:062e0cd 
+Fred_angry: Arrête de te moquer de moi ! #line:010019c 
+You: Pas du tout. J'ai la solution. Moi aussi, j'en ai besoin de ce "plan B". #line:0463fb0 
 << show fred >>
-Vous lui expliquez que vous avez passé votre samedi après-midi à rédiger des fiches de révision. Un exemplaire pour vous et un autre pour lui. Fred sourit et vous prend dans ses bras !
-Fred_smiling: Gosh ! Tu as fait ça pour moi ?
-You: Pour moi aussi, je te le rappelle !
-Fred_excited: T'es vraiment mon meilleur pote !
-You: Toi aussi. On se retrouve après déjeuner ?
-Fred: Yes yes.
+Vous lui expliquez que vous avez passé votre samedi après-midi à rédiger des fiches de révision. Un exemplaire pour vous et un autre pour lui. Fred sourit et vous prend dans ses bras ! #line:080ab2e 
+Fred_smiling: Gosh ! Tu as fait ça pour moi ? #line:083329d 
+You: Pour moi aussi, je te le rappelle ! #line:0fdf70b 
+Fred_excited: T'es vraiment mon meilleur pote ! #line:07cfa37 
+You: Toi aussi. On se retrouve après déjeuner ? #line:0bc8107 
+Fred: Yes yes. #line:0462320 
 
 << advanceTime 1:15 >>
-La séance de footing et de remotivation est achevée.
+La séance de footing et de remotivation est achevée. #line:037d355 
 
--> Rentrez manger
+-> Rentrez manger #line:091ab68 
   << hide >>
   << jump Dimanche_Lunch >>
 
@@ -304,19 +303,19 @@ position: -146,975
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
-Vous quittez Fred et vous retournez à votre chambre manger. Vous vous cuisinez un plat de pâtes à la carbonara. C'est riche et copieux. Tant mieux, vous allez en avoir besoin, de calories...
+Vous quittez Fred et vous retournez à votre chambre manger. Vous vous cuisinez un plat de pâtes à la carbonara. C'est riche et copieux. Tant mieux, vous allez en avoir besoin, de calories... #line:057add0 
 
 << advanceTime 0:45 >>
 
-Vous avez aidé Fred à reprendre confiance en lui, en ses capacités d'apprentissage. Maintenant, il faut le convaincre de réviser la philosophie quantique en s'aidant de vos fiches de révision.
+Vous avez aidé Fred à reprendre confiance en lui, en ses capacités d'apprentissage. Maintenant, il faut le convaincre de réviser la philosophie quantique en s'aidant de vos fiches de révision. #line:0e30998 
 
-Vous devez maintenant vous rendre chez Fred.
+Vous devez maintenant vous rendre chez Fred. #line:04e1023 
 
 << fadeIn >>
 << setBackground door >>
 << fadeOut >>
 
--> Sonner à la porte de Fred
+-> Sonner à la porte de Fred #line:0a75dbf 
   << jump Motiver_Fred_Reviser >>
 
 ===
@@ -333,22 +332,22 @@ position: 131,978
 << visit Motiver_Fred_Reviser >>
 // Fred vous accueille avec un grand sourire. C'est un signe qui ne trompe pas. Vous avez regonflé son enthousiasme. Votre meilleur pote a repris confiance en lui. Maintenant, iel faut le motiver à réviser. 
 
-Fred vous accueille, de quelle manière vous allez pouvoir convaincre Fred de travailler avec vos fiches de révision ?
+Fred vous accueille, de quelle manière vous allez pouvoir convaincre Fred de travailler avec vos fiches de révision ? #line:088c944 
 
-Vous pourrez lui montrez les fiches de révision que vous avez déjà imprimées. Vous lui expliquez combien elles font gagner du temps, comment s'en servir...
+Vous pourrez lui montrez les fiches de révision que vous avez déjà imprimées. Vous lui expliquez combien elles font gagner du temps, comment s'en servir... #line:0cca12f 
 
-Ou, vous pourrez discuter avec Fred de sa situation à l'université, en espérant ainsi l'inciter à trouver lui-même son but.
+Ou, vous pourrez discuter avec Fred de sa situation à l'université, en espérant ainsi l'inciter à trouver lui-même son but. #line:0938868 
 
-Enfin, vous pourrez poussez Fred pour qu'il se dote d'un but, précis et réalisable.
+Enfin, vous pourrez poussez Fred pour qu'il se dote d'un but, précis et réalisable. #line:066f374 
 << else >>
-De quelle manière vous allez pouvoir le convaincre de travailler avec vos fiches de révision ?
+De quelle manière vous allez pouvoir le convaincre de travailler avec vos fiches de révision ? #line:0d4a37e 
 << endif >>
 
--> Lui montrer vos fiches #once
+-> Lui montrer vos fiches #once #line:008e0b2 
   << jump Sortir_Fiches_Trop_Vite >>
--> Discuter avec Fred sur sa situation #once
+-> Discuter avec Fred sur sa situation #once #line:04bfef4 
   << jump Guider_Fred_But >>
--> Pousser Fred à se définir son objectif #once
+-> Pousser Fred à se définir son objectif #once #line:05c99d1 
   << jump Forcer_Fred_But >>
 ===
 title: Sortir_Fiches_Trop_Vite
@@ -357,26 +356,26 @@ colorID: 0
 position: 496,1261
 ---
 << show fred >>
-Vous décidez de jouer le rôle d'un magicien, d'un illusionniste. Vous improvisez un tour de passe avec vos fiches de révision. Elles font alors office de cartes. 
-Votre tour n'est pas trop au point. Ce n'est pas grave, c'est surtout pour l'ambiance. Histoire de susciter un climat positif et ludique. 
-Fred se prête d'ailleurs facilement au jeu. Vous n'arrivez pas vraiment à faire disparaître la fiche qu'a choisie Fred. Vous vous en excusez. Fred en rigole.   
-Vous décidez que c'est le moment. vous passez au choses sérieuses. Vous étalez le tas de fiches devant vous. Vous lui expliquez comment vous vous y êtes pris pour les rédiger. Comment on peut s'en servir pour réviser. 
-You: Tu sais, j'ai passé tout un après-midi à les créer. 
-Fred_smiling: Félicitations.
-You: Je les ai faites pour toi.
-Fred: Pour toi aussi, non ?
-You: Si bien sûr. Mais je les ai vraiment repensées pour toi.  Toi qui déteste l'écrit et le "par-coeur".
-Fred: C'est gentil. Merci.
-You: Tu veux les regarder de plus près.
-Fred: ...
-Vous lui tendez alors vos fiches de révision. Fred les prend, puis, se ravise et les balance en l'air ! Il répand vos magnifiques fiches dans toute la pièce ! 
-Fred_angry: Hey, Boss ! Je suis pas une marionette ! Suffit pas d'appuyer sur un bouton pour que je fasse ce qu'on attende de moi !
+Vous décidez de jouer le rôle d'un magicien, d'un illusionniste. Vous improvisez un tour de passe avec vos fiches de révision. Elles font alors office de cartes.  #line:033323b 
+Votre tour n'est pas trop au point. Ce n'est pas grave, c'est surtout pour l'ambiance. Histoire de susciter un climat positif et ludique.  #line:08b4354 
+Fred se prête d'ailleurs facilement au jeu. Vous n'arrivez pas vraiment à faire disparaître la fiche qu'a choisie Fred. Vous vous en excusez. Fred en rigole.    #line:0bdf221 
+Vous décidez que c'est le moment. vous passez au choses sérieuses. Vous étalez le tas de fiches devant vous. Vous lui expliquez comment vous vous y êtes pris pour les rédiger. Comment on peut s'en servir pour réviser.  #line:0139604 
+You: Tu sais, j'ai passé tout un après-midi à les créer.  #line:0f3af25 
+Fred_smiling: Félicitations. #line:0759603 
+You: Je les ai faites pour toi. #line:0b0f9f1 
+Fred: Pour toi aussi, non ? #line:0e151c0 
+You: Si bien sûr. Mais je les ai vraiment repensées pour toi.  Toi qui déteste l'écrit et le "par-coeur". #line:05ed71e 
+Fred: C'est gentil. Merci. #line:008a2ad 
+You: Tu veux les regarder de plus près. #line:022de0f 
+Fred: ... #line:0086702 
+Vous lui tendez alors vos fiches de révision. Fred les prend, puis, se ravise et les balance en l'air ! Il répand vos magnifiques fiches dans toute la pièce !  #line:0cc360d 
+Fred_angry: Hey, Boss ! Je suis pas une marionette ! Suffit pas d'appuyer sur un bouton pour que je fasse ce qu'on attende de moi ! #line:0b9516d 
 
 //Vous vous dites à ce moment que vous n'avez probablement pas choisi la méthode la plus efficace pour le convaincre de travailler.
 << show fred sad >>
-Vous avez été un peu trop frontal...
+Vous avez été un peu trop frontal... #line:04ec31e 
 
--> S'y prendre autrement
+-> S'y prendre autrement #line:0b02bc1 
   << jump Motiver_Fred_Reviser >>
 
 ===
@@ -385,29 +384,29 @@ tags:
 colorID: 0
 position: 514,745
 ---
-Vous décidez de prendre le taureau par les cornes. 
-You: Il faut que je t'avoue encore une chose, Fred. Mes fiches de révision ne feront pas tout le travail pour toi.
-Fred: Noooo, ça je m'en doutais.
-You: Peut-être, mais sache que je connais le moyen de t'aider à exploser ton score au Grand Oral !
-Fred_smiling: Sérieux ? Tu es devenu coach professionnel spécialisé en performances universitaires ?
-You: Naan... Reconnais quand même que j'ai augmenté ma moyenne.
-Fred: C'est vrai.
-You: Alors crois-moi. Si tu veux y arriver, il te faut définir un objectif clair, réalisable et que tu peux segmenter en plusieurs étapes !
-Fred: Sans déconner ?! 
-You: Je te jure !
-Fred_smiling: Tu as lu ça dans le hors série de Student Herald Mag ?!
-Honnêtement, votre intervention n'est pas aisée. 
+Vous décidez de prendre le taureau par les cornes.  #line:0ae3fe3 
+You: Il faut que je t'avoue encore une chose, Fred. Mes fiches de révision ne feront pas tout le travail pour toi. #line:064fe70 
+Fred: Noooo, ça je m'en doutais. #line:01ed9bb 
+You: Peut-être, mais sache que je connais le moyen de t'aider à exploser ton score au Grand Oral ! #line:0dc6a46 
+Fred_smiling: Sérieux ? Tu es devenu coach professionnel spécialisé en performances universitaires ? #line:08ab934 
+You: Naan... Reconnais quand même que j'ai augmenté ma moyenne. #line:04370f0 
+Fred: C'est vrai. #line:0b0666a 
+You: Alors crois-moi. Si tu veux y arriver, il te faut définir un objectif clair, réalisable et que tu peux segmenter en plusieurs étapes ! #line:00da826 
+Fred: Sans déconner ?!  #line:0ee5a3b 
+You: Je te jure ! #line:0061b8e 
+Fred_smiling: Tu as lu ça dans le hors série de Student Herald Mag ?! #line:07e7a19 
+Honnêtement, votre intervention n'est pas aisée.  #line:0e7af66 
 //Fred n'est franchement pas convaincu par vos arguments. Au fur et à mesure que vous déroulez votre raisonnement, vous sentez que vous perdez l'attention et la confiance de Fred. Vous le voyez s'agiter, gesticuler, rigoler, grimacer, réfuter vos propos... 
-Le moins qu'on puisse dire est qu'iel n'a pas l'air convaincu. 
-Fred_angry2: Hey, ça va pas, non ? Je me fixe un but, si j'en ai envie ! Et ce n'est pas toi qui va me dire comment faire !
-You: Attends... C'est pour ton bien...
-Fred_angry: Qu'est-ce que tu en sais ? Tu es devin ?
-You: Heu...
+Le moins qu'on puisse dire est qu'iel n'a pas l'air convaincu.  #line:0a38aaf 
+Fred_angry2: Hey, ça va pas, non ? Je me fixe un but, si j'en ai envie ! Et ce n'est pas toi qui va me dire comment faire ! #line:0c3fa0d 
+You: Attends... C'est pour ton bien... #line:014ede5 
+Fred_angry: Qu'est-ce que tu en sais ? Tu es devin ? #line:05c89cb 
+You: Heu... #line:016e1d9 
 << show fred sad >>
-Hélas, au lieu d'inciter Fred à se définir un but, vous l'avez piégé, acculé contre un mur. 
-Résultat : iel s'est replié sur lui même. Il va falloir regagner sa confiance...
+Hélas, au lieu d'inciter Fred à se définir un but, vous l'avez piégé, acculé contre un mur.  #line:0b367ca 
+Résultat : iel s'est replié sur lui même. Il va falloir regagner sa confiance... #line:0130d75 
 
--> S'y prendre autrement
+-> S'y prendre autrement #line:0f567da 
   << jump Motiver_Fred_Reviser >>
 
 ===
@@ -416,31 +415,31 @@ tags:
 colorID: 0
 position: 513,1006
 ---
-Vous préférez la méthode la plus indirecte, la plus incertaine. Vous ne savez pas si vous allez trouver les mots adaptés pour que Fred formule de lui-même son objectif.
-Mais, vous tentez le coup.
-You: Pourquoi as-tu intégré l'Académie d'Omniscience et de Polytechnologie Universelle ?
-Fred_smiling: Je ne sais pas trop. J'étais pris partout. J'aimais bien le site, l'ambiance, le public.
-You: C'est vrai qu'on s'amuse bien ici.
-Fred: Yes yes.
-You: Qu'est-ce que tu attends de ton diplôme ?
-Fred_surprised: Je sais pas non plus. C'est un diplôme, quoi. 
-You: C'est important, un diplôme ?
-Fred: Yes, ça fait partie du jeu. 
-You: Et si tu n'avais pas ce diplôme ?
-Fred_sad: Faudrait que je recommence tout à zéro. Ailleurs.
-You: Est-ce nécessaire de tout recommencer depuis le début ? 
-Fred_surprised: Je comprends pas ta question.
-You: Tu peux changer de voie, ou compléter ton apprentissage par un autre cursus.
-Fred vous regarde avec de grands yeux.
-Fred_excited: Oui ! Bien sûr ! J'aurai dû y penser plus tôt ! Rien n'est perdu, tout est encore possible !
-Fred bredouille tellement iel est excité.
+Vous préférez la méthode la plus indirecte, la plus incertaine. Vous ne savez pas si vous allez trouver les mots adaptés pour que Fred formule de lui-même son objectif. #line:0c5407b 
+Mais, vous tentez le coup. #line:0ea6106 
+You: Pourquoi as-tu intégré l'Académie d'Omniscience et de Polytechnologie Universelle ? #line:0894b11 
+Fred_smiling: Je ne sais pas trop. J'étais pris partout. J'aimais bien le site, l'ambiance, le public. #line:046eb03 
+You: C'est vrai qu'on s'amuse bien ici. #line:095292f 
+Fred: Yes yes. #line:0568195 
+You: Qu'est-ce que tu attends de ton diplôme ? #line:032d44a 
+Fred_surprised: Je sais pas non plus. C'est un diplôme, quoi.  #line:04f0b23 
+You: C'est important, un diplôme ? #line:0c02b89 
+Fred: Yes, ça fait partie du jeu.  #line:045a921 
+You: Et si tu n'avais pas ce diplôme ? #line:0db27b1 
+Fred_sad: Faudrait que je recommence tout à zéro. Ailleurs. #line:0cf77d6 
+You: Est-ce nécessaire de tout recommencer depuis le début ?  #line:07dde10 
+Fred_surprised: Je comprends pas ta question. #line:0e35ca7 
+You: Tu peux changer de voie, ou compléter ton apprentissage par un autre cursus. #line:0b8b391 
+Fred vous regarde avec de grands yeux. #line:06fa50e 
+Fred_excited: Oui ! Bien sûr ! J'aurai dû y penser plus tôt ! Rien n'est perdu, tout est encore possible ! #line:0ea06f6 
+Fred bredouille tellement iel est excité. #line:06f94ae 
 //Iel sait ce qu'il va faire maintenant. Iel va aller au bout de ce premier diplôme de l'Académie d'Omniscience et de Polytechnologie Universelle. Après, iel verra bien s'iel continue dans cette voie ou s'iel choisit un autre chemin.
 
 //Vous êtes heureux pour lui, et vous aussi. Vous lui dites qu'il est temps de se servir des fiches de révision que vous avez réalisées samedi.
 
-You: Viens avec moi ...
+You: Viens avec moi ... #line:0d1e09d 
 
--> Il est temps de se servir des fiches de révision
+-> Il est temps de se servir des fiches de révision #line:0efc14b 
   << hide >>
   << jump Reviser_Fiches1 >>
 
@@ -458,11 +457,11 @@ position: 783,1004
 // Vous demandez à Fred de le suivre dans votre chambre. Ce qu'iel fait. 
 << if !visited("Rassurer_Fred") >>
 << visit Rassurer_Fred >>
-Vous demandez à Room Mate de basculer la pièce en mode "immersion studieuse". Cependant, vous précisez à votre IA que vous ne souhaitez pas activer les modules vidéos "work with me". 
-Puisqu'aujourd'hui, vous ne travaillez pas seul mais en duo. Fred vous observe, émerveillé:
-Fred_happy: T'es vraiment un pro du business universitaire.
-You: Ouais. Bon, c'est pas tout, on a du pain sur la planche.
-Fred: Comment on s'y prend? C'est toi le big boss !
+Vous demandez à Room Mate de basculer la pièce en mode "immersion studieuse". Cependant, vous précisez à votre IA que vous ne souhaitez pas activer les modules vidéos "work with me".  #line:0dadce9 
+Puisqu'aujourd'hui, vous ne travaillez pas seul mais en duo. Fred vous observe, émerveillé: #line:0b049fb 
+Fred_happy: T'es vraiment un pro du business universitaire. #line:0253bc9 
+You: Ouais. Bon, c'est pas tout, on a du pain sur la planche. #line:0ed9396 
+Fred: Comment on s'y prend? C'est toi le big boss ! #line:0f71be9 
 << endif >>
 
 << empty >>
@@ -472,11 +471,11 @@ Fred: Comment on s'y prend? C'est toi le big boss !
 //sinon:
 // Pour utiliser ses fiches de révision, plusieurs choix s'offrent à vous. Lequel serait le plus judicieux ?
 
--> C'est vous qui lisez vos fiches de révision à Fred. #once
+-> C'est vous qui lisez vos fiches de révision à Fred. #once #line:0c94a8a 
   << jump PJ_Lit_Fiches >>
--> Vous donnez les fiches à Fred. Vous lui demandez ensuite de vous les lire à haute voix. #once
+-> Vous donnez les fiches à Fred. Vous lui demandez ensuite de vous les lire à haute voix. #once #line:03dc710 
   << jump Fred_Lit_Fiches >>
--> Vous lisez tous les deux les fiches. #once
+-> Vous lisez tous les deux les fiches. #once #line:09add10 
   << jump Duo_Echange_Fiches >>
 
 // C'est vous qui lisez vos fiches de révision à Fred. Vous lui demandez par contre de ne pas vous interrompre. Sinon, la lecture risque d'être trop partielle et confuse.  
@@ -493,28 +492,28 @@ tags:
 colorID: 0
 position: 1120,743
 ---
-Vous avez conscience du manque de préparation de Fred. 
+Vous avez conscience du manque de préparation de Fred.  #line:0f3b4c8 
 // Contrairement à vous qui avez dû relire les cours, iel n'a pas pris le temps raviver ses connaissances en matière de philosophie quantique. 
-You: Je sais que tu n'as pas encore mis le nez dans tes cours. Moi si.
-Fred_surprised: Et alors ? C'est une compétition ?
-You: Naan, mais je pense préférable de commencer par te lire mes fiches.
-Fred_angry: Tu plaisantes ?
-You: Pas du tout. Cela va te servir de séance de révision accélérée.
+You: Je sais que tu n'as pas encore mis le nez dans tes cours. Moi si. #line:0c65443 
+Fred_surprised: Et alors ? C'est une compétition ? #line:0f18529 
+You: Naan, mais je pense préférable de commencer par te lire mes fiches. #line:018ce43 
+Fred_angry: Tu plaisantes ? #line:0a643f8 
+You: Pas du tout. Cela va te servir de séance de révision accélérée. #line:0595b44 
 // à partir d'ici expression ironique, sarcastique de Fred
-Fred_surprised: C'est trop généreux de ta part.
-You: Merci.
-Fred_surprised: Tu es une mère pour moi.
-You: En plus, tu peux suivre en regardant les doubles que je t'ai données.
-Fred_surprised: Surtout moi qui adore lire...
-Vous réalisez trop tard votre erreur. Fred adore échanger oralement avec ses camarades. Iel n'arrête pas de vous interpeller. Vous tentez de lui répondre le plus brièvement possible. 
-Mais iel ne cesse de vous poser d'autres questions, qui entraînent d'autres questions. Vous lui intimez l'ordre de cesser de vous interrompre. Ce qu'iel fait de mauvais gré. 
-Votre lecture de vos fiches de révision se transforme en soporifique cours magistral. Vous constatez que l'attention de Fred faiblit en même temps que la fréquence de ses interventions. 
+Fred_surprised: C'est trop généreux de ta part. #line:0eaeb45 
+You: Merci. #line:0c3dedc 
+Fred_surprised: Tu es une mère pour moi. #line:0dbb35e 
+You: En plus, tu peux suivre en regardant les doubles que je t'ai données. #line:0d7eeb7 
+Fred_surprised: Surtout moi qui adore lire... #line:0474116 
+Vous réalisez trop tard votre erreur. Fred adore échanger oralement avec ses camarades. Iel n'arrête pas de vous interpeller. Vous tentez de lui répondre le plus brièvement possible.  #line:034379f 
+Mais iel ne cesse de vous poser d'autres questions, qui entraînent d'autres questions. Vous lui intimez l'ordre de cesser de vous interrompre. Ce qu'iel fait de mauvais gré.  #line:0109ca6 
+Votre lecture de vos fiches de révision se transforme en soporifique cours magistral. Vous constatez que l'attention de Fred faiblit en même temps que la fréquence de ses interventions.  #line:0615b47 
 // Vous réalisez que vous avez extrait Fred de sa zone de confort. Vous l'empêchez d'interagir avec vous, de manière spontanée et informelle. Hors, si vous désirez qu'iel garde confiance en lui et reste motivé, vous devez lui ménager un espace de travail rassurant et fiable. Tout le contraire de ce que vous faites actuellement.
 
-C'est normal qu'iel finisse par perdre patience et balancer vos fiches de révision aux quatre coins de la pièce. 
+C'est normal qu'iel finisse par perdre patience et balancer vos fiches de révision aux quatre coins de la pièce.  #line:04d7c9d 
 // Le verdict est clair et sans appel : vous avez fait fausse route.  
 
--> Choisir une autre méthode.
+-> Choisir une autre méthode. #line:0a8b119 
   << jump Reviser_Fiches1 >>
 
 // A votre avis, juste un choix erroné renvoi à la liste d'action comme je le fais
@@ -527,24 +526,24 @@ position: 1115,1292
 ---
 << empty >>
 //Vous pensez bien faire en favorisant l'autonomie de Fred dans ses révisions.
-You: Je sais que tu n'as pas encore mis le nez dans tes cours.
-Fred: Je vois que tu lis dans mes pensées.
-You: Naan, mais je te connais bien. Et c'est parce que je te connais bien que je te demande de les lire, à ma place.
-Fred_surprised: À ta place ?
-You: Contrairement à toi, je me suis déjà replongé dans la philosophie quantique. Mes souvenirs sont plus frais. C'est moi qui devrait lire ces fiches.
-Fred_angry2: Alors, fais-le ! Ce sont les tiennes après tout !
-You: Non merci. Il faut que tu te les appropries ! Je t'en prie, lis-les...
-Fred_angry: Tu déconnes ?!
-You: Naan, je le fais pour toi.
-Fred_sad: Arrête de me prendre pour ton petit frère.
-De mauvais gré, Fred se force à lire vos fiches. Vous constatez qu'iel peine à développer les mots ou les phrases clés qu'elles contiennent. 
-Et ce n'est pas seulement parce qu'il semble mécontent. Vos fiches ne sont que des synthèses, des résumés succincts. 
+You: Je sais que tu n'as pas encore mis le nez dans tes cours. #line:02af3dd 
+Fred: Je vois que tu lis dans mes pensées. #line:0af0242 
+You: Naan, mais je te connais bien. Et c'est parce que je te connais bien que je te demande de les lire, à ma place. #line:069d155 
+Fred_surprised: À ta place ? #line:0c02e08 
+You: Contrairement à toi, je me suis déjà replongé dans la philosophie quantique. Mes souvenirs sont plus frais. C'est moi qui devrait lire ces fiches. #line:00b467c 
+Fred_angry2: Alors, fais-le ! Ce sont les tiennes après tout ! #line:0a548d6 
+You: Non merci. Il faut que tu te les appropries ! Je t'en prie, lis-les... #line:07282d4 
+Fred_angry: Tu déconnes ?! #line:0a74d2a 
+You: Naan, je le fais pour toi. #line:0e1872d 
+Fred_sad: Arrête de me prendre pour ton petit frère. #line:0234c29 
+De mauvais gré, Fred se force à lire vos fiches. Vous constatez qu'iel peine à développer les mots ou les phrases clés qu'elles contiennent.  #line:01a8af1 
+Et ce n'est pas seulement parce qu'il semble mécontent. Vos fiches ne sont que des synthèses, des résumés succincts.  #line:014f680 
 // Enfin, vous l'obligez à vous lire à haute voix des textes, des écrits qu'iel n'a même pas réalisés. Alors que maître Azul l'a bien précisé : un profil "divergent" préfère raisonner oralement, sans filet. Vous réalisez que vous avez extrait Fred de sa zone de confort. Hors, si vous désirez qu'iel garde confiance en lui et reste motivé, vous ne devez pas le brusquer. Ce que vous faites actuellement.
 
 //C'est normal qu'iel finisse par perdre patience et balancer vos fiches de révision aux quatre coins de la pièce.
-Le verdict est clair et sans appel : vous vous êtes planté.  
+Le verdict est clair et sans appel : vous vous êtes planté.   #line:0c5253c 
 
--> Choisir une autre méthode.
+-> Choisir une autre méthode. #line:09bb77b 
   << jump Reviser_Fiches1 >>
 
 // A votre avis, juste un choix erroné renvoi à la liste d'action comme je le fais
@@ -555,39 +554,39 @@ tags:
 colorID: 0
 position: 1107,1011
 ---
-You: Voilà ce que je te propose. En s'aidant de mes fiches, on se pose des questions sur la philosophie quantique.
-Fred_happy: OK. Tu commences ?
-You: Non non, à toi l'honneur.
-Fred_smiling: Merci.
+You: Voilà ce que je te propose. En s'aidant de mes fiches, on se pose des questions sur la philosophie quantique. #line:04fcf19 
+Fred_happy: OK. Tu commences ? #line:0cbdea5 
+You: Non non, à toi l'honneur. #line:018ba85 
+Fred_smiling: Merci. #line:097f739 
 // Rien qu'à observer l'attitude tout à la fois complice et engagée de votre pote, vous devinez que vous avez trouvé la bonne solution. 
-Fred se prend au jeu. Iel inspecte vos fiches de révision. Vous pose une question. Vous tentez d'y répondre en sollicitant vos connaissances, imparfaites mais plus solides que les siennes. 
-Iel vous corrige votre erreur à l'aide de vos fiches, iel approfondit vos arguments. 
-You: À mon tour.
-Fred_smiling: Ce sera plus facile de me piéger.
-You: C'est pas le but. Le but est de réviser de manière ludique et interactive.
-Fred_happy: Comme dans un jeu ?
-You: Ouais.
-Vous vous plongez dans vos fiches. Vous choisissez un concept ou une notion précise. Vous lui posez à votre tour une question. Iel répond avec sa verve habituelle. 
-Vous devez, vous aussi, rectifier son argumentaire. Fred ne maîtrise pas encore bien ses sujets. Surtout au début de la séance. C'est encore très vague et parcellaire.
-Vous n'oubliez pas pour autant de ménager des pauses régulières en musique avec votre cycloluth de Feudall. 
+Fred se prend au jeu. Iel inspecte vos fiches de révision. Vous pose une question. Vous tentez d'y répondre en sollicitant vos connaissances, imparfaites mais plus solides que les siennes.  #line:05b565b 
+Iel vous corrige votre erreur à l'aide de vos fiches, iel approfondit vos arguments.  #line:0f9d745 
+You: À mon tour. #line:05423f8 
+Fred_smiling: Ce sera plus facile de me piéger. #line:0c2596d 
+You: C'est pas le but. Le but est de réviser de manière ludique et interactive. #line:02933de 
+Fred_happy: Comme dans un jeu ? #line:02482cc 
+You: Ouais. #line:0f87161 
+Vous vous plongez dans vos fiches. Vous choisissez un concept ou une notion précise. Vous lui posez à votre tour une question. Iel répond avec sa verve habituelle.  #line:0f4d4b4 
+Vous devez, vous aussi, rectifier son argumentaire. Fred ne maîtrise pas encore bien ses sujets. Surtout au début de la séance. C'est encore très vague et parcellaire. #line:093f1b0 
+Vous n'oubliez pas pour autant de ménager des pauses régulières en musique avec votre cycloluth de Feudall.  #line:012183f 
 << music Solo2 >> 
-Connaissant assez bien les goûts de Fred, vous optez pour des improvisations à sonorité plus métalliques. Vous branchez votre instrument sur un amplificateur.
-Fred: Gosh ! T'es vraiment doué en guitare.
+Connaissant assez bien les goûts de Fred, vous optez pour des improvisations à sonorité plus métalliques. Vous branchez votre instrument sur un amplificateur. #line:0285397 
+Fred: Gosh ! T'es vraiment doué en guitare. #line:09da8fe 
 << hide >>
 // You: C'est un de mes dons cachés.
 
-Et le jeu de ping pong entrecoupé d'interludes métalleux continue ainsi pendant des heures. Un vrai moment de délice et de partage. 
+Et le jeu de ping pong entrecoupé d'interludes métalleux continue ainsi pendant des heures. Un vrai moment de délice et de partage.  #line:0df24a5 
 
 << music Neutral >>
 << advanceTime 10:00 20:00 0:15 >>
 
-Puis, votre horloge connectée vous informe qu'il est plus de 20 heures.
+Puis, votre horloge connectée vous informe qu'il est plus de 20 heures. #line:07981a2 
 //  Il serait peut-être temps de dîner. Vous proposez à Fred de rester manger avec vous. Proposition qu'iel accepte.
 
-You: Tu veux manger ici avec moi ?
-Fred: Yes, j'ai mega faim !
+You: Tu veux manger ici avec moi ? #line:062cd5e 
+Fred: Yes, j'ai mega faim ! #line:07c8aaf 
 
--> Dîner avec Fred.
+-> Dîner avec Fred. #line:0c29fb9 
   << hide >>
   << jump Diner_Dim >>
 
@@ -603,28 +602,28 @@ position: 1444,999
 << fadeOut >>
 
 // Ce dimanche soir, vous faites encore une exception. Vous n'avez pas le temps, vous avez un invité. 
-Vous enfournez deux maxi pizzas congelées dans le four. Deux maxi plats cuisinés que vous dévorez, Fred et vous, avec bonheur... 
-En vous remémorant les moments les plus incroyables de votre journée de révision...
+Vous enfournez deux maxi pizzas congelées dans le four. Deux maxi plats cuisinés que vous dévorez, Fred et vous, avec bonheur...  #line:04819a7 
+En vous remémorant les moments les plus incroyables de votre journée de révision... #line:05f7934 
 
-C'est alors que vous vous souvenez de votre grand-mère...
+C'est alors que vous vous souvenez de votre grand-mère... #line:07d9908 
 // En effet, vous voyez un appel manqué sur votre palmphone. Vous savez qu'il est important, tant pour elle que pour vous, de la rappeler.
-You: Désolé, j'ai oublié. Je dois rappeler ma grand-mère. Elle est à l'hôpital.
-Fred_smiling: No worry. Je te laisse. 
-You: T'es pas obligé de partir.
-Fred_excited: Normal, c'est un family business. Je suis que ton... meilleur pote.
-Fred éclate de rire avant de se lever et de vous laisser seul avec votre palmphone.
+You: Désolé, j'ai oublié. Je dois rappeler ma grand-mère. Elle est à l'hôpital. #line:08f9694 
+Fred_smiling: No worry. Je te laisse.  #line:04e6bf1 
+You: T'es pas obligé de partir. #line:053d16e 
+Fred_excited: Normal, c'est un family business. Je suis que ton... meilleur pote. #line:04a37fe 
+Fred éclate de rire avant de se lever et de vous laisser seul avec votre palmphone. #line:0374716 
 << hide >>
 
-Votre grand-mère décroche dès la première sonnerie. 
-Elle vous arrose à nouveau de ses paroles sucrées et affectueuses. 
-Les pharmaceutiques y sont pour quelque chose. N'empêche. Quelle femme, une authentique dure-à-cuire...
+Votre grand-mère décroche dès la première sonnerie.  #line:082f7ce 
+Elle vous arrose à nouveau de ses paroles sucrées et affectueuses.  #line:03ed053 
+Les pharmaceutiques y sont pour quelque chose. N'empêche. Quelle femme, une authentique dure-à-cuire... #line:0d5f4c4 
 // Vous l'écoutez avec patience. Puis, elle vous dit au revoir. Vous raccrochez, heureux d'avoir pris le temps de papoter avec "mamie". 
 // Elle vous garde plus d'une heure.
 << advanceTime 21:00 >>
 
-Vous sentez le poids de la fatigue accumulée. Un petit tour aux toilettes pour se laver les dents. On enfile sa tenue pour la nuit.
+Vous sentez le poids de la fatigue accumulée. Un petit tour aux toilettes pour se laver les dents. On enfile sa tenue pour la nuit. #line:0feb99f 
 
--> Au dodo !
+-> Au dodo ! #line:03ffbe3 
   << jump Dodo_Dim_Lun >>
 
 ===
@@ -637,10 +636,10 @@ position: 1738,999
 << setBackground bedroom night >>
 << fadeOut  >>
 
-Vous avez fait du bon boulot avec Fred dimanche.
+Vous avez fait du bon boulot avec Fred dimanche. #line:0881f9d 
 
 << fadeIn>>
-Vous fermez les yeux et plongez dans un sommeil profond et durable...
+Vous fermez les yeux et plongez dans un sommeil profond et durable... #line:07b6271 
 
 << jump Lundi_matin >>
 ===
@@ -656,11 +655,11 @@ position: 1738,999
 << fadeOut>>
 
 
-Vous rouvrez les yeux quand votre horloge connectée sonne. Il est huit heures. 
+Vous rouvrez les yeux quand votre horloge connectée sonne. Il est huit heures.  #line:01b7d19 
 << stopFX Chime_LOOP >>
 << fx EatCook >>
-Vous avalez un petit déjeuner, simple et rapide : une boîte de chimicookies et un synthécafé.
-Maintenant, il va falloir se remettre à retravailler vos fiches de révision...
+Vous avalez un petit déjeuner, simple et rapide : une boîte de chimicookies et un synthécafé. #line:078a56c 
+Maintenant, il va falloir se remettre à retravailler vos fiches de révision... #line:00604eb 
 
 << advanceTime 0:30 >>
 
@@ -668,11 +667,11 @@ Maintenant, il va falloir se remettre à retravailler vos fiches de révision...
 << setBackground bedroom >>
 << fadeOut >>
 
-Vous appelez Fred et lui demandez de revenir réviser avec vous, ou vous allez chercher Fred directement chez lui ?
+Vous appelez Fred et lui demandez de revenir réviser avec vous, ou vous allez chercher Fred directement chez lui ? #line:053a557 
 
--> Appeler Fred
+-> Appeler Fred #line:0548d21 
   << jump Call_Fred >>
--> Aller chez Fred
+-> Aller chez Fred #line:0689a6f 
   << jump Sonner_Fred >>
 
 // penser à faire monter la jauge stress au réveil, après le petit-déjeuner???????
@@ -682,16 +681,16 @@ title: Call_Fred
 tags: 
 position: 1733,1245
 ---
-Vous téléphonez chez Fred. La sonnerie sonne dans le vide. 
-Ce n'est pas son genre. Vous laissez un message avant de raccrocher. Vous lui dites bien qu'il est important qu'il retravaille ses fiches de révision. Pour l'avoir vécu, vous savez combien le travail de mémorisation est encore fragile et instable.
+Vous téléphonez chez Fred. La sonnerie sonne dans le vide.  #line:085ce64 
+Ce n'est pas son genre. Vous laissez un message avant de raccrocher. Vous lui dites bien qu'il est important qu'il retravaille ses fiches de révision. Pour l'avoir vécu, vous savez combien le travail de mémorisation est encore fragile et instable. #line:0454e89 
 
 << advanceTime 0:05 >>
 
-Fred ne vous rappelle pas. Que décidez-vous de faire ?
+Fred ne vous rappelle pas. Que décidez-vous de faire ? #line:08a8d60 
 
 //-> Attendre son rappel
 //  << jump Attendre_Fred >>
--> Aller chez lui
+-> Aller chez lui #line:06ad8af 
   << jump Sonner_Fred >>
 ===
 title: Sonner_Fred
@@ -701,34 +700,33 @@ position: 2032,1003
 << fadeIn >>
 << setBackground door >>
 << fadeOut >>
-
-Vous sonnez chez Fred. Une fois, deux fois, trois fois... Vous ne vous découragez pas. Il en va de son sort universitaire...
-Finalement, Fred vous ouvre. 
+Vous sonnez chez Fred. Une fois, deux fois, trois fois... Vous ne vous découragez pas. Il en va de son sort universitaire... #line:0606a95 
+Finalement, Fred vous ouvre.  #line:07ef993 
 
 << fadeIn >>
 << setBackground bedroom_fred >>
 << fadeOut >>
 // Vous entrez. Il suffit de l'observer pour constater qu'iel est fatigué.
 
-You: Fred, habille-toi et suis-moi !
-Fred_surprised: Baaaah........ Pourquoi ?
-You: On doit encore réviser les fiches !
-Fred_surprised: Mais on a pas cessé de le faire hier ?!
-You: Ce n'est pas suffisant. C'est comme la peinture, il faut remettre une couche !
-Fred_happy: Ha Ha ! J'adore ta blague !
-You: Ce n'est pas une blague ! Tu sais, les jurés possèdent un détecteur neurocérébral !
-Fred_surprised: Un quoi ?
-You: Un détecteur neurocérébral : ils vont fouiller dans ton cerveau et ils t'interrogeront sur ce que tu connais le moins !
-Fred_angry: Tu délires, c'est de la science fiction !
-You: Crois-moi, nous sommes dans un univers de science fiction. 
-Fred_surprised: Sérieux ?
-You: Sérieux. 
-Fred_smiling: C'est génial ce que tu dis. Je voudrais avoir le même.
-You: En attendant, il faut s'en prémunir. Il faut se remettre à réviser. Suis-moi !
-Fred: OK, Boss.
-Fred s'habille, prend un petit-déjeuner éclair et vous rejoint dans votre chambre.
+You: Fred, habille-toi et suis-moi ! #line:0fbd6c2 
+Fred_surprised: Baaaah........ Pourquoi ? #line:0f6b9b6 
+You: On doit encore réviser les fiches ! #line:021002b 
+Fred_surprised: Mais on a pas cessé de le faire hier ?! #line:0e51974 
+You: Ce n'est pas suffisant. C'est comme la peinture, il faut remettre une couche ! #line:01b7d43 
+Fred_happy: Ha Ha ! J'adore ta blague ! #line:037acfb 
+You: Ce n'est pas une blague ! Tu sais, les jurés possèdent un détecteur neurocérébral ! #line:047ecf4 
+Fred_surprised: Un quoi ? #line:01ef9c7 
+You: Un détecteur neurocérébral : ils vont fouiller dans ton cerveau et ils t'interrogeront sur ce que tu connais le moins ! #line:09fafe2 
+Fred_angry: Tu délires, c'est de la science fiction ! #line:0cc6619 
+You: Crois-moi, nous sommes dans un univers de science fiction.  #line:037c31f 
+Fred_surprised: Sérieux ? #line:0a764df 
+You: Sérieux.  #line:0252aba 
+Fred_smiling: C'est génial ce que tu dis. Je voudrais avoir le même. #line:081e9f8 
+You: En attendant, il faut s'en prémunir. Il faut se remettre à réviser. Suis-moi ! #line:08a3026 
+Fred: OK, Boss. #line:05f4840 
+Fred s'habille, prend un petit-déjeuner éclair et vous rejoint dans votre chambre. #line:0b205ab 
 
--> Retour dans la chambre.
+-> Retour dans la chambre. #line:08114b1 
   << hide >>
   << advanceTime 0:05 >>
   << jump Reviser_Fiches2 >>
@@ -738,19 +736,19 @@ tags:
 colorID: 0
 position: 2028,1231
 ---
-Vous attendez Fred... 
+Vous attendez Fred...  #line:053f5cc 
 << advanceTime 1:00 >>
 
-Encore et encore... 
+Encore et encore...  #line:089f8a2 
 << advanceTime 1:00 >>
 
-Manifestement, iel pense qu'une seule séance de révision avec vos fiches lui suffit. Vous avez oublié que Fred n'a pris toute la mesure de ses limites. 
-Soit, iel se surestime, soit iel se sous-estime. Vous ne pouvez encore le laisser seul, sans le guider jusqu'au Grand Oral.
+Manifestement, iel pense qu'une seule séance de révision avec vos fiches lui suffit. Vous avez oublié que Fred n'a pris toute la mesure de ses limites.  #line:0acf125 
+Soit, iel se surestime, soit iel se sous-estime. Vous ne pouvez encore le laisser seul, sans le guider jusqu'au Grand Oral. #line:0822be4 
 
 << fx Failure >>
-Vous avez encore foiré. Il faut tout recommencer !
+Vous avez encore foiré. Il faut tout recommencer ! #line:0667f38 
 
--> Retour à lundi matin!
+-> Retour à lundi matin! #line:0737cb6 
   << resetLevel >>
   << jump Lundi_matin >>
 // A mon sens, c'est un choix très imprudent pour le joueur de laisser Fred en roue libre lundi matin. Pour moi, c'est game over. Qu'en pensez-vous?
@@ -763,21 +761,21 @@ position: 2319,996
 << setBackground bedroom >>
 << fadeOut>>
 
-Vous redemandez à Room Mate de lancer le mode "immersion studieuse" dans votre chambre pour une heure. 
+Vous redemandez à Room Mate de lancer le mode "immersion studieuse" dans votre chambre pour une heure.  #line:0b20dfd 
 // Comme vous êtes de nouveau en duo, vous n'utilisez pas le module "work with me". 
 << music Solo1 >>
-C'est vous qui démarrez la session.
-C'est encore un pur moment de complicité, de délire, de bonheur et de partage enrichissant.
+C'est vous qui démarrez la session. #line:05daacd 
+C'est encore un pur moment de complicité, de délire, de bonheur et de partage enrichissant. #line:040a5f9 
 << advanceTime 2:00 9:30 0:05 >>
-Malheureusement, le Room Mate vous coupe, il est l'heure d'aller à l'oral.
-Fred: Yoooo ! Tu avais raison, j'en avais besoin de cette séance de rafraîchissement. 
-You: Je sais, je sais. On appelle ces séances des "piqûres de rappel".
-Fred_happy: Damned, ça me pique rien que de t'entendre le dire.
-You: Ouais.
-Fred_smiling: Yes yes. En tout cas, tu es vraiment un master de l'apprentissage ! 
-You: Merci.
+Malheureusement, le Room Mate vous coupe, il est l'heure d'aller à l'oral. #line:075c17e 
+Fred: Yoooo ! Tu avais raison, j'en avais besoin de cette séance de rafraîchissement.  #line:061f901 
+You: Je sais, je sais. On appelle ces séances des "piqûres de rappel". #line:0d13906 
+Fred_happy: Damned, ça me pique rien que de t'entendre le dire. #line:034cba5 
+You: Ouais. #line:0526785 
+Fred_smiling: Yes yes. En tout cas, tu es vraiment un master de l'apprentissage !  #line:05e449e 
+You: Merci. #line:0eab579 
 
--> Au Grand Oral !
+-> Au Grand Oral ! #line:07746e2 
   << hide >>
   << jump Grand_Oral >>
 ===
@@ -791,15 +789,15 @@ position: 2563,996
 << music Tense >>
 << fadeOut >>
 
-Avant d'entrer dans la salle, Fred et vous vous souhaitez bonne chance. 
+Avant d'entrer dans la salle, Fred et vous vous souhaitez bonne chance.  #line:09dc704 
 
 << fadeIn >>
 << setBackground oral >>
 << advanceTime 0:05 >>
 << fadeOut >>
 
-Le reste... se déroule sans réelle encombre. Vous êtes de nouveau inspecté par les lunettes de détection neurocérébrale. 
-Le jury vous interroge cette fois sur "l'intrication quantique". Vous parvenez encore à présenter une argumentation cohérente, solide, qui résiste aux questions des jurés.
+Le reste... se déroule sans réelle encombre. Vous êtes de nouveau inspecté par les lunettes de détection neurocérébrale.  #line:023cba1 
+Le jury vous interroge cette fois sur "l'intrication quantique". Vous parvenez encore à présenter une argumentation cohérente, solide, qui résiste aux questions des jurés. #line:0b61f12 
 << fx Success >>
 
 << fadeIn >>
@@ -808,32 +806,32 @@ Le jury vous interroge cette fois sur "l'intrication quantique". Vous parvenez e
 
 << advanceTime 0:30 >>
 
-Quand vous sortez de là, vous devez attendre quelques temps avant de voir sortir à son tour Fred.
+Quand vous sortez de là, vous devez attendre quelques temps avant de voir sortir à son tour Fred. #line:023f102 
 << advanceTime 0:45 >>
 << show fred >>
-You: Alors ? 
-Fred_smiling: Je pense que c'est bon.
-You: Je suis tombé sur le sujet de l'intrication quantique. Et toi ?
-Fred_happy: Celui de la décohérence quantique.
-You: Suspense...
-Fred_smiling: T'inquiète, j'ai géré.
-Vous restez là, à discutez, le temps que les résultats s'affichent sur l'écran. 
+You: Alors ?  #line:07d6de0 
+Fred_smiling: Je pense que c'est bon. #line:0851e88 
+You: Je suis tombé sur le sujet de l'intrication quantique. Et toi ? #line:0f51007 
+Fred_happy: Celui de la décohérence quantique. #line:0e694c7 
+You: Suspense... #line:0410caa 
+Fred_smiling: T'inquiète, j'ai géré. #line:0af313d 
+Vous restez là, à discutez, le temps que les résultats s'affichent sur l'écran.  #line:04065c6 
 
 << fx Notification >>
 << music Victory >>
 << setBackground door class-screen >>
 
-You: Super, Fred! T'es trop fort ! Tu as eu [b]A+[/b] !
-Fred_happy: Merci. Mais c'est grâce à toi tout ça, mon pote. Et toi ? Tu as eu combien ?
-You: Heu... [b]B+[/b]. C'est pas aussi bling que toi...
-Fred_surprised: Cesse de te rabaisser, { $name }. Tu mérites amplement d'avoir un [b]A+[/b].
-You: Ouais... L'important, c'est que tu restes ici.
-Fred_surprised: Quoi ?!
-You: Tu te demandais pas si tu allais quitter la fac ?
-Fred: Damned, tu l'avais senti ?
-You: Si l'on veut.
-Fred_excited: Maintenant qu'on a les résultats et qu'ils sont bons... On peut aller fêter ça à la cafétéria ?
-You: Yes !
+You: Super, Fred! T'es trop fort ! Tu as eu [b]A+[/b] ! #line:0dd8817 
+Fred_happy: Merci. Mais c'est grâce à toi tout ça, mon pote. Et toi ? Tu as eu combien ? #line:0df9254 
+You: Heu... [b]B+[/b]. C'est pas aussi bling que toi... #line:05f9c10 
+Fred_surprised: Cesse de te rabaisser, { $name }. Tu mérites amplement d'avoir un [b]A+[/b]. #line:0a54008 
+You: Ouais... L'important, c'est que tu restes ici. #line:02056b2 
+Fred_surprised: Quoi ?! #line:0bd6159 
+You: Tu te demandais pas si tu allais quitter la fac ? #line:0d671f3 
+Fred: Damned, tu l'avais senti ? #line:0d2086d 
+You: Si l'on veut. #line:0c1b24a 
+Fred_excited: Maintenant qu'on a les résultats et qu'ils sont bons... On peut aller fêter ça à la cafétéria ? #line:0dda84c 
+You: Yes ! #line:02d8c98 
 
 << hide >>
 << jump Feter_Cafeteria >>
@@ -847,53 +845,53 @@ position: 2824,985
 << advanceTime 0:15 >>
 << fadeOut >>
 
-Vous vous installez à la cafétéria. Les étudiants présents dans la salle vous fixent des yeux.
-You: Tu as vu ? Les gens ont remarqué que la star de l'Académie est à la cafétéria en ce moment.
-Fred: Pas seulement { $name }. Ils ont aussi reconnu la star du glam rock : toi !
-You: Naan, tu plaisantes.
-Fred_smiling: Yes yes. Tu vaux plus que tu ne le crois.
-You: Merci. De ta part, c'est un sacré compliment.
-Fred: Tu le mérites. Sans toi, j'allais dans le mur.
-You: Tu sais. c'est grâce à toi aussi que je suis devenu un killer de la métacognition. 
-Fred_surprised: La métacognition ?! C'est quoi ça ?
-You: Pour faire simple : l'art d'apprendre à apprendre.
-Fred: Yes yes. Je confirme. Allez, c'est mon tour de jouer le boss, c'est moi qui commande et paye !
-Fred commande à boire. C'est l'heure de l'apéro. On vous sert des pintes de cyberbière bien mousseusses. Vous trinquez et goûtez le breuvage. Pas mal. Vous sentez que c'est le moment de le dire à Fred...
-You: Je t'avoue même que, grâce à toi, j'ai mieux compris mes erreurs. 
-Fred_surprised: Quelles erreurs ?
+Vous vous installez à la cafétéria. Les étudiants présents dans la salle vous fixent des yeux. #line:0a3011c 
+You: Tu as vu ? Les gens ont remarqué que la star de l'Académie est à la cafétéria en ce moment. #line:0209cff 
+Fred: Pas seulement { $name }. Ils ont aussi reconnu la star du glam rock : toi ! #line:07f1277 
+You: Naan, tu plaisantes. #line:0456a2f 
+Fred_smiling: Yes yes. Tu vaux plus que tu ne le crois. #line:0523ac6 
+You: Merci. De ta part, c'est un sacré compliment. #line:0e5451a 
+Fred: Tu le mérites. Sans toi, j'allais dans le mur. #line:08f3bd7 
+You: Tu sais. c'est grâce à toi aussi que je suis devenu un killer de la métacognition.  #line:0cfd59e 
+Fred_surprised: La métacognition ?! C'est quoi ça ? #line:0b29efd 
+You: Pour faire simple : l'art d'apprendre à apprendre. #line:03ead8e 
+Fred: Yes yes. Je confirme. Allez, c'est mon tour de jouer le boss, c'est moi qui commande et paye ! #line:097a96f 
+Fred commande à boire. C'est l'heure de l'apéro. On vous sert des pintes de cyberbière bien mousseusses. Vous trinquez et goûtez le breuvage. Pas mal. Vous sentez que c'est le moment de le dire à Fred... #line:0676bc6 
+You: Je t'avoue même que, grâce à toi, j'ai mieux compris mes erreurs.  #line:047eb74 
+Fred_surprised: Quelles erreurs ? #line:0feb0fb 
 
--> Avouer à Fred un secret
+-> Avouer à Fred un secret #line:03ffc02 
   << jump Avouer_Fred_Secret >>
 ===
 title: Avouer_Fred_Secret
 tags: 
 position: 3053,984
 ---
-You: Tu l'as dis. Je ne me faisais pas assez confiance. Je me sentais tellement en-dessous de toi. 
-Fred: T'exagères.
-You: Naan. Tu me semblais indépassable. Je voulais tant être ton égal.
-Fred_happy: Rien que ça ?
-You: Voire plus ! Je rêvais d'être meilleur que la star de l'Académie !
-Fred: Sans blague ! Tu es aussi une star à l'Académie, je te le redis.
-You: Ouais. Mais c'est pas le plus important. 
-Fred_smiling: OK.
-You: Ce qui compte, c'est ce que je veux, moi. Te dépasser dans le classement, j'en ai rien à foutre ! 
-You: Cela ne m'aide pas à mieux me connaître. Et c'est ça ce qui compte : savoir qui l'on est vraiment, ce que l'on veut dans la vie, dans les études.
-Fred_happy: Yes yes. T'as 100% raison.
-You: Quand j'ai compris que tu projetais de quitter l'Académie, j'ai paniqué !
-Fred: Sérieux ?
-You: Tu es mon meilleur pote.
-Fred: Je vois ça.
-You: Mais, je comprends là encore que je me suis trompé. Le plus important c'est que, quoiqu'il se passe, nous restions amis.
-Fred_smiling: Yes yes. Tu es un vrai sage.
-You: J'espère en tout cas le devenir un jour.
-La journée continue un moment. Vous payez la seconde tournée. Fred en commande une troisième. Vous en profitez également pour grignotter une salade ou un chill and chips. 
+You: Tu l'as dis. Je ne me faisais pas assez confiance. Je me sentais tellement en-dessous de toi.  #line:02e3558 
+Fred: T'exagères. #line:066c15a 
+You: Naan. Tu me semblais indépassable. Je voulais tant être ton égal. #line:07ea7db 
+Fred_happy: Rien que ça ? #line:0e97a2d 
+You: Voire plus ! Je rêvais d'être meilleur que la star de l'Académie ! #line:0377d17 
+Fred: Sans blague ! Tu es aussi une star à l'Académie, je te le redis. #line:0801e8a 
+You: Ouais. Mais c'est pas le plus important.  #line:0dea586 
+Fred_smiling: OK. #line:02ae7f9 
+You: Ce qui compte, c'est ce que je veux, moi. Te dépasser dans le classement, j'en ai rien à foutre !  #line:0248640 
+You: Cela ne m'aide pas à mieux me connaître. Et c'est ça ce qui compte : savoir qui l'on est vraiment, ce que l'on veut dans la vie, dans les études. #line:003b334 
+Fred_happy: Yes yes. T'as 100% raison. #line:0110424 
+You: Quand j'ai compris que tu projetais de quitter l'Académie, j'ai paniqué ! #line:017ab08 
+Fred: Sérieux ? #line:0f9ba21 
+You: Tu es mon meilleur pote. #line:0f33c66 
+Fred: Je vois ça. #line:0cb7096 
+You: Mais, je comprends là encore que je me suis trompé. Le plus important c'est que, quoiqu'il se passe, nous restions amis. #line:0a7f5b2 
+Fred_smiling: Yes yes. Tu es un vrai sage. #line:02ce292 
+You: J'espère en tout cas le devenir un jour. #line:02a32b6 
+La journée continue un moment. Vous payez la seconde tournée. Fred en commande une troisième. Vous en profitez également pour grignotter une salade ou un chill and chips.  #line:0861543 
 
 << advanceTime 2:00 >>
-L'heure tourne. Il est grand temps de rentrer. Vous reprenez les cours demain matin.
-Vous vous faites l'accolade et vous vous dites à demain !
+L'heure tourne. Il est grand temps de rentrer. Vous reprenez les cours demain matin. #line:094c0b4 
+Vous vous faites l'accolade et vous vous dites à demain ! #line:04fc725 
 
--> Rentez se reposer
+-> Rentez se reposer #line:0b04dce 
   << hide >>
   << jump Dormir >>
 ===
@@ -905,16 +903,16 @@ position: 3314,987
 << setBackground bedroom >>
 << fadeOut >>
 
-Dans votre chambre, vous vous posez sur votre lit.
-Fatigué, repu, mais content d'être parvenu à remplir cette dernière mission... La dernière mission... Il n'y en aura plus d'autre après ?...
+Dans votre chambre, vous vous posez sur votre lit. #line:0c915bd 
+Fatigué, repu, mais content d'être parvenu à remplir cette dernière mission... La dernière mission... Il n'y en aura plus d'autre après ?... #line:0d9685d 
 
-Temde_cheerful: Yep, c'est ta dernière épreuve et tu l'as réussie.
-You: Je vous verrai plus ?
-Temde_smiling: Presque plus.
-You: Comment ça, presque plus ?
-Temde: Viens { $name }, rejoins-nous, ça sera plus facile de te l'expliquer...
+Temde_cheerful: Yep, c'est ta dernière épreuve et tu l'as réussie. #line:05d377a 
+You: Je vous verrai plus ? #line:0a7b2e4 
+Temde_smiling: Presque plus. #line:07bbedf 
+You: Comment ça, presque plus ? #line:04ef838 
+Temde: Viens { $name }, rejoins-nous, ça sera plus facile de te l'expliquer... #line:0b2a497 
 
--> Suivre Miss Temdé.
+-> Suivre Miss Temdé. #line:045dea8 
   << fx Warp >>
   << fadeIn 1500 >>
   << hide >>
@@ -929,22 +927,22 @@ position: 3571,983
 << music Victory >>
 << fadeOut >>
 
-Vous vous retrouvez encore dans ce verdoyant écrin de calme et de sérénité. Les quatre Sages vous applaudit, le sourire aux lèvres.
-Sapiens_happy: Bravo ! Tu utilises avec brio les quatre stratégies d'apprentissage. En aidant Fred à surmonter ses propres obstacles, tu as su exploiter au mieux les techniques et les secrets que nous t'avons enseignés. 
-Ledai_happy: Parfait ! Tu as franchi la dernière marche. Tu as [b]appris à apprendre[/b]. 
-Azul_happy: Félicitations ! Tu es devenu un [b]Apprenant Universel[/b] !
-Temde_happy: Yep ! Je te l'ai dit. Tu es autonome. Tu n'as plus besoin de nous. 
-You: Vous voulez dire que je ne vous verrai plus ?
-Temde_sad: Non, ce n'est pas ça.
-Ledai_explaining: Nous ne viendrons plus te réveiller tous les soirs. 
-Azul_proud: Mais nous serons toujours présents à tes côtés.
-Temde_smiling: Dans ton coeur et dans tes pensées.
-Sapiens_happy: Dans tes lectures et tes écrits.
-You: Un peu comme des anges ?
-Azul_cheerful: Oui. Nous sommes devenus tes Anges de la métacognition.
-You: Cool ! C'est chouette ! 
-Sapiens_angry: Suffit. Il est tard. Il te faut dormir.
-Ledai_happy: Bonne nuit { $name }.
-Azul_happy: Que tes songes soient créatifs et originaux.
-Temde_cheerful: N'oublie pas de rêver à nous de temps en temps...
+Vous vous retrouvez encore dans ce verdoyant écrin de calme et de sérénité. Les quatre Sages vous applaudit, le sourire aux lèvres. #line:078268e 
+Sapiens_happy: Bravo ! Tu utilises avec brio les quatre stratégies d'apprentissage. En aidant Fred à surmonter ses propres obstacles, tu as su exploiter au mieux les techniques et les secrets que nous t'avons enseignés.  #line:017b09c 
+Ledai_happy: Parfait ! Tu as franchi la dernière marche. Tu as [b]appris à apprendre[/b].  #line:0a68f0c 
+Azul_happy: Félicitations ! Tu es devenu un [b]Apprenant Universel[/b] ! #line:0e05aaf 
+Temde_happy: Yep ! Je te l'ai dit. Tu es autonome. Tu n'as plus besoin de nous.  #line:0d04fae 
+You: Vous voulez dire que je ne vous verrai plus ? #line:0cce37c 
+Temde_sad: Non, ce n'est pas ça. #line:0341448 
+Ledai_explaining: Nous ne viendrons plus te réveiller tous les soirs.  #line:0bfe203 
+Azul_proud: Mais nous serons toujours présents à tes côtés. #line:0e76ddc 
+Temde_smiling: Dans ton coeur et dans tes pensées. #line:0b32a64 
+Sapiens_happy: Dans tes lectures et tes écrits. #line:0417897 
+You: Un peu comme des anges ? #line:0434098 
+Azul_cheerful: Oui. Nous sommes devenus tes Anges de la métacognition. #line:0029545 
+You: Cool ! C'est chouette !  #line:062b141 
+Sapiens_angry: Suffit. Il est tard. Il te faut dormir. #line:097ac2c 
+Ledai_happy: Bonne nuit { $name }. #line:0d4a8c1 
+Azul_happy: Que tes songes soient créatifs et originaux. #line:0366dbd 
+Temde_cheerful: N'oublie pas de rêver à nous de temps en temps... #line:050222d 
 ===

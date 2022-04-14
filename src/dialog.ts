@@ -203,7 +203,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       for (const tag of this.metadata.filetags) {
         if (tag.startsWith("gauges")) {
           const values = tag.split(":")[1].trim();
-          const gauges = values.split(" ");
+          const gauges = values.split(",");
           this.graphics.currentGauges = gauges;
         }
       }

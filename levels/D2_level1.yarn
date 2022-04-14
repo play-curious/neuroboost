@@ -1,4 +1,4 @@
-#gauges: learning sleep food
+﻿#gauges:learning,sleep,food
 
 title: Start
 tags: 
@@ -12,20 +12,20 @@ colorID: 8
 << setTime 18:15 >>
 << music Victory >>
 
-Vous êtes toujours avec Fred à contempler les résultats de ce premier examen de la semaine de sprint. Ce dernier se retourne vers vous.
+Vous êtes toujours avec Fred à contempler les résultats de ce premier examen de la semaine de sprint. Ce dernier se retourne vers vous. #line:0aa5e70 
 
-Fred_smiling: Avec des scores pareil, y a plus qu'une chose à faire !
-You: Quoi donc ?
-Fred_happy: Célébrer ce premier jour victorieux ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande !
-You: Je sais pas... Demain matin, on a un exercice de simulation. Un test de pilotage de drone d'ingénierie !
-Fred_happy: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur.
-You: Oui, mais faudra avoir l'esprit clair et sain.
-Fred_smiling: No worry, on s'en va avant l'aube, on fait une petite sieste et on sera nickel pour l'heure H.
+Fred_smiling: Avec des scores pareil, y a plus qu'une chose à faire ! #line:0378319 
+You: Quoi donc ? #line:0a66e1e 
+Fred_happy: Célébrer ce premier jour victorieux ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande ! #line:0b027ac 
+You: Je sais pas... Demain matin, on a un exercice de simulation. Un test de pilotage de drone d'ingénierie ! #line:03a1bce 
+Fred_happy: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur. #line:06de838 
+You: Oui, mais faudra avoir l'esprit clair et sain. #line:0bb05e6 
+Fred_smiling: No worry, on s'en va avant l'aube, on fait une petite sieste et on sera nickel pour l'heure H. #line:028fbe7 
 
--> Accepter l'invitation
+-> Accepter l'invitation #line:004bf73 
     << hide >>
     <<jump Cafeteria>>
--> Refuser l'invitation
+-> Refuser l'invitation #line:071c41d 
     << hide >>
     <<jump Retour_chambre>>
 ===
@@ -38,26 +38,26 @@ position: -1298.765380859375,-151.80938720703125
 << advanceTime 00:15 >>
 << fadeOut >>
 
-Allongé tranquillement sur votre lit, vous vous replongez dans la lecture augmentée de l'atlas Ouiki_4D de Star Mars - The Lone Lightsaber... Quand...
-DRING ! DRING ! DRIIIIIING !... Inutile d'allumer le téléscreen de votre porte. Vous vous doutez qui sonne comme un dératé... FRED !!
+Allongé tranquillement sur votre lit, vous vous replongez dans la lecture augmentée de l'atlas Ouiki_4D de Star Mars - The Lone Lightsaber... Quand... #line:093f153 
+DRING ! DRING ! DRIIIIIING !... Inutile d'allumer le téléscreen de votre porte. Vous vous doutez qui sonne comme un dératé... FRED !! #line:0644ad9 
 
-Fred_excited: Allez, tu peux pas me laisser tout seul.
-You: Et si.
-Fred_happy: On n'est plus potes ? À la vie, à la mort ?
-You: Arrête de jouer ta victime, Fred, c'est fatiguant.
-Fred_happy: Steuplay...
+Fred_excited: Allez, tu peux pas me laisser tout seul. #line:0ad5ed8 
+You: Et si. #line:0e3b6da 
+Fred_happy: On n'est plus potes ? À la vie, à la mort ? #line:0b45563 
+You: Arrête de jouer ta victime, Fred, c'est fatiguant. #line:08d875c 
+Fred_happy: Steuplay... #line:0a32634 
 
 << if isTimeOver("19:30") >>
--> Accepter l'invitation
+-> Accepter l'invitation #line:09c92c6 
     << fadeIn >>
     << hide ! >>
     <<jump Cafeteria>>
 << else >>
--> Accepter l'invitation
+-> Accepter l'invitation #line:04b2532 
     << fadeIn >>
     << hide ! >>
     <<jump Cafeteria>>
--> Refuser l'invitation
+-> Refuser l'invitation #line:08a8526 
     << fadeIn >>
     << hide ! >>
     <<jump Retour_chambre>>
@@ -76,12 +76,12 @@ position: -1075.3348388671875,-37.09675598144531
 << music Danse >>
 << fadeOut >>
 
-Vous voilà donc à la cafétéria avec Fred. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer.
-Fred_smiling: Alors, tu vois qu'on peut étudier tout en s'amusant.
-You: Oui ! J'espère juste ne pas le regretter demain matin.
-Fred_happy: No worry. Faut juste savoir gérer.
-Fred a raison, l'ambiance est vivifiante et enivrante... Vous vous laissez gagner par le flow et par les good vibes...
--> The show must go on
+Vous voilà donc à la cafétéria avec Fred. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer. #line:0408c35 
+Fred_smiling: Alors, tu vois qu'on peut étudier tout en s'amusant. #line:0d53561 
+You: Oui ! J'espère juste ne pas le regretter demain matin. #line:0e66417 
+Fred_happy: No worry. Faut juste savoir gérer. #line:049a6b9 
+Fred a raison, l'ambiance est vivifiante et enivrante... Vous vous laissez gagner par le flow et par les good vibes... #line:05a646d 
+-> The show must go on #line:0399d78 
     << hide >>
     <<jump Choix_neutres>>
 ===
@@ -92,19 +92,19 @@ position: -850.2415771484375,-40.334877014160156
 ---
 << if !visited("Choix_neutres") >>
 << visit Choix_neutres >>
-Maintenant que la partie bat son plein, qu'avez-vous envie de faire ?
+Maintenant que la partie bat son plein, qu'avez-vous envie de faire ? #line:03a21e7 
 << endif >>
 
 << if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
--> Aller swinguer sur le Dance Floor#once
+-> Aller swinguer sur le Dance Floor#once #line:02056f4 
     <<jump DanceFloor>>
--> Se Rafraîchir le gosier#once
+-> Se Rafraîchir le gosier#once #line:0a0fbc9 
     <<jump Boire_Soft>>
--> Grignotter un petit booster de calories#once
+-> Grignotter un petit booster de calories#once #line:0b64aeb 
     <<jump Snacking>>
--> Jouer de la guitare#once
+-> Jouer de la guitare#once #line:0c80736 
     <<jump Guitar_Jam>>
--> Chatter avec Fred#once
+-> Chatter avec Fred#once #line:086a685 
     <<jump Chatter_avec_Fred>>
 << else >>
 <<jump TIRED>>
@@ -114,81 +114,81 @@ title: DanceFloor
 tags: 
 position: -626.3383646011353,-256.5753173828125
 ---
-On va voir, qui de vous ou de Fred, est la superstar de l'Académie... 
-Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffer doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous.
-C'est comme si vous vous étiez calé sur l'orbite de la Planète Disco. Vous vous trémoussez, vous vous déhanchez, vous sautez, vous virevoltez, vous tournoyez comme un globe scintillant ou une boule disco radieuse !
-Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public !
-Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressivement de l'orbite disco, vous saluez trois fois la foule avant de quitter la piste de danse. Votre sortie est suivie par un tonnerre d'applaudissements !
-Vous parvenez même à entendre les Houras de Fred qui survolent péniblement au-dessus des fracas de mains qui claquent et claquent encore...
+On va voir, qui de vous ou de Fred, est la superstar de l'Académie...  #line:01eaa0c 
+Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffer doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous. #line:0ff5e35 
+C'est comme si vous vous étiez calé sur l'orbite de la Planète Disco. Vous vous trémoussez, vous vous déhanchez, vous sautez, vous virevoltez, vous tournoyez comme un globe scintillant ou une boule disco radieuse ! #line:01c4444 
+Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public ! #line:03f5ea5 
+Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressivement de l'orbite disco, vous saluez trois fois la foule avant de quitter la piste de danse. Votre sortie est suivie par un tonnerre d'applaudissements ! #line:0fa106d 
+Vous parvenez même à entendre les Houras de Fred qui survolent péniblement au-dessus des fracas de mains qui claquent et claquent encore... #line:0b2dc6e 
 
 << removeFromGauge sleep 40 >>
 << removeFromGauge food 10 >>
 << advanceTime 2:00 >>
 
--> Que faire maintenant ?
+-> Que faire maintenant ? #line:00e7036 
     <<jump Choix_neutres>>
 ===
 title: Boire_Soft
 tags: 
 position: -624.2387084960938,177.95016479492188
 ---
-Le Bar est, vous le confirmez, rempli à craquer de bonnes choses à boire et à manger. Un petit soft, sans alcool et légèrement chargé en caféine, ça va vous booster le corps et l'esprit.
-Vous prenez donc une pinte de Xeno Cola. Vous savez qu'ils ont dilué le Xeno Cole dans l'eau et une mer de glaçons. Vous buvez plutôt du Xeno Décaféiné. L'effet s'en ressent néanmoins. Vous voilà prêt à repartir à l'assaut de la nuit !
+Le Bar est, vous le confirmez, rempli à craquer de bonnes choses à boire et à manger. Un petit soft, sans alcool et légèrement chargé en caféine, ça va vous booster le corps et l'esprit. #line:0a33d77 
+Vous prenez donc une pinte de Xeno Cola. Vous savez qu'ils ont dilué le Xeno Cole dans l'eau et une mer de glaçons. Vous buvez plutôt du Xeno Décaféiné. L'effet s'en ressent néanmoins. Vous voilà prêt à repartir à l'assaut de la nuit ! #line:0bf2066 
 
 << addToGauge food 10 >>
 << advanceTime 0:15 >>
 
--> Et ensuite ?
+-> Et ensuite ? #line:0e45629 
     <<jump Choix_neutres>>
 ===
 title: Snacking
 tags: 
 position: -626.3383636474609,394.9043884277344
 ---
-Le Bar est sûrement réappovisionné en permanence. Il y a toujours autant de bonnes choses à grignoter. Après tout ce que vous avez bu et sué, il est temps de s'avaler quelques grammes de calories.
-Comme dit le proverbe: "Une barre de Max après chaque moment, fait de l'étudiant un gagnant". Et c'est bien vrai, vous en aviez besoin de cette pause cacao Max. Elle vous redynamise...
+Le Bar est sûrement réappovisionné en permanence. Il y a toujours autant de bonnes choses à grignoter. Après tout ce que vous avez bu et sué, il est temps de s'avaler quelques grammes de calories. #line:05a36f4 
+Comme dit le proverbe: "Une barre de Max après chaque moment, fait de l'étudiant un gagnant". Et c'est bien vrai, vous en aviez besoin de cette pause cacao Max. Elle vous redynamise... #line:0c45f63 
 
 << addToGauge food 10 >>
 << advanceTime 0:15 >>
 
--> Et ensuite?
+-> Et ensuite? #line:0a87c27 
     <<jump Choix_neutres>>
 ===
 title: Guitar_Jam
 tags: 
 position: -627.0029144287109,-472.9125061035156
 ---
-Entre Fred et vous, celui qui touche sa corde en guitare, c'est bien vous. Et vous allez le prouver... 
-Vous vous approchez tranquillement de la guitare posée près de l'enceinte murale. On dirait une cithare classique, sauf qu'elle possède une carte-son HD 4K. Génial ! Un vrai bijoux de technologie HiFi !
-Vous posez l'instrument sur vos genoux, vous allumez l'amplificateur. Vous gratouillez les cordes, à la mano, tout simplement. 
+Entre Fred et vous, celui qui touche sa corde en guitare, c'est bien vous. Et vous allez le prouver...  #line:0218abd 
+Vous vous approchez tranquillement de la guitare posée près de l'enceinte murale. On dirait une cithare classique, sauf qu'elle possède une carte-son HD 4K. Génial ! Un vrai bijoux de technologie HiFi ! #line:054d9ef 
+Vous posez l'instrument sur vos genoux, vous allumez l'amplificateur. Vous gratouillez les cordes, à la mano, tout simplement.  #line:04c8649 
 
 << music Solo1 >>
 
-Dingue, le rugissement cybersonique qu'elle envoie ! Ça déchire l'air ambiant et ça réveille la foule !
-Tous les yeux se tournent vers vous. Quelqu'un coupe la musique. Vous voilà seul sur la grande scène. À vous de jouer ! Vous vous lancez dans une improvisation à cordes cybermétalliques.
-Le temps file, la foule boit vos notes. Vous ne vous en souciez plus, absorbé que vous êtes dans votre oeuvre sonore.
-Quand vous daignez enfin vous arrêter et relever les yeux, vous êtes salué par un concert d'applaudissements ! Vous remarquez Fred qui vous contemple, tout sourire, et qui lève le pouce en signe d'acquiescement.
+Dingue, le rugissement cybersonique qu'elle envoie ! Ça déchire l'air ambiant et ça réveille la foule ! #line:0823ed5 
+Tous les yeux se tournent vers vous. Quelqu'un coupe la musique. Vous voilà seul sur la grande scène. À vous de jouer ! Vous vous lancez dans une improvisation à cordes cybermétalliques. #line:030cd85 
+Le temps file, la foule boit vos notes. Vous ne vous en souciez plus, absorbé que vous êtes dans votre oeuvre sonore. #line:0bf9181 
+Quand vous daignez enfin vous arrêter et relever les yeux, vous êtes salué par un concert d'applaudissements ! Vous remarquez Fred qui vous contemple, tout sourire, et qui lève le pouce en signe d'acquiescement. #line:0f72d5b 
 
 << music Danse >>
 << removeFromGauge sleep 30 >>
 << removeFromGauge food 10 >>
 << advanceTime 2:00 >>
 
--> Un autre exploit en tête?
+-> Un autre exploit en tête? #line:006034e 
     <<jump Choix_neutres>>
 ===
 title: Chatter_avec_Fred
 tags: 
 position: -623.1002006530762,-40
 ---
-La sono du Sound System est à fond, pourtant, cela ne vous empêche pas d'échanger, Fred et vous. Vous vous connaissez depuis suffisamment longtemps. Vous pourriez même échanger par ondes télépathiques. Les ingénieurs neurocybernétiques sont sur le créneau, mais les premiers prototypes sont pour l'instant décevants.
-Peu importe, vous vous marrez bien tous les deux. Un peu d'imagination et vous vous projetteriez dans un concert Live IRL comme on en faisait, du temps de l'écran 2D.
+La sono du Sound System est à fond, pourtant, cela ne vous empêche pas d'échanger, Fred et vous. Vous vous connaissez depuis suffisamment longtemps. Vous pourriez même échanger par ondes télépathiques. Les ingénieurs neurocybernétiques sont sur le créneau, mais les premiers prototypes sont pour l'instant décevants. #line:06d14a8 
+Peu importe, vous vous marrez bien tous les deux. Un peu d'imagination et vous vous projetteriez dans un concert Live IRL comme on en faisait, du temps de l'écran 2D. #line:0deed6f 
 
 << removeFromGauge sleep 20 >>
 << removeFromGauge food 25 >>
 << advanceTime 1:00 >>
 
--> Ensuite ?
+-> Ensuite ? #line:0d5290e 
     <<jump Choix_neutres>>
 ===
 title: TIRED
@@ -199,15 +199,15 @@ colorID: 1
 
 << music DanseQuiet >>
 
-Tout d'un coup, le son de la musique s'affaiblit, les voix deviennent des murmures inaudibles. Vous vous sentez mou, très mou, très très mou...
+Tout d'un coup, le son de la musique s'affaiblit, les voix deviennent des murmures inaudibles. Vous vous sentez mou, très mou, très très mou... #line:0511f02 
 
-Fred_drunk: Hé, ça va ?
-You: ...  Heu...
-Fred_drunk: Tu es un peu trop fatigué. Y a un sofa dans le coin, là-bas. Va te reposer.
-You: Et toi ?
-Fred_drunk: Je t'accompagne. Je reste encore, j'ai la pêche !
-You: OK.
--> Se reposer
+Fred_drunk: Hé, ça va ? #line:05cc764 
+You: ...  Heu... #line:055c33e 
+Fred_drunk: Tu es un peu trop fatigué. Y a un sofa dans le coin, là-bas. Va te reposer. #line:0007e56 
+You: Et toi ? #line:033c651 
+Fred_drunk: Je t'accompagne. Je reste encore, j'ai la pêche ! #line:09aaef2 
+You: OK. #line:088001e 
+-> Se reposer #line:04e7487 
     << hide >>
     <<jump Sofa>>
 ===
@@ -215,16 +215,16 @@ title: Sofa
 tags: 
 position: -184.85113525390625,-39.76994323730469
 ---
-Fred vous amène jusqu'à un large canapé-fauteuil. Vous vous effondrez dedans. C'est clair, vous avez besoin de reprendre des forces. Il vous dit deux ou trois choses, vous ne savez pas, vous n'écoutez pas, vous n'entendez pas. Vos paupières s'abaissent, vous glissez doucement dans une douce langueur...
+Fred vous amène jusqu'à un large canapé-fauteuil. Vous vous effondrez dedans. C'est clair, vous avez besoin de reprendre des forces. Il vous dit deux ou trois choses, vous ne savez pas, vous n'écoutez pas, vous n'entendez pas. Vos paupières s'abaissent, vous glissez doucement dans une douce langueur... #line:0a9bce6 
 
 << fadeIn >>
 << addToGauge sleep 10 >>
 << saveGauges sleep food >>
 << advanceTime 1:30 >>
 
-Puis, on vous secoue brusquement !!!
+Puis, on vous secoue brusquement !!! #line:00d4ace 
 
--> Ouvrir les yeux
+-> Ouvrir les yeux #line:045a0cd 
     <<jump Open_Eyes>>
 ===
 title: Open_Eyes
@@ -233,11 +233,11 @@ position: 34.24329662322998,-36.5318603515625
 ---
 << fadeOut >>
 
-Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?
-You: ...Euh... Et toi ?
-Fred_happy: Moi je reste. Je te le répète.
-Quand vous entendez Fred se vanter d'être plus énergique, votre sang et votre ego ne font qu'un tour !
-You: Pareil alors.
+Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ? #line:0ae00a3 
+You: ...Euh... Et toi ? #line:0c77296 
+Fred_happy: Moi je reste. Je te le répète. #line:074f6bd 
+Quand vous entendez Fred se vanter d'être plus énergique, votre sang et votre ego ne font qu'un tour ! #line:09376ef 
+You: Pareil alors. #line:0f049c6 
 << hide fred >>
 
 <<jump Que_Faire>>
@@ -250,19 +250,19 @@ position: 256.4327850341797,-39.769962310791016
 << music Danse >>
 
 << if !visited("Que_Faire") >>
-La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la piste de danse. Vous allez lui montrer que vous aussi, vous n'êtes pas un looser ! Alors ? quel est votre plan d'attaque ?
+La soirée est loin d'être finie ! Fred est encore vif et rayonnant sur la piste de danse. Vous allez lui montrer que vous aussi, vous n'êtes pas un looser ! Alors ? quel est votre plan d'attaque ? #line:08e2290 
 << endif >>
 << if getGauge("sleep") >= 25 && getGauge("food") >= 25 >>
--> Retourner défier le Body Beat sur le Dance Floor#once
+-> Retourner défier le Body Beat sur le Dance Floor#once #line:0a7e7ba 
     <<jump DanceFloor2>>
--> Se rafraîchir au bar#once
+-> Se rafraîchir au bar#once #line:0cb64c0 
     <<jump Cafe_ou_Alcool>>
--> Grignoter quelque chose#once
+-> Grignoter quelque chose#once #line:05c360b 
     <<jump Medoc_Bot>>
--> Improviser un solo de guitare encore plus glam grooovy#once
+-> Improviser un solo de guitare encore plus glam grooovy#once #line:07afe6c 
     <<jump Metal_Jam>>
 << else >>
--> Vite ! Au lit
+-> Vite ! Au lit #line:02204b4 
     <<jump Go_To_Bed>>
 << endif >>
 ===
@@ -270,65 +270,65 @@ title: DanceFloor2
 tags: 
 position: 471.05039978027344,-479.585205078125
 ---
-Vous rejoignez le centre de la piste. Vous levez le bras, la foule s'arrête de gigoter et se rassemble tout autour de vous.
-Vous voilà redevenu le centre d'attention de la soirée, le centre d'attraction de la salle.
+Vous rejoignez le centre de la piste. Vous levez le bras, la foule s'arrête de gigoter et se rassemble tout autour de vous. #line:0a12a92 
+Vous voilà redevenu le centre d'attention de la soirée, le centre d'attraction de la salle. #line:038d9b0 
 
-Vous rentrez peu à peu en transe, au rythme de la musique. Puis, au bout de quelques minutes, vous regagnez l'orbite de la planète Disco ! Et c'est reparti pour une bonne heure de Breaking Beat endiablé ! Votre performance rencontre un succès planétaire et discothécaire !
+Vous rentrez peu à peu en transe, au rythme de la musique. Puis, au bout de quelques minutes, vous regagnez l'orbite de la planète Disco ! Et c'est reparti pour une bonne heure de Breaking Beat endiablé ! Votre performance rencontre un succès planétaire et discothécaire ! #line:0e4c389 
 
 << removeFromGauge sleep 30 >>
 << removeFromGauge food 10 >>
 << advanceTime 2:00 >>
 
--> Arriverez-vous à faire encore mieux ?
+-> Arriverez-vous à faire encore mieux ? #line:0ed9b9d 
     <<jump Que_Faire>>
 ===
 title: Cafe_ou_Alcool
 tags: 
 position: 472.81689453125,179.61012268066406
 ---
-Dingue ! Le bar n'est plus aussi approvisionné ! Il ne reste plus aucun soft doux, ni même de Xeno Cola.
-Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un shot de X-Espresso ou une canette de ZedBoul. Tant pis, vous avez besoin d'un coup de pouce !
+Dingue ! Le bar n'est plus aussi approvisionné ! Il ne reste plus aucun soft doux, ni même de Xeno Cola. #line:09e181f 
+Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un shot de X-Espresso ou une canette de ZedBoul. Tant pis, vous avez besoin d'un coup de pouce ! #line:0702e43 
 
 << removeFromGauge food 20 >>
 << addToGauge sleep 10 >>
 << advanceTime 0:10 >>
 
--> Un shot et on y retourne !
+-> Un shot et on y retourne ! #line:0f6b969 
     <<jump Que_Faire>>
 ===
 title: Medoc_Bot
 tags: 
 position: 474.3383331298828,-40.58226013183594
 ---
-Vous vous dirigez vers le bar, toutefois, vous ne distinguez plus aucun snack de disponible. Vous vous tournez alors vers un BarBot.
+Vous vous dirigez vers le bar, toutefois, vous ne distinguez plus aucun snack de disponible. Vous vous tournez alors vers un BarBot. #line:0d0d9db 
 
-BarBot: Vous désirez ?
-You: Manger quelque chose  qui redonne de l'énergie.
-BarBot: À sucer ou avaler ?
-You: Le plus efficace.
-BarBot: Avec ou sans sucre ?
-You: Le moins dégueulasse.
-BarBot: Ce sera une boule magique... Il faut la sucer doucement.
-You: Merci.
+BarBot: Vous désirez ? #line:080a336 
+You: Manger quelque chose  qui redonne de l'énergie. #line:0b19564 
+BarBot: À sucer ou avaler ? #line:02070c5 
+You: Le plus efficace. #line:0471b36 
+BarBot: Avec ou sans sucre ? #line:0ee3fa3 
+You: Le moins dégueulasse. #line:09d4908 
+BarBot: Ce sera une boule magique... Il faut la sucer doucement. #line:05d1930 
+You: Merci. #line:00df1e0 
 
-Le BarBot vous tend une espèce de gomme multicolore. Vous la mettez dans votre bouche. Niac... Ils ont vraiment abusé de colorants et de sucre de synthèse. Vous grimacez mais continuez à l'ingérer docilement. Vous ressentez assez rapidement un effet revitalisant.
+Le BarBot vous tend une espèce de gomme multicolore. Vous la mettez dans votre bouche. Niac... Ils ont vraiment abusé de colorants et de sucre de synthèse. Vous grimacez mais continuez à l'ingérer docilement. Vous ressentez assez rapidement un effet revitalisant. #line:06f7726 
 << hide >>
 
 << removeFromGauge food 25 >>
 << addToGauge sleep 10 >>
 << advanceTime 0:10 >>
 
--> Ouf, ça c'est fait, et maintenant ?
+-> Ouf, ça c'est fait, et maintenant ? #line:0247174 
     <<jump Que_Faire>>
 ===
 title: Metal_Jam
 tags: 
 position: 470.79235076904297,-256.9925937652588
 ---
-Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota, c'est qu'elle vous attendait. Vous réactivez sa carte-son HD 4K. Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête à vous écouter. On dirait que la star de la soirée, c'est vous. À vous de le prouver, à vous de jouer !
+Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota, c'est qu'elle vous attendait. Vous réactivez sa carte-son HD 4K. Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête à vous écouter. On dirait que la star de la soirée, c'est vous. À vous de le prouver, à vous de jouer ! #line:05c560b 
 
 << music Solo2 >>
-Vous repartez dans un concert solo d'improvisation, où les riffs électriques et les accords cybermétalliques s'accordent pour composer une symphonie post-électronique. C'est à nouveau un show d'enfer ! Vous êtes applaudi, encore et encore. Au point où vous accordez à votre public un morceau bonus.
+Vous repartez dans un concert solo d'improvisation, où les riffs électriques et les accords cybermétalliques s'accordent pour composer une symphonie post-électronique. C'est à nouveau un show d'enfer ! Vous êtes applaudi, encore et encore. Au point où vous accordez à votre public un morceau bonus. #line:00bc26c 
 
 << music Danse >>
 
@@ -336,7 +336,7 @@ Vous repartez dans un concert solo d'improvisation, où les riffs électriques e
 << removeFromGauge food 10 >>
 << advanceTime 2:00 >>
 
--> Comment faire encore plus fort ?
+-> Comment faire encore plus fort ? #line:01aa27c 
     <<jump Que_Faire>>
 ===
 title: Go_To_Bed
@@ -345,11 +345,11 @@ position: 700.6830902099609,395.89404296875
 colorID: 1
 ---
 <<if isTimeOver("6:30")>>
-Mince, il ne reste plus beaucoup de monde sur la piste. Vous ne voyez plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Vous apercevez les premiers rayons de soleil filtrer à travers les fenêtres de la salle.
-Il est temps d'aller dormir. D'un coup, vous vous sentez fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... tout à l'heure...
+Mince, il ne reste plus beaucoup de monde sur la piste. Vous ne voyez plus Fred. Il n'a pas eu tort. Il doit être sacrément tard, ou sacrément tôt. Vous apercevez les premiers rayons de soleil filtrer à travers les fenêtres de la salle. #line:09b3158 
+Il est temps d'aller dormir. D'un coup, vous vous sentez fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... non... tout à l'heure... #line:0dbe9f0 
 <<else>>
-Dingue, il reste encore pas mal d'étudiants sur la piste. Vous ne savez pas si Fred est parmi eux. Tout ce que vous voyez à cette heure de la nuit, ce sont des silhouettes floues et indistinctes. Il est temps d'aller dormir.
-D'ailleurs, vous vous sentez soudainement fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... enfin... ce matin...
+Dingue, il reste encore pas mal d'étudiants sur la piste. Vous ne savez pas si Fred est parmi eux. Tout ce que vous voyez à cette heure de la nuit, ce sont des silhouettes floues et indistinctes. Il est temps d'aller dormir. #line:0a6d94b 
+D'ailleurs, vous vous sentez soudainement fatigué, très fatigué, très très fatigué. Vite ! Au dodo ! Il faut reprendre des forces pour l'examen demain matin... enfin... ce matin... #line:08513b3 
 <<endif>>
 
 << fadeIn >>
@@ -364,12 +364,12 @@ position: 927.2608032226562,397.54339599609375
 << music >>
 << fadeOut >>
 << advanceTime 0:15 >>
-Vous filez dans votre chambre en quatrième vitesse. Mais vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent !
-Vous avez l'impression de rester coincé une heure dans ce cagibi. C'est pénible, surtout que votre vision se trouble, se dédouble. Vous avez vraiment dû un peu trop abuser...
+Vous filez dans votre chambre en quatrième vitesse. Mais vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent ! #line:00d4817 
+Vous avez l'impression de rester coincé une heure dans ce cagibi. C'est pénible, surtout que votre vision se trouble, se dédouble. Vous avez vraiment dû un peu trop abuser... #line:09d5696 
 << advanceTime 0:20 >>
-Une fois votre corvée accomplie, vous rampez jusqu'à votre lit. Vous vous glissez dedans tout habillé et fermez les yeux. Malheureusement, vous avez la tête qui tourne et qui serre, vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité.
+Une fois votre corvée accomplie, vous rampez jusqu'à votre lit. Vous vous glissez dedans tout habillé et fermez les yeux. Malheureusement, vous avez la tête qui tourne et qui serre, vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité. #line:0cf47bb 
 << fadeIn >>
-Non, décidément, rien à faire, vous n'arrivez pas à dormir. Et les heures s'égrènent... Jusqu'à ce que votre horloge connectée vous tire de votre léthargie...
+Non, décidément, rien à faire, vous n'arrivez pas à dormir. Et les heures s'égrènent... Jusqu'à ce que votre horloge connectée vous tire de votre léthargie... #line:0690aca 
 << setTime 8:00 >>
 <<jump Bip_Bip>>
 ===
@@ -380,11 +380,11 @@ position: 1149.49072265625,399.1321105957031
 << setBackground bedroom >>
 << music Neutral >>
 << fadeOut >>
-Argh... Il est encore trop tôt ! Vous ne vous êtes pas reposé. Vous aimeriez avoir une bonne nuit de sommeil... C'est trop tard maintenant, il faut aller au charbon...
-Vous vous levez sans grande conviction. Vous enlevez vos vêtements, ils sentent la sueur et d'autres mauvaises odeurs. Vous en enfilez de nouveaux et partez au front.
-Pas le temps d'avaler un petit déjeuner, pas envie de toute manière...
+Argh... Il est encore trop tôt ! Vous ne vous êtes pas reposé. Vous aimeriez avoir une bonne nuit de sommeil... C'est trop tard maintenant, il faut aller au charbon... #line:05e1b94 
+Vous vous levez sans grande conviction. Vous enlevez vos vêtements, ils sentent la sueur et d'autres mauvaises odeurs. Vous en enfilez de nouveaux et partez au front. #line:0a1afe8 
+Pas le temps d'avaler un petit déjeuner, pas envie de toute manière... #line:082b763 
 
--> Aller en cours
+-> Aller en cours #line:05a2aa1 
     <<jump ExamenTP>>
 ===
 title: ExamenTP
@@ -396,28 +396,28 @@ position: 1372.3470306396484,399.1321716308594
 << setTime 8:58 >>
 << fadeOut >>
 
-Ce matin, vous vous retrouvez noyé dans la masse, ou plutôt isolé dans la foule. Vous vous sentez léger, flottant, invisible. Heureusement, vous apercevez votre ami Fred.
+Ce matin, vous vous retrouvez noyé dans la masse, ou plutôt isolé dans la foule. Vous vous sentez léger, flottant, invisible. Heureusement, vous apercevez votre ami Fred. #line:02f1a4d 
 
-Fred_excited: Gosh, tu étais déchaîné hier soir ! Et tu as déchaîné la foule...
-You: Humm...
-Fred_smiling: Je vois ça. Tu ne t'es pas assez ménagé.
-You: Muuuh...
-Fred_happy: Fingers crossed ! Tout peut encore arriver.
+Fred_excited: Gosh, tu étais déchaîné hier soir ! Et tu as déchaîné la foule... #line:0bb9cd2 
+You: Humm... #line:01ce98d 
+Fred_smiling: Je vois ça. Tu ne t'es pas assez ménagé. #line:01bbacd 
+You: Muuuh... #line:0462ab4 
+Fred_happy: Fingers crossed ! Tout peut encore arriver. #line:0fc96d3 
 << hide >>
 
-Hagard, vous quittez Fred et vous vous rendez à votre poste.
+Hagard, vous quittez Fred et vous vous rendez à votre poste. #line:017d1da 
 
 << fadeIn >>
 << setBackground class >>
 << setTime 9:00 >>
 << fadeOut >>
 
-Vous vous calez difficilement sur votre siège et tentez de suivre les instructions qui défilent sur l'écran. Ce n'est pas la première fois que vous pilotez un drone d'ingénierie. Vous êtes même assez doué à ce jeu.
-Cependant, ce matin, vous êtes trop fatigué, trop barbouillé, trop peu concentré. Vous avez du mal à décrypter les consignes, pourtant classiques. Vous avez du mal à guider votre appareil. Vous commettez trop d'erreurs, vous frôlez même le crash.
+Vous vous calez difficilement sur votre siège et tentez de suivre les instructions qui défilent sur l'écran. Ce n'est pas la première fois que vous pilotez un drone d'ingénierie. Vous êtes même assez doué à ce jeu. #line:057bb1d 
+Cependant, ce matin, vous êtes trop fatigué, trop barbouillé, trop peu concentré. Vous avez du mal à décrypter les consignes, pourtant classiques. Vous avez du mal à guider votre appareil. Vous commettez trop d'erreurs, vous frôlez même le crash. #line:0d8e30b 
 << advanceTime 3:00 >>
-C'est la cata, la bérézina, la défaite. Vous savez que vous avez foiré votre examen. Vous sortez de la salle juste après la fin du test, vous passez même devant Fred sans rien dire.
+C'est la cata, la bérézina, la défaite. Vous savez que vous avez foiré votre examen. Vous sortez de la salle juste après la fin du test, vous passez même devant Fred sans rien dire. #line:08ca798 
 
--> Vous filez dans votre chambre
+-> Vous filez dans votre chambre #line:0940b68 
     <<jump Dodo_Echec>>
 ===
 title: Dodo_Echec
@@ -428,8 +428,8 @@ position: 1589.6320333480835,395.89398193359375
 << setBackground bedroom >>
 << advanceTime 0:15 >>
 << fadeOut >>
-Vous ouvrez la porte avec fracas, faites gicler vos fringues en l'air et vous vous glissez sous votre couette.
-Vous êtes défait et épuisé. Vous ne prenez même pas le temps de gémir ou de hurler votre rage, vous vous endormez presque comme un vaincu...
+Vous ouvrez la porte avec fracas, faites gicler vos fringues en l'air et vous vous glissez sous votre couette. #line:08d8fdd 
+Vous êtes défait et épuisé. Vous ne prenez même pas le temps de gémir ou de hurler votre rage, vous vous endormez presque comme un vaincu... #line:0805760 
 
 << fadeIn >>
 << jump Miss_Temde >>
@@ -442,17 +442,17 @@ position: 1807.6790771484375,395.8939208984375
 << music Mysterious >>
 << fadeOut >>
 
-C'est alors que vous sursautez d'agacement ! Quelqu'un vous chatouille et vous gratouille les pieds, les mains, le nez, les oreilles...
+C'est alors que vous sursautez d'agacement ! Quelqu'un vous chatouille et vous gratouille les pieds, les mains, le nez, les oreilles... #line:086b71a 
 
--> Qui ose m'embêter dans mon lit ?
+-> Qui ose m'embêter dans mon lit ? #line:0f62de6 
 
-Temde_smiling: Hello { $name }.
-You: Quoi ?! Vous encore ?!
-Temde_cheerful: Yep, on n'a pas fini de t'embêter en effet.
-You: M'embêter ?! Vous lisez dans mes pensées ?!
-Temde_cheerful: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retourne !
-You: Où ça ?
-Temde_smiling: À l'Assemblée des 4 sages
+Temde_smiling: Hello { $name }. #line:0933095 
+You: Quoi ?! Vous encore ?! #line:08030b0 
+Temde_cheerful: Yep, on n'a pas fini de t'embêter en effet. #line:0387094 
+You: M'embêter ?! Vous lisez dans mes pensées ?! #line:0a6f34c 
+Temde_cheerful: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retourne ! #line:0ffe000 
+You: Où ça ? #line:06f3c00 
+Temde_smiling: À l'Assemblée des 4 sages #line:0076238 
 
 << fx Warp >>
 << fadeIn >>
@@ -468,27 +468,27 @@ colorID: 1
 << setBackground circle >>
 << fadeOut >>
 
-Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre.
-Azul_happy: Un truc qui te servira également au quotidien.
-Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique !
-Temde_smiling: Yep, un tuyau qui sonne juste, tellement c'est évident !
-Sapiens_concerned: Tu m'écoutes { $name } ?
--> Oui
+Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre. #line:005f939 
+Azul_happy: Un truc qui te servira également au quotidien. #line:05cefc0 
+Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique ! #line:03dea3d 
+Temde_smiling: Yep, un tuyau qui sonne juste, tellement c'est évident ! #line:06887e9 
+Sapiens_concerned: Tu m'écoutes { $name } ? #line:090d007 
+-> Oui #line:0d2d7ac 
     <<jump Revelation>>
 ===
 title: Revelation
 tags:  noUi
 position: 2242.7559814453125,395.5284118652344
 ---
-Sapiens_thinking: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Un appareil électronique a besoin d'électricité pour démarrer et fonctionner. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire !
-Ledai_explaining: Tout à fait, ton engin biologique, a besoin de calories... et de vitamines.
-Sapiens_thinking: Mais pas n'importe lesquelles. Celles qui nourrissent et facilitent la conduction neurobiologique.
-You: C'est quoi ce charabia?
-Azul_happy: Les 2 savants veulent dire que que ton corps a besoin de boire et de manger. Des bonnes choses.
-Temde_thinking: Pas les substances miracles de synthèse. Mensonges de bonimenteurs !
-Sapiens_thinking: Ton corps a besoin d'énergie. Il a également besoin de se recharger.
-You: Comme mon palmphone ?
-Ledai_happy: Tout à fait.
+Sapiens_thinking: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Un appareil électronique a besoin d'électricité pour démarrer et fonctionner. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire ! #line:02771ae 
+Ledai_explaining: Tout à fait, ton engin biologique, a besoin de calories... et de vitamines. #line:067cf10 
+Sapiens_thinking: Mais pas n'importe lesquelles. Celles qui nourrissent et facilitent la conduction neurobiologique. #line:02287a2 
+You: C'est quoi ce charabia? #line:00fe57b 
+Azul_happy: Les 2 savants veulent dire que que ton corps a besoin de boire et de manger. Des bonnes choses. #line:09db962 
+Temde_thinking: Pas les substances miracles de synthèse. Mensonges de bonimenteurs ! #line:0ecf094 
+Sapiens_thinking: Ton corps a besoin d'énergie. Il a également besoin de se recharger. #line:0bf2555 
+You: Comme mon palmphone ? #line:0e1ac36 
+Ledai_happy: Tout à fait. #line:0402fa2 
 
 <<jump Sommeil>>
 ===
@@ -496,18 +496,18 @@ title: Sommeil
 tags:  noUi
 position: 2464.5450744628906,392.3604736328125
 ---
-Sapiens_thinking: Ton système biologique, comme ton palmphone, a besoin chaque nuit de recharger sa batterie.
-You: Ah bon ? Ça suffit pas de le nourrir... en énergie calorique ?
-Ledai_explaining: Hélas, non. Pour pouvoir refaire le plein en énergie, il doit cesser toute activité.
-You: Je comprends pas.
-Sapiens_thinking: Imagine que ton appareil s'éteigne brutalement parce que sa batterie est à plat. Tu ne peux plus t'en servir, il faut d'abord recharger sa batterie.
-You: Ouais, mais dès qu'il est remonté à 10%, je peux le rallumer et m'en servir.
-Azul_happy: Ton enveloppe biologique est plus exigeante et plus gourmande.
-Temde_smiling: Elle en demande plus. Une nuit de sommeil !
-You: Ça veut dire combien ?
-Sapiens_thinking: Plusieurs heures. 6 heures pour les plus vifs. 10 heures pour les plus mous.
-You: Et si je ne dispose même pas de 6 heures ?
-Azul_proud: Il y a une solution de dépannage
+Sapiens_thinking: Ton système biologique, comme ton palmphone, a besoin chaque nuit de recharger sa batterie. #line:0f23713 
+You: Ah bon ? Ça suffit pas de le nourrir... en énergie calorique ? #line:0294c72 
+Ledai_explaining: Hélas, non. Pour pouvoir refaire le plein en énergie, il doit cesser toute activité. #line:027daa1 
+You: Je comprends pas. #line:0448431 
+Sapiens_thinking: Imagine que ton appareil s'éteigne brutalement parce que sa batterie est à plat. Tu ne peux plus t'en servir, il faut d'abord recharger sa batterie. #line:0b4074e 
+You: Ouais, mais dès qu'il est remonté à 10%, je peux le rallumer et m'en servir. #line:041bf71 
+Azul_happy: Ton enveloppe biologique est plus exigeante et plus gourmande. #line:00e89c0 
+Temde_smiling: Elle en demande plus. Une nuit de sommeil ! #line:047de87 
+You: Ça veut dire combien ? #line:019496e 
+Sapiens_thinking: Plusieurs heures. 6 heures pour les plus vifs. 10 heures pour les plus mous. #line:004bc53 
+You: Et si je ne dispose même pas de 6 heures ? #line:08690fd 
+Azul_proud: Il y a une solution de dépannage #line:0a728b0 
 
 <<jump Sieste>>
 ===
@@ -515,17 +515,17 @@ title: Sieste
 tags:  noUi
 position: 2686.2007751464844,394.8099365234375
 ---
-Azul_happy: Si tu n'as pas eu le temps de profiter d'une bonne nuit de sommeil, tu fais un somme !
-You: Un somme ?
-Temde_smiling: Yep, une bonne sieste quoi !
-Azul_sad: Hier, tu es rentré trop tard et trop énervé pour te reposer.
-Sapiens_thinking: Tu n'as pas pu profiter des heures restantes pour recharger ta batterie.
-Ledai_explaining: Tout à fait, tu as abusé des réserves de ton matériel biologique et tu as cédé aux sirènes des carburants de synthèse !
-Temde_smiling: Tire une bonne leçon de ton erreur !
-Azul_happy: Tu sais ce qu'il faut faire, écouter les besoins de ton corps et le recharger !
-Sapiens_happy: Tu as compris cette nouvelle leçon ?
+Azul_happy: Si tu n'as pas eu le temps de profiter d'une bonne nuit de sommeil, tu fais un somme ! #line:03c1725 
+You: Un somme ? #line:0e8da1a 
+Temde_smiling: Yep, une bonne sieste quoi ! #line:025ab00 
+Azul_sad: Hier, tu es rentré trop tard et trop énervé pour te reposer. #line:0fabc9c 
+Sapiens_thinking: Tu n'as pas pu profiter des heures restantes pour recharger ta batterie. #line:082d763 
+Ledai_explaining: Tout à fait, tu as abusé des réserves de ton matériel biologique et tu as cédé aux sirènes des carburants de synthèse ! #line:0eaeea1 
+Temde_smiling: Tire une bonne leçon de ton erreur ! #line:027b815 
+Azul_happy: Tu sais ce qu'il faut faire, écouter les besoins de ton corps et le recharger ! #line:0b5a398 
+Sapiens_happy: Tu as compris cette nouvelle leçon ? #line:0bff9cd 
 
--> Oui
+-> Oui #line:0ddd08f 
     <<jump QCM_Recues>>
 ===
 title: QCM_Recues
@@ -533,80 +533,80 @@ tags:  noUi
 position: 2908.9466247558594,391.5020446777344
 colorID: 1
 ---
-Sapiens_thinking: C'est ce que nous allons voir.
+Sapiens_thinking: C'est ce que nous allons voir. #line:0dda2ca 
 
-Sapiens_thinking: Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos réserves, on peut continuer à agir, à travailler. On n'a pas besoin de dormir et de recharger les batteries tant qu'elles ne sont pas à plat.
--> Vrai
+Sapiens_thinking: Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos réserves, on peut continuer à agir, à travailler. On n'a pas besoin de dormir et de recharger les batteries tant qu'elles ne sont pas à plat. #line:06bc6cb 
+-> Vrai #line:044fa2d 
     << fx Failure >>
-    Sapiens_angry: Grossière erreur, jeune novice ! On ne stocke pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures !
-    Ledai_explaining: Certes, Master Sapiens, mais laissons une chance à { $name }.
--> Faux
+    Sapiens_angry: Grossière erreur, jeune novice ! On ne stocke pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures ! #line:030496f 
+    Ledai_explaining: Certes, Master Sapiens, mais laissons une chance à { $name }. #line:07113fa 
+-> Faux #line:06a1ff6 
     << fx Success >>
-    Sapiens_happy: Bravo ! Le sommeil ne se stocke pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain.
-    Ledai_happy: Une autre phrase quiz, Master Sapiens ?
+    Sapiens_happy: Bravo ! Le sommeil ne se stocke pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain. #line:08425ec 
+    Ledai_happy: Une autre phrase quiz, Master Sapiens ? #line:0efd67b 
 
-Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour !
+Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour ! #line:09366cb 
 
--> Vrai
+-> Vrai #line:0c791c4 
     << fx Failure >>
-    Sapiens_angry: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité.
-    Azul_sad: Master Sapiens, { $name } est encore novice et vous avez d'autres quizz à lui poser.
-    Sapiens_thinking: En effet.
--> Faux
+    Sapiens_angry: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité. #line:01481b0 
+    Azul_sad: Master Sapiens, { $name } est encore novice et vous avez d'autres quizz à lui poser. #line:05300f3 
+    Sapiens_thinking: En effet. #line:08df99c 
+-> Faux #line:00f2421 
     << fx Success >>
-    Sapiens_happy: Excellente réponse ! Le secret d'un entretien métabolique durable est de se nourrir régulièrement, de manière équilibrée.
-    Azul_cheerful: Est-ce la fin de la séance de quizz ?
-    Sapiens_thinking: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième: 
+    Sapiens_happy: Excellente réponse ! Le secret d'un entretien métabolique durable est de se nourrir régulièrement, de manière équilibrée. #line:07f18aa 
+    Azul_cheerful: Est-ce la fin de la séance de quizz ? #line:0bb5bcf 
+    Sapiens_thinking: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième:  #line:0bb34b1 
     
-Sapiens_thinking: L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil.
+Sapiens_thinking: L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil. #line:0c5a2c7 
 
--> Vrai
+-> Vrai #line:0f76f79 
     << fx Success >>
-    Sapiens_happy: Exactement ! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand !
-    Temde_smiling: Très bien, mais faites court et concis ! { $name } est fatigué !
-    Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
--> Faux
+    Sapiens_happy: Exactement ! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand ! #line:0151139 
+    Temde_smiling: Très bien, mais faites court et concis ! { $name } est fatigué ! #line:024a0ce 
+    Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue. #line:063cb95 
+-> Faux #line:00a3f09 
     << fx Failure >>
-    Sapiens_angry: Encore une idée reçue, une affirmation infondée! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand!
-    Temde_sad: Très bien, mais faites court et concis! { $name } est fatiguée!
-    Sapiens_concerned: C'est comme ça quand on ne prend pas soin de son métabolisme!
-    Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue.
+    Sapiens_angry: Encore une idée reçue, une affirmation infondée! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand! #line:02baefc 
+    Temde_sad: Très bien, mais faites court et concis! { $name } est fatiguée! #line:0eb5a88 
+    Sapiens_concerned: C'est comme ça quand on ne prend pas soin de son métabolisme! #line:07ef4f6 
+    Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue. #line:0fcdca1 
 
-Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante.
+Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante. #line:01528df 
 
--> Vrai
+-> Vrai #line:01ae1fe 
     << fx Failure >>
-    Sapiens_angry: Non-sens ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière !
-    Azul_sad: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment.
-    Sapiens_thinking: Je profite de la remarque d'Azul pour poser une question subsidiaire. Pour recharger ton métabolisme, combien d'heures tu dois dormir chaque jour ?
-    -> 8 heures
+    Sapiens_angry: Non-sens ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! #line:00201f3 
+    Azul_sad: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment. #line:0976d40 
+    Sapiens_thinking: Je profite de la remarque d'Azul pour poser une question subsidiaire. Pour recharger ton métabolisme, combien d'heures tu dois dormir chaque jour ? #line:02c089d 
+    -> 8 heures #line:08035d4 
         <<jump huit_heures>>
-    -> Ça dépend, 6 à 10 heures
+    -> Ça dépend, 6 à 10 heures #line:0146683 
         <<jump six_10_heures>>
--> Faux
+-> Faux #line:04ba9a7 
     << fx Success >>
-    Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que...
-    Temde_neutral: Non non, on coupe ! Le temps presse !
-    Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
-    <<jump journal_mental>>!
+    Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que... #line:0bc13d5 
+    Temde_neutral: Non non, on coupe ! Le temps presse ! #line:0ff8a03 
+    Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:083bddf 
+    <<jump journal_mental>>! #line:0d0ab77 
 ===
 title: huit_heures
 tags:  noUi
 position: 3125.9331665039062,286.40415954589844
 ---
-Azul_sad: C'est ton dernier mot ?
--> 8 heures
+Azul_sad: C'est ton dernier mot ? #line:0a469c9 
+-> 8 heures #line:0c3b89a 
     <<jump huit_heures>>
--> Entre 6 et 10 heures
+-> Entre 6 et 10 heures #line:02972f3 
     <<jump six_10_heures>>
 ===
 title: six_10_heures
 tags:  noUi
 position: 3341.1002807617188,392.2286071777344
 ---
-Sapiens_happy: Ah, je préfère ça. Ce qui me rappelle le temps où je...
-Temde_neutral: Non, on coupe ! Le temps presse !
-Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental !
+Sapiens_happy: Ah, je préfère ça. Ce qui me rappelle le temps où je... #line:0715588 
+Temde_neutral: Non, on coupe ! Le temps presse ! #line:0beff39 
+Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:092a6ff 
 
 << hide >>
 << fx Warp >>
@@ -622,7 +622,7 @@ position: 3557.0534057617188,389.2486877441406
 << setBackground bedroom night >>
 << fadeOut 400 >>
 
-Le carré de jardin tranquille des sages a disparu subitement !
-Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être.
-Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages...
+Le carré de jardin tranquille des sages a disparu subitement ! #line:0e91632 
+Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être. #line:05ae07d 
+Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages... #line:01686de 
 ===
