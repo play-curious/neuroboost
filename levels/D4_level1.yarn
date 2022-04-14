@@ -1,4 +1,4 @@
-# gauges: learning sleep food mentalLoad
+﻿#gauges:learning,sleep,food,mentalLoad
 
 title: Start
 tags:
@@ -16,13 +16,13 @@ position: -1863,65
 << music Victory >>
 << fadeOut >>
 
-Après vous êtes réveillé en douceur... Vous prenez votre petit déjeuner tranquillement. Une boîte de biocookies et un thé décaféiné, rien de tel pour commencer une nouvelle journée. 
-Vous débarrassez la cuisine, vous faites votre toilette, vous préparez vos affaires pour aller à la bibliothèque, quand votre palmphone vibre :
+Après vous êtes réveillé en douceur... Vous prenez votre petit déjeuner tranquillement. Une boîte de biocookies et un thé décaféiné, rien de tel pour commencer une nouvelle journée.  #line:08d6679 
+Vous débarrassez la cuisine, vous faites votre toilette, vous préparez vos affaires pour aller à la bibliothèque, quand votre palmphone vibre : #line:0b2008b 
 
 << loopFX PhoneRing_LOOP 5000 >>
-C'est Fred!
+C'est Fred! #line:07aa125 
 
--> Prendre l'appel
+-> Prendre l'appel #line:0b9f6c3 
     <<jump Appel_Fred>>
 ===
 title: Appel_Fred
@@ -32,22 +32,22 @@ position: -1538,58
 ---
 << stopFX PhoneRing_LOOP >>
 
-Fred@holo_excited: Hello, { $name }, la forme ? Motivé ? 
-You: Oui, on travaille en binôme aujourd'hui sur notre mémoire. La théorie du chaos dans la macrobiologie post-darwinienne.
-Fred@holo_smiling: Cool, tu me retrouves ?
-You: Tu es déjà à la bibliothèque ?
-Fred@holo_happy: Non, je suis à la maison, je viens juste de recevoir le dernier GTR : Grand Thrill Rodéo 66 ! Une tuerie !
-You: Je te rappelle qu'on doit finir notre projet sur la théorie du chaos aujourd'hui, avant minuit.
-Fred@holo_smiling: Yes, yes. Viens d'abord chez moi !
-You: Fred, on a encore du pain sur la planche.
-Fred@holo_smiling: Yes yes, on verra cet après-midi.
+Fred@holo_excited: Hello, { $name }, la forme ? Motivé ?  #line:053256a 
+You: Oui, on travaille en binôme aujourd'hui sur notre mémoire. La théorie du chaos dans la macrobiologie post-darwinienne. #line:0269dec 
+Fred@holo_smiling: Cool, tu me retrouves ? #line:03d8889 
+You: Tu es déjà à la bibliothèque ? #line:0cc96ad 
+Fred@holo_happy: Non, je suis à la maison, je viens juste de recevoir le dernier GTR : Grand Thrill Rodéo 66 ! Une tuerie ! #line:025ef02 
+You: Je te rappelle qu'on doit finir notre projet sur la théorie du chaos aujourd'hui, avant minuit. #line:0504f52 
+Fred@holo_smiling: Yes, yes. Viens d'abord chez moi ! #line:084a465 
+You: Fred, on a encore du pain sur la planche. #line:088ed24 
+Fred@holo_smiling: Yes yes, on verra cet après-midi. #line:081da26 
 << hide >>
 << advanceTime 0:05 >>
-Vous connaissez Fred, iel est têtu. Vous n'avez que deux possibilités :
+Vous connaissez Fred, iel est têtu. Vous n'avez que deux possibilités : #line:0197eed 
 
--> Vous allez à la bibliothèque et vous espérez qu'il vous rejoindra.
+-> Vous allez à la bibliothèque et vous espérez qu'il vous rejoindra. #line:0208632 
     <<jump Bibli_soloAM>>
--> Vous allez chez lui et vous l'obligez à venir à la bibliothèque.
+-> Vous allez chez lui et vous l'obligez à venir à la bibliothèque. #line:0265d1b 
     <<jump ChezFred>>
 ===
 title: Bibli_soloAM
@@ -60,20 +60,20 @@ position: -1265,73
 << setTime 8:15 >>
 << fadeOut >>
 
-Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez.
-Vous relisez tranquillement tout ce que vous avez déjà noté. Vous en profitez pour revoir certaines références, approfondir d'autres. C'est passionnant la théorie du chaos. La macrobiologie également. Le temps passe, les minutes et les heures s'écoulent... 
+Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez. #line:0fa8535 
+Vous relisez tranquillement tout ce que vous avez déjà noté. Vous en profitez pour revoir certaines références, approfondir d'autres. C'est passionnant la théorie du chaos. La macrobiologie également. Le temps passe, les minutes et les heures s'écoulent...  #line:0d36258 
 << advanceTime 4:45 >>
-Mais que fait donc Fred ? Le voilà enfin.
+Mais que fait donc Fred ? Le voilà enfin. #line:0acef83 
 << show fred >>
-You: Mais qu'est-ce que tu foutais ?
-Fred_smiling: C'est trop de la bombe nucléaire GTR 66!
-You: T'as vu l'heure ? La bibliothèque ferme à 20h !
-Fred_happy: No worry, j'ai tout dans la tête.
-You: J'espère bien.
-Fred_smiling: On commence par quoi ?
-You: Heu.
-Fred_smiling: C'est toi le chef de projet, non ?..
-Vous ne saisissez pas très bien le sens des paroles de Fred. Que veux-t-iel dire ?
+You: Mais qu'est-ce que tu foutais ? #line:01537ff 
+Fred_smiling: C'est trop de la bombe nucléaire GTR 66! #line:04e5547 
+You: T'as vu l'heure ? La bibliothèque ferme à 20h ! #line:0e8fc30 
+Fred_happy: No worry, j'ai tout dans la tête. #line:0657129 
+You: J'espère bien. #line:057c3d1 
+Fred_smiling: On commence par quoi ? #line:0fec0a5 
+You: Heu. #line:0de0a6f 
+Fred_smiling: C'est toi le chef de projet, non ?.. #line:0bf3676 
+Vous ne saisissez pas très bien le sens des paroles de Fred. Que veux-t-iel dire ? #line:0039505 
 
 <<jump Liste_taches>>
 ===
@@ -86,18 +86,18 @@ position: -726,629
 << setBackground library >>
 << fadeOut >>
 
-Vous retournez vous asseoir à la même table que ce matin. L'ambiance est toujours calme et propice à la l'étude. Vous textez Fred pour lui dire que vous l'attendez au même endroit.
-Le temps passe, les minutes et les heures s'écoulent. Mais que fait donc Fred ? Pas trop tôt, le voilà...
+Vous retournez vous asseoir à la même table que ce matin. L'ambiance est toujours calme et propice à la l'étude. Vous textez Fred pour lui dire que vous l'attendez au même endroit. #line:0f40937 
+Le temps passe, les minutes et les heures s'écoulent. Mais que fait donc Fred ? Pas trop tôt, le voilà... #line:07e6097 
 
 << show fred >>
 << advanceTime 2:00 >>
 
-You: Tu te fous de moi ou quoi ?
-Fred_smiling: C'est trop de la bombe nucléaire GTR 66 !
-You: Je te rappelle que la bibliothèque ferme à 20h !
-Fred_happy: No worry, j'ai tout dans la tête, faut juste que je me pose un moment.
-You: Il est temps.
-Fred_smiling: Je t'écoute.
+You: Tu te fous de moi ou quoi ? #line:00f0da3 
+Fred_smiling: C'est trop de la bombe nucléaire GTR 66 ! #line:0c06b57 
+You: Je te rappelle que la bibliothèque ferme à 20h ! #line:0b50035 
+Fred_happy: No worry, j'ai tout dans la tête, faut juste que je me pose un moment. #line:0d33be5 
+You: Il est temps. #line:0c8be11 
+Fred_smiling: Je t'écoute. #line:0b84038 
 
 <<jump Liste_taches>>
 ===
@@ -110,21 +110,21 @@ position: -795,107
 << setBackground library >>
 << fadeOut >>
 
-Dingue, Fred vous a suivi à la bibliothèque. C'est une première...
-Fred_happy: Au fait, { $name }, félicitations !
-You: Ah bon ?
-Fred_smiling: T'as eu [b]B-[/b] à ta note de synthèse sur la PNLIAA
-You: C'est déjà tombé ?
-Fred_smiling: Yes, yes.
-You: Génial! Et toi ?
-Fred_happy: Pareil. [b]B-[/b]
-You: C'est pas mal.
-Fred_smiling: Oui, vu la vitesse à laquelle j'ai torché ma rédaction.
-You: Justement, on va prendre le temps nécessaire pour rendre un dossier sur la théorie du chaos en macrobiologie post-darwinienne qui mérite A !
-Fred_happy: Yes yes... j'espère bien. On commence par quoi ?
-You: Heu...
-Fred_smiling: C'est toi le chef de projet, non ? Tu es passé maître en théorie du chaos...
-Vous ne saisissez pas très bien le sens des paroles de Fred. Que veux-t-iel dire ?
+Dingue, Fred vous a suivi à la bibliothèque. C'est une première... #line:05fe603 
+Fred_happy: Au fait, { $name }, félicitations ! #line:0cae9e4 
+You: Ah bon ? #line:0b60bb0 
+Fred_smiling: T'as eu [b]B-[/b] à ta note de synthèse sur la PNLIAA #line:0c398ee 
+You: C'est déjà tombé ? #line:0d49155 
+Fred_smiling: Yes, yes. #line:0d71eda 
+You: Génial! Et toi ? #line:0575073 
+Fred_happy: Pareil. [b]B-[/b] #line:0a4c759 
+You: C'est pas mal. #line:00775f4 
+Fred_smiling: Oui, vu la vitesse à laquelle j'ai torché ma rédaction. #line:0a0862d 
+You: Justement, on va prendre le temps nécessaire pour rendre un dossier sur la théorie du chaos en macrobiologie post-darwinienne qui mérite A ! #line:056ebc7 
+Fred_happy: Yes yes... j'espère bien. On commence par quoi ? #line:08dd8d1 
+You: Heu... #line:046f5de 
+Fred_smiling: C'est toi le chef de projet, non ? Tu es passé maître en théorie du chaos... #line:039ffc7 
+Vous ne saisissez pas très bien le sens des paroles de Fred. Que veux-t-iel dire ? #line:0b9dba6 
 
 <<jump Liste_taches>>
 ===
@@ -134,22 +134,22 @@ colorID: 1
 position: -1322,330
 ---
 << if !visited("Liste_taches") >>
-Fred_happy: Alors, on attaque quoi maintenant, boss ?
+Fred_happy: Alors, on attaque quoi maintenant, boss ? #line:07e8242 
 << visit Liste_taches >>
 << endif >>
 
 << if !isTimeOver("20:00") >>
--> Montrer vos notes à Fred#once
+-> Montrer vos notes à Fred#once #line:0b6a071 
     <<jump Notes_You>>
--> Demander à Fred ses notes#once
+-> Demander à Fred ses notes#once #line:04da5f6 
     <<jump Notes_Fred>>
--> Reprendre la rédaction du mémoire#once
+-> Reprendre la rédaction du mémoire#once #line:0d4f0e0 
     <<jump Redaction>>
--> Valider le plan du mémoire#once 
+-> Valider le plan du mémoire#once #line:0a46a48  
     <<jump Plan>>
--> Générer une bulle d'attention#once
+-> Générer une bulle d'attention#once #line:04c8f62 
     <<jump Zero_distraction>>
--> Faire la pause lunch#once
+-> Faire la pause lunch#once #line:022dd53 
     <<jump lunch>>
 << else >>
     <<jump Exit_Bibli>>
@@ -160,26 +160,26 @@ tags:
 colorID: 0
 position: -1088,586
 ---
-You: On se met à la rédaction du mémoire? 
-Fred_smiling: Yes. On se répartit la tâche comment?
-You: Heu... Comme on a dit au début. Je fais la première partie sur le problème des modèles déterministes mais dont le degré d'erreur croît de manière exponentielle. 
-You: Toi, tu fais la seconde, sur l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme.
-You: Pour la troisième partie sur la macrobiologie, je m'occupe de la section sur la théorie de l'évolution et les équilibres macrobiologiques et toi de la deuxième section sur la révolution du paradigme post-darwinien..
-Fred_happy: OK. Et qui fait la conclusion appliquée à la macrobiologie post-darwinienne ?
-You: Je ferai la conclusion et toi l'intro, avec le problème à 3 corps de Poincaré ?
-Fred: Si tu le dis.
-Vous reprenez vos brouillons et vos notes et vous commencez à mettre au propre vos idées. Vous vous voulez bien faire les choses. Vous prenez le temps de contrôler régulièrement vos sources et de réutiliser dans votre argumentation les données que vous avez glanées. 
+You: On se met à la rédaction du mémoire?  #line:0bb361e 
+Fred_smiling: Yes. On se répartit la tâche comment? #line:0751afa 
+You: Heu... Comme on a dit au début. Je fais la première partie sur le problème des modèles déterministes mais dont le degré d'erreur croît de manière exponentielle.  #line:0676776 
+You: Toi, tu fais la seconde, sur l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme. #line:039f383 
+You: Pour la troisième partie sur la macrobiologie, je m'occupe de la section sur la théorie de l'évolution et les équilibres macrobiologiques et toi de la deuxième section sur la révolution du paradigme post-darwinien.. #line:0d88d76 
+Fred_happy: OK. Et qui fait la conclusion appliquée à la macrobiologie post-darwinienne ? #line:0a78e6a 
+You: Je ferai la conclusion et toi l'intro, avec le problème à 3 corps de Poincaré ? #line:04141ae 
+Fred: Si tu le dis. #line:0c4390d 
+Vous reprenez vos brouillons et vos notes et vous commencez à mettre au propre vos idées. Vous vous voulez bien faire les choses. Vous prenez le temps de contrôler régulièrement vos sources et de réutiliser dans votre argumentation les données que vous avez glanées.  #line:0d3ecee 
 
 << advanceTime 3:00 >>
 << addToGauge learning 10 >>
 
-Quand vous relevez la tête, vous voyez Fred, qui vous sourit.
-Fred_smiling: Tu avais l'air méga-sérieux. T'as pas arrêté de taper sur l'ordi.
-You: Et toi tu as avancé ?
-Fred_happy: Yes, j'ai tout un monde d'idées, de thèmes et d'arguments dans ma tête. J'ai plein de remarques à faire. On lit et on voit tellement de conneries.
-You: Quoi ?! T'as rien rédigé ?
-Fred_smiling: Si... J'ai commencé à réfléchir à la conclusion.
-You: Noon!
+Quand vous relevez la tête, vous voyez Fred, qui vous sourit. #line:0ae9e41 
+Fred_smiling: Tu avais l'air méga-sérieux. T'as pas arrêté de taper sur l'ordi. #line:050c0dc 
+You: Et toi tu as avancé ? #line:06845fa 
+Fred_happy: Yes, j'ai tout un monde d'idées, de thèmes et d'arguments dans ma tête. J'ai plein de remarques à faire. On lit et on voit tellement de conneries. #line:0c67717 
+You: Quoi ?! T'as rien rédigé ? #line:02f9b50 
+Fred_smiling: Si... J'ai commencé à réfléchir à la conclusion. #line:01d56a8 
+You: Noon! #line:0e95694 
 
 <<jump Liste_taches>>
 ===
@@ -188,12 +188,12 @@ tags:
 colorID: 0
 position: -866,342
 ---
-You: Tu n'as pas faim?
-Fred_happy: Si, je manque clairement de fuel là.
-You: On va manger à la cafeteria de la bibli?
-Fred_smiling: yes yes!
+You: Tu n'as pas faim? #line:040a6aa 
+Fred_happy: Si, je manque clairement de fuel là. #line:077366d 
+You: On va manger à la cafeteria de la bibli? #line:091abbd 
+Fred_smiling: yes yes! #line:0c0a9cf 
 
--> Cafeteria de la bibliothèque 
+-> Cafeteria de la bibliothèque  #line:0504ddd 
     <<jump Lunch_bibli>>
 ===
 title: Zero_distraction
@@ -201,14 +201,14 @@ tags:
 colorID: 0
 position: -1778,295
 ---
-Vous demandez au récepteur de l'IA de la bibliothèque de déployer une "Sphère de Travail Immersive". Aussitôt un dôme de lumière opaque se referme sur votre table et vous isole du reste de la bibliothèque et des étudiants qui y sont. Le son devient net et réverbéré, comme dans un studio d'enregistrement. 
-Fred_happy: Great, ta bulle de silence. On va pouvoir parler tous les deux sans honte !
-You: Pas du tout. C'est pas un environnement pensé pour hurler à gogo, mais pour faciliter la concentration et l'étude.
-Fred_sad: Finalement, c'est pas fun ta bulle.
-You: On n'est pas au café, Fred. On doit finir la rédaction du mémoire aujourd'hui.
-Fred_smiling: Yes Yes...  Et si je te montrais ce qu'on peut faire dans le dernier GTR, y a déjà plein de playthrough sur Zootud ?
-You: Naaan... De toute manière, ça ne marcherait pas. Nos connexions sont limitées aux sites académiques.
-Fred_sad: Dis donc, c'est vraiment pas top ta boule immersive...
+Vous demandez au récepteur de l'IA de la bibliothèque de déployer une "Sphère de Travail Immersive". Aussitôt un dôme de lumière opaque se referme sur votre table et vous isole du reste de la bibliothèque et des étudiants qui y sont. Le son devient net et réverbéré, comme dans un studio d'enregistrement.  #line:05e3a77 
+Fred_happy: Great, ta bulle de silence. On va pouvoir parler tous les deux sans honte ! #line:0871ea7 
+You: Pas du tout. C'est pas un environnement pensé pour hurler à gogo, mais pour faciliter la concentration et l'étude. #line:0315da5 
+Fred_sad: Finalement, c'est pas fun ta bulle. #line:0bc9f26 
+You: On n'est pas au café, Fred. On doit finir la rédaction du mémoire aujourd'hui. #line:0ba096f 
+Fred_smiling: Yes Yes...  Et si je te montrais ce qu'on peut faire dans le dernier GTR, y a déjà plein de playthrough sur Zootud ? #line:0c484f1 
+You: Naaan... De toute manière, ça ne marcherait pas. Nos connexions sont limitées aux sites académiques. #line:0908b61 
+Fred_sad: Dis donc, c'est vraiment pas top ta boule immersive... #line:009cae6 
 
 << advanceTime 1:00 >>
 
@@ -226,29 +226,29 @@ position: -507,380
 << setBackground cafeteria >>
 << fadeOut >>
 
-Vous êtes content de commander un lunch à la bibliothèque. 
+Vous êtes content de commander un lunch à la bibliothèque.  #line:0675a3f 
 << fx EatCook >>
-Aujourd'hui, vous ne mangez pas un énième Burger Big Protéine Double Cheese, mais une salade gourmande, accompagné d'un grand verre de jus d'orange. C'est tout aussi copieux et vitaminé, et plus équilibré. 
+Aujourd'hui, vous ne mangez pas un énième Burger Big Protéine Double Cheese, mais une salade gourmande, accompagné d'un grand verre de jus d'orange. C'est tout aussi copieux et vitaminé, et plus équilibré.  #line:0fe4b04 
 
 << addToGauge food 20 >>
 << addToGauge sleep 20 >>
 
-Vous êtes content de voir que vos efforts payent. C'est dommage que Fred ne suive pas votre exemple. Il engloutit un Tacos Tex-Mex XXXL et un Xeno Cola double-sugar ! Vous avez mal pour son estomac.
+Vous êtes content de voir que vos efforts payent. C'est dommage que Fred ne suive pas votre exemple. Il engloutit un Tacos Tex-Mex XXXL et un Xeno Cola double-sugar ! Vous avez mal pour son estomac. #line:02453c8 
 << advanceTime 1:00 >>
-Le temps de faire un petit tour aux toilettes, vous retrouvez Fred en train de jouer avec un étudiant sur une Nanontedo à GTR 66 ! 
+Le temps de faire un petit tour aux toilettes, vous retrouvez Fred en train de jouer avec un étudiant sur une Nanontedo à GTR 66 !  #line:06bb0d5 
 
 << show fred >>
-You: Plus tard, Fred, on y retourne. 
-Fred_smiling: Yes, yes, attends 5 minutes encore.
-You: Non Fred !
-Fred_happy: Please...
+You: Plus tard, Fred, on y retourne.  #line:03d08b0 
+Fred_smiling: Yes, yes, attends 5 minutes encore. #line:00fb3c6 
+You: Non Fred ! #line:040f0b5 
+Fred_happy: Please... #line:05c3178 
 <<hide>>
 << music NegativeSad >>
 <<advanceTime 1:00>>
 
--> Retourner en salle et laisser Fred jouer quelques minutes
+-> Retourner en salle et laisser Fred jouer quelques minutes #line:09a9dd1 
     <<jump Bibli_soloPM >>
--> Insister pour que Fred vienne avec vous 
+-> Insister pour que Fred vienne avec vous  #line:0fe9164 
     <<jump Fred_goesback_towork >>
 ===
 title: Notes_You
@@ -256,19 +256,19 @@ tags:
 colorID: 0
 position: -1869,550
 ---
-You: Tu as dû avancer depuis la dernière fois. 
-Fred_happy: Yes yes. On échange à nouveau nos commentaires et nos notes ?
-You: On commence par les miennes ?
-Fred_excited: Yeeees. Je t'écoute !
-You: Non, on fait ça par écrit.
-Fred_surprised: Pourquoi ?
-You: On est dans une bibliothèque, on ne doit pas parler.
-Fred_surprised: Pourquoi ?
-You: On dérange les travail des autres étudiants.
-Fred_sad: C'est stupide...
+You: Tu as dû avancer depuis la dernière fois.  #line:0afc209 
+Fred_happy: Yes yes. On échange à nouveau nos commentaires et nos notes ? #line:06385ab 
+You: On commence par les miennes ? #line:0433ce7 
+Fred_excited: Yeeees. Je t'écoute ! #line:0cc993e 
+You: Non, on fait ça par écrit. #line:0a84d86 
+Fred_surprised: Pourquoi ? #line:03d17f4 
+You: On est dans une bibliothèque, on ne doit pas parler. #line:0deafe4 
+Fred_surprised: Pourquoi ? #line:07388b0 
+You: On dérange les travail des autres étudiants. #line:08a4055 
+Fred_sad: C'est stupide... #line:0612b99 
 << hide >>
-Vous envoyez la mise à jour de vos documents de travail à Fred. Vous voyez votre ami grincer des dents. Iel ne semble pas très heureux de travailler ainsi. D'ailleurs, iel prend son temps à lire et relire vos docs.
-Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous coupez court. Il faut faire silence dans ce "sanctuaire de l'étude". Vous n'y pouvez rien, vous ne faites qu'appliquer le règlement intérieur.  
+Vous envoyez la mise à jour de vos documents de travail à Fred. Vous voyez votre ami grincer des dents. Iel ne semble pas très heureux de travailler ainsi. D'ailleurs, iel prend son temps à lire et relire vos docs. #line:0cd49dd 
+Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous coupez court. Il faut faire silence dans ce "sanctuaire de l'étude". Vous n'y pouvez rien, vous ne faites qu'appliquer le règlement intérieur.   #line:00cff4c 
 <<advanceTime 2:00>>
 << addToGauge learning 10 >>
 
@@ -279,13 +279,13 @@ tags:
 colorID: 0
 position: -180,330
 ---
-Fred_sad: T'es vraiment pas drôle.
-You: J'ai besoin de toi. 
-Fred_sad: Ça, j'ai bien entendu. Et si j'avais besoin de toi aussi ?
-You: Tu plaisantes, tu es le meilleur de la promo. C'est moi qui ai de la chance de t'avoir comme partenaire.
-Vous retournez au travail à la bibliothèque.
+Fred_sad: T'es vraiment pas drôle. #line:05dba73 
+You: J'ai besoin de toi.  #line:012be8b 
+Fred_sad: Ça, j'ai bien entendu. Et si j'avais besoin de toi aussi ? #line:08be592 
+You: Tu plaisantes, tu es le meilleur de la promo. C'est moi qui ai de la chance de t'avoir comme partenaire. #line:0d28f76 
+Vous retournez au travail à la bibliothèque. #line:05cfba6 
 
--> Se remettre au travail
+-> Se remettre au travail #line:0edfc52 
     << fadeIn >>
     << setBackground library>>
     << fadeOut >>
@@ -297,14 +297,14 @@ colorID: 0
 position: -383,633
 ---
 << fx Notification >>
-Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux. C'est à regret que Fred et vous, sortez de l'établissement.
-You: Merde, on est loin d'avoir fini.
-Fred_smiling: No worry. Tu termines la rédaction de la partie 1 et de la section 1 de la partie 3. Je m'occupe de la partie 2 et de la section 2 de la partie 3. 
-You: Et je fais la conclusion et toi...
-Fred_happy: Non, je m'occupes de la conclusion, tu te charges de l'intro.
-You: OK. On échange nos rendus à 21h, on compile et on valide.
-Fred_smiling: No worry.
-Satisfait de vos résolutions, confiant dans les capacité de Fred, habitué à livrer ses rendus à la dernière minute, vous retournez dans votre chambre.
+Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux. C'est à regret que Fred et vous, sortez de l'établissement. #line:03609d0 
+You: Merde, on est loin d'avoir fini. #line:07d545c 
+Fred_smiling: No worry. Tu termines la rédaction de la partie 1 et de la section 1 de la partie 3. Je m'occupe de la partie 2 et de la section 2 de la partie 3.  #line:01e8406 
+You: Et je fais la conclusion et toi... #line:0e30978 
+Fred_happy: Non, je m'occupes de la conclusion, tu te charges de l'intro. #line:0b0b64d 
+You: OK. On échange nos rendus à 21h, on compile et on valide. #line:0ba6e27 
+Fred_smiling: No worry. #line:06c92af 
+Satisfait de vos résolutions, confiant dans les capacité de Fred, habitué à livrer ses rendus à la dernière minute, vous retournez dans votre chambre. #line:0b0533d 
 <<hide>>
 <<jump Bedroom>>
 ===
@@ -318,21 +318,21 @@ position: -1913,850
 << setBackground circle >>
 << fadeOut >>
 
-Sapiens_happy: Tu vois, nous étions impatients de te revoir.
-Azul_proud: C'est que derrière ses airs de maître inflexible, se cache un coeur tendre. N'est-ce pas Master Sapiens ?
-Sapiens_angry: Tu ne crois pas exagérer, Azul ?
-Temde_thinking: À peine.
-Ledai_explaining: Nous connaissons ton problème, { $name }. Fred te laisse gérer ce projet seul.
-You: Ouais, et il ne fait rien pour m'aider.
-Sapiens_concerned: Penses-tu ? Il t'a désigné chef de projet. Penses-tu mériter cet honneur ?
-You: Heu...
-Azul_sad: Rassure-toi, on est tous passé par là. Moi, le premier.
-Temde_smiling: Je confirme.
-Sapiens_thinking: On ne naît pas chef de projet. On le devient. 
-Ledai_explaining: On apprend notamment de nos dysfonctionnements. Et de ceux des autres. Ton erreur a été de ne pas distinguer le profil de Fred. Ce qu'il sait bien faire, ce qu'il ne sait pas faire.
-Sapiens_thinking: Et c'est justement l'objet de cette quatrième session : déterminer le profil cognitif de ton partenaire.
-Azul_happy: Ce qui t'aidera à mieux comprendre le tien.
-You: Comment faire ?
+Sapiens_happy: Tu vois, nous étions impatients de te revoir. #line:02c6d14 
+Azul_proud: C'est que derrière ses airs de maître inflexible, se cache un coeur tendre. N'est-ce pas Master Sapiens ? #line:0fc9524 
+Sapiens_angry: Tu ne crois pas exagérer, Azul ? #line:0896e67 
+Temde_thinking: À peine. #line:01fe789 
+Ledai_explaining: Nous connaissons ton problème, { $name }. Fred te laisse gérer ce projet seul. #line:0dc65f3 
+You: Ouais, et il ne fait rien pour m'aider. #line:08d251c 
+Sapiens_concerned: Penses-tu ? Il t'a désigné chef de projet. Penses-tu mériter cet honneur ? #line:0a608d8 
+You: Heu... #line:078a509 
+Azul_sad: Rassure-toi, on est tous passé par là. Moi, le premier. #line:0e1e9b4 
+Temde_smiling: Je confirme. #line:05d2424 
+Sapiens_thinking: On ne naît pas chef de projet. On le devient.  #line:00d10f6 
+Ledai_explaining: On apprend notamment de nos dysfonctionnements. Et de ceux des autres. Ton erreur a été de ne pas distinguer le profil de Fred. Ce qu'il sait bien faire, ce qu'il ne sait pas faire. #line:091a138 
+Sapiens_thinking: Et c'est justement l'objet de cette quatrième session : déterminer le profil cognitif de ton partenaire. #line:0ded121 
+Azul_happy: Ce qui t'aidera à mieux comprendre le tien. #line:0f445b0 
+You: Comment faire ? #line:0ddef42 
 <<jump Learning_styles>>
 ===
 title: Learning_styles
@@ -340,26 +340,26 @@ tags: noUi
 colorID: 0
 position: -1519,862
 ---
-Sapiens_happy: D'abord, regarde-nous. Nous sommes tous des Sages, des experts de la connaissance. Sommes-nous pour autant semblables ?
-You: Pas du tout.
-Sapiens_happy: Tu le vois bien. La sagesse et la connaissance ont plusieurs visages. Certes, j'estime que certains sages sont plus experts que...
-Temde_thinking: Tu va trop loin là !
-Sapiens_thinking: Disons que nos cerveaux ne sont pas rigoureusement identiques. 
-Ledai_explaining: Tout à fait, nous n'avons pas tous les mêmes processeurs, les mêmes composants, les mêmes câblages, les mêmes réactions. 
-You: Et en quoi ça va m'aider pour mon projet ?
-Azul_sad: Tu sembles agacé.
-You: Je suis surtout perdu.
-Temde_cheerful: C'est pourtant simple. L'un d'entre nous correspond au profil de ton ami Fred. Il ne te reste plus qu'à trouver qui, et surtout pourquoi.
-Ledai_happy: Après, tu n'as plus qu'à appuyer sur les boutons que tu as identifiés.
-Azul_happy: Et Fred sera ravi et très réactif dans la production de votre projet. 
-You: Fred n'est pas un robot !
-Ledai_explaining: Nous non plus ! Mais nous avons besoin de recevoir les bons signaux.
-Temde_smiling: Yep, dans le cas contraire, tu n'aidera pas Fred, et toi non plus.
-You: Sérieux ?
-Azul_proud: Sérieux. C'est ça le travail collaboratif : comprendre et valoriser les forces vives de chacun.
-You: OK.
+Sapiens_happy: D'abord, regarde-nous. Nous sommes tous des Sages, des experts de la connaissance. Sommes-nous pour autant semblables ? #line:04680bf 
+You: Pas du tout. #line:03a449c 
+Sapiens_happy: Tu le vois bien. La sagesse et la connaissance ont plusieurs visages. Certes, j'estime que certains sages sont plus experts que... #line:02f5fc7 
+Temde_thinking: Tu va trop loin là ! #line:03c8108 
+Sapiens_thinking: Disons que nos cerveaux ne sont pas rigoureusement identiques.  #line:05a5af3 
+Ledai_explaining: Tout à fait, nous n'avons pas tous les mêmes processeurs, les mêmes composants, les mêmes câblages, les mêmes réactions.  #line:0a09090 
+You: Et en quoi ça va m'aider pour mon projet ? #line:011953d 
+Azul_sad: Tu sembles agacé. #line:0dfcb43 
+You: Je suis surtout perdu. #line:06a7939 
+Temde_cheerful: C'est pourtant simple. L'un d'entre nous correspond au profil de ton ami Fred. Il ne te reste plus qu'à trouver qui, et surtout pourquoi. #line:0b2b81f 
+Ledai_happy: Après, tu n'as plus qu'à appuyer sur les boutons que tu as identifiés. #line:052f462 
+Azul_happy: Et Fred sera ravi et très réactif dans la production de votre projet.  #line:02627a7 
+You: Fred n'est pas un robot ! #line:01d4974 
+Ledai_explaining: Nous non plus ! Mais nous avons besoin de recevoir les bons signaux. #line:0e00d5d 
+Temde_smiling: Yep, dans le cas contraire, tu n'aidera pas Fred, et toi non plus. #line:0ccb890 
+You: Sérieux ? #line:0b2cf5e 
+Azul_proud: Sérieux. C'est ça le travail collaboratif : comprendre et valoriser les forces vives de chacun. #line:088cebf 
+You: OK. #line:060068f 
 
--> Interroger les Sages 
+-> Interroger les Sages  #line:0f7fa48 
     <<jump Test_Sages>>
 ===
 title: Notes_Fred
@@ -367,17 +367,17 @@ tags:
 colorID: 0
 position: -1593,569
 ---
-You: Tu peux m'envoyer les notes que tu as rédigées. Enfin, tout ce que tu as pu noter ?
-Fred_happy: Bien sûr.
-Fred pianote sur son ordinateur, l'instant d'après, vous réceptionnez ses documents... Incroyable, il n'y a pas grand chose d'exploitable. Que des bouts de phrases, de mots et quelques commentaires en annexe.
-You: C'est tout ce que tu as pondu ?
-Fred_smiling: No worry, le reste est dans ma tête.
-You: Je suis pas dans ta tête !
-Fred_sad: Bon, d'accord. Je m'y remets...
-Vous voyez à son air pincé que Fred n'a pas l'air intimement convaincu par vos arguments. Vous vous replongez dans vos notes et vos documents. 
-Après un bon moment, Fred, vous renvoie les fichiers mis à jour...
-Fred_smiling: J'ai fait un effort. J'ai écrit des vraies phrases.
-En effet, c'est mieux, mais ça reste laconique. On dirait plus des diapositives de présentation qu'une argumentation ou un mémoire. Et les sources et les références ne sont pas correctement indiquées.   
+You: Tu peux m'envoyer les notes que tu as rédigées. Enfin, tout ce que tu as pu noter ? #line:010aae0 
+Fred_happy: Bien sûr. #line:0e21ac0 
+Fred pianote sur son ordinateur, l'instant d'après, vous réceptionnez ses documents... Incroyable, il n'y a pas grand chose d'exploitable. Que des bouts de phrases, de mots et quelques commentaires en annexe. #line:0ea1a49 
+You: C'est tout ce que tu as pondu ? #line:06a58cb 
+Fred_smiling: No worry, le reste est dans ma tête. #line:084c5a6 
+You: Je suis pas dans ta tête ! #line:04024c1 
+Fred_sad: Bon, d'accord. Je m'y remets... #line:066f673 
+Vous voyez à son air pincé que Fred n'a pas l'air intimement convaincu par vos arguments. Vous vous replongez dans vos notes et vos documents.  #line:0e5156a 
+Après un bon moment, Fred, vous renvoie les fichiers mis à jour... #line:030d4d6 
+Fred_smiling: J'ai fait un effort. J'ai écrit des vraies phrases. #line:02ec16d 
+En effet, c'est mieux, mais ça reste laconique. On dirait plus des diapositives de présentation qu'une argumentation ou un mémoire. Et les sources et les références ne sont pas correctement indiquées.    #line:0c57e80 
 <<advanceTime 3:00>>
 << addToGauge learning 10 >>
 
@@ -390,13 +390,13 @@ position: -940,907
 ---
 << hide >>
 
--> Interroger Miss Temdé
+-> Interroger Miss Temdé #line:0cb5a6e 
     <<jump QuestionsTemde>>
--> Interroger Master Sapiens
+-> Interroger Master Sapiens #line:00f2b31 
     <<jump QuestionsSapiens>>
--> Interroger Ledai
+-> Interroger Ledai #line:041c420 
     <<jump QuestionsLedai>>
--> Interroger Azul
+-> Interroger Azul #line:09f651a 
     <<jump QuestionsAzul>>
 ===
 title: QuestionsTemde
@@ -404,17 +404,17 @@ tags: noUi
 colorID: 0
 position: -1895,1126
 ---
-You: Qu'est-ce que tu aimes faire le plus, Miss Temdé ?
-Temde_smiling: Agir dans le feu de l'action, se trouver face à un problème concret et devoir trouver une solution.
-You: Qu'est-ce que tu n'aimes pas du tout faire ?
-Temde_thinking: La théorie, la routine, suivre les consignes de quelqu'un d'autre. 
-You: Et comment tu te définirais ?
-Temde_cheerful: J'aime prendre des risques, j'avance à tâtons, mes erreurs m'aident à progresser.
-You: Merci.
+You: Qu'est-ce que tu aimes faire le plus, Miss Temdé ? #line:0d80347 
+Temde_smiling: Agir dans le feu de l'action, se trouver face à un problème concret et devoir trouver une solution. #line:0a8c4db 
+You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:0815685 
+Temde_thinking: La théorie, la routine, suivre les consignes de quelqu'un d'autre.  #line:07ded1f 
+You: Et comment tu te définirais ? #line:01237bb 
+Temde_cheerful: J'aime prendre des risques, j'avance à tâtons, mes erreurs m'aident à progresser. #line:00fc2ad 
+You: Merci. #line:01ad7d6 
 
--> Interroger un autre sage 
+-> Interroger un autre sage  #line:01cc9e0 
     <<jump Questions_Sages>>
--> Révéler lequel ressemble à Fred 
+-> Révéler lequel ressemble à Fred  #line:01ef52d 
     <<jump Trouver_Fred>>
 ===
 title: QuestionsSapiens
@@ -422,17 +422,17 @@ tags: noUi
 colorID: 0
 position: -1525,1148
 ---
-You: Qu'est-ce que tu aimes faire le plus, Master Sapiens ?
-Sapiens_happy: Accumuler des données, des théories, des concepts.
-You: Qu'est-ce que tu n'aimes pas du tout faire ?
-Sapiens_concerned: Qu'on ne me laisse pas le temps de raisonner avant de donner ma réponse. Qu'on me harcèle de questions sans préavis.
-You: Et comment tu te définirais ?
-Sapiens_thinking: J'ai soif de savoir et d'informations. Plus je sais et plus je maîtrise la moindre situation, le moindre imprévu. 
-You: Merci.
+You: Qu'est-ce que tu aimes faire le plus, Master Sapiens ? #line:06d2f6a 
+Sapiens_happy: Accumuler des données, des théories, des concepts. #line:0897191 
+You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd74 
+Sapiens_concerned: Qu'on ne me laisse pas le temps de raisonner avant de donner ma réponse. Qu'on me harcèle de questions sans préavis. #line:088bf63 
+You: Et comment tu te définirais ? #line:09897ab 
+Sapiens_thinking: J'ai soif de savoir et d'informations. Plus je sais et plus je maîtrise la moindre situation, le moindre imprévu.  #line:0153123 
+You: Merci. #line:0aa54c6 
 
--> Interroger un autre sage 
+-> Interroger un autre sage  #line:0844236 
     <<jump Questions_Sages>>
--> Révéler lequel ressemble à Fred 
+-> Révéler lequel ressemble à Fred  #line:0319aa8 
     <<jump Trouver_Fred>>
 ===
 title: QuestionsLedai
@@ -440,17 +440,17 @@ tags: noUi
 colorID: 0
 position: -1201,1184
 ---
-You: C'est ton tour, Ledai. Qu'est-ce que tu aimes faire le plus ?
-Ledai_happy: Appliquer un process qu'on m'a confié, étape par étape, avec rigueur et discernement.
-You: Qu'est-ce que tu n'aimes pas du tout faire ?
-Ledai_doubtful: Ne pas avoir de plan d'action préalable, ou ne pas avoir de priorité claire dans ma liste de tâches. 
-You: Et comment tu te définirais ?
-Ledai_explaining: Je suis une machine de précision. J'aime agir selon un protocole que j'ai eu le temps de valider.
-You: Merci.
+You: C'est ton tour, Ledai. Qu'est-ce que tu aimes faire le plus ? #line:0e6d6d8 
+Ledai_happy: Appliquer un process qu'on m'a confié, étape par étape, avec rigueur et discernement. #line:0e39ad0 
+You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:0fbd481 
+Ledai_doubtful: Ne pas avoir de plan d'action préalable, ou ne pas avoir de priorité claire dans ma liste de tâches.  #line:05c6676 
+You: Et comment tu te définirais ? #line:0cfebd1 
+Ledai_explaining: Je suis une machine de précision. J'aime agir selon un protocole que j'ai eu le temps de valider. #line:0aa9a21 
+You: Merci. #line:0fc5c47 
 
--> Interroger un autre sage 
+-> Interroger un autre sage  #line:0f3647f 
     <<jump Questions_Sages>>
--> Révéler lequel ressemble à Fred 
+-> Révéler lequel ressemble à Fred  #line:0bb7b25 
     <<jump Trouver_Fred>>
 ===
 title: QuestionsAzul
@@ -458,17 +458,17 @@ tags: noUi
 colorID: 0
 position: -892,1220
 ---
-You: À ton tour, Azul. Qu'est-ce que tu aimes faire le plus ?
-Azul_happy: J'aime réfléchir, discuter avec les autres, imaginer une solution. 
-You: Qu'est-ce que tu n'aimes pas du tout faire ?
-Azul_sad: Perdre du temps à rédiger ou à mettre sur papier un plan bien propre sur soi qui découle d'une problématique bien creusée, dérouler un raisonnement sans donner tout de suite mon opinion.
-You: Enfin, comment tu te définirais ?
-Azul_proud: Je suis un créatif, un inspiré, j'aime déceler une piste que personne n'a encore explorée.
-You: Merci.
+You: À ton tour, Azul. Qu'est-ce que tu aimes faire le plus ? #line:0e0c066 
+Azul_happy: J'aime réfléchir, discuter avec les autres, imaginer une solution.  #line:0b109d5 
+You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:0a4fab9 
+Azul_sad: Perdre du temps à rédiger ou à mettre sur papier un plan bien propre sur soi qui découle d'une problématique bien creusée, dérouler un raisonnement sans donner tout de suite mon opinion. #line:0e75db1 
+You: Enfin, comment tu te définirais ? #line:043c930 
+Azul_proud: Je suis un créatif, un inspiré, j'aime déceler une piste que personne n'a encore explorée. #line:0e46387 
+You: Merci. #line:07de45a 
 
--> Interroger un autre sage 
+-> Interroger un autre sage  #line:0080a15 
     <<jump Questions_Sages>>
--> Révéler lequel ressemble à Fred 
+-> Révéler lequel ressemble à Fred  #line:023f3b4 
     <<jump Trouver_Fred>>
 ===
 title: Trouver_Fred
@@ -476,19 +476,19 @@ tags: noUi
 colorID: 0
 position: -575,926
 ---
-Sapiens_happy: Alors, tu as trouvé qui a le profil correspondant à celui de ton ami ?
-You: Oui, je crois.
-Sapiens_happy: Nous t'écoutons.
+Sapiens_happy: Alors, tu as trouvé qui a le profil correspondant à celui de ton ami ? #line:03178d8 
+You: Oui, je crois. #line:00ae19f 
+Sapiens_happy: Nous t'écoutons. #line:04dced3 
 
--> C'est vous, Master Sapiens 
+-> C'est vous, Master Sapiens  #line:0e8379b 
     <<jump SapiensNo>>
--> C'est vous, Miss Temdé 
+-> C'est vous, Miss Temdé  #line:0f5d309 
     <<jump TemdeNo>>
--> C'est vous, Azul 
+-> C'est vous, Azul  #line:0c550df 
     <<jump AzulYes>>
--> C'est vous, Ledai 
+-> C'est vous, Ledai  #line:0cb251b 
     <<jump LedaiNo>>
--> Je ne suis plus si sûr...
+-> Je ne suis plus si sûr... #line:0fd2961 
     <<jump Questions_Sages>>
 ===
 title: SapiensNo
@@ -498,9 +498,9 @@ position: -626,1181
 ---
 << fx Failure >>
 
-Sapiens_angry: Sûrement pas ! Contrairement à ton ami et aux apparences, je ne suis pas qu'une boîte à idées. Je suis un grand cerveau, moi ! Je t'aurais transmis une bibliographie étendue, le plan de travail et un premier jet de l'introduction et de la conclusion. Avec moi, tu aurais eu le squelette de ton mémoire dès la première heure... 
+Sapiens_angry: Sûrement pas ! Contrairement à ton ami et aux apparences, je ne suis pas qu'une boîte à idées. Je suis un grand cerveau, moi ! Je t'aurais transmis une bibliographie étendue, le plan de travail et un premier jet de l'introduction et de la conclusion. Avec moi, tu aurais eu le squelette de ton mémoire dès la première heure...  #line:0fb5414 
 
-->  Une autre idée? 
+->  Une autre idée?  #line:0d9274c 
     <<jump Trouver_Fred>>
 ===
 title: TemdeNo
@@ -510,9 +510,9 @@ position: -308,922
 ---
 << fx Failure >>
 
-Temde_thinking: Pas loin. Mais ton ami et moi, nous ne sommes pas si proches. Moi, j'adore le concret, me servir de mes mains. C'est bien pour cela que j'en ai quatre !... Cherche encore.
+Temde_thinking: Pas loin. Mais ton ami et moi, nous ne sommes pas si proches. Moi, j'adore le concret, me servir de mes mains. C'est bien pour cela que j'en ai quatre !... Cherche encore. #line:0de3710 
 
-->  Trouver le profil de Fred 
+->  Trouver le profil de Fred  #line:04c7dbe 
     <<jump Trouver_Fred>>
 ===
 title: AzulYes
@@ -523,11 +523,11 @@ position: -116,1177
 << fx Success >>
 << music Victory >>
 
-Azul_happy: Bravo ! Tu as trouvé ! Je suis imaginatif et intuitif, comme ton ami Fred. Je suis capable de voir ce que les autres ne peuvent voir.
-Azul_sad: Cependant, j'ai comme faiblesse de manquer de discipline. Je me disperse, je peine à développer et à figer noir sur blanc mes visions.
-Azul_proud: Maintenant que tu as deviné quel est le profil d'apprentissage de Fred, je vais te donner quelques conseils pour t'aider à le motiver et à l'impliquer dans votre projet. Si ça t'intéresse...
+Azul_happy: Bravo ! Tu as trouvé ! Je suis imaginatif et intuitif, comme ton ami Fred. Je suis capable de voir ce que les autres ne peuvent voir. #line:01ba3b3 
+Azul_sad: Cependant, j'ai comme faiblesse de manquer de discipline. Je me disperse, je peine à développer et à figer noir sur blanc mes visions. #line:0846ca7 
+Azul_proud: Maintenant que tu as deviné quel est le profil d'apprentissage de Fred, je vais te donner quelques conseils pour t'aider à le motiver et à l'impliquer dans votre projet. Si ça t'intéresse... #line:0413c49 
 
-->  Oui 
+->  Oui  #line:099bfc5 
     <<jump Motiver_Fred>>
 ===
 title: LedaiNo
@@ -537,9 +537,9 @@ position: -380,1192
 ---
 << fx Failure >>
 
-Ledai_doubtful: Hélas non. Ton ami et moi sommes opposés en presque tout. Ce Fred a l'esprit chaotique, qui ne cesse de bouillir et de se disperser. Il préfère le monde des hypothèses plutôt que la confrontation mécanique ou schématique. Il préfère observer et discuter avec tout le monde que le démontage méthodique d'un problème technique. 
+Ledai_doubtful: Hélas non. Ton ami et moi sommes opposés en presque tout. Ce Fred a l'esprit chaotique, qui ne cesse de bouillir et de se disperser. Il préfère le monde des hypothèses plutôt que la confrontation mécanique ou schématique. Il préfère observer et discuter avec tout le monde que le démontage méthodique d'un problème technique.  #line:0285458 
 
-->  Qui d'autre alors? 
+->  Qui d'autre alors?  #line:05e2950 
     <<jump Trouver_Fred>>
 ===
 title: Motiver_Fred
@@ -547,14 +547,14 @@ tags: noUi
 colorID: 0
 position: -54,1470
 ---
-Azul_happy: Fred et moi, comme mes Master Sapiens, Miss Temdé, Ledai, nous avons nos faiblesses.
-Azul_sad: En ce qui me concerne, je perds facilement mes moyens quand il s'agit de mettre par écrit mes idées et mes arguments. Je peine à respecter un plan rigide et méthodique, c'est fastidieux et démotivant.
-Azul_happy: Je ne peux pas m'empêcher de donner mon avis plutôt que présenter une idée ou un concept. J'ai besoin d'échanger avec les autres, de confronter mon ressenti avec ceux des autres, ça m'aide à fixer mon jugement.
-You: Ouais, mais concrètement, je fais quoi ?
-Azul_proud: Tu ne le laisses pas seul, sans pistes à explorer.
-You: C'est-à-dire ?
-Azul_happy: Tu le guides pas-à-pas jusqu'à la finalisation du projet. C'est toi qui pilotes la conception. Lui, il te fournira des idées, des pistes de réflexion en pagaille. Tu n'auras plus qu'à trier.  
-You: OK.
+Azul_happy: Fred et moi, comme mes Master Sapiens, Miss Temdé, Ledai, nous avons nos faiblesses. #line:0a39098 
+Azul_sad: En ce qui me concerne, je perds facilement mes moyens quand il s'agit de mettre par écrit mes idées et mes arguments. Je peine à respecter un plan rigide et méthodique, c'est fastidieux et démotivant. #line:07b9cd1 
+Azul_happy: Je ne peux pas m'empêcher de donner mon avis plutôt que présenter une idée ou un concept. J'ai besoin d'échanger avec les autres, de confronter mon ressenti avec ceux des autres, ça m'aide à fixer mon jugement. #line:0d8d90a 
+You: Ouais, mais concrètement, je fais quoi ? #line:0d6bc64 
+Azul_proud: Tu ne le laisses pas seul, sans pistes à explorer. #line:08190d7 
+You: C'est-à-dire ? #line:01ed33c 
+Azul_happy: Tu le guides pas-à-pas jusqu'à la finalisation du projet. C'est toi qui pilotes la conception. Lui, il te fournira des idées, des pistes de réflexion en pagaille. Tu n'auras plus qu'à trier.   #line:0544787 
+You: OK. #line:03a1770 
 
 <<jump Guider_Fred>>
 ===
@@ -563,19 +563,19 @@ tags: noUi
 colorID: 0
 position: -459,1605
 ---
-Azul_happy: N'oublie pas non plus de le solliciter régulièrement. Verbalement ! 
-You: Quoi ?!
-Azul_happy: Tu lui rapportes tout ce que tu as trouvé. Et tu lui demandes ce qu'il a noté ou retenu.
-You: Sérieusement ?
-Azul_happy: Sérieux ! Verbalement aussi. C'est comme ça qu'un esprit divergent fonctionne.
-You: Un esprit "divergent" ?!
-Azul_proud: C'est ce que moi et Fred sommes. 
-You: Ah... Et moi ? Je suis quoi ?
-Azul_cheerful: À toi de trouver. Ah... Une dernière chose. N'oublie pas de noter tout ça dans ton journal mental.
-You: J'y penserai. Merci pour le coup de pouce, à bientôt !
+Azul_happy: N'oublie pas non plus de le solliciter régulièrement. Verbalement !  #line:06bc00a 
+You: Quoi ?! #line:079fa73 
+Azul_happy: Tu lui rapportes tout ce que tu as trouvé. Et tu lui demandes ce qu'il a noté ou retenu. #line:085d1b8 
+You: Sérieusement ? #line:045a860 
+Azul_happy: Sérieux ! Verbalement aussi. C'est comme ça qu'un esprit divergent fonctionne. #line:08299ed 
+You: Un esprit "divergent" ?! #line:00adb08 
+Azul_proud: C'est ce que moi et Fred sommes.  #line:0908d96 
+You: Ah... Et moi ? Je suis quoi ? #line:0f13d6e 
+Azul_cheerful: À toi de trouver. Ah... Une dernière chose. N'oublie pas de noter tout ça dans ton journal mental. #line:078dbed 
+You: J'y penserai. Merci pour le coup de pouce, à bientôt ! #line:0796097 
 << hide >>
 
-->  Quitter l'Assemblée des Sages 
+->  Quitter l'Assemblée des Sages  #line:0e3cbd5 
     <<jump Journal_Mental>>
 ===
 title: Journal_Mental
@@ -588,8 +588,8 @@ position: -1002,1672
 << setBackground bedroom night >>
 << fadeOut 200 >>
 
-Vous voilà encore dans cette parenthèse de douce pénombre maternelle... ou astrale... Qui sait... En tout cas, vous êtes au calme, seul avec vous-même. Ou presque. Vous avez un compagnon qui ne vous quitte jamais : votre journal mental. Ce magnifique "carnet d'ingénieur tout-terrain". 
-Qu'allez-vous notez dedans cette fois ?
+Vous voilà encore dans cette parenthèse de douce pénombre maternelle... ou astrale... Qui sait... En tout cas, vous êtes au calme, seul avec vous-même. Ou presque. Vous avez un compagnon qui ne vous quitte jamais : votre journal mental. Ce magnifique "carnet d'ingénieur tout-terrain".  #line:0fe9f3c 
+Qu'allez-vous notez dedans cette fois ? #line:0edc7c6 
 ===
 title: ChezFred
 tags: 
@@ -600,17 +600,17 @@ position: -1039,-48
 << setBackground bedroom_fred >>
 << fadeOut >>
 
-Fred vous fait entrer à la première sonnerie. 
-Fred_excited: Tu vas voir, ce GTR, c'est de la giga-bombe!
-You: Fred, faut qu'on aille à la bibli, tu joueras ce week-end.
-Fred_sad: T'es pas drôle. Viens, juste pour 5 minutes.
-You: Non, Fred. On a du travail.
-Fred_sad: Je le ferai plus tard.
-You: J'ai besoin de toi, s'il-te-plaît.
-Fred_sad: Haaaan, t'es relou parfois.
-You: Je veux l'avoir mon diplôme.
-Fred_sad: D'accord...
-Ouf, vous avez touché la corde sensible de Fred, iel accepte de vous suivre... À la bibliothèque. 
+Fred vous fait entrer à la première sonnerie.  #line:03683a1 
+Fred_excited: Tu vas voir, ce GTR, c'est de la giga-bombe! #line:091415a 
+You: Fred, faut qu'on aille à la bibli, tu joueras ce week-end. #line:0d2c26f 
+Fred_sad: T'es pas drôle. Viens, juste pour 5 minutes. #line:0af460c 
+You: Non, Fred. On a du travail. #line:02334fb 
+Fred_sad: Je le ferai plus tard. #line:0152d6f 
+You: J'ai besoin de toi, s'il-te-plaît. #line:06efd66 
+Fred_sad: Haaaan, t'es relou parfois. #line:0c51cb3 
+You: Je veux l'avoir mon diplôme. #line:02c9d2e 
+Fred_sad: D'accord... #line:063be70 
+Ouf, vous avez touché la corde sensible de Fred, iel accepte de vous suivre... À la bibliothèque.  #line:04d9deb 
 <<hide>>
 <<jump Bibli_binome>>
 ===
@@ -623,36 +623,36 @@ position: -81,758
 << setBackground bedroom night >>
 << fadeOut >>
 
-Vous demandez à l'IA de votre studio de passer en mode "Immersion Studieuse".  
+Vous demandez à l'IA de votre studio de passer en mode "Immersion Studieuse".   #line:01b74d7 
 // y-a-t-il une animation son/visuelle? La jauge de la charge mentale est renforcée? Le joueur le voit? 
 // C'est une proposition, pas indispensable dans cette quête, juste possibilité que le joueur réutilise ce qu'il a débloqué
 <<setTime 21:30>>
-Vous ne vous accordez qu'une pause dîner. Une soupe de nouilles aux légumes et un sorbet multi-fruits. C'est finalement bien Yum yum... Vous mettez un point final à votre version. Il est 21h passé. Vous envoyez votre texte quasi définitif à Fred. Et vous attendez le sien. Rien...
+Vous ne vous accordez qu'une pause dîner. Une soupe de nouilles aux légumes et un sorbet multi-fruits. C'est finalement bien Yum yum... Vous mettez un point final à votre version. Il est 21h passé. Vous envoyez votre texte quasi définitif à Fred. Et vous attendez le sien. Rien... #line:0863a36 
 
 << loopFX PhoneRing_LOOP 5000 >>
-Si Si ! Votre palmphone vibre:
+Si Si ! Votre palmphone vibre: #line:0da53c2 
 << stopFX PhoneRing_LOOP >>
 
-Fred@holo_excited: Bien reçu ton texte. 
-You: Et toi?
-Fred@holo_excited: Je suis en train de finir.
-You: Et on fait comment pour réassembler notre travail ?
-Fred@holo_happy: No Worry. C'est moi qui suis en retard, je m'en occupe.
-You: Promis ?
-Fred@holo_happy: Promis.
+Fred@holo_excited: Bien reçu ton texte.  #line:08c6d43 
+You: Et toi? #line:04b1aaa 
+Fred@holo_excited: Je suis en train de finir. #line:05abc74 
+You: Et on fait comment pour réassembler notre travail ? #line:08950c8 
+Fred@holo_happy: No Worry. C'est moi qui suis en retard, je m'en occupe. #line:02efb97 
+You: Promis ? #line:093f014 
+Fred@holo_happy: Promis. #line:0bbbb99 
 << hide >>
-Espérons que vous pourrez lui faire confiance. De toute manière, il est trop tard pour changer le cours des choses... À moins que...
+Espérons que vous pourrez lui faire confiance. De toute manière, il est trop tard pour changer le cours des choses... À moins que... #line:05990d5 
 
 << fadeIn >>
 << fadeOut >>
 
 << music Mysterious>>
 
-Sapiens_happy: Tu nous as appelé?
-You: Heu... Oui... J'ai pensé à vous... Enfin...
-Sapiens_happy: Je sais, c'est moi qui t'ai entendu le premier. Allez, suis-moi.
+Sapiens_happy: Tu nous as appelé? #line:0512aa7 
+You: Heu... Oui... J'ai pensé à vous... Enfin... #line:07757a8 
+Sapiens_happy: Je sais, c'est moi qui t'ai entendu le premier. Allez, suis-moi. #line:0b5abb4 
 
--> Suivre Master Sapiens 
+-> Suivre Master Sapiens  #line:0568d5f 
     <<jump Assemblee>>
 ===
 title: Plan
@@ -660,19 +660,19 @@ tags:
 colorID: 0
 position: -1320,588
 ---
-You: Tu te souviens du plan ?
-Fred_smiling: Ton plan ? 
-You: Oui, je t'ai demandé d'en proposer un, t'as refusé.
-Fred_excited: Le plan, ça vient avec les idées, les breakthrough.
-You: Sans plan, on ne peut pas avancer dans la rédaction. Et on en est là, la rédaction, la dernière ligne droite.
-Fred_sad: Mais pourquoi on doit suivre l'axe que tu as proposé ? 
-You: T'en vois d'autre,
-Fred_happy: Oui, plein, y a l'embarras du choix.
-You: Ben c'est le problème. On n'a plus le temps d'hésiter. On doit choisir un plan et s'y tenir. 
-Fred_sad: C'est vraiment dommage.
-You: Je te rappelle qu'on doit le rendre ce soir ce mémoire. C'est maintenant trop tard pour changer d'avis. Je te renvoie le plan et on le valide. Un point, c'est tout.
-En réalité, c'est plus facile à dire qu'à faire. Fred se révèle un infatigable avocat de l'accusation. Iel ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions. Commentaires qui ne font que fragiliser votre problématique et douter de vous.
-Si Fred a raison, il va falloir revoir le plan de votre mémoire sur cette fichue théorie du chaos post-darwinienne...
+You: Tu te souviens du plan ? #line:0d35c07 
+Fred_smiling: Ton plan ?  #line:0bbf028 
+You: Oui, je t'ai demandé d'en proposer un, t'as refusé. #line:02a6644 
+Fred_excited: Le plan, ça vient avec les idées, les breakthrough. #line:00b90ba 
+You: Sans plan, on ne peut pas avancer dans la rédaction. Et on en est là, la rédaction, la dernière ligne droite. #line:0c7dbb2 
+Fred_sad: Mais pourquoi on doit suivre l'axe que tu as proposé ?  #line:0b5f3f0 
+You: T'en vois d'autre, #line:029b51b 
+Fred_happy: Oui, plein, y a l'embarras du choix. #line:0706189 
+You: Ben c'est le problème. On n'a plus le temps d'hésiter. On doit choisir un plan et s'y tenir.  #line:06d0cf6 
+Fred_sad: C'est vraiment dommage. #line:0ea5b77 
+You: Je te rappelle qu'on doit le rendre ce soir ce mémoire. C'est maintenant trop tard pour changer d'avis. Je te renvoie le plan et on le valide. Un point, c'est tout. #line:006169a 
+En réalité, c'est plus facile à dire qu'à faire. Fred se révèle un infatigable avocat de l'accusation. Iel ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions. Commentaires qui ne font que fragiliser votre problématique et douter de vous. #line:0277657 
+Si Fred a raison, il va falloir revoir le plan de votre mémoire sur cette fichue théorie du chaos post-darwinienne... #line:05e5bdc 
 << advanceTime 1:30 >>
 << addToGauge learning 10 >>
 
@@ -683,14 +683,14 @@ tags:
 colorID: 0
 position: -1215,858
 ---
-Temde_cheerful: On va jouer à une sorte de jeu. Tu vas nous poser les mêmes questions. Et nous répondrons chacun le plus honnêtement possible.
-You: D'accord.
+Temde_cheerful: On va jouer à une sorte de jeu. Tu vas nous poser les mêmes questions. Et nous répondrons chacun le plus honnêtement possible. #line:009a5cc 
+You: D'accord. #line:0e54a20 
 
-Temde_smiling: Tu vas voir, c'est très simple. À chaque fois, tu nous demandes :
-Temde_smiling: Ce que nous aimons faire le plus.
-Temde_thinking: Ce que nous détestons faire.
+Temde_smiling: Tu vas voir, c'est très simple. À chaque fois, tu nous demandes : #line:074fabd 
+Temde_smiling: Ce que nous aimons faire le plus. #line:03f22dc 
+Temde_thinking: Ce que nous détestons faire. #line:0163c03 
 
 // Option "Commencer le jeu " moved to the end of this node
--> Commencer le jeu 
+-> Commencer le jeu  #line:03833cc 
     <<jump Questions_Sages>>
 ===

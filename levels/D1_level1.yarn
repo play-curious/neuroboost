@@ -1,4 +1,4 @@
-title: Start
+﻿title: Start
 tags:
 position: -1979.929937362671,-817.3228759765625
 ---
@@ -7,21 +7,21 @@ position: -1979.929937362671,-817.3228759765625
 << setTime 8:00 >>
 << loopFX Chime_LOOP 2000 >>
 << showGauges >>
-Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.
+Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. #line:07ba3f1 
 
 << stopFX Chime_LOOP >>
 << music Neutral >>
 
 
-Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle.
+Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:0c77b94 
 
 << loopFX PhoneRing_LOOP 5000 >>
 
-Ronronron... Cette fois, c'est votre palmphone qui vibre : Fred veut vous parler.
+Ronronron... Cette fois, c'est votre palmphone qui vibre : Fred veut vous parler.  #line:09a08b2 
 
--> Prendre l'appel
+-> Prendre l'appel #line:062154e 
   << jump Appel_Fred >>
--> Rejeter l'appel
+-> Rejeter l'appel #line:0be341f 
   << jump Rejet_Fred >>
 ===
 title: Appel_Fred
@@ -30,22 +30,22 @@ position: -1617.4276733398438,-825.2426147460938
 ---
 << stopFX PhoneRing_LOOP >>
 
-Fred@holo_excited: Hello ! C'est Fred !
-You: Je sais, j'ai vu ton nom.
-Fred@holo_smiling: Yes yes... Tu fais quoi là, maintenant ?
-You: Je viens de me réveiller.
-Fred@holo_smiling: Tu sais qu'on a le partiel de cet aprèm ?
-You: Heu... ouais... C'est sur quoi déjà ?
-Fred@holo_smiling: La matière que tu n'aimes pas du tout : l'Atronometric Data Management
-You: Ouais... Le truc super long qui veut rien dire...
-Fred@holo_happy: Tu rigoles, c'est super passionnant et super cool ! J'adore !
-You: Facile à dire pour toi, tu révises jamais !
-Fred@holo_smiling: C'est ça quand on est un génie.
-You: Ouais ouais...
-Fred@holo_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ?
-You: Ouais...
+Fred@holo_excited: Hello ! C'est Fred ! #line:0aae894 
+You: Je sais, j'ai vu ton nom. #line:0b92fc1 
+Fred@holo_smiling: Yes yes... Tu fais quoi là, maintenant ? #line:079d735 
+You: Je viens de me réveiller. #line:06187c2 
+Fred@holo_smiling: Tu sais qu'on a le partiel de cet aprèm ? #line:0194b31 
+You: Heu... ouais... C'est sur quoi déjà ? #line:044eee7 
+Fred@holo_smiling: La matière que tu n'aimes pas du tout : l'Atronometric Data Management #line:0f21f03 
+You: Ouais... Le truc super long qui veut rien dire... #line:06d4354 
+Fred@holo_happy: Tu rigoles, c'est super passionnant et super cool ! J'adore ! #line:06efd0d 
+You: Facile à dire pour toi, tu révises jamais ! #line:0d4f47c 
+Fred@holo_smiling: C'est ça quand on est un génie. #line:09164d8 
+You: Ouais ouais... #line:0302484 
+Fred@holo_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ? #line:0e87913 
+You: Ouais... #line:0d2cb1e 
 << hide >>
-Vous poussez un grand soupir avant de raccrocher
+Vous poussez un grand soupir avant de raccrocher #line:0799319 
 
 << advanceTime 0:15 >>
 
@@ -57,19 +57,19 @@ position: -1805.537826538086,-561.8787231445312
 ---
 << loopFX PhoneRing_LOOP 5000 >>
 
-Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle aussitôt !
+Ahhhh... Vous avez oublié qui est Fred. Il est du genre têtu. Il vous rappelle aussitôt ! #line:0c37a79 
 
--> Prendre l'appel
+-> Prendre l'appel #line:0c304d5 
     <<jump Appel_Fred>>
 ===
 title: Phone_off
 tags:
 position: -1293.9966201782227,-821.3144836425781
 ---
-Vraiment ce Fred, il vous agace. Il ne fout rien et il passe haut la main ! Il est temps que ça change !
-Et c'est cette semaine que ça va se produire ! La semaine de partiels de fin de semestre ! Vous allez lui montrer de quelle étoffe sont fait les vrais winners !
-Il vous reste 6 heures avant l'heure H...
-Il y a de quoi faire pour montrer à Fred qui est le Big Winner de l'Académie !
+Vraiment ce Fred, il vous agace. Il ne fout rien et il passe haut la main ! Il est temps que ça change ! #line:0bbd1cb 
+Et c'est cette semaine que ça va se produire ! La semaine de partiels de fin de semestre ! Vous allez lui montrer de quelle étoffe sont fait les vrais winners ! #line:03776d2 
+Il vous reste 6 heures avant l'heure H... #line:0f4f74f 
+Il y a de quoi faire pour montrer à Fred qui est le Big Winner de l'Académie ! #line:05305af 
 <<jump Action_List>>
 ===
 title: Action_List
@@ -81,19 +81,19 @@ position: -847.2033081054688,-821.7307662963867
 
 << if !visited("Action_List") >>
 << visit Action_List >>
-Que faites-vous maintenant ?
+Que faites-vous maintenant ? #line:051589e 
 << endif >>
 
 << if isTimeOver("12:00") >>
-Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe.
--> Manger (à midi)
+Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe. #line:0fb2dda 
+-> Manger (à midi) #line:0f2760d 
     <<jump Lunch>>
 << else>>
--> Cuisine@cuisine
+-> Cuisine@cuisine #line:04b3fcf 
     <<jump cuisine_subchoice>>
--> Bureau@bureau
+-> Bureau@bureau #line:09907fc 
     <<jump bureau_subchoice>>
--> Salon@salon
+-> Salon@salon #line:0024456 
     <<jump salon_subchoice>>
 << endif>>
 ===
@@ -105,9 +105,9 @@ position: -319.1514720916748,-55.38755989074707
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
--> Prendre le petit déjeuner#once
+-> Prendre le petit déjeuner#once #line:0241478 
     <<jump Petit_dej>>
--> back
+-> back #line:0e655c3 
     << fadeIn >>
     <<jump Action_List>>
 ===
@@ -119,11 +119,11 @@ position: -993.6492929458618,-75.37680292129517
 << setBackground bedroom desk >>
 << fadeOut >>
 
--> Passer du temps sur le chat avec le pote d'une autre Université#once
+-> Passer du temps sur le chat avec le pote d'une autre Université#once #line:09984ee 
     <<jump Chat>>
--> Réviser cette fichue Astronometric Data Management#once
+-> Réviser cette fichue Astronometric Data Management#once #line:053666a 
     <<jump Revision>>
--> back
+-> back #line:0d24803 
     << fadeIn >>
     <<jump Action_List>>
 ===
@@ -135,9 +135,9 @@ position: -1716.8310852050781,-38.99417304992676
 << setBackground bedroom chill>>
 << fadeOut >>
 
--> Binger votre série TV préférée#once
+-> Binger votre série TV préférée#once #line:03557f1 
     <<jump BingeTV>>
--> back
+-> back #line:06dd47d 
     << fadeIn >>
     <<jump Action_List>>
 ===
@@ -149,12 +149,12 @@ position: -441.43939208984375,237.24887084960938
 << setBackground bedroom kitchen >>
 << fadeOut >>
 << fx EatCook >>
-Yum Yum... Rien ne vaut une boîte de chimicookies et un synthécafé après le réveil.
-De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le café traditionnels. Heureusement que le génie génétique permet désormais de resynthétiser tout ce qui a poussé ou vécu sur la Terre originelle...
+Yum Yum... Rien ne vaut une boîte de chimicookies et un synthécafé après le réveil. #line:0d54d40 
+De toute manière, vous n'avez jamais su à quoi ressemblait le chocolat et le café traditionnels. Heureusement que le génie génétique permet désormais de resynthétiser tout ce qui a poussé ou vécu sur la Terre originelle... #line:05b36c1 
 
 << advanceTime 0:30 >>
 
-Bon, ce n'est pas tout.
+Bon, ce n'est pas tout. #line:0d1d272 
 
 << fadeIn >>
 <<jump Action_List>>
@@ -163,14 +163,14 @@ title: Chat
 tags:
 position: -779.0828857421875,231.5269012451172
 ---
-Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi.
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. #line:05a8c12 
 << fx Notification >>
-Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, puis Lou, puis Cam...
+Vous êtes pingé par Alex, vous engagez la conversation. Ensuite, c'est Dom, puis Lou, puis Cam... #line:0e63ed1 
 
 << advanceTime 2:00 >>
 << visit Chat >>
 
-Vous passez deux heures à discuter de tout, mais surtout de rien.
+Vous passez deux heures à discuter de tout, mais surtout de rien. #line:03ecef8 
 
 << fadeIn >>
 <<jump Action_List>>
@@ -179,11 +179,11 @@ title: Revision
 tags:
 position: -1231.30712890625,224.80491638183594
 ---
-Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Management. Rien que le titre vous barbe. ça commence mal...
+Vous soufflez un grand coup avant d'ouvrir votre dossier Astrometric Data Management. Rien que le titre vous barbe. ça commence mal... #line:0de8c73 
 
 << advanceTime 2:00 >>
 
-Vous passez les 2 heures à potasser ce long pensum ennuyeux. C'est à vous dégoûter de devenir un jour astronaute. Vous qui êtes super fan de Star Mars, du corsaire Yann Salto et du Chevalier Laser Dude Highwalker...
+Vous passez les 2 heures à potasser ce long pensum ennuyeux. C'est à vous dégoûter de devenir un jour astronaute. Vous qui êtes super fan de Star Mars, du corsaire Yann Salto et du Chevalier Laser Dude Highwalker... #line:0372675 
 
 << fadeIn >>
 <<jump Action_List>>
@@ -193,24 +193,24 @@ tags:
 position: -1573.0745849609375,216.18408203125
 ---
 
-Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
+Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés. #line:054bb8d 
 << visit BingeTV >>
 
-Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés.
-Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber.
+Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés. #line:0547e77 
+Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber. #line:0dff0af 
 
 << show lightsaber@holo>>
 << loopFX TVStarwars_LOOP 10000 >>
 
-Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable et séduisant corsaire Yann Salto. Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse.
-Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... Vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait détruire son moteur gauche ! Il est obligé d'atterrir en catastrophe sur Tortuga.
-Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite.
+Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable et séduisant corsaire Yann Salto. Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. #line:08edab5 
+Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... Vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait détruire son moteur gauche ! Il est obligé d'atterrir en catastrophe sur Tortuga. #line:0aa2dec 
+Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite. #line:0164b13 
 
 << advanceTime 4:00 13:00 1:00 >>
 << stopFX TVStarwars_LOOP >>
 << hide >>
 
-Au final, vous passez trop de temps à binger votre série préférée.
+Au final, vous passez trop de temps à binger votre série préférée. #line:0e14d64 
 
 << fadeIn >>
 <<jump Action_List>>
@@ -223,14 +223,14 @@ position: -1026.218994140625,513.7423095703125
 << setBackground bedroom kitchen >>
 << fadeOut >>
 << fx EatCook >>
-Yum Yum... Délicieux ce Burger Big Proteins Double Cheese !
-Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant l'examen !
-Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures...
+Yum Yum... Délicieux ce Burger Big Proteins Double Cheese ! #line:0530c64 
+Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant l'examen ! #line:0b89f1b 
+Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures... #line:00ba9c8 
 
 << advanceTime 0:30 >>
 
-Et maintenant,
--> Il est temps d'aller en classe
+Et maintenant, #line:0f8431c 
+-> Il est temps d'aller en classe #line:06d1dfe 
     <<jump Test>>
 ===
 title: Test
@@ -242,12 +242,12 @@ position: -666.0570068359375,500.580322265625
 << setTime 14:00 >>
 << fadeOut >>
 
-Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b>, que le compteur se met en route.
-Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi.
+Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b>, que le compteur se met en route. #line:06b2e70 
+Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi. #line:0598ff5 
 
 << advanceTime 4:00 >>
 
-Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe
+Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe #line:0be01e7 
 
 <<jump Post_Test>>
 ===
@@ -259,26 +259,26 @@ position: -341.2677307128906,490.52679443359375
 << setBackground door class >>
 << fadeOut >>
 
-Fred_excited: Alors, ça l'a fait ?
-You: Je pense oui. C'était basique.
-Fred_smiling: Yes, je m'attendais à plus tordu que ça.
-You: Moi aussi
-Fred_smiling: Y avait quelques petits pièges, mais ils sont tellement gros, on ne pouvait pas les louper !
-You: Ah bon ?
-Fred_surprised: Yes, tu n'en as pas trouvé.
-You: Non.
-Fred_smiling: C'est dommage. Tu sais qu'une mauvaise réponse t'enlève autant de point qu'une bonne réponse.
-You: Heuuuu...
+Fred_excited: Alors, ça l'a fait ? #line:0876127 
+You: Je pense oui. C'était basique. #line:01647f2 
+Fred_smiling: Yes, je m'attendais à plus tordu que ça. #line:0804335 
+You: Moi aussi #line:042aa91 
+Fred_smiling: Y avait quelques petits pièges, mais ils sont tellement gros, on ne pouvait pas les louper ! #line:0ce0a8b 
+You: Ah bon ? #line:086ed91 
+Fred_surprised: Yes, tu n'en as pas trouvé. #line:0d5781e 
+You: Non. #line:0818e11 
+Fred_smiling: C'est dommage. Tu sais qu'une mauvaise réponse t'enlève autant de point qu'une bonne réponse. #line:0bf1cd4 
+You: Heuuuu... #line:0facc92 
 
 << advanceTime 0:15 >>
 
-Fred s'apprête à vous répondre quand la sonnerie retentit.
+Fred s'apprête à vous répondre quand la sonnerie retentit. #line:07aa496 
 << fx Notification >>
 << setBackground door class-screen>>
 << hide >>
-Les résultats du test viennent de tomber...
+Les résultats du test viennent de tomber... #line:0fd7dde 
 
--> Consulter les résultats
+-> Consulter les résultats #line:01e5c57 
     <<jump Resultats_Bad>>
 ===
 title: Resultats_Bad
@@ -288,23 +288,23 @@ position: -16.689138412475586,492.05352783203125
 
 << music NegativeSad >>
 
-Hélas... Fred n'avait pas tort... Les scores s'affichent sur l'écran de la porte principale. Vous êtes dans le peloton... de queue... La semaine de sprint commence mal...
+Hélas... Fred n'avait pas tort... Les scores s'affichent sur l'écran de la porte principale. Vous êtes dans le peloton... de queue... La semaine de sprint commence mal... #line:0f1a807 
 
-Fred_excited: Hé, ça va ? Tu as l'air tout blême d'un coup.
-You: Ben... J'ai tout juste <b>D-</b>.
-Fred_happy: Hé alors ? Ce n'est pas la fin du monde. Ce n'est qu'une note parmi d'autres. Tu vas te rattraper.
-You: Facile à dire pour toi. Tu as eu <b>A+</b> !
-Fred_smiling: Y a qu'une chose à faire dans ce cas !
-You: Quoi donc ?
-Fred_happy: Se vider la tête ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande !
-You: Je sais pas...
+Fred_excited: Hé, ça va ? Tu as l'air tout blême d'un coup. #line:06878c2 
+You: Ben... J'ai tout juste <b>D-</b>. #line:0d592fa 
+Fred_happy: Hé alors ? Ce n'est pas la fin du monde. Ce n'est qu'une note parmi d'autres. Tu vas te rattraper. #line:0f8a7da 
+You: Facile à dire pour toi. Tu as eu <b>A+</b> ! #line:0166adc 
+Fred_smiling: Y a qu'une chose à faire dans ce cas ! #line:01bdf3a 
+You: Quoi donc ? #line:0fc9d11 
+Fred_happy: Se vider la tête ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande ! #line:0a6af63 
+You: Je sais pas... #line:012855e 
 
 << advanceTime 0:15 >>
 
--> Accepter l'offre de Fred
+-> Accepter l'offre de Fred #line:0bc651a 
     << hide >>
     <<jump Fete_deprime>>
--> Refuser l'offre de Fred
+-> Refuser l'offre de Fred #line:0eeda10 
     << hide >>
     <<jump Rester_Chambre_deprime>>
 ===
@@ -317,13 +317,13 @@ position: 402.3575134277344,484.3177490234375
 << advanceTime 0:30 >>
 << fadeOut >>
 
-Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer...
+Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer... #line:0ebf942 
 
 << advanceTime 2:00 >>
 
-Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais cette fois-ci, il n'insiste pas pour vous dissuader de partir. Manifestement, vous devez faire une sacrée tête d'enterrement. Même l'infatiguable Fred renonce à vous convaincre de rester t'amuser...
+Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais cette fois-ci, il n'insiste pas pour vous dissuader de partir. Manifestement, vous devez faire une sacrée tête d'enterrement. Même l'infatiguable Fred renonce à vous convaincre de rester t'amuser... #line:042c713 
 
--> Rentrer dormir
+-> Rentrer dormir #line:093495e 
     << advanceTime 0:30 >>
     <<jump Chambre_Nuit>>
 ===
@@ -331,11 +331,11 @@ title: Rester_Chambre_deprime
 tags:
 position: 403.7701988220215,752.0811309814453
 ---
-Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à chaque fois qu'il revient à la charge, vous le renvoyez <i>gentiment</i> dans les cordes. Du coup, quand vous vous dirigez vers la porte de votre chambre, Fred ne dit plus rien. Pour la première fois, vous êtes parvenu à dissuader l'infatiguable Fred de passer un bon moment avec lui...
+Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à chaque fois qu'il revient à la charge, vous le renvoyez <i>gentiment</i> dans les cordes. Du coup, quand vous vous dirigez vers la porte de votre chambre, Fred ne dit plus rien. Pour la première fois, vous êtes parvenu à dissuader l'infatiguable Fred de passer un bon moment avec lui... #line:0e0e5d2 
 
 << advanceTime 0:30 >>
 
--> Rentrer dormir
+-> Rentrer dormir #line:047bca2 
     <<jump Chambre_Nuit>>
 ===
 title: Chambre_Nuit
@@ -345,10 +345,10 @@ position: -17.766727447509766,752.0414428710938
 << fadeIn >>
 << setBackground bedroom night >>
 << fadeOut >>
-Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde...
-Demain est un autre jour, vivement demain...
+Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle journée de merde... #line:0da04e6 
+Demain est un autre jour, vivement demain... #line:0c839f3 
 << fx Sleep_LOOP >>
--> Faire un gros somme
+-> Faire un gros somme #line:002a60d 
     <<jump Reveil_Sage>>
 ===
 title: Reveil_Sage
@@ -359,33 +359,33 @@ position: -352.5212097167969,897.6408081054688
 << setBackground bedroom night >>
 << music Mysterious >>
 
-???: Hello! Je te réveille?
+???: Hello! Je te réveille? #line:07bbd4a 
 
 <<show temde>>
 << fadeOut >>
 
-Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras...
+Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras... #line:09d34da 
 
-Temde_smiling: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse !
+Temde_smiling: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse ! #line:04a714a 
 
-Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit :
-Temde_smiling: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ?
+Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit : #line:044441f 
+Temde_smiling: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ? #line:065fb9c 
 
 <<prompt name Mon_nom_: Steve>>
 <<empty>>
 
-Temde_smiling: Enchantée { $name }. Lève-toi, on a du pain sur la planche !
-You: Suiiiiis faaaaaaatigué...........
-Temde_sad: Arrête tes jérémiades ! T'as bricolé comme tu as pu, ça n'a pas marché. T'as juste qu'à reprendre le chantier et basta !
-You: Noon ! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire !
-You: J'ai raté, j'ai raté. C'est fini, foutu !
-Temde_smiling: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Tu vas réparer ton engin académique, je ne te dis que ça ! Allez suis-moi, on t'attend là-bas !
-You: Qui m'attend ? Où là-bas ?
-Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit quand même !
+Temde_smiling: Enchantée { $name }. Lève-toi, on a du pain sur la planche ! #line:0fc2466 
+You: Suiiiiis faaaaaaatigué........... #line:01081e7 
+Temde_sad: Arrête tes jérémiades ! T'as bricolé comme tu as pu, ça n'a pas marché. T'as juste qu'à reprendre le chantier et basta ! #line:0b038e3 
+You: Noon ! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire ! #line:07f436e 
+You: J'ai raté, j'ai raté. C'est fini, foutu ! #line:0d2f065 
+Temde_smiling: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Tu vas réparer ton engin académique, je ne te dis que ça ! Allez suis-moi, on t'attend là-bas ! #line:020d3da 
+You: Qui m'attend ? Où là-bas ? #line:0940e22 
+Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit quand même ! #line:02f8956 
 
--> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller
+-> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller #line:018cd35 
     <<jump Tenter_rester_chambre>>
--> Se laisser guider par l'irréelle Miss Temdé
+-> Se laisser guider par l'irréelle Miss Temdé #line:0c2f10c 
     << fadeIn >>
     <<jump Assemblee_Sages>>
 ===
@@ -393,12 +393,12 @@ title: Tenter_rester_chambre
 tags: noUi
 position: -719.885986328125,901.3107299804688
 ---
-You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !!
-Temde_thinking: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
+You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laisser dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !! #line:061645d 
+Temde_thinking: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu... #line:0502659 
 
-Miss Temdé lève la paume d'une de ses mains cybernétique...
+Miss Temdé lève la paume d'une de ses mains cybernétique... #line:03616cd 
 
-Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente.
+Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente. #line:0ff9b42 
 
 << fx Warp >>
 << fadeIn 1500 12ea12 >>
@@ -414,49 +414,49 @@ position: -562.1727294921875,1164.6718139648438
 << music Tense >>
 << fadeOut >>
 
-L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes.
-Temde_smiling: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }.
-You: Mais....
-Azul_happy: T'inquiète { $name }, mes confères et moi, on arrive parfois à lire dans tes pensées. C'est pour faciliter la communication.
-Sapiens_happy: Tout à fait. Sinon nous risquerions de perdre un temps précieux dans des prolégomènes et des malentendus sans queue ni tête.
-Temde_thinking: C'est ça oui. Comme si <b>Master Sapiens</b> savait faire court...
-Ledai_doubtful: Du calme <b>Master Sapiens</b> et <b>Miss Temdé</b>. Et si nous abordions la question du soir...
-Azul_sad: Attendez messieurs. C'est la première nuit que nous nous immisçons dans la vie de { $name }. Notre visiteur de ce soir ne sait plus à quel sage se vouer. Surtout qu'il ne nous connaît pas encore.
-Sapiens_thinking: Très juste, <b>Azul</b>. Puisque j'ai pris la parole, je me présente : je suis <b>Master Sapiens</b>, le Gardien des Savoirs
-Ledai_explaining: Et moi, je suis <b>Ledaï</b>, le Gardien des Pratiques.
-Azul_proud: Enchanté de te rencontrer, { $name }. On m'appelle <b>Azul</b>, le Gardien des Précognitions.
-Ledai_explaining: Et tu as déjà fait la connaissance de notre 4e sage <b>Miss Temdé</b>...
-Temde_smiling: ... La Gardienne des Improvisations.
-You: C'est pas possible, mon rêve devient de plus en plus en délirant.
-Azul_happy: Pas du tout { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens.
-Sapiens_thinking: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi.
+L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes. #line:056b321 
+Temde_smiling: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenu chez nous, { $name }. #line:04f4f35 
+You: Mais.... #line:05cf2e4 
+Azul_happy: T'inquiète { $name }, mes confères et moi, on arrive parfois à lire dans tes pensées. C'est pour faciliter la communication. #line:0175283 
+Sapiens_happy: Tout à fait. Sinon nous risquerions de perdre un temps précieux dans des prolégomènes et des malentendus sans queue ni tête. #line:074dbc9 
+Temde_thinking: C'est ça oui. Comme si <b>Master Sapiens</b> savait faire court... #line:059e2d8 
+Ledai_doubtful: Du calme <b>Master Sapiens</b> et <b>Miss Temdé</b>. Et si nous abordions la question du soir... #line:0916925 
+Azul_sad: Attendez messieurs. C'est la première nuit que nous nous immisçons dans la vie de { $name }. Notre visiteur de ce soir ne sait plus à quel sage se vouer. Surtout qu'il ne nous connaît pas encore. #line:056b14e 
+Sapiens_thinking: Très juste, <b>Azul</b>. Puisque j'ai pris la parole, je me présente : je suis <b>Master Sapiens</b>, le Gardien des Savoirs #line:08b4377 
+Ledai_explaining: Et moi, je suis <b>Ledaï</b>, le Gardien des Pratiques. #line:0f3a432 
+Azul_proud: Enchanté de te rencontrer, { $name }. On m'appelle <b>Azul</b>, le Gardien des Précognitions. #line:0f4924c 
+Ledai_explaining: Et tu as déjà fait la connaissance de notre 4e sage <b>Miss Temdé</b>... #line:039d16f 
+Temde_smiling: ... La Gardienne des Improvisations. #line:0e517ee 
+You: C'est pas possible, mon rêve devient de plus en plus en délirant. #line:032929f 
+Azul_happy: Pas du tout { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens. #line:077fe88 
+Sapiens_thinking: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi. #line:081c094 
 
 << music Neutral >>
 
--> Cékoilamétaconnexion???
+-> Cékoilamétaconnexion??? #line:081277c 
     <<jump Metaconnexion>>
--> La Métacognition, déjà entendu parler
+-> La Métacognition, déjà entendu parler #line:0a736bc 
     <<jump Metacognition>>
 ===
 title: Metaconnexion
 tags: noUi
 position: -878.8255004882812,1170.7235107421875
 ---
-You: Heuuuuu... J'ai rien compris de ce vous avez dit. La métaconnexion ???
-Azul_proud: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien.
-Temde_smiling: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de faire ! Et de trouver une solution qui marche !
-Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences...
-You: Les neurosciences ?
-Sapiens_happy: Les sciences appliquées au fonctionnement de tes processus mentaux.
-You: Quoi ?
-Temde_sad: Quel est le mode d'emploi de ton cerveau, quoi.
-Sapiens_concerned: Hum... J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière.
-Azul_sad: Pardonnez-lui, <b>Master Sapiens</b>. <b>Miss Temdé</b> n'y met pas les formes, mais sa pédagogie s'est révélé parfois percutante.
-Sapiens_concerned: Moui...
-You: Et la métacognition alors ?
-Sapiens_thinking: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux.
-You: Hein ???
-Azul_happy: C'est-à-dire comment apprendre... à apprendre !
+You: Heuuuuu... J'ai rien compris de ce vous avez dit. La métaconnexion ??? #line:02434a3 
+Azul_proud: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien. #line:06f975d 
+Temde_smiling: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de faire ! Et de trouver une solution qui marche ! #line:0fc8373 
+Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences... #line:005e8f4 
+You: Les neurosciences ? #line:06ba656 
+Sapiens_happy: Les sciences appliquées au fonctionnement de tes processus mentaux. #line:07d59a3 
+You: Quoi ? #line:0d3befd 
+Temde_sad: Quel est le mode d'emploi de ton cerveau, quoi. #line:0f1b183 
+Sapiens_concerned: Hum... J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière. #line:02856f8 
+Azul_sad: Pardonnez-lui, <b>Master Sapiens</b>. <b>Miss Temdé</b> n'y met pas les formes, mais sa pédagogie s'est révélé parfois percutante. #line:0bf50b9 
+Sapiens_concerned: Moui... #line:0d32c0c 
+You: Et la métacognition alors ? #line:07fd606 
+Sapiens_thinking: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux. #line:031e501 
+You: Hein ??? #line:090bf79 
+Azul_happy: C'est-à-dire comment apprendre... à apprendre ! #line:011a5d4 
 
 <<jump Metacognition>>
 ===
@@ -464,37 +464,37 @@ title: Metacognition
 tags: noUi
 position: -730.5562744140625,1421.6199951171875
 ---
-You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage ?
-Ledai_happy: Bravo, { $name }, je n'aurai pas dit mieux.
-Sapiens_happy: Je sens que nous avons ce soir, un candidat d'exception.
-Ledai_explaining: Venons en donc au sujet de ce soir, <b>Master Sapiens</b>.
-Sapiens_thinking: Oui, la mémorisation.
--> Qu'est-ce qu'elle a ma mémorisation?
+You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage ? #line:0da69a4 
+Ledai_happy: Bravo, { $name }, je n'aurai pas dit mieux. #line:07186d1 
+Sapiens_happy: Je sens que nous avons ce soir, un candidat d'exception. #line:0b356d7 
+Ledai_explaining: Venons en donc au sujet de ce soir, <b>Master Sapiens</b>. #line:01eca65 
+Sapiens_thinking: Oui, la mémorisation. #line:085e256 
+-> Qu'est-ce qu'elle a ma mémorisation? #line:0d59581 
     <<jump memorisation>>
 ===
 title: memorisation
 tags: noUi
 position: -366.2418212890625,1422.0413818359375
 ---
-Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit.
-Temde_thinking: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }.
-Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt...
+Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit. #line:0ea6147 
+Temde_thinking: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }. #line:0d49277 
+Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt... #line:0a57318 
 
 << fadeIn 200 >>
 << setBackground schema >>
 << fadeOut 200 >>
 
-Sapiens_thinking: En bref, la cartographie de la mémoire dans le cerveau se découpe en deux zones. Comme tes deux hémisphères.
+Sapiens_thinking: En bref, la cartographie de la mémoire dans le cerveau se découpe en deux zones. Comme tes deux hémisphères. #line:0853e70 
 
 << setBackground schema shelf-disorganized >>
 
-Sapiens_thinking: Il y a tout d'abord <b>La mémoire courte</b>. Elle est utilisée quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas... Et elle stocke ça dans un énorme container.
-Sapiens_thinking: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sans ordre précis. Elle les empile en vrac, les unes sur les autres, à gauche à droite. En bref, elle range ça n'importe comment, comme un amateur, un dilettante !
+Sapiens_thinking: Il y a tout d'abord <b>La mémoire courte</b>. Elle est utilisée quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas... Et elle stocke ça dans un énorme container. #line:0bc94b1 
+Sapiens_thinking: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sans ordre précis. Elle les empile en vrac, les unes sur les autres, à gauche à droite. En bref, elle range ça n'importe comment, comme un amateur, un dilettante ! #line:08ab121 
 
-Ledai_explaining: Oui. Ce qui fait que quand tu es à la recherche d'une référence particulière, tu ne sais plus où elle se trouve, ni si tous les documents sont rangés au même endroit.
-Sapiens_thinking: Tout à fait, c'est le chaos ! La panique ! La catastrophe !.. Alors que <b>la mémoire longue</b>...
+Ledai_explaining: Oui. Ce qui fait que quand tu es à la recherche d'une référence particulière, tu ne sais plus où elle se trouve, ni si tous les documents sont rangés au même endroit. #line:0991ef5 
+Sapiens_thinking: Tout à fait, c'est le chaos ! La panique ! La catastrophe !.. Alors que <b>la mémoire longue</b>... #line:03bbbec 
 
--> C'est quoi la mémoire longue?
+-> C'est quoi la mémoire longue? #line:0617b83 
     <<jump Memoire_Longue>>
 ===
 title: Memoire_Longue
@@ -503,17 +503,17 @@ position: -63.20210266113281,1418.4576416015625
 ---
 << setBackground schema shelf-organized >>
 
-Sapiens_thinking: <b>La mémoire longue</b> c'est le caviar de la connaissance. Là au contraire, tout y est ordonné, rangé, archivé, classifié. Comme dans une authentique bibliothèque. Dès qu'on a besoin de trouver quelque chose, on sait où le trouver.
+Sapiens_thinking: <b>La mémoire longue</b> c'est le caviar de la connaissance. Là au contraire, tout y est ordonné, rangé, archivé, classifié. Comme dans une authentique bibliothèque. Dès qu'on a besoin de trouver quelque chose, on sait où le trouver. #line:0b78acd 
 
-Ledai_explaining: Sans compter que chaque élément de <b>la mémoire longue</b> contient un index, une table des matières. Le cerveau n'a plus qu'à suivre le plan et ça roule sans sursaut.
-Sapiens_thinking: En bref, le secret pour bien apprendre réside dans ta capacité à consolider tes nouvelles connaissances, les stocker de manière logique et efficace.
-Azul_happy: Tu as saisi ? Nos deux savants veulent te dire qu'ils vont t'aider à faire glisser tes nouveaux savoirs, de la mémoire courte à la mémoire longue.
+Ledai_explaining: Sans compter que chaque élément de <b>la mémoire longue</b> contient un index, une table des matières. Le cerveau n'a plus qu'à suivre le plan et ça roule sans sursaut. #line:0970ca1 
+Sapiens_thinking: En bref, le secret pour bien apprendre réside dans ta capacité à consolider tes nouvelles connaissances, les stocker de manière logique et efficace. #line:041c990 
+Azul_happy: Tu as saisi ? Nos deux savants veulent te dire qu'ils vont t'aider à faire glisser tes nouveaux savoirs, de la mémoire courte à la mémoire longue. #line:0ba2da0 
 
 << fadeIn 200 >>
 << setBackground circle >>
 << fadeOut 200 >>
 
-You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions dans ma mémoire longue ?
+You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions dans ma mémoire longue ? #line:02bf1b5 
 
 <<jump Routinisation>>
 ===
@@ -521,16 +521,16 @@ title: Routinisation
 tags: noUi
 position: 243.36883544921875,1410.058349609375
 ---
-Sapiens_thinking: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
-Ledai_explaining: Il faut surtout pratiquer ! Répéter et répéter et encore répéter ! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement.
-Azul_happy: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis pas la maîtriser.
-Ledai_explaining: Pour une fois que je suis d'accord avec <b>Azul</b>. Ainsi, tu mémorises la liste des ingrédients, les dosages, comme les étapes de préparation et les temps de cuisson.
-Temde_cheerful: Yep, et comme tu n'as plus besoin d'avoir le mode d'emploi, tu deviens un sage, tu es autonome !
-You: Et comment je fais pour que ma pratique devienne une routine?
-Ledai_explaining: Tout simplement en répétant, en appliquant.
-Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : <b>les rappels libres</b>.
-You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil. Comment faire ?
-Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> !
+Sapiens_thinking: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler ! #line:0c67f70 
+Ledai_explaining: Il faut surtout pratiquer ! Répéter et répéter et encore répéter ! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement. #line:00317ce 
+Azul_happy: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis pas la maîtriser. #line:050ca2d 
+Ledai_explaining: Pour une fois que je suis d'accord avec <b>Azul</b>. Ainsi, tu mémorises la liste des ingrédients, les dosages, comme les étapes de préparation et les temps de cuisson. #line:0e3a8de 
+Temde_cheerful: Yep, et comme tu n'as plus besoin d'avoir le mode d'emploi, tu deviens un sage, tu es autonome ! #line:0df9941 
+You: Et comment je fais pour que ma pratique devienne une routine? #line:0439386 
+Ledai_explaining: Tout simplement en répétant, en appliquant. #line:0832a45 
+Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : <b>les rappels libres</b>. #line:0318be0 
+You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil. Comment faire ? #line:0d2186b 
+Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> ! #line:0838542 
 
 <<jump Journal_Rappel_libre>>
 ===
@@ -544,9 +544,9 @@ position: 528.9749550819397,1406.2884521484375
 << setBackground bedroom night >>
 << fadeOut 400 >>
 
-Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Les 4 sages non plus ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée. Curieusement, vous ne vous sentez pas inquiet.
-En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof...
-Serait-ce le <bi>journal mental</bi> dont parlait Ledai ?
+Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Les 4 sages non plus ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée. Curieusement, vous ne vous sentez pas inquiet. #line:00b6d70 
+En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof... #line:0c1bf30 
+Serait-ce le <bi>journal mental</bi> dont parlait Ledai ? #line:063d2d3 
 ===
 
 

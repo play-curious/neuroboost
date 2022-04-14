@@ -1,0 +1,203 @@
+LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?
+en	09b4ff8	Bip ! Bip ! Votre horloge connectée vous surprend en plein milieu d'un rêve.	D5_level2	Start	8	210f8444
+en	0728962	Vous réalisez qu'il est de nouveau vendredi. Vous devez repasser l'épreuve de GRH : Gestion des Ressources Hybrides.	D5_level2	Start	9	66847654
+en	06cf026	Ronronron... Votre palmphone vibre. C'est votre grand-mère qui se rappelle à vous. Vous savez ce qu'elle va vous dire, mais vous devez prendre son appel.	D5_level2	Start	10	c0a2b628
+en	0d27193	C'est mamie, et elle ne va pas très bien, quoi qu'elle en dise...	D5_level2	Start	11	e2c7d10d
+en	0d5ad22	-> Prendre l'appel	D5_level2	Start	12	4ee62c7c
+en	07ea769	Que voulez-vous faire?	D5_level2	Liste_Taches	19	b07b7f6b
+en	053ca6c	C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !	D5_level2	Liste_Taches	20	22f4f576
+en	03a7d04	-> Manger	D5_level2	Liste_Taches	21	596304b2
+en	0d03aa4	-> Réviser votre cours, façon "rappel libre" #once	D5_level2	bureau_subchoice	26	7cc9206b
+en	0ecd663	-> Vous informer en ligne sur les causes et les effets des pathologies cardiaques#once	D5_level2	bureau_subchoice	27	36b7bd27
+en	0e22ba7	-> Prendre votre petit déjeuner#once	D5_level2	cuisine_subchoice	32	b4f61564
+en	01f72bb	-> Appeler vos parents#once	D5_level2	salon_subchoice	37	2d8edb36
+en	08995b6	-> Appeler Fred#once	D5_level2	salon_subchoice	38	b16bc44f
+en	0248b56	-> Méditer pour se détendre#once	D5_level2	salon_subchoice	39	a662a99a
+en	0bbacfe	You: Bonjour mamie ! Tu vas mieux ?	D5_level2	Appel_Mamie	45	07edd394
+en	0f09c1c	Mamie@holo_shadow: Bonjour chouchou, donc tes parents t'ont déjà expliqué la situation ?	D5_level2	Appel_Mamie	46	dca00f0e
+en	0fdb760	You: Heu...	D5_level2	Appel_Mamie	47	94d39185
+en	0c1da5e	Mamie@holo_shadow: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux...	D5_level2	Appel_Mamie	48	3cba8b91
+en	06a7beb	You: Courage mamie !	D5_level2	Appel_Mamie	49	925a7055
+en	0cd2819	Vous aimeriez parler plus, mais le Paramedibot arrive pour l'emmèner au bloc opératoire !	D5_level2	Appel_Mamie	50	ad4aa02a
+en	06bb322	Ce matin, l'important est moins de manger équilibré que de garder son calme. Vous gavez de chimicookies et vous buvez un synthécafé.	D5_level2	Breakfast	56	870306d1
+en	02d994c	-> Passons aux choses sérieuses !	D5_level2	Breakfast	57	f4a94609
+en	04f580b	Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous appuyez sur le bouton "appel". Votre mère décroche :	D5_level2	Maman_Call	63	57b77b1d
+en	0997c40	Maman@holo_shadow: Bibi. Tu es au courant ?	D5_level2	Maman_Call	64	da39922d
+en	0ecb0f2	You: Oui. Mamie m'a appelé. Pourquoi tu n'as rien dit ?	D5_level2	Maman_Call	65	291fe0c7
+en	0c3842c	Maman@holo_shadow: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus.	D5_level2	Maman_Call	66	2a90df1a
+en	02f77ff	You: Merci. Du coup, je suis plus stressé...	D5_level2	Maman_Call	67	09a13ba1
+en	0e60133	Maman@holo_shadow: Bibi, je ne pensais pas te...	D5_level2	Maman_Call	68	645f9766
+en	0a1b54f	You: J'ai compris. Bye !	D5_level2	Maman_Call	69	db1525b2
+en	012cbe3	Vous raccrochez, encore plus énervé.	D5_level2	Maman_Call	70	ce7fa358
+en	0b83e5d	-> Il faut se ressaisir et agir	D5_level2	Maman_Call	71	d64ef358
+en	03a836e	Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés.	D5_level2	Rappel_libre	77	1f363029
+en	0c4345c	Vous mettez de côté les pensées qui veulent bifurquer sur l'état de votre grand-mère, et vous vous concentrez sur votre matière.	D5_level2	Rappel_libre	78	d43e3b13
+en	049b74e	Vous arrivez à vous y mettre de plus en plus, et faites de bons progrès, ce qui vous satisfait.	D5_level2	Rappel_libre	79	0dc9dac6
+en	0552a35	Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs... En direction de votre grand-mère, de son problème cardiaque, de son opération.	D5_level2	Rappel_libre	80	cf8817ce
+en	02ce1eb	Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond...	D5_level2	Rappel_libre	81	84bae4d1
+en	0bc3369	-> Qu'est-ce que vous allez bien faire ?	D5_level2	Rappel_libre	82	3c7554db
+en	044ec53	Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches.	D5_level2	Web_Info	88	6e1e68ba
+en	08a6722	Vous passez l'heures suivante à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations.	D5_level2	Web_Info	89	145ba5df
+en	09b92e5	Vous vous souvenez de l'enseignement des sages, et vous changez de sujet de recherche pour aller réviser votre GRH. Vous trouvez une tonne d'informations utile.	D5_level2	Web_Info	90	cff6833a
+en	0c7cc60	Se concentrer sur votre travail vous a aidé dans votre examen plutôt que de vous perdre en questions inutiles.	D5_level2	Web_Info	91	cd06bb22
+en	023c812	Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes...	D5_level2	Web_Info	92	0993fbcd
+en	07034ed	Vous vous demandez si c'était une si bonne idée de vouloir s'informer tout seul sur un sujet aussi sensible...	D5_level2	Web_Info	93	f47109ed
+en	03b6a21	-> Et maintenant, que faire?	D5_level2	Web_Info	94	a7e0eb24
+en	0a40e46	Vous parcourez le journal d'appel de votre palmphone, vous y trouvez facilement son numéro et vous l'appeler.	D5_level2	Fred_Call	100	dff2a1b7
+en	0187982	Fred@holo_excited: Hey ! C'est toi qui m'appelles for once !	D5_level2	Fred_Call	101	2a0fa47c
+en	07d3e5b	You: Ouais. J'ai besoin de toi.	D5_level2	Fred_Call	102	b8d47123
+en	0d37c0c	Fred@holo_happy: C'est vrai ?	D5_level2	Fred_Call	103	6ba2b32d
+en	059038a	You: Oui. Je dois me changer les idées et je pensais qu'une session de sport...	D5_level2	Fred_Call	104	d3158a1f
+en	0aab3db	Fred@holo_smiling: Yes yes ! Du fight contact avec des exosquelettes ! C'est une excellente idée !	D5_level2	Fred_Call	105	6a11798f
+en	074d201	You: Non pas vraiment. J'avais plutôt pensé à un sport plus relaxant.	D5_level2	Fred_Call	106	a4bd9eae
+en	0ab15c8	Fred@holo_surprised: Ah bon. Retrouve-moi à la salle de sport et on reparle de ça.	D5_level2	Fred_Call	107	54391ba1
+en	067f5a7	You: Hum...	D5_level2	Fred_Call	108	967acb1d
+en	0088508	Fred@holo_excited: Allez, viens. Trust me...	D5_level2	Fred_Call	109	161b2439
+en	012f447	-> Accepter la proposition de Fred	D5_level2	Fred_Call	110	624d0d3c
+en	026311f	-> Refuser la proposition de Fred	D5_level2	Fred_Call	111	57640c5a
+en	0eb24f9	Pas le temps !! Vous engloutissez fissa un Burger Big Proteins Double Cheese ! Vous videz une canette de Xeno Cola ! Voilà votre repas du midi. Ce n'est pas équilibré, mais en ce vendredi matin, ce n'est pas le plus important. Vous filez ensuite à la salle d'examen...	D5_level2	Lunch	118	2f8a63ed
+en	046c163	-> Se rendre à l'examen	D5_level2	Lunch	119	71708132
+en	06cb2db	Revêtu d'un exosquelette tout-terrain, Fred vous attend et vous balance un exosquelette que vous rattrapez in-extremis au vol. Vous enfilez la combinaison et rejoignez Fred sur la piste.	D5_level2	Sport_Stress	125	580a9999
+en	070777a	Fred_excited: Viens, on se fighte !	D5_level2	Sport_Stress	126	34555785
+en	0a0c2a5	You: Je suis pas sûr que...	D5_level2	Sport_Stress	127	62230bef
+en	006d530	Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. La suite : vous la connaissez, vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! H	D5_level2	Sport_Stress	128	c09e55a7
+en	0132ef5	Heureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait.	D5_level2	Sport_Stress	129	d643efee
+en	0cf5fc3	Vous avez la langue sèche et les membres engourdis.	D5_level2	Sport_Stress	130	54417b6b
+en	027d506	Hélas, cet exercice de sport violent n'a pas évacué votre angoisse. C'est ce que vous avaient dit les Sages.	D5_level2	Sport_Stress	131	7fecff3f
+en	0e4ef4d	-> Qu'est-ce que vous allez bien pouvoir faire ?	D5_level2	Sport_Stress	132	c5cf1aa5
+en	0c5615a	You: Nan... Je crois pas... J'ai du boulot.	D5_level2	NoMove_Stress	138	0c3e9785
+en	0dad407	Fred@holo_excited: No no, faut que tu penses à autre chose !	D5_level2	NoMove_Stress	139	f7189643
+en	090df95	You: Pas envie...	D5_level2	NoMove_Stress	140	3398d9b9
+en	08ecb13	Fred@holo_happy: D'accord, alors on joue en ligne !	D5_level2	NoMove_Stress	141	dd3175fd
+en	03468b2	You: Naan.	D5_level2	NoMove_Stress	142	1a1e50c3
+en	0b8cb0d	Fred@holo_smiling: Attention, je te défie à Call of Study ! Tout le METAVERSE le saura !	D5_level2	NoMove_Stress	143	002108ca
+en	037733b	You: Tu fais chier, Fred...	D5_level2	NoMove_Stress	144	62430e12
+en	0cee906	Fred@holo_smiling: C'est pour ça que je suis ton pote... ah ah...	D5_level2	NoMove_Stress	145	1ad9e140
+en	0055bb9	Vous grognez et vous pestez, cependant, vous lancez le serveur GameStream. Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred. Son skin est aujourd'hui fuschia et orange fluo, c'est vraiment laid.	D5_level2	NoMove_Stress	146	e5f3a4f7
+en	047eb0f	Bon, c'est facile à repérer et viser. Vous respirez un bon coup et plongez dans Crawl of Study. C'est un MOBA, se situant dans une reconstitution 3D de l'Académie d'Omniscience et de Polytechnologie Universelle. Le gameplay mélange Plateformer en mode Parkour et TPS en mode athlète grec néo-antique.	D5_level2	NoMove_Stress	147	0cae593a
+en	0bd645f	Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser.	D5_level2	NoMove_Stress	148	e8197d47
+en	013edea	Hélas, cela ne réduit pas votre trouble. Vous vous rappelez que les Sages vous ont déconseillé les activités physiques trop violentes et trop intenses. Ils avaient raison.	D5_level2	NoMove_Stress	149	e554abe9
+en	0f56dfa	-> Qu'est-ce que vous allez bien pouvoir faire ?	D5_level2	NoMove_Stress	150	c5cf1aa5
+en	0d4376f	Vous retrouvez devant l'entrée de la salle de classe, Fred. Ce dernier vous regarde avec perplexité.	D5_level2	Salle_Examen	156	9a94ae1d
+en	04645d0	Fred_excited: Damned, tu as l'air étrange.	D5_level2	Salle_Examen	157	8f47ef27
+en	05bfbf2	You: Ça va, ça va...	D5_level2	Salle_Examen	158	1e9a53a4
+en	08cfda9	Fred_surprised: Ah bon ? J'ai bien l'impression que notre séance de fight ne t'a pas réussi.	D5_level2	Salle_Examen	159	86e80e25
+en	0f70174	You: Ça va, je t'assure.	D5_level2	Salle_Examen	160	ec54b48e
+en	09df9e1	Fred_surprised: Ah bon ? J'ai bien l'impression que ton idée de footing t'a plus réussi qu'à moi.	D5_level2	Salle_Examen	161	40efbc89
+en	00d2895	You: Si tu le dis.	D5_level2	Salle_Examen	162	9297f004
+en	0d28dc6	Fred_surprised: Ah bon ? Hier, tu crachais le feu. Aujourd'hui, tu es glacé.	D5_level2	Salle_Examen	163	3e525062
+en	0bbaf53	Votre palmphone vibre. C'est votre mère qui tente de vous rejoindre. Fred vous fixe des yeux :	D5_level2	Salle_Examen	164	57a4a032
+en	036c307	Fred_sad: T'es sûr ? Ça va ?	D5_level2	Salle_Examen	165	fe297d2f
+en	02ef916	You: Attends...	D5_level2	Salle_Examen	166	c79d710f
+en	041bcf1	-> Prendre l'appel	D5_level2	Salle_Examen	167	4ee62c7c
+en	0757205	-> Rejeter l'appel	D5_level2	Salle_Examen	168	2a0a44c1
+en	0d83977	Vous collez le combiné à votre oreille :	D5_level2	Maman_blabla	174	0960d078
+en	019efa8	You: Je sais. mamie est toujours dans le coma.	D5_level2	Maman_blabla	175	8603308c
+en	0fad03f	Maman@holo_shadow: C'est vrai Bibi ?	D5_level2	Maman_blabla	176	b85d6efe
+en	0c0f730	You: On m'a prévenu.	D5_level2	Maman_blabla	177	03fca3f3
+en	010991d	Maman@holo_shadow: Et tu te sens comment ?	D5_level2	Maman_blabla	178	7805a703
+en	0a0d529	You: T'inquiète, maman, je gère.	D5_level2	Maman_blabla	179	07db2762
+en	013951a	Maman@holo_shadow: C'est bien { $name }. Ta mamie est une personne forte. Dure comme du béton... armé... Elle s'en sortira..	D5_level2	Maman_blabla	180	cd8be3f7
+en	0bf1ef8	You: Je te laisse, on va en examen !	D5_level2	Maman_blabla	181	ce8d3015
+en	0531828	Maman@holo_shadow: Courage, Bibi...	D5_level2	Maman_blabla	182	9feda065
+en	0a26a54	Ce qu'elle vous énerve votre mère, à vous appeler "Bibi" !!!	D5_level2	Maman_blabla	183	6edce92e
+en	0429c77	Fred_sad: Alors ? Mauvaises nouvelles ?	D5_level2	Maman_blabla	184	10bc773d
+en	0ca3876	You: Non, faut juste lâcher prise.	D5_level2	Maman_blabla	185	2ce4ca3e
+en	0764b28	Fred_surprised: Pardon ?! Tu veux qu'on en parle ensemble ?	D5_level2	Maman_blabla	186	fdcdd905
+en	0bc06f4	-> Tout raconter à Fred	D5_level2	Maman_blabla	187	f48b2aef
+en	073a28d	-> Ne rien dire à Fred	D5_level2	Maman_blabla	188	a78d0827
+en	0990ca1	Vous balayez du doigt l'appel.	D5_level2	Maman_message	194	a2bec6fc
+en	003294f	Fred_surprised: Mais qu'est-ce qui se passe ?	D5_level2	Maman_message	195	6b1b6591
+en	0cb0937	You: C'est compliqué.	D5_level2	Maman_message	196	ca93625d
+en	068ccbf	Votre palmphone gigote à nouveau ! Votre mère a laissé un message sur votre répondeur. Vous ne pouvez vous empêcher de fixer votre appareil.	D5_level2	Maman_message	197	f69150d2
+en	0d7370f	Vous entrez dans le journal de messagerie et demandez la conversion textuelle du message :	D5_level2	Maman_message	198	0b13c153
+en	0515369	"L'opération a été menée à bien, mais ta grand-mère a fait un malaise. Elle a été transférée en service de réanimation critique. Bisous. Maman."	D5_level2	Maman_message	199	6a74ce26
+en	0987b6c	Fred_sad: Alors ?	D5_level2	Maman_message	200	c416fd2a
+en	02a31aa	L'information, que vous connaissiez déjà vous affecte de plein fouet ! C'est fou comme l'humain est une éponge...	D5_level2	Maman_message	201	b46ec73b
+en	044c6b3	-> Tout raconter à Fred	D5_level2	Maman_message	202	f48b2aef
+en	079d786	-> Ne rien dire à Fred	D5_level2	Maman_message	203	a78d0827
+en	01c2d80	C'est plus fort que vous. Vous avez envie de tout déballer devant Fred. Et c'est ce que vous faites. Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Elle a été hospitalisée d'urgence. Elle vient de subir une opération.	D5_level2	Fred_implorer	209	74644090
+en	03165e1	Malheureusement, ça ne s'est pas bien passé. Elle a été transférée en réanimation. Elle est encore dans le coma... Vous êtes tellement stressé, vous monopolisez la parole.	D5_level2	Fred_implorer	210	3067e729
+en	01aac71	Fred vous console tant vien que mal, mais rien que le fait de vous être laché fait redescendre la pression accumulée. Vous vous sentez plus prêt à commencer cet examen.	D5_level2	Fred_implorer	211	9f0b75de
+en	0126187	-> Entrer dans la salle	D5_level2	Fred_implorer	212	cd942954
+en	009b207	Fred_happy: Dis-moi.	D5_level2	Fred_silence	218	a4fb6484
+en	0a41100	You: Rien.	D5_level2	Fred_silence	219	f51a3f51
+en	061e67e	Fred_smiling: { $name}...	D5_level2	Fred_silence	220	9f88af67
+en	04d0e22	You: Noon...	D5_level2	Fred_silence	221	a5271367
+en	0bef6ad	Fred_smiling: Yes Yes...	D5_level2	Fred_silence	222	67843395
+en	0e09195	You: C'est inutile !	D5_level2	Fred_silence	223	db9e3f5b
+en	01d8393	Fred_sad: OK, si tu le prends comme ça...	D5_level2	Fred_silence	224	3eda8b7b
+en	0d418c6	L'horloge sonne ! Il est l'heure d'entrer dans la salle. L'examen va commencer...	D5_level2	Fred_silence	225	cb863888
+en	0446488	-> Entrer dans la salle	D5_level2	Fred_silence	226	cd942954
+en	03751f2	Vous vous asseyez devant votre pupitre. Vous êtes anxieux. Vous devez le réussir cet examen cette fois. Le sujet s'affiche à l'écran: [b]La loi de Murphy dans la GRH[/b]...	D5_level2	Examen	232	86dd9466
+en	01c8f35	Vous lisez les questions, votre esprit vagabonde entre vos révisions et votre grand-mère.	D5_level2	Examen	233	a64e00e7
+en	00058cf	Vous répondez aux questions au hasard, sans trop savoir ce que l'on vous demande et ce qu'il faut indiquer. C'est un peu comme si votre corps était là, mais votre esprit ailleurs.	D5_level2	Examen	234	f98809d5
+en	0364f01	Les quatre heures passent dans un espace-temps indéterminé. Vous comprenez que vous avez à nouveau foiré l'examen.	D5_level2	Examen	235	69153eb4
+en	0811f47	Vous arrivez à faire abstraction de vos pensées intrusives, et vous vous donnez pleinement au problème présent.	D5_level2	Examen	236	10523178
+en	0a3db7c	Hélas, vos révisions n'auront pas suffit, et vous n'arrivez pas à répondre à la moitié des questions	D5_level2	Examen	237	ef78f15d
+en	0195f7a	Vous comprenez que vous êtes repartis pour un tour...	D5_level2	Examen	238	36876029
+en	0c2c532	Vous sentez qu'enfin, votre corps et votre esprit sont présents et unis. Vous répondez aux questions, en prenant soin de peaufiner vos arguments.	D5_level2	Examen	239	70bb659b
+en	080b64b	Les quatre heures passent très vite. Vous validez votre copie et vous sortez de la salle en sifflotant.	D5_level2	Examen	240	239abb85
+en	0e1f2ec	-> Sortir	D5_level2	Examen	241	fab90f88
+en	0998607	Vous retrouvez dehors Fred. Il vous fixe d'un air ahuri.	D5_level2	Resultats_Good	247	4730baa0
+en	0398124	Fred_excited: Damned de damned ! On dirait que tu as dévoré un crocodile.	D5_level2	Resultats_Good	248	f21116b9
+en	0b88603	You: Ouais.	D5_level2	Resultats_Good	249	825adff7
+en	06bb9cf	Fred_smiling: Tu en as de la chance.	D5_level2	Resultats_Good	250	79c704c2
+en	0c62c56	You: Ouais.	D5_level2	Resultats_Good	251	825adff7
+en	06a85e2	Fred vous avoue ne pas être content de sa performance... Vous l'écoutez d'un air distrait, vous êtes si content de vous.	D5_level2	Resultats_Good	252	40b04eb9
+en	0241e9c	Soudain, les résultats s'affichent au tableau. Vous n'avez explosé votre score : <b>B+</b>. Alors que Fred n'a eu que <b>C+</b>. C'est lui qui blêmit, il est choqué.	D5_level2	Resultats_Good	253	dfa287b2
+en	03fbe0a	Vous dites au-revoir à votre pote	D5_level2	Resultats_Good	254	89c30e49
+en	0efbdfd	-> Retournez à votre chambre	D5_level2	Resultats_Good	255	8dd770b7
+en	0b6098b	Vous rentrez dans votre chambre, soulagé. Vous avez réussi votre examen. Au dîner, vous vous efforcez  de manger mieux : une soupe bio métanorganique et un fromage frais.	D5_level2	Bedroom_night	262	7b0b1ad2
+en	0471fa9	Cependant, vous pensez toujours à votre grand-mère. Que lui arrive-t-il ? Est-elle sur la voie de la guérison ou pas ?	D5_level2	Bedroom_night	263	1e1cd72f
+en	0f46b9c	Votre corps et votre instinct vous dit qu'il faut trouver le sommeil. Vous vous changez et vous glissez dans le lit. Mais vos pensées sont toujours là et vous agitent l'esprit.	D5_level2	Bedroom_night	264	a7c1b508
+en	06f6f47	-> Que faire?	D5_level2	Bedroom_night	265	c3970142
+en	0f8e8a8	Vous demandez à Room Mate, votre IA, de basculer en mode "Immersion Studieuse". Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même, face à vos questions et vos appréhensions.	D5_level2	Zero_Distraction	271	7f23e46d
+en	0acbd71	L'ambiance "studieuse" de votre chambre était une bonne idée, mais ça ne suffit pas. Ce soir, dans ce silence, vous ne vous sentez pas capable de pratiquer la méditation de pleine conscience. Il vous faut trouver autre chose.	D5_level2	Zero_Distraction	272	91a9c2df
+en	0496620	-> Quoi d'autre?	D5_level2	Zero_Distraction	273	15c097b8
+en	0fe5954	Vous examinez votre palmphone : aucun appel ou message. Ce silence vous agresse une nouvelle fois.	D5_level2	Choix_night	280	26fbcbed
+en	0e0b5f8	-> Couper toute distraction mentale #once	D5_level2	Choix_night	281	e3508e01
+en	07d2a54	-> Appeler votre mère #once	D5_level2	Choix_night	282	d63169f7
+en	0b7547b	-> Jouer de la musique #once	D5_level2	Choix_night	283	f274f6e0
+en	0db755e	-> Faire une sieste	D5_level2	Choix_night	284	55ecd084
+en	0561efa	Vous rappelez votre mère. Elle ne répond pas. Vous ne laissez aucun message. Vous raccrochez et vous regrettez votre geste. Vous avez encore cédé aux émotions nuisibles...	D5_level2	Maman_callnight	290	41d064f9
+en	0c4f3da	La sieste est une technique efficace quand on éprouve une fatigue importante et relativement saine. En revanche, si le corps ou le mental est perturbé ou malade, ça ne marche pas...	D5_level2	Sieste_dontwork	296	105f181e
+en	0bec4c7	Vous avez beau fermer les yeux, rien ne se passe. Vos idées noires continuent de vous hanter.	D5_level2	Sieste_dontwork	297	af0b50ce
+en	093b745	-> Essayer autre chose	D5_level2	Sieste_dontwork	298	fa36d8fe
+en	04c3d89	Vous retrouvez Fred à la salle de sport.	D5_level2	Salle_Sport	305	2dc09a9d
+en	0d6de3f	Fred_excited: Yes Yes ! Prêt pour une séance de fight contact ?	D5_level2	Salle_Sport	306	fc764e38
+en	01b0467	You: Naan. Je te le répète, je préfère quelque chose de plus soft.	D5_level2	Salle_Sport	307	25758abe
+en	0175c25	Fred_surprised: La valse ?	D5_level2	Salle_Sport	308	633b8cc5
+en	086562d	You: Imbécile... Une séance de footing.	D5_level2	Salle_Sport	309	b1302f6e
+en	02b6739	Fred_sad: Du footing ?! Mais c'est chiant.	D5_level2	Salle_Sport	310	559cd74e
+en	0b71253	You: Pas que. Le footing permet d'évacuer les toxines tout en stimulant les masses musculaires, lymphatiques et le système nerveux.	D5_level2	Salle_Sport	311	987b2a77
+en	09b7735	Fred_smiling: Je vois que tu t'es renseigné.	D5_level2	Salle_Sport	312	3eae7af0
+en	04f72f5	Vous continuez la négociation avec Fred pendant. Il n'est pas ravi par votre idée. Que décidez-vous ?	D5_level2	Salle_Sport	313	745361be
+en	081266a	-> Imposer l'option footing	D5_level2	Salle_Sport	314	2909a1a3
+en	0d8e062	-> Accepter l'option fight contact	D5_level2	Salle_Sport	315	25c53b5d
+en	0512c04	Vous tenez tête à Fred. Il cède non sans maugréer. Il enlève son exosquelette et vous rejoint dehors, sur la piste d'athlétisme.	D5_level2	Sport_Destress	322	e293c5ab
+en	0385730	Vous faites un premier tour de piste, puis un second, puis un troisième.	D5_level2	Sport_Destress	323	e1da289e
+en	09bba28	Petit à petit, vous trouvez votre rythme de pas et votre cadence respiratoire. Vous sentez que vous brûlez vos calories et vos énergies négatives. Plus vous vous oxygénez, plus vous vous échauffez, plus vous vous détendez.	D5_level2	Sport_Destress	324	74781af2
+en	0e2883f	Au bout d'une heure trente, vous décidez de vous arrêtez. Fred vous attend sur la piste d'arrivée depuis un moment. Il a le visage rouge comme un crabe ébouillanté.	D5_level2	Sport_Destress	325	ae748101
+en	09ad811	Vous le remerciez pour sa présence discrète mais nécessaire. Sans lui, vous n'auriez pas eu la force de vous lancer dans cette course d'endurance.	D5_level2	Sport_Destress	326	2a91833f
+en	0a0d38b	Vous lui souhaitez bonne chance pour tout à l'heure et vous rejoignez votre chambre.	D5_level2	Sport_Destress	327	dd3c387e
+en	02dc595	-> Qu'est-ce que vous allez faire ?	D5_level2	Sport_Destress	328	8cbb7133
+en	01e0f3b	Vous décidez de prendre un peu de temps pour vous détendre, en suivant un des conseils des sages : La méditation.	D5_level2	Mediter	335	f386a2d0
+en	0fd44de	Vous vous mettez confortablement sur votre canapé, et vous commencez...	D5_level2	Mediter	336	cb38000f
+en	042e656	Vous sentez vos poumons se gonfler puis se vider.	D5_level2	Mediter	337	a110c7a1
+en	0ad1fee	Vous sentez l'air entrer dans votre bouche et descendre jusqu'au niveau du ventre avant de faire le chemin inverse à l'expiration. Votre corps se relâche peu à peu. Vos pensées se font moins bruyantes, moins oppressantes, moins nombreuses.	D5_level2	Mediter	338	7c21f12f
+en	0077027	Vous comprenez un peu mieux ce que veut dire : se connecter à l'instant présent.	D5_level2	Mediter	339	304b5db7
+en	0899190	C'est raté ! Vous n'avez pas suivi les instructions et les conseils des Sages. Vous avez encore échoué à votre épreuve. Tant pis pour vous, vous allez devoir revivre à nouveau cette journée infernale !	D5_level2	Replay	346	3f749e95
+en	037b926	Cessez d'être le jouet de vos émotions et vos peurs ! Soyez lucide et présent !	D5_level2	Replay	347	89154aa0
+en	0a58227	-> Rejouer	D5_level2	Replay	348	2dc76dce
+en	038a982	Vous vous levez de votre lit et vous prenez votre cycloluth, une guitare archaïque de la planète Feudall.	D5_level2	Play_Luth	355	bcd92750
+en	0459ade	Les cordes sonnent juste, vous vous échauffez par une petit gigue traditionnelle d'Eirun VI.	D5_level2	Play_Luth	356	b46f70af
+en	0c961cf	Puis, constatant que vos doigts sont souples et précis, vous enchaînez avec d'autres balades, d'autres gestes du répertoire médiéfull galactique.	D5_level2	Play_Luth	357	11216333
+en	0067d8d	La mélodie envahit votre chambre. Heureusement, vous avez demandé à Room Mate d'isoler votre pièce sur le plan sonore. Vous n'entendez aucun son venu de l'extérieur et aucun son de votre chambre ne peut en sortir.	D5_level2	Play_Luth	358	2f86c4a8
+en	043670d	Vous pouvez faire tout le bruit que vous voulez, vous ne dérangez que vous. La musique vous emporte, elle vous illumine, elle vous enchante, elle vous distrait. Vous oubliez tous vos tracas, tous vos déboires, toutes vos peurs.	D5_level2	Play_Luth	359	cf941659
+en	0748d4a	Une heure après, quand vous reposez le cycloluth, vous vous sentez léger et joyeux.	D5_level2	Play_Luth	360	c21f134e
+en	0f9c13b	-> Et maintenant ?	D5_level2	Play_Luth	361	be76d3ba
+en	0d8028a	Votre esprit est suffisamment détendu. Vous fermez les yeux, vous relâchez votre corps, vous glissez dans le sommeil. Vous dites enfin bye bye à ce vendredi stressant...	D5_level2	Sleep_End	368	3e2a8fe5
+en	079eecc	Victoire !! Vous avez combattu le stress et vous l'avez repoussé, vous l'avez vaincu !	D5_level2	Sleep_End	369	a9bf6d62
+en	093a7a2	-> Tenter de sommeiller	D5_level2	SiesteCrossroad	376	3dc82d37
+en	0091a34	-> Tenter de s'endormir	D5_level2	SiesteCrossroad	377	d4d8192d

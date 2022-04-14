@@ -1,0 +1,228 @@
+LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?
+en	02a3388	Vous vous dans votre chambre. Il est jeudi matin, encore une fois. Vous mangez votre petit déjeuner tout en pensant à ce que vous allez bien pouvoir faire pour ce projet de mémoire sur la théorie du chaos en macrobiologie post-darwinienne. Motiver et guider Fred : c'est bien joli à dire, c'est plus difficile à faire.	D4_level2	Start	8	9fda41ea
+en	0fc5fb6	Fred... Vous attendez son appel d'ailleurs.	D4_level2	Start	9	94e65912
+en	0308746	Dring Dring.	D4_level2	Start	10	f434ce93
+en	0042053	-> Vous décrochez	D4_level2	Start	11	2868a2cd
+en	0a622c4	Fred@holo_excited: Hello, { $name }, la forme ? Motivé ?	D4_level2	Appel_Fred	18	45fa2a07
+en	01e1f78	You: Oui, je te rappelle qu'on doit finir notre mémoire sur la théorie du chaos dans la macrobiologie post-darwinienne.	D4_level2	Appel_Fred	19	dc8d9afd
+en	0f00fce	Fred@holo_smiling: Cool, tu me retrouves ?	D4_level2	Appel_Fred	20	5c14265d
+en	0b4d03d	You: Non, viens plutôt me chercher.	D4_level2	Appel_Fred	21	98a01238
+en	06aaf28	Fred@holo_happy: Non, je suis à la maison, je viens juste de recevoir le dernier GTR : Grand Thrill Rodéo 66 ! Une tuerie !	D4_level2	Appel_Fred	22	4aea521a
+en	0320c2d	You: Je te le répète, on doit finir notre mémoire ! Avant minuit !	D4_level2	Appel_Fred	23	69d02bb3
+en	0dcf2cc	Fred@holo_smiling: Yes yes. Viens d'abord chez moi !	D4_level2	Appel_Fred	24	f6d588a8
+en	04016b2	You: Fred, je peux pas faire le boulot tout seul. J'ai besoin de toi.	D4_level2	Appel_Fred	25	22bee11b
+en	05b6ac7	Fred@holo_smiling: Yes yes, on verra après. Viens !	D4_level2	Appel_Fred	26	13351ea7
+en	0f99a58	You: Fred, sérieux...	D4_level2	Appel_Fred	27	08567059
+en	0cca79b	Fred@holo_smiling: Je te dis, viens !	D4_level2	Appel_Fred	28	f6520a69
+en	041d168	Tant pis, vous avez essayé de le raisonner par téléphone, ça ne marche pas. Il faut essayer autre chose :	D4_level2	Appel_Fred	29	503624e0
+en	0b30d3e	-> Vous allez à la bibliothèque et vous le harcelez jusqu'à ce qu'iel vous rejoigne.	D4_level2	Appel_Fred	30	f9e20131
+en	09ab66e	-> Vous allez chez lui et vous l'obligez à venir à la bibliothèque.	D4_level2	Appel_Fred	31	8d31355d
+en	0210c73	Vous vous asseyez à une table de la grande bibliothèque. Quelle ambiance de concentration et de travail. Ça motive. Vous textez Fred pour lui préciser dans quelle zone du bâtiment vous l'attendez.	D4_level2	Bibli_soloAM	38	69e6b7ba
+en	09be2be	Vous y ajoutez un paramètre. Et toutes les dix minutes, votre palmphone renvoie votre texto à Fred. Vous espérez ainsi le forcer à vous retrouver. Le temps passe, les minutes et les heures s'écoulent.	D4_level2	Bibli_soloAM	39	4f486c65
+en	097a9fb	Mais que fait donc Fred ? Le voilà enfin.	D4_level2	Bibli_soloAM	40	5e9e44b7
+en	0f1bfbc	You: J'ai pas arrêté de te relancer, tu foutais quoi ?	D4_level2	Bibli_soloAM	41	4df11df4
+en	015d8ac	Fred_smiling: Je jouais à GTR 66 ! C'est trop de la bombe nucléaire !	D4_level2	Bibli_soloAM	42	d61e7444
+en	06d46cb	You: Et mes textos ? Je t'en ai balancé des centaines ! Tu les as bien reçus ?	D4_level2	Bibli_soloAM	43	f71a77b6
+en	0a211cc	Fred_smiling: Je les ai pas entendu, j'avais le casque sur la tête.	D4_level2	Bibli_soloAM	44	15072e6c
+en	045040f	You: T'as vu l'heure ? La bibliothèque ferme à 20h !	D4_level2	Bibli_soloAM	45	4b5e08e9
+en	033461c	Fred_happy: No worry, j'ai tout dans la tête.	D4_level2	Bibli_soloAM	46	7a4dafad
+en	02af4ec	You: J'espère bien.	D4_level2	Bibli_soloAM	47	d9aa3674
+en	02555ca	Fred_excited: On commence par quoi ?	D4_level2	Bibli_soloAM	48	772c0244
+en	0aea5f3	You: Heu.	D4_level2	Bibli_soloAM	49	bcc06bf1
+en	046c0db	Fred_smiling: C'est toi le chef de projet, non ?..	D4_level2	Bibli_soloAM	50	019e757a
+en	01a6df8	Vous vous rappelez des paroles d'Azul, c'est vous le capitaine de ce projet. C'est à vous de mener la barque.	D4_level2	Bibli_soloAM	51	87e1da7f
+en	03aeea4	-> Se mettre au travail	D4_level2	Bibli_soloAM	52	21c11071
+en	03f23dc	Vous retournez vous asseoir à la même table que ce matin. Vous textez Fred pour lui dire que vous l'attendez au même endroit. Vous ajoutez une condition de renvoi automatique du texto. S'iel ne répond pas dans les 10 minutes, le message lui est renvoyé de nouveau. Le temps passe, les minutes et les heures s'écoulent. Enfin, Fred revient en salle...	D4_level2	Bibli_soloPM	59	b2b6c7cb
+en	08b782b	You: Tu te fous de moi ou quoi ?	D4_level2	Bibli_soloPM	60	02ada88d
+en	05a2da8	Fred_smiling: C'est trop de la bombe nucléaire GTR 66 !	D4_level2	Bibli_soloPM	61	a2ce3047
+en	0a2d4c0	You: Je te rappelle que la bibliothèque ferme à 20h !	D4_level2	Bibli_soloPM	62	d7a0775c
+en	0b7cfd4	Fred_happy: No worry, j'ai tout dans la tête, faut juste que je me pose un moment.	D4_level2	Bibli_soloPM	63	88212bf2
+en	0844380	You: Il est grand temps.	D4_level2	Bibli_soloPM	64	4d31365d
+en	0ed7142	Fred_smiling: Je t'écoute.	D4_level2	Bibli_soloPM	65	a1bfd07d
+en	0d7cbe3	-> Se remettre au travail	D4_level2	Bibli_soloPM	66	9474dca3
+en	00123b2	Vous voilà à la bibliothèque avec Fred.	D4_level2	Bibli_binome	73	608c7c61
+en	0bf05f2	Fred_excited: Au fait, { $name }, félicitations !	D4_level2	Bibli_binome	74	9d1e9808
+en	03e555c	You: Merci.	D4_level2	Bibli_binome	75	167ab86b
+en	0901a2a	Fred_smiling: T'as eu [b]B-[/b] à ta note de synthèse sur la PNLIAA	D4_level2	Bibli_binome	76	4d5a5986
+en	0aa44c4	You: Ah.	D4_level2	Bibli_binome	77	29c9edc0
+en	0aaabd3	Fred_surprised: Tu t'en fiches ?	D4_level2	Bibli_binome	78	0f0269ed
+en	02ddbff	You: C'est bien. En attendant, mettons-nous au travail.	D4_level2	Bibli_binome	79	c46867cc
+en	091b440	Fred_happy: J'ai eu pareil. [b]B-[/b]	D4_level2	Bibli_binome	80	b597bdc1
+en	0c7d464	You: Félicitations Fred ! Tu vois, quand tu travailles.	D4_level2	Bibli_binome	81	d99ab791
+en	0323ce1	Fred_smiling: Travailler ? Si tu savais la vitesse avec laquelle j'ai torché ma rédaction.	D4_level2	Bibli_binome	82	aabbcf7a
+en	0da444f	You: Justement, on va éviter de faire la même co.... bêtise avec la théorie du chaos. D'accord ?	D4_level2	Bibli_binome	83	f5c3c73d
+en	01e1669	Fred_smiling: OK. On commence par quoi ?	D4_level2	Bibli_binome	84	b5fb2424
+en	07a5945	You: Heu...	D4_level2	Bibli_binome	85	94d39185
+en	0a089d1	Fred_happy: C'est toi le chef de projet, non ? Tu es passé maître en théorie du chaos...	D4_level2	Bibli_binome	86	38fe3171
+en	03873cc	Vous vous rappelez des paroles de Azul. C'est à vous de piloter ce travail, de motiver et guider Fred dans ce projet collaboratif.	D4_level2	Bibli_binome	87	714e56b4
+en	0e68709	-> Se mettre au travail	D4_level2	Bibli_binome	88	21c11071
+en	0c3407b	Fred_happy: Alors, on attaque quoi maintenant, boss ?	D4_level2	Liste_taches	95	265e529c
+en	0620e87	-> Travailler avec Fred sur le mémoire	D4_level2	Liste_taches	96	34f08881
+en	0611eb4	-> Montrer vos notes à Fred#once	D4_level2	Liste_taches	97	83070153
+en	0ead95b	-> Demander à Fred ses notes#once	D4_level2	Liste_taches	98	2ff7ff17
+en	0c51ae2	-> Reprendre la rédaction du mémoire#once	D4_level2	Liste_taches	99	a143f8ff
+en	08f7a73	-> Valider le plan du mémoire#once	D4_level2	Liste_taches	100	83abec4f
+en	0bc0935	-> Générer une bulle d'immersion studieuse#once	D4_level2	Liste_taches	101	a650a453
+en	0eb4b51	-> Faire la pause lunch#once	D4_level2	Liste_taches	102	4ecd30a7
+en	0c284d3	You: On reprend la rédaction détaillée du mémoire ?	D4_level2	Redaction	109	fc535ea8
+en	005280e	Fred: Yes. On se répartit la tâche comment ?	D4_level2	Redaction	110	573ee5ea
+en	01c46ea	You: Heu...	D4_level2	Redaction	111	94d39185
+en	06e222c	-> Demander l'avis de Fred	D4_level2	Redaction	112	7ff112a4
+en	07279f3	-> Donner les ordres à Fred	D4_level2	Redaction	113	74a00c5b
+en	09efca7	You: Tu n'as pas faim?	D4_level2	lunch	120	33bd3d9a
+en	0fb3d6a	Fred_smiling: Si, je manque clairement de fuel là.	D4_level2	lunch	121	0a7affe1
+en	01672ed	You: On va manger à la cafeteria de la bibli?	D4_level2	lunch	122	243b9461
+en	0339b31	Fred_smiling: Yes yes !	D4_level2	lunch	123	49f5f6b8
+en	0c416da	-> Cafeteria de la bibliothèque	D4_level2	lunch	124	4f79bf6f
+en	0968648	Vous demandez au récepteur de l'IA de la bibliothèque de déployer une "Sphère de Travail Immersive". Aussitôt un dôme de lumière opaque se referme sur votre table et vous isole du reste de la bibliothèque et des étudiants qui y sont. Le son devient net et réverbéré, comme dans un studio d'enregistrement.	D4_level2	Zero_distraction	131	8224682f
+en	032b9c9	Fred_smiling: Great, ta bulle de silence. On va pouvoir parler tous les deux sans honte !	D4_level2	Zero_distraction	132	7e50c17b
+en	0d7834f	You: Tu as tout compris. Maintenant que nous sommes enfermés dans une bulle de travail, nous allons pouvoir échanger verbalement, toi et moi. C'est cool non ?	D4_level2	Zero_distraction	133	d15cc8de
+en	0dd2ca1	Fred_happy: Yolo, c'est trop dingue ton truc ! J'adore !	D4_level2	Zero_distraction	134	48511aab
+en	0f7cd07	You: Bon, on reste concentré, Fred. On doit finir la rédaction du mémoire aujourd'hui.	D4_level2	Zero_distraction	135	e6c37d47
+en	09a583b	Fred_happy: Yes Yes...  Et si je te montrais ce qu'on peut faire dans le dernier GTR, y a déjà plein de playthrough sur Zootud ?	D4_level2	Zero_distraction	136	6f2bd42a
+en	0056a1d	You: Fred, on reste concentré sur le sujet du mémoire. De toute manière, ça ne marcherait pas. Nos connexions sont limitées aux sites académiques.	D4_level2	Zero_distraction	137	58511483
+en	09940ab	Fred_sad: Ah, c'est pas si fun ta boule...	D4_level2	Zero_distraction	138	e59b42d1
+en	05d8166	You: C'est pas fun, c'est sérieux.	D4_level2	Zero_distraction	139	c0bcfe47
+en	07c6912	Fred_sad: Ah.	D4_level2	Zero_distraction	140	b428462f
+en	06c7c8c	You: Rappelle-toi qu'on a un diplôme à décrocher.	D4_level2	Zero_distraction	141	0fa07364
+en	0fc578f	Fred_smiling: C'est vrai.	D4_level2	Zero_distraction	142	8e971d2a
+en	0c0955f	->  Reprendre le travail	D4_level2	Zero_distraction	143	453aacb9
+en	09e9a0a	Vous commandez un lunch à la bibliothèque.	D4_level2	Lunch_bibli	150	5a984b52
+en	053045f	C'est jour de relâche, vous commandez un Burger Big Protéine Double Cheese. C'est pas équilibré mais vous avez assez d'effort à faire par ailleurs.	D4_level2	Lunch_bibli	151	2383f757
+en	073a69e	Vous rigolez quand vous observez Fred engloutir son Tacos Tex-Mex XXXL et liquider un Xeno Cola double-sugar ! Vous avez mal pour son estomac. Vous êtes obligé d'aller aux toilettes. Quand vous revenez, Fred est à nouveau en train de jouer avec un étudiant sur une Nanontedo à GTR 66 !	D4_level2	Lunch_bibli	152	f5b4db15
+en	0df9445	You: Fred, on y retourne, j'ai besoin de toi.	D4_level2	Lunch_bibli	153	a6b631f0
+en	055c14d	Fred_excited: Yes, yes, attends 5 minutes encore.	D4_level2	Lunch_bibli	154	e7048fab
+en	02324cc	You: Fred, c'est toi le créatif du projet, moi je suis le chef d'ouvrage.	D4_level2	Lunch_bibli	155	9b62fef4
+en	00297e6	Fred_smiling: Please...	D4_level2	Lunch_bibli	156	d20fc7b7
+en	012b100	-> Retourner en salle et laisser Fred jouer quelques minutes	D4_level2	Lunch_bibli	157	4713643f
+en	071a93f	-> Insister pour que Fred vienne avec vous	D4_level2	Lunch_bibli	158	ea98e994
+en	002fcbd	You: Je sais que tu as avancé depuis la dernière fois.	D4_level2	Notes_You	165	1070218f
+en	0530a0b	Fred_happy: Yes yes. On échange à nouveau nos commentaires et nos notes ?	D4_level2	Notes_You	166	dd9aca37
+en	0cd9556	You: On commence par les miennes ?	D4_level2	Notes_You	167	71461b91
+en	0a51cb6	Fred_smiling: Yeeees. Je t'écoute !	D4_level2	Notes_You	168	aac8157e
+en	08e64e8	You: Non, mais je ne peux pas te lire à haute voix, on est à la bibliothèque !	D4_level2	Notes_You	169	0acdc0de
+en	0bfb9d2	-> Vous lui lisez vos notes << if visited("Zero_Distraction") >>	D4_level2	Notes_You	170	005ac462
+en	01f3a4c	-> C'est à lui de lire vos notes	D4_level2	Notes_You	171	63294c5a
+en	028d7bc	Fred_sad: T'es vraiment pas drôle.	D4_level2	Fred_goesback_towork	178	66d63ba2
+en	036ff77	You: J'ai besoin de toi.	D4_level2	Fred_goesback_towork	179	73868b93
+en	0c3d161	Fred_sad: Ça, j'ai bien entendu. Et si j'avais besoin de toi aussi ?	D4_level2	Fred_goesback_towork	180	35ef3207
+en	0ea7b37	You: Tu plaisantes, tu es le meilleur de la promo. Ceci dit, comme les Sages l'ont dit, sans moi, tu te disperserais et tu n'y arriverais pas.	D4_level2	Fred_goesback_towork	181	9fcdd1ea
+en	0b6426a	Fred_surprised: Les Sages ?!	D4_level2	Fred_goesback_towork	182	4dd57577
+en	00a0389	You: Laisse tomber.	D4_level2	Fred_goesback_towork	183	7e3913af
+en	005ba03	-> Vous retournez au travail à la bibliothèque.	D4_level2	Fred_goesback_towork	184	47f302fb
+en	00f03b9	Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux. C'est à regret que Fred et vous, sortez de l'établissement.	D4_level2	Exit_Bibli	191	af085309
+en	0e613d9	You: Non, on a presque fini.	D4_level2	Exit_Bibli	192	e6a35a98
+en	06a417f	Fred_happy: Cool, tu as tout dans les mains : le plan, les idées fortes. Tu n'as plus qu'à développer tout ce qu'on a dit. No worry, ça va le faire, je te fais confiance.	D4_level2	Exit_Bibli	193	46ddc9fe
+en	0c6c678	You: Et toi ?	D4_level2	Exit_Bibli	194	397f1321
+en	0e56f3e	Fred_happy: Je m'occupe de la conclusion et de l'intro.	D4_level2	Exit_Bibli	195	91a6ab2b
+en	02bda36	You: OK.	D4_level2	Exit_Bibli	196	f0bab017
+en	031f90d	Fred_smiling: Keep faith.	D4_level2	Exit_Bibli	197	544c2feb
+en	03fa023	C'est drôle. C'est Fred désormais qui vous pilote et vous rassure sur votre capacité à finir dans les temps. Troublé, un peu hésitant, vous retournez dans votre chambre.	D4_level2	Exit_Bibli	198	61402ee8
+en	07ecec4	Ding Ding Dong. L'horloge officielle de la bibliothèque de l'Académie d'Omniscience et de Polytechnologie Universelle vient de sonner pour la dernière fois. Les robots vous font signe de remballer vos affaires et de quitter les lieux.	D4_level2	Exit_Bibli	199	160a0388
+en	0c62d43	You: Non, on est loin d'avoir fini !!	D4_level2	Exit_Bibli	200	c5278d29
+en	04492ae	Vous criez, vous paniquez complètement, vous vous mettez à suer à grosses gouttes, votre vue se trouble, votre ouïe sature, parasité par un effet de larsen. Vous avez encore échoué !	D4_level2	Exit_Bibli	201	4f4d61e5
+en	07dace0	-> Vous allez devoir recommencer cette journée épuisante à la bibliothèque	D4_level2	Exit_Bibli	202	f2b7a403
+en	01b1dcd	You: Je sais que toi aussi, tu as avancé sur le travail de rédaction du mémoire.	D4_level2	Notes_Fred	209	d01fde7d
+en	0fed354	Fred_smiling: Bien sûr.	D4_level2	Notes_Fred	210	1b60df2a
+en	0bf6862	You: Tu as tes notes avec toi ?	D4_level2	Notes_Fred	211	80dd4e43
+en	0a57c1c	Fred_happy: Tu veux pas plutôt qu'on en parle de vive voix ?	D4_level2	Notes_Fred	212	180ee141
+en	0f34e21	You: Heu... C'est plus facile pour moi de les lire. Surtout qu'on est à la bibliothèque, il ne faut pas faire du bruit.	D4_level2	Notes_Fred	213	82ebf20c
+en	031034a	-> Écouter Fred présenter ses notes <<if visited("Zero_Distraction")>>	D4_level2	Notes_Fred	214	0f288e99
+en	0b165d9	-> Demander à Fred de vous envoyer ses notes écrites	D4_level2	Notes_Fred	215	0f3e56fb
+en	024dd08	Fred vous fait entrer à la première sonnerie.	D4_level2	ChezFred	222	d7d5c15c
+en	02fbd0b	Fred_excited: Tu vas voir, ce GTR, c'est de la giga-bombe !	D4_level2	ChezFred	223	e193728a
+en	0847944	You: Fred, faut qu'on aille à la bibli, tu joueras ce week-end.	D4_level2	ChezFred	224	04266a54
+en	00f974b	Fred_smiling: T'es pas drôle. Viens, juste pour 5 minutes.	D4_level2	ChezFred	225	3d7fa20c
+en	052b050	You: Non, Fred. On doit s'y mettre au plus vite, sinon, ça recommencera.	D4_level2	ChezFred	226	969a9859
+en	00bf353	Fred_surprised: Recommencera ?!	D4_level2	ChezFred	227	c6659904
+en	045b04a	You: Rien, laisse tomber.	D4_level2	ChezFred	228	a9f6dc62
+en	07a065e	Fred_smiling: Alors on joue ?	D4_level2	ChezFred	229	c9793dbd
+en	034a9a9	You: Non. J'ai besoin de toi, Fred, s'il-te-plaît.	D4_level2	ChezFred	230	c487d801
+en	045699a	Fred_sad: Haaaan, t'es relou parfois.	D4_level2	ChezFred	231	bc138581
+en	0a8ab2a	You: Je veux l'avoir mon diplôme.	D4_level2	ChezFred	232	50cfabbe
+en	011dc57	Fred_sad: D'accord...	D4_level2	ChezFred	233	a2150a53
+en	00a52f4	Bien joué, vous avez touché la corde sensible de Fred, iel accepte de vous suivre... À la bibliothèque.	D4_level2	ChezFred	234	cf94b822
+en	0949681	Vous demandez à l'IA de votre studio de passer en mode "Immersion Studieuse".	D4_level2	Bedroom	241	42032fe3
+en	04d4a5b	Vous ne vous accordez qu'une pause dîner. Une soupe de nouilles aux légumes et un sorbet multi-fruits. Vous vous attaquez ensuite à la rédaction finale de votre mémoire. Les échanges avec Fred sont encore frais dans votre tête. Vous n'hésitez pas à convertir ses paroles en texte pour enrichir vos propres paragraphes.	D4_level2	Bedroom	242	ad247568
+en	064a2e4	Heureusement que l'IA de la bibliothèque a enregistré tous les échanges que vous avez eu avec lui aujourd'hui : ça vous fait gagner un temps fou.	D4_level2	Bedroom	243	f9728cce
+en	0f9806b	Une fois que vous estimez avoir fini, vous annulez le mode "Immersion Studieuse" et vous contactez Fred.	D4_level2	Bedroom	244	90600eb5
+en	0eb7fce	Fred@holo_excited: T'as fini ?	D4_level2	Bedroom	245	2c9d2b7b
+en	05c5e53	You: Oui. Et toi ?	D4_level2	Bedroom	246	86bbaa26
+en	01d28a8	Fred@holo_happy: Je t'envoie ma participation à mon tour. Désolé, c'est modeste.	D4_level2	Bedroom	247	d9c03272
+en	0e6d6c9	You: Je sais, l'écrit, c'est pas ton truc. Mais tu m'as énormément aidé sur ma partie. Avec tes idées et tes remarques.	D4_level2	Bedroom	248	ec693b6e
+en	03fb032	Fred@holo_smiling: Merci. On fait la paire.	D4_level2	Bedroom	249	6b054427
+en	0c35c9a	You: Je sais pas.	D4_level2	Bedroom	250	6382020e
+en	0d43b47	Fred@holo_smiling: Yes yes, je te le dis.	D4_level2	Bedroom	251	d43afffc
+en	0076812	Fred raccroche. Vous recevez dans votre boîte mail sa contribution. Vous l'intégrez dans le texte final et vous déposez le tout dans le FTP de l'Académie. Bravo ! Mission accomplie...	D4_level2	Bedroom	252	3116bcef
+en	0608a08	You: Tu te souviens du plan ?	D4_level2	Plan	259	433b232e
+en	010b808	Fred_smiling: Ton plan ?	D4_level2	Plan	260	3197fa8f
+en	0a49c05	You: Oui, je t'ai demandé d'en proposer un, t'as refusé.	D4_level2	Plan	261	a6354cd9
+en	02066f7	Fred_smiling: Le plan, ça vient avec les idées, les breakthrough.	D4_level2	Plan	262	a5fefe39
+en	0696f59	You: Sans plan, on ne peut pas avancer dans la rédaction. Et on en est là, la rédaction, la dernière ligne droite.	D4_level2	Plan	263	60f6472d
+en	091835b	Fred_sad: Mais pourquoi on doit suivre l'axe que tu as proposé ?	D4_level2	Plan	264	ac96a390
+en	0d08340	You: T'en vois d'autre,	D4_level2	Plan	265	89e7d75f
+en	0b977ec	Fred_happy: Oui, plein, y a l'embarras du choix.	D4_level2	Plan	266	2379a763
+en	004dc90	You: On n'a plus le temps.	D4_level2	Plan	267	24ef9020
+en	0e52680	Fred_smiling: On a toujours le temps.	D4_level2	Plan	268	0e1a6abd
+en	0d5fcf7	-> Vous prenez le temps de discuter avec Fred de tous les plans possibles	D4_level2	Plan	269	901b2cbe
+en	08a8a75	-> Vous présentez votre plan à Fred	D4_level2	Plan	270	ad84bd59
+en	0d67c8e	You: Tu sais, moi, j'échange par écrit. C'est plus simple.	D4_level2	Notes_You_Good	277	46cb4260
+en	017912f	Fred_surprised: Ah. Pour moi...	D4_level2	Notes_You_Good	278	91cb2981
+en	0bad325	You: Ouais, je sais. C'est le contraire. Exceptionnellement, je fais l'effort de te présenter oralement ce que j'ai accumulé de mon côté.	D4_level2	Notes_You_Good	279	babe313c
+en	09fbef3	Fred_smiling: Cool.	D4_level2	Notes_You_Good	280	49979dc0
+en	0b1d3d8	You: C'est une première pour moi. J'espère que je ne serai pas confus.	D4_level2	Notes_You_Good	281	edd0d88d
+en	0fd4f63	Fred_happy: Pas grave.	D4_level2	Notes_You_Good	282	18b0a2b9
+en	0fa3688	You: Merci.	D4_level2	Notes_You_Good	283	167ab86b
+en	0d62399	Ne sachant pas par quoi commencer, vous dites la première remarque qui vous vient en tête. Et puis, de fil en aiguille, une remarque en amène une autre, qui en amène une autre. Fred est un auditeur très bienveillant. En outre, iel rebondit sur certaines de vos idées et vous incite à les clarifier, les critiquer, les nuancer.	D4_level2	Notes_You_Good	284	e6d972d9
+en	0b450ec	Au final, ce n'est pas vous qui avez présenté votre travail à Fred. C'est Fred qui a revu vos notes et a corrigé ce qui n'allait pas. C'est génial.	D4_level2	Notes_You_Good	285	5adaece2
+en	03a3fb9	Enfin, comble de joie : l'IA vous informe qu'elle a enregistré toute la conversation et qu'elle vous transfère le fichier audio sur votre ordinateur !	D4_level2	Notes_You_Good	286	9185b7a3
+en	0e9165e	You: On fait ça par écrit.	D4_level2	Notes_You_Bad	293	309af217
+en	0cdd371	Fred_surprised: Pourquoi ?	D4_level2	Notes_You_Bad	294	ce05a667
+en	09a3070	You: Parce que ! T'as dit que c'est moi le chef, non ?	D4_level2	Notes_You_Bad	295	a9ab5c4c
+en	0c5e7f6	Fred_sad: Oui, chef...	D4_level2	Notes_You_Bad	296	9e8631a4
+en	0b9fc4e	Vous envoyez vos documents de travail à Fred. Vous voyez votre ami grincer des dents.	D4_level2	Notes_You_Bad	297	3c7d33c1
+en	096efcd	Iel peine à lire et relire vos docs. Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous limitez les discussions pour vous concentrez sur votre travail.	D4_level2	Notes_You_Bad	298	4e8a932f
+en	013daa2	Avez-vous fait le bon choix ?	D4_level2	Notes_You_Bad	299	5eb0bf36
+en	0ca8f0f	Fred_happy: Tout est dans ma tête. Tu veux que je commence par quoi ?	D4_level2	Notes_Fred_Good	306	b14cfb37
+en	0e52cd5	Vous comprenez que c'est à vous de questionner Fred et, en quelque sorte, de lui tirer les vers du nez. Vous passez les deux heures suivantes à lui poser des questions, à écouter ses réponses, à rebondir sur ces idées, ces commentaires.	D4_level2	Notes_Fred_Good	307	a2eb08cd
+en	06c6070	C'est vraiment super stimulant et super enrichissant. Fred a vu des trucs que vous n'aviez pas remarqué. Cette personne a un don, c'est certain. Après, iel ne correspond pas totalement aux standards académiques. C'est sa force et sa faiblesse.	D4_level2	Notes_Fred_Good	308	414bf6f2
+en	0b03dfd	Quand vous pensez avoir fait le tour de la question avec lui, l'IA vous informe qu'elle a enregistré toute la conversation. Elle vous transfère le fichier audio sur votre ordinateur. Génial !	D4_level2	Notes_Fred_Good	309	590efb28
+en	0082f38	Fred pianote sur son ordinateur, l'instant d'après, vous réceptionnez ses documents... Incroyable, il n'y a pas grand chose d'exploitable. Que des bouts de phrases, de mots et quelques commentaires en annexe.	D4_level2	Notes_Fred_Bad	316	36926d07
+en	0f22648	You: Azul avait raison, tu es fâché avec l'écrit toi.	D4_level2	Notes_Fred_Bad	317	8bdce54f
+en	0fb3b4a	Fred: C'est qui Azul ?	D4_level2	Notes_Fred_Bad	318	38e1429f
+en	0a11445	You: Laisse tomber. Tu veux pas faire un effort ?	D4_level2	Notes_Fred_Bad	319	9a0ce54e
+en	0599f66	Fred: Tsss.	D4_level2	Notes_Fred_Bad	320	420bf2d1
+en	0cb3a4f	You: Pour moi, Fred, s'il-te-plaît. Je sais que tu es intelligent, que tu en sais des choses.	D4_level2	Notes_Fred_Bad	321	0730f3fe
+en	0b3e63f	Fred: Bon, d'accord. Puisque tu insistes. C'est bien parce que c'est toi...	D4_level2	Notes_Fred_Bad	322	eb6e8836
+en	0d827ea	Vous voyez à son air pincé que Fred se fait violence pour vous faire plaisir. Après un bon moment, Fred, vous renvoie les fichiers mis à jour.	D4_level2	Notes_Fred_Bad	323	aa67a20e
+en	058646a	Fred: J'ai fait un effort. J'ai écrit des vraies phrases.	D4_level2	Notes_Fred_Bad	324	627982d7
+en	0057664	En effet, c'est mieux, mais ça reste laconique. Il reste encore beaucoup à faire mais vous n'obtiendrez pas plus de Fred de cette manière.	D4_level2	Notes_Fred_Bad	325	4ccbfd87
+en	0af7001	Avez-vous fait le bon choix ?	D4_level2	Notes_Fred_Bad	326	5eb0bf36
+en	0774d64	You: C'est le dernier jour, on doit choisir un plan et s'y tenir.	D4_level2	Plan_Good	333	834a140e
+en	0da186f	Fred_happy: Très bien. Dis-moi ce que tu as retenu et je te dirai ce que j'en pense.	D4_level2	Plan_Good	334	b300b101
+en	02303dd	You: OK.	D4_level2	Plan_Good	335	f0bab017
+en	0d3ee9f	Vous farfouillez dans vos dossier et vous ouvrez le fichier qui contient le plan détaillé du mémoire sur la théorie du chaos en macrobiologie post-darwinienne.	D4_level2	Plan_Good	336	05b1f417
+en	0a18b2d	Vous commencez ensuite à lui présentez vos trois grandes parties, vos sections et sous-sections. Fred se révèle un infatigable représentant du jury. Iel ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions.	D4_level2	Plan_Good	337	e00f75fe
+en	07d69b4	En clair, iel vous déstabilise, iel vous secoue. Iel vous fait douter de votre problématique et de vous. Sauf que, c'est là le génie de Fred. Fred ne se contente pas de vous perturber, iel vous propose des pistes alternatives, des questions et des arguments auxquels vous n'aviez pas pensés.	D4_level2	Plan_Good	338	d2f37e06
+en	03502f1	En fait, iel secoue l'arbre de votre argumentation pour vous aider à cueillir tous les fruits qu'il a produit. Grâce à la contribution de Fred, vous comprenez que vous avez un plan en béton armé.	D4_level2	Plan_Good	339	c4ae19d1
+en	04260cf	You: Ben c'est le problème. On n'a plus le temps d'hésiter. On doit choisir un plan et s'y tenir.	D4_level2	Plan_Bad	346	1b96045b
+en	0c92611	Fred_sad: C'est vraiment dommage.	D4_level2	Plan_Bad	347	fa382496
+en	0fe17ad	You: Je te rappelle qu'on doit le rendre ce soir ce mémoire. C'est maintenant trop tard pour changer d'avis. Je te renvoie le plan et on le valide. Un point, c'est tout.	D4_level2	Plan_Bad	348	e48b6378
+en	0531726	Vous sentez que vous n'avez peut-être pas pris la bonne décision. Fred se révèle un infatigable avocat de l'accusation. Iel ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions. Commentaires qui ne font que fragiliser votre problématique et douter de vous.	D4_level2	Plan_Bad	349	86944457
+en	0264a4e	Si Fred avait raison... Vous allez devoir revivre encore une fois cette journée de jeudi. Pourvu que non...	D4_level2	Plan_Bad	350	2bc026c2
+en	027a1aa	Vous vous rappelez des conseils d'Azul. Il faut solliciter Fred, sur ses connaissances et ses opinions. De manière verbale.	D4_level2	Redaction_Good	357	b73541e5
+en	0d6c894	Vous prenez le temps de lui résumer oralement ce que vous avez déjà sur la question des modèles chaotiques, déterministes dont le degré d'erreur croît de manière exponentielle. Votre présentation n'ennuie pas Fred, au contraire, votre pote se trouve être une source inépuisable d'idées et de référence pour étayer cette partie.	D4_level2	Redaction_Good	358	65cdde92
+en	0863687	Vous enchaînez avec la portée de l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme. Là encore, échanger avec Fred vous permet de consolider vos arguments et de donner plus de profondeur à cette question.	D4_level2	Redaction_Good	359	d06657a1
+en	0a38763	Enfin, vous énumérez brièvement les éléments que vous avez déjà intégrés dans la troisième partie sur la macrobiologie et la remise en question du postulat darwinien de l'évolution comme un schéma linéaire et donc prévisible. Fred se montre encore généreux et vous propose des réflexions, des idées, des hypothèses auxquelles vous n'aviez pas pensées.	D4_level2	Redaction_Good	360	d4d4bd89
+en	0d7870c	Au final, vous constatez qu'avec le concours de Fred, votre rédaction s'est considérablement étoffée. Elle est vraiment solide et bien charpentée. Il ne vous reste plus qu'à arranger votre démonstration de manière plus académique et plus littéraire et le tour sera joué.	D4_level2	Redaction_Good	361	2bf958e3
+en	0399372	Alors que vous terminez de noter un truc dans votre agenda, l'IA vous informe qu'elle a enregistré toute la conversation. Elle vous expédie le fichier audio sur votre ordinateur. Parfait ! Si vous avez oublié un truc, vous n'aurez qu'à réécouter l'enregistrement...	D4_level2	Redaction_Good	362	d3d56f12
+en	0a59d4a	You: Je m'occupe du problème des modèles déterministes dont le degré d'erreur croît de manière exponentielle. Je prends également en charge l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme. Je te laisse réfléchir sur la révolution du paradigme post-darwinien en macrobiologie pour la conclusion ?	D4_level2	Redaction_Bad	369	455f7139
+en	03a4d80	Fred_smiling: OK. Et qui fait l'introduction ?	D4_level2	Redaction_Bad	370	3a7ca14b
+en	0fff9aa	You: Toi, par exemple. N'oublie pas le problème à 3 corps de Poincaré dans l'introduction. Je te demande pas d'écrire beaucoup, non ?	D4_level2	Redaction_Bad	371	767bcd76
+en	0699c86	Fred_sad: Non, c'est vrai.	D4_level2	Redaction_Bad	372	8f3ae2f2
+en	0da4c78	You: Cool.	D4_level2	Redaction_Bad	373	6f64ddbb
+en	0ce4d55	Vous reprenez vos brouillons et vos notes et vous commencez à mettre au propre vos idées. Vous vous voulez bien faire les choses. Vous prenez le temps de contrôler régulièrement vos sources et de réutiliser dans votre argumentation les données que vous avez glanées.	D4_level2	Redaction_Bad	374	390f1273
+en	0256ae6	Quand vous relevez la tête, vous voyez Fred, qui vous sourit.	D4_level2	Redaction_Bad	375	d3d1b67b
+en	0bf97db	Fred_smiling: J'ai plein d'idée pour la conclusion. Et pour l'introduction aussi.	D4_level2	Redaction_Bad	376	d2436536
+en	0feaaae	You: Noon !	D4_level2	Redaction_Bad	377	094c44d1
+en	0583471	Manifestement, ce n'était pas le meilleur choix possible.	D4_level2	Redaction_Bad	378	cdc50cfb

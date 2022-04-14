@@ -1,4 +1,4 @@
-title: Start
+﻿title: Start
 tags:
 position: -2407.69775390625,128.14415740966797
 colorID: 8
@@ -8,20 +8,20 @@ colorID: 8
 << music Victory>>
 << fadeOut >>
 
-Vous avez pulvérisé votre score! Vous êtes un winner de chez winner! Vous brûlez d'envie de le clamer haut et fort...
-Vous cherchez Fred du regard. Rien. Intrigué, vous demandez autour de vous. On ne sait pas où iel est. Comment est-il possible qu'autant de personne ne sache pas où se trouve la star de l'Académie d'Omniscience et de Polytechnologie Universelle.
-Heureusement, vous tombez enfin sur quelqu'un qui a entendu quelqu'un qui a entendu quelqu'un qui a entendu que... 
+Vous avez pulvérisé votre score! Vous êtes un winner de chez winner! Vous brûlez d'envie de le clamer haut et fort... #line:0b1834e 
+Vous cherchez Fred du regard. Rien. Intrigué, vous demandez autour de vous. On ne sait pas où iel est. Comment est-il possible qu'autant de personne ne sache pas où se trouve la star de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:06e0b52 
+Heureusement, vous tombez enfin sur quelqu'un qui a entendu quelqu'un qui a entendu quelqu'un qui a entendu que...  #line:0a91079 
 << music >>
 << fx Failure >>
-Iel aurait disparu.
-Disparu, Fred ?! Ce n'est pas possible !... Apparemment si. Iel aurait demandé à aller aux toilettes avant que les jurés ne prennent la parole et ne lui posent des questions sur sa prestation au Grand Oral. Depuis, personne ne l'a revu.
-Vous n'en revenez pas. Fred aurait fui comme un lâche. Non, ce n'est pas possible. Et pourtant... Vous jetez un oeil au tableau des notes: sur la ligne correspondant à Fred, vous distinguez un [b]F[/b]. Mince ! C'est une note éliminatoire.
+Iel aurait disparu. #line:0b95b63 
+Disparu, Fred ?! Ce n'est pas possible !... Apparemment si. Iel aurait demandé à aller aux toilettes avant que les jurés ne prennent la parole et ne lui posent des questions sur sa prestation au Grand Oral. Depuis, personne ne l'a revu. #line:0cf97cc 
+Vous n'en revenez pas. Fred aurait fui comme un lâche. Non, ce n'est pas possible. Et pourtant... Vous jetez un oeil au tableau des notes: sur la ligne correspondant à Fred, vous distinguez un [b]F[/b]. Mince ! C'est une note éliminatoire. #line:0f015a1 
 << music Mysterious >>
-Son année est fichue. Son diplôme aussi. Vous ne pouvez abandonner Fred dans un tel moment. Après tout ce qu'iel a fait pour vous.
+Son année est fichue. Son diplôme aussi. Vous ne pouvez abandonner Fred dans un tel moment. Après tout ce qu'iel a fait pour vous. #line:0ce8a73 
 
 << advanceTime 0:15 >>
 
--> Retrouver Fred
+-> Retrouver Fred #line:089e0b4 
     << jump Finding_Fred >>
 ===
 title: Finding_Fred
@@ -32,23 +32,23 @@ position: -2189.6949462890625,126.72453308105469
 << fadeOut >>
 
 << if !visited("Finding_Fred") >>
-Où diable se trouve Fred ?
+Où diable se trouve Fred ? #line:0250d02 
 << visit Finding_Fred >>
 << endif >>
 
 << if visited("Toilettes_No") and visited("Salle_Sport_No") and visited("Cafeteria_No") >>
-Rien de tout.
-Une dernière idée vous vient à l'esprit...
--> Rendre visite à sa chambre
+Rien de tout. #line:049ebef 
+Une dernière idée vous vient à l'esprit... #line:0770c24 
+-> Rendre visite à sa chambre #line:0a7997e 
     << jump Bedroom_Fred >>
 << else >>
--> Fouiller les toilettes #once
+-> Fouiller les toilettes #once #line:023d322 
     << visit Toilettes_No >>
     << jump Toilettes_No >>
--> Aller faire un tour à la salle de sport #once
+-> Aller faire un tour à la salle de sport #once #line:08b14cf 
     << visit Salle_Sport_No >>
     << jump Salle_Sport_No >>
--> Inspecter la cafétéria #once
+-> Inspecter la cafétéria #once #line:07be7b6 
     << visit Cafeteria_No >>
     << jump Cafeteria_No >>
 << endif >>
@@ -62,28 +62,28 @@ position: -1962.5316162109375,468.0980529785156
 << advanceTime 0:15 >>
 << fadeOut >>
 
-Et si Fred s'était claquemuré chez lui, dans sa chambre ?... Vous retournez dans la zone résidentielle de l'Académie. Vous sonnez à la porte de votre pote. Une fois, deux fois, trois fois !
-Vous criez son nom. Vous entendez le verrou se débloquer, vous pénétrez dans sa chambre. 
+Et si Fred s'était claquemuré chez lui, dans sa chambre ?... Vous retournez dans la zone résidentielle de l'Académie. Vous sonnez à la porte de votre pote. Une fois, deux fois, trois fois ! #line:0efd577 
+Vous criez son nom. Vous entendez le verrou se débloquer, vous pénétrez dans sa chambre.  #line:0092760 
 
 << fadeIn >>
 << setBackground bedroom_fred messy >>
 << music NegativeSad >>
 << fadeOut >>
 
-Fred, vous tourne le dos, iel est très occupé à remplir ses valises.
+Fred, vous tourne le dos, iel est très occupé à remplir ses valises. #line:084057f 
 
-You: Qu'est-ce que tu fais ?
-Fred_sad: Tu vois bien.
-You: Tu t'en vas ?
-Fred_sad: Yes yes, je quitte le jeu !
-You: Quel jeu ?
-Fred_sad: L'Académie, les examens, les études, l'apprentissage, la rigueur scolaire...
-You: Quoi ?!
-Fred_sad: Je cesse de laisser les autres me dire ce que je peux ou ne peux pas faire.
-You: Fred, tu va bien ?
-Fred_sad: J'ai jamais été plus lucide. Je vais enfin commencer à vivre ma vie. Comme je l'entends, comme je la comprends.
-You: Et tu te barres comme ça ? En douce, sans même un adieu ?
-Fred_surprised: Yes yes. T'as raison. C'est pas fair play...
+You: Qu'est-ce que tu fais ? #line:0f82bab 
+Fred_sad: Tu vois bien. #line:0805394 
+You: Tu t'en vas ? #line:0edb6fd 
+Fred_sad: Yes yes, je quitte le jeu ! #line:0c1670c 
+You: Quel jeu ? #line:02f93cf 
+Fred_sad: L'Académie, les examens, les études, l'apprentissage, la rigueur scolaire... #line:017ca5e 
+You: Quoi ?! #line:020ba9b 
+Fred_sad: Je cesse de laisser les autres me dire ce que je peux ou ne peux pas faire. #line:0dc8037 
+You: Fred, tu va bien ? #line:0df2ffd 
+Fred_sad: J'ai jamais été plus lucide. Je vais enfin commencer à vivre ma vie. Comme je l'entends, comme je la comprends. #line:06a60fa 
+You: Et tu te barres comme ça ? En douce, sans même un adieu ? #line:04100d7 
+Fred_surprised: Yes yes. T'as raison. C'est pas fair play... #line:0fd2665 
 
 << jump Fred_confesse >>
 ===
@@ -91,18 +91,18 @@ title: Fred_confesse
 tags: 
 position: -1735.787841796875,467.32421875
 ---
--> T'es le winner, tu es le gars le plus populaire de l'Académie.
-    Fred_sad: Tss, ça c'est le passé, c'est fini, terminé, game over.
-    You: Donc tu balances tout au premier échec ? 
--> You: Qu'est-ce qui te prends ?
-    Fred_sad: T'inquiète pas pour moi.
-    You: Au contraire, on s'inquiète tous pour toi.
-    Fred_sad: Tu rigoles ! Y a que toi qui es ici. Avec moi.
-    You: Heu...
-    Fred_sad: Tu vois bien. Tu es mon seul vrai pote. Les autres...
-    You: Et alors. Tu balances tout parce que t'as qu'un seul ami ?
-Fred_sad: Non ! J'ai fini par comprendre que tout ça, c'était pas pour moi.
-You: De quoi tu parles ?
+-> T'es le winner, tu es le gars le plus populaire de l'Académie. #line:029fc74 
+    Fred_sad: Tss, ça c'est le passé, c'est fini, terminé, game over. #line:0e908c1 
+    You: Donc tu balances tout au premier échec ?  #line:01b5e2c 
+-> You: Qu'est-ce qui te prends ? #line:0788d83 
+    Fred_sad: T'inquiète pas pour moi. #line:0b8e9f5 
+    You: Au contraire, on s'inquiète tous pour toi. #line:0a27d7a 
+    Fred_sad: Tu rigoles ! Y a que toi qui es ici. Avec moi. #line:0b3b136 
+    You: Heu... #line:05c39f2 
+    Fred_sad: Tu vois bien. Tu es mon seul vrai pote. Les autres... #line:0c16544 
+    You: Et alors. Tu balances tout parce que t'as qu'un seul ami ? #line:0db58f2 
+Fred_sad: Non ! J'ai fini par comprendre que tout ça, c'était pas pour moi. #line:01556d1 
+You: De quoi tu parles ? #line:02faeb5 
 
 << jump Fred_Echec >>
 ===
@@ -110,26 +110,26 @@ title: Fred_Echec
 tags: 
 position: -1515.0112915039062,464.32421875
 ---
-Fred_sad: J'ai toujours eu de la chance. C'était trop facile.
-You: Je te le fais pas dire...
-Votre ami vous glisse un regard noir. Vous regrettez vos paroles.
-Fred_sad: Et puis, cette semaine, la chance a commencé à me filer entre les doigts.
-You: La chance ?
-Fred_sad: C'était discret au début. Je m'en rendais pas compte.
-You: Je vois pas où tu veux en venir.
-Fred_sad: J'ai toujours cru que j'étais un élu. Une sorte de demi-dieu.
+Fred_sad: J'ai toujours eu de la chance. C'était trop facile. #line:05fe247 
+You: Je te le fais pas dire... #line:0df5e6c 
+Votre ami vous glisse un regard noir. Vous regrettez vos paroles. #line:036354f 
+Fred_sad: Et puis, cette semaine, la chance a commencé à me filer entre les doigts. #line:0217877 
+You: La chance ? #line:0143766 
+Fred_sad: C'était discret au début. Je m'en rendais pas compte. #line:09b47c6 
+You: Je vois pas où tu veux en venir. #line:0fb513a 
+Fred_sad: J'ai toujours cru que j'étais un élu. Une sorte de demi-dieu. #line:0f93530 
 
--> Ah ah !
-    Vous vous mordez la langue quand Fred darde ses yeux étincelants sur vous.
-    You: Pardon...
-    Fred_sad: Tu vois. Toi aussi, tu te moques de moi.
-    You: Non, c'est pour détendre l'atmosphère. J'ai l'impression que tu prends les choses bien trop à coeur.
--> Mais non, tu prend des choses trop au sérieux !
-Fred_sad: Un peu ! car j'ai fini par comprendre que j'étais un fake !
+-> Ah ah ! #line:05a4ace 
+    Vous vous mordez la langue quand Fred darde ses yeux étincelants sur vous. #line:07bfa97 
+    You: Pardon... #line:0d9c3d6 
+    Fred_sad: Tu vois. Toi aussi, tu te moques de moi. #line:068631f 
+    You: Non, c'est pour détendre l'atmosphère. J'ai l'impression que tu prends les choses bien trop à coeur. #line:0d6acf1 
+-> Mais non, tu prend des choses trop au sérieux ! #line:0f01c41 
+Fred_sad: Un peu ! car j'ai fini par comprendre que j'étais un fake ! #line:03e7782 
 
-You: Un fake ?!
-Fred_sad: Un imposteur, un poseur, un fanfaron, un flambeur. Je ne mérite pas d'être ici. C'est pour ça que je me casse.
-You: Attends !
+You: Un fake ?! #line:091461b 
+Fred_sad: Un imposteur, un poseur, un fanfaron, un flambeur. Je ne mérite pas d'être ici. C'est pour ça que je me casse. #line:098a0c8 
+You: Attends ! #line:0f31795 
 
 << jump Fred_Evitement >>
 
@@ -139,17 +139,17 @@ title: Fred_Evitement
 tags: 
 position: -1289.0086059570312,463.9372863769531
 ---
-You: T'as des capacités exceptionnelles, bien sûr que tu peux rattraper ça.
-Fred_smiling: Ah bon ? Ils m'ont filé combien au Grand Oral ?
--> You: Heu... F...
-    Fred_sad: Tu vois. C'est une note éliminatoire. La messe est dite.
--> You: Heu... B-
-    Fred_sad: Menteur ! 
-Fred_sad: Arrête ton char. Game over, je te dis ! Ils n'iront pas juqu'à me donner la possibilité de repasser cette épreuve.
+You: T'as des capacités exceptionnelles, bien sûr que tu peux rattraper ça. #line:010e5a4 
+Fred_smiling: Ah bon ? Ils m'ont filé combien au Grand Oral ? #line:0642978 
+-> You: Heu... F... #line:048dfdd 
+    Fred_sad: Tu vois. C'est une note éliminatoire. La messe est dite. #line:027e69d 
+-> You: Heu... B- #line:01fef7b 
+    Fred_sad: Menteur !  #line:08e0363 
+Fred_sad: Arrête ton char. Game over, je te dis ! Ils n'iront pas juqu'à me donner la possibilité de repasser cette épreuve. #line:08c3b51 
 // You: Mais si tu t'étais pas barré avant qu'il te pose les questions d'usage, t'aurais pu avoir une notre acceptable.
 // Fred_sad: No no. Les dés étaient jetés. J'avais déjà perdu.
-You: T'exagères.
-Fred_sad: Je voulais pas me faire tailler en pièce. Je ne voulais pas leur faire ce plaisir là.
+You: T'exagères. #line:0ab459f 
+Fred_sad: Je voulais pas me faire tailler en pièce. Je ne voulais pas leur faire ce plaisir là. #line:0d22ada 
 
 << jump Raisonner_Fred >>
 ===
@@ -161,33 +161,33 @@ position: -1064.6189880371094,464.7111511230469
 // You: Arrête, tu es un caïd à l'oral, tu t'en sors toujours !
 // Fred_sad: Pas cette fois là, ça n'aurait pas marché.
 // You: Et pourquoi ?
-Fred_sad: Il m'ont eu. Ils m'ont interrogé sur la partie que je n'avais même pas regardé, pas le temps.
-You: Et alors ?
+Fred_sad: Il m'ont eu. Ils m'ont interrogé sur la partie que je n'avais même pas regardé, pas le temps. #line:0d96a3b 
+You: Et alors ? #line:03c2441 
 // Fred_sad: Je suis bon dans l'improvisation. Mais là, j'étais à découvert.
 // You: Je vois pas le problème.
-Fred_sad: Je l'ai senti. Je peux pas t'expliquer. Ils avaient compris que je ne savais rien.
-Vous vous sentez obligé de contredire Fred. Alors que vous savez pertinemment qu'il a raison, les Sages vous l'ont confié. Les jurés du Grand Oral cherchent le maillon faible du candidat : le sujet le moins maîtrisé et l'interrogent sciemment là-dessus.
-You: Tu délires ! C'est ton interprétation.
-Fred_sad: Non, si j'avais tenté de les convaincre du contraire, ils m'auraient tendu des pièges. J'étais fait.
+Fred_sad: Je l'ai senti. Je peux pas t'expliquer. Ils avaient compris que je ne savais rien. #line:0aced6d 
+Vous vous sentez obligé de contredire Fred. Alors que vous savez pertinemment qu'il a raison, les Sages vous l'ont confié. Les jurés du Grand Oral cherchent le maillon faible du candidat : le sujet le moins maîtrisé et l'interrogent sciemment là-dessus. #line:0c2a03b 
+You: Tu délires ! C'est ton interprétation. #line:01cd2b8 
+Fred_sad: Non, si j'avais tenté de les convaincre du contraire, ils m'auraient tendu des pièges. J'étais fait. #line:06afcc3 
 
--> Naan, t'es parano.
-    Fred_sad: La preuve, même toi, tu ne me crois pas. Alors, à quoi bon revenir dessus. Ce qui est fait est fait.
--> Mais demandes aux Sages, et tu peux revenir dans le temps !
-    Fred_surprised: Mais qu'est-ce que tu racontes encore ? Je parle de ma vie, pas de la science fiction !
+-> Naan, t'es parano. #line:0be0847 
+    Fred_sad: La preuve, même toi, tu ne me crois pas. Alors, à quoi bon revenir dessus. Ce qui est fait est fait. #line:06184c5 
+-> Mais demandes aux Sages, et tu peux revenir dans le temps ! #line:0503563 
+    Fred_surprised: Mais qu'est-ce que tu racontes encore ? Je parle de ma vie, pas de la science fiction ! #line:0e1950e 
 
 // Là encore, vous vous sentez obligé de tricher avec la réalité. Vous ne pouvez lui avouer qu'il a raison. Le Grand Oral est un piège, une épreuve éliminatoire : le candidat ne doit surtout pas afficher de grosses lacunes s'il veut obtenir une note suffisante.
 
-You: T'exagère ! Je te reconnais plus ! Tu n'es plus un winner, t'es un looser ! C'est pas possible.
-Fred_sad: Tu vois bien. Mon seul et meilleur pote me traite de "looser". Je ne crois plus en mon "don".
-Fred_sad: Et toi non plus.
+You: T'exagère ! Je te reconnais plus ! Tu n'es plus un winner, t'es un looser ! C'est pas possible. #line:0ff4223 
+Fred_sad: Tu vois bien. Mon seul et meilleur pote me traite de "looser". Je ne crois plus en mon "don". #line:0c848d0 
+Fred_sad: Et toi non plus. #line:043e837 
 
 << hide >>
 << advanceTime 0:15 >>
 
-Vous vous mordez la langue encore une fois. Vous vous en voulez d'avoir douté de Fred. Vous êtes venu pour le secourir, le soutenir. Et que faites-vous à la place ? Vous l'enfoncez... 
+Vous vous mordez la langue encore une fois. Vous vous en voulez d'avoir douté de Fred. Vous êtes venu pour le secourir, le soutenir. Et que faites-vous à la place ? Vous l'enfoncez...  #line:06f0fbf 
 // Inutile d'insister, vous ne le ferez pas revenir sur sa décision, surtout après les boulettes que vous avez commises. Vous vous éclipsez discrètement de sa chambre.
 
--> Quitter la chambre en silence
+-> Quitter la chambre en silence #line:047cba6 
     << jump Joueur_Bedroom >>
 ===
 title: Joueur_Bedroom
@@ -202,10 +202,10 @@ position: -838.7797698974609,460.3569030761719
 // Le monde n'est décidément pas juste. Vous, vous avez la chance de revivre vos journées et d'apprendre de vos erreurs. Pourquoi pas Fred ? 
 // En quoi êtes-vous plus méritant que lui ? Pourquoi n'a-t-il pas, lui aussi, droit à une seconde chance ?
 // Tout ça finit par vous exaspérer. Vous grognez, vous pestez, vous râlez. 
-Vous brandissez les poings et vous interpellez les Sages. Vous avez beau ne pas les voir, vous savez qu'ils vous entendent.
-You: J'en ai assez de cette comédie ! Ce qui arrive à Fred est injuste ! Je ne comprends pas. C'est ça votre plan ? Iel doit payer pour que moi, je réussisse ? C'est minable !
-Ledai_doubtful: { $name }. Tu n'y es pas du tout.
-You: Ah bon ? Alors expliquez-moi ce que vous tramez !
+Vous brandissez les poings et vous interpellez les Sages. Vous avez beau ne pas les voir, vous savez qu'ils vous entendent. #line:0a2db97 
+You: J'en ai assez de cette comédie ! Ce qui arrive à Fred est injuste ! Je ne comprends pas. C'est ça votre plan ? Iel doit payer pour que moi, je réussisse ? C'est minable ! #line:0ae01dc 
+Ledai_doubtful: { $name }. Tu n'y es pas du tout. #line:00f44ea 
+You: Ah bon ? Alors expliquez-moi ce que vous tramez ! #line:0b2fb0d 
 
 << jump Ledai >>
 ===
@@ -214,16 +214,16 @@ tags:
 position: -614.25244140625,460.4302978515625
 colorID: 1
 ---
-Ledai_explaining: C'est très simple, mais un peu long.
-You: Alors, racontez-moi la version courte.
-Ledai_explaining: C'est encore long. Tout ce que je peux te dire, c'est que cela fait partie du processus d'apprentissage.
-You: C'est tout, c'est une blague ?!
-Ledai_explaining: Pas du tout. C'est ta dernière leçon. La plus importante. Suis-moi à l'Assemblée des Sages.
+Ledai_explaining: C'est très simple, mais un peu long. #line:0a1e092 
+You: Alors, racontez-moi la version courte. #line:0c8cdb3 
+Ledai_explaining: C'est encore long. Tout ce que je peux te dire, c'est que cela fait partie du processus d'apprentissage. #line:06405f8 
+You: C'est tout, c'est une blague ?! #line:0226b1a 
+Ledai_explaining: Pas du tout. C'est ta dernière leçon. La plus importante. Suis-moi à l'Assemblée des Sages. #line:0c39929 
 
 // Vous comprenez que si vous désirez avoir le fin mot de l'histoire, vous devez suivre Ledai.
 // Ce que vous acceptez, non sans rechigner.
 
--> Suivre Ledai
+-> Suivre Ledai #line:0ce4daf 
     << hide >>
     << fx Warp >>
     << jump Assemble_Sages >>
@@ -238,60 +238,60 @@ position: -395.6365661621094,463.4656677246094
 << fadeOut >>
 
 // Vous retrouvez à l'assemblée les trois autres sages : Miss Temdé, Master Sapiens et Azul.
-You: Maître Azul, dites-moi tout, je ne comprends plus rien de ce qui se passe.
-Azul_sad: Patience { $name }. Tout va s'éclaircir.
-You: Mais qu'est-ce vous avez tous à me répéter que tout va bien ?! Au contraire, rien ne va plus !
-Temde_sad: C'est normal, tu passes par une nouvelle phase.
-You: C'est rien par rapport à ce qu'endure Fred ! C'est ignoble, ce qui lui arrive ! Iel va quitter l'Académie !
-Ledai_explaining: Tout à fait, pour la première fois, tu te soucies du sort des membres de ton équipe.
-You: De mon équipe ?!
-Azul_proud: C'est une façon de parler. Tu prends en compte les besoins et les problèmes des autres.
-Sapiens_thinking: Tu passes d'une approche quantitative, à une vision qualitative de la métacognition.
-Ledai_happy: C'est un grand pas en avant.
-Temde_sad: Et cela te bouleverse
-Azul_cheerful: Et nous sommes là pour t'accompagner dans cette dernière épreuve.
-Ledai_happy: Exactement, c'est la raison de ta présence ici.
-Sapiens_concerned: Nous allons aborder les enjeux principaux de la métacognition. À commencer par le rapport au savoir.
-You: Le rapport au savoir ?!...
+You: Maître Azul, dites-moi tout, je ne comprends plus rien de ce qui se passe. #line:0ca734e 
+Azul_sad: Patience { $name }. Tout va s'éclaircir. #line:0b12d58 
+You: Mais qu'est-ce vous avez tous à me répéter que tout va bien ?! Au contraire, rien ne va plus ! #line:0e6ced8 
+Temde_sad: C'est normal, tu passes par une nouvelle phase. #line:037fba9 
+You: C'est rien par rapport à ce qu'endure Fred ! C'est ignoble, ce qui lui arrive ! Iel va quitter l'Académie ! #line:0bf6ef1 
+Ledai_explaining: Tout à fait, pour la première fois, tu te soucies du sort des membres de ton équipe. #line:0a831ec 
+You: De mon équipe ?! #line:0953d25 
+Azul_proud: C'est une façon de parler. Tu prends en compte les besoins et les problèmes des autres. #line:068f1c7 
+Sapiens_thinking: Tu passes d'une approche quantitative, à une vision qualitative de la métacognition. #line:0c91ceb 
+Ledai_happy: C'est un grand pas en avant. #line:021e6ff 
+Temde_sad: Et cela te bouleverse #line:0bd10ee 
+Azul_cheerful: Et nous sommes là pour t'accompagner dans cette dernière épreuve. #line:0ad5d60 
+Ledai_happy: Exactement, c'est la raison de ta présence ici. #line:0b95a5c 
+Sapiens_concerned: Nous allons aborder les enjeux principaux de la métacognition. À commencer par le rapport au savoir. #line:0bcf11e 
+You: Le rapport au savoir ?!... #line:0fd665c 
 
--> Moi, je vous parle de Fred !
+-> Moi, je vous parle de Fred ! #line:018a4aa 
     << jump Rapport_Savoir >>
 ===
 title: Rapport_Savoir
 tags:
 position: -174.98825073242188,463.3049011230469
 ---
-Sapiens_thinking: Fred. Nous allons y venir. En attendant, il est indispensable de refaire un point sur certains concepts clés de la métacognition. Comme [b]le rapport au savoir[/b].
-Azul: Ce qui détermine, entre autres, le profil d'apprentissage de quelqu'un. Nous t'avons fait comprendre que Fred possède un profil "divergent".
-You: Ouais. Mais je vois pas comment l'aider à sauver son Grand Oral, le convaincre de ne pas lâcher l'Académie.
-Sapiens_concerned: Normal. C'est plus compliqué que cela. Il ne s'agit pas juste d'appuyer sur un bouton, mais de recalibrer l'ensemble de l'appareillage d'apprentissage.
-You: Comment ?
-Sapiens_thinking: En prenant en compte son rapport au savoir dans sa globalité. Le rapport au savoir permet de définir quel comportement, quelle stratégie l'apprenant utilise pour apprendre.
-You: Ouais ouais.
-Sapiens: Exactement, souviens-toi. Nous avons déjà vu que pour apprendre à apprendre, il faut mettre en place des stratégies d'apprentissage.
-You: Ouais. Je sais. Mais je vous redemande, c'est quoi le rapport avec Fred ?
-Sapiens_angry: Chut ! Tu es en ce moment l'esclave de tes émotions. Je te demande de revenir ici, dans le temps présent.
-Azul: Laisse ta colère et ta frustration s'échapper de toi.
-You: Ouais. OK...
+Sapiens_thinking: Fred. Nous allons y venir. En attendant, il est indispensable de refaire un point sur certains concepts clés de la métacognition. Comme [b]le rapport au savoir[/b]. #line:08e977c 
+Azul: Ce qui détermine, entre autres, le profil d'apprentissage de quelqu'un. Nous t'avons fait comprendre que Fred possède un profil "divergent". #line:0ee421e 
+You: Ouais. Mais je vois pas comment l'aider à sauver son Grand Oral, le convaincre de ne pas lâcher l'Académie. #line:0afb10d 
+Sapiens_concerned: Normal. C'est plus compliqué que cela. Il ne s'agit pas juste d'appuyer sur un bouton, mais de recalibrer l'ensemble de l'appareillage d'apprentissage. #line:0995ea4 
+You: Comment ? #line:02acec4 
+Sapiens_thinking: En prenant en compte son rapport au savoir dans sa globalité. Le rapport au savoir permet de définir quel comportement, quelle stratégie l'apprenant utilise pour apprendre. #line:0ccfd6c 
+You: Ouais ouais. #line:0f519b9 
+Sapiens: Exactement, souviens-toi. Nous avons déjà vu que pour apprendre à apprendre, il faut mettre en place des stratégies d'apprentissage. #line:0011437 
+You: Ouais. Je sais. Mais je vous redemande, c'est quoi le rapport avec Fred ? #line:0850b06 
+Sapiens_angry: Chut ! Tu es en ce moment l'esclave de tes émotions. Je te demande de revenir ici, dans le temps présent. #line:071ed9e 
+Azul: Laisse ta colère et ta frustration s'échapper de toi. #line:07ebe78 
+You: Ouais. OK... #line:0d94044 
 
--> Je me tais...
+-> Je me tais... #line:009650d 
     << jump Strategies_Apprentissage >>
 ===
 title: Strategies_Apprentissage
 tags:
 position: 44.112525939941406,464.1114196777344
 ---
-Sapiens_thinking: Bien. Je disais donc. Nous avons déjà abordé avec toi la plupart des stratégies d'apprentissage.
-You: Super, merci. Tout va bien alors.
-Sapiens: Non, pas encore. Comprends que nous n'avons plus rien à t'apprendre sur les stratégies, que je qualifierais de "quantitatives".
-You: C'est-à-dire ?
-Sapiens_thinking: Par exemple, les [b]stratégies cognitives[/b] avec "le rappel libre", le principe de la "mémoire courte" et "mémoire longue".
-Ledai_explaining: Tout à fait. Nous avons également fait le tour des [b]stratégies d'organisation[/b]. C'est-à-dire la planification et la répartition des tâches, ainsi que le travail en groupe ou en collaboration.
-Azul_sad: Rappelle-toi { $name }, je t'ai appris à motiver et guider Fred lors de vos sessions de travail sur la mémoire.
-You: Mouais.
-Sapiens: Crois-moi. Ces deux stratégies ont été étudiées, appliquées, acquises. Cependant, nous devons encore revenir sur sur les autres.
-You: Lesquelles ?
-Sapiens: les stratégies plus qualitatives. C'est l'objet de cette nouvelle leçon.
+Sapiens_thinking: Bien. Je disais donc. Nous avons déjà abordé avec toi la plupart des stratégies d'apprentissage. #line:0095d26 
+You: Super, merci. Tout va bien alors. #line:0756442 
+Sapiens: Non, pas encore. Comprends que nous n'avons plus rien à t'apprendre sur les stratégies, que je qualifierais de "quantitatives". #line:019b927 
+You: C'est-à-dire ? #line:0e95443 
+Sapiens_thinking: Par exemple, les [b]stratégies cognitives[/b] avec "le rappel libre", le principe de la "mémoire courte" et "mémoire longue". #line:0f4528b 
+Ledai_explaining: Tout à fait. Nous avons également fait le tour des [b]stratégies d'organisation[/b]. C'est-à-dire la planification et la répartition des tâches, ainsi que le travail en groupe ou en collaboration. #line:0525f69 
+Azul_sad: Rappelle-toi { $name }, je t'ai appris à motiver et guider Fred lors de vos sessions de travail sur la mémoire. #line:0b9cf6b 
+You: Mouais. #line:0d7396f 
+Sapiens: Crois-moi. Ces deux stratégies ont été étudiées, appliquées, acquises. Cependant, nous devons encore revenir sur sur les autres. #line:029891b 
+You: Lesquelles ? #line:090c672 
+Sapiens: les stratégies plus qualitatives. C'est l'objet de cette nouvelle leçon. #line:0396322 
 
 << jump Strategies_Affectives >>
 ===
@@ -300,69 +300,69 @@ tags:
 position: 921.7142944335938,458.70709228515625
 colorID: 1
 ---
-Sapiens: Le rapport à la réussite définit ce qu'une personne tire de son apprentissage.
-Azul_proud: Il précise aussi comment on se positionne par rapport à ses pairs.
-Temde_cheerful: Réfléchir à son rapport à la réussite, c'est apprendre à mieux se connaître.
-Ledai_explaining: Le rapport à la réussite détermine ce que l'on veut vraiment. Ce qui aide ensuite à choisir la meilleure stratégie pour y arriver.
-You: Tout ça m'a l'air compliqué, à vous entendre.
-Sapiens_happy: C'est qu'il n'y a pas un rapport à la réussite, ni une stratégie ad hoc.
-Temde_sad: Cela dépend de chaque personne : Fred dans le cas présent.
-You: Comment faire alors ?
-Azul_happy: Rappelle-toi. Nous t'avons montré comment nous étions tous les quatre différents.
-You: Ouais.
-Azul: Nous allons reprendre l'exercice. Cela va t'aider à mieux cerner le profil de Fred. Et partant, de trouver les moyens de le remotiver. Master Sapiens, à toi l'honneur !
-Sapiens_thinking: Réussir, pour moi, cela signifie devenir une encyclopédie vivante, avoir réponse à tout, être la source la plus fiable de la connaissance.
-You: Je vois, c'est modeste. Tu veux juste être le premier.
-Ledai_happy: Réussir, pour moi, c'est être prêt en toute circonstance, à déployer une méthodologie ou un processus fiable.
-You: OK, tu veux toujours savoir comment faire.
-Azul_proud: Réussir, pour moi, c'est être capable de tirer profit de la situation. Même si elle me semble défavorable. On a toujours quelque chose à apprendre.
-You: Cool. Tu n'as pas peur de relever un défi. C'est même le contraire.
-Temde_smiling: Pour moi, réussir, même si je n'aime pas ce mot-là, signifie être capable de s'adapter à n'importe quelle situation, même la plus improbable.
-You: Si je résume ton credo, c'est rester souple et agile.
+Sapiens: Le rapport à la réussite définit ce qu'une personne tire de son apprentissage. #line:06a04fd 
+Azul_proud: Il précise aussi comment on se positionne par rapport à ses pairs. #line:05f5708 
+Temde_cheerful: Réfléchir à son rapport à la réussite, c'est apprendre à mieux se connaître. #line:07acb4b 
+Ledai_explaining: Le rapport à la réussite détermine ce que l'on veut vraiment. Ce qui aide ensuite à choisir la meilleure stratégie pour y arriver. #line:04d28c0 
+You: Tout ça m'a l'air compliqué, à vous entendre. #line:08abab7 
+Sapiens_happy: C'est qu'il n'y a pas un rapport à la réussite, ni une stratégie ad hoc. #line:0f57e36 
+Temde_sad: Cela dépend de chaque personne : Fred dans le cas présent. #line:0f4a780 
+You: Comment faire alors ? #line:05253cc 
+Azul_happy: Rappelle-toi. Nous t'avons montré comment nous étions tous les quatre différents. #line:0b594b1 
+You: Ouais. #line:0893be7 
+Azul: Nous allons reprendre l'exercice. Cela va t'aider à mieux cerner le profil de Fred. Et partant, de trouver les moyens de le remotiver. Master Sapiens, à toi l'honneur ! #line:03a3637 
+Sapiens_thinking: Réussir, pour moi, cela signifie devenir une encyclopédie vivante, avoir réponse à tout, être la source la plus fiable de la connaissance. #line:075c3d9 
+You: Je vois, c'est modeste. Tu veux juste être le premier. #line:072ba0d 
+Ledai_happy: Réussir, pour moi, c'est être prêt en toute circonstance, à déployer une méthodologie ou un processus fiable. #line:02a3a85 
+You: OK, tu veux toujours savoir comment faire. #line:0a37eea 
+Azul_proud: Réussir, pour moi, c'est être capable de tirer profit de la situation. Même si elle me semble défavorable. On a toujours quelque chose à apprendre. #line:0fd75e2 
+You: Cool. Tu n'as pas peur de relever un défi. C'est même le contraire. #line:0bc139f 
+Temde_smiling: Pour moi, réussir, même si je n'aime pas ce mot-là, signifie être capable de s'adapter à n'importe quelle situation, même la plus improbable. #line:0e5baa0 
+You: Si je résume ton credo, c'est rester souple et agile. #line:0b2f0a3 
 
--> Et Fred ?
+-> Et Fred ? #line:04d8152 
     << jump Profil_Fred >>
 ===
 title: Profil_Fred
 tags:
 position: 1140.1434326171875,459.3251953125
 ---
-Sapiens_concerned: Ton ami, nous en avons déjà parlé, a un profil "divergent", comme celui d'Azul.
-Azul_cheerful: Je suis probablement celui qui comprend mieux Fred. Son point fort, c'est l'originalité, l'intuition, l'imagination, l'échange verbal avec ses pairs.
-You: Chouette ! Ça ne m'explique pas pourquoi il est en échec.
-Azul_sad: J'y viens. Ses points faibles sont : la mise en forme par écrit, l'apprentissage par coeur, et le manque de structure.
-You: Ça me fait une belle jambe.
-Ledai_doubtful: Au contraire, nous cernons désormais les difficultés que rencontrent Fred.
-Sapiens_thinking: Difficultés qu'il n'a pas appris à identifier et à surmonter.
-Ledai_explaining: Il ne suffit plus que de lui indiquer les tactiques pour dépasser, contourner ses failles.
-Azul_cheerful: Ce qui nous amène alors au "plan B".
+Sapiens_concerned: Ton ami, nous en avons déjà parlé, a un profil "divergent", comme celui d'Azul. #line:0297373 
+Azul_cheerful: Je suis probablement celui qui comprend mieux Fred. Son point fort, c'est l'originalité, l'intuition, l'imagination, l'échange verbal avec ses pairs. #line:0bbfce1 
+You: Chouette ! Ça ne m'explique pas pourquoi il est en échec. #line:05f8cba 
+Azul_sad: J'y viens. Ses points faibles sont : la mise en forme par écrit, l'apprentissage par coeur, et le manque de structure. #line:0bfbfc5 
+You: Ça me fait une belle jambe. #line:0ac82bc 
+Ledai_doubtful: Au contraire, nous cernons désormais les difficultés que rencontrent Fred. #line:0a357c7 
+Sapiens_thinking: Difficultés qu'il n'a pas appris à identifier et à surmonter. #line:0c4091c 
+Ledai_explaining: Il ne suffit plus que de lui indiquer les tactiques pour dépasser, contourner ses failles. #line:0c507d0 
+Azul_cheerful: Ce qui nous amène alors au "plan B". #line:06a91b4 
 
--> Le plan B ?
+-> Le plan B ? #line:04396f0 
     << jump Plan_B >>
 ===
 title: Plan_B
 tags:
 position: 1355.2037353515625,457.06011962890625
 ---
-Azul_sad: Fred a perdu la foi si je puis dire. Perdu la foi en ses capacités d'apprentissage et d'amélioration.
-Temde_sad: Contrairement à toi, Fred n'a pas pris de recul sur son comportement, ses styles d'apprentissage.
-Ledai_explaining: Il n'a pas pris la distance nécessaire pour observer le lien entre les méthodes les plus appropriées et les contextes.
-Sapiens_thinking: Avec notre accompagnement, tu as pris soin de t'auto-observer, de t'auto-réguler, de t'auto-ajuster.
-Azul_proud: Les résultats sont là, tes notes ont remonté sensiblement.
-Temde_sad: Alors que celles de Fred n'ont fait que baisser.
-You: Ho ! Je vais pas faire de miracle ! En un jour, je ne vais pas faire de Fred un "killer" au Grand Oral.
-Temde_cheerful: Non, mais tu peux lui donner un coup de pouce pour redresser la barre.
-Azul_cheerful: C'est ce qu'on appelle le "plan B". Face à une situation sans issue, on sort un atout !
-You: J'en ai pas d'atout !
-Azul: Si. Tes fiches de révisions. Il en a grand besoin. Plus que toi.
-You: Mais... Ce sont mes fiches. Je ne vais pas...
-Temde_smiling: Si si... Désormais, il est temps d'apprendre à partager ce que tu as appris.
-You: Heu... C'est tout?
-Sapiens_thinking: Non...
+Azul_sad: Fred a perdu la foi si je puis dire. Perdu la foi en ses capacités d'apprentissage et d'amélioration. #line:0416b3a 
+Temde_sad: Contrairement à toi, Fred n'a pas pris de recul sur son comportement, ses styles d'apprentissage. #line:0650e61 
+Ledai_explaining: Il n'a pas pris la distance nécessaire pour observer le lien entre les méthodes les plus appropriées et les contextes. #line:05d7bac 
+Sapiens_thinking: Avec notre accompagnement, tu as pris soin de t'auto-observer, de t'auto-réguler, de t'auto-ajuster. #line:0764deb 
+Azul_proud: Les résultats sont là, tes notes ont remonté sensiblement. #line:02f59a7 
+Temde_sad: Alors que celles de Fred n'ont fait que baisser. #line:0cb77bb 
+You: Ho ! Je vais pas faire de miracle ! En un jour, je ne vais pas faire de Fred un "killer" au Grand Oral. #line:0523220 
+Temde_cheerful: Non, mais tu peux lui donner un coup de pouce pour redresser la barre. #line:0a7f0f9 
+Azul_cheerful: C'est ce qu'on appelle le "plan B". Face à une situation sans issue, on sort un atout ! #line:076597f 
+You: J'en ai pas d'atout ! #line:08f8ccf 
+Azul: Si. Tes fiches de révisions. Il en a grand besoin. Plus que toi. #line:07d461e 
+You: Mais... Ce sont mes fiches. Je ne vais pas... #line:02c6aac 
+Temde_smiling: Si si... Désormais, il est temps d'apprendre à partager ce que tu as appris. #line:023ab93 
+You: Heu... C'est tout? #line:0802925 
+Sapiens_thinking: Non... #line:0cf26ef 
 
 << hide >>
 
--> Fred doit se trouver un objectif
+-> Fred doit se trouver un objectif #line:0ffa069 
     << jump Self_Motivation >>
 
 //NB les fiches de révision, c'est la solution ultime qui permet au joueur d'atteindre son objectif au Day6 level2, et même d'exploser son score
@@ -371,16 +371,16 @@ title: Self_Motivation
 tags:
 position: 1577.9716796875,453.790771484375
 ---
-Ledai_explaining: Nous l'avons dit et nous le répétons : Fred est perdu.
-Sapiens_thinking: Iel est perdu parce qu'iel n'a pas de but, de direction, d'objectif clair.
-Ledai: Sans but précis, Fred ne peut mobiliser ses ressources.
-Azul: C'est là que tu interviens. Tu vas l'aider à formuler son objectif.
-Sapiens_concerned: Pas n'importe lequel ! Un objectif qu'iel se fixe lui-même. Un objectif spécifique, réalisable. Et, de préférence, découpé en plusieurs étapes.
-You: Je vais pas y arriver !
-Temde_smiling: Mais si. Tu es presque l'un des nôtres. Tu es un expert de la métacognition. Tu vas apprendre à Fred comment contourner ses limites.
-You: Comment ça ?
-Sapiens: En lui expliquant ce que nous t'avons présenté et expliqué...
-Temde: Pour réussir en tout, il faut savoir "apprendre à apprendre".
+Ledai_explaining: Nous l'avons dit et nous le répétons : Fred est perdu. #line:0a6ff19 
+Sapiens_thinking: Iel est perdu parce qu'iel n'a pas de but, de direction, d'objectif clair. #line:0bf19be 
+Ledai: Sans but précis, Fred ne peut mobiliser ses ressources. #line:050d3a1 
+Azul: C'est là que tu interviens. Tu vas l'aider à formuler son objectif. #line:054e987 
+Sapiens_concerned: Pas n'importe lequel ! Un objectif qu'iel se fixe lui-même. Un objectif spécifique, réalisable. Et, de préférence, découpé en plusieurs étapes. #line:0fdbbcc 
+You: Je vais pas y arriver ! #line:0f17ece 
+Temde_smiling: Mais si. Tu es presque l'un des nôtres. Tu es un expert de la métacognition. Tu vas apprendre à Fred comment contourner ses limites. #line:0769877 
+You: Comment ça ? #line:0434520 
+Sapiens: En lui expliquant ce que nous t'avons présenté et expliqué... #line:00fefae 
+Temde: Pour réussir en tout, il faut savoir "apprendre à apprendre". #line:0ae081b 
 
 << jump Apprendre_Apprendre >>
 ===
@@ -388,38 +388,38 @@ title: Apprendre_Apprendre
 tags:
 position: 1799.8902587890625,457.50482177734375
 ---
-Sapiens_concerned: Apprendre à apprendre est le but ultime de l'apprentissage. C'est ainsi qu'on devient un expert de la métacognition.
-You: Arrêtez de vous vous fichez de moi. Je suis loin d'être un sage, comme vous.
-Azul_proud: Ne sois pas modeste, { $name }.
-Sapiens: Tu sais tout maintenant des quatre stratégies d'apprentissage : stratégie cognitive, stratégie organisationnelle, stratégie affective, stratégie métacognitive !
-You: Ouais. Et alors ?
-Sapiens: Tu n'as plus qu'une marche à monter avant de devenir un [b]Apprenant Universel[/b] !
-You: Heu... ça veut dire quoi ?
-Azul_happy: Une fois que tu auras permis à Fred de surmonter ses obstacles d'apprentissage...
-Temde_cheerful: ... les stratégies d'apprentissage n'auront plus de secret pour toi.
-Sapiens_happy: Tu sauras les exploiter au mieux, selon le but que tu te seras fixé.
-Ledai: Tu sauras comment "apprendre à apprendre".
-You: Cool.
-Sapiens: Mais avant cela, il faut passer la dernière épreuve.
-Ledai_explaining: Aider Fred à se fixer un objectif personnel et l'atteindre.
-Azul: Souviens-toi. Fred a perdu confiance en lui. Il doit redéfinir sa stratégie affective.
-Temde_sad: Fred ne sait plus ce qu'il fiche à l'Académie, ce qu'il en attend. Il doit aussi revoir sa stratégie métacognitive.
-Sapiens: Un petit QCM pour finir ?
+Sapiens_concerned: Apprendre à apprendre est le but ultime de l'apprentissage. C'est ainsi qu'on devient un expert de la métacognition. #line:0ffca4e 
+You: Arrêtez de vous vous fichez de moi. Je suis loin d'être un sage, comme vous. #line:0bb0b86 
+Azul_proud: Ne sois pas modeste, { $name }. #line:0a0a603 
+Sapiens: Tu sais tout maintenant des quatre stratégies d'apprentissage : stratégie cognitive, stratégie organisationnelle, stratégie affective, stratégie métacognitive ! #line:0e762ef 
+You: Ouais. Et alors ? #line:031751a 
+Sapiens: Tu n'as plus qu'une marche à monter avant de devenir un [b]Apprenant Universel[/b] ! #line:02f9faf 
+You: Heu... ça veut dire quoi ? #line:0e7c218 
+Azul_happy: Une fois que tu auras permis à Fred de surmonter ses obstacles d'apprentissage... #line:071fdc0 
+Temde_cheerful: ... les stratégies d'apprentissage n'auront plus de secret pour toi. #line:047d0ad 
+Sapiens_happy: Tu sauras les exploiter au mieux, selon le but que tu te seras fixé. #line:0d527d5 
+Ledai: Tu sauras comment "apprendre à apprendre". #line:018482d 
+You: Cool. #line:0fc6c22 
+Sapiens: Mais avant cela, il faut passer la dernière épreuve. #line:0fae0dd 
+Ledai_explaining: Aider Fred à se fixer un objectif personnel et l'atteindre. #line:0d8072e 
+Azul: Souviens-toi. Fred a perdu confiance en lui. Il doit redéfinir sa stratégie affective. #line:0ab43c1 
+Temde_sad: Fred ne sait plus ce qu'il fiche à l'Académie, ce qu'il en attend. Il doit aussi revoir sa stratégie métacognitive. #line:01422a5 
+Sapiens: Un petit QCM pour finir ? #line:06f6120 
 
 << hide >>
 
--> Va pour un QCM
+-> Va pour un QCM #line:02363d3 
     << jump QCM >>
 ===
 title: QCM
 tags:
 position: 2022.2449951171875,462.113037109375
 ---
-Sapiens_concerned: Reprenons l'exercice pour conclure. Ta mission va être d'accompagner Fred, de l'aider à redéfinir son objectif. Comment ?
+Sapiens_concerned: Reprenons l'exercice pour conclure. Ta mission va être d'accompagner Fred, de l'aider à redéfinir son objectif. Comment ? #line:0d03b33 
 
--> En lui proposant une méthode universelle que nous t'avons apprise ?
+-> En lui proposant une méthode universelle que nous t'avons apprise ? #line:0fd08c6 
     << jump Strategie_Metacognitive_Bad >>
--> En le laissant prendre conscience de ses limites, qu'il ne doit pas forcer mais contourner ?
+-> En le laissant prendre conscience de ses limites, qu'il ne doit pas forcer mais contourner ? #line:098514e 
     << jump Strategie_Metacognitive_Good >>
 ===
 title: Toilettes_No
@@ -431,11 +431,11 @@ position: -1969.8092041015625,-190.40352630615234
 << advanceTime 0:05 >>
 << fadeOut >>
 
-Il faut bien commencer par quelque part. Vous foncez dans les toilettes qui donnent sur l'amphithéâtre du Grand Oral. L'oeil aux aguets, vous inspectez le moindre recoin : il y a des badauds, mais pas de Fred. Les regards courroucés de ceux-ci ne vous découragent pas.
-Vous prenez ensuite sur vous de taper à la porte de chaque compartiment, histoire de vous assurer qu'il ne se serait pas enfermé dans l'un d'entre-eux. C'était bien tenté, mais, ce n'est pas ici que se cache Fred.
-Dépité, vous ressortez des toilettes sous les yeux accusateurs de ceux que vous avez dérangés pour rien...
+Il faut bien commencer par quelque part. Vous foncez dans les toilettes qui donnent sur l'amphithéâtre du Grand Oral. L'oeil aux aguets, vous inspectez le moindre recoin : il y a des badauds, mais pas de Fred. Les regards courroucés de ceux-ci ne vous découragent pas. #line:0df6394 
+Vous prenez ensuite sur vous de taper à la porte de chaque compartiment, histoire de vous assurer qu'il ne se serait pas enfermé dans l'un d'entre-eux. C'était bien tenté, mais, ce n'est pas ici que se cache Fred. #line:0f098d6 
+Dépité, vous ressortez des toilettes sous les yeux accusateurs de ceux que vous avez dérangés pour rien... #line:0ace253 
 
--> Chercher Fred ailleurs
+-> Chercher Fred ailleurs #line:0fc58ae 
     << fadeIn >>
     << jump Finding_Fred >>
 ===
@@ -448,11 +448,11 @@ position: -1968.4114990234375,29.55572509765625
 << advanceTime 0:10 >>
 << fadeOut >>
 
-Vous savez que Fred passe beaucoup de temps à la salle de sport. Alors, vous vous dites qu'il y a une chance, même petite, qu'iel soit allé là-bas pour se défouler, vider sa frustration en tapant sur des sacs de frappe.
-C'est le coeur plein d'espoir que vous entrez dans la salle de sport. Hélas, après avoir examiné les environs, posé des questions au personnes présentes...
-Force est de reconnaître que vous avez fait choux blanc. Fred n'a pas mis les pieds ici ce matin. Vous vous demandez bien où iel se planque...
+Vous savez que Fred passe beaucoup de temps à la salle de sport. Alors, vous vous dites qu'il y a une chance, même petite, qu'iel soit allé là-bas pour se défouler, vider sa frustration en tapant sur des sacs de frappe. #line:004ef5d 
+C'est le coeur plein d'espoir que vous entrez dans la salle de sport. Hélas, après avoir examiné les environs, posé des questions au personnes présentes... #line:074342f 
+Force est de reconnaître que vous avez fait choux blanc. Fred n'a pas mis les pieds ici ce matin. Vous vous demandez bien où iel se planque... #line:015a82c 
 
--> Chercher Fred ailleurs
+-> Chercher Fred ailleurs #line:045db24 
     << fadeIn >>
     << jump Finding_Fred >>
 ===
@@ -465,11 +465,11 @@ position: -1964.2073974609375,249.321533203125
 << advanceTime 0:10 >>
 << fadeOut >>
 
-La cafétéria est un second foyer pour Fred. Iel y traîne souvent. Pour boire un coup, grignoter quelque chose, papoter avec des amis, et surtout pour faire la fête. Aujourd'hui, pourtant, la cafétéria est bien calme.
-Il n'y a personne ou presque. En tout cas, aucun signe de Fred. Vous demandez à tout hasard à un Bar Bot s'il a servi Fred. Il vous répond que non.
-Mauvaise pioche : Fred se niche ailleurs. Où donc ?
+La cafétéria est un second foyer pour Fred. Iel y traîne souvent. Pour boire un coup, grignoter quelque chose, papoter avec des amis, et surtout pour faire la fête. Aujourd'hui, pourtant, la cafétéria est bien calme. #line:04fec6c 
+Il n'y a personne ou presque. En tout cas, aucun signe de Fred. Vous demandez à tout hasard à un Bar Bot s'il a servi Fred. Il vous répond que non. #line:0ee75e9 
+Mauvaise pioche : Fred se niche ailleurs. Où donc ? #line:01a368c 
 
--> Chercher Fred ailleurs
+-> Chercher Fred ailleurs #line:0665e3c 
     << fadeIn >>
     << jump Finding_Fred >>
 ===
@@ -477,69 +477,69 @@ title: Strategies_Affectives
 tags:
 position: 263.66294860839844,462.5964660644531
 ---
-Sapiens_thinking: Nous devons revenir sur deux stratégies que nous devons approfondir avec toi, si nous voulons te donner tous les moyens nécessaires pour "apprendre à apprendre".
--> Qu'est-ce que vous me raconter là ?
-    Azul_sad: Calme ta colère, { $name }. Si tu veux profiter pleinement de notre enseignement, tu dois évacuer ton stress, lâcher prise.
-    Sapiens: Merci, Azul. 
--> J'écoute
-Sapiens: Bref, nous t'avons notamment appris à gérer ton bien-être, ton stress. Il s'agit de la [b]la stratégie affective[/b].
-You: Le bien-être, vous voulez dire : manger équilibré et dormir régulièrement ?
-Ledai: Tout à fait.
-Sapiens_thinking: Mais nous avons mis de côté deux variables : [b]la confiance en soi[/b] et [b]la motivation[/b]. Qui font pourtant partie intégrante de cette stratégie.
-Azul_happy: Il semblerait en tout cas que, par la force des choses, tu aies pris de plus en plus confiance en toi.
--> Oui
-    Sapiens_concerned: Dommage que Fred n'a pas la même clarté de motivation dans son parcours. Iel vient de perdre confiance en lui.
--> Oui, mais...
-    You: ... je ne vois toujours pas le rapport avec Fred. C'est de lui dont il est question.
-    Sapiens_concerned: Justement. Fred n'a pas de motivation claire dans son parcours. Et iel vient de perdre confiance en lui. 
-Sapiens_concerned: Iel est dans l'impasse, iel ne sait plus comment rebondir.
-Ledai_explaining: Autrement dit, Fred n'est pas claire sur son [b]objectif personnel[/b].
+Sapiens_thinking: Nous devons revenir sur deux stratégies que nous devons approfondir avec toi, si nous voulons te donner tous les moyens nécessaires pour "apprendre à apprendre". #line:081518b 
+-> Qu'est-ce que vous me raconter là ? #line:0cbad6d 
+    Azul_sad: Calme ta colère, { $name }. Si tu veux profiter pleinement de notre enseignement, tu dois évacuer ton stress, lâcher prise. #line:097269a 
+    Sapiens: Merci, Azul.  #line:0074af5 
+-> J'écoute #line:08ef690 
+Sapiens: Bref, nous t'avons notamment appris à gérer ton bien-être, ton stress. Il s'agit de la [b]la stratégie affective[/b]. #line:05e17b5 
+You: Le bien-être, vous voulez dire : manger équilibré et dormir régulièrement ? #line:04da66e 
+Ledai: Tout à fait. #line:044a894 
+Sapiens_thinking: Mais nous avons mis de côté deux variables : [b]la confiance en soi[/b] et [b]la motivation[/b]. Qui font pourtant partie intégrante de cette stratégie. #line:0b1add3 
+Azul_happy: Il semblerait en tout cas que, par la force des choses, tu aies pris de plus en plus confiance en toi. #line:0385878 
+-> Oui #line:0f9ff19 
+    Sapiens_concerned: Dommage que Fred n'a pas la même clarté de motivation dans son parcours. Iel vient de perdre confiance en lui. #line:0e7583c 
+-> Oui, mais... #line:0aa92f7 
+    You: ... je ne vois toujours pas le rapport avec Fred. C'est de lui dont il est question. #line:0c438e1 
+    Sapiens_concerned: Justement. Fred n'a pas de motivation claire dans son parcours. Et iel vient de perdre confiance en lui.  #line:078cc72 
+Sapiens_concerned: Iel est dans l'impasse, iel ne sait plus comment rebondir. #line:0a9a5c6 
+Ledai_explaining: Autrement dit, Fred n'est pas claire sur son [b]objectif personnel[/b]. #line:0e99926 
 
--> C'est-à-dire ?
+-> C'est-à-dire ? #line:0821dad 
     << jump Strategies_Metacognitives >>
 ===
 title: Strategies_Metacognitives
 tags:
 position: 482.4721374511719,462.5337829589844
 ---
-Sapiens_concerned: Pour comprendre, revenons à ton cas
--> Je ne vois pas le rapport
--> Pourquoi moi ?
-Azul_proud: Que veux-tu ? Qu'attends-tu donc de ton passage à l'Académie ?
-You: Heu...
-Temde_sad: Tu vois. Question simple et pourtant réponse compliquée.
-Azul_sad: Alors imagine Fred, qui n'a pas bénéficié des leçons que tu as reçues avec nous.
-You: Ben...
-Azul_happy: Exactement. Fred est largué, iel est déboussolé.
-Sapiens_thinking: Comme iel n'a pas conscience de ses limites, iel ne réalise pas qu'iel les a dépassées.
-Ledai_explaining: Et surtout Fred ne sait pas du tout comment contourner ses limites, ses faiblesses.
-You: Si je comprends bien, vous dites que c'est fichu...
+Sapiens_concerned: Pour comprendre, revenons à ton cas #line:05334a3 
+-> Je ne vois pas le rapport #line:07309ec 
+-> Pourquoi moi ? #line:012e6e7 
+Azul_proud: Que veux-tu ? Qu'attends-tu donc de ton passage à l'Académie ? #line:015b6cd 
+You: Heu... #line:02066ba 
+Temde_sad: Tu vois. Question simple et pourtant réponse compliquée. #line:0ca72b0 
+Azul_sad: Alors imagine Fred, qui n'a pas bénéficié des leçons que tu as reçues avec nous. #line:0f3c3b0 
+You: Ben... #line:0eb0a41 
+Azul_happy: Exactement. Fred est largué, iel est déboussolé. #line:02c85bd 
+Sapiens_thinking: Comme iel n'a pas conscience de ses limites, iel ne réalise pas qu'iel les a dépassées. #line:0bb6b80 
+Ledai_explaining: Et surtout Fred ne sait pas du tout comment contourner ses limites, ses faiblesses. #line:0d219ec 
+You: Si je comprends bien, vous dites que c'est fichu... #line:02c229b 
 
--> ... Fred est perdu ?
+-> ... Fred est perdu ? #line:0f7e440 
     << jump Fred_Lost >>
 ===
 title: Fred_Lost
 tags:
 position: 702.8917846679688,459.6944885253906
 ---
-Temde: Pas du tout.
-Sapiens_concerned: Iel ne sait juste pas comment s'en sortir.
-Ledai_happy: Par contre, toi, tu as des ressources qu'iel n'a pas.
-Azul_proud: Tu peux le guider. Comme nous t'avons aidé à arriver jusqu'ici.
--> Vous êtes fou ?!
-    Sapiens_angry: Sûrement pas ! Nous sommes des Sages ! Des experts des stratégies d'apprentissage !
--> Je vais faire de mon mieux
-    Temde: J'en étais sûr.
-You: Mais comment je vais m'y prendre ?
-Sapiens_concerned: Tu n'as qu'à simplement nous écouter. Nous te donnerons toutes les clés pour permettre à Fred de comprendre ses limites et d'apprendre à les surmonter, les contourner.
-Azul: Et probablement toi aussi. En partie.
-You: Qu'est-ce que vous racontez ?
-Sapiens: Tu verras bien. Ta mission sera également d'aider Fred à formuler un objectif personnel, spécifique, accessible, qui l'aidera à établir ses priorités.
-You: Houlala. C'est beaucoup de choses tout ça.
-Azul: Ne t'inquiète pas. Nous reviendrons là-dessus.
-Sapiens_concerned: Maintenant, il est temps d'aborder un point crucial :
+Temde: Pas du tout. #line:0e6b1ec 
+Sapiens_concerned: Iel ne sait juste pas comment s'en sortir. #line:0fe11a0 
+Ledai_happy: Par contre, toi, tu as des ressources qu'iel n'a pas. #line:0960de6 
+Azul_proud: Tu peux le guider. Comme nous t'avons aidé à arriver jusqu'ici. #line:0798f52 
+-> Vous êtes fou ?! #line:00c59c1 
+    Sapiens_angry: Sûrement pas ! Nous sommes des Sages ! Des experts des stratégies d'apprentissage ! #line:0141d26 
+-> Je vais faire de mon mieux #line:00cd7b0 
+    Temde: J'en étais sûr. #line:0e06a90 
+You: Mais comment je vais m'y prendre ? #line:0c54c1e 
+Sapiens_concerned: Tu n'as qu'à simplement nous écouter. Nous te donnerons toutes les clés pour permettre à Fred de comprendre ses limites et d'apprendre à les surmonter, les contourner. #line:08294c4 
+Azul: Et probablement toi aussi. En partie. #line:0b86032 
+You: Qu'est-ce que vous racontez ? #line:0e6a37b 
+Sapiens: Tu verras bien. Ta mission sera également d'aider Fred à formuler un objectif personnel, spécifique, accessible, qui l'aidera à établir ses priorités. #line:0a70b1c 
+You: Houlala. C'est beaucoup de choses tout ça. #line:0f699bd 
+Azul: Ne t'inquiète pas. Nous reviendrons là-dessus. #line:0c58a17 
+Sapiens_concerned: Maintenant, il est temps d'aborder un point crucial : #line:051c5b6 
 
--> Le rapport à la réussite
+-> Le rapport à la réussite #line:040b67c 
     << jump Rapport_Reussite >>
 ===
 title: Journal_Mental
@@ -552,10 +552,10 @@ position: 2903.8995971679688,471.1633605957031
 << music Neutral >>
 << fadeOut 200 >>
 
-Tu te retrouves dans cette bulle de sérénité, propice à la méditation. C'est étrange, aujourd'hui, ce n'est pas ta journée que vas tenter de rectifier, ça tu l'as déjà fait. 
-Non, pour la première fois, tu vas tenter de corriger la trajectoire d'une autre personne : ton super pote Fred.
+Tu te retrouves dans cette bulle de sérénité, propice à la méditation. C'est étrange, aujourd'hui, ce n'est pas ta journée que vas tenter de rectifier, ça tu l'as déjà fait.  #line:0fb67bc 
+Non, pour la première fois, tu vas tenter de corriger la trajectoire d'une autre personne : ton super pote Fred. #line:06c0265 
 
-Pense à bien noter dans ton "carnet d'ingénieur tout-terrain" tout ce qui te sera utile pour cette dernière épreuve.
+Pense à bien noter dans ton "carnet d'ingénieur tout-terrain" tout ce qui te sera utile pour cette dernière épreuve. #line:05c41fe 
 ===
 title: Strategie_Metacognitive_Bad
 tags:
@@ -563,14 +563,14 @@ position: 2246.5753784179688,578.4083862304688
 ---
 << fx Failure>>
 
-Sapiens_angry: Non pas du tout ! Il n'y a pas méthode miracle ! Il faut adapter sa stratégie à la personne et à la situation !
-You: Oups. Pardon.
-Azul_happy: Tu dois demander à Fred ce qu'il veut vraiment. Pourquoi il est à l'Académie, ce qu'il en attend ?
-Temde_smiling: Ce n'est qu'à partir de ce premier tour de table que Fred peut trouver, avec ton soutien, un moyen de reprendre son apprentissage en main y arriver.
-You: Avec mes fiches de révision ?
-Sapiens_thinking: Exactement. Le temps lui manque, ses choix sont limités.
-Azul_sad: C'est le "plan B". Mais si Fred ne sait pas ce qu'il en veut en faire, cela n'a aucun intérêt.
-Sapiens_thinking: Il lui faut d'abord un objectif. La méthode vient ensuite
+Sapiens_angry: Non pas du tout ! Il n'y a pas méthode miracle ! Il faut adapter sa stratégie à la personne et à la situation ! #line:0cdcebf 
+You: Oups. Pardon. #line:09b4145 
+Azul_happy: Tu dois demander à Fred ce qu'il veut vraiment. Pourquoi il est à l'Académie, ce qu'il en attend ? #line:0a72c9f 
+Temde_smiling: Ce n'est qu'à partir de ce premier tour de table que Fred peut trouver, avec ton soutien, un moyen de reprendre son apprentissage en main y arriver. #line:0537754 
+You: Avec mes fiches de révision ? #line:06b9abd 
+Sapiens_thinking: Exactement. Le temps lui manque, ses choix sont limités. #line:0ab46b3 
+Azul_sad: C'est le "plan B". Mais si Fred ne sait pas ce qu'il en veut en faire, cela n'a aucun intérêt. #line:0ccb3ea 
+Sapiens_thinking: Il lui faut d'abord un objectif. La méthode vient ensuite #line:0138745 
 
 << jump Objectif_QCM >>
 ===
@@ -580,14 +580,14 @@ position: 2243.4690551757812,357.7644348144531
 ---
 << fx Success>>
 
-Sapiens_happy: Parfait ! Il faut adapter sa stratégie à la personne et à la situation !
-You: Oui.
-Azul_happy: Tu dois demander à Fred ce qu'il veut vraiment. Pourquoi il est à l'Académie, ce qu'il en attend ?
-Temde_smiling: Ce n'est qu'à partir de ce premier tour de table que Fred peut trouver, avec ton soutien, un moyen de reprendre son apprentissage en main y arriver.
-You: Avec mes fiches de révision ?
-Sapiens_thinking: Oui. Le temps lui manque, ses choix sont limités.
-Azul_sad: C'est le "plan B". Mais si Fred ne sait pas ce qu'il en veut en faire, cela n'a aucun intérêt.
-Sapiens_thinking: Il lui faut d'abord l'objectif. La méthode vient ensuite
+Sapiens_happy: Parfait ! Il faut adapter sa stratégie à la personne et à la situation ! #line:0a3ec4e 
+You: Oui. #line:03191f7 
+Azul_happy: Tu dois demander à Fred ce qu'il veut vraiment. Pourquoi il est à l'Académie, ce qu'il en attend ? #line:0923aee 
+Temde_smiling: Ce n'est qu'à partir de ce premier tour de table que Fred peut trouver, avec ton soutien, un moyen de reprendre son apprentissage en main y arriver. #line:0728ea8 
+You: Avec mes fiches de révision ? #line:0858b37 
+Sapiens_thinking: Oui. Le temps lui manque, ses choix sont limités. #line:0407437 
+Azul_sad: C'est le "plan B". Mais si Fred ne sait pas ce qu'il en veut en faire, cela n'a aucun intérêt. #line:0134d2c 
+Sapiens_thinking: Il lui faut d'abord l'objectif. La méthode vient ensuite #line:0e9469b 
 
 << jump Objectif_QCM >>
 ===
@@ -595,13 +595,13 @@ title: Objectif_QCM
 tags:
 position: 2468.0347595214844,466.08001708984375
 ---
-Sapiens_concerned: Fred ne pourra surmonter son problème que s'iel se fixe un objectif. Une fois, et une fois seulement, son objectif fixé, Fred pourra réfléchir, avec ton soutien, à une solution lui permettant de contourner ses limites.
-You: Oui. J'ai compris.
-Sapiens: Mais plus précisément. L'objectif de Fred doit être :
+Sapiens_concerned: Fred ne pourra surmonter son problème que s'iel se fixe un objectif. Une fois, et une fois seulement, son objectif fixé, Fred pourra réfléchir, avec ton soutien, à une solution lui permettant de contourner ses limites. #line:0148511 
+You: Oui. J'ai compris. #line:04aa98e 
+Sapiens: Mais plus précisément. L'objectif de Fred doit être : #line:06c72b1 
 
--> Universel, spatial et verbal
+-> Universel, spatial et verbal #line:095889f 
     << jump Objectif_Personnel_Bad >>
--> Personnel, spécifique et réalisable.
+-> Personnel, spécifique et réalisable. #line:0dcc176 
     << jump Objectif_Personnel_Good >>
 ===
 title: Objectif_Personnel_Bad
@@ -610,15 +610,15 @@ position: 2685.858673095703,357.48114013671875
 ---
 << fx Failure>>
 
-Sapiens_sad: Quel piège énorme, et tu es tombé dedans ! Quelle déception...
-Azul_sad: { $name } n'a pas bien entendu les réponses.
-Ledai_doubtful: Tsss... N'essaye pas de le couvrir. Il a raté.
-Temde_smiling: Mes chers amis, gardons la tête froide. Continuons.
-Sapiens_thinking: Oui... Pour que Fred reprenne confiance en lui et trouve une solution à son problème, il lui faut redonner une direction claire à son parcours. Bref, iel doit se définir lui-même un objectif spécifique et réalisable.
-Azul_happy: Ton rôle { $name } est de l'aider à le trouver.
-Sapiens: Les mots clés sont auto-observation et auto-régulation.
-Ledai_explaining: C'est compris ?
-You: Oui.
+Sapiens_sad: Quel piège énorme, et tu es tombé dedans ! Quelle déception... #line:0a1b31c 
+Azul_sad: { $name } n'a pas bien entendu les réponses. #line:08de884 
+Ledai_doubtful: Tsss... N'essaye pas de le couvrir. Il a raté. #line:0f07527 
+Temde_smiling: Mes chers amis, gardons la tête froide. Continuons. #line:05a86b5 
+Sapiens_thinking: Oui... Pour que Fred reprenne confiance en lui et trouve une solution à son problème, il lui faut redonner une direction claire à son parcours. Bref, iel doit se définir lui-même un objectif spécifique et réalisable. #line:02f1352 
+Azul_happy: Ton rôle { $name } est de l'aider à le trouver. #line:0795b9d 
+Sapiens: Les mots clés sont auto-observation et auto-régulation. #line:0d3d8f3 
+Ledai_explaining: C'est compris ? #line:02e3998 
+You: Oui. #line:099448a 
 << hide >>
 
 << fx Warp >>
@@ -630,16 +630,16 @@ position: 2685.434356689453,571.055908203125
 ---
 << fx Success >>
 
-Sapiens_happy: Parfait ! C'est ça.
-Temde_smiling: Mes chers amis, continuons.
-Sapiens_thinking: Oui... Pour que Fred reprenne confiance en lui et trouve une solution à son problème, il lui faut redonner une direction claire à son parcours. Bref, iel doit se définir lui-même un objectif spécifique et réalisable.
-Azul_happy: Ton rôle { $name } est de l'aider à le trouver.
-Sapiens: Les mots clés sont auto-observation et auto-régulation.
-Ledai_explaining: C'est compris ?
-You: Oui.
+Sapiens_happy: Parfait ! C'est ça. #line:0ebcf40 
+Temde_smiling: Mes chers amis, continuons. #line:0c003c3 
+Sapiens_thinking: Oui... Pour que Fred reprenne confiance en lui et trouve une solution à son problème, il lui faut redonner une direction claire à son parcours. Bref, iel doit se définir lui-même un objectif spécifique et réalisable. #line:0661786 
+Azul_happy: Ton rôle { $name } est de l'aider à le trouver. #line:0cfe09c 
+Sapiens: Les mots clés sont auto-observation et auto-régulation. #line:02a1581 
+Ledai_explaining: C'est compris ? #line:04b70a6 
+You: Oui. #line:056e501 
 << hide >>
 
--> Note tout ça dans ton journal mental
+-> Note tout ça dans ton journal mental #line:0429691 
     << fx Warp >>
     << jump Journal_Mental >>
 ===
