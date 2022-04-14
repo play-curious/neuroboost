@@ -452,20 +452,16 @@ export class Menu extends extension.ExtendedCompositeEntity {
         "booyah/images/button-back.png"
       ].texture
     );
-    
+
     closeButton.anchor.set(0.5);
     closeButton.position.set(50);
     closeButton.interactive = true;
     closeButton.buttonMode = true;
-    this._on(
-      closeButton,
-      "pointertap",
-      () => {
-        this.container.removeChild(background);
-        this.container.removeChild(closeButton);
-        this._deactivateChildEntity(scrollBox);
-      }
-    );
+    this._on(closeButton, "pointertap", () => {
+      this.container.removeChild(background);
+      this.container.removeChild(closeButton);
+      this._deactivateChildEntity(scrollBox);
+    });
     this.container.addChild(closeButton);
   }
 

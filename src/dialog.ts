@@ -122,11 +122,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.enabled = true;
     this.selectedOptions = [];
 
-    //@ts-ignore
-    const saveData = window.loadSave ?save.getSave():undefined ;
+    const saveData = DialogScene.loadSave ? save.getSave() : undefined;
 
-    //@ts-ignore
-    delete window.loadSave;
+    DialogScene.loadSave = false;
 
     if (saveData) {
       this.startNode = saveData.nodeName;
