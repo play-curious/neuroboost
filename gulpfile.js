@@ -1,9 +1,12 @@
 const util = require("gulp-util");
+const transform = require("gulp-transform");
+const rename = require("gulp-rename");
 const gulp = require("gulp");
 const path = require("path");
 const tap = require("gulp-tap");
 const cp = require("child_process");
 const fs = require("fs");
+const hash = require("hash.js");
 
 function images() {
   const template = fs.readFileSync(
@@ -80,8 +83,64 @@ function watch(cb) {
   gulp.watch("images/**/*", images);
 }
 
+function yarnToCSV(file, info) {
+  console.log(info.basename);
+  
+  // const yarnFile = fs.readFileSync(
+  //   path.join(__dirname, "levels", file),
+  //   "utf8"
+  // );
+
+  let currentNode = "";
+  let readingHeader = true;
+  let body = "LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?\n";
+  let i = 1;
+  for (let line of file.split("\n")) {
+    line = line.trim();
+    if (line === "===") {
+      readingHeader = true;
+    } else if (line === "---") {
+      readingHeader = false;
+    } else {
+      if (readingHeader) {
+        const [name, value] = line.split(": ");
+        if (name === "title") {
+          currentNode = value;
+        }
+      } else {
+        let [text, id] = line.split("#line:");
+        text = text.trim();
+        if(id === undefined
+        || text === "-> back"
+        || (text.includes("->") && text.includes("@"))) continue;
+        body += "en	";
+        body += id + "	";
+        body += text + "	";
+        body += info.basename.substring(0, info.basename.length-5) + "	";
+        body += currentNode + "	";
+        body += i + "	";
+        const hashed = hash.sha1().update(text).digest("hex");
+        body += hashed.substring(0, 8);
+        body += "\n";
+      }
+    }
+    i++;
+  }
+
+  return body;
+}
+
+function convertLevelsToCSV() {
+  return gulp
+    .src(["levels/D*.yarn", "levels/End_Screen.yarn"])
+    .pipe(transform("utf8", yarnToCSV))
+    .pipe(rename({ extname: ".tsv" }))
+    .pipe(gulp.dest("levels/lang/en/"));
+}
+
 exports.images = images;
 exports.watch = gulp.series(images, watch);
+exports.yarnToCSV = convertLevelsToCSV;
 
 // Meta-tasks
 

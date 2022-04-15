@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 import * as yarnBound from "yarn-bound";
 
+import * as narration from "booyah/src/narration";
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 import * as audio from "booyah/src/audio";
@@ -101,6 +102,7 @@ const stateNames = [
 const states: { [k: string]: entity.EntityResolvable } = {
   Start_Menu: new save.StartMenu(),
 };
+
 for (const stateName of stateNames) {
   if (stateName.includes("journal"))
     states[`${stateName}`] = new journal.JournalScene(

@@ -1,4 +1,4 @@
-# gauges: learning sleep food mentalLoad
+﻿#gauges:learning,sleep,food,mentalLoad
 
 title: Start
 tags:
@@ -15,16 +15,16 @@ position: -941,-697
 << setTime 8:00 2 >>
 << fadeOut >>
 << loopFX Chime_LOOP 2000 >>
-Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. 
+Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.  #line:0aa5e7b 
 << stopFX Chime_LOOP >>
 << music Neutral >>
 
-Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie d'Omniscience et de Polytechnologie Universelle. Attention, ça ne veut pas dire jour de repos !
+Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie d'Omniscience et de Polytechnologie Universelle. Attention, ça ne veut pas dire jour de repos ! #line:02f7e52 
 
 << loopFX PhoneRing_LOOP 5000 >>
-Ronronron... Votre palmphone qui vibre. Sans suprise, vous voyez que l'appel vient de Fred.
+Ronronron... Votre palmphone qui vibre. Sans suprise, vous voyez que l'appel vient de Fred. #line:0a81caa 
 
--> Prendre l'appel
+-> Prendre l'appel #line:02b8348 
     <<jump Appel_Fred>>
 ===
 title: Appel_Fred
@@ -34,24 +34,24 @@ position: -631,-697
 ---
 << stopFX PhoneRing_LOOP >>
 
-Fred@holo_excited: Hello ! Je te dérange pas ?
-You: Naaan...
-Fred@holo_smiling: Tu fais quoi là, maintenant ?
-You: Je finis mon petit déjeuner.
-Fred@holo_smiling: Yes yes. Cool. Tu viens avec moi à la salle de gym ?
-You: Naan... Je dois travailler en autonomie.
-Fred@holo_smiling: Tu veux parler de la note de synthèse sur la PNLIAA ?
-You: Ouais. La Programmation Neuro Linguistique des Intelligences Artifielles Analogiques.
-Fred@holo_excited: No worry. On a juste qu'à minuit pour la déposer sur le FTP de l'Académie.
-You: C'est vrai. C'est assez touffu ce truc de PNLIAA.
-Fred@holo_smiling: Pfuuu. Tu prends trop les choses au sérieux. Alors tu viens ?
+Fred@holo_excited: Hello ! Je te dérange pas ? #line:08eba87 
+You: Naaan... #line:00fd80e 
+Fred@holo_smiling: Tu fais quoi là, maintenant ? #line:0de8a96 
+You: Je finis mon petit déjeuner. #line:0c77f0f 
+Fred@holo_smiling: Yes yes. Cool. Tu viens avec moi à la salle de gym ? #line:0d66d67 
+You: Naan... Je dois travailler en autonomie. #line:0bb9184 
+Fred@holo_smiling: Tu veux parler de la note de synthèse sur la PNLIAA ? #line:0afe120 
+You: Ouais. La Programmation Neuro Linguistique des Intelligences Artifielles Analogiques. #line:0a1583f 
+Fred@holo_excited: No worry. On a juste qu'à minuit pour la déposer sur le FTP de l'Académie. #line:0ec868c 
+You: C'est vrai. C'est assez touffu ce truc de PNLIAA. #line:094fa41 
+Fred@holo_smiling: Pfuuu. Tu prends trop les choses au sérieux. Alors tu viens ? #line:04141c1 
 
 << hide >>
 << advanceTime 1:00 >>
 
--> Rejoindre Fred
+-> Rejoindre Fred #line:03d11d4 
     <<jump Salle_Gym>>
--> Rester travailler
+-> Rester travailler #line:0f969d5 
     <<jump Liste_Taches>>
 ===
 title: Salle_Gym
@@ -64,19 +64,19 @@ position: -23,-776
 << advanceTime 0:20 >>
 << fadeOut >>
 
-Vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit.
-Fred_excited: Je savais que tu allais venir.
-You: La preuve.
-Fred_smiling: Yes. Après notre séance de gym, tu vas voir, tu vas torcher cette note de synthèse !
-You: On verra, je l'espère.
-Fred_excited: No worry ! Allez viens !
+Vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit. #line:06be99b 
+Fred_excited: Je savais que tu allais venir. #line:0191a44 
+You: La preuve. #line:0ac94f1 
+Fred_smiling: Yes. Après notre séance de gym, tu vas voir, tu vas torcher cette note de synthèse ! #line:0f7b067 
+You: On verra, je l'espère. #line:0b93234 
+Fred_excited: No worry ! Allez viens ! #line:0efa519 
 << hide >>
 
 << loopFX Sports_LOOP 16000 >>
 
-Vous emboîtez le pas de Fred et vous éclatez tous les deux aux différentes activités proposées: cybersprint, electroskate, eBall, eJump...
+Vous emboîtez le pas de Fred et vous éclatez tous les deux aux différentes activités proposées: cybersprint, electroskate, eBall, eJump... #line:08dc9c5 
 
-Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
+Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vous vous sentez épuisé. Il est temps de retourner travailler. #line:00e13d8 
 
 << stopFX Sports_LOOP >>
 
@@ -85,12 +85,12 @@ Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vo
 << removeFromGauge food 30 >>
 << addToGauge mentalLoad 30 >>
 
-Fred_smiling: Tu pars déjà, lâcheur ?
-You: J'en peux plus.
-Fred_sad: Tant pis.
+Fred_smiling: Tu pars déjà, lâcheur ? #line:01a88d0 
+You: J'en peux plus. #line:0d39a55 
+Fred_sad: Tant pis. #line:0043c50 
 << hide >>
 
--> Retourner dans votre chambre
+-> Retourner dans votre chambre #line:0adf8ce 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -104,11 +104,11 @@ position: -328,-637
 
 <<if !visited("Liste_Taches")>>
 << visit Liste_Taches >>
-Que faites-vous maintenant ?
+Que faites-vous maintenant ? #line:0054ed7 
 <<endif>>
 
 << if getGauge("mentalLoad") >= 100 >>
--> Faire un somme
+-> Faire un somme #line:03b4018 
     <<jump Surcharge_Cognitive>>
 << endif >>
 
@@ -124,11 +124,11 @@ tags: freechoice
 colorID: 1
 position: -328,-637
 ---
--> Lit@lit
+-> Lit@lit #line:02d6ff7 
     <<jump lit_subchoice_am>>
--> Bureau@bureau
+-> Bureau@bureau #line:02e6000 
     <<jump bureau_subchoice_am>>
--> Salon@salon
+-> Salon@salon #line:03f1c02 
     <<jump salon_subchoice>>
 ===
 title: lit_subchoice_am
@@ -138,9 +138,9 @@ tags: subchoice
 << setBackground bedroom bed >>
 << fadeOut >>
 
--> Faire une sieste#once
+-> Faire une sieste#once #line:0462dc3 
     <<jump Sleep>>
--> back
+-> back #line:04c558a 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -151,13 +151,13 @@ tags: subchoice
 << setBackground bedroom desk >>
 << fadeOut >>
 
--> Préparer son bureau avant de se mettre à travailler#once
+-> Préparer son bureau avant de se mettre à travailler#once #line:043ca29 
     <<jump Ranger>>
--> Ouvrir le chat histoire de se détendre#once
+-> Ouvrir le chat histoire de se détendre#once #line:0b8be50 
     <<jump Chat>>
--> Débuter la rédaction de la note de synthèse#once
+-> Débuter la rédaction de la note de synthèse#once #line:0c4cb46 
     <<jump Redaction_Note>>
--> back
+-> back #line:05ae014 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -168,9 +168,9 @@ tags: subchoice
 << setBackground bedroom chill >>
 << fadeOut >>
 
--> Binger votre série TV préférée#once
+-> Binger votre série TV préférée#once #line:0825e0c 
     <<jump BingeTV>>
--> back
+-> back #line:0493de4 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -179,13 +179,13 @@ tags: freechoice
 colorID: 1
 position: -328,-637
 ---
--> Lit@lit
+-> Lit@lit #line:0cf8a2b 
     <<jump lit_subchoice_pm>>
--> Bureau@bureau
+-> Bureau@bureau #line:0e66104 
     <<jump bureau_subchoice_pm>>
--> Salon@salon
+-> Salon@salon #line:03831eb 
     <<jump salon_subchoice>>
--> Cuisine@cuisine
+-> Cuisine@cuisine #line:0c386e3 
     <<jump cuisine_subchoice_pm>>
 ===
 title: lit_subchoice_pm
@@ -195,9 +195,9 @@ tags: subchoice
 << setBackground bedroom bed >>
 << fadeOut >>
 
--> Faire une sieste#once
+-> Faire une sieste#once #line:0b1db6d 
     <<jump Sleep>>
--> back
+-> back #line:0f3724e 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -208,11 +208,11 @@ tags: subchoice
 << setBackground bedroom desk >>
 << fadeOut >>
 
--> Se détendre sur le chat#once
+-> Se détendre sur le chat#once #line:070ff91 
     <<jump Chat>>
--> Continuer la rédaction de la note de synthèse#once
+-> Continuer la rédaction de la note de synthèse#once #line:0d83cf1 
     <<jump Redaction_Note>>
--> back
+-> back #line:05b771d 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -223,9 +223,9 @@ tags: subchoice
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
--> Manger#once
+-> Manger#once #line:0f0f15f 
     <<jump Diner>>
--> back
+-> back #line:0d1eff8 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -234,12 +234,12 @@ tags:
 colorID: 0
 position: -958,-443
 ---
-Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite votre le paper print de votre brief, les documents de référence que vous avez déjà en possession.
-Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document. Avant de commencer la rédaction de votre note, vous prenez le temps d'établir un plan de réflexion et de travail. Certes, cela vous prend du temps, mais ça va vous faciliter le processus de rédaction.
+Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite votre le paper print de votre brief, les documents de référence que vous avez déjà en possession. #line:0c2da19 
+Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document. Avant de commencer la rédaction de votre note, vous prenez le temps d'établir un plan de réflexion et de travail. Certes, cela vous prend du temps, mais ça va vous faciliter le processus de rédaction. #line:07d17d5 
 << advanceTime 0:20 >>
 << removeFromGauge mentalLoad 10 >>
 
--> Il ne reste plus qu'à s'y mettre maintenant
+-> Il ne reste plus qu'à s'y mettre maintenant #line:0f12c46 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -249,18 +249,18 @@ colorID: 0
 position: -388,-306
 ---
 << fx Notification >>
-Vous cliquez sur l'icône ChatApp de votre Palmphone. Il y a encore plus de monde que lundi ! 
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Il y a encore plus de monde que lundi !  #line:03fd939 
 << fx Notification >>
-Vous êtes pingé par Fred ! Il vous demande si vous ne voulez pas le rejoindre à la salle de gym !
+Vous êtes pingé par Fred ! Il vous demande si vous ne voulez pas le rejoindre à la salle de gym ! #line:01a52e4 
 << fx Notification >>
-Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous ne pouvez ignorer son injonction !
-Toute la communauté va apprendre que vous avez refusé un duel virtuel, que vous êtes un lâche...
-Vexé et décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait.
-Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.
+Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous ne pouvez ignorer son injonction ! #line:01d6f70 
+Toute la communauté va apprendre que vous avez refusé un duel virtuel, que vous êtes un lâche... #line:07431b7 
+Vexé et décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait. #line:03c3db8 
+Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter. #line:0da4e45 
 << advanceTime 2:00 >>
 << addToGauge mentalLoad 30 >>
 
--> Et maintenant, il faut peut-être travailler sur cette note de synthèse ?
+-> Et maintenant, il faut peut-être travailler sur cette note de synthèse ? #line:0198641 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -269,22 +269,22 @@ tags:
 colorID: 0
 position: 326,-411
 ---
-Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber.
+Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber. #line:0d11e8f 
 << show lightsaber@holo>>
 << loopFX TVStarwars_LOOP 10000 >>
-Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir !
-Ils sont parvenu à décryogéniser Jaba Fett. Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de de Mana de toute la galaxie !
-Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran ! Vont-ils parvenir à arrêter Dude ? L'empêcher de libérer la galaxie du joug de l'Imperium Noir ?
-Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples: les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..
+Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir ! #line:080516c 
+Ils sont parvenu à décryogéniser Jaba Fett. Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de de Mana de toute la galaxie ! #line:0827128 
+Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran ! Vont-ils parvenir à arrêter Dude ? L'empêcher de libérer la galaxie du joug de l'Imperium Noir ? #line:072f83e 
+Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples: les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque.. #line:0ad6a89 
 << stopFX TVStarwars_LOOP >>
 << hide >>
 << advanceTime 3:00 >>
 << addToGauge food 30>>
 << addToGauge mentalLoad 40>>
 
-Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse...
+Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse... #line:04ecc7e 
 
--> Vite, au travail !
+-> Vite, au travail ! #line:0f4ec37 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -293,18 +293,18 @@ tags:
 colorID: 0
 position: -706,-331
 ---
-Vous vous rappelez ce que vous ont dit les 4 Sages. Dormir régulièrement, tous les jours. Toutefois, si le temps manque, un petit somme, ça fait du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux.
+Vous vous rappelez ce que vous ont dit les 4 Sages. Dormir régulièrement, tous les jours. Toutefois, si le temps manque, un petit somme, ça fait du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux. #line:0f947aa 
 
 << loopFX Sleep_LOOP 5000 >>
-Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. 
+Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice.  #line:040ab85 
 << stopFX Sleep >>
 
-Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.
+Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux. #line:0a71e55 
 
 << removeFromGauge sleep 20 >>
 << removeFromGauge mentalLoad 10 >>
 
--> Maintenant, il faut s'y remettre
+-> Maintenant, il faut s'y remettre #line:0be3a2f 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -314,12 +314,12 @@ colorID: 0
 position: -22,-299
 ---
 << if visited("Redaction_Note") >>
-Vous vous retroussez les manches et vous attelez à la tâche. Mettre au propre cette note de synthèse, fruit de plusieurs jours de lecture, de prises de notes, de réflexions diverses et variées.
-Vous avez tellement de choses à dire et à coucher sur votre document, vous ne manquez pas d'idées, mais de concentration et productivité.
+Vous vous retroussez les manches et vous attelez à la tâche. Mettre au propre cette note de synthèse, fruit de plusieurs jours de lecture, de prises de notes, de réflexions diverses et variées. #line:02a36e5 
+Vous avez tellement de choses à dire et à coucher sur votre document, vous ne manquez pas d'idées, mais de concentration et productivité. #line:0ae7283 
 << addToGauge learning 30 >>
 << else >>
-Allez, encore une fois, vous respirez un grand coup avant de replonger dans le grand bain. Vous êtes loin d'avoir fini et les heures ne cessent de filer.
-Il faut terminer cette note de synthèse coûte que coûte avant la deadline...
+Allez, encore une fois, vous respirez un grand coup avant de replonger dans le grand bain. Vous êtes loin d'avoir fini et les heures ne cessent de filer. #line:0e9a809 
+Il faut terminer cette note de synthèse coûte que coûte avant la deadline... #line:0094415 
 
 << addToGauge learning 20 >>
 
@@ -328,9 +328,9 @@ Il faut terminer cette note de synthèse coûte que coûte avant la deadline...
 << advanceTime 1:00 >>
 << loopFX PhoneRing_LOOP 5000 >>
 
-Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...
+Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler... #line:05597da 
 
--> Prendre l'appel
+-> Prendre l'appel #line:04a8cf4 
     <<jump Fred_again>>
 ===
 title: Fred_again
@@ -340,14 +340,14 @@ position: 33,47
 ---
 << stopFX PhoneRing_LOOP >>
 
-Fred@holo_excited: Alors ? Je t'attends toujours ? Quand viens-tu ?
-You: Heu... Je sais pas.
-Fred@holo_happy: Beware ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.
+Fred@holo_excited: Alors ? Je t'attends toujours ? Quand viens-tu ? #line:068ad62 
+You: Heu... Je sais pas. #line:0e02807 
+Fred@holo_happy: Beware ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse. #line:0933cbe 
 << hide >>
-Nooon ! Si la communauté apprend que vous avez décliné le défi de Fred. Fred, le membre le plus populaire du Métaverse de la fraternité étudiante.
-Vous êtes grillé aux yeux de tous les camarades de l'Académie d'Omniscience et de Polytechnologie Universelle... Vous êtes piégé. quand faut y aller, faut y aller...
+Nooon ! Si la communauté apprend que vous avez décliné le défi de Fred. Fred, le membre le plus populaire du Métaverse de la fraternité étudiante. #line:0d5bbdd 
+Vous êtes grillé aux yeux de tous les camarades de l'Académie d'Omniscience et de Polytechnologie Universelle... Vous êtes piégé. quand faut y aller, faut y aller... #line:0a9d7ba 
 
--> Retrouver Fred
+-> Retrouver Fred #line:04a4eb8 
     <<jump Salle_Gym2>>
 ===
 title: Salle_Gym2
@@ -360,8 +360,8 @@ position: 317,29
 << fadeOut >>
 << loopFX Sports_LOOP 16000 >>
 
-Vous relevez le défi lancé par Fred. En fait, vous vous éclatez tous les deux comme des enfants; cybersprint, electroskate, eBall, eJump...
-Le moins que l'on puisse dire, c'est que vous êtes donné à fond. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.
+Vous relevez le défi lancé par Fred. En fait, vous vous éclatez tous les deux comme des enfants : cybersprint, electroskate, eBall, eJump... #line:05b7fff 
+Le moins que l'on puisse dire, c'est que vous êtes donné à fond. Au final, vous vous sentez épuisé. Il est temps de retourner travailler. #line:06b85e7 
 << stopFX Sports_LOOP  >>
 
 << advanceTime 2:00 >>
@@ -369,13 +369,13 @@ Le moins que l'on puisse dire, c'est que vous êtes donné à fond. Au final, vo
 << addToGauge food 30 >>
 << addToGauge mentalLoad 30 >>
 
-Fred_smiling: Tu pars déjà, tu déclares forfait ?
-You: J'en peux plus.
-Fred_smiling: Alors, j'ai gagné.
-You: Pour une fois.
+Fred_smiling: Tu pars déjà, tu déclares forfait ? #line:0c2042d 
+You: J'en peux plus. #line:055017d 
+Fred_smiling: Alors, j'ai gagné. #line:00c7c51 
+You: Pour une fois. #line:0297745 
 << hide >>
 
--> Retourner dans votre chambre
+-> Retourner dans votre chambre #line:09b4ee0 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -388,22 +388,22 @@ position: -427,-43
 << setBackground bedroom >>
 << fadeOut >>
 << music NegativeSad >>
-Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec.
-Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte.
-Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...
-N'empêche, vous sentez votre tête penchez en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrer dans le noir...
+Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. #line:050998f 
+Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte. #line:01ea25b 
+Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !... #line:0a80fc6 
+N'empêche, vous sentez votre tête penchez en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrer dans le noir... #line:02fb7a3 
 << fadeIn >>
 
-Puis, vous entendez une voix familière:
+Puis, vous entendez une voix familière: #line:0fe6b9c 
 
-???: Tout va bien, { $name } ?
-You: Tais-toi, Miss Temdé !
+???: Tout va bien, { $name } ? #line:0660f97 
+You: Tais-toi, Miss Temdé ! #line:0b5c0c2 
 << fadeOut >>
-Azul_proud: Raté, c'est moi, Azul.
-You: Zut...
-Azul_happy: Pas grave, viens, on a une nouveau truc à t'apprendre.
+Azul_proud: Raté, c'est moi, Azul. #line:0508ea5 
+You: Zut... #line:00470e3 
+Azul_happy: Pas grave, viens, on a une nouveau truc à t'apprendre. #line:0a4a5d0 
 
--> Suivre Azul 
+-> Suivre Azul  #line:07c135a 
     << hide >>
     <<jump Assemblee_3>>
 ===
@@ -417,21 +417,21 @@ position: -1091,21
 << setBackground circle >>
 << fadeOut >>
 
-Hop, la seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin exotique.
-Ce petit nid de verdure que vos hôtes nomment l'assemblée des Sages. C'est de la téléportation ou de la magie ? Et où se trouve ce fichu décor si criant de vérité... On dirait d'authentiques plantes exotiques...
-Temde_smiling: Yep, elles sont réelles, ce ne sont pas des végétaux synthétiques. C'est moi qui m'en occupe.
-Sapiens_concerned: Super Miss Temdé. Je ne crois pas que { $name } soit venu pour échanger sur cette question.
-Ledai_explaining: Tout à fait. Cette nouvelle session aura pour objet la surcharge cognitive.
+Hop, la seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin exotique. #line:0def546 
+Ce petit nid de verdure que vos hôtes nomment l'assemblée des Sages. C'est de la téléportation ou de la magie ? Et où se trouve ce fichu décor si criant de vérité... On dirait d'authentiques plantes exotiques... #line:01acb97 
+Temde_smiling: Yep, elles sont réelles, ce ne sont pas des végétaux synthétiques. C'est moi qui m'en occupe. #line:049d30a 
+Sapiens_concerned: Super Miss Temdé. Je ne crois pas que { $name } soit venu pour échanger sur cette question. #line:013b5c8 
+Ledai_explaining: Tout à fait. Cette nouvelle session aura pour objet la surcharge cognitive. #line:098a333 
 << hide >>
-You: Quoi ?!
-Azul_proud: On t'as appris à ménager ton corps.
-Temde_cheerful: Bien dormir et manger équilibré.
-Sapiens_thinking: C'est la même chose avec tes capacités mentales. Elles ont besoin d'énergie et de recharger les batteries. Je te l'ai dit. Mais elles peuvent aussi tomber en panne.
-You: Comment ça ?
-Sapiens_concerned: Si tu les surcharges.
-Ledai_explaining: Si tu les fais surchauffer. Comme ton ordinateur, il peut se bloquer, ne plus répondre.
-You: Ah bon ?
-Sapiens_happy: Il faut utiliser la technique <i>pomodoro</i>
+You: Quoi ?! #line:0cea551 
+Azul_proud: On t'as appris à ménager ton corps. #line:007843d 
+Temde_cheerful: Bien dormir et manger équilibré. #line:0369523 
+Sapiens_thinking: C'est la même chose avec tes capacités mentales. Elles ont besoin d'énergie et de recharger les batteries. Je te l'ai dit. Mais elles peuvent aussi tomber en panne. #line:0c4bb09 
+You: Comment ça ? #line:0d2e27b 
+Sapiens_concerned: Si tu les surcharges. #line:00b8454 
+Ledai_explaining: Si tu les fais surchauffer. Comme ton ordinateur, il peut se bloquer, ne plus répondre. #line:05c15b1 
+You: Ah bon ? #line:0471186 
+Sapiens_happy: Il faut utiliser la technique <i>pomodoro</i> #line:043ca63 
 <<jump pomodoro>>
 ===
 title: pomodoro
@@ -441,18 +441,18 @@ position: -750,149
 ---
 << music Neutral >>
 
-You: Et ça consiste en quoi ?
-Ledai_explaining: C'est très simple. Il faut fractionner ta tâche en plusieurs petites tâches.
-You: Un exemple.
-Ledai_explaining: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir en une seule fois. Tu vas le couper en plus petit bouts que tu vas du premier au dernier morceau.
-You: Ouais... Et si je veux le dévorer ?
-Sapiens_concerned: Ah, jeunesse insouciante... Tu vas t'étouffer, tu vas faire exploser ton estomac jusqu'à régurgiter ce que tu auras péniblement avalé.
-Ledai_doubtful: Beuha... C'est dégoûtant.
-Azul_happy: L'important n'est pas de s'élancer, mais de franchir le kilomètre suivant, et ainsi de suite jusqu'à la ligne d'arrivée.
-Temde_smiling: L'important est de tenir l'effort sur la durée, pas de sprinter.
-You: Et c'est tout ?
-Sapiens_thinking: Non. Il y a autre chose. Le plus important... Éviter les distractions.
--> Les distractions  ?
+You: Et ça consiste en quoi ? #line:02746d5 
+Ledai_explaining: C'est très simple. Il faut fractionner ta tâche en plusieurs petites tâches. #line:03602b4 
+You: Un exemple. #line:026f129 
+Ledai_explaining: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir en une seule fois. Tu vas le couper en plus petit bouts que tu vas du premier au dernier morceau. #line:0077256 
+You: Ouais... Et si je veux le dévorer ? #line:0eb665c 
+Sapiens_concerned: Ah, jeunesse insouciante... Tu vas t'étouffer, tu vas faire exploser ton estomac jusqu'à régurgiter ce que tu auras péniblement avalé. #line:0f9cb00 
+Ledai_doubtful: Beuha... C'est dégoûtant. #line:0e86fe5 
+Azul_happy: L'important n'est pas de s'élancer, mais de franchir le kilomètre suivant, et ainsi de suite jusqu'à la ligne d'arrivée. #line:0cfd064 
+Temde_smiling: L'important est de tenir l'effort sur la durée, pas de sprinter. #line:0a55ca5 
+You: Et c'est tout ? #line:05684c6 
+Sapiens_thinking: Non. Il y a autre chose. Le plus important... Éviter les distractions. #line:09f97d3 
+-> Les distractions  ? #line:082271e 
     <<jump Les_distractions>>
 ===
 title: Les_distractions
@@ -460,16 +460,16 @@ tags:  noUi
 colorID: 0
 position: -370,280
 ---
-Sapiens_thinking: Les perturbations extérieures qui parasitent ta charge mentale et saturent tes processus de calcul cérébral.
-You: Hé, je suis pas une machine !
-Ledai_happy: Tout à fait, l'erreur est humaine, pas informatique.
-Azul_proud: Je la fais court. Plus on est concentré, moins on peut disperser son attention. C'est comme le jonglage...
+Sapiens_thinking: Les perturbations extérieures qui parasitent ta charge mentale et saturent tes processus de calcul cérébral. #line:07ebae0 
+You: Hé, je suis pas une machine ! #line:0eb3c6d 
+Ledai_happy: Tout à fait, l'erreur est humaine, pas informatique. #line:0a3347e 
+Azul_proud: Je la fais court. Plus on est concentré, moins on peut disperser son attention. C'est comme le jonglage... #line:09fd718 
 
-Temde_smiling: Exactement. Regarde-moi ! J'ai quatre bras ! Toi, tu n'en as que deux, je peux jongler avec plus de balles que toi ! 
-You: C'est ça. Je te défie !
+Temde_smiling: Exactement. Regarde-moi ! J'ai quatre bras ! Toi, tu n'en as que deux, je peux jongler avec plus de balles que toi !  #line:0f9fe4f 
+You: C'est ça. Je te défie ! #line:0643c7f 
 << hide >>
-Miss Temdé se lève tranquillement et étend ses mains. Des balles apparues de nulle part se matérialisent dans ses paumes. Miss Temdé jongle ainsi avec quatre, cinq, puis six balles...
-Temde_smiling: À ton tour, montre-nous ce que tu peux faire.
+Miss Temdé se lève tranquillement et étend ses mains. Des balles apparues de nulle part se matérialisent dans ses paumes. Miss Temdé jongle ainsi avec quatre, cinq, puis six balles... #line:03b8236 
+Temde_smiling: À ton tour, montre-nous ce que tu peux faire. #line:0172964 
 <<jump Jongler>>
 ===
 title: Jongler
@@ -487,13 +487,13 @@ position: -184,504
 << empty >> 
 
 << if $ballsJuggled < 5 >>
-Temde_smiling: Tu vois, tu ne peux pas jongler autant de balles que moi.
-Temde_thinking: Mais, moi aussi, j'ai mes limites. J'ai beau jonglé 6 balles, mais je ne pourrais pas jonger 7, ou 8, ou 12 !  
-Azul_happy: Nous en avons tous des limites...
+Temde_smiling: Tu vois, tu ne peux pas jongler autant de balles que moi. #line:0f6c696 
+Temde_thinking: Mais, moi aussi, j'ai mes limites. J'ai beau jonglé 6 balles, mais je ne pourrais pas jonger 7, ou 8, ou 12 !   #line:08f0c22 
+Azul_happy: Nous en avons tous des limites... #line:0007bae 
 << else >>
-Temde_smiling: Bravo ! Tu a réussi à jongler autant de balles que moi.
-Temde_thinking: Mais est-ce que tu aurais pu jongler le double ? Le triple ? 
-Azul_happy: Nous avons tous des limites...
+Temde_smiling: Bravo ! Tu a réussi à jongler autant de balles que moi. #line:047ca36 
+Temde_thinking: Mais est-ce que tu aurais pu jongler le double ? Le triple ?  #line:0d2e2b4 
+Azul_happy: Nous avons tous des limites... #line:0f35edb 
 << endif>>
 
 <<jump Quit_Mini_Game>>
@@ -503,15 +503,15 @@ tags:  noUi
 colorID: 0
 position: 342,320
 ---
-Sapiens_angry: Je suis content de voir que tu te prends au jeu.
-Ledai_doubtful: En effet, tout ce travail n'est pas mené en vain.
-You: J'espère bien. C'est parfois barbant votre baratin...
-Ledai_doubtful: Notre baratin ? Mais, nous essayons de t'améliorer...
-You: Mouais...
-Sapiens_thinking: Commençons par cette question. La technique pomodoro consiste à fractionner une tâche en plusieurs tâches.
--> Pour pouvoir jongler avec chacune dans l'ordre que l'on veut, voire en même temps
+Sapiens_angry: Je suis content de voir que tu te prends au jeu. #line:04d7d40 
+Ledai_doubtful: En effet, tout ce travail n'est pas mené en vain. #line:0d5e72d 
+You: J'espère bien. C'est parfois barbant votre baratin... #line:064bc3c 
+Ledai_doubtful: Notre baratin ? Mais, nous essayons de t'améliorer... #line:0c86c64 
+You: Mouais... #line:045153a 
+Sapiens_thinking: Commençons par cette question. La technique pomodoro consiste à fractionner une tâche en plusieurs tâches. #line:0c28caa 
+-> Pour pouvoir jongler avec chacune dans l'ordre que l'on veut, voire en même temps #line:060fe3f 
     <<jump Pomodoro_No>>
--> Pour pouvoir avancer méthodiquement, en respectant des étapes de concentration intenses mais courtes
+-> Pour pouvoir avancer méthodiquement, en respectant des étapes de concentration intenses mais courtes #line:0ebed3f 
     <<jump Pomodoro_Yes>>
 ===
 title: Pomodoro_No
@@ -521,18 +521,18 @@ position: 701,260
 ---
 << fx Failure >>
 
-Sapiens_angry: N'importe quoi ! Tu n'as rien compris de ce qu'on a dit.
-Sapiens_concerned: Je suis attristé de voir tout le mal que Miss Temdé s'est donné avec la parabole des balles de jonglage.
-Sapiens_concerned: Non, on ne peut pas gérer n'importe quelle tâche dans n'importe quel ordre ! Et surtout pas tout en même temps ! Ta charge cognitive encaisse, encaisse. Et elle finit par saturer.
-Ledai_doubtful: Hélas. Le "mode multitâche" a la vie dure.
-Azul_sad: Cessons de regarder le verre à moitié vide. Je pense que { $name } a compris la leçon cette fois.
-Ledai_explaining: Bien parlé Azul.
-Sapiens_thinking: J'espère. Continuons avec la deuxième affirmation test, laquelle est la bonne ?
-Sapiens_happy: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques.
-Sapiens_happy: Tu travailleras <b>uniquement l'après-midi</b> ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ?
--> Me ménager
+Sapiens_angry: N'importe quoi ! Tu n'as rien compris de ce qu'on a dit. #line:0d724c6 
+Sapiens_concerned: Je suis attristé de voir tout le mal que Miss Temdé s'est donné avec la parabole des balles de jonglage. #line:0300ce3 
+Sapiens_concerned: Non, on ne peut pas gérer n'importe quelle tâche dans n'importe quel ordre ! Et surtout pas tout en même temps ! Ta charge cognitive encaisse, encaisse. Et elle finit par saturer. #line:08ecf98 
+Ledai_doubtful: Hélas. Le "mode multitâche" a la vie dure. #line:0491c4e 
+Azul_sad: Cessons de regarder le verre à moitié vide. Je pense que { $name } a compris la leçon cette fois. #line:0190a86 
+Ledai_explaining: Bien parlé Azul. #line:0aadad0 
+Sapiens_thinking: J'espère. Continuons avec la deuxième affirmation test, laquelle est la bonne ? #line:093a374 
+Sapiens_happy: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. #line:00f24e1 
+Sapiens_happy: Tu travailleras <b>uniquement l'après-midi</b> ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ? #line:0756ef2 
+-> Me ménager #line:0f34e44 
     <<jump GestionTemps_No>>
--> Travailler d'arrache-pied
+-> Travailler d'arrache-pied #line:0741df4 
     <<jump GestionTemps_Yes>>
 ===
 title: Pomodoro_Yes
@@ -542,16 +542,16 @@ position: 698,531
 ---
 << fx Success >>
 
-Sapiens_happy: Exactement ! On doit apprendre les tâches les unes après les autres de manière logique.
-Ledai_explaining: Que ce soit de manière linéaire ou itérative. On n'entame jamais une tâche importante si on ne sait pas d'où on vient ni on veut aller.
-Temde_smiling: Oui, enfin, grosso modo...
-Azul_sad: Chut ! Ne commençons pas à nous chicaner. Comment voulez-vous que { $name } y comprenne quelque chose...
-Sapiens_concerned: Merci, Azul. Continuons avec la deuxième affirmation test, laquelle est la bonne ?
-Sapiens_happy: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques.
-Sapiens_happy: Tu travailleras <b>uniquement l'après-midi</b> ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ?
--> Me ménager
+Sapiens_happy: Exactement ! On doit apprendre les tâches les unes après les autres de manière logique. #line:0167c15 
+Ledai_explaining: Que ce soit de manière linéaire ou itérative. On n'entame jamais une tâche importante si on ne sait pas d'où on vient ni on veut aller. #line:04fea71 
+Temde_smiling: Oui, enfin, grosso modo... #line:01c47d0 
+Azul_sad: Chut ! Ne commençons pas à nous chicaner. Comment voulez-vous que { $name } y comprenne quelque chose... #line:09360a5 
+Sapiens_concerned: Merci, Azul. Continuons avec la deuxième affirmation test, laquelle est la bonne ? #line:024e3f0 
+Sapiens_happy: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques. #line:0d8e42c 
+Sapiens_happy: Tu travailleras <b>uniquement l'après-midi</b> ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ? #line:0a747d4 
+-> Me ménager #line:020937b 
     <<jump GestionTemps_No>>
--> Travailler d'arrache-pied
+-> Travailler d'arrache-pied #line:02fe822 
     <<jump GestionTemps_Yes>>
 ===
 title: GestionTemps_No
@@ -561,20 +561,20 @@ position: 1042,297
 ---
 << fx Failure >>
 
-Sapiens_angry: J'en perds ma barbe ! Quelle réponse idiote ! Tu as compris ce qu'est la surcharge cognitive ?
-You: C'est quand le cerveau fatigue, il surchauffe.
-Ledai_doubtful: Alors pourquoi as-tu cru cette affirmation ?
-You: Parce que mon pote, Fred, il bosse à la dernière minute et ça marche !
-Temde_thinking: Tu n'es pas ton pote.
-Azul_sad: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil : Il faut travailler régulièrement, sans excès.
-Temde_thinking: Surtout ne pas tout reporter au dernier moment.
-Ledai_explaining: Sinon, tu risques le court-circuit, le "system failure"...
-Sapiens_concerned: C'est enfin compris ?
-You: Oui.
-Sapiens_thinking: Alors voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive... Choisis bien cette fois ta réponse.
--> Les distracteurs sont comme des bonbons qui récompensent les pauses entre chaque session de concentration intense
+Sapiens_angry: J'en perds ma barbe ! Quelle réponse idiote ! Tu as compris ce qu'est la surcharge cognitive ? #line:04d03cd 
+You: C'est quand le cerveau fatigue, il surchauffe. #line:0983ab3 
+Ledai_doubtful: Alors pourquoi as-tu cru cette affirmation ? #line:0358705 
+You: Parce que mon pote, Fred, il bosse à la dernière minute et ça marche ! #line:0df26f3 
+Temde_thinking: Tu n'es pas ton pote. #line:0348fa2 
+Azul_sad: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil : Il faut travailler régulièrement, sans excès. #line:0f80780 
+Temde_thinking: Surtout ne pas tout reporter au dernier moment. #line:0ac4dc0 
+Ledai_explaining: Sinon, tu risques le court-circuit, le "system failure"... #line:01288b8 
+Sapiens_concerned: C'est enfin compris ? #line:06b1428 
+You: Oui. #line:0dcf040 
+Sapiens_thinking: Alors voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive... Choisis bien cette fois ta réponse. #line:0116f8b 
+-> Les distracteurs sont comme des bonbons qui récompensent les pauses entre chaque session de concentration intense #line:0dd0b29 
     <<jump Distracteurs_No>>
--> Les distracteurs sont des tentations extérieures qui menacent et dérangent l'effort de concentration du cerveau
+-> Les distracteurs sont des tentations extérieures qui menacent et dérangent l'effort de concentration du cerveau #line:02128de 
     <<jump Distracteurs_Yes>>
 ===
 title: GestionTemps_Yes
@@ -584,16 +584,16 @@ position: 1048,579
 ---
 << fx Success >>
 
-Sapiens_happy: Tout à fait. Chaque chose en son temps. Comme tes ordinateurs, il faut les mettre en veille pour qu'ils cessent de computer sans fin, qu'ils puissent refroidir et récupérer en capacités de calcul.
-Azul_proud: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil: Il faut travailler régulièrement, sans excès.
-Temde_smiling: Surtout ne pas tout reporter au dernier moment.
-Ledai_explaining: Sinon, tu risques le court-circuit, le "system failure"...
-Sapiens_happy: C'est enfin compris ?
-You: Oui.
-Sapiens: Alors voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive... Choisis bien ta réponse.
--> Les distracteurs sont comme des bonbons qui récompensent les pauses entre chaque session de concentration intense
+Sapiens_happy: Tout à fait. Chaque chose en son temps. Comme tes ordinateurs, il faut les mettre en veille pour qu'ils cessent de computer sans fin, qu'ils puissent refroidir et récupérer en capacités de calcul. #line:092cda1 
+Azul_proud: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil: Il faut travailler régulièrement, sans excès. #line:01417a6 
+Temde_smiling: Surtout ne pas tout reporter au dernier moment. #line:073279a 
+Ledai_explaining: Sinon, tu risques le court-circuit, le "system failure"... #line:0110780 
+Sapiens_happy: C'est enfin compris ? #line:0b0e200 
+You: Oui. #line:04b31f8 
+Sapiens: Alors voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive... Choisis bien ta réponse. #line:090a765 
+-> Les distracteurs sont comme des bonbons qui récompensent les pauses entre chaque session de concentration intense #line:08385ef 
     <<jump Distracteurs_No>>
--> Les distracteurs sont des tentations extérieures qui menacent et dérangent l'effort de concentration du cerveau
+-> Les distracteurs sont des tentations extérieures qui menacent et dérangent l'effort de concentration du cerveau #line:0e7a1b4 
     <<jump Distracteurs_Yes>>
 ===
 title: Distracteurs_No
@@ -603,24 +603,24 @@ position: 1281,310
 ---
 << fx Failure >>
 
-Sapiens_angry: Quelle horreur ! Quel non-sens ! Les distracteurs...
-Sapiens_angry: Réseaux sociaux, notifications automatiques, connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport direct avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses !
-Sapiens_angry: Comme leur nom l'indique, ce sont des nuisances ! Ils t'empêchent d'être 100% concentré sur la tâche présente. Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Par conséquent les distracteurs affaiblissent ta capacité cognitive...
-You: Ah... zut...
-Sapiens_angry: C'est tout ce que tu as à me dire ?
-You: Ben... Ouais...
-Sapiens_concerned: Quelle misère.
-Azul_sad: Je pense que { $name } a compris cette fois-ci. N'est-ce pas ?
-You: Oui.
-Sapiens_concerned: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ?
-You: Parce qu'il réduisent mon attention.
-Ledai_explaining: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites !
-Azul_happy: Il faut se ménager un espace de calme et de paix, une bulle d'attention.
-Sapiens_thinking: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...
-You: OK.
-Ledai_happy: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !
+Sapiens_angry: Quelle horreur ! Quel non-sens ! Les distracteurs... #line:0199d2f 
+Sapiens_angry: Réseaux sociaux, notifications automatiques, connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport direct avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses ! #line:00d2d6a 
+Sapiens_angry: Comme leur nom l'indique, ce sont des nuisances ! Ils t'empêchent d'être 100% concentré sur la tâche présente. Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Par conséquent les distracteurs affaiblissent ta capacité cognitive... #line:0d3ac41 
+You: Ah... zut... #line:0bc669e 
+Sapiens_angry: C'est tout ce que tu as à me dire ? #line:0a3746a 
+You: Ben... Ouais... #line:0313570 
+Sapiens_concerned: Quelle misère. #line:0428688 
+Azul_sad: Je pense que { $name } a compris cette fois-ci. N'est-ce pas ? #line:03fd84b 
+You: Oui. #line:0ef8838 
+Sapiens_concerned: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ? #line:09dcd65 
+You: Parce qu'il réduisent mon attention. #line:0a1f92e 
+Ledai_explaining: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites ! #line:031161d 
+Azul_happy: Il faut se ménager un espace de calme et de paix, une bulle d'attention. #line:09ee971 
+Sapiens_thinking: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable... #line:03eea13 
+You: OK. #line:0fa85dd 
+Ledai_happy: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental ! #line:0afa8a4 
 << hide >>
--> Journal mental 
+-> Journal mental  #line:0148cac 
     <<jump JournalMental>>
 ===
 title: Distracteurs_Yes
@@ -630,18 +630,18 @@ position: 1384,604
 ---
 << fx Success >>
 
-Sapiens_happy: Bien entendu. Les Réseaux sociaux, les notifications automatiques, la connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport immédiat avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses ! Comme leur nom l'indique, ce sont des nuisances !
-Sapiens_happy: Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Les distracteurs affaiblissent ta capacité cognitive. Tu dois être 100% concentré sur la tâche présente, pas être distrait par d'autre choses ou d'autres personnes..
-You: Oui.
-Sapiens_happy: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ?
-You: Parce qu'il réduisent mon attention.
-Ledai_happy: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites !
-Azul_happy: Il faut se ménager un espace de calme de paix une bulle d'attention.
-Sapiens_happy: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...
-You: OK.
-Ledai_happy: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !
+Sapiens_happy: Bien entendu. Les Réseaux sociaux, les notifications automatiques, la connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport immédiat avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses ! Comme leur nom l'indique, ce sont des nuisances ! #line:0210305 
+Sapiens_happy: Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Les distracteurs affaiblissent ta capacité cognitive. Tu dois être 100% concentré sur la tâche présente, pas être distrait par d'autre choses ou d'autres personnes.. #line:0fe8d10 
+You: Oui. #line:0811abc 
+Sapiens_happy: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ? #line:0a410b9 
+You: Parce qu'il réduisent mon attention. #line:0987eb1 
+Ledai_happy: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites ! #line:0e1deb8 
+Azul_happy: Il faut se ménager un espace de calme de paix une bulle d'attention. #line:09712cb 
+Sapiens_happy: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable... #line:0f55336 
+You: OK. #line:0bd1ccf 
+Ledai_happy: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental ! #line:0083029 
 << hide >>
--> Journal mental 
+-> Journal mental  #line:020390a 
     <<jump JournalMental>>
 ===
 title: JournalMental
@@ -654,8 +654,8 @@ position: 1209,900
 << setBackground bedroom night >>
 << fadeOut 200 >>
 
-Vous revoilà seul... Dans cet instant figé, dans cette parenthèse intime entre l'ombre et la lumière, le jour et la nuit. Votre "carnet d'ingénieur tout-terrain" est entre vos mains...
-Qu'allez-vous noter dessus ?
+Vous revoilà seul... Dans cet instant figé, dans cette parenthèse intime entre l'ombre et la lumière, le jour et la nuit. Votre "carnet d'ingénieur tout-terrain" est entre vos mains... #line:013dc70 
+Qu'allez-vous noter dessus ? #line:028022b 
 ===
 title: Lunch
 tags:
@@ -666,16 +666,16 @@ position: 477,-702
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
-Yum Yum ! Il est temps de se faire une pause "manger équilibré", comme le recommande les Sages. 
+Yum Yum ! Il est temps de se faire une pause "manger équilibré", comme le recommande les Sages.  #line:05c15dc 
 << fx EatCook >>
-Vous vous cuisinez un Green Burger Full Vegie. Franchement, c'est étrange, tant pour le goût que pour l'aspect.
-On dirait un burger à la viande et il n'y en a aucune. En outre, c'est vraiment copieux. Et les frites à base de riz croustillant... Dingue. C'est meilleur que les frites de chez Naz Do...
+Vous vous cuisinez un Green Burger Full Vegie. Franchement, c'est étrange, tant pour le goût que pour l'aspect. #line:08fec15 
+On dirait un burger à la viande et il n'y en a aucune. En outre, c'est vraiment copieux. Et les frites à base de riz croustillant... Dingue. C'est meilleur que les frites de chez Naz Do... #line:0ac6233 
 
 << advanceTime 0:30 >>
 << removeFromGauge sleep 20 >>
 << addToGauge food 20 >>
 
--> C'est pas tout, il faut s'y remettre
+-> C'est pas tout, il faut s'y remettre #line:0656218 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -688,15 +688,15 @@ position: 684,-454
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
-À cette heure-ci, vous n'avez pas trop envie de cuire quelque chose de trop lourd. Un mix de ratatouilles de légumes du soleil d'Aldébaran, y a rien de mieux... 
+À cette heure-ci, vous n'avez pas trop envie de cuire quelque chose de trop lourd. Un mix de ratatouilles de légumes du soleil d'Aldébaran, y a rien de mieux...  #line:07e9d83 
 << fx EatCook >>
-Vous ouvrez votre boîte de plat-rouge-bio. Vous servez le tout avec une assiette de céréales complètes. C'est simple, chaud, nourrissant et franchement bon.
+Vous ouvrez votre boîte de plat-rouge-bio. Vous servez le tout avec une assiette de céréales complètes. C'est simple, chaud, nourrissant et franchement bon. #line:028599b 
 
 << advanceTime 0:30 >>
 << removeFromGauge sleep 20 >>
 << addToGauge food 20 >>
 
--> La journée n'est pas encore finie !
+-> La journée n'est pas encore finie ! #line:00b7ab2 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
@@ -705,19 +705,19 @@ tags: noUi
 colorID: 0
 position: 182,578
 ---
-Sapiens_concerned: On peut aussi apprendre à les repousser.
-Temde_smiling: Ou à les contourner. C'est selon.
-Ledai_explaining: Exactement, et c'est l'objet de cette session.
-Sapiens_thinking: Gérer ta charge cognitive. Ne surtout pas saturer ton processeur cérébral.
-Ledai_happy: S'isoler des éléments distracteurs. Ne pas abuser du "mode multitâches".
-You: C'est quoi le "mode multitâches" ?
-Temde_cheerful: En "mode multitâches", tu commence une action, tu passes à une autre, puis à une troisième...
-Azul_proud: Ou tu en mènes plusieurs de front.
-Ledai_explaining: Au lieu de focaliser ton processeur sur un calcul stratégique, tu fragmente ton attention.
-Sapiens_thinking: Cela réduit ta capacité cognitive. Et à un moment donnée, cette dernière sature ! Elle bloque ! Elle freeze !
-Ledai_explaining: Elle ne répond plus, c'est l'écran bleu.
-You: Ah.
-Sapiens_concerned: Un petit questionnaire pour conclure ?
+Sapiens_concerned: On peut aussi apprendre à les repousser. #line:0782903 
+Temde_smiling: Ou à les contourner. C'est selon. #line:0549316 
+Ledai_explaining: Exactement, et c'est l'objet de cette session. #line:07b1850 
+Sapiens_thinking: Gérer ta charge cognitive. Ne surtout pas saturer ton processeur cérébral. #line:0d0022f 
+Ledai_happy: S'isoler des éléments distracteurs. Ne pas abuser du "mode multitâches". #line:02b3bdc 
+You: C'est quoi le "mode multitâches" ? #line:0ed6808 
+Temde_cheerful: En "mode multitâches", tu commence une action, tu passes à une autre, puis à une troisième... #line:073a225 
+Azul_proud: Ou tu en mènes plusieurs de front. #line:03b11fa 
+Ledai_explaining: Au lieu de focaliser ton processeur sur un calcul stratégique, tu fragmente ton attention. #line:0f012c1 
+Sapiens_thinking: Cela réduit ta capacité cognitive. Et à un moment donnée, cette dernière sature ! Elle bloque ! Elle freeze ! #line:0f3e42f 
+Ledai_explaining: Elle ne répond plus, c'est l'écran bleu. #line:0d52d93 
+You: Ah. #line:078a1bc 
+Sapiens_concerned: Un petit questionnaire pour conclure ? #line:0615edb 
 
 <<jump Le_Quizz_des_Sages>>
 ===

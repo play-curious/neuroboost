@@ -1,0 +1,232 @@
+LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?
+en	0aa5e7b	Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.	D3_level1	Start	8	2ad5fd4d
+en	02f7e52	Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie d'Omniscience et de Polytechnologie Universelle. Attention, ça ne veut pas dire jour de repos !	D3_level1	Start	9	b767c90e
+en	0a81caa	Ronronron... Votre palmphone qui vibre. Sans suprise, vous voyez que l'appel vient de Fred.	D3_level1	Start	10	ba9b02d4
+en	02b8348	-> Prendre l'appel	D3_level1	Start	11	4ee62c7c
+en	08eba87	Fred@holo_excited: Hello ! Je te dérange pas ?	D3_level1	Appel_Fred	18	b5e42d9c
+en	00fd80e	You: Naaan...	D3_level1	Appel_Fred	19	9f9bb162
+en	0de8a96	Fred@holo_smiling: Tu fais quoi là, maintenant ?	D3_level1	Appel_Fred	20	b05e020d
+en	0c77f0f	You: Je finis mon petit déjeuner.	D3_level1	Appel_Fred	21	ae6fbdf6
+en	0d66d67	Fred@holo_smiling: Yes yes. Cool. Tu viens avec moi à la salle de gym ?	D3_level1	Appel_Fred	22	33451a4f
+en	0bb9184	You: Naan... Je dois travailler en autonomie.	D3_level1	Appel_Fred	23	6b8ea66d
+en	0afe120	Fred@holo_smiling: Tu veux parler de la note de synthèse sur la PNLIAA ?	D3_level1	Appel_Fred	24	ea46ba78
+en	0a1583f	You: Ouais. La Programmation Neuro Linguistique des Intelligences Artifielles Analogiques.	D3_level1	Appel_Fred	25	4bd38f3a
+en	0ec868c	Fred@holo_excited: No worry. On a juste qu'à minuit pour la déposer sur le FTP de l'Académie.	D3_level1	Appel_Fred	26	102f6abb
+en	094fa41	You: C'est vrai. C'est assez touffu ce truc de PNLIAA.	D3_level1	Appel_Fred	27	ff7d2ae3
+en	04141c1	Fred@holo_smiling: Pfuuu. Tu prends trop les choses au sérieux. Alors tu viens ?	D3_level1	Appel_Fred	28	66cd8ed0
+en	03d11d4	-> Rejoindre Fred	D3_level1	Appel_Fred	29	00a09eb1
+en	0f969d5	-> Rester travailler	D3_level1	Appel_Fred	30	a6d4d718
+en	06be99b	Vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit.	D3_level1	Salle_Gym	37	806a0dca
+en	0191a44	Fred_excited: Je savais que tu allais venir.	D3_level1	Salle_Gym	38	d9a81901
+en	0ac94f1	You: La preuve.	D3_level1	Salle_Gym	39	94966af7
+en	0f7b067	Fred_smiling: Yes. Après notre séance de gym, tu vas voir, tu vas torcher cette note de synthèse !	D3_level1	Salle_Gym	40	0d42ffb8
+en	0b93234	You: On verra, je l'espère.	D3_level1	Salle_Gym	41	99de2e31
+en	0efa519	Fred_excited: No worry ! Allez viens !	D3_level1	Salle_Gym	42	00fdcd37
+en	08dc9c5	Vous emboîtez le pas de Fred et vous éclatez tous les deux aux différentes activités proposées: cybersprint, electroskate, eBall, eJump...	D3_level1	Salle_Gym	43	cdf1518a
+en	00e13d8	Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.	D3_level1	Salle_Gym	44	c284f691
+en	01a88d0	Fred_smiling: Tu pars déjà, lâcheur ?	D3_level1	Salle_Gym	45	8e985d70
+en	0d39a55	You: J'en peux plus.	D3_level1	Salle_Gym	46	747ff249
+en	0043c50	Fred_sad: Tant pis.	D3_level1	Salle_Gym	47	10f829e6
+en	0adf8ce	-> Retourner dans votre chambre	D3_level1	Salle_Gym	48	d29b9189
+en	0054ed7	Que faites-vous maintenant ?	D3_level1	Liste_Taches	55	b871a697
+en	03b4018	-> Faire un somme	D3_level1	Liste_Taches	56	c2ca1e05
+en	0462dc3	-> Faire une sieste#once	D3_level1	lit_subchoice_am	67	ebe766c9
+en	043ca29	-> Préparer son bureau avant de se mettre à travailler#once	D3_level1	bureau_subchoice_am	72	eb981d17
+en	0b8be50	-> Ouvrir le chat histoire de se détendre#once	D3_level1	bureau_subchoice_am	73	498aa673
+en	0c4cb46	-> Débuter la rédaction de la note de synthèse#once	D3_level1	bureau_subchoice_am	74	53bf1aa5
+en	0825e0c	-> Binger votre série TV préférée#once	D3_level1	salon_subchoice	79	547369f9
+en	0b1db6d	-> Faire une sieste#once	D3_level1	lit_subchoice_pm	90	ebe766c9
+en	070ff91	-> Se détendre sur le chat#once	D3_level1	bureau_subchoice_pm	95	fb3089b9
+en	0d83cf1	-> Continuer la rédaction de la note de synthèse#once	D3_level1	bureau_subchoice_pm	96	1694b47d
+en	0f0f15f	-> Manger#once	D3_level1	cuisine_subchoice_pm	101	f2f28f9f
+en	0c2da19	Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite votre le paper print de votre brief, les documents de référence que vous avez déjà en possession.	D3_level1	Ranger	108	b5bf6139
+en	07d17d5	Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document. Avant de commencer la rédaction de votre note, vous prenez le temps d'établir un plan de réflexion et de travail. Certes, cela vous prend du temps, mais ça va vous faciliter le processus de rédaction.	D3_level1	Ranger	109	75da5428
+en	0f12c46	-> Il ne reste plus qu'à s'y mettre maintenant	D3_level1	Ranger	110	6b251a6d
+en	03fd939	Vous cliquez sur l'icône ChatApp de votre Palmphone. Il y a encore plus de monde que lundi !	D3_level1	Chat	117	504d6062
+en	01a52e4	Vous êtes pingé par Fred ! Il vous demande si vous ne voulez pas le rejoindre à la salle de gym !	D3_level1	Chat	118	d038e2b2
+en	01d6f70	Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous ne pouvez ignorer son injonction !	D3_level1	Chat	119	0f4707f2
+en	07431b7	Toute la communauté va apprendre que vous avez refusé un duel virtuel, que vous êtes un lâche...	D3_level1	Chat	120	e06fccb3
+en	03c3db8	Vexé et décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait.	D3_level1	Chat	121	23a0da68
+en	0da4e45	Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.	D3_level1	Chat	122	230ea659
+en	0198641	-> Et maintenant, il faut peut-être travailler sur cette note de synthèse ?	D3_level1	Chat	123	db4febf8
+en	0d11e8f	Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber.	D3_level1	BingeTV	130	78d68134
+en	080516c	Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir !	D3_level1	BingeTV	131	c868822d
+en	0827128	Ils sont parvenu à décryogéniser Jaba Fett. Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de de Mana de toute la galaxie !	D3_level1	BingeTV	132	06bd7d05
+en	072f83e	Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran ! Vont-ils parvenir à arrêter Dude ? L'empêcher de libérer la galaxie du joug de l'Imperium Noir ?	D3_level1	BingeTV	133	c394e996
+en	0ad6a89	Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples: les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..	D3_level1	BingeTV	134	7fbb0bed
+en	04ecc7e	Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse...	D3_level1	BingeTV	135	15345de3
+en	0f4ec37	-> Vite, au travail !	D3_level1	BingeTV	136	093dbe65
+en	0f947aa	Vous vous rappelez ce que vous ont dit les 4 Sages. Dormir régulièrement, tous les jours. Toutefois, si le temps manque, un petit somme, ça fait du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux.	D3_level1	Sleep	143	8d5f60b5
+en	040ab85	Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice.	D3_level1	Sleep	144	f89783d0
+en	0a71e55	Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.	D3_level1	Sleep	145	31c02172
+en	0be3a2f	-> Maintenant, il faut s'y remettre	D3_level1	Sleep	146	be690fb1
+en	02a36e5	Vous vous retroussez les manches et vous attelez à la tâche. Mettre au propre cette note de synthèse, fruit de plusieurs jours de lecture, de prises de notes, de réflexions diverses et variées.	D3_level1	Redaction_Note	153	8b38f356
+en	0ae7283	Vous avez tellement de choses à dire et à coucher sur votre document, vous ne manquez pas d'idées, mais de concentration et productivité.	D3_level1	Redaction_Note	154	d29f2045
+en	0e9a809	Allez, encore une fois, vous respirez un grand coup avant de replonger dans le grand bain. Vous êtes loin d'avoir fini et les heures ne cessent de filer.	D3_level1	Redaction_Note	155	f1d31e4c
+en	0094415	Il faut terminer cette note de synthèse coûte que coûte avant la deadline...	D3_level1	Redaction_Note	156	2bbf49e0
+en	05597da	Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...	D3_level1	Redaction_Note	157	16da9348
+en	04a8cf4	-> Prendre l'appel	D3_level1	Redaction_Note	158	4ee62c7c
+en	068ad62	Fred@holo_excited: Alors ? Je t'attends toujours ? Quand viens-tu ?	D3_level1	Fred_again	165	98c7763e
+en	0e02807	You: Heu... Je sais pas.	D3_level1	Fred_again	166	53ec6e69
+en	0933cbe	Fred@holo_happy: Beware ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.	D3_level1	Fred_again	167	424776ea
+en	0d5bbdd	Nooon ! Si la communauté apprend que vous avez décliné le défi de Fred. Fred, le membre le plus populaire du Métaverse de la fraternité étudiante.	D3_level1	Fred_again	168	3dfcf35e
+en	0a9d7ba	Vous êtes grillé aux yeux de tous les camarades de l'Académie d'Omniscience et de Polytechnologie Universelle... Vous êtes piégé. quand faut y aller, faut y aller...	D3_level1	Fred_again	169	83ac00c9
+en	04a4eb8	-> Retrouver Fred	D3_level1	Fred_again	170	e2b0d39f
+en	05b7fff	Vous relevez le défi lancé par Fred. En fait, vous vous éclatez tous les deux comme des enfants : cybersprint, electroskate, eBall, eJump...	D3_level1	Salle_Gym2	177	ecc22bbf
+en	06b85e7	Le moins que l'on puisse dire, c'est que vous êtes donné à fond. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.	D3_level1	Salle_Gym2	178	b1a0acd2
+en	0c2042d	Fred_smiling: Tu pars déjà, tu déclares forfait ?	D3_level1	Salle_Gym2	179	70804cf8
+en	055017d	You: J'en peux plus.	D3_level1	Salle_Gym2	180	747ff249
+en	00c7c51	Fred_smiling: Alors, j'ai gagné.	D3_level1	Salle_Gym2	181	dcbf9172
+en	0297745	You: Pour une fois.	D3_level1	Salle_Gym2	182	805c63e9
+en	09b4ee0	-> Retourner dans votre chambre	D3_level1	Salle_Gym2	183	d29b9189
+en	050998f	Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec.	D3_level1	Surcharge_Cognitive	190	63806860
+en	01ea25b	Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte.	D3_level1	Surcharge_Cognitive	191	9d50b6d8
+en	0a80fc6	Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...	D3_level1	Surcharge_Cognitive	192	a07f048f
+en	02fb7a3	N'empêche, vous sentez votre tête penchez en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrer dans le noir...	D3_level1	Surcharge_Cognitive	193	c86c2951
+en	0fe6b9c	Puis, vous entendez une voix familière:	D3_level1	Surcharge_Cognitive	194	7c5b018f
+en	0660f97	???: Tout va bien, { $name } ?	D3_level1	Surcharge_Cognitive	195	408a479f
+en	0b5c0c2	You: Tais-toi, Miss Temdé !	D3_level1	Surcharge_Cognitive	196	3202f442
+en	0508ea5	Azul_proud: Raté, c'est moi, Azul.	D3_level1	Surcharge_Cognitive	197	422e72f2
+en	00470e3	You: Zut...	D3_level1	Surcharge_Cognitive	198	f0d9bda2
+en	0a4a5d0	Azul_happy: Pas grave, viens, on a une nouveau truc à t'apprendre.	D3_level1	Surcharge_Cognitive	199	13403f36
+en	07c135a	-> Suivre Azul	D3_level1	Surcharge_Cognitive	200	fc9be4a9
+en	0def546	Hop, la seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin exotique.	D3_level1	Assemblee_3	207	23ad7af9
+en	01acb97	Ce petit nid de verdure que vos hôtes nomment l'assemblée des Sages. C'est de la téléportation ou de la magie ? Et où se trouve ce fichu décor si criant de vérité... On dirait d'authentiques plantes exotiques...	D3_level1	Assemblee_3	208	6077635a
+en	049d30a	Temde_smiling: Yep, elles sont réelles, ce ne sont pas des végétaux synthétiques. C'est moi qui m'en occupe.	D3_level1	Assemblee_3	209	80e2e0bb
+en	013b5c8	Sapiens_concerned: Super Miss Temdé. Je ne crois pas que { $name } soit venu pour échanger sur cette question.	D3_level1	Assemblee_3	210	38e0f36d
+en	098a333	Ledai_explaining: Tout à fait. Cette nouvelle session aura pour objet la surcharge cognitive.	D3_level1	Assemblee_3	211	fe87094a
+en	0cea551	You: Quoi ?!	D3_level1	Assemblee_3	212	0e92be16
+en	007843d	Azul_proud: On t'as appris à ménager ton corps.	D3_level1	Assemblee_3	213	45279805
+en	0369523	Temde_cheerful: Bien dormir et manger équilibré.	D3_level1	Assemblee_3	214	7df712fa
+en	0c4bb09	Sapiens_thinking: C'est la même chose avec tes capacités mentales. Elles ont besoin d'énergie et de recharger les batteries. Je te l'ai dit. Mais elles peuvent aussi tomber en panne.	D3_level1	Assemblee_3	215	967b151e
+en	0d2e27b	You: Comment ça ?	D3_level1	Assemblee_3	216	f5a667c1
+en	00b8454	Sapiens_concerned: Si tu les surcharges.	D3_level1	Assemblee_3	217	0368877f
+en	05c15b1	Ledai_explaining: Si tu les fais surchauffer. Comme ton ordinateur, il peut se bloquer, ne plus répondre.	D3_level1	Assemblee_3	218	4f3f40af
+en	0471186	You: Ah bon ?	D3_level1	Assemblee_3	219	285d20be
+en	043ca63	Sapiens_happy: Il faut utiliser la technique <i>pomodoro</i>	D3_level1	Assemblee_3	220	ecba9ac5
+en	02746d5	You: Et ça consiste en quoi ?	D3_level1	pomodoro	227	1728a152
+en	03602b4	Ledai_explaining: C'est très simple. Il faut fractionner ta tâche en plusieurs petites tâches.	D3_level1	pomodoro	228	16b2810d
+en	026f129	You: Un exemple.	D3_level1	pomodoro	229	3ade8208
+en	0077256	Ledai_explaining: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir en une seule fois. Tu vas le couper en plus petit bouts que tu vas du premier au dernier morceau.	D3_level1	pomodoro	230	764e55bc
+en	0eb665c	You: Ouais... Et si je veux le dévorer ?	D3_level1	pomodoro	231	565c43df
+en	0f9cb00	Sapiens_concerned: Ah, jeunesse insouciante... Tu vas t'étouffer, tu vas faire exploser ton estomac jusqu'à régurgiter ce que tu auras péniblement avalé.	D3_level1	pomodoro	232	196435fc
+en	0e86fe5	Ledai_doubtful: Beuha... C'est dégoûtant.	D3_level1	pomodoro	233	884bdc62
+en	0cfd064	Azul_happy: L'important n'est pas de s'élancer, mais de franchir le kilomètre suivant, et ainsi de suite jusqu'à la ligne d'arrivée.	D3_level1	pomodoro	234	7a44a834
+en	0a55ca5	Temde_smiling: L'important est de tenir l'effort sur la durée, pas de sprinter.	D3_level1	pomodoro	235	ba65ff50
+en	05684c6	You: Et c'est tout ?	D3_level1	pomodoro	236	4f9401b4
+en	09f97d3	Sapiens_thinking: Non. Il y a autre chose. Le plus important... Éviter les distractions.	D3_level1	pomodoro	237	4499432c
+en	082271e	-> Les distractions  ?	D3_level1	pomodoro	238	941a0128
+en	07ebae0	Sapiens_thinking: Les perturbations extérieures qui parasitent ta charge mentale et saturent tes processus de calcul cérébral.	D3_level1	Les_distractions	245	a01d05fe
+en	0eb3c6d	You: Hé, je suis pas une machine !	D3_level1	Les_distractions	246	b82f7bdb
+en	0a3347e	Ledai_happy: Tout à fait, l'erreur est humaine, pas informatique.	D3_level1	Les_distractions	247	ca788504
+en	09fd718	Azul_proud: Je la fais court. Plus on est concentré, moins on peut disperser son attention. C'est comme le jonglage...	D3_level1	Les_distractions	248	fda90532
+en	0f9fe4f	Temde_smiling: Exactement. Regarde-moi ! J'ai quatre bras ! Toi, tu n'en as que deux, je peux jongler avec plus de balles que toi !	D3_level1	Les_distractions	249	cbff079e
+en	0643c7f	You: C'est ça. Je te défie !	D3_level1	Les_distractions	250	ac78c71f
+en	03b8236	Miss Temdé se lève tranquillement et étend ses mains. Des balles apparues de nulle part se matérialisent dans ses paumes. Miss Temdé jongle ainsi avec quatre, cinq, puis six balles...	D3_level1	Les_distractions	251	bd894f88
+en	0172964	Temde_smiling: À ton tour, montre-nous ce que tu peux faire.	D3_level1	Les_distractions	252	041c9531
+en	0f6c696	Temde_smiling: Tu vois, tu ne peux pas jongler autant de balles que moi.	D3_level1	Jongler	259	b68d6806
+en	08f0c22	Temde_thinking: Mais, moi aussi, j'ai mes limites. J'ai beau jonglé 6 balles, mais je ne pourrais pas jonger 7, ou 8, ou 12 !	D3_level1	Jongler	260	7af87918
+en	0007bae	Azul_happy: Nous en avons tous des limites...	D3_level1	Jongler	261	c45e38b3
+en	047ca36	Temde_smiling: Bravo ! Tu a réussi à jongler autant de balles que moi.	D3_level1	Jongler	262	d701e0c0
+en	0d2e2b4	Temde_thinking: Mais est-ce que tu aurais pu jongler le double ? Le triple ?	D3_level1	Jongler	263	ccba3e38
+en	0f35edb	Azul_happy: Nous avons tous des limites...	D3_level1	Jongler	264	82d4e037
+en	04d7d40	Sapiens_angry: Je suis content de voir que tu te prends au jeu.	D3_level1	Le_Quizz_des_Sages	271	a1aac23d
+en	0d5e72d	Ledai_doubtful: En effet, tout ce travail n'est pas mené en vain.	D3_level1	Le_Quizz_des_Sages	272	c31f1fe7
+en	064bc3c	You: J'espère bien. C'est parfois barbant votre baratin...	D3_level1	Le_Quizz_des_Sages	273	11864d98
+en	0c86c64	Ledai_doubtful: Notre baratin ? Mais, nous essayons de t'améliorer...	D3_level1	Le_Quizz_des_Sages	274	ad239f56
+en	045153a	You: Mouais...	D3_level1	Le_Quizz_des_Sages	275	8236d8f2
+en	0c28caa	Sapiens_thinking: Commençons par cette question. La technique pomodoro consiste à fractionner une tâche en plusieurs tâches.	D3_level1	Le_Quizz_des_Sages	276	b5c707bf
+en	060fe3f	-> Pour pouvoir jongler avec chacune dans l'ordre que l'on veut, voire en même temps	D3_level1	Le_Quizz_des_Sages	277	e983d90f
+en	0ebed3f	-> Pour pouvoir avancer méthodiquement, en respectant des étapes de concentration intenses mais courtes	D3_level1	Le_Quizz_des_Sages	278	deaab406
+en	0d724c6	Sapiens_angry: N'importe quoi ! Tu n'as rien compris de ce qu'on a dit.	D3_level1	Pomodoro_No	285	6112f2a6
+en	0300ce3	Sapiens_concerned: Je suis attristé de voir tout le mal que Miss Temdé s'est donné avec la parabole des balles de jonglage.	D3_level1	Pomodoro_No	286	4f173d83
+en	08ecf98	Sapiens_concerned: Non, on ne peut pas gérer n'importe quelle tâche dans n'importe quel ordre ! Et surtout pas tout en même temps ! Ta charge cognitive encaisse, encaisse. Et elle finit par saturer.	D3_level1	Pomodoro_No	287	35b93844
+en	0491c4e	Ledai_doubtful: Hélas. Le "mode multitâche" a la vie dure.	D3_level1	Pomodoro_No	288	f4337e07
+en	0190a86	Azul_sad: Cessons de regarder le verre à moitié vide. Je pense que { $name } a compris la leçon cette fois.	D3_level1	Pomodoro_No	289	9a1807e5
+en	0aadad0	Ledai_explaining: Bien parlé Azul.	D3_level1	Pomodoro_No	290	380c6313
+en	093a374	Sapiens_thinking: J'espère. Continuons avec la deuxième affirmation test, laquelle est la bonne ?	D3_level1	Pomodoro_No	291	f5e50c81
+en	00f24e1	Sapiens_happy: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques.	D3_level1	Pomodoro_No	292	fbc57a9e
+en	0756ef2	Sapiens_happy: Tu travailleras <b>uniquement l'après-midi</b> ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ?	D3_level1	Pomodoro_No	293	e12072fb
+en	0f34e44	-> Me ménager	D3_level1	Pomodoro_No	294	28aff34b
+en	0741df4	-> Travailler d'arrache-pied	D3_level1	Pomodoro_No	295	0cee9281
+en	0167c15	Sapiens_happy: Exactement ! On doit apprendre les tâches les unes après les autres de manière logique.	D3_level1	Pomodoro_Yes	302	d4faaffb
+en	04fea71	Ledai_explaining: Que ce soit de manière linéaire ou itérative. On n'entame jamais une tâche importante si on ne sait pas d'où on vient ni on veut aller.	D3_level1	Pomodoro_Yes	303	4ac6955c
+en	01c47d0	Temde_smiling: Oui, enfin, grosso modo...	D3_level1	Pomodoro_Yes	304	0cee4687
+en	09360a5	Azul_sad: Chut ! Ne commençons pas à nous chicaner. Comment voulez-vous que { $name } y comprenne quelque chose...	D3_level1	Pomodoro_Yes	305	302eef7a
+en	024e3f0	Sapiens_concerned: Merci, Azul. Continuons avec la deuxième affirmation test, laquelle est la bonne ?	D3_level1	Pomodoro_Yes	306	1a084dd1
+en	0d8e42c	Sapiens_happy: Maintenant que tu as accepté l'idée que ton processeur cérébral ne pourra supporter un effort continu trop long... Tu décides de ménager ton cerveau en passant la matinée à pratiquer des activités agréables ou ludiques.	D3_level1	Pomodoro_Yes	307	fbc57a9e
+en	0a747d4	Sapiens_happy: Tu travailleras <b>uniquement l'après-midi</b> ou tu préfères travailler <b>matin et après-midi</b> afin de te ménager des pauses régulières et laisser ton processeur cérébral refroidir régulièrement ?	D3_level1	Pomodoro_Yes	308	e12072fb
+en	020937b	-> Me ménager	D3_level1	Pomodoro_Yes	309	28aff34b
+en	02fe822	-> Travailler d'arrache-pied	D3_level1	Pomodoro_Yes	310	0cee9281
+en	04d03cd	Sapiens_angry: J'en perds ma barbe ! Quelle réponse idiote ! Tu as compris ce qu'est la surcharge cognitive ?	D3_level1	GestionTemps_No	317	9b45608a
+en	0983ab3	You: C'est quand le cerveau fatigue, il surchauffe.	D3_level1	GestionTemps_No	318	f4749e02
+en	0358705	Ledai_doubtful: Alors pourquoi as-tu cru cette affirmation ?	D3_level1	GestionTemps_No	319	ea4b4445
+en	0df26f3	You: Parce que mon pote, Fred, il bosse à la dernière minute et ça marche !	D3_level1	GestionTemps_No	320	1375aab4
+en	0348fa2	Temde_thinking: Tu n'es pas ton pote.	D3_level1	GestionTemps_No	321	523c74bb
+en	0f80780	Azul_sad: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil : Il faut travailler régulièrement, sans excès.	D3_level1	GestionTemps_No	322	4f0e85cd
+en	0ac4dc0	Temde_thinking: Surtout ne pas tout reporter au dernier moment.	D3_level1	GestionTemps_No	323	33340116
+en	01288b8	Ledai_explaining: Sinon, tu risques le court-circuit, le "system failure"...	D3_level1	GestionTemps_No	324	2377fc2a
+en	06b1428	Sapiens_concerned: C'est enfin compris ?	D3_level1	GestionTemps_No	325	ed1641b2
+en	0dcf040	You: Oui.	D3_level1	GestionTemps_No	326	778ee8c6
+en	0116f8b	Sapiens_thinking: Alors voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive... Choisis bien cette fois ta réponse.	D3_level1	GestionTemps_No	327	ae21d9a1
+en	0dd0b29	-> Les distracteurs sont comme des bonbons qui récompensent les pauses entre chaque session de concentration intense	D3_level1	GestionTemps_No	328	69edeee6
+en	02128de	-> Les distracteurs sont des tentations extérieures qui menacent et dérangent l'effort de concentration du cerveau	D3_level1	GestionTemps_No	329	9ff8a559
+en	092cda1	Sapiens_happy: Tout à fait. Chaque chose en son temps. Comme tes ordinateurs, il faut les mettre en veille pour qu'ils cessent de computer sans fin, qu'ils puissent refroidir et récupérer en capacités de calcul.	D3_level1	GestionTemps_Yes	336	966e3d2b
+en	01417a6	Azul_proud: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil: Il faut travailler régulièrement, sans excès.	D3_level1	GestionTemps_Yes	337	094fefe8
+en	073279a	Temde_smiling: Surtout ne pas tout reporter au dernier moment.	D3_level1	GestionTemps_Yes	338	1bfbdd29
+en	0110780	Ledai_explaining: Sinon, tu risques le court-circuit, le "system failure"...	D3_level1	GestionTemps_Yes	339	2377fc2a
+en	0b0e200	Sapiens_happy: C'est enfin compris ?	D3_level1	GestionTemps_Yes	340	82b6cb70
+en	04b31f8	You: Oui.	D3_level1	GestionTemps_Yes	341	778ee8c6
+en	090a765	Sapiens: Alors voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive... Choisis bien ta réponse.	D3_level1	GestionTemps_Yes	342	c674920f
+en	08385ef	-> Les distracteurs sont comme des bonbons qui récompensent les pauses entre chaque session de concentration intense	D3_level1	GestionTemps_Yes	343	69edeee6
+en	0e7a1b4	-> Les distracteurs sont des tentations extérieures qui menacent et dérangent l'effort de concentration du cerveau	D3_level1	GestionTemps_Yes	344	9ff8a559
+en	0199d2f	Sapiens_angry: Quelle horreur ! Quel non-sens ! Les distracteurs...	D3_level1	Distracteurs_No	351	3f11989a
+en	00d2d6a	Sapiens_angry: Réseaux sociaux, notifications automatiques, connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport direct avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses !	D3_level1	Distracteurs_No	352	145b29e4
+en	0d3ac41	Sapiens_angry: Comme leur nom l'indique, ce sont des nuisances ! Ils t'empêchent d'être 100% concentré sur la tâche présente. Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Par conséquent les distracteurs affaiblissent ta capacité cognitive...	D3_level1	Distracteurs_No	353	eeea8d73
+en	0bc669e	You: Ah... zut...	D3_level1	Distracteurs_No	354	56828f7b
+en	0a3746a	Sapiens_angry: C'est tout ce que tu as à me dire ?	D3_level1	Distracteurs_No	355	5c466279
+en	0313570	You: Ben... Ouais...	D3_level1	Distracteurs_No	356	a553cfcf
+en	0428688	Sapiens_concerned: Quelle misère.	D3_level1	Distracteurs_No	357	b6a0a02a
+en	03fd84b	Azul_sad: Je pense que { $name } a compris cette fois-ci. N'est-ce pas ?	D3_level1	Distracteurs_No	358	65137816
+en	0ef8838	You: Oui.	D3_level1	Distracteurs_No	359	778ee8c6
+en	09dcd65	Sapiens_concerned: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ?	D3_level1	Distracteurs_No	360	47fd1d42
+en	0a1f92e	You: Parce qu'il réduisent mon attention.	D3_level1	Distracteurs_No	361	4734c6af
+en	031161d	Ledai_explaining: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites !	D3_level1	Distracteurs_No	362	4cc7f3a2
+en	09ee971	Azul_happy: Il faut se ménager un espace de calme et de paix, une bulle d'attention.	D3_level1	Distracteurs_No	363	a3f47eaf
+en	03eea13	Sapiens_thinking: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...	D3_level1	Distracteurs_No	364	833760db
+en	0fa85dd	You: OK.	D3_level1	Distracteurs_No	365	f0bab017
+en	0afa8a4	Ledai_happy: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !	D3_level1	Distracteurs_No	366	629b54d6
+en	0148cac	-> Journal mental	D3_level1	Distracteurs_No	367	71ceb606
+en	0210305	Sapiens_happy: Bien entendu. Les Réseaux sociaux, les notifications automatiques, la connexion web ou TV, la pollution sonore, échanges avec amis, activité sans rapport immédiat avec la tâche présente... Ne sont pas des facilitateurs, ni même des récompenses ! Comme leur nom l'indique, ce sont des nuisances !	D3_level1	Distracteurs_Yes	374	3fc17e60
+en	0fe8d10	Sapiens_happy: Les distracteurs distraient ton attention, la dispersent dans toute les directions ! Les distracteurs affaiblissent ta capacité cognitive. Tu dois être 100% concentré sur la tâche présente, pas être distrait par d'autre choses ou d'autres personnes..	D3_level1	Distracteurs_Yes	375	569fd9c7
+en	0811abc	You: Oui.	D3_level1	Distracteurs_Yes	376	778ee8c6
+en	0a410b9	Sapiens_happy: Les distracteurs doivent être réduits au maximum. Surtout en période de concentration intense. Pourquoi ?	D3_level1	Distracteurs_Yes	377	84b82c9d
+en	0987eb1	You: Parce qu'il réduisent mon attention.	D3_level1	Distracteurs_Yes	378	4734c6af
+en	0e1deb8	Ledai_happy: Tout à fait. Pour atteindre un niveau de concentration élevé, il faut se déconnecter de ces ondes parasites !	D3_level1	Distracteurs_Yes	379	f966d082
+en	09712cb	Azul_happy: Il faut se ménager un espace de calme de paix une bulle d'attention.	D3_level1	Distracteurs_Yes	380	ebd74525
+en	0f55336	Sapiens_happy: Pas d'écran, pas de réseau, pas de bruit désagréable, pas de présence indésirable...	D3_level1	Distracteurs_Yes	381	53c4637b
+en	0bd1ccf	You: OK.	D3_level1	Distracteurs_Yes	382	f0bab017
+en	0083029	Ledai_happy: Maintenant, il ne te reste plus qu'à noter tout ça dans ton journal mental !	D3_level1	Distracteurs_Yes	383	629b54d6
+en	020390a	-> Journal mental	D3_level1	Distracteurs_Yes	384	71ceb606
+en	013dc70	Vous revoilà seul... Dans cet instant figé, dans cette parenthèse intime entre l'ombre et la lumière, le jour et la nuit. Votre "carnet d'ingénieur tout-terrain" est entre vos mains...	D3_level1	JournalMental	391	346f3321
+en	028022b	Qu'allez-vous noter dessus ?	D3_level1	JournalMental	392	4aebef93
+en	05c15dc	Yum Yum ! Il est temps de se faire une pause "manger équilibré", comme le recommande les Sages.	D3_level1	Lunch	399	30bbf832
+en	08fec15	Vous vous cuisinez un Green Burger Full Vegie. Franchement, c'est étrange, tant pour le goût que pour l'aspect.	D3_level1	Lunch	400	f22d9595
+en	0ac6233	On dirait un burger à la viande et il n'y en a aucune. En outre, c'est vraiment copieux. Et les frites à base de riz croustillant... Dingue. C'est meilleur que les frites de chez Naz Do...	D3_level1	Lunch	401	cac76d71
+en	0656218	-> C'est pas tout, il faut s'y remettre	D3_level1	Lunch	402	91b75cc4
+en	07e9d83	À cette heure-ci, vous n'avez pas trop envie de cuire quelque chose de trop lourd. Un mix de ratatouilles de légumes du soleil d'Aldébaran, y a rien de mieux...	D3_level1	Diner	409	3b41c53e
+en	028599b	Vous ouvrez votre boîte de plat-rouge-bio. Vous servez le tout avec une assiette de céréales complètes. C'est simple, chaud, nourrissant et franchement bon.	D3_level1	Diner	410	e36418ac
+en	00b7ab2	-> La journée n'est pas encore finie !	D3_level1	Diner	411	fe1606e9
+en	0782903	Sapiens_concerned: On peut aussi apprendre à les repousser.	D3_level1	Quit_Mini_Game	418	dff318b5
+en	0549316	Temde_smiling: Ou à les contourner. C'est selon.	D3_level1	Quit_Mini_Game	419	76ff2a52
+en	07b1850	Ledai_explaining: Exactement, et c'est l'objet de cette session.	D3_level1	Quit_Mini_Game	420	911f16be
+en	0d0022f	Sapiens_thinking: Gérer ta charge cognitive. Ne surtout pas saturer ton processeur cérébral.	D3_level1	Quit_Mini_Game	421	5cb4f21b
+en	02b3bdc	Ledai_happy: S'isoler des éléments distracteurs. Ne pas abuser du "mode multitâches".	D3_level1	Quit_Mini_Game	422	80ab6efc
+en	0ed6808	You: C'est quoi le "mode multitâches" ?	D3_level1	Quit_Mini_Game	423	dc31255f
+en	073a225	Temde_cheerful: En "mode multitâches", tu commence une action, tu passes à une autre, puis à une troisième...	D3_level1	Quit_Mini_Game	424	882be3d2
+en	03b11fa	Azul_proud: Ou tu en mènes plusieurs de front.	D3_level1	Quit_Mini_Game	425	7082b328
+en	0f012c1	Ledai_explaining: Au lieu de focaliser ton processeur sur un calcul stratégique, tu fragmente ton attention.	D3_level1	Quit_Mini_Game	426	8f4bc235
+en	0f3e42f	Sapiens_thinking: Cela réduit ta capacité cognitive. Et à un moment donnée, cette dernière sature ! Elle bloque ! Elle freeze !	D3_level1	Quit_Mini_Game	427	9bee25c4
+en	0d52d93	Ledai_explaining: Elle ne répond plus, c'est l'écran bleu.	D3_level1	Quit_Mini_Game	428	d12a27ab
+en	078a1bc	You: Ah.	D3_level1	Quit_Mini_Game	429	29c9edc0
+en	0615edb	Sapiens_concerned: Un petit questionnaire pour conclure ?	D3_level1	Quit_Mini_Game	430	fef6bb49

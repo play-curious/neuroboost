@@ -122,11 +122,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.enabled = true;
     this.selectedOptions = [];
 
-    //@ts-ignore
-    const saveData = window.loadSave ?save.getSave():undefined ;
+    const saveData = DialogScene.loadSave ? save.getSave() : undefined;
 
-    //@ts-ignore
-    delete window.loadSave;
+    DialogScene.loadSave = false;
 
     if (saveData) {
       this.startNode = saveData.nodeName;
@@ -205,7 +203,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       for (const tag of this.metadata.filetags) {
         if (tag.startsWith("gauges")) {
           const values = tag.split(":")[1].trim();
-          const gauges = values.split(" ");
+          const gauges = values.split(",");
           this.graphics.currentGauges = gauges;
         }
       }

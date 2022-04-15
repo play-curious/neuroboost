@@ -1,0 +1,347 @@
+LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?
+en	0321513	Vous êtes attablé à un large plateau oblong, vous riez. Vous êtes entouré de vos confrères et consoeurs : les 4 sages !	D5_level1	Start	8	469e4bbd
+en	0465049	Vous avez rejoint leur assemblée ! Vous êtes devenu un expert de la métacognition !...	D5_level1	Start	9	f626b4a5
+en	0fdfbaf	Bip ! Bip ! Votre horloge connectée vous surprend en plein milieu d'un rêve merveilleux.	D5_level1	Start	10	249b0475
+en	05bec81	Hélas, ce ne sera pas pour aujourd'hui. Ce matin, vous devez réviser. Nous sommes jeudi, la semaine de partiels ne s'est pas achevée. Vous devez passer encore un examen cet après-midi.	D5_level1	Reveil	16	04683161
+en	034c955	La GRH : la Gestion des Ressources Hybrides. C'est-à-dire les forces vives : biologiques, numériques, et biologinumériques...	D5_level1	Reveil	17	fb06353a
+en	039a65d	Ronronron... Votre palmphone vibre. Pour la première fois de la semaine, ce n'est pas Fred, mais votre grand-mère. Qu'est-ce qui lui prend de vous appeler à cette heure-ci ?	D5_level1	Reveil	18	54284d59
+en	056860d	-> Prendre l'appel	D5_level1	Reveil	19	4ee62c7c
+en	0c01801	-> Rejeter l'appel	D5_level1	Reveil	20	2a0a44c1
+en	0a2e419	Que voulez-vous faire?	D5_level1	Liste_Taches	27	b07b7f6b
+en	0e60daf	C'est l'heure de déjeuner. Il faut manger avant d'aller à l'examen !	D5_level1	Liste_Taches	28	22f4f576
+en	0f5649f	-> Manger	D5_level1	Liste_Taches	29	596304b2
+en	0a33a5f	-> Réviser votre cours, façon "rappel libre" #once	D5_level1	bureau_subchoice	34	7cc9206b
+en	0b2264f	-> Vous informer en ligne sur les causes et les effets des pathologies cardiaques#once	D5_level1	bureau_subchoice	35	36b7bd27
+en	0cbdbfa	-> Prendre votre petit déjeuner#once	D5_level1	cuisine_subchoice	40	b4f61564
+en	0ca4bb0	-> Appeler vos parents#once	D5_level1	salon_subchoice	45	2d8edb36
+en	0d368df	-> Appeler Fred#once	D5_level1	salon_subchoice	46	b16bc44f
+en	0dc5f32	You: Bonjour mamie ! Pourquoi je ne te vois pas ?	D5_level1	Appel_Mamie	52	51d103ba
+en	09e9477	Mamie@holo_shadow: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir...	D5_level1	Appel_Mamie	53	d66ae937
+en	0b2c720	You: Ah bon ?	D5_level1	Appel_Mamie	54	285d20be
+en	0cb28e3	Mamie@holo_shadow: Je suis à l'hôpital et on m'a branchée sur des dizaines de câbles et de moniteurs. Je ressemble plus à une véhicule accidenté qu'à une grand-mère.	D5_level1	Appel_Mamie	55	69cbc42e
+en	0af7656	You: Qu'est-ce qui t'es arrivée ?	D5_level1	Appel_Mamie	56	cda75c43
+en	00db0dd	Mamie@holo_shadow: Rien de grave, chouchou. Tes parents t'ont rien dit ?	D5_level1	Appel_Mamie	57	440eb1c4
+en	0ffcbf6	You: Heu non...	D5_level1	Appel_Mamie	58	b1bc9213
+en	054b688	Mamie@holo_shadow: Ah... Bien sûr...	D5_level1	Appel_Mamie	59	e9171207
+en	0ae83b8	You: Quoi ?	D5_level1	Appel_Mamie	60	32b1a869
+en	0e1f352	Mamie@holo_shadow: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux...	D5_level1	Appel_Mamie	61	3cba8b91
+en	07ebf06	You: Ton coeur ?! Mamie...	D5_level1	Appel_Mamie	62	eede79be
+en	0dcce80	Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire !	D5_level1	Appel_Mamie	63	c1de528c
+en	0104bbb	Du coup, votre aïeule coupe court à la conversation. Vous n'en saurez pas plus. Quel choc !!	D5_level1	Appel_Mamie	64	37a3adc1
+en	082d5c8	Votre grand-mère à l'hôpital, la connaissant dure comme du béton armé, c'est du sérieux. Vraiment, ça craint...	D5_level1	Appel_Mamie	65	b08f0cea
+en	0001bfe	Il y a des journées comme celle-ci qu'on préférerais zapper... Du coup, vous ne savez plus du tout par quoi vous allez commencer...	D5_level1	Appel_Mamie	66	bd05b92b
+en	0f72aa5	-> Pourtant, il faut choisir	D5_level1	Appel_Mamie	67	57c69e41
+en	0f180f8	Ce n'est pas une heure pour appeler ses petits-enfants ! Vous pourriez être en cours ou en examen ! Vraiment, les grands-parents, il faut leur imposer une mise à jour du manuel du savoir-vivre !...	D5_level1	Rejet_Mamie	73	824c1182
+en	0edfb4d	Votre palmphone s'ébroue de nouveau ! C'est encore votre grand-mère ! Elle insiste, ce n'est pas son genre. En général, elle laisse un message sur votre répondeur. C'est peut-être sérieux...	D5_level1	Rejet_Mamie	74	5885651e
+en	0804287	-> Prendre l'appel	D5_level1	Rejet_Mamie	75	4ee62c7c
+en	0c61e86	C'est vraiment pas yum yum ce matin... Votre muesli à la crème n'a pas de goût et votre jus d'orange reconstitué vous attaque l'estomac. C'est trop acide. Décidément, la nourriture biologcindus ne ne fait pas toujours des miracles. Surtout, quand le moral est bas... Au moins, vous vous sentez le corps moins vidé.	D5_level1	Breakfast	81	289271db
+en	000a34a	-> Que faites-vous maintenant?	D5_level1	Breakfast	82	384138a2
+en	0f1795d	Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous appuyez sur le bouton "appel". Votre mère décroche :	D5_level1	Maman_Call	88	57b77b1d
+en	0442ed3	Maman@holo_shadow: Bibi. Tu es au courant ?	D5_level1	Maman_Call	89	da39922d
+en	00f2c5c	You: Oui. Mamie m'a appelé. Qu'a-t-elle ?	D5_level1	Maman_Call	90	2a103a6f
+en	0a4c162	Maman@holo_shadow: Elle a fait une crise cardiaque. On l'a admise d'urgence à l'hôpital. Son état est stable mais on doit l'opérer.	D5_level1	Maman_Call	91	4e6c49ff
+en	05d2da3	You: Pourquoi ne m'avoir rien dit ?	D5_level1	Maman_Call	92	50e26e6b
+en	0c66227	Maman@holo_shadow: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus.	D5_level1	Maman_Call	93	2a90df1a
+en	0282628	You: Merci. Du coup, je suis plus stressé...	D5_level1	Maman_Call	94	09a13ba1
+en	0193543	Maman@holo_shadow: Bibi, je ne pensais pas te...	D5_level1	Maman_Call	95	645f9766
+en	0598eec	You: J'ai compris. Bye !	D5_level1	Maman_Call	96	db1525b2
+en	0ebfe3a	Vous raccrochez, encore plus énervé. Cette histoire sent de plus en plus mauvais...	D5_level1	Maman_Call	97	cd7b9bed
+en	0345efd	-> Il faut se ressaisir et agir	D5_level1	Maman_Call	98	d64ef358
+en	084cb91	Vous avez des lacunes en GRH, toutefois, vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés.	D5_level1	Rappel_libre	104	1f363029
+en	00a6227	Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs... En direction de votre grand-mère, de son problème cardiaque, de son opération.	D5_level1	Rappel_libre	105	cf8817ce
+en	069f116	Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond...	D5_level1	Rappel_libre	106	84bae4d1
+en	05f6737	-> Qu'est-ce que vous allez bien faire ?	D5_level1	Rappel_libre	107	3c7554db
+en	0a92560	Vous vous approchez de votre ordinateur de bureau. Vous lancez le navigateur et tapez "problème cardiaque" dans le moteur de recherches.	D5_level1	Web_Info	113	6e1e68ba
+en	069a072	Vous passez l'heures suivante à lire des tonnes d'articles sur le sujet. Vous n'êtes pas diplômé en science médicale, il vous est difficile de faire le tri dans les informations.	D5_level1	Web_Info	114	145ba5df
+en	08a3006	Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes...	D5_level1	Web_Info	115	0993fbcd
+en	048d52f	Vous vous demandez si c'était une si bonne idée de vouloir s'informer tout seul sur un sujet aussi sensible...	D5_level1	Web_Info	116	f47109ed
+en	0c04c0a	-> Et maintenant, que faire?	D5_level1	Web_Info	117	a7e0eb24
+en	04e2d90	Vous parcourez le journal d'appel de votre palmphone, vous y trouvez facilement son numéro et vous l'appeler.	D5_level1	Fred_Call	123	dff2a1b7
+en	03789f6	Fred@holo_excited: Hey ! C'est toi qui m'appelles for once !	D5_level1	Fred_Call	124	2a0fa47c
+en	013714c	You: Ouais... Hum... Heu...	D5_level1	Fred_Call	125	407bb056
+en	017b1e7	Fred@holo_smiling: Ça va pas ?	D5_level1	Fred_Call	126	5cd6b537
+en	0b8bd9d	You: C'est ma grand-mère. Je viens d'apprendre qu'on va l'opérer du coeur...	D5_level1	Fred_Call	127	78956dd9
+en	092804b	Fred@holo_surprised: Gosh ! C'est pas nice comme nouvelle. Je comprends...	D5_level1	Fred_Call	128	16fca2dd
+en	0206496	You: Je pense plus qu'à ça.	D5_level1	Fred_Call	129	4334d0c8
+en	0b20a50	Fred@holo_smiling: Il faut te vider la tête ! Trust me !	D5_level1	Fred_Call	130	85d2b2ee
+en	0bded6d	You: En buvant des shots de wodga ?!	D5_level1	Fred_Call	131	00aecbd4
+en	0da5b01	Fred@holo_excited: Non, surtout pas d'alcool ! Viens avec moi, on va se défouler à la salle de sport !	D5_level1	Fred_Call	132	3ac6e710
+en	0e59e52	You: Sais pas...	D5_level1	Fred_Call	133	949c9880
+en	04a0929	Fred@holo_excited: Si, follow me...	D5_level1	Fred_Call	134	55290c9f
+en	00d4a58	-> Accepter la proposition de Fred	D5_level1	Fred_Call	135	624d0d3c
+en	0270fa2	-> Refuser la proposition de Fred	D5_level1	Fred_Call	136	57640c5a
+en	0eae5d4	Zuuut !! Déjà l'heure de se préparer à sortir ! Pas le temps de faire dans le subtil et l'équilibré. Vous enfournez dans le four radio un Burger Big Proteins Double Cheese !	D5_level1	Lunch	143	5e3b077e
+en	05a65a4	Le temps que votre plat réchauffe, vous videz une canette de Xeno Cola ! Cinq bouchées plus tard et un rapide coup de serviette pour enlever le ketchup, vous enfilez vos frustres et vous filez en salle...	D5_level1	Lunch	144	17bda501
+en	0a39ac3	-> Se rendre à l'examen	D5_level1	Lunch	145	71708132
+en	0266780	Revêtu d'un exosquelette tout-terrain, Fred vous attend.	D5_level1	Sport_Stress	151	c6b508ce
+en	05248b2	Fred_excited: Yes yes ! Te voilà. Mets ta combi !	D5_level1	Sport_Stress	152	409b781a
+en	0474eb5	Il vous balance un exosquelette que vous rattrapez in-extremis au vol. Vous enfilez la combinaison et rejoignez Fred sur la piste.	D5_level1	Sport_Stress	153	45899bf7
+en	0d7a5ce	You: Et qu'est-ce qu'on fait maintenant ?	D5_level1	Sport_Stress	154	83b1bf18
+en	03b8144	Fred_smiling: on se défoule autant qu'on peut !	D5_level1	Sport_Stress	155	34165be5
+en	054f4cc	You: Heu...	D5_level1	Sport_Stress	156	94d39185
+en	0f5f517	Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons. Ravi de son coup, Fred vous tend la main pour vous redresser. Vous la saisissez, l'agrippez et la tirez pour le faire chuter à son tour !	D5_level1	Sport_Stress	157	577849ed
+en	04a6008	Fred, beau joueur, se laisse tomber à vos côtés. La suite : vous passez votre temps à vous donnez des coups de poings et des coups de pieds de gangster ! Vous imaginez que Fred incarne votre peur, votre frustration. Vous lui envoyez toute la colère et la rage contenue en vous !	D5_level1	Sport_Stress	158	4036c965
+en	05802ee	Heureusement, le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. En revanche, vos muscles et vos poumons, eux, se raidissent et surchauffent. Après plus d'une heure de ce boxing endiablé, vous déclarez forfait. Vous avez la langue sèche et les membres engourdis.	D5_level1	Sport_Stress	159	c94daf8b
+en	005e993	Fred_smiling: Alors ? Tu te sens mieux ?	D5_level1	Sport_Stress	160	ea327029
+en	018e4b1	You: Crevé...	D5_level1	Sport_Stress	161	99ce5a9d
+en	0a0b4c7	Fred_smiling: Cool et...	D5_level1	Sport_Stress	162	b8ec62a4
+en	04e0544	You: Toujours aussi véner...	D5_level1	Sport_Stress	163	0cdd3288
+en	087e086	Fred_sad: Damned.	D5_level1	Sport_Stress	164	3e0afe8d
+en	063cb46	Hélas, cet exercice de frappe intense ne semble pas avoir évacué votre angoisse, loin de là.	D5_level1	Sport_Stress	165	520827b5
+en	0376d57	-> Qu'est-ce que vous allez bien pouvoir faire ?	D5_level1	Sport_Stress	166	c5cf1aa5
+en	005d27c	You: Nan... Je crois pas... Je vais	D5_level1	NoMove_Stress	172	25a5df47
+en	0b275b9	Fred@holo_excited: Au contraire, faut que tu penses à autre chose !	D5_level1	NoMove_Stress	173	02bf8c0c
+en	0b9ef67	You: Pas envie...	D5_level1	NoMove_Stress	174	3398d9b9
+en	030bd86	Fred@holo_happy: D'accord, alors on joue en ligne !	D5_level1	NoMove_Stress	175	dd3175fd
+en	0f77a75	You: Naan	D5_level1	NoMove_Stress	176	3b6c1bbd
+en	0ec03c5	Fred@holo_smiling: Attention, je te défie à Crawl of Study ! Tout le METAVERSE le saura !	D5_level1	NoMove_Stress	177	78b8f197
+en	0caad58	You: Tu fais chier, Fred...	D5_level1	NoMove_Stress	178	62430e12
+en	0a5fd91	Fred@holo_smiling: C'est pour ça que je suis ton pote... ah ah...	D5_level1	NoMove_Stress	179	1ad9e140
+en	0761bd7	Vous grognez et vous pestez, cependant, vous lancez le serveur GameStream. Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred. Son skin est aujourd'hui fuschia et orange fluo, c'est vraiment laid.	D5_level1	NoMove_Stress	180	e5f3a4f7
+en	05b47d6	Bon, c'est facile à repérer et viser. Vous respirez un bon coup et plongez dans Crawl of Study. C'est un MOBA, se situant dans une reconstitution 3D de l'Académie d'Omniscience et de Polytechnologie Universelle.	D5_level1	NoMove_Stress	181	5793deab
+en	07f33eb	Le gameplay mélange Plateformer en mode Parkour et TPS en mode athlète grec néo-antique. Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser. Pour autant, cela ne réduit pas votre trouble.	D5_level1	NoMove_Stress	182	19ce83aa
+en	0065fe8	Vous êtes aussi énervé après deux bonnes heures de jeu qu'avant.	D5_level1	NoMove_Stress	183	23602a41
+en	0ea55d4	-> Qu'est-ce que vous allez bien pouvoir faire ?	D5_level1	NoMove_Stress	184	c5cf1aa5
+en	0778139	Vous retrouvez Fred devant l'entrée de la salle de classe. Ce dernier vous regarde avec perplexité.	D5_level1	Salle_Examen	190	ba81256f
+en	0e35285	Fred_surprised: Damned, ça n'a pas l'air d'aller. Tu as le visage blême.	D5_level1	Salle_Examen	191	1c6ce94a
+en	07f0b42	You: Ça va, ça va...	D5_level1	Salle_Examen	192	1e9a53a4
+en	0050193	Fred_sad: Ah bon ? J'ai bien l'impression que notre séance de sport ne t'a pas réussi.	D5_level1	Salle_Examen	193	00d98207
+en	0058a9d	You: Ça va, je t'assure...	D5_level1	Salle_Examen	194	4cd76dfe
+en	04338f2	Votre palmphone vibre. C'est votre mère qui tente de vous rejoindre. Fred vous fixe des yeux:	D5_level1	Salle_Examen	195	9b38c0df
+en	037e754	Fred_sad: T'es sûr ? Ça va ?	D5_level1	Salle_Examen	196	fe297d2f
+en	0018679	You: Attends...	D5_level1	Salle_Examen	197	c79d710f
+en	0e8a63c	-> Prendre l'appel	D5_level1	Salle_Examen	198	4ee62c7c
+en	012ac4b	-> Rejeter l'appel	D5_level1	Salle_Examen	199	2a0a44c1
+en	0e2952a	Vous collez le combiné à votre oreille:	D5_level1	Maman_blabla	205	604a0ac3
+en	01d7c34	You: Maman ?	D5_level1	Maman_blabla	206	dc23b8ef
+en	0cd51de	Maman@holo_shadow: Oui, Bibi	D5_level1	Maman_blabla	207	385e7cce
+en	060baae	Heuah.... Manquait plus que votre mère vous appelle encore "Bibi". Vous n'êtes plus un nourisson !	D5_level1	Maman_blabla	208	e7bee546
+en	08c96b7	You: Dis-moi.	D5_level1	Maman_blabla	209	81563595
+en	0077fe4	Maman@holo_shadow: C'est mamie.	D5_level1	Maman_blabla	210	fe96f7a7
+en	0115589	You: Quoi encore ?	D5_level1	Maman_blabla	211	e91c0d69
+en	06fe828	Maman@holo_shadow: Elle est sortie du bloc.	D5_level1	Maman_blabla	212	82fe705b
+en	0527a7a	You: Et alors ?	D5_level1	Maman_blabla	213	0486a51c
+en	081d30c	Maman@holo_shadow: Ça va... Mais...	D5_level1	Maman_blabla	214	168d07c2
+en	0129bd2	You: Mais ?	D5_level1	Maman_blabla	215	e72e5e3d
+en	00777dc	Maman@holo_shadow: On l'a transféré en salle de réanimation.	D5_level1	Maman_blabla	216	847a6d55
+en	07499e9	You: Ça veut dire quoi ?	D5_level1	Maman_blabla	217	963e7f74
+en	030f66d	Maman@holo_shadow: Elle n'est pas sortie du coma...	D5_level1	Maman_blabla	218	15b22305
+en	029a81d	You: Nom de....	D5_level1	Maman_blabla	219	f8156826
+en	0ac204d	Maman@holo_shadow: Rassure-toi { $name }, ta mamie est une personne forte. Dure comme du béton... armé... Elle s'en sortira..	D5_level1	Maman_blabla	220	12a3deaa
+en	03a63ba	You: Je te laisse, on va en examen !	D5_level1	Maman_blabla	221	ce8d3015
+en	0879b59	Maman@holo_shadow: Courage, Bibi...	D5_level1	Maman_blabla	222	9feda065
+en	0a15124	En clair, les choses ne s'annoncent bien. Vraiment pas bien.	D5_level1	Maman_blabla	223	dab36cab
+en	06189f6	Fred_sad: Alors? Tu as une figure de déterré...	D5_level1	Maman_blabla	224	9746f667
+en	0e0396e	You: Tu crois pas si bien dire...	D5_level1	Maman_blabla	225	f3896dfd
+en	0d5c0e1	Fred_surprised: Pardon ?	D5_level1	Maman_blabla	226	f02ca3c4
+en	0ef952f	-> Tout raconter à Fred	D5_level1	Maman_blabla	227	f48b2aef
+en	0600a34	-> Ne rien dire à Fred	D5_level1	Maman_blabla	228	a78d0827
+en	0e081b5	Vous balayez du doigt l'appel.	D5_level1	Maman_message	234	a2bec6fc
+en	022970e	Fred_surprised: Mais qu'est-ce qui se passe ?	D5_level1	Maman_message	235	6b1b6591
+en	099d96f	You: C'est compliqué.	D5_level1	Maman_message	236	ca93625d
+en	09bb333	Votre palmphone gigote à nouveau ! Votre mère a laissé un message sur votre répondeur. Vous ne pouvez vous empêcher fixer votre appareil.	D5_level1	Maman_message	237	a3a0db6d
+en	0487aa6	Vous entrez dans le journal de messagerie et demandez la conversion textuelle du message :	D5_level1	Maman_message	238	0b13c153
+en	044a794	"L'opération a été menée à bien, mais votre grand-mère a fait un malaise. Elle a été transférée en service de réanimation critique..."	D5_level1	Maman_message	239	b8c1d0cf
+en	02be3f1	Fred_sad: Alors ?	D5_level1	Maman_message	240	c416fd2a
+en	035e6dd	You: Heu...	D5_level1	Maman_message	241	94d39185
+en	01d2c40	-> Tout raconter à Fred	D5_level1	Maman_message	242	f48b2aef
+en	09fc96d	-> Ne rien dire à Fred	D5_level1	Maman_message	243	a78d0827
+en	0d75a3d	Fred_happy: Dis-moi.	D5_level1	Fred_implorer	249	a4fb6484
+en	0134151	You: Puisque tu veux savoir...	D5_level1	Fred_implorer	250	b9f875f5
+en	02a2897	Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Elle a été hospitalisée d'urgence. Elle vient de subir une opération.	D5_level1	Fred_implorer	251	60786707
+en	08b4916	Malheureusement, ça n'est pas bien passé. Elle a été transféré en réanimation. Elle est encore dans le coma... Vous êtes tellement stressé, vous monopolisez la parole.	D5_level1	Fred_implorer	252	780f9718
+en	03e16a0	Fred, aimerait bien vous aider mais vous ne lui laissez pas le temps de trouver des mots doux et réconfortants...	D5_level1	Fred_implorer	253	63d73b56
+en	09e7dac	L'horloge automatique sonne! C'est déjà l'heure d'entrer en salle d'examen! Trop nul...	D5_level1	Fred_implorer	254	f1855f67
+en	064c64e	-> Entrer dans la salle	D5_level1	Fred_implorer	255	cd942954
+en	0eb5fad	Fred_happy: Dis-moi.	D5_level1	Fred_silence	261	a4fb6484
+en	02cb970	You: Rien.	D5_level1	Fred_silence	262	f51a3f51
+en	0848cdb	Fred_smiling: { $name}...	D5_level1	Fred_silence	263	9f88af67
+en	0d7ba01	You: Noon...	D5_level1	Fred_silence	264	a5271367
+en	070095c	Fred_smiling: Yes Yes...	D5_level1	Fred_silence	265	67843395
+en	06eb89b	You: Tais-toi !	D5_level1	Fred_silence	266	5dc7bb1b
+en	04e14d4	Fred_sad: Ok, si tu le prends comme ça...	D5_level1	Fred_silence	267	b5f54ddb
+en	0db5975	Après vous être embrouillé avec Fred, vous entrez dans la salle pour attendre le début de l'examen.	D5_level1	Fred_silence	268	bb78483c
+en	0596a50	-> Entrer dans la salle	D5_level1	Fred_silence	269	cd942954
+en	008d537	Vous vous asseyez devant votre pupitre. Vous avez l'esprit troublé. Et ce n'est pas un problème d'attention. Vous n'arrivez tout simplement pas à vous concentrer. Le sujet s'affiche à l'écran: <b>La loi de Murphy dans la GRH</b>...	D5_level1	Examen	275	0bb9e224
+en	0b04bfa	Génial... Le sujet super cool. C'est plutôt vous qui subissez en ce moment la loi de Murphy... Il y avait une faible probabilité de recevoir une nouvelle désastreuse, vous l'avez reçue ce matin. Et depuis, ça ne fait qu'empirer...	D5_level1	Examen	276	ce7978bf
+en	0603555	Vous répondez aux questions au hasard, sans trop savoir ce que l'on vous demande et ce qu'il faut indiquer. C'est un peu comme si votre corps était là, mais votre esprit ailleurs.	D5_level1	Examen	277	f98809d5
+en	0871c45	Les quatre heures passent dans un espace-temps indéterminé. Vous validez sans conviction votre copie et quittez la salle, l'air hagard, agité parfois de légers tremblements.	D5_level1	Examen	278	e5eefbb3
+en	03272dd	-> Sortir	D5_level1	Examen	279	fab90f88
+en	00cd449	Vous retrouvez dehors Fred. Il vous fixe d'un air encore plus ahuri.	D5_level1	Resultats_bad	285	c67f1869
+en	02de704	Fred_excited: Damned de damned! Si tu voyais ta figure dans une glace...	D5_level1	Resultats_bad	286	9ea71217
+en	06d47a9	You: Non merci...	D5_level1	Resultats_bad	287	3b4f7705
+en	08038f9	Fred_surprised: Tu as foiré toi aussi ?	D5_level1	Resultats_bad	288	59329868
+en	069ffa9	You: S'il n'y avait que ça...	D5_level1	Resultats_bad	289	1b73e013
+en	06da674	Fred vous avoue ne pas être content de sa performance... Hélas, ce n'est ni le jour ni l'heure. Vous vous fichez de votre score. De toute manière, vous êtes entré de plain-pied dans le cercle vicieux de la loi de Murphy. Tout ne peut aller que de mal en pis...	D5_level1	Resultats_bad	290	d94f2e2e
+en	075a255	Vous pensez à votre grand-mère. Vous ne pensez qu'à ça. Autant vous dire que vous n'avez même pas l'envie d'éclater de rire quand les résultats s'affichent au tableau.	D5_level1	Resultats_bad	291	0d03f8f4
+en	0276d81	Vous n'avez pas la moyenne : un petit <b>D</b>. Fred n'a eu que <b>C+</b>. Il a l'air déçu.	D5_level1	Resultats_bad	292	555c106c
+en	00dd2e6	Et alors ? Vous auriez eu A tous les deux, ce n'est pas ça qui ferait sortir votre grand-mère de son coma. Vous dites au-revoir à votre pote.	D5_level1	Resultats_bad	293	bd7343d8
+en	055ef1b	-> Retournez à votre chambre	D5_level1	Resultats_bad	294	8dd770b7
+en	0dcb4f4	Vous rentrez dans votre chambre. Vous avez la tête compressée. Vous ressassez sans cesse les incidents de la journée. Vous n'osez rappelez votre mère. Vous attendez que celle-ci vous rappelle.	D5_level1	Bedroom_night	301	e36ca77e
+en	0ea4b9c	Puis, le soir venu, vous vous efforcez  de manger mieux : une soupe bio mécanorganique. Mais le ventre et le coeur n'y sont pas. Vous êtes très, très énervé. Vous ne savez plus quoi penser, ni que faire pour vous calmer.	D5_level1	Bedroom_night	302	1daf88b1
+en	0d4d07c	Votre corps et votre instinct vous dit qu'il faut trouver le sommeil. Vous vous changez et vous glissez dans le lit. Mais vos pensées sont toujours là et vous agitent l'esprit.	D5_level1	Bedroom_night	303	a7c1b508
+en	0599c2f	-> Que faire?	D5_level1	Bedroom_night	304	c3970142
+en	01666cc	Vous demandez à votre IA locale de basculer en mode Zéro-Distraction. Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même.	D5_level1	Zero_Distraction	310	56bc71ee
+en	081f7b5	Cependant, cette solitude ne vous renforce pas, elle vous met seul, face à vos idées noires. Vous continuez à tourber en boucle les mêmes pensées dramatiques. Impossible de trouver le sommeil.	D5_level1	Zero_Distraction	311	341e7bb8
+en	0af1aa4	Vous demandez à votre IA de rebasculer en mode normal. Il faut essayer autre chose...	D5_level1	Zero_Distraction	312	dd0f3606
+en	04984b9	-> Quoi d'autre?	D5_level1	Zero_Distraction	313	15c097b8
+en	002d378	Vous examinez votre palmphone: aucun appel ou message. Ce silence est angoissant. Comment parviendrez-vous à vous endormir?	D5_level1	Choix_night	319	fd271721
+en	0fcc3a7	-> Couper toute distraction mentale #once	D5_level1	Choix_night	320	e3508e01
+en	0f4d9c1	-> Appeler votre mère #once	D5_level1	Choix_night	321	d63169f7
+en	0a90770	-> Attendre que ça vienne #once	D5_level1	Choix_night	322	01c3a0e0
+en	06b0854	-> Faire une sieste #once	D5_level1	Choix_night	323	06df3fe1
+en	0885033	Vous rappelez votre mère. Une fois... Deux fois... Elle ne répond pas. Vous lui laissez un message confus et maladroit avant de raccrocher. Pourquoi donc, elle ne décroche pas ? ...	D5_level1	Maman_callnight	329	5f9e1160
+en	0707859	Serait-elle à l'hôpital avec votre grand-mère ? Elle ne peut pas vous répondre, ou elle ne veut pas vous répondre ?... Que se passe-t-il ? Comment se porte votre grand-mère ?...	D5_level1	Maman_callnight	330	ccff4080
+en	0b3de72	-> Essayer autre chose	D5_level1	Maman_callnight	331	fa36d8fe
+en	04bc49a	Vous broyez du noir dans le silence et l'obscurité relative de votre chambre connectée. Vous ne pouvez pas vous empêchez de fixer les différents curseurs lumineux qui scintillent ou clignotent dans la pièce.	D5_level1	Rien	337	4c6304d5
+en	0c059be	Vos paupières sont lourdes, elles refusent néanmoins de se refermer... Les minutes, les heures passent... Puis... le décompte du temps vous échappe... Quand...	D5_level1	Rien	338	b2a363c8
+en	0ef1056	La sieste est une technique efficace quand on éprouve une fatigue importante et relativement saine. En revanche, si le corps ou le mental est perturbé ou malade, ça ne marche pas... Vous avez beau fermer les yeux, rien ne se passe.	D5_level1	Sieste_dontwork	344	8aa889c7
+en	03bd25d	Vos idées noires continuent de vous hanter.	D5_level1	Sieste_dontwork	345	297a2099
+en	07b97f6	-> Essayer autre chose	D5_level1	Sieste_dontwork	346	fa36d8fe
+en	0d5b188	Ledai_happy: Bonsoir { $name }.	D5_level1	Assemblee_Sages	353	104fdf7e
+en	0960ffa	You: Heiiiin...	D5_level1	Assemblee_Sages	354	45b55c86
+en	06d5690	Ledai_explaining: Suis-moi. On va te réparer ton moteur émotionnel...	D5_level1	Assemblee_Sages	355	52fad25d
+en	0ca85f3	You: Ahhhh... Heu...	D5_level1	Assemblee_Sages	356	86a37847
+en	0e55a4c	Ledai_happy: Allez...	D5_level1	Assemblee_Sages	357	c53e00b7
+en	0bce0ee	-> Suivre Ledai	D5_level1	Assemblee_Sages	358	626a5d22
+en	00b101d	Vous voilà de nouveau à l'Assemblée des Sages. Cet endroit normalement si verdoyant et si paisible. Mais ce soir, vous voyez tout en gris, voire en noir. Même ce paradis vous semble triste et éteint.	D5_level1	Assemblee_Sages	359	7de21b0b
+en	0d416f7	D'autant que vous ne voyez pas en quoi les experts de la métacognition pourraient aider votre grand-mère à sortir du coma.	D5_level1	Assemblee_Sages	360	dbece1c4
+en	030d737	You: Je vois pas ce que je fais là. C'est ma mamie qui va mal, pas moi.	D5_level1	Assemblee_Sages	361	41836b1a
+en	0ef23f8	Ledai_explaining: Au contraire, tu ne raisonne pas positivement et rationnellement.	D5_level1	Assemblee_Sages	362	67723246
+en	0c3f22b	You: Je suis surtout pas une machine comme vous !	D5_level1	Assemblee_Sages	363	23cd5599
+en	01ee68a	Azul_sad: Ce n'est pas gentil pour Ledai.	D5_level1	Assemblee_Sages	364	12251222
+en	02e9dbf	You: Ah bon ?	D5_level1	Assemblee_Sages	365	285d20be
+en	0fb050c	Azul_sad: Il est sincère. Tu as besoin d'aide...	D5_level1	Assemblee_Sages	366	a39cfb10
+en	085bdbf	You: Vous allez m'apprendre quoi cette fois ?	D5_level1	Assemblee_Sages	367	ace47845
+en	099e81f	Azul_happy: À gérer tes émotions.	D5_level1	Assemblee_Sages	368	957dfa47
+en	0f478a5	Temde_cheerful: À prévoir tout, même l'imprévisible.	D5_level1	Assemblee_Sages	369	62bc570d
+en	0c4f2a8	You: C'est ça, ouais.	D5_level1	Assemblee_Sages	370	a6aa4148
+en	0d7729a	Sapiens_angry: Tss... Quel manque de confiance dans note sagesse et notre expertise...	D5_level1	Assemblee_Sages	371	83133fcb
+en	059ba93	-> Balivernes!	D5_level1	Assemblee_Sages	372	ca604c7a
+en	066c741	Sapiens_thinking: Tu t'égares. L'émotion t'empêche de raisonner froidement.	D5_level1	LeStress	378	5ada2585
+en	05d61dc	Azul_sad: Tu es stressé, énervé, angoissé, déboussolé.	D5_level1	LeStress	379	97a8cb4d
+en	08a589d	Sapiens_thinking: Tu dois reprendre le contrôle de ton système nerveux central !	D5_level1	LeStress	380	c2956512
+en	03d991b	Temde_sad: Tu dois surtout lâcher prise, laisser les choses se faire. Tu n'y peux rien. Tu ne contrôles rien.	D5_level1	LeStress	381	ed636227
+en	063ccd8	Azul_happy: Tu dois te recentrer sur l'essentiel. Toi et le moment présent. C'est là-dessus que tu peux agir. Pas plus, pas moins.	D5_level1	LeStress	382	81e8ec17
+en	0c2deb0	You: Quoi ?! Je comprends rien...	D5_level1	LeStress	383	f1e95064
+en	0e4f776	Temde_smiling: Ta grand-mère traverse une épreuve difficile. C'est un fait. Malheureusement, c'est son épreuve, pas la tienne.	D5_level1	LeStress	384	ad63e37d
+en	00fc0a0	You: Quoi ?! Vous me demandez de l'ignorer, d'agir en égoïste ?!	D5_level1	LeStress	385	662ea1b7
+en	0b62136	Agacé, vous sautez sur place! Le sang vous monte à la tête...	D5_level1	LeStress	386	9ae5abc2
+en	021e1d9	Sapiens_angry: Suffit !	D5_level1	LeStress	387	4db8495e
+en	0b54896	Azul_sad: Calme-toi et écoute. Fais-nous confiance	D5_level1	LeStress	388	59fb5e92
+en	0385d2b	You: J'écoute...	D5_level1	Frustration	394	4c81e800
+en	0d20089	Azul_happy: C'est normal et c'est bien que tu penses à elle. La médecine a fait tout ce qu'elle pouvait pour l'aider. Tes pensées et celles de tes parents sont à son chevet. Maintenant, c'est à ta grand-mère de faire le reste du chemin. Seule. Tu n'as aucune prise sur cet événement.	D5_level1	Frustration	395	457e3c04
+en	0da5724	You: Pardon ?	D5_level1	Frustration	396	5a411653
+en	007036c	Ledai_explaining: On ne peut pas tout contrôler dans une expérience de vie. Contente-toi de maîtriser ce que tu peux modifier. Tes émotions par exemple.	D5_level1	Frustration	397	69085518
+en	0543ba2	Sapiens_concerned: Ton stress n'aidera pas ta grand-mère à aller mieux. Par contre il t'empêche de voir clair et de rester lucide.	D5_level1	Frustration	398	b7cb8a9b
+en	06779ec	You: C'est vous qui êtes malades !	D5_level1	Frustration	399	ffef0ff3
+en	08f163c	Azul_sad: Détrompes-toi, j'ai vécu des événements difficiles comme toi. Ce que j'ai appris, c'est de ne pas me laisser envahir par ces idées noires qui me font du mal.	D5_level1	Frustration	400	d026b7db
+en	0310c7f	Ledai_doubtful: Crois-tu que ton stress va guérir ta grand-mère ?	D5_level1	Frustration	401	1c37625a
+en	0c516c7	You: Heu... Ben...	D5_level1	Frustration	402	d42b47ad
+en	0a40a87	Ledai_doubtful: Alors, cesse d'y penser !	D5_level1	Frustration	403	05ff5f79
+en	0756dc1	Temde_thinking: Ledai a raison. Tu ne peux pas faire plus. À part attendre la suite.	D5_level1	Frustration	404	3cada1d8
+en	0d1fc40	You: Et si ?	D5_level1	Frustration	405	92f739d8
+en	00d9fae	Azul_happy: Arrête de voir les choses en noir. Tu verras bien.	D5_level1	Frustration	406	d12f7a7b
+en	030e796	-> Comment?	D5_level1	Frustration	407	3b0ef7df
+en	08a20e6	Sapiens_thinking: Le stress est un carburant utile dans les situations de péril et de danger immédiat. Il permet de réagir vite et intensément. Toutefois, quand, comme toi, on se retrouve dans une configuration où l'on a aucune prise possible sur les paramètres et les variables...	D5_level1	Stress_cognition	413	ae381fb2
+en	03c6a95	Sapiens_thinking: Cela devient insupportable. Tout ce carburant, cette énergie se retourne contre nous. Puisqu'on ne peut la brûler en agissant concrètement, elle nous consume de l'intérieur.	D5_level1	Stress_cognition	414	9d90aed4
+en	08d4b26	You: Vous voulez dire que le stress est une sorte de fuel ?	D5_level1	Stress_cognition	415	912413c2
+en	0eaba99	Ledai_happy: Tout à fait.	D5_level1	Stress_cognition	416	504e9903
+en	019f653	You: Et c'est quoi le rapport avec l'apprentissage ?	D5_level1	Stress_cognition	417	5a26dea4
+en	0574bf5	Azul_happy: Ce carburant qu'est le stress fait monter la température dans ton esprit. Ton cerveau devient incapable de gérer le présent.	D5_level1	Stress_cognition	418	311a251b
+en	0fb6715	You: Comment ça ?	D5_level1	Stress_cognition	419	f5a667c1
+en	0179dbc	Azul_happy: Imagine que tu roules sur une autoroute. Soudainement, ton accélérateur casse alors que tu appuies dessus. La vitesse augmente de plus en plus, sans but ni fin. Au début, tu peux encore arriver à contrôler ton véhicule. Mais plus celui-ci accélère, plus cela devient difficile.	D5_level1	Stress_cognition	420	c8108dd7
+en	0e217c9	Azul_sad: À un moment donné, cela devient même ingérable. Tu finis par perdre le contrôle de ton engin.	D5_level1	Stress_cognition	421	ab614585
+en	014d0b5	You: C'est ça le stress ?	D5_level1	Stress_cognition	422	57ad18b9
+en	0784fab	Ledai_explaining: Le temps semble s'écouler de plus en plus vite. Au point où tu n'arrives plus à traiter les informations.	D5_level1	Stress_cognition	423	e7f75fcc
+en	00bb75c	Sapiens_thinking: Tu ne peux plus à la fois analyser, décider et choisir ton mode d'action.	D5_level1	Stress_cognition	424	e7225792
+en	02fbd74	You: Et comment faire pour combattre le stress ?	D5_level1	Stress_cognition	425	4c37b837
+en	066b91b	Azul_proud: Réduire la vitesse.	D5_level1	Destress	431	a0891edd
+en	0227b9c	Ledai_explaining: Ramener ton stress à un niveau suffisamment bas pour qu'il ne t'empêche pas de raisonner.	D5_level1	Destress	432	62b25feb
+en	0d7e978	You: Et concrètement ?	D5_level1	Destress	433	a09ac11a
+en	0fb4f7c	Temde_smiling: Entreprendre des actions qui te permettent de reprendre le contrôle de tes pensées.	D5_level1	Destress	434	8c0fd6b5
+en	01df5c1	You: C'est-à-dire ?	D5_level1	Destress	435	4e52e8f4
+en	00ef55d	Sapiens_happy: Toute action qui mobilise activement et positivement ton attention.	D5_level1	Destress	436	d1b68768
+en	039db62	Azul_happy: Et aussi toute action qui relâche la pression sur ton mental.	D5_level1	Destress	437	bb9c6ac9
+en	08b9500	You: Ouais. Tout ça reste très théorique.	D5_level1	Destress	438	0a0cfa04
+en	04ce601	Temde_smiling: Par exemple toute activité agréable qui demande attention ou concentration.	D5_level1	Destress	439	abcaef13
+en	054469b	You: Lesquelles ?	D5_level1	Destress	440	b5ce4a5b
+en	0f401a0	Azul_happy: Jouer de la musique, chanter, dessiner, danser avec entrain. Le sport, quant il est pratiqué de manière sereine et consciente. La méditation...	D5_level1	Destress	441	596a9aa7
+en	031821d	-> C'est tout?	D5_level1	Destress	442	759a7b04
+en	0326e33	Sapiens_thinking: L'important est que ton engin cérébral évacue cette énergie négative d'une manière et d'une autre.	D5_level1	Lacher_prise	448	194f9942
+en	0656268	Ledai_explaining: Et surtout qu'il arrête d'en produire à nouveau.	D5_level1	Lacher_prise	449	ea6d5598
+en	093e629	Temde_thinking: Ces idées noires qui tournent en boucle te polluent la tête. Elles te rongent de l'intérieur.	D5_level1	Lacher_prise	450	f6620274
+en	0125bd3	Azul_happy: Il faut les laisser sortir de ta tête...	D5_level1	Lacher_prise	451	77b7859c
+en	0b5b00c	You: OK. Ça a l'air si simple, à vous écouter. Pourtant, je me sens si mal... Et j'ai essayé des trucs, ça n'a rien donné.	D5_level1	Lacher_prise	452	cce4b232
+en	0f1597f	Sapiens_concerned: Ne t'inquiète pas. Nous n'en avons pas fini. Je vais encore quelques questions Quizz pour m'assurer que tu as bien compris...	D5_level1	Lacher_prise	453	8e06447e
+en	08b659c	Azul: ... comment répondre de manière consciente et sereine à la peur, à l'angoisse, au stress.	D5_level1	Lacher_prise	454	4ee8c6f2
+en	07cb8ee	-> Prêt?	D5_level1	Lacher_prise	455	62b833ca
+en	00cb185	Sapiens_thinking: Je t'ai dit qu'il te faut pratiquer une activé qui mobilise ton attention... immédiate. Azul t'a énuméré quelques exemples d'actions utiles pour réduire le stress. Tu t'en souviens?	D5_level1	Quizz_Meditation	461	0b0066ea
+en	0d9abf2	You: Oui.	D5_level1	Quizz_Meditation	462	778ee8c6
+en	086741b	Sapiens_happy: Parfait. Alors, pour réduire ton stress, dois-tu:	D5_level1	Quizz_Meditation	463	54b97a94
+en	057ac50	-> Te concentrer intensément et écraser à l'aide de ta volonté tes mauvaises pensées?	D5_level1	Quizz_Meditation	464	7b3e6aa7
+en	0250606	-> Pratiquer la médiation en pleine conscience?	D5_level1	Quizz_Meditation	465	67171a90
+en	09c2ae3	Sapiens_angry: Mauvaise réponse ! S'il suffisait d'appuyer sur un bouton pour supprimer le stress, ça se saurait...	D5_level1	Meditation_No	471	dc5a7839
+en	0ca95e4	Azul_proud: Ce que veux dire Master Sapiens, c'est que la volonté, la pensée rationnelle n'est pas forcément la mieux à même de combattre les émotions, comme le stress.	D5_level1	Meditation_No	472	2d841a82
+en	0b9e181	You: Je fais comment alors ?	D5_level1	Meditation_No	473	28dc683b
+en	020bf6e	Sapiens_thinking: La méditation en pleine conscience.	D5_level1	Meditation_No	474	f5bdcfca
+en	0efe8bf	You: Ça veut dire quoi au juste la pleine conscience ?	D5_level1	Meditation_No	475	d09e0a30
+en	0c5866f	Azul_happy: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négative. Tu le fais en pleine conscience tu ne dors pas.	D5_level1	Meditation_No	476	f03322c2
+en	08eb3c1	Azul_cheerful: Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental.	D5_level1	Meditation_No	477	5a124ffc
+en	0488445	You: Ah bon ?	D5_level1	Meditation_No	478	285d20be
+en	037bc77	Azul_happy: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent...	D5_level1	Meditation_No	479	44bdd19e
+en	0285d20	You: Ahhh. D'accord...	D5_level1	Meditation_No	480	754207de
+en	00e90e3	-> Question suivante	D5_level1	Meditation_No	481	10f250e3
+en	0ed2d4e	Sapiens_happy: Parfait! C'est la méditation en pleine conscience.	D5_level1	Meditation_Yes	487	33a03955
+en	0a8bb0a	You: Ça veut dire quoi au juste la pleine conscience?	D5_level1	Meditation_Yes	488	81d9eab4
+en	0577800	Azul_happy: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négative. Tu le fais en pleine conscience, tu ne dors pas.	D5_level1	Meditation_Yes	489	1d4d6f27
+en	0c306e3	Azul_cheerful: Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental.	D5_level1	Meditation_Yes	490	5a124ffc
+en	0d3c44c	You: Ah bon ?	D5_level1	Meditation_Yes	491	285d20be
+en	0a55295	Azul_happy: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent...	D5_level1	Meditation_Yes	492	44bdd19e
+en	03d3ae5	You: Ouaaah... ça a l'air bien...	D5_level1	Meditation_Yes	493	19436ad3
+en	0e823f9	-> Question suivante	D5_level1	Meditation_Yes	494	10f250e3
+en	0994985	Sapiens_thinking: Voyons si tu vas trouver la bonne réponse. Pour réduire ton stress, tu peux également agir de manière physique et tangible.	D5_level1	Quizz_sport	500	02142e46
+en	0b9387c	-> En imaginant que le sac de frappe sur lequel tu tapes représente la cause de ta frustration	D5_level1	Quizz_sport	501	56632e72
+en	0e7881f	-> En pratiquant un sport plus doux et moins agressif. Comme le jogging	D5_level1	Quizz_sport	502	195e8f46
+en	0f1e98c	Sapiens_angry: Choix malheureux et risqué. La boxe peut, certes, aider à se défouler. Il faut également veiller à ce que la boxe ne risque pas d'entretenir ta frustration ou ta colère.	D5_level1	Sport_No	508	3a32f178
+en	06780ec	You: Pourquoi ?	D5_level1	Sport_No	509	16b3d3fa
+en	00541e9	Sapiens_thinking: Toute activité  physique ou sportive n'est pas forcément adaptée pour réduire le stress. La boxe est un sport de nature violente. Et si cette violence n'est pas également évacuée à l'issue de la session, elle peut consolider le stress et la frustration initiale. Ce serait inefficace voire contre-productif.	D5_level1	Sport_No	510	88aeedd2
+en	02c67bd	Azul_happy: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité plus calme, qui consomme ton énergie en douceur, te détende, sans t'aigrir.	D5_level1	Sport_No	511	100dcc7c
+en	0237735	Sapiens_thinking: En conclusion, éviter une activité trop brutale, qui pourrait générer à son tour du stress ou de la tension.	D5_level1	Sport_No	512	7b8601ad
+en	0ecea0f	You: Ah.	D5_level1	Sport_No	513	29c9edc0
+en	08efe6d	-> Dernière question	D5_level1	Sport_No	514	5f633a4a
+en	0230bee	Sapiens_happy: Bien répondu. Il faut également veiller à choisir une activité physique ou sportive qui ne risque pas d'entretenir ta frustration ou ta colère. Ce serait inefficace voire contre-productif.	D5_level1	Sport_Yes	520	f1fe58be
+en	08d0d28	Azul_happy: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité calme, qui consomme ton énergie en douceur, te détende.	D5_level1	Sport_Yes	521	1c86a0fc
+en	09c0781	Sapiens_thinking: En conclusion, éviter une activité trop violente, trop agressive, qui pourrait générer à son tour du stress ou de la tension.	D5_level1	Sport_Yes	522	c6d00a1f
+en	0803d28	-> Dernière question	D5_level1	Sport_Yes	523	5f633a4a
+en	0d64976	Sapiens_thinking: Dernière question. Pour réduire ton stress, tu peux choisir de pratiquer une activité ludique, créative, artistique...	D5_level1	Quizz_Art	529	b4c4457c
+en	081cadd	Sapiens_thinking: Qui fait écho à ton angoisse, comme visionner un film mélodramatique ou tragique ? Ou qui détourne ton attention de ton angoisse comme jouer des musiques joyeuses, radieuses, pleines de vie ?	D5_level1	Quizz_Art	530	9c7485b7
+en	0445f79	-> Echo à l'angoisse	D5_level1	Quizz_Art	531	48cc5b75
+en	07ff9e0	-> S'en détourner	D5_level1	Quizz_Art	532	145cde8b
+en	06ad591	Sapiens_angry: Mauvaise réponse ! Tu n'as pas compris qu'il faut éviter au maximum de maintenir ton mental dans cet environnement négatif et stérile !	D5_level1	Art_No	538	260223f3
+en	05cfd41	Azul_sad: Ce qu'il veut dire c'est que tu dois te fier à cette règle de bon sens: "lâcher prise".	D5_level1	Art_No	539	5a5b8dff
+en	08ec02b	You: Ça veut dire quoi au juste, "lâcher prise" ?	D5_level1	Art_No	540	f0f2d13a
+en	0654dde	Azul_sad: Faire le vide dans ta tête ! Ne plus entretenir ces idées noires, ne pas les ressasser, ne pas les contempler de trop près, ne pas les retenir, les laisser filer...	D5_level1	Art_No	541	51764c57
+en	0e8fdd7	Sapiens_concerned: Seuls ceux qui ont une maîtrise émotionnelle élevée sont capables d'affronter leurs peurs et leurs angoisses en face.	D5_level1	Art_No	542	add7f38c
+en	0fab1bc	Azul_happy: Quand on est encore débutant, il est préférable de se tenir le plus éloigné possible de ces mauvaises énergies.	D5_level1	Art_No	543	7414ea21
+en	03d0547	Sapiens_concerned: Elles sont plus fortes que toi.	D5_level1	Art_No	544	94d2ed23
+en	0855545	Azul_happy: Il te faudra plus d'une nuit avant de pouvoir te protéger d'elles...	D5_level1	Art_No	545	d34303ae
+en	0252e84	You: Ah...	D5_level1	Art_No	546	fff4bab1
+en	00cf502	Sapiens_thinking: N'hésite pas à recourir aux choix clairs et éprouvés.	D5_level1	Art_No	547	9c4987af
+en	099e17e	Azul_happy: L'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent.	D5_level1	Art_No	548	5af02345
+en	0c85eb8	You: Je note tout ça dans mon "carnet d'ingénieur tout-terrain" ?	D5_level1	Art_No	549	8b19106b
+en	0a8f4a1	Ledai_happy: Oui !	D5_level1	Art_No	550	bd570cd0
+en	0675eef	-> Noter tout ça dans ton journal mental	D5_level1	Art_No	551	4e9e9c4d
+en	09c710c	Sapiens_happy: Bonne réponse ! Il ne faut pas sur-estimer sa capacité à faire face à ses peurs et ses angoisses. Seuls ceux qui ont une maîtrise émotionnelle élevée sont capables de le faire.	D5_level1	Art_Yes	557	aeef8534
+en	09e5021	Azul_happy: Oui, il vaut mieux se fier à cette règle de bon sens: "lâcher prise".	D5_level1	Art_Yes	558	b427331a
+en	0be62ca	You: Ça veut dire quoi au juste, "lâcher prise" ?	D5_level1	Art_Yes	559	f0f2d13a
+en	06bcd8a	Azul_happy: Faire le vide dans ta tête ! Ne plus entretenir ces idées noires, ne pas les ressasser, ne pas les contempler de trop près, ne pas les retenir, les laisser filer.	D5_level1	Art_Yes	560	22b32bef
+en	0b4a2c4	Sapiens_concerned: Ces mauvaises énergies sont plus fortes que toi. Il est préférable, au début, de se tenir le plus éloigné possible d'elles.	D5_level1	Art_Yes	561	998e7821
+en	0d8ac57	Azul_happy: Il te faudra plus d'une nuit avant de pouvoir les affronter face à face...	D5_level1	Art_Yes	562	eff7962a
+en	0526094	You: Ah...	D5_level1	Art_Yes	563	fff4bab1
+en	01b7d85	Sapiens_concerned: N'hésite pas à recourir aux choix clairs et éprouvés.	D5_level1	Art_Yes	564	4813ef0b
+en	0c38101	Azul_happy: L'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent.	D5_level1	Art_Yes	565	5af02345
+en	0a20f39	You: Je note tout ça dans mon "carnet d'ingénieur tout-terrain"?	D5_level1	Art_Yes	566	c77bf601
+en	0a1c9b2	Ledai_happy: Oui !	D5_level1	Art_Yes	567	bd570cd0
+en	0b985d8	-> Noter tout ça dans ton journal mental	D5_level1	Art_Yes	568	4e9e9c4d
+en	014b088	Vous êtes de nouveau transporté dans cette bulle de pénombre, de calme et de sérénité. Serait-ce un lieu dédié à ce que le sage Azul nomme le "lâcher prise". Vous contemplez votre "carnet d'ingénieur tout-terrain". Est-il garanti stressproof, anti idées noires ?...	D5_level1	Journal_Mental	574	68c549bd
