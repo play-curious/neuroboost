@@ -130,7 +130,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     for (let i = 0; i < gaugesList.length; i++) {
       const _gauge = gaugesList[i];
       this._gauges[_gauge] = new gauge.Gauge(
-        new PIXI.Point(140 * i + 30, 15),
+        new PIXI.Point(140 * i + 30 + 150, 15),
         new PIXI.Sprite(
           this.entityConfig.app.loader.resources[
             `images/ui/gauges/${_gauge}.png`

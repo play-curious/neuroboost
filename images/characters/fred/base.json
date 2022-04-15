@@ -261,5 +261,50 @@
       "y": 540.0
     }
   ],
+  "happy-mask": [
+    {
+      "model": "base_happy",
+      "x": 966,
+	    "y": 540
+    },
+    {
+      "model": "eyes_f",
+      "x": 957,
+	    "y": 101
+    },
+    {
+      "model": "p_masque",
+      "x": 945.5,
+      "y": 490.5,
+      "scale": 1.2
+    },
+    {
+      "model": "hair_b",
+      "x": 951,
+      "y": 68
+    },
+    {
+      "model": "sleeves_f",
+      "x": 948,
+	    "y": 307
+    },
+    {
+      "model": "scarf_b",
+      "x": 1022,
+      "y": 576
+    },
+    {
+      "model": "arm_happy",
+      "x": 1002,
+      "y": 358
+    }
+  ],
+  "masque": [
+    {
+      "model": "p_masque",
+      "x": 845.5,
+      "y": 475.5
+    }
+  ],
   "default": "happy"
 }
