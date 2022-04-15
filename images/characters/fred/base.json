@@ -273,14 +273,8 @@
 	    "y": 101
     },
     {
-      "model": "p_masque",
-      "x": 945.5,
-      "y": 490.5,
-      "scale": 1.2
-    },
-    {
-      "model": "hair_b",
-      "x": 951,
+      "model": "p_masqueMa",
+      "x": 953,
       "y": 68
     },
     {
@@ -299,11 +293,58 @@
       "y": 358
     }
   ],
-  "masque": [
+  "excited-mask": [
     {
-      "model": "p_masque",
-      "x": 845.5,
-      "y": 475.5
+      "model": "base_excited",
+      "x": 934,
+	    "y": 539
+    },
+    {
+      "model": "eyes_b",
+      "x": 957,
+      "y": 102
+    },
+    {
+      "model": "p_masqueMa",
+      "x": 953,
+      "y": 68
+    },
+    {
+      "model": "scarf_b",
+      "x": 1022,
+      "y": 575
+    },
+    {
+      "model": "sleeves_b",
+      "x": 962,
+      "y": 306
+    }
+  ],
+  "smiling-mask": [
+    {
+      "model": "base_smiling",
+      "x": 981,
+	    "y": 539
+    },
+    {
+      "model": "eyes_e",
+      "x": 958,
+	    "y": 101
+    },
+    {
+      "model": "p_masqueMa",
+      "x": 953,
+      "y": 68
+    },
+    {
+      "model": "sleeves_e",
+      "x": 958,
+	    "y": 306
+    },
+    {
+      "model": "scarf_b",
+      "x": 1023,
+      "y": 575
     }
   ],
   "default": "happy"

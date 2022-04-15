@@ -494,6 +494,7 @@ tags:
 position: 1945.437255859375,2178.48876953125
 colorID: 4
 ---
+<< setBackground bedroom night >>
 Le soleil s'est couché, il est temps de clore votre journée par un dîner bien mérité. Vous avez faim et vous avez le temps de vous préparer un petit plat sympa et exotique : des lasagnes vénusiennes. C'est délicieux et riches en nutriments essentiels.
 
 << advanceTime 0:30 >>
@@ -508,22 +509,22 @@ Zut ! Vous aviez complètement oublié. Fred vous en a parlé dimanche dernier..
 
 << empty >> // Fred débarque
 Fred pénètre dans votre chambre. Il a sorti ses plus beaux habits : celui d'un cavalier de salsatronique.
-Fred: Alors ? C'est quoi ces frusques ?
+Fred_excited-mask: Alors ? C'est quoi ces frusques ?
 You: Heu... J'y pensais plus...
-Fred: Comment tu as pu oublier.
+Fred_smiling-mask: Comment tu as pu oublier.
 You: Heu...
-Fred: C'est la fièvre du samedi soir !
+Fred_smiling-mask: C'est la fièvre du samedi soir !
 You: Ben...
-Fred: Arrête. Tu m'as promis. Et rappelle-toi comment tu as assuré mardi soir. 
+Fred_happy-mask: Arrête. Tu m'as promis. Et rappelle-toi comment tu as assuré mardi soir. 
 You: Heu...
-Fred: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller !
+Fred_smiling-mask: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller !
 
 -> Refuser
     <<hide>>
     <<jump ReviserSoir_S>>
 -> Suivre Fred
     Il a raison. Vous débarrassez la table et vous vous précipitez vers votre armoire. Aiguillé par les conseils de Fred, vous enfilez une tenue Rock Glam de malade. Vous resplendissez dans cette tenue scintillante et clinquante !
-    Fred: Parfait ! Allez, on y va !
+    Fred_smiling-mask: Parfait ! Allez, on y va !
     << hide >>
     << jump Soiree_S >>
 ===
