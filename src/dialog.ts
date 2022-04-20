@@ -311,6 +311,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     let indexOfBack = 0;
     for (let i = 0; i < result.options.length; i++) {
       const option = result.options[i];
+      const optionText = option.text.trim();
 
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
       if (
@@ -321,11 +322,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         continue;
 
       options.push({
-        text: option.text,
+        text:optionText,
         id: `${i}`,
       });
 
-      if (option.text === "back") indexOfBack = i;
+      if (optionText === "back") indexOfBack = i;
     }
 
     if (
