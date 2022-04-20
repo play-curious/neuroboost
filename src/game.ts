@@ -16,14 +16,13 @@ import * as journal from "./journal";
 import * as variable from "./variable";
 import * as miniGame from "./mini_game";
 
-const outroVideoScene = new narration.VideoScene({
-  video: "game-by-play-curious",
-  videoOptions: { scale: 2 },
-  musicVolume: 2,
-  skipButtonOptions: {
-    position: { x: 150, y: 150 },
-  },
-});
+// Strange audio bug makes narration.VideoScene not work for this
+const outroVideoScene = new entity.ParallelEntity([
+  new entity.VideoEntity("game-by-play-curious", { scale: 2 }),
+  new entity.FunctionCallEntity(function () {
+    this._entityConfig.fxMachine.play("game-by-play-curious");
+  }),
+]);
 
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
@@ -174,6 +173,7 @@ const fxAssets = [
   "Click",
   "Spawn",
   "Warp",
+  "game-by-play-curious",
 ];
 
 const musicAssets = [
@@ -191,7 +191,7 @@ const musicAssets = [
   "JungleBodyBeat",
 ];
 
-const videoAssets = ["game-by-play-curious"]
+const videoAssets = ["game-by-play-curious"];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
 
@@ -224,4 +224,4 @@ resizeHtmlLayer(screenSize);
 window.addEventListener("resize", () => resizeHtmlLayer(screenSize));
 document.addEventListener("fullscreenchange", () =>
   resizeHtmlLayer(screenSize)
-);//
+); //
