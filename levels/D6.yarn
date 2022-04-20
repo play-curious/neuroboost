@@ -1455,7 +1455,7 @@ Pas la peine d'attendre les résultats pour savoir que vous avez royalement rat�
 
 << if !visited("sages") >>
 
-<< visit sages true >>
+<< visitPermanent sages >>
 À peine de retour dans votre chambre, vous vous écriez : #line:0242151 
 You: Hé, messieurs les Sages ! Vous êtes là ? Parce que j'aurais besoin de vous... Ça va pas, mais pas du tout ! J'ai raté le Grand Oral... #line:00b8f49 
 Sapiens_concerned: Oui. Nous le savons. #line:0acab7b 
