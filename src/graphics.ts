@@ -536,7 +536,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const [animationShifting, baseAlpha] = [120, 0.6];
     let freechoicesFound = 0;
     for (let i = 0; i < nodeOptions.length; i++) {
-      const [choiceText, jsonValue] = nodeOptions[i].split("@");
+      const [choiceText, jsonValue] = nodeOptions[i].trim().split("@");
       if (!highlightJSON.hasOwnProperty(jsonValue)) continue;
       freechoicesFound++;
 
