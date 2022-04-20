@@ -587,6 +587,7 @@ You: Tu veux manger ici avec moi ? #line:062cd5e
 Fred: Yes, j'ai mega faim ! #line:07c8aaf 
 
 -> Dîner avec Fred. #line:0c29fb9 
+  << hide >>
   << jump Diner_Dim >>
 
 ===
@@ -644,7 +645,6 @@ Vous fermez les yeux et plongez dans un sommeil profond et durable... #line:07b6
 ===
 title: Lundi_matin
 tags: 
-colorID: 0
 position: 1738,999
 ---
 << fadeIn >>
@@ -661,7 +661,7 @@ Vous rouvrez les yeux quand votre horloge connectée sonne. Il est huit heures. 
 Vous avalez un petit déjeuner, simple et rapide : une boîte de chimicookies et un synthécafé. #line:078a56c 
 Maintenant, il va falloir se remettre à retravailler vos fiches de révision... #line:00604eb 
 
-<< advanceTime 0:45 >>
+<< advanceTime 0:30 >>
 
 << fadeIn >>
 << setBackground bedroom >>
@@ -679,24 +679,22 @@ Vous appelez Fred et lui demandez de revenir réviser avec vous, ou vous allez c
 ===
 title: Call_Fred
 tags: 
-colorID: 0
 position: 1733,1245
 ---
 Vous téléphonez chez Fred. La sonnerie sonne dans le vide.  #line:085ce64 
 Ce n'est pas son genre. Vous laissez un message avant de raccrocher. Vous lui dites bien qu'il est important qu'il retravaille ses fiches de révision. Pour l'avoir vécu, vous savez combien le travail de mémorisation est encore fragile et instable. #line:0454e89 
 
-<< advanceTime 1:00 >>
+<< advanceTime 0:05 >>
 
-Les minutes passent. Fred ne vous rappelle pas. Que décidez-vous de faire ? #line:0c7bca6 
+Fred ne vous rappelle pas. Que décidez-vous de faire ? #line:08a8d60 
 
--> Attendre son rappel #line:01671c7 
-  << jump Attendre_Fred >>
--> Aller chez lui #line:0115726 
+//-> Attendre son rappel
+//  << jump Attendre_Fred >>
+-> Aller chez lui #line:06ad8af 
   << jump Sonner_Fred >>
 ===
 title: Sonner_Fred
 tags: 
-colorID: 0
 position: 2032,1003
 ---
 << fadeIn >>
@@ -710,26 +708,27 @@ Finalement, Fred vous ouvre.  #line:07ef993
 << fadeOut >>
 // Vous entrez. Il suffit de l'observer pour constater qu'iel est fatigué.
 
-You: Fred, habille-toi et suis-moi ! #line:043de2f 
-Fred_surprised: Baaaah........ Pourquoi ? #line:0442784 
-You: On doit encore réviser les fiches ! #line:0a1094f 
-Fred_surprised: Mais on a pas cessé de le faire hier ?! #line:0b22922 
-You: Ce n'est pas suffisant. C'est comme la peinture, il faut remettre une couche ! #line:0489a8d 
-Fred_happy: Ha Ha ! J'adore ta blague ! #line:0d917c1 
-You: Ce n'est pas une blague ! Tu sais que les jurés possèdent un détecteur neurocérébral ! #line:007b572 
-Fred_surprised: Un quoi ? #line:06c6570 
-You: Un détecteur neurocérébral : ils vont fouiller dans ton cerveau et ils t'interrogeront sur ce que tu connais le moins ! #line:09b217c 
-Fred_angry: Tu délires, c'est de la science fiction ! #line:00860a4 
-You: Crois-moi, nous sommes dans un univers de science fiction.  #line:00cea69 
-Fred_surprised: Sérieux ? #line:0a605d6 
-You: Sérieux.  #line:009ebfa 
-Fred_smiling: C'est génial ce que tu dis. Je voudrais avoir le même. #line:08b1257 
-You: En attendant, il faut s'en prémunir. Il faut se remettre à réviser. Suis-moi #line:0a63c0f 
-Fred: OK, Boss. #line:0e5b278 
-Fred s'habille, prend un petit-déjeuner éclair et vous rejoint dans votre chambre. #line:0227c9d 
+You: Fred, habille-toi et suis-moi ! #line:0fbd6c2 
+Fred_surprised: Baaaah........ Pourquoi ? #line:0f6b9b6 
+You: On doit encore réviser les fiches ! #line:021002b 
+Fred_surprised: Mais on a pas cessé de le faire hier ?! #line:0e51974 
+You: Ce n'est pas suffisant. C'est comme la peinture, il faut remettre une couche ! #line:01b7d43 
+Fred_happy: Ha Ha ! J'adore ta blague ! #line:037acfb 
+You: Ce n'est pas une blague ! Tu sais, les jurés possèdent un détecteur neurocérébral ! #line:047ecf4 
+Fred_surprised: Un quoi ? #line:01ef9c7 
+You: Un détecteur neurocérébral : ils vont fouiller dans ton cerveau et ils t'interrogeront sur ce que tu connais le moins ! #line:09fafe2 
+Fred_angry: Tu délires, c'est de la science fiction ! #line:0cc6619 
+You: Crois-moi, nous sommes dans un univers de science fiction.  #line:037c31f 
+Fred_surprised: Sérieux ? #line:0a764df 
+You: Sérieux.  #line:0252aba 
+Fred_smiling: C'est génial ce que tu dis. Je voudrais avoir le même. #line:081e9f8 
+You: En attendant, il faut s'en prémunir. Il faut se remettre à réviser. Suis-moi ! #line:08a3026 
+Fred: OK, Boss. #line:05f4840 
+Fred s'habille, prend un petit-déjeuner éclair et vous rejoint dans votre chambre. #line:0b205ab 
 
--> Retour dans la chambre. #line:0f61b15 
+-> Retour dans la chambre. #line:08114b1 
   << hide >>
+  << advanceTime 0:05 >>
   << jump Reviser_Fiches2 >>
 ===
 title: Attendre_Fred
@@ -756,53 +755,45 @@ Vous avez encore foiré. Il faut tout recommencer ! #line:0667f38
 ===
 title: Reviser_Fiches2
 tags: 
-colorID: 0
 position: 2319,996
 ---
 << fadeIn >>
 << setBackground bedroom >>
 << fadeOut>>
 
-Vous redemandez à Room Mate de lancer le mode "immersion studieuse" dans votre chambre.  #line:00f2806 
+Vous redemandez à Room Mate de lancer le mode "immersion studieuse" dans votre chambre pour une heure.  #line:0b20dfd 
 // Comme vous êtes de nouveau en duo, vous n'utilisez pas le module "work with me". 
 << music Solo1 >>
-C'est vous qui démarrez la session. Le jeu de ping pong reprend, entrecoupé d'interludes métalleux entre chaque session "pomodoro".  #line:027fd8e 
-C'est encore un pur moment de complicité, de délire, de bonheur et de partage enrichissant.  #line:05a054a 
-Fred: Yoooo ! Tu avais raison, j'en avais besoin de cette séance de rafraîchissement.  #line:0c24b42 
-You: Je sais, je sais. On appelle ces séances des "piqûres de rappel". #line:01a2aaa 
-Fred_happy: Damned, ça me pique rien que de t'entendre le dire. #line:0b5dc62 
-You: Ouais. #line:07924cd 
-Fred_smiling: Yes yes. En tout cas, tu es vraiment un master de l'apprentissage !  #line:03d14cb 
-You: Merci. #line:0f366d9 
+C'est vous qui démarrez la session. #line:05daacd 
+C'est encore un pur moment de complicité, de délire, de bonheur et de partage enrichissant. #line:040a5f9 
+<< advanceTime 2:00 9:30 0:05 >>
+Malheureusement, le Room Mate vous coupe, il est l'heure d'aller à l'oral. #line:075c17e 
+Fred: Yoooo ! Tu avais raison, j'en avais besoin de cette séance de rafraîchissement.  #line:061f901 
+You: Je sais, je sais. On appelle ces séances des "piqûres de rappel". #line:0d13906 
+Fred_happy: Damned, ça me pique rien que de t'entendre le dire. #line:034cba5 
+You: Ouais. #line:0526785 
+Fred_smiling: Yes yes. En tout cas, tu es vraiment un master de l'apprentissage !  #line:05e449e 
+You: Merci. #line:0eab579 
 
-<< setTime 13:00 >>
-C'est alors que votre horloge connectée vous informe qu'il est 13 heures. Il faut manger avant de partir à l'oral !  #line:0cb3e6b 
-
-<< fx EatCook >>
-<< fadeIn >>
-<< setBackground bedroom kitchen >>
-<< fadeOut>>
-
-Vous proposez un repas rapide et basique, pour vous et votre pote. Burger Big Proteins Double Cheese et Xeno Cola ! Vous avalez tous les deux votre sandwich, vite fait bien fait ! #line:0f368e7 
-
--> Au Grand Oral ! #line:03ed049 
+-> Au Grand Oral ! #line:07746e2 
+  << hide >>
   << jump Grand_Oral >>
 ===
 title: Grand_Oral
 tags: 
-colorID: 0
 position: 2563,996
 ---
 << fadeIn >>
 << setBackground door class >>
+<< advanceTime 0:10 >>
 << music Tense >>
 << fadeOut >>
 
 Avant d'entrer dans la salle, Fred et vous vous souhaitez bonne chance.  #line:09dc704 
 
-<< hide >>
 << fadeIn >>
 << setBackground oral >>
+<< advanceTime 0:05 >>
 << fadeOut >>
 
 Le reste... se déroule sans réelle encombre. Vous êtes de nouveau inspecté par les lunettes de détection neurocérébrale.  #line:023cba1 
@@ -813,17 +804,18 @@ Le jury vous interroge cette fois sur "l'intrication quantique". Vous parvenez e
 << setBackground door class >>
 << fadeOut >>
 
-<< advanceTime 3:00 >>
+<< advanceTime 0:30 >>
 
-Quand vous sortez de là, vous devez attendre quelques heures avant de voir sortir à son tour Fred. #line:066e421 
+Quand vous sortez de là, vous devez attendre quelques temps avant de voir sortir à son tour Fred. #line:023f102 
+<< advanceTime 0:45 >>
 << show fred >>
-You: Alors ?  #line:0806a2a 
-Fred_smiling: Je pense que c'est bon. #line:00efd00 
-You: Je suis tombé sur le sujet de l'intrication quantique. Et toi ? #line:0805b9d 
-Fred: Celui de la décohérence quantique. #line:07044c8 
-You: Suspense... #line:0f91a81 
-Fred_smiling: T'inquiète, j'ai géré. #line:0ad9f81 
-Vous restez là, à discutez, le temps que les résultats s'affichent sur l'écran.  #line:04aa127 
+You: Alors ?  #line:07d6de0 
+Fred_smiling: Je pense que c'est bon. #line:0851e88 
+You: Je suis tombé sur le sujet de l'intrication quantique. Et toi ? #line:0f51007 
+Fred_happy: Celui de la décohérence quantique. #line:0e694c7 
+You: Suspense... #line:0410caa 
+Fred_smiling: T'inquiète, j'ai géré. #line:0af313d 
+Vous restez là, à discutez, le temps que les résultats s'affichent sur l'écran.  #line:04065c6 
 
 << fx Notification >>
 << music Victory >>
@@ -846,11 +838,11 @@ You: Yes ! #line:02d8c98
 ===
 title: Feter_Cafeteria
 tags: 
-colorID: 0
 position: 2824,985
 ---
 << fadeIn >>
-<< setBackground party >>
+<< setBackground cafeteria >>
+<< advanceTime 0:15 >>
 << fadeOut >>
 
 Vous vous installez à la cafétéria. Les étudiants présents dans la salle vous fixent des yeux. #line:0a3011c 
@@ -873,53 +865,52 @@ Fred_surprised: Quelles erreurs ? #line:0feb0fb
 ===
 title: Avouer_Fred_Secret
 tags: 
-colorID: 0
 position: 3053,984
 ---
-You: Tu l'as dis. Je ne me faisais pas assez confiance. Je me sentais tellement en-dessous de toi.  #line:0ed11ab 
-Fred: T'exagères. #line:0098e77 
-You: Naan. Tu me semblais indépassable. Je voulais tant être ton égal. #line:09df424 
-Fred_happy: Rien que ça ? #line:001d046 
-You: Voire plus ! Je rêvais d'être meilleur que la star de l'Académie ! #line:0f63a70 
-Fred: Sans blague ! Tu es aussi une star à l'Académie, je te le redis. #line:07a6234 
-You: Ouais. Mais c'est pas le plus important.  #line:0618885 
-Fred_smiling: OK. #line:0dd5c66 
-You: Ce qui compte, c'est ce que je veux, moi. Te dépasser dans le classement, j'en ai rien à foutre !  #line:07c7d32 
-You: Cela ne m'aide pas à mieux me connaître. Et c'est ça ce qui compte : savoir qui l'on est vraiment, ce que l'on veut dans la vie, dans les études. #line:0e2b8ee 
-Fred_happy: Yes yes. T'as 100% raison. #line:0ba8e99 
-You: Quand j'ai compris que tu projetais de quitter l'Académie, j'ai paniqué ! #line:0109c59 
-Fred: Sérieux ? #line:058ce1a 
-You: Tu es mon meilleur pote. #line:07fb371 
-Fred: Je vois ça. #line:01cf4e6 
-You: Mais, je comprends là encore que je me suis trompé. Le plus important c'est que, quoiqu'il se passe, nous restions amis. #line:0f935fe 
-Fred_smiling: Yes yes. Tu es un vrai sage. #line:031b69c 
-You: J'espère en tout cas le devenir un jour. #line:06127fc 
-La soirée continue un moment. Vous payez la seconde tournée. Fred en commande une troisième. Vous en profitez également pour grignotter une salade ou un chill and chips.  #line:0703a6b 
+You: Tu l'as dis. Je ne me faisais pas assez confiance. Je me sentais tellement en-dessous de toi.  #line:02e3558 
+Fred: T'exagères. #line:066c15a 
+You: Naan. Tu me semblais indépassable. Je voulais tant être ton égal. #line:07ea7db 
+Fred_happy: Rien que ça ? #line:0e97a2d 
+You: Voire plus ! Je rêvais d'être meilleur que la star de l'Académie ! #line:0377d17 
+Fred: Sans blague ! Tu es aussi une star à l'Académie, je te le redis. #line:0801e8a 
+You: Ouais. Mais c'est pas le plus important.  #line:0dea586 
+Fred_smiling: OK. #line:02ae7f9 
+You: Ce qui compte, c'est ce que je veux, moi. Te dépasser dans le classement, j'en ai rien à foutre !  #line:0248640 
+You: Cela ne m'aide pas à mieux me connaître. Et c'est ça ce qui compte : savoir qui l'on est vraiment, ce que l'on veut dans la vie, dans les études. #line:003b334 
+Fred_happy: Yes yes. T'as 100% raison. #line:0110424 
+You: Quand j'ai compris que tu projetais de quitter l'Académie, j'ai paniqué ! #line:017ab08 
+Fred: Sérieux ? #line:0f9ba21 
+You: Tu es mon meilleur pote. #line:0f33c66 
+Fred: Je vois ça. #line:0cb7096 
+You: Mais, je comprends là encore que je me suis trompé. Le plus important c'est que, quoiqu'il se passe, nous restions amis. #line:0a7f5b2 
+Fred_smiling: Yes yes. Tu es un vrai sage. #line:02ce292 
+You: J'espère en tout cas le devenir un jour. #line:02a32b6 
+La journée continue un moment. Vous payez la seconde tournée. Fred en commande une troisième. Vous en profitez également pour grignotter une salade ou un chill and chips.  #line:0861543 
 
-<< advanceTime 4:00 >>
-L'heure tourne. Il est grand temps de rentrer. Vous reprenez les cours demain matin. #line:080ca85 
-Vous vous faites l'accolade et vous vous dites à demain ! #line:0958213 
+<< advanceTime 2:00 >>
+L'heure tourne. Il est grand temps de rentrer. Vous reprenez les cours demain matin. #line:094c0b4 
+Vous vous faites l'accolade et vous vous dites à demain ! #line:04fc725 
 
--> Rentez dormir #line:0e7d1a9 
+-> Rentez se reposer #line:0b04dce 
   << hide >>
   << jump Dormir >>
 ===
 title: Dormir
 tags: 
-colorID: 0
 position: 3314,987
 ---
 << fadeIn >>
-<< setBackground bedroom night >>
+<< setBackground bedroom >>
 << fadeOut >>
 
-Dans votre chambre, vous vous déshabillez, allez faire un petit tour aux toilettes et vous gagnez le lit.  #line:03afffb 
-Fatigué, repu, mais content d'être parvenu à remplir cette dernière mission... La dernière mission... Il n'y en aura plus d'autre après ?... #line:0bcc23a 
-Temde_cheerful: Yep, c'est ta dernière épreuve et tu l'as réussie. #line:09b1682 
-You: Je vous verrai plus ? #line:0e108f0 
-Temde_smiling: Presque plus. #line:02944e3 
-You: Comment ça, presque plus ? #line:0fb0084 
-Temde: Viens { $name }, rejoins-nous, ça sera plus facile de te l'expliquer... #line:00bf398 
+Dans votre chambre, vous vous posez sur votre lit. #line:0c915bd 
+Fatigué, repu, mais content d'être parvenu à remplir cette dernière mission... La dernière mission... Il n'y en aura plus d'autre après ?... #line:0d9685d 
+
+Temde_cheerful: Yep, c'est ta dernière épreuve et tu l'as réussie. #line:05d377a 
+You: Je vous verrai plus ? #line:0a7b2e4 
+Temde_smiling: Presque plus. #line:07bbedf 
+You: Comment ça, presque plus ? #line:04ef838 
+Temde: Viens { $name }, rejoins-nous, ça sera plus facile de te l'expliquer... #line:0b2a497 
 
 -> Suivre Miss Temdé. #line:045dea8 
   << fx Warp >>

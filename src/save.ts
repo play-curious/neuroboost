@@ -47,7 +47,7 @@ export function save(ctx: dialog.DialogScene) {
 }
 
 export function getSave(): SaveData {
-  return JSON.parse(localStorage.getItem("save"))
+  return JSON.parse(localStorage.getItem("save"));
 }
 
 export function hasSave(): boolean {
@@ -100,8 +100,7 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
           this._on(it, "pointerup", () => {
             this.config.fxMachine.play("Click");
 
-            //@ts-ignore
-            window.loadSave = true;
+            StartMenu.loadSave = true;
 
             // load saved node from saveData.node
             this._transition = entity.makeTransition(getSave().levelName);

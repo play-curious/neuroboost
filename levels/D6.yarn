@@ -273,12 +273,13 @@ Vous vous replongez dans vos cours et vos notes. Vous abordez cette fois le para
 Soit, le monde des phénomènes n'est pas la réalité, ou bien la réalité n'existe pas pour les chats. Non, attend, c'est pas ça, ... #line:0544861 
 Vous faites une pause pour vous remettre les idées en place. #line:066deff 
 << advanceTime 0:15 >>
-Vous continuez tranquillement vos révisions #line:011fa00 
-<<empty>> //TODO: Revision suite
+Vous continuez tranquillement vos révisions #line:0cbeb1f 
+
 << advanceTime 1:00 >>
 
-<< endif >>
+L'idée est da la cohabitation de plusieurs univers parallèles, comme le stipule Everett, est simplement fascinante !  #line:028ddee 
 
+<< endif >>
 
 
 << removeFromGauge sleep 15 >>
@@ -506,23 +507,24 @@ Soudain, quelqu'un sonne à la porte...  #line:0873fc8
 Zut ! Vous aviez complètement oublié. Fred vous en a parlé dimanche dernier... #line:098d496 
 
 << empty >> // Fred débarque
+
 Fred pénètre dans votre chambre. Il a sorti ses plus beaux habits : celui d'un cavalier de salsatronique. #line:0581736 
-Fred: Alors ? C'est quoi ces frusques ? #line:061aeff 
+Fred_excited-mask: Alors ? C'est quoi ces frusques ? #line:061aeff 
 You: Heu... J'y pensais plus... #line:059ed3e 
-Fred: Comment tu as pu oublier. #line:017512e 
+Fred_smiling-mask: Comment tu as pu oublier. #line:017512e 
 You: Heu... #line:0d8df88 
-Fred: C'est la fièvre du samedi soir ! #line:081a5dd 
+Fred_smiling-mask: C'est la fièvre du samedi soir ! #line:081a5dd 
 You: Ben... #line:08c8a72 
-Fred: Arrête. Tu m'as promis. Et rappelle-toi comment tu as assuré mardi soir.  #line:0dc364b 
+Fred_happy-mask: Arrête. Tu m'as promis. Et rappelle-toi comment tu as assuré mardi soir.  #line:0dc364b 
 You: Heu... #line:0c11a64 
-Fred: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller ! #line:070a80d 
+Fred_smiling-mask: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller ! #line:070a80d 
 
 -> Refuser #line:0927d6c 
     <<hide>>
     <<jump ReviserSoir_S>>
 -> Suivre Fred #line:02831a3 
     Il a raison. Vous débarrassez la table et vous vous précipitez vers votre armoire. Aiguillé par les conseils de Fred, vous enfilez une tenue Rock Glam de malade. Vous resplendissez dans cette tenue scintillante et clinquante ! #line:017ef6a 
-    Fred: Parfait ! Allez, on y va ! #line:005a6ba 
+    Fred_smiling-mask: Parfait ! Allez, on y va ! #line:005a6ba 
     << hide >>
     << jump Soiree_S >>
 ===
@@ -1393,18 +1395,19 @@ title: RevisionWeb_L
 tags: 
 position: 4678,4094
 ---
-Vous ouvrez votre navigateur et vous tapez quelques mots clés dans votre moteur de recherche. Vous optez plutôt pour des vidéos d'apprentissage.  #line:08ee2d9 
-Vidéos réalisées par des professeurs ou des étudiants en thèse. Voire même quelques vulgarisateurs qui semblent avoir la côte sur Zootud, la célèbre plateforme de vidéos en ligne !  #line:0aefa14 
-Oui, les vidéos sont courtes et sympathiques. Hélas, elles ne répondent pas vraiment à vos attentes. La plupart du temps, elles ne font que survoler des notions que vous avez déjà plus ou moins en tête.  #line:0cce2c9 
-Soit, elles ne détaillent pas assez les mécanismes et les courants philosophiques sous-jacents. Si les membres du jury vous posent des questions dessus, vous n'êtes pas sûr d'être capable de répondre de manière scientifique et rigoureuse. #line:09f12c7 
-Soit, elles se veulent exhaustives et finissent par devenir trop longue, trop soporifiques. Pire qu'un cours magistral avec un professeur IRL. #line:0cef223 
-Vous arrêtez la torture. Vous avez perdu votre temps à papillonner sur le web. Pour un résultat finalement décevant. Stop ! #line:08fc999 
+Vous ouvrez votre navigateur et vous tapez quelques mots clés dans votre moteur de recherche. Vous optez plutôt pour des vidéos d'apprentissage.  #line:092ee1c 
+Vidéos réalisées par des professeurs ou des étudiants en thèse. Voire même quelques vulgarisateurs qui semblent avoir la côte sur Zootud, la célèbre plateforme de vidéos en ligne !  #line:0a1db2e 
+Oui, les vidéos sont courtes et sympathiques. Hélas, elles ne répondent pas vraiment à vos attentes. La plupart du temps, elles ne font que survoler des notions que vous avez déjà plus ou moins en tête.  #line:0590261 
+Soit, elles ne détaillent pas assez les mécanismes et les courants philosophiques sous-jacents. Si les membres du jury vous posent des questions dessus, vous n'êtes pas sûr d'être capable de répondre de manière scientifique et rigoureuse. #line:0a54212 
+Soit, elles se veulent exhaustives et finissent par devenir trop longue, trop soporifiques. Pire qu'un cours magistral avec un professeur IRL. #line:04c8547 
 
 << removeFromGauge sleep 15 >>
 << removeFromGauge food 15 >>
 << addToGauge mentalLoad 40 >>
 << addToGauge stress 35 >>
 << advanceTime 1:00 >>
+
+Vous arrêtez la torture. Vous avez perdu votre temps à papillonner sur le web. Pour un résultat finalement décevant. Stop ! #line:05a03af 
 
 <<jump ExamenDefaite_L>>
 ===
@@ -1452,7 +1455,7 @@ Pas la peine d'attendre les résultats pour savoir que vous avez royalement rat�
 
 << if !visited("sages") >>
 
-<< visit sages true >>
+<< visitPermanent sages >>
 À peine de retour dans votre chambre, vous vous écriez : #line:0242151 
 You: Hé, messieurs les Sages ! Vous êtes là ? Parce que j'aurais besoin de vous... Ça va pas, mais pas du tout ! J'ai raté le Grand Oral... #line:00b8f49 
 Sapiens_concerned: Oui. Nous le savons. #line:0acab7b 

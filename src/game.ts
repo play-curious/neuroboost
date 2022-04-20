@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 import * as yarnBound from "yarn-bound";
 
+import * as narration from "booyah/src/narration";
 import * as booyah from "booyah/src/booyah";
 import * as entity from "booyah/src/entity";
 import * as audio from "booyah/src/audio";
@@ -14,6 +15,14 @@ import * as dialog from "./dialog";
 import * as journal from "./journal";
 import * as variable from "./variable";
 import * as miniGame from "./mini_game";
+
+// Strange audio bug makes narration.VideoScene not work for this
+const outroVideoScene = new entity.ParallelEntity([
+  new entity.VideoEntity("game-by-play-curious", { scale: 2 }),
+  new entity.FunctionCallEntity(function () {
+    this._entityConfig.fxMachine.play("game-by-play-curious");
+  }),
+]);
 
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
@@ -101,6 +110,7 @@ const stateNames = [
 const states: { [k: string]: entity.EntityResolvable } = {
   Start_Menu: new save.StartMenu(),
 };
+
 for (const stateName of stateNames) {
   if (stateName.includes("journal"))
     states[`${stateName}`] = new journal.JournalScene(
@@ -113,6 +123,8 @@ for (const stateName of stateNames) {
       stateName === startingScene ? startingNode : "Start"
     );
 }
+
+states["outro_video"] = outroVideoScene;
 
 async function levelLoader(entityConfig: entity.EntityConfig) {
   const levels: Record<string, string> = {};
@@ -162,6 +174,7 @@ const fxAssets = [
   "Click",
   "Spawn",
   "Warp",
+  "game-by-play-curious",
 ];
 
 const musicAssets = [
@@ -179,6 +192,8 @@ const musicAssets = [
   "JungleBodyBeat",
 ];
 
+const videoAssets = ["game-by-play-curious"];
+
 const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 export const screenSize = new PIXI.Point(1920, 1080);
@@ -193,6 +208,7 @@ booyah.go({
   fontAssets,
   fxAssets,
   musicAssets,
+  videoAssets,
   screenSize,
   splashScreen,
   extraLoaders: [levelLoader],
@@ -209,4 +225,4 @@ resizeHtmlLayer(screenSize);
 window.addEventListener("resize", () => resizeHtmlLayer(screenSize));
 document.addEventListener("fullscreenchange", () =>
   resizeHtmlLayer(screenSize)
-);
+); //

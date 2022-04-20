@@ -1,4 +1,8 @@
-# Polytech Game
+# NeuroBoost Game
+
+A game about meta-cognition, or "learning about learning". Created by Play Curious for the Foundation Polytech.
+
+Programmed using the Booyah game engine on top of HTML5 technologies, in particular pixi.js.
 
 ## Installation
 
@@ -18,11 +22,10 @@ Refresh linked dependencies `yarn add github:play-curious/REPO_NAME -f`
 
 Jump to specific node on your browser: `www.domain.com/?node=NODE_TITLE&level=LEVEL_NAME`
 
-### YarnSpinner
+### Scripts
 
-TODO
+This game uses YarnSpinner to handle dialog and scripts. See `documentation.md` for more info on the custom commands and formats.
 
-## Notes
+## License
 
-- To add YarnSpinner custom command, place it as method of DialogScene class in `src/dialog.ts`
-- To add YarnSpinner custom variable, add it to Variables interface in `src/variable.ts`
+Available under the permissive open-source MIT license.

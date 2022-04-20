@@ -5,7 +5,7 @@ Toutes les images sont d'abord modifiées afin de pouvoir être analysées, puis
 
 **IL EST NECESSAIRE D'AVOIR UNE LICENSE DE TEXTUREPACKER**
 
-## Rangement
+## 1. Rangement
 Les images doivent être rangées dans un ordre bien particulier afin que toutes les sprites soient correctement générés.
 
 A la racine, se situe le dossier `sources` qui contient ensuite tous les personnages ou les fonds d'écran, comme ci-dessous:
@@ -35,7 +35,7 @@ sources/
 ...
 ```
 
-## Génération des images
+## 2. Génération des images
 
 Les images passent par plusieurs phases de traitement :\
 - La première, et qui peut être évité si les images sont \*propres, est celle où tous les pixels subissent une transformation, si nécessaire, pour la prochaine étape.
@@ -70,7 +70,7 @@ export/
 
 \*Les pixels transparents de l'image doivent avoir la valeur RGBA (0,0,0,0). Sinon la détection de la boite contenant l'image est faussé 
 
-## Le fichier base.json
+## 3. Le fichier base.json
 
 Ce fichier décrit précisement comment les sprites doivent être arrangés les uns avec les autres. A la racine du json se trouve toutes les humeurs ainsi que la clé `default` qui sert à donner l'humeur par défaut.
 
@@ -83,7 +83,13 @@ default - str: nom de l'humeur par défaut
 |- y - int: emplacement en ordonnée de l'image
 ```
 
-## Axe d'amélioration du script python
+## 4. Ajouter des images à des ressources existantes
+
+L'ajout d'image peut se faire de deux manières différentes :
+- Soit l'on ajoute les images aux sources, puis on exécute le fichier `algo.py` à nouveau.
+- Soit l'on exécute le fichier `algo.py` seulement sur les resources à ajouter (à noté qu'il faut respecté le rangement d'écrit lors du 1er chapitre), puis l'on ajoute les images modifiées là où on le souhaite. Il faudra tout de même ouvrir le fichier `base.json` là où les nouvelles images sont afin de modifier manuellement quel humeur utilise quelles nouvelles resources.
+
+## 5. Axe d'amélioration du script python
 
 - Se séparer de *TexturePacker*
 - Donner des identifiants uniques à chaque image lors de l'étape 3

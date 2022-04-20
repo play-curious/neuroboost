@@ -32,5 +32,17 @@
       "y": 409.0
     }
   ],
-  "default": "day"
+  "toilet": [
+    {
+      "model": "b_class",
+      "x": 960.0,
+      "y": 540.0
+    },
+    {
+      "model": "p_toiletCl",
+      "x": 707.0,
+      "y": 606.5
+    }
+  ],
+  "default": "night"
 }

@@ -19,6 +19,8 @@ import * as clock from "./clock";
 import * as dialog from "./dialog";
 
 export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
+  static loadSave = false;
+
   get config(): ExtendedEntityConfig {
     return this._entityConfig as ExtendedEntityConfig;
   }
