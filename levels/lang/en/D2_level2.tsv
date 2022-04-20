@@ -1,0 +1,126 @@
+LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?
+en	0b0cdb1	Vous êtes lové dans une confortable et douce langueur... Quand...	D2_level2	Start	8	fe1187a3
+en	027d93e	On vous secoue brusquement !!!	D2_level2	Start	9	43f07fd0
+en	093ee21	-> Ouvrir les yeux	D2_level2	Start	10	809b8e1d
+en	0fdb130	Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ?	D2_level2	Open_Eyes	16	056b8a52
+en	000208d	Et c'est reparti pour un tour... Fred répète comme un perroquet ce qu'il vous a déjà dit hier soir... Vous voilà revenu en arrière... En plein milieu de cette soirée de plaisir et de tentations... Certes, vous en avez trop fait, mais l'ambiance et le public étaient avec vous... Dur dur...	D2_level2	Open_Eyes	17	ef98b950
+en	0fde965	You: ...Hum... Tu fais quoi toi ?	D2_level2	Open_Eyes	18	63b406a9
+en	0105169	Fred_happy: Moi je reste. Je te le répète.	D2_level2	Open_Eyes	19	8844b862
+en	08d8e14	Après tout, Vous avez encore de l'énergie à revendre pour la soiré. Vous savez qu'il faut simplement faire attention à ne pas trop vider vos réserves de sommeil et de nourriture...	D2_level2	Open_Eyes	20	81c79fe1
+en	0695665	Mais comme vous l'ont répété les 4 sages, c'est avant tout une question de dosage, de volonté. Le tout est de savoir s'arrêter quand il le faut. Et puis, vous voulez montrer à Fred, que vous aussi, vous êtes en béton...	D2_level2	Open_Eyes	21	c6644b29
+en	0712066	You: Pari tenu!	D2_level2	Open_Eyes	22	259fa954
+en	092efae	Fred_smiling: Yolo ! T'as mangé du tigre aujourd'hui ?!	D2_level2	Open_Eyes	23	8dacc046
+en	076e4ec	You: C'est pas faux.	D2_level2	Open_Eyes	24	767255e2
+en	0c94623	On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses...	D2_level2	Que_Faire	30	538277e5
+en	0805b14	-> Retourner swinguer sur le Dance Floor#once	D2_level2	Que_Faire	31	f553f242
+en	021268c	-> Se rafraîchir au bar#once	D2_level2	Que_Faire	32	4c458502
+en	03f46cf	-> Grignoter quelque chose#once	D2_level2	Que_Faire	33	9908b029
+en	0484cba	-> Refaire un solo de guitare en criant tout votre saoul#once	D2_level2	Que_Faire	34	bd5eece0
+en	04444ac	-> Quitter la salle avant d'être épuisé#once	D2_level2	Que_Faire	35	ca1dab96
+en	0b56faf	-> Vite ! Au lit	D2_level2	Que_Faire	36	2d66771b
+en	03f5cdf	Vous rejoignez le centre de la piste. Vous levez le bras, histoire d'indiquer à la foule que vous êtes sur le ring! Prêt à leur accorder un nouveau show exclusif et endiablé! Tout le monde s'arrête de gigoter et se rassemble tout autour de vous.	D2_level2	DanceFloor2	42	8a16e217
+en	0d5d8ed	C'est la classe, vous voilà redevenu le centre d'attention de la soirée, le centre d'attraction de la salle.	D2_level2	DanceFloor2	43	73731668
+en	0badcd2	Vous rentrez peu à peu en transe, au rythme de la musique. Puis, au bout de quelques minutes, vous décollez et vous atteignez à la vitesse de la lumière l'orbite de la planète Disco ! Et c'est reparti pour une bonne heure de Breaking Beat endiablé ! Votre performance rencontre un succès intergalactique et musicalesque !	D2_level2	DanceFloor2	44	c48b92a6
+en	08c55a6	-> Arriverez-vous à faire encore mieux ?	D2_level2	DanceFloor2	45	9d7da27f
+en	0bd595d	Sans surprise, le bar n'est plus aussi approvisionné ! Il ne reste plus aucun soft doux, ni même de Xeno Cola.	D2_level2	Cafe_ou_Alcool	51	ffc38ff1
+en	008120f	Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un shot de X-Espresso ou une canette de ZedBoul.	D2_level2	Cafe_ou_Alcool	52	6c76425b
+en	04fb22c	-> Vous laissez tomber	D2_level2	Cafe_ou_Alcool	53	7492e09f
+en	059e2f7	-> Vous vous résignez	D2_level2	Cafe_ou_Alcool	54	a4b1aed2
+en	0d184a4	Vous vous dirigez vers le bar, en pure perte. Encore une fois, tous les snack ont disparu. Vous vous tournez vers un BarBot.	D2_level2	Medoc_Bot	60	537ca3c8
+en	07f9b03	BarBot: Vous désirez ?	D2_level2	Medoc_Bot	61	d973e71b
+en	0f9ff72	You: Manger ton machin coloré qui rebooste.	D2_level2	Medoc_Bot	62	57755aae
+en	032d8f7	BarBot: À sucer ou avaler ?	D2_level2	Medoc_Bot	63	095767ee
+en	060634d	You: Le truc à sucer !	D2_level2	Medoc_Bot	64	b5474df8
+en	05a9a88	BarBot: La boule magique ?	D2_level2	Medoc_Bot	65	4a881c4b
+en	05a697f	You: Oui, c'est ça.	D2_level2	Medoc_Bot	66	4f044b10
+en	0036e73	BarBot: Une boule magique alors.	D2_level2	Medoc_Bot	67	ab0b1a16
+en	0a3f0f3	You: Il y a quoi au juste dedans ?	D2_level2	Medoc_Bot	68	16901af5
+en	035be8c	BarBot: Des molécules actives de synthèse. C'est un stupéfiant de catégorie 1, banal, à consommer sans modération.	D2_level2	Medoc_Bot	69	1e7067a0
+en	08736c4	-> Vous préférez ne pas avaler ce truc	D2_level2	Medoc_Bot	70	79f88e3b
+en	0264b31	-> Vous prenez quand même la boule magique	D2_level2	Medoc_Bot	71	da0944d7
+en	016f96a	Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota depuis hier. Elle vous attend, elle vous réclame. Vous réactivez sa carte-son HD 4K.	D2_level2	Metal_Jam	77	447f7973
+en	0f7b78e	Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête une nouvelle fois à vous écouter. Vous savez que la star de la soirée, c'est vous. Et vous allez le leur prouver, à eux et à Fred ! À vous de jouer !	D2_level2	Metal_Jam	78	b32ccf47
+en	069f9f8	Vous repartez dans un concert solo d'improvisation, où les riffs électriques et les accords cybermétalliques s'accordent pour composer une symphonie post-électronique. Vous vous surpassez par rapport à hier soir ! Vous avez le flow, vous avez le fuel, vous avez la soul rock teinté de métal !	D2_level2	Metal_Jam	79	1eda9ab7
+en	025d497	Vous êtes applaudi, encore et encore et encore... Bon joueur, vous accordez à votre public un morceau bonus. Et un deuxième, parce qu'ils le réclament, et le méritent.	D2_level2	Metal_Jam	80	e12247ce
+en	0018f02	-> Comment faire encore plus fort ?	D2_level2	Metal_Jam	81	259cc94e
+en	08cbc2b	Vous vous rapprochez de Fred, qui est en pleine conversation avec un groupe d'étudiants docteurs.	D2_level2	End_of_Party	87	55b4843a
+en	0b46577	You: Fred, il est tard, il est temps d'aller faire un somme.	D2_level2	End_of_Party	88	91ae8e33
+en	08756d8	Fred_sad: Déjà ? Je suis en pleine conversation...	D2_level2	End_of_Party	89	11870a7e
+en	01abbac	You: Je suis fatigué, j'y vais.	D2_level2	End_of_Party	90	55221acd
+en	03119d8	Fred_smiling: OK. T'as raison. Je te suis.	D2_level2	End_of_Party	91	298573b4
+en	0fa1482	Fred dit bonne nuit à ses interlocuteurs. Vous aussi. Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle.	D2_level2	End_of_Party	92	ab7c6226
+en	03ce9d3	-> Vite ! Au lit	D2_level2	End_of_Party	93	2d66771b
+en	009e04f	Fred_sad: Hey, j'en peux plus. J'y vais.	D2_level2	End_of_Party	94	f61732ff
+en	082b7de	You: Déjà ? Tu déclares forfait ?	D2_level2	End_of_Party	95	db94a3e5
+en	09b2b1e	Fred_smiling: Yes yes.	D2_level2	End_of_Party	96	3bd7b96b
+en	0d69718	You: OK, je te suis.	D2_level2	End_of_Party	97	3e495a02
+en	0f5f0de	Fred_smiling: Cool...	D2_level2	End_of_Party	98	3d1e1c72
+en	09b8398	Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle.	D2_level2	End_of_Party	99	1bac7157
+en	0d694c4	-> Vite ! Au lit	D2_level2	End_of_Party	100	2d66771b
+en	0f59f21	En effet, vous vous sentez vraiment fatigué, la tête et l'estomac lourd. Il est temps d'aller se coucher. Vous quittez la salle sans dire au revoir à Fred ou à quiconque.	D2_level2	End_of_Party	101	c7c8ec87
+en	0b06e60	-> Vite ! Au lit	D2_level2	End_of_Party	102	2d66771b
+en	0a4066e	Arrivé devant la porte de votre chambre, Fred se tourne vers vous.	D2_level2	Go_To_Bed_Good	108	b111ca70
+en	03eccc5	Fred_smiling: C'était vraiment sympa ce soir.	D2_level2	Go_To_Bed_Good	109	5f4bc80f
+en	00df311	You: Ouais	D2_level2	Go_To_Bed_Good	110	bf5e181b
+en	06f56f2	Fred_happy: Je suis content que tu sois venu ce soir. Tu as assuré. Tu as mis le groove à la salle!	D2_level2	Go_To_Bed_Good	111	d049b51a
+en	03e476e	You: Merci. Bonne nuit, Fred.	D2_level2	Go_To_Bed_Good	112	c333f005
+en	0328c61	Fred_excited: Pareil.	D2_level2	Go_To_Bed_Good	113	c47a7be0
+en	01c4a64	Sur ces mots, Fred s'éloigne et vous laisse.	D2_level2	Go_To_Bed_Good	114	be7059d1
+en	06edca4	-> Se Reposer	D2_level2	Go_To_Bed_Good	115	78dfc626
+en	07ceca0	Arrivé devant la porte de votre chambre, Fred se tourne vers vous.	D2_level2	Go_To_Bed_VeryGood	121	b111ca70
+en	07d3598	Fred_happy: C'était vraiment la hype ce soir.	D2_level2	Go_To_Bed_VeryGood	122	61bbdf3e
+en	0098843	You: Ouais	D2_level2	Go_To_Bed_VeryGood	123	bf5e181b
+en	0c115f5	Fred_happy: Non seulement tu es venu, tu as mis le groove dans la salle. Mais si j'étais pas venu te chercher, t'étais encore branché sur les vibes de la fête... Chapeau bas.	D2_level2	Go_To_Bed_VeryGood	124	fc85a486
+en	01df97b	You: Merci, Fred.  Bonne nuit.	D2_level2	Go_To_Bed_VeryGood	125	b0a102ee
+en	09e7644	Fred_excited: T'es vraiment un winner. Bonne nuit aussi.	D2_level2	Go_To_Bed_VeryGood	126	ce7deb69
+en	047a550	Sur ces confidences, ces louanges, Fred s'éloigne et vous laisse.	D2_level2	Go_To_Bed_VeryGood	127	77bc748b
+en	06bdef5	-> Se Reposer	D2_level2	Go_To_Bed_VeryGood	128	78dfc626
+en	095083b	Vous entrez tranquillement dans votre chambre. Vous allez aux toilettes. Votre vessie en a besoin. Vos dents aussi. Vous vous dévêtez et gagnez votre lit. Vous êtes bien crevé, mais encore pas éteint. Il est temps pour de se recharger. À défaut d'un nuit de sommeil, un somme vous fera déjà le plus grand bien.	D2_level2	Se_Reposer_Good	134	6d536f77
+en	08ac6a4	-> Un petit somme	D2_level2	Se_Reposer_Good	135	9716bdc7
+en	0309d31	La seconde où vous touchez votre lit, vous dormez déjà.	D2_level2	Sieste_Good	141	1b53bc90
+en	053ac97	Et la minute suivante vous entendez le bip bip de votre horloge connectée.	D2_level2	Sieste_Good	142	5737cd72
+en	0c85b54	Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'hier. Vous vous changez rapidement. Ce qui vous laisse le temps de prendre un petit déjeuner.	D2_level2	Sieste_Good	143	51c53e3c
+en	03f274b	-> Petit déjeuner	D2_level2	Sieste_Good	144	96fd0355
+en	0a06acb	Yum Yum... Un petit déjeuner bien riche quand on a fait un somme trop court, ça vous booste le corps et le système nerveux ! Vous sentez que votre organisme reprend du tonus et de la vigueur...	D2_level2	Petit_Dejeuner_Good	150	9d57d7ec
+en	0858680	-> Aller en cours	D2_level2	Petit_Dejeuner_Good	151	4a08d0bc
+en	0bd159f	Ce matin, vous retrouvez votre ami Fred, qui vous attend avec le sourire.	D2_level2	ExamenTP_Good	157	2f5aa753
+en	028f8a8	Fred_excited: Hey, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps...	D2_level2	ExamenTP_Good	158	4ba3ed90
+en	0ddab6e	You: Ouais...	D2_level2	ExamenTP_Good	159	eb54cf26
+en	0bf6f69	Fred_smiling: Je vois ça. J'espère que tu as bien dormi.	D2_level2	ExamenTP_Good	160	157e0822
+en	083d267	You: Ouais.	D2_level2	ExamenTP_Good	161	825adff7
+en	00d7d95	Fred_excited: Yes yes. Moi aussi. On se revoit tout à l'heure.	D2_level2	ExamenTP_Good	162	5e68f2ca
+en	0086d5b	Vous vous rendez à votre poste. Vous vous calez sur votre siège et prenez connaissance des instructions qui défilent sur l'écran. Vous savez comment piloter un drone d'ingénierie. Vous êtes même doué à ce jeu	D2_level2	ExamenTP_Good	163	ddfb936e
+en	05f29c8	Enfin, vous vous sentez suffisamment reposé. En effet, vous appliquez sans trop de difficulté les consignes. À part une erreur ou deux, vous guidez votre appareil à bon port.	D2_level2	ExamenTP_Good	164	3ab5b8de
+en	09197a3	Puis, vous sortez de la salle de classe.	D2_level2	ExamenTP_Good	165	dbe5238c
+en	075dcd1	Dehors, vous rejoignez Fred.	D2_level2	Sortir	171	694b69f4
+en	072f2fb	Fred_smiling: C'était easy, non?	D2_level2	Sortir	172	931fb620
+en	0b8eac9	You: Ouais.	D2_level2	Sortir	173	825adff7
+en	05c06e6	Fred_happy: Je pense avoir cartonné. Et toi ?	D2_level2	Sortir	174	fcc98be7
+en	0b67da4	You: Ça devrait aller.	D2_level2	Sortir	175	bfd2607f
+en	0c34794	C'est à ce moment que les résultats tombent.	D2_level2	Sortir	176	8266825d
+en	05a2fca	Fred décroche un <b>A</b> et vous un <b>B</b>	D2_level2	Sortir	177	93990850
+en	0981b12	Fred_smiling: Hey ! Attention, hein ! Tu serais pas en train de vouloir me dépasser ?...	D2_level2	Sortir	178	12fb782c
+en	0187a34	You: Bien entendu.	D2_level2	Sortir	179	ae1dd8e8
+en	09dcf0b	Fred_smiling: Je t'adore, tu as toujours la phrase qui tue. Allez, on va manger un petit truc et on file au cinoche. On est libre maintenant jusqu'à demain.	D2_level2	Sortir	180	cfc09140
+en	0b3e43f	You: Yes.	D2_level2	Sortir	181	5ba69b51
+en	0f08c3f	Fred_smiling: Yes yes!	D2_level2	Sortir	182	f2bb0b2e
+en	07bd3dd	Nonononoon... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition.	D2_level2	Replay	188	49df6bc2
+en	0ebe6d4	Vous devez respecter votre cycle de sommeil et d'alimentation !	D2_level2	Replay	189	068ef7cf
+en	0e44199	Vous allez devoir retourner à cette soirée festive...	D2_level2	Replay	190	16f34797
+en	05385cd	-> Retourner à la fête	D2_level2	Replay	191	b937b5b9
+en	06ab823	Mince, il ne reste plus personne sur la piste. Vous ne ne voyez plus Fred. Il est sacrément tard, ou sacrément tôt. Les premiers rayons de soleil filtrent à travers les fenêtres de la salle.	D2_level2	Go_To_Bed_Loose	198	ac84caef
+en	060e8a3	Vous avez péché par ambition. Vous n'avez pas assez écouté votre corps. Vous êtes épuisé, totalement à plat. Il est plus que temps d'aller dormir.  Vous sentez que cela cogne dans votre tête. Allez-vous pouvoir récupérer assez de sommeil ?...	D2_level2	Go_To_Bed_Loose	199	72e2e472
+en	010bcf3	Vous filez dans votre chambre en titubant. Vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent ! Vous avez l'impression de rester coincé une heure dans ce cagibi.	D2_level2	SeReposer	205	52657441
+en	0a5f793	C'est pénible, surtout que votre vision se trouble, se dédouble. Pas de doute, vous n'avez pas su quitter l'arène à temps. Vous avez franchi la ligne rouge. Vous êtes plus que crevé...	D2_level2	SeReposer	206	cd15100b
+en	0a1f289	Vous avez la tête qui tourne et qui serre, qui vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité.	D2_level2	SeReposer	207	8e80325f
+en	0e8130b	Non, décidément, rien à faire, vous n'arrivez pas à vous endormir...	D2_level2	SeReposer	208	05318a24
+en	064df23	Argh... L'horloge connectée vous fait bondir de votre lit ! Il est encore trop tôt ! Vous ne vous êtes toujours pas reposé. Vous aimeriez avoir une bonne nuit de sommeil...	D2_level2	Bip_Bip	214	1095cef5
+en	09e61f9	Vous avez encore raté votre soirée. Vous avez voulu battre Fred à son propre jeu. Vous étiez tellement obsédé par l'idée de gagner que vous avez négligé votre bien-être. Vous n'avez pas écouté votre corps.	D2_level2	Bip_Bip	215	a5be2737
+en	0886c90	Au final, vous avez encore perdu...	D2_level2	Bip_Bip	216	a950e2e6
+en	0b24153	-> Recommencer	D2_level2	Bip_Bip	217	942c9725
+en	0154ec5	Tant pis, vous avez besoin d'un coup de pouce... Du moins, le pensez-vous...	D2_level2	Drink_Bad	223	7f9dfc24
+en	054e0f2	-> Un shot et on y retourne !	D2_level2	Drink_Bad	224	c40ad9ea
+en	05cdafa	BarBot: Tenez.	D2_level2	Eat_Bad	230	9ae924b6
+en	0eb0a3c	You: Merci.	D2_level2	Eat_Bad	231	167ab86b
+en	06f6f0b	Le BarBot vous tend une espèce de gomme multicolore. Vous la mettez dans votre bouche. Niac... C'est moche, ça a un sale goût et vous vous demandez si vous avez fait le bon choix... Trop tard, c'est fait. Vous ressentez quand même un effet revitalisant. Cela suffira-t-il ?...	D2_level2	Eat_Bad	232	212340b3
+en	074c83d	-> Bon, ça c'est fait, et maintenant ?	D2_level2	Eat_Bad	233	d6501a4a

@@ -104,6 +104,7 @@ const stateNames = [
   "journal_organisation",
   "D7_level1",
   "D7_level2",
+  "End_Screen"
 ];
 
 const states: { [k: string]: entity.EntityResolvable } = {
@@ -123,7 +124,7 @@ for (const stateName of stateNames) {
     );
 }
 
-states["End_Screen"] = outroVideoScene;
+states["outro_video"] = outroVideoScene;
 
 async function levelLoader(entityConfig: entity.EntityConfig) {
   const levels: Record<string, string> = {};
@@ -207,9 +208,9 @@ booyah.go({
   fontAssets,
   fxAssets,
   musicAssets,
+  videoAssets,
   screenSize,
   splashScreen,
-  videoAssets,
   extraLoaders: [levelLoader],
   entityInstallers: [
     audio.installJukebox,

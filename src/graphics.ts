@@ -114,7 +114,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public loadSave() {
-    const { lastGraphics: last } = save.getSave()
+    const { lastGraphics: last } = save.getSave();
 
     if (last.lastBg) this.setBackground(last.lastBg, last.lastBgMood);
     if (last.lastCharacter)
@@ -130,7 +130,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     for (let i = 0; i < gaugesList.length; i++) {
       const _gauge = gaugesList[i];
       this._gauges[_gauge] = new gauge.Gauge(
-        new PIXI.Point(140 * i + 30, 15),
+        new PIXI.Point(140 * i + 30 + 150, 15),
         new PIXI.Sprite(
           this.entityConfig.app.loader.resources[
             `images/ui/gauges/${_gauge}.png`
@@ -536,7 +536,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const [animationShifting, baseAlpha] = [120, 0.6];
     let freechoicesFound = 0;
     for (let i = 0; i < nodeOptions.length; i++) {
-      const [choiceText, jsonValue] = nodeOptions[i].split("@");
+      const [choiceText, jsonValue] = nodeOptions[i].trim().split("@");
       if (!highlightJSON.hasOwnProperty(jsonValue)) continue;
       freechoicesFound++;
 

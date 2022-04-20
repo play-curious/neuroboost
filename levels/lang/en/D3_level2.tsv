@@ -1,0 +1,112 @@
+LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?
+en	082188f	Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée. Vous voilà revenu dans votre chambre. On est à nouveau mercredi matin. Et c'est reparti pour un tour.	D3_level2	Start	8	c6fbe4d5
+en	0c0a13c	Cette-fois, il va falloir la réussir cette note de synthèse en Programmation Neuro Linguistique des Intelligences Artificielles Analogiques.	D3_level2	Start	9	b6b30f8b
+en	09b5659	Ronronron... Votre palmphone qui vibre. Fred vous relance.	D3_level2	Start	10	cbafdf28
+en	095288e	-> Prendre l'appel	D3_level2	Start	11	4ee62c7c
+en	0e7041f	Fred@holo_excited: Hello ! Je te dérange pas ?	D3_level2	Appel_Fred	18	b5e42d9c
+en	0fc0b63	You: Un peu...	D3_level2	Appel_Fred	19	91630e00
+en	00d17f3	Fred@holo_surprised: Ah bon ?	D3_level2	Appel_Fred	20	72e727d0
+en	0d5515d	You: Je finis mon petit déjeuner.	D3_level2	Appel_Fred	21	ae6fbdf6
+en	0d0655b	Fred@holo_smiling: Great ! Tu viens avec moi à la salle de gym ?	D3_level2	Appel_Fred	22	d0950ae0
+en	0f3d323	You: Naan... Je dois travailler en autonomie.	D3_level2	Appel_Fred	23	6b8ea66d
+en	09b2be5	Fred@holo_smiling: Tu veux parler de la note de synthèse sur la PNLIAA ?	D3_level2	Appel_Fred	24	ea46ba78
+en	01a37fa	You: Ouais.	D3_level2	Appel_Fred	25	825adff7
+en	01e3267	Fred@holo_excited: No worry. On a juste qu'à minuit pour la déposer sur le FTP de l'Académie.	D3_level2	Appel_Fred	26	102f6abb
+en	0093fb1	You: Ouais. Mais l'autre fois, je n'y suis pas arrivé.	D3_level2	Appel_Fred	27	827c57ef
+en	06c3530	Fred@holo_surprised: Quoi ?!	D3_level2	Appel_Fred	28	23db2d71
+en	0cc0e18	You: Laisse tomber.	D3_level2	Appel_Fred	29	7e3913af
+en	02fcdb2	Fred@holo_smiling: OK. Keep cool. Alors tu viens ?	D3_level2	Appel_Fred	30	92a2db80
+en	00d6876	-> Rejoindre Fred	D3_level2	Appel_Fred	31	00a09eb1
+en	077178d	-> Rester travailler	D3_level2	Appel_Fred	32	a6d4d718
+en	0d49d56	Vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit.	D3_level2	Salle_Gym	39	806a0dca
+en	011e84b	Fred_excited: Je savais que tu allais venir.	D3_level2	Salle_Gym	40	d9a81901
+en	00ab591	You: Je savais que tu allais dire ça.	D3_level2	Salle_Gym	41	f88895e5
+en	005edbe	Fred_surprised: What ?!	D3_level2	Salle_Gym	42	2f1e35ca
+en	0d6a409	You: Rien.	D3_level2	Salle_Gym	43	f51a3f51
+en	0bf38a2	Fred_smiling: Yolo ! Tu vas voir, après notre séance de gym, tu vas torcher cette note de synthèse !	D3_level2	Salle_Gym	44	e7c4c8df
+en	040abe0	You: Je n'en suis pas si sûr.	D3_level2	Salle_Gym	45	17dc6493
+en	0c75155	Fred_smiling: No worry ! Allez viens !	D3_level2	Salle_Gym	46	57bd76c1
+en	042d950	Vous emboîtez le pas de Fred et vous éclatez tous les deux aux différentes activités proposées: cybersprint, electroskate, eBall, eJump...	D3_level2	Salle_Gym	47	cdf1518a
+en	0842f3a	Le moins que l'on puisse dire, c'est que vous y avez mis du vôtre. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.	D3_level2	Salle_Gym	48	c284f691
+en	0b96a23	Fred_smiling: Tu pars déjà, lâcheur ?	D3_level2	Salle_Gym	49	8e985d70
+en	001901c	You: J'en peux plus. Et je dois m'y mettre.	D3_level2	Salle_Gym	50	e025c2e3
+en	039eabf	Fred_sad: Lâcheur...	D3_level2	Salle_Gym	51	9d276fe0
+en	0e67141	-> Retourner dans votre chambre	D3_level2	Salle_Gym	52	d29b9189
+en	0efba58	-> Envoyer la note de synthèse sur le FTP de l'Académie	D3_level2	Liste_Taches	59	9808dd7b
+en	00e895d	Que faites-vous maintenant ?	D3_level2	Liste_Taches	60	b871a697
+en	0e2055c	-> Faire un somme	D3_level2	Liste_Taches	61	c2ca1e05
+en	0f2729b	-> Faire une sieste#once	D3_level2	lit_subchoice_am	72	ebe766c9
+en	07d896e	-> Préparer son bureau avant de se mettre à travailler#once	D3_level2	bureau_subchoice_am	77	eb981d17
+en	05d541d	-> Ouvrir le chat histoire de se détendre#once	D3_level2	bureau_subchoice_am	78	498aa673
+en	0b5a741	-> Débuter la rédaction de la note de synthèse#once	D3_level2	bureau_subchoice_am	79	53bf1aa5
+en	066882d	-> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction"#once	D3_level2	bureau_subchoice_am	80	8c53fcbe
+en	01eb1a1	-> Binger votre série TV préférée#once	D3_level2	salon_subchoice	85	547369f9
+en	00bd306	-> Casser la croûte#once	D3_level2	cuisine_subchoice_am	90	d505048f
+en	07762fe	-> Faire une sieste#once	D3_level2	lit_subchoice_pm	101	ebe766c9
+en	0c4b250	-> Se détendre sur le chat#once	D3_level2	bureau_subchoice_pm	106	fb3089b9
+en	0d5efeb	-> Continuer la rédaction de la note de synthèse#once	D3_level2	bureau_subchoice_pm	107	1694b47d
+en	0a6583e	-> Demander à l'IA de votre chambre d'activer le mode "Zéro Distraction" <<if !visited("Zero_Distraction")>>	D3_level2	bureau_subchoice_pm	108	0cd7fa65
+en	0ca3ea3	-> Manger#once	D3_level2	cuisine_subchoice_pm	113	f2f28f9f
+en	016fb38	Vous ne savez pas si cette tâche est indispensable. Les Sages n'ont pas été clair à ce sujet. Mais ça ne vous fera pas de mal, jugez-vous.	D3_level2	Ranger	120	b98b0795
+en	0f24307	Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite le paper print de votre brief, les documents de référence que vous avez déjà en possession. Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document.	D3_level2	Ranger	121	3cce00d1
+en	0614126	Vous prenez ensuite plusieurs minutes pour établir un plan de réflexion et de travail. Vous êtes content de vous, ça va vous faciliter le processus de rédaction.	D3_level2	Ranger	122	41b91225
+en	033c6b9	-> Il ne reste plus qu'à s'y mettre maintenant	D3_level2	Ranger	123	6b251a6d
+en	02e780f	Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes pingé par Fred !	D3_level2	Chat	130	98459297
+en	0fab654	Il vous demande encore si vous ne voulez pas le rejoindre à la salle de gym ! Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous savez que ne pouvez ignorer son injonction ! Si toute la communauté apprenait que vous aviez refusé un duel virtuel, que vous êtes un lâche...	D3_level2	Chat	131	bb4f8ea5
+en	08a2fd3	Décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait. Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter.	D3_level2	Chat	132	2b87b802
+en	01550f8	-> Et maintenant, il faut peut-être travailler sur cette note de synthèse ?	D3_level2	Chat	133	db4febf8
+en	0f3a220	Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars - The Lone Lightsaber.	D3_level2	BingeTV	140	78d68134
+en	00c8862	Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir ! Ils sont parvenus à décryogéniser Jaba Fett.	D3_level2	BingeTV	141	c7ebdea6
+en	05e7f52	Ils en besoin car lui seul sait où se cache Dude Highwalker, le Chevalier Laser... Sur Dunooine, la planète de Sable, la seule réserve de Mana de toute la galaxie ! Quand les commandos Dark débarquent sur Dunooine, vous avez les yeux scotchés à l'écran !	D3_level2	BingeTV	142	c1edaf14
+en	0e22abb	Vous avez l'impression que vous avez déjà vu cet épisode... Hier ? Possible. Peu importe. Vous ne vous lassez jamais de Star Mars, même les rediffusions...	D3_level2	BingeTV	143	57730fe3
+en	009f5c9	Vous tremblez à chaque fois que les Dark Ops débusquent la cache de Dude. Heureusement que ses disciples : les Freewalkers, parviennent à retenir les commandos le temps que le Chevalier Laser atteigne une nouvelle planque..	D3_level2	BingeTV	144	5b1cf514
+en	08d2c22	Le temps file... Meuha... Il faudrait peut-être terminer cette fichue note de synthèse...	D3_level2	BingeTV	145	15345de3
+en	0a899a0	-> Vite, au travail !	D3_level2	BingeTV	146	093dbe65
+en	020fcc8	Vous n'avez pas oublié ce que vous ont dit les quatre Sages. Si vous avez sommeil et si le temps manque, un petit somme, ça fait toujours du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux.	D3_level2	Sleep	153	c4e195ec
+en	058b075	Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux.	D3_level2	Sleep	154	ee316a24
+en	0b14191	-> Maintenant, il faut s'y remettre	D3_level2	Sleep	155	be690fb1
+en	0a89fb3	Vous vous retroussez les manches et vous recommencez ce travail fastidieux mais indispensable pour décrocher une bonne note... Mettre au propre cette note de synthèse. Cela vous demande une attention, une concentration et une motivation inimaginable.	D3_level2	Redaction_Note	162	54275797
+en	0a0cb50	Comment ont fait les Sages pour arriver à ce rang si convoité d'expert en métacognition, dites-vous.	D3_level2	Redaction_Note	163	14242bf3
+en	0785c34	Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cette note de synthèse avant la deadline...	D3_level2	Redaction_Note	164	20ba1711
+en	06fa378	Alors que vous vous accordez une pause Xeno Cola, votre palmphone vibre: Fred veut encore vous parler...	D3_level2	Redaction_Note	165	16da9348
+en	08ac6f6	-> Prendre l'appel	D3_level2	Redaction_Note	166	4ee62c7c
+en	000e443	Vous inspirez un bon coup et vous vous y remettez. Sauf que, vu que vous n'êtes dérangé par aucun bip bip, aucune notification, que la musique est sympa, que votre camarade virtuel vous semble lui aussi sympa... Hé ben, ça vient beaucoup plus facilement.	D3_level2	Redaction_Note	167	43026157
+en	07f65dd	Vous êtes vous même surpris par la rapidité avec laquelle vous enchaînez les mots, les lignes, les paragraphes, les pages... Ces Sages, ce ne sont pas des savants, mais des magiciens, des enchanteurs...	D3_level2	Redaction_Note	168	0b77fa4f
+en	0dc9373	Cette fois, vous êtes certain de terminer votre note de synthèse avant minuit, et même avant...	D3_level2	Redaction_Note	169	e5c9caff
+en	097265e	Fred@holo_excited: Alors ? Je t'attends toujours ? Quand viens-tu ?	D3_level2	Fred_again	176	98c7763e
+en	02751de	You: Je sais. Tu as décidé de ne pas me lâcher de la journée.	D3_level2	Fred_again	177	24704524
+en	0f20acf	Fred@holo_happy: Attention à ce que tu dis ! Je te défie IRL à la salle de gym, ce sera notre AlphaMégaRing. Et si tu ne viens pas, je le dis à toute la communauté du Métaverse.	D3_level2	Fred_again	178	521b940b
+en	0663ba6	Pitié... Vous savez que vous n'avez pas la force de décliner le défi de Fred. Le membre le plus populaire du Métaverse de la fraternité étudiante.	D3_level2	Fred_again	179	00aaf0cc
+en	05a87d6	-> Retrouver Fred	D3_level2	Fred_again	180	e2b0d39f
+en	0e3de2c	Résigné, Vous retrouvez Fred à la salle de gym. En fait, vous vous éclatez tous les deux comme des enfants : cybersprint, electroskate, eBall, eJump...	D3_level2	Salle_Gym2	187	4aac8371
+en	02833f8	Le moins que l'on puisse dire, c'est que vous vous donnez à fond. Au final, vous vous sentez épuisé. Il est temps de retourner travailler.	D3_level2	Salle_Gym2	188	58a87175
+en	0b6d05e	Fred_smiling: Tu pars déjà, tu déclares forfait ?	D3_level2	Salle_Gym2	189	70804cf8
+en	0668e36	You: T'as encore gagné.	D3_level2	Salle_Gym2	190	ffa24c92
+en	06b1116	Fred_smiling: Je gagne toujours.	D3_level2	Salle_Gym2	191	9e368ca4
+en	054661a	You: On verra bien...	D3_level2	Salle_Gym2	192	1a56204e
+en	032c173	-> Retourner dans votre chambre	D3_level2	Salle_Gym2	193	d29b9189
+en	060f23f	Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte. Vous auriez peut-être abusé de votre temps de travail.	D3_level2	Surcharge_Cognitive	200	47192b93
+en	023fb4d	Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !...	D3_level2	Surcharge_Cognitive	201	7672c860
+en	017de2b	N'empêche, vous sentez votre tête pencher en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte.	D3_level2	Surcharge_Cognitive	202	9928a37d
+en	0f6820d	Vous finissez par céder. Vous sombrez dans le noir...	D3_level2	Surcharge_Cognitive	203	86c9a7b1
+en	056248a	-> Réveillez-vous ! Il faut recommencer !	D3_level2	Surcharge_Cognitive	204	eebf0ef8
+en	06a40c3	Votre ventre gargouille. Vous décidez de vous refaire ce surprenant Green Burger Full Vegie.	D3_level2	Lunch	211	e8f58022
+en	0da8728	C'est dingue ce que burger sans viande ni pain ni frites vous cale l'estomac. Il faudrait vraiment que Naz Do l'ajoute à ses menus dans ses restaurants...	D3_level2	Lunch	212	5fb5146c
+en	084e0a8	-> C'est pas tout, il faut s'y remettre	D3_level2	Lunch	213	91b75cc4
+en	009311a	Comme hier, le soir venu, vous avez la flemme de cuisiner, et vous n'avez pas aussi faim.	D3_level2	Diner	220	c2939006
+en	0ea36db	Le mix de ratatouilles de légumes du soleil d'Aldébaran avec son assiette de céréales complètes, ça vous va très bien.	D3_level2	Diner	221	ef131b18
+en	01219de	-> La journée n'est pas encore finie !	D3_level2	Diner	222	fe1606e9
+en	0a3b588	You: Room Mate, peux-tu désactiver tous les messages entrants. Je dois rester concentré pour travailler.	D3_level2	Zero_Distraction	229	72fdee43
+en	07d3f75	RoomMate: Entendu, je place votre chambre en mode "Immersion Studieuse".	D3_level2	Zero_Distraction	230	9a098900
+en	0f516ac	Votre IA ne fait pas les choses à moitié. Elle vous choisit un musique d'ambiance discrète et sympathique.	D3_level2	Zero_Distraction	231	782dd563
+en	08c1a5a	RoomMate: Voulez-vous que je projette sur votre screencast un module work-with-me ?	D3_level2	Zero_Distraction	232	44cea1c8
+en	0297352	You: Ça consiste en quoi ?	D3_level2	Zero_Distraction	233	be337ce7
+en	0d8c5ee	RoomMate: Des simulations dans lesquelles vous voyez travailler un étudiant en 3D ultra High Rez. Il travaille dans une situation correspondant exactement à la vôtre. Vous pouvez choisir le thème, le cadre et la durée, tout ce que vous souhaitez.	D3_level2	Zero_Distraction	234	2ff53813
+en	0a757bf	You: Parfait ! thème : rédaction de note de synthèse. Ambiance cool. Durée: 60 minutes, intégrant des pauses toutes les 20 minutes.	D3_level2	Zero_Distraction	235	96f3b70f
+en	0677c11	L'IA vous affiche alors la vidéo d'un étudiant paisible mais sérieux, qui entame la rédaction de sa composition. C'est incroyable, mais c'est vrai que de voir un camarade virtuel besogner comme vous, sans fléchir... ça vous rassure, ça vous détend, ça vous inspire.	D3_level2	Zero_Distraction	236	96e415b3
+en	0605ce3	Et maintenant, comme on dit : "y a plus qu'à"...	D3_level2	Zero_Distraction	237	d57197ff
+en	0b460db	Vous n'avez malheureusement pas fini votre rédaction à temps, vous allez encore devoir recommencer cette journée...	D3_level2	Time_Over	244	e5e8092f
+en	051e49b	-> Il faut recommencer !	D3_level2	Time_Over	245	a02a0363
+en	0638ff5	Victoire ! Vous avez réussi ! Il n'est pas encore minuit et vous avez terminé la rédaction de la note de synthèse.	D3_level2	Envoi_Note_Synthese	252	9815d864
+en	062ddf5	Vous daignez prendre encore le temps de faire un vérification syntaxique par votre ordinateur avant d'expédier votre fichier final au serveur FTP de l'Académie d'Omniscience et de Polytechnologie Universelle.	D3_level2	Envoi_Note_Synthese	253	a882bc11
+en	0234628	Une bonne chose de faite. Vous pouvez désormais faire ce que vous voulez du reste de votre soirée...	D3_level2	Envoi_Note_Synthese	254	219a394b

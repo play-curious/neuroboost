@@ -1,4 +1,4 @@
-title: Start
+﻿title: Start
 tags: 
 ---
 << fadeIn >>
@@ -7,9 +7,9 @@ tags:
 << show fred >>
 << fadeOut >>
 
-Fred_smiling: Merci d'avoir joué !
-Fred_smiling: J'espère que tu en as appris plus sur la métacognition.
-Fred_smiling: Hâte de te revoir pour un prochain épisode !
+Fred_smiling: Merci d'avoir joué ! #line:095aa16 
+Fred_smiling: J'espère que tu en as appris plus sur la métacognition. #line:0457790 
+Fred_smiling: Hâte de te revoir pour un prochain épisode ! #line:065f2d2 
 
 << music >>
 ===

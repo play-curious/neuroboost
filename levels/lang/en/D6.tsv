@@ -1,0 +1,541 @@
+LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?
+en	02861e5	C'est le matin, vous vous réveillez... naturellement, normalement, sans sonnerie. Logique, nous sommes samedi, c'est le week-end, synonyme de repos, du moins de relâche. Il est dix heures passées.	D6	Start	8	99a7767d
+en	06967d0	Vous vous levez tranquillement et prenez un petit-déjeuner copieux : chocolat organique, crêpes au caramel beurré, jus d'oranges organiques compressées.	D6	Start	9	94344037
+en	08aa252	Vous avez bien dormi : pas d'insomnie, pas de stress étouffant, pas de pensées angoissantes, pas de cauchemar.	D6	Start	10	299e95ae
+en	0900d55	Vous pensez à votre grand-mère, mais vous avez l'esprit serein et optimiste.	D6	Start	11	570d8359
+en	058f466	Votre palmphone vibre, c'est votre mère. Le sort aurait-il perçu vos pensées ?	D6	Start	12	83e3c437
+en	01ffc52	-> Répondre	D6	Start	13	6365ee17
+en	077c23e	Maman@holo: Je te réveille pas, Bibi ?	D6	Appel_Maman	19	4e2bc3ea
+en	0d3dd0e	You: Non. Je viens de finir mon petit-déjeuner.	D6	Appel_Maman	20	5b31e7a2
+en	0f83a1c	Maman@holo: Parfait. Tu as des nouvelles de l'hôpital ?	D6	Appel_Maman	21	520f2ee7
+en	0c60223	You: Non, toujours rien. Comment va Mamie ?	D6	Appel_Maman	22	461c4533
+en	044fbd0	Maman@holo: Tout va bien. Elle s'est réveillée. Elle est encore fatiguée, confuse, elle a du mal à trouver ses mots. Mais elle va bien.	D6	Appel_Maman	23	a5565dc7
+en	09aa214	You: Ouf !	D6	Appel_Maman	24	ed8a2a85
+en	01c7c6a	Maman@holo: Tu connais ta grand-mère.	D6	Appel_Maman	25	49302c06
+en	03aa1d3	You: Ouais.	D6	Appel_Maman	26	825adff7
+en	0285964	Maman@holo: C'est une dure-à-cuire. Elle va s'en sortir. Comme toujours.	D6	Appel_Maman	27	8cd59576
+en	0a6e49f	You: Ouais.	D6	Appel_Maman	28	825adff7
+en	0c17fe9	Maman@holo: Tu fais quoi aujourd'hui ?	D6	Appel_Maman	29	0c0e8929
+en	050d0ee	You: Je révise pour la Grand Oral.	D6	Appel_Maman	30	4f2bc3e7
+en	09f1d9b	Maman@holo: Tu continues le Jungle Body Beat ?	D6	Appel_Maman	31	2deff1c7
+en	0cf6e18	You: Ouais. Ça me fait du bien, c'est tonique, vivifiant et gracieux.	D6	Appel_Maman	32	c6101b43
+en	09172d7	Maman@holo: Ah. Et ça impressionne tes camarades ?	D6	Appel_Maman	33	73f0cb52
+en	0dfa2fe	You: Un peu. Quand je me lance sur le Dance Floor, je ne passe pas inaperçu. Bon, c'est pas tout. Je vais devoir me préparer pour revoir mes leçons. Je te laisse. Ciao !	D6	Appel_Maman	34	51243169
+en	0e0d405	Maman@holo: Ciao.	D6	Appel_Maman	35	54e0b7cc
+en	0f2bdb6	Bon, il est temps de s'y mettre. C'est qu'il y a beaucoup a réviser, même pour un week-end entier.	D6	Appel_Maman	36	a9d23f8d
+en	0576ac8	Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories.	D6	Taches_S	43	c190f165
+en	06054a6	-> Aller dîner	D6	Taches_S	44	d6ec2f43
+en	021cb5b	-> Manger sainement <<if !visited("MangerMidi_S")>>	D6	Cuisine_S	51	c07879dc
+en	04ee09d	-> Manger vite <<if !visited("MangerMidi_S")>>	D6	Cuisine_S	52	6f4f6694
+en	091bddc	-> Grignoter un petit quelque chose <<if !visited("Grignoter_S")>>	D6	Cuisine_S	53	325ee712
+en	0c45dc5	-> Demander au Roommate de couper les distractions #once	D6	Bureau_S	60	067bde5f
+en	0936ce8	-> Planifier le travail à faire #once	D6	Bureau_S	61	fef6c0aa
+en	06d3788	-> Réviser la Philosophie Quantique <<if !visited("revision3")>>	D6	Bureau_S	62	0b46f480
+en	0e9f1ef	-> Ranger le bureau #once	D6	Bureau_S	63	9f693a87
+en	08fade8	-> Faire une sieste #once	D6	Lit_S	70	06df3fe1
+en	03f7f0a	-> Regarder Star Mars #once	D6	Detente_S	77	2e4acefd
+en	0df8004	-> Jouer du Cycloluth #once	D6	Detente_S	78	c2557ab1
+en	0f3adb1	-> Chatter en ligne #once	D6	Detente_S	79	0ec318d3
+en	0ace565	Vous demandez à votre RoomMate de basculer votre chambre en mode "immersion studieuse".	D6	Zero_Distraction_S	85	c95cc6c3
+en	0cbdbba	RoomMate s'exécute, et empêche les distractions extérieures de pouvoir vous perturber, en ne vous laissant accès qu'au strict minimum pour réviser dans les meilleures conditions.	D6	Zero_Distraction_S	86	e2be8d5c
+en	01b0da9	Vous vous installez sur votre bureau. Vous rangez un minimum et sortez votre journal Bullet Point. Vous savez que ce week-end, il va diablement servir. Vous tournez les pages jusqu'à arriver à une page blanche.	D6	Planning_S	92	c02c35c6
+en	0cda8aa	Vous notez les tâches obligatoires et prioritaires du week-end. <b>Les quatre thèmes de la philosophie quantique</b>.	D6	Planning_S	93	f6b60a3c
+en	0384152	Vous énumérez ensuite les tâches importantes ou utiles : <b>Le samedi soir enfiévré à la cafétéria, la séance de détox sportive du lendemain, le coup de fil de mamie</b>.	D6	Planning_S	94	ddc972c4
+en	087319b	Enfin, vous vous attardez sur les tâches plus accessoires : <b>Sieste et éventuellement d'autres pauses fun</b>.	D6	Planning_S	95	21ed0991
+en	0dad130	Vous tournez encore la page. Nouvelle feuille vierge.	D6	Planning_S	96	169efc27
+en	0c4398a	Vous y notez en haut et en gras : Samedi.	D6	Planning_S	97	7d0d392e
+en	077a75c	Vous listez ensuite tous les événements de ce jour. Réviser deux thèmes de la philosophie quantique. D'abord le <b>principe d'incertitude ou d'indétermination</b>, et en second, le <b>phénomène d'intrication quantique</b>.	D6	Planning_S	98	5d0e0f2c
+en	048bee6	Ensuite vous passez aux tâches secondaires: Votre entraînement de Jungle Body Beat à 14 h.	D6	Planning_S	99	f144aca0
+en	08893ca	Puis, la soirée à la cafétéria, celle qui va faire remonter votre niveau de fun et vous permettre de vous lâcher au concours de danse.	D6	Planning_S	100	c51244f0
+en	097e49b	Et en plus petites tâches, une pause sieste, et tous les autres éléments de détente à votre disposition.	D6	Planning_S	101	c997c11b
+en	01e95e0	La philosophie quantique. Un beau et riche sujet. Vous en avez lu des livres sur la question. Vous en avez écrit des pages sur les différents thèmes que cette noble matière aborde.	D6	Reviser_S	107	4e8d2564
+en	086df00	Heureusement vous avez pris le temps d'établir un planning ce matin, donc vous savez exactement où commencer : le principe d'incertitude ou d'indétermination.	D6	Reviser_S	108	a3f6ca45
+en	0d706eb	Par quoi allez-vous commencer ce matin ? Vous n'e savez pas trop. Vous n'avez pas vraiment réfléchi à la question. Tant pis.	D6	Reviser_S	109	705c83b8
+en	03a02e1	Vous faites confiance à la méthode du "rappel libre". Vous sortez des stylos de différentes couleurs et plusieurs pages blanches. Vous commencez à noter dessus les titres, les mots-clés, les concepts, les théories, les définitions et les arguments qui vous viennent à l'esprit..	D6	Reviser_S	110	a52e7227
+en	06f89f6	Ding ding ! Vous vous accordez une pause de 15 minutes, histoire de ne pas surcharger le cerveau.	D6	Reviser_S	111	efc70852
+en	0a0cf53	Pfouu. En effet, il y en a de la matière. Cela vous prend au bas mot une heure pour faire un première passe des concepts qui vous paraissent essentiels.	D6	Reviser_S	112	bdf5286b
+en	065ad7d	Pas de questions, il est l'heure d'attaquer l'intrigue de l'intrication quantique !	D6	Reviser_S	113	2905697a
+en	0233075	La notion d'intrication est passionnante. Elle stipule et justifie que des éléments peuvent être intriqués, enchevêtrés l'un à l'autre. Et ce, quel que soit la distance qui les sépare.	D6	Reviser_S	114	0faa26ac
+en	04bc177	Vous avancez à un bon rythme.	D6	Reviser_S	115	e32fd89e
+en	08abe8d	Vous n'oubliez pas de vous ménager avec des pauses entre chaque session, en grattant les cordes de votre cycloluth de Feudall. Ce qui vous permet de maintenir une attention utile et soutenue.	D6	Reviser_S	116	d4116c0e
+en	0c2302c	L'intrication quantique est une théorie révolutionnaire qui expliquerait les phénomènes d'ubiquité, de synchronicité, de coïncidences. C'est dingue !	D6	Reviser_S	117	e42bd4e0
+en	063fb9f	Vous travaillez sur ce thème de manière studieuse mais détendue.	D6	Reviser_S	118	5d7825f8
+en	01377b7	Vous vous replongez dans vos cours et vos notes. Vous abordez cette fois le paradoxe du chat de Schrödinger et la superpositions d'états différents. Ce qui est matériellement impossible. Ou c'est le contraire ?	D6	Reviser_S	119	46a396c4
+en	0544861	Soit, le monde des phénomènes n'est pas la réalité, ou bien la réalité n'existe pas pour les chats. Non, attend, c'est pas ça, ...	D6	Reviser_S	120	6fd4ff2a
+en	066deff	Vous faites une pause pour vous remettre les idées en place.	D6	Reviser_S	121	91e29e68
+en	0cbeb1f	Vous continuez tranquillement vos révisions	D6	Reviser_S	122	e4db3004
+en	028ddee	L'idée est da la cohabitation de plusieurs univers parallèles, comme le stipule Everett, est simplement fascinante !	D6	Reviser_S	123	deae4ec5
+en	03fc02f	Vous vous dites qu'il n'est pas inutile de mettre de l'ordre dans vos affaires.	D6	Ranger_S	129	97950a32
+en	0dbbe55	Vous passez la demi-heure suivante à nettoyer votre bureau et ne laissez en évidence que ce qui vous servira dans votre travail de révision.	D6	Ranger_S	130	6d8b262d
+en	0a023f4	Vous êtes satisfait de votre rangement, vous vous sentez tout de suite plus à même de travailler dans un environnement organisé.	D6	Ranger_S	131	17f5113d
+en	0015401	Vous avez fait une grasse matinée. Toutefois, cette semaine d'examens est très éprouvante. Vous ne cesser de la revivre en boucle. Ce week-end, c'est la cerise sur le gâteau. Vous n'avez pas le droit à l'erreur.	D6	Sieste_S	137	dd97807e
+en	0ff1005	Trêve de paroles, vous vous asseyez sur votre lit et vous tombez presqu'aussitôt dans un doux sommeil réparateur. Bien entendu, vous gardez à l'esprit de ne pas vous endormir trop profondément. Il s'agit de faire une sieste, pas de passer l'après-midi à ronfler...	D6	Sieste_S	138	3ad2c60d
+en	0c67eaa	Ce n'est seulement qu'après plus d'une demi-heure que vous rouvrez les yeux.	D6	Sieste_S	139	679e54bb
+en	0253000	Ce somme, vous en aviez bien besoin...	D6	Sieste_S	140	9d7ca206
+en	07d19ad	Nous sommes un jour de week-end, un jour férié. Vous méritez bien une pause TV. Vous n'avez pas encore entamé la saison 8 de Star Mars - The Lone Lightsaber.	D6	BingeTV_S	146	7f9685ad
+en	022b1b3	Vous lancez l'application Screencast, elle vous affiche alors l'écran d'accueil Webflix. Vous pointez votre doigt sur Star Mars. Le générique démarre dans un roulement de fanfare.	D6	BingeTV_S	147	2a36273f
+en	096aa6d	La huitième saison reprend là où s'était arrêtée la précédente à savoir : la disparition de Dude Highwalker, aspiré par un Métavers des sables.	D6	BingeTV_S	148	ff81d286
+en	01f2976	Hé oui, ce ne sont pas les commandos de choc de l'Impérium Noir qui ont fini par attraper le Chevalier Laser mais les Touarogs de l'infâme pirate : Jara the Hun, qui l'a sacrifié au Métavers des sables...	D6	BingeTV_S	149	d74fc1d1
+en	0d9230a	Vous avez déjà passer 2 heures devant votre série, mais vous voulez vraiment voir la suite...	D6	BingeTV_S	150	d5bc3c0b
+en	046fa2a	-> Continuez à regarder	D6	BingeTV_S	151	d3497aaa
+en	08aa712	-> Retournez à vos occupations	D6	BingeTV_S	152	0715f2d2
+en	01a1680	Est-ce la fin pour Dude ? Vous vous doutiez que non. Et vous aviez raison...	D6	BingeTV_S	153	475a4627
+en	02fb2c0	L'ignoble pirate des sables, et vous-même, ignoriez que Dude avait été immergé dans le chaudron de Mana, juste après sa naissance. Le corps et l'esprit de Dude Highwalker sont saturés de récepteurs de Mana.	D6	BingeTV_S	154	127eb849
+en	03bc9fb	Or, le Métavers des sables est en réalité la créature qui produit la Mana. Ce sont ces déjections ! Pensez-vous vraiment que le Métavers des sables dévore ses excréments ?! Non, il les traite avec respect ! Après une digestion spirituellement difficile, le monstre des sables recrache sa proie.	D6	BingeTV_S	155	48482466
+en	0fb884c	Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de bile manachique...  La suite de l'histoire est tout aussi palpitante et surprenante. Vous ne pouvez pas vous empêcher d'enchaîner les épisodes l'un derrière l'autre. Si bien que plus de quatre heures s'écoulent en un rayon d'épée laser.	D6	BingeTV_S	156	83c4e3d6
+en	04ea1a7	Après votre pause Star Mars...	D6	BingeTV_S	157	b871dccf
+en	06312ef	Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare analogique de la planète Feudall. Le son brut et archaïque de cet instrument vous détend, vous apaise, vous nettoie l'esprit d'informations superflues et pesantes.	D6	Musique_S	163	7ea55d5d
+en	0b61cb0	-> Aller au club de Jungle Body Beat #once	D6	Porte_S	170	b2a2f114
+en	09eafb6	Vous arrivez dans les derniers, cependant, le cours n'a pas encore commencé. Plus exactement, votre coach vous attendait.	D6	Sport_S	176	09e01acc
+en	079d286	Il vous adresse un léger sourire quand il vous voit surgir sur la piste. Vous savez qu'il vous apprécie et que vous êtes rarement en retard. Sans compter que vous vous donnez à fond.	D6	Sport_S	177	48301456
+en	0d07d3c	Vous êtes un peu en avance, donc vous profitez pour tchatter avec les autres étudiants.	D6	Sport_S	178	66fce3f3
+en	05f3753	Quand votre coach lance la musique et commence ses mouvements d'échauffement, il se tourne vers vous. Les autres stagiaires également. Curieusement, cela ne vous déroute pas. Vous êtes dans votre élément. Leur regard, leur attention glissent sur vous comme la pluie sur les plumes d'un cygne.	D6	Sport_S	179	ddd2e971
+en	02226d7	Vous entrez à votre tour dans la séance et, comme d'habitude, vous vous lâchez. Vous fusionnez avec la musique, le rythme, la direction du coach, la chorégraphie du groupe. C'est à peine si vous vous rendez compte que les minutes s'égrènent, une heure s'écoule, puis une seconde.	D6	Sport_S	180	3ad30c25
+en	009ab8d	Le coach tape des mains, signifiant la fin de la séance. Il remercie tout le monde et surtout vous, pour donner chair et souffle à sa troupe.	D6	Sport_S	181	531fe1ad
+en	0b71209	Quand vous retournez aux vestiaires, vous êtes épuisé. Fatigué mais heureux, euphorique, satisfait. On vous félicite, on vous encourage. Vraiment, ces séances de Jungle Body Break vous font un bien fou : au corps et au mental.	D6	Sport_S	182	8fe37263
+en	0ba30f3	Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous avez encore des choses à faire aujourd'hui.	D6	Sport_S	183	b0c62fdf
+en	0e3f8f0	Vous prenez votre palmphone. Vous cliquez sur l'icône ChatApp.	D6	Reseaux_S	189	eb1a2f10
+en	020529c	Loulou vous ping, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses...	D6	Reseaux_S	190	58b684f0
+en	0c8d730	Ils vous envoient leur encouragement, souhaitant un prompt rétablissement à votre grand-mère. Cela vous réchauffe encore plus le cœur. Votre grand-mère s'est enfin réveillée, les choses suivent leur cours, et désormais d'autres personnes pensent à elle.	D6	Reseaux_S	191	42f0ab39
+en	084795a	Vous vous sentez calme et confiant.	D6	Reseaux_S	192	4f7d71f6
+en	09be906	Le soleil s'est couché, il est temps de clore votre journée par un dîner bien mérité. Vous avez faim et vous avez le temps de vous préparer un petit plat sympa et exotique : des lasagnes vénusiennes. C'est délicieux et riches en nutriments essentiels.	D6	Soir_S	199	830bf669
+en	0a89af1	Vous faites le bilan de votre première journée. C'est un début, mais il en reste du travail à faire. Pas grave vous avez encore toute la journée de dimanche. Et même ce soir. Peut-être que...	D6	Soir_S	200	ea976cc6
+en	0873fc8	Soudain, quelqu'un sonne à la porte...	D6	Soir_S	201	6b8e72f6
+en	098d496	Zut ! Vous aviez complètement oublié. Fred vous en a parlé dimanche dernier...	D6	Soir_S	202	203ef625
+en	0581736	Fred pénètre dans votre chambre. Il a sorti ses plus beaux habits : celui d'un cavalier de salsatronique.	D6	Soir_S	203	c39cbe47
+en	061aeff	Fred: Alors ? C'est quoi ces frusques ?	D6	Soir_S	204	8669ac0b
+en	059ed3e	You: Heu... J'y pensais plus...	D6	Soir_S	205	2e5cc12b
+en	017512e	Fred: Comment tu as pu oublier.	D6	Soir_S	206	9c9a77f4
+en	0d8df88	You: Heu...	D6	Soir_S	207	94d39185
+en	081a5dd	Fred: C'est la fièvre du samedi soir !	D6	Soir_S	208	3e3bd279
+en	08c8a72	You: Ben...	D6	Soir_S	209	4595099d
+en	0dc364b	Fred: Arrête. Tu m'as promis. Et rappelle-toi comment tu as assuré mardi soir.	D6	Soir_S	210	979f1551
+en	0c11a64	You: Heu...	D6	Soir_S	211	94d39185
+en	070a80d	Fred: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller !	D6	Soir_S	212	470c8689
+en	0927d6c	-> Refuser	D6	Soir_S	213	fa33dd26
+en	02831a3	-> Suivre Fred	D6	Soir_S	214	240b1624
+en	017ef6a	Il a raison. Vous débarrassez la table et vous vous précipitez vers votre armoire. Aiguillé par les conseils de Fred, vous enfilez une tenue Rock Glam de malade. Vous resplendissez dans cette tenue scintillante et clinquante !	D6	Soir_S	215	839db142
+en	005a6ba	Fred: Parfait ! Allez, on y va !	D6	Soir_S	216	4b989bb1
+en	003cc10	Qui a dit "Le monde appartient à ceux qui se lèvent tôt" ?	D6	ReviserSoir_S	222	1e1aba67
+en	05bdd50	Ben, vous croyez plutôt à l'inverse ! S'il faut travailler le soir pour réussir, alors voilà ce que vous allez faire.	D6	ReviserSoir_S	223	1105865b
+en	0ea1528	Vous baillez malgré vous... Et votre attention semble de moins et moins clair.	D6	ReviserSoir_S	224	55b58870
+en	09593ca	OK ca suffit, au lit !	D6	ReviserSoir_S	225	88c1befc
+en	001743e	-> Aller se coucher	D6	ReviserSoir_S	226	b8ab646c
+en	087817b	Le moins qu'on puisse dire c'est que vous ne passez pas inaperçus. Tant Fred avec son look de tombeur de salsatronique, que vous avec votre costume de Rock Glam Star.	D6	Soiree_S	232	0a01be47
+en	02e92c9	On vous applaudit à tout crin. Fred avait raison, votre performance de mardi n'est pas passée inaperçue sur les réseaux sociaux.	D6	Soiree_S	233	ff9ac399
+en	0674756	Fred est probablement la star la plus populaire de l'Académie. Vous, vous êtes la star des soirées organisées à la cafétéria...	D6	Soiree_S	234	529f058e
+en	0030929	Maintenant, il va falloir défendre votre réputation.	D6	Soiree_S	235	b0a631de
+en	0736e1f	Vous transmettez à toute l'audience votre pep's, votre enthousiasme, votre passion, votre fièvre du mouvement.	D6	Soiree_S	236	b54f3df4
+en	06b9fa9	Tout le monde se souviendra de votre intervention. Vous êtes le soleil de ce samedi soir de folie, l'astre de la danse et du Body Beat.	D6	Soiree_S	237	af7ef809
+en	0dc797a	Quand vous quittez la piste de danse, un vrombissement sourd s'élève peu à peu et finit par envahir l'atmosphère de toute la salle. Vous êtes la star de la soirée.	D6	Soiree_S	238	a7479f08
+en	03b3085	Dommage que vous ne vous êtes pas entraîné aujourd'hui ! Vous vous sentez tout lourd sur la piste, et vous manquez de tomber sur un faux pas.	D6	Soiree_S	239	768aa869
+en	0b8d06e	Malheureusement, ce sera une erreur fatale, et ça vous a coûté le grand prix. Vous êtes déçu de ne pas avoir pris le temps d'aller vous entraîner quand vous le pouviez...	D6	Soiree_S	240	9e07ac10
+en	07e22f9	Il est grand temps de s'en aller. Vous dites au revoir à Fred, qui vous assure qu'il ne va pas tarder à faire de même. Vous n'avez pas la patience de l'attendre.	D6	Soiree_S	241	f9ef1186
+en	0062db8	Vous quittez la cafétéria et rejoignez votre chambre.	D6	Soiree_S	242	d65089a4
+en	07e2d79	Votre corps, lui, vous signale qu'il a quasiment donné tout ce qu'il pouvait. Il se fait tard. Vous vous sentez fatigué.	D6	Dormir_S	248	6595cfbc
+en	08717ce	Vous vous déshabillez fissa, un petit tour aux toilettes et vous vous glissez dans votre lit.	D6	Dormir_S	249	9e03fd96
+en	0b48a33	Vous avez du mal à dormir dû à la quantité de travail que vous avez ingéré.	D6	Dormir_S	250	307af194
+en	062b3b6	-> Dodo	D6	Dormir_S	251	eacfcf68
+en	0f68a70	Vous vous réveillez le lendemain avec des étoiles plein les yeux. Ce fut une super fièvre du samedi soir. Vous étiez le soleil de cette galaxie festive. Dommage que la partie soit finie.	D6	Reveil_D	258	f4a9d869
+en	00163ef	Dommage aussi que le jour se soit levé depuis un moment. Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps de se lever et de prendre son petit-déjeuner.	D6	Reveil_D	259	fcba6723
+en	05c2f72	Vous vous réveillez le lendemain, fatigué d'avoir autant révisé. Vous n'avez pas l'impression d'avoir avancé tant que ça malgré la quantité d'informations que vous avez ingéré.	D6	Reveil_D	260	01863b96
+en	03e59d8	Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps de se lever et de prendre son petit-déjeuner.	D6	Reveil_D	261	988e84de
+en	06d4b03	Vous vérifiez ce que votre cuisine a en stock et vous vous préparez un solide petit-déjeuner sucré salé. Un jus de fruit, un maxi café, des viennoiseries, des tartines, du beurre, de la confiture, un œuf de Mégaloodinde brouillé fumé, des néotomates cerises et quelques feuilles de salade.	D6	Reveil_D	262	5f92079f
+en	01d09d8	C'est riche, délicieux, copieux et varié. Vous êtes rassasié.	D6	Reveil_D	263	a0cb43c1
+en	0ed4813	Mais vous vous rendez compte qu'il ne vous reste plus rien pour manger...	D6	Reveil_D	264	f90d3236
+en	0f446f1	Vous vous rendez chez Fred et toquez à sa porte, cependant iel ne répond pas, peut-être qu'iel avait une urgence. Il va falloir s'occuper sans ellui.	D6	Fred_D	270	bbeea768
+en	09e1cef	-> Retourner à votre journée	D6	Fred_D	271	cae166c2
+en	0b17eca	Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories.	D6	Taches_D	278	c190f165
+en	0772e21	-> Aller dîner	D6	Taches_D	279	d6ec2f43
+en	09a6432	Vous ouvrez le frigo et admirez les étagères vides.	D6	Cuisine_D	286	f3660a2d
+en	006553c	Il ne reste vraiment rien de rien...	D6	Cuisine_D	287	0ebf1503
+en	0a726b2	-> Manger un petit plat #once	D6	Cuisine_D	288	acad0d54
+en	0ffbe4c	-> Grignoter un encas #once	D6	Cuisine_D	289	11bad68b
+en	0f0cfdf	-> Se reposer un peu #once	D6	Lit_D	296	c86a441a
+en	0e67f1e	-> Continuer les révisions << if !visited("revision4") >>	D6	Bureau_D	303	fe02a8e8
+en	0abb184	-> Préparer le planning << if !visited("Planning_S") >> #once	D6	Bureau_D	304	5ecf3308
+en	0fc660d	-> Revoir le planning << if visited("Planning_S") >> #once	D6	Bureau_D	305	98502a3a
+en	0d3ba04	-> Finir la journée << if visited("revision4")>>	D6	Detente_D	312	3211efa6
+en	05e1351	Vous avez fini toutes vos révisions ! Vous en profitez pour vous détendre, en jouant un peu de cycloluthe et en chattant avec vos amis.	D6	Detente_D	313	be9fe2dd
+en	0baecac	-> Faire de la cycloluthe	D6	Detente_D	314	5e343926
+en	0f27a94	-> Chatter en ligne	D6	Detente_D	315	bf5bbb8b
+en	073a770	-> Aller faire les courses << if !isTimeOver("12:00")>> #once	D6	Porte_D	322	ff8091fb
+en	00f1c49	C'est une sage décision. Votre corps a besoin de recharger ses batteries, comme le disent les Sages.	D6	Sieste_D	328	ffcb6cbc
+en	0026820	Vous vous allongez sur le lit et vous piquez un petit somme réparateur.	D6	Sieste_D	329	017f1f10
+en	0ffaddd	Vous vous réveillez ensuite, de bonne humeur et le corps détendu.	D6	Sieste_D	330	93e62b0a
+en	0abbb4f	Vous vous cuisinez un plat de pâtes à la carnobara. Autant dire que ça vous remet d'aplomb.	D6	Manger_D	336	2b99ea67
+en	02848c7	C'est dimanche, jour de repos. Cependant, il serait judicieux continuer à vous préparer à votre grand oral de demain.	D6	Manger_D	337	0da359a6
+en	0e46a65	Alors, quoi encore ? Ah oui, il faut traiter l'intrication quantique !	D6	Reviser_D	343	74d1f5fd
+en	09a3967	Vous vous stressez, il aurait fallu faire cela hier déjà !	D6	Reviser_D	344	87b5611e
+en	03a4bd7	La notion d'intrication est passionnante. Elle stipule et justifie que des éléments peuvent être intriqués, enchevêtrés l'un à l'autre. Et ce, quel que soit la distance qui les sépare.	D6	Reviser_D	345	0faa26ac
+en	0c92a67	Un petit pause, histoire de souffler un coup.	D6	Reviser_D	346	7eb705a6
+en	0518a5e	L'intrication quantique est une théorie révolutionnaire qui expliquerait les phénomènes d'ubiquité, de synchronicité, de coïncidences. C'est dingue !	D6	Reviser_D	347	e42bd4e0
+en	0fc3ffe	Vous vous replongez dans vos cours et vos notes. Vous abordez cette fois le paradoxe du chat de Schrödinger et la superpositions d'états différents. Ce qui est matériellement impossible.	D6	Reviser_D	348	7f524396
+en	0dcbf43	Vous faites votre pause musicale avec votre cycloluth.	D6	Reviser_D	349	c4b65779
+en	03a37f0	Soit, le monde des phénomènes n'est pas la réalité mais seulement ce que nous en percevons.	D6	Reviser_D	350	23ea5874
+en	05cde4f	Soit, on admet la coexistence de plusieurs états possibles, la cohabitation de plusieurs univers parallèles, comme le stipule Everett.	D6	Reviser_D	351	3fbc5371
+en	09c49e2	Il vous reste à réviser le quatrième et dernier thème. La décohérence quantique. Vous commencez à vous imprégner de ce dernier thème que vous n'aviez pas eu le temps d'aborder jusque-là.	D6	Reviser_D	352	d05d57ff
+en	0112919	Tout à coup, vous vous rendez compte ce qui vous a dérangé en établissant le planning tout à l'heure...	D6	Reviser_D	353	b97e23fd
+en	06bc986	Vous prenez une feuille volante et vous notez dessus tout ce dont vous vous rappelez concernant le principe d'intrication quantique, que vous avez revu hier.	D6	Reviser_D	354	3fc03622
+en	077d83c	Le résultat est franchement inquiétant. Vous réalisez que vous avez déjà oublié pas mal d'éléments. En tout cas, certaines notions ou affirmations ne sont plus aussi limpides qu'hier.	D6	Reviser_D	355	83f52988
+en	0dff11c	C'est le choc ! Vous comprenez que c'est votre mémoire courte qui bosse en ce moment. Il faut consolider ça au plus vite !	D6	Reviser_D	356	b37a1d4a
+en	0b4cbe6	Comment faire ? Vous vous rappelez de ce que maître Azul vous dit. Il faut alors passer au "plan B" : simplifier !	D6	Reviser_D	357	6b41206c
+en	0f871e9	Vous n'avez pas le temps de mémoriser durablement autant de savoirs en si peu temps. Vous décidez de rédiger une série de fiches de révision sur toutes les notions, les théories, les paradigmes, les problématiques soulevées. Thèmes que vous devez maîtriser à fond pour réussir votre Grand Oral.	D6	Reviser_D	358	a33bc6c0
+en	005ba90	Vous y passez un temps conséquent. Vous travaillez de manière intense mais détendue.	D6	Reviser_D	359	df5a59a2
+en	0a2be19	Détendue, car vous respectez des sessions d'une heure, conformément aux règles de la méthode "pomodoro".	D6	Reviser_D	360	89a383af
+en	075b053	L'après-midi défile à vitesse grand "V". Vous n'avez pas fini de rédiger vos fiches. Mais vous gardez bon espoir de les terminer avant d'aller vous coucher.	D6	Reviser_D	361	d2b26405
+en	092a854	Il vous reste à réviser le quatrième et dernier thème. La décohérence quantique. Vous commencez à vous imprégner de ce dernier thème que vous n'aviez pas eu le temps d'aborder jusque-là. Votre première session de révision se déroule sans problème.	D6	Reviser_D	362	6b7e7ec0
+en	070e4f5	Une petite pause musicale...	D6	Reviser_D	363	971b189c
+en	0d69481	Et c'est reparti pour une dernière session.	D6	Reviser_D	364	9c382db8
+en	0198e0f	A vrai dire, vous ne savez même plus ce que vous êtes censé apprendre. Vous ouvrez vos livres, vous tournez les pages, vous jouez avec le stylo dans votre main, ...	D6	Reviser_D	365	d75f9d84
+en	096339f	Vous passez une bonne heure à vous relire, sans vraiment améliorer votre travail précédent.	D6	Reviser_D	366	8676f331
+en	0e33042	Vous recevez un appel de votre mamie	D6	Reviser_D	367	4f8d4f00
+en	0bf0436	-> Répondre	D6	Reviser_D	368	6365ee17
+en	06bc883	Ah oui, le planning !	D6	Planning_D	374	91475d97
+en	01b38f5	Si Master Sapiens était là, il vous aurait certainement dit qu'il aurait fallu commencer hier. Mais bon, mieux vaut tard que jamais !	D6	Planning_D	375	a7c4f336
+en	0ed05d5	Vous rangez un minimum et sortez votre journal Bullet Point.	D6	Planning_D	376	5ee42daa
+en	0cf35ed	Vous tournez les pages jusqu'à en trouver une blanche. Vous pensez à la parabole du sceau : [i]d'abord les pierres, ensuite les cailloux, enfin le sable[/i].	D6	Planning_D	377	cf5daa8d
+en	01a1e6b	D'abord les pierres. Vous notez les tâches obligatoires et prioritaires du week-end. [u]Les quatre thèmes de la philosophie quantique[/u].	D6	Planning_D	378	1415069b
+en	06d4c02	Vous énumérez ensuite les tâches importantes ou utiles : les cailloux. [u]la séance de détox sportive du lendemain, le coup de fil de mamie[/u].	D6	Planning_D	379	fcf465ec
+en	0eea8e2	Enfin, vous vous attardez sur les tâches plus accessoires : [u]sieste et éventuellement d'autres pauses fun[/u].	D6	Planning_D	380	ba1eb727
+en	0de0c75	Vous reprenez votre journal Bullet Point. Vous regardez ce que vous avez déjà accompli hier. Vous n'avez travaillé qu'un des quatre sujets que comportent la philosophie quantique. Vous avez du pain du planche...	D6	Planning_D	381	6bc3374e
+en	0c2bc4d	Vous reprenez votre journal Bullet Point. Vous regardez ce que vous avez déjà accompli hier. Vous avez travaillé deux sujets sur les quatre que comportent la philosophie quantique.	D6	Planning_D	382	b06e7cca
+en	06584e5	Vous reprenez votre journal Bullet Point. Vous regardez ce que vous avez déjà accompli hier. Vous avez travaillé trois des quatre sujets que comportent la philosophie quantique. Vous y êtes presque pour être bien au point !	D6	Planning_D	383	3230af6b
+en	02ff5f5	A priori, rien qu'aujourd'hui, vous pouvez terminer d'apprendre ce qui vous fait lacune. Cependant, vous sentez qu'il y anguille sous roche...	D6	Planning_D	384	9841c9ec
+en	027a577	Ah, et une chose très important : faire des courses le matin, avant que le marché ne ferme.	D6	Planning_D	385	4cc2a1ea
+en	00d1b77	Vous êtes en route pour le marché quand vous vous rappelez qu'il est fermé l'après-midi !	D6	Courses_D	391	cc6d4397
+en	0ea3f20	Quel boulet !	D6	Courses_D	392	3ba20ad7
+en	0cef240	Vous remplissez votre caddy avec vos ingrédients préférés.	D6	Courses_D	393	e82589e7
+en	0c22e1d	Un peu de grains, des pâtes, des chimicookies, du synthécafé bien sûr...	D6	Courses_D	394	8675c31e
+en	0e99708	Ah, et il ne faut pas oublier du Xeno Cola !	D6	Courses_D	395	1ae85e03
+en	0377021	-> C'est fait !	D6	Courses_D	396	144e2f3b
+en	04cea37	Vous vous lancez alors dans une petite improvisation de cycloluth, votre cithare analogique de la planète Feudall. Le son brut et archaïque de cet instrument vous détend, vous apaise, vous nettoie l'esprit d'informations superflues et pesantes.	D6	Musique_D	402	7ea55d5d
+en	04f2326	Vous prenez votre palmphone et vous cliquez sur l'icône ChatApp.	D6	Reseaux_D	408	5bcd9715
+en	07aa257	Bob a envoyé un quiz : "Quel personnage de Star Mars êtes-vous ?". Vous vous lancez sans hésitation dans les questions à choix multiples...	D6	Reseaux_D	409	dd2e289f
+en	02b7481	Vous êtes satisfait. Vous vous êtes offert une récompense. C'est ce que les Sages vous ont dit : ne pas bouder votre plaisir et vos envies.	D6	Reseaux_D	410	4de550bf
+en	0bedb8a	Hum hum... La pause "réseaux sociaux", correspond-elle vraiment aux recommandations des Sages ? Vous hésitez à répondre oui, comme non. Tant pis...	D6	Reseaux_D	411	a9f25998
+en	0bcc9ca	Mamie@holo_shadow: Coucou mon chouchou !	D6	AppelMamie_D	417	a662dcaa
+en	00961b8	You: Salut mamie !	D6	AppelMamie_D	418	2dc713fe
+en	05faa07	Mamie@holo_shadow: Je te dérange ?	D6	AppelMamie_D	419	ef233693
+en	089fd8a	-> Je ne peux pas parler très longtemps << if visited("Planning_D") >>	D6	AppelMamie_D	420	8e38a519
+en	01912fb	Mamie@holo_shadow: Ah bon ?	D6	AppelMamie_D	421	75fadfdd
+en	0b763d2	You: Je suis content d'avoir de tes nouvelles. Mais j'ai établi un planning très strict pour aujourd'hui, afin de réussir mes examens !	D6	AppelMamie_D	422	057bd0ec
+en	00dd5e4	Mamie@holo_shadow: D'accord, je comprends ! Je suis fier de toi, mon chouchou...	D6	AppelMamie_D	423	31ed22c6
+en	080ab58	Ouf ! Vous avez réussi à ne rester parler que 15 minutes au téléphone, tout en gardant le lien avec votre grand-mère.	D6	AppelMamie_D	424	1396185a
+en	0a41837	-> Heu...	D6	AppelMamie_D	425	2f2e5929
+en	0e5fa25	Mamie@holo_shadow: Tant que ça ?	D6	AppelMamie_D	426	99096d89
+en	0928628	You: Naan... Mais...	D6	AppelMamie_D	427	953e823a
+en	090777a	Mamie@holo_shadow: Tu me demandes pas comment ça va ?	D6	AppelMamie_D	428	4b39aee9
+en	0c1864e	You: Heu, si. Comment vas-tu ?	D6	AppelMamie_D	429	41dbbfaa
+en	04d321b	Mamie@holo_shadow: Très bien. Mieux que toi apparemment. Je suis sorti du coma et j'ai repris tous mes esprits.	D6	AppelMamie_D	430	7f788ec4
+en	08da861	Ouf ! Même au bout d'une heure au téléphone, vous ne saviez pas comment raccrocher.	D6	AppelMamie_D	431	81b2bd59
+en	0822b76	Il est plus de 20 heures ?! Il est temps de se préparer un petit dîner.	D6	Diner_D	438	91ee02f2
+en	0a3dd17	C'est vraiment bête d'avoir oublié de faire les courses.	D6	Diner_D	439	21acf35f
+en	07d20a3	Vous consultez à nouveau les réserves dans votre cuisine. Vous enfournez dans votre autocuiseur une brandade de moquerue, accompagnée de son riz blanchi.	D6	Diner_D	440	ad182d63
+en	099cbc7	C'est fin et ça nourrit bien son étudiant. Vous débarrassez la table et vous vous accordez une pause devant votre série préférée.	D6	Diner_D	441	8317f0f2
+en	01d34cf	Nous sommes un jour de week-end, un jour férié. Vous méritez bien une pause TV.	D6	BingeTV_D	447	842c0505
+en	04f4701	Vous n'avez pas encore entamé la saison 8 de Star Mars - The Lone Lightsaber.	D6	BingeTV_D	448	79759adc
+en	0c87bf4	Vous lancez l'application Screencast, elle vous affiche alors l'écran d'accueil Webflix. Vous pointez votre doigt sur Star Mars. Le générique démarre dans un roulement de fanfare.	D6	BingeTV_D	449	2a36273f
+en	0de1519	La huitième saison reprend là où s'était arrêtée la précédente à savoir : la disparition de Dude Highwalker, aspiré par un Métavers des sables.	D6	BingeTV_D	450	ff81d286
+en	095a2a1	Hé oui, ce ne sont pas les commandos de choc de l'Impérium Noir qui ont fini par attraper le Chevalier Laser mais les Touarogs de l'infâme pirate : Jara the Hun, qui l'a sacrifié au Métavers des sables...	D6	BingeTV_D	451	d74fc1d1
+en	08b7133	Est-ce la fin pour Dude ? Vous vous doutiez que non. Et vous aviez raison...	D6	BingeTV_D	452	475a4627
+en	0c3b613	L'ignoble pirate des sables, et vous-même, ignoriez que Dude avait été immergé dans le chaudron de Mana, juste après sa naissance. Le corps et l'esprit de Dude Highwalker sont saturés de récepteurs de Mana.	D6	BingeTV_D	453	127eb849
+en	0aeb6d8	Or, le Métavers des sables est en réalité la créature qui produit la Mana. Ce sont ces déjections ! Pensez-vous vraiment que le Métavers des sables dévore ces excréments ?! Non, il les traite avec respect ! Après une digestion spirituellement difficile, le monstre des sables recrache sa proie.	D6	BingeTV_D	454	0b095bf3
+en	0ecfd78	Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de bile manachique...  La suite de l'histoire est tout aussi palpitante et surprenante. Vous ne pouvez pas vous empêchez d'enchaîner les épisodes l'un derrière l'autre. Si bien que plus de quatre heures s'écoulent en un rayon d'épée laser.	D6	BingeTV_D	455	db7e7fbf
+en	0e21ded	Vous continuez là où vous vous étiez arrêté samedi, et recommencez à suivre les aventures de Dude Highwalker	D6	BingeTV_D	456	4f5a6b68
+en	0494968	Est-ce la fin pour Dude ? Vous vous doutiez que non. Et vous aviez raison...	D6	BingeTV_D	457	475a4627
+en	0940d1c	L'ignoble pirate des sables, et vous-même, ignoriez que Dude avait été immergé dans le chaudron de Mana, juste après sa naissance. Le corps et l'esprit de Dude Highwalker sont saturés de récepteurs de Mana.	D6	BingeTV_D	458	127eb849
+en	04461de	Or, le Métavers des sables est en réalité la créature qui produit la Mana. Ce sont ces déjections ! Pensez-vous vraiment que le Métavers des sables dévore ses excréments ?! Non, il les traite avec respect ! Après une digestion spirituellement difficile, le monstre des sables recrache sa proie.	D6	BingeTV_D	459	48482466
+en	0405402	Dude est éjecté du gosier du Métavers des sables ! Son corps est couvert de bile manachique...  La suite de l'histoire est tout aussi palpitante et surprenante. Vous ne pouvez pas vous empêcher d'enchaîner les épisodes l'un derrière l'autre. Si bien que plus de deux heures s'écoulent en un rayon d'épée laser.	D6	BingeTV_D	460	282b5304
+en	05c5d6a	Vous avez déjà fini la dernière saison de Star Mars. Vous êtes impatient que la suite sorte, tellement que rien d'autre ne vous fait envie.	D6	BingeTV_D	461	6d51f100
+en	0303c0a	Tant pis, vous retournez regarder vos moments favoris de la série, et vous y passez deux heures.	D6	BingeTV_D	462	3aeee7f0
+en	0c5d434	-> Au dodo !	D6	BingeTV_D	463	22401f91
+en	0ba7464	Vous vous allongez sur le lit pour une courte pause. Vous mettez un réveil pour vous empêcher de sombrer dans le sommeil profond.	D6	Dormir_D	469	10d8a14c
+en	0e34e77	Vous fermez les yeux...	D6	Dormir_D	470	b9a88b40
+en	0d595e6	Vous ne rouvrez les yeux que le lendemain matin, à l'aube. Vous vous sentez requinqué et d'attaque pour le Grand Oral !	D6	Reveil_L	477	99820fd8
+en	026a8a3	Vous prenez le temps de petit-déjeuner, pour mettre toutes les chances de votre côté.	D6	Reveil_L	478	a9ec0e69
+en	0b4e668	Une fois terminé, vous essayez d'appeler Fred pour votre séance de sport, mais il semblerait qu'il n'ait toujours pas envie de répondre. Il doit sûrement être concentré dans ses révisions.	D6	Reveil_L	479	83742285
+en	0e4d98c	Une fois terminé, vous vous asseyez à votre bureau. Vous sentez qu'il vous manque encore des notions, que vous allez tenter de rattraper.	D6	Reveil_L	480	ce2e8035
+en	08bddbd	Sapiens_happy: Bravo ! Viens avec moi...	D6	SagesVictoire_L	486	fc16552c
+en	041ab52	You: Mais j'ai réussi !	D6	SagesVictoire_L	487	bac4044b
+en	07a954f	Sapiens_angry: Justement, viens avec moi	D6	SagesVictoire_L	488	059b25e2
+en	059c7a5	Vous retrouvez les Sages attablés, dans leur jardin à la verdure inégalable.	D6	SagesVictoire_L	489	214764da
+en	00d6bf2	Sapiens_thinking: L'Académie d'Omniscience et de Polytechnologie Universelle possède un secret bien gardé.	D6	SagesVictoire_L	490	c341b124
+en	074fc01	Azul_proud: Secret que nous avons percé à jour.	D6	SagesVictoire_L	491	769f00c5
+en	05beea6	Ledai_explaining: Ils ont un détecteur neurocérébral. Ils peuvent lire dans vos pensées.	D6	SagesVictoire_L	492	02334b14
+en	0b544ab	Temde_smiling: Moins bien que nous. Mais ça marche pas top mal.	D6	SagesVictoire_L	493	4a0c2c71
+en	0a90d20	Sapiens_happy: Ils s'en servent le jour du Grand Oral. Pour vérifiez si les candidats n'ont pas de grosses lacunes.	D6	SagesVictoire_L	494	ebf4ced2
+en	0d20282	Ledai_explaining: Et si c'est le cas, le jury vous interroge sur le sujet que vous n'avez pris le temps d'apprendre.	D6	SagesVictoire_L	495	edd368d0
+en	0e0d68f	You: Hé ! C'est vicieux !	D6	SagesVictoire_L	496	64de7c17
+en	00e3fb2	Sapiens_thinking: Le jour du Grand Oral, aucune excuse ne tient !	D6	SagesVictoire_L	497	cd59d43b
+en	06f9489	Ledai_explaining: Heureusement que tu as été capable de répondre à n'importe quel sujet !	D6	SagesVictoire_L	498	5104ff6b
+en	0f44dd6	Azul_happy: Aussi, nous devons vous parler de l'histoire du sceau et des pierres. Tu la connais ?	D6	SagesVictoire_L	499	39df6526
+en	02b4c9f	-> Non, c'est quoi ?	D6	SagesVictoire_L	500	c8058a00
+en	0ca0766	Azul_proud: C'est très simple. Dans un sceau, on doit verser des pierres, des cailloux, du sable.	D6	SagesVictoire_L	501	b2216720
+en	0fe8c56	You: Oui et alors ?	D6	SagesVictoire_L	502	8180dfdb
+en	0555ce8	Azul_proud: Sais-tu dans quel ordre il faut glisser les différents éléments pour remplir le sceau à ras-bord ?	D6	SagesVictoire_L	503	7f02b5dd
+en	008acf9	You: Heu... Non...	D6	SagesVictoire_L	504	207bdfe6
+en	020d86b	Azul_happy: C'est simple, tu commences par les plus gros objets, les pierres. Ensuite les cailloux, et tu termines par le sable.	D6	SagesVictoire_L	505	a57056aa
+en	09e8d6a	You: Ah ouais. Et alors ?	D6	SagesVictoire_L	506	4e5ac6b9
+en	05acecf	Azul_happy: Si tu avais commencé par le sable, puis les cailloux, tu n'aurais pas pu mettre toutes les pierres. Et pourtant, en opérant dans le sens inverse, c'est possible.	D6	SagesVictoire_L	507	082300d5
+en	051ed08	You: Je comprends pas où vous voulez en venir.	D6	SagesVictoire_L	508	7eff1d78
+en	04e244a	Temde_smiling: C'est une parabole !	D6	SagesVictoire_L	509	93b2ca2a
+en	0502378	Azul_happy: C'est pour te faire comprendre qu'il te faut ordonner tes tâches, définir tes priorités. Le sceau représente ta journée de travail.	D6	SagesVictoire_L	510	3344fb23
+en	06528e3	Ledai_explaining: Tu commences ta journée par t'occuper des tâches les plus importantes : les pierres.	D6	SagesVictoire_L	511	c987baf6
+en	01cf610	Sapiens_happy: Ensuite, s'il te reste du temps, des tâches secondaires : les cailloux.	D6	SagesVictoire_L	512	5a54b5c5
+en	0c7d42c	Ledai_explaining: Enfin, si tu as encore la possibilité, de tes tâches les plus accessoires : le sable.	D6	SagesVictoire_L	513	e45f6c15
+en	0c7b712	You: Et donc c'est comme j'ai fait ce weekend. J'ai fait d'abord les tâches les plus importantes, puis les taches moins prioritaires.	D6	SagesVictoire_L	514	44cf71e1
+en	0c08e9f	Sapiens_happy: Exactement.	D6	SagesVictoire_L	515	ac0def01
+en	0a78abc	Ledai_explaining: Il est pour cette raison qu'il faut établir un planning.	D6	SagesVictoire_L	516	163e71a1
+en	0732324	Sapiens_happy: D'abord, tu dois répertorier sur un agenda tout ce que tu as prévu dans les jours à venir.	D6	SagesVictoire_L	517	4f446240
+en	0684e66	Sapiens_thinking: Ensuite, tu planifies tes priorités. Ici, tes révisions sur la philosophie quantique. Les différents thèmes à aborder.	D6	SagesVictoire_L	518	1ae92955
+en	06a6d74	Ledai_explaining: Après, tu révises chaque thème, en respectant des sessions d'une heure environ. Avec la méthode "pomodoro".	D6	SagesVictoire_L	519	1c90139e
+en	03c9e36	You: Bien sûr.	D6	SagesVictoire_L	520	1ccd222b
+en	09c69c6	Sapiens_happy: Bien. On a parlé des grosses pierres. Il te reste à remplir ton sceau avec le cailloux et le sable.	D6	SagesVictoire_L	521	e0d0bb7b
+en	01b0d52	You: Comment ça ?	D6	SagesVictoire_L	522	f5a667c1
+en	031a98d	Temde_sad: Veux-tu passer ta vie en mode "ermite" à réviser, réviser et encore réviser ?	D6	SagesVictoire_L	523	e8180f02
+en	0b64a21	Azul_sad: Alors que tu aime aussi le repos, la détente, la convivialité, le plaisir, la gratitude.	D6	SagesVictoire_L	524	9a4f8afd
+en	039bad6	Temde_smiling: Compris ?	D6	SagesVictoire_L	525	3dbff441
+en	0910ed2	You: Oui.	D6	SagesVictoire_L	526	778ee8c6
+en	02cd942	Sapiens_thinking: Très bien. Abordons maintenant la notion de la "piqûre de rappel".	D6	SagesVictoire_L	527	0e556165
+en	0a03c48	-> La piqûre de rappel ?	D6	SagesVictoire_L	528	a0f9798e
+en	0c20a9a	Sapiens_thinking: Nous avons déjà vu la différence entre la mémoire courte et la mémoire longue.	D6	SagesVictoire_L	529	0088bb9c
+en	0638b4e	You: Oui.	D6	SagesVictoire_L	530	778ee8c6
+en	0321450	Sapiens_happy: Pour optimiser tes connaissances au moment du Grand Oral, il faut faire basculer les informations de la mémoire courte dans la mémoire longue.	D6	SagesVictoire_L	531	1661bbc0
+en	0ecc8e1	Sapiens_concerned: Pour cela, il y a la méthode de "la piqûre de rappel".	D6	SagesVictoire_L	532	68b32811
+en	03bee34	You: Mais c'est quoi au juste cette "piqûre" ?	D6	SagesVictoire_L	533	744c742f
+en	09a8795	Sapiens_happy: Tu mobilises tes connaissances encore fragiles. Par un rappel libre, un test, un exercice récapitulatif...	D6	SagesVictoire_L	534	73ca362a
+en	0f06cfe	Ledai_explaining: L'important est que tu sollicites ta mémoire courte pour enregistrer durablement ces nouvelles informations.	D6	SagesVictoire_L	535	783c5039
+en	0e4c221	Temde_smiling: Enfin, n'hésite pas à recourir à un plan B si nécessaire.	D6	SagesVictoire_L	536	a0684a5a
+en	08038fe	You: Un plan B ?	D6	SagesVictoire_L	537	e651b47d
+en	01dfba9	Sapiens_happy: Des fiches de révision par exemple.	D6	SagesVictoire_L	538	73c6c760
+en	0940dfc	You: D'accord...	D6	SagesVictoire_L	539	c4199bf2
+en	0464c22	-> C'est tout ?	D6	SagesVictoire_L	540	72916d18
+en	0310eed	Azul_happy: C'est tout	D6	SagesVictoire_L	541	f1201163
+en	0efbe4a	Vous décidez de vous préparer un plat sain pour être en forme pour vos révisions : Un plat de nouilles de soja aux légumes.	D6	MangerSain_S	547	691e2c81
+en	02c7105	Il faut mettre l'eau à bouillir, tremper les pâtes dedans. Ensuite, faire sauter les pâtes avec des lamelles de légumes frais finement tranchées.	D6	MangerSain_S	548	b136e8f4
+en	009a42d	C'est prêt à manger !	D6	MangerSain_S	549	515f910b
+en	0a8430e	Vous vous sentez tout de suite mieux et d'attaque pour la suite.	D6	MangerSain_S	550	922d1f95
+en	05805f0	Vous voulez manger vite pour perdre le moins de temps possible.	D6	MangerVite_S	556	10795454
+en	0941a79	Un burger Big Proteins Double Cheese, c'est très rapide à cuisiner, il n'y a plus qu'à le mettre dans le four microwave et une minute plus tard, il est en ressort chaud et croustillant !	D6	MangerVite_S	557	c9c631e1
+en	0ed8d99	Vous rangez rapidement la vaisselle, et vous y retournez.	D6	MangerVite_S	558	55588b87
+en	0e87e80	Il vous reste un peu plus d'une heure avant votre passage.	D6	Jogging_L	564	738f16e1
+en	02a77c5	Vous allez en profiter pour faire un petit jogging pour bien réveiller votre corps, suivi par une dernière piqûre de rappel.	D6	Jogging_L	565	33c215ed
+en	06db36a	Une fois au stade, vous commencez par réaliser quelques tours de piste, à pas mesurés. Puis, quand vous estimez que votre corps est suffisamment chauffé et stimulé, vous accélérez la cadence.	D6	Jogging_L	566	76e1482b
+en	0a5f14b	-> Allez à l'oral	D6	Jogging_L	567	e4721574
+en	0052715	Vous arrivez avec un bon quart d'heure d'avance. Parfait pour une petite piqûre de rappel sur la philosophie quantique.	D6	Jogging_L	568	9589a257
+en	0b7af9f	-> C'est le moment de vérité	D6	Jogging_L	569	cc38447c
+en	092ee1c	Vous ouvrez votre navigateur et vous tapez quelques mots clés dans votre moteur de recherche. Vous optez plutôt pour des vidéos d'apprentissage.	D6	RevisionWeb_L	575	93698dc9
+en	0a1db2e	Vidéos réalisées par des professeurs ou des étudiants en thèse. Voire même quelques vulgarisateurs qui semblent avoir la côte sur Zootud, la célèbre plateforme de vidéos en ligne !	D6	RevisionWeb_L	576	c59adcfb
+en	0590261	Oui, les vidéos sont courtes et sympathiques. Hélas, elles ne répondent pas vraiment à vos attentes. La plupart du temps, elles ne font que survoler des notions que vous avez déjà plus ou moins en tête.	D6	RevisionWeb_L	577	1e064aa8
+en	0a54212	Soit, elles ne détaillent pas assez les mécanismes et les courants philosophiques sous-jacents. Si les membres du jury vous posent des questions dessus, vous n'êtes pas sûr d'être capable de répondre de manière scientifique et rigoureuse.	D6	RevisionWeb_L	578	a884dfc0
+en	04c8547	Soit, elles se veulent exhaustives et finissent par devenir trop longue, trop soporifiques. Pire qu'un cours magistral avec un professeur IRL.	D6	RevisionWeb_L	579	aca3ce49
+en	05a03af	Vous arrêtez la torture. Vous avez perdu votre temps à papillonner sur le web. Pour un résultat finalement décevant. Stop !	D6	RevisionWeb_L	580	c760fae3
+en	071b428	Vous entrez dans la salle de théâtre. Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus.	D6	ExamenDefaite_L	586	a76a97f2
+en	0ba9287	Une fois l'exécution publique terminée, c'est votre tour. Vous angoissez, peu rassuré par ce que vous venez de voir...	D6	ExamenDefaite_L	587	e458f4a5
+en	08fe26e	Vous commencez par vous présenter au jury, ce dernier vous salue. Vous leur rappelez ce que vous avez choisi comme matière de Grand Oral : <b>la Philosophie quantique</b>.	D6	ExamenDefaite_L	588	b9d3358b
+en	0ea98fb	L'un des jurés enfile des lunettes d'amplification de lumière, d'infravision... Vous ne savez pas vraiment pourquoi... Il vous fixe un moment avant de s'écrier : "La décohérence quantique"...	D6	ExamenDefaite_L	589	2c8f4ca2
+en	01e0f27	Vous déglutissez difficilement. Vous avez soudainement chaud. Très chaud. Vous dégoulinez de sueur...	D6	ExamenDefaite_L	590	4e4f06ea
+en	0786002	Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la réviser, même pas de la survoler. Vous n'avez que de vagues notions confuses, quelques bribes de connaissance qui ont du mal à s'emboîter, voire se contredisent...	D6	ExamenDefaite_L	591	8c44d242
+en	0e107dc	La superposition des différents états au niveau microphilosophique s'effondre quand le penseur les analyse au niveau macrophilosophique. C'est un truc comme ça. Sauf que les postulats s'ordonnent mal et se contredisent.	D6	ExamenDefaite_L	592	135d69cb
+en	02d4c97	Fichtre ! Vous vous sentez mal. Très mal...	D6	ExamenDefaite_L	593	67719b83
+en	0d74a13	Vous ne vous rappelez plus très bien la suite des événements. Tout est allé si vite. Et surtout, dans la mauvaise direction. Vous avez bredouillé, bafouillé des phrases maladroites, des affirmations hésitantes.	D6	ExamenDefaite_L	594	4daa6bee
+en	0dbcc7e	Puis, quand est venu le temps des questions-réponses... Ce fut le massacre. Le jury ne vous a épargné aucun coup, aucune humiliation.	D6	ExamenDefaite_L	595	dc673729
+en	02751be	Vous sortez de la salle en tremblant. C'est à peine si vous vous rappelez qui vous êtes et où vous êtes...	D6	ExamenDefaite_L	596	d028c92b
+en	055277b	Vous êtes dégoûté par votre prestation devant le grand jury. Vous n'étiez pas du tout prêt. Vous êtes tombé sur un sujet que vous ne maîtrisiez pas, que vous ne connaissiez pas.	D6	ExamenDefaite_L	597	2f1a928c
+en	0d4406a	Pas la peine d'attendre les résultats pour savoir que vous avez royalement raté. Vous retournez dans votre chambre sans vraiment voir le trajet, ressassant sans cesse tout ce que vous avez mal fait...	D6	ExamenDefaite_L	598	0d345c33
+en	0242151	À peine de retour dans votre chambre, vous vous écriez :	D6	ExamenDefaite_L	599	9a8bc3d5
+en	00b8f49	You: Hé, messieurs les Sages ! Vous êtes là ? Parce que j'aurais besoin de vous... Ça va pas, mais pas du tout ! J'ai raté le Grand Oral...	D6	ExamenDefaite_L	600	b8c816a8
+en	0acab7b	Sapiens_concerned: Oui. Nous le savons.	D6	ExamenDefaite_L	601	12cc4c21
+en	0ee9c4c	You: Alors, pourquoi vous ne dites rien ?	D6	ExamenDefaite_L	602	5ee8a5d7
+en	0280560	Sapiens_concerned: Je te parle en ce moment { $name }	D6	ExamenDefaite_L	603	6cf65b6a
+en	00e0712	You: Parce que je vous ai appelé.	D6	ExamenDefaite_L	604	a2ac3292
+en	0e1b4e5	Sapiens_thinking: En effet. Parce que c'est la première étape.	D6	ExamenDefaite_L	605	775226bb
+en	0fcf458	You: La première étape ?	D6	ExamenDefaite_L	606	05d4e602
+en	03f4ba9	Sapiens_concerned: On ne peut rectifier ses erreurs que si on admet d'abord les avoir commises.	D6	ExamenDefaite_L	607	354da706
+en	0b7bdc7	You: Vous êtes un pervers ?!	D6	ExamenDefaite_L	608	e0108268
+en	09792d4	Sapiens_happy: Non, un Sage de la métacognition. Pour apprendre à apprendre, il faut d'abord observer ses échecs. Ensuite, seulement, on peut en tirer des leçons. Et corriger ses erreurs.	D6	ExamenDefaite_L	609	77fab6a1
+en	0f5d7e3	You: Ah.	D6	ExamenDefaite_L	610	29c9edc0
+en	08c2305	Sapiens_happy: C'est ce que nous allons faire de ce pas !	D6	ExamenDefaite_L	611	23851bfc
+en	0e7a1cc	-> Suivre maitre Sapiens	D6	ExamenDefaite_L	612	98c0f3a7
+en	0843e94	Vous allez dans votre lit et fermez les yeux, déprimés...	D6	ExamenDefaite_L	613	0b87cc20
+en	00ba4bc	-> Recommencer le week-end	D6	ExamenDefaite_L	614	74efaebf
+en	04172ea	Vous entrez dans la salle de théâtre. Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus.	D6	ExamenVictoire_L	620	a76a97f2
+en	017df57	Une foix l'exécution publique terminée, c'est votre tour. Vous vous relaxez, conscient que vous avez mieux révisé que votre compère.	D6	ExamenVictoire_L	621	7ef94bb2
+en	0e12637	Vous entrez dans l'immense salle du Planétarium. Au centre de l'estrade, seul devant les jurés, examiné, scruté par les membres du public, assis derrière eux...	D6	ExamenVictoire_L	622	b5f2a198
+en	04f0985	Vous prenez une grande inspiration avant de prendre la parole. Vous vous présentez au jury, ce dernier vous remercie. Vous leur rappelez la matière retenue : <b>la Philosophie quantique</b>.	D6	ExamenVictoire_L	623	d92d57f7
+en	0044462	L'un des jurés enfile des lunettes d'amplification de lumière, d'infravision... Vous ne savez pas vraiment pourquoi... Il vous fixe un moment avant de s'écrier : "La décohérence quantique"...	D6	ExamenVictoire_L	624	2c8f4ca2
+en	0d497f9	L'un des jurés enfile à nouveau ces lunettes étranges... Des lunettes de détection neurocérébral. Il vous fixe un moment avant de s'écrier : "L'incertitude quantique"...	D6	ExamenVictoire_L	625	22c297d6
+en	0767c66	Pfouu.... Vous soufflez un grand coup. Bien entendu, l'incertitude quantique n'est pas votre thème préféré. Malgré tout, vous avez des arguments, des concepts, des débats, des problématiques, des polémiques qui vous viennent aussitôt en tête.	D6	ExamenVictoire_L	626	d9567d88
+en	05fdbdb	Vous ne vous rappelez pas trop bien la suite de votre présentation. En tous les cas, votre intervention s'est bien déroulée. Vous leur avez déroulé une argumentation cohérente, bien structurée, et suffisamment complète de la question. La phase des questions des jurés s'est également très bien passée. Vous êtes toujours parvenu à leur répondre de manière précise et juste.	D6	ExamenVictoire_L	627	f883e4da
+en	041d80a	Vous les saluez et les remerciez avant de quitter la salle et de rentrer dans votre chambre en attendant les résultats.	D6	ExamenVictoire_L	628	03061c55
+en	0eb9505	Vous mangez un bout et allez dans votre lit, vous êtes exténué. Ce week-end aura été épuisant, même en ayant appris à bien gérer votre temps. Il faut dire que vous aviez beaucoup à rattraper, mais vous vous en êtes sorti avec brio !	D6	ExamenVictoire_L	629	aa03ef80
+en	02fe30b	Vous retrouvez les Sages attablés, dans leur jardin à la verdure inégalable.	D6	SagesDefaite_L	635	214764da
+en	076fe14	Sapiens_thinking: L'Académie d'Omniscience et de Polytechnologie Universelle possède un secret bien gardé.	D6	SagesDefaite_L	636	c341b124
+en	066cde2	Azul_proud: Secret que nous avons percé à jour.	D6	SagesDefaite_L	637	769f00c5
+en	0164385	Ledai_explaining: Ils ont un détecteur neurocérébral. Ils peuvent lire dans vos pensées.	D6	SagesDefaite_L	638	02334b14
+en	00cb202	Temde_smiling: Moins bien que nous. Mais ça marche pas top mal.	D6	SagesDefaite_L	639	4a0c2c71
+en	0032607	Sapiens_happy: Ils s'en servent le jour du Grand Oral. Pour vérifier si les candidats n'ont pas de grosses lacunes.	D6	SagesDefaite_L	640	2daf32bb
+en	0188bef	Ledai_explaining: Et si c'est le cas, le jury vous interroge sur le sujet que vous n'avez pris le temps d'apprendre.	D6	SagesDefaite_L	641	edd368d0
+en	0d1b0e1	You: Hé ! C'est vicieux !	D6	SagesDefaite_L	642	64de7c17
+en	0e105c3	Sapiens_thinking: Le jour du Grand Oral, aucune excuse ne tient !	D6	SagesDefaite_L	643	cd59d43b
+en	0ac2056	Ledai_explaining: Tu dois être capable de répondre à n'importe quel sujet !	D6	SagesDefaite_L	644	8ea7dc27
+en	0e2375d	You: Mais c'était trop long ! J'ai essayé...	D6	SagesDefaite_L	645	9d7fc82d
+en	0c05dc7	Sapiens_happy: Il ne s'agit pas d'essayer, mais d'accomplir !	D6	SagesDefaite_L	646	e2bc94a0
+en	0a4dd68	Azul_proud: Ne t'inquiète pas { $name }, nous avons une solution.	D6	SagesDefaite_L	647	c16a17be
+en	0910bb4	Ledai_happy: Et nous allons te donner les clés pour la mettre en application.	D6	SagesDefaite_L	648	f168ad29
+en	0ed3d3d	Azul_happy: Avant de commencer, nous allons parler de l'histoire du sceau et des pierres. Tu la connais ?	D6	SagesDefaite_L	649	8f388c77
+en	092d541	-> Non, c'est quoi ?	D6	SagesDefaite_L	650	c8058a00
+en	032687f	Azul_proud: C'est très simple. Dans un sceau, on doit verser des pierres, des cailloux, du sable.	D6	SagesDefaite_L	651	b2216720
+en	002d4c0	You: Oui et alors ?	D6	SagesDefaite_L	652	8180dfdb
+en	0f84f9a	Azul_proud: Sais-tu dans quel ordre il faut glisser les différents éléments pour remplir le sceau à ras-bord ?	D6	SagesDefaite_L	653	7f02b5dd
+en	0f4c117	You: Heu... Non...	D6	SagesDefaite_L	654	207bdfe6
+en	091ec22	Azul_happy: C'est simple, tu commences par les plus gros objets, les pierres. Ensuite les cailloux, et tu termines par le sable.	D6	SagesDefaite_L	655	a57056aa
+en	090be36	You: Ah ouais. Et alors ?	D6	SagesDefaite_L	656	4e5ac6b9
+en	05cc948	Azul_happy: Si tu avais commencé par le sable, puis les cailloux, tu n'aurais pas pu mettre toutes les pierres. Et pourtant, en opérant dans le sens inverse, c'est possible.	D6	SagesDefaite_L	657	082300d5
+en	021a7da	You: Je comprends pas où vous voulez en venir.	D6	SagesDefaite_L	658	7eff1d78
+en	095d729	Temde_smiling: C'est une parabole !	D6	SagesDefaite_L	659	93b2ca2a
+en	0c3ed26	Azul_happy: C'est pour te faire comprendre qu'il te faut ordonner tes tâches, définir tes priorités. Le sceau représente ta journée de travail.	D6	SagesDefaite_L	660	3344fb23
+en	0462b86	Ledai_explaining: Tu commences ta journée par t'occuper des tâches les plus importantes : les pierres.	D6	SagesDefaite_L	661	c987baf6
+en	0061df5	Sapiens_happy: Ensuite, s'il te reste du temps, des tâches secondaires : les cailloux.	D6	SagesDefaite_L	662	5a54b5c5
+en	0cffc07	Ledai_explaining: Enfin, si tu as encore la possibilité, de tes tâches les plus accessoires : le sable.	D6	SagesDefaite_L	663	e45f6c15
+en	04f8958	You: OK. Et c'est quoi le rapport avec mon oral raté ?	D6	SagesDefaite_L	664	bd20f37a
+en	09512e3	Sapiens_happy: Pour réussir ton oral, tu dois apprendre à gérer l'accumulation des tâches, à planifier tes tâches, à ordonner et gérer tes priorités, à consolider tes apprentissages.	D6	SagesDefaite_L	665	9162f830
+en	04ccfa0	Sapiens_thinking: La planification des tâches consiste à gérer le trop-plein d'actions et d'informations.	D6	SagesDefaite_L	666	5090c6fc
+en	0acc442	You: C'est comme la question de la surcharge cognitive ?	D6	SagesDefaite_L	667	739d74d8
+en	03c705a	Ledai_happy: En quelque sorte. Sauf que cela se situe à un niveau supérieur.	D6	SagesDefaite_L	668	232b90d2
+en	0de2407	Sapiens_happy: On t'a appris à gérer la charge cognitive sur une journée.	D6	SagesDefaite_L	669	76f29cf5
+en	06ab6d1	You: Ouais.	D6	SagesDefaite_L	670	825adff7
+en	0962675	Sapiens_happy: Cette-fois, on veut t'apprendre à la gérer sur plusieurs jours.	D6	SagesDefaite_L	671	217670a4
+en	0290823	You: Ah bon.	D6	SagesDefaite_L	672	3c5bed9a
+en	0ab0bc4	Sapiens_happy: Pour cela, il te faut apprendre à organiser et réorganiser tes actions.	D6	SagesDefaite_L	673	d261e854
+en	0946ccc	You: Si vous le dites.	D6	SagesDefaite_L	674	e6d80c1e
+en	0dd4bf4	Sapiens_thinking: Oui. Organiser son travail sur plusieurs jours nécessite un esprit d'organisation et d'adaptation plus poussé.	D6	SagesDefaite_L	675	d89d1690
+en	0ba7223	Ledai_explaining: Il faut apprendre à s'observer et se réguler.	D6	SagesDefaite_L	676	44b2b1e8
+en	0069c08	Sapiens_thinking: C'est la leçon d'aujourd'hui...	D6	SagesDefaite_L	677	1d6f9d73
+en	0d81e3d	Sapiens_happy: D'abord, tu dois organiser un planning, le plus tôt possible. Idéalement, le matin de ta première journée, répertorier sur un agenda tout ce que tu as prévu dans les jours à venir.	D6	SagesDefaite_L	678	2f832e49
+en	0296d5f	Ledai_explaining: Dans le cas présent, tu notes ton planning du week-end. Bien entendu, tu ne gardes que les informations réellement utiles et significatives.	D6	SagesDefaite_L	679	877a1ca4
+en	0811523	Sapiens_thinking: Ensuite, tu planifies tes priorités. Ici, tes révisions sur la philosophie quantique. Les différents thèmes à aborder.	D6	SagesDefaite_L	680	1ae92955
+en	07301ef	Ledai_explaining: Après, tu révises chaque thème, en respectant des sessions d'une heure environ. Tu te rappelle de la méthode "pomodoro" ?	D6	SagesDefaite_L	681	155224d7
+en	0501a83	You: Bien sûr.	D6	SagesDefaite_L	682	1ccd222b
+en	061cc48	Ledai_explaining: Tu réalises tes tâches. Une par une ! Pas de distractions ! Pas de multitâche ! Ton attention doit être totale, compris ?	D6	SagesDefaite_L	683	46bcf9b1
+en	0716f21	You: Ouais.	D6	SagesDefaite_L	684	825adff7
+en	0a22f79	Sapiens_happy: Chaque nouveau jour, pense à revoir ton planning. Qu'as-tu accompli ? Que reste-t-il à faire ? Es-tu dans les temps ?	D6	SagesDefaite_L	685	cd5d4c25
+en	073a7a5	Ledai_explaining: Pour tes révisions, favorise des actions que tu as bien intégrées. Cela te fait gagner du temps.	D6	SagesDefaite_L	686	e6586b7f
+en	0678c41	You: Comme quoi ?	D6	SagesDefaite_L	687	ae03f6ff
+en	04d16f2	Sapiens_happy: Le "rappel libre". La méthode "pomodoro", comme l'a évoqué Ledai.	D6	SagesDefaite_L	688	5eae8ea0
+en	059a8e2	You: OK.	D6	SagesDefaite_L	689	f0bab017
+en	09f24d5	Sapiens_happy: Bien. On a parlé des grosses pierres. Il te reste à remplir ton sceau avec le cailloux et le sable.	D6	SagesDefaite_L	690	e0d0bb7b
+en	01a34cc	You: On s'en fiche des cailloux et du sable !	D6	SagesDefaite_L	691	b3da5148
+en	0452608	Ledai_doubtful: Détrompe-toi, { $name }. Il faut toujours prévoir l'imprédictible.	D6	SagesDefaite_L	692	cdd50793
+en	0806c5c	Sapiens_concerned: Ledai a raison. N'oublie pas que ta journée comporte également des tâches obligatoires qui ne correspondent pas à ton planning stratégique.	D6	SagesDefaite_L	693	3ee82c02
+en	048c4dc	You: Lesquelles ?	D6	SagesDefaite_L	694	b5ce4a5b
+en	0bcfa81	Sapiens_happy: Ta séance de danse du samedi matin, par exemple.	D6	SagesDefaite_L	695	6af01ce7
+en	0126df9	Azul_proud: Veux-tu renoncer à ton entraînement de Jungle Body Beat ?	D6	SagesDefaite_L	696	204236f8
+en	001b4da	You: Sûrement pas.	D6	SagesDefaite_L	697	ac308530
+en	0917c6b	Ledai_explaining: Dans ce cas, il faut intégrer ces impondérables dans ta gestion de planning.	D6	SagesDefaite_L	698	05c19951
+en	0170d73	You: OK. Mais le sable, c'est superflu ?	D6	SagesDefaite_L	699	5d4dc10e
+en	09567bc	Temde_smiling: Ça dépend pour qui.	D6	SagesDefaite_L	700	bf9d681c
+en	0139984	Azul_happy: Ce sable peut être important pour toi ou pour tes proches.	D6	SagesDefaite_L	701	90948d11
+en	0686d0e	You: Comment ça ?	D6	SagesDefaite_L	702	f5a667c1
+en	0b2e7ac	Temde_sad: Veux-tu passer ton week-end, en mode "ermite" à réviser, réviser et encore réviser ?	D6	SagesDefaite_L	703	23c8592a
+en	082866c	Azul_sad: Alors que ton week-end pourrait rimer aussi avec repos, détente, convivialité, plaisir, gratitude.	D6	SagesDefaite_L	704	73aba358
+en	0fcaecc	Temde_smiling: Compris ?	D6	SagesDefaite_L	705	3dbff441
+en	009605c	You: Oui.	D6	SagesDefaite_L	706	778ee8c6
+en	057c8fb	Sapiens_thinking: Très bien. Abordons maintenant la notion de la "piqûre de rappel".	D6	SagesDefaite_L	707	0e556165
+en	063e2cd	-> La piqûre de rappel ?	D6	SagesDefaite_L	708	a0f9798e
+en	0177522	Sapiens_thinking: Nous avons déjà vu la différence entre la mémoire courte et la mémoire longue.	D6	SagesDefaite_L	709	0088bb9c
+en	0d779ff	You: Oui.	D6	SagesDefaite_L	710	778ee8c6
+en	08a222d	Sapiens_happy: Pour optimiser tes connaissances au moment du Grand Oral, il faut faire basculer toutes tes informations dans la mémoire longue.	D6	SagesDefaite_L	711	7021342a
+en	084ab0a	You: Mouais...	D6	SagesDefaite_L	712	8236d8f2
+en	0f83a7b	Sapiens_concerned: Je te sens dubitatif.	D6	SagesDefaite_L	713	bacf1324
+en	014c206	You: Y a tellement à apprendre.	D6	SagesDefaite_L	714	76ef7721
+en	050eb37	Temde_smiling: Yep, c'est pour ça que nous sommes là. Pour te guider.	D6	SagesDefaite_L	715	39132fe3
+en	0f61102	Ledai_explaining: C'est l'intérêt de la "piqûre de rappel".	D6	SagesDefaite_L	716	c208f87a
+en	0a451ad	Sapiens_happy: Après avoir relu, révisé, appris ton cours ou une partie de ton cours, ta mémoire s'enrichit de ces nouvelles connaissances. C'est le mécanisme de la mémoire courte.	D6	SagesDefaite_L	717	dc69e49d
+en	05e8ce5	You: Oui oui. Je sais.	D6	SagesDefaite_L	718	13f40854
+en	0ad59de	Sapiens_concerned: Hélas, le lendemain ou les jours suivants, cette information se détériore, s'efface. Heureusement, il y a la méthode de la "piqûre de rappel".	D6	SagesDefaite_L	719	33e0d720
+en	0216b3d	You: Mais c'est quoi au juste cette "piqûre" ?	D6	SagesDefaite_L	720	744c742f
+en	0e5435e	Sapiens_happy: La "piqûre de rappel"... Tu mobilises tes connaissances encore fragiles. Par un rappel libre, un test, un exercice récapitulatif...	D6	SagesDefaite_L	721	b3578342
+en	05fad4f	Ledai_explaining: L'important est que tu sollicites ta mémoire courte pour enregistrer durablement ces nouvelles informations.	D6	SagesDefaite_L	722	783c5039
+en	0e2c777	You: Et ça fait mal ? Pourquoi vous dites une "piqûre" ?	D6	SagesDefaite_L	723	28b8d7bd
+en	03eff32	Azul_proud: Tout simplement parce qu'on peut illustrer ce mécanisme en évoquant l'image d'une piqûre de rappel.	D6	SagesDefaite_L	724	7b6c2448
+en	0508204	You: C'est idiot.	D6	SagesDefaite_L	725	875b8c6f
+en	051006d	Sapiens_happy: Pas du tout. C'est même très efficace !	D6	SagesDefaite_L	726	90f7aeb4
+en	0a89bc7	Ledai_explaining: Cela peut te sembler au départ peu productif. Mais au final, c'est la méthode la plus certaine et la plus durable.	D6	SagesDefaite_L	727	70e10f10
+en	06246e8	Sapiens: N'oublie pas que tu n'as moins de trois jours pour être incollable en matière de philosophie quantique !	D6	SagesDefaite_L	728	f310c593
+en	0d7724b	You: Ouais. J'ai bien vu que c'était trop court.	D6	SagesDefaite_L	729	97eead89
+en	0caddfb	Ledai_doubtful: Pas trop court ! C'est difficile mais pas impossible !  Il faut juste ne pas perdre ton objectif de vue.	D6	SagesDefaite_L	730	4319d21c
+en	0b8bd49	Sapiens_happy: Et penser à réévaluer ta planification chaque jour !	D6	SagesDefaite_L	731	06338581
+en	0751f9d	Azul_happy: Master Sapiens a raison. Si tu remarques que tes prévisions ne sont pas réalistes, n'abandonne pas mais revoie-les ! Simplifie !	D6	SagesDefaite_L	732	bc6e8f21
+en	0c110ca	Temde_smiling: N'hésite pas à recourir à un plan B si nécessaire.	D6	SagesDefaite_L	733	2e686e18
+en	09405a2	You: Un plan B ?	D6	SagesDefaite_L	734	e651b47d
+en	06d7b9e	Sapiens_happy: Des fiches de révision par exemple.	D6	SagesDefaite_L	735	73c6c760
+en	00a94e0	You: D'accord...	D6	SagesDefaite_L	736	c4199bf2
+en	09d32d6	-> C'est tout ?	D6	SagesDefaite_L	737	72916d18
+en	0df45db	Azul_happy: Non, n'oublie surtout pas de te faire plaisir.	D6	SagesDefaite_L	738	b1594799
+en	074c054	Temde_smiling: C'est le week-end de ton Grand Oral, c'est un week-end quand même.	D6	SagesDefaite_L	739	9cab13d6
+en	098cf1d	Azul_cheerful: C'est important aussi de respirer, de s'occuper de son corps, d'interagir avec ses semblables.	D6	SagesDefaite_L	740	8d5317c2
+en	01bdea9	Ledai_doubtful: Vraiment ?	D6	SagesDefaite_L	741	002f0b28
+en	003a973	Sapiens_happy: Hum.	D6	SagesDefaite_L	742	d2dc51c4
+en	035a1d0	Temde_smiling: Ne les écoutes pas ces deux-là. Ce sont des "Kassos".	D6	SagesDefaite_L	743	deaa882f
+en	0822ee3	Ledai_doubtful: Comment ?!	D6	SagesDefaite_L	744	b06ecc65
+en	01502a7	Sapiens_angry: Je m'insurge contre...	D6	SagesDefaite_L	745	93911631
+en	09589c1	Azul_sad: Calmons-nous les amis. Nous sommes des Sages. Quelle image lamentable nous révélons à notre disciple ? Comment voulez-vous qu'il croie en nos enseignements ?	D6	SagesDefaite_L	746	815ce92c
+en	04ceb8c	Ledai_explaining: C'est vrai.	D6	SagesDefaite_L	747	e092edfc
+en	06baa55	Sapiens_angry: Nous réglerons ça plus tard. Entre nous...	D6	SagesDefaite_L	748	1614b78b
+en	0f7d9a4	You: C'est bon, je peux y aller ?	D6	SagesDefaite_L	749	f5709b8e
+en	0c6e97e	Sapiens_happy: Presque. Prêt à répondre à quelques questions ?	D6	SagesDefaite_L	750	65432527
+en	06e1c4b	You: Ai-je le choix ?	D6	SagesDefaite_L	751	690267da
+en	0a327f4	Sapiens: Sur ton planning, tu indiques toutes les tâches de ta journée. En ce qui concerne la session de révision. Tu la mets où ?	D6	SagesDefaite_L	752	211903ee
+en	0e4228c	-> Tout en haut, en priorité !	D6	SagesDefaite_L	753	0d341976
+en	0f5a235	Sapiens_happy: Exactement ! Réviser est ta tâche prioritaire ! Elle doit donc être tout en haut de ton agenda !	D6	SagesDefaite_L	754	47f7e875
+en	0b0245e	Azul_happy: Rappelle-toi l'image du sceau. Les pierres, ce sont tes séances de révision.	D6	SagesDefaite_L	755	8f97afa9
+en	0b3ec34	Temde_smiling: Tu dois commencer par les mettre dans le sceau avant de t'occuper du reste !	D6	SagesDefaite_L	756	9b82a23e
+en	085a596	Sapiens: Voyons ce que tu répondras à ce second quiz.	D6	SagesDefaite_L	757	3c726266
+en	073e87a	-> Plus loin. Tu t'en occuperas quand tu auras le temps.	D6	SagesDefaite_L	758	5c44a1d5
+en	0320467	Sapiens_angry: Enfin ! Quelle ineptie ! Réviser est ta tâche prioritaire ! Elle doit donc être tout en haut de ton agenda !	D6	SagesDefaite_L	759	beda0a39
+en	0abae5e	Azul_sad: Rappelle-toi l'image du sceau. Les pierres, ce sont tes séances de révision.	D6	SagesDefaite_L	760	920fbb6f
+en	060c494	Temde_thinking: Tu dois commencer par les mettre dans le sceau avant de t'occuper du reste !	D6	SagesDefaite_L	761	8fde86fa
+en	0f58213	You: Oui. C'est vrai.	D6	SagesDefaite_L	762	bc25ef0a
+en	08c7082	Sapiens_thinking: Voyons si tu répondras mieux à ce second quiz.	D6	SagesDefaite_L	763	dc1ebda3
+en	04c9727	Sapiens: Une fois que tu as entamé ta tâche prioritaire. Acceptes-tu d'être dérangé par un ami, un appel, un message ?	D6	SagesDefaite_L	764	67d83291
+en	01ebcb5	-> Oui. Cela fait partie des aléas de la vie.	D6	SagesDefaite_L	765	5383d26c
+en	0150290	Sapiens_angry: Non, non et non ! Quand tu te mets à réviser, tu dois solliciter ton attention cérébrale à 100%. Sinon, tu ne vas pas cesser de te disperser.	D6	SagesDefaite_L	766	1b9d9312
+en	0c39a3f	Azul_sad: C'est ce qui t'es arrivé, souviens-toi.	D6	SagesDefaite_L	767	31d11d14
+en	06434d8	You: C'est vrai.	D6	SagesDefaite_L	768	1d0fbd87
+en	0a74667	Ledai_doubtful: La priorité la plus urgente en premier ! Et une priorité à la fois ! C'est simple comme règle, non ?	D6	SagesDefaite_L	769	e2fe3bb5
+en	0465656	You: Oui.	D6	SagesDefaite_L	770	778ee8c6
+en	058de2c	Sapiens_concerned: Voyons enfin si tu trouveras la bonne réponse à cette dernière question.	D6	SagesDefaite_L	771	dae44d4e
+en	0c50bd2	You: J'écoute.	D6	SagesDefaite_L	772	879250dc
+en	0e9cc90	-> Non. Je dois accomplir une tâche à la fois. Pas de distraction !	D6	SagesDefaite_L	773	7820f264
+en	0148ac0	Sapiens_happy: Oui, la priorité la plus urgente en premier !	D6	SagesDefaite_L	774	a87ff4fa
+en	0058c93	Ledai_explaining: Et une priorité à la fois ! C'est simple comme règle.	D6	SagesDefaite_L	775	933a5858
+en	0e199eb	Sapiens_happy: Voyons enfin si tu trouveras la réponse à cette dernière question.	D6	SagesDefaite_L	776	be7b7757
+en	02a0b7f	You: J'écoute.	D6	SagesDefaite_L	777	879250dc
+en	0609893	Sapiens_thinking: Maintenant que tu as établi ton planning pour ton week-end de révision. Que fais-tu ?	D6	SagesDefaite_L	778	c54baf59
+en	029fc8a	-> Tu le suis jusqu'au lundi matin ?	D6	SagesDefaite_L	779	0ce2deb8
+en	0baf843	Sapiens_angry: N'importe quoi ! Nous avons pourtant bien insisté.	D6	SagesDefaite_L	780	4bb1b410
+en	00414e0	Ledai_explaining: S'observer et s'auto-réguler !	D6	SagesDefaite_L	781	afc78976
+en	03cf171	You: Ah oui. J'avais oublié.	D6	SagesDefaite_L	782	d8977e8a
+en	06a6d43	Sapiens_angry: Non ! Tu ne dois pas oublier !	D6	SagesDefaite_L	783	7d1cf2d1
+en	01088cc	Ledai_explaining: Tu dois appliquer les bonnes méthodes !	D6	SagesDefaite_L	784	62185b18
+en	05cc1af	-> Tu le revois et le réévalue chaque jour ?	D6	SagesDefaite_L	785	4f923c46
+en	0159555	Sapiens_happy: Bonne réponse !	D6	SagesDefaite_L	786	dbebfb60
+en	090fd10	Ledai_explaining: S'observer et s'auto-réguler !	D6	SagesDefaite_L	787	afc78976
+en	0cb6e94	Sapiens_happy: Ce sont des méthodes éprouvées !	D6	SagesDefaite_L	788	2d7e983b
+en	0e3e144	Ledai_explaining: Et tu dois les consigner dans ton journal mental !	D6	SagesDefaite_L	789	5ad665bb
+en	0b98f6a	Azul_proud: Souviens-toi. Sois souple et agile !	D6	SagesDefaite_L	790	0962b088
+en	084ef4a	Temde_smiling: Si tu te sens pris au piège, pense au "plan B" ! Simplifie !	D6	SagesDefaite_L	791	c8084e18
+en	0294a5c	Azul_happy: Il y a toujours un autre moyen !	D6	SagesDefaite_L	792	f95356bc
+en	0ad4174	You: Les fiches de révision ?	D6	SagesDefaite_L	793	31691e22
+en	0c911f5	Azul_proud: En ce qui concerne ton Grand Oral, oui, c'est un bonne voie alternative.	D6	SagesDefaite_L	794	19932847
+en	0380a89	-> Recommencer le week-end	D6	SagesDefaite_L	795	74efaebf
+en	0265c96	Vous êtes de nouveau seul. Dans un espace-temps indéfini. Il ne fait ni chaud ni froid, ni vraiment jour ni vraiment nuit.	D6	JournalMental	801	431045b9
+en	07738f0	Vous avez entre les mains votre "carnet d'ingénieur tout-terrain". Vous avez plein de choses à noter dedans. Ce truc de planification des tâches, ça demande un sacré sens de l'organisation...	D6	JournalMental	802	3ddcb4d9
+en	0e90aa8	Vous vous sentez beaucoup trop fatigué...	D6	FailGauge	809	738b35ff
+en	063722e	Vous avez trop faim pour faire quoi que ce soit...	D6	FailGauge	810	5c00237c
+en	0000016	Vous vous êtes trop donner aux révisions, votre cerveau n'enregistre plus rien...	D6	FailGauge	811	2e57e954
+en	0d1ef81	-> Recommencer le week-end	D6	FailGauge	812	74efaebf
+en	0e8b6b3	Vous mangez un petit encas pour vous remettre en forme.	D6	Grignoter_D	818	a073656a
+en	0c463ee	Vous grignotez un petit quelque chose	D6	Grignoter_S	824	888c4ba7
