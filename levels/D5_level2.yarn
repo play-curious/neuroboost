@@ -84,6 +84,7 @@ tags: subchoice
     <<jump Breakfast>>
 -> back #line:0e01364 
     << fadeIn >>
+    <<jump Liste_Taches>>
 ===
 title: salon_subchoice
 tags: subchoice
