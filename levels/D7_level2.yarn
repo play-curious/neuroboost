@@ -619,7 +619,7 @@ Elle vous arrose à nouveau de ses paroles sucrées et affectueuses.  #line:03ed
 Les pharmaceutiques y sont pour quelque chose. N'empêche. Quelle femme, une authentique dure-à-cuire... #line:0d5f4c4 
 // Vous l'écoutez avec patience. Puis, elle vous dit au revoir. Vous raccrochez, heureux d'avoir pris le temps de papoter avec "mamie". 
 // Elle vous garde plus d'une heure.
-<< advanceTime 21:00 >>
+<< advanceTime 1:00 21:00 0:05>>
 
 Vous sentez le poids de la fatigue accumulée. Un petit tour aux toilettes pour se laver les dents. On enfile sa tenue pour la nuit. #line:0feb99f 
 

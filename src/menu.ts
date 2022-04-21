@@ -87,7 +87,8 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.container.addChild(this.blackBackground);
     }
 
-    { // 
+    {
+      //
       this.menuButton = this.makeSprite("images/menu/menu.png", (it) => {
         it.anchor.set(0.6);
         //it.alpha = 0.8;
@@ -99,7 +100,8 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this._on(this.menuButton, "pointerup", this.open);
     }
 
-    { // Cadre du menu
+    {
+      // Cadre du menu
       this.popupBackground = this.makeSprite(
         "images/menu/background.png",
         (it) => {
@@ -110,100 +112,103 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.popupBackground.interactive = true;
       this.container.addChild(this.popupBackground);
     }
-    
-    { // Blason de l'école
-      this.playCuriousLogo = this.makeSprite(
-        "images/logo.png",
-        (it) => {
-          it.anchor.set(0.5);
-          it.scale.set(0.30);
-          it.position.set(this.popupBackground.width / 2, -230);
-        }
-      );
+
+    {
+      // Blason de l'école
+      this.playCuriousLogo = this.makeSprite("images/logo.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.3);
+        it.position.set(this.popupBackground.width / 2, -230);
+      });
       this._on(this.playCuriousLogo, "pointertap", this._onTapPCLogo);
       this.popupBackground.addChild(this.playCuriousLogo);
     }
 
-    { // Bouton historique
-      const x = this.popupBackground.width / 2 -142;
+    {
+      // Bouton historique
+      const x = this.popupBackground.width / 2 - 142;
       const y = 70;
-      let image = this.makeSprite(
-        "images/menu/historique.png",
-        (it) => {
-          it.anchor.set(0.5);
-          it.scale.set(0.2);
-          it.position.set(x, y);
-        }
-      );
+      let image = this.makeSprite("images/menu/historique.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.2);
+        it.position.set(x, y);
+      });
       this.popupBackground.addChild(image);
 
-      this.historyButton = this.makeText("Historique", {
-        fontFamily: "Ubuntu",
-        fill: "white",
-        fontSize: 50,
-      },
-      (it) => {
-        it.anchor.set(0, 0.5);
-        it.position.set(x + 45, y);
-        it.interactive = true;
-        it.buttonMode = true;
-      });
+      this.historyButton = this.makeText(
+        "Historique",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 50,
+        },
+        (it) => {
+          it.anchor.set(0, 0.5);
+          it.position.set(x + 45, y);
+          it.interactive = true;
+          it.buttonMode = true;
+        }
+      );
       this._on(this.historyButton, "pointertap", this._showHistory);
       this.popupBackground.addChild(this.historyButton);
     }
 
-    { // Bouton journal
-      const x = this.popupBackground.width / 2 -115;
+    {
+      // Bouton journal
+      const x = this.popupBackground.width / 2 - 115;
       const y = 0;
-      let image = this.makeSprite(
-        "images/menu/journal.png",
-        (it) => {
-          it.anchor.set(0.5);
-          it.scale.set(0.4);
-          it.position.set(x, y);
-        }
-      );
+      let image = this.makeSprite("images/menu/journal.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.4);
+        it.position.set(x, y);
+      });
       this.popupBackground.addChild(image);
 
-      this.journal = this.makeText("Journal", {
-        fontFamily: "Ubuntu",
-        fill: "grey",
-        fontSize: 50,
-      },
-      (it) => {
-        it.anchor.set(0, 0.5);
-        it.position.set(x + 45, y);
-        it.interactive = true;
-        it.buttonMode = false;
-      });
+      this.journal = this.makeText(
+        "Journal",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 50,
+        },
+        (it) => {
+          it.anchor.set(0, 0.5);
+          it.position.set(x + 45, y);
+          it.interactive = true;
+          it.buttonMode = true;
+
+          this._on(it, "pointerup", this._downloadJournal);
+        }
+      );
       this.popupBackground.addChild(this.journal);
-      this.journalUpdated = false;
+      // this.journalUpdated = false;
     }
 
-    { // Crédit
-      const x = this.popupBackground.width /2 + 200;
-      const y = this.popupBackground.height /2 -90;
-      let image = this.makeSprite(
-        "images/menu/playcurious.png",
-        (it) => {
-          it.anchor.set(0.5);
-          it.scale.set(0.4);
-          it.position.set(x, y);
-        }
-      );
+    {
+      // Crédit
+      const x = this.popupBackground.width / 2 + 200;
+      const y = this.popupBackground.height / 2 - 90;
+      let image = this.makeSprite("images/menu/playcurious.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.4);
+        it.position.set(x, y);
+      });
       this.popupBackground.addChild(image);
 
-      this.creditButton = this.makeText("Credits", {
-        fontFamily: "Ubuntu",
-        fill: "white",
-        fontSize: 40,
-      },
-      (it) => {
-        it.anchor.set(0.5);
-        it.position.set(x -150, y);
-        it.interactive = true;
-        it.buttonMode = true;
-      });
+      this.creditButton = this.makeText(
+        "Credits",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 40,
+        },
+        (it) => {
+          it.anchor.set(0.5);
+          it.position.set(x - 150, y);
+          it.interactive = true;
+          it.buttonMode = true;
+        }
+      );
       this._on(this.creditButton, "pointertap", this._showCredits);
       this.popupBackground.addChild(this.creditButton);
 
@@ -213,15 +218,18 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     if (util.supportsFullscreen()) {
       // Création texte
-      const textFullscreen = this.makeText("Plein-écran", {
-        fontFamily: "Ubuntu",
-        fill: "white",
-        fontSize: 30,
-      },
-      (it) => {
-        it.anchor.set(0);
-        it.position.set(+90, -this.popupBackground.height/2 +20);
-      });
+      const textFullscreen = this.makeText(
+        "Plein-écran",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 30,
+        },
+        (it) => {
+          it.anchor.set(0);
+          it.position.set(+90, -this.popupBackground.height / 2 + 20);
+        }
+      );
       this.popupBackground.addChild(textFullscreen);
       // Création image
       this.fullscreenSwitcher = new SpriteSwitcher(
@@ -232,7 +240,10 @@ export class Menu extends extension.ExtendedCompositeEntity {
         this.settings.fullscreen ? "on" : "off"
       );
       this.fullscreenSwitcher.container.scale.set(0.7);
-      this.fullscreenSwitcher.container.position.set(+50, -this.popupBackground.height/2 +50);
+      this.fullscreenSwitcher.container.position.set(
+        +50,
+        -this.popupBackground.height / 2 + 50
+      );
       this.fullscreenSwitcher.onStateChange((state) => {
         if (state === "on") {
           util.requestFullscreen(document.getElementById("game-parent"));
@@ -249,16 +260,13 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       const x = this.popupBackground.width - 250;
       const y = 200;
-      const logo = this.makeSprite(
-        "images/menu/musique.png",
-        (it) => {
-          it.anchor.set(0.5);
-          it.scale.set(0.30);
-          it.position.set(x - 165, y);
-        }
-      );
+      const logo = this.makeSprite("images/menu/musique.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.3);
+        it.position.set(x - 165, y);
+      });
       this.popupBackground.addChild(logo);
-      
+
       this.musicVolumeSwitcher = new SpriteRangeSwitcher(
         {
           0: "images/menu/fx_000.png",
@@ -284,14 +292,11 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       const x = this.popupBackground.width - 250;
       const y = 290;
-      const logo = this.makeSprite(
-        "images/menu/bruitage.png",
-        (it) => {
-          it.anchor.set(0.5);
-          it.scale.set(0.30);
-          it.position.set(x - 165, y);
-        }
-      );
+      const logo = this.makeSprite("images/menu/bruitage.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.3);
+        it.position.set(x - 165, y);
+      });
       this.popupBackground.addChild(logo);
 
       this.soundVolumeSwitcher = new SpriteRangeSwitcher(
@@ -395,42 +400,17 @@ export class Menu extends extension.ExtendedCompositeEntity {
     booyah.changeGameState("paused");
     this.debugPressCount = 0;
 
+    // Check if the journal button should be activated or deactivated
     if (
-      !this.journalUpdated &&
       Object.keys(this.config.variableStorage.get("journalAnswers")).length > 0
     ) {
-      this.popupBackground.removeChild(this.journal);
-      this.journal = this.makeText("Journal", {
-        fontFamily: "Ubuntu",
-        fill: "white",
-        fontSize: 50,
-      });
-      this.journal.anchor.set(0.5);
-      this.journal.position.set(
-        this.popupBackground.width / 2,
-        this.popupBackground.height * 0.29
-      );
-      this.journal.interactive = true;
+      this.journal.alpha = 1;
       this.journal.buttonMode = true;
-      this._on(this.journal, "pointerup", () => {
-        this._activateChildEntity(
-          new popup.Confirm(
-            "Téléchargement du journal de la métacognition",
-            (validated: boolean) => {
-              if (!validated) return;
-              const journalDownload = new journal.JournalPDF();
-              this._activateChildEntity(journalDownload);
-              journalDownload.journalToPDF(
-                this.config.variableStorage.get("journalAnswers"),
-                this.makeSprite("images/journalPDF/background.png")
-              );
-              this._deactivateChildEntity(journalDownload);
-            }
-          )
-        );
-      });
-      this.popupBackground.addChild(this.journal);
-      this.journalUpdated = true;
+      this.journal.interactive = true;
+    } else {
+      this.journal.alpha = 0.5;
+      this.journal.buttonMode = false;
+      this.journal.interactive = false;
     }
 
     // Displaying the menu will be done in _onSignal()
@@ -529,6 +509,31 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   private _onTapPCLogo() {
     window.open("https://playcurious.games", "_blank");
+  }
+
+  private _downloadJournal() {
+    // If no journal entries exist, should do nothing
+    if (
+      Object.keys(this.config.variableStorage.get("journalAnswers")).length ===
+      0
+    )
+      return;
+
+    this._activateChildEntity(
+      new popup.Confirm(
+        "Téléchargement du journal de la métacognition",
+        (validated: boolean) => {
+          if (!validated) return;
+          const journalDownload = new journal.JournalPDF();
+          this._activateChildEntity(journalDownload);
+          journalDownload.journalToPDF(
+            this.config.variableStorage.get("journalAnswers"),
+            this.makeSprite("images/journalPDF/background.png")
+          );
+          this._deactivateChildEntity(journalDownload);
+        }
+      )
+    );
   }
 }
 
