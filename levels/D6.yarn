@@ -359,6 +359,7 @@ La huitième saison reprend là où s'était arrêtée la précédente à savoir
 Hé oui, ce ne sont pas les commandos de choc de l'Impérium Noir qui ont fini par attraper le Chevalier Laser mais les Touarogs de l'infâme pirate : Jara the Hun, qui l'a sacrifié au Métavers des sables... #line:01f2976 
 
 << advanceTime 2:00 >>
+<< stopFX TVStarwars_LOOP >>
 
 << removeFromGauge sleep 15 >>
 << removeFromGauge food 10 >>
