@@ -687,52 +687,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   }
 
-  public removeCharacters(withAnimation: boolean = true) {
-    for (const [id, character] of this._characters) {
-      this._characters.delete(id);
-
-      if (withAnimation) {
-        if (character.holo) {
-          this._activateChildEntity(
-            new tween.Tween({
-              duration: 500,
-              easing: easing.easeInCubic,
-              from: 100,
-              to: 0,
-              onUpdate: (value: number) => {
-                character.container.position.y = (100 - value) * 5.4 + 80;
-                character.container.scale.y = value / 100;
-                character.container.position.x = -(100 - value) * 9.6 + 250;
-                character.container.scale.x = (100 - value) / 100 + 1;
-              },
-            })
-          );
-        } else {
-          this._activateChildEntity(
-            new tween.Tween({
-              duration: 1500,
-              easing: easing.easeOutQuint,
-              from: 250,
-              to: 1500,
-              onUpdate: (value) => {
-                character.container.position.x = value;
-              },
-              onTeardown: () => {
-                this._characterLayer.removeChild(character.container);
-                // this._deactivateChildEntity(character.entity);
-              },
-            })
-          );
-        }
-      } else {
-        this._characterLayer.removeChild(character.container);
-      }
-    }
-
-    delete this.last.lastCharacter;
-    delete this.last.lastMood;
-  }
-
   /**
    *
    *
@@ -780,6 +734,52 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       // Place character on screen
       this._characterLayer.addChild(characterCE.container);
     }
+  }
+
+  public removeCharacters(withAnimation: boolean = true) {
+    for (const [id, character] of this._characters) {
+      this._characters.delete(id);
+
+      if (withAnimation) {
+        if (character.holo) {
+          this._activateChildEntity(
+            new tween.Tween({
+              duration: 250,
+              easing: easing.easeInCubic,
+              from: 100,
+              to: 0,
+              onUpdate: (value: number) => {
+                character.container.position.y = (100 - value) * 5.4 + 80;
+                character.container.scale.y = value / 100;
+                character.container.position.x = -(100 - value) * 9.6 + 250;
+                character.container.scale.x = (100 - value) / 100 + 1;
+              },
+            })
+          );
+        } else {
+          this._activateChildEntity(
+            new tween.Tween({
+              duration: 1500,
+              easing: easing.easeOutQuint,
+              from: 250,
+              to: 1500,
+              onUpdate: (value) => {
+                character.container.position.x = value;
+              },
+              onTeardown: () => {
+                this._characterLayer.removeChild(character.container);
+                // this._deactivateChildEntity(character.entity);
+              },
+            })
+          );
+        }
+      } else {
+        this._characterLayer.removeChild(character.container);
+      }
+    }
+
+    delete this.last.lastCharacter;
+    delete this.last.lastMood;
   }
 
   fadeIn(duration: number = 1000, color: string = "#000000") {
