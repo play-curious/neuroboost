@@ -479,12 +479,27 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     scrollBox.container.position.set(100);
     let currentY = 0;
+    let empty = true;
     // @ts-ignore
-    window.dialogScene?.getHistoryText().forEach((text) => {
-      text.position.set(0, currentY);
-      scrollBox.content.addChild(text);
-      currentY += text.height + 30;
-    });
+    if (window.dialogScene) {
+      // @ts-ignore
+      window.dialogScene?.getHistoryText().forEach((text) => {
+        text.position.set(0, currentY);
+        scrollBox.content.addChild(text);
+        currentY += text.height + 30;
+        empty = false;
+      });
+    }
+
+    if (empty) {
+      scrollBox.content.addChild(
+        this.makeText("Empty history - Historique vide", {
+          fontFamily: "Ubuntu",
+          fontSize: "50px",
+          fill: "#ffffff",
+        })
+      );
+    }
 
     scrollBox.refresh();
     scrollBox.scrollBy(new PIXI.Point(0, -(currentY + 200)));
