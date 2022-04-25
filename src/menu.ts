@@ -29,7 +29,12 @@ const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
     "Game Design": "Jesse Himmelstein",
     "Narrative Design": "Ronan Le Breton",
     "Sound Design": "Jean-Baptiste Mar",
-    "Graphic Design": ["Xuan Le", "Sana Coftier", "Nawel Benrhannou"],
+    "Graphic Design": [
+      "Xuan Le",
+      "Sana Coftier",
+      "Nawel Benrhannou",
+      "Juliette Amélie",
+    ],
     Animation: ["Xuan Le", "Sana Coftier"],
     QA: "Ilyes Khamassi",
   },
