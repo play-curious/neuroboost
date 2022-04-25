@@ -424,16 +424,22 @@ export class Menu extends extension.ExtendedCompositeEntity {
   }
 
   _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any): void {
+    const html = document.getElementById("html-layer");
+
     if (signal === "pause" && !this.opened) {
       this.opened = true;
       this.menuButton.visible = false;
       this.container.visible = true;
+
+      if (html) html.style.display = "none";
 
       this._onOpen();
     } else if (signal === "play" && this.opened) {
       this.opened = false;
       this.menuButton.visible = true;
       this.container.visible = false;
+
+      if (html) html.style.display = "block";
     }
   }
 
