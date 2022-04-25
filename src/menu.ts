@@ -480,7 +480,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
     scrollBox.container.position.set(100);
     let currentY = 0;
     // @ts-ignore
-    dialogScene.getHistoryText().forEach((text) => {
+    window.dialogScene?.getHistoryText().forEach((text) => {
       text.position.set(0, currentY);
       scrollBox.content.addChild(text);
       currentY += text.height + 30;
