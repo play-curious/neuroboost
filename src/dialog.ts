@@ -322,7 +322,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         continue;
 
       options.push({
-        text:optionText,
+        text: optionText,
         id: `${i}`,
       });
 
