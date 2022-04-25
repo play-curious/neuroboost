@@ -16,6 +16,14 @@ import * as journal from "./journal";
 import * as variable from "./variable";
 import * as miniGame from "./mini_game";
 
+// Strange audio bug makes narration.VideoScene not work for this
+const outroVideoScene = new entity.ParallelEntity([
+  new entity.VideoEntity("game-by-play-curious", { scale: 2 }),
+  new entity.FunctionCallEntity(function () {
+    this._entityConfig.fxMachine.play("game-by-play-curious");
+  }),
+]);
+
 // Have the HTML layer match the canvas scale and x-offset
 function resizeHtmlLayer(appSize: PIXI.Point): void {
   const canvasBbox = document
@@ -116,6 +124,8 @@ for (const stateName of stateNames) {
     );
 }
 
+states["outro_video"] = outroVideoScene;
+
 async function levelLoader(entityConfig: entity.EntityConfig) {
   const levels: Record<string, string> = {};
   await Promise.all(
@@ -164,6 +174,7 @@ const fxAssets = [
   "Click",
   "Spawn",
   "Warp",
+  "game-by-play-curious",
 ];
 
 const musicAssets = [
@@ -181,6 +192,8 @@ const musicAssets = [
   "JungleBodyBeat",
 ];
 
+const videoAssets = ["game-by-play-curious"];
+
 const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 export const screenSize = new PIXI.Point(1920, 1080);
@@ -195,6 +208,7 @@ booyah.go({
   fontAssets,
   fxAssets,
   musicAssets,
+  videoAssets,
   screenSize,
   splashScreen,
   extraLoaders: [levelLoader],
@@ -211,4 +225,4 @@ resizeHtmlLayer(screenSize);
 window.addEventListener("resize", () => resizeHtmlLayer(screenSize));
 document.addEventListener("fullscreenchange", () =>
   resizeHtmlLayer(screenSize)
-);
+); //

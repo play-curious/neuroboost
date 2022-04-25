@@ -81,10 +81,10 @@ module.exports = {
           from: "levels",
           to: "levels",
         },
-        // {
-        //   from: "video",
-        //   to: "video",
-        // },
+        {
+          from: "video",
+          to: "video",
+        },
       ],
     }),
     // //opimize all image file

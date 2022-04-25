@@ -726,7 +726,7 @@ Ledai_explaining: Et surtout qu'il arrête d'en produire à nouveau. #line:06562
 Temde_thinking: Ces idées noires qui tournent en boucle te polluent la tête. Elles te rongent de l'intérieur. #line:093e629 
 Azul_happy: Il faut les laisser sortir de ta tête... #line:0125bd3 
 You: OK. Ça a l'air si simple, à vous écouter. Pourtant, je me sens si mal... Et j'ai essayé des trucs, ça n'a rien donné. #line:0b5b00c 
-Sapiens_concerned: Ne t'inquiète pas. Nous n'en avons pas fini. Je vais encore quelques questions Quizz pour m'assurer que tu as bien compris... #line:0f1597f 
+Sapiens_concerned: Ne t'inquiète pas. Nous n'en avons pas fini. Je vais encore poser quelques questions Quizz pour m'assurer que tu as bien compris... #line:0f1597f 
 Azul: ... comment répondre de manière consciente et sereine à la peur, à l'angoisse, au stress. #line:08b659c 
 
 -> Prêt?  #line:07cb8ee 
@@ -742,7 +742,7 @@ Sapiens_happy: Parfait. Alors, pour réduire ton stress, dois-tu: #line:086741b
 
 -> Te concentrer intensément et écraser à l'aide de ta volonté tes mauvaises pensées?  #line:057ac50 
     <<jump Meditation_No>>
--> Pratiquer la médiation en pleine conscience?  #line:0250606 
+-> Pratiquer la méditation en pleine conscience?  #line:0250606 
     <<jump Meditation_Yes>>
 ===
 title: Meditation_No

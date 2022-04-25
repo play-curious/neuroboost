@@ -359,6 +359,7 @@ La huitième saison reprend là où s'était arrêtée la précédente à savoir
 Hé oui, ce ne sont pas les commandos de choc de l'Impérium Noir qui ont fini par attraper le Chevalier Laser mais les Touarogs de l'infâme pirate : Jara the Hun, qui l'a sacrifié au Métavers des sables... #line:01f2976 
 
 << advanceTime 2:00 >>
+<< stopFX TVStarwars_LOOP >>
 
 << removeFromGauge sleep 15 >>
 << removeFromGauge food 10 >>
@@ -507,23 +508,24 @@ Soudain, quelqu'un sonne à la porte...  #line:0873fc8
 Zut ! Vous aviez complètement oublié. Fred vous en a parlé dimanche dernier... #line:098d496 
 
 << empty >> // Fred débarque
+
 Fred pénètre dans votre chambre. Il a sorti ses plus beaux habits : celui d'un cavalier de salsatronique. #line:0581736 
-Fred: Alors ? C'est quoi ces frusques ? #line:061aeff 
+Fred_excited-mask: Alors ? C'est quoi ces frusques ? #line:061aeff 
 You: Heu... J'y pensais plus... #line:059ed3e 
-Fred: Comment tu as pu oublier. #line:017512e 
+Fred_smiling-mask: Comment tu as pu oublier. #line:017512e 
 You: Heu... #line:0d8df88 
-Fred: C'est la fièvre du samedi soir ! #line:081a5dd 
+Fred_smiling-mask: C'est la fièvre du samedi soir ! #line:081a5dd 
 You: Ben... #line:08c8a72 
-Fred: Arrête. Tu m'as promis. Et rappelle-toi comment tu as assuré mardi soir.  #line:0dc364b 
+Fred_happy-mask: Arrête. Tu m'as promis. Et rappelle-toi comment tu as assuré mardi soir.  #line:0dc364b 
 You: Heu... #line:0c11a64 
-Fred: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller ! #line:070a80d 
+Fred_smiling-mask: Désolé, tu ne peux pas te débiner. Allez ! File t'habiller ! #line:070a80d 
 
 -> Refuser #line:0927d6c 
     <<hide>>
     <<jump ReviserSoir_S>>
 -> Suivre Fred #line:02831a3 
     Il a raison. Vous débarrassez la table et vous vous précipitez vers votre armoire. Aiguillé par les conseils de Fred, vous enfilez une tenue Rock Glam de malade. Vous resplendissez dans cette tenue scintillante et clinquante ! #line:017ef6a 
-    Fred: Parfait ! Allez, on y va ! #line:005a6ba 
+    Fred_smiling-mask: Parfait ! Allez, on y va ! #line:005a6ba 
     << hide >>
     << jump Soiree_S >>
 ===
@@ -1454,7 +1456,7 @@ Pas la peine d'attendre les résultats pour savoir que vous avez royalement rat�
 
 << if !visited("sages") >>
 
-<< visit sages true >>
+<< visitPermanent sages >>
 À peine de retour dans votre chambre, vous vous écriez : #line:0242151 
 You: Hé, messieurs les Sages ! Vous êtes là ? Parce que j'aurais besoin de vous... Ça va pas, mais pas du tout ! J'ai raté le Grand Oral... #line:00b8f49 
 Sapiens_concerned: Oui. Nous le savons. #line:0acab7b 

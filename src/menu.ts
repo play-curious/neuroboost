@@ -9,6 +9,7 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import * as journal from "./journal";
 import * as popup from "./popup";
+import { isYieldExpression } from "typescript";
 
 interface Settings {
   fx: number;
@@ -73,7 +74,6 @@ export class Menu extends extension.ExtendedCompositeEntity {
     this.settings.fullscreen = util.inFullscreen();
 
     this.container = new PIXI.Container();
-
     this.container.visible = false;
 
     {
@@ -88,11 +88,12 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
-      this.menuButton = this.makeSprite("images/menu/menu_button.png", (it) => {
-        it.anchor.set(0, 0.5);
-        it.alpha = 0.8;
-        it.position.set(0, variable.height / 2);
-        it.scale.set(60 / it.width);
+      //
+      this.menuButton = this.makeSprite("images/menu/menu.png", (it) => {
+        it.anchor.set(0.6);
+        //it.alpha = 0.8;
+        it.position.set(100);
+        it.scale.set(0.5);
         it.buttonMode = true;
         it.interactive = true;
       });
@@ -100,6 +101,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
+      // Cadre du menu
       this.popupBackground = this.makeSprite(
         "images/menu/background.png",
         (it) => {
@@ -112,71 +114,101 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
-      this.playCuriousLogo = this.makeSprite(
-        "images/menu/playcurious_logo.png",
-        (it) => {
-          it.anchor.set(0.5);
-          it.scale.set(0.8);
-          it.position.set(
-            this.popupBackground.width / 2,
-            this.popupBackground.height * 0.66
-          );
-
-          it.interactive = true;
-          it.buttonMode = true;
-        }
-      );
+      // Blason de l'école
+      this.playCuriousLogo = this.makeSprite("images/logo.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.3);
+        it.position.set(this.popupBackground.width / 2, -230);
+      });
       this._on(this.playCuriousLogo, "pointertap", this._onTapPCLogo);
       this.popupBackground.addChild(this.playCuriousLogo);
     }
 
     {
-      this.journal = this.makeText("Journal", {
-        fontFamily: "Ubuntu",
-        fill: "grey",
-        fontSize: 50,
+      // Bouton historique
+      const x = this.popupBackground.width / 2 - 142;
+      const y = 70;
+      let image = this.makeSprite("images/menu/historique.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.2);
+        it.position.set(x, y);
       });
-      this.journal.anchor.set(0.5);
-      this.journal.position.set(
-        this.popupBackground.width / 2,
-        this.popupBackground.height * 0.29
-      );
-      this.journal.interactive = true;
-      this.journal.buttonMode = false;
-      this.popupBackground.addChild(this.journal);
-      this.journalUpdated = false;
-    }
+      this.popupBackground.addChild(image);
 
-    {
-      this.historyButton = this.makeText("History", {
-        fontFamily: "Ubuntu",
-        fill: "white",
-        fontSize: 50,
-      });
-      this.historyButton.anchor.set(0.5);
-      this.historyButton.position.set(
-        this.popupBackground.width / 2,
-        this.journal.position.y + this.journal.height + 10
+      this.historyButton = this.makeText(
+        "Historique",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 50,
+        },
+        (it) => {
+          it.anchor.set(0, 0.5);
+          it.position.set(x + 45, y);
+          it.interactive = true;
+          it.buttonMode = true;
+        }
       );
-      this.historyButton.interactive = true;
-      this.historyButton.buttonMode = true;
       this._on(this.historyButton, "pointertap", this._showHistory);
       this.popupBackground.addChild(this.historyButton);
     }
 
     {
-      this.creditButton = this.makeText("Credits", {
-        fontFamily: "Ubuntu",
-        fill: "white",
-        fontSize: 50,
+      // Bouton journal
+      const x = this.popupBackground.width / 2 - 115;
+      const y = 0;
+      let image = this.makeSprite("images/menu/journal.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.4);
+        it.position.set(x, y);
       });
-      this.creditButton.anchor.set(0.5);
-      this.creditButton.position.set(
-        this.popupBackground.width / 2,
-        this.historyButton.position.y + this.historyButton.height + 10
+      this.popupBackground.addChild(image);
+
+      this.journal = this.makeText(
+        "Journal",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 50,
+        },
+        (it) => {
+          it.anchor.set(0, 0.5);
+          it.position.set(x + 45, y);
+          it.interactive = true;
+          it.buttonMode = true;
+
+          this._on(it, "pointerup", this._downloadJournal);
+        }
       );
-      this.creditButton.interactive = true;
-      this.creditButton.buttonMode = true;
+      this.popupBackground.addChild(this.journal);
+      // this.journalUpdated = false;
+    }
+
+    {
+      // Crédit
+      const x = this.popupBackground.width / 2 + 200;
+      const y = this.popupBackground.height / 2 - 90;
+      let image = this.makeSprite("images/menu/playcurious.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.4);
+        it.position.set(x, y);
+      });
+      this.popupBackground.addChild(image);
+
+      this.creditButton = this.makeText(
+        "Credits",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 40,
+        },
+        (it) => {
+          it.anchor.set(0.5);
+          it.position.set(x - 150, y);
+          it.interactive = true;
+          it.buttonMode = true;
+        }
+      );
       this._on(this.creditButton, "pointertap", this._showCredits);
       this.popupBackground.addChild(this.creditButton);
 
@@ -184,6 +216,112 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.creditsEntity = null;
     }
 
+    if (util.supportsFullscreen()) {
+      // Création texte
+      const textFullscreen = this.makeText(
+        "Plein-écran",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 30,
+        },
+        (it) => {
+          it.anchor.set(0);
+          it.position.set(+90, -this.popupBackground.height / 2 + 20);
+        }
+      );
+      this.popupBackground.addChild(textFullscreen);
+      // Création image
+      this.fullscreenSwitcher = new SpriteSwitcher(
+        {
+          on: "images/menu/fullscreen_off.png",
+          off: "images/menu/fullscreen_on.png",
+        },
+        this.settings.fullscreen ? "on" : "off"
+      );
+      this.fullscreenSwitcher.container.scale.set(0.7);
+      this.fullscreenSwitcher.container.position.set(
+        +50,
+        -this.popupBackground.height / 2 + 50
+      );
+      this.fullscreenSwitcher.onStateChange((state) => {
+        if (state === "on") {
+          util.requestFullscreen(document.getElementById("game-parent"));
+          textFullscreen.text = "Fenêtré";
+        } else if (util.inFullscreen()) {
+          util.exitFullscreen();
+          textFullscreen.text = "Plein-écran";
+        }
+        this.settings.fullscreen = state === "on";
+        this.saveSettings();
+      });
+    }
+
+    {
+      const x = this.popupBackground.width - 250;
+      const y = 200;
+      const logo = this.makeSprite("images/menu/musique.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.3);
+        it.position.set(x - 165, y);
+      });
+      this.popupBackground.addChild(logo);
+
+      this.musicVolumeSwitcher = new SpriteRangeSwitcher(
+        {
+          0: "images/menu/fx_000.png",
+          0.25: "images/menu/fx_025.png",
+          0.5: "images/menu/fx_050.png",
+          0.75: "images/menu/fx_075.png",
+          1: "images/menu/fx_100.png",
+        },
+        this.settings.music ?? defaultSettings.music
+      );
+      this.musicVolumeSwitcher.container.scale.set(0.8);
+      this.musicVolumeSwitcher.container.position.set(x, y);
+      this.musicVolumeSwitcher.onStateChange((state: number) => {
+        this.config.playOptions.setOption("musicOn", state !== 0);
+        this.settings.music = state;
+
+        // The actual music volume is cut in half
+        this.config.jukebox.changeVolume(state * 0.5);
+        this.saveSettings();
+      });
+    }
+
+    {
+      const x = this.popupBackground.width - 250;
+      const y = 290;
+      const logo = this.makeSprite("images/menu/bruitage.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.3);
+        it.position.set(x - 165, y);
+      });
+      this.popupBackground.addChild(logo);
+
+      this.soundVolumeSwitcher = new SpriteRangeSwitcher(
+        {
+          0: "images/menu/fx_000.png",
+          0.25: "images/menu/fx_025.png",
+          0.5: "images/menu/fx_050.png",
+          0.75: "images/menu/fx_075.png",
+          1: "images/menu/fx_100.png",
+        },
+        this.settings.fx ?? defaultSettings.fx
+      );
+      this.soundVolumeSwitcher.container.scale.set(0.8);
+      this.soundVolumeSwitcher.container.position.set(x, y);
+      this.soundVolumeSwitcher.onStateChange((state: number) => {
+        this.config.playOptions.setOption("fxOn", state !== 0);
+        this.settings.fx = state;
+        this.config.fxMachine.changeVolume(state);
+        this.config.fxMachine.play("Click");
+        this.saveSettings();
+      });
+    }
+
+    /*
+     * Affichage du titre dans la version originel du menu, sert à activer le mode DEBUG
     {
       this.title = this.makeSprite("images/menu/title.png", (it) => {
         it.anchor.set(0.5);
@@ -223,78 +361,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       });
       this.popupBackground.addChild(this.title);
       this.popupBackground.addChild(this.debugText);
-    }
-
-    if (util.supportsFullscreen()) {
-      // if (false) {
-      this.fullscreenSwitcher = new SpriteSwitcher(
-        {
-          on: "images/menu/fullscreen_button_disable.png",
-          off: "images/menu/fullscreen_button_enable.png",
-        },
-        this.settings.fullscreen ? "on" : "off"
-      );
-      this.fullscreenSwitcher.container.position.set(
-        this.popupBackground.width / 2,
-        +200
-      );
-      this.fullscreenSwitcher.onStateChange((state) => {
-        if (state === "on") {
-          util.requestFullscreen(document.getElementById("game-parent"));
-        } else if (util.inFullscreen()) {
-          util.exitFullscreen();
-        }
-        this.settings.fullscreen = state === "on";
-        this.saveSettings();
-      });
-    }
-
-    {
-      this.musicVolumeSwitcher = new SpriteRangeSwitcher(
-        {
-          0: "images/menu/music_range_0.png",
-          0.25: "images/menu/music_range_0.25.png",
-          0.5: "images/menu/music_range_0.5.png",
-          0.75: "images/menu/music_range_0.75.png",
-          1: "images/menu/music_range_1.png",
-        },
-        this.settings.music ?? defaultSettings.music
-      );
-      this.musicVolumeSwitcher.container.position.x =
-        this.popupBackground.width - 310;
-      this.musicVolumeSwitcher.container.position.y += 40;
-      this.musicVolumeSwitcher.onStateChange((state: number) => {
-        this.config.playOptions.setOption("musicOn", state !== 0);
-        this.settings.music = state;
-
-        // The actual music volume is cut in half
-        this.config.jukebox.changeVolume(state * 0.5);
-        this.saveSettings();
-      });
-    }
-
-    {
-      this.soundVolumeSwitcher = new SpriteRangeSwitcher(
-        {
-          0: "images/menu/fx_range_0.png",
-          0.25: "images/menu/fx_range_0.25.png",
-          0.5: "images/menu/fx_range_0.5.png",
-          0.75: "images/menu/fx_range_0.75.png",
-          1: "images/menu/fx_range_1.png",
-        },
-        this.settings.fx ?? defaultSettings.fx
-      );
-      this.soundVolumeSwitcher.container.position.x =
-        this.popupBackground.width - 290;
-      this.soundVolumeSwitcher.container.position.y -= 120;
-      this.soundVolumeSwitcher.onStateChange((state: number) => {
-        this.config.playOptions.setOption("fxOn", state !== 0);
-        this.settings.fx = state;
-        this.config.fxMachine.changeVolume(state);
-        this.config.fxMachine.play("Click");
-        this.saveSettings();
-      });
-    }
+    }*/
 
     this._activateChildEntity(
       this.fullscreenSwitcher,
@@ -333,42 +400,17 @@ export class Menu extends extension.ExtendedCompositeEntity {
     booyah.changeGameState("paused");
     this.debugPressCount = 0;
 
+    // Check if the journal button should be activated or deactivated
     if (
-      !this.journalUpdated &&
       Object.keys(this.config.variableStorage.get("journalAnswers")).length > 0
     ) {
-      this.popupBackground.removeChild(this.journal);
-      this.journal = this.makeText("Journal", {
-        fontFamily: "Ubuntu",
-        fill: "white",
-        fontSize: 50,
-      });
-      this.journal.anchor.set(0.5);
-      this.journal.position.set(
-        this.popupBackground.width / 2,
-        this.popupBackground.height * 0.29
-      );
-      this.journal.interactive = true;
+      this.journal.alpha = 1;
       this.journal.buttonMode = true;
-      this._on(this.journal, "pointerup", () => {
-        this._activateChildEntity(
-          new popup.Confirm(
-            "Téléchargement du journal de la métacognition",
-            (validated: boolean) => {
-              if (!validated) return;
-              const journalDownload = new journal.JournalPDF();
-              this._activateChildEntity(journalDownload);
-              journalDownload.journalToPDF(
-                this.config.variableStorage.get("journalAnswers"),
-                this.makeSprite("images/journalPDF/background.png")
-              );
-              this._deactivateChildEntity(journalDownload);
-            }
-          )
-        );
-      });
-      this.popupBackground.addChild(this.journal);
-      this.journalUpdated = true;
+      this.journal.interactive = true;
+    } else {
+      this.journal.alpha = 0.5;
+      this.journal.buttonMode = false;
+      this.journal.interactive = false;
     }
 
     // Displaying the menu will be done in _onSignal()
@@ -467,6 +509,31 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   private _onTapPCLogo() {
     window.open("https://playcurious.games", "_blank");
+  }
+
+  private _downloadJournal() {
+    // If no journal entries exist, should do nothing
+    if (
+      Object.keys(this.config.variableStorage.get("journalAnswers")).length ===
+      0
+    )
+      return;
+
+    this._activateChildEntity(
+      new popup.Confirm(
+        "Téléchargement du journal de la métacognition",
+        (validated: boolean) => {
+          if (!validated) return;
+          const journalDownload = new journal.JournalPDF();
+          this._activateChildEntity(journalDownload);
+          journalDownload.journalToPDF(
+            this.config.variableStorage.get("journalAnswers"),
+            this.makeSprite("images/journalPDF/background.png")
+          );
+          this._deactivateChildEntity(journalDownload);
+        }
+      )
+    );
   }
 }
 

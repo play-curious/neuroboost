@@ -297,7 +297,7 @@ Vous vous rappelez ce que vous ont dit les 4 Sages. Dormir régulièrement, tous
 
 << loopFX Sleep_LOOP 5000 >>
 Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice.  #line:040ab85 
-<< stopFX Sleep >>
+<< stopFX Sleep_LOOP >>
 
 Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux. #line:0a71e55 
 
