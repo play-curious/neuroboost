@@ -25,7 +25,7 @@ const defaultSettings: Settings = {
 
 const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
   credits: {
-    Programming: ["Camille Abella", "André Quentin", "Maréchal Eliot"],
+    Programming: ["Camille Abella", "Quentin André", "Eliot Maréchal"],
     "Game Design": "Jesse Himmelstein",
     "Narrative Design": "Ronan Le Breton",
     "Sound Design": "Jean-Baptiste Mar",
