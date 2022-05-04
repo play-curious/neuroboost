@@ -28,6 +28,7 @@ const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
     Programming: ["Camille Abella", "Quentin André", "Eliot Maréchal"],
     "Game Design": "Jesse Himmelstein",
     "Narrative Design": "Ronan Le Breton",
+    Locator: "William Barreau",
     "Sound Design": "Jean-Baptiste Mar",
     "Graphic Design": [
       "Xuan Le",
