@@ -1,0 +1,545 @@
+﻿#gauges:learning,sleep,food,mentalLoad,stress
+
+title: Start
+tags:
+colorID: 0
+position: -893,370
+---
+<< fadeIn >>
+<< advanceTime 0:15 >>
+<< setBackground oral >>
+<< fadeOut >>
+
+Vous entrez dans la salle de théâtre. Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus. #line:071b428 
+Une fois l'exécution publique terminée, c'est votre tour. Vous angoissez, peu rassuré par ce que vous venez de voir... #line:0ba9287 
+
+<< addToGauge stress 20 >>
+
+Vous commencez par vous présenter au jury, ce dernier vous salue. Vous leur rappelez ce que vous avez choisi comme matière de Grand Oral : <b>la Philosophie quantique</b>. #line:08fe26e 
+L'un des jurés enfile des lunettes d'amplification de lumière, d'infravision... Vous ne savez pas vraiment pourquoi... Il vous fixe un moment avant de s'écrier : "La décohérence quantique"... #line:0ea98fb 
+
+<< addToGauge stress 20 >>
+
+Vous déglutissez difficilement. Vous avez soudainement chaud. Très chaud. Vous dégoulinez de sueur... #line:01e0f27 
+Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la réviser, même pas de la survoler. Vous n'avez que de vagues notions confuses, quelques bribes de connaissance qui ont du mal à s'emboîter, voire se contredisent... #line:0786002 
+La superposition des différents états au niveau microphilosophique s'effondre quand le penseur les analyse au niveau macrophilosophique. C'est un truc comme ça. Sauf que les postulats s'ordonnent mal et se contredisent.  #line:0e107dc 
+
+<< advanceTime 0:20 >>
+<< addToGauge stress 25 >>
+<< music NegativeSad >>
+
+Fichtre ! Vous vous sentez mal. Très mal... #line:02d4c97 
+Vous ne vous rappelez plus très bien la suite des événements. Tout est allé si vite. Et surtout, dans la mauvaise direction. Vous avez bredouillé, bafouillé des phrases maladroites, des affirmations hésitantes. #line:0d74a13 
+Puis, quand est venu le temps des questions-réponses... Ce fut le massacre. Le jury ne vous a épargné aucun coup, aucune humiliation. #line:0dbcc7e 
+
+<< advanceTime 0:10 >>
+
+Vous sortez de la salle en tremblant. C'est à peine si vous vous rappelez qui vous êtes et où vous êtes... #line:02751be 
+Vous êtes dégoûté par votre prestation devant le grand jury. Vous n'étiez pas du tout prêt. Vous êtes tombé sur un sujet que vous ne maîtrisiez pas, que vous ne connaissiez pas. #line:055277b 
+Pas la peine d'attendre les résultats pour savoir que vous avez royalement raté. Vous retournez dans votre chambre sans vraiment voir le trajet, ressassant sans cesse tout ce que vous avez mal fait... #line:0d4406a 
+
+<< fadeIn >>
+
+---
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle semaine de merde... #line:0da04e6 
+Le Grand Oral était une épreuve éliminatoire, et vous doutez que le jury vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues... #line:0c839f3 
+<< fx Sleep_LOOP >>
+-> Faire un gros somme #line:002a60d 
+    <<jump Reveil_Sage>>
+
+
+
+===
+title: Reveil_Sage
+tags: noUi
+position: -352.5212097167969,897.6408081054688
+---
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< music Mysterious >>
+
+
+???: Hello! Je te réveille? #line:07bbd4a 
+
+<<show temde>>
+<< fadeOut >>
+
+Vous vous redressez subitement ! Quel drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras... #line:09d34da 
+
+Temde_smiling: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse ! #line:04a714a 
+
+Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit. #line:044441f 
+Temde_smiling: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ? #line:065fb9c 
+
+<<prompt name Mon_nom_: Steve>>
+<<empty>>
+
+Temde_smiling: Enchantée { $name }. Lève-toi, on a du pain sur la planche ! #line:0fc2466 
+You: Suiiiiis faaaaaaatigué........... #line:01081e7 
+Temde_sad: Arrête tes jérémiades ! T'as bricolé comme tu as pu, ça n'a pas marché. T'as juste qu'à reprendre le chantier et basta ! #line:0b038e3 
+You: Noon ! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire ! #line:07f436e 
+You: J'ai raté, j'ai raté. C'est fini, foutu ! #line:0d2f065 
+Temde_smiling: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Tu vas réparer ton engin académique, je ne te dis que ça ! Allez suis-moi, on t'attend là-bas ! #line:020d3da 
+You: Qui m'attend ? Où là-bas ? #line:0940e22 
+Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit quand même ! #line:02f8956 
+
+-> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller #line:018cd35 
+    <<jump Tenter_rester_chambre>>
+-> Se laisser guider par l'irréelle Miss Temdé #line:0c2f10c 
+    << fadeIn >>
+    <<jump Assemblee_Sages>>
+===
+title: Tenter_rester_chambre
+tags: noUi
+position: -719.885986328125,901.3107299804688
+---
+You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laissez dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !! #line:061645d 
+Temde_thinking: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu... #line:0502659 
+
+Miss Temdé lève la paume d'une de ses mains cybernétiques... #line:03616cd 
+
+Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente. #line:0ff9b42 
+
+<< fx Warp >>
+<< fadeIn 1500 12ea12 >>
+<< hide ! >>
+
+<<jump Assemblee_Sages>>
+===
+title: Assemblee_Sages
+tags: noUi
+position: -562.1727294921875,1164.6718139648438
+---
+<< setBackground circle >>
+<< music Tense >>
+<< fadeOut >>
+
+L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes. #line:056b321 
+Temde_smiling: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenue chez nous, { $name }. #line:04f4f35 
+You: Mais.... #line:05cf2e4 
+Azul_happy: T'inquiète { $name }, mes confères et moi, on arrive parfois à lire dans tes pensées. C'est pour faciliter la communication. #line:0175283 
+Sapiens_happy: Tout à fait. Sinon nous risquerions de perdre un temps précieux dans des prolégomènes et des malentendus sans queue ni tête. #line:074dbc9 
+Temde_thinking: C'est ça oui. Comme si <b>Master Sapiens</b> savait faire court... #line:059e2d8 
+Ledai_doubtful: Du calme <b>Master Sapiens</b> et <b>Miss Temdé</b>. Vous connaissez le protocole, alors procédons à celui-ci... #line:0916925 
+Azul_sad: Attendez messieurs. C'est la première nuit que nous nous immisçons dans la vie de { $name }. Notre visiteur de ce soir ne sait plus à quel sage se vouer. Surtout qu'il ne nous connaît pas encore. #line:056b14e 
+Sapiens_thinking: Très juste, <b>Azul</b>. Puisque j'ai pris la parole, je me présente : je suis <b>Master Sapiens</b>, le Gardien des Savoirs #line:08b4377 
+Ledai_explaining: Et moi, je suis <b>Ledaï</b>, le Gardien des Pratiques. #line:0f3a432 
+Azul_proud: Enchanté de te rencontrer, { $name }. On m'appelle <b>Azul</b>, le Gardien des Précognitions. #line:0f4924c 
+Ledai_explaining: Et tu as déjà fait la connaissance de notre 4e sage <b>Miss Temdé</b>... #line:039d16f 
+Temde_smiling: ... La Gardienne des Improvisations. #line:0e517ee 
+You: C'est pas possible, mon rêve devient de plus en plus en délirant. #line:032929f 
+Azul_happy: Pas du tout { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens. #line:077fe88 
+Sapiens_thinking: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi. #line:081c094 
+
+<< music Neutral >>
+
+-> Cékoilamétaconnexion??? #line:081277c 
+    <<jump Metaconnexion>>
+-> La Métacognition, déjà entendu parler #line:0a736bc 
+    <<jump Metacognition>>
+===
+title: Metaconnexion
+tags: noUi
+position: -878.8255004882812,1170.7235107421875
+---
+You: Heuuuuu... J'ai rien compris de ce vous avez dit. La métaconnexion ??? #line:02434a3 
+Azul_proud: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien. #line:06f975d 
+Temde_smiling: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de faire ! Et de trouver une solution qui marche ! #line:0fc8373 
+Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences... #line:005e8f4 
+You: Les neurosciences ? #line:06ba656 
+Sapiens_happy: Les sciences appliquées au fonctionnement de tes processus mentaux. #line:07d59a3 
+You: Quoi ? #line:0d3befd 
+Temde_sad: Quel est le mode d'emploi de ton cerveau, quoi. #line:0f1b183 
+Sapiens_concerned: Hum... J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière. #line:02856f8 
+Azul_sad: Pardonnez-lui, <b>Master Sapiens</b>. <b>Miss Temdé</b> n'y met pas les formes, mais sa pédagogie s'est révélé parfois percutante. #line:0bf50b9 
+Sapiens_concerned: Moui... #line:0d32c0c 
+You: Et la métacognition alors ? #line:07fd606 
+Sapiens_thinking: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux. #line:031e501 
+You: Hein ??? #line:090bf79 
+Azul_happy: C'est-à-dire comment apprendre... à apprendre ! #line:011a5d4 
+
+<<jump Metacognition>>
+===
+title: Metacognition
+tags: noUi
+position: -730.5562744140625,1421.6199951171875
+---
+You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage ? #line:0da69a4 
+Ledai_happy: Bravo, { $name }, je n'aurai pas dit mieux. #line:07186d1 
+Sapiens_happy: Je sens que nous avons ce soir, un candidat d'exception. #line:0b356d7
+Ledai_happy: Bien, maintenant que les présentations sont faites et que tout est au clair, nous devrions nous éclipser et exécuter notre rôle : donner à notre disciple une 
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+<< empty >>
+<< fadeIn 1 >>
+<< setBackground bedroom >>
+<< setTime 8:00>>
+<< loopFX Chime_LOOP 2000 >>
+<< showGauges >>
+<< fadeOut >>
+
+Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.  #line:0282b9b 
+
+<< stopFX Chime_LOOP >>
+<< music Neutral >>
+
+Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:00aae49 
+
+<< loopFX PhoneRing_LOOP 5000 >>
+Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler. #line:0c10bcd 
+-> Prendre l'appel #line:0c4a7b0 
+    <<jump Appel_Fred_Rewind>>
+-> Rejeter l'appel #line:062f62e 
+    <<jump Rejet_Fred_Rewind>>
+===
+title: Appel_Fred_Rewind
+tags: 
+colorID: 0
+position: -592,376
+---
+<< stopFX PhoneRing_LOOP >>
+
+Fred@holo_excited: Hello ! c'est Fred ! #line:0fb4525 
+You: Qu'est-ce que tu veux me dire cette fois-ci ? #line:0d1a13b 
+Fred@holo_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin... #line:039d35b 
+You: Normal, j'ai foiré le partiel d'Atronometric Data Management. #line:09b04e6 
+Fred@holo_smiling: Yes, la bonne blague, c'est cet après-midi qu'on le passe ! #line:057105b 
+You: Quoi ?! #line:080aa84 
+Fred@holo_smiling: Yes, on est lundi matin. C'est ce qui est prévu. #line:0af11a5 
+You: Lundi ?! Mais c'était hier !! #line:0f2a881 
+Fred@holo_happy: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui. #line:03aa008 
+You: C'est dingue ! Je rêve ou quoi ? #line:0b5f597 
+Fred@holo_smiling: No no, je t'assure que c'est la réalité, coco. #line:0c6db74 
+You: Euh... #line:007c5ec 
+Fred@holo_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ? #line:03c1f6b 
+You: Euh, ok... #line:03e0c76 
+
+<< hide >>
+
+Vous raccrochez sans vous en rendre compte #line:077b761 
+
+<< advanceTime 0:15 >>
+
+<<jump Phone_off_Rewind>>
+===
+title: Rejet_Fred_Rewind
+tags:
+colorID: 0
+position: -758,62
+---
+Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais vaincu. Il vous rappelle aussitôt ! #line:064cdc3 
+-> Prendre l'appel #line:04b2664 
+    <<jump Appel_Fred_Rewind>>
+===
+title: Phone_off_Rewind
+tags:
+colorID: 0
+position: -342,363
+---
+<< setBackground bedroom >>
+<< fadeOut >>
+Mais c'est quoi ce truc ?! On dirait que vous avez fait un bon en arrière dans le temps ! Vous allez pouvoir repasser le partiel d'Atronometric Data Management. C'est la chance du siècle ! #line:0d751d6 
+Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre ! #line:020bca4 
+
+<<showGauges>>
+Il vous reste 6 heures avant l'heure H... Aujourd'hui, vous allez montrer à Fred qui est le Big Winner de l'Académie ! #line:0cfadf9 
+
+<<jump Action_List_Rewind>>
+===
+title: Action_List_Rewind
+tags: freechoice
+colorID: 0
+position: -895,604
+---
+<< setBackground bedroom >>
+<< fadeOut >>
+
+<< if !visited("Action_List") >>
+<< visit Action_List >>
+Que faites-vous maintenant? #line:03f3124 
+<< endif >>
+
+<< if isTimeOver("12:00") >>
+Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe. #line:0424ed0 
+-> Manger (à midi) #line:0526b3b 
+    <<jump Lunch_Rewind>>
+<< else>>
+-> Cuisine@cuisine #line:0b8d567 
+    <<jump cuisine_subchoice>>
+-> Bureau@bureau #line:0027a0c 
+    <<jump bureau_subchoice>>
+-> Salon@salon #line:021edd5 
+    <<jump salon_subchoice>>
+<< endif>>
+===
+title: cuisine_subchoice
+tags: subchoice
+position: -319.1514720916748,-55.38755989074707
+---
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+-> Prendre le petit déjeuner #line:079d0ff 
+    <<jump Petit_dej_Rewind>>
+-> back #line:0fad580 
+    << fadeIn >>
+    <<jump Action_List_Rewind>>
+===
+title: bureau_subchoice
+tags: subchoice
+position: -993.6492929458618,-75.37680292129517
+---
+<< fadeIn >>
+<< setBackground bedroom desk >>
+<< fadeOut >>
+-> Passer du temps sur le chat avec le pote d'une autre Université #line:026de4e 
+    <<jump Chat_Rewind>>
+-> Réviser cette fichue Astronometric Data Management #line:070f359 
+    <<jump Revision_Rewind>>
+-> Essayer le rappel libre #line:0310da3 
+    <<jump Rappel_libre>>
+-> back #line:0a06fb6 
+    << fadeIn >>
+    <<jump Action_List_Rewind>>
+===
+title: salon_subchoice
+tags: subchoice
+position: -1716.8310852050781,-38.99417304992676
+---
+<< fadeIn >>
+<< setBackground bedroom chill >>
+<< fadeOut >>
+-> Binger votre série TV préférée #line:0f2e31c 
+    <<jump BingeTV_Rewind>>
+-> back #line:0341673 
+    <<jump Action_List_Rewind>>
+===
+title: Lunch_Rewind
+tags:
+colorID: 7
+position: -1284,1084
+---
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+<< fx EatCook >>
+
+Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... #line:046846a 
+D'accord, ce repas est bien chargé en calories et en caféine, mais vous avez mangé le même hier. Ça commence à bien faire ces sensations de "déjà-vu"... #line:0e88c64 
+Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route ! #line:0f21e5a 
+
+<< advanceTime 0:30 >>
+
+-> Il est temps de battre votre précédent score! #line:02b7a89 
+    <<jump Test_Rewind>>
+===
+title: Petit_dej_Rewind
+tags:
+colorID: 0
+position: -1040,831
+---
+<< fx EatCook >>
+
+Encore un petit déjeuner chimicookies arrosé d'un synthécafé. C'est clair que ce matin dégage un étrange air de "déjà-vu"... #line:0ac0772 
+Bon, ce n'est pas tout. #line:0d01fa8 
+
+<< advanceTime 0:30 >>
+
+<< fadeIn >>
+<<jump Action_List_Rewind>>
+===
+title: Chat_Rewind
+tags:
+colorID: 0
+position: -755,827
+---
+<b>Pensez-vous vraiment que c'est ce que vous a recommandé les 4 Sages de la Métacognition?</b> #line:0349739 
+
+Peu importe, il est trop tard maintenant, vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. Vous êtes pingé par Alex, vous engagez la conversation. #line:0ecf0bf 
+
+<< fx Notification >>
+
+Ensuite, c'est Dom, puis Lou, puis Cam... #line:008f37e 
+
+<< if visited("Chat") >>
+<bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi> #line:0cd34ae 
+<< endif >>
+
+<< advanceTime 2:00 >>
+
+Vous passez deux heures à discuter de tout, mais surtout de rien. #line:06ab06b 
+
+<< fadeIn >>
+<<jump Action_List_Rewind>>
+===
+title: Revision_Rewind
+tags:
+colorID: 0
+position: -508,824
+---
+Vous ouvrez une nouvelle fois votre dossier Astrometric Data Management. Qu'est-ce que c'est barbant... Mais cette fois, vous ravalez votre bile. #line:0ca527e 
+Aujourd'hui, vous voulez réussir votre journée. Vous voulez coiffer Fred au poteau! Vous aussi, vous aurez un <i>A+</i> #line:04765d7 
+
+<< advanceTime 2:00 >>
+
+<< addToGauge learning 45 >>
+
+Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à potasser ce long pensum ennuyeux ! Beuark ! #line:0cd60f9 
+
+<< fadeIn >>
+<<jump Action_List_Rewind>>
+===
+title: BingeTV_Rewind
+tags:
+colorID: 0
+position: -288,823
+---
+
+<bi>Pensez-vous vraiment que c'est ce que vous ont recommandé les 4 Sages de la Métacognition?</bi> #line:04a07cf 
+Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés. Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber. #line:0ff050f 
+
+<< show lightsaber@holo >>
+<< loopFX TVStarwars_LOOP 10000 >>
+
+Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable corsaire Yann Salto. #line:0dd0537 
+Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... #line:0335c72 
+
+<< if visited("BingeTV") >>
+<bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi> #line:0a04f28 
+<< endif >>
+
+En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait amocher son vaisseau ! Il est obligé d'atterrir en catastrophe sur Tortuga.  Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite. #line:0f4f9b7 
+
+<< advanceTime 4:00 13:00 1:00 >>
+<< stopFX TVStarwars_LOOP >>
+<< hide >>
+
+Au final vous passez trop de temps à binger votre série préférée. #line:023c509 
+
+<< fadeIn >>
+<<jump Action_List_Rewind>>
+===
+title: Rappel_libre
+tags:
+colorID: 0
+position: -42,822
+---
+Il est temps d'appliquer la méthode miracle que vous ont enseignée ces esprits qui vous ont parlé durant votre sommeil. #line:0b8f655 
+Vous essayez de vous souvenir de ce que vous avez retenu en cours. Ce n'est pas brillant. Vous vous ne que souvenez de très peu de choses. Pas étonnant, vous n'aimez pas cette matière. #line:07f35ff 
+Mais lorsque vous replongez dans la lecture pour verifier vos réponses, vous constatez que ça vous aide vraiment à mettre de l'ordre dans votre esprit. Il y a encore du travail à faire, mais ça sort plus facilement de votre tête ! #line:080fdf4 
+
+<< visit Rappel_libre >>
+<< addToGauge learning 100 >>
+
+Vous prenez encore le temps de relire votre cours pour combler les lacunes qui vous gênent encore. Résultat, vous vous sentez bien plus prêt à attaquer l'examen cette fois. #line:0988ada 
+
+<< advanceTime 2:00 >>
+
+<< fadeIn >>
+<<jump Action_List_Rewind>>
+===
+title: Test_Rewind
+tags:
+colorID: 0
+position: -1007,1085
+---
+<< fadeIn >>
+<< setBackground class >>
+<< setTime 14:00 >>
+<< fadeOut >>
+
+Vous voilà désormais dans la grande salle. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b> que le compteur se met en route. #line:0352286 
+
+<< advanceTime 4:00 >>
+
+Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Ce coup-ci, vous êtes sûr de vous. Bingo ! Vous allez y arriver !! #line:006d985 
+
+Euphorique, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe. #line:0b43c25 
+
+<<jump Post_Test_Rewind>>
+===
+title: Post_Test_Rewind
+tags: 
+colorID: 0
+position: -742,1087
+---
+<< fadeIn >>
+<< setBackground door class >>
+<< fadeOut >>
+
+Fred_excited: Alors, ça l'a fait ? #line:0cbca32 
+You: Ouais ! Trop facile ! #line:0c9acae 
+Fred_happy: Yes, je suis content pour toi. Toi qui n'aimais pas cette matière. #line:084e7f4 
+You: Ouais, mais ce coup-ci, j'ai mis le paquet ! #line:0266bbe 
+Fred_smiling: Ahhhh... Génial ! #line:014e2cf 
+You: Je vais avoir <b>A</b> ! #line:00808f8 
+Fred_happy: No... Pas moins ? #line:0f7880c 
+You: Je te le dis ! #line:08f2afc 
+Fred_smiling: C'est génial ! Je t'ai encore jamais vu comme ça. #line:072af68 
+You: Ouais ! #line:01fabda 
+
+<< advanceTime 0:15 >>
+
+Fred s'apprête à vous répondre quand la sonnerie retentit. #line:02b4a63 
+<< fx Notification >>
+
+<< hide >>
+<< setBackground door class-screen >>
+Les résultats du test viennent de tomber... #line:0509cfb 
+
+<< if visited("Rappel_libre") >>
+-> Consulter les résultats #line:09b16c0 
+    <<jump Resultats_Good>>
+<< else >>
+-> Consulter les résultats #line:0524065 
+    <<jump Resultats_Bad_Again>>
+<< endif >>
+===
+title: Resultats_Good
+tags: 
+colorID: 0
+position: -529,1332
+---
+<< empty >>
+<< music Victory >>
+<< fx Success >>
+
+Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore... #line:0395b52 
+
+Fred_smiling: Hé, C'est vachement bien pour une matière que tu détestes. #line:085368d 
+You: Facile à dire pour toi. Tu as eu <b>A+</b> #line:04e24fc 
+Fred_happy: Et alors ? Tu feras mieux la prochaine fois. #line:038278d 
+<< hide >>
+
+<< advanceTime 0:05 >>
+===
+title: Resultats_Bad_Again
+tags:
+colorID: 0
+position: -476,1087
+---
+TaTaTaTa... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition. #line:0da87fe 
+
+Tentez à nouveau de passer ce premier examen... #line:0ac7005 
+
+<< setTime 8:15 >>
+
+<< fadeIn >>
+<< resetLevel >>
+<<jump Phone_off_Rewind>>
+===
