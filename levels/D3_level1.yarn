@@ -391,7 +391,7 @@ position: -427,-43
 Pfuuuu... Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps... Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. #line:050998f 
 Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte. #line:01ea25b 
 Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !... #line:0a80fc6 
-N'empêche, vous sentez votre tête penchez en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrer dans le noir... #line:02fb7a3 
+N'empêche, vous sentez votre tête pencher en avant. Vous tentez de la redresser, mais la fatigue, la charge est trop forte. Vous finissez par céder. Vous sombrez dans le noir... #line:02fb7a3 
 << fadeIn >>
 
 Puis, vous entendez une voix familière: #line:0fe6b9c 
@@ -401,7 +401,7 @@ You: Tais-toi, Miss Temdé ! #line:0b5c0c2
 << fadeOut >>
 Azul_proud: Raté, c'est moi, Azul. #line:0508ea5 
 You: Zut... #line:00470e3 
-Azul_happy: Pas grave, viens, on a une nouveau truc à t'apprendre. #line:0a4a5d0 
+Azul_happy: Pas grave, viens, on a un nouveau truc à t'apprendre. #line:0a4a5d0 
 
 -> Suivre Azul  #line:07c135a 
     << hide >>
@@ -488,7 +488,7 @@ position: -184,504
 
 << if $ballsJuggled < 5 >>
 Temde_smiling: Tu vois, tu ne peux pas jongler autant de balles que moi. #line:0f6c696 
-Temde_thinking: Mais, moi aussi, j'ai mes limites. J'ai beau jonglé 6 balles, mais je ne pourrais pas jonger 7, ou 8, ou 12 !   #line:08f0c22 
+Temde_thinking: Mais, moi aussi, j'ai mes limites. J'ai beau jongler 6 balles, mais je ne pourrais pas jonger 7, ou 8, ou 12 !   #line:08f0c22 
 Azul_happy: Nous en avons tous des limites... #line:0007bae 
 << else >>
 Temde_smiling: Bravo ! Tu a réussi à jongler autant de balles que moi. #line:047ca36 

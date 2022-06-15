@@ -6,12 +6,19 @@ colorID: 0
 position: -893,370
 ---
 << fadeIn >>
+<<showGauges>>
 << advanceTime 0:15 >>
 << setBackground oral >>
 << fadeOut >>
 
+Voilà finalement venu le Grand Oral. L'Académie d'Omniscience et de Polytechnologie Universelle met beaucoup d'emphase sur l'importance de cette épreuve dès la première année. Souvent impitoyable, elle met les élèves en difficulté et indiquent s'ils sont aptes à continuer leur cursus.
+
+Autrement dit, cette épreuve est éliminatoire.
+
 Vous entrez dans la salle de théâtre. Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus. #line:071b428 
 Une fois l'exécution publique terminée, c'est votre tour. Vous angoissez, peu rassuré par ce que vous venez de voir... #line:0ba9287 
+
+Il faut avouer que ces derniers temps, vous avez été accablé par des notes plutôt désastreuses. Vous vous sentez déboussolé face à la masse d'informations à retenir que demande l'Académie.
 
 << addToGauge stress 20 >>
 
@@ -41,11 +48,12 @@ Pas la peine d'attendre les résultats pour savoir que vous avez royalement rat�
 << fadeIn >>
 
 ---
+<< setTime 17:00 >>
 << fadeIn >>
 << setBackground bedroom night >>
 << fadeOut >>
 Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle semaine de merde... #line:0da04e6 
-Le Grand Oral était une épreuve éliminatoire, et vous doutez que le jury vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues... #line:0c839f3 
+Le Grand Oral était une épreuve éliminatoire, et vous doutez fortement que le jury ne vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues... #line:0c839f3 
 << fx Sleep_LOOP >>
 -> Faire un gros somme #line:002a60d 
     <<jump Reveil_Sage>>
@@ -96,7 +104,7 @@ title: Tenter_rester_chambre
 tags: noUi
 position: -719.885986328125,901.3107299804688
 ---
-You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laissez dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !! #line:061645d 
+You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laissez dormir paisiblement. Je suis crevé et je dois faire mes valises demain ! J'ai besoin de reprendre des forces !! #line:061645d 
 Temde_thinking: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu... #line:0502659 
 
 Miss Temdé lève la paume d'une de ses mains cybernétiques... #line:03616cd 
@@ -170,376 +178,19 @@ position: -730.5562744140625,1421.6199951171875
 You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage ? #line:0da69a4 
 Ledai_happy: Bravo, { $name }, je n'aurai pas dit mieux. #line:07186d1 
 Sapiens_happy: Je sens que nous avons ce soir, un candidat d'exception. #line:0b356d7
-Ledai_happy: Bien, maintenant que les présentations sont faites et que tout est au clair, nous devrions nous éclipser et exécuter notre rôle : donner à notre disciple une 
+Ledai_happy: Bien, maintenant que les présentations sont faites et que tout est au clair, nous devrions nous éclipser et exécuter notre rôle...
+Azul_happy: C'est vrai. Nous ne voudrions pas déboussoler { $name } dès notre première intervention !
 
+<< fx Warp >>
+<< fadeIn 100 ffffff >>
+<< hide ! >>
+<< setBackground bedroom night >>
+<< fadeOut 400 >>
 
-
-
-
-
-
-
-
-
-
-
-
----
-<< empty >>
-<< fadeIn 1 >>
-<< setBackground bedroom >>
-<< setTime 8:00>>
-<< loopFX Chime_LOOP 2000 >>
-<< showGauges >>
-<< fadeOut >>
-
-Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.  #line:0282b9b 
-
-<< stopFX Chime_LOOP >>
-<< music Neutral >>
-
-Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:00aae49 
-
-<< loopFX PhoneRing_LOOP 5000 >>
-Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler. #line:0c10bcd 
--> Prendre l'appel #line:0c4a7b0 
-    <<jump Appel_Fred_Rewind>>
--> Rejeter l'appel #line:062f62e 
-    <<jump Rejet_Fred_Rewind>>
-===
-title: Appel_Fred_Rewind
-tags: 
-colorID: 0
-position: -592,376
----
-<< stopFX PhoneRing_LOOP >>
-
-Fred@holo_excited: Hello ! c'est Fred ! #line:0fb4525 
-You: Qu'est-ce que tu veux me dire cette fois-ci ? #line:0d1a13b 
-Fred@holo_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin... #line:039d35b 
-You: Normal, j'ai foiré le partiel d'Atronometric Data Management. #line:09b04e6 
-Fred@holo_smiling: Yes, la bonne blague, c'est cet après-midi qu'on le passe ! #line:057105b 
-You: Quoi ?! #line:080aa84 
-Fred@holo_smiling: Yes, on est lundi matin. C'est ce qui est prévu. #line:0af11a5 
-You: Lundi ?! Mais c'était hier !! #line:0f2a881 
-Fred@holo_happy: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui. #line:03aa008 
-You: C'est dingue ! Je rêve ou quoi ? #line:0b5f597 
-Fred@holo_smiling: No no, je t'assure que c'est la réalité, coco. #line:0c6db74 
-You: Euh... #line:007c5ec 
-Fred@holo_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ? #line:03c1f6b 
-You: Euh, ok... #line:03e0c76 
-
-<< hide >>
-
-Vous raccrochez sans vous en rendre compte #line:077b761 
-
-<< advanceTime 0:15 >>
-
-<<jump Phone_off_Rewind>>
-===
-title: Rejet_Fred_Rewind
-tags:
-colorID: 0
-position: -758,62
----
-Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais vaincu. Il vous rappelle aussitôt ! #line:064cdc3 
--> Prendre l'appel #line:04b2664 
-    <<jump Appel_Fred_Rewind>>
-===
-title: Phone_off_Rewind
-tags:
-colorID: 0
-position: -342,363
----
-<< setBackground bedroom >>
-<< fadeOut >>
-Mais c'est quoi ce truc ?! On dirait que vous avez fait un bon en arrière dans le temps ! Vous allez pouvoir repasser le partiel d'Atronometric Data Management. C'est la chance du siècle ! #line:0d751d6 
-Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre ! #line:020bca4 
-
-<<showGauges>>
-Il vous reste 6 heures avant l'heure H... Aujourd'hui, vous allez montrer à Fred qui est le Big Winner de l'Académie ! #line:0cfadf9 
-
-<<jump Action_List_Rewind>>
-===
-title: Action_List_Rewind
-tags: freechoice
-colorID: 0
-position: -895,604
----
-<< setBackground bedroom >>
-<< fadeOut >>
-
-<< if !visited("Action_List") >>
-<< visit Action_List >>
-Que faites-vous maintenant? #line:03f3124 
-<< endif >>
-
-<< if isTimeOver("12:00") >>
-Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe. #line:0424ed0 
--> Manger (à midi) #line:0526b3b 
-    <<jump Lunch_Rewind>>
-<< else>>
--> Cuisine@cuisine #line:0b8d567 
-    <<jump cuisine_subchoice>>
--> Bureau@bureau #line:0027a0c 
-    <<jump bureau_subchoice>>
--> Salon@salon #line:021edd5 
-    <<jump salon_subchoice>>
-<< endif>>
-===
-title: cuisine_subchoice
-tags: subchoice
-position: -319.1514720916748,-55.38755989074707
----
-<< fadeIn >>
-<< setBackground bedroom kitchen >>
-<< fadeOut >>
--> Prendre le petit déjeuner #line:079d0ff 
-    <<jump Petit_dej_Rewind>>
--> back #line:0fad580 
-    << fadeIn >>
-    <<jump Action_List_Rewind>>
-===
-title: bureau_subchoice
-tags: subchoice
-position: -993.6492929458618,-75.37680292129517
----
-<< fadeIn >>
-<< setBackground bedroom desk >>
-<< fadeOut >>
--> Passer du temps sur le chat avec le pote d'une autre Université #line:026de4e 
-    <<jump Chat_Rewind>>
--> Réviser cette fichue Astronometric Data Management #line:070f359 
-    <<jump Revision_Rewind>>
--> Essayer le rappel libre #line:0310da3 
-    <<jump Rappel_libre>>
--> back #line:0a06fb6 
-    << fadeIn >>
-    <<jump Action_List_Rewind>>
-===
-title: salon_subchoice
-tags: subchoice
-position: -1716.8310852050781,-38.99417304992676
----
-<< fadeIn >>
-<< setBackground bedroom chill >>
-<< fadeOut >>
--> Binger votre série TV préférée #line:0f2e31c 
-    <<jump BingeTV_Rewind>>
--> back #line:0341673 
-    <<jump Action_List_Rewind>>
-===
-title: Lunch_Rewind
-tags:
-colorID: 7
-position: -1284,1084
----
-<< fadeIn >>
-<< setBackground bedroom kitchen >>
-<< fadeOut >>
-<< fx EatCook >>
-
-Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... #line:046846a 
-D'accord, ce repas est bien chargé en calories et en caféine, mais vous avez mangé le même hier. Ça commence à bien faire ces sensations de "déjà-vu"... #line:0e88c64 
-Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route ! #line:0f21e5a 
-
-<< advanceTime 0:30 >>
-
--> Il est temps de battre votre précédent score! #line:02b7a89 
-    <<jump Test_Rewind>>
-===
-title: Petit_dej_Rewind
-tags:
-colorID: 0
-position: -1040,831
----
-<< fx EatCook >>
-
-Encore un petit déjeuner chimicookies arrosé d'un synthécafé. C'est clair que ce matin dégage un étrange air de "déjà-vu"... #line:0ac0772 
-Bon, ce n'est pas tout. #line:0d01fa8 
-
-<< advanceTime 0:30 >>
+Vous vous tenez à nouveau dans la pénombre de votre chambre d'étudiant, éclairée par la faible lueur d'une faible lampe de chevet.
+Qu'est-ce qu'il vient de vous arriver ? Un rêve, une hallucination sortie de votre cerveau épuisé ? Vous remettez ces questions à demain et vous endormez très vite, bordé par l'espoir que vous ont donné ces êtres étranges ...
 
 << fadeIn >>
-<<jump Action_List_Rewind>>
 ===
-title: Chat_Rewind
-tags:
-colorID: 0
-position: -755,827
----
-<b>Pensez-vous vraiment que c'est ce que vous a recommandé les 4 Sages de la Métacognition?</b> #line:0349739 
 
-Peu importe, il est trop tard maintenant, vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. Vous êtes pingé par Alex, vous engagez la conversation. #line:0ecf0bf 
 
-<< fx Notification >>
-
-Ensuite, c'est Dom, puis Lou, puis Cam... #line:008f37e 
-
-<< if visited("Chat") >>
-<bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi> #line:0cd34ae 
-<< endif >>
-
-<< advanceTime 2:00 >>
-
-Vous passez deux heures à discuter de tout, mais surtout de rien. #line:06ab06b 
-
-<< fadeIn >>
-<<jump Action_List_Rewind>>
-===
-title: Revision_Rewind
-tags:
-colorID: 0
-position: -508,824
----
-Vous ouvrez une nouvelle fois votre dossier Astrometric Data Management. Qu'est-ce que c'est barbant... Mais cette fois, vous ravalez votre bile. #line:0ca527e 
-Aujourd'hui, vous voulez réussir votre journée. Vous voulez coiffer Fred au poteau! Vous aussi, vous aurez un <i>A+</i> #line:04765d7 
-
-<< advanceTime 2:00 >>
-
-<< addToGauge learning 45 >>
-
-Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à potasser ce long pensum ennuyeux ! Beuark ! #line:0cd60f9 
-
-<< fadeIn >>
-<<jump Action_List_Rewind>>
-===
-title: BingeTV_Rewind
-tags:
-colorID: 0
-position: -288,823
----
-
-<bi>Pensez-vous vraiment que c'est ce que vous ont recommandé les 4 Sages de la Métacognition?</bi> #line:04a07cf 
-Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés. Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber. #line:0ff050f 
-
-<< show lightsaber@holo >>
-<< loopFX TVStarwars_LOOP 10000 >>
-
-Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable corsaire Yann Salto. #line:0dd0537 
-Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... #line:0335c72 
-
-<< if visited("BingeTV") >>
-<bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi> #line:0a04f28 
-<< endif >>
-
-En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait amocher son vaisseau ! Il est obligé d'atterrir en catastrophe sur Tortuga.  Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite. #line:0f4f9b7 
-
-<< advanceTime 4:00 13:00 1:00 >>
-<< stopFX TVStarwars_LOOP >>
-<< hide >>
-
-Au final vous passez trop de temps à binger votre série préférée. #line:023c509 
-
-<< fadeIn >>
-<<jump Action_List_Rewind>>
-===
-title: Rappel_libre
-tags:
-colorID: 0
-position: -42,822
----
-Il est temps d'appliquer la méthode miracle que vous ont enseignée ces esprits qui vous ont parlé durant votre sommeil. #line:0b8f655 
-Vous essayez de vous souvenir de ce que vous avez retenu en cours. Ce n'est pas brillant. Vous vous ne que souvenez de très peu de choses. Pas étonnant, vous n'aimez pas cette matière. #line:07f35ff 
-Mais lorsque vous replongez dans la lecture pour verifier vos réponses, vous constatez que ça vous aide vraiment à mettre de l'ordre dans votre esprit. Il y a encore du travail à faire, mais ça sort plus facilement de votre tête ! #line:080fdf4 
-
-<< visit Rappel_libre >>
-<< addToGauge learning 100 >>
-
-Vous prenez encore le temps de relire votre cours pour combler les lacunes qui vous gênent encore. Résultat, vous vous sentez bien plus prêt à attaquer l'examen cette fois. #line:0988ada 
-
-<< advanceTime 2:00 >>
-
-<< fadeIn >>
-<<jump Action_List_Rewind>>
-===
-title: Test_Rewind
-tags:
-colorID: 0
-position: -1007,1085
----
-<< fadeIn >>
-<< setBackground class >>
-<< setTime 14:00 >>
-<< fadeOut >>
-
-Vous voilà désormais dans la grande salle. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b> que le compteur se met en route. #line:0352286 
-
-<< advanceTime 4:00 >>
-
-Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Ce coup-ci, vous êtes sûr de vous. Bingo ! Vous allez y arriver !! #line:006d985 
-
-Euphorique, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe. #line:0b43c25 
-
-<<jump Post_Test_Rewind>>
-===
-title: Post_Test_Rewind
-tags: 
-colorID: 0
-position: -742,1087
----
-<< fadeIn >>
-<< setBackground door class >>
-<< fadeOut >>
-
-Fred_excited: Alors, ça l'a fait ? #line:0cbca32 
-You: Ouais ! Trop facile ! #line:0c9acae 
-Fred_happy: Yes, je suis content pour toi. Toi qui n'aimais pas cette matière. #line:084e7f4 
-You: Ouais, mais ce coup-ci, j'ai mis le paquet ! #line:0266bbe 
-Fred_smiling: Ahhhh... Génial ! #line:014e2cf 
-You: Je vais avoir <b>A</b> ! #line:00808f8 
-Fred_happy: No... Pas moins ? #line:0f7880c 
-You: Je te le dis ! #line:08f2afc 
-Fred_smiling: C'est génial ! Je t'ai encore jamais vu comme ça. #line:072af68 
-You: Ouais ! #line:01fabda 
-
-<< advanceTime 0:15 >>
-
-Fred s'apprête à vous répondre quand la sonnerie retentit. #line:02b4a63 
-<< fx Notification >>
-
-<< hide >>
-<< setBackground door class-screen >>
-Les résultats du test viennent de tomber... #line:0509cfb 
-
-<< if visited("Rappel_libre") >>
--> Consulter les résultats #line:09b16c0 
-    <<jump Resultats_Good>>
-<< else >>
--> Consulter les résultats #line:0524065 
-    <<jump Resultats_Bad_Again>>
-<< endif >>
-===
-title: Resultats_Good
-tags: 
-colorID: 0
-position: -529,1332
----
-<< empty >>
-<< music Victory >>
-<< fx Success >>
-
-Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore... #line:0395b52 
-
-Fred_smiling: Hé, C'est vachement bien pour une matière que tu détestes. #line:085368d 
-You: Facile à dire pour toi. Tu as eu <b>A+</b> #line:04e24fc 
-Fred_happy: Et alors ? Tu feras mieux la prochaine fois. #line:038278d 
-<< hide >>
-
-<< advanceTime 0:05 >>
-===
-title: Resultats_Bad_Again
-tags:
-colorID: 0
-position: -476,1087
----
-TaTaTaTa... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition. #line:0da87fe 
-
-Tentez à nouveau de passer ce premier examen... #line:0ac7005 
-
-<< setTime 8:15 >>
-
-<< fadeIn >>
-<< resetLevel >>
-<<jump Phone_off_Rewind>>
-===

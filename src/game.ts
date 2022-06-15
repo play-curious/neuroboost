@@ -84,6 +84,8 @@ const startingScene =
 
 // prettier-ignore
 const stateNames = [
+  "Prologue",
+  "C1",
   "D1_level1",
   "journal_method",
   "D1_level2",
