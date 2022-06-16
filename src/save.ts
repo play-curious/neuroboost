@@ -6,6 +6,8 @@ import * as variable from "./variable";
 import * as dialog from "./dialog";
 import * as popup from "./popup";
 
+const firstLevel = "Prologue";
+
 export interface SaveData {
   levelName: string;
   nodeName: string;
@@ -143,14 +145,14 @@ export class StartMenu extends extension.ExtendedCompositeEntity {
                 (ok) => {
                   if (ok) {
                     deleteSave();
-                    this._transition = entity.makeTransition("D1_level1");
+                    this._transition = entity.makeTransition(firstLevel);
                   }
                 }
               )
             );
           } else {
             deleteSave();
-            this._transition = entity.makeTransition("D1_level1");
+            this._transition = entity.makeTransition(firstLevel);
           }
         });
       }

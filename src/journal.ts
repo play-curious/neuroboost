@@ -135,10 +135,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
   private _htmlContainer: HTMLElement;
 
-  constructor(
-    private variableStorage: variable.VariableStorage,
-    private option: string
-  ) {
+  constructor(private name: string) {
     super();
   }
 
@@ -162,7 +159,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
     htmlLayer.appendChild(this._htmlContainer);
 
     const leftElements = document.createElement("div");
-    const answers = options[this.option].closeQuestion.answers;
+    const answers = options[this.name].closeQuestion.answers;
     const answersInputs: HTMLInputElement[] = [];
     {
       leftElements.style.position = "absolute";
@@ -175,10 +172,10 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
 
       leftElements.insertAdjacentHTML(
         "beforeend",
-        `<p>${options[this.option].closeQuestion.question}</h1>`
+        `<p>${options[this.name].closeQuestion.question}</h1>`
       );
 
-      const answers = options[this.option].closeQuestion.answers;
+      const answers = options[this.name].closeQuestion.answers;
 
       for (let i = 0; i < answers.length; i++) {
         const answer: HTMLInputElement = document.createElement("input");
@@ -202,7 +199,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       this._htmlContainer.appendChild(rightElements);
 
       const rightQuestion = document.createElement("p");
-      rightQuestion.textContent = options[this.option].openQuestion.question;
+      rightQuestion.textContent = options[this.name].openQuestion.question;
       rightQuestion.style.position = "absolute";
       rightQuestion.style.left = "940px";
       rightQuestion.style.top = "140px";
@@ -237,14 +234,14 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
 
             const journalStorage =
               this.config.variableStorage.get("journalAnswers");
-            journalStorage[this.option] = {};
+            journalStorage[this.name] = {};
             for (const answer of answersInputs) {
               if (answer.checked) {
-                journalStorage[this.option].closeQuestion =
+                journalStorage[this.name].closeQuestion =
                   answer.id.split("-")[2];
               }
             }
-            journalStorage[this.option].openQuestion = (
+            journalStorage[this.name].openQuestion = (
               textArea as HTMLInputElement
             ).value;
 
