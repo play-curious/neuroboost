@@ -3,9 +3,14 @@
 title: Start
 tags:
 colorID: 0
-position: -893,370
+position: -891,402
 ---
 << fadeIn >>
+<< setGauge learning 10 >>
+<< setGauge sleep 30 >>
+<< setGauge food 50 >>
+<< setGauge mentalLoad 80 >>
+<< setGauge stress 40 >>
 <<showGauges>>
 << advanceTime 0:15 >>
 << setBackground oral >>
@@ -28,16 +33,47 @@ L'un des jurés enfile des lunettes d'amplification de lumière, d'infravision..
 << addToGauge stress 20 >>
 
 Vous déglutissez difficilement. Vous avez soudainement chaud. Très chaud. Vous dégoulinez de sueur... #line:01e0f27 
-Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la réviser, même pas de la survoler. Vous n'avez que de vagues notions confuses, quelques bribes de connaissance qui ont du mal à s'emboîter, voire se contredisent... #line:0786002 
+Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la réviser, même pas de la survoler. Vous n'avez que de vagues notions confuses... Jamais vous n'allez pouvoir tenir un oral convaincant sur ce sujet !
 
 
 << advanceTime 0:20 >>
 << addToGauge stress 25 >>
 << music NegativeSad >>
 
-Vous ne vous rappelez plus très bien la suite des événements. Tout est allé si vite. Et surtout, dans la mauvaise direction. Vous avez bredouillé, bafouillé des phrases maladroites, des affirmations hésitantes. #line:0d74a13 
-Puis, quand est venu le temps des questions-réponses... Ce fut le massacre. Le jury ne vous a épargné aucun coup, aucune humiliation. #line:0dbcc7e 
+-> Tenter de broder comme vous pouvez
+    <<jump Broder>>
+-> Essayer de rediriger vers un autre sujet
+    <<jump Ramener_vers_sujet>>
+-> Abandonner et sortir du théâtre
+    <<jump ragequit>>
 
+===
+title: Broder
+tags:
+position: -822,745
+---
+Pendant l'oral, vous faites de votre mieux pour meubler le temps comme vous le pouvez. D'habitude, vous êtes un maître pour broder, mais là, vos lacunes vous empêchent de tenir un discours cohérent sur ce sujet.
+Puis, quand est venu le temps des questions-réponses... Ce fut le massacre. Le jury ne vous a épargné aucun coup, aucune humiliation. #line:0dbcc7e 
+<<jump Sortie_Salle>>
+===
+title: Ramener_vers_sujet
+tags:
+position: -543,672
+---
+Vous tentez tant bien que mal de rediriger le sujet, mais les jurés voient clair à travers votre stratagème et vous posent des questions encore plus pointilleuses sur cette fichue décohérence quantique.
+<<jump Sortie_Salle>>
+===
+title: ragequit
+tags:
+position: -540,524
+---
+Vous décidez d'assumer pleinement votre défaite et d'abandonner, sans rien dire, en descendant les marches du podium. Les jurés se contentent d'exclamer un froid "suivant !" et vous passez amèrement la porte du théâtre, laissant derrière vous vos espoirs académiques.
+<<jump Chambre_Soir>>
+===
+title: Sortie_Salle
+tags:
+position: -549,805
+---
 << advanceTime 0:10 >>
 
 Vous sortez de la salle en tremblant. C'est à peine si vous vous rappelez qui vous êtes et où vous êtes... #line:02751be 
@@ -57,7 +93,7 @@ position: -352.5212097167969,897.6408081054688
 << fadeOut >>
 
 Le Grand Oral était une épreuve éliminatoire, et vous doutez fortement que le jury ne vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues...
-Une fois dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle semaine de merde... #line:0da04e6 
+Une fois dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle semaine pourrie... #line:0da04e6 
  
 << fx Sleep_LOOP >>
 -> Faire un gros somme #line:002a60d 
@@ -68,7 +104,7 @@ Une fois dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre 
 ===
 title: Reveil_Sage
 tags: noUi
-position: -352.5212097167969,897.6408081054688
+position: -177,968
 ---
 << fadeIn >>
 << setBackground bedroom night >>
@@ -197,5 +233,3 @@ Qu'est-ce qu'il vient de vous arriver ? Un rêve, une hallucination sortie de vo
 
 << fadeIn >>
 ===
-
-

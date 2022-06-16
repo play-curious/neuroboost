@@ -186,9 +186,17 @@ position: -1405,986
 << fadeOut >>
 << fx EatCook >>
 
+<<if visited("LunchBefore")>>
 Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... #line:046846a 
 D'accord, ce repas est bien chargé en calories et en caféine, mais vous avez mangé le même hier. Ça commence à bien faire ces sensations de "déjà-vu"... #line:0e88c64 
 Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route ! #line:0f21e5a 
+<<else>>
+Yum Yum... Délicieux ce Burger Big Proteins Double Cheese ! #line:0530c64 
+Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant l'examen ! #line:0b89f1b 
+Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures... #line:00ba9c8 
+<<endif>>
+
+<<visitPermanent LunchBefore>>
 
 <<jump Check_Results>>
 ===
@@ -478,16 +486,15 @@ You: Facile à dire pour toi. Tu as eu <b>A+</b> ! #line:0166adc
 Fred_smiling: Y a qu'une chose à faire dans ce cas ! #line:01bdf3a 
 You: Quoi donc ? #line:0fc9d11 
 Fred_happy: Se vider la tête ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande ! #line:0a6af63 
-You: Je sais pas... #line:012855e 
+
 
 << advanceTime 0:15 >>
 
--> Accepter l'offre de Fred #line:0bc651a 
-    << hide >>
-    <<jump Fete_deprime>>
--> Refuser l'offre de Fred #line:0eeda10 
-    << hide >>
-    <<jump Rester_Chambre_deprime>>
+-> Peut-être... #line:0bc651a 
+-> J'ai vraiment pas la tête à ça... #line:0eeda10 
+
+You: J'ai pas trop la tête à ça... Je te dirai si je change d'avis, mais pour l'instant, je suis épuisé. Je rentre. #line:012855e 
+<<jump Sages_Defaite>>
 ===
 
 title: Fete_deprime
@@ -611,7 +618,7 @@ Sapiens_thinking: Tout à fait, c'est le chaos ! La panique ! La catastrophe !..
 ===
 title: Memoire_Longue
 tags: noUi
-position: -63.20210266113281,1418.4576416015625
+position: -67,1414
 ---
 << setBackground schema shelf-organized >>
 
@@ -670,6 +677,8 @@ En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magn
 Serait-ce le <bi>journal mental</bi> dont parlait Ledai ? #line:063d2d3 
 
 <<visitPermanent Chapitre1>>
+
+<<showJournal method>>
 
 <<if !visited("Resultats_Good")>>
 -> Recommencer la journée #line:0380a89 
