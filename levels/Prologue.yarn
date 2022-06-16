@@ -11,14 +11,14 @@ position: -893,370
 << setBackground oral >>
 << fadeOut >>
 
-Voilà finalement venu le Grand Oral. L'Académie d'Omniscience et de Polytechnologie Universelle met beaucoup d'emphase sur l'importance de cette épreuve dès la première année. Souvent impitoyable, elle met les élèves en difficulté et indiquent s'ils sont aptes à continuer leur cursus.
+Voilà finalement venu le Grand Oral. L'Académie d'Omniscience et de Polytechnologie Universelle met beaucoup en avant l'importance de cette épreuve dès la première année. Souvent impitoyable, elle met les élèves en difficulté et indiquent s'ils sont aptes à continuer leur cursus.
 
 Autrement dit, cette épreuve est éliminatoire.
 
 Vous entrez dans la salle de théâtre. Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus. #line:071b428 
 Une fois l'exécution publique terminée, c'est votre tour. Vous angoissez, peu rassuré par ce que vous venez de voir... #line:0ba9287 
 
-Il faut avouer que ces derniers temps, vous avez été accablé par des notes plutôt désastreuses. Vous vous sentez déboussolé face à la masse d'informations à retenir que demande l'Académie.
+Il faut avouer que ces derniers temps, vous avez obtenu des notes plutôt désastreuses. Vous vous sentez déboussolé face à la masse d'informations à retenir que demande l'Académie.
 
 << addToGauge stress 20 >>
 
@@ -47,13 +47,20 @@ Pas la peine d'attendre les résultats pour savoir que vous avez royalement rat�
 
 << fadeIn >>
 
+<<jump Chambre_Soir>>
+===
+title: Chambre_Soir
+tags: noUi
+position: -352.5212097167969,897.6408081054688
 ---
 << setTime 17:00 >>
 << fadeIn >>
 << setBackground bedroom night >>
 << fadeOut >>
-Dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle semaine de merde... #line:0da04e6 
-Le Grand Oral était une épreuve éliminatoire, et vous doutez fortement que le jury ne vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues... #line:0c839f3 
+
+Le Grand Oral était une épreuve éliminatoire, et vous doutez fortement que le jury ne vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues...
+Une fois dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle semaine de merde... #line:0da04e6 
+ 
 << fx Sleep_LOOP >>
 -> Faire un gros somme #line:002a60d 
     <<jump Reveil_Sage>>

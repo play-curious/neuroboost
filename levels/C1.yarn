@@ -3,14 +3,14 @@
 title: Start
 tags:
 colorID: 0
-position: -568,-53
+position: -245,126
 ---
 << empty >>
 << fadeIn 1 >>
+<< setGauge learning 0 >>
 << setBackground bedroom >>
 << setTime 8:00>>
 << loopFX Chime_LOOP 2000 >>
-<< showGauges >>
 << fadeOut >>
 
 Bip ! Bip ! Il est 8 heures, vous rappelle votre horloge connectée.  #line:0282b9b 
@@ -18,7 +18,9 @@ Bip ! Bip ! Il est 8 heures, vous rappelle votre horloge connectée.  #line:0282
 << stopFX Chime_LOOP >>
 << music Neutral >>
 
+<<if visited("Chapitre1")>>
 Quel rêve étrange ...
+<<endif>>
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:00aae49 
 
 << loopFX PhoneRing_LOOP 5000 >>
@@ -35,6 +37,7 @@ position: -570,57
 ---
 << stopFX PhoneRing_LOOP >>
 
+<<if !visited("FredCall")>>
 Fred@holo_excited: Hello ! c'est Fred ! #line:0fb4525 
 You: Je sais, j'ai vu ton nom. #line:0d1a13b 
 Fred@holo_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin... #line:039d35b 
@@ -51,6 +54,15 @@ Fred@holo_smiling: No no, je t'assure que c'est la réalité, coco. #line:0c6db7
 You: Euh... #line:007c5ec 
 Fred@holo_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ? #line:03c1f6b 
 You: Euh, ok... #line:03e0c76 
+<<else>>
+Fred@holo_excited: Hello ! c'est Fred ! #line:0fb4525 
+You: Je sais, Fred, on a le partiel cet aprem ! On se retrouve à 14h devant la classe, ok ?
+Fred@holo_smiling: Wow, t'es pressé, ce matin, à ce que je vois !
+You: T'inquiète, on se verra à la fête de ce soir si tout va bien !
+Fred@holo_excited: Cool, je savais même pas que t'étais au courant ! A plus tard, alors !
+You: A plus !
+<<endif>>
+
 
 << hide >>
 
@@ -65,9 +77,14 @@ tags:
 colorID: 0
 position: -326,-51
 ---
+<<if !visited("FredCall")>>
 Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais vaincu. Il vous rappelle aussitôt ! #line:064cdc3 
 -> Prendre l'appel #line:04b2664 
     <<jump Appel_Fred_Rewind>>
+<<else>>
+Fred vous a déjà fait perdre du temps hier soir, alors vous rejetez ses appels dans l'espoir qu'il se lasse.
+<< advanceTime 0:15 >>
+<<endif>>
 ===
 title: Phone_off_Rewind
 tags:
@@ -76,18 +93,23 @@ position: -316,223
 ---
 << setBackground bedroom >>
 << fadeOut >>
+
+<<if !visited("FredCall")>>
 Mais c'est quoi ce truc ?! On dirait que vous avez fait un bon en arrière dans le temps ! Peut-être que ces <i>sages</i> y sont pour quelque chose... Vous allez pouvoir revivre cette semaine, sauver votre année. C'est la chance du siècle ! #line:0d751d6 
 Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre ! #line:020bca4 
+<<endif>>
 
 <<showGauges>>
 Il vous reste 6 heures avant le partiel... Aujourd'hui, vous allez montrer à Fred qui est le Big Winner de l'Académie ! #line:0cfadf9 
+
+<<visitPermanent FredCall>>
 
 <<jump Action_List_Rewind>>
 ===
 title: Action_List_Rewind
 tags: freechoice
 colorID: 0
-position: -1122,466
+position: -1248,479
 ---
 << setBackground bedroom >>
 << fadeOut >>
@@ -112,16 +134,18 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
 ===
 title: cuisine_subchoice
 tags: subchoice
-position: -543,533
+position: -525,562
 ---
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
--> Prendre le petit déjeuner #line:079d0ff 
+
+-> Prendre le petit déjeuner <<if !visited("Petit_dej")>>#line:079d0ff 
     <<jump Petit_dej_Rewind>>
 -> back #line:0fad580 
     << fadeIn >>
     <<jump Action_List_Rewind>>
+
 ===
 title: bureau_subchoice
 tags: subchoice
@@ -130,11 +154,11 @@ position: -993.6492929458618,-75.37680292129517
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
--> Passer du temps sur le chat avec le pote d'une autre Université #line:026de4e 
+-> Passer du temps sur le chat avec le pote d'une autre Université <<if !visited("Chat")>> #line:026de4e 
     <<jump Chat_Rewind>>
--> Réviser cette fichue Astronometric Data Management #line:070f359 
+-> Réviser cette fichue Astronometric Data Management <<if !visited("Revision")>> #line:070f359 
     <<jump Revision_Rewind>>
--> Essayer la technique du rappel libre #line:0310da3 
+-> Essayer la technique du rappel libre <<if !visited("Rappel_libre")>> #line:0310da3 
     <<jump Rappel_libre>>
 -> back #line:0a06fb6 
     << fadeIn >>
@@ -147,7 +171,7 @@ position: -1427,217
 << fadeIn >>
 << setBackground bedroom chill >>
 << fadeOut >>
--> Binger votre série TV préférée #line:0f2e31c 
+-> Binger votre série TV préférée <<if !visited("BingeTV")>> #line:0f2e31c 
     <<jump BingeTV_Rewind>>
 -> back #line:0341673 
     <<jump Action_List_Rewind>>
@@ -155,7 +179,7 @@ position: -1427,217
 title: Lunch_Rewind
 tags:
 colorID: 7
-position: -1284,1084
+position: -1405,986
 ---
 << fadeIn >>
 << setBackground bedroom kitchen >>
@@ -166,10 +190,24 @@ Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Sup
 D'accord, ce repas est bien chargé en calories et en caféine, mais vous avez mangé le même hier. Ça commence à bien faire ces sensations de "déjà-vu"... #line:0e88c64 
 Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route ! #line:0f21e5a 
 
-<< advanceTime 0:30 >>
-
+<<jump Check_Results>>
+===
+title: Check_Results
+tags:
+colorID: 7
+position: -1269,1157
+---
+<< if getGauge("learning") >= 66 >>
 -> Il est temps de battre votre précédent score! #line:02b7a89 
     <<jump Test_Rewind>>
+<< else >>
+-> Il est temps de battre votre précédent score! #line:02b7a89 
+    <<if visited("Assemblee_Sages")>>
+        <<jump Resultats_Bad_Again>>
+    <<else>>
+        <<jump Test>>
+    <<endif>>
+<< endif >>
 ===
 title: Petit_dej_Rewind
 tags:
@@ -181,6 +219,8 @@ position: -1040,831
 Encore un petit déjeuner chimicookies arrosé d'un synthécafé. C'est clair que ce matin dégage un étrange air de "déjà-vu"... #line:0ac0772 
 Bon, ce n'est pas tout. #line:0d01fa8 
 
+<<visit Petit_dej>>
+
 << advanceTime 0:30 >>
 
 << fadeIn >>
@@ -191,21 +231,23 @@ tags:
 colorID: 0
 position: -907,703
 ---
-<b>Pensez-vous vraiment que c'est ce que vous ont recommandé les 4 Sages de la Métacognition ?</b> #line:0349739 
 
-Peu importe, il est trop tard maintenant, vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. Vous êtes pingé par Alex, vous engagez la conversation. #line:0ecf0bf 
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. Vous êtes pingé par Alex, vous engagez la conversation. #line:0ecf0bf 
 
 << fx Notification >>
 
 Ensuite, c'est Dom, puis Lou, puis Cam... #line:008f37e 
 
-<< if visited("Chat") >>
+<< if visited("Chat_Before") >>
 <bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi> #line:0cd34ae 
 << endif >>
 
 << advanceTime 2:00 >>
 
 Vous passez deux heures à discuter de tout, mais surtout de rien. #line:06ab06b 
+
+<<visit Chat>>
+<<visitPermanent ChatBefore>>
 
 << fadeIn >>
 <<jump Action_List_Rewind>>
@@ -217,6 +259,8 @@ position: -591,772
 ---
 Vous ouvrez une nouvelle fois votre dossier Astrometric Data Management. Qu'est-ce que c'est barbant... Mais cette fois, vous ravalez votre bile. #line:0ca527e 
 Aujourd'hui, vous voulez réussir votre journée. Vous voulez coiffer Fred au poteau ! Vous aussi, vous aurez un <i>A+</i> #line:04765d7 
+
+<<visit Revision>>
 
 << advanceTime 2:00 >>
 
@@ -230,10 +274,9 @@ Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à pot
 title: BingeTV_Rewind
 tags:
 colorID: 0
-position: -741,452
+position: -744,455
 ---
 
-<bi>Pensez-vous vraiment que c'est ce que vous ont recommandé les 4 Sages de la Métacognition ?</bi> #line:04a07cf 
 Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, dévoilant votre liste de programmes préférés. Vous pointez avec le doigt sur l'icône de votre série du moment : Star Mars - The Lone Lightsaber. #line:0ff050f 
 
 << show lightsaber@holo >>
@@ -242,7 +285,7 @@ Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affich
 Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable corsaire Yann Salto. #line:0dd0537 
 Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse... #line:0335c72 
 
-<< if visited("BingeTV") >>
+<< if visited("BingeTV_Before") >>
 <bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi> #line:0a04f28 
 << endif >>
 
@@ -253,6 +296,9 @@ En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleur
 << hide >>
 
 Au final, vous passez trop de temps à binger votre série préférée. #line:023c509 
+
+<<visit BingeTV>>
+<<visitPermanent BingeTV_Before>>
 
 << fadeIn >>
 <<jump Action_List_Rewind>>
@@ -279,7 +325,7 @@ Vous prenez encore le temps de relire votre cours pour combler les lacunes qui v
 title: Test_Rewind
 tags:
 colorID: 0
-position: -1007,1085
+position: -1013,1248
 ---
 << fadeIn >>
 << setBackground class >>
@@ -296,10 +342,28 @@ Euphorique, vous quittez la salle et retrouvez Fred, qui vous attend à l'entré
 
 <<jump Post_Test_Rewind>>
 ===
+title: Test
+tags:
+position: -666.0570068359375,500.580322265625
+---
+<< fadeIn >>
+<< setBackground class >>
+<< setTime 14:00 >>
+<< fadeOut >>
+
+Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b>, que le compteur se met en route. #line:06b2e70 
+Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi. #line:0598ff5 
+
+<< advanceTime 4:00 >>
+
+Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe #line:0be01e7 
+
+<<jump Post_Test>>
+===
 title: Post_Test_Rewind
 tags: 
 colorID: 0
-position: -786,1085
+position: -830,1233
 ---
 << fadeIn >>
 << setBackground door class >>
@@ -325,26 +389,18 @@ Fred s'apprête à vous répondre quand la sonnerie retentit. #line:02b4a63
 << setBackground door class-screen >>
 Les résultats du test viennent de tomber... #line:0509cfb 
 
-<< if getGauge("learning") >= 66 >>
--> Consulter les résultats #line:09b16c0 
-    <<jump Resultats_Good>>
-<< else >>
--> Consulter les résultats #line:0524065 
-    <<if visited("Assemblee_Sages")>>
-        <<jump Resultats_Bad_Again>>
-    <<else>>
-        <<jump Sages_Defaite>>
-    <<endif>>
-<< endif >>
+<<jump Resultats_Good>>
 ===
 title: Resultats_Good
 tags: 
 colorID: 0
-position: -529,1332
+position: -801,1373
 ---
 << empty >>
 << music Victory >>
 << fx Success >>
+
+<<visit Resultats_Good>>
 
 Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore... #line:0395b52 
 
@@ -376,9 +432,97 @@ Tentez à nouveau de passer ce premier examen... #line:0ac7005
 <<jump Phone_off_Rewind>>
 ===
 
+title: Post_Test
+tags:
+position: -270,525
+---
+<< fadeIn >>
+<< setBackground door class >>
+<< fadeOut >>
+
+Fred_excited: Alors, ça l'a fait ? #line:0876127 
+You: Je pense oui. C'était basique. #line:01647f2 
+Fred_smiling: Yes, je m'attendais à plus tordu que ça. #line:0804335 
+You: Moi aussi. #line:042aa91 
+Fred_smiling: Y avait quelques petits pièges, mais ils sont tellement gros, on ne pouvait pas les louper ! #line:0ce0a8b 
+You: Ah bon ? #line:086ed91 
+Fred_surprised: Yes, tu n'en as pas trouvé. #line:0d5781e 
+You: Non. #line:0818e11 
+Fred_smiling: C'est dommage. Tu sais qu'une mauvaise réponse t'enlève autant de point qu'une bonne réponse. #line:0bf1cd4 
+You: Heuuuu... #line:0facc92 
+
+<< advanceTime 0:15 >>
+
+Fred s'apprête à vous répondre quand la sonnerie retentit. #line:07aa496 
+<< fx Notification >>
+<< setBackground door class-screen>>
+<< hide >>
+Les résultats du test viennent de tomber... #line:0fd7dde 
+
+-> Consulter les résultats #line:01e5c57 
+    <<jump Resultats_Bad>>
+===
+title: Resultats_Bad
+tags:
+position: -88,657
+---
+
+<< music NegativeSad >>
+
+Hélas... Fred n'avait pas tort... Les scores s'affichent sur l'écran de la porte principale. Vous êtes dans le peloton... de queue... La semaine de sprint commence mal... #line:0f1a807 
+
+Fred_excited: Hé, ça va ? Tu as l'air tout blême d'un coup. #line:06878c2 
+You: Ben... J'ai tout juste <b>D-</b>. #line:0d592fa 
+Fred_happy: Hé alors ? Ce n'est pas la fin du monde. Ce n'est qu'une note parmi d'autres. Tu vas te rattraper. #line:0f8a7da 
+You: Facile à dire pour toi. Tu as eu <b>A+</b> ! #line:0166adc 
+Fred_smiling: Y a qu'une chose à faire dans ce cas ! #line:01bdf3a 
+You: Quoi donc ? #line:0fc9d11 
+Fred_happy: Se vider la tête ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande ! #line:0a6af63 
+You: Je sais pas... #line:012855e 
+
+<< advanceTime 0:15 >>
+
+-> Accepter l'offre de Fred #line:0bc651a 
+    << hide >>
+    <<jump Fete_deprime>>
+-> Refuser l'offre de Fred #line:0eeda10 
+    << hide >>
+    <<jump Rester_Chambre_deprime>>
+===
+
+title: Fete_deprime
+tags:
+position: -124,768
+---
+<< fadeIn >>
+<< setBackground party >>
+<< advanceTime 0:30 >>
+<< fadeOut >>
+
+Le soir, vous retrouvez Fred à la cafétéria. C'est là que se déroule la fête. Le sound system tourne à fond, la boisson coule à flot, les saladiers débordent de snacks. Le monde danse, gesticule, crie, l'ambiance est d'enfer... #line:0ebf942 
+
+<< advanceTime 2:00 >>
+
+Malgré tout, votre esprit est ailleurs. Fred vous voit tourner les talons. Mais cette fois-ci, il n'insiste pas pour vous dissuader de partir. Manifestement, vous devez faire une sacrée tête d'enterrement. Même l'infatiguable Fred renonce à vous convaincre de rester t'amuser... #line:042c713 
+
+-> Rentrer dormir #line:093495e 
+    << advanceTime 0:30 >>
+    <<jump Sages_Defaite>>
+===
+title: Rester_Chambre_deprime
+tags:
+position: 66,996
+---
+Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à chaque fois qu'il revient à la charge, vous le renvoyez <i>gentiment</i> dans les cordes. Du coup, quand vous vous dirigez vers la porte de votre chambre, Fred ne dit plus rien. Pour la première fois, vous êtes parvenu à dissuader l'infatiguable Fred de passer un bon moment avec lui... #line:0e0e5d2 
+
+<< advanceTime 0:30 >>
+
+-> Rentrer dormir #line:047bca2 
+    <<jump Sages_Defaite>>
+===
 title: Sages_Defaite
 tags: noUi
-position: -730.5562744140625,1421.6199951171875
+position: -388,1264
 ---
 
 << fadeIn >>
@@ -400,10 +544,13 @@ Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des S
 ===
 title: Sages_Victoire
 tags: noUi
-position: -730.5562744140625,1421.6199951171875
+position: -760,1476
 ---
 
-//transition chambre nuit
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+
 Vous vous retrouvez une fois de plus seul, fier d'avoir remonté votre note de la dernière fois. Décidément, ces sages vous ont déjà bien aidé !
 
 Coup du hasard, c'est en pensant à eux que vous croisez à nouveau cette silhouette familière qui se glisse dans votre champ de vision.
@@ -421,15 +568,19 @@ Temde_cheerful: Pas cette fois, { $name }. Pour l'instant, cap vers l'Assemblée
 ===
 title: Assemblee_Sages
 tags: noUi
-position: -730.5562744140625,1421.6199951171875
+position: -571,1504
 ---
-// transition assemblée
 
-
-<< visitPermanent Assemblee_Sages >>
+<< fadeIn >>
+<< hide ! >>
+<< setBackground circle >>
+<< fadeOut >>
 
 Ledai_explaining: Venons en donc au sujet de ce soir, <b>Master Sapiens</b>. #line:01eca65 
 Sapiens_thinking: Oui, la mémorisation. #line:085e256 
+
+<< visitPermanent Assemblee_Sages >>
+
 -> Qu'est-ce qu'elle a, ma mémorisation? #line:0d59581 
     <<jump memorisation>>
 ===
@@ -491,11 +642,11 @@ You: Et comment je fais pour que ma pratique devienne une routine? #line:0439386
 Ledai_explaining: Tout simplement en répétant, en appliquant. #line:0832a45 
 
 
-<< if visited("Rappel_Libre") >>
-    You: C'est la méthode du rappel libre, pas vrai ?
-    Sapiens_happy: Exact ! Tu l'as déjà bien assimilé, on dirait !
+<< if visited("Rappel_libre") >>
+You: C'est la méthode du rappel libre, pas vrai ?
+Sapiens_happy: Exact ! Tu l'as déjà bien assimilé, on dirait !
 << else >>
-    Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : <b>les rappels libres</b>. #line:0318be0 
+Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : <b>les rappels libres</b>. #line:0318be0 
 << endif >>
 
 You: Ouaiiiis... Mais va falloir que je me souvienne de tout ça à mon réveil. Comment faire ? #line:0d2186b 
@@ -506,7 +657,7 @@ Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental
 ===
 title: Journal_Rappel_libre
 tags: noUi
-position: 528.9749550819397,1406.2884521484375
+position: 544,1399
 ---
 << fx Warp >>
 << fadeIn 100 ffffff >>
@@ -517,4 +668,12 @@ position: 528.9749550819397,1406.2884521484375
 Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Les 4 sages non plus ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée. Curieusement, vous ne vous sentez pas inquiet. #line:00b6d70 
 En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof... #line:0c1bf30 
 Serait-ce le <bi>journal mental</bi> dont parlait Ledai ? #line:063d2d3 
+
+<<visitPermanent Chapitre1>>
+
+<<if !visited("Resultats_Good")>>
+-> Recommencer la journée #line:0380a89 
+    << resetLevel >>
+    << jump Start>>
+<<endif>>
 ===

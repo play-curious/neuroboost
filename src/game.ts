@@ -86,9 +86,7 @@ const startingScene =
 const stateNames = [
   "Prologue",
   "C1",
-  "D1_level1",
   "journal_method",
-  "D1_level2",
   "D2_level1",
   "journal_food",
   "journal_sleep",
