@@ -8,6 +8,7 @@ import * as miniGame from "./mini_game";
 import * as clock from "./clock";
 import * as save from "./save";
 import * as popup from "./popup";
+import * as journal from "./journal";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (
@@ -266,6 +267,29 @@ export const commands: Record<string, Command> = {
         // @ts-ignore
         container: this.graphics._miniGameLayer,
       })
+    );
+  },
+
+  showJournal(name: string): void {
+    if (!name) {
+      throw new Error("Missing argument journal name");
+    }
+
+    this.graphics.setBackground("bedroom", "night");
+
+    this.disable();
+    this.activate(
+      new entity.EntitySequence([
+        new journal.JournalScene(name),
+        new entity.FunctionCallEntity(() => {
+          // Restore background
+          this.graphics.setBackground(
+            this.graphics.last.lastBg,
+            this.graphics.last.lastBgMood
+          );
+          this.enable();
+        }),
+      ])
     );
   },
 

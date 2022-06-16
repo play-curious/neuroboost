@@ -113,10 +113,7 @@ const states: { [k: string]: entity.EntityResolvable } = {
 
 for (const stateName of stateNames) {
   if (stateName.includes("journal"))
-    states[`${stateName}`] = new journal.JournalScene(
-      variableStorage,
-      stateName.split("_")[1]
-    );
+    states[`${stateName}`] = new journal.JournalScene(stateName.split("_")[1]);
   else
     states[stateName] = new dialog.DialogScene(
       stateName,
