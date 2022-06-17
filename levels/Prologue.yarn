@@ -6,7 +6,7 @@ colorID: 0
 position: -891,402
 ---
 << fadeIn >>
-<< setGauge learning 10 >>
+<< setGauge learning 0 >>
 << setGauge sleep 30 >>
 << setGauge food 50 >>
 << setGauge mentalLoad 80 >>
@@ -28,7 +28,7 @@ Il faut avouer que ces derniers temps, vous avez obtenu des notes plutôt désas
 << addToGauge stress 20 >>
 
 Vous commencez par vous présenter au jury, ce dernier vous salue. Vous leur rappelez ce que vous avez choisi comme matière de Grand Oral : <b>la Philosophie quantique</b>. #line:08fe26e 
-L'un des jurés enfile des lunettes d'amplification de lumière, d'infravision... Vous ne savez pas vraiment pourquoi... Il vous fixe un moment avant de s'écrier : "La décohérence quantique"... #line:0ea98fb 
+L'un des jurés enfile de drôles de lunettes et vous fixe un moment avant de s'écrier : "La décohérence quantique"... #line:0ea98fb 
 
 << addToGauge stress 20 >>
 
@@ -221,15 +221,6 @@ Ledai_happy: Bravo, { $name }, je n'aurai pas dit mieux. #line:07186d1
 Sapiens_happy: Je sens que nous avons ce soir, un candidat d'exception. #line:0b356d7
 Ledai_happy: Bien, maintenant que les présentations sont faites et que tout est au clair, nous devrions nous éclipser et exécuter notre rôle...
 Azul_happy: C'est vrai. Nous ne voudrions pas déboussoler { $name } dès notre première intervention !
-
-<< fx Warp >>
-<< fadeIn 100 ffffff >>
-<< hide ! >>
-<< setBackground bedroom night >>
-<< fadeOut 400 >>
-
-Vous vous tenez à nouveau dans la pénombre de votre chambre d'étudiant, éclairée par la faible lueur d'une faible lampe de chevet.
-Qu'est-ce qu'il vient de vous arriver ? Un rêve, une hallucination sortie de votre cerveau épuisé ? Vous remettez ces questions à demain et vous endormez très vite, bordé par l'espoir que vous ont donné ces êtres étranges ...
 
 << fadeIn >>
 ===
