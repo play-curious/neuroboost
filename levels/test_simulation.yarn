@@ -1,0 +1,56 @@
+#gauges:learning,sleep,food,mentalLoad,stress
+
+title: Start
+tags:
+colorID: 0
+position: -891,402
+---
+<< setGauge learning 0 >>
+<< setGauge sleep 30 >>
+<< setGauge food 50 >>
+<< setGauge mentalLoad 80 >>
+<< setGauge stress 40 >>
+<< showGauges >>
+
+<< jump Choices >>
+
+===
+title: Choices
+tags:
+position: -1617.4276733398438,-825.2426147460938
+---
+
+-> Advance time by 1 hour
+  << jump AdvanceTimeBy1 >>
+-> Advance time until 12:00
+  << jump AdvanceTimeUntil12 >>
+-> Advance time until 18:00
+  << jump AdvanceTimeUntil18 >>
+
+===
+title: AdvanceTimeBy1
+tags:
+position: -1617.4276733398438,-825.2426147460938
+---
+
+<< advanceTimeBy 1:00 >>
+<< jump Choices >>
+
+===
+title: AdvanceTimeUntil12
+tags:
+position: -1617.4276733398438,-825.2426147460938
+---
+ 
+<< advanceTimeUntil 12:00 >>
+<< jump Choices >>
+
+===
+title: AdvanceTimeUntil18
+tags:
+position: -1617.4276733398438,-825.2426147460938
+---
+
+<< advanceTimeUntil 18:00 >>
+<< jump Choices >>
+===

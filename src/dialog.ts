@@ -322,7 +322,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         continue;
 
       options.push({
-        text:optionText,
+        text: optionText,
         id: `${i}`,
       });
 
@@ -454,5 +454,27 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.enabled = true;
     this.graphics.showNode();
     this._advance();
+  }
+
+  /** Automatically simulate effects on sleep & food gauges */
+  simulateGauges(minutes: number): void {
+    // Need about 8 hours of sleep per day
+    const sleepPerHour = 12.5;
+    // No more than 12 hours before meals
+    const foodPerHour = 8.3;
+
+    {
+      const oldValue = this.config.variableStorage.get("sleep");
+      const simulatedSleep = (sleepPerHour * minutes) / 60;
+      const newValue = Math.max(Number(oldValue) - simulatedSleep, 0);
+      this.config.variableStorage.set("sleep", `${newValue}`);
+    }
+
+    {
+      const oldValue = this.config.variableStorage.get("food");
+      const simulatedFood = (foodPerHour * minutes) / 60;
+      const newValue = Math.max(Number(oldValue) - simulatedFood, 0);
+      this.config.variableStorage.set("food", `${newValue}`);
+    }
   }
 }
