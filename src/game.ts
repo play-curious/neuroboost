@@ -123,15 +123,23 @@ for (const stateName of stateNames) {
 
 states["outro_video"] = outroVideoScene;
 
+const extraLevels = ["characters", "backgrounds", "test_simulation"];
+for (const levelName of extraLevels) {
+  states[levelName] = new dialog.DialogScene(levelName, "Start");
+}
+
+// TODO: make a better system to separate levels and chain them together
+// TODO: only load yarn files as they are needed?
 async function levelLoader(entityConfig: entity.EntityConfig) {
   const levels: Record<string, string> = {};
+  const levelNames = stateNames
+    .filter((name) => name[0] == "C" || name[0] == "D")
+    .concat(extraLevels);
   await Promise.all(
-    stateNames.map(async (name) => {
-      if (!name.includes("journal")) {
-        const response = await fetch(`levels/${name}.yarn`);
-        const text = await response.text();
-        levels[name] = text;
-      }
+    levelNames.map(async (name) => {
+      const response = await fetch(`levels/${name}.yarn`);
+      const text = await response.text();
+      levels[name] = text;
     })
   );
 

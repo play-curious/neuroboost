@@ -83,11 +83,16 @@ export const commands: Record<string, Command> = {
     this.config.clock.setTime(minutesSinceMidnight);
   },
 
+  /** @deprecated */
   advanceTime(
     time: clock.ResolvableTime,
     maxTime?: clock.ResolvableTime,
     stepTime?: clock.ResolvableTime
   ) {
+    console.warn(
+      "<<advanceTime>> is deprecated. Use <<advanceTimeBy>> or <<advanceTimeTo>> instead"
+    );
+
     const [, , minutesToAdvance] = clock.parseTime(time);
 
     let minutesToStop, minutesStep;
@@ -109,6 +114,39 @@ export const commands: Record<string, Command> = {
     this.config.variableStorage.set("time", `${newMinutes}`);
 
     this.config.clock.advanceTime(newMinutes);
+  },
+
+  /**
+   * Makes time clock forward by a certain amount.
+   * Automatically adjusts food and sleep meters
+   */
+  advanceTimeBy(time: clock.ResolvableTime) {
+    const [, , minutesToAdvance] = clock.parseTime(time);
+
+    const minutesSinceMidnight = Number(
+      this.config.variableStorage.get("time")
+    );
+    const newMinutes = minutesSinceMidnight + minutesToAdvance;
+
+    this.config.variableStorage.set("time", `${newMinutes}`);
+
+    this.config.clock.advanceTime(newMinutes);
+    this.simulateGauges(minutesToAdvance);
+  },
+
+  /** Makes the clock move forward until a certain time */
+  advanceTimeUntil(time: clock.ResolvableTime) {
+    const [, , newMinutesSinceMidnight] = clock.parseTime(time);
+
+    const minutesSinceMidnight = Number(
+      this.config.variableStorage.get("time")
+    );
+    this.config.variableStorage.set("time", `${newMinutesSinceMidnight}`);
+
+    this.config.clock.advanceTime(newMinutesSinceMidnight);
+
+    const minutesToAdvance = newMinutesSinceMidnight - minutesSinceMidnight;
+    this.simulateGauges(minutesToAdvance);
   },
 
   hideClock() {
