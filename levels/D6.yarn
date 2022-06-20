@@ -1503,7 +1503,7 @@ Vous prenez une grande inspiration avant de prendre la parole. Vous vous présen
 <<if !visited("sages")>>
 L'un des jurés enfile des lunettes d'amplification de lumière, d'infravision... Vous ne savez pas vraiment pourquoi... Il vous fixe un moment avant de s'écrier : "La décohérence quantique"... #line:0044462 
 <<else>>
-L'un des jurés enfile à nouveau ces lunettes étranges... Des lunettes de détection neurocérébral. Il vous fixe un moment avant de s'écrier : "L'incertitude quantique"... #line:0d497f9 
+L'un des jurés enfile à nouveau ces lunettes étranges... Des lunettes de détection neurocérébrale. Il vous fixe un moment avant de s'écrier : "L'incertitude quantique"... #line:0d497f9 
 <<endif>>
 
 Pfouu.... Vous soufflez un grand coup. Bien entendu, l'incertitude quantique n'est pas votre thème préféré. Malgré tout, vous avez des arguments, des concepts, des débats, des problématiques, des polémiques qui vous viennent aussitôt en tête. #line:0767c66 
@@ -1758,7 +1758,7 @@ Vous avez trop faim pour faire quoi que ce soit... #line:063722e
 <<endif>>
 
 <<if getGauge("mentalLoad") >= 100 >>
-Vous vous êtes trop donner aux révisions, votre cerveau n'enregistre plus rien... #line:0000016 
+Vous vous êtes trop donné aux révisions, votre cerveau n'enregistre plus rien... #line:0000016 
 <<endif>>
 
 -> Recommencer le week-end #line:0d1ef81 
@@ -1784,7 +1784,7 @@ position: 1742.1867031989302,580.8256842017254
 ---
 <<visit Grignoter_S>>
 
-Vous grignotez un petit quelque chose #line:0c463ee 
+Vous grignotez un petit quelque chose. #line:0c463ee 
 
 << advanceTime 0:15 >>
 << addToGauge food 30 >>

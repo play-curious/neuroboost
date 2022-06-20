@@ -1,0 +1,419 @@
+﻿#gauges:learning,sleep,food
+
+title: Start
+tags: noUi
+position: -1391.4708251953125,85.48695087432861
+colorID: 8
+---
+<< fadeIn 1 >>
+
+Vous êtes lové dans une confortable et douce langueur... Quand... #line:0b0cdb1 
+On vous secoue brusquement !!! #line:027d93e 
+
+<< setGauge learning 100 >>
+<< setGauge food 70 >>
+<< setGauge sleep 70 >>
+<< showGauges >>
+<< setTime 1:30 >>
+
+-> Ouvrir les yeux #line:093ee21 
+    <<jump Open_Eyes>>
+===
+title: Open_Eyes
+tags: 
+position: -1172.1470947265625,85.38811206817627
+---
+<< setBackground party >>
+<< music DanseQuiet >>
+<< fadeOut >>
+
+Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ? #line:0fdb130 
+Et c'est reparti pour un tour... Fred répète comme un perroquet ce qu'il vous a déjà dit hier soir... Vous voilà revenu en arrière... En plein milieu de cette soirée de plaisir et de tentations... Certes, vous en avez trop fait, mais l'ambiance et le public étaient avec vous... Dur dur... #line:000208d 
+You: ...Hum... Tu fais quoi toi ? #line:0fde965 
+Fred_happy: Moi je reste. Je te le répète. #line:0105169 
+Après tout, Vous avez encore de l'énergie à revendre pour la soiré. Vous savez qu'il faut simplement faire attention à ne pas trop vider vos réserves de sommeil et de nourriture... #line:08d8e14 
+Mais comme vous l'ont répété les 4 sages, c'est avant tout une question de dosage, de volonté. Le tout est de savoir s'arrêter quand il le faut. Et puis, vous voulez montrer à Fred, que vous aussi, vous êtes en béton... #line:0695665 
+You: Pari tenu! #line:0712066 
+Fred_smiling: Yolo ! T'as mangé du tigre aujourd'hui ?! #line:092efae 
+You: C'est pas faux. #line:076e4ec 
+<< hide fred >>
+
+<<jump Que_Faire>>
+===
+title: Que_Faire
+tags:
+position: -950.9030456542969,86.7411298751831
+---
+<< music Danse >>
+
+<< if !visited("Que_Faire") >>
+<< visit Que_Faire >>
+On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses... #line:0c94623 
+<< endif >>
+
+<< if getGauge("sleep") >= 50 || getGauge("food") >= 50 >>
+-> Retourner swinguer sur le Dance Floor#once #line:0805b14 
+    <<jump DanceFloor2>>
+-> Se rafraîchir au bar#once #line:021268c 
+    <<jump Cafe_ou_Alcool>>
+-> Grignoter quelque chose#once #line:03f46cf 
+    <<jump Medoc_Bot>>
+-> Refaire un solo de guitare en criant tout votre saoul#once #line:0484cba 
+    <<jump Metal_Jam>>
+-> Quitter la salle avant d'être épuisé#once #line:04444ac 
+    <<jump End_of_Party>>
+<< else >>
+-> Vite ! Au lit #line:0b56faf 
+    <<jump Go_To_Bed_Loose>>
+<< endif >>
+===
+title: DanceFloor2
+tags: 
+position: -728.075834274292,-134.31593322753906
+---
+Vous rejoignez le centre de la piste. Vous levez le bras, histoire d'indiquer à la foule que vous êtes sur le ring! Prêt à leur accorder un nouveau show exclusif et endiablé! Tout le monde s'arrête de gigoter et se rassemble tout autour de vous. #line:03f5cdf 
+C'est la classe, vous voilà redevenu le centre d'attention de la soirée, le centre d'attraction de la salle. #line:0d5d8ed 
+
+Vous rentrez peu à peu en transe, au rythme de la musique. Puis, au bout de quelques minutes, vous décollez et vous atteignez à la vitesse de la lumière l'orbite de la planète Disco ! Et c'est reparti pour une bonne heure de Breaking Beat endiablé ! Votre performance rencontre un succès intergalactique et musicalesque ! #line:0badcd2 
+
+<< removeFromGauge sleep 30 >>
+<< removeFromGauge food 10 >>
+<< advanceTime 2:00 >>
+
+-> Arriverez-vous à faire encore mieux ? #line:08c55a6 
+    <<jump Que_Faire>>
+===
+title: Cafe_ou_Alcool
+tags: 
+position: -730.5491943359375,527.3186235427856
+---
+Sans surprise, le bar n'est plus aussi approvisionné ! Il ne reste plus aucun soft doux, ni même de Xeno Cola. #line:0bd595d 
+Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un shot de X-Espresso ou une canette de ZedBoul. #line:008120f 
+
+-> Vous laissez tomber #line:04fb22c 
+    <<jump Que_Faire>>
+-> Vous vous résignez #line:059e2f7 
+    <<jump Drink_Bad>>
+===
+title: Medoc_Bot
+tags: 
+position: -729.918030500412,303.28855895996094
+---
+Vous vous dirigez vers le bar, en pure perte. Encore une fois, tous les snack ont disparu. Vous vous tournez vers un BarBot. #line:0d184a4 
+
+ << show barbot >>
+BarBot: Vous désirez ? #line:07f9b03 
+You: Manger ton machin coloré qui rebooste. #line:0f9ff72 
+BarBot: À sucer ou avaler ? #line:032d8f7 
+You: Le truc à sucer ! #line:060634d 
+BarBot: La boule magique ? #line:05a9a88 
+You: Oui, c'est ça. #line:05a697f 
+BarBot: Une boule magique alors. #line:0036e73 
+You: Il y a quoi au juste dedans ? #line:0a3f0f3 
+BarBot: Des molécules actives de synthèse. C'est un stupéfiant de catégorie 1, banal, à consommer sans modération. #line:035be8c 
+<< hide >>
+
+-> Vous préférez ne pas avaler ce truc #line:08736c4 
+    <<jump Que_Faire>>
+-> Vous prenez quand même la boule magique #line:0264b31 
+    <<jump Eat_Bad>>
+===
+title: Metal_Jam
+tags: 
+position: -729.2131729125977,85.79140090942383
+---
+Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota depuis hier. Elle vous attend, elle vous réclame. Vous réactivez sa carte-son HD 4K. #line:016f96a 
+Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête une nouvelle fois à vous écouter. Vous savez que la star de la soirée, c'est vous. Et vous allez le leur prouver, à eux et à Fred ! À vous de jouer ! #line:0f7b78e 
+
+<< music Solo2 >>
+
+Vous repartez dans un concert solo d'improvisation, où les riffs électriques et les accords cybermétalliques s'accordent pour composer une symphonie post-électronique. Vous vous surpassez par rapport à hier soir ! Vous avez le flow, vous avez le fuel, vous avez la soul rock teinté de métal ! #line:069f9f8 
+Vous êtes applaudi, encore et encore et encore... Bon joueur, vous accordez à votre public un morceau bonus. Et un deuxième, parce qu'ils le réclament, et le méritent. #line:025d497 
+
+<< removeFromGauge sleep 20 >>
+
+-> Comment faire encore plus fort ? #line:0018f02 
+    <<jump Que_Faire>>
+===
+title: End_of_Party
+tags: 
+position: -731.0557861328125,994.7333374023438
+---
+<< if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
+Vous vous rapprochez de Fred, qui est en pleine conversation avec un groupe d'étudiants docteurs. #line:08cbc2b 
+You: Fred, il est tard, il est temps d'aller faire un somme. #line:0b46577 
+Fred_sad: Déjà ? Je suis en pleine conversation... #line:08756d8 
+You: Je suis fatigué, j'y vais. #line:01abbac 
+Fred_smiling: OK. T'as raison. Je te suis. #line:03119d8 
+<< hide >>
+Fred dit bonne nuit à ses interlocuteurs. Vous aussi. Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:0fa1482 
+
+-> Vite ! Au lit #line:03ce9d3 
+    <<jump Go_To_Bed_Good>>
+
+<< elseif getGauge("sleep") >= 33 && getGauge("food") >= 33 >>
+Fred_sad: Hey, j'en peux plus. J'y vais. #line:009e04f 
+You: Déjà ? Tu déclares forfait ? #line:082b7de 
+Fred_smiling: Yes yes. #line:09b2b1e 
+You: OK, je te suis. #line:0d69718 
+Fred_smiling: Cool... #line:0f5f0de 
+<< hide >>
+Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:09b8398 
+
+-> Vite ! Au lit #line:0d694c4 
+    <<jump Go_To_Bed_VeryGood>>
+
+<< else >>
+En effet, vous vous sentez vraiment fatigué, la tête et l'estomac lourd. Il est temps d'aller se coucher. Vous quittez la salle sans dire au revoir à Fred ou à quiconque. #line:0f59f21 
+
+-> Vite ! Au lit #line:0b06e60 
+    <<jump Go_To_Bed_Loose>>
+
+<< endif >>
+===
+title: Go_To_Bed_Good
+tags: 
+position: -503.7049560546875,991.6459350585938
+---
+<< fadeIn >>
+<< setBackground door night >>
+<< music >>
+<< fadeOut >>
+<< advanceTime 0:15 >>
+Arrivé devant la porte de votre chambre, Fred se tourne vers vous. #line:0a4066e 
+Fred_smiling: C'était vraiment sympa ce soir. #line:03eccc5 
+You: Ouais #line:00df311 
+Fred_happy: Je suis content que tu sois venu ce soir. Tu as assuré. Tu as mis le groove à la salle! #line:06f56f2 
+You: Merci. Bonne nuit, Fred. #line:03e476e 
+Fred_excited: Pareil. #line:0328c61 
+<< hide >>
+Sur ces mots, Fred s'éloigne et vous laisse. #line:01c4a64 
+
+-> Se Reposer #line:06edca4 
+    <<jump Se_Reposer_Good>>
+===
+title: Go_To_Bed_VeryGood
+tags:  
+position: -502.02838134765625,1214.2044677734375
+---
+<< fadeIn >>
+<< setBackground door night >>
+<< music >>
+<< fadeOut >>
+<< advanceTime 0:15 >>
+Arrivé devant la porte de votre chambre, Fred se tourne vers vous. #line:07ceca0 
+Fred_happy: C'était vraiment la hype ce soir. #line:07d3598 
+You: Ouais #line:0098843 
+Fred_happy: Non seulement tu es venu, tu as mis le groove dans la salle. Mais si j'étais pas venu te chercher, t'étais encore branché sur les vibes de la fête... Chapeau bas. #line:0c115f5 
+You: Merci, Fred.  Bonne nuit. #line:01df97b 
+Fred_excited: T'es vraiment un winner. Bonne nuit aussi. #line:09e7644 
+<< hide >>
+Sur ces confidences, ces louanges, Fred s'éloigne et vous laisse. #line:047a550 
+
+-> Se Reposer #line:06bdef5 
+    <<jump Se_Reposer_Good>>
+===
+title: Se_Reposer_Good
+tags:
+position: -281.2446746826172,1109.7478637695312
+---
+<< fadeIn >>
+<< hideGauges >>
+<< setBackground bedroom night >>
+<< fadeOut>>
+
+Vous entrez tranquillement dans votre chambre. Vous allez aux toilettes. Votre vessie en a besoin. Vos dents aussi. Vous vous dévêtez et gagnez votre lit. Vous êtes bien crevé, mais encore pas éteint. Il est temps pour de se recharger. À défaut d'un nuit de sommeil, un somme vous fera déjà le plus grand bien. #line:095083b 
+
+-> Un petit somme #line:08ac6a4 
+    <<jump Sieste_Good>>
+===
+title: Sieste_Good
+tags:
+position: -62.58292770385742,1107.5968017578125
+---
+La seconde où vous touchez votre lit, vous dormez déjà. #line:0309d31 
+
+<< fadeIn >>
+<< addToGauge sleep 40 >>
+<< advanceTime 8:00 8:00 0:05 >>
+<< setBackground bedroom >>
+<< loopFX Chime_LOOP 2000 >>
+<< fadeOut >>
+
+Et la minute suivante vous entendez le bip bip de votre horloge connectée.  #line:053ac97 
+<< stopFX Chime_LOOP >>
+<< music Neutral >>
+Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'hier. Vous vous changez rapidement. Ce qui vous laisse le temps de prendre un petit déjeuner. #line:0c85b54 
+
+-> Petit déjeuner #line:03f274b 
+    <<jump Petit_Dejeuner_Good>>
+===
+title: Petit_Dejeuner_Good
+tags:
+position: 153.05007934570312,1108.568115234375
+---
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+Yum Yum... Un petit déjeuner bien riche quand on a fait un somme trop court, ça vous booste le corps et le système nerveux ! Vous sentez que votre organisme reprend du tonus et de la vigueur... #line:0a06acb 
+<< addToGauge food 40 >>
+<< advanceTime 0:15 >>
+
+-> Aller en cours #line:0858680 
+    <<jump ExamenTP_Good>>
+===
+title: ExamenTP_Good
+tags: 
+position: 375.0788269042969,1111.1724853515625
+---
+<< fadeIn >>
+<< setBackground door class >>
+<< setTime 9:00 >>
+<< fadeOut >>
+
+Ce matin, vous retrouvez votre ami Fred, qui vous attend avec le sourire. #line:0bd159f 
+
+Fred_excited: Hey, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps... #line:028f8a8 
+You: Ouais... #line:0ddab6e 
+Fred_smiling: Je vois ça. J'espère que tu as bien dormi. #line:0bf6f69 
+You: Ouais. #line:083d267 
+Fred_excited: Yes yes. Moi aussi. On se revoit tout à l'heure. #line:00d7d95 
+<< hide >>
+
+<< fadeIn >>
+<< setBackground class >>
+<< fadeOut >>
+
+Vous vous rendez à votre poste. Vous vous calez sur votre siège et prenez connaissance des instructions qui défilent sur l'écran. Vous savez comment piloter un drone d'ingénierie. Vous êtes même doué à ce jeu #line:0086d5b 
+Enfin, vous vous sentez suffisamment reposé. En effet, vous appliquez sans trop de difficulté les consignes. À part une erreur ou deux, vous guidez votre appareil à bon port. #line:05f29c8 
+Puis, vous sortez de la salle de classe. #line:09197a3 
+
+<< advanceTime 3:00 >>
+
+<<jump Sortir>>
+===
+title: Sortir
+tags: 
+position: 591.0426635742188,1112.3233642578125
+---
+
+<< fadeIn >>
+<< setBackground door class >>
+<< fadeOut >>
+
+Dehors, vous rejoignez Fred. #line:075dcd1 
+Fred_smiling: C'était easy, non? #line:072f2fb 
+You: Ouais. #line:0b8eac9 
+Fred_happy: Je pense avoir cartonné. Et toi ? #line:05c06e6 
+You: Ça devrait aller. #line:0b67da4 
+
+C'est à ce moment que les résultats tombent.  #line:0c34794 
+<< setBackground door class-screen >>
+<< fx Notification >>
+Fred décroche un <b>A</b> et vous un <b>B</b> #line:05a2fca 
+<< fx Success >>
+<< music Victory >>
+Fred_smiling: Hey ! Attention, hein ! Tu serais pas en train de vouloir me dépasser ?... #line:0981b12 
+You: Bien entendu. #line:0187a34 
+Fred_smiling: Je t'adore, tu as toujours la phrase qui tue. Allez, on va manger un petit truc et on file au cinoche. On est libre maintenant jusqu'à demain. #line:09dcf0b 
+You: Yes. #line:0b3e43f 
+Fred_smiling: Yes yes! #line:0f08c3f 
+<< advanceTime 0:15 >>
+===
+title: Replay
+tags:
+position: -1624.1019287109375,775.4595947265625
+---
+<< fadeIn >>
+<< setBackground circle >>
+<< fadeOut >>
+Nonononoon... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition. #line:07bd3dd 
+Vous devez respecter votre cycle de sommeil et d'alimentation ! #line:0ebe6d4 
+
+Vous allez devoir retourner à cette soirée festive... #line:0e44199 
+
+-> Retourner à la fête #line:05385cd 
+    << resetLevel >>
+    <<jump Start>>
+===
+title: Go_To_Bed_Loose
+tags:
+position: -286.4623107910156,765.6393432617188
+colorID: 1
+---
+<< music >>
+Mince, il ne reste plus personne sur la piste. Vous ne ne voyez plus Fred. Il est sacrément tard, ou sacrément tôt. Les premiers rayons de soleil filtrent à travers les fenêtres de la salle. #line:06ab823 
+Vous avez péché par ambition. Vous n'avez pas assez écouté votre corps. Vous êtes épuisé, totalement à plat. Il est plus que temps d'aller dormir.  Vous sentez que cela cogne dans votre tête. Allez-vous pouvoir récupérer assez de sommeil ?... #line:060e8a3 
+
+<<jump SeReposer>>
+===
+title: SeReposer
+tags:
+position: -73.00656509399414,765.8036499023438
+---
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+<< hideGauges >>
+<< advanceTime 0:15 >>
+Vous filez dans votre chambre en titubant. Vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent ! Vous avez l'impression de rester coincé une heure dans ce cagibi. #line:010bcf3 
+<< advanceTime 0:20 >>
+C'est pénible, surtout que votre vision se trouble, se dédouble. Pas de doute, vous n'avez pas su quitter l'arène à temps. Vous avez franchi la ligne rouge. Vous êtes plus que crevé... #line:0a5f793 
+Vous avez la tête qui tourne et qui serre, qui vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité. #line:0a1f289 
+
+<< fadeIn >>
+Non, décidément, rien à faire, vous n'arrivez pas à vous endormir... #line:0e8130b 
+
+<<jump Bip_Bip>>
+===
+title: Bip_Bip
+tags:
+position: 139.57297730445862,766.5597534179688
+---
+<< setBackground bedroom >>
+<< loopFX AlarmClock_LOOP 2000 >>
+<< advanceTime 8:00 8:00 0:05 >>
+<< music Neutral >>
+<< fadeOut >>
+
+Argh... L'horloge connectée vous fait bondir de votre lit ! Il est encore trop tôt ! Vous ne vous êtes toujours pas reposé. Vous aimeriez avoir une bonne nuit de sommeil... #line:064df23 
+
+<< stopFX AlarmClock_LOOP >>
+
+Vous avez encore raté votre soirée. Vous avez voulu battre Fred à son propre jeu. Vous étiez tellement obsédé par l'idée de gagner que vous avez négligé votre bien-être. Vous n'avez pas écouté votre corps. #line:09e61f9 
+
+<< fx Failure >>
+
+Au final, vous avez encore perdu... #line:0886c90 
+
+-> Recommencer #line:0b24153 
+    <<jump Replay>>
+===
+title: Drink_Bad
+tags: 
+position: -506.3429870605469,528.9087734222412
+---
+Tant pis, vous avez besoin d'un coup de pouce... Du moins, le pensez-vous... #line:0154ec5 
+<< removeFromGauge food 20 >>
+<< addToGauge sleep 10 >>
+<< advanceTime 0:10 >>
+
+-> Un shot et on y retourne ! #line:054e0f2 
+    <<jump Que_Faire>>
+===
+title: Eat_Bad
+tags: 
+position: -505.91009521484375,303.20033264160156
+---
+BarBot: Tenez. #line:05cdafa 
+You: Merci. #line:0eb0a3c 
+Le BarBot vous tend une espèce de gomme multicolore. Vous la mettez dans votre bouche. Niac... C'est moche, ça a un sale goût et vous vous demandez si vous avez fait le bon choix... Trop tard, c'est fait. Vous ressentez quand même un effet revitalisant. Cela suffira-t-il ?... #line:06f6f0b 
+<< hide >>
+
+<< removeFromGauge food 25 >>
+<< addToGauge sleep 10 >>
+<< advanceTime 0:10 >>
+
+-> Bon, ça c'est fait, et maintenant ? #line:074c83d 
+    <<jump Que_Faire>>
+===
