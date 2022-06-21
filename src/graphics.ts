@@ -168,7 +168,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    */
   public showUi() {
     this._uiLayer.visible = true;
-    this._dialogLayer.visible = true;
   }
 
   /**
@@ -176,7 +175,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    */
   public hideUi() {
     this._uiLayer.visible = false;
-    this._dialogLayer.visible = false;
   }
 
   /**

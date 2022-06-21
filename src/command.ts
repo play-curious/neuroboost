@@ -338,18 +338,9 @@ export const commands: Record<string, Command> = {
     );
   },
 
-  showTitle(...words: string[]): void {
+  showTitle(...words: string[]): entity.Entity {
     const text = words.join(" ");
-
-    this.disable();
-    this.activate(
-      new entity.EntitySequence([
-        new title.Title(text),
-        new entity.FunctionCallEntity(() => {
-          this.enable();
-        }),
-      ])
-    );
+    return new title.Title(text);
   },
 
   empty() {},

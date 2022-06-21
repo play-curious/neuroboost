@@ -5,7 +5,7 @@ tags:
 colorID: 0
 position: -891,402
 ---
-<< hideUi >>
+<< fadeIn >>
 << showTitle Prologue >>
 << setGauge learning 0 >>
 << setGauge sleep 30 >>
@@ -16,7 +16,6 @@ position: -891,402
 << advanceTime 0:15 >>
 << setBackground oral >>
 << fadeOut >>
-<< showUi >>
 Voilà finalement venu le Grand Oral. L'Académie d'Omniscience et de Polytechnologie Universelle met beaucoup en avant l'importance de cette épreuve dès la première année. Souvent impitoyable, elle met les élèves en difficulté et indiquent s'ils sont aptes à continuer leur cursus.
 
 Autrement dit, cette épreuve est éliminatoire.
