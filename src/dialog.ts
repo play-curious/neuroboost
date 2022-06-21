@@ -457,20 +457,20 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   /** Automatically simulate effects on sleep & food gauges */
-  simulateGauges(minutes: number): void {
-    // Need about 8 hours of sleep per day
-    const sleepPerHour = 12.5;
-    // No more than 12 hours before meals
-    const foodPerHour = 8.3;
+  simulateGauges(minutes: number, gaugesToIgnore: string[]): void {
+    // Need about 8 hours of sleep per day (15% for 2:15)
+    const sleepPerHour = 15 / 2.25;
+    // No more than 9 between meals (25% for 2:15)
+    const foodPerHour = 25 / 2.25;
 
-    {
+    if (!gaugesToIgnore.includes("sleep")) {
       const oldValue = this.config.variableStorage.get("sleep");
       const simulatedSleep = (sleepPerHour * minutes) / 60;
       const newValue = Math.max(Number(oldValue) - simulatedSleep, 0);
       this.config.variableStorage.set("sleep", `${newValue}`);
     }
 
-    {
+    if (!gaugesToIgnore.includes("food")) {
       const oldValue = this.config.variableStorage.get("food");
       const simulatedFood = (foodPerHour * minutes) / 60;
       const newValue = Math.max(Number(oldValue) - simulatedFood, 0);

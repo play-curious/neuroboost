@@ -183,9 +183,10 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   }
 
   changeValue(newValue: number) {
-    if (newValue === this._value) return;
-    if (this._currentTween.animation)
+    if (this._currentTween.animation) {
       this._deactivateChildEntity(this._currentTween.animation);
+      this._currentTween.animation = null;
+    }
 
     this._currentTween.to = newValue;
     this._currentTween.animation = new tween.Tween({

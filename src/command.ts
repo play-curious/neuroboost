@@ -120,7 +120,7 @@ export const commands: Record<string, Command> = {
    * Makes time clock forward by a certain amount.
    * Automatically adjusts food and sleep meters
    */
-  advanceTimeBy(time: clock.ResolvableTime) {
+  advanceTimeBy(time: clock.ResolvableTime, ...gaugesToIgnore: string[]) {
     const [, , minutesToAdvance] = clock.parseTime(time);
 
     const minutesSinceMidnight = Number(
@@ -131,11 +131,11 @@ export const commands: Record<string, Command> = {
     this.config.variableStorage.set("time", `${newMinutes}`);
 
     this.config.clock.advanceTime(newMinutes);
-    this.simulateGauges(minutesToAdvance);
+    this.simulateGauges(minutesToAdvance, gaugesToIgnore);
   },
 
   /** Makes the clock move forward until a certain time */
-  advanceTimeUntil(time: clock.ResolvableTime) {
+  advanceTimeUntil(time: clock.ResolvableTime, ...gaugesToIgnore: string[]) {
     const [, , newMinutesSinceMidnight] = clock.parseTime(time);
 
     const minutesSinceMidnight = Number(
@@ -146,7 +146,7 @@ export const commands: Record<string, Command> = {
     this.config.clock.advanceTime(newMinutesSinceMidnight);
 
     const minutesToAdvance = newMinutesSinceMidnight - minutesSinceMidnight;
-    this.simulateGauges(minutesToAdvance);
+    this.simulateGauges(minutesToAdvance, gaugesToIgnore);
   },
 
   hideClock() {

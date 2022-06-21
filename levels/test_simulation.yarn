@@ -26,6 +26,10 @@ position: -1617.4276733398438,-825.2426147460938
   << jump AdvanceTimeUntil12 >>
 -> Advance time until 18:00
   << jump AdvanceTimeUntil18 >>
+-> Sleep night
+  << jump SleepNight >>
+-> Eat lunch
+  << jump EatLunch >>
 
 ===
 title: AdvanceTimeBy1
@@ -52,5 +56,23 @@ position: -1617.4276733398438,-825.2426147460938
 ---
 
 << advanceTimeUntil 18:00 >>
+<< jump Choices >>
+===
+title: SleepNight
+tags:
+position: -1617.4276733398438,-825.2426147460938
+---
+
+<< advanceTimeUntil 8:00 sleep >>
+<< addToGauge sleep 100 >>
+<< jump Choices >>
+===
+title: EatLunch
+tags:
+position: -1617.4276733398438,-825.2426147460938
+---
+
+<< advanceTimeBy 0:20 food >>
+<< addToGauge food 70 >>
 << jump Choices >>
 ===
