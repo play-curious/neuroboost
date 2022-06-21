@@ -5,20 +5,272 @@ tags: noUi
 position: -1391.4708251953125,85.48695087432861
 colorID: 8
 ---
-<< fadeIn 1 >>
+<< fadeIn  >>
+<< setBackground door class >>
+<< fadeOut >>
 
-Vous êtes lové dans une confortable et douce langueur... Quand... #line:0b0cdb1 
-On vous secoue brusquement !!! #line:027d93e 
+Fred_smiling: Allô ? Tu m'entends pas ou quoi ?
+You: Pardon, Fred, j'étais ailleurs pendant un instant... Tu disais ?
+Fred_happy: La fête organisée par les docteurs, tu viens ou quoi ? Je leur ai promis que je relèverais leur défi du roi de la soirée. Je peux pas me défiler !
+You: Ben, le truc c'est que... Demain matin, on a un exercice de simulation. Un test de pilotage de drone d'ingénierie ! #line:03a1bce 
+Fred_happy: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur. #line:06de838 
+You: Oui, mais mon drone est pas prêt ! La coque est trop lourde et mon système de navigation est encore bancal. 
+Fred_smiling: Tranquille, le mien fonctionne comme du tonnerre, je te passerai mes plans !
+You: Même si j'ai tes plans, il me faudra au moins deux heures pour faire les changements et les tester...
+Fred_happy: Ok, je vois que t'es difficile en affaires... Si les docteurs m'ont donné ce défi, c'est pas pour rien, mais je vais être contre le champion des teufeurs, j'ai nommé : BB Rex. J'aurai besoin de toi si je veux être sûr de gagner.
+Fred_excited: Si on gagne le défi des docteurs, tu peux être sûr que je prendrai du temps pour t'aider avec ton drone demain matin. T'en dis quoi ?
+Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir ce défi ?! Il tient vraiment à sa réputation, celui-là... En tout cas, vous savez qu'avec ses talents d'ingénierie, vous pourriez avoir une très bonne note, voire une excellente !
+You: Bon... Tu me laisses pas le choix, là ! On se retrouve vers 21h30 ?
+Fred_smiling: Haha, ça, c'est l'attitude que je préfère ! Allez, à plus tard !
 
-<< setGauge learning 100 >>
-<< setGauge food 70 >>
-<< setGauge sleep 70 >>
-<< showGauges >>
-<< setTime 1:30 >>
+-> Rentrer
+    << hide >>
+    <<jump Back_Home>>
 
--> Ouvrir les yeux #line:093ee21 
-    <<jump Open_Eyes>>
+
 ===
+
+title: Back_Home
+tags: 
+position: -1264,-83
+---
+<< setGauge learning 0 >>
+<< setGauge food 60 >>
+<< setGauge sleep 60 >>
+
+<< fadeIn >>
+<< setBackground bedroom >>
+<< setTime 18:30 >>
+<< fadeOut >>
+
+<< showGauges >>
+Vous vous retrouvez seul. Vous et Fred avez rendez-vous à 21h30, mais entre temps vous pouvez faire ce que vous voulez avant la soirée ! Voyons voir...
+<<jump Actions_Before_Party>>
+===
+
+title: Actions_Before_Party
+tags: freechoice
+position: -1006,-171
+---
+<< setBackground bedroom >>
+<< fadeOut >>
+
+-> Cuisine@cuisine #line:0717775 
+    <<jump Cuisine_S >>
+-> Porte@porte #line:0d21566 
+    <<jump Porte_S>>
+-> Bureau@bureau #line:048f567 
+    <<jump Bureau_S>>
+-> Lit@lit #line:03dbf5c 
+    <<jump Lit_S>>
+-> Salon@salon #line:0645318 
+    <<jump Salon_S>>
+===
+
+title: Cuisine_S
+tags: subchoice
+position: -740,-268
+---
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+-> Manger un bout avant la fête << if !visited("Dinner") >>
+    <<jump Eat_Before_Party>>
+-> back
+    <<jump Actions_Before_Party>>
+===
+
+title: Eat_Before_Party
+tags:
+position: -513,-239
+---
+Vous préparez un repas rapide, ni trop léger, ni trop lourd, pour éviter d'être tout engourdi sur la piste de danse. Cela vous permettra de tenir un peu avant de devoir vous jeter sur les gourmandises !
+<< visit Dinner >>
+<< addToGauge food 50>>
+<<jump Actions_Before_Party>>
+===
+
+title: Bureau_S
+tags: subchoice
+position: -595,-84
+---
+<< fadeIn >>
+<< setBackground bedroom desk >>
+<< fadeOut >>
+-> Revoir les plans du drone << if !visited("Drone_Review") >>
+    <<jump Drone_Review>>
+-> back
+    <<jump Actions_Before_Party>>
+===
+
+title: Drone_Review
+tags: 
+position: 0,0
+---
+Vous profitez de ce moment au calme pour tenter d'améliorer votre drone comme vous le pouvez. Vous repassez d'abord sur le module d'assistance à la trajectoire, mais il y a encore du boulot avant d'avoir un système acceptable.
+<< addToGauge learning 20>>
+Décidément, vous aurez bien besoin de ce coup de pouce de Fred !
+<< visit Drone_Review >>
+<<jump Actions_Before_Party>>
+===
+
+title: Lit_S
+tags: subchoice
+position: -628,-136
+---
+<< fadeIn >>
+<< setBackground bedroom bed >>
+<< fadeOut >>
+-> Faire une sieste << if !visited("Sieste") >>
+    <<jump Sieste>>
+-> back
+    <<jump Actions_Before_Party>>
+===
+
+title: Sieste
+tags: 
+position: 0,0
+---
+Vous profitez du calme avant la fête pour reprendre vos forces en faisant un somme. En vous réveillant, vous vous sentez débordant d'énergie !
+<< visit Sieste >>
+<< addToGauge sleep 50>>
+<<jump Actions_Before_Party>>
+===
+
+title: Salon_S
+tags: subchoice
+position: -804,-54
+---
+<< fadeIn >>
+<< setBackground bedroom chill >>
+<< fadeOut >>
+
+-> Pratiquer ses gammes à la guitare << if !visited("Guitar_Training") >>
+    <<jump Guitar_Training>>
+-> S'entraîner au Jungle Body Beat << if !visited("Danse_Training") >>
+    <<jump Danse_Training>>
+-> Regarder Star Mars << if !visited("Star_Mars_Incursion")>>
+    <<jump Star_Mars_Incursion>>
+-> back
+    <<jump Actions_Before_Party>>
+===
+
+title: Guitar_Training
+tags: 
+position: 0,0
+---
+Pas de soirée qui se respecte sans un guitariste amateur grattant les accords de WanderHall... Vous, vous préférez le bon vieux néo-shredding, ou encore le galactic jazz. Dans tous les cas, vous vous entraînez un peu pour amuser la galerie tout à l'heure.
+<< visit Guitar_Training >>
+<<jump Actions_Before_Party>>
+===
+
+title: Danse_Training
+tags: 
+position: 0,0
+---
+Vous allumez votre stéréo uni-directionnelle pour pratiquer vos meilleurs pas de danse sans déranger vos voisins. C'est sûr que vous allez impressionner tout le monde en vous déhanchant comme ça !
+<< visit Danse_Training >>
+<<jump Actions_Before_Party>>
+===
+
+title: Star_Mars_Incursion
+tags: 
+position: 0,0
+---
+<< show lightsaber@holo >>
+<< loopFX TVStarwars_LOOP 10000 >>
+Allez, un petit épisode pour se calmer les nerfs avant de partir se défouler. Pas de nouvel épisode aujourd'hui, mais vous en profitez pour revisiter un classique : sur la planète Métopsia, nos héros doivent déjouer les plans du Collectionneur, une créature polymorphe désirant absorber l'ADN de tous les individus.
+L'histoire est si passionnante que vous restez jusqu'à la fin de l'épisode, le "cliffhanger", même si vous l'avez déjà vu : le méchant était en réalité une créature bienveillante, désirant empêcher une incursion extra-terrestre. Quel suspense !
+<< visit Star_Mars_Incursion >>
+<< stopFX TVStarwars_LOOP >>
+<< hide >>
+<<jump Actions_Before_Party>>
+===
+
+title: Porte_S
+tags: subchoice
+position: -804,-54
+---
+-> Retrouver Fred (passe le temps jusqu'à 21h30)
+    <<jump Debut_Soiree>>
+-> back
+    <<jump Actions_Before_Party>>
+===
+
+title: Debut_Soiree
+tags: 
+position: -804,-54
+---
+<< setBackground party >>
+<< music DanseQuiet >>
+<< fadeOut >>
+
+Fred_excited: Yo, te voilà enfin ! Alors, pas mal, cette fête, non ?
+You: Carrément ! Alors, on le commence, ce défi ?
+Fred_excited: Ouais, mais avant ça, il faut trouver notre adversaire, BB-Rex !
+You: Et il est où, ce... BB-Rex ?
+Fred_happy: Euh... Ca, je sais pas vraiment... Je l'ai jamais vu avant. Mais il paraît que c'est le plus grand fêtard de l'université, alors il devrait pas être difficile à trouver !
+You: Euh... Ok... On fait quoi en attendant ?
+Fred_smiling: En attendant, allons nous chercher de quoi nous remplir le gosier ! Tiens, un BarBot !
+BarBot: Qu'est-ce que je peux vous offrir, les losers ?
+Fred_smiling: Yo BarBot, mets-nous deux verres de...
+Fred_surprised: Attends... Comment tu viens de m'appeler ?
+BarBot: Ben quoi, loser, y a quelque chose qui va pas dans ton programme de décodage, ou quoi ? Allez, dégage d'ici et laisse-moi servir.
+You: Euh... Ils sont censés être aussi violents ?
+Barbot: Non, seulement moi. C'est moi qui écrit les règles ici, amigo.
+Fred_excited: OH !! JE SAIS !! C'est pas un Barbot !! C'EST LUI, BB-REX !!
+You: Quoi ??
+Barbot: Et ouais, amigo, en fer et en os.
+Fred_excited: Le vieux robot de la cafétéria ! Les docteurs se sont amusés à le reprogramer pour le transformer en caïd !
+You: C'est... lui, notre adversaire ?
+Barbot: Et comment... Bon, les losers, pour l'instant, vous avez les poches vides, hein ? Vous feriez-mieux de vous y mettre si vous voulez amasser les 4 points Rex et pouvoir m'affronter en duel !
+You: De quoi il parle, là ?
+Fred_excited: A chaque fois qu'on arrive à impressionner BB, il nous donne un point ! Quand on en a récupéré 4, on peut l'affronter pour voir qui obtiendra le titre de champion de la fête !
+Barbot: T'oublies un détail, amigo. Personne a réussi à battre BB-Rex. En tout cas, aucun humain. Tout simplement car BB-Rex est le plus grand teufeur de l'histoire. Allez, au boulot les losers !
+Fred_surprised: T'as entendu le tas de ferraille, { $name }, il faut qu'on se fasse remarquer ! Alors, on fait quoi ?
+
+-> Hall de la cafétéria
+    <<jump Hall>>
+-> Bar
+    <<jump Bar>>
+-> Canapé
+    <<jump Sofa>>
+-> Porte
+    <<jump Porte>>
+===
+
+title: Hall
+tags: 
+position: -804,-54
+---
+-> Jouer un solo de guitare
+    <<jump Solo_Guitare>>
+-> Se déhancher sur la piste de danse
+    <<jump Danse>>
+===
+
+title: Bar
+tags: 
+position: -804,-54
+---
+-> Grignoter un snack
+    <<jump Grignoter>>
+-> Se rafraîchir au bar
+    <<jump Danse>>
+-> Tenter de pirater BB-Rex
+    <<jump Pirater>>
+===
+
+title: Hall
+tags: 
+position: -804,-54
+---
+-> Jouer un solo de guitare
+    <<jump Solo_Guitare>>
+-> Se déhancher sur la piste de danse
+    <<jump Danse>>
+===
+
 title: Open_Eyes
 tags: 
 position: -1172.1470947265625,85.38811206817627
@@ -69,7 +321,7 @@ On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait
 ===
 title: DanceFloor2
 tags: 
-position: -728.075834274292,-134.31593322753906
+position: -693,18
 ---
 Vous rejoignez le centre de la piste. Vous levez le bras, histoire d'indiquer à la foule que vous êtes sur le ring! Prêt à leur accorder un nouveau show exclusif et endiablé! Tout le monde s'arrête de gigoter et se rassemble tout autour de vous. #line:03f5cdf 
 C'est la classe, vous voilà redevenu le centre d'attention de la soirée, le centre d'attraction de la salle. #line:0d5d8ed 

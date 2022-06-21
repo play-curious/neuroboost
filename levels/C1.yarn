@@ -30,6 +30,7 @@ Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler
 -> Rejeter l'appel #line:062f62e 
     <<jump Rejet_Fred_Rewind>>
 ===
+
 title: Appel_Fred_Rewind
 tags: 
 colorID: 0
@@ -76,6 +77,7 @@ Vous raccrochez sans vous en rendre compte. #line:077b761
 
 <<jump Phone_off_Rewind>>
 ===
+
 title: Rejet_Fred_Rewind
 tags:
 colorID: 0
@@ -91,6 +93,7 @@ Fred vous a déjà fait perdre du temps hier soir, alors vous rejetez ses appels
 <<jump Action_List_Rewind>>
 <<endif>>
 ===
+
 title: Phone_off_Rewind
 tags:
 colorID: 0
@@ -111,6 +114,7 @@ Il vous reste 6 heures avant le partiel... Aujourd'hui, vous allez montrer à Fr
 
 <<jump Action_List_Rewind>>
 ===
+
 title: Action_List_Rewind
 tags: freechoice
 colorID: 0
@@ -137,6 +141,7 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
     <<jump salon_subchoice>>
 << endif>>
 ===
+
 title: cuisine_subchoice
 tags: subchoice
 position: -525,562
@@ -150,8 +155,8 @@ position: -525,562
 -> back #line:0fad580 
     << fadeIn >>
     <<jump Action_List_Rewind>>
-
 ===
+
 title: bureau_subchoice
 tags: subchoice
 position: -993.6492929458618,-75.37680292129517
@@ -169,6 +174,7 @@ position: -993.6492929458618,-75.37680292129517
     << fadeIn >>
     <<jump Action_List_Rewind>>
 ===
+
 title: salon_subchoice
 tags: subchoice
 position: -1427,217
@@ -181,6 +187,7 @@ position: -1427,217
 -> back #line:0341673 
     <<jump Action_List_Rewind>>
 ===
+
 title: Lunch_Rewind
 tags:
 colorID: 7
@@ -205,6 +212,7 @@ Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et évit
 
 <<jump Check_Results>>
 ===
+
 title: Check_Results
 tags:
 colorID: 7
@@ -222,6 +230,7 @@ position: -1269,1157
     <<endif>>
 << endif >>
 ===
+
 title: Petit_dej_Rewind
 tags:
 colorID: 0
@@ -239,6 +248,7 @@ Bon, ce n'est pas tout. #line:0d01fa8
 << fadeIn >>
 <<jump Action_List_Rewind>>
 ===
+
 title: Chat_Rewind
 tags:
 colorID: 0
@@ -265,6 +275,7 @@ Vous passez deux heures à discuter de tout, mais surtout de rien. #line:06ab06b
 << fadeIn >>
 <<jump Action_List_Rewind>>
 ===
+
 title: Revision_Rewind
 tags:
 colorID: 0
@@ -284,6 +295,7 @@ Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à pot
 << fadeIn >>
 <<jump Action_List_Rewind>>
 ===
+
 title: BingeTV_Rewind
 tags:
 colorID: 0
@@ -316,6 +328,7 @@ Au final, vous passez trop de temps à binger votre série préférée. #line:02
 << fadeIn >>
 <<jump Action_List_Rewind>>
 ===
+
 title: Rappel_libre
 tags:
 colorID: 0
@@ -335,6 +348,7 @@ Vous prenez encore le temps de relire votre cours pour combler les lacunes qui v
 << fadeIn >>
 <<jump Action_List_Rewind>>
 ===
+
 title: Test_Rewind
 tags:
 colorID: 0
@@ -355,6 +369,7 @@ Euphorique, vous quittez la salle et retrouvez Fred, qui vous attend à l'entré
 
 <<jump Post_Test_Rewind>>
 ===
+
 title: Test
 tags:
 position: -666.0570068359375,500.580322265625
@@ -373,6 +388,7 @@ Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fre
 
 <<jump Post_Test>>
 ===
+
 title: Post_Test_Rewind
 tags: 
 colorID: 0
@@ -404,6 +420,7 @@ Les résultats du test viennent de tomber... #line:0509cfb
 
 <<jump Resultats_Good>>
 ===
+
 title: Resultats_Good
 tags: 
 colorID: 0
@@ -420,11 +437,7 @@ You: Facile à dire pour toi. Tu as eu <b>A+</b>. #line:04e24fc
 Fred_happy: Et alors ? Tu feras mieux la prochaine fois.
 You: C'est sûr !
 Fred_smiling: Avec des scores pareil, y a plus qu'une chose à faire, célébrer ce jour victorieux ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande ! #line:0b027ac 
-You: Ce serait sympa, mais... Demain matin, on a un exercice de simulation. Un test de pilotage de drone d'ingénierie ! #line:03a1bce 
-Fred_happy: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur. #line:06de838 
-You: Oui, mais faudra avoir l'esprit clair et sain. #line:0bb05e6 
-Fred_smiling: No worry, on s'en va avant l'aube, on fait une petite sieste et on sera nickel pour l'heure H. #line:028fbe7 
-
+You: Ce serait sympa, mais... 
 << hide >>
 
 << advanceTime 0:05 >>
@@ -438,8 +451,8 @@ Fred_smiling: No worry, on s'en va avant l'aube, on fait une petite sieste et on
     <<showJournal method>>
 -> Passer à la journée suivante
 <<endif>>
-
 ===
+
 title: Resultats_Bad_Again
 tags:
 colorID: 0
@@ -498,6 +511,7 @@ Les résultats du test viennent de tomber... #line:0fd7dde
 -> Consulter les résultats #line:01e5c57 
     <<jump Resultats_Bad>>
 ===
+
 title: Resultats_Bad
 tags:
 position: -88,657
@@ -525,6 +539,7 @@ You: J'ai pas trop la tête à ça... Je te dirai si je change d'avis, mais pour
 << hide >>
 <<jump Sages_Defaite>>
 ===
+
 title: Rester_Chambre_deprime
 tags:
 position: 66,996
@@ -536,6 +551,7 @@ Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à cha
 -> Rentrer dormir #line:047bca2 
     <<jump Sages_Defaite>>
 ===
+
 title: Sages_Defaite
 tags: noUi
 position: -388,1264
@@ -556,15 +572,15 @@ You: Où ça ? On va encore remonter le temps ?
 Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre.
 
 <<jump Assemblee_Sages>>
-
 ===
+
 title: Sages_Victoire
 tags: noUi
 position: -760,1476
 ---
 
 Temde_neutral: { $name } ! Je vois que tu es déjà parvenu à t'améliorer par toi-même. C'est une capacité que je respecte.
-You: Euh... J'étais avec mon poten là...
+You: Euh... J'étais avec mon pote là...
 Temde_smiling: Pas d'inquiétude, nous te renverrons à cet instant précis dès que nous aurons terminé. Pour l'instant, viens, suis-moi une fois de plus.
 You: Où ça ? On va encore remonter le temps ?
 Temde_cheerful: Pas cette fois, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Même si tu es débrouillard, nous avons quelques astuces à t'apprendre.
@@ -574,8 +590,8 @@ Temde_cheerful: Pas cette fois, { $name }. Pour l'instant, cap vers l'Assemblée
 << hide ! >>
 
 <<jump Assemblee_Sages>>
-
 ===
+
 title: Assemblee_Sages
 tags: noUi
 position: -571,1504
@@ -594,6 +610,7 @@ Sapiens_thinking: Oui, la mémorisation. #line:085e256
 -> Qu'est-ce qu'elle a, ma mémorisation? #line:0d59581 
     <<jump memorisation>>
 ===
+
 title: memorisation
 tags: noUi
 position: -366.2418212890625,1422.0413818359375
@@ -619,6 +636,7 @@ Sapiens_thinking: Tout à fait, c'est le chaos ! La panique ! La catastrophe !..
 -> C'est quoi la mémoire longue? #line:0617b83 
     <<jump Memoire_Longue>>
 ===
+
 title: Memoire_Longue
 tags: noUi
 position: -67,1414
@@ -639,6 +657,7 @@ You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions 
 
 <<jump Routinisation>>
 ===
+
 title: Routinisation
 tags: noUi
 position: 243.36883544921875,1410.058349609375
@@ -669,8 +688,8 @@ Temde_smiling: Lorsque tu auras eu le temps de noter dans ton journal, nous te r
 <<endif>>
 
 <<jump Journal_Rappel_libre>>
-
 ===
+
 title: Journal_Rappel_libre
 tags: noUi
 position: 544,1399
