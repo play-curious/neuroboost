@@ -133,7 +133,7 @@ for (const levelName of extraLevels) {
 async function levelLoader(entityConfig: entity.EntityConfig) {
   const levels: Record<string, string> = {};
   const levelNames = stateNames
-    .filter((name) => name[0] == "C" || name[0] == "D")
+    .filter((name) => name[0] == "C" || name[0] == "D" || name == "Prologue")
     .concat(extraLevels);
   await Promise.all(
     levelNames.map(async (name) => {
