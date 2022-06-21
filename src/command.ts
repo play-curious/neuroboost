@@ -9,6 +9,7 @@ import * as clock from "./clock";
 import * as save from "./save";
 import * as popup from "./popup";
 import * as journal from "./journal";
+import * as title from "./title";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (
@@ -141,7 +142,7 @@ export const commands: Record<string, Command> = {
     );
     let [, , newMinutesSinceMidnight] = clock.parseTime(time);
 
-    // OPT: This loop is inefficient but won't be called more than 7 times
+    // OPT: This loop is inefficient but won't be called more than 7 times in the current scenario
     while (newMinutesSinceMidnight <= oldMinutesSinceMidnight) {
       // Must have gone to the next day
       newMinutesSinceMidnight += clock.dayMinutes;
@@ -331,6 +332,20 @@ export const commands: Record<string, Command> = {
             this.graphics.last.lastBg,
             this.graphics.last.lastBgMood
           );
+          this.enable();
+        }),
+      ])
+    );
+  },
+
+  showTitle(...words: string[]): void {
+    const text = words.join(" ");
+
+    this.disable();
+    this.activate(
+      new entity.EntitySequence([
+        new title.Title(text),
+        new entity.FunctionCallEntity(() => {
           this.enable();
         }),
       ])

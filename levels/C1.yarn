@@ -6,6 +6,7 @@ colorID: 0
 position: -245,126
 ---
 << empty >>
+<< showTitle Chapter 1 >>
 << fadeIn 1 >>
 << setGauge learning 0 >>
 << setBackground bedroom >>
