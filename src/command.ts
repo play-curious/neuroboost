@@ -136,16 +136,22 @@ export const commands: Record<string, Command> = {
 
   /** Makes the clock move forward until a certain time */
   advanceTimeUntil(time: clock.ResolvableTime, ...gaugesToIgnore: string[]) {
-    const [, , newMinutesSinceMidnight] = clock.parseTime(time);
-
-    const minutesSinceMidnight = Number(
+    const oldMinutesSinceMidnight = Number(
       this.config.variableStorage.get("time")
     );
+    let [, , newMinutesSinceMidnight] = clock.parseTime(time);
+
+    // OPT: This loop is inefficient but won't be called more than 7 times
+    while (newMinutesSinceMidnight <= oldMinutesSinceMidnight) {
+      // Must have gone to the next day
+      newMinutesSinceMidnight += clock.dayMinutes;
+    }
+
     this.config.variableStorage.set("time", `${newMinutesSinceMidnight}`);
 
     this.config.clock.advanceTime(newMinutesSinceMidnight);
 
-    const minutesToAdvance = newMinutesSinceMidnight - minutesSinceMidnight;
+    const minutesToAdvance = newMinutesSinceMidnight - oldMinutesSinceMidnight;
     this.simulateGauges(minutesToAdvance, gaugesToIgnore);
   },
 
