@@ -232,7 +232,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public showCloseup(
-    path?: images.StaticSpritePath & `images/closeups/${string}.png`
+    path?: images.SpritePath & `images/closeups/${string}.png`
   ): void {
     this._closeupLayer.removeChildren();
     if (!path) return;

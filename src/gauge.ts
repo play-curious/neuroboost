@@ -6,7 +6,7 @@ import * as easing from "booyah/src/easing";
 
 import * as extension from "./extension";
 import * as variable from "./variable";
-import { StaticSpritePath } from "./images";
+import { SpritePath } from "./images";
 
 const gaugesNames = {
   sleep: `Énergie`,
@@ -135,7 +135,7 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     return this._value;
   }
 
-  colorByValue(value: number): StaticSpritePath {
+  colorByValue(value: number): SpritePath {
     if (value > 66)
       return this._inverted
         ? "images/ui/gauges/innerDisk_red.png"
