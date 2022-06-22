@@ -15,6 +15,7 @@ import * as dialog from "./dialog";
 import * as journal from "./journal";
 import * as variable from "./variable";
 import * as miniGame from "./mini_game";
+import * as toc from "./toc";
 
 // Strange audio bug makes narration.VideoScene not work for this
 const outroVideoScene = new entity.ParallelEntity([
@@ -122,6 +123,7 @@ for (const stateName of stateNames) {
 }
 
 states["outro_video"] = outroVideoScene;
+states["toc"] = new toc.TableOfContents();
 
 const extraLevels = ["characters", "backgrounds", "test_simulation"];
 for (const levelName of extraLevels) {
