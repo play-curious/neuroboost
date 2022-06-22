@@ -89,7 +89,7 @@ Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais v
     <<jump Appel_Fred_Rewind>>
 <<else>>
 Fred vous a déjà fait perdre du temps hier soir, alors vous rejetez ses appels dans l'espoir qu'il se lasse.
-<< advanceTime 0:15 >>
+<< stopFX PhoneRing_LOOP >>
 <<jump Action_List_Rewind>>
 <<endif>>
 ===
@@ -448,11 +448,18 @@ You: Ce serait sympa, mais...
     <<jump Sages_Victoire>>
 <<else>>
 -> Réécrire dans le Journal mental
-    <<showJournal method>>
--> Passer à la journée suivante
+    << showJournal method >>
+    <<jump AfterJournal>>
+-> Passer au chapitre suivant
 <<endif>>
 ===
-
+title: AfterJournal
+tags:
+colorID: 0
+position: -476,1087
+---
+-> Passer au chapitre suivant
+===
 title: Resultats_Bad_Again
 tags:
 colorID: 0
@@ -712,5 +719,9 @@ Serait-ce le <bi>journal mental</bi> dont parlait Ledai ? #line:063d2d3
 -> Recommencer la journée #line:0380a89 
     << resetLevel >>
     << jump Start>>
+<<else>>
+-> Revenir vers Fred
+<< fx Warp >>
+<< fadeIn 1500 12ea12 >>
 <<endif>>
 ===
