@@ -8,12 +8,15 @@ import * as extension from "./extension";
 
 export class Title extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
+  private _isExiting: boolean;
 
   constructor(public readonly text: string) {
     super();
   }
 
   _setup() {
+    this._isExiting = false;
+
     this._container = new PIXI.Container();
     this._container.alpha = 0;
     this._container.interactive = true;
@@ -51,14 +54,19 @@ export class Title extends extension.ExtendedCompositeEntity {
     }
 
     {
-      // Transition
-      const fadeIn = new tween.Tween({
-        obj: this._container,
-        property: "alpha",
-        to: 1,
-        duration: 1000,
-      });
-      this._activateChildEntity(fadeIn);
+      // Fade in, wait a second, fade out
+      this._activateChildEntity(
+        new entity.EntitySequence([
+          new tween.Tween({
+            obj: this._container,
+            property: "alpha",
+            to: 1,
+            duration: 1000,
+          }),
+          new entity.WaitingEntity(1000),
+          new entity.FunctionCallEntity(() => this._exit()),
+        ])
+      );
     }
   }
 
@@ -67,6 +75,11 @@ export class Title extends extension.ExtendedCompositeEntity {
   }
 
   private _exit() {
+    // Can't exit twice
+    if (this._isExiting) return;
+
+    this._isExiting = true;
+
     this._activateChildEntity(
       new entity.EntitySequence([
         // Fade out

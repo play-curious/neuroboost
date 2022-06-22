@@ -50,7 +50,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   public selectedOptions: string[];
   public enabled: boolean;
 
-  constructor(public levelName: string, public startNode: string) {
+  private _startNode: string;
+
+  constructor(public levelName: string) {
     super();
   }
 
@@ -115,34 +117,40 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   _setup(): void {
     //@ts-ignore
     window.dialogScene = this;
-    this._entityConfig.dialogScene = this;
 
-    // this.history = [];
-    // this.lastHistory = 0;
+    // TODO: this is incorrect, should provide child entities with the dialogScene
+    this._entityConfig.dialogScene = this;
+    this.config.dialogScene = this;
+
     this.enabled = true;
     this.selectedOptions = [];
 
-    const saveData = DialogScene.loadSave ? save.getSave() : undefined;
+    // TODO: rewrite save/load system
 
-    DialogScene.loadSave = false;
+    this._startNode = this._enteringTransition.params?.startNode || "Start";
 
-    if (saveData) {
-      this.startNode = saveData.nodeName;
-      this.levelName = saveData.levelName;
+    this.visited = new Set();
+    this.visitedPermanent = new Set();
 
-      this.visited = new Set(saveData.visited);
-      this.visitedPermanent = new Set(saveData.visitedPermanent);
+    // const saveData = DialogScene.loadSave ? save.getSave() : undefined;
 
-      this.config.history = saveData.history;
-      this.config.variableStorage = new variable.VariableStorage(
-        saveData.variableStorage
-      );
-    } else {
-      this.visited = new Set();
-      this.visitedPermanent = new Set();
-    }
+    // DialogScene.loadSave = false;
 
-    this.config.dialogScene = this;
+    // if (saveData) {
+    //   this.startNode = saveData.nodeName;
+    //   this.levelName = saveData.levelName;
+
+    //   this.visited = new Set(saveData.visited);
+    //   this.visitedPermanent = new Set(saveData.visitedPermanent);
+
+    //   this.config.history = saveData.history;
+    //   this.config.variableStorage = new variable.VariableStorage(
+    //     saveData.variableStorage
+    //   );
+    // } else {
+    //   this.visited = new Set();
+    //   this.visitedPermanent = new Set();
+    // }
 
     command.fxLoops.clear();
 
@@ -162,7 +170,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       "stress",
     ]);
 
-    if (saveData) this.graphics.loadSave();
+    // if (saveData) this.graphics.loadSave();
 
     // Setup clock
     this._activateChildEntity(
@@ -181,7 +189,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   private _initRunner() {
     this.runner = new yarnBound.YarnBound({
       dialogue: this.config.levels[this.levelName],
-      startAt: this.startNode,
+      startAt: this._startNode,
       variableStorage: this.config.variableStorage,
       functions: {},
     });

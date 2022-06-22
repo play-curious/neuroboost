@@ -6,6 +6,8 @@ import * as tween from "booyah/src/tween";
 
 import * as extension from "./extension";
 
+export type SceneType = "level" | "sages" | "journal";
+
 const yellow = 0xf9c560;
 const subtitleFontSize = 34;
 
@@ -66,6 +68,7 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
     let chapter = 0;
     for (let column = 0; column < 2; column++) {
       for (let row = 0; row < 4; row++) {
+        const currentChapter = chapter;
         const gridCell = new PIXI.Point(
           gridStart.x + column * (columnWidth + columnPadding),
           gridStart.y + row * rowHeight
@@ -93,7 +96,9 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
 
           title.interactive = true;
           title.buttonMode = true;
-          this._on(title, "pointer", () => this._pickScene(`C${chapter}`));
+          this._on(title, "pointerup", () =>
+            this._pickScene("level", currentChapter)
+          );
 
           this._container.addChild(title);
         }
@@ -135,7 +140,9 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
 
             sages.interactive = true;
             sages.buttonMode = true;
-            this._on(sages, "pointer", () => this._pickScene(`C${chapter}`));
+            this._on(sages, "pointerup", () =>
+              this._pickScene("sages", currentChapter)
+            );
 
             this._container.addChild(sages);
           }
@@ -173,7 +180,9 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
 
             text.interactive = true;
             text.buttonMode = true;
-            this._on(text, "pointer", () => this._pickScene(`C${chapter}`));
+            this._on(text, "pointerup", () =>
+              this._pickScene("journal", currentChapter)
+            );
 
             this._container.addChild(text);
           }
@@ -207,7 +216,7 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
     this._container = null;
   }
 
-  private _pickScene(name: string): void {
-    this._transition = entity.makeTransition(name);
+  private _pickScene(type: SceneType, index: number): void {
+    this._transition = entity.makeTransition("pick", { type, index });
   }
 }
