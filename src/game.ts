@@ -18,6 +18,37 @@ import * as miniGame from "./mini_game";
 import * as toc from "./toc";
 import _ from "underscore";
 
+class RequestTransitionEntity extends entity.EntityBase {
+  constructor(public readonly f: () => entity.Transition) {
+    super();
+  }
+
+  _setup() {
+    this._transition = this.f();
+  }
+}
+
+function checkSave(): entity.Transition {
+  if (!save.hasSave()) return entity.makeTransition("toc");
+
+  // Load variable storage
+  if (save.getVariableStorage()) {
+    this._entityConfig.variableStorage.data = save.getVariableStorage();
+  }
+
+  const loadedChapterData = save.getCurrentChapter();
+
+  // If no save exists, go the main menu
+  if (!loadedChapterData) {
+    return entity.makeTransition("toc");
+  } else {
+    // Go to the specified chapter, providing the chapter data
+    return entity.makeTransition(loadedChapterData.levelName, {
+      loadedChapterData,
+    });
+  }
+}
+
 // Strange audio bug makes narration.VideoScene not work for this
 const outroVideoScene = new entity.ParallelEntity([
   new entity.VideoEntity("game-by-play-curious", { scale: 2 }),
@@ -94,7 +125,7 @@ const dialogScenes = [
 const debuggingDialogScenes = ["characters", "backgrounds", "test_simulation"];
 
 let states: { [k: string]: entity.EntityResolvable } = {
-  // Start_Menu: new save.StartMenu(),
+  start: new RequestTransitionEntity(checkSave),
   toc: new toc.TableOfContents(),
   outro_video: outroVideoScene,
 };
@@ -149,20 +180,6 @@ async function levelLoader(entityConfig: entity.EntityConfig) {
   entityConfig.levels = levels;
 }
 
-// const transitions: Record<string, entity.Transition> = {};
-// let i = 0;
-// let previousState = "";
-// for (const state in states) {
-//   if (i === 0) {
-//     i++;
-//     continue;
-//   }
-//   if (i !== 1) transitions[previousState] = entity.makeTransition(state);
-//   previousState = state;
-//   i++;
-// }
-// transitions[previousState] = entity.makeTransition("end");
-
 const fxAssets = [
   "Narration_TypeWriter_LOOP",
   "Dialog_TypeWriter_LOOP",
@@ -209,7 +226,7 @@ export const screenSize = new PIXI.Point(1920, 1080);
 const splashScreen = "images/splash_screen.png";
 
 const params = new URLSearchParams(window.location.search);
-const startingScene = params.get("level") || params.get("scene") || "toc";
+const startingScene = params.get("level") || params.get("scene") || "start";
 const startingNode = params.get("startNode") || params.get("node") || "Start";
 const startingSceneParams = { startNode: startingNode };
 

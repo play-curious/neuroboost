@@ -216,7 +216,7 @@ export const commands: Record<string, Command> = {
   // MUSIC FX
 
   music(musicName?: string) {
-    this.graphics.last.lastMusic = musicName;
+    this.graphics.graphicsState.lastMusic = musicName;
     this.config.jukebox.play(musicName);
   },
 
@@ -329,8 +329,8 @@ export const commands: Record<string, Command> = {
         new entity.FunctionCallEntity(() => {
           // Restore background
           this.graphics.setBackground(
-            this.graphics.last.lastBg,
-            this.graphics.last.lastBgMood
+            this.graphics.graphicsState.lastBg,
+            this.graphics.graphicsState.lastBgMood
           );
           this.enable();
         }),
@@ -360,17 +360,17 @@ export const functions: Record<string, YarnFunction> = {
     return this.graphics.getGaugeValue(gauge);
   },
 
-  save() {
-    save.save(this);
-  },
+  // save() {
+  //   save.save(this);
+  // },
 
-  resetSave() {
-    save.deleteSave();
-  },
+  // resetSave() {
+  //   save.deleteSave();
+  // },
 
-  hasSave(): boolean {
-    return save.hasSave();
-  },
+  // hasSave(): boolean {
+  //   return save.hasSave();
+  // },
 
   isTimeOver(time: clock.ResolvableTime, day?: string): boolean {
     let [, , minutesSinceMidnight] = clock.parseTime(time);

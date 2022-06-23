@@ -125,32 +125,22 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.enabled = true;
     this.selectedOptions = [];
 
-    // TODO: rewrite save/load system
-
     this._startNode = this._enteringTransition.params?.startNode || "Start";
 
-    this.visited = new Set();
-    this.visitedPermanent = new Set();
+    const loadedChapterData = this._enteringTransition.params
+      ?.loadedChapterData as save.CurrentChapter;
+    if (loadedChapterData) {
+      this._startNode = loadedChapterData.nodeName;
+      this.levelName = loadedChapterData.levelName;
 
-    // const saveData = DialogScene.loadSave ? save.getSave() : undefined;
+      this.visited = new Set(loadedChapterData.visited);
+      this.visitedPermanent = new Set(loadedChapterData.visitedPermanent);
 
-    // DialogScene.loadSave = false;
-
-    // if (saveData) {
-    //   this.startNode = saveData.nodeName;
-    //   this.levelName = saveData.levelName;
-
-    //   this.visited = new Set(saveData.visited);
-    //   this.visitedPermanent = new Set(saveData.visitedPermanent);
-
-    //   this.config.history = saveData.history;
-    //   this.config.variableStorage = new variable.VariableStorage(
-    //     saveData.variableStorage
-    //   );
-    // } else {
-    //   this.visited = new Set();
-    //   this.visitedPermanent = new Set();
-    // }
+      // this.config.history = saveData.history;
+    } else {
+      this.visited = new Set();
+      this.visitedPermanent = new Set();
+    }
 
     command.fxLoops.clear();
 
@@ -170,8 +160,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       "stress",
     ]);
 
-    // if (saveData) this.graphics.loadSave();
-
     // Setup clock
     this._activateChildEntity(
       this.config.clock,
@@ -183,6 +171,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     this._initRunner();
     this._parseFileTags();
+
+    if (loadedChapterData)
+      this.graphics.loadSave(loadedChapterData.graphicsState);
+
     this._advance(-1);
   }
 
@@ -252,9 +244,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this._onChangeNodeData(this.lastNodeData, this.metadata);
       this.lastNodeData = this.metadata;
 
-      if (!this._hasTag(this.lastNodeData, "nosave")) {
-        save.save(this);
-      }
+      this._saveProgress();
     }
 
     const result = this.runner.currentResult;
@@ -439,6 +429,19 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     else this.graphics.showUi();
 
     this.emit("changeNodeData", oldNodeData, newNodeData);
+  }
+
+  private _saveProgress() {
+    if (this._hasTag(this.lastNodeData, "nosave")) return;
+
+    save.saveCurrentChapter({
+      levelName: this.levelName,
+      nodeName: this.metadata.title,
+      visited: Array.from(this.visited),
+      visitedPermanent: Array.from(this.visitedPermanent),
+      graphicsState: this.graphics.graphicsState,
+    });
+    save.saveVariableStorage(this._entityConfig.variableStorage.data);
   }
 
   activate(
