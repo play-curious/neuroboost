@@ -2,7 +2,7 @@
 
 title: Start
 tags: noUi
-position: -1391.4708251953125,85.48695087432861
+position: -1627,-493
 colorID: 8
 ---
 << fadeIn  >>
@@ -10,29 +10,32 @@ colorID: 8
 << fadeOut >>
 
 Fred_smiling: Allô ? Tu m'entends pas ou quoi ?
+<<if !visited("Chapitre2")>>
 You: Pardon, Fred, j'étais ailleurs pendant un instant... Tu disais ?
 Fred_happy: La fête organisée par les docteurs, tu viens ou quoi ? Je leur ai promis que je relèverais leur défi du roi de la soirée. Je peux pas me défiler !
 You: Ben, le truc c'est que... Demain matin, on a un exercice de simulation. Un test de pilotage de drone d'ingénierie ! #line:03a1bce 
 Fred_happy: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur. #line:06de838 
 You: Oui, mais mon drone est pas prêt ! La coque est trop lourde et mon système de navigation est encore bancal. 
-Fred_smiling: Tranquille, le mien fonctionne comme du tonnerre, je te passerai mes plans !
+Fred_smiling: Tranquille, le mien fonctionne du tonnerre, je te passerai mes plans !
 You: Même si j'ai tes plans, il me faudra au moins deux heures pour faire les changements et les tester...
 Fred_happy: Ok, je vois que t'es difficile en affaires... Si les docteurs m'ont donné ce défi, c'est pas pour rien, mais je vais être contre le champion des teufeurs, j'ai nommé : BB Rex. J'aurai besoin de toi si je veux être sûr de gagner.
 Fred_excited: Si on gagne le défi des docteurs, tu peux être sûr que je prendrai du temps pour t'aider avec ton drone demain matin. T'en dis quoi ?
 Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir ce défi ?! Il tient vraiment à sa réputation, celui-là... En tout cas, vous savez qu'avec ses talents d'ingénierie, vous pourriez avoir une très bonne note, voire une excellente !
 You: Bon... Tu me laisses pas le choix, là ! On se retrouve vers 21h30 ?
 Fred_smiling: Haha, ça, c'est l'attitude que je préfère ! Allez, à plus tard !
+<<else>>
+You: On se retrouve à la fête à 21 heures, du coup ?
+Fred_happy: Hein ? Je... Ok, à tout-à-l'heure, alors !
+<<endif>>
 
 -> Rentrer
     << hide >>
     <<jump Back_Home>>
-
-
 ===
 
 title: Back_Home
 tags: 
-position: -1264,-83
+position: -1367,-540
 ---
 << setGauge learning 0 >>
 << setGauge food 60 >>
@@ -50,11 +53,14 @@ Vous vous retrouvez seul. Vous et Fred avez rendez-vous à 21h30, mais entre tem
 
 title: Actions_Before_Party
 tags: freechoice
-position: -1006,-171
+position: -1210,-459
 ---
 << setBackground bedroom >>
 << fadeOut >>
-
+<<if isTimeOver("21:30")>>
+Vous avez oublié de vous rendre à la soirée ! Vite, allez retrouver Fred !
+    <<jump Debut_Soiree>>
+<<else>>
 -> Cuisine@cuisine #line:0717775 
     <<jump Cuisine_S >>
 -> Porte@porte #line:0d21566 
@@ -65,16 +71,17 @@ position: -1006,-171
     <<jump Lit_S>>
 -> Salon@salon #line:0645318 
     <<jump Salon_S>>
+<<endif>>
 ===
 
 title: Cuisine_S
 tags: subchoice
-position: -740,-268
+position: -1290,-229
 ---
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
--> Manger un bout avant la fête << if !visited("Dinner") >>
+-> Manger un bout avant la fête (30 min) << if !visited("Dinner") >>
     <<jump Eat_Before_Party>>
 -> back
     <<jump Actions_Before_Party>>
@@ -82,22 +89,23 @@ position: -740,-268
 
 title: Eat_Before_Party
 tags:
-position: -513,-239
+position: -1480,-308
 ---
 Vous préparez un repas rapide, ni trop léger, ni trop lourd, pour éviter d'être tout engourdi sur la piste de danse. Cela vous permettra de tenir un peu avant de devoir vous jeter sur les gourmandises !
 << visit Dinner >>
 << addToGauge food 50>>
+<< advanceTimeBy 0:30 food sleep >>
 <<jump Actions_Before_Party>>
 ===
 
 title: Bureau_S
 tags: subchoice
-position: -595,-84
+position: -829,-486
 ---
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
--> Revoir les plans du drone << if !visited("Drone_Review") >>
+-> Revoir les plans du drone (1h30) << if !visited("Drone_Review") >>
     <<jump Drone_Review>>
 -> back
     <<jump Actions_Before_Party>>
@@ -105,10 +113,11 @@ position: -595,-84
 
 title: Drone_Review
 tags: 
-position: 0,0
+position: -673,-592
 ---
 Vous profitez de ce moment au calme pour tenter d'améliorer votre drone comme vous le pouvez. Vous repassez d'abord sur le module d'assistance à la trajectoire, mais il y a encore du boulot avant d'avoir un système acceptable.
 << addToGauge learning 20>>
+<< advanceTimeBy 1:30 >>
 Décidément, vous aurez bien besoin de ce coup de pouce de Fred !
 << visit Drone_Review >>
 <<jump Actions_Before_Party>>
@@ -116,12 +125,12 @@ Décidément, vous aurez bien besoin de ce coup de pouce de Fred !
 
 title: Lit_S
 tags: subchoice
-position: -628,-136
+position: -878,-289
 ---
 << fadeIn >>
 << setBackground bedroom bed >>
 << fadeOut >>
--> Faire une sieste << if !visited("Sieste") >>
+-> Faire une sieste (1h30) << if !visited("Sieste") >>
     <<jump Sieste>>
 -> back
     <<jump Actions_Before_Party>>
@@ -129,27 +138,28 @@ position: -628,-136
 
 title: Sieste
 tags: 
-position: 0,0
+position: -816,-411
 ---
 Vous profitez du calme avant la fête pour reprendre vos forces en faisant un somme. En vous réveillant, vous vous sentez débordant d'énergie !
 << visit Sieste >>
 << addToGauge sleep 50>>
+<< advanceTimeBy 1:30 sleep food >>
 <<jump Actions_Before_Party>>
 ===
 
 title: Salon_S
 tags: subchoice
-position: -804,-54
+position: -1032,-604
 ---
 << fadeIn >>
 << setBackground bedroom chill >>
 << fadeOut >>
 
--> Pratiquer ses gammes à la guitare << if !visited("Guitar_Training") >>
+-> Pratiquer ses gammes à la guitare (1h) << if !visited("Guitar_Training") >>
     <<jump Guitar_Training>>
--> S'entraîner au Jungle Body Beat << if !visited("Danse_Training") >>
+-> S'entraîner au Jungle Body Beat (1h) << if !visited("Danse_Training") >>
     <<jump Danse_Training>>
--> Regarder Star Mars << if !visited("Star_Mars_Incursion")>>
+-> Regarder Star Mars (1h) << if !visited("Star_Mars_Incursion")>>
     <<jump Star_Mars_Incursion>>
 -> back
     <<jump Actions_Before_Party>>
@@ -157,30 +167,34 @@ position: -804,-54
 
 title: Guitar_Training
 tags: 
-position: 0,0
+position: -1082,-816
 ---
 Pas de soirée qui se respecte sans un guitariste amateur grattant les accords de WanderHall... Vous, vous préférez le bon vieux néo-shredding, ou encore le galactic jazz. Dans tous les cas, vous vous entraînez un peu pour amuser la galerie tout à l'heure.
 << visit Guitar_Training >>
+<< advanceTimeBy 1:00 >>
 <<jump Actions_Before_Party>>
 ===
 
 title: Danse_Training
 tags: 
-position: 0,0
+position: -849,-789
 ---
 Vous allumez votre stéréo uni-directionnelle pour pratiquer vos meilleurs pas de danse sans déranger vos voisins. C'est sûr que vous allez impressionner tout le monde en vous déhanchant comme ça !
 << visit Danse_Training >>
+<< advanceTimeBy 1:00 >>
 <<jump Actions_Before_Party>>
 ===
 
 title: Star_Mars_Incursion
 tags: 
-position: 0,0
+position: -1349,-851
 ---
 << show lightsaber@holo >>
 << loopFX TVStarwars_LOOP 10000 >>
 Allez, un petit épisode pour se calmer les nerfs avant de partir se défouler. Pas de nouvel épisode aujourd'hui, mais vous en profitez pour revisiter un classique : sur la planète Métopsia, nos héros doivent déjouer les plans du Collectionneur, une créature polymorphe désirant absorber l'ADN de tous les individus.
+<< advanceTimeBy 1:00 >>
 L'histoire est si passionnante que vous restez jusqu'à la fin de l'épisode, le "cliffhanger", même si vous l'avez déjà vu : le méchant était en réalité une créature bienveillante, désirant empêcher une incursion extra-terrestre. Quel suspense !
+<< advanceTimeBy 0:30 >>
 << visit Star_Mars_Incursion >>
 << stopFX TVStarwars_LOOP >>
 << hide >>
@@ -189,7 +203,7 @@ L'histoire est si passionnante que vous restez jusqu'à la fin de l'épisode, le
 
 title: Porte_S
 tags: subchoice
-position: -804,-54
+position: -1102,-281
 ---
 -> Retrouver Fred (passe le temps jusqu'à 21h30)
     <<jump Debut_Soiree>>
@@ -199,13 +213,18 @@ position: -804,-54
 
 title: Debut_Soiree
 tags: 
-position: -804,-54
+position: -939,-153
 ---
+<< fadeIn >>
 << setBackground party >>
+<< advanceTimeBy 00:15 >>
+<< fadeOut >>
 << music DanseQuiet >>
 << fadeOut >>
-
+<<set $partyPoints to 0>>
 Fred_excited: Yo, te voilà enfin ! Alors, pas mal, cette fête, non ?
+
+<<if !visited("Chapitre2")>>
 You: Carrément ! Alors, on le commence, ce défi ?
 Fred_excited: Ouais, mais avant ça, il faut trouver notre adversaire, BB-Rex !
 You: Et il est où, ce... BB-Rex ?
@@ -221,451 +240,888 @@ Barbot: Non, seulement moi. C'est moi qui écrit les règles ici, amigo.
 Fred_excited: OH !! JE SAIS !! C'est pas un Barbot !! C'EST LUI, BB-REX !!
 You: Quoi ??
 Barbot: Et ouais, amigo, en fer et en os.
-Fred_excited: Le vieux robot de la cafétéria ! Les docteurs se sont amusés à le reprogramer pour le transformer en caïd !
+Fred_excited: Le vieux robot de la cafétéria ! Les docteurs se sont amusés à le reprogrammer pour le transformer en caïd !
 You: C'est... lui, notre adversaire ?
-Barbot: Et comment... Bon, les losers, pour l'instant, vous avez les poches vides, hein ? Vous feriez-mieux de vous y mettre si vous voulez amasser les 4 points Rex et pouvoir m'affronter en duel !
+Barbot: Et comment... Bon, les losers, pour l'instant, vous avez les poches vides, hein ? Vous feriez-mieux de vous y mettre si vous voulez amasser les 4 Party Points et pouvoir m'affronter en duel !
 You: De quoi il parle, là ?
 Fred_excited: A chaque fois qu'on arrive à impressionner BB, il nous donne un point ! Quand on en a récupéré 4, on peut l'affronter pour voir qui obtiendra le titre de champion de la fête !
 Barbot: T'oublies un détail, amigo. Personne a réussi à battre BB-Rex. En tout cas, aucun humain. Tout simplement car BB-Rex est le plus grand teufeur de l'histoire. Allez, au boulot les losers !
 Fred_surprised: T'as entendu le tas de ferraille, { $name }, il faut qu'on se fasse remarquer ! Alors, on fait quoi ?
-
--> Hall de la cafétéria
-    <<jump Hall>>
--> Bar
-    <<jump Bar>>
--> Canapé
-    <<jump Sofa>>
--> Porte
-    <<jump Porte>>
+<<else>>
+You: Carrément ! Allez, allons chercher ce BB-Rex !
+Fred_excited: Yoo, je vois que t'es d'attaque !
+Fred_happy: Le seul petit problème, c'est que je sais pas vraiment... qui c'est. Mais c'est le plus grand fêtard de l'uni...
+You: T'inquiètes, je le connais !
+Fred_surprised: Tu... Tu le connais, toi ?
+You: Ben ouais... C'est le vieux BarBot de la cafétéria, qui a été reprogrammé par les docteurs !
+Fred_smiling: Haha, ouais je le savais... C'était pour te faire marcher !
+Barbot: Yo, les losers, alors, mettez-vous au boulot pour amasser les Points Rex si vous voulez impressionner BB-Rex !
+Fred_excited: Oh, trop bien ! C'est parti !
+<<endif>>
+<< advanceTimeBy 0:15 >>
+<<jump Actions_Party>>
 ===
 
-title: Hall
-tags: 
-position: -804,-54
----
--> Jouer un solo de guitare
-    <<jump Solo_Guitare>>
--> Se déhancher sur la piste de danse
-    <<jump Danse>>
-===
-
-title: Bar
-tags: 
-position: -804,-54
----
--> Grignoter un snack
-    <<jump Grignoter>>
--> Se rafraîchir au bar
-    <<jump Danse>>
--> Tenter de pirater BB-Rex
-    <<jump Pirater>>
-===
-
-title: Hall
-tags: 
-position: -804,-54
----
--> Jouer un solo de guitare
-    <<jump Solo_Guitare>>
--> Se déhancher sur la piste de danse
-    <<jump Danse>>
-===
-
-title: Open_Eyes
-tags: 
-position: -1172.1470947265625,85.38811206817627
----
-<< setBackground party >>
-<< music DanseQuiet >>
-<< fadeOut >>
-
-Fred_excited: Hé, ça fait un moment que tu pionces. Tu es sûr de vouloir rester ici ? #line:0fdb130 
-Et c'est reparti pour un tour... Fred répète comme un perroquet ce qu'il vous a déjà dit hier soir... Vous voilà revenu en arrière... En plein milieu de cette soirée de plaisir et de tentations... Certes, vous en avez trop fait, mais l'ambiance et le public étaient avec vous... Dur dur... #line:000208d 
-You: ...Hum... Tu fais quoi toi ? #line:0fde965 
-Fred_happy: Moi je reste. Je te le répète. #line:0105169 
-Après tout, Vous avez encore de l'énergie à revendre pour la soiré. Vous savez qu'il faut simplement faire attention à ne pas trop vider vos réserves de sommeil et de nourriture... #line:08d8e14 
-Mais comme vous l'ont répété les 4 sages, c'est avant tout une question de dosage, de volonté. Le tout est de savoir s'arrêter quand il le faut. Et puis, vous voulez montrer à Fred, que vous aussi, vous êtes en béton... #line:0695665 
-You: Pari tenu! #line:0712066 
-Fred_smiling: Yolo ! T'as mangé du tigre aujourd'hui ?! #line:092efae 
-You: C'est pas faux. #line:076e4ec 
-<< hide fred >>
-
-<<jump Que_Faire>>
-===
-title: Que_Faire
+title: Actions_Party
 tags:
-position: -950.9030456542969,86.7411298751831
+position: -433,-420
 ---
+<< hide >>
 << music Danse >>
 
-<< if !visited("Que_Faire") >>
-<< visit Que_Faire >>
-On va bien voir qui, de Fred ou de vous, craquera le premier, déclarera forfait et filera au lit ! Alors ? quel est votre plan d'attaque ? Mais n'oubliez pas cette fois ci de ménager votre corps, de ne pas trop abuser des mauvaises choses... #line:0c94623 
-<< endif >>
+<<if !isTimeOver("21:30")>>
+<<if isTimeOver("4:00")>>
+    <<jump TooLate>>
+<<endif>>
+<<endif>>
 
-<< if getGauge("sleep") >= 50 || getGauge("food") >= 50 >>
--> Retourner swinguer sur le Dance Floor#once #line:0805b14 
-    <<jump DanceFloor2>>
--> Se rafraîchir au bar#once #line:021268c 
-    <<jump Cafe_ou_Alcool>>
--> Grignoter quelque chose#once #line:03f46cf 
-    <<jump Medoc_Bot>>
--> Refaire un solo de guitare en criant tout votre saoul#once #line:0484cba 
-    <<jump Metal_Jam>>
--> Quitter la salle avant d'être épuisé#once #line:04444ac 
-    <<jump End_of_Party>>
-<< else >>
--> Vite ! Au lit #line:0b56faf 
-    <<jump Go_To_Bed_Loose>>
-<< endif >>
+<<if getGauge("sleep") <= 0>>
+    <<jump FailSleep>>
+<<elseif getGauge("food") <= 0>>
+    <<jump FailFood>>
+<<endif>>
+
+<<if $partyPoints < 4>>
+-> Hall de la cafétéria
+    <<jump Hall_S>>
+-> Bar
+    <<jump Bar_S>>
+-> Canapé
+    <<jump Sofa_S>>
+-> Porte
+    <<jump Porte_Fete_S>>
+<<else>>
+-> Confronter BB-Rex
+    <<jump RapBattle>>
+<<endif>>
 ===
-title: DanceFloor2
-tags: 
-position: -693,18
----
-Vous rejoignez le centre de la piste. Vous levez le bras, histoire d'indiquer à la foule que vous êtes sur le ring! Prêt à leur accorder un nouveau show exclusif et endiablé! Tout le monde s'arrête de gigoter et se rassemble tout autour de vous. #line:03f5cdf 
-C'est la classe, vous voilà redevenu le centre d'attention de la soirée, le centre d'attraction de la salle. #line:0d5d8ed 
 
-Vous rentrez peu à peu en transe, au rythme de la musique. Puis, au bout de quelques minutes, vous décollez et vous atteignez à la vitesse de la lumière l'orbite de la planète Disco ! Et c'est reparti pour une bonne heure de Breaking Beat endiablé ! Votre performance rencontre un succès intergalactique et musicalesque ! #line:0badcd2 
-
-<< removeFromGauge sleep 30 >>
-<< removeFromGauge food 10 >>
-<< advanceTime 2:00 >>
-
--> Arriverez-vous à faire encore mieux ? #line:08c55a6 
-    <<jump Que_Faire>>
-===
-title: Cafe_ou_Alcool
-tags: 
-position: -730.5491943359375,527.3186235427856
----
-Sans surprise, le bar n'est plus aussi approvisionné ! Il ne reste plus aucun soft doux, ni même de Xeno Cola. #line:0bd595d 
-Si vous voulez boire, vous n'avez plus beaucoup de choix, vous devez prendre un shot de X-Espresso ou une canette de ZedBoul. #line:008120f 
-
--> Vous laissez tomber #line:04fb22c 
-    <<jump Que_Faire>>
--> Vous vous résignez #line:059e2f7 
-    <<jump Drink_Bad>>
-===
-title: Medoc_Bot
-tags: 
-position: -729.918030500412,303.28855895996094
----
-Vous vous dirigez vers le bar, en pure perte. Encore une fois, tous les snack ont disparu. Vous vous tournez vers un BarBot. #line:0d184a4 
-
- << show barbot >>
-BarBot: Vous désirez ? #line:07f9b03 
-You: Manger ton machin coloré qui rebooste. #line:0f9ff72 
-BarBot: À sucer ou avaler ? #line:032d8f7 
-You: Le truc à sucer ! #line:060634d 
-BarBot: La boule magique ? #line:05a9a88 
-You: Oui, c'est ça. #line:05a697f 
-BarBot: Une boule magique alors. #line:0036e73 
-You: Il y a quoi au juste dedans ? #line:0a3f0f3 
-BarBot: Des molécules actives de synthèse. C'est un stupéfiant de catégorie 1, banal, à consommer sans modération. #line:035be8c 
-<< hide >>
-
--> Vous préférez ne pas avaler ce truc #line:08736c4 
-    <<jump Que_Faire>>
--> Vous prenez quand même la boule magique #line:0264b31 
-    <<jump Eat_Bad>>
-===
-title: Metal_Jam
-tags: 
-position: -729.2131729125977,85.79140090942383
----
-Vous retournez vous emparer de la cyber-guitare. Elle n'a pas bougé d'un iota depuis hier. Elle vous attend, elle vous réclame. Vous réactivez sa carte-son HD 4K. #line:016f96a 
-Quelqu'un éteint la sono. La foule s'arrête de danser et s'apprête une nouvelle fois à vous écouter. Vous savez que la star de la soirée, c'est vous. Et vous allez le leur prouver, à eux et à Fred ! À vous de jouer ! #line:0f7b78e 
-
-<< music Solo2 >>
-
-Vous repartez dans un concert solo d'improvisation, où les riffs électriques et les accords cybermétalliques s'accordent pour composer une symphonie post-électronique. Vous vous surpassez par rapport à hier soir ! Vous avez le flow, vous avez le fuel, vous avez la soul rock teinté de métal ! #line:069f9f8 
-Vous êtes applaudi, encore et encore et encore... Bon joueur, vous accordez à votre public un morceau bonus. Et un deuxième, parce qu'ils le réclament, et le méritent. #line:025d497 
-
-<< removeFromGauge sleep 20 >>
-
--> Comment faire encore plus fort ? #line:0018f02 
-    <<jump Que_Faire>>
-===
-title: End_of_Party
-tags: 
-position: -731.0557861328125,994.7333374023438
----
-<< if getGauge("sleep") >= 50 && getGauge("food") >= 50 >>
-Vous vous rapprochez de Fred, qui est en pleine conversation avec un groupe d'étudiants docteurs. #line:08cbc2b 
-You: Fred, il est tard, il est temps d'aller faire un somme. #line:0b46577 
-Fred_sad: Déjà ? Je suis en pleine conversation... #line:08756d8 
-You: Je suis fatigué, j'y vais. #line:01abbac 
-Fred_smiling: OK. T'as raison. Je te suis. #line:03119d8 
-<< hide >>
-Fred dit bonne nuit à ses interlocuteurs. Vous aussi. Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:0fa1482 
-
--> Vite ! Au lit #line:03ce9d3 
-    <<jump Go_To_Bed_Good>>
-
-<< elseif getGauge("sleep") >= 33 && getGauge("food") >= 33 >>
-Fred_sad: Hey, j'en peux plus. J'y vais. #line:009e04f 
-You: Déjà ? Tu déclares forfait ? #line:082b7de 
-Fred_smiling: Yes yes. #line:09b2b1e 
-You: OK, je te suis. #line:0d69718 
-Fred_smiling: Cool... #line:0f5f0de 
-<< hide >>
-Vous quittez tous les deux la salle de fête. Vous êtes en sueur, fatigué mais satisfaits et le sourire aux lèvres. Vous retournez en zigzaguant vers la zone "dortoir" de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:09b8398 
-
--> Vite ! Au lit #line:0d694c4 
-    <<jump Go_To_Bed_VeryGood>>
-
-<< else >>
-En effet, vous vous sentez vraiment fatigué, la tête et l'estomac lourd. Il est temps d'aller se coucher. Vous quittez la salle sans dire au revoir à Fred ou à quiconque. #line:0f59f21 
-
--> Vite ! Au lit #line:0b06e60 
-    <<jump Go_To_Bed_Loose>>
-
-<< endif >>
-===
-title: Go_To_Bed_Good
-tags: 
-position: -503.7049560546875,991.6459350585938
----
-<< fadeIn >>
-<< setBackground door night >>
-<< music >>
-<< fadeOut >>
-<< advanceTime 0:15 >>
-Arrivé devant la porte de votre chambre, Fred se tourne vers vous. #line:0a4066e 
-Fred_smiling: C'était vraiment sympa ce soir. #line:03eccc5 
-You: Ouais #line:00df311 
-Fred_happy: Je suis content que tu sois venu ce soir. Tu as assuré. Tu as mis le groove à la salle! #line:06f56f2 
-You: Merci. Bonne nuit, Fred. #line:03e476e 
-Fred_excited: Pareil. #line:0328c61 
-<< hide >>
-Sur ces mots, Fred s'éloigne et vous laisse. #line:01c4a64 
-
--> Se Reposer #line:06edca4 
-    <<jump Se_Reposer_Good>>
-===
-title: Go_To_Bed_VeryGood
-tags:  
-position: -502.02838134765625,1214.2044677734375
----
-<< fadeIn >>
-<< setBackground door night >>
-<< music >>
-<< fadeOut >>
-<< advanceTime 0:15 >>
-Arrivé devant la porte de votre chambre, Fred se tourne vers vous. #line:07ceca0 
-Fred_happy: C'était vraiment la hype ce soir. #line:07d3598 
-You: Ouais #line:0098843 
-Fred_happy: Non seulement tu es venu, tu as mis le groove dans la salle. Mais si j'étais pas venu te chercher, t'étais encore branché sur les vibes de la fête... Chapeau bas. #line:0c115f5 
-You: Merci, Fred.  Bonne nuit. #line:01df97b 
-Fred_excited: T'es vraiment un winner. Bonne nuit aussi. #line:09e7644 
-<< hide >>
-Sur ces confidences, ces louanges, Fred s'éloigne et vous laisse. #line:047a550 
-
--> Se Reposer #line:06bdef5 
-    <<jump Se_Reposer_Good>>
-===
-title: Se_Reposer_Good
+title: FailFood
 tags:
-position: -281.2446746826172,1109.7478637695312
+position: -170,-251
+---
+Enivré par la foule et la musique, vous ne vous rendez pas compte à temps que votre ventre crie famine.
+Vous vous dirigez vers les snacks pour constater avec horreur qu'ils ont tous disparus. Vous vous sentez de moins en moins bien, de plus en plus nauséeux et votre coeur bat très fort à cause des baffles.
+Si vous voulez éviter le malaise, vous allez devoir rentrer... Vous auriez mieux fait de manger quelque chose...
+<<jump Chambre_Soir_Fail>>
+===
+
+title: TooLate
+tags:
+position: -170,-251
+---
+Vous et Fred avez beau vous amuser, il commence à se faire tard...
+Peu à peu, les étudiants quittent la piste de danse et vous laissent.
+Il est si tard... Il serait probablement plus judicieux de rentrer.
+<<jump Chambre_Soir_Fail>>
+===
+
+title: FailSleep
+tags:
+position: -170,-251
+---
+Enivré par la foule et la musique, vous ne vous rendez pas compte à temps que vous avez dépensé toute l'énergie que vous aviez accumulé.
+Vous prenez un peu de temps loin des baffles, mais réalisez que vous vous endormez presque instantanément.
+Si vous voulez éviter de dormir n'importe où, vous allez devoir rentrer...
+<<jump Chambre_Soir_Fail>>
+===
+
+title: RapBattle
+tags:
+position: -170,-251
+---
+Fred_excited: Yo, BB-Rex ! On a obtenu tous les Party Points nécessaires, alors maintenant on accepte ton défi !... Quel qu'il soit, d'ailleurs.
+BarBot: Ah ouais... On m'avait dit que vous étiez costauds pour des premières années... Bien, si vous y tenez... C'est l'heure...
+BarBot: ...de la destruction.
+BarBot: ...de l'annihilation.
+BarBot: ...de...
+BarBot: ...la bataille de rap !!
+Fred_surprised: Quoi ?! Mais j'ai jamais fait ça, moi ?
+BarBot: C'est parti...
+BarBot: Mon flow est titanesque, un peu comme ma cuirasse...
+BarBot: Avant j'étais Barbot, maintenant j'suis le ClashBot qui tabasse !
+Fred_surprised: Mince, il est trop fort... Ok, je me lance... Suis ma rime, { $name } !
+Fred_excited: Nous on est étudiants, on a pas beaucoup d'argent...
+
+-> Mais quand on rappe on a des punchlines d'argent !
+    <<jump Bad_Rap1>>
+-> Et pourtant nos rimes sont plus dures que du diamant !
+    <<jump Good_Rap1>>
+-> Prendre le contrôle du BarBot <<if visited("PiratedPerfect")>>
+    <<jump Control_BarBot>>
+===
+
+title: Good_Rap1
+tags:
+position: -174,-126
+---
+You: Et pourtant nos rimes sont plus dures que du diamant !
+BarBot: Mmmh... Peut-être, mais pour des premières années...
+BarBot: Je suis étonné... que vous ayiez appris à rapper !
+<< visit Good_Rap >>
+
+-> On a beau être jeune, toi tu n'es pas de taille...
+    <<jump Good_Rap2>>
+-> Toi t'es qu'un robot, tes rimes sont tellement pauvres...
+    <<jump Bad_Rap2>>
+-> Prendre le contrôle du BarBot <<if visited ("PiratedPerfect")>>
+    <<jump Control_BarBot>>
+===
+
+title: Bad_Rap1
+tags:
+position: 44,-190
+---
+You: Mais quand on rappe on a des punchlines d'argent !
+BarBot: Pfff... Sérieusement ? Faire rimer Argent et Argent...
+BarBot: Venant de la part d'enfants, ça n'est pas très étonnant !
+
+-> On a beau être jeune, toi tu n'es pas de taille...
+    <<jump Good_Rap2>>
+-> Toi t'es qu'un robot, tes rimes sont tellement pauvres...
+    <<jump Bad_Rap2>>
+-> Prendre le contrôle du BarBot <<if visited ("PiratedPerfect")>>
+    <<jump Control_BarBot>>
+===
+
+title: Good_Rap2
+tags:
+position: 153,-54
+---
+You: On a beau être jeune, toi tu n'es pas de taille...
+Fred_excited: Alors mords la poussière, espèce de tas de ferraille !
+<< visit Good_Rap >>
+<<jump End_Rap>>
+===
+
+title: Bad_Rap2
+tags:
+position: -89,-10
+---
+You: Toi t'es qu'un robot, tes rimes sont tellement pauvres...
+Fred_surprised: Euh... En plus t'es... T'as la tête... Tu...
+Fred_angry: Sérieusement, { $name }, t'as pas des rimes encore plus difficiles ?!
+
+<<jump End_Rap>>
+===
+
+title: Control_BarBot
+tags:
+position: -224,46
+---
+BarBot: Désactivation du protocole "rappeur"...
+BarBot: Je... Erreur... Vous voulez grignoter quelque chose ?
+You: Euh... Yo, Fred je crois que BB-Rex a un problème...
+Fred_excited: Même pour un robot, c'est bizarre, il est tout blême !
+BarBot: Hahaha, bien joué, le piratage...
+<< visit Good_Rap >>
+<<jump End_Rap>>
+===
+
+title: End_Rap
+tags:
+position: -36,90
+---
+BarBot: Bon, les amis, on va arrêter là, je crois...
+BarBot: Maintenant, je vous demande de quitter la salle...
+<< visit End_Rap >>
+<<if visited("Good_Rap")>>
+    <<jump WinCompetition>>
+<<else>>
+    <<jump LoseCompetition>>
+<<endif>>
+===
+
+title: WinCompetition
+tags:
+position: 173,158
+---
+BarBot: ...Avec le titre de champions incontestés de la fête !!!
+Tous les élèves vous applaudissent à l'unisson. Vous êtes les véritables rois de la fête.
+Fred_smiling: On a gagné !! On est les premiers à avoir battu BB-Rex !
+Fred_excited: C'est grâce à toi, { $name } ! Allez, on fête ça ?
+You: Je suis un peu fatigué, là...
+Fred_happy: Tu as raison, on ferait mieux de rentrer. Demain, je dois t'aider avec ton drone ! A plus, tout le monde !
+<<jump TransitionMatin>>
+===
+
+title: LoseCompetition
+tags:
+position: -54,166
+---
+Barbot: ...Et de plus ramener vos faces de losers !
+Tous les étudiants vous regardent d'un air déçu, puis reviennent à leurs occupations.
+Fred_sad: Mince... On a pas réussi... Mais au moins on s'est bien amusés. Merci d'être resté jusqu'au bout, { $name }.
+You: Je suis un peu fatigué, là
+Fred_happy: Tu as raison, on ferait mieux de rentrer. Demain, je dois t'aider avec ton drone ! A plus, tout le monde !
+<<jump TransitionMatin>>
+===
+
+title: TransitionMatin
+tags:
+position: -40,256
 ---
 << fadeIn >>
-<< hideGauges >>
+<< hide >>
 << setBackground bedroom night >>
-<< fadeOut>>
-
-Vous entrez tranquillement dans votre chambre. Vous allez aux toilettes. Votre vessie en a besoin. Vos dents aussi. Vous vous dévêtez et gagnez votre lit. Vous êtes bien crevé, mais encore pas éteint. Il est temps pour de se recharger. À défaut d'un nuit de sommeil, un somme vous fera déjà le plus grand bien. #line:095083b 
-
--> Un petit somme #line:08ac6a4 
-    <<jump Sieste_Good>>
+<< fadeOut >>
+A peine rentré, vous vous effondrez dans votre lit, songeant à la journée suivante...
+<<if visited("End_Rap")>>
+    <<jump MatinWin>>
+<<else>>
+    <<jump MatinLose>>
+<<endif>>
 ===
-title: Sieste_Good
-tags:
-position: -62.58292770385742,1107.5968017578125
----
-La seconde où vous touchez votre lit, vous dormez déjà. #line:0309d31 
 
+title: MatinWin
+tags:
+position: 259,328
+---
 << fadeIn >>
-<< addToGauge sleep 40 >>
-<< advanceTime 8:00 8:00 0:05 >>
 << setBackground bedroom >>
-<< loopFX Chime_LOOP 2000 >>
+<< addToGauge sleep 50 >>
+<< addToGauge food 50 >>
+<< advanceTimeUntil 8:00 sleep food >>
 << fadeOut >>
-
-Et la minute suivante vous entendez le bip bip de votre horloge connectée.  #line:053ac97 
-<< stopFX Chime_LOOP >>
-<< music Neutral >>
-Déjà 8 heures ?! C'est passé trop vite, mais vous vous sentez bien mieux qu'hier. Vous vous changez rapidement. Ce qui vous laisse le temps de prendre un petit déjeuner. #line:0c85b54 
-
--> Petit déjeuner #line:03f274b 
-    <<jump Petit_Dejeuner_Good>>
+Bip !! Vous êtes réveillé par votre Palmphone. C'est Fred qui appelle. Il veut sûrement aider pour le TP de drones !
+Fred@holo_excited: Yo, { $name } ! Bien dormi ? Pas moi ! Je t'ai envoyé les plans de mon drone, t'as vu, je tiens mes promesses !
+You: Merci, Fred !
+Fred@holo_happy: T'inquiète, c'est pour être resté jusqu'au bout hier soir ! Alors... Pour ce qui est de l'allègement des matériaux, j'ai penché pour une coque en méta-plastique...
+Fred et vous prenez 1h pour travailler sur le drone. Au final, celui-ci semble fin prêt pour le TP de pilotage ! Va-t-il tenir jusqu'au bout ?
+-> Aller au TP
+    << hide >>
+    <<jump Tp_Win>>
 ===
-title: Petit_Dejeuner_Good
+
+title: MatinLose
 tags:
-position: 153.05007934570312,1108.568115234375
+position: -418,177
 ---
 << fadeIn >>
-<< setBackground bedroom kitchen >>
+<< setBackground bedroom >>
+<< addToGauge sleep 50 >>
+<< addToGauge food 50 >>
+<< advanceTimeUntil 8:00 sleep food>>
 << fadeOut >>
-Yum Yum... Un petit déjeuner bien riche quand on a fait un somme trop court, ça vous booste le corps et le système nerveux ! Vous sentez que votre organisme reprend du tonus et de la vigueur... #line:0a06acb 
-<< addToGauge food 40 >>
-<< advanceTime 0:15 >>
-
--> Aller en cours #line:0858680 
-    <<jump ExamenTP_Good>>
-===
-title: ExamenTP_Good
-tags: 
-position: 375.0788269042969,1111.1724853515625
----
-<< fadeIn >>
-<< setBackground door class >>
-<< setTime 9:00 >>
-<< fadeOut >>
-
-Ce matin, vous retrouvez votre ami Fred, qui vous attend avec le sourire. #line:0bd159f 
-
-Fred_excited: Hey, tu avais la fièvre hier soir ! Je suis content que tu sois resté aussi longtemps... #line:028f8a8 
-You: Ouais... #line:0ddab6e 
-Fred_smiling: Je vois ça. J'espère que tu as bien dormi. #line:0bf6f69 
-You: Ouais. #line:083d267 
-Fred_excited: Yes yes. Moi aussi. On se revoit tout à l'heure. #line:00d7d95 
+Bip !! Votre réveil sonne en vous faisant bourdonner les oreilles.
+Vous avez mal dormi, songeant au TP de pilotage. Il ne vous reste qu'une heure pour améliorer votre drone.
+Fred@holo_happy: Yo, { $name } ! Bien dormi ? Pas moi ! Je t'ai envoyé les plans de mon drone, t'as vu, je tiens mes promesses !
+You: Merci, Fred ! T'étais pas obligé, tu sais...
+Fred@holo_sarcasme: Je sais, et crois pas que je vais passer 1h à t'expliquer comment ça marche alors que t'es parti super tôt hier !
 << hide >>
+Au final, vous parvenez à faire des améliorations légères sur votre drone, mais sans les explications de Fred, le résultat n'est pas fameux...
+<< addToGauge learning 10 >>
+-> Aller au TP
+    <<jump TpLose>>
+===
 
+title: TpLose
+tags: 
+position: -223,301
+---
 << fadeIn >>
 << setBackground class >>
 << fadeOut >>
 
-Vous vous rendez à votre poste. Vous vous calez sur votre siège et prenez connaissance des instructions qui défilent sur l'écran. Vous savez comment piloter un drone d'ingénierie. Vous êtes même doué à ce jeu #line:0086d5b 
-Enfin, vous vous sentez suffisamment reposé. En effet, vous appliquez sans trop de difficulté les consignes. À part une erreur ou deux, vous guidez votre appareil à bon port. #line:05f29c8 
-Puis, vous sortez de la salle de classe. #line:09197a3 
-
-<< advanceTime 3:00 >>
-
-<<jump Sortir>>
-===
-title: Sortir
-tags: 
-position: 591.0426635742188,1112.3233642578125
----
+Vous entrez dans la salle de cours et allumez votre drone. Ce dernier est encore perfectible, vous auriez aimé avoir plus de temps pour le tester et le régler, mais c'est trop tard.
+Comme vous vous y attendiez, vous pilotez maladroitement l'engin, qui vient s'écraser à l'autre bout de la salle à la moitié de l'examen.
+Vous quittez la salle avec une mine déçue.
 
 << fadeIn >>
 << setBackground door class >>
 << fadeOut >>
 
-Dehors, vous rejoignez Fred. #line:075dcd1 
-Fred_smiling: C'était easy, non? #line:072f2fb 
-You: Ouais. #line:0b8eac9 
-Fred_happy: Je pense avoir cartonné. Et toi ? #line:05c06e6 
-You: Ça devrait aller. #line:0b67da4 
+Fred_happy: Hey, fais pas cette tête... T'as tenu la moitié du temps, au moins... Je suis sûr que ce sera pas si terrible...
 
-C'est à ce moment que les résultats tombent.  #line:0c34794 
+<< fadeIn >>
 << setBackground door class-screen >>
-<< fx Notification >>
-Fred décroche un <b>A</b> et vous un <b>B</b> #line:05a2fca 
-<< fx Success >>
-<< music Victory >>
-Fred_smiling: Hey ! Attention, hein ! Tu serais pas en train de vouloir me dépasser ?... #line:0981b12 
-You: Bien entendu. #line:0187a34 
-Fred_smiling: Je t'adore, tu as toujours la phrase qui tue. Allez, on va manger un petit truc et on file au cinoche. On est libre maintenant jusqu'à demain. #line:09dcf0b 
-You: Yes. #line:0b3e43f 
-Fred_smiling: Yes yes! #line:0f08c3f 
-<< advanceTime 0:15 >>
+<< fadeOut >>
+
+En voyant vos résultats, Fred affiche une moue gênée... Les professeurs ne vous ont pas raté, vous mettant un D-.
+<< hide >>
+Vous tournez les talons sans rien lui dire. Après tout, ce ne serait pas arrivée s'il vous avait aidé... Au final, vous êtes plus en colère contre vous-même qu'autre chose.
+
+<< fadeIn >>
+<< setBackground bedroom >>
+<< setTime 14:00 >>
+<< fadeOut >>
+<<jump AfterTpLose>>
 ===
-title: Replay
+
+title: AfterTpLose
+tags: 
+position: -223,301
+---
+En revenant dans votre terrier d'étudiant, vous constatez avec soulagement que Miss Temdé vous attend dans votre chambre...
+Temde_smiling: { $name }, comment était la fête ?
+You: Pas terrible... Surtout après coup...
+Temde_neutral: Je sais. Suis-moi, nous allons voir ça ensemble.
+<<jump Assemblee_Sages>>
+===
+
+title: Hall_S
+tags: subchoice
+position: 335,-307
+---
+-> Jouer un solo de guitare (1h) <<if !visited("Guitar_Solo")>>
+    <<jump Solo_Guitare>>
+-> Se déhancher sur la piste de danse (1h) <<if !visited("Danse")>>
+    <<jump Danse>>
+-> back
+    <<jump Actions_Party>>
+===
+
+title: Solo_Guitare
 tags:
-position: -1624.1019287109375,775.4595947265625
+position: 470,-242
+---
+Vous vous approchez de l'instrument, une cyber-guitare améliorée par un groupe de docteurs. Celle-ci est posée contre un énorme amplificateur d'où sortent une ribambelle de cables et de pédales d'effets bricolées maison.
+Vous allumez l'amplificateur et grattez la première corde. Un son puissant et dissonnant jaillit du caisson d'amplificateur. Vous allez devoir apprendre à dompter la bête.
+Le temps d'accorder l'instrument et de le prendre en main, un petit groupe s'est déjà amassé autour de vous, prêt à entendre vos mélodies.
+Le robot BarBot modifié, BB-Rex, vous entend et coupe sa sono intégrée pour vous écouter.
+BarBot: Yo la rockstar, on va voir si ton groove est à la hauteur de BB-Rex !
+<< visit Guitar_Solo >>
+
+<<if !visited("Guitar_Training")>>
+    <<jump Solo_Bad>>
+<<else>>
+    <<jump Solo_Good>>
+<<endif>>
+===
+
+title: Solo_Bad
+tags:
+position: 585,-117
+---
+Stressé par la tension et la foule, vous entamez votre solo. Vous aimeriez avoir un peu révisé avant de venir, mais c'est trop tard désormais.
+Heureusement, Fred est là pour vous accompagner. Muni de sa Rythm-Box portable M47, il vous crée un beat du tonnerre.
+Vous parvenez tout de même à tenir une belle performance, qui ne laisse pas les étudiants indifférents.
+BarBot: Bon, ça, c'est ce que j'aime voir ! Bon, c'était un peu basique pour BB-Rex, mais vous avez réussi à ravir le public. Allez, pour la peine, voilà 1 PARTY POINT !
+Le barbot vous lance un gâteau apéritif teinté d'or que Fred attrape en sautant.
+Fred_excited: Génial !
+<< music Solo1 >>
+<< advanceTimeBy 1:00 >>
+<<set $partyPoints to ($partyPoints + 1)>>
+<<jump Actions_Party>>
+===
+
+title: Solo_Good
+tags:
+position: 719,-183
+---
+Confiant de vos compétences et fier d'avoir mené le groupe de Galactic Jazz au temps du lycée, vous entamez un shredding digne des plus grands.
+Heureusement, Fred est là pour vous accompagner. Muni de sa Rythm-Box portable M47, il vous crée un beat du tonnerre.
+Les cordes rugissent au rythme de vos ongles, se tendent et s'étouffent pour laisser la distortion s'exprimer.
+Le public est en extase. Vous êtes parvenus à créer un spectacle digne de ce nom.
+BarBot: Ok, je vous laisse ma couronne, les amis, vous l'avez mérité. J'ai pas entendu de licks pareils depuis les seventies !
+Fred_surprised: Qu'est-ce qu'il raconte ?
+Le barbot éjecte 2 gâteaux apéritifs teintés d'or que vous et Fred attrapez au vol.
+Fred_excited: Deux Party Points ?? Trop bien ! On avance deux fois plus vite !
+<< music Solo2 >>
+<< advanceTimeBy 1:00 >>
+<<set $partyPoints to ($partyPoints + 2)>>
+<<jump Actions_Party>>
+===
+
+title: Danse
+tags:
+position: 534,-351
+---
+Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffer doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous. #line:0ff5e35 
+BarBot: Alors, l'ami, on groove ? On va voir comment tu te débrouilles en dehors de ta zone de confort. MODE DISCO ACTIVE !
+<< music JungleBodyBeat >>
+Un rythme endiablé tout droit sorti d'une époque bien révolue vous prend aux tripes.
+<< visit Danse >>
+
+<<if !visited("Danse_Training")>>
+    <<jump Danse_Bad>>
+<<else>>
+    <<jump Danse_Good>>
+<<endif>>
+===
+
+title: Danse_Good
+tags:
+position: 679,-392
+---
+C'est comme si vous vous étiez calé sur l'orbite de la Planète Disco. Vous vous trémoussez, vous vous déhanchez, vous sautez, vous virevoltez, vous tournoyez comme un globe scintillant ou une boule disco radieuse ! #line:01c4444 
+Vous vous retournez pour constater que Fred vous a rejoint sur la piste de danse !
+Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public ! #line:03f5ea5 
+Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressivement de l'orbite disco, vous saluez trois fois la foule avant de quitter la piste de danse. Votre sortie est suivie par un tonnerre d'applaudissements ! #line:0fa106d 
+Barbot: Wow, je vois que vous êtes plus que familiers avec le monde magique de la disco ! C'était puissant, les amis. Voilà 2 PARTY POINTS pour la peine !
+Le barbot éjecte 2 gâteaux apéritifs teintés d'or que vous et Fred attrapez au vol.
+Fred_excited: Deux Party Points ?? Trop bien ! On avance deux fois plus vite !
+<< advanceTimeBy 1:00 >>
+<<set $partyPoints to ($partyPoints + 2)>>
+<<jump Actions_Party>>
+===
+
+title: Danse_Bad
+tags:
+position: 711,-282
+---
+Vous vous déhanchez en vous donnant un maximum, tentant de vous rappeler de vos leçons de Jungle Body Beat pour l'appliquer à l'ambiance disco.
+Vous aimeriez avoir eu le temps de vous entraîner, mais heureusement Fred est là pour vous guider et vous faire groover un maximum !
+BarBot: Ok, ça suffit. Vous êtes bons, les gars, mais vous pourriez être encore meilleurs. Allez, un Party Point est de mise !
+Le barbot vous lance un gâteau apéritif teinté d'or que Fred attrape en sautant.
+<< advanceTimeBy 1:00 >>
+<<set $partyPoints to ($partyPoints + 1)>>
+<<jump Actions_Party>>
+===
+
+title: Bar_S
+tags: subchoice
+position: -105,-630
+---
+-> Grignoter un snack (15 min) <<if !visited("Grignoter")>>
+    <<jump Grignoter>>
+-> Prendre une boisson (15 min)
+    <<jump Drink>>
+-> Tenter de pirater BB-Rex (30 min) <<if !visited("Pirater")>>
+    <<jump Pirater>>
+-> Modifier le comportement de BB-Rex (30 min) <<if visited("Pirater") && visited("Drone_Review") && !visited("PiratedPerfect")>>
+    <<jump Piratage_Good>>
+-> back
+    <<jump Actions_Party>>
+===
+
+title: Grignoter
+tags:
+position: -163,-939
+---
+BarBot: Alors, amigo, on a déjà le ventre creux ? Besoin d'un petit casse-croûte avant de revenir affronter BB-Rex ?
+You: Euh... Ouais. T'as quoi au menu ?
+BarBot: Que de la bombe, frérot ! Tiens, goûte ça.
+You: Y a rien d'illégal là-dedans, pas vrai ?
+BarBot: Bahahaha, bien sûr que non ! On va pas gaspiller les bonnes choses sur les premières années, p'tit génie !
+Vous croquez dans le biscuit apéritif. Ce n'est ni sain, ni très bon, mais ça devrait vous faire tenir le reste de la soirée.
+<< advanceTimeBy 0:15 food>>
+<< visit Grignoter >>
+<< addToGauge food 30 >>
+<<jump Actions_Party>>
+===
+
+title: Drink
+tags: subchoice
+position: 128,-897
+---
+Barbot: Alors, on commence enfin à se décoincer, je vois ? Allez, un petit cocktail, ça te mettra bien.
+
+-> Mets-moi un truc bien corsé <<if !visited("Alcohol")>>
+    <<jump Drink_Alcohol>>
+-> D'accord, mais sans alcool <<if !visited("Soft")>>
+    <<jump Drink_Soft>>
+-> back
+    <<jump Actions_Party>>
+===
+
+title: Drink_Alcohol
+tags: 
+position: 128,-897
+---
+<< advanceTimeBy 0:15 >>
+Barbot: C'est ce qe je veux entendre. Allez, bois-moi ça comme un vrai homme.
+BB-Rex vous sert un grand verre contenant un liquide semi-translucide. A l'intérieur, les couleurs virevoltent et se croisent pour former des mélanges.
+Vous avalez le cocktail d'un coup. Vous sentez votre gorge frémir et vous manquez de tout rejetez, tant le mélange est corsé.
+Barbot: Haha ! C'est ce que j'aime !! Allez, pour la bravoure, voilà 1 Party Point !
+<< removeFromGauge sleep 20 >>
+<< removeFromGauge food 20 >>
+Désinhibé mais nauséeux, vous ne savez pas si vous avez eu une bonne idée de boire ce cocktail. Ce qui est sûr, c'est qu'il vous a donné un coup au système. Vous prenez un peu plus de temps pour reprendre vos esprits.
+
+<< visit Alcohol >>
+<< advanceTimeBy 0:30 >>
+<<jump Actions_Party>>
+===
+
+title: Drink_Soft
+tags: 
+position: 128,-897
+---
+BarBot: C'est bien ce que je pensais... Allez, voilà un truc tout soft, à ton image... Haha !
+Vous vous sentez revigoré par la boisson caféinée. Maintenant, votre coeur bat à fond. Pas idéal pour faire une sieste, mais au moins, vous pourrez tenir un peu.
+<< addToGauge sleep 15 >>
+<< addToGauge food 10 >>
+<< advanceTimeBy 0:15 >>
+<< visit Soft >>
+<<jump Actions_Party>>
+===
+
+title: Pirater
+tags: 
+position: 190,-589
+---
+Vous contemplez BB-Rex, le Barbot reprogrammé par les docteurs pour devenir le roi de la fête. Hey, si ce robot a déjà été piraté une fois, vous pourriez tenter de pénétrer son système, vous aussi !
+Vous vous glissez derrière l'androïde et connectez votre tablette portable sur son boîtier principal.
+<< advanceTimeBy 0:30 >>
+BINGO ! Devant vous, une interface de code vous montre les comportements basiques du robot.
+-> LIBERER_PARTY_POINT
+    <<jump Reward_Piratage>>
+===
+
+title: Reward_Piratage
+tags: 
+position: 190,-589
+---
+Vous lancez la fonction et une trappe s'ouvre sur la tête du robot. Un biscuit doré en jaillit ! Un Party Point !
+<<set $partyPoints to ($partyPoints + 1)>>
+Peut-être que vous pourriez influencer encore plus le comportement du droïde...
+Vous remarquez que son architecture de conscience est similaire à un système de pilotage. Le robot n'est pas reprogrammé... Il est piloté !!
+<< visit Pirater >>
+<<if !visited("Drone_Review")>>
+    <<jump Piratage_Bad>>
+<<else>>
+    <<jump Piratage_Good>>
+<<endif>>
+
+<<jump Actions_Party>>
+===
+
+title: Piratage_Bad
+tags: 
+position: 434,-558
+---
+Si seulement vous aviez compris les rouages des Systèmes d'Assistance au Pilotage de drone ! Les plans de Fred vous auraient bien aidé...
+<< advanceTimeBy 0:30 >>
+BarBot: Hé ! Pas cool, ça, amigo. On essaye pas de pirater BB-Rex, ok ?! J'ai passé... Euh, je veux dire, les étudiants qui m'ont reprogrammé ont passé beaucoup de temps à le faire !
+You: Euh... Désolé...
+
+<<jump Actions_Party>>
+===
+
+title: Piratage_Good
+tags: 
+position: 369,-742
+---
+Vous utilisez vos connaissances fraîchement acquises en Systèmes d'Assistance au Pilotage pour prendre le contrôle du droïde ! Désormais, vous pourrez activer son contrôle à distance à l'aide de votre tablette.
+<< advanceTimeBy 0:30 >>
+Fred_surprised: T'as fait QUOI ??
+Fred_excited: TROP BIEN !! Passe-moi les commandes !
+Barbot: Yo !! Fred est vraiment la meilleure personne que je connaisse, je l'adore ! Tiens, un PARTY POINT, rien que pour toi !!
+Fred_excited: Hahahaha !
+<<set $partyPoints to ($partyPoints + 1)>>
+
+<< visit PiratedPerfect >>
+
+<<jump Actions_Party>>
+===
+
+title: Sofa_S
+tags: subchoice
+position: -604,-48
+---
+-> Se reposer sur le canapé (1h) <<if !visited("Soft")>>
+    <<jump Repos_Fete>>
+-> Demander à Fred d'expliquer le Système d'Assistance au Pilotage (45 min) <<if !visited("Drone_Review")>>
+    <<jump Ask_Fred_Drone>>
+-> back
+    <<jump Actions_Party>>
+===
+
+title: Ask_Fred_Drone
+tags:
+position: -787,56
+---
+Vous invitez Fred à s'installer sur le canapé, proche de vous.
+You: Dis, Fred, tu pourrais m'expliquer ton système de pilotage assisté pour le TP de demain ?
+Fred_surprised: Là, maintenant ?! On est dans le coeur de la fête !
+You: Je serais un peu moins stressé pour demain si je savais comment ça marchait...
+Fred_smiling: Bon, ok... Je vais faire vite, alors. Tu vois, les systèmes de correction de trajectoire par advanced learning...
+Fred semble, au final, plutôt passionné par le sujet, et vous en ressortez avec quelques notions, mais rien qui puisse changer la donne pour demain...
+<< advanceTimeBy 0:45 >>
+Vous vous demandez à quoi cela pourrait bien servir dans le contexte actuel...
+<< visit Drone_Review >>
+<< addToGauge learning 20>>
+<<jump Actions_Party>>
+===
+
+title: Repos_Fete
+tags:
+position: -625,119
+---
+Vous vous allongez sur le canapé de la cafétéria. Le tissu en nanofibre se laisse facilement détendre sous votre poids et vous vous endormez vite malgré la musique et la fête alentours.
+<< addToGauge sleep 40 >>
+<< advanceTimeBy 1:00 sleep >>
+Une fois révéillé, vous vous sentez revigoré, d'attaque.
+<<jump Actions_Party>>
+===
+
+title: Porte_Fete_S
+tags: subchoice
+position: -400,-662
+---
+-> Rentrer chez soi avant d'être trop fatigué
+    <<jump Rentrer>>
+-> back
+    <<jump Actions_Party>>
+===
+
+title: Rentrer
+tags:
+position: -443,-816
+---
+Vous vous dirigez vers l'entrée, épuisé et priant de ne pas être trop épuisé pour demain. Vous êtes en train de reprendre vos affaires quand Fred vous arrête dans votre lancée.
+Fred_surprised: Hey, { $name }, tu t'en vas déjà ?? La soirée a à peine commencé, on doit toujours vaincre BB à son propre jeu !
+You: Je sais pas trop, je suis un peu fatigué, là... En plus, demain matin, on a TP. Tu pourrais rentrer toi aussi !
+Fred_happy: Hors de question, ça ! Allez, reste un peu, le temps d'obtenir le reste des points ! Promis, je t'aiderai avec ton drone !
+-> Rester
+    <<jump Rester>>
+-> Rentrer
+    <<jump Chambre_Soir_Fail>>
+===
+
+title: Rester
+tags:
+position: -609,-689
+---
+You: Bon, ok. Je vais rester un peu.
+Fred_excited: Yes !!
+<<jump Actions_Party>>
+===
+
+title: Chambre_Soir_Fail
+tags:
+position: -349,-969
 ---
 << fadeIn >>
-<< setBackground circle >>
+<< hide >>
+<< setBackground bedroom night >>
+<< advanceTimeBy 0:30 >>
 << fadeOut >>
-Nonononoon... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition. #line:07bd3dd 
-Vous devez respecter votre cycle de sommeil et d'alimentation ! #line:0ebe6d4 
-
-Vous allez devoir retourner à cette soirée festive... #line:0e44199 
-
--> Retourner à la fête #line:05385cd 
-    << resetLevel >>
-    <<jump Start>>
+Lessivé, vous décidez de rentrer chez vous avant de ne plus pouvoir assumer le lendemain. Vous laissez Fred derrière, mais tant pis. Après tout, vous auriez dû travailler sur ce drone il ya bien longtemps...
+Vous vous jetez sur votre lit et vous endormez profondément.
+<<jump MatinLose>>
 ===
-title: Go_To_Bed_Loose
-tags:
-position: -286.4623107910156,765.6393432617188
+
+title: Tp_Win
+tags: 
+position: 375.0788269042969,1111.1724853515625
+---
+<< fadeIn >>
+<< setBackground class >>
+<< fadeOut >>
+
+Vous vous rendez à votre poste. Vous vous calez sur votre siège et prenez connaissance des instructions qui défilent sur l'écran. Vous savez comment piloter un drone d'ingénierie. Vous êtes même doué à ce jeu. #line:0086d5b 
+Votre drone est complet et répond parfaitement aux commandes. À part une erreur ou deux, vous guidez votre appareil à bon port. #line:05f29c8 
+Puis, vous sortez de la salle de classe. #line:09197a3
+
+<< visit Tp_Win >>
+
+<<jump Sortir_Classe>>
+===
+
+title: Sortir_Classe
+tags: 
+position: 591.0426635742188,1112.3233642578125
+---
+<< fadeIn >>
+<< setBackground door class >>
+<< fadeOut >>
+En sortant de la classe, vous rejoignez Fred, qui vous regarde avec une mine joyeuse.
+Fred_smiling: On s'est tous les deux bien débrouillés, non ?
+You: C'est sûr ! J'ai hâte de voir ma note. Merci de m'avoir aidé !
+<< setBackground door class-screen>>
+Fred_excited: C'est normal. Oh, les notes viennent de tomber !
+You: Bon... J'ai eu un B... Et toi !
+Fred_happy: Un A. C'est génial, tu me rattrapes presque !
+You: Ca te fait peur ?
+Fred_smiling: Héhé, même pas un peu. On se voit demain ?
+You: Carrément !
+
+<< fadeIn >>
+<< hide >>
+<< setBackground bedroom >>
+<< setTime 14:00 >>
+<< fadeOut >>
+
+En rentrant dans votre terrier d'étudiant, vous tombez encore une fois nez à nez avec Miss Temdé, qui semble vous attendre.
+Temde_cheerful: { $name } ! Comment était la fête ?
+You: Plutôt sympa ! Je me suis bien débrouillé au TP, c'est ça l'important !
+Temde_smiling: C'est parfait, ça ! Suis-moi, petit génie, nous avons encore des choses à t'apprendre...
+<<jump Assemblee_Sages>>
+===
+
+title: Assemblee_Sages
+tags:  noUi
+position: 2023.925796508789,396.5407409667969
 colorID: 1
 ---
-<< music >>
-Mince, il ne reste plus personne sur la piste. Vous ne ne voyez plus Fred. Il est sacrément tard, ou sacrément tôt. Les premiers rayons de soleil filtrent à travers les fenêtres de la salle. #line:06ab823 
-Vous avez péché par ambition. Vous n'avez pas assez écouté votre corps. Vous êtes épuisé, totalement à plat. Il est plus que temps d'aller dormir.  Vous sentez que cela cogne dans votre tête. Allez-vous pouvoir récupérer assez de sommeil ?... #line:060e8a3 
-
-<<jump SeReposer>>
-===
-title: SeReposer
-tags:
-position: -73.00656509399414,765.8036499023438
----
 << fadeIn >>
-<< setBackground bedroom night >>
-<< fadeOut >>
-<< hideGauges >>
-<< advanceTime 0:15 >>
-Vous filez dans votre chambre en titubant. Vous n'avez pas le temps de vous dévêtir, vous vous ruez dans les toilettes ! Vous avez l'estomac et la vessie qui débordent ! Vous avez l'impression de rester coincé une heure dans ce cagibi. #line:010bcf3 
-<< advanceTime 0:20 >>
-C'est pénible, surtout que votre vision se trouble, se dédouble. Pas de doute, vous n'avez pas su quitter l'arène à temps. Vous avez franchi la ligne rouge. Vous êtes plus que crevé... #line:0a5f793 
-Vous avez la tête qui tourne et qui serre, qui vous oppresse. On dirait qu'on vous a téléporté sur une planète à forte gravité. #line:0a1f289 
-
-<< fadeIn >>
-Non, décidément, rien à faire, vous n'arrivez pas à vous endormir... #line:0e8130b 
-
-<<jump Bip_Bip>>
-===
-title: Bip_Bip
-tags:
-position: 139.57297730445862,766.5597534179688
----
-<< setBackground bedroom >>
-<< loopFX AlarmClock_LOOP 2000 >>
-<< advanceTime 8:00 8:00 0:05 >>
-<< music Neutral >>
+<< hide ! >>
+<< setBackground circle >>
 << fadeOut >>
 
-Argh... L'horloge connectée vous fait bondir de votre lit ! Il est encore trop tôt ! Vous ne vous êtes toujours pas reposé. Vous aimeriez avoir une bonne nuit de sommeil... #line:064df23 
-
-<< stopFX AlarmClock_LOOP >>
-
-Vous avez encore raté votre soirée. Vous avez voulu battre Fred à son propre jeu. Vous étiez tellement obsédé par l'idée de gagner que vous avez négligé votre bien-être. Vous n'avez pas écouté votre corps. #line:09e61f9 
-
-<< fx Failure >>
-
-Au final, vous avez encore perdu... #line:0886c90 
-
--> Recommencer #line:0b24153 
-    <<jump Replay>>
+Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre. #line:005f939 
+Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique ! #line:03dea3d 
+You: Mon moteur biologique ? Mais... Je suis pas une machine, moi !
+Temde_neutral: Très juste, n'en déplaise à Ledai. Ce que veulent dirent ces deux sages, c'est que comme une machine... Tu as besoin d'énergie.
+Azul_proud: Et c'est de cela qu'on va parler, maintenant ! D'abord, comment bien alimenter ton matériel biologique pour qu'il soit au top !
+Ledai_explaining: Mais aussi, comment le reposer pour le garder au meilleur de sa performance.
+<<jump Sages_FreeChoice>>
 ===
-title: Drink_Bad
-tags: 
-position: -506.3429870605469,528.9087734222412
----
-Tant pis, vous avez besoin d'un coup de pouce... Du moins, le pensez-vous... #line:0154ec5 
-<< removeFromGauge food 20 >>
-<< addToGauge sleep 10 >>
-<< advanceTime 0:10 >>
 
--> Un shot et on y retourne ! #line:054e0f2 
-    <<jump Que_Faire>>
-===
-title: Eat_Bad
-tags: 
-position: -505.91009521484375,303.20033264160156
+title: Sages_FreeChoice
+tags: noUi
+position: -366.2418212890625,1422.0413818359375
 ---
-BarBot: Tenez. #line:05cdafa 
-You: Merci. #line:0eb0a3c 
-Le BarBot vous tend une espèce de gomme multicolore. Vous la mettez dans votre bouche. Niac... C'est moche, ça a un sale goût et vous vous demandez si vous avez fait le bon choix... Trop tard, c'est fait. Vous ressentez quand même un effet revitalisant. Cela suffira-t-il ?... #line:06f6f0b 
+Azul_happy: Alors, que veux-tu approfondir maintenant ?
+
+-> Bien alimenter son matériel biologique
+    <<jump Bien_Manger>>
+-> Recharger ses batteries biologiques
+    <<jump Routinisation>>
+-> C'est bon pour moi ! (Quitter les sages)
+    <<jump QCM_Recues>>
+===
+
+title: Bien_Manger
+tags:  noUi
+position: 2242.7559814453125,395.5284118652344
+---
+Sapiens_thinking: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Un appareil électronique a besoin d'électricité pour démarrer et fonctionner. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire ! #line:02771ae 
+Ledai_explaining: Tout à fait, ton engin biologique, a besoin de calories... et de vitamines. #line:067cf10 
+Sapiens_thinking: Mais pas n'importe lesquelles. Celles qui nourrissent et facilitent la conduction neurobiologique. #line:02287a2 
+You: En gros, il faut que je mange, quoi... Super utile, le tuyau... #line:00fe57b 
+Azul_happy: Oui, mais pas seulement, il ne faut pas non plus manger n'importe quoi.
+Temde_thinking: Pas les substances miracles de synthèse. Mensonges de bonimenteurs ! #line:0ecf094 
+<<jump Sages_FreeChoice>>
+===
+
+title: Sommeil
+tags:  noUi
+position: 2464.5450744628906,392.3604736328125
+---
+Sapiens_thinking: Ton système biologique, comme ton palmphone, a besoin chaque nuit de recharger sa batterie. #line:0f23713 
+Ledai_explaining: Imagine que ton appareil s'éteigne brutalement parce que sa batterie est à plat. Tu ne peux plus t'en servir, il faut d'abord recharger sa batterie. #line:0b4074e 
+You: Ouais, mais pour ce qui est de mon palmphone, dès qu'il est remonté à 10%, je peux le rallumer et m'en servir. #line:041bf71 
+Azul_happy: Ton enveloppe biologique est plus exigeante et plus gourmande. #line:00e89c0 
+Temde_smiling: Elle en demande plus. Une nuit de sommeil ! #line:047de87 
+You: Ça veut dire combien ? #line:019496e 
+Sapiens_thinking: Plusieurs heures. 6 heures pour les plus vifs. 10 heures pour les plus mous. #line:004bc53 
+You: Et si je ne dispose même pas de 6 heures ? #line:08690fd 
+Azul_proud: Il y a bien une solution de dépannage... #line:0a728b0 
+Azul_happy: Si tu n'as pas eu le temps de profiter d'une bonne nuit de sommeil, tu fais une bonne sieste !
+Azul_proud: L'important, c'est d'écouter les besoins de ton corps et le recharger ! #line:0b5a398 
+<<jump Sages_FreeChoice>>
+===
+
+title: QCM_Recues
+tags:  noUi
+position: 2908.9466247558594,391.5020446777344
+colorID: 1
+---
+Sapiens_thinking: C'est ce que nous allons voir. C'est le moment pour un petit questionnaire... #line:0dda2ca 
+
+Sapiens_thinking: Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos réserves, on peut continuer à agir, à travailler. On n'a pas besoin de dormir et de recharger les batteries tant qu'elles ne sont pas à plat. #line:06bc6cb 
+-> Vrai #line:044fa2d 
+    << fx Failure >>
+    Sapiens_angry: Grossière erreur, jeune novice ! On ne stocke pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures ! #line:030496f 
+    Ledai_explaining: Certes, Master Sapiens, mais laissons une chance à { $name }. #line:07113fa 
+-> Faux #line:06a1ff6 
+    << fx Success >>
+    Sapiens_happy: Bravo ! Le sommeil ne se stocke pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain. #line:08425ec 
+    Ledai_happy: Une autre phrase quiz, Master Sapiens ? #line:0efd67b 
+
+Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour ! #line:09366cb 
+
+-> Vrai #line:0c791c4 
+    << fx Failure >>
+    Sapiens_angry: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité. #line:01481b0 
+    Azul_sad: Master Sapiens, { $name } est encore novice et vous avez d'autres quizz à lui poser. #line:05300f3 
+    Sapiens_thinking: En effet. #line:08df99c 
+-> Faux #line:00f2421 
+    << fx Success >>
+    Sapiens_happy: Excellente réponse ! Le secret d'un entretien métabolique durable est de se nourrir régulièrement, de manière équilibrée. #line:07f18aa 
+    Azul_cheerful: Est-ce la fin de la séance de quizz ? #line:0bb5bcf 
+    Sapiens_thinking: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième:  #line:0bb34b1 
+    
+Sapiens_thinking: L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil. #line:0c5a2c7 
+
+-> Vrai #line:0f76f79 
+    << fx Success >>
+    Sapiens_happy: Exactement ! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand ! #line:0151139 
+    Temde_smiling: Très bien, mais faites court et concis ! { $name } est fatigué ! #line:024a0ce 
+    Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue. #line:063cb95 
+-> Faux #line:00a3f09 
+    << fx Failure >>
+    Sapiens_angry: Encore une idée reçue, une affirmation infondée! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand! #line:02baefc 
+    Temde_sad: Très bien, mais faites court et concis! { $name } est fatiguée! #line:0eb5a88 
+    Sapiens_concerned: C'est comme ça quand on ne prend pas soin de son métabolisme! #line:07ef4f6 
+    Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue. #line:0fcdca1 
+
+Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante. #line:01528df 
+
+-> Vrai #line:01ae1fe 
+    << fx Failure >>
+    Sapiens_angry: Non-sens ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! #line:00201f3 
+    Azul_sad: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment. #line:0976d40 
+    Sapiens_thinking: Je profite de la remarque d'Azul pour poser une question subsidiaire. Pour recharger ton métabolisme, combien d'heures tu dois dormir chaque jour ? #line:02c089d 
+    -> 8 heures #line:08035d4 
+        <<jump huit_heures>>
+    -> Ça dépend, 6 à 10 heures #line:0146683 
+        <<jump six_10_heures>>
+-> Faux #line:04ba9a7 
+    << fx Success >>
+    Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que... #line:0bc13d5 
+    Temde_neutral: Non non, on coupe ! Le temps presse ! #line:0ff8a03 
+    Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:083bddf 
+    <<jump journal_mental>>! #line:0d0ab77 
+===
+
+title: huit_heures
+tags:  noUi
+position: 3125.9331665039062,286.40415954589844
+---
+Sapiens_happy: Mmmh, pas forcément... Cela dépend des personnes. Ce qui me rappelle le temps où je...
+Temde_neutral: Non, on coupe ! Le temps presse ! #line:0beff39 
+Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:092a6ff 
+
 << hide >>
+<< fx Warp >>
+<< fadeIn 1000 ffffff>>
+<<jump journal_mental>>
+===
 
-<< removeFromGauge food 25 >>
-<< addToGauge sleep 10 >>
-<< advanceTime 0:10 >>
+title: six_10_heures
+tags:  noUi
+position: 3341.1002807617188,392.2286071777344
+---
+Sapiens_happy: Oui, cela dépend des personnes. Ce qui me rappelle le temps où je... #line:0715588 
+Temde_neutral: Non, on coupe ! Le temps presse ! #line:0beff39 
+Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:092a6ff 
 
--> Bon, ça c'est fait, et maintenant ? #line:074c83d 
-    <<jump Que_Faire>>
+<< hide >>
+<< fx Warp >>
+<< fadeIn 1000 ffffff>>
+<<jump journal_mental>>
+===
+title: journal_mental
+tags: noUi
+position: 3557.0534057617188,389.2486877441406
+---
+<< fadeIn 100 ffffff>>
+<< hide ! >>
+<< setBackground bedroom night >>
+<< fadeOut 400 >>
+
+Le carré de jardin tranquille des sages a disparu subitement ! #line:0e91632 
+Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être. #line:05ae07d 
+Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages... #line:01686de 
+<< visitPermanent Chapitre2 >>
+<<jump Journal>>
+===
+
+title: Journal
+tags: noUi
+position: 3557.0534057617188,389.2486877441406
+---
+<< showJournal sleep >>
+<< showJournal food >>
+
+<<if !visited("Tp_Win")>>
+-> Recommencer la soirée d'hier
+    << resetLevel >>
+    <<jump Start>>
+<<else>>
+-> Continuer
+<<endif>>
 ===
