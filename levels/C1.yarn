@@ -176,7 +176,7 @@ position: -1427,217
 << fadeIn >>
 << setBackground bedroom chill >>
 << fadeOut >>
--> Regarder votre série TV préférée (Au moins 2h...) <<if !visited("BingeTV")>> #line:0f2e31c 
+-> Regarder votre série préférée (Au moins 2h...) <<if !visited("BingeTV")>> #line:0f2e31c 
     <<jump BingeTV_Rewind>>
 -> back #line:0341673 
     <<jump Action_List_Rewind>>

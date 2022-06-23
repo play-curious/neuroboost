@@ -87,6 +87,7 @@ const stateNames = [
   "Prologue",
   "C1",
   "C2",
+  "C3",
   "D3_level1",
   "journal_mentalWorkload",
   "D3_level2",
