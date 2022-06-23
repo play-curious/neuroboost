@@ -16,7 +16,7 @@ Fred_happy: La fête organisée par les docteurs, tu viens ou quoi ? Je leur ai 
 You: Ben, le truc c'est que... Demain matin, on a un exercice de simulation. Un test de pilotage de drone d'ingénierie ! #line:03a1bce 
 Fred_happy: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur. #line:06de838 
 You: Oui, mais mon drone est pas prêt ! La coque est trop lourde et mon système de navigation est encore bancal. 
-Fred_smiling: Tranquille, le mien fonctionne comme du tonnerre, je te passerai mes plans !
+Fred_smiling: Tranquille, le mien fonctionne du tonnerre, je te passerai mes plans !
 You: Même si j'ai tes plans, il me faudra au moins deux heures pour faire les changements et les tester...
 Fred_happy: Ok, je vois que t'es difficile en affaires... Si les docteurs m'ont donné ce défi, c'est pas pour rien, mais je vais être contre le champion des teufeurs, j'ai nommé : BB Rex. J'aurai besoin de toi si je veux être sûr de gagner.
 Fred_excited: Si on gagne le défi des docteurs, tu peux être sûr que je prendrai du temps pour t'aider avec ton drone demain matin. T'en dis quoi ?
@@ -81,7 +81,7 @@ position: -1290,-229
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
--> Manger un bout avant la fête << if !visited("Dinner") >>
+-> Manger un bout avant la fête (30 min) << if !visited("Dinner") >>
     <<jump Eat_Before_Party>>
 -> back
     <<jump Actions_Before_Party>>
@@ -94,7 +94,7 @@ position: -1480,-308
 Vous préparez un repas rapide, ni trop léger, ni trop lourd, pour éviter d'être tout engourdi sur la piste de danse. Cela vous permettra de tenir un peu avant de devoir vous jeter sur les gourmandises !
 << visit Dinner >>
 << addToGauge food 50>>
-<< advanceTimeBy 0:30 food >>
+<< advanceTimeBy 0:30 food sleep >>
 <<jump Actions_Before_Party>>
 ===
 
@@ -105,7 +105,7 @@ position: -829,-486
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
--> Revoir les plans du drone << if !visited("Drone_Review") >>
+-> Revoir les plans du drone (1h30) << if !visited("Drone_Review") >>
     <<jump Drone_Review>>
 -> back
     <<jump Actions_Before_Party>>
@@ -130,7 +130,7 @@ position: -878,-289
 << fadeIn >>
 << setBackground bedroom bed >>
 << fadeOut >>
--> Faire une sieste << if !visited("Sieste") >>
+-> Faire une sieste (1h30) << if !visited("Sieste") >>
     <<jump Sieste>>
 -> back
     <<jump Actions_Before_Party>>
@@ -143,7 +143,7 @@ position: -816,-411
 Vous profitez du calme avant la fête pour reprendre vos forces en faisant un somme. En vous réveillant, vous vous sentez débordant d'énergie !
 << visit Sieste >>
 << addToGauge sleep 50>>
-<< advanceTimeBy 1:30 sleep >>
+<< advanceTimeBy 1:30 sleep food >>
 <<jump Actions_Before_Party>>
 ===
 
@@ -155,11 +155,11 @@ position: -1032,-604
 << setBackground bedroom chill >>
 << fadeOut >>
 
--> Pratiquer ses gammes à la guitare << if !visited("Guitar_Training") >>
+-> Pratiquer ses gammes à la guitare (1h) << if !visited("Guitar_Training") >>
     <<jump Guitar_Training>>
--> S'entraîner au Jungle Body Beat << if !visited("Danse_Training") >>
+-> S'entraîner au Jungle Body Beat (1h) << if !visited("Danse_Training") >>
     <<jump Danse_Training>>
--> Regarder Star Mars << if !visited("Star_Mars_Incursion")>>
+-> Regarder Star Mars (1h) << if !visited("Star_Mars_Incursion")>>
     <<jump Star_Mars_Incursion>>
 -> back
     <<jump Actions_Before_Party>>
@@ -192,8 +192,9 @@ position: -1349,-851
 << show lightsaber@holo >>
 << loopFX TVStarwars_LOOP 10000 >>
 Allez, un petit épisode pour se calmer les nerfs avant de partir se défouler. Pas de nouvel épisode aujourd'hui, mais vous en profitez pour revisiter un classique : sur la planète Métopsia, nos héros doivent déjouer les plans du Collectionneur, une créature polymorphe désirant absorber l'ADN de tous les individus.
-<< advanceTimeBy 1:30 >>
+<< advanceTimeBy 1:00 >>
 L'histoire est si passionnante que vous restez jusqu'à la fin de l'épisode, le "cliffhanger", même si vous l'avez déjà vu : le méchant était en réalité une créature bienveillante, désirant empêcher une incursion extra-terrestre. Quel suspense !
+<< advanceTimeBy 0:30 >>
 << visit Star_Mars_Incursion >>
 << stopFX TVStarwars_LOOP >>
 << hide >>
@@ -216,7 +217,7 @@ position: -939,-153
 ---
 << fadeIn >>
 << setBackground party >>
-<< advanceTimeUntil 21:45 >>
+<< advanceTimeBy 00:15 >>
 << fadeOut >>
 << music DanseQuiet >>
 << fadeOut >>
@@ -478,7 +479,9 @@ position: 259,328
 ---
 << fadeIn >>
 << setBackground bedroom >>
-<< advanceTimeUntil 8:00 >>
+<< addToGauge sleep 50 >>
+<< addToGauge food 50 >>
+<< advanceTimeUntil 8:00 sleep food >>
 << fadeOut >>
 Bip !! Vous êtes réveillé par votre Palmphone. C'est Fred qui appelle. Il veut sûrement aider pour le TP de drones !
 Fred@holo_excited: Yo, { $name } ! Bien dormi ? Pas moi ! Je t'ai envoyé les plans de mon drone, t'as vu, je tiens mes promesses !
@@ -486,6 +489,7 @@ You: Merci, Fred !
 Fred@holo_happy: T'inquiète, c'est pour être resté jusqu'au bout hier soir ! Alors... Pour ce qui est de l'allègement des matériaux, j'ai penché pour une coque en méta-plastique...
 Fred et vous prenez 1h pour travailler sur le drone. Au final, celui-ci semble fin prêt pour le TP de pilotage ! Va-t-il tenir jusqu'au bout ?
 -> Aller au TP
+    << hide >>
     <<jump Tp_Win>>
 ===
 
@@ -495,10 +499,12 @@ position: -418,177
 ---
 << fadeIn >>
 << setBackground bedroom >>
-<< advanceTimeUntil 8:00 >>
+<< addToGauge sleep 50 >>
+<< addToGauge food 50 >>
+<< advanceTimeUntil 8:00 sleep food>>
 << fadeOut >>
 Bip !! Votre réveil sonne en vous faisant bourdonner les oreilles.
-Vous avez bien dormi, trop dormi ! Il ne vous reste qu'une heure pour améliorer votre drone.
+Vous avez mal dormi, songeant au TP de pilotage. Il ne vous reste qu'une heure pour améliorer votre drone.
 Fred@holo_happy: Yo, { $name } ! Bien dormi ? Pas moi ! Je t'ai envoyé les plans de mon drone, t'as vu, je tiens mes promesses !
 You: Merci, Fred ! T'étais pas obligé, tu sais...
 Fred@holo_sarcasme: Je sais, et crois pas que je vais passer 1h à t'expliquer comment ça marche alors que t'es parti super tôt hier !
@@ -529,7 +535,7 @@ Fred_happy: Hey, fais pas cette tête... T'as tenu la moitié du temps, au moins
 
 << fadeIn >>
 << setBackground door class-screen >>
-<< fadeIn >>
+<< fadeOut >>
 
 En voyant vos résultats, Fred affiche une moue gênée... Les professeurs ne vous ont pas raté, vous mettant un D-.
 << hide >>
@@ -557,9 +563,9 @@ title: Hall_S
 tags: subchoice
 position: 335,-307
 ---
--> Jouer un solo de guitare <<if !visited("Guitar_Solo")>>
+-> Jouer un solo de guitare (1h) <<if !visited("Guitar_Solo")>>
     <<jump Solo_Guitare>>
--> Se déhancher sur la piste de danse <<if !visited("Danse")>>
+-> Se déhancher sur la piste de danse (1h) <<if !visited("Danse")>>
     <<jump Danse>>
 -> back
     <<jump Actions_Party>>
@@ -594,7 +600,7 @@ BarBot: Bon, ça, c'est ce que j'aime voir ! Bon, c'était un peu basique pour B
 Le barbot vous lance un gâteau apéritif teinté d'or que Fred attrape en sautant.
 Fred_excited: Génial !
 << music Solo1 >>
-<< advanceTimeBy 0:30 >>
+<< advanceTimeBy 1:00 >>
 <<set $partyPoints to ($partyPoints + 1)>>
 <<jump Actions_Party>>
 ===
@@ -612,7 +618,7 @@ Fred_surprised: Qu'est-ce qu'il raconte ?
 Le barbot éjecte 2 gâteaux apéritifs teintés d'or que vous et Fred attrapez au vol.
 Fred_excited: Deux Party Points ?? Trop bien ! On avance deux fois plus vite !
 << music Solo2 >>
-<< advanceTimeBy 1:30 >>
+<< advanceTimeBy 1:00 >>
 <<set $partyPoints to ($partyPoints + 2)>>
 <<jump Actions_Party>>
 ===
@@ -645,7 +651,7 @@ Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressi
 Barbot: Wow, je vois que vous êtes plus que familiers avec le monde magique de la disco ! C'était puissant, les amis. Voilà 2 PARTY POINTS pour la peine !
 Le barbot éjecte 2 gâteaux apéritifs teintés d'or que vous et Fred attrapez au vol.
 Fred_excited: Deux Party Points ?? Trop bien ! On avance deux fois plus vite !
-<< advanceTimeBy 0:30 >>
+<< advanceTimeBy 1:00 >>
 <<set $partyPoints to ($partyPoints + 2)>>
 <<jump Actions_Party>>
 ===
@@ -658,7 +664,7 @@ Vous vous déhanchez en vous donnant un maximum, tentant de vous rappeler de vos
 Vous aimeriez avoir eu le temps de vous entraîner, mais heureusement Fred est là pour vous guider et vous faire groover un maximum !
 BarBot: Ok, ça suffit. Vous êtes bons, les gars, mais vous pourriez être encore meilleurs. Allez, un Party Point est de mise !
 Le barbot vous lance un gâteau apéritif teinté d'or que Fred attrape en sautant.
-<< advanceTimeBy 0:30 >>
+<< advanceTimeBy 1:00 >>
 <<set $partyPoints to ($partyPoints + 1)>>
 <<jump Actions_Party>>
 ===
@@ -667,13 +673,13 @@ title: Bar_S
 tags: subchoice
 position: -105,-630
 ---
--> Grignoter un snack <<if !visited("Grignoter")>>
+-> Grignoter un snack (15 min) <<if !visited("Grignoter")>>
     <<jump Grignoter>>
--> Se rafraîchir au bar
+-> Prendre une boisson (15 min)
     <<jump Drink>>
--> Tenter de pirater BB-Rex <<if !visited("Pirater")>>
+-> Tenter de pirater BB-Rex (30 min) <<if !visited("Pirater")>>
     <<jump Pirater>>
--> Modifier le comportement de BB-Rex <<if visited("Pirater") && visited("Drone_Review") && !visited("PiratedPerfect")>>
+-> Modifier le comportement de BB-Rex (30 min) <<if visited("Pirater") && visited("Drone_Review") && !visited("PiratedPerfect")>>
     <<jump Piratage_Good>>
 -> back
     <<jump Actions_Party>>
@@ -713,13 +719,14 @@ title: Drink_Alcohol
 tags: 
 position: 128,-897
 ---
+<< advanceTimeBy 0:15 >>
 Barbot: C'est ce qe je veux entendre. Allez, bois-moi ça comme un vrai homme.
 BB-Rex vous sert un grand verre contenant un liquide semi-translucide. A l'intérieur, les couleurs virevoltent et se croisent pour former des mélanges.
 Vous avalez le cocktail d'un coup. Vous sentez votre gorge frémir et vous manquez de tout rejetez, tant le mélange est corsé.
 Barbot: Haha ! C'est ce que j'aime !! Allez, pour la bravoure, voilà 1 Party Point !
-Désinhibé mais nauséeux, vous ne savez pas si vous avez eu une bonne idée de boire ce cocktail. Ce qui est sûr, c'est qu'il vous a donné un coup au système.
 << removeFromGauge sleep 20 >>
 << removeFromGauge food 20 >>
+Désinhibé mais nauséeux, vous ne savez pas si vous avez eu une bonne idée de boire ce cocktail. Ce qui est sûr, c'est qu'il vous a donné un coup au système. Vous prenez un peu plus de temps pour reprendre vos esprits.
 
 << visit Alcohol >>
 << advanceTimeBy 0:30 >>
@@ -732,6 +739,8 @@ position: 128,-897
 ---
 BarBot: C'est bien ce que je pensais... Allez, voilà un truc tout soft, à ton image... Haha !
 Vous vous sentez revigoré par la boisson caféinée. Maintenant, votre coeur bat à fond. Pas idéal pour faire une sieste, mais au moins, vous pourrez tenir un peu.
+<< addToGauge sleep 15 >>
+<< addToGauge food 10 >>
 << advanceTimeBy 0:15 >>
 << visit Soft >>
 <<jump Actions_Party>>
@@ -743,7 +752,7 @@ position: 190,-589
 ---
 Vous contemplez BB-Rex, le Barbot reprogrammé par les docteurs pour devenir le roi de la fête. Hey, si ce robot a déjà été piraté une fois, vous pourriez tenter de pénétrer son système, vous aussi !
 Vous vous glissez derrière l'androïde et connectez votre tablette portable sur son boîtier principal.
-<< advanceTimeBy 0:20 >>
+<< advanceTimeBy 0:30 >>
 BINGO ! Devant vous, une interface de code vous montre les comportements basiques du robot.
 -> LIBERER_PARTY_POINT
     <<jump Reward_Piratage>>
@@ -800,9 +809,9 @@ title: Sofa_S
 tags: subchoice
 position: -604,-48
 ---
--> Se reposer sur le canapé
+-> Se reposer sur le canapé (1h) <<if !visited("Soft")>>
     <<jump Repos_Fete>>
--> Demander à Fred d'expliquer le Système d'Assistance au Pilotage <<if !visited("Drone_Review")>>
+-> Demander à Fred d'expliquer le Système d'Assistance au Pilotage (45 min) <<if !visited("Drone_Review")>>
     <<jump Ask_Fred_Drone>>
 -> back
     <<jump Actions_Party>>
@@ -818,7 +827,7 @@ Fred_surprised: Là, maintenant ?! On est dans le coeur de la fête !
 You: Je serais un peu moins stressé pour demain si je savais comment ça marchait...
 Fred_smiling: Bon, ok... Je vais faire vite, alors. Tu vois, les systèmes de correction de trajectoire par advanced learning...
 Fred semble, au final, plutôt passionné par le sujet, et vous en ressortez avec quelques notions, mais rien qui puisse changer la donne pour demain...
-<< advanceTimeBy 0:30 >>
+<< advanceTimeBy 0:45 >>
 Vous vous demandez à quoi cela pourrait bien servir dans le contexte actuel...
 << visit Drone_Review >>
 << addToGauge learning 20>>
@@ -831,7 +840,7 @@ position: -625,119
 ---
 Vous vous allongez sur le canapé de la cafétéria. Le tissu en nanofibre se laisse facilement détendre sous votre poids et vous vous endormez vite malgré la musique et la fête alentours.
 << addToGauge sleep 40 >>
-<< advanceTimeBy 0:45 sleep >>
+<< advanceTimeBy 1:00 sleep >>
 Une fois révéillé, vous vous sentez revigoré, d'attaque.
 <<jump Actions_Party>>
 ===
@@ -919,6 +928,7 @@ Fred_smiling: Héhé, même pas un peu. On se voit demain ?
 You: Carrément !
 
 << fadeIn >>
+<< hide >>
 << setBackground bedroom >>
 << setTime 14:00 >>
 << fadeOut >>
@@ -928,23 +938,6 @@ Temde_cheerful: { $name } ! Comment était la fête ?
 You: Plutôt sympa ! Je me suis bien débrouillé au TP, c'est ça l'important !
 Temde_smiling: C'est parfait, ça ! Suis-moi, petit génie, nous avons encore des choses à t'apprendre...
 <<jump Assemblee_Sages>>
-===
-
-title: Replay
-tags:
-position: -1624.1019287109375,775.4595947265625
----
-<< fadeIn >>
-<< setBackground circle >>
-<< fadeOut >>
-Nonononoon... Vous n'avez pas bien écouté les leçons des 4 Sages de la Métacognition. #line:07bd3dd 
-Vous devez respecter votre cycle de sommeil et d'alimentation ! #line:0ebe6d4 
-
-Vous allez devoir retourner à cette soirée festive... #line:0e44199 
-
--> Retourner à la fête #line:05385cd 
-    << resetLevel >>
-    <<jump Start>>
 ===
 
 title: Assemblee_Sages
@@ -958,13 +951,29 @@ colorID: 1
 << fadeOut >>
 
 Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre. #line:005f939 
-Azul_happy: Un truc qui te servira également au quotidien. #line:05cefc0 
 Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique ! #line:03dea3d 
-Sapiens_concerned: Tu en dis quoi, { $name } ? #line:090d007 
--> C'est quoi, cette histoire de moteur biologique ? #line:0d2d7ac 
-    <<jump Revelation>>
+You: Mon moteur biologique ? Mais... Je suis pas une machine, moi !
+Temde_neutral: Très juste, n'en déplaise à Ledai. Ce que veulent dirent ces deux sages, c'est que comme une machine... Tu as besoin d'énergie.
+Azul_proud: Et c'est de cela qu'on va parler, maintenant ! D'abord, comment bien alimenter ton matériel biologique pour qu'il soit au top !
+Ledai_explaining: Mais aussi, comment le reposer pour le garder au meilleur de sa performance.
+<<jump Sages_FreeChoice>>
 ===
-title: Revelation
+
+title: Sages_FreeChoice
+tags: noUi
+position: -366.2418212890625,1422.0413818359375
+---
+Azul_happy: Alors, que veux-tu approfondir maintenant ?
+
+-> Bien alimenter son matériel biologique
+    <<jump Bien_Manger>>
+-> Recharger ses batteries biologiques
+    <<jump Routinisation>>
+-> C'est bon pour moi ! (Quitter les sages)
+    <<jump QCM_Recues>>
+===
+
+title: Bien_Manger
 tags:  noUi
 position: 2242.7559814453125,395.5284118652344
 ---
@@ -974,12 +983,9 @@ Sapiens_thinking: Mais pas n'importe lesquelles. Celles qui nourrissent et facil
 You: En gros, il faut que je mange, quoi... Super utile, le tuyau... #line:00fe57b 
 Azul_happy: Oui, mais pas seulement, il ne faut pas non plus manger n'importe quoi.
 Temde_thinking: Pas les substances miracles de synthèse. Mensonges de bonimenteurs ! #line:0ecf094 
-Sapiens_thinking: Enfin, ton corps a besoin d'énergie. Mais il a également besoin de se recharger. #line:0bf2555 
-You: Toujours la métaphore du Palmphone ? #line:0e1ac36 
-Ledai_happy: Tout à fait. #line:0402fa2 
-
-<<jump Sommeil>>
+<<jump Sages_FreeChoice>>
 ===
+
 title: Sommeil
 tags:  noUi
 position: 2464.5450744628906,392.3604736328125
@@ -993,20 +999,11 @@ You: Ça veut dire combien ? #line:019496e
 Sapiens_thinking: Plusieurs heures. 6 heures pour les plus vifs. 10 heures pour les plus mous. #line:004bc53 
 You: Et si je ne dispose même pas de 6 heures ? #line:08690fd 
 Azul_proud: Il y a bien une solution de dépannage... #line:0a728b0 
-
-<<jump Sieste_Sages>>
-===
-title: Sieste_Sages
-tags:  noUi
-position: 2686.2007751464844,394.8099365234375
----
 Azul_happy: Si tu n'as pas eu le temps de profiter d'une bonne nuit de sommeil, tu fais une bonne sieste !
 Azul_proud: L'important, c'est d'écouter les besoins de ton corps et le recharger ! #line:0b5a398 
-Sapiens_happy: Tu as compris cette nouvelle leçon ? #line:0bff9cd 
-
--> Oui #line:0ddd08f 
-    <<jump QCM_Recues>>
+<<jump Sages_FreeChoice>>
 ===
+
 title: QCM_Recues
 tags:  noUi
 position: 2908.9466247558594,391.5020446777344
@@ -1074,7 +1071,7 @@ title: huit_heures
 tags:  noUi
 position: 3125.9331665039062,286.40415954589844
 ---
-Sapiens_happy: Mmmh, pas forcément... Cela dépend des personnes. La bonne réponse était de 6 à 10 heures. Ce qui me rappelle le temps où je...
+Sapiens_happy: Mmmh, pas forcément... Cela dépend des personnes. Ce qui me rappelle le temps où je...
 Temde_neutral: Non, on coupe ! Le temps presse ! #line:0beff39 
 Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:092a6ff 
 
@@ -1088,7 +1085,7 @@ title: six_10_heures
 tags:  noUi
 position: 3341.1002807617188,392.2286071777344
 ---
-Sapiens_happy: Ah, je préfère ça. Ce qui me rappelle le temps où je... #line:0715588 
+Sapiens_happy: Oui, cela dépend des personnes. Ce qui me rappelle le temps où je... #line:0715588 
 Temde_neutral: Non, on coupe ! Le temps presse ! #line:0beff39 
 Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:092a6ff 
 
@@ -1122,6 +1119,7 @@ position: 3557.0534057617188,389.2486877441406
 
 <<if !visited("Tp_Win")>>
 -> Recommencer la soirée d'hier
+    << resetLevel >>
     <<jump Start>>
 <<else>>
 -> Continuer

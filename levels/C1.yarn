@@ -24,11 +24,9 @@ Quel rêve étrange ...
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:00aae49 
 
 << loopFX PhoneRing_LOOP 5000 >>
-Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler. #line:0c10bcd 
+Cette fois, c'est votre palmphone qui vibre : <b>Fred</b> veut vous parler. #line:0c10bcd 
 -> Prendre l'appel #line:0c4a7b0 
     <<jump Appel_Fred_Rewind>>
--> Rejeter l'appel #line:062f62e 
-    <<jump Rejet_Fred_Rewind>>
 ===
 
 title: Appel_Fred_Rewind
@@ -39,23 +37,23 @@ position: -570,57
 << stopFX PhoneRing_LOOP >>
 
 <<if !visited("FredCall")>>
-Fred@holo_excited: Hello ! c'est Fred ! #line:0fb4525 
+Fred@holo_excited: Salut ! c'est Fred ! #line:0fb4525 
 You: Je sais, j'ai vu ton nom. #line:0d1a13b 
-Fred@holo_smiling: Yo, je vois que tu n'es pas de bonne humeur ce matin... #line:039d35b 
-You: Facile à dire pour toi, tu révises jamais et tu as tout le temps des bonnes notes !
+Fred@holo_smiling: Yo, je vois que t'es pas de bonne humeur ce matin... #line:039d35b 
+You: Facile à dire pour toi, tu révises jamais et t'as tout le temps des bonnes notes !
 Fred@holo_happy: Damned, tu t'es vraiment levé du mauvais pied aujourd'hui. Qu'est-ce qui ne va pas ?
 
 -> C'est fini, je vais jamais passer mon année !
 -> Tu le sais bien, tu as dû voir ma prestation d'hier...
 
 You: À ton avis... J'ai foiré le Grand Oral ! C'est une note éliminatoire, tu sais ce que ça veut dire ! #line:09b04e6 
-Fred@holo_smiling: Yes, la bonne blague... Le Grand Oral, c'est dans une semaine ! #line:057105b 
+Fred@holo_smiling: Ah ouais, la bonne blague... Le Grand Oral, c'est dans une semaine ! #line:057105b 
 You: Quoi ?! #line:080aa84 
-Fred@holo_happy: Toi, tu as la tête dans le pâté. Aujourd'hui, on a le partiel d'Astronometric Data Management. T'as pas oublié, quand-même ?
+Fred@holo_happy: Toi, t'as la tête dans le pâté. Aujourd'hui, on a le partiel d'Astronometric Data Management. T'as pas oublié, quand-même ?
 You: Mais... C'était la semaine dernière ?? #line:0f2a881 
-Fred@holo_happy: Yes yes, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui. #line:03aa008 
+Fred@holo_happy: Ouais ouais, dans ta tête peut-être, coco. Mais dans la vraie vie, c'est aujourd'hui. #line:03aa008 
 You: C'est dingue ! Je rêve ou quoi ? #line:0b5f597 
-Fred@holo_smiling: No no, je t'assure que c'est la réalité, coco. #line:0c6db74 
+Fred@holo_smiling: Non non, je t'assure que c'est la réalité, tête de mule. #line:0c6db74 
 You: Euh... #line:007c5ec 
 Fred@holo_excited: Bon, je vais me détendre à la salle de gym, on se retrouve à 14 heures pour l'exam ? #line:03c1f6b 
 You: Euh, ok... #line:03e0c76 
@@ -78,22 +76,6 @@ Vous raccrochez sans vous en rendre compte. #line:077b761
 <<jump Phone_off_Rewind>>
 ===
 
-title: Rejet_Fred_Rewind
-tags:
-colorID: 0
-position: -326,-51
----
-<<if !visited("FredCall")>>
-Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais vaincu. Il vous rappelle aussitôt ! #line:064cdc3 
--> Prendre l'appel #line:04b2664 
-    <<jump Appel_Fred_Rewind>>
-<<else>>
-Fred vous a déjà fait perdre du temps hier soir, alors vous rejetez ses appels dans l'espoir qu'il se lasse.
-<< stopFX PhoneRing_LOOP >>
-<<jump Action_List_Rewind>>
-<<endif>>
-===
-
 title: Phone_off_Rewind
 tags:
 colorID: 0
@@ -103,12 +85,12 @@ position: -316,223
 << fadeOut >>
 
 <<if !visited("FredCall")>>
-Mais c'est quoi ce truc ?! On dirait que vous avez fait un bon en arrière dans le temps ! Peut-être que ces <i>sages</i> y sont pour quelque chose... Vous allez pouvoir revivre cette semaine, sauver votre année. C'est la chance du siècle ! #line:0d751d6 
+Quoi ?! On dirait que vous avez fait un bond en arrière dans le temps ! Peut-être que ces <i>sages</i> y sont pour quelque chose... Vous allez pouvoir revivre cette semaine, sauver votre année. C'est la chance du siècle ! #line:0d751d6 
 Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre ! #line:020bca4 
 <<endif>>
 
 <<showGauges>>
-Il vous reste 6 heures avant le partiel... Aujourd'hui, vous allez montrer à Fred qui est le Big Winner de l'Académie ! #line:0cfadf9 
+Il vous reste quelques heures avant le partiel... Aujourd'hui, vous allez montrer à Fred qui est le plus grand vainqueur de l'Académie ! #line:0cfadf9 
 
 <<visitPermanent FredCall>>
 
@@ -139,7 +121,19 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
     <<jump bureau_subchoice>>
 -> Salon@salon #line:021edd5 
     <<jump salon_subchoice>>
+-> Porte@porte
+    <<jump porte_subchoice>>
 << endif>>
+=== 
+
+title: porte_subchoice
+tags: subchoice
+position: -525,562
+---
+-> Aller à l'examen (passer jusqu'à 14h)
+    <<jump Check_Results>>
+-> back
+    <<jump Action_List_Rewind>>
 ===
 
 title: cuisine_subchoice
@@ -150,7 +144,7 @@ position: -525,562
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
--> Prendre le petit déjeuner <<if !visited("Petit_dej")>>#line:079d0ff 
+-> Prendre le petit déjeuner (30 min) <<if !visited("Petit_dej")>>#line:079d0ff 
     <<jump Petit_dej_Rewind>>
 -> back #line:0fad580 
     << fadeIn >>
@@ -164,11 +158,11 @@ position: -993.6492929458618,-75.37680292129517
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
--> Passer du temps sur le chat avec le pote d'une autre Université <<if !visited("Chat")>> #line:026de4e 
+-> Passer du temps sur le chat avec un pote (Au moins 1h...) <<if !visited("Chat")>> #line:026de4e 
     <<jump Chat_Rewind>>
--> Réviser cette fichue Astronometric Data Management <<if !visited("Revision")>> #line:070f359 
+-> Réviser cette fichue Astronometric Data Management (2h) <<if !visited("Revision")>> #line:070f359 
     <<jump Revision_Rewind>>
--> Essayer la technique du rappel libre <<if !visited("Rappel_libre")>> #line:0310da3 
+-> Essayer la technique du rappel libre (2h) <<if !visited("Rappel_libre")>> #line:0310da3 
     <<jump Rappel_libre>>
 -> back #line:0a06fb6 
     << fadeIn >>
@@ -182,7 +176,7 @@ position: -1427,217
 << fadeIn >>
 << setBackground bedroom chill >>
 << fadeOut >>
--> Binger votre série TV préférée <<if !visited("BingeTV")>> #line:0f2e31c 
+-> Regarder votre série TV préférée (Au moins 2h...) <<if !visited("BingeTV")>> #line:0f2e31c 
     <<jump BingeTV_Rewind>>
 -> back #line:0341673 
     <<jump Action_List_Rewind>>
@@ -200,12 +194,10 @@ position: -1405,986
 
 <<if visited("LunchBefore")>>
 Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... #line:046846a 
-D'accord, ce repas est bien chargé en calories et en caféine, mais vous avez mangé le même hier. Ça commence à bien faire ces sensations de "déjà-vu"... #line:0e88c64 
 Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route ! #line:0f21e5a 
 <<else>>
-Yum Yum... Délicieux ce Burger Big Proteins Double Cheese ! #line:0530c64 
-Bien chargé en calories mais vous allez en avoir besoin tout à l'heure, quand vous claquerez des calories sur l'écran de travail durant l'examen ! #line:0b89f1b 
-Glouglou... Un bonne gorgée de Xeno Cola pour accélérer la digestion et éviter le coup de barre de 15 heures... #line:00ba9c8 
+Miam... Délicieux, ce Burger Big Proteins Double Cheese !
+Bien chargé en calories, mais vous allez en avoir besoin tout à l'heure pour l'examen ! Allez, une bonne gorgée de Xeno Cola pour accélérer la digestion... #line:00ba9c8 
 <<endif>>
 
 <<visitPermanent LunchBefore>>
@@ -255,7 +247,7 @@ colorID: 0
 position: -907,703
 ---
 
-Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. Probablement que c'est parce que nous sommes lundi. Vous êtes pingé par Alex, vous engagez la conversation. #line:0ecf0bf 
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. C'est lundi, après tout... Vous êtes pingé par Alex, vous engagez la conversation. #line:0ecf0bf 
 
 << fx Notification >>
 
@@ -267,7 +259,7 @@ Ensuite, c'est Dom, puis Lou, puis Cam... #line:008f37e
 
 << advanceTime 2:00 >>
 
-Vous passez deux heures à discuter de tout, mais surtout de rien. #line:06ab06b 
+Vous passez 2 heures à discuter de tout, mais surtout de rien. #line:06ab06b 
 
 <<visit Chat>>
 <<visitPermanent ChatBefore>>
@@ -281,8 +273,8 @@ tags:
 colorID: 0
 position: -591,772
 ---
-Vous ouvrez une nouvelle fois votre dossier Astrometric Data Management. Qu'est-ce que c'est barbant... Mais cette fois, vous ravalez votre bile. #line:0ca527e 
-Aujourd'hui, vous voulez réussir votre journée. Vous voulez coiffer Fred au poteau ! Vous aussi, vous aurez un <i>A+</i> ! #line:04765d7 
+Vous ouvrez votre dossier Astrometric Data Management. Qu'est-ce que c'est barbant... Mais cette fois, vous ravalez votre bile. #line:0ca527e 
+Aujourd'hui, vous voulez réussir votre journée. Vous aussi, vous aurez un <i>A+</i>, comme Fred ! #line:04765d7 
 
 <<visit Revision>>
 
@@ -314,13 +306,13 @@ Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. 
 <bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi> #line:0a04f28 
 << endif >>
 
-En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait amocher son vaisseau ! Il est obligé d'atterrir en catastrophe sur Tortuga. Le suspense est haletant, vous ne pouvez pas ne pas regarder l'épisode suivant. Et ainsi de suite. #line:0f4f9b7 
+En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait amocher son vaisseau ! Il est obligé d'atterrir en catastrophe sur Tortuga. Le suspense est haletant... 
 
 << advanceTime 4:00 13:00 1:00 >>
 << stopFX TVStarwars_LOOP >>
 << hide >>
 
-Au final, vous passez trop de temps à binger votre série préférée. #line:023c509 
+Au final, vous avez regardé plus d'épisodes que prévu...
 
 <<visit BingeTV>>
 <<visitPermanent BingeTV_Before>>
@@ -335,13 +327,13 @@ colorID: 0
 position: -485,416
 ---
 Vous tentez d'appliquer la méthode du rappel libre. #line:0b8f655 
-Vous essayez de vous souvenir de ce que vous avez retenu en cours. Ce n'est pas brillant. Vous ne vous souvenez que de très peu de choses. Pas étonnant, vous n'aimez pas cette matière. #line:07f35ff 
+Vous essayez de vous souvenir de ce que vous avez retenu en cours, sans aide. Ce n'est pas brillant. Très peu de choses vous reviennent. Pas étonnant, vous n'aimez pas cette matière. #line:07f35ff 
 Mais lorsque vous replongez dans la lecture pour verifier vos réponses, vous constatez que ça vous aide vraiment à mettre de l'ordre dans votre esprit. Il y a encore du travail à faire, mais ça sort plus facilement de votre tête ! #line:080fdf4 
 
 << visit Rappel_libre >>
 << addToGauge learning 60 >>
 
-Vous prenez encore le temps de relire votre cours pour combler les lacunes qui vous gênent encore. Résultat, vous vous sentez bien plus prêt à attaquer l'examen cette fois. #line:0988ada 
+Vous prenez encore le temps de relire votre cours pour combler les lacunes qui vous gênent encore. Résultat, vous vous sentez bien plus prêt à attaquer l'examen. #line:0988ada 
 
 << advanceTime 2:00 >>
 
@@ -358,12 +350,11 @@ position: -1013,1248
 << setBackground class >>
 << setTime 14:00 >>
 << fadeOut >>
-
 Vous voilà désormais dans la grande salle. Vous vous installez devant votre écran de travail. À peine vous cliquez sur le fichier <b>Sujet d'examen</b> que le compteur se met en route. #line:0352286 
 
 << advanceTime 4:00 >>
 
-Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Ce coup-ci, vous êtes sûr de vous. Bingo ! Vous allez y arriver !! #line:006d985 
+Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Ce coup-ci, vous êtes sûr de vous. Vous allez y arriver !! #line:006d985 
 
 Euphorique, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe. #line:0b43c25 
 
@@ -378,13 +369,12 @@ position: -666.0570068359375,500.580322265625
 << setBackground class >>
 << setTime 14:00 >>
 << fadeOut >>
-
 Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b>, que le compteur se met en route. #line:06b2e70 
 Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi. #line:0598ff5 
 
 << advanceTime 4:00 >>
 
-Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe #line:0be01e7 
+Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe. #line:0be01e7 
 
 <<jump Post_Test>>
 ===
@@ -430,13 +420,13 @@ position: -801,1373
 << music Victory >>
 << fx Success >>
 
-Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore... #line:0395b52 
+Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard !... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore... #line:0395b52 
 
 Fred_smiling: Hé, C'est vachement bien pour une matière que tu détestes. #line:085368d 
 You: Facile à dire pour toi. Tu as eu <b>A+</b>. #line:04e24fc 
 Fred_happy: Et alors ? Tu feras mieux la prochaine fois.
 You: C'est sûr !
-Fred_smiling: Avec des scores pareil, y a plus qu'une chose à faire, célébrer ce jour victorieux ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande ! #line:0b027ac 
+Fred_smiling: Avec des scores pareil, y a plus qu'une chose à faire, célébrer ce jour victorieux ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à eux ! #line:0b027ac 
 You: Ce serait sympa, mais... 
 << hide >>
 
@@ -497,19 +487,18 @@ position: -270,525
 << fadeOut >>
 
 Fred_excited: Alors, ça l'a fait ? #line:0876127 
-You: Je pense oui. C'était basique. #line:01647f2 
+You: Je pense, oui. C'était basique. #line:01647f2 
 Fred_smiling: Yes, je m'attendais à plus tordu que ça. #line:0804335 
 You: Moi aussi. #line:042aa91 
 Fred_smiling: Y avait quelques petits pièges, mais ils sont tellement gros, on ne pouvait pas les louper ! #line:0ce0a8b 
 You: Ah bon ? #line:086ed91 
-Fred_surprised: Yes, tu n'en as pas trouvé. #line:0d5781e 
+Fred_surprised: Ouais, t'en as pas trouvé ? #line:0d5781e 
 You: Non. #line:0818e11 
-Fred_smiling: C'est dommage. Tu sais qu'une mauvaise réponse t'enlève autant de point qu'une bonne réponse. #line:0bf1cd4 
+Fred_smiling: C'est dommage. Tu sais, une mauvaise réponse t'enlève autant de points qu'une bonne réponse. #line:0bf1cd4 
 You: Heuuuu... #line:0facc92 
 
 << advanceTime 0:15 >>
 
-Fred s'apprête à vous répondre quand la sonnerie retentit. #line:07aa496 
 << fx Notification >>
 << setBackground door class-screen>>
 << hide >>
@@ -534,7 +523,7 @@ Fred_happy: Hé alors ? Ce n'est pas la fin du monde. Ce n'est qu'une note parmi
 You: Facile à dire pour toi. Tu as eu <b>A+</b> ! #line:0166adc 
 Fred_smiling: Y a qu'une chose à faire dans ce cas ! #line:01bdf3a 
 You: Quoi donc ? #line:0fc9d11 
-Fred_happy: Se vider la tête ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à leur bande ! #line:0a6af63 
+Fred_happy: Se vider la tête ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à eux ! #line:0a6af63 
 
 
 << advanceTime 0:15 >>
@@ -545,18 +534,6 @@ Fred_happy: Se vider la tête ! Ça tombe bien, les docteurs font une fête ce s
 You: J'ai pas trop la tête à ça... Je te dirai si je change d'avis, mais pour l'instant, je suis épuisé. Je rentre. #line:012855e 
 << hide >>
 <<jump Sages_Defaite>>
-===
-
-title: Rester_Chambre_deprime
-tags:
-position: 66,996
----
-Vous avez beau dire non. Fred n'est pas du genre à s'avouer vaincu. Mais à chaque fois qu'il revient à la charge, vous le renvoyez <i>gentiment</i> dans les cordes. Du coup, quand vous vous dirigez vers la porte de votre chambre, Fred ne dit plus rien. Pour la première fois, vous êtes parvenu à dissuader l'infatiguable Fred de passer un bon moment avec lui... #line:0e0e5d2 
-
-<< advanceTime 0:30 >>
-
--> Rentrer dormir #line:047bca2 
-    <<jump Sages_Defaite>>
 ===
 
 title: Sages_Defaite
@@ -610,7 +587,7 @@ position: -571,1504
 << fadeOut >>
 
 Ledai_explaining: Venons en donc au sujet de ce soir, <b>Master Sapiens</b>. #line:01eca65 
-Sapiens_thinking: Oui, la mémorisation. #line:085e256 
+Sapiens_thinking: Oui, la mémorisation.
 
 << visitPermanent Assemblee_Sages >>
 
@@ -625,7 +602,30 @@ position: -366.2418212890625,1422.0413818359375
 Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit. #line:0ea6147 
 Temde_thinking: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }. #line:0d49277 
 Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt... #line:0a57318 
+Azul_cheerful: Vous savez quoi ? On va demander à { $name } ce qui l'intéresse, au lieu de se chamailler sans arrêt !
+Sapiens_thinking: Mmh... Bien. Pour commencer, nous pouvons te parler des types de mémoires : la mémoire courte et la mémoire longue... #line:085e256 
+Ledai_happy: Nous pouvons aussi t'expliquer comment passer de l'une à l'autre pour consolider tes connaissances !
+<<jump Sages_FreeChoice>>
+===
 
+title: Sages_FreeChoice
+tags: noUi
+position: -366.2418212890625,1422.0413818359375
+---
+Azul_happy: Alors, que veux-tu approfondir maintenant ?
+
+-> Mémoire courte et mémoire longue
+    <<jump Types_Memoire>>
+-> Comment consolider ses connaissances
+    <<jump Routinisation>>
+-> C'est bon pour moi ! (Quitter les sages)
+    <<jump Quit_Sages>>
+===
+
+title: Types_Memoire
+tags: noUi
+position: -366.2418212890625,1422.0413818359375
+---
 << fadeIn 200 >>
 << setBackground schema >>
 << fadeOut 200 >>
@@ -654,28 +654,26 @@ Sapiens_thinking: <b>La mémoire longue</b> c'est le caviar de la connaissance. 
 
 Ledai_explaining: Sans compter que chaque élément de <b>la mémoire longue</b> contient un index, une table des matières. Le cerveau n'a plus qu'à suivre le plan et ça roule sans sursaut. #line:0970ca1 
 Sapiens_thinking: En bref, le secret pour bien apprendre réside dans ta capacité à consolider tes nouvelles connaissances, les stocker de manière logique et efficace. #line:041c990 
-Azul_happy: Tu as saisi ? Nos deux savants veulent te dire qu'ils vont t'aider à faire glisser tes nouveaux savoirs, de la mémoire courte à la mémoire longue. #line:0ba2da0 
 
 << fadeIn 200 >>
 << setBackground circle >>
 << fadeOut 200 >>
 
-You: Génial, Azul ! Et je fais comment pour glisser et déposer mes révisions dans ma mémoire longue ? #line:02bf1b5 
+Azul_happy: Tu as saisi ? La clé est de faire glisser tes nouveaux savoirs de la mémoire courte à la mémoire longue. #line:0ba2da0 
 
-<<jump Routinisation>>
+<<jump Sages_FreeChoice>>
 ===
 
 title: Routinisation
 tags: noUi
 position: 243.36883544921875,1410.058349609375
 ---
-Sapiens_thinking: Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler ! #line:0c67f70 
+Sapiens_thinking: Pour consolider ses connaissances, c'est simple. Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
 Ledai_explaining: Il faut surtout pratiquer ! Répéter et répéter et encore répéter ! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement. #line:00317ce 
 Azul_happy: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis pas la maîtriser. #line:050ca2d 
 Ledai_explaining: Pour une fois que je suis d'accord avec <b>Azul</b>. Ainsi, tu mémorises la liste des ingrédients, les dosages, comme les étapes de préparation et les temps de cuisson. #line:0e3a8de 
 You: Et comment je fais pour que ma pratique devienne une routine? #line:0439386 
 Ledai_explaining: Tout simplement en répétant, en appliquant. #line:0832a45 
-
 
 << if visited("Rappel_libre") >>
 You: C'est la méthode du rappel libre, pas vrai ?
@@ -687,7 +685,14 @@ Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacogn
 Ledai_explaining: Le rappel libre, c'est tenter de restituer, par soi-même, et sans ordre précis, les notions que l'on a retenues. Cette méthode est moins connue, mais bien plus efficace qu'une relecture classique.
 Sapiens_happy: La raison est très simple : en récupérant par toi-même les informations dans ta mémoire vive, tu indiques à ton cerveau qu'il doit consolider l'information, la faire passer dans la mémoire longue.
 Azul_happy: Et c'est comme ça que tu réussis à conserver l'information le plus longtemps possible !
-You: Ouaiiiis... Mais en attendant, va falloir que je me souvienne de tout ça à mon réveil. Comment faire ? #line:0d2186b 
+<<jump Sages_FreeChoice>>
+===
+
+title: Quit_Sages
+tags: noUi
+position: 243.36883544921875,1410.058349609375
+---
+You: C'est bon pour moi... Mais en attendant, va falloir que je me souvienne de tout ça à mon réveil. Comment faire ? #line:0d2186b 
 Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> ! #line:0838542 
 
 <<if !visited("Resultats_Good")>>
@@ -707,8 +712,8 @@ position: 544,1399
 << setBackground bedroom night >>
 << fadeOut 400 >>
 
-Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Les 4 sages non plus ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée. Curieusement, vous ne vous sentez pas inquiet. #line:00b6d70 
-En outre, vous n'êtes pas totalement isolé. Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof... #line:0c1bf30 
+Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée.
+Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof... #line:0c1bf30 
 Serait-ce le <bi>journal mental</bi> dont parlait Ledai ? #line:063d2d3 
 
 <<visitPermanent Chapitre1>>
