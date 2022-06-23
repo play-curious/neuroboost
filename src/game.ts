@@ -88,7 +88,7 @@ const variableStorage = new variable.VariableStorage({
   learning: "0",
   stress: "0",
   sleep: "100",
-  name: "Moi",
+  name: "Apprenant",
   time: "540",
   eval: "",
   food: "100",
