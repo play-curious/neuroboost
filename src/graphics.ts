@@ -155,9 +155,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   }
 
-  public getGaugeValue(name: string): number {
-    if (this._gauges.hasOwnProperty(name)) return this._gauges[name].getValue();
-    return undefined;
+  public getGauge(name: string): gauge.Gauge {
+    return this._gauges[name];
   }
 
   public setGauge(name: string, value: number) {

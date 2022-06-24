@@ -110,27 +110,15 @@ export function installGameData(rootConfig: entity.EntityConfig) {
   };
 }
 
-// Setup level order
-const dialogScenes = [
-  "Prologue",
-  "C1",
-  "C2",
-  "D3_level2",
-  "D4_level2",
-  "D5_level2",
-  "D6",
-  "D7_level2",
-];
-
-const debuggingDialogScenes = ["characters", "backgrounds", "test_simulation"];
-
 let states: { [k: string]: entity.EntityResolvable } = {
   start: new RequestTransitionEntity(checkSave),
   toc: new toc.TableOfContents(),
   outro_video: outroVideoScene,
 };
 
-const allDialogScenes = dialogScenes.concat(debuggingDialogScenes);
+const allDialogScenes = dialog.dialogScenes.concat(
+  dialog.debuggingDialogScenes
+);
 for (const dialogScene of allDialogScenes) {
   states[dialogScene] = new dialog.DialogScene(dialogScene);
 }
@@ -138,12 +126,15 @@ for (const dialogScene of allDialogScenes) {
 const transitions: Record<string, entity.TransitionDescriptor> = {};
 
 // Each dialog scene leads to the next
-for (let i = 0; i < dialogScenes.length - 1; i++) {
-  transitions[dialogScenes[i]] = entity.makeTransition(dialogScenes[i + 1]);
+for (let i = 0; i < dialog.dialogScenes.length - 1; i++) {
+  transitions[dialog.dialogScenes[i]] = entity.makeTransition(
+    dialog.dialogScenes[i + 1]
+  );
 }
 
 // The last dialog scene goes to the outro video, then the end
-transitions[dialogScenes.length - 1] = entity.makeTransition("outro_video");
+transitions[dialog.dialogScenes.length - 1] =
+  entity.makeTransition("outro_video");
 transitions["outro_video"] = entity.makeTransition("end");
 
 // The TOC transition is based on the type and index
@@ -151,16 +142,16 @@ transitions["toc"] = (transition: entity.Transition) => {
   const sceneType = transition.params.type as toc.SceneType;
   if (sceneType === "level") {
     // Jump to the level
-    return entity.makeTransition(dialogScenes[transition.params.index]);
+    return entity.makeTransition(dialog.dialogScenes[transition.params.index]);
   } else if (sceneType == "sages") {
     // Jump to the sages part
-    return entity.makeTransition(dialogScenes[transition.params.index], {
+    return entity.makeTransition(dialog.dialogScenes[transition.params.index], {
       startNode: "Assemblee_Sages",
     });
   } else {
     console.assert(sceneType === "journal");
     // Jump to the journal part
-    return entity.makeTransition(dialogScenes[transition.params.index], {
+    return entity.makeTransition(dialog.dialogScenes[transition.params.index], {
       startNode: "Journal",
     });
   }

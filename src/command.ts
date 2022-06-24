@@ -200,18 +200,18 @@ export const commands: Record<string, Command> = {
     this.config.variableStorage.set(gaugeName, `${newValue}`);
   },
 
-  saveGauges<VarName extends keyof variable.Gauges>(...names: VarName[]) {
-    savedGauges.clear();
-    names.forEach((name) => {
-      savedGauges.set(name, Number(this.config.variableStorage.get(name)));
-    });
-  },
+  // saveGauges<VarName extends keyof variable.Gauges>(...names: VarName[]) {
+  //   savedGauges.clear();
+  //   names.forEach((name) => {
+  //     savedGauges.set(name, Number(this.config.variableStorage.get(name)));
+  //   });
+  // },
 
-  loadGauges() {
-    savedGauges.forEach((id, key) => {
-      this.config.variableStorage.set(key, `${savedGauges.get(key)}`);
-    });
-  },
+  // loadGauges() {
+  //   savedGauges.forEach((id, key) => {
+  //     this.config.variableStorage.set(key, `${savedGauges.get(key)}`);
+  //   });
+  // },
 
   // MUSIC FX
 
@@ -343,6 +343,19 @@ export const commands: Record<string, Command> = {
     return new title.Title(text);
   },
 
+  completeLevel(): void {
+    const score = this.calculateScore();
+    save.updateCompletedLevel(this.levelName, score);
+  },
+
+  completeSages(): void {
+    save.updateCompletedSages(this.levelName);
+  },
+
+  completeJournal(): void {
+    save.updateCompletedJournal(this.levelName);
+  },
+
   empty() {},
 };
 
@@ -357,7 +370,7 @@ export const functions: Record<string, YarnFunction> = {
   },
 
   getGauge(gauge: string): number {
-    return this.graphics.getGaugeValue(gauge);
+    return parseInt(this.entityConfig.variableStorage.get(gauge));
   },
 
   // save() {

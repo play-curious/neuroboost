@@ -5,6 +5,8 @@ import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 
 import * as extension from "./extension";
+import * as save from "./save";
+import * as dialog from "./dialog";
 
 export type SceneType = "level" | "sages" | "journal";
 
@@ -70,6 +72,10 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
     for (let column = 0; column < 2; column++) {
       for (let row = 0; row < 4; row++) {
         const currentChapter = chapter; // Necessary to copy this variable for use within callbacks
+        const chapterData = save.getCompletedChapter(
+          dialog.dialogScenes[chapter]
+        );
+
         const gridCell = new PIXI.Point(
           gridStart.x + column * (columnWidth + columnPadding),
           gridStart.y + row * rowHeight
@@ -112,10 +118,11 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
             // Make stars
 
             // TODO: get score
-            const score = Math.floor(Math.random() * 3.9);
+            // const score = Math.floor(Math.random() * 3.9);
             const starWidth = 40;
             for (let i = 0; i < 3; i++) {
-              const starVariant = score > i ? "highlight" : "greyed";
+              const starVariant =
+                chapterData.score > i ? "highlight" : "greyed";
               const fileName = `images/ui/star-${starVariant}.png`;
               const sprite = new PIXI.Sprite(
                 this._entityConfig.app.loader.resources[fileName].texture
@@ -160,8 +167,10 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
               // Make sages check
 
               // TODO: get check from saved game
-              const isChecked = Math.random() > 0.5;
-              const variant = isChecked ? "highlight" : "greyed";
+              // const isChecked = Math.random() > 0.5;
+              const variant = chapterData.completedSages
+                ? "highlight"
+                : "greyed";
               const fileName = `images/ui/check-${variant}.png`;
               const sprite = new PIXI.Sprite(
                 this._entityConfig.app.loader.resources[fileName].texture
@@ -201,8 +210,10 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
               // Make journal check
 
               // TODO: get check from saved game
-              const isChecked = Math.random() > 0.5;
-              const variant = isChecked ? "highlight" : "greyed";
+              // const isChecked = Math.random() > 0.5;
+              const variant = chapterData.completedJournal
+                ? "highlight"
+                : "greyed";
               const fileName = `images/ui/check-${variant}.png`;
               const sprite = new PIXI.Sprite(
                 this._entityConfig.app.loader.resources[fileName].texture

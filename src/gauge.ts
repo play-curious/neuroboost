@@ -8,12 +8,30 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import { SpritePath } from "./images";
 
-const gaugesNames = {
+export const gaugesNames = {
+  learning: `Apprentissage`,
   sleep: `Énergie`,
   food: `Nutrition`,
-  learning: `Apprentissage`,
   mentalLoad: `Charge Mentale`,
   stress: `Stress`,
+};
+
+export interface GaugeLimits {
+  /** The minimum value for the gauge to be yellow */
+  minMedium: number;
+
+  /** The minimum value for the gauge to be green (or red, if inverted) */
+  minHigh: number;
+}
+
+const defaultGaugeLimits = { minMedium: 33, minHigh: 66 };
+
+export const gaugeLevels: Record<keyof typeof gaugesNames, GaugeLimits> = {
+  learning: { minMedium: 50, minHigh: 80 },
+  sleep: defaultGaugeLimits,
+  food: defaultGaugeLimits,
+  mentalLoad: defaultGaugeLimits,
+  stress: defaultGaugeLimits,
 };
 
 export class Gauge extends extension.ExtendedCompositeEntity {
@@ -136,11 +154,12 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   }
 
   colorByValue(value: number): SpritePath {
-    if (value > 66)
+    if (value > gaugeLevels[this.name].minHigh)
       return this._inverted
         ? "images/ui/gauges/innerDisk_red.png"
         : "images/ui/gauges/innerDisk_green.png";
-    else if (value > 33) return "images/ui/gauges/innerDisk_yellow.png";
+    else if (value > gaugeLevels[this.name].minMedium)
+      return "images/ui/gauges/innerDisk_yellow.png";
     else
       return this._inverted
         ? "images/ui/gauges/innerDisk_green.png"

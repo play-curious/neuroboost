@@ -8,10 +8,10 @@ import * as popup from "./popup";
 
 const localStorageKey = "neuroboost-save";
 
-export interface CompletedChapter {
-  score: number;
-  completedJournal: boolean;
-  completedSages: boolean;
+export class CompletedChapter {
+  score: number = 0;
+  completedJournal: boolean = false;
+  completedSages: boolean = false;
 }
 
 export interface GraphicsState {
@@ -74,7 +74,7 @@ export function deleteSave() {
   localStorage.removeItem(localStorageKey);
 }
 
-export function saveCurrentChapter(data: CurrentChapter): void {
+export function updateCurrentChapter(data: CurrentChapter): void {
   const saveData = getSave();
   saveData.currentChapter = data;
   updateSave(saveData);
@@ -91,13 +91,35 @@ export function getCurrentChapter(): CurrentChapter | undefined {
   return saveData.currentChapter;
 }
 
-export function saveCompletedChapter(
-  name: string,
-  data: CompletedChapter
-): void {
+export function updateCompletedLevel(name: string, score: number) {
+  const completedChapter = getCompletedChapter(name);
+  completedChapter.score = Math.max(score, completedChapter.score);
+  updateCompletedChapter(name, completedChapter);
+}
+
+export function updateCompletedJournal(name: string) {
+  const completedChapter = getCompletedChapter(name);
+  completedChapter.completedJournal = true;
+  updateCompletedChapter(name, completedChapter);
+}
+
+export function updateCompletedSages(name: string) {
+  const completedChapter = getCompletedChapter(name);
+  completedChapter.completedSages = true;
+  updateCompletedChapter(name, completedChapter);
+}
+
+function updateCompletedChapter(name: string, data: CompletedChapter): void {
   const saveData = getSave();
   saveData.completedChapters[name] = data;
   updateSave(saveData);
+}
+
+export function getCompletedChapter(name: string): CompletedChapter {
+  const saveData = getSave();
+  let completedChapter = saveData.completedChapters[name];
+  if (!completedChapter) completedChapter = new CompletedChapter();
+  return completedChapter;
 }
 
 export function getCompletedChapters(): Record<string, CompletedChapter> {
@@ -105,7 +127,7 @@ export function getCompletedChapters(): Record<string, CompletedChapter> {
   return saveData.completedChapters;
 }
 
-export function saveVariableStorage(data: variable.Variables): void {
+export function updateVariableStorage(data: variable.Variables): void {
   const saveData = getSave();
   saveData.variableStorage = data;
   updateSave(saveData);
