@@ -9,6 +9,7 @@ import * as clock from "./clock";
 import * as save from "./save";
 import * as popup from "./popup";
 import * as journal from "./journal";
+import * as title from "./title";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (
@@ -141,7 +142,7 @@ export const commands: Record<string, Command> = {
     );
     let [, , newMinutesSinceMidnight] = clock.parseTime(time);
 
-    // OPT: This loop is inefficient but won't be called more than 7 times
+    // OPT: This loop is inefficient but won't be called more than 7 times in the current scenario
     while (newMinutesSinceMidnight <= oldMinutesSinceMidnight) {
       // Must have gone to the next day
       newMinutesSinceMidnight += clock.dayMinutes;
@@ -199,23 +200,23 @@ export const commands: Record<string, Command> = {
     this.config.variableStorage.set(gaugeName, `${newValue}`);
   },
 
-  saveGauges<VarName extends keyof variable.Gauges>(...names: VarName[]) {
-    savedGauges.clear();
-    names.forEach((name) => {
-      savedGauges.set(name, Number(this.config.variableStorage.get(name)));
-    });
-  },
+  // saveGauges<VarName extends keyof variable.Gauges>(...names: VarName[]) {
+  //   savedGauges.clear();
+  //   names.forEach((name) => {
+  //     savedGauges.set(name, Number(this.config.variableStorage.get(name)));
+  //   });
+  // },
 
-  loadGauges() {
-    savedGauges.forEach((id, key) => {
-      this.config.variableStorage.set(key, `${savedGauges.get(key)}`);
-    });
-  },
+  // loadGauges() {
+  //   savedGauges.forEach((id, key) => {
+  //     this.config.variableStorage.set(key, `${savedGauges.get(key)}`);
+  //   });
+  // },
 
   // MUSIC FX
 
   music(musicName?: string) {
-    this.graphics.last.lastMusic = musicName;
+    this.graphics.graphicsState.lastMusic = musicName;
     this.config.jukebox.play(musicName);
   },
 
@@ -328,13 +329,31 @@ export const commands: Record<string, Command> = {
         new entity.FunctionCallEntity(() => {
           // Restore background
           this.graphics.setBackground(
-            this.graphics.last.lastBg,
-            this.graphics.last.lastBgMood
+            this.graphics.graphicsState.lastBg,
+            this.graphics.graphicsState.lastBgMood
           );
           this.enable();
         }),
       ])
     );
+  },
+
+  showTitle(...words: string[]): entity.Entity {
+    const text = words.join(" ");
+    return new title.Title(text);
+  },
+
+  completeLevel(): void {
+    const score = this.calculateScore();
+    save.updateCompletedLevel(this.levelName, score);
+  },
+
+  completeSages(): void {
+    save.updateCompletedSages(this.levelName);
+  },
+
+  completeJournal(): void {
+    save.updateCompletedJournal(this.levelName);
   },
 
   empty() {},
@@ -351,20 +370,20 @@ export const functions: Record<string, YarnFunction> = {
   },
 
   getGauge(gauge: string): number {
-    return this.graphics.getGaugeValue(gauge);
+    return parseInt(this.entityConfig.variableStorage.get(gauge));
   },
 
-  save() {
-    save.save(this);
-  },
+  // save() {
+  //   save.save(this);
+  // },
 
-  resetSave() {
-    save.deleteSave();
-  },
+  // resetSave() {
+  //   save.deleteSave();
+  // },
 
-  hasSave(): boolean {
-    return save.hasSave();
-  },
+  // hasSave(): boolean {
+  //   return save.hasSave();
+  // },
 
   isTimeOver(time: clock.ResolvableTime, day?: string): boolean {
     let [, , minutesSinceMidnight] = clock.parseTime(time);

@@ -12,7 +12,6 @@ import * as variable from "./variable";
 import * as images from "./images";
 import * as gauge from "./gauge";
 import * as save from "./save";
-import { SaveData } from "./save";
 
 // Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
@@ -26,8 +25,6 @@ const maxLineLength = 68;
 const defilementDurationPerLetter = 25;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
-  public last: save.SaveData["lastGraphics"];
-
   private _characters: Map<
     string,
     {
@@ -37,6 +34,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   >;
 
+  private _graphicsState: save.GraphicsState;
   private _fade: PIXI.Graphics;
   private _container: PIXI.Container;
   private _backgroundLayer: PIXI.Container;
@@ -62,7 +60,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
-    this.last = {};
+    this._graphicsState = {};
 
     this._container = new PIXI.Container();
     this.config.container.addChild(this._container);
@@ -113,16 +111,27 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._container = null;
   }
 
-  public loadSave() {
-    const { lastGraphics: last } = save.getSave();
+  public loadSave(loadedGraphicsState: save.GraphicsState) {
+    if (loadedGraphicsState.lastBg)
+      this.setBackground(
+        loadedGraphicsState.lastBg,
+        loadedGraphicsState.lastBgMood
+      );
+    if (loadedGraphicsState.lastCharacter)
+      this.addCharacter(
+        loadedGraphicsState.lastCharacter,
+        loadedGraphicsState.lastMood
+      );
+    if (loadedGraphicsState.lastGauges)
+      this.toggleGauges(true, ...loadedGraphicsState.lastGauges);
+    if (loadedGraphicsState.lastMusic)
+      this.config.jukebox.play(loadedGraphicsState.lastMusic);
 
-    if (last.lastBg) this.setBackground(last.lastBg, last.lastBgMood);
-    if (last.lastCharacter)
-      this.addCharacter(last.lastCharacter, last.lastMood);
-    if (last.lastGauges) this.toggleGauges(true, ...last.lastGauges);
-    if (last.lastMusic) this.config.jukebox.play(last.lastMusic);
+    this._graphicsState = loadedGraphicsState;
+  }
 
-    this.last = last;
+  public get graphicsState(): save.GraphicsState {
+    return this._graphicsState;
   }
 
   public initGauges(gaugesList: (keyof variable.Gauges)[]) {
@@ -146,9 +155,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   }
 
-  public getGaugeValue(name: string): number {
-    if (this._gauges.hasOwnProperty(name)) return this._gauges[name].getValue();
-    return undefined;
+  public getGauge(name: string): gauge.Gauge {
+    return this._gauges[name];
   }
 
   public setGauge(name: string, value: number) {
@@ -199,7 +207,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       }
     }
 
-    this.last.lastGauges = JSON.parse(JSON.stringify(gaugesName));
+    this._graphicsState.lastGauges = JSON.parse(JSON.stringify(gaugesName));
     let i = 0;
     const gaugesTween: entity.EntityBase[] = [];
     for (const gaugeName of gaugesName) {
@@ -232,7 +240,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public showCloseup(
-    path?: images.StaticSpritePath & `images/closeups/${string}.png`
+    path?: images.SpritePath & `images/closeups/${string}.png`
   ): void {
     this._closeupLayer.removeChildren();
     if (!path) return;
@@ -639,11 +647,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    */
   public setBackground(bg: string, mood?: string) {
     // Check if background change
-    if (bg === this.last.lastBg && mood === this.last.lastBgMood) return;
+    if (
+      bg === this._graphicsState.lastBg &&
+      mood === this._graphicsState.lastBgMood
+    )
+      return;
 
     // Register last background
-    this.last.lastBg = bg;
-    this.last.lastBgMood = mood;
+    this._graphicsState.lastBg = bg;
+    this._graphicsState.lastBgMood = mood;
 
     // Remove background
     this._backgroundLayer.removeChildren();
@@ -729,8 +741,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       }
     }
 
-    delete this.last.lastCharacter;
-    delete this.last.lastMood;
+    delete this._graphicsState.lastCharacter;
+    delete this._graphicsState.lastMood;
   }
 
   /**
@@ -741,20 +753,23 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    */
   public addCharacter(character?: string, mood?: string) {
     // Check if character or mood change
-    if (character === this.last.lastCharacter && mood === this.last.lastMood)
+    if (
+      character === this._graphicsState.lastCharacter &&
+      mood === this._graphicsState.lastMood
+    )
       return;
 
     //console.log(this._lastCharacter, this._lastMood, "->", character, mood);
 
     // Remove characters
-    const characterChanged = character !== this.last.lastCharacter;
+    const characterChanged = character !== this._graphicsState.lastCharacter;
     this.removeCharacters(characterChanged);
 
     // Register last character & mood
-    this.last.lastCharacter = character;
-    this.last.lastMood = mood;
+    this._graphicsState.lastCharacter = character;
+    this._graphicsState.lastMood = mood;
 
-    save.save(this.config.dialogScene);
+    // save.save(this.config.dialogScene);
 
     let displayMode: string;
     [character, displayMode] = character.split("@");

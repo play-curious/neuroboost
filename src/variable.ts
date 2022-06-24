@@ -59,4 +59,11 @@ export class VariableStorage extends PIXI.utils.EventEmitter {
   get data(): Variables {
     return this._data;
   }
+
+  set data(values: Partial<Variables>) {
+    for (const valueName in values) {
+      // @ts-ignore
+      this.set(valueName, values[valueName]);
+    }
+  }
 }

@@ -7,6 +7,7 @@ position: -245,126
 ---
 << empty >>
 << fadeIn 1 >>
+<< showTitle Chapter 1 >>
 << setGauge learning 0 >>
 << setBackground bedroom >>
 << setTime 8:00>>
@@ -420,6 +421,7 @@ position: -801,1373
 << empty >>
 << music Victory >>
 << fx Success >>
+<< completeLevel >>
 
 Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard !... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore... #line:0395b52 
 
@@ -440,7 +442,8 @@ You: Ce serait sympa, mais...
 <<else>>
 -> Réécrire dans le Journal mental
     << showJournal method >>
-    <<jump AfterJournal>>
+    << completeJournal >>
+    << jump AfterJournal >>
 -> Passer au chapitre suivant
 <<endif>>
 ===
@@ -707,6 +710,7 @@ Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental
 Temde_smiling: Lorsque tu auras eu le temps de noter dans ton journal, nous te renverrons au début de cette journée. Bonne chance !
 <<endif>>
 
+<< completeSages >>
 <<jump Journal_Rappel_libre>>
 ===
 
@@ -727,6 +731,7 @@ Serait-ce le <bi>journal mental</bi> dont parlait Ledai ? #line:063d2d3
 <<visitPermanent Chapitre1>>
 
 <<showJournal method>>
+<< completeJournal >>
 
 <<if !visited("Resultats_Good")>>
 -> Recommencer la journée #line:0380a89 

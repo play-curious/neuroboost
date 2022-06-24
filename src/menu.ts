@@ -44,7 +44,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private container: PIXI.Container;
 
   private blackBackground: PIXI.Graphics;
-  private popupBackground: PIXI.Sprite;
+  private popupBackground: PIXI.NineSlicePlane;
   private menuButton: PIXI.Sprite;
   //private backButton: PIXI.Sprite;
   private playCuriousLogo: PIXI.Sprite;
@@ -61,6 +61,8 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   private debugPressCount: number;
   private debugText: PIXI.Text;
+  private _tocButton: PIXI.Text;
+  private _gameLogo: PIXI.Sprite;
 
   private saveSettings() {
     localStorage.setItem("settings", JSON.stringify(this.settings));
@@ -102,61 +104,91 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       // Cadre du menu
-      this.popupBackground = this.makeSprite(
-        "images/menu/background.png",
-        (it) => {
-          it.anchor.set(0, 0.5);
-          it.position.set(0, variable.height / 2);
-        }
+      this.popupBackground = new PIXI.NineSlicePlane(
+        this._entityConfig.app.loader.resources[
+          "images/ui/resizable_container.png"
+        ].texture,
+        116,
+        125,
+        116,
+        125
       );
+      this.popupBackground.width = 571;
+      this.popupBackground.height = 1028;
+      this.popupBackground.position.set(
+        0,
+        (this._entityConfig.app.view.height - 1028) / 2
+      ); // Vertically center
       this.popupBackground.interactive = true;
       this.container.addChild(this.popupBackground);
     }
 
     {
-      // Blason de l'école
-      this.playCuriousLogo = this.makeSprite("images/logo.png", (it) => {
-        it.anchor.set(0.5);
-        it.scale.set(0.3);
-        it.position.set(this.popupBackground.width / 2, -230);
-      });
-      this._on(this.playCuriousLogo, "pointertap", this._onTapPCLogo);
-      this.popupBackground.addChild(this.playCuriousLogo);
-    }
-
-    {
-      // Bouton historique
-      const x = this.popupBackground.width / 2 - 142;
-      const y = 70;
-      let image = this.makeSprite("images/menu/historique.png", (it) => {
-        it.anchor.set(0.5);
-        it.scale.set(0.2);
-        it.position.set(x, y);
-      });
-      this.popupBackground.addChild(image);
-
-      this.historyButton = this.makeText(
-        "Historique",
+      // TOC link
+      this._tocButton = this.makeText(
+        "Chapitres",
         {
           fontFamily: "Ubuntu",
           fill: "white",
           fontSize: 50,
         },
         (it) => {
-          it.anchor.set(0, 0.5);
-          it.position.set(x + 45, y);
+          it.anchor.set(0.5, 0);
+          it.position.set(this.popupBackground.width / 2, 110);
           it.interactive = true;
           it.buttonMode = true;
         }
       );
-      this._on(this.historyButton, "pointertap", this._showHistory);
-      this.popupBackground.addChild(this.historyButton);
+      this._on(this._tocButton, "pointerup", this._onTapTocButton);
+      this.popupBackground.addChild(this._tocButton);
+
+      // Blason de l'école
+      this._gameLogo = this.makeSprite("images/logo.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.3);
+        it.position.set(this.popupBackground.width / 2, 340);
+      });
+      this._gameLogo.interactive = true;
+      this._gameLogo.buttonMode = true;
+      this._on(this._gameLogo, "pointerup", this._onTapTocButton);
+      this.popupBackground.addChild(this._gameLogo);
     }
+
+    // Temporarily deactivating the history button
+
+    // {
+    //   // Bouton historique
+    //   const x = this.popupBackground.width / 2 - 142;
+    //   const y = 584;
+    //   let image = this.makeSprite("images/menu/historique.png", (it) => {
+    //     it.anchor.set(0.5);
+    //     it.scale.set(0.2);
+    //     it.position.set(x, y);
+    //   });
+    //   this.popupBackground.addChild(image);
+
+    //   this.historyButton = this.makeText(
+    //     "Historique",
+    //     {
+    //       fontFamily: "Ubuntu",
+    //       fill: "white",
+    //       fontSize: 50,
+    //     },
+    //     (it) => {
+    //       it.anchor.set(0, 0.5);
+    //       it.position.set(x + 45, y);
+    //       it.interactive = true;
+    //       it.buttonMode = true;
+    //     }
+    //   );
+    //   this._on(this.historyButton, "pointertap", this._showHistory);
+    //   this.popupBackground.addChild(this.historyButton);
+    // }
 
     {
       // Bouton journal
       const x = this.popupBackground.width / 2 - 115;
-      const y = 0;
+      const y = 584;
       let image = this.makeSprite("images/menu/journal.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.4);
@@ -187,12 +219,15 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       // Crédit
       const x = this.popupBackground.width / 2 + 200;
-      const y = this.popupBackground.height / 2 - 90;
-      let image = this.makeSprite("images/menu/playcurious.png", (it) => {
+      const y = this.popupBackground.height - 90;
+      const image = this.makeSprite("images/menu/playcurious.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.4);
         it.position.set(x, y);
       });
+      image.interactive = true;
+      image.buttonMode = true;
+      this._on(image, "pointerup", this._onTapPCLogo);
       this.popupBackground.addChild(image);
 
       this.creditButton = this.makeText(
@@ -227,7 +262,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         },
         (it) => {
           it.anchor.set(0);
-          it.position.set(+90, -this.popupBackground.height / 2 + 20);
+          it.position.set(+90, 20);
         }
       );
       this.popupBackground.addChild(textFullscreen);
@@ -240,10 +275,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         this.settings.fullscreen ? "on" : "off"
       );
       this.fullscreenSwitcher.container.scale.set(0.7);
-      this.fullscreenSwitcher.container.position.set(
-        +50,
-        -this.popupBackground.height / 2 + 50
-      );
+      this.fullscreenSwitcher.container.position.set(50, 50);
       this.fullscreenSwitcher.onStateChange((state) => {
         if (state === "on") {
           util.requestFullscreen(document.getElementById("game-parent"));
@@ -259,7 +291,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       const x = this.popupBackground.width - 250;
-      const y = 200;
+      const y = 714;
       const logo = this.makeSprite("images/menu/musique.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.3);
@@ -291,7 +323,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       const x = this.popupBackground.width - 250;
-      const y = 290;
+      const y = 804;
       const logo = this.makeSprite("images/menu/bruitage.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.3);
@@ -392,6 +424,20 @@ export class Menu extends extension.ExtendedCompositeEntity {
     this._entityConfig.container.removeChild(this.menuButton);
   }
 
+  private _onTapTocButton() {
+    const message =
+      "Etes-vous sûr de vouloir retourner au choix des chapitres ?";
+    this._activateChildEntity(
+      new popup.Confirm(message, (result: boolean) => {
+        if (!result) return;
+
+        // Return to the TOC and close the menu
+        this._entityConfig.gameStateMachine.changeState("toc");
+        this.close();
+      })
+    );
+  }
+
   open() {
     if (this.opened) return;
 
@@ -399,19 +445,6 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     booyah.changeGameState("paused");
     this.debugPressCount = 0;
-
-    // Check if the journal button should be activated or deactivated
-    if (
-      Object.keys(this.config.variableStorage.get("journalAnswers")).length > 0
-    ) {
-      this.journal.alpha = 1;
-      this.journal.buttonMode = true;
-      this.journal.interactive = true;
-    } else {
-      this.journal.alpha = 0.5;
-      this.journal.buttonMode = false;
-      this.journal.interactive = false;
-    }
 
     // Displaying the menu will be done in _onSignal()
   }
@@ -448,6 +481,24 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   private _onOpen() {
     this.blackBackground.visible = true;
+
+    // Check if the journal button should be activated or deactivated
+    const shouldEnableJournal =
+      Object.keys(this.config.variableStorage.get("journalAnswers")).length > 0;
+    this._enableButton(this.journal, shouldEnableJournal);
+
+    // Check if the TOC button should be activated
+    const shouldEnableTocButton =
+      this._entityConfig.gameStateMachine.isSetup &&
+      this._entityConfig.gameStateMachine.lastTransition.name !== "toc";
+    this._enableButton(this._tocButton, shouldEnableTocButton);
+    this._enableButton(this._gameLogo, shouldEnableTocButton);
+  }
+
+  private _enableButton(obj: PIXI.DisplayObject, active = true): void {
+    obj.alpha = active ? 1 : 0.5;
+    obj.buttonMode = active;
+    obj.interactive = active;
   }
 
   private _showCredits() {

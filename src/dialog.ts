@@ -11,6 +11,7 @@ import * as command from "./command";
 import * as variable from "./variable";
 import * as graphics from "./graphics";
 import * as extension from "./extension";
+import * as gauge from "./gauge";
 
 import * as yarnBound from "yarn-bound";
 
@@ -41,6 +42,24 @@ export function isOption(
   return result instanceof yarnBound.OptionsResult;
 }
 
+// Setup level order
+export const dialogScenes = [
+  "Prologue",
+  "C1",
+  "C2",
+  "D3_level2",
+  "D4_level2",
+  "D5_level2",
+  "D6",
+  "D7_level2",
+];
+
+export const debuggingDialogScenes = [
+  "characters",
+  "backgrounds",
+  "test_simulation",
+];
+
 export class DialogScene extends extension.ExtendedCompositeEntity {
   public lastNodeData: yarnBound.Metadata;
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
@@ -50,7 +69,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   public selectedOptions: string[];
   public enabled: boolean;
 
-  constructor(public levelName: string, public startNode: string) {
+  private _startNode: string;
+
+  constructor(public levelName: string) {
     super();
   }
 
@@ -115,34 +136,30 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   _setup(): void {
     //@ts-ignore
     window.dialogScene = this;
-    this._entityConfig.dialogScene = this;
 
-    // this.history = [];
-    // this.lastHistory = 0;
+    // TODO: this is incorrect, should provide child entities with the dialogScene
+    this._entityConfig.dialogScene = this;
+    this.config.dialogScene = this;
+
     this.enabled = true;
     this.selectedOptions = [];
 
-    const saveData = DialogScene.loadSave ? save.getSave() : undefined;
+    this._startNode = this._enteringTransition.params?.startNode || "Start";
 
-    DialogScene.loadSave = false;
+    const loadedChapterData = this._enteringTransition.params
+      ?.loadedChapterData as save.CurrentChapter;
+    if (loadedChapterData) {
+      this._startNode = loadedChapterData.nodeName;
+      this.levelName = loadedChapterData.levelName;
 
-    if (saveData) {
-      this.startNode = saveData.nodeName;
-      this.levelName = saveData.levelName;
+      this.visited = new Set(loadedChapterData.visited);
+      this.visitedPermanent = new Set(loadedChapterData.visitedPermanent);
 
-      this.visited = new Set(saveData.visited);
-      this.visitedPermanent = new Set(saveData.visitedPermanent);
-
-      this.config.history = saveData.history;
-      this.config.variableStorage = new variable.VariableStorage(
-        saveData.variableStorage
-      );
+      // this.config.history = saveData.history;
     } else {
       this.visited = new Set();
       this.visitedPermanent = new Set();
     }
-
-    this.config.dialogScene = this;
 
     command.fxLoops.clear();
 
@@ -162,8 +179,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       "stress",
     ]);
 
-    if (saveData) this.graphics.loadSave();
-
     // Setup clock
     this._activateChildEntity(
       this.config.clock,
@@ -175,13 +190,17 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     this._initRunner();
     this._parseFileTags();
+
+    if (loadedChapterData)
+      this.graphics.loadSave(loadedChapterData.graphicsState);
+
     this._advance(-1);
   }
 
   private _initRunner() {
     this.runner = new yarnBound.YarnBound({
       dialogue: this.config.levels[this.levelName],
-      startAt: this.startNode,
+      startAt: this._startNode,
       variableStorage: this.config.variableStorage,
       functions: {},
     });
@@ -244,9 +263,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this._onChangeNodeData(this.lastNodeData, this.metadata);
       this.lastNodeData = this.metadata;
 
-      if (!this._hasTag(this.lastNodeData, "nosave")) {
-        save.save(this);
-      }
+      this._saveProgress();
     }
 
     const result = this.runner.currentResult;
@@ -433,6 +450,19 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.emit("changeNodeData", oldNodeData, newNodeData);
   }
 
+  private _saveProgress() {
+    if (this._hasTag(this.lastNodeData, "nosave")) return;
+
+    save.updateCurrentChapter({
+      levelName: this.levelName,
+      nodeName: this.metadata.title,
+      visited: Array.from(this.visited),
+      visitedPermanent: Array.from(this.visitedPermanent),
+      graphicsState: this.graphics.graphicsState,
+    });
+    save.updateVariableStorage(this._entityConfig.variableStorage.data);
+  }
+
   activate(
     e: entity.EntityBase,
     config?: entity.EntityConfigResolvable,
@@ -476,5 +506,35 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       const newValue = Math.max(Number(oldValue) - simulatedFood, 0);
       this.config.variableStorage.set("food", `${newValue}`);
     }
+  }
+
+  calculateScore(): number {
+    const vars = this.config.variableStorage;
+
+    const learning = parseInt(vars.get("learning"));
+
+    // If learning in the red, 0 stars
+    if (learning < gauge.gaugeLevels["learning"].minMedium) return 0;
+    // If learning in yellow 1 star
+    if (learning < gauge.gaugeLevels["learning"].minHigh) return 1;
+
+    // If any other (shown) gauges are not green, 2 stars
+    for (const gaugeName of this.graphics.currentGauges) {
+      if (variable.InvertedGauges.includes(gaugeName)) {
+        if (
+          // @ts-ignore
+          parseInt(vars.get(gaugeName)) >= gauge.gaugeLevels[gaugeName].minLow
+        )
+          return 2;
+      } else {
+        if (
+          // @ts-ignore
+          parseInt(vars.get(gaugeName)) < gauge.gaugeLevels[gaugeName].minHigh
+        )
+          return 2;
+      }
+    }
+    // All is green. 3 stars!
+    return 3;
   }
 }

@@ -6,12 +6,13 @@ colorID: 0
 position: -891,402
 ---
 << fadeIn >>
+<< showTitle Prologue >>
 << setGauge learning 0 >>
 << setGauge sleep 30 >>
 << setGauge food 50 >>
 << setGauge mentalLoad 80 >>
 << setGauge stress 40 >>
-<<showGauges>>
+<< showGauges >>
 << advanceTime 0:15 >>
 << setBackground oral >>
 << fadeOut >>

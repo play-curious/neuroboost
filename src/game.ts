@@ -15,6 +15,39 @@ import * as dialog from "./dialog";
 import * as journal from "./journal";
 import * as variable from "./variable";
 import * as miniGame from "./mini_game";
+import * as toc from "./toc";
+import _ from "underscore";
+
+class RequestTransitionEntity extends entity.EntityBase {
+  constructor(public readonly f: () => entity.Transition) {
+    super();
+  }
+
+  _setup() {
+    this._transition = this.f();
+  }
+}
+
+function checkSave(): entity.Transition {
+  if (!save.hasSave()) return entity.makeTransition("toc");
+
+  // Load variable storage
+  if (save.getVariableStorage()) {
+    this._entityConfig.variableStorage.data = save.getVariableStorage();
+  }
+
+  const loadedChapterData = save.getCurrentChapter();
+
+  // If no save exists, go the main menu
+  if (!loadedChapterData) {
+    return entity.makeTransition("toc");
+  } else {
+    // Go to the specified chapter, providing the chapter data
+    return entity.makeTransition(loadedChapterData.levelName, {
+      loadedChapterData,
+    });
+  }
+}
 
 // Strange audio bug makes narration.VideoScene not work for this
 const outroVideoScene = new entity.ParallelEntity([
@@ -55,7 +88,7 @@ const variableStorage = new variable.VariableStorage({
   learning: "0",
   stress: "0",
   sleep: "100",
-  name: "Moi",
+  name: "Apprenant",
   time: "540",
   eval: "",
   food: "100",
@@ -77,63 +110,58 @@ export function installGameData(rootConfig: entity.EntityConfig) {
   };
 }
 
-const params = new URLSearchParams(window.location.search);
-const startingNode = params.get("startNode") || params.get("node") || "Start";
-const startingScene =
-  params.get("level") || params.get("scene") || "Start_Menu";
-
-// prettier-ignore
-const stateNames = [
-  "Prologue",
-  "C1",
-  "C2",
-  "C3",
-  "D3_level1",
-  "journal_mentalWorkload",
-  "D3_level2",
-  "D4_level1",
-  "journal_profiles",
-  "D4_level2",
-  "D5_level1",
-  "journal_stress",
-  "D5_level2",
-  "D6",
-  "journal_organisation",
-  "D7_level1",
-  "D7_level2",
-  "End_Screen"
-];
-
-const states: { [k: string]: entity.EntityResolvable } = {
-  Start_Menu: new save.StartMenu(),
+let states: { [k: string]: entity.EntityResolvable } = {
+  start: new RequestTransitionEntity(checkSave),
+  toc: new toc.TableOfContents(),
+  outro_video: outroVideoScene,
 };
 
-for (const stateName of stateNames) {
-  if (stateName.includes("journal"))
-    states[`${stateName}`] = new journal.JournalScene(stateName.split("_")[1]);
-  else
-    states[stateName] = new dialog.DialogScene(
-      stateName,
-      stateName === startingScene ? startingNode : "Start"
-    );
+const allDialogScenes = dialog.dialogScenes.concat(
+  dialog.debuggingDialogScenes
+);
+for (const dialogScene of allDialogScenes) {
+  states[dialogScene] = new dialog.DialogScene(dialogScene);
 }
 
-states["outro_video"] = outroVideoScene;
+const transitions: Record<string, entity.TransitionDescriptor> = {};
 
-const extraLevels = ["characters", "backgrounds", "test_simulation"];
-for (const levelName of extraLevels) {
-  states[levelName] = new dialog.DialogScene(levelName, "Start");
+// Each dialog scene leads to the next
+for (let i = 0; i < dialog.dialogScenes.length - 1; i++) {
+  transitions[dialog.dialogScenes[i]] = entity.makeTransition(
+    dialog.dialogScenes[i + 1]
+  );
 }
 
-// TODO: make a better system to separate levels and chain them together
+// The last dialog scene goes to the outro video, then the end
+transitions[dialog.dialogScenes.length - 1] =
+  entity.makeTransition("outro_video");
+transitions["outro_video"] = entity.makeTransition("end");
+
+// The TOC transition is based on the type and index
+transitions["toc"] = (transition: entity.Transition) => {
+  const sceneType = transition.params.type as toc.SceneType;
+  if (sceneType === "level") {
+    // Jump to the level
+    return entity.makeTransition(dialog.dialogScenes[transition.params.index]);
+  } else if (sceneType == "sages") {
+    // Jump to the sages part
+    return entity.makeTransition(dialog.dialogScenes[transition.params.index], {
+      startNode: "Assemblee_Sages",
+    });
+  } else {
+    console.assert(sceneType === "journal");
+    // Jump to the journal part
+    return entity.makeTransition(dialog.dialogScenes[transition.params.index], {
+      startNode: "Journal",
+    });
+  }
+};
+
 // TODO: only load yarn files as they are needed?
 async function levelLoader(entityConfig: entity.EntityConfig) {
   const levels: Record<string, string> = {};
-  const levelNames = stateNames
-    .filter((name) => name[0] == "C" || name[0] == "D" || name == "Prologue")
-    .concat(extraLevels);
   await Promise.all(
-    levelNames.map(async (name) => {
+    allDialogScenes.map(async (name) => {
       const response = await fetch(`levels/${name}.yarn`);
       const text = await response.text();
       levels[name] = text;
@@ -142,20 +170,6 @@ async function levelLoader(entityConfig: entity.EntityConfig) {
 
   entityConfig.levels = levels;
 }
-
-const transitions: Record<string, entity.Transition> = {};
-let i = 0;
-let previousState = "";
-for (const state in states) {
-  if (i === 0) {
-    i++;
-    continue;
-  }
-  if (i !== 1) transitions[previousState] = entity.makeTransition(state);
-  previousState = state;
-  i++;
-}
-transitions[previousState] = entity.makeTransition("end");
 
 const fxAssets = [
   "Narration_TypeWriter_LOOP",
@@ -202,8 +216,14 @@ export const screenSize = new PIXI.Point(1920, 1080);
 
 const splashScreen = "images/splash_screen.png";
 
+const params = new URLSearchParams(window.location.search);
+const startingScene = params.get("level") || params.get("scene") || "start";
+const startingNode = params.get("startNode") || params.get("node") || "Start";
+const startingSceneParams = { startNode: startingNode };
+
 booyah.go({
   startingScene,
+  startingSceneParams,
   states,
   transitions,
   graphicalAssets: images.graphicalAssets,
