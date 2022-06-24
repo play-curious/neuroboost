@@ -1,5 +1,6 @@
 import * as _ from "underscore";
 import * as PIXI from "pixi.js";
+import * as filters from "pixi-filters";
 
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
@@ -97,9 +98,8 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
           line.hitArea = new PIXI.Rectangle(0, 0, columnWidthAfterIndent, 50);
           line.interactive = true;
           line.buttonMode = true;
-          this._on(line, "pointerup", () =>
-            this._pickScene("level", currentChapter)
-          );
+          this._applyHoveringEffects(line);
+          this._on(line, "pointerout", () => (line.filters = []));
           this._container.addChild(line);
 
           {
@@ -147,13 +147,14 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
             line.hitArea = new PIXI.Rectangle(0, 0, columnWidthAfterIndent, 50);
             line.interactive = true;
             line.buttonMode = true;
+            this._applyHoveringEffects(line, yellow);
             this._on(line, "pointerup", () =>
               this._pickScene("sages", currentChapter)
             );
             this._container.addChild(line);
 
             {
-              const sagesText = "Accéder aux Sages";
+              const sagesText = " Accéder aux Sages ";
               const sages = new PIXI.Text(sagesText, {
                 fontFamily: "Ubuntu",
                 fontStyle: "italic",
@@ -190,13 +191,14 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
             line.hitArea = new PIXI.Rectangle(0, 0, columnWidthAfterIndent, 50);
             line.interactive = true;
             line.buttonMode = true;
+            this._applyHoveringEffects(line, yellow);
             this._on(line, "pointerup", () =>
               this._pickScene("journal", currentChapter)
             );
             this._container.addChild(line);
 
             {
-              const textContent = "Écrire sur le journal";
+              const textContent = " Écrire sur le journal ";
               const text = new PIXI.Text(textContent, {
                 fontFamily: "Ubuntu",
                 fontStyle: "italic",
@@ -285,5 +287,16 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
 
   private _continue(): void {
     this._transition = entity.makeTransition("continue");
+  }
+
+  private _applyHoveringEffects(
+    obj: PIXI.DisplayObject,
+    color = 0xffffff
+  ): void {
+    this._on(obj, "pointerover", () => {
+      // @ts-ignore
+      obj.filters = [new filters.OutlineFilter(2, color)];
+    });
+    this._on(obj, "pointerout", () => (obj.filters = []));
   }
 }
