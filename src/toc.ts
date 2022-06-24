@@ -228,6 +228,50 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
         chapter++;
       }
     }
+
+    if (save.getCurrentChapter()) {
+      // Make continue button
+
+      const buttonContainer = new PIXI.Container();
+      buttonContainer.position.set(this._entityConfig.app.view.width / 2, 950);
+      buttonContainer.buttonMode = true;
+      buttonContainer.interactive = true;
+      this._container.addChild(buttonContainer);
+
+      const normal = new PIXI.Graphics();
+      normal.lineStyle(2, yellow);
+      normal.drawRect(-250, 0, 500, 70);
+      buttonContainer.addChild(normal);
+
+      const hover = new PIXI.Graphics();
+      hover.beginFill(yellow);
+      hover.drawRect(-250, 0, 500, 70);
+      hover.endFill();
+      hover.visible = false;
+      hover.alpha = 0.5;
+      buttonContainer.addChild(hover);
+
+      {
+        const text = new PIXI.Text("Continue", {
+          fontFamily: "Ubuntu",
+          fontSize: subtitleFontSize,
+          fill: yellow,
+        });
+        text.anchor.set(0.5, 0.5);
+        text.position.set(0, 35);
+        buttonContainer.addChild(text);
+      }
+
+      this._on(buttonContainer, "pointerover", () => {
+        normal.visible = false;
+        hover.visible = true;
+      });
+      this._on(buttonContainer, "pointerout", () => {
+        normal.visible = true;
+        hover.visible = false;
+      });
+      this._on(buttonContainer, "pointerup", this._continue);
+    }
   }
 
   protected _teardown(frameInfo: entity.FrameInfo): void {
@@ -237,5 +281,9 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
 
   private _pickScene(type: SceneType, index: number): void {
     this._transition = entity.makeTransition("pick", { type, index });
+  }
+
+  private _continue(): void {
+    this._transition = entity.makeTransition("continue");
   }
 }

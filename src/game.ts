@@ -139,6 +139,17 @@ transitions["outro_video"] = entity.makeTransition("end");
 
 // The TOC transition is based on the type and index
 transitions["toc"] = (transition: entity.Transition) => {
+  if (transition.name === "continue") {
+    // Go to the specified chapter, providing the chapter data
+    const loadedChapterData = save.getCurrentChapter();
+    return entity.makeTransition(loadedChapterData.levelName, {
+      loadedChapterData,
+    });
+  }
+
+  // The player must have picked a level
+  console.assert(transition.name === "pick");
+
   const sceneType = transition.params.type as toc.SceneType;
   if (sceneType === "level") {
     // Jump to the level
