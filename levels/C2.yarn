@@ -17,10 +17,21 @@ You: Ben, le truc c'est que... Demain matin, on a un exercice de simulation. Un 
 Fred_happy: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur. #line:06de838 
 You: Oui, mais mon drone est pas prêt ! La coque est trop lourde et mon système de navigation est encore bancal. 
 Fred_smiling: Tranquille, le mien fonctionne du tonnerre, je te passerai mes plans !
-You: Même si j'ai tes plans, il me faudra au moins deux heures pour faire les changements et les tester...
-Fred_happy: Ok, je vois que t'es difficile en affaires... Si les docteurs m'ont donné ce défi, c'est pas pour rien, mais je vais être contre le champion des teufeurs, j'ai nommé : BB Rex. J'aurai besoin de toi si je veux être sûr de gagner.
+
+-> Ca prendra du temps de faire les changements...
+    You: Même si j'ai tes plans, il me faudra au moins deux heures pour faire les changements et les tester...
+-> D'accord, mais tu m'aides à l'assembler !
+
+Fred_happy: Ok, je vois que t'es difficile en affaires... Si les docteurs m'ont donné ce défi, c'est pas pour rien, mais j'aurai besoin de toi si je veux être sûr de gagner.
 Fred_excited: Si on gagne le défi des docteurs, tu peux être sûr que je prendrai du temps pour t'aider avec ton drone demain matin. T'en dis quoi ?
-Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir ce défi ?! Il tient vraiment à sa réputation, celui-là... En tout cas, vous savez qu'avec ses talents d'ingénierie, vous pourriez avoir une très bonne note, voire une excellente !
+Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir ce défi ?! Il tient vraiment à sa réputation, celui-là... En tout cas, vous savez qu'avec ses talents d'ingénierie, vous pourriez rattraper le retard de votre drone !
+
+-> C'est quoi, exactement, ce défi ?
+    Fred_smiling: Le défi du roi de la fête ! Le champion incontesté, c'est BB-Rex. On va devoir l'impressionner si on veut remporter son titre !
+    You: BB-Rex ?? On dirait un nom de mauvais rappeur !
+    Fred_happy: Ouais, je sais, mais c'est lui le champion !
+-> Ok, on se revoit là-bas
+
 You: Bon... Tu me laisses pas le choix, là ! On se retrouve vers 21h30 ?
 Fred_smiling: Haha, ça, c'est l'attitude que je préfère ! Allez, à plus tard !
 <<else>>
@@ -235,8 +246,15 @@ BarBot: Qu'est-ce que je peux vous offrir, les losers ?
 Fred_smiling: Yo BarBot, mets-nous deux verres de...
 Fred_surprised: Attends... Comment tu viens de m'appeler ?
 BarBot: Ben quoi, loser, y a quelque chose qui va pas dans ton programme de décodage, ou quoi ? Allez, dégage d'ici et laisse-moi servir.
-You: Euh... Ils sont censés être aussi violents ?
-Barbot: Non, seulement moi. C'est moi qui écrit les règles ici, amigo.
+
+-> Je crois que ce BarBot a un problème...
+    You: Euh... Ils sont censés être aussi violents ?
+    Barbot: Non, seulement moi. C'est moi qui écrit les règles ici, amigo.
+-> Hé ! Loser toi-même !
+    You: Euh... Comment tu me parles, sale robot ? Loser toi-même !
+    Tous les regards se tournent soudain vers vous.
+    BarBot: Hey, amigo, tu sais à qui tu parles, au moins ?
+
 Fred_excited: OH !! JE SAIS !! C'est pas un Barbot !! C'EST LUI, BB-REX !!
 You: Quoi ??
 Barbot: Et ouais, amigo, en fer et en os.

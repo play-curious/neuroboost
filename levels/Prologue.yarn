@@ -16,16 +16,23 @@ position: -891,402
 << setBackground oral >>
 << fadeOut >>
 
-Voilà finalement venu le Grand Oral. L'Académie d'Omniscience et de Polytechnologie Universelle met beaucoup en avant l'importance de cette épreuve dès la première année. Souvent impitoyable, elle met les élèves en difficulté et indiquent s'ils sont aptes à continuer leur cursus.
+Voilà finalement venu le Grand Oral. L'Académie met beaucoup en avant l'importance de cette épreuve dès la première année. Impitoyable, elle met les élèves en difficulté et indique s'ils peuvent continuer leur cursus.
 
 Autrement dit, cette épreuve est éliminatoire.
 
-Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Ça ne se passe pas bien du tout, il se perd dans ses explications, et les jurés, s'en rendant compte, le coincent de plus en plus. #line:071b428 
-Une fois l'exécution publique terminée, c'est votre tour. Vous angoissez, peu rassuré par ce que vous venez de voir... #line:0ba9287 
+"On en a assez vu ! Allez, AU SUIVANT !"
+Ces mots prononcés par le jury alors même que vous vous asseyez dans les gradins vous glacent le sang.
+Le dernier élève se dirige vers la porte en sanglots. Vous angoissez, peu rassuré par ce que vous venez de voir...
 
 Il faut avouer que ces derniers temps, vous avez obtenu des notes plutôt désastreuses. Vous vous sentez déboussolé face à la masse d'informations à retenir que demande l'Académie.
 
+Vous déglutissez difficilement en regardant l'ordre de passage. Le suivant, c'est <b>vous</b>.
+
 << addToGauge stress 20 >>
+-> Prendre vos notes pour éviter d'être perdu
+    Tant pis si cela vous coûte des points, vous prenez une holo-feuille de notes sur laquelle vous avez écrits les grands points à aborder.
+    En voyant cela, les membres du jury semblent déjà ennuyés avant-même que vous ayiez commencé.
+-> Vous rassurer en faisant mine d'être confiant
 
 Vous commencez par vous présenter au jury, puis vous leur rappelez ce que vous avez choisi comme matière de Grand Oral : <b>la Philosophie quantique</b>. #line:08fe26e 
 L'un des jurés enfile de drôles de lunettes et vous fixe un moment avant de s'écrier : "La décohérence quantique"... #line:0ea98fb 
@@ -33,7 +40,7 @@ L'un des jurés enfile de drôles de lunettes et vous fixe un moment avant de s'
 << addToGauge stress 20 >>
 
 Vous déglutissez difficilement. Vous avez soudainement chaud. Très chaud. Vous dégoulinez de sueur... #line:01e0f27 
-Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la réviser, même pas de la survoler. Vous n'avez que de vagues notions confuses... Jamais vous n'allez pouvoir tenir un oral convaincant sur ce sujet !
+Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la préparer, même pas de la survoler... Jamais vous n'allez pouvoir tenir un oral convaincant sur ce sujet !
 
 
 << advanceTime 0:20 >>
@@ -93,15 +100,13 @@ position: -352.5212097167969,897.6408081054688
 << fadeOut >>
 
 Le Grand Oral était une épreuve éliminatoire, et vous doutez fortement que le jury ne vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues...
-Une fois dans votre chambre, vous enfilez votre pyjama, vous faites fissa votre toilette et vous vous glissez dans votre lit... Quelle semaine pourrie... #line:0da04e6 
+Vous vous glissez tout de suite dans votre lit. Quelle semaine pourrie... #line:0da04e6 
  
 << fx Sleep_LOOP >>
 -> Faire un gros somme #line:002a60d 
     <<jump Reveil_Sage>>
-
-
-
 ===
+
 title: Reveil_Sage
 tags: noUi
 position: -177,968
@@ -116,22 +121,26 @@ position: -177,968
 <<show temde>>
 << fadeOut >>
 
-Vous vous redressez subitement ! Quel drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras... #line:09d34da 
+Vous vous redressez subitement ! Quel drôle de rêve ! Une fille à quatre bras vous adressait la parole.
 
 Temde_smiling: Non non, je suis bien là, à côté de toi. #line:04a714a 
 
-Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle est assise sur le fauteuil près du bureau, juste à côté de votre lit. #line:044441f 
+Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle se tient là, juste à côté de votre lit. #line:044441f 
 Temde_smiling: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ? #line:065fb9c 
 
 <<prompt name Mon_nom_: Steve>>
 <<empty>>
 
-Temde_smiling: Enchantée { $name }. Lève-toi, on a du pain sur la planche ! #line:0fc2466 
+Temde_smiling: Enchantée, { $name }. Lève-toi, on a du pain sur la planche ! #line:0fc2466 
 You: Mais... J'suis fatigué... #line:01081e7 
 Temde_sad: Arrête tes jérémiades ! Tu as bricolé comme tu as pu, ça n'a pas marché. Tu n'as qu'à reprendre le chantier ! #line:0b038e3 
-You: Noon ! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire ! #line:07f436e 
-You: J'ai raté, j'ai raté. C'est fini, fichu ! #line:0d2f065 
-Temde_smiling: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Allez suis-moi, on t'attend là-bas ! #line:020d3da 
+-> Comment ça ?
+    You: Comment ça ? Comment je pourrais sauver mes études alors que j'ai raté le Grand Oral ?
+    Temde_smiling: C'est très simple, { $name } ! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Allez suis-moi, on t'attend là-bas ! #line:020d3da 
+-> Non, c'est fini, j'ai tout raté !
+    You: Noon ! Je suis fatigué, je veux dormir profondément, pas faire un rêve illusoire ! #line:07f436e 
+    You: J'ai raté, j'ai raté. C'est fini, fichu ! #line:0d2f065 
+    Temde_smiling: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Allez suis-moi, on t'attend là-bas ! #line:020d3da 
 You: Qui m'attend ? Où, là-bas ? #line:0940e22 
 Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit quand même ! #line:02f8956 
 
@@ -141,12 +150,13 @@ Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute 
     << fadeIn >>
     <<jump Assemblee_Sages>>
 ===
+
 title: Tenter_rester_chambre
 tags: noUi
 position: -719.885986328125,901.3107299804688
 ---
-You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laissez dormir paisiblement. Je suis crevé et je dois faire mes valises demain ! J'ai besoin de reprendre des forces !! #line:061645d 
-Temde_thinking: Je vois, on se prend pour un dur... Tant pis { $name }, tu l'auras voulu... #line:0502659 
+You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laissez dormir paisiblement. Je suis crevé et je dois faire mes valises demain ! J'ai besoin de reprendre des forces !!
+Temde_thinking: Je vois, on se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
 
 Miss Temdé lève la paume d'une de ses mains cybernétiques... #line:03616cd 
 
@@ -166,19 +176,73 @@ position: -562.1727294921875,1164.6718139648438
 << music Tense >>
 << fadeOut >>
 
-L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes. #line:056b321 
+L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, mais étrange, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université.
+Quatre individus étranges se tiennent devant vous, vous toisent du regard.
+<<jump Sages_FreeChoice>>
+===
+
+title: Sages_FreeChoice
+tags: noUi
+position: -562.1727294921875,1164.6718139648438
+---
+-> Où suis-je ? #once
+    <<jump ou_suis_je>>
+-> Qui êtes-vous ? #once
+    <<jump qui_etes_vous>>
+-> Qu'est-ce que vous allez me faire ?? <<if visited("explications1")>>
+    <<jump explications_sages>>
+-> Tenter de s'enfuir #once
+    <<jump fuir>>
+===
+
+title: ou_suis_je
+tags: noUi
+position: -562.1727294921875,1164.6718139648438
+---
 Temde_smiling: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenue chez nous, { $name }. #line:04f4f35 
-You: Mais.... #line:05cf2e4 
-Azul_happy: T'inquiète { $name }, mes confères et moi, ça nous arrive de lire dans tes pensées. C'est pour faciliter la communication. #line:0175283 
-Ledai_doubtful: Vous connaissez le protocole, alors procédons... #line:0916925 
-Azul_sad: Attendez, tout le monde. C'est la première nuit que nous nous immisçons dans la vie de { $name }. Notre visiteur de ce soir ne sait plus à quel sage se vouer. Surtout qu'il ne nous connaît pas encore. #line:056b14e 
+You: C'est quelle sorte d'endroit, cette... assemblée ?
+Temde_cheerful: Eh bien... Je suppose que tu pourrais appeler ça un jardin...
+Azul_happy: ...Un endroit singulier, bien loin des limitations cosmiques palpables par l'humanité...
+Sapiens_happy: ...En dehors de l'espace, du temps.
+Ledai_explaining: ...Un lieu créé par la conscience du nouveau disciple des Sages... J'ai nommé... toi.
+You: Hein ?
+<< visit explications1 >>
+<<jump Sages_FreeChoice>>
+===
+
+title: qui_etes_vous
+tags: noUi
+position: -562.1727294921875,1164.6718139648438
+---
+You: Vous... Vous êtes qui, vous ??
+Temde_neutral: Nous sommes les sages de la métacognition.
+Azul_sad: Nous devrions nous présenter à { $name }. C'est la première nuit que nous nous immisçons dans sa vie. Notre visiteur de ce soir ne sait plus à quel sage se vouer.
 Sapiens_thinking: Très juste, <b>Azul</b>. Puisque j'ai pris la parole, je me présente : je suis <b>Master Sapiens</b>, le Gardien des Savoirs. #line:08b4377 
 Ledai_explaining: Et moi, je suis <b>Ledaï</b>, le Gardien des Pratiques. #line:0f3a432 
 Azul_proud: Enchanté de te rencontrer, { $name }. On m'appelle <b>Azul</b>, le Gardien des Précognitions. #line:0f4924c 
 Ledai_explaining: Et tu as déjà fait la connaissance de notre 4e sage <b>Miss Temdé</b>... #line:039d16f 
 Temde_smiling: ... La Gardienne des Improvisations. #line:0e517ee 
-You: C'est pas possible, mon rêve devient de plus en plus en délirant. #line:032929f 
-Azul_happy: Pas du tout { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens. #line:077fe88 
+<< visit explications1 >>
+<<jump Sages_FreeChoice>>
+===
+
+title: fuir
+tags: noUi
+position: -562.1727294921875,1164.6718139648438
+---
+Vous prenez vos jambes à votre coup, traversant le jardin onirique dans lequel vous vous trouvez. Mais ce coin de verdure s'étend à perte de vue, ne semble pas avoir de fin.
+Vous finissez par rebrousser chemin, convaincu que vous ne retrouverez jamais votre foyer tout seul.
+Temde_sad: C'est bon, ton petit footing est terminé ? Alors reviens ici, nous avons des choses à t'expliquer.
+<< visit explications1 >>
+<<jump Sages_FreeChoice>>
+===
+
+title: explications_sages
+tags: noUi
+position: -562.1727294921875,1164.6718139648438
+---
+You: Et, qu'est-ce que je fais là, au juste ?
+Azul_happy: C'est très simple { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens. 
 Sapiens_thinking: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi. #line:081c094 
 
 << music Neutral >>
@@ -197,15 +261,14 @@ You: Heuuuuu... J'ai rien compris de ce vous avez dit. La métaconnexion ??? #li
 Azul_proud: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien. #line:06f975d 
 Temde_smiling: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de faire ! Et de trouver une solution qui marche ! #line:0fc8373 
 Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences... #line:005e8f4 
-You: Les neurosciences ? #line:06ba656 
-Sapiens_happy: Les sciences appliquées au fonctionnement de tes processus mentaux. #line:07d59a3 
-Temde_sad: Quel est le mode d'emploi de ton cerveau, quoi. #line:0f1b183 
-Sapiens_concerned: Hum... J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière. #line:02856f8 
-You: Et la métacognition alors ? #line:07fd606 
-Sapiens_thinking: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux. #line:031e501 
-You: Hein ??? #line:090bf79 
-Azul_happy: C'est-à-dire comment apprendre... à apprendre ! #line:011a5d4 
-
+-> Les neurosciences ?
+    Sapiens_happy: Les sciences appliquées au fonctionnement de tes processus mentaux. #line:07d59a3 
+    Temde_sad: Quel est le mode d'emploi de ton cerveau, quoi. #line:0f1b183 
+    Sapiens_concerned: Hum... J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière. #line:02856f8 
+-> Et la métacognition, alors ?
+    Sapiens_thinking: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux. #line:031e501 
+    You: Hein ??? #line:090bf79 
+    Azul_happy: C'est-à-dire comment apprendre... à apprendre ! #line:011a5d4 
 <<jump Metacognition>>
 ===
 title: Metacognition
@@ -217,7 +280,6 @@ Ledai_happy: Bravo, { $name }, je n'aurais pas dit mieux. #line:07186d1
 Sapiens_happy: Je sens que nous avons ce soir un candidat d'exception. #line:0b356d7
 Ledai_happy: Bien, maintenant que les présentations sont faites et que tout est au clair, nous devrions nous éclipser et exécuter notre rôle...
 Azul_happy: C'est vrai. Nous ne voudrions pas déboussoler { $name } dès notre première intervention !
-
 << fx Warp >>
 << fadeIn 1500 12ea12 >>
 << hide ! >>

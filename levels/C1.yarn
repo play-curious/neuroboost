@@ -24,7 +24,7 @@ Quel rêve étrange ...
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:00aae49 
 
 << loopFX PhoneRing_LOOP 5000 >>
-Cette fois, c'est votre palmphone qui vibre : <b>Fred</b> veut vous parler. #line:0c10bcd 
+Votre palmphone vibre : <b>Fred</b> veut vous parler. #line:0c10bcd 
 -> Prendre l'appel #line:0c4a7b0 
     <<jump Appel_Fred_Rewind>>
 ===
@@ -41,7 +41,7 @@ Fred@holo_excited: Salut ! c'est Fred ! #line:0fb4525
 You: Je sais, j'ai vu ton nom. #line:0d1a13b 
 Fred@holo_smiling: Yo, je vois que t'es pas de bonne humeur ce matin... #line:039d35b 
 You: Facile à dire pour toi, tu révises jamais et t'as tout le temps des bonnes notes !
-Fred@holo_happy: Damned, tu t'es vraiment levé du mauvais pied aujourd'hui. Qu'est-ce qui ne va pas ?
+Fred@holo_happy: Ah ouais, tu t'es vraiment levé du mauvais pied aujourd'hui. Qu'est-ce qui ne va pas ?
 
 -> C'est fini, je vais jamais passer mon année !
 -> Tu le sais bien, tu as dû voir ma prestation d'hier...
@@ -85,12 +85,13 @@ position: -316,223
 << fadeOut >>
 
 <<if !visited("FredCall")>>
-Quoi ?! On dirait que vous avez fait un bond en arrière dans le temps ! Peut-être que ces <i>sages</i> y sont pour quelque chose... Vous allez pouvoir revivre cette semaine, sauver votre année. C'est la chance du siècle ! #line:0d751d6 
+Quoi ?! On dirait que vous avez fait un bond en arrière dans le temps ! Peut-être que ces <i>sages</i> y sont pour quelque chose...
+Vous allez pouvoir revivre cette semaine, sauver votre année. C'est la chance du siècle ! #line:0d751d6 
 Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre ! #line:020bca4 
 <<endif>>
 
 <<showGauges>>
-Il vous reste quelques heures avant le partiel... Aujourd'hui, vous allez montrer à Fred qui est le plus grand vainqueur de l'Académie ! #line:0cfadf9 
+Il vous reste quelques heures avant le partiel... De la semaine dernière !
 
 <<visitPermanent FredCall>>
 
@@ -193,10 +194,10 @@ position: -1405,986
 << fx EatCook >>
 
 <<if visited("LunchBefore")>>
-Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... #line:046846a 
+Et ce midi pareil... Encore ce burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... #line:046846a 
 Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route ! #line:0f21e5a 
 <<else>>
-Miam... Délicieux, ce Burger Big Proteins Double Cheese !
+Miam... Délicieux, ce burger Big Proteins Double Cheese !
 Bien chargé en calories, mais vous allez en avoir besoin tout à l'heure pour l'examen ! Allez, une bonne gorgée de Xeno Cola pour accélérer la digestion... #line:00ba9c8 
 <<endif>>
 
@@ -552,8 +553,14 @@ Sérieusement ! Même en l'ayant passé la semaine dernière, vous avez quand-m�
 << music Mysterious >>
 
 Temde_neutral: Allons, ne sois pas défaitiste, { $name }, l'apprentissage de la métacognition n'est pas évident au début, mais nous allons tout faire pour t'aider. Viens, suis-moi une fois de plus.
-You: Où ça ? On va encore remonter le temps ?
-Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre.
+-> On va encore remonter le temps ?
+    You: Où ça ? On va encore remonter le temps ?
+    Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre.
+-> Suivre Miss Temdé
+
+<< fx Warp >>
+<< fadeIn 1500 12ea12 >>
+<< hide ! >>
 
 <<jump Assemblee_Sages>>
 ===
@@ -566,8 +573,10 @@ position: -760,1476
 Temde_neutral: { $name } ! Je vois que tu es déjà parvenu à t'améliorer par toi-même. C'est une capacité que je respecte.
 You: Euh... J'étais avec mon pote là...
 Temde_smiling: Pas d'inquiétude, nous te renverrons à cet instant précis dès que nous aurons terminé. Pour l'instant, viens, suis-moi une fois de plus.
-You: Où ça ? On va encore remonter le temps ?
-Temde_cheerful: Pas cette fois, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Même si tu es débrouillard, nous avons quelques astuces à t'apprendre.
+-> On va encore remonter le temps ?
+    You: Où ça ? On va encore remonter le temps ?
+    Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre.
+-> Suivre Miss Temdé
 
 << fx Warp >>
 << fadeIn 1500 12ea12 >>
@@ -580,7 +589,6 @@ title: Assemblee_Sages
 tags: noUi
 position: -571,1504
 ---
-
 << fadeIn >>
 << hide ! >>
 << setBackground circle >>
@@ -668,9 +676,9 @@ title: Routinisation
 tags: noUi
 position: 243.36883544921875,1410.058349609375
 ---
-Sapiens_thinking: Pour consolider ses connaissances, c'est simple. Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
+Sapiens_thinking: Pour consolider ses connaissances, il faut travailler !
 Ledai_explaining: Il faut surtout pratiquer ! Répéter et répéter et encore répéter ! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement. #line:00317ce 
-Azul_happy: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis pas la maîtriser. #line:050ca2d 
+Azul_happy: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis par la maîtriser. #line:050ca2d 
 Ledai_explaining: Pour une fois que je suis d'accord avec <b>Azul</b>. Ainsi, tu mémorises la liste des ingrédients, les dosages, comme les étapes de préparation et les temps de cuisson. #line:0e3a8de 
 You: Et comment je fais pour que ma pratique devienne une routine? #line:0439386 
 Ledai_explaining: Tout simplement en répétant, en appliquant. #line:0832a45 
@@ -692,7 +700,7 @@ title: Quit_Sages
 tags: noUi
 position: 243.36883544921875,1410.058349609375
 ---
-You: C'est bon pour moi... Mais en attendant, va falloir que je me souvienne de tout ça à mon réveil. Comment faire ? #line:0d2186b 
+You: C'est bon pour moi... Mais en attendant, va falloir que je me souvienne de tout ça à mon réveil. Comment faire ?
 Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> ! #line:0838542 
 
 <<if !visited("Resultats_Good")>>
@@ -713,7 +721,7 @@ position: 544,1399
 << fadeOut 400 >>
 
 Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée.
-Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof... #line:0c1bf30 
+Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain"...
 Serait-ce le <bi>journal mental</bi> dont parlait Ledai ? #line:063d2d3 
 
 <<visitPermanent Chapitre1>>
