@@ -64,11 +64,12 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
     const columnPadding = 75;
     const rowHeight = 197;
     const indent = new PIXI.Point(38, 32);
+    const columnWidthAfterIndent = columnWidth - indent.x;
 
     let chapter = 0;
     for (let column = 0; column < 2; column++) {
       for (let row = 0; row < 4; row++) {
-        const currentChapter = chapter;
+        const currentChapter = chapter; // Necessary to copy this variable for use within callbacks
         const gridCell = new PIXI.Point(
           gridStart.x + column * (columnWidth + columnPadding),
           gridStart.y + row * rowHeight
@@ -85,26 +86,29 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
         }
 
         {
-          const titleText = chapter === 0 ? "Prologue" : `Chapitre ${chapter}`;
-          const title = new PIXI.Text(titleText, {
-            fontFamily: "Jura",
-            fontStyle: "bold",
-            fontSize: subtitleFontSize,
-            fill: "white",
-          });
-          title.position.set(gridCell.x + indent.x, gridCell.y + indent.y);
-
-          title.interactive = true;
-          title.buttonMode = true;
-          this._on(title, "pointerup", () =>
+          const line = new PIXI.Container();
+          line.position.set(gridCell.x + indent.x, gridCell.y + indent.y);
+          line.hitArea = new PIXI.Rectangle(0, 0, columnWidthAfterIndent, 50);
+          line.interactive = true;
+          line.buttonMode = true;
+          this._on(line, "pointerup", () =>
             this._pickScene("level", currentChapter)
           );
+          this._container.addChild(line);
 
-          this._container.addChild(title);
-        }
-
-        if (chapter > 0) {
           {
+            const titleText =
+              chapter === 0 ? "Prologue" : `Chapitre ${chapter}`;
+            const title = new PIXI.Text(titleText, {
+              fontFamily: "Jura",
+              fontStyle: "bold",
+              fontSize: subtitleFontSize,
+              fill: "white",
+            });
+            line.addChild(title);
+          }
+
+          if (chapter > 0) {
             // Make stars
 
             // TODO: get score
@@ -118,91 +122,95 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
               );
               sprite.anchor.set(1, 0);
               sprite.position.set(
-                gridCell.x + columnWidth - (2 - i) * starWidth,
-                gridCell.y + indent.y
+                columnWidthAfterIndent - (2 - i) * starWidth,
+                0
               );
-              this._container.addChild(sprite);
+              line.addChild(sprite);
+            }
+          }
+        }
+
+        if (chapter > 0) {
+          {
+            const line = new PIXI.Container();
+            line.position.set(
+              gridCell.x + indent.x,
+              gridCell.y + indent.y + 53
+            );
+            line.hitArea = new PIXI.Rectangle(0, 0, columnWidthAfterIndent, 50);
+            line.interactive = true;
+            line.buttonMode = true;
+            this._on(line, "pointerup", () =>
+              this._pickScene("sages", currentChapter)
+            );
+            this._container.addChild(line);
+
+            {
+              const sagesText = "Accéder aux Sages";
+              const sages = new PIXI.Text(sagesText, {
+                fontFamily: "Ubuntu",
+                fontStyle: "italic",
+                fontSize: subtitleFontSize,
+                fill: yellow,
+              });
+              line.addChild(sages);
+            }
+
+            {
+              // Make sages check
+
+              // TODO: get check from saved game
+              const isChecked = Math.random() > 0.5;
+              const variant = isChecked ? "highlight" : "greyed";
+              const fileName = `images/ui/check-${variant}.png`;
+              const sprite = new PIXI.Sprite(
+                this._entityConfig.app.loader.resources[fileName].texture
+              );
+              sprite.anchor.set(1, 0);
+              sprite.position.set(columnWidthAfterIndent, 0);
+              line.addChild(sprite);
             }
           }
 
           {
-            const sagesText = "Accéder aux Sages";
-            const sages = new PIXI.Text(sagesText, {
-              fontFamily: "Ubuntu",
-              fontStyle: "italic",
-              fontSize: subtitleFontSize,
-              fill: yellow,
-            });
-            sages.position.set(
-              gridCell.x + indent.x,
-              gridCell.y + indent.y + 53
-            );
-
-            sages.interactive = true;
-            sages.buttonMode = true;
-            this._on(sages, "pointerup", () =>
-              this._pickScene("sages", currentChapter)
-            );
-
-            this._container.addChild(sages);
-          }
-
-          {
-            // Make sages check
-
-            // TODO: get check from saved game
-            const isChecked = Math.random() > 0.5;
-            const variant = isChecked ? "highlight" : "greyed";
-            const fileName = `images/ui/check-${variant}.png`;
-            const sprite = new PIXI.Sprite(
-              this._entityConfig.app.loader.resources[fileName].texture
-            );
-            sprite.anchor.set(1, 0);
-            sprite.position.set(
-              gridCell.x + columnWidth,
-              gridCell.y + indent.y + 53
-            );
-            this._container.addChild(sprite);
-          }
-
-          {
-            const textContent = "Écrire sur le journal";
-            const text = new PIXI.Text(textContent, {
-              fontFamily: "Ubuntu",
-              fontStyle: "italic",
-              fontSize: subtitleFontSize,
-              fill: yellow,
-            });
-            text.position.set(
+            const line = new PIXI.Container();
+            line.position.set(
               gridCell.x + indent.x,
               gridCell.y + indent.y + 106
             );
-
-            text.interactive = true;
-            text.buttonMode = true;
-            this._on(text, "pointerup", () =>
+            line.hitArea = new PIXI.Rectangle(0, 0, columnWidthAfterIndent, 50);
+            line.interactive = true;
+            line.buttonMode = true;
+            this._on(line, "pointerup", () =>
               this._pickScene("journal", currentChapter)
             );
+            this._container.addChild(line);
 
-            this._container.addChild(text);
-          }
+            {
+              const textContent = "Écrire sur le journal";
+              const text = new PIXI.Text(textContent, {
+                fontFamily: "Ubuntu",
+                fontStyle: "italic",
+                fontSize: subtitleFontSize,
+                fill: yellow,
+              });
+              line.addChild(text);
+            }
 
-          {
-            // Make journal check
+            {
+              // Make journal check
 
-            // TODO: get check from saved game
-            const isChecked = Math.random() > 0.5;
-            const variant = isChecked ? "highlight" : "greyed";
-            const fileName = `images/ui/check-${variant}.png`;
-            const sprite = new PIXI.Sprite(
-              this._entityConfig.app.loader.resources[fileName].texture
-            );
-            sprite.anchor.set(1, 0);
-            sprite.position.set(
-              gridCell.x + columnWidth,
-              gridCell.y + indent.y + 106
-            );
-            this._container.addChild(sprite);
+              // TODO: get check from saved game
+              const isChecked = Math.random() > 0.5;
+              const variant = isChecked ? "highlight" : "greyed";
+              const fileName = `images/ui/check-${variant}.png`;
+              const sprite = new PIXI.Sprite(
+                this._entityConfig.app.loader.resources[fileName].texture
+              );
+              sprite.anchor.set(1, 0);
+              sprite.position.set(columnWidthAfterIndent, 0);
+              line.addChild(sprite);
+            }
           }
         }
 

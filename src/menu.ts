@@ -61,6 +61,8 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   private debugPressCount: number;
   private debugText: PIXI.Text;
+  private _tocButton: PIXI.Text;
+  private _gameLogo: PIXI.Sprite;
 
   private saveSettings() {
     localStorage.setItem("settings", JSON.stringify(this.settings));
@@ -123,7 +125,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       // TOC link
-      const tocButton = this.makeText(
+      this._tocButton = this.makeText(
         "Chapitres",
         {
           fontFamily: "Ubuntu",
@@ -137,19 +139,19 @@ export class Menu extends extension.ExtendedCompositeEntity {
           it.buttonMode = true;
         }
       );
-      this._on(tocButton, "pointerup", this._onTapTocButton);
-      this.popupBackground.addChild(tocButton);
+      this._on(this._tocButton, "pointerup", this._onTapTocButton);
+      this.popupBackground.addChild(this._tocButton);
 
       // Blason de l'école
-      const gameLogo = this.makeSprite("images/logo.png", (it) => {
+      this._gameLogo = this.makeSprite("images/logo.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.3);
         it.position.set(this.popupBackground.width / 2, 340);
       });
-      gameLogo.interactive = true;
-      gameLogo.buttonMode = true;
-      this._on(gameLogo, "pointerup", this._onTapTocButton);
-      this.popupBackground.addChild(gameLogo);
+      this._gameLogo.interactive = true;
+      this._gameLogo.buttonMode = true;
+      this._on(this._gameLogo, "pointerup", this._onTapTocButton);
+      this.popupBackground.addChild(this._gameLogo);
     }
 
     // Temporarily deactivating the history button
@@ -481,19 +483,22 @@ export class Menu extends extension.ExtendedCompositeEntity {
     this.blackBackground.visible = true;
 
     // Check if the journal button should be activated or deactivated
-    if (
-      Object.keys(this.config.variableStorage.get("journalAnswers")).length > 0
-    ) {
-      this.journal.alpha = 1;
-      this.journal.buttonMode = true;
-      this.journal.interactive = true;
-    } else {
-      this.journal.alpha = 0.5;
-      this.journal.buttonMode = false;
-      this.journal.interactive = false;
-    }
+    const shouldEnableJournal =
+      Object.keys(this.config.variableStorage.get("journalAnswers")).length > 0;
+    this._enableButton(this.journal, shouldEnableJournal);
 
-    // TODO: Check if the TOC button should be activated
+    // Check if the TOC button should be activated
+    const shouldEnableTocButton =
+      this._entityConfig.gameStateMachine.isSetup &&
+      this._entityConfig.gameStateMachine.lastTransition.name !== "toc";
+    this._enableButton(this._tocButton, shouldEnableTocButton);
+    this._enableButton(this._gameLogo, shouldEnableTocButton);
+  }
+
+  private _enableButton(obj: PIXI.DisplayObject, active = true): void {
+    obj.alpha = active ? 1 : 0.5;
+    obj.buttonMode = active;
+    obj.interactive = active;
   }
 
   private _showCredits() {
