@@ -63,6 +63,12 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._graphicsState = {};
 
     this._container = new PIXI.Container();
+    this._container.hitArea = new PIXI.Rectangle(
+      0,
+      0,
+      this._entityConfig.app.view.width,
+      this._entityConfig.app.view.height
+    );
     this.config.container.addChild(this._container);
 
     this._backgroundLayer = new PIXI.Container();
@@ -313,11 +319,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._dialogSpeaker.visible = false;
     }
 
-    const hitBox = new PIXI.Container();
     {
+      // Use the dialog box in button mode, but actually allow clicks anywhere on the screen
+      const hitBox = new PIXI.Container();
       hitBox.position.set(140, 704);
       hitBox.hitArea = new PIXI.Rectangle(0, 0, 1634, 322);
-      hitBox.interactive = true;
       hitBox.buttonMode = true;
       this._nodeDisplay.addChild(hitBox);
     }
@@ -359,8 +365,12 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         onTeardown: () => {
           dialogBox.text = baseText;
           this._deactivateChildEntity(writer);
-          this._off(hitBox, "pointerup", accelerate);
-          this._on(hitBox, "pointerup", onBoxClick);
+          this._off(this._container, "pointerup", accelerate);
+          this._once(this._container, "pointerup", () => {
+            this._container.interactive = false;
+            this._container.buttonMode = false;
+            onBoxClick();
+          });
         },
       });
 
@@ -370,7 +380,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       this._activateChildEntity(defilement);
 
-      this._once(hitBox, "pointerup", accelerate);
+      this._once(this._container, "pointerup", accelerate);
+      this._container.interactive = true;
+      this._container.buttonMode = true;
     }
   }
 
