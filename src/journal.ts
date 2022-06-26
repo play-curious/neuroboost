@@ -7,6 +7,7 @@ import * as entity from "booyah/src/entity";
 import * as filter from "./graphics_filter";
 import * as variable from "./variable";
 import * as extension from "./extension";
+import * as save from "./save";
 import dayjs from "dayjs";
 
 const options: { [key: string]: any } = {
@@ -133,7 +134,9 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
   private _glitch: filter.Glitch;
   private _holo: filter.Holograph;
   private _container: PIXI.Container;
-  private _htmlContainer: HTMLElement;
+  private _htmlContainer: HTMLFormElement;
+  private _answerInputs: HTMLInputElement[];
+  private _textArea: HTMLTextAreaElement;
 
   constructor(private name: string) {
     super();
@@ -155,19 +158,13 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
 
     // Handle html
     const htmlLayer = document.getElementById("html-layer");
-    this._htmlContainer = document.createElement("div");
+    this._htmlContainer = document.createElement("form");
     htmlLayer.appendChild(this._htmlContainer);
 
-    const leftElements = document.createElement("div");
-    const answers = options[this.name].closeQuestion.answers;
-    const answersInputs: HTMLInputElement[] = [];
+    // Create closed question on left
     {
-      leftElements.style.position = "absolute";
-      leftElements.style.left = "230px";
-      leftElements.style.top = "180px";
-      leftElements.style.width = "600px";
-      leftElements.style.textAlign = "justify";
-      leftElements.style.fontSize = "32px";
+      const leftElements = document.createElement("div");
+      leftElements.className = "journal-left-container";
       this._htmlContainer.appendChild(leftElements);
 
       leftElements.insertAdjacentHTML(
@@ -176,14 +173,16 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       );
 
       const answers = options[this.name].closeQuestion.answers;
+      this._answerInputs = [];
 
       for (let i = 0; i < answers.length; i++) {
         const answer: HTMLInputElement = document.createElement("input");
         answer.type = "radio";
+        answer.required = true;
         answer.name = "closed-question";
         answer.id = `closed-question-${i}`;
         answer.value = `${i}`;
-        answersInputs[i] = answer;
+        this._answerInputs[i] = answer;
 
         const label: HTMLLabelElement = document.createElement("label");
         label.innerText = `${answers[i]}`;
@@ -193,64 +192,68 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       }
     }
 
-    const rightElements = document.createElement("div");
-    const textArea = document.createElement("textArea");
+    // Create open question on right
     {
+      const rightElements = document.createElement("div");
       this._htmlContainer.appendChild(rightElements);
 
       const rightQuestion = document.createElement("p");
+      rightQuestion.className = "journal-right-question";
       rightQuestion.textContent = options[this.name].openQuestion.question;
-      rightQuestion.style.position = "absolute";
-      rightQuestion.style.left = "940px";
-      rightQuestion.style.top = "140px";
-      rightQuestion.style.width = "760px";
-      rightQuestion.style.textAlign = "justify";
-      rightQuestion.style.fontSize = "28px";
       rightElements.appendChild(rightQuestion);
 
-      textArea.style.position = "absolute";
-      textArea.style.left = "947px";
-      textArea.style.top = "280px";
-      textArea.style.width = "735px";
-      textArea.style.height = "425px";
-      textArea.style.fontSize = "28px";
-      textArea.style.fontFamily = "Ubuntu";
-      textArea.style.color = "white";
-      textArea.style.border = "none";
-      textArea.style.borderRadius = "2%";
-      textArea.style.background = "transparent";
-      textArea.style.resize = "none";
-      rightElements.appendChild(textArea);
+      this._textArea = document.createElement(
+        "textArea"
+      ) as HTMLTextAreaElement;
+      this._textArea.required = true;
+      this._textArea.minLength = 40;
+      this._textArea.placeholder = "Ecrire ici...";
+      this._textArea.className = "journal-right-answer";
+      rightElements.appendChild(this._textArea);
 
-      this._container.addChild(
-        this.makeSprite("images/ui/journal_button.png", (it) => {
-          it.anchor.set(1, 0);
-          it.position.set(1750, 720);
-          it.interactive = true;
-          it.buttonMode = true;
+      // Validate button
+      {
+        const buttonContainer = new PIXI.Container();
+        buttonContainer.position.set(1603, 803);
+        this._container.addChild(buttonContainer);
 
-          this._on(it, "pointerup", () => {
-            this.config.fxMachine.play("Click");
+        const button = this.makeSprite("images/ui/journal_button.png");
+        button.anchor.set(0.5, 0.5);
+        button.interactive = true;
+        button.buttonMode = true;
+        this._on(button, "pointerup", this._validate);
+        buttonContainer.addChild(button);
 
-            const journalStorage =
-              this.config.variableStorage.get("journalAnswers");
-            journalStorage[this.name] = {};
-            for (const answer of answersInputs) {
-              if (answer.checked) {
-                journalStorage[this.name].closeQuestion =
-                  answer.id.split("-")[2];
-              }
-            }
-            journalStorage[this.name].openQuestion = (
-              textArea as HTMLInputElement
-            ).value;
+        const buttonText = new PIXI.Text("VALIDER", {
+          fontFamily: "Ubuntu",
+          fontSize: 32,
+          fill: "white",
+        });
+        buttonText.anchor.set(0.5, 0.5);
+        buttonContainer.addChild(buttonText);
+      }
 
-            this.config.variableStorage.set("journalAnswers", journalStorage);
+      // Skip button
+      {
+        const buttonContainer = new PIXI.Container();
+        buttonContainer.position.set(1300, 803);
+        this._container.addChild(buttonContainer);
 
-            this._transition = entity.makeTransition();
-          });
-        })
-      );
+        const button = this.makeSprite("images/ui/journal_button.png");
+        button.anchor.set(0.5, 0.5);
+        button.interactive = true;
+        button.buttonMode = true;
+        this._on(button, "pointerup", this._skip);
+        buttonContainer.addChild(button);
+
+        const buttonText = new PIXI.Text("Passer", {
+          fontFamily: "Ubuntu",
+          fontSize: 32,
+          fill: "white",
+        });
+        buttonText.anchor.set(0.5, 0.5);
+        buttonContainer.addChild(buttonText);
+      }
     }
   }
 
@@ -258,6 +261,35 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
     this.config.container.removeChild(this._container);
     this._htmlContainer.remove();
     this._container = null;
+  }
+
+  private _validate() {
+    const isValid = this._htmlContainer.reportValidity();
+    if (!isValid) {
+      this.config.fxMachine.play("Failure");
+      return;
+    }
+
+    this.config.fxMachine.play("Success");
+
+    const journalStorage = this.config.variableStorage.get("journalAnswers");
+    journalStorage[this.name] = {};
+    for (const answer of this._answerInputs) {
+      if (answer.checked) {
+        journalStorage[this.name].closeQuestion = answer.id.split("-")[2];
+      }
+    }
+    journalStorage[this.name].openQuestion = this._textArea.value;
+
+    this.config.variableStorage.set("journalAnswers", journalStorage);
+    save.updateVariableStorage(this.config.variableStorage.data);
+
+    this._transition = entity.makeTransition();
+  }
+
+  private _skip() {
+    this.config.fxMachine.play("Click");
+    this._transition = entity.makeTransition("skip");
   }
 }
 

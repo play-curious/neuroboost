@@ -31,11 +31,6 @@ class RequestTransitionEntity extends entity.EntityBase {
 function checkSave(): entity.Transition {
   if (!save.hasSave()) return entity.makeTransition("toc");
 
-  // Load variable storage
-  if (save.getVariableStorage()) {
-    this._entityConfig.variableStorage.data = save.getVariableStorage();
-  }
-
   const loadedChapterData = save.getCurrentChapter();
 
   // If no save exists, go the main menu
@@ -78,8 +73,6 @@ function resizeHtmlLayer(appSize: PIXI.Point): void {
 }
 
 // Common attributes for all DialogScene
-//   - VariableStorage
-//   - Clock
 const variableStorage = new variable.VariableStorage({
   journalAnswers: {},
   ballsJuggled: 0,
@@ -93,6 +86,11 @@ const variableStorage = new variable.VariableStorage({
   eval: "",
   food: "100",
 });
+// Load variable storage from memory, if available
+if (save.hasSave() && save.getVariableStorage()) {
+  variableStorage.data = save.getVariableStorage();
+}
+
 const globalHistory: yarnBound.Result[] = [];
 
 // TODO: Move this to dialog rather than in the game
