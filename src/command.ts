@@ -344,14 +344,16 @@ export const commands: Record<string, Command> = {
     return new title.Title(text);
   },
 
-  completeLevel(): entity.Entity {
+  completeLevel(...hintWords: string[]): entity.Entity {
     const score = this.calculateScore();
     save.updateCompletedLevel(this.levelName, score);
+    // Look up the index of the chapter to get the number
+    const chapter = dialog.dialogScenes.indexOf(this.levelName) + 1;
+    const hint = hintWords.join(" ");
     return new chapter_menus.ScoreMenu({
-      chapter: 5,
-      score: 2,
-      message:
-        "Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger.",
+      chapter,
+      score,
+      hint,
     });
   },
 

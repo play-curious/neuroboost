@@ -270,9 +270,10 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
 }
 
 export class ScoreMenuOptions {
+  /** Number of the chapter, eg. "Chapitre 1" */
   chapter: number;
   score: number;
-  message: string = "";
+  hint: string = "";
 }
 
 export class ScoreMenu extends extension.ExtendedCompositeEntity {
@@ -360,7 +361,7 @@ export class ScoreMenu extends extension.ExtendedCompositeEntity {
 
     {
       // Make message
-      const message = new PIXI.Text(this._options.message, {
+      const message = new PIXI.Text(this._options.hint, {
         fontFamily: "Ubuntu",
         fontStyle: "italic",
         fontSize: subtitleFontSize,
