@@ -15,12 +15,14 @@ interface Settings {
   fx: number;
   music: number;
   fullscreen: boolean;
+  textSpeed: number;
 }
 
 const defaultSettings: Settings = {
   fx: 0.5,
   music: 0.5,
   fullscreen: util.inFullscreen(),
+  textSpeed: 0.5,
 };
 
 const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
@@ -59,6 +61,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private fullscreenSwitcher: SpriteSwitcher;
   private musicVolumeSwitcher: SpriteRangeSwitcher;
   private soundVolumeSwitcher: SpriteRangeSwitcher;
+  private textSpeedSwitcher: SpriteRangeSwitcher;
 
   private debugPressCount: number;
   private debugText: PIXI.Text;
@@ -198,7 +201,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       // Bouton journal
       const x = this.popupBackground.width / 2 - 115;
-      const y = 584;
+      const y = 575;
       let image = this.makeSprite("images/menu/journal.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.4);
@@ -229,7 +232,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       // Crédit
       const x = this.popupBackground.width / 2 + 200;
-      const y = this.popupBackground.height - 90;
+      const y = this.popupBackground.height - 70;
       const image = this.makeSprite("images/menu/playcurious.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.4);
@@ -301,7 +304,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       const x = this.popupBackground.width - 250;
-      const y = 714;
+      const y = 690;
       const logo = this.makeSprite("images/menu/musique.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.3);
@@ -333,7 +336,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       const x = this.popupBackground.width - 250;
-      const y = 804;
+      const y = 780;
       const logo = this.makeSprite("images/menu/bruitage.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.3);
@@ -358,6 +361,34 @@ export class Menu extends extension.ExtendedCompositeEntity {
         this.settings.fx = state;
         this.config.fxMachine.changeVolume(state);
         this.config.fxMachine.play("Click");
+        this.saveSettings();
+      });
+    }
+
+    {
+      const x = this.popupBackground.width - 250;
+      const y = 870;
+      const logo = this.makeSprite("images/menu/speed.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.3);
+        it.position.set(x - 165, y);
+      });
+      this.popupBackground.addChild(logo);
+
+      this.textSpeedSwitcher = new SpriteRangeSwitcher(
+        {
+          0: "images/menu/fx_000.png",
+          0.25: "images/menu/fx_025.png",
+          0.5: "images/menu/fx_050.png",
+          0.75: "images/menu/fx_075.png",
+          1: "images/menu/fx_100.png",
+        },
+        this.settings.textSpeed ?? defaultSettings.fx
+      );
+      this.textSpeedSwitcher.container.scale.set(0.8);
+      this.textSpeedSwitcher.container.position.set(x, y);
+      this.textSpeedSwitcher.onStateChange((state: number) => {
+        this.config.playOptions.setOption("textSpeed", state);
         this.saveSettings();
       });
     }
@@ -419,6 +450,12 @@ export class Menu extends extension.ExtendedCompositeEntity {
     );
     this._activateChildEntity(
       this.soundVolumeSwitcher,
+      entity.extendConfig({
+        container: this._controlsContainer,
+      })
+    );
+    this._activateChildEntity(
+      this.textSpeedSwitcher,
       entity.extendConfig({
         container: this._controlsContainer,
       })
