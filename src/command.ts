@@ -10,6 +10,7 @@ import * as save from "./save";
 import * as popup from "./popup";
 import * as journal from "./journal";
 import * as title from "./title";
+import * as chapter_menus from "./chapter_menus";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (
@@ -343,9 +344,17 @@ export const commands: Record<string, Command> = {
     return new title.Title(text);
   },
 
-  completeLevel(): void {
+  completeLevel(...hintWords: string[]): entity.Entity {
     const score = this.calculateScore();
     save.updateCompletedLevel(this.levelName, score);
+    // Look up the index of the chapter to get the number
+    const chapter = dialog.dialogScenes.indexOf(this.levelName) + 1;
+    const hint = hintWords.join(" ");
+    return new chapter_menus.ScoreMenu({
+      chapter,
+      score,
+      hint,
+    });
   },
 
   completeSages(): void {

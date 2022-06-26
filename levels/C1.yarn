@@ -440,9 +440,12 @@ position: -801,1373
 << empty >>
 << music Victory >>
 << fx Success >>
-<< completeLevel >>
 
-Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard !... Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore... #line:0395b52 
+Voilà... Les scores s'affichent sur l'écran de la porte principale... Vous avez remonté votre retard ! #line:0395b52 
+
+<< completeLevel Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger. >>
+
+Mais vous n'êtes pas encore dans le peleton de tête... Vous n'avez que <b>B</b>. Fred vous distance encore... #line:0395b52 
 
 Fred_smiling: Hé, C'est vachement bien pour une matière que tu détestes. #line:085368d 
 You: Facile à dire pour toi. Tu as eu <b>A+</b>. #line:04e24fc 

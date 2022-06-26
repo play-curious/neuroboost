@@ -15,12 +15,14 @@ interface Settings {
   fx: number;
   music: number;
   fullscreen: boolean;
+  textSpeed: number;
 }
 
 const defaultSettings: Settings = {
   fx: 0.5,
   music: 0.5,
   fullscreen: util.inFullscreen(),
+  textSpeed: 0.5,
 };
 
 const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
@@ -43,6 +45,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private opened: boolean;
   private container: PIXI.Container;
 
+  private _controlsContainer: PIXI.Container;
   private blackBackground: PIXI.Graphics;
   private popupBackground: PIXI.NineSlicePlane;
   private menuButton: PIXI.Sprite;
@@ -58,6 +61,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private fullscreenSwitcher: SpriteSwitcher;
   private musicVolumeSwitcher: SpriteRangeSwitcher;
   private soundVolumeSwitcher: SpriteRangeSwitcher;
+  private textSpeedSwitcher: SpriteRangeSwitcher;
 
   private debugPressCount: number;
   private debugText: PIXI.Text;
@@ -80,11 +84,11 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       this.blackBackground = new PIXI.Graphics()
-        .beginFill(0x333333, 0.8)
+        .beginFill(0)
         .drawRect(0, 0, variable.width, variable.height)
         .endFill();
       this.blackBackground.interactive = true;
-      this.blackBackground.alpha = 0;
+      this.blackBackground.alpha = 0.5;
       this._on(this.blackBackground, "pointerup", this.close);
       this.container.addChild(this.blackBackground);
     }
@@ -124,6 +128,15 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
+      this._controlsContainer = new PIXI.Container();
+      this._controlsContainer.position.set(
+        0,
+        (this._entityConfig.app.view.height - 1028) / 2
+      );
+      this.container.addChild(this._controlsContainer);
+    }
+
+    {
       // TOC link
       this._tocButton = this.makeText(
         "Chapitres",
@@ -140,7 +153,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         }
       );
       this._on(this._tocButton, "pointerup", this._onTapTocButton);
-      this.popupBackground.addChild(this._tocButton);
+      this._controlsContainer.addChild(this._tocButton);
 
       // Blason de l'école
       this._gameLogo = this.makeSprite("images/logo.png", (it) => {
@@ -151,7 +164,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this._gameLogo.interactive = true;
       this._gameLogo.buttonMode = true;
       this._on(this._gameLogo, "pointerup", this._onTapTocButton);
-      this.popupBackground.addChild(this._gameLogo);
+      this._controlsContainer.addChild(this._gameLogo);
     }
 
     // Temporarily deactivating the history button
@@ -188,7 +201,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       // Bouton journal
       const x = this.popupBackground.width / 2 - 115;
-      const y = 584;
+      const y = 575;
       let image = this.makeSprite("images/menu/journal.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.4);
@@ -219,7 +232,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       // Crédit
       const x = this.popupBackground.width / 2 + 200;
-      const y = this.popupBackground.height - 90;
+      const y = this.popupBackground.height - 70;
       const image = this.makeSprite("images/menu/playcurious.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.4);
@@ -291,7 +304,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       const x = this.popupBackground.width - 250;
-      const y = 714;
+      const y = 690;
       const logo = this.makeSprite("images/menu/musique.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.3);
@@ -323,7 +336,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       const x = this.popupBackground.width - 250;
-      const y = 804;
+      const y = 780;
       const logo = this.makeSprite("images/menu/bruitage.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.3);
@@ -348,6 +361,34 @@ export class Menu extends extension.ExtendedCompositeEntity {
         this.settings.fx = state;
         this.config.fxMachine.changeVolume(state);
         this.config.fxMachine.play("Click");
+        this.saveSettings();
+      });
+    }
+
+    {
+      const x = this.popupBackground.width - 250;
+      const y = 870;
+      const logo = this.makeSprite("images/menu/speed.png", (it) => {
+        it.anchor.set(0.5);
+        it.scale.set(0.3);
+        it.position.set(x - 165, y);
+      });
+      this.popupBackground.addChild(logo);
+
+      this.textSpeedSwitcher = new SpriteRangeSwitcher(
+        {
+          0: "images/menu/fx_000.png",
+          0.25: "images/menu/fx_025.png",
+          0.5: "images/menu/fx_050.png",
+          0.75: "images/menu/fx_075.png",
+          1: "images/menu/fx_100.png",
+        },
+        this.settings.textSpeed ?? defaultSettings.fx
+      );
+      this.textSpeedSwitcher.container.scale.set(0.8);
+      this.textSpeedSwitcher.container.position.set(x, y);
+      this.textSpeedSwitcher.onStateChange((state: number) => {
+        this.config.playOptions.setOption("textSpeed", state);
         this.saveSettings();
       });
     }
@@ -398,19 +439,25 @@ export class Menu extends extension.ExtendedCompositeEntity {
     this._activateChildEntity(
       this.fullscreenSwitcher,
       entity.extendConfig({
-        container: this.popupBackground,
+        container: this._controlsContainer,
       })
     );
     this._activateChildEntity(
       this.musicVolumeSwitcher,
       entity.extendConfig({
-        container: this.popupBackground,
+        container: this._controlsContainer,
       })
     );
     this._activateChildEntity(
       this.soundVolumeSwitcher,
       entity.extendConfig({
-        container: this.popupBackground,
+        container: this._controlsContainer,
+      })
+    );
+    this._activateChildEntity(
+      this.textSpeedSwitcher,
+      entity.extendConfig({
+        container: this._controlsContainer,
       })
     );
 
@@ -572,7 +619,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     this._activateChildEntity(
       new popup.Confirm(
-        "Téléchargement du journal de la métacognition",
+        "Télécharger votre journal de la métacognition ?",
         (validated: boolean) => {
           if (!validated) return;
           const journalDownload = new journal.JournalPDF();

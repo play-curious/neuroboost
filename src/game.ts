@@ -15,7 +15,7 @@ import * as dialog from "./dialog";
 import * as journal from "./journal";
 import * as variable from "./variable";
 import * as miniGame from "./mini_game";
-import * as toc from "./toc";
+import * as chapter_menus from "./chapter_menus";
 import _ from "underscore";
 
 class RequestTransitionEntity extends entity.EntityBase {
@@ -30,11 +30,6 @@ class RequestTransitionEntity extends entity.EntityBase {
 
 function checkSave(): entity.Transition {
   if (!save.hasSave()) return entity.makeTransition("toc");
-
-  // Load variable storage
-  if (save.getVariableStorage()) {
-    this._entityConfig.variableStorage.data = save.getVariableStorage();
-  }
 
   const loadedChapterData = save.getCurrentChapter();
 
@@ -78,8 +73,6 @@ function resizeHtmlLayer(appSize: PIXI.Point): void {
 }
 
 // Common attributes for all DialogScene
-//   - VariableStorage
-//   - Clock
 const variableStorage = new variable.VariableStorage({
   journalAnswers: {},
   ballsJuggled: 0,
@@ -93,6 +86,11 @@ const variableStorage = new variable.VariableStorage({
   eval: "",
   food: "100",
 });
+// Load variable storage from memory, if available
+if (save.hasSave() && save.getVariableStorage()) {
+  variableStorage.data = save.getVariableStorage();
+}
+
 const globalHistory: yarnBound.Result[] = [];
 
 // TODO: Move this to dialog rather than in the game
@@ -112,7 +110,7 @@ export function installGameData(rootConfig: entity.EntityConfig) {
 
 let states: { [k: string]: entity.EntityResolvable } = {
   start: new RequestTransitionEntity(checkSave),
-  toc: new toc.TableOfContents(),
+  toc: new chapter_menus.TableOfContents(),
   outro_video: outroVideoScene,
 };
 
@@ -139,7 +137,18 @@ transitions["outro_video"] = entity.makeTransition("end");
 
 // The TOC transition is based on the type and index
 transitions["toc"] = (transition: entity.Transition) => {
-  const sceneType = transition.params.type as toc.SceneType;
+  if (transition.name === "continue") {
+    // Go to the specified chapter, providing the chapter data
+    const loadedChapterData = save.getCurrentChapter();
+    return entity.makeTransition(loadedChapterData.levelName, {
+      loadedChapterData,
+    });
+  }
+
+  // The player must have picked a level
+  console.assert(transition.name === "pick");
+
+  const sceneType = transition.params.type as chapter_menus.SceneType;
   if (sceneType === "level") {
     // Jump to the level
     return entity.makeTransition(dialog.dialogScenes[transition.params.index]);

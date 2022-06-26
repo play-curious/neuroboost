@@ -22,7 +22,7 @@ const dialogRegexp = /^([a-z]+)(_([a-z]+))?:(.+)/i;
 
 const maxLineLength = 68;
 
-const defilementDurationPerLetter = 25;
+const typewriterDurationPerLetter = 50;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
   private _characters: Map<
@@ -63,6 +63,12 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._graphicsState = {};
 
     this._container = new PIXI.Container();
+    this._container.hitArea = new PIXI.Rectangle(
+      0,
+      0,
+      this._entityConfig.app.view.width,
+      this._entityConfig.app.view.height
+    );
     this.config.container.addChild(this._container);
 
     this._backgroundLayer = new PIXI.Container();
@@ -313,11 +319,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._dialogSpeaker.visible = false;
     }
 
-    const hitBox = new PIXI.Container();
     {
+      // Use the dialog box in button mode, but actually allow clicks anywhere on the screen
+      const hitBox = new PIXI.Container();
       hitBox.position.set(140, 704);
       hitBox.hitArea = new PIXI.Rectangle(0, 0, 1634, 322);
-      hitBox.interactive = true;
       hitBox.buttonMode = true;
       this._nodeDisplay.addChild(hitBox);
     }
@@ -341,36 +347,65 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       // Manually split text into lines to avoid words "jumping" from line to line
       const baseText = splitIntoLines(interpolatedText, maxLineLength);
 
-      const writer = this.makeFxLoop(
-        `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
-        250
-      );
+      const textSpeedOption: number =
+        this.config.playOptions.getOption("textSpeed");
 
-      const defilement = new tween.Tween({
-        from: 1,
-        to: baseText.length,
-        duration: baseText.length * defilementDurationPerLetter,
-        onSetup: () => {
-          this._activateChildEntity(writer);
-        },
-        onUpdate: (value) => {
-          dialogBox.text = baseText.slice(0, Math.round(value));
-        },
-        onTeardown: () => {
-          dialogBox.text = baseText;
-          this._deactivateChildEntity(writer);
-          this._off(hitBox, "pointerup", accelerate);
-          this._on(hitBox, "pointerup", onBoxClick);
-        },
-      });
+      if (textSpeedOption === 1) {
+        // Just write the text
+        dialogBox.text = baseText;
 
-      const accelerate = () => {
-        if (defilement.isSetup) this._deactivateChildEntity(defilement);
-      };
+        this._container.interactive = true;
+        this._container.buttonMode = true;
+        this._once(this._container, "pointerup", () => {
+          this.config.fxMachine.play("Click");
 
-      this._activateChildEntity(defilement);
+          this._container.interactive = false;
+          this._container.buttonMode = false;
+          onBoxClick();
+        });
+      } else {
+        // Do a nice typewriter animation
+        const writer = this.makeFxLoop(
+          `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
+          250
+        );
 
-      this._once(hitBox, "pointerup", accelerate);
+        const typewriterSpeed =
+          typewriterDurationPerLetter * (1 - textSpeedOption);
+
+        const typewriterAnimation = new tween.Tween({
+          from: 1,
+          to: baseText.length,
+          duration: baseText.length * typewriterSpeed,
+          onSetup: () => {
+            this._activateChildEntity(writer);
+          },
+          onUpdate: (value) => {
+            dialogBox.text = baseText.slice(0, Math.round(value));
+          },
+          onTeardown: () => {
+            dialogBox.text = baseText;
+            this._deactivateChildEntity(writer);
+            this._off(this._container, "pointerup", accelerate);
+            this._once(this._container, "pointerup", () => {
+              this._container.interactive = false;
+              this._container.buttonMode = false;
+              onBoxClick();
+            });
+          },
+        });
+
+        const accelerate = () => {
+          if (typewriterAnimation.isSetup)
+            this._deactivateChildEntity(typewriterAnimation);
+        };
+
+        this._activateChildEntity(typewriterAnimation);
+
+        this._once(this._container, "pointerup", accelerate);
+        this._container.interactive = true;
+        this._container.buttonMode = true;
+      }
     }
   }
 

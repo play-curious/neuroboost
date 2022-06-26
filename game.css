@@ -221,3 +221,45 @@ body.embedded {
 .build-info {
   font-size: x-small;
 }
+
+.journal-left-container {
+  position: absolute;
+  left: 230px;
+  top: 180px;
+  width: 600px;
+  text-align: justify;
+  font-size: 32px;
+}
+
+.journal-right-question {
+  position: absolute;
+  left: 940px;
+  top: 140px;
+  width: 760px;
+  text-align: justify;
+  font-size: 28px;
+}
+
+.journal-right-question radio {
+  margin: 10px;
+}
+
+.journal-right-answer {
+  position: absolute;
+  left: 947px;
+  top: 280px;
+  width: 735px;
+  height: 425px;
+  font-size: 28px;
+  font-family: Ubuntu;
+  color: white;
+  border: none;
+  border-radius: 2%;
+  background: transparent;
+  resize: none;
+}
+
+.journal-right-answer::placeholder {
+  color: white;
+  font-style: italic;
+}

@@ -37,8 +37,8 @@ abstract class Popup extends extension.ExtendedCompositeEntity {
       this.makeSprite("images/ui/popup/ok_button.png")
     );
 
-    this._okButton = new PIXI.Container();
     {
+      this._okButton = new PIXI.Container();
       this._okButton.position.set(1203, 540);
       this._okButton.hitArea = new PIXI.Rectangle(0, 0, 262, 75);
       this._okButton.interactive = true;
