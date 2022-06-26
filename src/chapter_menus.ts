@@ -248,10 +248,12 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
   }
 
   private _pickScene(type: SceneType, index: number): void {
+    this._entityConfig.fxMachine.play("Click");
     this._transition = entity.makeTransition("pick", { type, index });
   }
 
   private _continue(): void {
+    this._entityConfig.fxMachine.play("Click");
     this._transition = entity.makeTransition("continue");
   }
 
@@ -401,17 +403,23 @@ export class ScoreMenu extends extension.ExtendedCompositeEntity {
   }
 
   private _restartLevel() {
+    this._entityConfig.fxMachine.play("Click");
+
     // Tell the state machine to restart the current level
     const stateDescriptor = this._entityConfig.gameStateMachine.lastTransition;
     this._entityConfig.gameStateMachine.changeState(stateDescriptor);
   }
 
   private _gotoToc() {
+    this._entityConfig.fxMachine.play("Click");
+
     // Tell the state machine to return to the TOC
     this._entityConfig.gameStateMachine.changeState("toc");
   }
 
   private _continue() {
+    this._entityConfig.fxMachine.play("Click");
+
     // Simply stop this menu, the dialog will continue
     this._transition = entity.makeTransition();
   }
