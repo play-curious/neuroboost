@@ -43,6 +43,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private opened: boolean;
   private container: PIXI.Container;
 
+  private _controlsContainer: PIXI.Container;
   private blackBackground: PIXI.Graphics;
   private popupBackground: PIXI.NineSlicePlane;
   private menuButton: PIXI.Sprite;
@@ -80,11 +81,11 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       this.blackBackground = new PIXI.Graphics()
-        .beginFill(0x333333, 0.8)
+        .beginFill(0)
         .drawRect(0, 0, variable.width, variable.height)
         .endFill();
       this.blackBackground.interactive = true;
-      this.blackBackground.alpha = 0;
+      this.blackBackground.alpha = 0.5;
       this._on(this.blackBackground, "pointerup", this.close);
       this.container.addChild(this.blackBackground);
     }
@@ -124,6 +125,15 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
+      this._controlsContainer = new PIXI.Container();
+      this._controlsContainer.position.set(
+        0,
+        (this._entityConfig.app.view.height - 1028) / 2
+      );
+      this.container.addChild(this._controlsContainer);
+    }
+
+    {
       // TOC link
       this._tocButton = this.makeText(
         "Chapitres",
@@ -140,7 +150,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         }
       );
       this._on(this._tocButton, "pointerup", this._onTapTocButton);
-      this.popupBackground.addChild(this._tocButton);
+      this._controlsContainer.addChild(this._tocButton);
 
       // Blason de l'école
       this._gameLogo = this.makeSprite("images/logo.png", (it) => {
@@ -151,7 +161,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this._gameLogo.interactive = true;
       this._gameLogo.buttonMode = true;
       this._on(this._gameLogo, "pointerup", this._onTapTocButton);
-      this.popupBackground.addChild(this._gameLogo);
+      this._controlsContainer.addChild(this._gameLogo);
     }
 
     // Temporarily deactivating the history button
@@ -398,19 +408,19 @@ export class Menu extends extension.ExtendedCompositeEntity {
     this._activateChildEntity(
       this.fullscreenSwitcher,
       entity.extendConfig({
-        container: this.popupBackground,
+        container: this._controlsContainer,
       })
     );
     this._activateChildEntity(
       this.musicVolumeSwitcher,
       entity.extendConfig({
-        container: this.popupBackground,
+        container: this._controlsContainer,
       })
     );
     this._activateChildEntity(
       this.soundVolumeSwitcher,
       entity.extendConfig({
-        container: this.popupBackground,
+        container: this._controlsContainer,
       })
     );
 
