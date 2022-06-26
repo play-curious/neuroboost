@@ -47,7 +47,7 @@ export const dialogScenes = [
   "Prologue",
   "C1",
   "C2",
-  "D3_level2",
+  "C3",
   "D4_level2",
   "D5_level2",
   "D6",

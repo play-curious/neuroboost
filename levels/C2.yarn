@@ -6,6 +6,7 @@ position: -1627,-493
 colorID: 8
 ---
 << fadeIn  >>
+<< showTitle Chapitre 2 >>
 << setBackground door class >>
 << fadeOut >>
 
@@ -18,7 +19,7 @@ Fred_happy: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur. #line:06de
 You: Oui, mais mon drone est pas prêt ! La coque est trop lourde et mon système de navigation est encore bancal. 
 Fred_smiling: Tranquille, le mien fonctionne du tonnerre, je te passerai mes plans !
 
--> Ca prendra du temps de faire les changements...
+-> Ça prendra du temps de faire les changements...
     You: Même si j'ai tes plans, il me faudra au moins deux heures pour faire les changements et les tester...
 -> D'accord, mais tu m'aides à l'assembler !
 
@@ -28,7 +29,7 @@ Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir
 
 -> C'est quoi, exactement, ce défi ?
     Fred_smiling: Le défi du roi de la fête ! Le champion incontesté, c'est BB-Rex. On va devoir l'impressionner si on veut remporter son titre !
-    You: BB-Rex ?? On dirait un nom de mauvais rappeur !
+    You: BB-Rex ?? On dirait le nom d'un mauvais rappeur !
     Fred_happy: Ouais, je sais, mais c'est lui le champion !
 -> Ok, on se revoit là-bas
 
@@ -922,6 +923,8 @@ Vous vous rendez à votre poste. Vous vous calez sur votre siège et prenez conn
 Votre drone est complet et répond parfaitement aux commandes. À part une erreur ou deux, vous guidez votre appareil à bon port. #line:05f29c8 
 Puis, vous sortez de la salle de classe. #line:09197a3
 
+<< completeLevel >>
+
 << visit Tp_Win >>
 
 <<jump Sortir_Classe>>
@@ -1121,6 +1124,8 @@ position: 3557.0534057617188,389.2486877441406
 << setBackground bedroom night >>
 << fadeOut 400 >>
 
+<< completeSages >>
+
 Le carré de jardin tranquille des sages a disparu subitement ! #line:0e91632 
 Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être. #line:05ae07d 
 Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages... #line:01686de 
@@ -1134,6 +1139,8 @@ position: 3557.0534057617188,389.2486877441406
 ---
 << showJournal sleep >>
 << showJournal food >>
+
+<< completeJournal >>
 
 <<if !visited("Tp_Win")>>
 -> Recommencer la soirée d'hier

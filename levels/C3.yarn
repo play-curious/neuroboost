@@ -6,6 +6,7 @@ colorID: 0
 position: -215,-1026
 ---
 << fadeIn >>
+<< showTitle Chapitre 3 >>
 << setGauge learning 0 >>
 << setGauge sleep 100 >>
 << setGauge food 100 >>
@@ -16,14 +17,14 @@ position: -215,-1026
 << fadeOut >>
 << loopFX Chime_LOOP 2000 >>
 << set $silence to false >>
-Bip ! Bip ! Il est 8 heures vous rappelle votre horloge connectée.  #line:0aa5e7b 
+Bip ! Bip ! Il est 8 heures, vous rappelle votre horloge connectée.  #line:0aa5e7b 
 << stopFX Chime_LOOP >>
 << music Neutral >>
 
-Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie d'Omniscience et de Polytechnologie Universelle. Attention, ça ne veut pas dire jour de repos ! #line:02f7e52 
+Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie. Attention, ça ne veut pas dire jour de repos ! #line:02f7e52 
 Du repos, vous en auriez bien besoin... Pas d'un point de vue physique, mais mental : entre les deux examens que vous venez d'enchaîner et les cours barbants d'hier après-midi, vous commencez à saturer.
 << addToGauge mentalLoad 50 >>
-
+Vous vous demandez comment vous allez faire pour rédiger la note de synthèse que vous devez rendre aujourd'hui sans vous arracher les cheveux...
 << loopFX PhoneRing_LOOP 5000 >>
 Votre palmphone vibre. Sans suprise, vous voyez que l'appel vient de Fred. #line:0a81caa 
 
@@ -54,11 +55,11 @@ Fred@holo_excited: Hello ! Je te dérange pas ? #line:0e7041f
 You: Un peu... #line:0fc0b63 
 Fred@holo_surprised: Ah bon ? #line:00d17f3 
 You: Je finis mon petit déjeuner. #line:0d5515d 
-Fred@holo_smiling: Great ! Tu viens avec moi à la salle de gym ? #line:0d0655b 
+Fred@holo_smiling: Tu viens avec moi à la salle de gym ? #line:0d0655b 
 You: Naan... Je dois travailler en autonomie. #line:0f3d323 
 Fred@holo_smiling: Tu veux parler de la note de synthèse sur la PNLIAA ? #line:09b2be5 
 You: Ouais. #line:01a37fa 
-Fred@holo_excited: No worry. On a juste qu'à minuit pour la déposer sur le FTP de l'Académie. #line:01e3267 
+Fred@holo_excited: C'est bon, on a jusqu'à minuit pour la déposer sur le FTP de l'Académie...
 
 << hide >>
 << advanceTime 1:00 >>
@@ -80,12 +81,7 @@ position: -586,-820
 
 Vous retrouvez Fred à la salle de gym. Il sourit quand il vous voit. #line:0d49d56 
 Fred_excited: Je savais que tu allais venir. #line:011e84b 
-You: Je savais que tu allais dire ça. #line:00ab591 
-Fred_surprised: What ?! #line:005edbe 
-You: Rien. #line:0d6a409 
-Fred_smiling: Yolo ! Tu vas voir, après notre séance de gym, tu vas torcher cette note de synthèse ! #line:0bf38a2 
-You: Je n'en suis pas si sûr. #line:040abe0 
-Fred_smiling: No worry ! Allez viens ! #line:0c75155 
+
 << hide >>
 
 << loopFX Sports_LOOP 16000 >>
@@ -162,7 +158,7 @@ position: -829,-319
 ---
 << setBackground bedroom desk >>
 
--> Préparer son bureau avant de se mettre à travailler#once #line:07d896e 
+-> Préparer son bureau avant de travailler
     <<jump Ranger>>
 -> Ouvrir le chat histoire de se détendre#once #line:05d541d 
     <<jump Chat>>
@@ -208,16 +204,11 @@ position: -961,-447
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
-
-Vous ne savez pas si cette tâche est indispensable. Les Sages n'ont pas été clair à ce sujet. Mais ça ne vous fera pas de mal, jugez-vous. #line:016fb38 
-Vous débarrassez votre bureau de tous les objets inutiles et encombrants. Vous étalez ensuite le paper print de votre brief, les documents de référence que vous avez déjà en possession. Avant de commencer à vous jeter dans la gueule du loup, vous relisez bien le brief et les notes prises sur le document.  #line:0f24307 
-Vous prenez ensuite plusieurs minutes pour établir un plan de réflexion et de travail. Vous êtes content de vous, ça va vous faciliter le processus de rédaction. #line:0614126 
+Votre bureau est encore couvert de vieilles fiches de révision et de pièces de drone. Vous le débarrassez, puis vous prenez ensuite plusieurs minutes pour établir un plan de réflexion et de travail.
+Vous êtes content de vous, ça va vous faciliter le processus de rédaction.
 << advanceTime 1:00 >>
 << removeFromGauge mentalLoad 10 >>
-
--> Il ne reste plus qu'à s'y mettre maintenant  #line:033c6b9 
-    << fadeIn >>
-    << jump Liste_Taches >>
+<< jump Liste_Taches >>
 ===
 
 title: Chat
@@ -229,14 +220,9 @@ position: -1090,-305
 << setBackground bedroom desk >>
 << fadeOut >>
 
-<< fx Notification >>
-Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes pingé par Fred !  #line:02e780f 
-<< fx Notification >>
-Il vous demande encore si vous ne voulez pas le rejoindre à la salle de gym ! Vous lui répondez bien entendu non, mais il vous provoque en duel sur AlphaMégaRing, l'arène virtuelle du Métaverse de la fraternité étudiante de l'Académie. Vous savez que ne pouvez ignorer son injonction ! Si toute la communauté apprenait que vous aviez refusé un duel virtuel, que vous êtes un lâche... #line:0fab654 
-<< fx Notification >>
-Décidé à régler l'affaire au plus vite, vous vous connectez au site d'AlphaMégaRing ! Vous êtes meilleur que Fred à ce petit jeu. Vous le savez, il le sait. Cependant, Fred se montre un adversaire particulièrement retord et surprenant. Le combat s'avère plus long et difficile que prévu. Heureusement, c'est vous qui finissez encore par l'emporter. #line:08a2fd3 
-<< advanceTime 2:00 >>
-<< addToGauge mentalLoad 30 >>
+Vous ouvrez l'application Disboard pour discuter avec vos amis. Vous parlez toujours à votre groupe de potes habituel, avec qui vous passez du temps à refaire le monde et à jouer.
+Votre ami Phil passe une heure à vous expliquer comment marche son simulateur spatial préféré, Star Civilian. Vous ne comprenez rien, mais vous tentez de suivre pour lui faire plaisir.
+Au final, cette petite session de chat vous a fait du bien, mais votre cerveau n'a toujours pas eu de répis pendant plusieurs heures.
 
 -> Et maintenant, il faut peut-être travailler sur cette note de synthèse ?  #line:01550f8 
     << fadeIn >>
@@ -321,17 +307,15 @@ position: -407,-244
 << setBackground bedroom bed >>
 << fadeOut >>
 
-Vous n'avez pas oublié ce que vous ont dit les quatre Sages. Si vous avez sommeil et si le temps manque, un petit somme, ça fait toujours du bien. En effet, vous vous allongez sur votre lit, vous fermez les yeux.  #line:020fcc8 
 << loopFX Sleep_LOOP 5000 >>
 Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux. #line:058b075 
 << stopFX Sleep_LOOP >>
 
-<< removeFromGauge sleep 20 >>
+<< addToGauge sleep 60 >>
 << removeFromGauge mentalLoad 10 >> 
+<< advanceTimeBy 3:00 sleep >>
 
--> Maintenant, il faut s'y remettre #line:0b14191 
-    << fadeIn >>
-    <<jump Liste_Taches>>
+<<jump Liste_Taches>>
 ===
 
 title: Redaction_Note
@@ -342,6 +326,13 @@ position: -822,-557
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
+if learning < 30
+
+
+if 30< learning < 60
+
+if learning > 60
+
 
 << if !visited("Redaction_Note") >>
 << visit Redaction_Note >>

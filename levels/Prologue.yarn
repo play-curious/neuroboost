@@ -143,7 +143,7 @@ Temde_sad: Arrête tes jérémiades ! Tu as bricolé comme tu as pu, ça n'a pas
     You: J'ai raté, j'ai raté. C'est fini, fichu ! #line:0d2f065 
     Temde_smiling: Pas du tout { $name } ! Si je suis ici, c'est parce qu'on t'offre une seconde chance ! Allez suis-moi, on t'attend là-bas ! #line:020d3da 
 You: Qui m'attend ? Où, là-bas ? #line:0940e22 
-Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit quand même ! #line:02f8956 
+Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit, quand même ! #line:02f8956 
 
 -> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller #line:018cd35 
     <<jump Tenter_rester_chambre>>
@@ -177,7 +177,7 @@ position: -562.1727294921875,1164.6718139648438
 << music Tense >>
 << fadeOut >>
 
-L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, mais étrange, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université.
+L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, mais étrange, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus.
 Quatre individus étranges se tiennent devant vous, vous toisent du regard.
 <<jump Sages_FreeChoice>>
 ===
