@@ -15,7 +15,7 @@ import * as dialog from "./dialog";
 import * as journal from "./journal";
 import * as variable from "./variable";
 import * as miniGame from "./mini_game";
-import * as toc from "./toc";
+import * as chapter_menus from "./chapter_menus";
 import _ from "underscore";
 
 class RequestTransitionEntity extends entity.EntityBase {
@@ -112,7 +112,7 @@ export function installGameData(rootConfig: entity.EntityConfig) {
 
 let states: { [k: string]: entity.EntityResolvable } = {
   start: new RequestTransitionEntity(checkSave),
-  toc: new toc.TableOfContents(),
+  toc: new chapter_menus.TableOfContents(),
   outro_video: outroVideoScene,
 };
 
@@ -150,7 +150,7 @@ transitions["toc"] = (transition: entity.Transition) => {
   // The player must have picked a level
   console.assert(transition.name === "pick");
 
-  const sceneType = transition.params.type as toc.SceneType;
+  const sceneType = transition.params.type as chapter_menus.SceneType;
   if (sceneType === "level") {
     // Jump to the level
     return entity.makeTransition(dialog.dialogScenes[transition.params.index]);

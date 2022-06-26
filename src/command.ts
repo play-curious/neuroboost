@@ -10,6 +10,7 @@ import * as save from "./save";
 import * as popup from "./popup";
 import * as journal from "./journal";
 import * as title from "./title";
+import * as chapter_menus from "./chapter_menus";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (
@@ -343,9 +344,15 @@ export const commands: Record<string, Command> = {
     return new title.Title(text);
   },
 
-  completeLevel(): void {
+  completeLevel(): entity.Entity {
     const score = this.calculateScore();
     save.updateCompletedLevel(this.levelName, score);
+    return new chapter_menus.ScoreMenu({
+      chapter: 5,
+      score: 2,
+      message:
+        "Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger.",
+    });
   },
 
   completeSages(): void {
