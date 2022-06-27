@@ -31,6 +31,9 @@ class RequestTransitionEntity extends entity.EntityBase {
 function checkSave(): entity.Transition {
   if (!save.hasSave()) return entity.makeTransition("toc");
 
+  // Load variable storage from memory
+  this._entityConfig.variableStorage.data = save.getVariableStorage();
+
   const loadedChapterData = save.getCurrentChapter();
 
   // If no save exists, go the main menu
@@ -86,10 +89,6 @@ const variableStorage = new variable.VariableStorage({
   eval: "",
   food: "100",
 });
-// Load variable storage from memory, if available
-if (save.hasSave() && save.getVariableStorage()) {
-  variableStorage.data = save.getVariableStorage();
-}
 
 const globalHistory: yarnBound.Result[] = [];
 

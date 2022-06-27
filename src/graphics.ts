@@ -583,8 +583,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       if (!highlightJSON.hasOwnProperty(jsonValue)) continue;
       freechoicesFound++;
 
-      const path: images.SpritePath & `images/ui/highlights/${string}.png` =
-        `images/ui/highlights/${jsonValue}.png` as any;
+      const path = `images/ui/highlights/${jsonValue}.png` as images.SpritePath;
 
       let highlight: PIXI.Sprite;
       if (_.has(this.entityConfig.app.loader.resources, path)) {
@@ -593,7 +592,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         });
 
         this._nodeDisplay.addChild(highlight);
-      } else continue;
+      } else {
+        throw new Error(`Missing highlight sprite ${path}`);
+      }
 
       const hitboxPositions = highlightJSON[jsonValue];
       highlight.hitArea = new PIXI.Polygon(hitboxPositions);
@@ -602,52 +603,48 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         new entity.EntitySequence([
           new entity.WaitingEntity(Math.min(i, 1) * animationShifting * i),
           new tween.Tween({
+            obj: highlight,
+            property: "alpha",
             duration: 900,
             easing: easing.easeInSine,
             from: 0,
             to: baseAlpha,
-            onUpdate: (value) => {
-              highlight.alpha = value;
-            },
-            onTeardown: () => {
-              highlight.interactive = true;
-              highlight.buttonMode = true;
+          }),
+          new entity.FunctionCallEntity(() => {
+            highlight.interactive = true;
+            highlight.buttonMode = true;
 
-              this._on(highlight, "pointerup", () => {
-                this.config.dialogScene.addToHistory(
-                  "[freechoice]",
-                  choiceText
-                );
-                onBoxClick(i);
-              });
+            this._on(highlight, "pointerup", () => {
+              this.config.dialogScene.addToHistory("[freechoice]", choiceText);
+              onBoxClick(i);
+            });
 
-              this._on(highlight, "mouseover", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: baseAlpha,
-                    to: 1,
-                    onUpdate: (value) => {
-                      highlight.alpha = value;
-                    },
-                  })
-                );
-              });
-              this._on(highlight, "mouseout", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: 1,
-                    to: baseAlpha,
-                    onUpdate: (value) => {
-                      highlight.alpha = value;
-                    },
-                  })
-                );
-              });
-            },
+            this._on(highlight, "mouseover", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: baseAlpha,
+                  to: 1,
+                  onUpdate: (value) => {
+                    highlight.alpha = value;
+                  },
+                })
+              );
+            });
+            this._on(highlight, "mouseout", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1,
+                  to: baseAlpha,
+                  onUpdate: (value) => {
+                    highlight.alpha = value;
+                  },
+                })
+              );
+            });
           }),
         ])
       );
@@ -655,23 +652,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._nodeDisplay.addChild(highlight);
     }
 
-    if (freechoicesFound === nodeOptions.length) {
-      this._container.addChild(this._nodeDisplay);
-      this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
-    } else if (freechoicesFound === 0) {
-      const options: Record<string, string>[] = [];
-      for (let i = 0; i < nodeOptions.length; i++) {
-        options.push({
-          text: nodeOptions[i],
-          id: i.toString(),
-        });
-      }
-      this.setChoice(options, onBoxClick);
-    } else if (freechoicesFound !== nodeOptions.length) {
-      console.error("Free choice & choice are not compatible");
-    } else {
-      console.error("Should not happen");
-    }
+    this._container.addChild(this._nodeDisplay);
+    this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
+
+    console.assert(freechoicesFound === nodeOptions.length);
   }
 
   /**
