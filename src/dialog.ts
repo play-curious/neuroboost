@@ -256,8 +256,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       return;
     }
 
-    this.graphics.hideNode();
-
     // Check if the node data has changed
     if (this.lastNodeData?.title !== this.metadata.title) {
       this._onChangeNodeData(this.lastNodeData, this.metadata);
@@ -477,12 +475,12 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   disable() {
     this.enabled = false;
+    // TODO: why is this necessary?
     this.graphics.hideNode();
   }
 
   enable() {
     this.enabled = true;
-    this.graphics.showNode();
     this._advance();
   }
 

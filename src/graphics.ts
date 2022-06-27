@@ -200,7 +200,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    * Show node
    */
   public hideNode() {
-    if (this._nodeDisplay) this._container.removeChild(this._nodeDisplay);
+    if (!this._nodeDisplay) return;
+
+    this._container.removeChild(this._nodeDisplay);
     this._nodeDisplay = null;
   }
 
@@ -320,15 +322,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
 
     {
-      // Use the dialog box in button mode, but actually allow clicks anywhere on the screen
-      const hitBox = new PIXI.Container();
-      hitBox.position.set(140, 704);
-      hitBox.hitArea = new PIXI.Rectangle(0, 0, 1634, 322);
-      hitBox.buttonMode = true;
-      this._nodeDisplay.addChild(hitBox);
-    }
-
-    {
       const dialogBox = this.makeText(
         "",
         {
@@ -361,6 +354,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
           this._container.interactive = false;
           this._container.buttonMode = false;
+          this.hideNode();
           onBoxClick();
         });
       } else {
@@ -390,6 +384,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             this._once(this._container, "pointerup", () => {
               this._container.interactive = false;
               this._container.buttonMode = false;
+              this.hideNode();
               onBoxClick();
             });
           },
@@ -412,7 +407,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public setChoice(
     nodeOptions: Record<string, string>[],
     onBoxClick: (choiceId: number) => unknown,
-    subchoice?: number
+    backOptionIndex?: number
   ) {
     // This works for both links between nodes and shortcut options
     this._dialogLayer.visible = false;
@@ -423,12 +418,12 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
-      if (subchoice === Number(nodeOptions[i].id)) continue;
+      if (backOptionIndex === Number(nodeOptions[i].id)) continue;
 
       const choicebox = new PIXI.Container();
       choicebox.addChild(
         this.makeSprite(
-          i === (subchoice ? 1 : 0)
+          i === (backOptionIndex ? 1 : 0)
             ? "images/ui/choicebox_contour_reversed.png"
             : i === nodeOptions.length - 1
             ? "images/ui/choicebox_contour.png"
@@ -456,45 +451,46 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             onUpdate: (value) => {
               choicebox.position.x = value;
             },
-            onTeardown: () => {
-              choicebox.interactive = true;
-              choicebox.buttonMode = true;
+          }),
+          new entity.FunctionCallEntity(() => {
+            choicebox.interactive = true;
+            choicebox.buttonMode = true;
 
-              this._on(choicebox, "pointerup", () => {
-                this.config.dialogScene.addToHistory(
-                  "[choice]",
-                  nodeOptions[i].text
-                );
-                onBoxClick(Number(nodeOptions[i].id));
-              });
+            this._on(choicebox, "pointerup", () => {
+              this.config.dialogScene.addToHistory(
+                "[choice]",
+                nodeOptions[i].text
+              );
+              this.hideNode();
+              onBoxClick(Number(nodeOptions[i].id));
+            });
 
-              this._on(choicebox, "mouseover", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: 1,
-                    to: 1.03,
-                    onUpdate: (value) => {
-                      choicebox.scale.set(value);
-                    },
-                  })
-                );
-              });
-              this._on(choicebox, "mouseout", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: 1.03,
-                    to: 1,
-                    onUpdate: (value) => {
-                      choicebox.scale.set(value);
-                    },
-                  })
-                );
-              });
-            },
+            this._on(choicebox, "mouseover", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1,
+                  to: 1.03,
+                  onUpdate: (value) => {
+                    choicebox.scale.set(value);
+                  },
+                })
+              );
+            });
+            this._on(choicebox, "mouseout", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1.03,
+                  to: 1,
+                  onUpdate: (value) => {
+                    choicebox.scale.set(value);
+                  },
+                })
+              );
+            });
           }),
         ])
       );
@@ -523,7 +519,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._activateChildEntity(new entity.ParallelEntity(box_tweens));
 
-    if (subchoice) {
+    if (backOptionIndex) {
       const arrow_back = new PIXI.Container();
       arrow_back.addChild(this.makeSprite("images/ui/arrow_return.png"));
       arrow_back.scale.set(0.65);
@@ -532,7 +528,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       arrow_back.interactive = true;
       arrow_back.buttonMode = true;
       this._on(arrow_back, "pointerup", () => {
-        onBoxClick(subchoice);
+        this.hideNode();
+        onBoxClick(backOptionIndex);
       });
       this._on(arrow_back, "mouseover", () => {
         this._activateChildEntity(
@@ -616,6 +613,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
             this._on(highlight, "pointerup", () => {
               this.config.dialogScene.addToHistory("[freechoice]", choiceText);
+              this.hideNode();
               onBoxClick(i);
             });
 
