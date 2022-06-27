@@ -243,13 +243,14 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         button.anchor.set(0.5, 0.5);
         button.interactive = true;
         button.buttonMode = true;
+        button.tint = 0xdddddd;
         this._on(button, "pointerup", this._skip);
         buttonContainer.addChild(button);
 
         const buttonText = new PIXI.Text("Passer", {
           fontFamily: "Ubuntu",
           fontSize: 32,
-          fill: "white",
+          fill: 0xdddddd,
         });
         buttonText.anchor.set(0.5, 0.5);
         buttonContainer.addChild(buttonText);
@@ -259,8 +260,10 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
 
   _teardown() {
     this.config.container.removeChild(this._container);
-    this._htmlContainer.remove();
     this._container = null;
+
+    this._htmlContainer.remove();
+    this._htmlContainer = null;
   }
 
   private _validate() {
@@ -290,6 +293,17 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
   private _skip() {
     this.config.fxMachine.play("Click");
     this._transition = entity.makeTransition("skip");
+  }
+
+  _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any): void {
+    // When the game is paused, a menu is shown. Hide the html layer in that case
+    if (!this._htmlContainer) return;
+
+    if (signal === "pause") {
+      this._htmlContainer.style.visibility = "hidden";
+    } else if (signal === "play") {
+      this._htmlContainer.style.visibility = "visible";
+    }
   }
 }
 
