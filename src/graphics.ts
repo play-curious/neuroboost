@@ -582,7 +582,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public setFreechoice(
-    nodeOptions: string[],
+    nodeOptions: Record<string, string>[],
     onBoxClick: (choiceId: number) => unknown
   ) {
     this._dialogLayer.visible = false;
@@ -595,7 +595,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const [animationShifting, baseAlpha] = [120, 0.6];
     let freechoicesFound = 0;
     for (let i = 0; i < nodeOptions.length; i++) {
-      const [choiceText, jsonValue] = nodeOptions[i].trim().split("@");
+      const [choiceText, jsonValue] = nodeOptions[i].text.trim().split("@");
       if (!highlightJSON.hasOwnProperty(jsonValue)) continue;
       freechoicesFound++;
 

@@ -271,11 +271,13 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this._handleDialog();
     } else if (isOption(result)) {
       this.graphics.showDialogLayer();
-      if (this._hasTag(this.metadata, "freechoice")) {
-        this._handleFreechoice();
-      } else {
-        this._handleChoice();
-      }
+      this._handleChoice();
+
+      // if (this._hasTag(this.metadata, "freechoice")) {
+      //   this._handleFreechoice();
+      // } else {
+      //   this._handleChoice();
+      // }
     } else if (isCommand(result)) {
       this._handleCommand();
     } else {
@@ -323,10 +325,15 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     const options: Record<string, string>[] = [];
 
-    let indexOfBack = 0;
+    let indexOfBack;
+    let freeChoiceCount = 0;
     for (let i = 0; i < result.options.length; i++) {
       const option = result.options[i];
       const optionText = option.text.trim();
+
+      if (optionText.includes("@")) {
+        freeChoiceCount++;
+      }
 
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
       if (
@@ -353,36 +360,31 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       return;
     }
 
-    options.reverse();
+    if (freeChoiceCount > 0) {
+      if (freeChoiceCount < options.length)
+        throw new Error("Cannot mix free choices and normal choices");
 
-    this.graphics.setChoice(
-      options,
-      (id) => {
+      // Show highlight zones
+      this.graphics.setFreechoice(options, (id) => {
         this.config.fxMachine.play("Click");
-        this.selectedOptions.push(
-          `${this.metadata.title}|${this.metadata.choiceId}|${id}`
-        );
         this._advance.bind(this)(id);
-      },
-      this._hasTag(this.metadata, "subchoice") ? indexOfBack : undefined
-    );
-  }
+      });
+    } else {
+      // Regular choice
+      options.reverse();
 
-  private _handleFreechoice() {
-    const result = this.runner.currentResult;
-
-    if (!isOption(result))
-      throw new Error("Called _handleChoice for unknown result");
-
-    const options: string[] = [];
-    for (const option of result.options) {
-      if (option.isAvailable) options.push(option.text);
+      this.graphics.setChoice(
+        options,
+        (id) => {
+          this.config.fxMachine.play("Click");
+          this.selectedOptions.push(
+            `${this.metadata.title}|${this.metadata.choiceId}|${id}`
+          );
+          this._advance.bind(this)(id);
+        },
+        this._hasTag(this.metadata, "subchoice") ? indexOfBack : undefined
+      );
     }
-
-    this.graphics.setFreechoice(options, (id) => {
-      this.config.fxMachine.play("Click");
-      this._advance.bind(this)(id);
-    });
   }
 
   private _handleCommand(): void {
