@@ -414,6 +414,25 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
+
+    const isSubchoice = typeof backOptionIndex !== "undefined";
+    if (isSubchoice) {
+      // Catch all the clicks outside of the options
+      const clickCatcher = new PIXI.Container();
+      clickCatcher.hitArea = new PIXI.Rectangle(
+        0,
+        0,
+        this._entityConfig.app.view.width,
+        this._entityConfig.app.view.height
+      );
+      clickCatcher.interactive = true;
+      this._on(clickCatcher, "pointerup", () => {
+        this.hideNode();
+        onBoxClick(backOptionIndex);
+      });
+      this._nodeDisplay.addChild(clickCatcher);
+    }
+
     const animationShifting = 120;
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
@@ -519,7 +538,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._activateChildEntity(new entity.ParallelEntity(box_tweens));
 
-    if (backOptionIndex) {
+    if (isSubchoice) {
       const arrow_back = new PIXI.Container();
       arrow_back.addChild(this.makeSprite("images/ui/arrow_return.png"));
       arrow_back.scale.set(0.65);
