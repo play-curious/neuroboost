@@ -82,11 +82,7 @@ tags: freechoice
 colorID: 1
 position: -420,-531
 ---
-<<if !isTimeOver("21:00") >>
-    << setBackground bedroom >>
-<<else>>
-    << setBackground bedroom night >>
-<<endif>>
+<< setBackground bedroom >>
 
 << if getGauge("mentalLoad") >= 100 >>
     <<jump Surcharge_Cognitive>>
