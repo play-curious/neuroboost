@@ -4,6 +4,9 @@ import * as extension from "./extension";
 import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 
+const baseBallSpeed = 0.15;
+const ballSpeedVariation = 0.1;
+
 export abstract class MiniGame extends extension.ExtendedCompositeEntity {
   protected container: PIXI.Graphics;
 
@@ -20,7 +23,7 @@ export abstract class MiniGame extends extension.ExtendedCompositeEntity {
 export class Juggling extends MiniGame {
   // private temde: { container: PIXI.Container; entity: entity.ParallelEntity };
   // private temdeArm: PIXI.Sprite;
-  private hits: number;
+  private firstHitCount: number;
   private text: PIXI.Text;
   public balls: Ball[];
   public stopped: boolean;
@@ -34,10 +37,10 @@ export class Juggling extends MiniGame {
   _setup() {
     super._setup();
     this.stopped = false;
-    this.hits = 0;
+    this.firstHitCount = 0;
     this.balls = [];
     this.text = this.makeText(
-      "Click or tap a ball to juggle it",
+      "Cliquer sur une balle pour la jongler",
       {
         fontFamily: "Ubuntu",
         align: "center",
@@ -69,25 +72,23 @@ export class Juggling extends MiniGame {
   }
 
   retry() {
-    this.hits = 0;
+    this.firstHitCount = 0;
     this._teardown();
     this._deactivateAllChildEntities();
     this._off();
     this._setup();
   }
 
-  hit() {
-    this.hits++;
-    if (this.hits > this.balls.length) {
-      this.hits = 0;
-      if (this.balls.length < 5) {
-        this._activateChildEntity(this.addBall());
-      } else {
-        this.config.fxMachine.play("Success");
-        this.stop();
-        this.config.variableStorage.set("ballsJuggled", this.balls.length);
-        this._transition = entity.makeTransition();
-      }
+  firstHit() {
+    this.firstHitCount++;
+
+    if (this.balls.length < 6) {
+      this._activateChildEntity(this.addBall());
+    } else {
+      this.config.fxMachine.play("Success");
+      this.stop();
+      this.config.variableStorage.set("ballsJuggled", this.balls.length);
+      this._transition = entity.makeTransition();
     }
   }
 
@@ -136,16 +137,21 @@ export class Ball extends extension.ExtendedCompositeEntity {
   private sprite: PIXI.Sprite;
   private speed = 0;
   private index = 0;
+  private wasHit: boolean;
 
   constructor(private game: Juggling) {
     super();
   }
 
   _setup() {
+    this.wasHit = false;
+
     this.index = this.game.balls.indexOf(this);
     this.sprite = this.makeSprite(
       "images/mini_games/juggling/ball.png",
       (it) => {
+        // Larger hitbox (real radius is 260)
+        it.hitArea = new PIXI.Circle(0, 0, 500);
         it.anchor.set(0.5);
         it.scale.set(0.3);
         it.interactive = true;
@@ -159,9 +165,14 @@ export class Ball extends extension.ExtendedCompositeEntity {
         this.config.container.addChild(it);
         this._on(it, "pointerdown", () => {
           if (this.speed < 0) return;
+
           this.speed *= -1;
           this.config.fxMachine.play("Click");
-          this.game.hit();
+
+          if (!this.wasHit) {
+            this.game.firstHit();
+            this.wasHit = true;
+          }
         });
       }
     );
@@ -170,8 +181,10 @@ export class Ball extends extension.ExtendedCompositeEntity {
   _update() {
     if (this.game.stopped) return;
 
-    this.speed += 0.2 - this.index * 0.05;
-    this.sprite.rotation = Date.now() / 200;
+    this.speed +=
+      (baseBallSpeed + (2 * Math.random() - 1) * ballSpeedVariation) *
+      this._lastFrameInfo.timeScale;
+    this.sprite.rotation = (this._lastFrameInfo.timeScale * Date.now()) / 200;
     this.sprite.position.y += this.speed;
     if (this.sprite.position.y < this.game.zone.y) {
       this.sprite.alpha = this.sprite.position.y / this.game.zone.y;
