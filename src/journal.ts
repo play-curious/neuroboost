@@ -206,7 +206,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         "textArea"
       ) as HTMLTextAreaElement;
       this._textArea.required = true;
-      this._textArea.minLength = 40;
+      this._textArea.minLength = 30;
       this._textArea.placeholder = "Ecrire ici...";
       this._textArea.className = "journal-right-answer";
       rightElements.appendChild(this._textArea);
