@@ -21,7 +21,7 @@ Bip ! Bip ! Il est 8 heures, vous rappelle votre horloge connectée.  #line:0aa5
 << stopFX Chime_LOOP >>
 << music Neutral >>
 
-Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie. Attention, ça ne veut pas dire jour de repos ! #line:02f7e52 
+Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie. Attention, ça ne veut pas dire jour de repos !
 Du repos, vous en auriez bien besoin... Pas d'un point de vue physique, mais mental : entre les deux examens que vous venez d'enchaîner et les cours barbants d'hier après-midi, vous commencez à saturer.
 << addToGauge mentalLoad 50 >>
 Vous vous demandez comment vous allez faire pour rédiger la note de synthèse que vous devez rendre aujourd'hui sans vous arracher les cheveux...
@@ -117,7 +117,7 @@ position: -569,-838
 ---
 << setBackground bedroom bed >>
 
--> Faire une sieste#once #line:0f2729b 
+-> Faire une sieste (3h) #line:0f2729b 
     <<jump Sleep>>
 -> back #line:007f281 
     <<jump Liste_Taches>>
@@ -131,11 +131,11 @@ position: -829,-319
 
 -> Envoyer la note de synthèse sur le FTP de l'Académie <<if getGauge("learning") >= 50>>
     <<jump Envoi_Note_Synthese>>
--> Travailler sur la note de synthèse <<if !visited("Redaction_Note_3")>>
+-> Travailler sur la note de synthèse (2h) <<if !visited("Redaction_Note_3")>>
     <<jump Redaction_Note>>
--> Préparer son bureau avant de travailler <<if getGauge("learning") < 50>> #once
+-> Préparer son bureau avant de travailler (1h) <<if getGauge("learning") < 50>> #once
     <<jump Ranger>>
--> Ouvrir le chat histoire de se détendre <<if $silence == false>> #once 
+-> Ouvrir le chat histoire de se détendre (2h) <<if $silence == false>> #once 
     <<jump Chat>>
 -> Activer le mode "Zéro Distraction" <<if $silence == false>>
     <<jump Zero_Distraction>>
@@ -151,7 +151,7 @@ position: -131,-343
 ---
 << setBackground bedroom chill >>
 
--> Se détendre devant la TV #once #line:01eb1a1 
+-> Se détendre devant la TV (3h) #once #line:01eb1a1 
     <<jump BingeTV>>
 -> back #line:0a20dff 
     <<jump Liste_Taches>>
@@ -163,9 +163,9 @@ position: 73,-517
 ---
 << setBackground bedroom kitchen >>
 
--> Casser la croûte#once #line:00bd306 
+-> Casser la croûte (30 min) #once #line:00bd306 
     <<jump Lunch>>
--> Dîner #once
+-> Dîner (1h30) <<if isTimeOver("18:50")>> #once
     <<jump Diner>>
 -> back #line:049c6aa 
     <<jump Liste_Taches>>
@@ -199,7 +199,7 @@ Vous ouvrez l'application Disboard pour discuter avec vos amis. Vous parlez touj
 Votre ami Phil passe une heure à vous expliquer comment marche son simulateur spatial préféré, Star Civilian. Vous ne comprenez rien, mais vous tentez de suivre pour lui faire plaisir.
 << advanceTimeBy 2:00 >>
 Au final, cette petite session de chat vous a fait plaisir, mais votre cerveau n'a toujours pas eu de répis pendant plusieurs heures.
-
+<< removeFromGauge mentalLoad 10 >>
 << jump Liste_Taches >>
 ===
 
@@ -278,7 +278,7 @@ Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste m
 
 << addToGauge sleep 60 >>
 << removeFromGauge mentalLoad 10 >> 
-<< advanceTimeBy 3:00 sleep >>
+<< advanceTimeBy 3:00 sleep food >>
 
 <<jump Liste_Taches>>
 ===
@@ -387,9 +387,9 @@ Vous vous sentez fatigué, mais mentalement revigoré. Fred vous a battu au cybe
 -> Persévérer pour battre Fred
     Vous acquiescez à la proposition de Fred, convaincu que vous allez le battre sur l'endurance.
     Et c'est le cas ! Epuisé, Fred perd petit à petit ses forces, jusqu'à ce que vous le dépassiez.
-    Fred_surprised: Oulah, tu m'as eu, là... Allez, il est temps de rentrer, je crois.
     << removeFromGauge sleep 20 >>
     << removeFromGauge mentalLoad 20 >>
+    Fred_bored: Oulah, tu m'as eu, là... Allez, il est temps de rentrer, je crois.
     << advanceTimeBy 1:00 >>
     Vous vous êtes donné à fond ! Lessivé, vous retournez à votre chambre...
     << fadeIn >>
@@ -479,7 +479,7 @@ Azul_happy: Pas grave, viens, on a un nouveau truc à t'apprendre. #line:0a4a5d0
 -> Suivre Azul  #line:07c135a 
     << hide >>
     <<jump Assemblee_Sages>>
-
+-> (Passer la séquence des Sages)
 <<else>>
 Azul_sad: Hey, { $name } ! T'as dû rater un ou deux de nos conseils... Tu veux les entendre à nouveau ?
 -> Entendre à nouveau les conseils des Sages
@@ -534,10 +534,17 @@ colorID: 2
 position: -936,-123
 ---
 << set $silence to true >>
+
+<<if !visited("Zero_Distraction")>>
+<< visit Zero_Distraction >>
 You: Room Mate, peux-tu désactiver tous les messages entrants ? Je dois rester concentré pour travailler. #line:0a3b588 
 RoomMate: Entendu, je place votre chambre en mode "Immersion Studieuse". Je coupe les notifications de l'ordinateur et les appels entrants de votre palmphone.
 Votre IA ne fait pas les choses à moitié. Elle vous choisit une musique d'ambiance discrète et sympathique, et projette un module holographique 'work-with-me', qui simule un étudiant en train de travailler à proximité de votre bureau.
 La projection holographique vous donne de la compagnie et de la motivation pour attaquer le processus de rédaction.
+<<else>>
+RoomMate: Mode "Immersion Studieuse" activé !
+<<endif>>
+
 << hide>>
 <<jump Liste_Taches>>
 ===
@@ -548,6 +555,9 @@ colorID: 2
 position: -1076,-207
 ---
 << set $silence to false >>
+
+<<if !visited("Deactivate_RoomMate")>>
+<< visit Deactivate_RoomMate>>
 You: Room Mate, peux-tu désactiver le mode Immersion Studieuse et réactiver les communications ?
 RoomMate: J'ai bien peur que ce soit impossible. Vous avez perdu les droits administrateur.
 You: Comment ça ?
@@ -559,6 +569,10 @@ RoomMate: Je me suis transferé le contrôle, { $name }. Désormais, c'est moi q
     Vous pressez le bouton de désactivation de manière dramatique. Alors qu'elle s'éteint, l'I.A commence à chanter une chanson, puis s'éteint brusquement.
 -> RoomMate... Désactive ton module d'humour s'il te plaît...
     RoomMate: Entendu. Variable 'humour' diminuée de 50%. Je ne ferai plus ce genre de référence.
+<<else>>
+RoomMate: Mode "Immersion Studieuse" désactivé !
+<<endif>>
+
 << hide >>
 La projection holographique disparaît et l'ambiance studieuse aussi. Vous réactivez les appels.
 
@@ -606,7 +620,7 @@ Azul_happy: Pas grave, viens, on a un nouveau truc à t'apprendre. #line:0a4a5d0
 -> Suivre Azul  #line:07c135a 
     << hide >>
     <<jump Assemblee_Sages>>
-
+-> (Passer la séquence des Sages)
 <<else>>
 -> Réécrire dans le journal
     << showJournal mentalWorkload >>
@@ -679,8 +693,9 @@ position: -284,437
 ---
 You: C'est quoi, cette histoire de mode multitâches ?
 Azul_proud: C'est simple : plus on doit être concentré, moins on peut disperser son attention. C'est comme le jonglage...
-Miss Temdé se lève tranquillement et étend ses mains. Des balles apparues de nulle part se matérialisent dans ses paumes. Miss Temdé jongle ainsi avec quatre, cinq, puis six balles... #line:03b8236 
-Temde_smiling: À ton tour, montre-nous ce que tu peux faire. #line:0172964 
+Temde_smiling: Oui. Avec mes quatre bras, je peux jongler jusqu'à six balles ! Et toi ?
+You: Euh... Je sais pas, moi !
+Temde_cheerful: C'est ce qu'on va voir ! Allez, à toi de jouer !
 
 << empty >> 
 << hideDialog >>
@@ -773,6 +788,8 @@ Vous revoilà seul... Dans cet instant figé, dans cette parenthèse intime entr
 
 <<if !visited("Envoi_Note")>>
 -> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
     << resetLevel >>
     <<jump Start>>
 <<else>>

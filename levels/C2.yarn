@@ -8,6 +8,7 @@ colorID: 8
 << fadeIn  >>
 << showTitle Chapitre 2 >>
 << setBackground door class >>
+<< music Neutral >>
 << fadeOut >>
 
 Fred_smiling: Allô ? Tu m'entends pas ou quoi ?
@@ -229,7 +230,11 @@ position: -939,-153
 ---
 << fadeIn >>
 << setBackground party >>
+<<if isTimeOver("21:30")>>
 << advanceTimeBy 00:15 >>
+<<else>>
+<< advanceTimeUntil 21:30 >>
+<<endif>>
 << fadeOut >>
 << music DanseQuiet >>
 << fadeOut >>
@@ -252,7 +257,7 @@ BarBot: Ben quoi, loser, y a quelque chose qui va pas dans ton programme de déc
     You: Euh... Ils sont censés être aussi violents ?
     Barbot: Non, seulement moi. C'est moi qui écrit les règles ici, amigo.
 -> Hé ! Loser toi-même !
-    You: Euh... Comment tu me parles, sale robot ? Loser toi-même !
+    You: Euh... Comment tu nous parles, sale robot ? Loser toi-même !
     Tous les regards se tournent soudain vers vous.
     BarBot: Hey, amigo, tu sais à qui tu parles, au moins ?
 
@@ -288,7 +293,7 @@ position: -433,-420
 << hide >>
 << music Danse >>
 
-<<if !isTimeOver("21:30")>>
+<<if !isTimeOver("18:30")>>
 <<if isTimeOver("4:00")>>
     <<jump TooLate>>
 <<endif>>
@@ -482,6 +487,7 @@ position: -40,256
 ---
 << fadeIn >>
 << hide >>
+<< music Neutral >>
 << setBackground bedroom night >>
 << fadeOut >>
 A peine rentré, vous vous effondrez dans votre lit, songeant à la journée suivante...
@@ -506,6 +512,7 @@ Bip !! Vous êtes réveillé par votre Palmphone. C'est Fred qui appelle. Il veu
 Fred@holo_excited: Yo, { $name } ! Bien dormi ? Pas moi ! Je t'ai envoyé les plans de mon drone, t'as vu, je tiens mes promesses !
 You: Merci, Fred !
 Fred@holo_happy: T'inquiète, c'est pour être resté jusqu'au bout hier soir ! Alors... Pour ce qui est de l'allègement des matériaux, j'ai penché pour une coque en méta-plastique...
+<< addToGauge Learning 70 >>
 Fred et vous prenez 1h pour travailler sur le drone. Au final, celui-ci semble fin prêt pour le TP de pilotage ! Va-t-il tenir jusqu'au bout ?
 -> Aller au TP
     << hide >>
@@ -528,8 +535,8 @@ Fred@holo_happy: Yo, { $name } ! Bien dormi ? Pas moi ! Je t'ai envoyé les plan
 You: Merci, Fred ! T'étais pas obligé, tu sais...
 Fred@holo_sarcasme: Je sais, et crois pas que je vais passer 1h à t'expliquer comment ça marche alors que t'es parti super tôt hier !
 << hide >>
+<< addToGauge learning 20 >>
 Au final, vous parvenez à faire des améliorations légères sur votre drone, mais sans les explications de Fred, le résultat n'est pas fameux...
-<< addToGauge learning 10 >>
 -> Aller au TP
     <<jump TpLose>>
 ===
@@ -612,13 +619,13 @@ title: Solo_Bad
 tags:
 position: 585,-117
 ---
+<< music Solo1 >>
 Stressé par la tension et la foule, vous entamez votre solo. Vous aimeriez avoir un peu révisé avant de venir, mais c'est trop tard désormais.
 Heureusement, Fred est là pour vous accompagner. Muni de sa Rythm-Box portable M47, il vous crée un beat du tonnerre.
 Vous parvenez tout de même à tenir une belle performance, qui ne laisse pas les étudiants indifférents.
 BarBot: Bon, ça, c'est ce que j'aime voir ! Bon, c'était un peu basique pour BB-Rex, mais vous avez réussi à ravir le public. Allez, pour la peine, voilà 1 PARTY POINT !
 Le barbot vous lance un gâteau apéritif teinté d'or que Fred attrape en sautant.
 Fred_excited: Génial !
-<< music Solo1 >>
 << advanceTimeBy 1:00 >>
 <<set $partyPoints to ($partyPoints + 1)>>
 <<jump Actions_Party>>
@@ -628,6 +635,7 @@ title: Solo_Good
 tags:
 position: 719,-183
 ---
+<< music Solo2 >>
 Confiant de vos compétences et fier d'avoir mené le groupe de Galactic Jazz au temps du lycée, vous entamez un shredding digne des plus grands.
 Heureusement, Fred est là pour vous accompagner. Muni de sa Rythm-Box portable M47, il vous crée un beat du tonnerre.
 Les cordes rugissent au rythme de vos ongles, se tendent et s'étouffent pour laisser la distortion s'exprimer.
@@ -636,7 +644,6 @@ BarBot: Ok, je vous laisse ma couronne, les amis, vous l'avez mérité. J'ai pas
 Fred_surprised: Qu'est-ce qu'il raconte ?
 Le barbot éjecte 2 gâteaux apéritifs teintés d'or que vous et Fred attrapez au vol.
 Fred_excited: Deux Party Points ?? Trop bien ! On avance deux fois plus vite !
-<< music Solo2 >>
 << advanceTimeBy 1:00 >>
 <<set $partyPoints to ($partyPoints + 2)>>
 <<jump Actions_Party>>
@@ -646,9 +653,10 @@ title: Danse
 tags:
 position: 534,-351
 ---
+<< music DanseQuiet >>
 Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffer doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous. #line:0ff5e35 
 BarBot: Alors, l'ami, on groove ? On va voir comment tu te débrouilles en dehors de ta zone de confort. MODE DISCO ACTIVE !
-<< music JungleBodyBeat >>
+<< music Danse >>
 Un rythme endiablé tout droit sorti d'une époque bien révolue vous prend aux tripes.
 << visit Danse >>
 
@@ -958,7 +966,9 @@ En rentrant dans votre terrier d'étudiant, vous tombez encore une fois nez à n
 Temde_cheerful: { $name } ! Comment était la fête ?
 You: Plutôt sympa ! Je me suis bien débrouillé au TP, c'est ça l'important !
 Temde_smiling: C'est parfait, ça ! Suis-moi, petit génie, nous avons encore des choses à t'apprendre...
-<<jump Assemblee_Sages>>
+-> Suivre Temdé
+    <<jump Assemblee_Sages>>
+-> (Passer la séquence des Sages)
 ===
 
 title: Assemblee_Sages
@@ -966,7 +976,8 @@ tags:  noUi
 position: 2023.925796508789,396.5407409667969
 colorID: 1
 ---
-<< fadeIn >>
+<< fx Warp >>
+<< fadeIn 1500 12ea12 >>
 << hide ! >>
 << setBackground circle >>
 << fadeOut >>
@@ -989,7 +1000,7 @@ Azul_happy: Alors, que veux-tu approfondir maintenant ?
 -> Bien alimenter son matériel biologique
     <<jump Bien_Manger>>
 -> Recharger ses batteries biologiques
-    <<jump Routinisation>>
+    <<jump Sommeil>>
 -> C'est bon pour moi ! (Quitter les sages)
     <<jump QCM_Recues>>
 ===
@@ -998,7 +1009,7 @@ title: Bien_Manger
 tags:  noUi
 position: 2242.7559814453125,395.5284118652344
 ---
-Sapiens_thinking: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Un appareil électronique a besoin d'électricité pour démarrer et fonctionner. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire ! #line:02771ae 
+Sapiens_thinking: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire ! #line:02771ae 
 Ledai_explaining: Tout à fait, ton engin biologique, a besoin de calories... et de vitamines. #line:067cf10 
 Sapiens_thinking: Mais pas n'importe lesquelles. Celles qui nourrissent et facilitent la conduction neurobiologique. #line:02287a2 
 You: En gros, il faut que je mange, quoi... Super utile, le tuyau... #line:00fe57b 

@@ -12,12 +12,12 @@ position: -245,126
 << setBackground bedroom >>
 << setTime 8:00>>
 << loopFX Chime_LOOP 2000 >>
+<< music >>
 << fadeOut >>
 
 Bip ! Bip ! Il est 8 heures, vous rappelle votre horloge connectée.  #line:0282b9b 
-
-<< stopFX Chime_LOOP >>
 << music Neutral >>
+<< stopFX Chime_LOOP >>
 
 <<if !visited("Chapitre1")>>
 Quel rêve étrange ...
@@ -88,6 +88,9 @@ position: -316,223
 <<if !visited("FredCall")>>
 Quoi ?! On dirait que vous avez fait un bond en arrière dans le temps ! Peut-être que ces <i>sages</i> y sont pour quelque chose...
 Vous allez pouvoir revivre cette semaine, sauver votre année. C'est la chance du siècle ! #line:0d751d6 
+<< fx Bell_Meditation >>
+<< fadeIn 1 ffffff >>
+<< fadeOut>>
 Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre ! #line:020bca4 
 <<endif>>
 
@@ -582,19 +585,21 @@ Temde_neutral: Allons, ne sois pas défaitiste, { $name }, l'apprentissage de la
     You: Où ça ? On va encore remonter le temps ?
     Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre.
 -> Suivre Miss Temdé
-
-<< fx Warp >>
-<< fadeIn 1500 12ea12 >>
-<< hide ! >>
-
-<<jump Assemblee_Sages>>
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << hide ! >>
+    <<jump Assemblee_Sages>>
+-> (Passer la séquence des Sages)
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << hide ! >>
 ===
 
 title: Sages_Victoire
 tags: noUi
 position: -760,1476
 ---
-
+<< music Mysterious >>
 Temde_neutral: { $name } ! Je vois que tu es déjà parvenu à t'améliorer par toi-même. C'est une capacité que je respecte.
 You: Euh... J'étais avec mon pote là...
 Temde_smiling: Pas d'inquiétude, nous te renverrons à cet instant précis dès que nous aurons terminé. Pour l'instant, viens, suis-moi une fois de plus.
@@ -602,12 +607,14 @@ Temde_smiling: Pas d'inquiétude, nous te renverrons à cet instant précis dès
     You: Où ça ? On va encore remonter le temps ?
     Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre.
 -> Suivre Miss Temdé
-
-<< fx Warp >>
-<< fadeIn 1500 12ea12 >>
-<< hide ! >>
-
-<<jump Assemblee_Sages>>
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << hide ! >>
+    <<jump Assemblee_Sages>>
+-> (Passer la séquence des Sages)
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << hide ! >>
 ===
 
 title: Assemblee_Sages

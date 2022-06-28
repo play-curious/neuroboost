@@ -15,12 +15,14 @@ position: -891,402
 << showGauges >>
 << advanceTime 0:15 >>
 << setBackground oral >>
-<< fadeOut >>
 
-Voilà finalement venu le Grand Oral. L'Académie met beaucoup en avant l'importance de cette épreuve dès la première année. Impitoyable, elle met les élèves en difficulté et indique s'ils peuvent continuer leur cursus.
 
+Voilà finalement venu le Grand Oral.
+
+L'Académie met beaucoup en avant l'importance de cette épreuve dès la première année. Impitoyable, elle met les élèves en difficulté et indique s'ils peuvent continuer leur cursus.
 Autrement dit, cette épreuve est éliminatoire.
-
+<< music Tense >>
+<< fadeOut >>
 "On en a assez vu ! Allez, AU SUIVANT !"
 Ces mots prononcés par le jury alors même que vous vous asseyez dans les gradins vous glacent le sang.
 Le dernier élève se dirige vers la porte en sanglots. Vous angoissez, peu rassuré par ce que vous venez de voir...
@@ -46,7 +48,6 @@ Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la prépare
 
 << advanceTime 0:20 >>
 << addToGauge stress 25 >>
-<< music NegativeSad >>
 
 -> Tenter de broder comme vous pouvez
     <<jump Broder>>
@@ -82,12 +83,12 @@ title: Sortie_Salle
 tags:
 position: -549,805
 ---
+<< fadeIn >>
 << advanceTime 0:10 >>
-
+<< music NegativeSad >>
 Vous sortez de la salle en tremblant. C'est à peine si vous vous rappelez qui vous êtes et où vous êtes... #line:02751be 
 Pas la peine d'attendre les résultats pour savoir que vous avez royalement raté. Vous retournez dans votre chambre sans vraiment voir le trajet, ressassant sans cesse tout ce que vous avez mal fait... #line:0d4406a 
 
-<< fadeIn >>
 
 <<jump Chambre_Soir>>
 ===
@@ -99,7 +100,7 @@ position: -352.5212097167969,897.6408081054688
 << fadeIn >>
 << setBackground bedroom night >>
 << fadeOut >>
-
+<< music NegativeSad >>
 Le Grand Oral était une épreuve éliminatoire, et vous doutez fortement que le jury ne vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues...
 Vous vous glissez tout de suite dans votre lit. Quelle semaine pourrie... #line:0da04e6 
  
@@ -148,7 +149,8 @@ Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute 
 -> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller #line:018cd35 
     <<jump Tenter_rester_chambre>>
 -> Se laisser guider par l'irréelle Miss Temdé #line:0c2f10c 
-    << fadeIn >>
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
     <<jump Assemblee_Sages>>
 ===
 
@@ -174,7 +176,6 @@ tags: noUi
 position: -562.1727294921875,1164.6718139648438
 ---
 << setBackground circle >>
-<< music Tense >>
 << fadeOut >>
 
 L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, mais étrange, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus.
@@ -245,8 +246,6 @@ position: -562.1727294921875,1164.6718139648438
 You: Et, qu'est-ce que je fais là, au juste ?
 Azul_happy: C'est très simple { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens. 
 Sapiens_thinking: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi. #line:081c094 
-
-<< music Neutral >>
 
 -> C'est quoi, ça... la métaconnexion ? #line:081277c 
     <<jump Metaconnexion>>
