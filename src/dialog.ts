@@ -267,17 +267,16 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     const result = this.runner.currentResult;
 
     if (isText(result)) {
-      this.graphics.showDialogLayer();
-      this._handleDialog();
+      // Occasionnally Yarn will give us an empty line. Skip to the next
+      if (result.text.trim().length === 0) {
+        this._advance();
+      } else {
+        this.graphics.showDialogLayer();
+        this._handleDialog();
+      }
     } else if (isOption(result)) {
       this.graphics.showDialogLayer();
       this._handleChoice();
-
-      // if (this._hasTag(this.metadata, "freechoice")) {
-      //   this._handleFreechoice();
-      // } else {
-      //   this._handleChoice();
-      // }
     } else if (isCommand(result)) {
       this._handleCommand();
     } else {
@@ -337,7 +336,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
       if (
-        (option.hashtags.includes("once" as never) &&
+        (option.hashtags.includes("once") &&
           this.selectedOptions.includes(selectedOptionId)) ||
         !option.isAvailable
       )
