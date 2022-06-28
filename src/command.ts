@@ -348,7 +348,7 @@ export const commands: Record<string, Command> = {
     const score = this.calculateScore();
     save.updateCompletedLevel(this.levelName, score);
     // Look up the index of the chapter to get the number
-    const chapter = dialog.dialogScenes.indexOf(this.levelName) + 1;
+    const chapter = dialog.dialogScenes.indexOf(this.levelName);
     const hint = hintWords.join(" ");
     return new chapter_menus.ScoreMenu({
       chapter,
