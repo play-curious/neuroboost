@@ -7,7 +7,7 @@ position: -245,126
 ---
 << empty >>
 << fadeIn 1 >>
-<< showTitle Chapter 1 >>
+<< showTitle Chapitre 1 >>
 << setGauge learning 0 >>
 << setBackground bedroom >>
 << setTime 8:00>>
@@ -25,7 +25,7 @@ Quel rêve étrange ...
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:00aae49 
 
 << loopFX PhoneRing_LOOP 5000 >>
-Cette fois, c'est votre palmphone qui vibre : <b>Fred</b> veut vous parler. #line:0c10bcd 
+Votre palmphone vibre : <b>Fred</b> veut vous parler. #line:0c10bcd 
 -> Prendre l'appel #line:0c4a7b0 
     <<jump Appel_Fred_Rewind>>
 ===
@@ -42,7 +42,7 @@ Fred@holo_excited: Salut ! c'est Fred ! #line:0fb4525
 You: Je sais, j'ai vu ton nom. #line:0d1a13b 
 Fred@holo_smiling: Yo, je vois que t'es pas de bonne humeur ce matin... #line:039d35b 
 You: Facile à dire pour toi, tu révises jamais et t'as tout le temps des bonnes notes !
-Fred@holo_happy: Damned, tu t'es vraiment levé du mauvais pied aujourd'hui. Qu'est-ce qui ne va pas ?
+Fred@holo_happy: Ah ouais, tu t'es vraiment levé du mauvais pied aujourd'hui. Qu'est-ce qui ne va pas ?
 
 -> C'est fini, je vais jamais passer mon année !
 -> Tu le sais bien, tu as dû voir ma prestation d'hier...
@@ -72,7 +72,7 @@ You: A plus !
 
 Vous raccrochez sans vous en rendre compte. #line:077b761 
 
-<< advanceTime 0:15 >>
+<< advanceTimeBy 0:15 >>
 
 <<jump Phone_off_Rewind>>
 ===
@@ -86,12 +86,13 @@ position: -316,223
 << fadeOut >>
 
 <<if !visited("FredCall")>>
-Quoi ?! On dirait que vous avez fait un bond en arrière dans le temps ! Peut-être que ces <i>sages</i> y sont pour quelque chose... Vous allez pouvoir revivre cette semaine, sauver votre année. C'est la chance du siècle ! #line:0d751d6 
+Quoi ?! On dirait que vous avez fait un bond en arrière dans le temps ! Peut-être que ces <i>sages</i> y sont pour quelque chose...
+Vous allez pouvoir revivre cette semaine, sauver votre année. C'est la chance du siècle ! #line:0d751d6 
 Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre chambre ! #line:020bca4 
 <<endif>>
 
 <<showGauges>>
-Il vous reste quelques heures avant le partiel... Aujourd'hui, vous allez montrer à Fred qui est le plus grand vainqueur de l'Académie ! #line:0cfadf9 
+Il vous reste quelques heures avant le partiel... De la semaine dernière !
 
 <<visitPermanent FredCall>>
 
@@ -111,11 +112,23 @@ position: -1248,479
 Que faites-vous maintenant ? #line:03f3124 
 << endif >>
 
+<<if isTimeOver("14:10")>>
+Vous avez oublié de vous rendre à l'examen ! Vous allez être en retard !
+Temde_sad: Bon... Nous allons te renvoyer encore une fois dans le passé. Attention, ça va chatouiller un peu !
+<< fx Warp >>
+<< fadeIn 1500 12ea12 >>
+<< hide >>
+<< resetLevel >>
+<<jump Start>>
+<<endif>>
+
 << if isTimeOver("12:00") >>
-Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'aller en classe. #line:0424ed0 
--> Manger (à midi) #line:0526b3b 
-    <<jump Lunch_Rewind>>
-<< else>>
+Déjà midi passé ! C'est bientôt l'heure de l'examen !
+-> Cuisine@cuisine #line:0b8d567 
+    <<jump cuisine_subchoice>>
+-> Porte@porte
+    <<jump porte_subchoice>>
+<<else>>
 -> Cuisine@cuisine #line:0b8d567 
     <<jump cuisine_subchoice>>
 -> Bureau@bureau #line:0027a0c 
@@ -125,7 +138,7 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
 -> Porte@porte
     <<jump porte_subchoice>>
 << endif>>
-=== 
+===
 
 title: porte_subchoice
 tags: subchoice
@@ -144,12 +157,18 @@ position: -525,562
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
-
+<<if !isTimeOver("12:00")>>
 -> Prendre le petit déjeuner (30 min) <<if !visited("Petit_dej")>>#line:079d0ff 
     <<jump Petit_dej_Rewind>>
 -> back #line:0fad580 
     << fadeIn >>
     <<jump Action_List_Rewind>>
+<<else>>
+-> Manger avant l'examen
+    <<jump Lunch_Rewind>>
+-> back
+    <<jump Action_List_Rewind>>
+<<endif>>
 ===
 
 title: bureau_subchoice
@@ -177,7 +196,7 @@ position: -1427,217
 << fadeIn >>
 << setBackground bedroom chill >>
 << fadeOut >>
--> Regarder votre série TV préférée (Au moins 2h...) <<if !visited("BingeTV")>> #line:0f2e31c 
+-> Regarder votre série préférée (Au moins 2h...) <<if !visited("BingeTV")>> #line:0f2e31c 
     <<jump BingeTV_Rewind>>
 -> back #line:0341673 
     <<jump Action_List_Rewind>>
@@ -191,19 +210,20 @@ position: -1405,986
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
+<< advanceTimeBy 00:45 >>
 << fx EatCook >>
 
 <<if visited("LunchBefore")>>
-Et ce midi pareil... Encore ce Burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... #line:046846a 
+Et ce midi pareil... Encore ce burger Big Proteins Double Cheese et un verre Super Tall de Xeno Cola... #line:046846a 
 Espérons que vous n'allez pas reproduire les mêmes erreurs qu'hier. En route ! #line:0f21e5a 
 <<else>>
-Miam... Délicieux, ce Burger Big Proteins Double Cheese !
+Miam... Délicieux, ce burger Big Proteins Double Cheese !
 Bien chargé en calories, mais vous allez en avoir besoin tout à l'heure pour l'examen ! Allez, une bonne gorgée de Xeno Cola pour accélérer la digestion... #line:00ba9c8 
 <<endif>>
 
 <<visitPermanent LunchBefore>>
 
-<<jump Check_Results>>
+<<jump Action_List_Rewind>>
 ===
 
 title: Check_Results
@@ -236,7 +256,7 @@ Bon, ce n'est pas tout. #line:0d01fa8
 
 <<visit Petit_dej>>
 
-<< advanceTime 0:30 >>
+<< advanceTimeBy 0:30 >>
 
 << fadeIn >>
 <<jump Action_List_Rewind>>
@@ -258,7 +278,7 @@ Ensuite, c'est Dom, puis Lou, puis Cam... #line:008f37e
 <bi>Étrange... Vous avez l'impression d'avoir déjà vécu ce moment de dilatation du temps...</bi> #line:0cd34ae 
 << endif >>
 
-<< advanceTime 2:00 >>
+<< advanceTimeBy 2:00 >>
 
 Vous passez 2 heures à discuter de tout, mais surtout de rien. #line:06ab06b 
 
@@ -279,7 +299,7 @@ Aujourd'hui, vous voulez réussir votre journée. Vous aussi, vous aurez un <i>A
 
 <<visit Revision>>
 
-<< advanceTime 2:00 >>
+<< advanceTimeBy 2:00 >>
 
 << addToGauge learning 30 >>
 
@@ -309,7 +329,7 @@ Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. 
 
 En tous les cas, vous vous en doutiez, Yann Salto a beau être l'un des meilleurs pilotes de l'univers, il se fait amocher son vaisseau ! Il est obligé d'atterrir en catastrophe sur Tortuga. Le suspense est haletant... 
 
-<< advanceTime 4:00 13:00 1:00 >>
+<< advanceTimeBy 4:00 13:00 1:00 >>
 << stopFX TVStarwars_LOOP >>
 << hide >>
 
@@ -336,7 +356,7 @@ Mais lorsque vous replongez dans la lecture pour verifier vos réponses, vous co
 
 Vous prenez encore le temps de relire votre cours pour combler les lacunes qui vous gênent encore. Résultat, vous vous sentez bien plus prêt à attaquer l'examen. #line:0988ada 
 
-<< advanceTime 2:00 >>
+<< advanceTimeBy 2:00 >>
 
 << fadeIn >>
 <<jump Action_List_Rewind>>
@@ -353,7 +373,7 @@ position: -1013,1248
 << fadeOut >>
 Vous voilà désormais dans la grande salle. Vous vous installez devant votre écran de travail. À peine vous cliquez sur le fichier <b>Sujet d'examen</b> que le compteur se met en route. #line:0352286 
 
-<< advanceTime 4:00 >>
+<< advanceTimeBy 4:00 >>
 
 Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Ce coup-ci, vous êtes sûr de vous. Vous allez y arriver !! #line:006d985 
 
@@ -373,7 +393,7 @@ position: -666.0570068359375,500.580322265625
 Vous voilà désormais dans la grande classe. Vous vous installez devant votre écran de travail. A peine vous cliquez sur le fichier <b>Sujet d'examen</b>, que le compteur se met en route. #line:06b2e70 
 Vous passez les 4 heures suivantes à répondre aux questions à choix multiples qui s'enchaînent les unes derrière les autres. Les questions semblent bêtes et évidentes, vos réponses aussi. #line:0598ff5 
 
-<< advanceTime 4:00 >>
+<< advanceTimeBy 4:00 >>
 
 Après avoir validé votre rendu digital, vous quittez la salle et retrouvez Fred, qui vous attend à l'entrée de la classe. #line:0be01e7 
 
@@ -395,12 +415,12 @@ Fred_happy: Yes, je suis content pour toi. Toi qui n'aimais pas cette matière. 
 You: Ouais, mais ce coup-ci, j'ai mis le paquet ! #line:0266bbe 
 Fred_smiling: Ahhhh... Génial ! #line:014e2cf 
 You: Je vais avoir <b>A</b> ! #line:00808f8 
-Fred_happy: No... Pas moins ? #line:0f7880c 
+Fred_happy: Non... Pas moins ? #line:0f7880c 
 You: Je te le dis ! #line:08f2afc 
 Fred_smiling: C'est génial ! Je t'ai encore jamais vu comme ça. #line:072af68 
 You: Ouais ! #line:01fabda 
 
-<< advanceTime 0:15 >>
+<< advanceTimeBy 0:15 >>
 
 Fred s'apprête à vous répondre quand la sonnerie retentit. #line:02b4a63 
 << fx Notification >>
@@ -435,7 +455,7 @@ Fred_smiling: Avec des scores pareil, y a plus qu'une chose à faire, célébrer
 You: Ce serait sympa, mais... 
 << hide >>
 
-<< advanceTime 0:05 >>
+<< advanceTimeBy 0:05 >>
 
 <<visit Resultats_Good>>
 
@@ -503,7 +523,7 @@ You: Non. #line:0818e11
 Fred_smiling: C'est dommage. Tu sais, une mauvaise réponse t'enlève autant de points qu'une bonne réponse. #line:0bf1cd4 
 You: Heuuuu... #line:0facc92 
 
-<< advanceTime 0:15 >>
+<< advanceTimeBy 0:15 >>
 
 << fx Notification >>
 << setBackground door class-screen>>
@@ -532,7 +552,7 @@ You: Quoi donc ? #line:0fc9d11
 Fred_happy: Se vider la tête ! Ça tombe bien, les docteurs font une fête ce soir. Joignons-nous à eux ! #line:0a6af63 
 
 
-<< advanceTime 0:15 >>
+<< advanceTimeBy 0:15 >>
 
 -> Peut-être... #line:0bc651a 
 -> Même pas en rêve #line:0eeda10 
@@ -558,8 +578,14 @@ Sérieusement ! Même en l'ayant passé la semaine dernière, vous avez quand-m�
 << music Mysterious >>
 
 Temde_neutral: Allons, ne sois pas défaitiste, { $name }, l'apprentissage de la métacognition n'est pas évident au début, mais nous allons tout faire pour t'aider. Viens, suis-moi une fois de plus.
-You: Où ça ? On va encore remonter le temps ?
-Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre.
+-> On va encore remonter le temps ?
+    You: Où ça ? On va encore remonter le temps ?
+    Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre.
+-> Suivre Miss Temdé
+
+<< fx Warp >>
+<< fadeIn 1500 12ea12 >>
+<< hide ! >>
 
 <<jump Assemblee_Sages>>
 ===
@@ -572,8 +598,10 @@ position: -760,1476
 Temde_neutral: { $name } ! Je vois que tu es déjà parvenu à t'améliorer par toi-même. C'est une capacité que je respecte.
 You: Euh... J'étais avec mon pote là...
 Temde_smiling: Pas d'inquiétude, nous te renverrons à cet instant précis dès que nous aurons terminé. Pour l'instant, viens, suis-moi une fois de plus.
-You: Où ça ? On va encore remonter le temps ?
-Temde_cheerful: Pas cette fois, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Même si tu es débrouillard, nous avons quelques astuces à t'apprendre.
+-> On va encore remonter le temps ?
+    You: Où ça ? On va encore remonter le temps ?
+    Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre.
+-> Suivre Miss Temdé
 
 << fx Warp >>
 << fadeIn 1500 12ea12 >>
@@ -586,7 +614,6 @@ title: Assemblee_Sages
 tags: noUi
 position: -571,1504
 ---
-
 << fadeIn >>
 << hide ! >>
 << setBackground circle >>
@@ -674,9 +701,9 @@ title: Routinisation
 tags: noUi
 position: 243.36883544921875,1410.058349609375
 ---
-Sapiens_thinking: Pour consolider ses connaissances, c'est simple. Pas de miracle sans effort. Pas de médaille sans sueur. Il faut travailler !
+Sapiens_thinking: Pour consolider ses connaissances, pas de médaille sans sueur, il faut travailler !
 Ledai_explaining: Il faut surtout pratiquer ! Répéter et répéter et encore répéter ! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement. #line:00317ce 
-Azul_happy: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis pas la maîtriser. #line:050ca2d 
+Azul_happy: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis par la maîtriser. #line:050ca2d 
 Ledai_explaining: Pour une fois que je suis d'accord avec <b>Azul</b>. Ainsi, tu mémorises la liste des ingrédients, les dosages, comme les étapes de préparation et les temps de cuisson. #line:0e3a8de 
 You: Et comment je fais pour que ma pratique devienne une routine? #line:0439386 
 Ledai_explaining: Tout simplement en répétant, en appliquant. #line:0832a45 
@@ -698,7 +725,7 @@ title: Quit_Sages
 tags: noUi
 position: 243.36883544921875,1410.058349609375
 ---
-You: C'est bon pour moi... Mais en attendant, va falloir que je me souvienne de tout ça à mon réveil. Comment faire ? #line:0d2186b 
+You: C'est bon pour moi... Mais en attendant, va falloir que je me souvienne de tout ça à mon réveil. Comment faire ?
 Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> ! #line:0838542 
 
 <<if !visited("Resultats_Good")>>
@@ -720,7 +747,7 @@ position: 544,1399
 << fadeOut 400 >>
 
 Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Vous voilà seul... Dans une bulle de noirceur, éclairée par un douce lumière tamisée.
-Vous tenez entre vos mains un magnifique "carnet d'ingénieur tout-terrain". Garantie: waterproof, earthquakeproof, flameproof, acidproof... #line:0c1bf30 
+Vous tenez entre vos mains un magnifique "iMetaJournal"...
 Serait-ce le <bi>journal mental</bi> dont parlait Ledai ? #line:063d2d3 
 
 <<visitPermanent Chapitre1>>
