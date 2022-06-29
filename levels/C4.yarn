@@ -2,7 +2,7 @@
 
 title: Start
 tags:
-position: -2504.752685546875,43.17276573181152
+position: -2193,194
 colorID: 8
 ---
 << fadeIn 1 >>
@@ -13,11 +13,11 @@ colorID: 8
 << setGauge food 100 >>
 << setGauge mentalLoad 0 >>
 << showGauges >>
-<< music Victory >>
+<< music Neutral >>
 << fadeOut >>
 
-Vous vous dans votre chambre. Il est jeudi matin, encore une fois. Vous mangez votre petit déjeuner tout en pensant à ce que vous allez bien pouvoir faire pour ce projet de mémoire sur la théorie du chaos en macrobiologie post-darwinienne. Motiver et guider Fred : c'est bien joli à dire, c'est plus difficile à faire.  #line:02a3388 
-Fred... Vous attendez son appel d'ailleurs. #line:0fc5fb6 
+Après vous êtes réveillé en douceur... Vous prenez votre petit déjeuner tranquillement. Une boîte de biocookies et un thé décaféiné, rien de tel pour commencer une nouvelle journée.  #line:08d6679 
+Vous débarrassez la cuisine, vous faites votre toilette, vous préparez vos affaires pour aller à la bibliothèque, quand votre palmphone vibre : #line:0b2008b 
 
 << loopFX PhoneRing_LOOP 5000 >>
 Dring Dring. #line:0308746 
@@ -28,7 +28,7 @@ Dring Dring. #line:0308746
 title: Appel_Fred
 tags:
 colorID: 0
-position: -2287.7581787109375,43.895751953125
+position: -2110,83
 ---
 << stopFX PhoneRing_LOOP >>
 
@@ -54,7 +54,7 @@ Tant pis, vous avez essayé de le raisonner par téléphone, ça ne marche pas. 
 title: Bibli_soloAM
 tags: 
 colorID: 0
-position: -2043,-10
+position: -1908,10
 ---
 << fadeIn >>
 << setBackground library >>
@@ -86,7 +86,7 @@ Vous vous rappelez des paroles d'Azul, c'est vous le capitaine de ce projet. C'e
 title: Bibli_soloPM
 tags: 
 colorID: 0
-position: -949.32763671875,1219.6046142578125
+position: -1068,-218
 ---
 << fadeIn >>
 << setBackground library >>
@@ -110,7 +110,7 @@ Fred_smiling: Je t'écoute. #line:0ed7142
 title: Bibli_binome
 tags: 
 colorID: 0
-position: -1807,117
+position: -1813,100
 ---
 << fadeIn >>
 << setBackground library >>
@@ -137,6 +137,7 @@ Vous vous rappelez des paroles de Azul. C'est à vous de piloter ce travail, de 
 -> Se mettre au travail  #line:0e68709 
     <<jump Liste_taches>>
 ===
+
 title: Liste_taches
 tags: 
 position: -1617.8306884765625,24.821166694164276
@@ -175,7 +176,7 @@ Fred_happy: Alors, on attaque quoi maintenant, boss ? #line:0c3407b
 title: Redaction
 tags: 
 colorID: 0
-position: -1066,454
+position: -1210,189
 ---
 You: On reprend la rédaction détaillée du mémoire ?  #line:0c284d3 
 Fred: Yes. On se répartit la tâche comment ? #line:005280e 
@@ -188,10 +189,11 @@ You: Heu...  #line:01c46ea
 -> Donner les ordres à Fred #line:07279f3 
     << jump Redaction_Bad >>
 ===
+
 title: lunch
 tags: 
 colorID: 0
-position: -1389.5840454101562,1321.8181457519531
+position: -1527,-193
 ---
 You: Tu n'as pas faim? #line:09efca7 
 Fred_smiling: Si, je manque clairement de fuel là. #line:0fb3d6a 
@@ -201,10 +203,11 @@ Fred_smiling: Yes yes ! #line:0339b31
 -> Cafeteria de la bibliothèque  #line:0c416da 
     <<jump Lunch_bibli>>
 ===
+
 title: Zero_distraction
 tags: 
 colorID: 0
-position: -1699,-231
+position: -1724,-75
 ---
 Vous demandez au récepteur de l'IA de la bibliothèque de déployer une "Sphère de Travail Immersive". Aussitôt un dôme de lumière opaque se referme sur votre table et vous isole du reste de la bibliothèque et des étudiants qui y sont. Le son devient net et réverbéré, comme dans un studio d'enregistrement.  #line:0968648 
 Fred_smiling: Great, ta bulle de silence. On va pouvoir parler tous les deux sans honte ! #line:032b9c9 
@@ -224,10 +227,11 @@ Fred_smiling: C'est vrai. #line:0fc578f
 ->  Reprendre le travail  #line:0c0955f 
     <<jump Liste_taches>>
 ===
+
 title: Lunch_bibli
 tags:
 colorID: 0
-position: -1167.3054809570312,1321.2256164550781
+position: -1292,-230
 ---
 << hide >>
 << fadeIn >>
@@ -257,10 +261,11 @@ Fred_smiling: Please... #line:00297e6
 -> Insister pour que Fred vienne avec vous  #line:071a93f 
     << jump Fred_goesback_towork >>
 ===
+
 title: Notes_You
 tags: 
 colorID: 0
-position: -1399.2734375,-394.30879974365234
+position: -1447,-116
 ---
 << advanceTime 1:00 >>
 
@@ -280,10 +285,11 @@ You: Non, mais je ne peux pas te lire à haute voix, on est à la bibliothèque 
 -> C'est à lui de lire vos notes #line:01f3a4c 
     << jump Notes_You_Bad >>
 ===
+
 title: Fred_goesback_towork
 tags: 
 colorID: 0
-position: -949.209098815918,1430.5440979003906
+position: -1079,-311
 ---
 Fred_sad: T'es vraiment pas drôle. #line:028d7bc 
 You: J'ai besoin de toi.  #line:036ff77 
@@ -298,9 +304,10 @@ You: Laisse tomber. #line:00a0389
     << fadeOut >>
     <<jump Liste_taches>>
 ===
+
 title: Exit_Bibli
 tags: 
-position: -1934,881
+position: -1937,247
 colorID: 1
 ---
 << if getGauge("learning") > 66 >>
@@ -332,6 +339,7 @@ Vous criez, vous paniquez complètement, vous vous mettez à suer à grosses gou
 
 << endif >>
 ===
+
 title: Notes_Fred
 tags: 
 colorID: 0
@@ -355,10 +363,11 @@ You: Heu... C'est plus facile pour moi de les lire. Surtout qu'on est à la bibl
 -> Demander à Fred de vous envoyer ses notes écrites #line:0b165d9 
     << jump Notes_Fred_Bad >>
 ===
+
 title: ChezFred
 tags: 
 colorID: 0
-position: -2039,171
+position: -1917,168
 ---
 << fadeIn >>
 << setBackground bedroom_fred >>
@@ -384,10 +393,11 @@ Bien joué, vous avez touché la corde sensible de Fred, iel accepte de vous sui
 
 <<jump Bibli_binome>>
 ===
+
 title: Bedroom
 tags: 
 colorID: 0
-position: -1178.4630126953125,1891.7039794921875
+position: -1726,327
 ---
 << fadeIn >>
 << setBackground bedroom night >>
@@ -410,10 +420,11 @@ You: Je sais pas. #line:0c35c9a
 Fred@holo_smiling: Yes yes, je te le dis. #line:0d43b47 
 Fred raccroche. Vous recevez dans votre boîte mail sa contribution. Vous l'intégrez dans le texte final et vous déposez le tout dans le FTP de l'Académie. Bravo ! Mission accomplie... #line:0076812 
 ===
+
 title: Plan
 tags: 
 colorID: 0
-position: -1390.7283935546875,891.5607299804688
+position: -1653,239
 ---
 You: Tu te souviens du plan ? #line:0608a08 
 Fred_smiling: Ton plan ?  #line:010b808 
@@ -433,9 +444,10 @@ Fred_smiling: On a toujours le temps. #line:0e52680
 -> Vous présentez votre plan à Fred #line:08a8a75 
     << jump Plan_Bad >>
 ===
+
 title: Notes_You_Good
 tags: 
-position: -1171.1915283203125,-520.5768127441406
+position: -1202,-147
 colorID: 2
 ---
 You: Tu sais, moi, j'échange par écrit. C'est plus simple. #line:0d67c8e 
@@ -455,9 +467,10 @@ Enfin, comble de joie : l'IA vous informe qu'elle a enregistré toute la convers
 
 <<jump Liste_taches>>
 ===
+
 title: Notes_You_Bad
 tags: 
-position: -1169.79443359375,-313.6395568847656
+position: -1201,-82
 colorID: 2
 ---
 You: On fait ça par écrit. #line:0e9165e 
@@ -473,9 +486,10 @@ Avez-vous fait le bon choix ? #line:013daa2
 
 <<jump Liste_taches>>
 ===
+
 title: Notes_Fred_Good
 tags: 
-position: -1169.795654296875,-90.88680267333984
+position: -1164,-3
 colorID: 2
 ---
 Fred_happy: Tout est dans ma tête. Tu veux que je commence par quoi ? #line:0ca8f0f 
@@ -491,7 +505,7 @@ Quand vous pensez avoir fait le tour de la question avec lui, l'IA vous informe 
 ===
 title: Notes_Fred_Bad
 tags: 
-position: -1169.442138671875,123.66140747070312
+position: -1164,76
 colorID: 2
 ---
 Fred pianote sur son ordinateur, l'instant d'après, vous réceptionnez ses documents... Incroyable, il n'y a pas grand chose d'exploitable. Que des bouts de phrases, de mots et quelques commentaires en annexe. #line:0082f38 
@@ -512,7 +526,7 @@ Avez-vous fait le bon choix ? #line:0af7001
 ===
 title: Plan_Good
 tags: 
-position: -1171.308837890625,773.103515625
+position: -1427,193
 colorID: 2
 ---
 You: C'est le dernier jour, on doit choisir un plan et s'y tenir.  #line:0774d64 
@@ -529,7 +543,7 @@ En fait, iel secoue l'arbre de votre argumentation pour vous aider à cueillir t
 ===
 title: Plan_Bad
 tags: 
-position: -1172.7930908203125,995.4922485351562
+position: -1422,268
 colorID: 2
 ---
 You: Ben c'est le problème. On n'a plus le temps d'hésiter. On doit choisir un plan et s'y tenir.  #line:04260cf 
@@ -545,7 +559,7 @@ Si Fred avait raison... Vous allez devoir revivre encore une fois cette journée
 ===
 title: Redaction_Good
 tags: 
-position: -928,395
+position: -966,164
 colorID: 2
 ---
 Vous vous rappelez des conseils d'Azul. Il faut solliciter Fred, sur ses connaissances et ses opinions. De manière verbale.  #line:027a1aa 
@@ -561,7 +575,7 @@ Alors que vous terminez de noter un truc dans votre agenda, l'IA vous informe qu
 ===
 title: Redaction_Bad
 tags: 
-position: -905,563
+position: -968,236
 colorID: 2
 ---
 You: Je m'occupe du problème des modèles déterministes dont le degré d'erreur croît de manière exponentielle. Je prends également en charge l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme. Je te laisse réfléchir sur la révolution du paradigme post-darwinien en macrobiologie pour la conclusion ? #line:0a59d4a 
