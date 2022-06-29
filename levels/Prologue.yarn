@@ -5,6 +5,7 @@ tags:
 colorID: 0
 position: -891,402
 ---
+
 << fadeIn >>
 << showTitle Prologue >>
 << setGauge learning 0 >>
@@ -16,6 +17,14 @@ position: -891,402
 << advanceTime 0:15 >>
 << setBackground oral >>
 << fadeOut >>
+
+Tutorial: Bienvenue à l’académie Neuroboost !
+Tutorial: Tu vas vivre 7 jours où des choix te seront proposés pour valider tes examens et réussir ton année !
+Tutorial: Chaque jour t’aidera à apprendre de nouvelles stratégies ! 
+Tutorial: Pour t’aider, 4 sages et ton ami “Fred”.
+Tutorial: Pour progresser dans le jeu, tu auras des repères sous forme de "jauges" et la possibilité de jouer chaque journée de façon consécutive ou espacée.
+Tutorial: Si tu le souhaites, un carnet de bord te permettra de noter au fur et à mesure les idées qui t’ont le plus inspiré.e. et de gagner du temps à la fin du jeu pour les transposer dans ton quotidien.
+Tutorial: A toi de jouer
 
 Voilà finalement venu le Grand Oral. L'Académie met beaucoup en avant l'importance de cette épreuve dès la première année. Impitoyable, elle met les élèves en difficulté et indique s'ils peuvent continuer leur cursus.
 

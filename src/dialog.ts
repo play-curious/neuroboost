@@ -267,9 +267,13 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     const result = this.runner.currentResult;
 
     if (isText(result)) {
-      // Occasionnally Yarn will give us an empty line. Skip to the next
+      const textResult = this.runner.currentResult as yarnBound.TextResult;
+
       if (result.text.trim().length === 0) {
+        // Occasionnally Yarn will give us an empty line. Skip to the next
         this._advance();
+      } else if (textResult.markup[0]?.properties["name"] === "Tutorial") {
+        this._handleTutorial();
       } else {
         this.graphics.showDialogLayer();
         this._handleDialog();
@@ -283,6 +287,13 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       console.error("Unknown bondage result:", this.runner.currentResult);
       throw new Error(`Unknown bondage result`);
     }
+  }
+
+  private _handleTutorial() {
+    const textResult = this.runner.currentResult as yarnBound.TextResult;
+    this.graphics.showTutorial(textResult.text.trim(), () => {
+      this._advance();
+    });
   }
 
   private _handleDialog(placeholder?: string, id?: number) {

@@ -275,6 +275,66 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._dialogLayer.visible = false;
   }
 
+  public showTutorial(text: string, onClick: () => unknown) {
+    this._dialogLayer.visible = false;
+
+    this._nodeDisplay = new PIXI.Container();
+    this._container.addChild(this._nodeDisplay);
+
+    let textBox: PIXI.Text;
+    {
+      // Make tutorial text, but don't add it yet
+      textBox = new PIXI.Text(text, {
+        fill: "white",
+        fontFamily: "Ubuntu",
+        align: "center",
+        fontSize: 40,
+        leading: 10,
+        wordWrap: true,
+        wordWrapWidth: 1000,
+      });
+      textBox.anchor.set(0.5);
+      textBox.position.set(
+        this._entityConfig.app.view.width / 2,
+        this._entityConfig.app.view.height / 2
+      );
+    }
+
+    {
+      // Make menu background
+      const menuBackground = new PIXI.NineSlicePlane(
+        this._entityConfig.app.loader.resources[
+          "images/ui/resizable_container.png"
+        ].texture,
+        116,
+        125,
+        116,
+        125
+      );
+      menuBackground.width = textBox.width + 300;
+      menuBackground.height = textBox.height + 150;
+      menuBackground.position.set(
+        this._entityConfig.app.view.width / 2 - menuBackground.width / 2,
+        this._entityConfig.app.view.height / 2 - menuBackground.height / 2
+      );
+      this._nodeDisplay.addChild(menuBackground);
+    }
+
+    this._once(this._container, "pointerup", () => {
+      this.config.fxMachine.play("Click");
+
+      this._container.interactive = false;
+      this._container.buttonMode = false;
+
+      this.hideNode();
+      onClick();
+    });
+    this._container.interactive = true;
+    this._container.buttonMode = true;
+
+    this._nodeDisplay.addChild(textBox);
+  }
+
   public showDialog(
     text: string,
     name: string,
