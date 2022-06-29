@@ -829,8 +829,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       }
     }
 
-    delete this.last.lastCharacter;
-    delete this.last.lastMood;
+    delete this._graphicsState.lastCharacter;
+    delete this._graphicsState.lastMood;
   }
 
   fadeIn(duration: number = 1000, color: string = "#000000") {
