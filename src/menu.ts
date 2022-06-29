@@ -27,11 +27,17 @@ const defaultSettings: Settings = {
 
 const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
   credits: {
-    Programming: ["Camille Abella", "André Quentin", "Maréchal Eliot"],
+    Programming: ["Camille Abella", "Quentin André", "Eliot Maréchal"],
     "Game Design": "Jesse Himmelstein",
     "Narrative Design": "Ronan Le Breton",
+    Locator: "William Barreau",
     "Sound Design": "Jean-Baptiste Mar",
-    "Graphic Design": ["Xuan Le", "Sana Coftier", "Nawel Benrhannou"],
+    "Graphic Design": [
+      "Xuan Le",
+      "Sana Coftier",
+      "Nawel Benrhannou",
+      "Juliette Amélie",
+    ],
     Animation: ["Xuan Le", "Sana Coftier"],
     QA: "Ilyes Khamassi",
   },
@@ -504,16 +510,22 @@ export class Menu extends extension.ExtendedCompositeEntity {
   }
 
   _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any): void {
+    const html = document.getElementById("html-layer");
+
     if (signal === "pause" && !this.opened) {
       this.opened = true;
       this.menuButton.visible = false;
       this.container.visible = true;
+
+      if (html) html.style.display = "none";
 
       this._onOpen();
     } else if (signal === "play" && this.opened) {
       this.opened = false;
       this.menuButton.visible = true;
       this.container.visible = false;
+
+      if (html) html.style.display = "block";
     }
   }
 
@@ -577,12 +589,27 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     scrollBox.container.position.set(100);
     let currentY = 0;
+    let empty = true;
     // @ts-ignore
-    dialogScene.getHistoryText().forEach((text) => {
-      text.position.set(0, currentY);
-      scrollBox.content.addChild(text);
-      currentY += text.height + 30;
-    });
+    if (window.dialogScene) {
+      // @ts-ignore
+      window.dialogScene?.getHistoryText().forEach((text) => {
+        text.position.set(0, currentY);
+        scrollBox.content.addChild(text);
+        currentY += text.height + 30;
+        empty = false;
+      });
+    }
+
+    if (empty) {
+      scrollBox.content.addChild(
+        this.makeText("Empty history - Historique vide", {
+          fontFamily: "Ubuntu",
+          fontSize: "50px",
+          fill: "#ffffff",
+        })
+      );
+    }
 
     scrollBox.refresh();
     scrollBox.scrollBy(new PIXI.Point(0, -(currentY + 200)));
