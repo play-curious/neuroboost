@@ -5,7 +5,7 @@ import * as entity from "booyah/src/entity";
 import * as tween from "booyah/src/tween";
 
 const baseBallSpeed = 0.15;
-const ballSpeedVariation = 0.1;
+const ballSpeedVariation = 0.01;
 
 export abstract class MiniGame extends extension.ExtendedCompositeEntity {
   protected container: PIXI.Graphics;
@@ -24,11 +24,14 @@ export class Juggling extends MiniGame {
   // private temde: { container: PIXI.Container; entity: entity.ParallelEntity };
   // private temdeArm: PIXI.Sprite;
   private firstHitCount: number;
+  private hitCount: number;
   private text: PIXI.Text;
+  private _scoreDisplay: PIXI.Text;
+
   public balls: Ball[];
   public stopped: boolean;
   public zone = {
-    x: 500,
+    x: 300,
     y: 100,
     width: 1920 / 2,
     height: 1080 - 100,
@@ -38,6 +41,7 @@ export class Juggling extends MiniGame {
     super._setup();
     this.stopped = false;
     this.firstHitCount = 0;
+    this.hitCount = 0;
     this.balls = [];
     this.text = this.makeText(
       "Cliquer sur une balle pour la jongler",
@@ -54,6 +58,15 @@ export class Juggling extends MiniGame {
         this.container.addChild(it);
       }
     );
+
+    this._scoreDisplay = this.makeText("", {
+      fontFamily: "Ubuntu",
+      fill: 0xffffff,
+      fontSize: 70,
+    });
+    this._scoreDisplay.anchor.set(1, 0);
+    this._scoreDisplay.position.set(1920 - 20, 20);
+    this.container.addChild(this._scoreDisplay);
 
     this.config.container.addChild(this.container);
 
@@ -73,22 +86,25 @@ export class Juggling extends MiniGame {
 
   retry() {
     this.firstHitCount = 0;
+    this.hitCount = 0;
+
+    // TODO: This is wrong, should not call teardown on own entity
     this._teardown();
     this._deactivateAllChildEntities();
     this._off();
     this._setup();
   }
 
-  firstHit() {
-    this.firstHitCount++;
+  hit(firstHit = false) {
+    this.hitCount++;
+    this._scoreDisplay.text = this.hitCount.toString();
 
-    if (this.balls.length < 6) {
-      this._activateChildEntity(this.addBall());
-    } else {
-      this.config.fxMachine.play("Success");
-      this.stop();
-      this.config.variableStorage.set("ballsJuggled", this.balls.length);
-      this._transition = entity.makeTransition();
+    if (firstHit) {
+      this.firstHitCount++;
+
+      if (this.balls.length < 7) {
+        this._activateChildEntity(this.addBall());
+      }
     }
   }
 
@@ -98,14 +114,11 @@ export class Juggling extends MiniGame {
 
     this._activateChildEntity(
       new popup.Confirm(
-        `Tu as jonglé ${this.balls.length - 1} balles.\n\nRéessayer ?`,
+        `Tu as jonglé ${this.hitCount} fois.\n\nRéessayer ?`,
         (retry) => {
           if (retry) this.retry();
           else {
-            this.config.variableStorage.set(
-              "ballsJuggled",
-              this.balls.length - 1
-            );
+            this.config.variableStorage.set("ballsJuggled", this.hitCount);
             this._transition = entity.makeTransition();
           }
         }
@@ -138,6 +151,7 @@ export class Ball extends extension.ExtendedCompositeEntity {
   private speed = 0;
   private index = 0;
   private wasHit: boolean;
+  private _acceleration: number;
 
   constructor(private game: Juggling) {
     super();
@@ -147,6 +161,8 @@ export class Ball extends extension.ExtendedCompositeEntity {
     this.wasHit = false;
 
     this.index = this.game.balls.indexOf(this);
+    this._acceleration = baseBallSpeed + this.index * ballSpeedVariation;
+
     this.sprite = this.makeSprite(
       "images/mini_games/juggling/ball.png",
       (it) => {
@@ -170,8 +186,10 @@ export class Ball extends extension.ExtendedCompositeEntity {
           this.config.fxMachine.play("Click");
 
           if (!this.wasHit) {
-            this.game.firstHit();
+            this.game.hit(true);
             this.wasHit = true;
+          } else {
+            this.game.hit(false);
           }
         });
       }
@@ -181,9 +199,7 @@ export class Ball extends extension.ExtendedCompositeEntity {
   _update() {
     if (this.game.stopped) return;
 
-    this.speed +=
-      (baseBallSpeed + (2 * Math.random() - 1) * ballSpeedVariation) *
-      this._lastFrameInfo.timeScale;
+    this.speed += this._acceleration * this._lastFrameInfo.timeScale;
     this.sprite.rotation = (this._lastFrameInfo.timeScale * Date.now()) / 200;
     this.sprite.position.y += this.speed;
     if (this.sprite.position.y < this.game.zone.y) {
