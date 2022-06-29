@@ -53,7 +53,7 @@ Vous poussez un grand soupir avant de raccrocher. #line:0799319
 ===
 title: Rejet_Fred
 tags:
-position: -1805.537826538086,-561.8787231445312
+position: -1716,-602
 ---
 << loopFX PhoneRing_LOOP 5000 >>
 
@@ -364,7 +364,7 @@ position: -352.5212097167969,897.6408081054688
 <<show temde>>
 << fadeOut >>
 
-Vous vous redressez subitement ! Quelle drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras... #line:09d34da 
+Vous vous redressez subitement ! Quel drôle de rêve ! Une fille à quatre bras vous adressait la parole. N'importe quoi, y a que les cyborgs qui ont plus de  deux bras... #line:09d34da 
 
 Temde_smiling: Non non, je suis bien là, à côté de toi. Et je suis pas une vulgaire cyborguesse ! #line:04a714a 
 
@@ -396,7 +396,7 @@ position: -719.885986328125,901.3107299804688
 You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laissez dormir paisiblement. Je suis crevé et j'ai un autre examen demain ! J'ai besoin de reprendre des forces !! #line:061645d
 Temde_thinking: Je vois, j'ai affaire à un client qui se prend pour un dur... Tant pis { $name }, tu l'auras voulu... #line:0502659 
 
-Miss Temdé lève la paume d'une de ses mains cybernétique... #line:03616cd 
+Miss Temdé lève la paume d'une de ses mains cybernétiques... #line:03616cd 
 
 Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente. #line:0ff9b42 
 
@@ -415,7 +415,7 @@ position: -562.1727294921875,1164.6718139648438
 << fadeOut >>
 
 L'instant d'après, vous vous retrouvez dans un endroit inconnu. Un lieu paisible, un coin de nature tranquille, un jardin exotique au milieu de nulle part. Oui, vous êtes sûr de n'avoir jamais vu un site pareil sur le campus de l'université. Vous ne savez pas où vous êtes. #line:056b321 
-Temde_smiling: On appelle ce petit nid douillet l'assemblée des sages. Bienvenue chez nous, { $name }. #line:04f4f35
+Temde_smiling: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenue chez nous, { $name }. #line:04f4f35 
 You: Mais.... #line:05cf2e4 
 Azul_happy: T'inquiète { $name }, mes confrères et moi, on arrive parfois à lire dans tes pensées. C'est pour faciliter la communication. #line:0175283
 Sapiens_happy: Tout à fait. Sinon nous risquerions de perdre un temps précieux dans des prolégomènes et des malentendus sans queue ni tête. #line:074dbc9 

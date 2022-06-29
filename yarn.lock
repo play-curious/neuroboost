@@ -2366,7 +2366,7 @@ boolbase@^1.0.0:
 
 "booyah@github:play-curious/booyah#polytech":
   version "2.0.0"
-  resolved "https://codeload.github.com/play-curious/booyah/tar.gz/37938efc3d6443d97508b3e90c78761cabfe2e09"
+  resolved "https://codeload.github.com/play-curious/booyah/tar.gz/60056e8077e23a983079f53865165faadf517630"
   dependencies:
     "@types/fontfaceobserver" "^0.0.6"
     "@types/google.analytics" "0.0.41"

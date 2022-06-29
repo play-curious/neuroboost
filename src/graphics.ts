@@ -12,7 +12,6 @@ import * as variable from "./variable";
 import * as images from "./images";
 import * as gauge from "./gauge";
 import * as save from "./save";
-import { SaveData } from "./save";
 
 // Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
@@ -23,11 +22,9 @@ const dialogRegexp = /^([a-z]+)(_([a-z]+))?:(.+)/i;
 
 const maxLineLength = 68;
 
-const defilementDurationPerLetter = 25;
+const typewriterDurationPerLetter = 50;
 
 export class Graphics extends extension.ExtendedCompositeEntity {
-  public last: save.SaveData["lastGraphics"];
-
   private _characters: Map<
     string,
     {
@@ -37,6 +34,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   >;
 
+  private _graphicsState: save.GraphicsState;
   private _fade: PIXI.Graphics;
   private _container: PIXI.Container;
   private _backgroundLayer: PIXI.Container;
@@ -62,9 +60,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   _setup(): void {
-    this.last = {};
+    this._graphicsState = {};
 
     this._container = new PIXI.Container();
+    this._container.hitArea = new PIXI.Rectangle(
+      0,
+      0,
+      this._entityConfig.app.view.width,
+      this._entityConfig.app.view.height
+    );
     this.config.container.addChild(this._container);
 
     this._backgroundLayer = new PIXI.Container();
@@ -113,16 +117,27 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._container = null;
   }
 
-  public loadSave() {
-    const { lastGraphics: last } = save.getSave();
+  public loadSave(loadedGraphicsState: save.GraphicsState) {
+    if (loadedGraphicsState.lastBg)
+      this.setBackground(
+        loadedGraphicsState.lastBg,
+        loadedGraphicsState.lastBgMood
+      );
+    if (loadedGraphicsState.lastCharacter)
+      this.addCharacter(
+        loadedGraphicsState.lastCharacter,
+        loadedGraphicsState.lastMood
+      );
+    if (loadedGraphicsState.lastGauges)
+      this.toggleGauges(true, ...loadedGraphicsState.lastGauges);
+    if (loadedGraphicsState.lastMusic)
+      this.config.jukebox.play(loadedGraphicsState.lastMusic);
 
-    if (last.lastBg) this.setBackground(last.lastBg, last.lastBgMood);
-    if (last.lastCharacter)
-      this.addCharacter(last.lastCharacter, last.lastMood);
-    if (last.lastGauges) this.toggleGauges(true, ...last.lastGauges);
-    if (last.lastMusic) this.config.jukebox.play(last.lastMusic);
+    this._graphicsState = loadedGraphicsState;
+  }
 
-    this.last = last;
+  public get graphicsState(): save.GraphicsState {
+    return this._graphicsState;
   }
 
   public initGauges(gaugesList: (keyof variable.Gauges)[]) {
@@ -146,9 +161,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   }
 
-  public getGaugeValue(name: string): number {
-    if (this._gauges.hasOwnProperty(name)) return this._gauges[name].getValue();
-    return undefined;
+  public getGauge(name: string): gauge.Gauge {
+    return this._gauges[name];
   }
 
   public setGauge(name: string, value: number) {
@@ -186,7 +200,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    * Show node
    */
   public hideNode() {
-    if (this._nodeDisplay) this._container.removeChild(this._nodeDisplay);
+    if (!this._nodeDisplay) return;
+
+    this._container.removeChild(this._nodeDisplay);
     this._nodeDisplay = null;
   }
 
@@ -199,7 +215,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       }
     }
 
-    this.last.lastGauges = JSON.parse(JSON.stringify(gaugesName));
+    this._graphicsState.lastGauges = JSON.parse(JSON.stringify(gaugesName));
     let i = 0;
     const gaugesTween: entity.EntityBase[] = [];
     for (const gaugeName of gaugesName) {
@@ -232,7 +248,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public showCloseup(
-    path?: images.StaticSpritePath & `images/closeups/${string}.png`
+    path?: images.SpritePath & `images/closeups/${string}.png`
   ): void {
     this._closeupLayer.removeChildren();
     if (!path) return;
@@ -305,15 +321,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._dialogSpeaker.visible = false;
     }
 
-    const hitBox = new PIXI.Container();
-    {
-      hitBox.position.set(140, 704);
-      hitBox.hitArea = new PIXI.Rectangle(0, 0, 1634, 322);
-      hitBox.interactive = true;
-      hitBox.buttonMode = true;
-      this._nodeDisplay.addChild(hitBox);
-    }
-
     {
       const dialogBox = this.makeText(
         "",
@@ -333,59 +340,109 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       // Manually split text into lines to avoid words "jumping" from line to line
       const baseText = splitIntoLines(interpolatedText, maxLineLength);
 
-      const writer = this.makeFxLoop(
-        `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
-        250
-      );
+      const textSpeedOption: number =
+        this.config.playOptions.getOption("textSpeed");
 
-      const defilement = new tween.Tween({
-        from: 1,
-        to: baseText.length,
-        duration: baseText.length * defilementDurationPerLetter,
-        onSetup: () => {
-          this._activateChildEntity(writer);
-        },
-        onUpdate: (value) => {
-          dialogBox.text = baseText.slice(0, Math.round(value));
-        },
-        onTeardown: () => {
-          dialogBox.text = baseText;
-          this._deactivateChildEntity(writer);
-          this._off(hitBox, "pointerup", accelerate);
-          this._on(hitBox, "pointerup", onBoxClick);
-        },
-      });
+      if (textSpeedOption === 1) {
+        // Just write the text
+        dialogBox.text = baseText;
 
-      const accelerate = () => {
-        if (defilement.isSetup) this._deactivateChildEntity(defilement);
-      };
+        this._container.interactive = true;
+        this._container.buttonMode = true;
+        this._once(this._container, "pointerup", () => {
+          this.config.fxMachine.play("Click");
 
-      this._activateChildEntity(defilement);
+          this._container.interactive = false;
+          this._container.buttonMode = false;
+          this.hideNode();
+          onBoxClick();
+        });
+      } else {
+        // Do a nice typewriter animation
+        const writer = this.makeFxLoop(
+          `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
+          250
+        );
 
-      this._once(hitBox, "pointerup", accelerate);
+        const typewriterSpeed =
+          typewriterDurationPerLetter * (1 - textSpeedOption);
+
+        const typewriterAnimation = new tween.Tween({
+          from: 1,
+          to: baseText.length,
+          duration: baseText.length * typewriterSpeed,
+          onSetup: () => {
+            this._activateChildEntity(writer);
+          },
+          onUpdate: (value) => {
+            dialogBox.text = baseText.slice(0, Math.round(value));
+          },
+          onTeardown: () => {
+            dialogBox.text = baseText;
+            this._deactivateChildEntity(writer);
+            this._off(this._container, "pointerup", accelerate);
+            this._once(this._container, "pointerup", () => {
+              this._container.interactive = false;
+              this._container.buttonMode = false;
+              this.hideNode();
+              onBoxClick();
+            });
+          },
+        });
+
+        const accelerate = () => {
+          if (typewriterAnimation.isSetup)
+            this._deactivateChildEntity(typewriterAnimation);
+        };
+
+        this._activateChildEntity(typewriterAnimation);
+
+        this._once(this._container, "pointerup", accelerate);
+        this._container.interactive = true;
+        this._container.buttonMode = true;
+      }
     }
   }
 
   public setChoice(
     nodeOptions: Record<string, string>[],
     onBoxClick: (choiceId: number) => unknown,
-    subchoice?: number
+    backOptionIndex?: number
   ) {
     // This works for both links between nodes and shortcut options
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
+
+    const isSubchoice = typeof backOptionIndex !== "undefined";
+    if (isSubchoice) {
+      // Catch all the clicks outside of the options
+      const clickCatcher = new PIXI.Container();
+      clickCatcher.hitArea = new PIXI.Rectangle(
+        0,
+        0,
+        this._entityConfig.app.view.width,
+        this._entityConfig.app.view.height
+      );
+      clickCatcher.interactive = true;
+      this._on(clickCatcher, "pointerup", () => {
+        this.hideNode();
+        onBoxClick(backOptionIndex);
+      });
+      this._nodeDisplay.addChild(clickCatcher);
+    }
+
     const animationShifting = 120;
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
-      if (subchoice === Number(nodeOptions[i].id)) continue;
+      if (backOptionIndex === Number(nodeOptions[i].id)) continue;
 
       const choicebox = new PIXI.Container();
       choicebox.addChild(
         this.makeSprite(
-          i === (subchoice ? 1 : 0)
+          i === (backOptionIndex ? 1 : 0)
             ? "images/ui/choicebox_contour_reversed.png"
             : i === nodeOptions.length - 1
             ? "images/ui/choicebox_contour.png"
@@ -413,45 +470,46 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             onUpdate: (value) => {
               choicebox.position.x = value;
             },
-            onTeardown: () => {
-              choicebox.interactive = true;
-              choicebox.buttonMode = true;
+          }),
+          new entity.FunctionCallEntity(() => {
+            choicebox.interactive = true;
+            choicebox.buttonMode = true;
 
-              this._on(choicebox, "pointerup", () => {
-                this.config.dialogScene.addToHistory(
-                  "[choice]",
-                  nodeOptions[i].text
-                );
-                onBoxClick(Number(nodeOptions[i].id));
-              });
+            this._on(choicebox, "pointerup", () => {
+              this.config.dialogScene.addToHistory(
+                "[choice]",
+                nodeOptions[i].text
+              );
+              this.hideNode();
+              onBoxClick(Number(nodeOptions[i].id));
+            });
 
-              this._on(choicebox, "mouseover", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: 1,
-                    to: 1.03,
-                    onUpdate: (value) => {
-                      choicebox.scale.set(value);
-                    },
-                  })
-                );
-              });
-              this._on(choicebox, "mouseout", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: 1.03,
-                    to: 1,
-                    onUpdate: (value) => {
-                      choicebox.scale.set(value);
-                    },
-                  })
-                );
-              });
-            },
+            this._on(choicebox, "mouseover", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1,
+                  to: 1.03,
+                  onUpdate: (value) => {
+                    choicebox.scale.set(value);
+                  },
+                })
+              );
+            });
+            this._on(choicebox, "mouseout", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1.03,
+                  to: 1,
+                  onUpdate: (value) => {
+                    choicebox.scale.set(value);
+                  },
+                })
+              );
+            });
           }),
         ])
       );
@@ -480,7 +538,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._activateChildEntity(new entity.ParallelEntity(box_tweens));
 
-    if (subchoice) {
+    if (isSubchoice) {
       const arrow_back = new PIXI.Container();
       arrow_back.addChild(this.makeSprite("images/ui/arrow_return.png"));
       arrow_back.scale.set(0.65);
@@ -489,7 +547,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       arrow_back.interactive = true;
       arrow_back.buttonMode = true;
       this._on(arrow_back, "pointerup", () => {
-        onBoxClick(subchoice);
+        this.hideNode();
+        onBoxClick(backOptionIndex);
       });
       this._on(arrow_back, "mouseover", () => {
         this._activateChildEntity(
@@ -523,7 +582,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public setFreechoice(
-    nodeOptions: string[],
+    nodeOptions: Record<string, string>[],
     onBoxClick: (choiceId: number) => unknown
   ) {
     this._dialogLayer.visible = false;
@@ -536,12 +595,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const [animationShifting, baseAlpha] = [120, 0.6];
     let freechoicesFound = 0;
     for (let i = 0; i < nodeOptions.length; i++) {
-      const [choiceText, jsonValue] = nodeOptions[i].trim().split("@");
+      const [choiceText, jsonValue] = nodeOptions[i].text.trim().split("@");
       if (!highlightJSON.hasOwnProperty(jsonValue)) continue;
       freechoicesFound++;
 
-      const path: images.SpritePath & `images/ui/highlights/${string}.png` =
-        `images/ui/highlights/${jsonValue}.png` as any;
+      const path = `images/ui/highlights/${jsonValue}.png` as images.SpritePath;
 
       let highlight: PIXI.Sprite;
       if (_.has(this.entityConfig.app.loader.resources, path)) {
@@ -550,7 +608,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         });
 
         this._nodeDisplay.addChild(highlight);
-      } else continue;
+      } else {
+        throw new Error(`Missing highlight sprite ${path}`);
+      }
 
       const hitboxPositions = highlightJSON[jsonValue];
       highlight.hitArea = new PIXI.Polygon(hitboxPositions);
@@ -559,52 +619,49 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         new entity.EntitySequence([
           new entity.WaitingEntity(Math.min(i, 1) * animationShifting * i),
           new tween.Tween({
+            obj: highlight,
+            property: "alpha",
             duration: 900,
             easing: easing.easeInSine,
             from: 0,
             to: baseAlpha,
-            onUpdate: (value) => {
-              highlight.alpha = value;
-            },
-            onTeardown: () => {
-              highlight.interactive = true;
-              highlight.buttonMode = true;
+          }),
+          new entity.FunctionCallEntity(() => {
+            highlight.interactive = true;
+            highlight.buttonMode = true;
 
-              this._on(highlight, "pointerup", () => {
-                this.config.dialogScene.addToHistory(
-                  "[freechoice]",
-                  choiceText
-                );
-                onBoxClick(i);
-              });
+            this._on(highlight, "pointerup", () => {
+              this.config.dialogScene.addToHistory("[freechoice]", choiceText);
+              this.hideNode();
+              onBoxClick(i);
+            });
 
-              this._on(highlight, "mouseover", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: baseAlpha,
-                    to: 1,
-                    onUpdate: (value) => {
-                      highlight.alpha = value;
-                    },
-                  })
-                );
-              });
-              this._on(highlight, "mouseout", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: 1,
-                    to: baseAlpha,
-                    onUpdate: (value) => {
-                      highlight.alpha = value;
-                    },
-                  })
-                );
-              });
-            },
+            this._on(highlight, "mouseover", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: baseAlpha,
+                  to: 1,
+                  onUpdate: (value) => {
+                    highlight.alpha = value;
+                  },
+                })
+              );
+            });
+            this._on(highlight, "mouseout", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1,
+                  to: baseAlpha,
+                  onUpdate: (value) => {
+                    highlight.alpha = value;
+                  },
+                })
+              );
+            });
           }),
         ])
       );
@@ -612,23 +669,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._nodeDisplay.addChild(highlight);
     }
 
-    if (freechoicesFound === nodeOptions.length) {
-      this._container.addChild(this._nodeDisplay);
-      this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
-    } else if (freechoicesFound === 0) {
-      const options: Record<string, string>[] = [];
-      for (let i = 0; i < nodeOptions.length; i++) {
-        options.push({
-          text: nodeOptions[i],
-          id: i.toString(),
-        });
-      }
-      this.setChoice(options, onBoxClick);
-    } else if (freechoicesFound !== nodeOptions.length) {
-      console.error("Free choice & choice are not compatible");
-    } else {
-      console.error("Should not happen");
-    }
+    this._container.addChild(this._nodeDisplay);
+    this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
+
+    console.assert(freechoicesFound === nodeOptions.length);
   }
 
   /**
@@ -639,11 +683,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    */
   public setBackground(bg: string, mood?: string) {
     // Check if background change
-    if (bg === this.last.lastBg && mood === this.last.lastBgMood) return;
+    if (
+      bg === this._graphicsState.lastBg &&
+      mood === this._graphicsState.lastBgMood
+    )
+      return;
 
     // Register last background
-    this.last.lastBg = bg;
-    this.last.lastBgMood = mood;
+    this._graphicsState.lastBg = bg;
+    this._graphicsState.lastBgMood = mood;
 
     // Remove background
     this._backgroundLayer.removeChildren();
@@ -695,20 +743,23 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    */
   public addCharacter(character?: string, mood?: string) {
     // Check if character or mood change
-    if (character === this.last.lastCharacter && mood === this.last.lastMood)
+    if (
+      character === this._graphicsState.lastCharacter &&
+      mood === this._graphicsState.lastMood
+    )
       return;
 
     //console.log(this._lastCharacter, this._lastMood, "->", character, mood);
 
     // Remove characters
-    const characterChanged = character !== this.last.lastCharacter;
+    const characterChanged = character !== this._graphicsState.lastCharacter;
     this.removeCharacters(characterChanged);
 
     // Register last character & mood
-    this.last.lastCharacter = character;
-    this.last.lastMood = mood;
+    this._graphicsState.lastCharacter = character;
+    this._graphicsState.lastMood = mood;
 
-    save.save(this.config.dialogScene);
+    // save.save(this.config.dialogScene);
 
     let displayMode: string;
     [character, displayMode] = character.split("@");

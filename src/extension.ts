@@ -141,7 +141,7 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
   }
 
   makeSprite(
-    path: images.StaticSpritePath,
+    path: images.SpritePath,
     edit?: (it: PIXI.Sprite) => unknown
   ): PIXI.Sprite {
     const sprite = new PIXI.Sprite(
@@ -154,7 +154,7 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
   }
 
   makeAnimatedSprite(
-    path: images.AnimatedSpritePath,
+    path: images.SpritePath,
     edit?: (it: PIXI.AnimatedSprite) => unknown
   ) {
     const spriteEntity = util.makeAnimatedSprite(
