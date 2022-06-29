@@ -153,7 +153,9 @@ title: Sieste
 tags: 
 position: -816,-411
 ---
+<< fx Sleep_LOOP>>
 Vous profitez du calme avant la fête pour reprendre vos forces en faisant un somme. En vous réveillant, vous vous sentez débordant d'énergie !
+<< stopFX Sleep_LOOP>>
 << visit Sieste >>
 << addToGauge sleep 50>>
 << advanceTimeBy 1:30 sleep food >>
@@ -182,9 +184,11 @@ title: Guitar_Training
 tags: 
 position: -1082,-816
 ---
+<< music AcousticGuitar >>
 Pas de soirée qui se respecte sans un guitariste amateur grattant les accords de WanderHall... Vous, vous préférez le bon vieux néo-shredding, ou encore le galactic jazz. Dans tous les cas, vous vous entraînez un peu pour amuser la galerie tout à l'heure.
 << visit Guitar_Training >>
 << advanceTimeBy 1:00 >>
+<< music Neutral >>
 <<jump Actions_Before_Party>>
 ===
 
@@ -283,6 +287,7 @@ Barbot: Yo, les losers, alors, mettez-vous au boulot pour amasser les Points Rex
 Fred_excited: Oh, trop bien ! C'est parti !
 <<endif>>
 << advanceTimeBy 0:15 >>
+<< music Danse >>
 <<jump Actions_Party>>
 ===
 
@@ -291,7 +296,6 @@ tags:
 position: -433,-420
 ---
 << hide >>
-<< music Danse >>
 
 <<if !isTimeOver("18:30")>>
 <<if isTimeOver("4:00")>>
@@ -446,8 +450,10 @@ title: End_Rap
 tags:
 position: -36,90
 ---
+<< music Tense >>
 BarBot: Bon, les amis, on va arrêter là, je crois...
 BarBot: Maintenant, je vous demande de quitter la salle...
+<< music Danse >>
 << visit End_Rap >>
 <<if visited("Good_Rap")>>
     <<jump WinCompetition>>
@@ -466,6 +472,7 @@ Fred_smiling: On a gagné !! On est les premiers à avoir battu BB-Rex !
 Fred_excited: C'est grâce à toi, { $name } ! Allez, on fête ça ?
 You: Je suis un peu fatigué, là...
 Fred_happy: Tu as raison, on ferait mieux de rentrer. Demain, je dois t'aider avec ton drone ! A plus, tout le monde !
+<< music Neutral >>
 <<jump TransitionMatin>>
 ===
 
@@ -478,6 +485,7 @@ Tous les étudiants vous regardent d'un air déçu, puis reviennent à leurs occ
 Fred_sad: Mince... On a pas réussi... Mais au moins on s'est bien amusés. Merci d'être resté jusqu'au bout, { $name }.
 You: Je suis un peu fatigué, là
 Fred_happy: Tu as raison, on ferait mieux de rentrer. Demain, je dois t'aider avec ton drone ! A plus, tout le monde !
+<< music Neutral >>
 <<jump TransitionMatin>>
 ===
 
@@ -624,10 +632,12 @@ Stressé par la tension et la foule, vous entamez votre solo. Vous aimeriez avoi
 Heureusement, Fred est là pour vous accompagner. Muni de sa Rythm-Box portable M47, il vous crée un beat du tonnerre.
 Vous parvenez tout de même à tenir une belle performance, qui ne laisse pas les étudiants indifférents.
 BarBot: Bon, ça, c'est ce que j'aime voir ! Bon, c'était un peu basique pour BB-Rex, mais vous avez réussi à ravir le public. Allez, pour la peine, voilà 1 PARTY POINT !
+<< fx Success >>
 Le barbot vous lance un gâteau apéritif teinté d'or que Fred attrape en sautant.
 Fred_excited: Génial !
 << advanceTimeBy 1:00 >>
 <<set $partyPoints to ($partyPoints + 1)>>
+<< music Danse >>
 <<jump Actions_Party>>
 ===
 
@@ -642,10 +652,12 @@ Les cordes rugissent au rythme de vos ongles, se tendent et s'étouffent pour la
 Le public est en extase. Vous êtes parvenus à créer un spectacle digne de ce nom.
 BarBot: Ok, je vous laisse ma couronne, les amis, vous l'avez mérité. J'ai pas entendu de licks pareils depuis les seventies !
 Fred_surprised: Qu'est-ce qu'il raconte ?
+<< fx Success >>
 Le barbot éjecte 2 gâteaux apéritifs teintés d'or que vous et Fred attrapez au vol.
 Fred_excited: Deux Party Points ?? Trop bien ! On avance deux fois plus vite !
 << advanceTimeBy 1:00 >>
 <<set $partyPoints to ($partyPoints + 2)>>
+<< music Danse >>
 <<jump Actions_Party>>
 ===
 
@@ -653,7 +665,7 @@ title: Danse
 tags:
 position: 534,-351
 ---
-<< music DanseQuiet >>
+<< music JungleBodyBeat >>
 Cette fois, vous vous dirigez au milieu de la piste de danse. Vous commencez par vous échauffer doucement en vous laissant guider par le beat de la chanson. Puis, quand le morceau suivant débute, là, vous enclenchez la vitesse supérieure et vous libérez toute l'énergie et le rythme qui bat en vous. #line:0ff5e35 
 BarBot: Alors, l'ami, on groove ? On va voir comment tu te débrouilles en dehors de ta zone de confort. MODE DISCO ACTIVE !
 << music Danse >>
@@ -676,6 +688,7 @@ Vous vous retournez pour constater que Fred vous a rejoint sur la piste de danse
 Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public ! #line:03f5ea5 
 Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressivement de l'orbite disco, vous saluez trois fois la foule avant de quitter la piste de danse. Votre sortie est suivie par un tonnerre d'applaudissements ! #line:0fa106d 
 Barbot: Wow, je vois que vous êtes plus que familiers avec le monde magique de la disco ! C'était puissant, les amis. Voilà 2 PARTY POINTS pour la peine !
+<< fx Success >>
 Le barbot éjecte 2 gâteaux apéritifs teintés d'or que vous et Fred attrapez au vol.
 Fred_excited: Deux Party Points ?? Trop bien ! On avance deux fois plus vite !
 << advanceTimeBy 1:00 >>
@@ -690,6 +703,7 @@ position: 711,-282
 Vous vous déhanchez en vous donnant un maximum, tentant de vous rappeler de vos leçons de Jungle Body Beat pour l'appliquer à l'ambiance disco.
 Vous aimeriez avoir eu le temps de vous entraîner, mais heureusement Fred est là pour vous guider et vous faire groover un maximum !
 BarBot: Ok, ça suffit. Vous êtes bons, les gars, mais vous pourriez être encore meilleurs. Allez, un Party Point est de mise !
+<< fx Success >>
 Le barbot vous lance un gâteau apéritif teinté d'or que Fred attrape en sautant.
 << advanceTimeBy 1:00 >>
 <<set $partyPoints to ($partyPoints + 1)>>
@@ -789,6 +803,7 @@ title: Reward_Piratage
 tags: 
 position: 190,-589
 ---
+<< fx Success >>
 Vous lancez la fonction et une trappe s'ouvre sur la tête du robot. Un biscuit doré en jaillit ! Un Party Point !
 <<set $partyPoints to ($partyPoints + 1)>>
 Peut-être que vous pourriez influencer encore plus le comportement du droïde...
@@ -819,10 +834,12 @@ title: Piratage_Good
 tags: 
 position: 369,-742
 ---
+<< fx Teleportation >>
 Vous utilisez vos connaissances fraîchement acquises en Systèmes d'Assistance au Pilotage pour prendre le contrôle du droïde ! Désormais, vous pourrez activer son contrôle à distance à l'aide de votre tablette.
 << advanceTimeBy 0:30 >>
 Fred_surprised: T'as fait QUOI ??
 Fred_excited: TROP BIEN !! Passe-moi les commandes !
+<< fx Success >>
 Barbot: Yo !! Fred est vraiment la meilleure personne que je connaisse, je l'adore ! Tiens, un PARTY POINT, rien que pour toi !!
 Fred_excited: Hahahaha !
 <<set $partyPoints to ($partyPoints + 1)>>
@@ -865,9 +882,11 @@ title: Repos_Fete
 tags:
 position: -625,119
 ---
+<< fx Sleep_LOOP >>
 Vous vous allongez sur le canapé de la cafétéria. Le tissu en nanofibre se laisse facilement détendre sous votre poids et vous vous endormez vite malgré la musique et la fête alentours.
 << addToGauge sleep 40 >>
 << advanceTimeBy 1:00 sleep >>
+<< stopFX Sleep_LOOP>>
 Une fois révéillé, vous vous sentez revigoré, d'attaque.
 <<jump Actions_Party>>
 ===
@@ -886,6 +905,7 @@ title: Rentrer
 tags:
 position: -443,-816
 ---
+<< music DanseQuiet >>
 Vous vous dirigez vers l'entrée, épuisé et priant de ne pas être trop épuisé pour demain. Vous êtes en train de reprendre vos affaires quand Fred vous arrête dans votre lancée.
 Fred_surprised: Hey, { $name }, tu t'en vas déjà ?? La soirée a à peine commencé, on doit toujours vaincre BB à son propre jeu !
 You: Je sais pas trop, je suis un peu fatigué, là... En plus, demain matin, on a TP. Tu pourrais rentrer toi aussi !
@@ -894,6 +914,7 @@ Fred_happy: Hors de question, ça ! Allez, reste un peu, le temps d'obtenir le r
     <<jump Rester>>
 -> Rentrer
     <<jump Chambre_Soir_Fail>>
+    << music Neutral >>
 ===
 
 title: Rester
@@ -902,6 +923,7 @@ position: -609,-689
 ---
 You: Bon, ok. Je vais rester un peu.
 Fred_excited: Yes !!
+<< music Danse >>
 <<jump Actions_Party>>
 ===
 
@@ -1028,7 +1050,7 @@ You: Ouais, mais pour ce qui est de mon palmphone, dès qu'il est remonté à 10
 Azul_happy: Ton enveloppe biologique est plus exigeante et plus gourmande. #line:00e89c0 
 Temde_smiling: Elle en demande plus. Une nuit de sommeil ! #line:047de87 
 You: Ça veut dire combien ? #line:019496e 
-Sapiens_thinking: Plusieurs heures. 6 heures pour les plus vifs. 10 heures pour les plus mous. #line:004bc53 
+Sapiens_thinking: Ça dépend.... Ça peut être 6 heures pour quelqu'un, ou 10h pour quelqu'un d'autre. Chacun son rythme !
 You: Et si je ne dispose même pas de 6 heures ? #line:08690fd 
 Azul_proud: Il y a bien une solution de dépannage... #line:0a728b0 
 Azul_happy: Si tu n'as pas eu le temps de profiter d'une bonne nuit de sommeil, tu fais une bonne sieste !
