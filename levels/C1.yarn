@@ -14,7 +14,7 @@ position: -245,126
 << loopFX Chime_LOOP 2000 >>
 << fadeOut >>
 
-Bip !<pause> Bip !<pause> Il est 8 heures, vous rappelle votre horloge connectée.  #line:0282b9b 
+Bip !<pause> Bip !<pause 2000> Il est 8 heures, vous rappelle votre horloge connectée.  #line:0282b9b 
 
 << stopFX Chime_LOOP >>
 << music Neutral >>

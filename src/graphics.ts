@@ -1013,6 +1013,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 //   },
 // });
 
+const typewriterAnimationDefaults = {
+  pause: 1000,
+};
+
 class TypewriterAnimation extends entity.EntityBase {
   private _elapsedTime: number;
   private _lastLetterTime: number;
@@ -1033,18 +1037,33 @@ class TypewriterAnimation extends entity.EntityBase {
     this._lastLetterTime = 0;
     this._lettersShown = 0;
 
+    // Regexp to match pause command. The `y` flag allows us to use the lastIndex attribute correctly
+    const pauseRegExp = /<(\s*)pause(\s*)(\d*)(\s*)>/y;
+
     // Create a table of time per letter
     this._letters = "";
     this._timePerLetter = [];
     let lastTimePerLetter = this.defaultTimePerLetter;
     for (let i = 0; i < this.baseText.length; i++) {
-      if (
-        this.baseText[i] === "<" &&
-        this.baseText.indexOf("<pause>", i) === i
-      ) {
-        lastTimePerLetter += 20 * this.defaultTimePerLetter;
-        i += 6;
-      } else {
+      let foundCommand = false;
+      if (this.baseText[i] === "<") {
+        pauseRegExp.lastIndex = i;
+        const result = pauseRegExp.exec(this.baseText);
+        if (result) {
+          // Matched pause command.
+          foundCommand = true;
+
+          // Find the time (optional)
+          const timePerLetter =
+            (result[3] && parseInt(result[3])) ||
+            typewriterAnimationDefaults["pause"];
+
+          lastTimePerLetter += timePerLetter;
+          i += result[0].length - 1; // `i` will be incremented in the loop
+        }
+      }
+
+      if (!foundCommand) {
         this._timePerLetter.push(lastTimePerLetter);
         this._letters += this.baseText[i];
 
