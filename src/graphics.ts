@@ -5,6 +5,7 @@ import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
 import * as scroll from "booyah/src/scroll";
 import * as tween from "booyah/src/tween";
+import * as util from "booyah/src/util";
 
 import * as filter from "./graphics_filter";
 import * as extension from "./extension";
@@ -451,11 +452,12 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         //   },
         // });
 
-        const typewriterAnimation = new TypewriterAnimation(
+        const typewriterAnimation = new TypewriterAnimation({
           baseText,
-          dialogBox,
-          typewriterSpeed
-        );
+          textBox: dialogBox,
+          defaultTimePerLetter: typewriterSpeed,
+          isNarration: !speaker,
+        });
         this._on(this, "deactivatedChildEntity", (e) => {
           if (e !== typewriterAnimation) return;
 
@@ -1017,38 +1019,54 @@ const typewriterAnimationDefaults = {
   pause: 1000,
 };
 
+class TypewriterAnimationOptions {
+  baseText: string;
+  textBox: PIXI.Text;
+  defaultTimePerLetter: number;
+  isNarration: boolean;
+}
+
 class TypewriterAnimation extends entity.EntityBase {
+  private _options: TypewriterAnimationOptions;
   private _elapsedTime: number;
   private _lastLetterTime: number;
   private _lettersShown: number;
   private _letters: string;
-  private _timePerLetter: number[];
+  private _durationPerLetter: number[];
 
-  constructor(
-    public readonly baseText: string,
-    public readonly textBox: PIXI.Text,
-    public readonly defaultTimePerLetter: number
-  ) {
+  private _fxName: string;
+  private _lastFxTime: number;
+
+  constructor(options: Partial<TypewriterAnimationOptions>) {
     super();
+
+    this._options = util.fillInOptions(
+      options,
+      new TypewriterAnimationOptions()
+    );
   }
 
   _setup() {
     this._elapsedTime = 0;
     this._lastLetterTime = 0;
+    this._lastFxTime = 0;
     this._lettersShown = 0;
+    this._fxName = `${
+      this._options.isNarration ? "Narration" : "Dialog"
+    }_TypeWriter_LOOP`;
 
     // Regexp to match pause command. The `y` flag allows us to use the lastIndex attribute correctly
     const pauseRegExp = /<(\s*)pause(\s*)(\d*)(\s*)>/y;
 
-    // Create a table of time per letter
+    // Create a table of duration per letter
     this._letters = "";
-    this._timePerLetter = [];
-    let lastTimePerLetter = this.defaultTimePerLetter;
-    for (let i = 0; i < this.baseText.length; i++) {
+    this._durationPerLetter = [];
+    let lastTimePerLetter = this._options.defaultTimePerLetter;
+    for (let i = 0; i < this._options.baseText.length; i++) {
       let foundCommand = false;
-      if (this.baseText[i] === "<") {
+      if (this._options.baseText[i] === "<") {
         pauseRegExp.lastIndex = i;
-        const result = pauseRegExp.exec(this.baseText);
+        const result = pauseRegExp.exec(this._options.baseText);
         if (result) {
           // Matched pause command.
           foundCommand = true;
@@ -1064,29 +1082,32 @@ class TypewriterAnimation extends entity.EntityBase {
       }
 
       if (!foundCommand) {
-        this._timePerLetter.push(lastTimePerLetter);
-        this._letters += this.baseText[i];
+        this._durationPerLetter.push(lastTimePerLetter);
+        this._letters += this._options.baseText[i];
 
-        lastTimePerLetter = this.defaultTimePerLetter;
+        lastTimePerLetter = this._options.defaultTimePerLetter;
       }
     }
   }
 
   _update() {
-    // TODO: handle pause amounts (in additional milliseconds)
-    // TODO: start and stop fx
     // TODO: Commands mess up word spacing
     // TODO: Remove commands from text when not using typewriter
 
+    const fxDuration = 250;
+
     this._elapsedTime += this._lastFrameInfo.timeSinceLastFrame;
 
-    if (
-      this._elapsedTime >
-      this._lastLetterTime + this._timePerLetter[this._lettersShown]
-    ) {
+    const nextLetterDuration = this._durationPerLetter[this._lettersShown];
+    if (this._elapsedTime > this._lastLetterTime + nextLetterDuration) {
       this._lettersShown++;
-      this.textBox.text = this._letters.slice(0, this._lettersShown);
+      this._options.textBox.text = this._letters.slice(0, this._lettersShown);
       this._lastLetterTime = this._elapsedTime;
+
+      if (this._elapsedTime > this._lastFxTime + fxDuration) {
+        this._entityConfig.fxMachine.play(this._fxName);
+        this._lastFxTime = this._elapsedTime;
+      }
 
       if (this._lettersShown === this._letters.length - 1) {
         this._transition = entity.makeTransition();
@@ -1096,7 +1117,7 @@ class TypewriterAnimation extends entity.EntityBase {
 
   protected _teardown(frameInfo: entity.FrameInfo): void {
     // Show entire text
-    this.textBox.text = this._letters;
+    this._options.textBox.text = this._letters;
   }
 }
 
