@@ -5,6 +5,7 @@ import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
 import * as scroll from "booyah/src/scroll";
 import * as tween from "booyah/src/tween";
+import * as util from "booyah/src/util";
 
 import * as filter from "./graphics_filter";
 import * as extension from "./extension";
@@ -419,35 +420,54 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         });
       } else {
         // Do a nice typewriter animation
-        const writer = this.makeFxLoop(
-          `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
-          250
-        );
+
+        // const writer = this.makeFxLoop(
+        //   `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
+        //   250
+        // );
 
         const typewriterSpeed =
           typewriterDurationPerLetter * (1 - textSpeedOption);
 
-        const typewriterAnimation = new tween.Tween({
-          from: 1,
-          to: baseText.length,
-          duration: baseText.length * typewriterSpeed,
-          onSetup: () => {
-            this._activateChildEntity(writer);
-          },
-          onUpdate: (value) => {
-            dialogBox.text = baseText.slice(0, Math.round(value));
-          },
-          onTeardown: () => {
-            dialogBox.text = baseText;
-            this._deactivateChildEntity(writer);
-            this._off(this._container, "pointerup", accelerate);
-            this._once(this._container, "pointerup", () => {
-              this._container.interactive = false;
-              this._container.buttonMode = false;
-              this.hideNode();
-              onBoxClick();
-            });
-          },
+        // const typewriterAnimation = new tween.Tween({
+        //   from: 1,
+        //   to: baseText.length,
+        //   duration: baseText.length * typewriterSpeed,
+        //   onSetup: () => {
+        //     this._activateChildEntity(writer);
+        //   },
+        //   onUpdate: (value) => {
+        //     dialogBox.text = baseText.slice(0, Math.round(value));
+        //   },
+        //   onTeardown: () => {
+        //     dialogBox.text = baseText;
+        //     this._deactivateChildEntity(writer);
+        //     this._off(this._container, "pointerup", accelerate);
+        //     this._once(this._container, "pointerup", () => {
+        //       this._container.interactive = false;
+        //       this._container.buttonMode = false;
+        //       this.hideNode();
+        //       onBoxClick();
+        //     });
+        //   },
+        // });
+
+        const typewriterAnimation = new TypewriterAnimation({
+          baseText,
+          textBox: dialogBox,
+          defaultTimePerLetter: typewriterSpeed,
+          isNarration: !speaker,
+        });
+        this._on(this, "deactivatedChildEntity", (e) => {
+          if (e !== typewriterAnimation) return;
+
+          this._off(this._container, "pointerup", accelerate);
+          this._once(this._container, "pointerup", () => {
+            this._container.interactive = false;
+            this._container.buttonMode = false;
+            this.hideNode();
+            onBoxClick();
+          });
         });
 
         const accelerate = () => {
@@ -969,6 +989,135 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         }),
       ])
     );
+  }
+}
+
+// const typewriterAnimation = new tween.Tween({
+//   from: 1,
+//   to: baseText.length,
+//   duration: baseText.length * typewriterSpeed,
+//   onSetup: () => {
+//     this._activateChildEntity(writer);
+//   },
+//   onUpdate: (value) => {
+//     dialogBox.text = baseText.slice(0, Math.round(value));
+//   },
+//   onTeardown: () => {
+//     dialogBox.text = baseText;
+//     this._deactivateChildEntity(writer);
+//     this._off(this._container, "pointerup", accelerate);
+//     this._once(this._container, "pointerup", () => {
+//       this._container.interactive = false;
+//       this._container.buttonMode = false;
+//       this.hideNode();
+//       onBoxClick();
+//     });
+//   },
+// });
+
+const typewriterAnimationDefaults = {
+  pause: 1000,
+};
+
+class TypewriterAnimationOptions {
+  baseText: string;
+  textBox: PIXI.Text;
+  defaultTimePerLetter: number;
+  isNarration: boolean;
+}
+
+class TypewriterAnimation extends entity.EntityBase {
+  private _options: TypewriterAnimationOptions;
+  private _elapsedTime: number;
+  private _lastLetterTime: number;
+  private _lettersShown: number;
+  private _letters: string;
+  private _durationPerLetter: number[];
+
+  private _fxName: string;
+  private _lastFxTime: number;
+
+  constructor(options: Partial<TypewriterAnimationOptions>) {
+    super();
+
+    this._options = util.fillInOptions(
+      options,
+      new TypewriterAnimationOptions()
+    );
+  }
+
+  _setup() {
+    this._elapsedTime = 0;
+    this._lastLetterTime = 0;
+    this._lastFxTime = 0;
+    this._lettersShown = 0;
+    this._fxName = `${
+      this._options.isNarration ? "Narration" : "Dialog"
+    }_TypeWriter_LOOP`;
+
+    // Regexp to match pause command. The `y` flag allows us to use the lastIndex attribute correctly
+    const pauseRegExp = /<(\s*)pause(\s*)(\d*)(\s*)>/y;
+
+    // Create a table of duration per letter
+    this._letters = "";
+    this._durationPerLetter = [];
+    let lastTimePerLetter = this._options.defaultTimePerLetter;
+    for (let i = 0; i < this._options.baseText.length; i++) {
+      let foundCommand = false;
+      if (this._options.baseText[i] === "<") {
+        pauseRegExp.lastIndex = i;
+        const result = pauseRegExp.exec(this._options.baseText);
+        if (result) {
+          // Matched pause command.
+          foundCommand = true;
+
+          // Find the time (optional)
+          const timePerLetter =
+            (result[3] && parseInt(result[3])) ||
+            typewriterAnimationDefaults["pause"];
+
+          lastTimePerLetter += timePerLetter;
+          i += result[0].length - 1; // `i` will be incremented in the loop
+        }
+      }
+
+      if (!foundCommand) {
+        this._durationPerLetter.push(lastTimePerLetter);
+        this._letters += this._options.baseText[i];
+
+        lastTimePerLetter = this._options.defaultTimePerLetter;
+      }
+    }
+  }
+
+  _update() {
+    // TODO: Commands mess up word spacing
+    // TODO: Remove commands from text when not using typewriter
+
+    const fxDuration = 250;
+
+    this._elapsedTime += this._lastFrameInfo.timeSinceLastFrame;
+
+    const nextLetterDuration = this._durationPerLetter[this._lettersShown];
+    if (this._elapsedTime > this._lastLetterTime + nextLetterDuration) {
+      this._lettersShown++;
+      this._options.textBox.text = this._letters.slice(0, this._lettersShown);
+      this._lastLetterTime = this._elapsedTime;
+
+      if (this._elapsedTime > this._lastFxTime + fxDuration) {
+        this._entityConfig.fxMachine.play(this._fxName);
+        this._lastFxTime = this._elapsedTime;
+      }
+
+      if (this._lettersShown === this._letters.length - 1) {
+        this._transition = entity.makeTransition();
+      }
+    }
+  }
+
+  protected _teardown(frameInfo: entity.FrameInfo): void {
+    // Show entire text
+    this._options.textBox.text = this._letters;
   }
 }
 
