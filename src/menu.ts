@@ -93,17 +93,15 @@ export class Menu extends extension.ExtendedCompositeEntity {
         .beginFill(0)
         .drawRect(0, 0, variable.width, variable.height)
         .endFill();
-      this.blackBackground.interactive = true;
       this.blackBackground.alpha = 0.5;
+      this.blackBackground.interactive = true;
       this._on(this.blackBackground, "pointerup", this.close);
       this.container.addChild(this.blackBackground);
     }
 
     {
-      //
       this.menuButton = this.makeSprite("images/menu/menu.png", (it) => {
         it.anchor.set(0.6);
-        //it.alpha = 0.8;
         it.position.set(100);
         it.scale.set(0.5);
         it.buttonMode = true;
@@ -213,7 +211,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         it.scale.set(0.4);
         it.position.set(x, y);
       });
-      this.popupBackground.addChild(image);
+      this._controlsContainer.addChild(image);
 
       this.journal = this.makeText(
         "Journal",
@@ -231,7 +229,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
           this._on(it, "pointerup", this._downloadJournal);
         }
       );
-      this.popupBackground.addChild(this.journal);
+      this._controlsContainer.addChild(this.journal);
       // this.journalUpdated = false;
     }
 
@@ -247,7 +245,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       image.interactive = true;
       image.buttonMode = true;
       this._on(image, "pointerup", this._onTapPCLogo);
-      this.popupBackground.addChild(image);
+      this._controlsContainer.addChild(image);
 
       this.creditButton = this.makeText(
         "Credits",
@@ -264,7 +262,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         }
       );
       this._on(this.creditButton, "pointertap", this._showCredits);
-      this.popupBackground.addChild(this.creditButton);
+      this._controlsContainer.addChild(this.creditButton);
 
       // Credits entity starts null, and is created only when the button is pressed
       this.creditsEntity = null;
@@ -284,7 +282,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
           it.position.set(+90, 20);
         }
       );
-      this.popupBackground.addChild(textFullscreen);
+      this._controlsContainer.addChild(textFullscreen);
       // Création image
       this.fullscreenSwitcher = new SpriteSwitcher(
         {
@@ -316,7 +314,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         it.scale.set(0.3);
         it.position.set(x - 165, y);
       });
-      this.popupBackground.addChild(logo);
+      this._controlsContainer.addChild(logo);
 
       this.musicVolumeSwitcher = new SpriteRangeSwitcher(
         {
@@ -348,7 +346,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         it.scale.set(0.3);
         it.position.set(x - 165, y);
       });
-      this.popupBackground.addChild(logo);
+      this._controlsContainer.addChild(logo);
 
       this.soundVolumeSwitcher = new SpriteRangeSwitcher(
         {
@@ -379,7 +377,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         it.scale.set(0.3);
         it.position.set(x - 165, y);
       });
-      this.popupBackground.addChild(logo);
+      this._controlsContainer.addChild(logo);
 
       this.textSpeedSwitcher = new SpriteRangeSwitcher(
         {
