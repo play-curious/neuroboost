@@ -95,7 +95,7 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
       if (displayMode === "holo") {
         this._activateChildEntity(
           new tween.Tween({
-            duration: 250,
+            duration: 500,
             easing: easing.easeInCubic,
             from: 0,
             to: 100,
