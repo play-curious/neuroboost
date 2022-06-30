@@ -9,7 +9,6 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import * as journal from "./journal";
 import * as popup from "./popup";
-import { isYieldExpression } from "typescript";
 
 interface Settings {
   fx: number;

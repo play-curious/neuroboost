@@ -222,7 +222,7 @@ const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 export const screenSize = new PIXI.Point(1920, 1080);
 
-const splashScreen = "images/splash_screen.png";
+const splashScreen = "images/splash_screen.jpg";
 
 const params = new URLSearchParams(window.location.search);
 const startingScene = params.get("level") || params.get("scene") || "start";
