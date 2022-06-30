@@ -406,7 +406,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       if (textSpeedOption === 1) {
         // Just write the text
-        dialogBox.text = baseText;
+        const pauseRegExp = /<(\s*)pause(\s*)(\d*)(\s*)>/g;
+        const cleanedText = baseText.replace(pauseRegExp, "");
+        dialogBox.text = cleanedText;
 
         this._container.interactive = true;
         this._container.buttonMode = true;
@@ -420,42 +422,12 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         });
       } else {
         // Do a nice typewriter animation
-
-        // const writer = this.makeFxLoop(
-        //   `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
-        //   250
-        // );
-
         const typewriterSpeed =
           typewriterDurationPerLetter * (1 - textSpeedOption);
-
-        // const typewriterAnimation = new tween.Tween({
-        //   from: 1,
-        //   to: baseText.length,
-        //   duration: baseText.length * typewriterSpeed,
-        //   onSetup: () => {
-        //     this._activateChildEntity(writer);
-        //   },
-        //   onUpdate: (value) => {
-        //     dialogBox.text = baseText.slice(0, Math.round(value));
-        //   },
-        //   onTeardown: () => {
-        //     dialogBox.text = baseText;
-        //     this._deactivateChildEntity(writer);
-        //     this._off(this._container, "pointerup", accelerate);
-        //     this._once(this._container, "pointerup", () => {
-        //       this._container.interactive = false;
-        //       this._container.buttonMode = false;
-        //       this.hideNode();
-        //       onBoxClick();
-        //     });
-        //   },
-        // });
-
         const typewriterAnimation = new TypewriterAnimation({
           baseText,
           textBox: dialogBox,
-          defaultTimePerLetter: typewriterSpeed,
+          defaultLetterDuration: typewriterSpeed,
           isNarration: !speaker,
         });
         this._on(this, "deactivatedChildEntity", (e) => {
@@ -992,37 +964,24 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 }
 
-// const typewriterAnimation = new tween.Tween({
-//   from: 1,
-//   to: baseText.length,
-//   duration: baseText.length * typewriterSpeed,
-//   onSetup: () => {
-//     this._activateChildEntity(writer);
-//   },
-//   onUpdate: (value) => {
-//     dialogBox.text = baseText.slice(0, Math.round(value));
-//   },
-//   onTeardown: () => {
-//     dialogBox.text = baseText;
-//     this._deactivateChildEntity(writer);
-//     this._off(this._container, "pointerup", accelerate);
-//     this._once(this._container, "pointerup", () => {
-//       this._container.interactive = false;
-//       this._container.buttonMode = false;
-//       this.hideNode();
-//       onBoxClick();
-//     });
-//   },
-// });
-
-const typewriterAnimationDefaults = {
+const typewriterDefaultCharacterDurations: Record<string, number> = {
   pause: 1000,
+  ".": 500,
+  ",": 150,
+  "!": 500,
+  "?": 500,
+  ":": 300,
+  "…": 500,
 };
+
+const typewriterSpecialCharacters = Object.keys(
+  typewriterDefaultCharacterDurations
+);
 
 class TypewriterAnimationOptions {
   baseText: string;
   textBox: PIXI.Text;
-  defaultTimePerLetter: number;
+  defaultLetterDuration: number;
   isNarration: boolean;
 }
 
@@ -1049,11 +1008,12 @@ class TypewriterAnimation extends entity.EntityBase {
   _setup() {
     this._elapsedTime = 0;
     this._lastLetterTime = 0;
-    this._lastFxTime = 0;
     this._lettersShown = 0;
+
     this._fxName = `${
       this._options.isNarration ? "Narration" : "Dialog"
     }_TypeWriter_LOOP`;
+    this._lastFxTime = 0;
 
     // Regexp to match pause command. The `y` flag allows us to use the lastIndex attribute correctly
     const pauseRegExp = /<(\s*)pause(\s*)(\d*)(\s*)>/y;
@@ -1061,7 +1021,7 @@ class TypewriterAnimation extends entity.EntityBase {
     // Create a table of duration per letter
     this._letters = "";
     this._durationPerLetter = [];
-    let lastTimePerLetter = this._options.defaultTimePerLetter;
+    let nextLetterDuration = this._options.defaultLetterDuration;
     for (let i = 0; i < this._options.baseText.length; i++) {
       let foundCommand = false;
       if (this._options.baseText[i] === "<") {
@@ -1072,22 +1032,30 @@ class TypewriterAnimation extends entity.EntityBase {
           foundCommand = true;
 
           // Find the time (optional)
-          const timePerLetter =
+          const pauseDuration =
             (result[3] && parseInt(result[3])) ||
-            typewriterAnimationDefaults["pause"];
+            typewriterDefaultCharacterDurations["pause"];
 
-          lastTimePerLetter += timePerLetter;
+          nextLetterDuration = pauseDuration;
           i += result[0].length - 1; // `i` will be incremented in the loop
         }
       }
 
       if (!foundCommand) {
-        this._durationPerLetter.push(lastTimePerLetter);
+        this._durationPerLetter.push(nextLetterDuration);
         this._letters += this._options.baseText[i];
 
-        lastTimePerLetter = this._options.defaultTimePerLetter;
+        // After ponctuation, insert a pause
+        if (typewriterSpecialCharacters.includes(this._options.baseText[i])) {
+          nextLetterDuration =
+            typewriterDefaultCharacterDurations[this._options.baseText[i]];
+        } else {
+          nextLetterDuration = this._options.defaultLetterDuration;
+        }
       }
     }
+
+    this._playFx();
   }
 
   _update() {
@@ -1105,8 +1073,7 @@ class TypewriterAnimation extends entity.EntityBase {
       this._lastLetterTime = this._elapsedTime;
 
       if (this._elapsedTime > this._lastFxTime + fxDuration) {
-        this._entityConfig.fxMachine.play(this._fxName);
-        this._lastFxTime = this._elapsedTime;
+        this._playFx();
       }
 
       if (this._lettersShown === this._letters.length - 1) {
@@ -1118,6 +1085,11 @@ class TypewriterAnimation extends entity.EntityBase {
   protected _teardown(frameInfo: entity.FrameInfo): void {
     // Show entire text
     this._options.textBox.text = this._letters;
+  }
+
+  private _playFx() {
+    this._entityConfig.fxMachine.play(this._fxName);
+    this._lastFxTime = this._elapsedTime;
   }
 }
 
