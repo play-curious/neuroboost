@@ -6,7 +6,7 @@ position: -1627,-493
 colorID: 8
 ---
 << fadeIn  >>
-<< showTitle Chapitre 2 >>
+<< showTitle Chapitre 2 : >>
 << setBackground door class >>
 << music Neutral >>
 << fadeOut >>
@@ -310,14 +310,14 @@ position: -433,-420
 <<endif>>
 
 <<if $partyPoints < 4>>
--> Hall de la cafétéria
-    <<jump Hall_S>>
--> Bar
-    <<jump Bar_S>>
--> Canapé
-    <<jump Sofa_S>>
--> Porte
+-> Door@party-door  
     <<jump Porte_Fete_S>>
+-> Couch@party-couch
+    <<jump Sofa_S>>
+-> Hall@party-hall  
+    <<jump Hall_S>>
+-> Bar@party-bar 
+    <<jump Bar_S>>
 <<else>>
 -> Confronter BB-Rex
     <<jump RapBattle>>
@@ -1073,23 +1073,23 @@ colorID: 1
 Sapiens_thinking: C'est ce que nous allons voir. C'est le moment pour un petit questionnaire… #line:0dda2ca 
 
 Sapiens_thinking: Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos réserves, on peut continuer à agir, à travailler. On n'a pas besoin de dormir et de recharger les batteries tant qu'elles ne sont pas à plat. #line:06bc6cb 
--> Vrai #line:044fa2d 
+-> Vrai, notre corps emmagasine des unités de sommeil
     << fx Failure >>
     Sapiens_angry: Grossière erreur, jeune novice ! On ne stocke pas le sommeil. Chaque nuit, notre batterie tombe à zéro, il faut la recharger. Entre 6 et 10 heures ! #line:030496f 
     Ledai_explaining: Certes, Master Sapiens, mais laissons une chance à { $name }. #line:07113fa 
--> Faux #line:06a1ff6 
+-> Faux, le sommeil ne se stocke pas
     << fx Success >>
     Sapiens_happy: Bravo ! Le sommeil ne se stocke pas, il faut veiller à recharger son matériel biologique pour la nouvelle journée qui s'annonce le lendemain. #line:08425ec 
     Ledai_happy: Une autre phrase quiz, Master Sapiens ? #line:0efd67b 
 
 Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut surtout faire le plein de calories une fois par jour ! #line:09366cb 
 
--> Vrai #line:0c791c4 
+-> Vrai, seul le nombre de calories compte pour être plein d'énergie
     << fx Failure >>
     Sapiens_angry: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité. #line:01481b0 
     Azul_sad: Master Sapiens, { $name } est encore novice et vous avez d'autres quizz à lui poser. #line:05300f3 
     Sapiens_thinking: En effet. #line:08df99c 
--> Faux #line:00f2421 
+-> Faux, il faut veiller à manger équilibré plutôt qu'en grande quantité
     << fx Success >>
     Sapiens_happy: Excellente réponse ! Le secret d'un entretien métabolique durable est de se nourrir régulièrement, de manière équilibrée. #line:07f18aa 
     Azul_cheerful: Est-ce la fin de la séance de quizz ? #line:0bb5bcf 
@@ -1097,12 +1097,12 @@ Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut 
     
 Sapiens_thinking: L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil. #line:0c5a2c7 
 
--> Vrai #line:0f76f79 
+-> Vrai, l'activité physique peut dérégler le sommeil
     << fx Success >>
     Sapiens_happy: Exactement ! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand ! #line:0151139 
     Temde_smiling: Très bien, mais faites court et concis ! { $name } est fatigué ! #line:024a0ce 
     Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue. #line:063cb95 
--> Faux #line:00a3f09 
+-> Faux, l'activité physique est forcément positive
     << fx Failure >>
     Sapiens_angry: Encore une idée reçue, une affirmation infondée! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand! #line:02baefc 
     Temde_sad: Très bien, mais faites court et concis! { $name } est fatiguée! #line:0eb5a88 
@@ -1111,7 +1111,7 @@ Sapiens_thinking: L'activité physique fait du bien au métabolisme étudiant. M
 
 Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante. #line:01528df 
 
--> Vrai #line:01ae1fe 
+-> Vrai, il faut dormir deux fois plus après avoir être privé de sommeil
     << fx Failure >>
     Sapiens_angry: Non-sens ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! #line:00201f3 
     Azul_sad: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment. #line:0976d40 
@@ -1120,7 +1120,7 @@ Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Apr
         <<jump huit_heures>>
     -> Ça dépend, 6 à 10 heures #line:0146683 
         <<jump six_10_heures>>
--> Faux #line:04ba9a7 
+-> Faux, il suffit de faire des nuits complètes pour se remettre dans le rythme
     << fx Success >>
     Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que… #line:0bc13d5 
     Temde_neutral: Non non, on coupe ! Le temps presse ! #line:0ff8a03 
