@@ -13,7 +13,7 @@ position: -891,402
 << setGauge mentalLoad 80 >>
 << setGauge stress 40 >>
 << showGauges >>
-<< advanceTime 0:15 >>
+<< setTime 15:50 >>
 << setBackground oral >>
 
 
@@ -25,7 +25,7 @@ Autrement dit, cette épreuve est éliminatoire.
 << fadeOut >>
 "On en a assez vu ! Allez, AU SUIVANT !"
 Ces mots prononcés par le jury alors même que vous vous asseyez dans les gradins vous glacent le sang.
-Le dernier élève se dirige vers la porte en sanglots. Vous angoissez, peu rassuré par ce que vous venez de voir...
+Le dernier élève se dirige vers la porte en sanglots. Vous angoissez, peu rassuré par ce que vous venez de voir…
 
 Il faut avouer que ces derniers temps, vous avez obtenu des notes plutôt désastreuses. Vous vous sentez déboussolé face à la masse d'informations à retenir que demande l'Académie.
 
@@ -38,12 +38,12 @@ Vous déglutissez difficilement en regardant l'ordre de passage. Le suivant, c'e
 -> Vous rassurer en faisant mine d'être confiant
 
 Vous commencez par vous présenter au jury, puis vous leur rappelez ce que vous avez choisi comme matière de Grand Oral : <b>la Philosophie quantique</b>. #line:08fe26e 
-L'un des jurés enfile de drôles de lunettes et vous fixe un moment avant de s'écrier : "La décohérence quantique"... #line:0ea98fb 
+L'un des jurés enfile de drôles de lunettes et vous fixe un moment avant de s'écrier : "La décohérence quantique"… #line:0ea98fb 
 
 << addToGauge stress 20 >>
 
-Vous déglutissez difficilement. Vous avez soudainement chaud. Très chaud. Vous dégoulinez de sueur... #line:01e0f27 
-Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la préparer, même pas de la survoler... Jamais vous n'allez pouvoir tenir un oral convaincant sur ce sujet !
+Vous déglutissez difficilement. Vous avez soudainement chaud. Très chaud. Vous dégoulinez de sueur… #line:01e0f27 
+Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la préparer, même pas de la survoler… Jamais vous n'allez pouvoir tenir un oral convaincant sur ce sujet !
 
 
 << advanceTime 0:20 >>
@@ -62,7 +62,7 @@ tags:
 position: -822,745
 ---
 Pendant l'oral, vous faites de votre mieux pour meubler le temps comme vous le pouvez. D'habitude, vous êtes un maître pour broder, mais là, vos lacunes vous empêchent de tenir un discours cohérent sur ce sujet.
-Puis, quand est venu le temps des questions-réponses... Ce fut le massacre. Le jury ne vous a épargné aucun coup, aucune humiliation. #line:0dbcc7e 
+Puis, quand est venu le temps des questions-réponses… Ce fut le massacre. Le jury ne vous a épargné aucun coup, aucune humiliation. #line:0dbcc7e 
 <<jump Sortie_Salle>>
 ===
 title: Ramener_vers_sujet
@@ -86,8 +86,8 @@ position: -549,805
 << fadeIn >>
 << advanceTime 0:10 >>
 << music NegativeSad >>
-Vous sortez de la salle en tremblant. C'est à peine si vous vous rappelez qui vous êtes et où vous êtes... #line:02751be 
-Pas la peine d'attendre les résultats pour savoir que vous avez royalement raté. Vous retournez dans votre chambre sans vraiment voir le trajet, ressassant sans cesse tout ce que vous avez mal fait... #line:0d4406a 
+Vous sortez de la salle en tremblant. C'est à peine si vous vous rappelez qui vous êtes et où vous êtes… #line:02751be 
+Pas la peine d'attendre les résultats pour savoir que vous avez royalement raté. Vous retournez dans votre chambre sans vraiment voir le trajet, ressassant sans cesse tout ce que vous avez mal fait… #line:0d4406a 
 
 
 <<jump Chambre_Soir>>
@@ -101,8 +101,8 @@ position: -352.5212097167969,897.6408081054688
 << setBackground bedroom night >>
 << fadeOut >>
 << music NegativeSad >>
-Le Grand Oral était une épreuve éliminatoire, et vous doutez fortement que le jury ne vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues...
-Vous vous glissez tout de suite dans votre lit. Quelle semaine pourrie... #line:0da04e6 
+Le Grand Oral était une épreuve éliminatoire, et vous doutez fortement que le jury ne vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues…
+Vous vous glissez tout de suite dans votre lit. Quelle semaine pourrie… #line:0da04e6 
  
 << fx Sleep_LOOP >>
 -> Faire un gros somme #line:002a60d 
@@ -126,8 +126,9 @@ position: -177,968
 Vous vous redressez subitement ! Quel drôle de rêve ! Une fille à quatre bras vous adressait la parole.
 
 Temde_smiling: Non non, je suis bien là, à côté de toi. #line:04a714a 
-<< fx Bell_Meditation >>
-<< fadeIn 2 >>
+<< fadeIn 1 >>
+<< fadeOut >>
+<< fadeIn 1 >>
 << fadeOut >>
 Quoi ?!.. Vous tournez la tête et vous la voyez ! La cyborg à quatre bras ! Elle se tient là, juste à côté de votre lit. #line:044441f 
 Temde_smiling: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit nom ? #line:065fb9c 
@@ -136,7 +137,7 @@ Temde_smiling: Salut ! Je m'appelle Miss Temdé. Et toi, c'est quoi ton petit no
 <<empty>>
 
 Temde_smiling: Enchantée, { $name }. Lève-toi, on a du pain sur la planche ! #line:0fc2466 
-You: Mais... J'suis fatigué... #line:01081e7 
+You: Mais… J'suis fatigué… #line:01081e7 
 Temde_sad: Arrête tes jérémiades ! Tu as bricolé comme tu as pu, ça n'a pas marché. Tu n'as qu'à reprendre le chantier ! #line:0b038e3 
 -> Comment ça ?
     You: Comment ça ? Comment je pourrais sauver mes études alors que j'ai raté le Grand Oral ?
@@ -161,9 +162,9 @@ tags: noUi
 position: -719.885986328125,901.3107299804688
 ---
 You: Ça suffit <i>Miss Temdé</i> ! Vous vous cassez de mon rêve et vous me laissez dormir paisiblement. Je suis crevé et je dois faire mes valises demain ! J'ai besoin de reprendre des forces !!
-Temde_thinking: Je vois, on se prend pour un dur... Tant pis { $name }, tu l'auras voulu...
+Temde_thinking: Je vois, on se prend pour un dur… Tant pis { $name }, tu l'auras voulu…
 
-Miss Temdé lève la paume d'une de ses mains cybernétiques... #line:03616cd 
+Miss Temdé lève la paume d'une de ses mains cybernétiques… #line:03616cd 
 
 Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente. #line:0ff9b42 
 
@@ -204,11 +205,11 @@ tags: noUi
 position: -562.1727294921875,1164.6718139648438
 ---
 Temde_smiling: On appelle ce petit nid douillet l'assemblée des Sages. Bienvenue chez nous, { $name }. #line:04f4f35 
-You: C'est quelle sorte d'endroit, cette... assemblée ?
-Temde_cheerful: Eh bien... Je suppose que tu pourrais appeler ça un jardin...
-Azul_happy: ...Un endroit singulier, bien loin des limitations cosmiques palpables par l'humanité...
-Sapiens_happy: ...En dehors de l'espace, du temps.
-Ledai_explaining: ...Un lieu créé par la conscience du nouveau disciple des Sages... J'ai nommé... toi.
+You: C'est quelle sorte d'endroit, cette… assemblée ?
+Temde_cheerful: Eh bien… Je suppose que tu pourrais appeler ça un jardin…
+Azul_happy: …Un endroit singulier, bien loin des limitations cosmiques palpables par l'humanité…
+Sapiens_happy: …En dehors de l'espace, du temps.
+Ledai_explaining: …Un lieu créé par la conscience du nouveau disciple des Sages… J'ai nommé… toi.
 You: Hein ?
 << visit explications1 >>
 <<jump Sages_FreeChoice>>
@@ -218,14 +219,14 @@ title: qui_etes_vous
 tags: noUi
 position: -562.1727294921875,1164.6718139648438
 ---
-You: Vous... Vous êtes qui, vous ??
+You: Vous… Vous êtes qui, vous ??
 Temde_neutral: Nous sommes les sages de la métacognition.
 Azul_sad: Nous devrions nous présenter à { $name }. C'est la première nuit que nous nous immisçons dans sa vie. Notre visiteur de ce soir ne sait plus à quel sage se vouer.
 Sapiens_thinking: Très juste, <b>Azul</b>. Puisque j'ai pris la parole, je me présente : je suis <b>Master Sapiens</b>, le Gardien des Savoirs. #line:08b4377 
 Ledai_explaining: Et moi, je suis <b>Ledaï</b>, le Gardien des Pratiques. #line:0f3a432 
 Azul_proud: Enchanté de te rencontrer, { $name }. On m'appelle <b>Azul</b>, le Gardien des Précognitions. #line:0f4924c 
-Ledai_explaining: Et tu as déjà fait la connaissance de notre 4e sage <b>Miss Temdé</b>... #line:039d16f 
-Temde_smiling: ... La Gardienne des Improvisations. #line:0e517ee 
+Ledai_explaining: Et tu as déjà fait la connaissance de notre 4e sage <b>Miss Temdé</b>… #line:039d16f 
+Temde_smiling: … La Gardienne des Improvisations. #line:0e517ee 
 << visit explications1 >>
 <<jump Sages_FreeChoice>>
 ===
@@ -249,7 +250,7 @@ You: Et, qu'est-ce que je fais là, au juste ?
 Azul_happy: C'est très simple { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens. 
 Sapiens_thinking: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi. #line:081c094 
 
--> C'est quoi, ça... la métaconnexion ? #line:081277c 
+-> C'est quoi, ça… la métaconnexion ? #line:081277c 
     <<jump Metaconnexion>>
 -> La Métacognition, déjà entendu parler #line:0a736bc 
     <<jump Metacognition>>
@@ -259,18 +260,18 @@ title: Metaconnexion
 tags: noUi
 position: -878.8255004882812,1170.7235107421875
 ---
-You: Heuuuuu... J'ai rien compris de ce vous avez dit. La métaconnexion ??? #line:02434a3 
+You: Heuuuuu… J'ai rien compris de ce vous avez dit. La métaconnexion ??? #line:02434a3 
 Azul_proud: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien. #line:06f975d 
 Temde_smiling: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de faire ! Et de trouver une solution qui marche ! #line:0fc8373 
-Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences... #line:005e8f4 
+Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences… #line:005e8f4 
 -> Les neurosciences ?
     Sapiens_happy: Les sciences appliquées au fonctionnement de tes processus mentaux. #line:07d59a3 
     Temde_sad: Quel est le mode d'emploi de ton cerveau, quoi. #line:0f1b183 
-    Sapiens_concerned: Hum... J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière. #line:02856f8 
+    Sapiens_concerned: Hum… J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière. #line:02856f8 
 -> Et la métacognition, alors ?
     Sapiens_thinking: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux. #line:031e501 
     You: Hein ??? #line:090bf79 
-    Azul_happy: C'est-à-dire comment apprendre... à apprendre ! #line:011a5d4 
+    Azul_happy: C'est-à-dire comment apprendre… à apprendre ! #line:011a5d4 
 <<jump Metacognition>>
 ===
 title: Metacognition
@@ -280,7 +281,7 @@ position: -730.5562744140625,1421.6199951171875
 You: Si je vous suis bien, vous allez m'aider à améliorer mes capacités d'apprentissage ? #line:0da69a4 
 Ledai_happy: Bravo, { $name }, je n'aurais pas dit mieux. #line:07186d1 
 Sapiens_happy: Je sens que nous avons ce soir un candidat d'exception. #line:0b356d7
-Ledai_happy: Bien, maintenant que les présentations sont faites et que tout est au clair, nous devrions nous éclipser et exécuter notre rôle...
+Ledai_happy: Bien, maintenant que les présentations sont faites et que tout est au clair, nous devrions nous éclipser et exécuter notre rôle…
 Azul_happy: C'est vrai. Nous ne voudrions pas déboussoler { $name } dès notre première intervention !
 << fx Warp >>
 << fadeIn 1500 12ea12 >>

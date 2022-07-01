@@ -13,20 +13,20 @@ colorID: 8
 
 Fred_smiling: Allô ? Tu m'entends pas ou quoi ?
 <<if !visited("Chapitre2")>>
-You: Pardon, Fred, j'étais ailleurs pendant un instant... Tu disais ?
+You: Pardon, Fred, j'étais ailleurs pendant un instant… Tu disais ?
 Fred_happy: La fête organisée par les docteurs, tu viens ou quoi ? Je leur ai promis que je relèverais leur défi du roi de la soirée. Je peux pas me défiler !
-You: Ben, le truc c'est que... Demain matin, on a un exercice de simulation. Un test de pilotage de drone d'ingénierie ! #line:03a1bce 
+You: Ben, le truc c'est que… Demain matin, on a un exercice de simulation. Un test de pilotage de drone d'ingénierie ! #line:03a1bce 
 Fred_happy: Et alors ? On l'a déjà fait 100 fois, c'est pas si dur. #line:06de838 
 You: Oui, mais mon drone est pas prêt ! La coque est trop lourde et mon système de navigation est encore bancal. 
 Fred_smiling: Tranquille, le mien fonctionne du tonnerre, je te passerai mes plans !
 
--> Ça prendra du temps de faire les changements...
-    You: Même si j'ai tes plans, il me faudra au moins deux heures pour faire les changements et les tester...
+-> Ça prendra du temps de faire les changements…
+    You: Même si j'ai tes plans, il me faudra au moins deux heures pour faire les changements et les tester…
 -> D'accord, mais tu m'aides à l'assembler !
 
-Fred_happy: Ok, je vois que t'es difficile en affaires... Si les docteurs m'ont donné ce défi, c'est pas pour rien, mais j'aurai besoin de toi si je veux être sûr de gagner.
+Fred_happy: Ok, je vois que t'es difficile en affaires… Si les docteurs m'ont donné ce défi, c'est pas pour rien, mais j'aurai besoin de toi si je veux être sûr de gagner.
 Fred_excited: Si on gagne le défi des docteurs, tu peux être sûr que je prendrai du temps pour t'aider avec ton drone demain matin. T'en dis quoi ?
-Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir ce défi ?! Il tient vraiment à sa réputation, celui-là... En tout cas, vous savez qu'avec ses talents d'ingénierie, vous pourriez rattraper le retard de votre drone !
+Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir ce défi ?! Il tient vraiment à sa réputation, celui-là… En tout cas, vous savez qu'avec ses talents d'ingénierie, vous pourriez rattraper le retard de votre drone !
 
 -> C'est quoi, exactement, ce défi ?
     Fred_smiling: Le défi du roi de la fête ! Le champion incontesté, c'est BB-Rex. On va devoir l'impressionner si on veut remporter son titre !
@@ -34,11 +34,11 @@ Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir
     Fred_happy: Ouais, je sais, mais c'est lui le champion !
 -> Ok, on se revoit là-bas
 
-You: Bon... Tu me laisses pas le choix, là ! On se retrouve vers 21h30 ?
+You: Bon… Tu me laisses pas le choix, là ! On se retrouve vers 21h30 ?
 Fred_smiling: Haha, ça, c'est l'attitude que je préfère ! Allez, à plus tard !
 <<else>>
 You: On se retrouve à la fête à 21 heures, du coup ?
-Fred_happy: Hein ? Je... Ok, à tout-à-l'heure, alors !
+Fred_happy: Hein ? Je… Ok, à tout-à-l'heure, alors !
 <<endif>>
 
 -> Rentrer
@@ -60,7 +60,7 @@ position: -1367,-540
 << fadeOut >>
 
 << showGauges >>
-Vous vous retrouvez seul. Vous et Fred avez rendez-vous à 21h30, mais entre temps vous pouvez faire ce que vous voulez avant la soirée ! Voyons voir...
+Vous vous retrouvez seul. Vous et Fred avez rendez-vous à 21h30, mais entre temps vous pouvez faire ce que vous voulez avant la soirée ! Voyons voir…
 <<jump Actions_Before_Party>>
 ===
 
@@ -185,7 +185,7 @@ tags:
 position: -1082,-816
 ---
 << music AcousticGuitar >>
-Pas de soirée qui se respecte sans un guitariste amateur grattant les accords de WanderHall... Vous, vous préférez le bon vieux néo-shredding, ou encore le galactic jazz. Dans tous les cas, vous vous entraînez un peu pour amuser la galerie tout à l'heure.
+Pas de soirée qui se respecte sans un guitariste amateur grattant les accords de WanderHall… Vous, vous préférez le bon vieux néo-shredding, ou encore le galactic jazz. Dans tous les cas, vous vous entraînez un peu pour amuser la galerie tout à l'heure.
 << visit Guitar_Training >>
 << advanceTimeBy 1:00 >>
 << music Neutral >>
@@ -248,20 +248,20 @@ Fred_excited: Yo, te voilà enfin ! Alors, pas mal, cette fête, non ?
 <<if !visited("Chapitre2")>>
 You: Carrément ! Alors, on le commence, ce défi ?
 Fred_excited: Ouais, mais avant ça, il faut trouver notre adversaire, BB-Rex !
-You: Et il est où, ce... BB-Rex ?
-Fred_happy: Euh... Ca, je sais pas vraiment... Je l'ai jamais vu avant. Mais il paraît que c'est le plus grand fêtard de l'université, alors il devrait pas être difficile à trouver !
-You: Euh... Ok... On fait quoi en attendant ?
+You: Et il est où, ce… BB-Rex ?
+Fred_happy: Euh… Ca, je sais pas vraiment… Je l'ai jamais vu avant. Mais il paraît que c'est le plus grand fêtard de l'université, alors il devrait pas être difficile à trouver !
+You: Euh… Ok… On fait quoi en attendant ?
 Fred_smiling: En attendant, allons nous chercher de quoi nous remplir le gosier ! Tiens, un BarBot !
 BarBot: Qu'est-ce que je peux vous offrir, les losers ?
-Fred_smiling: Yo BarBot, mets-nous deux verres de...
-Fred_surprised: Attends... Comment tu viens de m'appeler ?
+Fred_smiling: Yo BarBot, mets-nous deux verres de…
+Fred_surprised: Attends… Comment tu viens de m'appeler ?
 BarBot: Ben quoi, loser, y a quelque chose qui va pas dans ton programme de décodage, ou quoi ? Allez, dégage d'ici et laisse-moi servir.
 
--> Je crois que ce BarBot a un problème...
-    You: Euh... Ils sont censés être aussi violents ?
+-> Je crois que ce BarBot a un problème…
+    You: Euh… Ils sont censés être aussi violents ?
     Barbot: Non, seulement moi. C'est moi qui écrit les règles ici, amigo.
 -> Hé ! Loser toi-même !
-    You: Euh... Comment tu nous parles, sale robot ? Loser toi-même !
+    You: Euh… Comment tu nous parles, sale robot ? Loser toi-même !
     Tous les regards se tournent soudain vers vous.
     BarBot: Hey, amigo, tu sais à qui tu parles, au moins ?
 
@@ -269,8 +269,8 @@ Fred_excited: OH !! JE SAIS !! C'est pas un Barbot !! C'EST LUI, BB-REX !!
 You: Quoi ??
 Barbot: Et ouais, amigo, en fer et en os.
 Fred_excited: Le vieux robot de la cafétéria ! Les docteurs se sont amusés à le reprogrammer pour le transformer en caïd !
-You: C'est... lui, notre adversaire ?
-Barbot: Et comment... Bon, les losers, pour l'instant, vous avez les poches vides, hein ? Vous feriez-mieux de vous y mettre si vous voulez amasser les 4 Party Points et pouvoir m'affronter en duel !
+You: C'est… lui, notre adversaire ?
+Barbot: Et comment… Bon, les losers, pour l'instant, vous avez les poches vides, hein ? Vous feriez-mieux de vous y mettre si vous voulez amasser les 4 Party Points et pouvoir m'affronter en duel !
 You: De quoi il parle, là ?
 Fred_excited: A chaque fois qu'on arrive à impressionner BB, il nous donne un point ! Quand on en a récupéré 4, on peut l'affronter pour voir qui obtiendra le titre de champion de la fête !
 Barbot: T'oublies un détail, amigo. Personne a réussi à battre BB-Rex. En tout cas, aucun humain. Tout simplement car BB-Rex est le plus grand teufeur de l'histoire. Allez, au boulot les losers !
@@ -278,11 +278,11 @@ Fred_surprised: T'as entendu le tas de ferraille, { $name }, il faut qu'on se fa
 <<else>>
 You: Carrément ! Allez, allons chercher ce BB-Rex !
 Fred_excited: Yoo, je vois que t'es d'attaque !
-Fred_happy: Le seul petit problème, c'est que je sais pas vraiment... qui c'est. Mais c'est le plus grand fêtard de l'uni...
+Fred_happy: Le seul petit problème, c'est que je sais pas vraiment… qui c'est. Mais c'est le plus grand fêtard de l'uni…
 You: T'inquiètes, je le connais !
-Fred_surprised: Tu... Tu le connais, toi ?
-You: Ben ouais... C'est le vieux BarBot de la cafétéria, qui a été reprogrammé par les docteurs !
-Fred_smiling: Haha, ouais je le savais... C'était pour te faire marcher !
+Fred_surprised: Tu… Tu le connais, toi ?
+You: Ben ouais… C'est le vieux BarBot de la cafétéria, qui a été reprogrammé par les docteurs !
+Fred_smiling: Haha, ouais je le savais… C'était pour te faire marcher !
 Barbot: Yo, les losers, alors, mettez-vous au boulot pour amasser les Points Rex si vous voulez impressionner BB-Rex !
 Fred_excited: Oh, trop bien ! C'est parti !
 <<endif>>
@@ -330,7 +330,7 @@ position: -170,-251
 ---
 Enivré par la foule et la musique, vous ne vous rendez pas compte à temps que votre ventre crie famine.
 Vous vous dirigez vers les snacks pour constater avec horreur qu'ils ont tous disparus. Vous vous sentez de moins en moins bien, de plus en plus nauséeux et votre coeur bat très fort à cause des baffles.
-Si vous voulez éviter le malaise, vous allez devoir rentrer... Vous auriez mieux fait de manger quelque chose...
+Si vous voulez éviter le malaise, vous allez devoir rentrer… Vous auriez mieux fait de manger quelque chose…
 <<jump Chambre_Soir_Fail>>
 ===
 
@@ -338,9 +338,9 @@ title: TooLate
 tags:
 position: -170,-251
 ---
-Vous et Fred avez beau vous amuser, il commence à se faire tard...
+Vous et Fred avez beau vous amuser, il commence à se faire tard…
 Peu à peu, les étudiants quittent la piste de danse et vous laissent.
-Il est si tard... Il serait probablement plus judicieux de rentrer.
+Il est si tard… Il serait probablement plus judicieux de rentrer.
 <<jump Chambre_Soir_Fail>>
 ===
 
@@ -350,7 +350,7 @@ position: -170,-251
 ---
 Enivré par la foule et la musique, vous ne vous rendez pas compte à temps que vous avez dépensé toute l'énergie que vous aviez accumulé.
 Vous prenez un peu de temps loin des baffles, mais réalisez que vous vous endormez presque instantanément.
-Si vous voulez éviter de dormir n'importe où, vous allez devoir rentrer...
+Si vous voulez éviter de dormir n'importe où, vous allez devoir rentrer…
 <<jump Chambre_Soir_Fail>>
 ===
 
@@ -358,18 +358,18 @@ title: RapBattle
 tags:
 position: -170,-251
 ---
-Fred_excited: Yo, BB-Rex ! On a obtenu tous les Party Points nécessaires, alors maintenant on accepte ton défi !... Quel qu'il soit, d'ailleurs.
-BarBot: Ah ouais... On m'avait dit que vous étiez costauds pour des premières années... Bien, si vous y tenez... C'est l'heure...
-BarBot: ...de la destruction.
-BarBot: ...de l'annihilation.
-BarBot: ...de...
-BarBot: ...la bataille de rap !!
+Fred_excited: Yo, BB-Rex ! On a obtenu tous les Party Points nécessaires, alors maintenant on accepte ton défi !… Quel qu'il soit, d'ailleurs.
+BarBot: Ah ouais… On m'avait dit que vous étiez costauds pour des premières années… Bien, si vous y tenez… C'est l'heure…
+BarBot: …de la destruction.
+BarBot: …de l'annihilation.
+BarBot: …de…
+BarBot: …la bataille de rap !!
 Fred_surprised: Quoi ?! Mais j'ai jamais fait ça, moi ?
-BarBot: C'est parti...
-BarBot: Mon flow est titanesque, un peu comme ma cuirasse...
+BarBot: C'est parti…
+BarBot: Mon flow est titanesque, un peu comme ma cuirasse…
 BarBot: Avant j'étais Barbot, maintenant j'suis le ClashBot qui tabasse !
-Fred_surprised: Mince, il est trop fort... Ok, je me lance... Suis ma rime, { $name } !
-Fred_excited: Nous on est étudiants, on a pas beaucoup d'argent...
+Fred_surprised: Mince, il est trop fort… Ok, je me lance… Suis ma rime, { $name } !
+Fred_excited: Nous on est étudiants, on a pas beaucoup d'argent…
 
 -> Mais quand on rappe on a des punchlines d'argent !
     <<jump Bad_Rap1>>
@@ -384,13 +384,13 @@ tags:
 position: -174,-126
 ---
 You: Et pourtant nos rimes sont plus dures que du diamant !
-BarBot: Mmmh... Peut-être, mais pour des premières années...
-BarBot: Je suis étonné... que vous ayiez appris à rapper !
+BarBot: Mmmh… Peut-être, mais pour des premières années…
+BarBot: Je suis étonné… que vous ayiez appris à rapper !
 << visit Good_Rap >>
 
--> On a beau être jeune, toi tu n'es pas de taille...
+-> On a beau être jeune, toi tu n'es pas de taille…
     <<jump Good_Rap2>>
--> Toi t'es qu'un robot, tes rimes sont tellement pauvres...
+-> Toi t'es qu'un robot, tes rimes sont tellement pauvres…
     <<jump Bad_Rap2>>
 -> Prendre le contrôle du BarBot <<if visited ("PiratedPerfect")>>
     <<jump Control_BarBot>>
@@ -401,12 +401,12 @@ tags:
 position: 44,-190
 ---
 You: Mais quand on rappe on a des punchlines d'argent !
-BarBot: Pfff... Sérieusement ? Faire rimer Argent et Argent...
+BarBot: Pfff… Sérieusement ? Faire rimer Argent et Argent…
 BarBot: Venant de la part d'enfants, ça n'est pas très étonnant !
 
--> On a beau être jeune, toi tu n'es pas de taille...
+-> On a beau être jeune, toi tu n'es pas de taille…
     <<jump Good_Rap2>>
--> Toi t'es qu'un robot, tes rimes sont tellement pauvres...
+-> Toi t'es qu'un robot, tes rimes sont tellement pauvres…
     <<jump Bad_Rap2>>
 -> Prendre le contrôle du BarBot <<if visited ("PiratedPerfect")>>
     <<jump Control_BarBot>>
@@ -416,7 +416,7 @@ title: Good_Rap2
 tags:
 position: 142,-26
 ---
-You: On a beau être jeune, toi tu n'es pas de taille...
+You: On a beau être jeune, toi tu n'es pas de taille…
 Fred_excited: Alors mords la poussière, espèce de tas de ferraille !
 << visit Good_Rap >>
 <<jump End_Rap>>
@@ -426,8 +426,8 @@ title: Bad_Rap2
 tags:
 position: -89,-10
 ---
-You: Toi t'es qu'un robot, tes rimes sont tellement pauvres...
-Fred_surprised: Euh... En plus t'es... T'as la tête... Tu...
+You: Toi t'es qu'un robot, tes rimes sont tellement pauvres…
+Fred_surprised: Euh… En plus t'es… T'as la tête… Tu…
 Fred_angry: Sérieusement, { $name }, t'as pas des rimes encore plus difficiles ?!
 
 <<jump End_Rap>>
@@ -437,11 +437,11 @@ title: Control_BarBot
 tags:
 position: -224,46
 ---
-BarBot: Désactivation du protocole "rappeur"...
-BarBot: Je... Erreur... Vous voulez grignoter quelque chose ?
-You: Euh... Yo, Fred je crois que BB-Rex a un problème...
+BarBot: Désactivation du protocole "rappeur"…
+BarBot: Je… Erreur… Vous voulez grignoter quelque chose ?
+You: Euh… Yo, Fred je crois que BB-Rex a un problème…
 Fred_excited: Même pour un robot, c'est bizarre, il est tout blême !
-BarBot: Hahaha, bien joué, le piratage...
+BarBot: Hahaha, bien joué, le piratage…
 << visit Good_Rap >>
 <<jump End_Rap>>
 ===
@@ -451,8 +451,8 @@ tags:
 position: -36,90
 ---
 << music Tense >>
-BarBot: Bon, les amis, on va arrêter là, je crois...
-BarBot: Maintenant, je vous demande de quitter la salle...
+BarBot: Bon, les amis, on va arrêter là, je crois…
+BarBot: Maintenant, je vous demande de quitter la salle…
 << music Danse >>
 << visit End_Rap >>
 <<if visited("Good_Rap")>>
@@ -466,11 +466,11 @@ title: WinCompetition
 tags:
 position: 173,158
 ---
-BarBot: ...Avec le titre de champions incontestés de la fête !!!
+BarBot: …Avec le titre de champions incontestés de la fête !!!
 Tous les élèves vous applaudissent à l'unisson. Vous êtes les véritables rois de la fête.
 Fred_smiling: On a gagné !! On est les premiers à avoir battu BB-Rex !
 Fred_excited: C'est grâce à toi, { $name } ! Allez, on fête ça ?
-You: Je suis un peu fatigué, là...
+You: Je suis un peu fatigué, là…
 Fred_happy: Tu as raison, on ferait mieux de rentrer. Demain, je dois t'aider avec ton drone ! A plus, tout le monde !
 << music Neutral >>
 <<jump TransitionMatin>>
@@ -480,9 +480,9 @@ title: LoseCompetition
 tags:
 position: -54,166
 ---
-Barbot: ...Et de plus ramener vos faces de losers !
+Barbot: …Et de plus ramener vos faces de losers !
 Tous les étudiants vous regardent d'un air déçu, puis reviennent à leurs occupations.
-Fred_sad: Mince... On a pas réussi... Mais au moins on s'est bien amusés. Merci d'être resté jusqu'au bout, { $name }.
+Fred_sad: Mince… On a pas réussi… Mais au moins on s'est bien amusés. Merci d'être resté jusqu'au bout, { $name }.
 You: Je suis un peu fatigué, là
 Fred_happy: Tu as raison, on ferait mieux de rentrer. Demain, je dois t'aider avec ton drone ! A plus, tout le monde !
 << music Neutral >>
@@ -498,7 +498,7 @@ position: -40,256
 << music Neutral >>
 << setBackground bedroom night >>
 << fadeOut >>
-A peine rentré, vous vous effondrez dans votre lit, songeant à la journée suivante...
+A peine rentré, vous vous effondrez dans votre lit, songeant à la journée suivante…
 <<if visited("End_Rap")>>
     <<jump MatinWin>>
 <<else>>
@@ -519,7 +519,7 @@ position: 259,328
 Bip !! Vous êtes réveillé par votre Palmphone. C'est Fred qui appelle. Il veut sûrement aider pour le TP de drones !
 Fred@holo_excited: Yo, { $name } ! Bien dormi ? Pas moi ! Je t'ai envoyé les plans de mon drone, t'as vu, je tiens mes promesses !
 You: Merci, Fred !
-Fred@holo_happy: T'inquiète, c'est pour être resté jusqu'au bout hier soir ! Alors... Pour ce qui est de l'allègement des matériaux, j'ai penché pour une coque en méta-plastique...
+Fred@holo_happy: T'inquiète, c'est pour être resté jusqu'au bout hier soir ! Alors… Pour ce qui est de l'allègement des matériaux, j'ai penché pour une coque en méta-plastique…
 << addToGauge Learning 70 >>
 Fred et vous prenez 1h pour travailler sur le drone. Au final, celui-ci semble fin prêt pour le TP de pilotage ! Va-t-il tenir jusqu'au bout ?
 -> Aller au TP
@@ -540,11 +540,11 @@ position: -418,177
 Bip !! Votre réveil sonne en vous faisant bourdonner les oreilles.
 Vous avez mal dormi, songeant au TP de pilotage. Il ne vous reste qu'une heure pour améliorer votre drone.
 Fred@holo_happy: Yo, { $name } ! Bien dormi ? Pas moi ! Je t'ai envoyé les plans de mon drone, t'as vu, je tiens mes promesses !
-You: Merci, Fred ! T'étais pas obligé, tu sais...
+You: Merci, Fred ! T'étais pas obligé, tu sais…
 Fred@holo_sarcasme: Je sais, et crois pas que je vais passer 1h à t'expliquer comment ça marche alors que t'es parti super tôt hier !
 << hide >>
 << addToGauge learning 20 >>
-Au final, vous parvenez à faire des améliorations légères sur votre drone, mais sans les explications de Fred, le résultat n'est pas fameux...
+Au final, vous parvenez à faire des améliorations légères sur votre drone, mais sans les explications de Fred, le résultat n'est pas fameux…
 -> Aller au TP
     <<jump TpLose>>
 ===
@@ -565,15 +565,15 @@ Vous quittez la salle avec une mine déçue.
 << setBackground door class >>
 << fadeOut >>
 
-Fred_happy: Hey, fais pas cette tête... T'as tenu la moitié du temps, au moins... Je suis sûr que ce sera pas si terrible...
+Fred_happy: Hey, fais pas cette tête… T'as tenu la moitié du temps, au moins… Je suis sûr que ce sera pas si terrible…
 
 << fadeIn >>
 << setBackground door class-screen >>
 << fadeOut >>
 
-En voyant vos résultats, Fred affiche une moue gênée... Les professeurs ne vous ont pas raté, vous mettant un D-.
+En voyant vos résultats, Fred affiche une moue gênée… Les professeurs ne vous ont pas raté, vous mettant un D-.
 << hide >>
-Vous tournez les talons sans rien lui dire. Après tout, ce ne serait pas arrivée s'il vous avait aidé... Au final, vous êtes plus en colère contre vous-même qu'autre chose.
+Vous tournez les talons sans rien lui dire. Après tout, ce ne serait pas arrivée s'il vous avait aidé… Au final, vous êtes plus en colère contre vous-même qu'autre chose.
 
 << fadeIn >>
 << setBackground bedroom >>
@@ -586,9 +586,9 @@ title: AfterTpLose
 tags: 
 position: -223,301
 ---
-En revenant dans votre terrier d'étudiant, vous constatez avec soulagement que Miss Temdé vous attend dans votre chambre...
+En revenant dans votre terrier d'étudiant, vous constatez avec soulagement que Miss Temdé vous attend dans votre chambre…
 Temde_smiling: { $name }, comment était la fête ?
-You: Pas terrible... Surtout après coup...
+You: Pas terrible… Surtout après coup…
 Temde_neutral: Je sais. Suis-moi, nous allons voir ça ensemble.
 <<jump Assemblee_Sages>>
 ===
@@ -731,7 +731,7 @@ tags:
 position: -163,-939
 ---
 BarBot: Alors, amigo, on a déjà le ventre creux ? Besoin d'un petit casse-croûte avant de revenir affronter BB-Rex ?
-You: Euh... Ouais. T'as quoi au menu ?
+You: Euh… Ouais. T'as quoi au menu ?
 BarBot: Que de la bombe, frérot ! Tiens, goûte ça.
 You: Y a rien d'illégal là-dedans, pas vrai ?
 BarBot: Bahahaha, bien sûr que non ! On va pas gaspiller les bonnes choses sur les premières années, p'tit génie !
@@ -778,7 +778,7 @@ title: Drink_Soft
 tags: 
 position: 128,-897
 ---
-BarBot: C'est bien ce que je pensais... Allez, voilà un truc tout soft, à ton image... Haha !
+BarBot: C'est bien ce que je pensais… Allez, voilà un truc tout soft, à ton image… Haha !
 Vous vous sentez revigoré par la boisson caféinée. Maintenant, votre coeur bat à fond. Pas idéal pour faire une sieste, mais au moins, vous pourrez tenir un peu.
 << addToGauge sleep 15 >>
 << addToGauge food 10 >>
@@ -806,8 +806,8 @@ position: 190,-589
 << fx Success >>
 Vous lancez la fonction et une trappe s'ouvre sur la tête du robot. Un biscuit doré en jaillit ! Un Party Point !
 <<set $partyPoints to ($partyPoints + 1)>>
-Peut-être que vous pourriez influencer encore plus le comportement du droïde...
-Vous remarquez que son architecture de conscience est similaire à un système de pilotage. Le robot n'est pas reprogrammé... Il est piloté !!
+Peut-être que vous pourriez influencer encore plus le comportement du droïde…
+Vous remarquez que son architecture de conscience est similaire à un système de pilotage. Le robot n'est pas reprogrammé… Il est piloté !!
 << visit Pirater >>
 <<if !visited("Drone_Review")>>
     <<jump Piratage_Bad>>
@@ -822,10 +822,10 @@ title: Piratage_Bad
 tags: 
 position: 434,-558
 ---
-Si seulement vous aviez compris les rouages des Systèmes d'Assistance au Pilotage de drone ! Les plans de Fred vous auraient bien aidé...
+Si seulement vous aviez compris les rouages des Systèmes d'Assistance au Pilotage de drone ! Les plans de Fred vous auraient bien aidé…
 << advanceTimeBy 0:30 >>
-BarBot: Hé ! Pas cool, ça, amigo. On essaye pas de pirater BB-Rex, ok ?! J'ai passé... Euh, je veux dire, les étudiants qui m'ont reprogrammé ont passé beaucoup de temps à le faire !
-You: Euh... Désolé...
+BarBot: Hé ! Pas cool, ça, amigo. On essaye pas de pirater BB-Rex, ok ?! J'ai passé… Euh, je veux dire, les étudiants qui m'ont reprogrammé ont passé beaucoup de temps à le faire !
+You: Euh… Désolé…
 
 <<jump Actions_Party>>
 ===
@@ -868,11 +868,11 @@ position: -787,56
 Vous invitez Fred à s'installer sur le canapé, proche de vous.
 You: Dis, Fred, tu pourrais m'expliquer ton système de pilotage assisté pour le TP de demain ?
 Fred_surprised: Là, maintenant ?! On est dans le coeur de la fête !
-You: Je serais un peu moins stressé pour demain si je savais comment ça marchait...
-Fred_smiling: Bon, ok... Je vais faire vite, alors. Tu vois, les systèmes de correction de trajectoire par advanced learning...
-Fred semble, au final, plutôt passionné par le sujet, et vous en ressortez avec quelques notions, mais rien qui puisse changer la donne pour demain...
+You: Je serais un peu moins stressé pour demain si je savais comment ça marchait…
+Fred_smiling: Bon, ok… Je vais faire vite, alors. Tu vois, les systèmes de correction de trajectoire par advanced learning…
+Fred semble, au final, plutôt passionné par le sujet, et vous en ressortez avec quelques notions, mais rien qui puisse changer la donne pour demain…
 << advanceTimeBy 0:45 >>
-Vous vous demandez à quoi cela pourrait bien servir dans le contexte actuel...
+Vous vous demandez à quoi cela pourrait bien servir dans le contexte actuel…
 << visit Drone_Review >>
 << addToGauge learning 20>>
 <<jump Actions_Party>>
@@ -908,7 +908,7 @@ position: -443,-816
 << music DanseQuiet >>
 Vous vous dirigez vers l'entrée, épuisé et priant de ne pas être trop épuisé pour demain. Vous êtes en train de reprendre vos affaires quand Fred vous arrête dans votre lancée.
 Fred_surprised: Hey, { $name }, tu t'en vas déjà ?? La soirée a à peine commencé, on doit toujours vaincre BB à son propre jeu !
-You: Je sais pas trop, je suis un peu fatigué, là... En plus, demain matin, on a TP. Tu pourrais rentrer toi aussi !
+You: Je sais pas trop, je suis un peu fatigué, là… En plus, demain matin, on a TP. Tu pourrais rentrer toi aussi !
 Fred_happy: Hors de question, ça ! Allez, reste un peu, le temps d'obtenir le reste des points ! Promis, je t'aiderai avec ton drone !
 -> Rester
     <<jump Rester>>
@@ -922,8 +922,8 @@ tags:
 position: -609,-689
 ---
 You: Bon, ok. Je vais rester un peu.
-Fred_excited: Yes !!
 << music Danse >>
+Fred_excited: Yes !!
 <<jump Actions_Party>>
 ===
 
@@ -935,9 +935,11 @@ position: -349,-969
 << hide >>
 << setBackground bedroom night >>
 << advanceTimeBy 0:30 >>
+<< music NegativeSad >>
 << fadeOut >>
-Lessivé, vous décidez de rentrer chez vous avant de ne plus pouvoir assumer le lendemain. Vous laissez Fred derrière, mais tant pis. Après tout, vous auriez dû travailler sur ce drone il ya bien longtemps...
+Lessivé, vous décidez de rentrer chez vous avant de ne plus pouvoir assumer le lendemain. Vous laissez Fred derrière, mais tant pis. Après tout, vous auriez dû travailler sur ce drone il ya bien longtemps…
 Vous vous jetez sur votre lit et vous endormez profondément.
+<< music Neutral >>
 <<jump MatinLose>>
 ===
 
@@ -972,7 +974,7 @@ Fred_smiling: On s'est tous les deux bien débrouillés, non ?
 You: C'est sûr ! J'ai hâte de voir ma note. Merci de m'avoir aidé !
 << setBackground door class-screen>>
 Fred_excited: C'est normal. Oh, les notes viennent de tomber !
-You: Bon... J'ai eu un B... Et toi !
+You: Bon… J'ai eu un B… Et toi !
 Fred_happy: Un A. C'est génial, tu me rattrapes presque !
 You: Ca te fait peur ?
 Fred_smiling: Héhé, même pas un peu. On se voit demain ?
@@ -987,7 +989,7 @@ You: Carrément !
 En rentrant dans votre terrier d'étudiant, vous tombez encore une fois nez à nez avec Miss Temdé, qui semble vous attendre.
 Temde_cheerful: { $name } ! Comment était la fête ?
 You: Plutôt sympa ! Je me suis bien débrouillé au TP, c'est ça l'important !
-Temde_smiling: C'est parfait, ça ! Suis-moi, petit génie, nous avons encore des choses à t'apprendre...
+Temde_smiling: C'est parfait, ça ! Suis-moi, petit génie, nous avons encore des choses à t'apprendre…
 -> Suivre Temdé
     <<jump Assemblee_Sages>>
 -> (Passer la séquence des Sages)
@@ -1006,8 +1008,8 @@ colorID: 1
 
 Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre. #line:005f939 
 Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique ! #line:03dea3d 
-You: Mon moteur biologique ? Mais... Je suis pas une machine, moi !
-Temde_neutral: Très juste, n'en déplaise à Ledai. Ce que veulent dirent ces deux sages, c'est que comme une machine... Tu as besoin d'énergie.
+You: Mon moteur biologique ? Mais… Je suis pas une machine, moi !
+Temde_neutral: Très juste, n'en déplaise à Ledai. Ce que veulent dirent ces deux sages, c'est que comme une machine… Tu as besoin d'énergie.
 Azul_proud: Et c'est de cela qu'on va parler, maintenant ! D'abord, comment bien alimenter ton matériel biologique pour qu'il soit au top !
 Ledai_explaining: Mais aussi, comment le reposer pour le garder au meilleur de sa performance.
 <<jump Sages_FreeChoice>>
@@ -1032,9 +1034,9 @@ tags:  noUi
 position: 2242.7559814453125,395.5284118652344
 ---
 Sapiens_thinking: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire ! #line:02771ae 
-Ledai_explaining: Tout à fait, ton engin biologique, a besoin de calories... et de vitamines. #line:067cf10 
+Ledai_explaining: Tout à fait, ton engin biologique, a besoin de calories… et de vitamines. #line:067cf10 
 Sapiens_thinking: Mais pas n'importe lesquelles. Celles qui nourrissent et facilitent la conduction neurobiologique. #line:02287a2 
-You: En gros, il faut que je mange, quoi... Super utile, le tuyau... #line:00fe57b 
+You: En gros, il faut que je mange, quoi… Super utile, le tuyau… #line:00fe57b 
 Azul_happy: Oui, mais pas seulement, il ne faut pas non plus manger n'importe quoi.
 Temde_thinking: Pas les substances miracles de synthèse. Mensonges de bonimenteurs ! #line:0ecf094 
 <<jump Sages_FreeChoice>>
@@ -1050,9 +1052,9 @@ You: Ouais, mais pour ce qui est de mon palmphone, dès qu'il est remonté à 10
 Azul_happy: Ton enveloppe biologique est plus exigeante et plus gourmande. #line:00e89c0 
 Temde_smiling: Elle en demande plus. Une nuit de sommeil ! #line:047de87 
 You: Ça veut dire combien ? #line:019496e 
-Sapiens_thinking: Ça dépend.... Ça peut être 6 heures pour quelqu'un, ou 10h pour quelqu'un d'autre. Chacun son rythme !
+Sapiens_thinking: Ça dépend…. Ça peut être 6 heures pour quelqu'un, ou 10h pour quelqu'un d'autre. Chacun son rythme !
 You: Et si je ne dispose même pas de 6 heures ? #line:08690fd 
-Azul_proud: Il y a bien une solution de dépannage... #line:0a728b0 
+Azul_proud: Il y a bien une solution de dépannage… #line:0a728b0 
 Azul_happy: Si tu n'as pas eu le temps de profiter d'une bonne nuit de sommeil, tu fais une bonne sieste !
 Azul_proud: L'important, c'est d'écouter les besoins de ton corps et le recharger ! #line:0b5a398 
 <<jump Sages_FreeChoice>>
@@ -1063,7 +1065,7 @@ tags:  noUi
 position: 2908.9466247558594,391.5020446777344
 colorID: 1
 ---
-Sapiens_thinking: C'est ce que nous allons voir. C'est le moment pour un petit questionnaire... #line:0dda2ca 
+Sapiens_thinking: C'est ce que nous allons voir. C'est le moment pour un petit questionnaire… #line:0dda2ca 
 
 Sapiens_thinking: Notre corps emmagasine des unités de sommeil. Tant qu'on n'a pas épuisé nos réserves, on peut continuer à agir, à travailler. On n'a pas besoin de dormir et de recharger les batteries tant qu'elles ne sont pas à plat. #line:06bc6cb 
 -> Vrai #line:044fa2d 
@@ -1115,17 +1117,17 @@ Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Apr
         <<jump six_10_heures>>
 -> Faux #line:04ba9a7 
     << fx Success >>
-    Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que... #line:0bc13d5 
+    Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que… #line:0bc13d5 
     Temde_neutral: Non non, on coupe ! Le temps presse ! #line:0ff8a03 
     Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:083bddf 
-    <<jump journal_mental>>! #line:0d0ab77 
+    <<jump journal_mental>> 
 ===
 
 title: huit_heures
 tags:  noUi
 position: 3125.9331665039062,286.40415954589844
 ---
-Sapiens_happy: Mmmh, pas forcément... Cela dépend des personnes. Ce qui me rappelle le temps où je...
+Sapiens_happy: Mmmh, pas forcément… Cela dépend des personnes. Ce qui me rappelle le temps où je…
 Temde_neutral: Non, on coupe ! Le temps presse ! #line:0beff39 
 Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:092a6ff 
 
@@ -1139,7 +1141,7 @@ title: six_10_heures
 tags:  noUi
 position: 3341.1002807617188,392.2286071777344
 ---
-Sapiens_happy: Oui, cela dépend des personnes. Ce qui me rappelle le temps où je... #line:0715588 
+Sapiens_happy: Oui, cela dépend des personnes. Ce qui me rappelle le temps où je… #line:0715588 
 Temde_neutral: Non, on coupe ! Le temps presse ! #line:0beff39 
 Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:092a6ff 
 
@@ -1161,7 +1163,7 @@ position: 3557.0534057617188,389.2486877441406
 
 Le carré de jardin tranquille des sages a disparu subitement ! #line:0e91632 
 Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être. #line:05ae07d 
-Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages... #line:01686de 
+Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages… #line:01686de 
 << visitPermanent Chapitre2 >>
 <<jump Journal>>
 ===
