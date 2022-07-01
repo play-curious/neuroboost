@@ -96,6 +96,10 @@ position: -420,-531
     <<jump TooTired>>
 << endif >>
 
+<<if isTimeOver("0:05")>>
+<<jump Time_Over>>
+<<endif>>
+
 << fadeOut >>
 
 -> Lit@lit #line:0b6bd1f 
@@ -117,7 +121,7 @@ position: -569,-838
 ---
 << setBackground bedroom bed >>
 
--> Faire une sieste (3h) #line:0f2729b 
+-> Faire une sieste (1h30) #line:0f2729b 
     <<jump Sleep>>
 -> back #line:007f281 
     <<jump Liste_Taches>>
@@ -133,7 +137,7 @@ position: -829,-319
     <<jump Envoi_Note_Synthese>>
 -> Travailler sur la note de synthèse (2h) <<if !visited("Redaction_Note_3")>>
     <<jump Redaction_Note>>
--> Préparer son bureau avant de travailler (1h) <<if getGauge("learning") < 50>> #once
+-> Préparer son bureau avant de travailler (0h30) <<if getGauge("learning") < 50>> #once
     <<jump Ranger>>
 -> Ouvrir le chat histoire de se détendre (2h) <<if $silence == false>> #once 
     <<jump Chat>>
@@ -165,7 +169,7 @@ position: 73,-517
 
 -> Casser la croûte (30 min) #once #line:00bd306 
     <<jump Lunch>>
--> Dîner (1h30) <<if isTimeOver("18:50")>> #once
+-> Dîner (1h) <<if isTimeOver("18:50")>> #once
     <<jump Diner>>
 -> back #line:049c6aa 
     <<jump Liste_Taches>>
@@ -180,7 +184,7 @@ position: -1017,-397
 << setBackground bedroom desk >>
 << fadeOut >>
 Votre bureau est encore couvert de vieilles fiches de révision et de pièces de drone. Vous le débarrassez, puis vous prenez ensuite plusieurs minutes pour établir un plan de réflexion et de travail.
-<< advanceTimeBy 1:00 >>
+<< advanceTimeBy 0:30 >>
 Vous êtes content de vous, ça va vous faciliter le processus de rédaction.
 << removeFromGauge mentalLoad 10 >>
 << jump Liste_Taches >>
@@ -278,7 +282,7 @@ Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste m
 
 << addToGauge sleep 60 >>
 << removeFromGauge mentalLoad 10 >> 
-<< advanceTimeBy 3:00 sleep food >>
+<< advanceTimeBy 1:30 sleep food >>
 
 <<jump Liste_Taches>>
 ===
@@ -316,7 +320,7 @@ Vous hésitez. D'un côté, vous serez obligé de vous remettre dedans lorsque v
 You: Ben… non. Tu m'aurais appelé plus tard, j'aurais peut-être accepté, mais là, c'est pas le moment !
 Fred@holo_angry: Oh, sérieux ?? Tu me lâches comme ça ? Tout ça pour rédiger la note ? C'est pas cool de ta part…
 << hide >>
-<< addToGauge learning 20 >>
+<< addToGauge learning 10 >>
 << addToGauge mentalLoad 30 >>
 Votre altercation avec Fred vous a un peu démotivé, pèse sur votre mental, mais vous parvenez au moins à finir ce maudit paragraphe.
 Quitte à refuser la proposition de Fred, peut-être auriez-vous dû mettre votre palmphone en silencieux…
@@ -447,10 +451,8 @@ Vous êtes si fatigué que vous tombez la tête la première dans votre lit.
 title: Time_Over
 tags: 
 colorID: 2
-position: 9,-797
+position: 152,-865
 ---
-<<empty>>
-
 << if getGauge("learning") > 50 >>
     <<jump Envoi_Note_Synthese>>
 << endif >>
@@ -523,7 +525,7 @@ Comme hier, le soir venu, vous avez la flemme de cuisiner, et vous n'avez pas au
 << addToGauge food 80 >>
 Le mix de ratatouilles de légumes du soleil d'Aldébaran avec son assiette de céréales complètes, ça vous va très bien.  #line:0ea36db 
 
-<< advanceTimeBy 1:00 >>
+<< advanceTimeBy 1:00 sleep >>
 
 <<jump Liste_Taches>>
 ===
@@ -546,7 +548,7 @@ RoomMate: Mode "Immersion Studieuse" activé !
 <<endif>>
 
 << hide>>
-<<jump Liste_Taches>>
+<<jump bureau_subchoice>>
 ===
 
 title: Desactiver_Zero_Distraction
@@ -592,7 +594,7 @@ Fred@holo_smiling: Ok, c'est pas grave ! Tu viens à la salle de sport ou pas ?
     Fred@holo_angry: Oh, sérieux ?? Tu me lâches comme ça ? C'est pas cool de ta part…
     << hide >>
 <<endif>>
-<<jump Liste_Taches>>
+<<jump bureau_subchoice>>
 ===
 
 title: Envoi_Note_Synthese
@@ -621,6 +623,8 @@ Azul_happy: Pas grave, viens, on a un nouveau truc à t'apprendre. #line:0a4a5d0
     << hide >>
     <<jump Assemblee_Sages>>
 -> (Passer la séquence des Sages)
+    << resetLevel >>
+    <<jump Start>>
 <<else>>
 -> Réécrire dans le journal
     << showJournal mentalWorkload >>

@@ -247,7 +247,7 @@ tags: noUi
 position: -562.1727294921875,1164.6718139648438
 ---
 You: Et, qu'est-ce que je fais là, au juste ?
-Azul_happy: C'est très simple { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens. 
+Azul_happy: C'est très simple, { $name }. Ton esprit en souffrance nous a appelé à la rescousse. Vois-nous comme tes anges gardiens. 
 Sapiens_thinking: Tout à fait, <b>Azul</b>. Grâce à nos métapouvoirs, les arcanes de la métacognition n'auront plus de secrets pour toi. #line:081c094 
 
 -> C'est quoi, ça… la métaconnexion ? #line:081277c 
@@ -260,7 +260,7 @@ title: Metaconnexion
 tags: noUi
 position: -878.8255004882812,1170.7235107421875
 ---
-You: Heuuuuu… J'ai rien compris de ce vous avez dit. La métaconnexion ??? #line:02434a3 
+You: Heuuuuu… J'ai rien compris de ce que vous avez dit. La métaconnexion ???
 Azul_proud: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien. #line:06f975d 
 Temde_smiling: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de faire ! Et de trouver une solution qui marche ! #line:0fc8373 
 Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences… #line:005e8f4 

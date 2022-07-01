@@ -513,14 +513,13 @@ position: 259,328
 << fadeIn >>
 << setBackground bedroom >>
 << addToGauge sleep 50 >>
-<< addToGauge food 50 >>
 << advanceTimeUntil 8:00 sleep food >>
 << fadeOut >>
 Bip !! Vous êtes réveillé par votre Palmphone. C'est Fred qui appelle. Il veut sûrement aider pour le TP de drones !
 Fred@holo_excited: Yo, { $name } ! Bien dormi ? Pas moi ! Je t'ai envoyé les plans de mon drone, t'as vu, je tiens mes promesses !
 You: Merci, Fred !
 Fred@holo_happy: T'inquiète, c'est pour être resté jusqu'au bout hier soir ! Alors… Pour ce qui est de l'allègement des matériaux, j'ai penché pour une coque en méta-plastique…
-<< addToGauge Learning 70 >>
+<< addToGauge learning 70 >>
 Fred et vous prenez 1h pour travailler sur le drone. Au final, celui-ci semble fin prêt pour le TP de pilotage ! Va-t-il tenir jusqu'au bout ?
 -> Aller au TP
     << hide >>
@@ -534,7 +533,6 @@ position: -418,177
 << fadeIn >>
 << setBackground bedroom >>
 << addToGauge sleep 50 >>
-<< addToGauge food 50 >>
 << advanceTimeUntil 8:00 sleep food>>
 << fadeOut >>
 Bip !! Votre réveil sonne en vous faisant bourdonner les oreilles.
@@ -955,8 +953,8 @@ Vous vous rendez à votre poste. Vous vous calez sur votre siège et prenez conn
 Votre drone est complet et répond parfaitement aux commandes. À part une erreur ou deux, vous guidez votre appareil à bon port. #line:05f29c8 
 Puis, vous sortez de la salle de classe. #line:09197a3
 
+<< visitPermanent Chapitre2 >>
 << completeLevel >>
-
 << visit Tp_Win >>
 
 <<jump Sortir_Classe>>
@@ -980,12 +978,13 @@ You: Ca te fait peur ?
 Fred_smiling: Héhé, même pas un peu. On se voit demain ?
 You: Carrément !
 
+<<if !visited("Assemblee_Sages")>>
+
 << fadeIn >>
 << hide >>
 << setBackground bedroom >>
 << setTime 14:00 >>
 << fadeOut >>
-
 En rentrant dans votre terrier d'étudiant, vous tombez encore une fois nez à nez avec Miss Temdé, qui semble vous attendre.
 Temde_cheerful: { $name } ! Comment était la fête ?
 You: Plutôt sympa ! Je me suis bien débrouillé au TP, c'est ça l'important !
@@ -993,6 +992,12 @@ Temde_smiling: C'est parfait, ça ! Suis-moi, petit génie, nous avons encore de
 -> Suivre Temdé
     <<jump Assemblee_Sages>>
 -> (Passer la séquence des Sages)
+<<else>>
+-> Passer au prochain chapitre
+-> Réécrire dans le Journal
+    << showJournal food >>
+    << showJournal sleep >>
+<<endif>>
 ===
 
 title: Assemblee_Sages
@@ -1164,7 +1169,7 @@ position: 3557.0534057617188,389.2486877441406
 Le carré de jardin tranquille des sages a disparu subitement ! #line:0e91632 
 Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être. #line:05ae07d 
 Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages… #line:01686de 
-<< visitPermanent Chapitre2 >>
+
 <<jump Journal>>
 ===
 
@@ -1179,6 +1184,7 @@ position: 3557.0534057617188,389.2486877441406
 
 <<if !visited("Tp_Win")>>
 -> Recommencer la soirée d'hier
+    << visitPermanent Chapitre2 >>
     << resetLevel >>
     <<jump Start>>
 <<else>>

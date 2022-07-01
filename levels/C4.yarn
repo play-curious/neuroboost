@@ -33,6 +33,7 @@ Quelque chose cloche… Fred ne vous a toujours pas appelé ! Ça ne lui ressemb
 -> Faire autre chose
 
 Vous vous étiez mis d'accord pour aller travailler sur le mémoire à la bibliothèque de l'Académie… Tout seul, qu'est-ce que vous allez faire ?
+<< hide >>
 << fadeIn >>
 <<jump Actions_List>>
 ===
@@ -95,7 +96,7 @@ position: -1358,-576
 -> Casser la croûte (30 min) #once
     <<jump Lunch>>
 -> back #line:0fad580 
-    << fadeIn >>
+    <<jump Action_List>>
 ===
 
 title: bureau_subchoice
@@ -157,6 +158,7 @@ Fred@holo_happy: C'est bon, viens ! On a le temps !
 -> Non, on se retrouve à la bibliothèque !
     You: Non, je vais à la bibliothèque pour bosser, on se rejoint là-bas directement !
     Fred@holo_bored: Pfff… Comme tu veux… Mais je finis le chapitre d'abord…
+<< hide >>
 <<jump Actions_List>>
 ===
 
@@ -319,7 +321,7 @@ Fred_happy: Hey, quand on a fini, on pourra se faire un petit GTR, tu crois pas 
     You: Oui, si on a encore le temps. Au pire, on pourra faire ça un autre jour !
     Fred_excited: Yes ! Bon alors, on s'y met ?
 -> Arrête avec ton GTR !
-    You: Bon sang mais Fred, calme-toit avec GTR ! Tu pourras y jouer plus tard !
+    You: Bon sang mais Fred, calme-toi avec GTR ! Tu pourras y jouer plus tard !
     Fred_bored: Pffff... Ouais, t'as sûrement raison...
 Fred_smiling: Bon, on s'y met ? C'est toi le chef de projet, non ? Alors, on fait quoi ?
 << hide >>
@@ -472,7 +474,7 @@ Fred: Yes. On se répartit la tâche comment ? #line:005280e
 
 <<visit Redaction>>
 
--> Demander l'avis de Fred  #line:06e222c 
+-> Demander l'avis de Fred <<if $silence && !visited("WorkWithoutFred")>>
     <<jump Redaction_Good>>
 -> Dire à Fred quoi faire et l'assister
     <<jump Redaction_Bad>>
@@ -483,12 +485,14 @@ tags:
 position: -781,408
 colorID: 2
 ---
-Vous prenez le temps de lui résumer oralement ce que vous avez déjà sur la question des modèles chaotiques, déterministes dont le degré d'erreur croît de manière exponentielle. Votre présentation n'ennuie pas Fred, au contraire, votre pote se trouve être une source inépuisable d'idées et de référence pour étayer cette partie. #line:0d6c894 
+
+Vous prenez le temps de résumer oralement à Fred ce que vous avez déjà sur la question des modèles chaotiques, déterministes dont le degré d'erreur croît de manière exponentielle.
+Votre présentation n'ennuie pas Fred, au contraire, votre pote se trouve être une source inépuisable d'idées et de référence pour étayer cette partie. #line:0d6c894 
 Vous enchaînez avec la portée de l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme. Là encore, échanger avec Fred vous permet de consolider vos arguments et de donner plus de profondeur à cette question. #line:0863687 
 Enfin, vous énumérez brièvement les éléments que vous avez déjà intégrés dans la troisième partie sur la macrobiologie et la remise en question du postulat darwinien de l'évolution comme un schéma linéaire et donc prévisible. Fred se montre encore généreux et vous propose des réflexions, des idées, des hypothèses auxquelles vous n'aviez pas pensées. #line:0a38763 
 Au final, vous constatez qu'avec le concours de Fred, votre rédaction s'est considérablement étoffée. Elle est vraiment solide et bien charpentée. Il ne vous reste plus qu'à arranger votre démonstration de manière plus académique et plus littéraire et le tour sera joué.  #line:0d7870c 
-Alors que vous terminez de noter un truc dans votre agenda, l'IA vous informe qu'elle a enregistré toute la conversation. Elle vous expédie le fichier audio sur votre ordinateur. Parfait ! Si vous avez oublié un truc, vous n'aurez qu'à réécouter l'enregistrement… #line:0399372 
-<< advanceTime 3:30 >>
+RoomMate: J'ai enregistrer 
+<< advanceTimeBy 3:30 >>
 << addToGauge learning 20 >>
 
 <<jump Liste_Taches>>
@@ -499,23 +503,26 @@ tags:
 position: -1001,420
 colorID: 2
 ---
-You: Je m'occupe du problème des modèles déterministes dont le degré d'erreur croît de manière exponentielle. Je prends également en charge l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme. Je te laisse réfléchir sur la révolution du paradigme post-darwinien en macrobiologie pour la conclusion ? #line:0a59d4a 
-Fred_smiling: OK. Et qui fait l'introduction ? #line:03a4d80 
-You: Toi, par exemple. N'oublie pas le problème à 3 corps de Poincaré dans l'introduction. Je te demande pas d'écrire beaucoup, non ? #line:0fff9aa 
-Fred_sad: Non, c'est vrai. #line:0699c86 
-You: Cool. #line:0da4c78 
-Vous reprenez vos brouillons et vos notes et vous commencez à mettre au propre vos idées. Vous vous voulez bien faire les choses. Vous prenez le temps de contrôler régulièrement vos sources et de réutiliser dans votre argumentation les données que vous avez glanées.  #line:0ce4d55 
+<<if visited("WorkWithoutFred")>>
+You: Bon... Alors... J'ai déjà commencé à rédigé nos parties au propre, on va l'utiliser en se servant de notre plan...
+Fred_surprised: Attends... T'as commencé la rédaction sans moi ?
+You: Ben... Ouais. T'étais pas là !
+<< show Fred_sad >>
+Fred vous regarde avec une mine désappointée. Il ne s'attendait sûrement pas à ce que vous travailliez sur le mémoire sans lui.
+<<endif>>
+You: Donc, je vais répartir les taches en suivant le plan et en m'aidant de nos recherches...
+You: Je m'occupe du problème du degré d'erreur des modèles déterministes... Je prends également en charge l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme.
+You: Je te laisse réfléchir sur la révolution du paradigme post-darwinien en macrobiologie pour la conclusion ?
+Fred_surprised: Je suppose que je fais l'introduction, aussi ?
+You: Oui, tu peux ! Je vérifierai ton travail une fois qu'il sera fait. Pour l'instant, à la rédaction !
+Fred_sad: Ok, ça marche...
 
 << hide >>
 << fadeIn >>
-<< advanceTime 3:00 >>
+<< advanceTimeBy 3:00 >>
 << addToGauge learning 10 >>
 << fadeOut >>
 
-Quand vous relevez la tête, vous voyez Fred, qui vous sourit. #line:0256ae6 
-Fred_smiling: J'ai plein d'idée pour la conclusion. Et pour l'introduction aussi. #line:0bf97db 
-You: Noon ! #line:0feaaae 
-Manifestement, ce n'était pas le meilleur choix possible. #line:0583471 
 <<jump Liste_Taches>>
 ===
 
@@ -555,7 +562,7 @@ tags:
 colorID: 0
 position: -611,270
 ---
-<< advanceTime 1:00 >>
+<< advanceTimeBy 1:00 >>
 
 You: Bon, on passe mes notes en revue ?
 Fred_smiling: Yeeees. Je t'écoute ! #line:0a51cb6 
@@ -582,7 +589,7 @@ Fred_smiling: Super ! Vas-y, je t'écoute !
 Ne sachant pas par quoi commencer, vous dites la première remarque qui vous vient en tête. Et puis, de fil en aiguille, une remarque en amène une autre, et ainsi de suite.
 Fred est un auditeur très bienveillant, il rebondit sur certaines de vos idées et vous incite à les clarifier, les critiquer, les nuancer.
 
-<< advanceTime 1:00 >> 
+<< advanceTimeBy 1:00 >> 
 << addToGauge learning 20 >>
 
 RoomMate: Voulez-vous que je conserve le fichier audio de la conversation pour en garder la trace ?
@@ -603,7 +610,7 @@ Fred_sad: Oui, chef… #line:0c5e7f6
 
 Vous envoyez vos documents de travail à Fred. Vous voyez votre ami grincer des dents. #line:0b9fc4e 
 Il peine à lire et relire vos docs, et n'arrête pas de faire des pauses, de vous interpeller, mais vous limitez les discussions pour vous concentrer sur le travail.
-<< advanceTime 1:00 >>
+<< advanceTimeBy 1:00 >>
 << addToGauge learning 10 >>
 <<jump Liste_Taches>>
 ===
@@ -624,7 +631,6 @@ Fred_happy: Je m'occupe de la conclusion et de l'intro. #line:0e56f3e
 You: OK. #line:02bda36 
 Fred_smiling: Keep faith. #line:031f90d 
 << hide >>
-C'est drôle. C'est Fred désormais qui vous pilote et vous rassure sur votre capacité à finir dans les temps. Troublé, un peu hésitant, vous retournez dans votre chambre. #line:03fa023 
 
 <<jump Bedroom>>
 
@@ -648,7 +654,7 @@ tags:
 colorID: 0
 position: -1211,149
 ---
-<< advanceTime 2:00 >>
+<< advanceTimeBy 2:00 >>
 
 You: Je sais que toi aussi, tu as avancé sur le travail de rédaction du mémoire. #line:01b1dcd 
 Fred_smiling: Bien sûr !
@@ -674,12 +680,13 @@ colorID: 2
 ---
 Fred_happy: Tout est dans ma tête. Tu veux que je commence par quoi ? #line:0ca8f0f 
 
-<< advanceTime 1:00 >>
+<< advanceTimeBy 1:00 >>
 << addToGauge learning 20 >>
 
 Vous comprenez que c'est à vous de questionner Fred et, en quelque sorte, de lui tirer les vers du nez. Vous passez les deux heures suivantes à lui poser des questions, à écouter ses réponses, à rebondir sur ses idées, ses commentaires. 
 Fred a beau ne pas répondre aux standards académiques, il a un don, c'est certain, il a remarqué plein de choses que vous n'auriez pas vues.
-Quand vous pensez avoir fait le tour de la question avec lui, l'IA vous informe qu'elle a enregistré toute la conversation. Elle vous transfère le fichier audio sur votre ordinateur. Génial ! #line:0b03dfd 
+RoomMate: Voulez-vous que je conserve le fichier audio de la conversation ?
+You: Vas-y BibliMate !
 
 <<jump Liste_Taches>>
 ===
@@ -695,7 +702,7 @@ Fred: Bon, d'accord. Puisque tu insistes. C'est bien parce que c'est toi… #lin
 Vous voyez à son air pincé que Fred se fait violence pour vous faire plaisir. Après un bon moment, Fred, vous renvoie les fichiers mis à jour. #line:0d827ea 
 Fred: J'ai fait un effort. J'ai écrit des vraies phrases. #line:058646a 
 En effet, c'est mieux, mais ça reste laconique. Il reste encore beaucoup à faire mais vous n'obtiendrez pas plus de Fred de cette manière. #line:0057664 
-<<advanceTime 1:00>>
+<< advanceTimeBy 1:00>>
 << addToGauge learning 10 >>
 
 <<jump Liste_Taches>>
@@ -709,19 +716,15 @@ position: -1139,276
 You: Tu te souviens du plan ? #line:0608a08 
 Fred_smiling: Ton plan ?  #line:010b808 
 You: Oui, je t'ai demandé d'en proposer un, t'as refusé. #line:0a49c05 
-Fred_smiling: Le plan, ça vient avec les idées, les breakthrough. #line:02066f7 
-You: Sans plan, on ne peut pas avancer dans la rédaction. Et on en est là, la rédaction, la dernière ligne droite. #line:0696f59 
 Fred_sad: Mais pourquoi on doit suivre l'axe que tu as proposé ?  #line:091835b 
-You: T'en vois d'autre, #line:0d08340 
+You: Tu en vois d'autres ?
 Fred_happy: Oui, plein, y a l'embarras du choix. #line:0b977ec 
-You: On n'a plus le temps. #line:004dc90 
-Fred_smiling: On a toujours le temps. #line:0e52680 
 
 << visit Plan >>
 
--> Vous prenez le temps de discuter avec Fred de tous les plans possibles  #line:0d5fcf7 
+-> Vous prenez le temps de discuter avec Fred de tous les plans possibles <<if $silence>>
     << jump Plan_Good >>
--> Vous présentez votre plan à Fred #line:08a8a75 
+-> Vous présentez votre plan à Fred
     << jump Plan_Bad >>
 ===
 
@@ -731,13 +734,11 @@ position: -1358,349
 colorID: 2
 ---
 You: C'est le dernier jour, on doit choisir un plan et s'y tenir.  #line:0774d64 
-Fred_happy: Très bien. Dis-moi ce que tu as retenu et je te dirai ce que j'en pense. #line:0da186f 
-You: OK.  #line:02303dd 
-Vous farfouillez dans vos dossier et vous ouvrez le fichier qui contient le plan détaillé du mémoire sur la théorie du chaos en macrobiologie post-darwinienne. #line:0d3ee9f 
-Vous commencez ensuite à lui présentez vos trois grandes parties, vos sections et sous-sections. Fred se révèle un infatigable représentant du jury. Iel ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions. #line:0a18b2d 
-En clair, iel vous déstabilise, iel vous secoue. Iel vous fait douter de votre problématique et de vous. Sauf que, c'est là le génie de Fred. Fred ne se contente pas de vous perturber, iel vous propose des pistes alternatives, des questions et des arguments auxquels vous n'aviez pas pensés. #line:07d69b4 
-En fait, iel secoue l'arbre de votre argumentation pour vous aider à cueillir tous les fruits qu'il a produit. Grâce à la contribution de Fred, vous comprenez que vous avez un plan en béton armé. #line:03502f1 
-<< advanceTime 2:00 >>
+Fred_happy: Très bien. Donne-moi les parties et je te dirai ce que j'en pense.
+You: Ok.  #line:02303dd 
+Vous commencez ensuite à lui présentez vos trois grandes parties, vos sections et sous-sections. Fred se met à la place du jury pour vous faire les meilleures remarques et vous proposer de meilleures options.
+Il réussit à étoffer votre argumentaire et ajoute plein de nouvelles idées.
+<< advanceTimeBy 2:00 >>
 << addToGauge learning 20 >>
 
 << jump Liste_Taches >>
@@ -748,13 +749,13 @@ tags:
 position: -1268,409
 colorID: 2
 ---
-You: Ben c'est le problème. On n'a plus le temps d'hésiter. On doit choisir un plan et s'y tenir.  #line:04260cf 
+You: Ben... C'est le problème. On n'a plus le temps d'hésiter. On doit choisir un plan et s'y tenir.
 Fred_sad: C'est vraiment dommage. #line:0c92611 
-You: Je te rappelle qu'on doit le rendre ce soir ce mémoire. C'est maintenant trop tard pour changer d'avis. Je te renvoie le plan et on le valide. Un point, c'est tout. #line:0fe17ad 
-Vous sentez que vous n'avez peut-être pas pris la bonne décision. Fred se révèle un infatigable avocat de l'accusation. Iel ne manque pas d'arguments ni de pertinence dans ces remarques et ces questions. Commentaires qui ne font que fragiliser votre problématique et douter de vous. #line:0531726 
-Si Fred avait raison… Vous allez devoir revivre encore une fois cette journée de jeudi. Pourvu que non… #line:0264a4e 
+You: Je te rappelle qu'on doit le rendre ce soir, ce mémoire. Je te renvoie le plan et on le valide. Un point, c'est tout.
+Aussitôt, Fred se met dans une position d'avocat de l'accusation, vous fait douter de vos parties et de la structure que vous avez choisie à mesure que vous la lui présentez.
+Pourvu qu'il se trompe...
 
-<< advanceTime 1:30 >>
+<< advanceTimeBy 1:30 >>
 << addToGauge learning 10 >>
 
 <<jump Liste_Taches>>

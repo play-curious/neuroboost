@@ -38,7 +38,7 @@ position: -570,57
 << stopFX PhoneRing_LOOP >>
 
 <<if !visited("FredCall")>>
-Fred@holo_excited: Salut ! c'est Fred ! #line:0fb4525 
+Fred@holo_excited: Salut ! C'est Fred !
 You: Je sais, j'ai vu ton nom. #line:0d1a13b 
 Fred@holo_smiling: Yo, je vois que t'es pas de bonne humeur ce matin… #line:039d35b 
 You: Facile à dire pour toi, tu révises jamais et t'as tout le temps des bonnes notes !
@@ -591,6 +591,8 @@ Temde_neutral: Allons, ne sois pas défaitiste, { $name }, l'apprentissage de la
     << fx Warp >>
     << fadeIn 1500 12ea12 >>
     << hide ! >>
+    << resetLevel >>
+    <<jump Start>>
 ===
 
 title: Sages_Victoire
