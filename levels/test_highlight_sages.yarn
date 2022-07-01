@@ -1,0 +1,21 @@
+title: Start
+tags: freechoice
+position: -571,1504
+---
+<< setBackground circle >>
+
+-> Tembe@temde  
+  Temde: Hello
+  << hide >>
+-> Azul@azul
+  Azul: Hello
+  << hide >>
+-> Ledai@ledai  
+  Ledai: Hello
+  << hide >>
+-> Sapiens@sapiens 
+  Sapiens: Hello
+  << hide >>
+
+<< jump Start >>
+===
