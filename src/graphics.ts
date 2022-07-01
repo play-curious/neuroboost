@@ -412,14 +412,22 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
         this._container.interactive = true;
         this._container.buttonMode = true;
-        this._once(this._container, "pointerup", () => {
+
+        // This complicated way of doing things is just avoid a "click-though menu problem"
+        // that we can't figure out
+        const onDialogClick = () => {
+          if (this._lastFrameInfo.gameState === "paused") return;
+
+          this._off(this._container, "pointerup", onDialogClick);
+
           this.config.fxMachine.play("Click");
 
           this._container.interactive = false;
           this._container.buttonMode = false;
           this.hideNode();
           onBoxClick();
-        });
+        };
+        this._on(this._container, "pointerup", onDialogClick);
       } else {
         // Do a nice typewriter animation
         const typewriterSpeed =
@@ -442,14 +450,20 @@ export class Graphics extends extension.ExtendedCompositeEntity {
           });
         });
 
+        // This complicated way of doing things is just avoid a "click-though menu problem"
+        // that we can't figure out
         const accelerate = () => {
+          if (this._lastFrameInfo.gameState === "paused") return;
+
+          this._off(this._container, "pointerup", accelerate);
+
           if (typewriterAnimation.isSetup)
             this._deactivateChildEntity(typewriterAnimation);
         };
 
         this._activateChildEntity(typewriterAnimation);
 
-        this._once(this._container, "pointerup", accelerate);
+        this._on(this._container, "pointerup", accelerate);
         this._container.interactive = true;
         this._container.buttonMode = true;
       }
