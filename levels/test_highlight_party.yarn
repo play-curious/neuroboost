@@ -1,0 +1,17 @@
+title: Start
+tags: freechoice
+position: -571,1504
+---
+<< setBackground party >>
+
+-> Door@party-door  
+  Door
+-> Couch@party-couch
+  Couch
+-> Hall@party-hall  
+  Hall
+-> Bar@party-bar 
+  Bar
+
+<< jump Start >>
+===

@@ -59,6 +59,8 @@ export const debuggingDialogScenes = [
   "characters",
   "backgrounds",
   "test_simulation",
+  "test_highlight_sages",
+  "test_highlight_party",
 ];
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
