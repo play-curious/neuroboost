@@ -31,6 +31,9 @@ class RequestTransitionEntity extends entity.EntityBase {
 function checkSave(): entity.Transition {
   if (!save.hasSave()) return entity.makeTransition("toc");
 
+  // Load variable storage from memory
+  this._entityConfig.variableStorage.data = save.getVariableStorage();
+
   const loadedChapterData = save.getCurrentChapter();
 
   // If no save exists, go the main menu
@@ -86,10 +89,6 @@ const variableStorage = new variable.VariableStorage({
   eval: "",
   food: "100",
 });
-// Load variable storage from memory, if available
-if (save.hasSave() && save.getVariableStorage()) {
-  variableStorage.data = save.getVariableStorage();
-}
 
 const globalHistory: yarnBound.Result[] = [];
 
@@ -223,7 +222,7 @@ const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 export const screenSize = new PIXI.Point(1920, 1080);
 
-const splashScreen = "images/splash_screen.png";
+const splashScreen = "images/splash_screen.jpg";
 
 const params = new URLSearchParams(window.location.search);
 const startingScene = params.get("level") || params.get("scene") || "start";

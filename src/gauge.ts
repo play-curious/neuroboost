@@ -154,11 +154,11 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   }
 
   colorByValue(value: number): SpritePath {
-    if (value > gaugeLevels[this.name].minHigh)
+    if (value >= gaugeLevels[this.name].minHigh)
       return this._inverted
         ? "images/ui/gauges/innerDisk_red.png"
         : "images/ui/gauges/innerDisk_green.png";
-    else if (value > gaugeLevels[this.name].minMedium)
+    else if (value >= gaugeLevels[this.name].minMedium)
       return "images/ui/gauges/innerDisk_yellow.png";
     else
       return this._inverted

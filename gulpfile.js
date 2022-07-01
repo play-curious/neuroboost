@@ -85,7 +85,7 @@ function watch(cb) {
 
 function yarnToCSV(file, info) {
   console.log(info.basename);
-  
+
   // const yarnFile = fs.readFileSync(
   //   path.join(__dirname, "levels", file),
   //   "utf8"
@@ -110,13 +110,16 @@ function yarnToCSV(file, info) {
       } else {
         let [text, id] = line.split("#line:");
         text = text.trim();
-        if(id === undefined
-        || text === "-> back"
-        || (text.includes("->") && text.includes("@"))) continue;
+        if (
+          id === undefined ||
+          text === "-> back" ||
+          (text.includes("->") && text.includes("@"))
+        )
+          continue;
         body += "en	";
         body += id + "	";
         body += text + "	";
-        body += info.basename.substring(0, info.basename.length-5) + "	";
+        body += info.basename.substring(0, info.basename.length - 5) + "	";
         body += currentNode + "	";
         body += i + "	";
         const hashed = hash.sha1().update(text).digest("hex");

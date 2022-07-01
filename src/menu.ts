@@ -9,7 +9,6 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import * as journal from "./journal";
 import * as popup from "./popup";
-import { isYieldExpression } from "typescript";
 
 interface Settings {
   fx: number;
@@ -27,11 +26,17 @@ const defaultSettings: Settings = {
 
 const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
   credits: {
-    Programming: ["Camille Abella", "André Quentin", "Maréchal Eliot"],
+    Programming: ["Camille Abella", "Quentin André", "Eliot Maréchal"],
     "Game Design": "Jesse Himmelstein",
     "Narrative Design": "Ronan Le Breton",
+    Locator: "William Barreau",
     "Sound Design": "Jean-Baptiste Mar",
-    "Graphic Design": ["Xuan Le", "Sana Coftier", "Nawel Benrhannou"],
+    "Graphic Design": [
+      "Xuan Le",
+      "Sana Coftier",
+      "Nawel Benrhannou",
+      "Juliette Amélie",
+    ],
     Animation: ["Xuan Le", "Sana Coftier"],
     QA: "Ilyes Khamassi",
   },
@@ -87,17 +92,15 @@ export class Menu extends extension.ExtendedCompositeEntity {
         .beginFill(0)
         .drawRect(0, 0, variable.width, variable.height)
         .endFill();
-      this.blackBackground.interactive = true;
       this.blackBackground.alpha = 0.5;
+      this.blackBackground.interactive = true;
       this._on(this.blackBackground, "pointerup", this.close);
       this.container.addChild(this.blackBackground);
     }
 
     {
-      //
       this.menuButton = this.makeSprite("images/menu/menu.png", (it) => {
         it.anchor.set(0.6);
-        //it.alpha = 0.8;
         it.position.set(100);
         it.scale.set(0.5);
         it.buttonMode = true;
@@ -207,7 +210,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         it.scale.set(0.4);
         it.position.set(x, y);
       });
-      this.popupBackground.addChild(image);
+      this._controlsContainer.addChild(image);
 
       this.journal = this.makeText(
         "Journal",
@@ -225,7 +228,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
           this._on(it, "pointerup", this._downloadJournal);
         }
       );
-      this.popupBackground.addChild(this.journal);
+      this._controlsContainer.addChild(this.journal);
       // this.journalUpdated = false;
     }
 
@@ -241,7 +244,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       image.interactive = true;
       image.buttonMode = true;
       this._on(image, "pointerup", this._onTapPCLogo);
-      this.popupBackground.addChild(image);
+      this._controlsContainer.addChild(image);
 
       this.creditButton = this.makeText(
         "Credits",
@@ -258,7 +261,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         }
       );
       this._on(this.creditButton, "pointertap", this._showCredits);
-      this.popupBackground.addChild(this.creditButton);
+      this._controlsContainer.addChild(this.creditButton);
 
       // Credits entity starts null, and is created only when the button is pressed
       this.creditsEntity = null;
@@ -278,7 +281,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
           it.position.set(+90, 20);
         }
       );
-      this.popupBackground.addChild(textFullscreen);
+      this._controlsContainer.addChild(textFullscreen);
       // Création image
       this.fullscreenSwitcher = new SpriteSwitcher(
         {
@@ -310,7 +313,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         it.scale.set(0.3);
         it.position.set(x - 165, y);
       });
-      this.popupBackground.addChild(logo);
+      this._controlsContainer.addChild(logo);
 
       this.musicVolumeSwitcher = new SpriteRangeSwitcher(
         {
@@ -342,7 +345,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         it.scale.set(0.3);
         it.position.set(x - 165, y);
       });
-      this.popupBackground.addChild(logo);
+      this._controlsContainer.addChild(logo);
 
       this.soundVolumeSwitcher = new SpriteRangeSwitcher(
         {
@@ -373,7 +376,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
         it.scale.set(0.3);
         it.position.set(x - 165, y);
       });
-      this.popupBackground.addChild(logo);
+      this._controlsContainer.addChild(logo);
 
       this.textSpeedSwitcher = new SpriteRangeSwitcher(
         {
@@ -504,16 +507,22 @@ export class Menu extends extension.ExtendedCompositeEntity {
   }
 
   _onSignal(frameInfo: entity.FrameInfo, signal: string, data?: any): void {
+    const html = document.getElementById("html-layer");
+
     if (signal === "pause" && !this.opened) {
       this.opened = true;
       this.menuButton.visible = false;
       this.container.visible = true;
+
+      if (html) html.style.display = "none";
 
       this._onOpen();
     } else if (signal === "play" && this.opened) {
       this.opened = false;
       this.menuButton.visible = true;
       this.container.visible = false;
+
+      if (html) html.style.display = "block";
     }
   }
 
@@ -577,32 +586,30 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     scrollBox.container.position.set(100);
     let currentY = 0;
+    let empty = true;
     // @ts-ignore
-    dialogScene.getHistoryText().forEach((text) => {
-      text.position.set(0, currentY);
-      scrollBox.content.addChild(text);
-      currentY += text.height + 30;
-    });
+    if (window.dialogScene) {
+      // @ts-ignore
+      window.dialogScene?.getHistoryText().forEach((text) => {
+        text.position.set(0, currentY);
+        scrollBox.content.addChild(text);
+        currentY += text.height + 30;
+        empty = false;
+      });
+    }
+
+    if (empty) {
+      scrollBox.content.addChild(
+        this.makeText("Empty history - Historique vide", {
+          fontFamily: "Ubuntu",
+          fontSize: "50px",
+          fill: "#ffffff",
+        })
+      );
+    }
 
     scrollBox.refresh();
     scrollBox.scrollBy(new PIXI.Point(0, -(currentY + 200)));
-
-    const closeButton = new PIXI.Sprite(
-      this._entityConfig.app.loader.resources[
-        "booyah/images/button-back.png"
-      ].texture
-    );
-
-    closeButton.anchor.set(0.5);
-    closeButton.position.set(50);
-    closeButton.interactive = true;
-    closeButton.buttonMode = true;
-    this._on(closeButton, "pointertap", () => {
-      this.container.removeChild(background);
-      this.container.removeChild(closeButton);
-      this._deactivateChildEntity(scrollBox);
-    });
-    this.container.addChild(closeButton);
   }
 
   private _onTapPCLogo() {

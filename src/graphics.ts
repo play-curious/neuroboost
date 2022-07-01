@@ -5,6 +5,7 @@ import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
 import * as scroll from "booyah/src/scroll";
 import * as tween from "booyah/src/tween";
+import * as util from "booyah/src/util";
 
 import * as filter from "./graphics_filter";
 import * as extension from "./extension";
@@ -200,7 +201,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
    * Show node
    */
   public hideNode() {
-    if (this._nodeDisplay) this._container.removeChild(this._nodeDisplay);
+    if (!this._nodeDisplay) return;
+
+    this._container.removeChild(this._nodeDisplay);
     this._nodeDisplay = null;
   }
 
@@ -273,6 +276,66 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._dialogLayer.visible = false;
   }
 
+  public showTutorial(text: string, onClick: () => unknown) {
+    this._dialogLayer.visible = false;
+
+    this._nodeDisplay = new PIXI.Container();
+    this._container.addChild(this._nodeDisplay);
+
+    let textBox: PIXI.Text;
+    {
+      // Make tutorial text, but don't add it yet
+      textBox = new PIXI.Text(text, {
+        fill: "white",
+        fontFamily: "Ubuntu",
+        align: "center",
+        fontSize: 40,
+        leading: 10,
+        wordWrap: true,
+        wordWrapWidth: 1000,
+      });
+      textBox.anchor.set(0.5);
+      textBox.position.set(
+        this._entityConfig.app.view.width / 2,
+        this._entityConfig.app.view.height / 2
+      );
+    }
+
+    {
+      // Make menu background
+      const menuBackground = new PIXI.NineSlicePlane(
+        this._entityConfig.app.loader.resources[
+          "images/ui/resizable_container.png"
+        ].texture,
+        116,
+        125,
+        116,
+        125
+      );
+      menuBackground.width = textBox.width + 300;
+      menuBackground.height = textBox.height + 150;
+      menuBackground.position.set(
+        this._entityConfig.app.view.width / 2 - menuBackground.width / 2,
+        this._entityConfig.app.view.height / 2 - menuBackground.height / 2
+      );
+      this._nodeDisplay.addChild(menuBackground);
+    }
+
+    this._once(this._container, "pointerup", () => {
+      this.config.fxMachine.play("Click");
+
+      this._container.interactive = false;
+      this._container.buttonMode = false;
+
+      this.hideNode();
+      onClick();
+    });
+    this._container.interactive = true;
+    this._container.buttonMode = true;
+
+    this._nodeDisplay.addChild(textBox);
+  }
+
   public showDialog(
     text: string,
     name: string,
@@ -320,15 +383,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
 
     {
-      // Use the dialog box in button mode, but actually allow clicks anywhere on the screen
-      const hitBox = new PIXI.Container();
-      hitBox.position.set(140, 704);
-      hitBox.hitArea = new PIXI.Rectangle(0, 0, 1634, 322);
-      hitBox.buttonMode = true;
-      this._nodeDisplay.addChild(hitBox);
-    }
-
-    {
       const dialogBox = this.makeText(
         "",
         {
@@ -352,7 +406,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
       if (textSpeedOption === 1) {
         // Just write the text
-        dialogBox.text = baseText;
+        const pauseRegExp = /<(\s*)pause(\s*)(\d*)(\s*)>/g;
+        const cleanedText = baseText.replace(pauseRegExp, "");
+        dialogBox.text = cleanedText;
 
         this._container.interactive = true;
         this._container.buttonMode = true;
@@ -361,38 +417,29 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
           this._container.interactive = false;
           this._container.buttonMode = false;
+          this.hideNode();
           onBoxClick();
         });
       } else {
         // Do a nice typewriter animation
-        const writer = this.makeFxLoop(
-          `${speaker ? "Dialog" : "Narration"}_TypeWriter_LOOP`,
-          250
-        );
-
         const typewriterSpeed =
           typewriterDurationPerLetter * (1 - textSpeedOption);
+        const typewriterAnimation = new TypewriterAnimation({
+          baseText,
+          textBox: dialogBox,
+          defaultLetterDuration: typewriterSpeed,
+          isNarration: !speaker,
+        });
+        this._on(this, "deactivatedChildEntity", (e) => {
+          if (e !== typewriterAnimation) return;
 
-        const typewriterAnimation = new tween.Tween({
-          from: 1,
-          to: baseText.length,
-          duration: baseText.length * typewriterSpeed,
-          onSetup: () => {
-            this._activateChildEntity(writer);
-          },
-          onUpdate: (value) => {
-            dialogBox.text = baseText.slice(0, Math.round(value));
-          },
-          onTeardown: () => {
-            dialogBox.text = baseText;
-            this._deactivateChildEntity(writer);
-            this._off(this._container, "pointerup", accelerate);
-            this._once(this._container, "pointerup", () => {
-              this._container.interactive = false;
-              this._container.buttonMode = false;
-              onBoxClick();
-            });
-          },
+          this._off(this._container, "pointerup", accelerate);
+          this._once(this._container, "pointerup", () => {
+            this._container.interactive = false;
+            this._container.buttonMode = false;
+            this.hideNode();
+            onBoxClick();
+          });
         });
 
         const accelerate = () => {
@@ -412,23 +459,42 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   public setChoice(
     nodeOptions: Record<string, string>[],
     onBoxClick: (choiceId: number) => unknown,
-    subchoice?: number
+    backOptionIndex?: number
   ) {
     // This works for both links between nodes and shortcut options
     this._dialogLayer.visible = false;
 
     this._nodeDisplay = new PIXI.Container();
     this._container.addChild(this._nodeDisplay);
+
+    const isSubchoice = typeof backOptionIndex !== "undefined";
+    if (isSubchoice) {
+      // Catch all the clicks outside of the options
+      const clickCatcher = new PIXI.Container();
+      clickCatcher.hitArea = new PIXI.Rectangle(
+        0,
+        0,
+        this._entityConfig.app.view.width,
+        this._entityConfig.app.view.height
+      );
+      clickCatcher.interactive = true;
+      this._on(clickCatcher, "pointerup", () => {
+        this.hideNode();
+        onBoxClick(backOptionIndex);
+      });
+      this._nodeDisplay.addChild(clickCatcher);
+    }
+
     const animationShifting = 120;
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
-      if (subchoice === Number(nodeOptions[i].id)) continue;
+      if (backOptionIndex === Number(nodeOptions[i].id)) continue;
 
       const choicebox = new PIXI.Container();
       choicebox.addChild(
         this.makeSprite(
-          i === (subchoice ? 1 : 0)
+          i === (backOptionIndex ? 1 : 0)
             ? "images/ui/choicebox_contour_reversed.png"
             : i === nodeOptions.length - 1
             ? "images/ui/choicebox_contour.png"
@@ -456,45 +522,46 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             onUpdate: (value) => {
               choicebox.position.x = value;
             },
-            onTeardown: () => {
-              choicebox.interactive = true;
-              choicebox.buttonMode = true;
+          }),
+          new entity.FunctionCallEntity(() => {
+            choicebox.interactive = true;
+            choicebox.buttonMode = true;
 
-              this._on(choicebox, "pointerup", () => {
-                this.config.dialogScene.addToHistory(
-                  "[choice]",
-                  nodeOptions[i].text
-                );
-                onBoxClick(Number(nodeOptions[i].id));
-              });
+            this._on(choicebox, "pointerup", () => {
+              this.config.dialogScene.addToHistory(
+                "[choice]",
+                nodeOptions[i].text
+              );
+              this.hideNode();
+              onBoxClick(Number(nodeOptions[i].id));
+            });
 
-              this._on(choicebox, "mouseover", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: 1,
-                    to: 1.03,
-                    onUpdate: (value) => {
-                      choicebox.scale.set(value);
-                    },
-                  })
-                );
-              });
-              this._on(choicebox, "mouseout", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: 1.03,
-                    to: 1,
-                    onUpdate: (value) => {
-                      choicebox.scale.set(value);
-                    },
-                  })
-                );
-              });
-            },
+            this._on(choicebox, "mouseover", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1,
+                  to: 1.03,
+                  onUpdate: (value) => {
+                    choicebox.scale.set(value);
+                  },
+                })
+              );
+            });
+            this._on(choicebox, "mouseout", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1.03,
+                  to: 1,
+                  onUpdate: (value) => {
+                    choicebox.scale.set(value);
+                  },
+                })
+              );
+            });
           }),
         ])
       );
@@ -523,7 +590,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._activateChildEntity(new entity.ParallelEntity(box_tweens));
 
-    if (subchoice) {
+    if (isSubchoice) {
       const arrow_back = new PIXI.Container();
       arrow_back.addChild(this.makeSprite("images/ui/arrow_return.png"));
       arrow_back.scale.set(0.65);
@@ -532,7 +599,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       arrow_back.interactive = true;
       arrow_back.buttonMode = true;
       this._on(arrow_back, "pointerup", () => {
-        onBoxClick(subchoice);
+        this.hideNode();
+        onBoxClick(backOptionIndex);
       });
       this._on(arrow_back, "mouseover", () => {
         this._activateChildEntity(
@@ -566,7 +634,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public setFreechoice(
-    nodeOptions: string[],
+    nodeOptions: Record<string, string>[],
     onBoxClick: (choiceId: number) => unknown
   ) {
     this._dialogLayer.visible = false;
@@ -579,12 +647,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const [animationShifting, baseAlpha] = [120, 0.6];
     let freechoicesFound = 0;
     for (let i = 0; i < nodeOptions.length; i++) {
-      const [choiceText, jsonValue] = nodeOptions[i].trim().split("@");
+      const [choiceText, jsonValue] = nodeOptions[i].text.trim().split("@");
       if (!highlightJSON.hasOwnProperty(jsonValue)) continue;
       freechoicesFound++;
 
-      const path: images.SpritePath & `images/ui/highlights/${string}.png` =
-        `images/ui/highlights/${jsonValue}.png` as any;
+      const path = `images/ui/highlights/${jsonValue}.png` as images.SpritePath;
 
       let highlight: PIXI.Sprite;
       if (_.has(this.entityConfig.app.loader.resources, path)) {
@@ -593,7 +660,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         });
 
         this._nodeDisplay.addChild(highlight);
-      } else continue;
+      } else {
+        throw new Error(`Missing highlight sprite ${path}`);
+      }
 
       const hitboxPositions = highlightJSON[jsonValue];
       highlight.hitArea = new PIXI.Polygon(hitboxPositions);
@@ -602,52 +671,49 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         new entity.EntitySequence([
           new entity.WaitingEntity(Math.min(i, 1) * animationShifting * i),
           new tween.Tween({
+            obj: highlight,
+            property: "alpha",
             duration: 900,
             easing: easing.easeInSine,
             from: 0,
             to: baseAlpha,
-            onUpdate: (value) => {
-              highlight.alpha = value;
-            },
-            onTeardown: () => {
-              highlight.interactive = true;
-              highlight.buttonMode = true;
+          }),
+          new entity.FunctionCallEntity(() => {
+            highlight.interactive = true;
+            highlight.buttonMode = true;
 
-              this._on(highlight, "pointerup", () => {
-                this.config.dialogScene.addToHistory(
-                  "[freechoice]",
-                  choiceText
-                );
-                onBoxClick(i);
-              });
+            this._on(highlight, "pointerup", () => {
+              this.config.dialogScene.addToHistory("[freechoice]", choiceText);
+              this.hideNode();
+              onBoxClick(i);
+            });
 
-              this._on(highlight, "mouseover", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: baseAlpha,
-                    to: 1,
-                    onUpdate: (value) => {
-                      highlight.alpha = value;
-                    },
-                  })
-                );
-              });
-              this._on(highlight, "mouseout", () => {
-                this._activateChildEntity(
-                  new tween.Tween({
-                    duration: 200,
-                    easing: easing.easeOutBack,
-                    from: 1,
-                    to: baseAlpha,
-                    onUpdate: (value) => {
-                      highlight.alpha = value;
-                    },
-                  })
-                );
-              });
-            },
+            this._on(highlight, "mouseover", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: baseAlpha,
+                  to: 1,
+                  onUpdate: (value) => {
+                    highlight.alpha = value;
+                  },
+                })
+              );
+            });
+            this._on(highlight, "mouseout", () => {
+              this._activateChildEntity(
+                new tween.Tween({
+                  duration: 200,
+                  easing: easing.easeOutBack,
+                  from: 1,
+                  to: baseAlpha,
+                  onUpdate: (value) => {
+                    highlight.alpha = value;
+                  },
+                })
+              );
+            });
           }),
         ])
       );
@@ -655,23 +721,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this._nodeDisplay.addChild(highlight);
     }
 
-    if (freechoicesFound === nodeOptions.length) {
-      this._container.addChild(this._nodeDisplay);
-      this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
-    } else if (freechoicesFound === 0) {
-      const options: Record<string, string>[] = [];
-      for (let i = 0; i < nodeOptions.length; i++) {
-        options.push({
-          text: nodeOptions[i],
-          id: i.toString(),
-        });
-      }
-      this.setChoice(options, onBoxClick);
-    } else if (freechoicesFound !== nodeOptions.length) {
-      console.error("Free choice & choice are not compatible");
-    } else {
-      console.error("Should not happen");
-    }
+    this._container.addChild(this._nodeDisplay);
+    this._activateChildEntity(new entity.ParallelEntity(freeboxTweens));
+
+    console.assert(freechoicesFound === nodeOptions.length);
   }
 
   /**
@@ -734,52 +787,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     }
   }
 
-  public removeCharacters(withAnimation: boolean = true) {
-    for (const [id, character] of this._characters) {
-      this._characters.delete(id);
-
-      if (withAnimation) {
-        if (character.holo) {
-          this._activateChildEntity(
-            new tween.Tween({
-              duration: 500,
-              easing: easing.easeInCubic,
-              from: 100,
-              to: 0,
-              onUpdate: (value: number) => {
-                character.container.position.y = (100 - value) * 5.4 + 80;
-                character.container.scale.y = value / 100;
-                character.container.position.x = -(100 - value) * 9.6 + 250;
-                character.container.scale.x = (100 - value) / 100 + 1;
-              },
-            })
-          );
-        } else {
-          this._activateChildEntity(
-            new tween.Tween({
-              duration: 1500,
-              easing: easing.easeOutQuint,
-              from: 250,
-              to: 1500,
-              onUpdate: (value) => {
-                character.container.position.x = value;
-              },
-              onTeardown: () => {
-                this._characterLayer.removeChild(character.container);
-                // this._deactivateChildEntity(character.entity);
-              },
-            })
-          );
-        }
-      } else {
-        this._characterLayer.removeChild(character.container);
-      }
-    }
-
-    delete this._graphicsState.lastCharacter;
-    delete this._graphicsState.lastMood;
-  }
-
   /**
    *
    *
@@ -830,6 +837,52 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       // Place character on screen
       this._characterLayer.addChild(characterCE.container);
     }
+  }
+
+  public removeCharacters(withAnimation: boolean = true) {
+    for (const [id, character] of this._characters) {
+      this._characters.delete(id);
+
+      if (withAnimation) {
+        if (character.holo) {
+          this._activateChildEntity(
+            new tween.Tween({
+              duration: 250,
+              easing: easing.easeInCubic,
+              from: 100,
+              to: 0,
+              onUpdate: (value: number) => {
+                character.container.position.y = (100 - value) * 5.4 + 80;
+                character.container.scale.y = value / 100;
+                character.container.position.x = -(100 - value) * 9.6 + 250;
+                character.container.scale.x = (100 - value) / 100 + 1;
+              },
+            })
+          );
+        } else {
+          this._activateChildEntity(
+            new tween.Tween({
+              duration: 1500,
+              easing: easing.easeOutQuint,
+              from: 250,
+              to: 1500,
+              onUpdate: (value) => {
+                character.container.position.x = value;
+              },
+              onTeardown: () => {
+                this._characterLayer.removeChild(character.container);
+                // this._deactivateChildEntity(character.entity);
+              },
+            })
+          );
+        }
+      } else {
+        this._characterLayer.removeChild(character.container);
+      }
+    }
+
+    delete this._graphicsState.lastCharacter;
+    delete this._graphicsState.lastMood;
   }
 
   fadeIn(duration: number = 1000, color: string = "#000000") {
@@ -908,6 +961,135 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         }),
       ])
     );
+  }
+}
+
+const typewriterDefaultCharacterDurations: Record<string, number> = {
+  pause: 1000,
+  ".": 500,
+  ",": 150,
+  "!": 500,
+  "?": 500,
+  ":": 300,
+  "…": 500,
+};
+
+const typewriterSpecialCharacters = Object.keys(
+  typewriterDefaultCharacterDurations
+);
+
+class TypewriterAnimationOptions {
+  baseText: string;
+  textBox: PIXI.Text;
+  defaultLetterDuration: number;
+  isNarration: boolean;
+}
+
+class TypewriterAnimation extends entity.EntityBase {
+  private _options: TypewriterAnimationOptions;
+  private _elapsedTime: number;
+  private _lastLetterTime: number;
+  private _lettersShown: number;
+  private _letters: string;
+  private _durationPerLetter: number[];
+
+  private _fxName: string;
+  private _lastFxTime: number;
+
+  constructor(options: Partial<TypewriterAnimationOptions>) {
+    super();
+
+    this._options = util.fillInOptions(
+      options,
+      new TypewriterAnimationOptions()
+    );
+  }
+
+  _setup() {
+    this._elapsedTime = 0;
+    this._lastLetterTime = 0;
+    this._lettersShown = 0;
+
+    this._fxName = `${
+      this._options.isNarration ? "Narration" : "Dialog"
+    }_TypeWriter_LOOP`;
+    this._lastFxTime = 0;
+
+    // Regexp to match pause command. The `y` flag allows us to use the lastIndex attribute correctly
+    const pauseRegExp = /<(\s*)pause(\s*)(\d*)(\s*)>/y;
+
+    // Create a table of duration per letter
+    this._letters = "";
+    this._durationPerLetter = [];
+    let nextLetterDuration = this._options.defaultLetterDuration;
+    for (let i = 0; i < this._options.baseText.length; i++) {
+      let foundCommand = false;
+      if (this._options.baseText[i] === "<") {
+        pauseRegExp.lastIndex = i;
+        const result = pauseRegExp.exec(this._options.baseText);
+        if (result) {
+          // Matched pause command.
+          foundCommand = true;
+
+          // Find the time (optional)
+          const pauseDuration =
+            (result[3] && parseInt(result[3])) ||
+            typewriterDefaultCharacterDurations["pause"];
+
+          nextLetterDuration = pauseDuration;
+          i += result[0].length - 1; // `i` will be incremented in the loop
+        }
+      }
+
+      if (!foundCommand) {
+        this._durationPerLetter.push(nextLetterDuration);
+        this._letters += this._options.baseText[i];
+
+        // After ponctuation, insert a pause
+        if (typewriterSpecialCharacters.includes(this._options.baseText[i])) {
+          nextLetterDuration =
+            typewriterDefaultCharacterDurations[this._options.baseText[i]];
+        } else {
+          nextLetterDuration = this._options.defaultLetterDuration;
+        }
+      }
+    }
+
+    this._playFx();
+  }
+
+  _update() {
+    // TODO: Commands mess up word spacing
+    // TODO: Remove commands from text when not using typewriter
+
+    const fxDuration = 250;
+
+    this._elapsedTime += this._lastFrameInfo.timeSinceLastFrame;
+
+    const nextLetterDuration = this._durationPerLetter[this._lettersShown];
+    if (this._elapsedTime > this._lastLetterTime + nextLetterDuration) {
+      this._lettersShown++;
+      this._options.textBox.text = this._letters.slice(0, this._lettersShown);
+      this._lastLetterTime = this._elapsedTime;
+
+      if (this._elapsedTime > this._lastFxTime + fxDuration) {
+        this._playFx();
+      }
+
+      if (this._lettersShown === this._letters.length - 1) {
+        this._transition = entity.makeTransition();
+      }
+    }
+  }
+
+  protected _teardown(frameInfo: entity.FrameInfo): void {
+    // Show entire text
+    this._options.textBox.text = this._letters;
+  }
+
+  private _playFx() {
+    this._entityConfig.fxMachine.play(this._fxName);
+    this._lastFxTime = this._elapsedTime;
   }
 }
 
