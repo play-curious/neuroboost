@@ -640,8 +640,8 @@ position: -366.2418212890625,1422.0413818359375
 ---
 Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'apprend pas en une seule nuit. #line:0ea6147 
 Temde_thinking: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }. #line:0d49277 
-Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de m'interrompre sans arrêt… #line:0a57318 
-Azul_cheerful: Vous savez quoi ? On va demander à { $name } ce qui l'intéresse, au lieu de se chamailler sans arrêt !
+Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de nous interrompre sans arrêt… #line:0a57318 
+Azul_cheerful: Vous savez quoi ? On va demander à { $name } ce qui l'intéresse, au lieu de se chamailler !
 Sapiens_thinking: Mmh… Bien. Pour commencer, nous pouvons te parler des types de mémoires : la mémoire courte et la mémoire longue… #line:085e256 
 Ledai_happy: Nous pouvons aussi t'expliquer comment passer de l'une à l'autre pour consolider tes connaissances !
 <<jump Sages_FreeChoice>>

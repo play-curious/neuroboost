@@ -24,7 +24,7 @@ Fred_smiling: Tranquille, le mien fonctionne du tonnerre, je te passerai mes pla
     You: Même si j'ai tes plans, il me faudra au moins deux heures pour faire les changements et les tester…
 -> D'accord, mais tu m'aides à l'assembler !
 
-Fred_happy: Ok, je vois que t'es difficile en affaires… Si les docteurs m'ont donné ce défi, c'est pas pour rien, mais j'aurai besoin de toi si je veux être sûr de gagner.
+Fred_happy: Ok, je vois que t'es difficile en affaires… En même temps, j'aurai besoin de toi si je veux être sûr de gagner le défi des docteurs.
 Fred_excited: Si on gagne le défi des docteurs, tu peux être sûr que je prendrai du temps pour t'aider avec ton drone demain matin. T'en dis quoi ?
 Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir ce défi ?! Il tient vraiment à sa réputation, celui-là… En tout cas, vous savez qu'avec ses talents d'ingénierie, vous pourriez rattraper le retard de votre drone !
 
@@ -259,7 +259,7 @@ BarBot: Ben quoi, loser, y a quelque chose qui va pas dans ton programme de déc
 
 -> Je crois que ce BarBot a un problème…
     You: Euh… Ils sont censés être aussi violents ?
-    Barbot: Non, seulement moi. C'est moi qui écrit les règles ici, amigo.
+    Barbot: Non, seulement moi. C'est moi qui écris les règles ici, amigo.
 -> Hé ! Loser toi-même !
     You: Euh… Comment tu nous parles, sale robot ? Loser toi-même !
     Tous les regards se tournent soudain vers vous.
@@ -483,7 +483,7 @@ position: -54,166
 Barbot: …Et de plus ramener vos faces de losers !
 Tous les étudiants vous regardent d'un air déçu, puis reviennent à leurs occupations.
 Fred_sad: Mince… On a pas réussi… Mais au moins on s'est bien amusés. Merci d'être resté jusqu'au bout, { $name }.
-You: Je suis un peu fatigué, là
+You: Je suis un peu fatigué, là...
 Fred_happy: Tu as raison, on ferait mieux de rentrer. Demain, je dois t'aider avec ton drone ! A plus, tout le monde !
 << music Neutral >>
 <<jump TransitionMatin>>
@@ -763,6 +763,7 @@ Barbot: C'est ce qe je veux entendre. Allez, bois-moi ça comme un vrai homme.
 BB-Rex vous sert un grand verre contenant un liquide semi-translucide. A l'intérieur, les couleurs virevoltent et se croisent pour former des mélanges.
 Vous avalez le cocktail d'un coup. Vous sentez votre gorge frémir et vous manquez de tout rejetez, tant le mélange est corsé.
 Barbot: Haha ! C'est ce que j'aime !! Allez, pour la bravoure, voilà 1 Party Point !
+<< set $partyPoints to $partyPoints+1 >>
 << removeFromGauge sleep 20 >>
 << removeFromGauge food 20 >>
 Désinhibé mais nauséeux, vous ne savez pas si vous avez eu une bonne idée de boire ce cocktail. Ce qui est sûr, c'est qu'il vous a donné un coup au système. Vous prenez un peu plus de temps pour reprendre vos esprits.
@@ -1009,6 +1010,7 @@ colorID: 1
 << fadeIn 1500 12ea12 >>
 << hide ! >>
 << setBackground circle >>
+<< music Mysterious >>
 << fadeOut >>
 
 Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre. #line:005f939 
@@ -1039,7 +1041,7 @@ tags:  noUi
 position: 2242.7559814453125,395.5284118652344
 ---
 Sapiens_thinking: Comme l'a dit Ledai, ton matériel biologique a besoin d'énergie pour marcher. Imagine que ton corps ait une prise de courant, si tu ne la branches pas, il ne peut rien faire ! #line:02771ae 
-Ledai_explaining: Tout à fait, ton engin biologique, a besoin de calories… et de vitamines. #line:067cf10 
+Ledai_explaining: Tout à fait, ton engin biologique a besoin de calories… et de vitamines. #line:067cf10 
 Sapiens_thinking: Mais pas n'importe lesquelles. Celles qui nourrissent et facilitent la conduction neurobiologique. #line:02287a2 
 You: En gros, il faut que je mange, quoi… Super utile, le tuyau… #line:00fe57b 
 Azul_happy: Oui, mais pas seulement, il ne faut pas non plus manger n'importe quoi.
