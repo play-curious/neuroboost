@@ -526,28 +526,29 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     const learning = parseInt(vars.get("learning"));
 
-    // If learning in the red, 0 stars
+    // If learning is red, 0 stars
     if (learning < gauge.gaugeLevels["learning"].minMedium) return 0;
-    // If learning in yellow 1 star
+    // If learning is yellow 1 star
     if (learning < gauge.gaugeLevels["learning"].minHigh) return 1;
 
-    // If any other (shown) gauges are not green, 2 stars
+    // If any other (shown) gauges are red, 2 stars
     for (const gaugeName of this.graphics.currentGauges) {
       if (variable.InvertedGauges.includes(gaugeName)) {
         if (
           // @ts-ignore
-          parseInt(vars.get(gaugeName)) >= gauge.gaugeLevels[gaugeName].minLow
+          parseInt(vars.get(gaugeName)) >= gauge.gaugeLevels[gaugeName].minHigh
         )
           return 2;
       } else {
         if (
           // @ts-ignore
-          parseInt(vars.get(gaugeName)) < gauge.gaugeLevels[gaugeName].minHigh
+          parseInt(vars.get(gaugeName)) < gauge.gaugeLevels[gaugeName].minLow
         )
           return 2;
       }
     }
-    // All is green. 3 stars!
+
+    // 3 stars!
     return 3;
   }
 }
