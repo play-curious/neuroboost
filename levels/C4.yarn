@@ -206,6 +206,7 @@ C'est à peu près la même chose que le matériel original, mais sans violence 
 Pas très intéressant, donc. Mais au moins, cela vous vide la tête.
 << removeFromGauge mentalLoad 30 >>
 << stopFX TVStarwars_LOOP >>
+<< hide >>
 <<jump Actions_List>>
 ===
 
@@ -367,6 +368,7 @@ tags:
 colorID: 0
 position: -580,-274
 ---
+<< hide >>
 << music NegativeSad >>
 Pfuuuu… Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps…
 Vous avez le ventre creux, c'en est sûrement la raison. Vous voulez vous faire un en-cas, mais votre corps en a décidé autrement.
@@ -384,6 +386,7 @@ tags:
 colorID: 0
 position: -581,-196
 ---
+<< hide >>
 << music NegativeSad >>
 Pfuuuu… Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps…
 << fadeIn >>
@@ -400,6 +403,7 @@ tags:
 colorID: 0
 position: -390,-150
 ---
+<< hide >>
 << music NegativeSad >>
 Pfuuuu… Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps…
 << fadeIn >>
@@ -440,9 +444,9 @@ tags: subchoice
 position: -934,-147
 colorID: 1
 ---
--> Pause Déjeuner (1h) #once
+-> Pause Casse-croûte (1h)
     <<jump Pause_Lunch>>
--> Pause Café (30 min) #once
+-> Pause Café (30 min)
     <<jump Pause_Coffee>>
 -> back
     <<jump Liste_Taches>>
@@ -477,6 +481,9 @@ Vous riez quand vous observez Fred engloutir son repas en une bouchée et tourne
 <<jump Leave_Pause>>
 <<else>>
 Bon... C'est reparti pour le travail...
+<< fadeIn >>
+<< setBackground library >>
+<< fadeOut >>
 <<jump Liste_Taches>>
 <<endif>>
 ===
@@ -507,6 +514,9 @@ Pas une solution à long terme, certes, mais au moins, ça vous donne de l'avanc
 <<jump Leave_Pause>>
 <<else>>
 Bon... C'est reparti pour le travail...
+<< fadeIn >>
+<< setBackground library >>
+<< fadeOut >>
 <<jump Liste_Taches>>
 <<endif>>
 ===
@@ -525,7 +535,7 @@ Fred_excited: Yes, yes, attends 5 minutes, encore.
     Fred sourit et vous tend ce petit dispositif coloré permettant de contrôler le personnage, que vous accrochez sur votre tempe.
     << removeFromGauge mentalLoad 20 >>
     C'est sympa de jouer les gangsters mais le temps passe ! Vous retournez à la bibliothèque pour travailler.
-    << advanceTimeBy 1:00 >>
+    << advanceTimeBy 1:00 food >>
 -> Insister pour que Fred vienne avec vous  #line:071a93f 
     You: Fred, en tant que chef de projet, j'ai besoin de ton esprit créatif ! Viens !
     Fred_smiling: Bon... Ok... J'imagine que le boss attendra.
@@ -630,9 +640,7 @@ tags:
 colorID: 0
 position: -1192,159
 ---
-You: Je sais que toi aussi, tu as avancé sur le travail de rédaction du mémoire. #line:01b1dcd 
-Fred_smiling: Bien sûr !
-You: Tu as tes notes avec toi ? #line:0bf6862 
+You: Je sais que toi aussi, tu as avancé sur le travail de rédaction du mémoire. Tu as tes notes avec toi ?
 Fred_happy: Tu veux pas plutôt qu'on en parle de vive voix ? #line:0a57c1c 
 
 << if $silence == false >>
@@ -673,9 +681,9 @@ colorID: 2
 ---
 Fred pianote sur son ordinateur, l'instant d'après, vous réceptionnez ses documents… Il n'y a pas grand chose d'exploitable... Que des bouts de phrases, de mots et quelques commentaires en annexe.
 You: Je sais pas trop quoi faire de ça, Fred... Tu peux reprendre ton travail, s'il te plaît ?
-Fred: Bon, d'accord. Puisque tu insistes. C'est bien parce que c'est toi… #line:0b3e63f 
+Fred_sad: Bon, d'accord. Puisque tu insistes. C'est bien parce que c'est toi… #line:0b3e63f 
 Vous voyez à son air pincé que Fred se fait violence pour vous faire plaisir. Après un bon moment, Fred, vous renvoie les fichiers mis à jour. #line:0d827ea 
-Fred: J'ai fait un effort. J'ai écrit des vraies phrases. #line:058646a 
+Fred_sad: J'ai fait un effort. J'ai écrit des vraies phrases. #line:058646a 
 En effet, c'est mieux, mais ça reste laconique. Il reste encore beaucoup à faire mais vous n'obtiendrez pas plus de Fred de cette manière. #line:0057664 
 << advanceTimeBy 3:00>>
 << addToGauge learning 10 >>
@@ -792,7 +800,7 @@ Fred_sad: Ok, ça marche...
 
 << hide >>
 << fadeIn >>
-<< advanceTimeBy 4:00 >>
+<< advanceTimeBy 3:00 >>
 << addToGauge learning 10 >>
 << addToGauge mentalLoad 30 >>
 << fadeOut >>
@@ -825,7 +833,7 @@ You: Non, on est loin d'avoir fini !! #line:0c62d43
 Fred_smiling: Mais, non, t'inquiète, ça va aller ! Je m'occupe de l'intro et de la conclusion, comme on a dit. Je te fais confiance pour le reste.
 You: Bon... On échange nos rendus sur Disboard, on compile et on valide.
 Satisfait de vos résolutions, et confiant dans les capacité de Fred, habitué à livrer ses rendus à la dernière minute, vous retournez dans votre chambre.
-<<hide>>
+<< hide >>
 <<jump Bedroom_Lose>>
 << endif >>
 ===
@@ -840,13 +848,13 @@ position: -1519,-189
 << fadeOut >>
 
 De retour chez vous, vous tentez tant bien que mal de terminer l'édition de votre mémoire.
-<< advanceTimeBy 0:30 >>
+<< advanceTimeBy 0:30 sleep food >>
 Déjà l'heure de compiler votre travail... L'heure de contacter Fred pour mettre en commun vos parties.
-Fred_bored: Quel ennui, ce truc... Bon, j'ai à peu près terminé, si tu veux voir.
+Fred@holo_bored: Quel ennui, ce truc... Bon, j'ai à peu près terminé, si tu veux voir.
 You: A peu près ?
 A votre grand désarroi, c'était un euphémisme de la part de Fred. Son texte n'est pas beau à voir.
 Vous faites de votre mieux pour arranger les deux parties entre elles... C'est un peu mieux, mais vous n'êtes vraiment pas satisfait du résultat.
--> Rendre le mémoire <<if getGauge("learning") >= 50 >>
+-> Rendre le mémoire
 <<if !visited("Assemblee_Sages")>>
 Vous auriez pu faire tellement mieux ! Vous envoyez le fichier sur la base de donnée de l'Académie, quand Fred semble se figer sur place derrière son holo-écran.
 <<jump Transition_Assemblee>>
@@ -872,6 +880,7 @@ position: -1864,35
 << fadeOut >>
 
 Une fois chez vous, vous prenez un peu de temps pour éditer le mémoire, puis le rendez le mémoire sur le serveur de l'Académie, convaincu de la qualité de votre travail.
+<< completeLevel >>
 Fred@holo_smiling: C'est pas mal, ce qu'on a fait, non ? Ca mérite bien un petit GTR...
 You: Carrément !
 <<if !visited("Assemblee_Sages")>>
@@ -922,46 +931,28 @@ Sapiens_angry: Tu ne crois pas exagérer, Azul ? #line:0896e67
 Temde_thinking: À peine. Tiens-toi bien, { $name }, aujourd'hui, on attaque un gros morceau : les styles d'apprentissage !
 Ledai_happy: Une leçon indispensable pour tout chef de projet en herbe !
 -> C'est compliqué, d'être chef de projet...
+    You: Ma journée était plutôt éprouvante...
+    Sapiens_thinking: C'est normal, { $name }.
 -> Les styles d'apprentissage ?
-You: Ma journée était plutôt éprouvante...
-Sapiens_thinking: C'est normal, { $name }. Comme tu l'as constaté, on ne naît pas chef de projet. On le devient.
-Ledai_explaining: On apprend notamment de nos dysfonctionnements. Et de ceux des autres. Ce qu'ils savent bien faire, ce qu'ils ne savent pas faire.
-Sapiens_thinking: Et c'est justement l'objet de cette quatrième session : déterminer le profil cognitif de ton partenaire. #line:0ded121 
+Ledai_explaining: Un bon chef de projet doit connaître ses propres dysfonctionnements ainsi que ceux des autres. Ce qu'ils savent bien faire, ce qu'ils ne savent pas faire.
+Sapiens_thinking: Et c'est justement l'objet de cette session : déterminer le profil cognitif de ton partenaire parmi les nôtres.
 Azul_happy: Ce qui t'aidera à mieux comprendre le tien. #line:0f445b0 
-
-<<jump Learning_styles>>
-===
-title: Learning_styles
-tags: noUi
-colorID: 0
-position: -1519,862
----
-Sapiens_happy: D'abord, regarde-nous. Nous sommes tous des Sages, des experts de la connaissance. Sommes-nous pour autant semblables ? #line:04680bf 
-You: Pas du tout. #line:03a449c 
-Sapiens_happy: Tu le vois bien. La sagesse et la connaissance ont plusieurs visages. Certes, j'estime que certains sages sont plus experts que... #line:02f5fc7 
-Temde_thinking: Tu va trop loin là ! #line:03c8108 
-Sapiens_thinking: Disons que nos cerveaux ne sont pas rigoureusement identiques.  #line:05a5af3 
-Ledai_explaining: Tout à fait, nous n'avons pas tous les mêmes processeurs, les mêmes composants, les mêmes câblages, les mêmes réactions.  #line:0a09090 
-You: Et en quoi ça va m'aider pour mon projet ? #line:011953d 
-Azul_sad: Tu sembles agacé. #line:0dfcb43 
-You: Je suis surtout perdu. #line:06a7939 
-Temde_cheerful: C'est pourtant simple. L'un d'entre nous correspond au profil de ton ami Fred. Il ne te reste plus qu'à trouver qui, et surtout pourquoi. #line:0b2b81f 
-Ledai_happy: Après, tu n'as plus qu'à appuyer sur les boutons que tu as identifiés. #line:052f462 
-Azul_happy: Et Fred sera ravi et très réactif dans la production de votre projet.  #line:02627a7 
-You: Fred n'est pas un robot ! #line:01d4974 
-Ledai_explaining: Nous non plus ! Mais nous avons besoin de recevoir les bons signaux. #line:0e00d5d 
-Temde_smiling: Yep, dans le cas contraire, tu n'aidera pas Fred, et toi non plus. #line:0ccb890 
-You: Sérieux ? #line:0b2cf5e 
-Azul_proud: Sérieux. C'est ça le travail collaboratif : comprendre et valoriser les forces vives de chacun. #line:088cebf 
-You: OK. #line:060068f 
+-> Le profil cognitif ?
+    Sapiens_happy: Regarde-nous. Nous sommes tous des Sages, des experts de la connaissance. Nous ne sommes pas pour autant semblables !
+    Sapiens_happy: La sagesse et la connaissance ont plusieurs visages. Certes, j'estime que certains sages sont plus experts que... #line:02f5fc7 
+    Temde_thinking: Tu vas trop loin là ! #line:03c8108 
+    Sapiens_thinking: Disons que nos cerveaux ne sont pas rigoureusement identiques. En bref, nous avons des profils différents.
+-> Trouver le profil de Fred
+You: D'accord, et comment je trouve le profil de Fred ?
+Temde_cheerful: Bien. L'un d'entre nous correspond au profil de ton ami Fred. Il ne te reste plus qu'à trouver qui, et surtout pourquoi. #line:0b2b81f  
+Azul_proud: C'est ça, le travail collaboratif : comprendre et valoriser les forces vives de chacun.
 
 -> Interroger les Sages  #line:0f7fa48 
-    <<jump Test_Sages>>
--> Déterminer le prof
+    <<jump Questions_Sages>>
 ===
 
 title: Questions_Sages
-tags: noUi, subchoice
+tags: noUi
 colorID: 0
 position: -940,907
 ---
@@ -975,86 +966,100 @@ position: -940,907
     <<jump QuestionsLedai>>
 -> Interroger Azul #line:09f651a 
     <<jump QuestionsAzul>>
+-> Révéler quel Sage ressemble à Fred  #line:0319aa8 
+    <<jump Trouver_Fred>>
 ===
 
 title: QuestionsTemde
-tags: noUi
+tags: noUi, subchoice
 colorID: 0
 position: -1895,1126
 ---
-You: Qu'est-ce que tu aimes faire le plus, Miss Temdé ? #line:0d80347 
-Temde_smiling: Agir dans le feu de l'action, se trouver face à un problème concret et devoir trouver une solution. #line:0a8c4db 
-You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:0815685 
-Temde_thinking: La théorie, la routine, suivre les consignes de quelqu'un d'autre.  #line:07ded1f 
-You: Et comment tu te définirais ? #line:01237bb 
-Temde_cheerful: J'aime prendre des risques, j'avance à tâtons, mes erreurs m'aident à progresser. #line:00fc2ad 
-You: Merci. #line:01ad7d6 
-
--> Interroger un autre sage  #line:01cc9e0 
+You: Miss Temdé...
+-> Demander ce que Temdé aime faire
+    You: Qu'est-ce que tu aimes faire le plus ? #line:0d80347 
+    Temde_smiling: Agir dans le feu de l'action, se trouver face à un problème concret et devoir trouver une solution. #line:0a8c4db 
+    <<jump QuestionsTemde>>
+-> Demander ce que Temdé n'aime pas faire
+    You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd74 
+    Temde_thinking: La théorie, la routine, suivre les consignes de quelqu'un d'autre.  #line:07ded1f 
+    <<jump QuestionsTemde>>
+-> Demander comment Temdé se définirait
+    You: Comment tu te définirais ? #line:09897ab 
+    Temde_cheerful: J'aime prendre des risques, j'avance à tâtons, mes erreurs m'aident à progresser. #line:00fc2ad 
+    <<jump QuestionsTemde>>
+-> back
     <<jump Questions_Sages>>
--> Révéler lequel ressemble à Fred  #line:01ef52d 
-    <<jump Trouver_Fred>>
 ===
 
 title: QuestionsSapiens
-tags: noUi
+tags: noUi, subchoice
 colorID: 0
 position: -1525,1148
 ---
-You: Qu'est-ce que tu aimes faire le plus, Master Sapiens ? #line:06d2f6a 
-Sapiens_happy: Accumuler des données, des théories, des concepts. #line:0897191 
-You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd74 
-Sapiens_concerned: Qu'on ne me laisse pas le temps de raisonner avant de donner ma réponse. Qu'on me harcèle de questions sans préavis. #line:088bf63 
-You: Et comment tu te définirais ? #line:09897ab 
-Sapiens_thinking: J'ai soif de savoir et d'informations. Plus je sais et plus je maîtrise la moindre situation, le moindre imprévu.  #line:0153123 
-You: Merci. #line:0aa54c6 
-
--> Interroger un autre sage  #line:0844236 
+You: Master Sapiens...
+-> Demander ce que Sapiens aime faire
+    You: Qu'est-ce que tu aimes faire le plus ?
+    Sapiens_happy: Accumuler des données, des théories, des concepts. #line:0897191 
+    <<jump QuestionsSapiens>>
+-> Demander ce que Sapiens n'aime pas faire
+    You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd74 
+    Sapiens_concerned: Qu'on ne me laisse pas le temps de raisonner avant de donner ma réponse. Qu'on me harcèle de questions sans préavis. #line:088bf63 
+    <<jump QuestionsSapiens>>
+-> Demander comment Sapiens se définirait
+    You: Comment tu te définirais ? #line:09897ab 
+    Sapiens_thinking: J'ai soif de savoir et d'informations. Plus je sais et plus je maîtrise la moindre situation, le moindre imprévu.  #line:0153123 
+    <<jump QuestionsSapiens>>
+-> back
     <<jump Questions_Sages>>
--> Révéler lequel ressemble à Fred  #line:0319aa8 
-    <<jump Trouver_Fred>>
 ===
 
 title: QuestionsLedai
-tags: noUi
+tags: noUi, subchoice
 colorID: 0
 position: -1201,1184
 ---
-You: C'est ton tour, Ledai. Qu'est-ce que tu aimes faire le plus ? #line:0e6d6d8 
-Ledai_happy: Appliquer un process qu'on m'a confié, étape par étape, avec rigueur et discernement. #line:0e39ad0 
-You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:0fbd481 
-Ledai_doubtful: Ne pas avoir de plan d'action préalable, ou ne pas avoir de priorité claire dans ma liste de tâches.  #line:05c6676 
-You: Et comment tu te définirais ? #line:0cfebd1 
-Ledai_explaining: Je suis une machine de précision. J'aime agir selon un protocole que j'ai eu le temps de valider. #line:0aa9a21 
-You: Merci. #line:0fc5c47 
-
--> Interroger un autre sage  #line:0f3647f 
+You: Ledai...
+-> Demander ce que Ledai aime faire
+    You: Qu'est-ce que tu aimes faire le plus ?
+    Ledai_happy: Appliquer un process qu'on m'a confié, étape par étape, avec rigueur et discernement. #line:0e39ad0
+    <<jump QuestionsLedai>> 
+-> Demander ce que Ledai n'aime pas faire
+    You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd74 
+    Ledai_doubtful: Ne pas avoir de plan d'action préalable, ou ne pas avoir de priorité claire dans ma liste de tâches.  #line:05c6676 
+    <<jump QuestionsLedai>> 
+-> Demander comment Ledai se définirait
+    You: Comment tu te définirais ? #line:09897ab 
+    Ledai_explaining: Je suis une machine de précision. J'aime agir selon un protocole que j'ai eu le temps de valider. #line:0aa9a21 
+    <<jump QuestionsLedai>> 
+-> back
     <<jump Questions_Sages>>
--> Révéler lequel ressemble à Fred  #line:0bb7b25 
-    <<jump Trouver_Fred>>
 ===
 
 title: QuestionsAzul
-tags: noUi
+tags: noUi, subchoice
 colorID: 0
 position: -892,1220
 ---
-You: À ton tour, Azul. Qu'est-ce que tu aimes faire le plus ? #line:0e0c066 
-Azul_happy: J'aime réfléchir, discuter avec les autres, imaginer une solution.  #line:0b109d5 
-You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:0a4fab9 
-Azul_sad: Perdre du temps à rédiger ou à mettre sur papier un plan bien propre sur soi qui découle d'une problématique bien creusée, dérouler un raisonnement sans donner tout de suite mon opinion. #line:0e75db1 
-You: Enfin, comment tu te définirais ? #line:043c930 
-Azul_proud: Je suis un créatif, un inspiré, j'aime déceler une piste que personne n'a encore explorée. #line:0e46387 
-You: Merci. #line:07de45a 
-
--> Interroger un autre sage  #line:0080a15 
+You: Azul...
+-> Demander ce qu'Azul aime faire
+    You: Qu'est-ce que tu aimes faire le plus ?
+    Azul_happy: J'aime réfléchir, discuter avec les autres, imaginer une solution.  #line:0b109d5 
+    <<jump QuestionsAzul>> 
+-> Demander ce qu'Azul n'aime pas faire
+    You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd74 
+    Azul_sad: Perdre du temps à rédiger ou à mettre sur papier un plan bien propre sur soi qui découle d'une problématique bien creusée, dérouler un raisonnement sans donner tout de suite mon opinion. #line:0e75db1
+    <<jump QuestionsAzul>> 
+-> Demander comment Azul se définirait
+    You: Comment tu te définirais ? #line:09897ab 
+    Azul_proud: Je suis un créatif, un inspiré, j'aime déceler une piste que personne n'a encore explorée. #line:0e46387 
+    <<jump QuestionsAzul>> 
+-> back
     <<jump Questions_Sages>>
--> Révéler lequel ressemble à Fred  #line:023f3b4 
-    <<jump Trouver_Fred>>
 ===
 
 title: Trouver_Fred
-tags: noUi
+tags: noUi, subchoice
 colorID: 0
 position: -575,926
 ---
@@ -1070,7 +1075,7 @@ Sapiens_happy: Nous t'écoutons. #line:04dced3
     <<jump AzulYes>>
 -> C'est vous, Ledai  #line:0cb251b 
     <<jump LedaiNo>>
--> Je ne suis plus si sûr... #line:0fd2961 
+-> back
     <<jump Questions_Sages>>
 ===
 
@@ -1081,7 +1086,8 @@ position: -626,1181
 ---
 << fx Failure >>
 
-Sapiens_angry: Sûrement pas ! Contrairement à ton ami et aux apparences, je ne suis pas qu'une boîte à idées. Je suis un grand cerveau, moi ! Je t'aurais transmis une bibliographie étendue, le plan de travail et un premier jet de l'introduction et de la conclusion. Avec moi, tu aurais eu le squelette de ton mémoire dès la première heure...  #line:0fb5414 
+Sapiens_angry: Sûrement pas ! Contrairement à ton ami et aux apparences, je ne suis pas qu'une boîte à idées. 
+Sapiens_angry: Je t'aurais transmis une bibliographie étendue, le plan de travail et un premier jet de l'introduction et de la conclusion. Avec moi, tu aurais eu le squelette de ton mémoire dès la première heure... 
 
 ->  Une autre idée?  #line:0d9274c 
     <<jump Trouver_Fred>>
@@ -1096,7 +1102,21 @@ position: -308,922
 
 Temde_thinking: Pas loin. Mais ton ami et moi, nous ne sommes pas si proches. Moi, j'adore le concret, me servir de mes mains. C'est bien pour cela que j'en ai quatre !... Cherche encore. #line:0de3710 
 
-->  Trouver le profil de Fred  #line:04c7dbe 
+->  Une autre idée ?
+    <<jump Trouver_Fred>>
+===
+
+title: LedaiNo
+tags: noUi
+colorID: 0
+position: -380,1192
+---
+<< fx Failure >>
+
+Ledai_doubtful: Hélas non. Ton ami et moi sommes opposés en presque tout. Ce Fred a l'esprit chaotique, qui ne cesse de bouillir et de se disperser. Il préfère le monde des hypothèses plutôt que la confrontation mécanique ou schématique.
+Ledai_doubtful: Il préfère observer et discuter avec tout le monde que le démontage méthodique d'un problème technique.  #line:0285458 
+
+-> Une autre idée ?
     <<jump Trouver_Fred>>
 ===
 
@@ -1110,60 +1130,33 @@ position: -116,1177
 
 Azul_happy: Bravo ! Tu as trouvé ! Je suis imaginatif et intuitif, comme ton ami Fred. Je suis capable de voir ce que les autres ne peuvent voir. #line:01ba3b3 
 Azul_sad: Cependant, j'ai comme faiblesse de manquer de discipline. Je me disperse, je peine à développer et à figer noir sur blanc mes visions. #line:0846ca7 
-Azul_proud: Maintenant que tu as deviné quel est le profil d'apprentissage de Fred, je vais te donner quelques conseils pour t'aider à le motiver et à l'impliquer dans votre projet. Si ça t'intéresse... #line:0413c49 
-
-->  Oui  #line:099bfc5 
-    <<jump Motiver_Fred>>
+<<jump Azul_FreeQuestions>>
 ===
 
-title: LedaiNo
+title: Azul_FreeQuestions
 tags: noUi
 colorID: 0
-position: -380,1192
+position: -116,1177
 ---
-<< fx Failure >>
-
-Ledai_doubtful: Hélas non. Ton ami et moi sommes opposés en presque tout. Ce Fred a l'esprit chaotique, qui ne cesse de bouillir et de se disperser. Il préfère le monde des hypothèses plutôt que la confrontation mécanique ou schématique. Il préfère observer et discuter avec tout le monde que le démontage méthodique d'un problème technique.  #line:0285458 
-
-->  Qui d'autre alors?  #line:05e2950 
-    <<jump Trouver_Fred>>
-===
-
-title: Motiver_Fred
-tags: noUi
-colorID: 0
-position: -54,1470
----
-Azul_happy: Fred et moi, comme mes Master Sapiens, Miss Temdé, Ledai, nous avons nos faiblesses. #line:0a39098 
-Azul_sad: En ce qui me concerne, je perds facilement mes moyens quand il s'agit de mettre par écrit mes idées et mes arguments. Je peine à respecter un plan rigide et méthodique, c'est fastidieux et démotivant. #line:07b9cd1 
-Azul_happy: Je ne peux pas m'empêcher de donner mon avis plutôt que présenter une idée ou un concept. J'ai besoin d'échanger avec les autres, de confronter mon ressenti avec ceux des autres, ça m'aide à fixer mon jugement. #line:0d8d90a 
-You: Ouais, mais concrètement, je fais quoi ? #line:0d6bc64 
-Azul_proud: Tu ne le laisses pas seul, sans pistes à explorer. #line:08190d7 
-You: C'est-à-dire ? #line:01ed33c 
-Azul_happy: Tu le guides pas-à-pas jusqu'à la finalisation du projet. C'est toi qui pilotes la conception. Lui, il te fournira des idées, des pistes de réflexion en pagaille. Tu n'auras plus qu'à trier.   #line:0544787 
-You: OK. #line:03a1770 
-
-<<jump Guider_Fred>>
-===
-
-title: Guider_Fred
-tags: noUi
-colorID: 0
-position: -459,1605
----
-Azul_happy: N'oublie pas non plus de le solliciter régulièrement. Verbalement !  #line:06bc00a 
-You: Quoi ?! #line:079fa73 
-Azul_happy: Tu lui rapportes tout ce que tu as trouvé. Et tu lui demandes ce qu'il a noté ou retenu. #line:085d1b8 
-You: Sérieusement ? #line:045a860 
-Azul_happy: Sérieux ! Verbalement aussi. C'est comme ça qu'un esprit divergent fonctionne. #line:08299ed 
-You: Un esprit "divergent" ?! #line:00adb08 
-Azul_proud: C'est ce que moi et Fred sommes.  #line:0908d96 
-You: Ah... Et moi ? Je suis quoi ? #line:0f13d6e 
-Azul_cheerful: À toi de trouver. Ah... Une dernière chose. N'oublie pas de noter tout ça dans ton journal mental. #line:078dbed 
-You: J'y penserai. Merci pour le coup de pouce, à bientôt ! #line:0796097 
-<< hide >>
-
-->  Quitter l'Assemblée des Sages  #line:0e3cbd5 
+<< completeSages >>
+-> Alors, comment motiver quelqu'un comme Fred ? #once
+    Azul_happy: Comme tout le monde, Fred et moi, nous avons nos faiblesses. #line:0a39098 
+    Azul_sad: En ce qui me concerne, je perds facilement mes moyens quand il s'agit de mettre par écrit mes idées et mes arguments. Je peine à respecter un plan rigide et méthodique, c'est fastidieux et démotivant. #line:07b9cd1 
+    Azul_happy: J'ai besoin de donner mon avis, d'échanger avec les autres, de confronter mon ressenti avec le leur, ça m'aide à fixer mon jugement.
+    Azul_proud: Pour guider quelqu'un comme nous, il faut nous donner des idées à explorer, de quoi échanger.
+    Ledai_happy: Tu le guides pas-à-pas jusqu'à la fin du projet, en lui demandant son avis verbalement. Il te fournira des idées, des pistes de réflexion, et tu n'auras plus qu'à trier.
+    Temde_happy: Sans oublier de le solliciter et de lui rapporter ce que tu as trouvé, verbalement aussi ! Et de lui demander ce qu'il a noté ou retenu. C'est comme ça qu'un esprit divergent fonctionne.
+    You: Un esprit "divergent" ?! #line:00adb08 
+    Azul_proud: C'est ce que moi et Fred sommes.  #line:0908d96 
+    <<jump Azul_FreeQuestions>>
+-> Et moi, c'est quoi, mon profil ? #once
+    You: Et moi ? Je ressemble à quel sage ?
+    Azul_cheerful: À toi de trouver. N'oublie pas de le noter dans ton Journal Mental quand tu nous quittera !
+    You: J'y penserai !
+    <<jump Azul_FreeQuestions>>
+-> J'ai compris (Quitter les sages)
+    You: Je crois que j'ai compris la leçon d'aujourd'hui. Bonne nuit, les Sages !
+    << hide >>
     <<jump Journal_Mental>>
 ===
 
@@ -1177,6 +1170,6 @@ position: -1002,1672
 << setBackground bedroom night >>
 << fadeOut 200 >>
 
-Vous voilà encore dans cette parenthèse de douce pénombre maternelle... ou astrale... Qui sait... En tout cas, vous êtes au calme, seul avec vous-même. Ou presque. Vous avez un compagnon qui ne vous quitte jamais : votre journal mental. Ce magnifique "carnet d'ingénieur tout-terrain".  #line:0fe9f3c 
-Qu'allez-vous notez dedans cette fois ? #line:0edc7c6 
+Vous voilà encore dans cette parenthèse de douce pénombre maternelle... Vous êtes au calme, seul avec vous-même. Ou presque. Vous avez un compagnon qui ne vous quitte jamais : votre journal mental.
+<< completeJournal >>
 ===
