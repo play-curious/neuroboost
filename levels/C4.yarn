@@ -2,7 +2,7 @@
 
 title: Start
 tags:
-position: -1632,-461
+position: -1656,-460
 colorID: 8
 ---
 << fadeIn 1 >>
@@ -17,6 +17,8 @@ colorID: 8
 << music Neutral >>
 << fadeOut >>
 
+<<if !visited("NoFredCall")>>
+<< visitPermanent NoFredCall >>
 Après vous être réveillé en douceur, vous prenez votre petit déjeuner tranquillement en attendant l'appel de Fred.
 Aujourd'hui, vous devez travailler en binôme pour rédiger un mémoire… Sur quoi, déjà ?
 Ah, oui ! La théorie du chaos dans la macrobiologie post-darwinienne. C'est compliqué, comme sujet, il vaut mieux être à deux pour l'aborder !
@@ -30,11 +32,15 @@ Quelque chose cloche… Fred ne vous a toujours pas appelé ! Ça ne lui ressemb
     Fred@holo_smiling: Je suis pas dispo pour le moment, mais si vous voulez, laissez-moi un message…
     Fred@holo_happy: …Je le lirai sûrement pas, mais rien ne vous empêche d'essayer !
     You: Super… Ça m'avance bien, tout ça !
+    << advanceTimeBy 0:15 >>
 -> Faire autre chose
 
 Vous vous étiez mis d'accord pour aller travailler sur le mémoire à la bibliothèque de l'Académie… Tout seul, qu'est-ce que vous allez faire ?
+<<else>>
+
+Vous vous levez une nouvelle fois. Pas besoin d'appeler Fred, vous savez qu'il est occupé à poncer le dernier GTR...
+<<endif>>
 << hide >>
-<< fadeIn >>
 <<jump Actions_List>>
 ===
 
@@ -45,9 +51,6 @@ position: -1210,-459
 << setBackground bedroom >>
 << fadeOut >>
 
-<<if isTimeOver("10:30")>>
-<<jump Fred_Call>>
-<<else>>
 -> Cuisine@cuisine #line:0717775 
     <<jump cuisine_subchoice>>
 -> Porte@porte #line:0d21566 
@@ -58,12 +61,11 @@ position: -1210,-459
     <<jump lit_subchoice>>
 -> Salon@salon #line:0645318 
     <<jump salon_subchoice>>
-<<endif>>
 ===
 
 title: lit_subchoice
 tags: subchoice
-position: -1229,-636
+position: -1220,-672
 ---
 << fadeIn >>
 << setBackground bedroom bed >>
@@ -76,7 +78,7 @@ position: -1229,-636
 
 title: porte_subchoice
 tags: subchoice
-position: -701,-342
+position: -829,-353
 ---
 -> Aller chez Fred
     <<jump ChezFred>>
@@ -96,12 +98,12 @@ position: -1358,-576
 -> Casser la croûte (30 min) #once
     <<jump Lunch>>
 -> back #line:0fad580 
-    <<jump Action_List>>
+    <<jump Actions_List>>
 ===
 
 title: bureau_subchoice
 tags: subchoice
-position: -971,-604
+position: -972,-619
 ---
 << fadeIn >>
 << setBackground bedroom desk >>
@@ -158,6 +160,7 @@ Fred@holo_happy: C'est bon, viens ! On a le temps !
 -> Non, on se retrouve à la bibliothèque !
     You: Non, je vais à la bibliothèque pour bosser, on se rejoint là-bas directement !
     Fred@holo_bored: Pfff… Comme tu veux… Mais je finis le chapitre d'abord…
+<< advanceTimeBy 0:15 >>
 << hide >>
 <<jump Actions_List>>
 ===
@@ -223,11 +226,13 @@ Peu satisfait, vous pliez bagage et vous posez à nouveau votre regard sur votre
 title: ChezFred
 tags: 
 colorID: 0
-position: -605,-425
+position: -603,-422
 ---
 << fadeIn >>
 << setBackground bedroom_fred >>
 << fadeOut >>
+
+<< advanceTimeBy 0:15 >>
 
 Fred vous fait entrer à la première sonnerie. #line:024dd08 
 
@@ -275,10 +280,6 @@ Que faire en attendant ?
     Le sujet est incroyablement complexe et vous avez du mal à structurer votre pensée sans l'aide des notes de Fred.
     << addToGauge learning 10 >>
     << addToGauge mentalLoad 20 >>
--> Etoffer ses recherches sur la macrobiologie
-    << advanceTimeBy 2:00 >>
-    Vous décidez de ne pas entamer la rédaction avant que Fred ne soit là, et préférez étoffer vos recherches en attendant.
-    << visit MoreResearch >>
 -> Attendre Fred en écoutant de la musique
     Vous décidez d'attendre Fred pour commencer, et de vous détendre en écoutant un peu de musique.
     You: Hey, BibliMate ! Crée une bulle sonore autour du bureau.
@@ -336,11 +337,15 @@ position: -870,-52
 colorID: 1
 ---
 << if getGauge("food") <= 0>>
-<<jump LoseFood>>
+<<jump TooHungry>>
 <<endif>>
 
 <<if getGauge("sleep") <= 0>>
-<<jump LoseFood>>
+<<jump TooTired>>
+<<endif>>
+
+<<if getGauge("mentalLoad") >= 100>>
+<<jump Surcharge_Cognitive>>
 <<endif>>
 
 << if !isTimeOver("20:00") >>
@@ -357,6 +362,57 @@ colorID: 1
 << endif>>
 ===
 
+title: TooHungry
+tags:
+colorID: 0
+position: -580,-274
+---
+<< music NegativeSad >>
+Pfuuuu… Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps…
+Vous avez le ventre creux, c'en est sûrement la raison. Vous voulez vous faire un en-cas, mais votre corps en a décidé autrement.
+<< fadeIn >>
+Vous êtes affamé !
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+===
+
+title: TooTired
+tags:
+colorID: 0
+position: -581,-196
+---
+<< music NegativeSad >>
+Pfuuuu… Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps…
+<< fadeIn >>
+Vous êtes épuisé !
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+===
+
+title: Surcharge_Cognitive
+tags:
+colorID: 0
+position: -390,-150
+---
+<< music NegativeSad >>
+Pfuuuu… Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps…
+<< fadeIn >>
+Vous êtes à bout !
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+<<jump Failed>>
+===
+
+
 title: Travail_Memoire_subchoice
 tags: subchoice
 position: -914,77
@@ -370,15 +426,17 @@ colorID: 1
     <<jump Redaction>>
 -> Valider le plan du mémoire <<if visited("Notes_You") && visited("Notes_Fred")>> #once
     <<jump Plan>>
--> Relire et conclure le mémoire <<if visited("Redaction")>> #once
-    <<jump Conclu_Bibli>>
+-> Relire le mémoire <<if visited("Redaction")>> #once
+    Vous relisez le mémoire, tentant de corriger les erreurs de logique et de grammaire, jusqu'à ce que votre temps s'écoule.
+    << advanceTimeUntil 20:00 >>
+    <<jump Exit_Bibli>>
 -> back
     <<jump Liste_Taches>>
 ===
 
 title: Pause_subchoice
 tags: subchoice
-position: -497,-21
+position: -934,-147
 colorID: 1
 ---
 -> Pause Déjeuner (1h) #once
@@ -392,7 +450,7 @@ colorID: 1
 title: Pause_Lunch
 tags: 
 colorID: 0
-position: -968,-254
+position: -958,-283
 ---
 You: T'as pas le ventre creux, par hasard ?
 Fred_excited: Ah, enfin ! Tu peux pas savoir à quel point j'attendais que tu dises ça.
@@ -425,7 +483,7 @@ Bon... C'est reparti pour le travail...
 title: Pause_Coffee
 tags: 
 colorID: 0
-position: -968,-254
+position: -1021,-218
 ---
 You: Un petit café pour se remonter ?
 Fred_surprised: Je savais pas que tu buvais du café...
@@ -455,7 +513,7 @@ Bon... C'est reparti pour le travail...
 title: Leave_Pause
 tags: 
 colorID: 0
-position: -968,-254
+position: -1131,-310
 ---
 << visit Leave_Pause >>
 You: Fred, on y retourne, j'ai besoin de toi.
@@ -480,7 +538,7 @@ Fred_excited: Yes, yes, attends 5 minutes, encore.
 title: Zero_Distraction
 tags: 
 colorID: 0
-position: -516,177
+position: -413,49
 ---
 You: Hey, BibliMate, active le mode Immersion Studieuse !
 RoomMate: C'est parti ! Une sphère de travail immersive, une !
@@ -500,7 +558,7 @@ You: Fred, on reste concentré sur le sujet du mémoire. De toute manière, ça 
 title: Desactiver_Zero_Distraction
 tags: 
 colorID: 0
-position: -516,177
+position: -413,-37
 ---
 You: Hey, BibliMate, désactive le mode immersif, s'il te plaît !
 RoomMate: Pas de souci ! 
@@ -511,7 +569,7 @@ RoomMate: Pas de souci !
 title: Notes_You
 tags: 
 colorID: 0
-position: -611,270
+position: -634,250
 ---
 << advanceTimeBy 1:00 >>
 
@@ -532,7 +590,7 @@ You: Non, mais je ne peux pas te lire à haute voix, on est à la bibliothèque 
 
 title: Notes_You_Good
 tags: 
-position: -341,404
+position: -383,341
 colorID: 2
 ---
 You: Grace à la bulle immersive, on va pouvoir faire ça à l'oral ! Cool, non ?
@@ -542,6 +600,7 @@ Fred est un auditeur très bienveillant, il rebondit sur certaines de vos idées
 
 << advanceTimeBy 1:00 >> 
 << addToGauge learning 20 >>
+<< addToGauge mentalLoad 10 >>
 
 RoomMate: Voulez-vous que je conserve le fichier audio de la conversation pour en garder la trace ?
 Fred_happy: Vas-y, BibliMate !
@@ -551,7 +610,7 @@ Fred_happy: Vas-y, BibliMate !
 
 title: Notes_You_Bad
 tags: 
-position: -545,441
+position: -541,384
 colorID: 2
 ---
 You: On va faire ça par écrit, ok ?
@@ -563,13 +622,14 @@ Vous envoyez vos documents de travail à Fred. Vous voyez votre ami grincer des 
 Il peine à lire et relire vos docs, et n'arrête pas de faire des pauses, de vous interpeller, mais vous limitez les discussions pour vous concentrer sur le travail.
 << advanceTimeBy 1:00 >>
 << addToGauge learning 10 >>
+<< addToGauge mentalLoad 20 >>
 <<jump Liste_Taches>>
 ===
 
 title: Notes_Fred
 tags: 
 colorID: 0
-position: -1211,149
+position: -1192,159
 ---
 << advanceTimeBy 1:00 >>
 
@@ -592,13 +652,14 @@ You: Heu… C'est plus facile pour moi de les lire. Surtout qu'on est à la bibl
 
 title: Notes_Fred_Good
 tags: 
-position: -1456,140
+position: -1300,62
 colorID: 2
 ---
 Fred_happy: Tout est dans ma tête. Tu veux que je commence par quoi ? #line:0ca8f0f 
 
 << advanceTimeBy 1:00 >>
 << addToGauge learning 20 >>
+<< addToGauge mentalLoad 10 >>
 
 Vous comprenez que c'est à vous de questionner Fred et, en quelque sorte, de lui tirer les vers du nez. Vous passez les deux heures suivantes à lui poser des questions, à écouter ses réponses, à rebondir sur ses idées, ses commentaires. 
 Fred a beau ne pas répondre aux standards académiques, il a un don, c'est certain, il a remarqué plein de choses que vous n'auriez pas vues.
@@ -621,6 +682,7 @@ Fred: J'ai fait un effort. J'ai écrit des vraies phrases. #line:058646a
 En effet, c'est mieux, mais ça reste laconique. Il reste encore beaucoup à faire mais vous n'obtiendrez pas plus de Fred de cette manière. #line:0057664 
 << advanceTimeBy 1:00>>
 << addToGauge learning 10 >>
+<< addToGauge mentalLoad 20 >>
 
 <<jump Liste_Taches>>
 ===
@@ -657,6 +719,7 @@ Vous commencez ensuite à lui présentez vos trois grandes parties, vos sections
 Il réussit à étoffer votre argumentaire et ajoute plein de nouvelles idées.
 << advanceTimeBy 2:00 >>
 << addToGauge learning 20 >>
+<< addToGauge mentalLoad 10 >>
 
 << jump Liste_Taches >>
 ===
@@ -674,6 +737,7 @@ Pourvu qu'il se trompe...
 
 << advanceTimeBy 2:00 >>
 << addToGauge learning 10 >>
+<< addToGauge mentalLoad 20 >>
 
 <<jump Liste_Taches>>
 ===
@@ -681,7 +745,7 @@ Pourvu qu'il se trompe...
 title: Redaction
 tags: 
 colorID: 0
-position: -893,282
+position: -893,277
 ---
 You: On se met à la rédaction du mémoire ?
 Fred_happy: Yes. On se répartit la tâche comment ? #line:005280e 
@@ -706,6 +770,7 @@ Fred_happy: T'inquiète, { $name }... Je ferai la conclu et l'intro !
 Vous travaillez d'arrache-pied pour fournir un mémoire dont vous serez tous deux satisfaits. Fred vous donne ses idées, et vous les mettez au propre, formant une chaîne de production efficace.
 Le gros du travail est terminé ! Il ne vous manque plus que la conclusion et la relecture.
 << addToGauge learning 30 >>
+<< addToGauge mentalLoad 20 >>
 << advanceTimeBy 3:00 >>
 <<jump Liste_Taches>>
 ===
@@ -733,6 +798,7 @@ Fred_sad: Ok, ça marche...
 << fadeIn >>
 << advanceTimeBy 3:00 >>
 << addToGauge learning 10 >>
+<< addToGauge mentalLoad 30 >>
 << fadeOut >>
 
 Au final, vous n'avez pas avancé si vite que cela... Vos parties ressemblent à un simple brouillon, surtout celles de Fred. Vous allez devoir travailler un peu plus pour la conclusion...
@@ -742,7 +808,7 @@ Au final, vous n'avez pas avancé si vite que cela... Vos parties ressemblent à
 
 title: Exit_Bibli
 tags: 
-position: -1498,-97
+position: -1294,-46
 colorID: 1
 ---
 << fx Notification >>
@@ -750,97 +816,84 @@ RoomMate: Ding-dong ! Allez, on remballe ses affaires ! La bibliothèque va ferm
 
 << if getGauge("learning") >= 50 >>
 You: Bon, c'est cool, ça ! On a presque fini !
-Fred_happy: Oui, tu as tout dans les mains : le plan, les idées fortes. Tu n'as plus qu'à développer tout ce qu'on a dit. T'inquiète, ça va le faire, je te fais confiance. #line:06a417f 
-You: Et toi ? #line:0c6c678 
-Fred_happy: Je m'occupe de la conclusion et de l'intro. #line:0e56f3e 
-You: Ok. #line:02bda36 
-Fred_smiling: Allez, courage !
+Fred_happy: Oui, on n'a qu'à relire et paufiner un peu la conclusion et on est bons !
+You: On se voit sur Disboard plus tard ?
+Fred_smiling: Ouaip. Allez, courage !
 << hide >>
 
-<<jump Bedroom>>
+<<jump Win>>
 
 << else >>
 
 You: Non, on est loin d'avoir fini !! #line:0c62d43 
 Fred_smiling: Mais, non, t'inquiète, ça va aller ! Je m'occupe de l'intro et de la conclusion, comme on a dit. Je te fais confiance pour le reste.
-You: Bon... On échange nos rendus à 21h, on compile et on valide.
+You: Bon... On échange nos rendus sur Disboard, on compile et on valide.
 Satisfait de vos résolutions, et confiant dans les capacité de Fred, habitué à livrer ses rendus à la dernière minute, vous retournez dans votre chambre.
 <<hide>>
-<<jump Bedroom_Unfinished>>
+<<jump Bedroom_Lose>>
 << endif >>
 ===
 
-title: Bedroom_Unfinished
+title: Bedroom_Lose
 tags: 
 colorID: 0
-position: -1332,-226
+position: -1519,-189
 ---
 << fadeIn >>
 << setBackground bedroom night >>
 << fadeOut >>
 
-<<if isTimeOver("21:00")>>
-<<jump Lose>>
-<<endif>>
-
--> Terminer de rédiger le mémoire 
-    <<jump Finish_Memoire>>
+De retour chez vous, vous tentez tant bien que mal de terminer l'édition de votre mémoire.
+<< advanceTimeBy 0:30 >>
+Déjà l'heure de compiler votre travail... L'heure de contacter Fred pour mettre en commun vos parties.
+Fred_bored: Quel ennui, ce truc... Bon, j'ai à peu près terminé, si tu veux voir.
+You: A peu près ?
+A votre grand désarroi, c'était un euphémisme de la part de Fred. Son texte n'est pas beau à voir.
+Vous faites de votre mieux pour arranger les deux parties entre elles... C'est un peu mieux, mais vous n'êtes vraiment pas satisfait du résultat.
 -> Rendre le mémoire <<if getGauge("learning") >= 50 >>
-    <<jump Win>>
-===
-
-title: Finish_Memoire
-tags: 
-colorID: 0
-position: -1332,-226
----
-You: RoomMate ! Mode Zéro Distraction !
-RoomMate: Bien reçu !
-Vous ne vous accordez qu'une pause dîner, puis vous vous attaquez ensuite à la rédaction finale de votre mémoire. Les échanges avec Fred sont encore frais dans votre tête.
-
+<<if !visited("Assemblee_Sages")>>
+Vous auriez pu faire tellement mieux ! Vous envoyez le fichier sur la base de donnée de l'Académie, quand Fred semble se figer sur place derrière son holo-écran.
+<<jump Transition_Assemblee>>
+<<else>>
+Sapiens_thinking: Fichtre ! Tu n'as pas dû écouter nos conseils pour te planter autant... Désire-tu les réécouter ?
+-> Réécouter les conseils des Sages
+    <<jump Assemblee_Sages>>
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+<<endif>>
 ===
 
 title: Win
 tags: 
 colorID: 0
-position: -1332,-226
+position: -1864,35
 ---
-Déjà 21h... L'heure de 
-You: RoomMate ! Mode Zéro Distraction !
-RoomMate: Bien reçu !
-Vous ne vous accordez qu'une pause dîner, puis vous vous attaquez ensuite à la rédaction finale de votre mémoire. Les échanges avec Fred sont encore frais dans votre tête.
-Vous n'hésitez pas à convertir ses paroles en texte pour enrichir vos propres paragraphes.
-Heureusement que l'IA de la bibliothèque a enregistré tous les échanges que vous avez eu avec lui aujourd'hui : ça vous fait gagner un temps fou. #line:064a2e4 
-<< addToGauge learning 20 >>
-Une fois que vous estimez avoir fini, vous annulez le mode "Immersion Studieuse" et vous contactez Fred. #line:0f9806b 
-Fred@holo_excited: T'as fini ? #line:0eb7fce 
-You: Oui. Et toi ? #line:05c5e53 
-Fred@holo_happy: Je t'envoie ma participation à mon tour. Désolé, c'est modeste. #line:01d28a8 
-You: Je sais, l'écrit, c'est pas ton truc. Mais tu m'as énormément aidé sur ma partie. Avec tes idées et tes remarques. #line:0e6d6c9 
-Fred@holo_smiling: Merci. On fait la paire. #line:03fb032 
-Fred raccroche. Vous recevez dans votre boîte mail sa contribution. Vous l'intégrez dans le texte final et vous déposez le tout dans le FTP de l'Académie.
-<< completeLevel >>
-Bravo ! Mission accomplie… #line:0076812 
-===
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
 
-title: Lose
-tags: 
-colorID: 0
-position: -1332,-226
----
-Déjà 21h... L'heure de contacter Fred pour mettre en commun vos parties.
-Fred_bored: Quel ennui, ce truc... Bon, j'ai à peu près terminé, si tu veux voir.
-You: A peu près ?
-A votre grand désarroi, c'était un euphémisme de la part de Fred. Son texte n'est pas beau à voir.
-Vous faites de votre mieux pour arranger les deux parties entre elles... C'est un peu mieux, mais vous n'êtes vraiment pas satisfait du résultat.
-Vous auriez pu faire tellement mieux ! Vous envoyez le fichier sur la base de donnée de l'Académie, quand Fred s'étonne.
+Une fois chez vous, vous prenez un peu de temps pour éditer le mémoire, puis le rendez le mémoire sur le serveur de l'Académie, convaincu de la qualité de votre travail.
+Fred@holo_smiling: C'est pas mal, ce qu'on a fait, non ? Ca mérite bien un petit GTR...
+You: Carrément !
+<<if !visited("Assemblee_Sages")>>
+Tout d'un coup, Fred semble se figer sur place derrière son holo-écran.
+<<jump Transition_Assemblee>>
+<<else>>
+-> Passer au chapitre suivant
+-> Réécrire dans le journal
+    << showJournal profiles >>
+<<endif>>
 ===
 
 title: Transition_Assemblee
 tags: 
 colorID: 0
-position: -1332,-226
+position: -1704,-114
 ---
+<< visit Chapitre4 >>
 Fred_surprised: Euh... QU'EST CE QUE ??! { $name }, Y A UN VIEUX PERVERS AVEC UN CHAPEAU BIZARRE DANS TA CHAMBRE !!
 Vous tournez la tête, terrifié, et constatez avec soulagement que derrière vous se tient...
 Sapiens_angry: Il m'a traité de vieux quoi, l'autre morveux ??
@@ -854,50 +907,9 @@ Sapiens_concerned: Mmoui, j'ai su faire plus discret dans mon temps. Suis-moi, n
 -> Suivre Sapiens
     <<jump Assemblee_Sages>>
 -> (Passer la séquence des Sages)
-
 ===
 
-title: Bedroom_Fail
-tags:
-colorID: 0
-position: -81,758
----
-<< fadeIn >>
-<< setBackground bedroom night >>
-<< fadeOut >>
-
-Vous demandez à l'IA de votre studio de passer en mode "Immersion Studieuse" puis vous mettez au travail.  
-<<setTime 21:30>>
-Vous ne vous accordez qu'une pause dîner. Vous mettez un point final à votre version. Après 21h passées, vous envoyez votre texte quasi définitif à Fred. Et vous attendez le sien. Rien...
-
-<< loopFX PhoneRing_LOOP 5000 >>
-Si Si ! Votre palmphone vibre: #line:0da53c2 
-<< stopFX PhoneRing_LOOP >>
-
-Fred@holo_excited: Bien reçu ton texte.  #line:08c6d43 
-You: Et toi? #line:04b1aaa 
-Fred@holo_excited: Je suis en train de finir. #line:05abc74 
-You: Et on fait comment pour réassembler notre travail ? #line:08950c8 
-Fred@holo_happy: No Worry. C'est moi qui suis en retard, je m'en occupe. #line:02efb97 
-You: Promis ? #line:093f014 
-Fred@holo_happy: Promis. #line:0bbbb99 
-<< hide >>
-Espérons que vous pourrez lui faire confiance. De toute manière, il est trop tard pour changer le cours des choses... À moins que... #line:05990d5 
-
-<< fadeIn >>
-<< fadeOut >>
-
-<< music Mysterious>>
-
-Sapiens_happy: Tu nous as appelé? #line:0512aa7 
-You: Heu... Oui... J'ai pensé à vous... Enfin... #line:07757a8 
-Sapiens_happy: Je sais, c'est moi qui t'ai entendu le premier. Allez, suis-moi. #line:0b5abb4 
-
--> Suivre Master Sapiens  #line:0568d5f 
-    <<jump Assemblee>>
-===
-
-title: Assemblee
+title: Assemblee_Sages
 tags: noUi
 colorID: 1
 position: -1913,850
@@ -906,6 +918,7 @@ position: -1913,850
 << fadeIn 1500 12ea12 >>
 << setBackground circle >>
 << fadeOut >>
+<< visit Assemblee_Sages>>
 
 Sapiens_happy: Tu vois, nous étions impatients de te revoir. #line:02c6d14 
 Azul_proud: C'est que derrière ses airs de maître inflexible, se cache un coeur tendre. N'est-ce pas, Master Sapiens ? #line:0fc9524 
