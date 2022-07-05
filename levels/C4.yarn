@@ -188,7 +188,7 @@ Un peu de gelée vitaminée en complément du petit-déjeuner de ce matin ne vou
 << addToGauge food 40 >>
 …Cet en-cas supplémentaire a ravi votre estomac.
 << stopFX EatCook >>
-<< advanceTimeBy 0:30 food >>
+<< advanceTimeBy 0:30 food sleep >>
 <<jump Actions_List>>
 ===
 
@@ -428,6 +428,7 @@ colorID: 1
     <<jump Plan>>
 -> Relire le mémoire <<if visited("Redaction")>> #once
     Vous relisez le mémoire, tentant de corriger les erreurs de logique et de grammaire, jusqu'à ce que votre temps s'écoule.
+    << addToGauge learning 10 >>
     << advanceTimeUntil 20:00 >>
     <<jump Exit_Bibli>>
 -> back
@@ -470,7 +471,7 @@ Vous commandez un déjeuner à la cafétéria. Autour de vous, les discussions d
 Fred_angry: Hé ! NO SPOIL !! On a pas fini le jeu, nous autres !
 Vous riez quand vous observez Fred engloutir son repas en une bouchée et tourner le dos furieusement au groupe d'étudiants qui parlaient du jeu pour allumer sa console portable.
 << removeFromGauge mentalLoad 20 >>
-<< advanceTimeBy 1:00 food >>
+<< advanceTimeBy 1:00 food sleep >>
 
 <<if !visited("Leave_Pause")>>
 <<jump Leave_Pause>>
@@ -551,7 +552,7 @@ You: Fred, on reste concentré sur le sujet du mémoire. De toute manière, ça 
 <<endif>>
 
 << set $silence to true >>
-<< visit Zero_Distraction>>
+<< visit Zero_Distraction >>
 <<jump Liste_Taches>>
 ===
 
@@ -571,8 +572,6 @@ tags:
 colorID: 0
 position: -634,250
 ---
-<< advanceTimeBy 1:00 >>
-
 You: Bon, on passe mes notes en revue ?
 Fred_smiling: Yeeees. Je t'écoute ! #line:0a51cb6 
 
@@ -598,7 +597,7 @@ Fred_smiling: Super ! Vas-y, je t'écoute !
 Ne sachant pas par quoi commencer, vous dites la première remarque qui vous vient en tête. Et puis, de fil en aiguille, une remarque en amène une autre, et ainsi de suite.
 Fred est un auditeur très bienveillant, il rebondit sur certaines de vos idées et vous incite à les clarifier, les critiquer, les nuancer.
 
-<< advanceTimeBy 1:00 >> 
+<< advanceTimeBy 2:00 >> 
 << addToGauge learning 20 >>
 << addToGauge mentalLoad 10 >>
 
@@ -620,7 +619,7 @@ Fred_sad: Oui, chef… #line:0c5e7f6
 
 Vous envoyez vos documents de travail à Fred. Vous voyez votre ami grincer des dents. #line:0b9fc4e 
 Il peine à lire et relire vos docs, et n'arrête pas de faire des pauses, de vous interpeller, mais vous limitez les discussions pour vous concentrer sur le travail.
-<< advanceTimeBy 1:00 >>
+<< advanceTimeBy 3:00 >>
 << addToGauge learning 10 >>
 << addToGauge mentalLoad 20 >>
 <<jump Liste_Taches>>
@@ -631,8 +630,6 @@ tags:
 colorID: 0
 position: -1192,159
 ---
-<< advanceTimeBy 1:00 >>
-
 You: Je sais que toi aussi, tu as avancé sur le travail de rédaction du mémoire. #line:01b1dcd 
 Fred_smiling: Bien sûr !
 You: Tu as tes notes avec toi ? #line:0bf6862 
@@ -657,7 +654,7 @@ colorID: 2
 ---
 Fred_happy: Tout est dans ma tête. Tu veux que je commence par quoi ? #line:0ca8f0f 
 
-<< advanceTimeBy 1:00 >>
+<< advanceTimeBy 2:00 >>
 << addToGauge learning 20 >>
 << addToGauge mentalLoad 10 >>
 
@@ -680,7 +677,7 @@ Fred: Bon, d'accord. Puisque tu insistes. C'est bien parce que c'est toi… #lin
 Vous voyez à son air pincé que Fred se fait violence pour vous faire plaisir. Après un bon moment, Fred, vous renvoie les fichiers mis à jour. #line:0d827ea 
 Fred: J'ai fait un effort. J'ai écrit des vraies phrases. #line:058646a 
 En effet, c'est mieux, mais ça reste laconique. Il reste encore beaucoup à faire mais vous n'obtiendrez pas plus de Fred de cette manière. #line:0057664 
-<< advanceTimeBy 1:00>>
+<< advanceTimeBy 3:00>>
 << addToGauge learning 10 >>
 << addToGauge mentalLoad 20 >>
 
@@ -735,7 +732,7 @@ You: Je te rappelle qu'on doit le rendre ce soir, ce mémoire. Je te renvoie le 
 Aussitôt, Fred se met dans une position d'avocat de l'accusation, vous fait douter de vos parties et de la structure que vous avez choisie à mesure que vous la lui présentez.
 Pourvu qu'il se trompe...
 
-<< advanceTimeBy 2:00 >>
+<< advanceTimeBy 3:00 >>
 << addToGauge learning 10 >>
 << addToGauge mentalLoad 20 >>
 
@@ -788,15 +785,14 @@ Fred_sad: Ah bon ?
 Fred vous regarde avec une mine désappointée. Il ne s'attendait sûrement pas à ce que vous travailliez sur le mémoire sans lui.
 <<endif>>
 You: Donc... Je vais répartir les taches en suivant le plan et en m'aidant de nos recherches...
-You: Je m'occupe du problème du degré d'erreur des modèles déterministes... Je prends également en charge l'effet papillon et l'imprévisibilité des systèmes dynamiques à long terme.
-You: Je te laisse réfléchir sur la révolution du paradigme post-darwinien en macrobiologie pour la conclusion ?
+You: Je m'occupe du problème du degré d'erreur des modèles déterministes... et je te laisse réfléchir sur la révolution du paradigme post-darwinien en macrobiologie pour la conclusion ?
 Fred_surprised: Je suppose que je fais l'introduction, aussi ?
 You: Oui, tu peux ! Je vérifierai ton travail une fois qu'il sera fait. Pour l'instant, à la rédaction !
 Fred_sad: Ok, ça marche...
 
 << hide >>
 << fadeIn >>
-<< advanceTimeBy 3:00 >>
+<< advanceTimeBy 4:00 >>
 << addToGauge learning 10 >>
 << addToGauge mentalLoad 30 >>
 << fadeOut >>
@@ -894,7 +890,7 @@ colorID: 0
 position: -1704,-114
 ---
 << visit Chapitre4 >>
-Fred_surprised: Euh... QU'EST CE QUE ??! { $name }, Y A UN VIEUX PERVERS AVEC UN CHAPEAU BIZARRE DANS TA CHAMBRE !!
+Fred@holo_surprised: Euh... QU'EST CE QUE ??! { $name }, Y A UN VIEUX PERVERS AVEC UN CHAPEAU BIZARRE DANS TA CHAMBRE !!
 Vous tournez la tête, terrifié, et constatez avec soulagement que derrière vous se tient...
 Sapiens_angry: Il m'a traité de vieux quoi, l'autre morveux ??
 You: Heyyy, Maître Sapiens ! Faut pas lui en vouloir, il pouvait pas s'attendre à vous voir ici !
@@ -924,16 +920,15 @@ Sapiens_happy: Tu vois, nous étions impatients de te revoir. #line:02c6d14
 Azul_proud: C'est que derrière ses airs de maître inflexible, se cache un coeur tendre. N'est-ce pas, Master Sapiens ? #line:0fc9524 
 Sapiens_angry: Tu ne crois pas exagérer, Azul ? #line:0896e67 
 Temde_thinking: À peine. Tiens-toi bien, { $name }, aujourd'hui, on attaque un gros morceau : les styles d'apprentissage !
+Ledai_happy: Une leçon indispensable pour tout chef de projet en herbe !
 -> C'est compliqué, d'être chef de projet...
-
 -> Les styles d'apprentissage ?
 You: Ma journée était plutôt éprouvante...
 Sapiens_thinking: C'est normal, { $name }. Comme tu l'as constaté, on ne naît pas chef de projet. On le devient.
 Ledai_explaining: On apprend notamment de nos dysfonctionnements. Et de ceux des autres. Ce qu'ils savent bien faire, ce qu'ils ne savent pas faire.
 Sapiens_thinking: Et c'est justement l'objet de cette quatrième session : déterminer le profil cognitif de ton partenaire. #line:0ded121 
 Azul_happy: Ce qui t'aidera à mieux comprendre le tien. #line:0f445b0 
-You: Comment faire ? #line:0ddef42 
--> Les styles d'apprentissage ?
+
 <<jump Learning_styles>>
 ===
 title: Learning_styles
