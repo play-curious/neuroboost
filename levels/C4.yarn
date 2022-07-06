@@ -6,6 +6,7 @@ position: -1656,-460
 colorID: 8
 ---
 << fadeIn 1 >>
+<< showTitle Chapitre 4 >>
 << setTime 8:00 3 >>
 << set $silence to false >>
 << setBackground bedroom >>
