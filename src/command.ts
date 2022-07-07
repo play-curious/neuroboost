@@ -366,6 +366,10 @@ export const commands: Record<string, Command> = {
   },
 
   empty() {},
+
+  screenshake(amount = "20", time = "500") {
+    this.graphics.addScreenShake(parseInt(amount), parseInt(time));
+  },
 };
 
 export const functions: Record<string, YarnFunction> = {
