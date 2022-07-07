@@ -60,7 +60,13 @@ position: -1367,-540
 << fadeOut >>
 
 << showGauges >>
+
 Vous vous retrouvez seul. Vous et Fred avez rendez-vous à 21h30, mais entre temps vous pouvez faire ce que vous voulez avant la soirée ! Voyons voir…
+
+<<if !visited("Chapitre2")>>
+Tutorial: Les jauges d'Énergie et de Nutrition mesurent votre fatigue et votre faim. Si l'une d'elle tombe à 0, c'est perdu !
+Tutorial: Pour obtenir les 3 étoiles, tentez de garder toutes les jauges à un niveau élevé !
+<<endif>>
 <<jump Actions_Before_Party>>
 ===
 

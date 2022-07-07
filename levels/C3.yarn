@@ -24,6 +24,7 @@ Bip ! Bip ! Il est 8 heures, vous rappelle votre horloge connectée.  #line:0aa5
 Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie. Attention, ça ne veut pas dire jour de repos !
 Du repos, vous en auriez bien besoin… Pas d'un point de vue physique, mais mental : entre les deux examens que vous venez d'enchaîner et les cours barbants d'hier après-midi, vous commencez à saturer.
 << addToGauge mentalLoad 50 >>
+Tutorial: La jauge de Charge Mentale mesure à quel point vous surchargez votre cerveau. Si elle atteint 100, c'est perdu !
 Vous vous demandez comment vous allez faire pour rédiger la note de synthèse que vous devez rendre aujourd'hui sans vous arracher les cheveux…
 << loopFX PhoneRing_LOOP 5000 >>
 Votre palmphone vibre. Sans suprise, vous voyez que l'appel vient de Fred. #line:0a81caa 

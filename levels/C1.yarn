@@ -112,6 +112,9 @@ position: -1248,479
 
 << if !visited("Action_List") >>
 << visit Action_List >>
+
+Tutorial: Durant les 7 Chapitres du jeu, des choix vous seront proposés pour valider vos examens et réussir votre année ! Chaque jour vous aidera à apprendre de nouvelles stratégies.
+Tutorial: Après chaque Chapitre, votre performance sera notée par des étoiles. Essayez de les récupérer toutes en augmentant au maximum votre jauge d'Apprentissage !
 Que faites-vous maintenant ? #line:03f3124 
 << endif >>
 
@@ -446,7 +449,11 @@ position: -801,1373
 
 Voilà… Les scores s'affichent sur l'écran de la porte principale… Vous avez remonté votre retard ! #line:0395b52 
 
+Tutorial: Bien joué ! Vous venez de terminer le premier Chapitre.
+
 << completeLevel Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger. >>
+
+Tutorial: Vous pouvez recommencer un Chapitre à tout moment via le menu, pour battre votre score ou simplement revoir l'histoire !
 
 Mais vous n'êtes pas encore dans le peleton de tête… Vous n'avez que <b>B</b>. Fred vous distance encore… #line:0395b52 
 
@@ -756,10 +763,14 @@ Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Vous voilà seul�
 Vous tenez entre vos mains un magnifique "iMetaJournal"…
 Serait-ce le <bi>journal mental</bi> dont parlait Ledai ? #line:063d2d3 
 
+Tutorial: Le Journal Mental vous permet de garder une trace des enseignements des Sages !
+
 <<visitPermanent Chapitre1>>
 
 <<showJournal method>>
 << completeJournal >>
+
+Tutorial: Vous pouvez télécharger votre Journal au format PDF à tout moment via le Menu.
 
 <<if !visited("Resultats_Good")>>
 -> Recommencer la journée #line:0380a89 
