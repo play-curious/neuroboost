@@ -1,5 +1,6 @@
 import * as _ from "underscore";
 import * as PIXI from "pixi.js";
+import * as filters from "pixi-filters";
 
 import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
@@ -49,6 +50,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _dialogSpeaker: PIXI.Container;
 
   private _screenShake?: ScreenShake;
+  private _blur?: Blur;
 
   private _nodeDisplay: PIXI.Container;
 
@@ -993,7 +995,27 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     if (this._screenShake) return;
 
     this._screenShake = new ScreenShake(amount, time);
-    this._activateChildEntity(this._screenShake);
+    this._activateChildEntity(
+      this._screenShake,
+      entity.extendConfig({ container: this._container })
+    );
+  }
+
+  public addBlur(amount: number): void {
+    if (this._blur) return;
+
+    this._blur = new Blur(amount);
+    this._activateChildEntity(
+      this._blur,
+      entity.extendConfig({ container: this._backgroundLayer })
+    );
+  }
+
+  public removeBlur(): void {
+    if (!this._blur) return;
+
+    this._deactivateChildEntity(this._blur);
+    this._blur = null;
   }
 }
 
@@ -1184,5 +1206,32 @@ class ScreenShake extends entity.EntityBase {
 
   protected _teardown(frameInfo: entity.FrameInfo): void {
     this._entityConfig.container.position = this._originalPos;
+  }
+}
+
+class Blur extends entity.EntityBase {
+  private _blurFilter: filters.KawaseBlurFilter;
+
+  constructor(public readonly amount = 4) {
+    super();
+  }
+
+  protected _setup(
+    frameInfo: entity.FrameInfo,
+    entityConfig: entity.EntityConfig
+  ): void {
+    this._blurFilter = new filters.KawaseBlurFilter(this.amount);
+
+    if (!this._entityConfig.container.filters)
+      this._entityConfig.container.filters = [];
+    this._entityConfig.container.filters.push(this._blurFilter);
+  }
+
+  protected _teardown(frameInfo: entity.FrameInfo): void {
+    this._entityConfig.container.filters = util.removeFromArray(
+      this._entityConfig.container.filters,
+      this._blurFilter
+    );
+    this._blurFilter = null;
   }
 }
