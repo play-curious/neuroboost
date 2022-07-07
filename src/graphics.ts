@@ -482,16 +482,18 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._container.addChild(this._nodeDisplay);
 
     const isSubchoice = typeof backOptionIndex !== "undefined";
+    let clickCatcher: PIXI.Container;
     if (isSubchoice) {
       // Catch all the clicks outside of the options
-      const clickCatcher = new PIXI.Container();
+      clickCatcher = new PIXI.Container();
       clickCatcher.hitArea = new PIXI.Rectangle(
         0,
         0,
         this._entityConfig.app.view.width,
         this._entityConfig.app.view.height
       );
-      clickCatcher.interactive = true;
+      // Starts inactive, but activates when the animation of options terminates
+      clickCatcher.interactive = false;
       this._on(clickCatcher, "pointerup", () => {
         this.hideNode();
         onBoxClick(backOptionIndex);
@@ -538,6 +540,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             },
           }),
           new entity.FunctionCallEntity(() => {
+            // Make the background click catcher active
+            if (clickCatcher) clickCatcher.interactive = true;
+
             choicebox.interactive = true;
             choicebox.buttonMode = true;
 
