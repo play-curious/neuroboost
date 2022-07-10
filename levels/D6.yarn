@@ -6,6 +6,7 @@ position: 560,139
 colorID: 1
 ---
 << fadeIn 1 >>
+<< showTitle Chapitre 6 >>
 << music Neutral >>
 << setBackground bedroom >>
 << showGauges >>

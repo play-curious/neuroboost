@@ -81,7 +81,7 @@ Fred_smiling: C'est toi le chef de projet, non ?.. #line:046c0db
 Vous vous rappelez des paroles d'Azul, c'est vous le capitaine de ce projet. C'est à vous de mener la barque. #line:01a6df8 
 
 -> Se mettre au travail  #line:03aeea4 
-    <<jump Liste_taches>>
+    <<jump Liste_Taches>>
 ===
 title: Bibli_soloPM
 tags: 
@@ -105,7 +105,7 @@ You: Il est grand temps. #line:0844380
 Fred_smiling: Je t'écoute. #line:0ed7142 
 
 -> Se remettre au travail  #line:0d7cbe3 
-    <<jump Liste_taches>>
+    <<jump Liste_Taches>>
 ===
 title: Bibli_binome
 tags: 
@@ -135,9 +135,9 @@ Fred_happy: C'est toi le chef de projet, non ? Tu es passé maître en théorie 
 Vous vous rappelez des paroles de Azul. C'est à vous de piloter ce travail, de motiver et guider Fred dans ce projet collaboratif. #line:03873cc 
 
 -> Se mettre au travail  #line:0e68709 
-    <<jump Liste_taches>>
+    <<jump Liste_Taches>>
 ===
-title: Liste_taches
+title: Liste_Taches
 tags: 
 position: -1617.8306884765625,24.821166694164276
 colorID: 1
@@ -147,9 +147,9 @@ colorID: 1
 <<jump Exit_Bibli>>
 << endif >>
 
-<< if !visited("Liste_taches") >>
+<< if !visited("Liste_Taches") >>
 Fred_happy: Alors, on attaque quoi maintenant, boss ? #line:0c3407b 
-<< visit Liste_taches >>
+<< visit Liste_Taches >>
 << endif >>
 
 << if !isTimeOver("20:00") >>
@@ -222,7 +222,7 @@ Fred_smiling: C'est vrai. #line:0fc578f
 << visit Zero_Distraction >>
 
 ->  Reprendre le travail  #line:0c0955f 
-    <<jump Liste_taches>>
+    <<jump Liste_Taches>>
 ===
 title: Lunch_bibli
 tags:
@@ -296,7 +296,7 @@ You: Laisse tomber. #line:00a0389
     << fadeIn >>
     << setBackground library >>
     << fadeOut >>
-    <<jump Liste_taches>>
+    <<jump Liste_Taches>>
 ===
 title: Exit_Bibli
 tags: 
@@ -453,7 +453,7 @@ Au final, ce n'est pas vous qui avez présenté votre travail à Fred. C'est Fre
 
 Enfin, comble de joie : l'IA vous informe qu'elle a enregistré toute la conversation et qu'elle vous transfère le fichier audio sur votre ordinateur ! #line:03a3fb9 
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Notes_You_Bad
 tags: 
@@ -471,7 +471,7 @@ Iel peine à lire et relire vos docs. Iel n'arrête pas de faire des pauses, de 
 << addToGauge learning 10 >>
 Avez-vous fait le bon choix ? #line:013daa2 
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Notes_Fred_Good
 tags: 
@@ -487,7 +487,7 @@ Vous comprenez que c'est à vous de questionner Fred et, en quelque sorte, de lu
 C'est vraiment super stimulant et super enrichissant. Fred a vu des trucs que vous n'aviez pas remarqué. Cette personne a un don, c'est certain. Après, iel ne correspond pas totalement aux standards académiques. C'est sa force et sa faiblesse.   #line:06c6070 
 Quand vous pensez avoir fait le tour de la question avec lui, l'IA vous informe qu'elle a enregistré toute la conversation. Elle vous transfère le fichier audio sur votre ordinateur. Génial ! #line:0b03dfd 
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Notes_Fred_Bad
 tags: 
@@ -508,7 +508,7 @@ Avez-vous fait le bon choix ? #line:0af7001
 <<advanceTime 1:00>>
 << addToGauge learning 10 >>
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Plan_Good
 tags: 
@@ -525,7 +525,7 @@ En fait, iel secoue l'arbre de votre argumentation pour vous aider à cueillir t
 << advanceTime 2:00 >>
 << addToGauge learning 20 >>
 
-<< jump Liste_taches >>
+<< jump Liste_Taches >>
 ===
 title: Plan_Bad
 tags: 
@@ -541,7 +541,7 @@ Si Fred avait raison... Vous allez devoir revivre encore une fois cette journée
 << advanceTime 1:30 >>
 << addToGauge learning 10 >>
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Redaction_Good
 tags: 
@@ -557,7 +557,7 @@ Alors que vous terminez de noter un truc dans votre agenda, l'IA vous informe qu
 << advanceTime 3:30 >>
 << addToGauge learning 20 >>
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Redaction_Bad
 tags: 
@@ -581,5 +581,5 @@ Quand vous relevez la tête, vous voyez Fred, qui vous sourit. #line:0256ae6
 Fred_smiling: J'ai plein d'idée pour la conclusion. Et pour l'introduction aussi. #line:0bf97db 
 You: Noon ! #line:0feaaae 
 Manifestement, ce n'était pas le meilleur choix possible. #line:0583471 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===

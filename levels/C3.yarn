@@ -227,7 +227,7 @@ Ils ont besoin de lui car lui seul sait où se cache Dude Highwalker… Sur Prov
 << advanceTimeBy 2:00 >>
 << removeFromGauge mentalLoad 20>>
 L'épisode est passionnant et vous sort de vos tracas quotidiens. Mais vous avez toujours du travail !
-Vous demandez au bout d'un moment si vous ne pourriez pas mêler l'utile à l'agréable…
+Vous vous demandez au bout d'un moment si vous ne pourriez pas mêler l'utile à l'agréable…
 
 -> En profiter pour travailler devant la TV
     <<jump TV_Revisions>>

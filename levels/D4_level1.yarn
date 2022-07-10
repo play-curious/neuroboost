@@ -75,7 +75,7 @@ You: Heu. #line:0de0a6f
 Fred_smiling: C'est toi le chef de projet, non ?.. #line:0bf3676 
 Vous ne saisissez pas très bien le sens des paroles de Fred. Que veux-t-iel dire ? #line:0039505 
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Bibli_soloPM
 tags:
@@ -99,7 +99,7 @@ Fred_happy: No worry, j'ai tout dans la tête, faut juste que je me pose un mome
 You: Il est temps. #line:0c8be11 
 Fred_smiling: Je t'écoute. #line:0b84038 
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Bibli_binome
 tags:
@@ -126,16 +126,16 @@ You: Heu... #line:046f5de
 Fred_smiling: C'est toi le chef de projet, non ? Tu es passé maître en théorie du chaos... #line:039ffc7 
 Vous ne saisissez pas très bien le sens des paroles de Fred. Que veux-t-iel dire ? #line:0b9dba6 
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
-title: Liste_taches
+title: Liste_Taches
 tags:
 colorID: 1
 position: -1322,330
 ---
-<< if !visited("Liste_taches") >>
+<< if !visited("Liste_Taches") >>
 Fred_happy: Alors, on attaque quoi maintenant, boss ? #line:07e8242 
-<< visit Liste_taches >>
+<< visit Liste_Taches >>
 << endif >>
 
 << if !isTimeOver("20:00") >>
@@ -181,7 +181,7 @@ You: Quoi ?! T'as rien rédigé ? #line:02f9b50
 Fred_smiling: Si... J'ai commencé à réfléchir à la conclusion. #line:01d56a8 
 You: Noon! #line:0e95694 
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: lunch
 tags: 
@@ -214,7 +214,7 @@ Fred_sad: Dis donc, c'est vraiment pas top ta boule immersive... #line:009cae6
 
 // Dans le level2 ça permettra de parler sans problème avec Fred!
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Lunch_bibli
 tags:
@@ -272,7 +272,7 @@ Iel n'arrête pas de faire des pauses, de vous interpeller, mais vous coupez cou
 <<advanceTime 2:00>>
 << addToGauge learning 10 >>
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Fred_goesback_towork
 tags: 
@@ -289,7 +289,7 @@ Vous retournez au travail à la bibliothèque. #line:05cfba6
     << fadeIn >>
     << setBackground library>>
     << fadeOut >>
-    <<jump Liste_taches >>
+    <<jump Liste_Taches >>
 ===
 title: Exit_Bibli
 tags: 
@@ -381,7 +381,7 @@ En effet, c'est mieux, mais ça reste laconique. On dirait plus des diapositives
 <<advanceTime 3:00>>
 << addToGauge learning 10 >>
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Questions_Sages
 tags: noUi
@@ -676,7 +676,7 @@ Si Fred a raison, il va falloir revoir le plan de votre mémoire sur cette fichu
 << advanceTime 1:30 >>
 << addToGauge learning 10 >>
 
-<<jump Liste_taches>>
+<<jump Liste_Taches>>
 ===
 title: Test_Sages
 tags: 
