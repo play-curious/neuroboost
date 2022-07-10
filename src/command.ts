@@ -365,7 +365,21 @@ export const commands: Record<string, Command> = {
     save.updateCompletedJournal(this.levelName);
   },
 
-  empty() {},
+  empty(): void {},
+
+  screenshake(amount = "20", time = "500"): entity.Entity {
+    this.graphics.addScreenShake(parseInt(amount), parseInt(time));
+
+    return new entity.WaitingEntity(parseInt(time));
+  },
+
+  addBlur(amount = "4"): void {
+    this.graphics.addBlur(parseInt(amount));
+  },
+
+  removeBlur(): void {
+    this.graphics.removeBlur();
+  },
 };
 
 export const functions: Record<string, YarnFunction> = {

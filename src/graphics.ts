@@ -1,5 +1,6 @@
 import * as _ from "underscore";
 import * as PIXI from "pixi.js";
+import * as filters from "pixi-filters";
 
 import * as entity from "booyah/src/entity";
 import * as easing from "booyah/src/easing";
@@ -47,6 +48,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
   private _dialogSpeaker: PIXI.Container;
+
+  private _screenShake?: ScreenShake;
+  private _blur?: Blur;
 
   private _nodeDisplay: PIXI.Container;
 
@@ -111,6 +115,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._fade.alpha = 0;
     this._fade.visible = false;
     this._fxLayer.addChild(this._fade);
+
+    // If the screenshake finishes, remove it as an attribute
+    this._on(this, "deactivatedChildEntity", (entity) => {
+      if (entity === this._screenShake) this._screenShake = null;
+    });
   }
 
   _teardown() {
@@ -981,6 +990,33 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       ])
     );
   }
+
+  public addScreenShake(amount = 20, time = 500) {
+    if (this._screenShake) return;
+
+    this._screenShake = new ScreenShake(amount, time);
+    this._activateChildEntity(
+      this._screenShake,
+      entity.extendConfig({ container: this._container })
+    );
+  }
+
+  public addBlur(amount: number): void {
+    if (this._blur) return;
+
+    this._blur = new Blur(amount);
+    this._activateChildEntity(
+      this._blur,
+      entity.extendConfig({ container: this._backgroundLayer })
+    );
+  }
+
+  public removeBlur(): void {
+    if (!this._blur) return;
+
+    this._deactivateChildEntity(this._blur);
+    this._blur = null;
+  }
 }
 
 const typewriterDefaultCharacterDurations: Record<string, number> = {
@@ -1136,4 +1172,66 @@ function splitIntoLines(input: string, lineLength: number): string {
     }
   }
   return result;
+}
+
+class ScreenShake extends entity.EntityBase {
+  private _originalPos: PIXI.Point;
+  private _elapsedTime: number;
+
+  constructor(public readonly amount = 20, public readonly time = 500) {
+    super();
+  }
+
+  protected _setup(
+    frameInfo: entity.FrameInfo,
+    entityConfig: entity.EntityConfig
+  ): void {
+    this._originalPos = this._entityConfig.container.position.clone();
+    this._elapsedTime = 0;
+  }
+
+  protected _update(frameInfo: entity.FrameInfo): void {
+    this._elapsedTime += frameInfo.timeSinceLastFrame;
+
+    if (this._elapsedTime > this.time) {
+      this._transition = entity.makeTransition();
+      return;
+    }
+
+    this._entityConfig.container.position.set(
+      this._originalPos.x + (Math.random() - 0.5) * this.amount,
+      this._originalPos.y + (Math.random() - 0.5) * this.amount
+    );
+  }
+
+  protected _teardown(frameInfo: entity.FrameInfo): void {
+    this._entityConfig.container.position = this._originalPos;
+  }
+}
+
+class Blur extends entity.EntityBase {
+  private _blurFilter: filters.KawaseBlurFilter;
+
+  constructor(public readonly amount = 4) {
+    super();
+  }
+
+  protected _setup(
+    frameInfo: entity.FrameInfo,
+    entityConfig: entity.EntityConfig
+  ): void {
+    this._blurFilter = new filters.KawaseBlurFilter(this.amount);
+
+    if (!this._entityConfig.container.filters)
+      this._entityConfig.container.filters = [];
+    this._entityConfig.container.filters.push(this._blurFilter);
+  }
+
+  protected _teardown(frameInfo: entity.FrameInfo): void {
+    this._entityConfig.container.filters = util.removeFromArray(
+      this._entityConfig.container.filters,
+      this._blurFilter
+    );
+    this._blurFilter = null;
+  }
 }
