@@ -27,6 +27,7 @@
     "csv-parse": "^4.16.0",
     "dayjs": "^1.10.8",
     "del": "^6.0.0",
+    "fancy-log": "^2.0.0",
     "firebase": "^8.6.7",
     "git-rev-sync": "^3.0.1",
     "gulp": "^4.0.2",

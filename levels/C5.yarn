@@ -101,11 +101,11 @@ colorID: 1
 << setBackground bedroom >>
 << fadeOut >>
 
-<< if visited("Liste_Taches")>>
-<< visit Liste_Taches >>
-Que voulez-vous faire? #line:07ea769 
-<< endif >>
-
+<<if getGauge("sleep") < 0 >>
+Vous ne vous sentez pas trop bien... Tout d'un coup, vous sentez votre vision se brouiller, vos oreilles bourdonner...
+<< fadeIn >>
+Ce n'est pas votre journée... Vous avez négligé votre corps.
+<<endif>>
 -> Bureau@bureau #line:0e03da3 
     <<jump bureau_subchoice>>
 -> Salon@salon #line:05963ce 
@@ -122,10 +122,6 @@ title: porte_subchoice
 tags: subchoice
 position: -2077,-400
 ---
-<< fadeIn >>
-<< setBackground bedroom desk >>
-<< fadeOut >>
-
 -> Aller à l'examen (passe le temps jusqu'à 14h)
     <<jump Salle_Examen>>
 -> back #line:0b4e444 
@@ -694,13 +690,14 @@ tags:
 position: -1077,-545
 colorID: 1
 ---
-<<if getGauge("sleep") <= 0>>
+<<if getGauge("sleep") <= 0 >>
 << fadeIn >>
-Incapable de dormir à cause du stress, vous vous forcez à garder les yeux fermés.
+Incapable de dormir à cause du stress, vous vous forcez à garder les yeux fermés. Toutes vos pensées se dirigent vers votre grand-mère... Vous êtes trop fatigué pour faire quoi que ce soit...
+Vous finissez quand-même par vous endormir, à bout de force.
 <<if !visited("Assemblee_Sages")>>
-assemblée sages wip
+<<jump Transition_Assemblee>>
 <<else>>
-replay assemblée ?
+Ledai_doubtful: { $name }, tu n'as pas réussi
 <<endif>>
 <<endif>>
 
@@ -765,7 +762,7 @@ colorID: 2
 << if getGauge("stress") > 33 >>
     <<jump Sieste_dontwork>>
 <<else>>
-    << jump Sleep_End >>
+    <<jump Sleep_End>>
 <<endif>>
 ===
 
@@ -776,7 +773,6 @@ position: -1091,-894
 La sieste est une technique efficace quand on éprouve une fatigue importante et relativement saine. En revanche, si le corps ou le mental est perturbé ou malade, ça ne marche pas...  #line:0c4f3da 
 Vous avez beau fermer les yeux, rien ne se passe. Vos idées noires continuent de vous hanter. #line:0bec4c7 
 << advanceTimeBy 0:30 >>
-
 <<jump Choix_night>>
 ===
 
