@@ -98,6 +98,7 @@ tags: freechoice
 position: -2175,-598
 colorID: 1
 ---
+<< hide >>
 << setBackground bedroom >>
 << fadeOut >>
 
