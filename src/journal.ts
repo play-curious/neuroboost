@@ -75,24 +75,24 @@ const options: { [key: string]: any } = {
     },
     openQuestion: {
       question:
-        "As-tu déjà recontré des problèmes en travaillant avec des personnes de profil différents ?",
+        "As-tu déjà recontré des problèmes en travaillant avec des personnes de profils différents ?",
     },
   },
   // Journal jour 5
   stress: {
     title: "Stress",
     closeQuestion: {
-      question: "A quelle fréquence te trouves-tu en situation de stresse ?",
+      question: "À quelle fréquence te trouves-tu en situation de stress ?",
       answers: [
-        "Tout les jours",
+        "Tous les jours",
         "Toutes les semaines",
-        "Tout les mois",
+        "Tous les mois",
         "Rarement",
       ],
     },
     openQuestion: {
       question:
-        "Lorsqu'il tu es stressé, que fais-tu comme activité pour lâcher prise ? ",
+        "Lorsque tu es stressé, que fais-tu comme activité pour lâcher prise ? ",
     },
   },
   // Journal jour 6
@@ -103,12 +103,12 @@ const options: { [key: string]: any } = {
       answers: [
         "Non, le weekend est sacré",
         "Seulement si je ne peux pas faire autrement",
-        "Le weekend, le soir, la journée... ils sont tout pareil",
+        "Le weekend, le soir, la journée... c'est pareil",
       ],
     },
     openQuestion: {
       question:
-        "Comment fais-tu pour organiser tes priorités, lorsque tu as beaucoup de tâches à jongler ?",
+        "Comment fais-tu pour organiser tes priorités, lorsque tu as beaucoup de tâches avec lesquelles jongler ?",
     },
   },
   // Journal jour 7

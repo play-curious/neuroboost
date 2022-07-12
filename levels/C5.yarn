@@ -14,7 +14,6 @@ colorID: 8
 << setGauge food 80 >>
 << setGauge mentalLoad 0 >>
 << setGauge stress 0 >>
-<< loopFX Chime_LOOP 2000 >>
 << setBackground circle >>
 << music Victory >>
 << fadeOut >>
@@ -25,16 +24,16 @@ Vous avez rejoint leur assemblée ! Vous êtes devenu un expert de la métacogni
 -> Crier de joie
     << fadeIn >>
     << setBackground bedroom >>
-    Vous levez les bras en l'air et vous époumonez, criant toute votre joie. Vous vous rendez alors compte que vous étiez allongé... Dans votre lit.
+    Vous levez les bras en l'air et vous époumonez, criant toute votre joie. Vous vous rendez alors compte que vous étiez allongé… Dans votre lit.
     << fadeOut >>
-    ???: Ca va pas la tête ?! Tu m'as réveillé, sale...
+    ???: Ca va pas la tête ?! Tu m'as réveillé, sale…
     Il est presque 8h, vous en profitez pour vous lever, sans prêter attention aux propos de votre voisin. Les murs sont fins, dans la cité résidentielle de l'Académie !
 -> Faire un test de réalité
     << fadeIn >>
     << setBackground bedroom >>
-    Non, c'est impossible... Vous devez rêver, c'est sûr ! Vous passez la main sur votre nez, vos joues, vos yeux. Ceux-ci ne ressentent rien : ils sont fermés !
+    Non, c'est impossible… Vous devez rêver, c'est sûr ! Vous passez la main sur votre nez, vos joues, vos yeux. Ceux-ci ne ressentent rien : ils sont fermés !
     << fadeOut >>
-    Vous vous réveillez en sursaut. Il est presque 8h, vous en profitez pour vous lever, déçu de ne pas vous être trompé...
+    Vous vous réveillez en sursaut. Il est presque 8h, vous en profitez pour vous lever, déçu de ne pas vous être trompé…
 <<jump Reveil>>
 ===
 
@@ -46,42 +45,43 @@ colorID: 8
 << advanceTimeBy 0:05 >>
 << showGauges >>
 << music Neutral >>
-Vendredi... La semaine des partiels n'est pas terminée. Aujourd'hui, c'est examen de GRH : Gestion des Ressources Hybrides.
+<< removeBlur >>
+Vendredi… La semaine des partiels n'est pas terminée. Aujourd'hui, c'est examen de GRH : Gestion des Ressources Hybrides, à 14h.
 Ca devrait aller vite, vous n'aurez qu'à passer une partie de la matinée à réviser et le tour devrait être joué.
-
+<< loopFX PhoneRing_LOOP 5000 >>
+<< screenshake 10 600 >>
 <<if !visited("MamieCall")>>
 << visitPermanent MamieCall >>
-<< loopFX PhoneRing_LOOP 5000 >>
 Votre palmphone vibre. Pour une fois, ce n'est pas Fred, mais votre grand-mère. Qu'est-ce qui lui prend de vous appeler à cette heure-ci ?
 -> Prendre l'appel  #line:0d5ad22 
 << stopFX PhoneRing_LOOP >>
 You: Bonjour mamie ! Pourquoi je ne te vois pas ? #line:0dc5f32 
-Mamie@holo_shadow: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir... #line:09e9477 
+Mamie@holo_shadow: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir… #line:09e9477 
 You: Ah bon ? #line:0b2c720 
 Mamie@holo_shadow: Je suis à l'hôpital et on m'a branchée sur des dizaines de câbles et de moniteurs. Je ressemble plus à une véhicule accidenté qu'à une grand-mère.  #line:0cb28e3 
-You: Qu'est-ce qui t'es arrivée ? #line:0af7656 
+You: Qu'est-ce qui t'est arrivé ?
 Mamie@holo_shadow: Rien de grave, chouchou. Tes parents ne t'ont rien dit ? #line:00db0dd 
-You: Heu... Non...
-Mamie@holo_shadow: Ah... Bien sûr... Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux...
+You: Heu… Non…
+Mamie@holo_shadow: Ah… Bien sûr… Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux…
 
-You: Ton coeur ?! Mamie... #line:07ebf06 
+You: Ton coeur ?! Mamie… #line:07ebf06 
 Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire ! #line:0dcce80 
 << hide >> 
 << music NegativeSad >>
 Votre aïeule coupe court à la conversation. Vous n'en saurez pas plus. Quel choc !!  #line:0104bbb 
-Votre grand-mère, dure comme du béton armé, à l'hôpital ? Ça ne sent pas bon...
-Il y a des journées comme celle-ci qu'on préférerait zapper... Vous ne savez plus du tout par quoi vous allez commencer...
+Votre grand-mère, dure comme du béton armé, à l'hôpital ? Ça ne sent pas bon…
+Il y a des journées comme celle-ci qu'on préférerait zapper… Vous ne savez plus du tout par quoi vous allez commencer…
 << addToGauge stress 70 >>
 
 <<else>>
 Votre palmphone vibre. C'est votre grand-mère qui vous rappelle. Vous savez ce qu'elle va vous dire, mais vous devez prendre son appel.
-C'est mamie, et elle ne va pas très bien, quoi qu'elle en dise... #line:0d27193 
+C'est mamie, et elle ne va pas très bien, quoi qu'elle en dise… #line:0d27193 
 -> Prendre l'appel  #line:0d5ad22 
 << stopFX PhoneRing_LOOP >>
 You: Bonjour mamie ! Tu vas mieux ?  #line:0bbacfe 
 Mamie@holo_shadow: Bonjour chouchou, donc tes parents t'ont déjà expliqué la situation ? #line:0f09c1c 
-You: Euh...
-Mamie@holo_shadow: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux...  #line:0c1da5e 
+You: Euh…
+Mamie@holo_shadow: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux…  #line:0c1da5e 
 You: Courage mamie ! #line:06a7beb 
 Vous aimeriez parler plus, mais le Paramedibot arrive pour l'emmener au bloc opératoire ! #line:0cd2819 
 << hide >> 
@@ -101,11 +101,23 @@ colorID: 1
 << setBackground bedroom >>
 << fadeOut >>
 
-<<if getGauge("sleep") < 0 >>
-Vous ne vous sentez pas trop bien... Tout d'un coup, vous sentez votre vision se brouiller, vos oreilles bourdonner...
-<< fadeIn >>
-Ce n'est pas votre journée... Vous avez négligé votre corps.
+<<if isTimeOver("14:00")>>
+Vous êtes en retard pour l'examen ! Si seulement il y avait un moyen de revenir en arrière…
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
 <<endif>>
+
+<<if getGauge("sleep") < 0  || getGauge("food") < 0 || getGauge("mentalLoad") > 100>>
+Vous ne vous sentez pas trop bien… Tout d'un coup, vous sentez votre vision se brouiller, vos oreilles bourdonner…
+<< fadeIn >>
+Ce n'est pas votre journée… Vous avez négligé votre corps. Vous fermez vos paupières et songez à la prochaine journée…
+<< resetLevel >>
+<<jump Start>>
+<<endif>>
+
 -> Bureau@bureau #line:0e03da3 
     <<jump bureau_subchoice>>
 -> Salon@salon #line:05963ce 
@@ -125,7 +137,6 @@ position: -2077,-400
 -> Aller à l'examen (passe le temps jusqu'à 14h)
     <<jump Salle_Examen>>
 -> back #line:0b4e444 
-    << fadeIn >>
     <<jump Liste_Taches>>
 ===
 
@@ -139,7 +150,7 @@ position: -2006,-802
 
 -> Réviser votre cours, façon "rappel libre" #once #line:0d03aa4 
     <<jump Rappel_libre>>
--> Approfondir votre cours <<if visited("Rappel_libre")>>
+-> Approfondir votre cours <<if visited("Rappel_libre")>> #once
     <<jump Approfondir>>
 -> Vous informer en ligne sur les causes et les effets des pathologies cardiaques#once #line:0ecd663 
     <<jump Web_Info>>
@@ -202,7 +213,7 @@ tags:
 position: -1644,-626
 ---
 <<if getGauge("stress") <= 66>>
-Vous vous allongez dans votre lit. Peut-être que le sommeil vous changerait les idées... Vous ne parvenez pas à penser à autre chose que votre grand-mère.
+Vous vous allongez dans votre lit. Peut-être que le sommeil vous changerait les idées… Vous ne parvenez pas à penser à autre chose que votre grand-mère.
 Au bout d'un certain temps, vous arrêtez la torture, incapable de fermer l'oeil.
 << advanceTimeBy 0:30 sleep >>
 <<else>>
@@ -238,7 +249,7 @@ position: -1302.82568359375,241.21925354003906
 colorID: 2
 ---
 Vous décidez de prendre un peu de temps pour vous détendre, en utilisant une méthode que vous connaissez peu : la méditation.
-Vous vous mettez confortablement sur votre canapé, et vous commencez... #line:0fd44de 
+Vous vous mettez confortablement sur votre canapé, et vous commencez… #line:0fd44de 
 
 << fx Bell_Meditation >>
 Vous sentez vos poumons se gonfler puis se vider.  #line:042e656 
@@ -273,8 +284,8 @@ Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous 
 Maman@holo_shadow: Mon chou. Tu es au courant ? #line:0997c40 
 You: Oui. Mamie m'a appelé. Pourquoi tu n'as rien dit ? #line:0ecb0f2 
 Maman@holo_shadow: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus. #line:0c3842c 
-You: Merci. Du coup, je suis encore plus stressé...
-Maman@holo_shadow: Mon chou, je ne pensais pas te...  #line:0e60133 
+You: Merci. Du coup, je suis encore plus stressé…
+Maman@holo_shadow: Mon chou, je ne pensais pas te…  #line:0e60133 
 You: J'ai compris. A plus ! #line:0a1b54f 
 << hide >>
 Vous raccrochez, encore plus fébrile que tout-à-l'heure.
@@ -287,20 +298,17 @@ title: Rappel_libre
 tags: 
 position: -1999,-977
 ---
-<< fadeIn >>
-<< setBackground bedroom desk >>
-<< fadeOut >>
 << visit Rappel_libre >>
 Vous avez des lacunes en GRH, mais vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés.  #line:03a836e 
 
 <<if getGauge("stress") < 66 >>
 Vous mettez de côté les pensées qui bifurquent sur l'état de votre grand-mère, et vous vous concentrez sur votre matière.
 Vous arrivez à vous y mettre de plus en plus, et faites de bons progrès, ce qui vous satisfait. #line:049b74e 
-<< addToGauge learning 30 >>
+<< addToGauge learning 40 >>
 << addToGauge mentalLoad 20>>
 <<else>>
-Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs... En direction de votre grand-mère, de son problème cardiaque, de son opération.  #line:0552a35 
-Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond... #line:02ce1eb 
+Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs… En direction de votre grand-mère, de son problème cardiaque, de son opération.  #line:0552a35 
+Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond… #line:02ce1eb 
 << addToGauge learning 20 >>
 << addToGauge mentalLoad 20>>
 <<endif>>
@@ -313,16 +321,13 @@ title: Approfondir
 tags: 
 position: -1692,-812
 ---
-<< fadeIn >>
-<< setBackground bedroom desk >>
-<< fadeOut >>
 Vous décidez de vous y remettre. Vous avez vos problèmes, mais la GRH ne se révisera pas toute seule !
 <<if getGauge("stress") < 66 >>
 Vous passez les quelques heures qui suivent à approfondir le sujet, vous plongeant pleinement dans vos révisions.
-<< addToGauge learning 30 >>
+<< addToGauge learning 40 >>
 << addToGauge mentalLoad 20>>
 <<else>>
-Toujours désolé de la situation, vous parvenez difficilement à vous remettre la tête dans le cours...
+Toujours désolé de la situation, vous parvenez difficilement à vous remettre la tête dans le cours… Vous avez compris quelques notions, mais d'autres vous échappent encore.
 << addToGauge learning 20 >>
 << addToGauge mentalLoad 20 >>
 <<endif>>
@@ -342,7 +347,7 @@ position: -1823,-911
 Vous vous approchez de votre ordinateur de bureau, puis recherchez les différentes pathologies qui incluent des problèmes cardiaques.
 Vous passez l'heure suivante à lire des tonnes d'articles sur le sujet. Vous n'êtes pas médecin, il vous est difficile de faire le tri dans les informations.
 << advanceTimeBy 1:00 >>
-Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes... #line:023c812 
+Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes… #line:023c812 
 Vous en ressortez encore plus stressé.
 << addToGauge stress 20 >>
 <<jump Liste_Taches>>
@@ -356,7 +361,7 @@ Vous parcourez le journal d'appel de votre palmphone, vous y trouvez facilement 
 Fred@holo_excited: Hey ! C'est toi qui m'appelles pour une fois ! #line:0187982 
 You: Ouais. J'ai besoin de toi. #line:07d3e5b 
 Fred@holo_happy: C'est vrai ? #line:0d37c0c 
-You: Oui. Je dois me changer les idées et je pensais qu'une session de sport... #line:059038a 
+You: Oui. Je dois me changer les idées… #line:059038a 
 Fred@holo_smiling: Bonne idée ! Le dernier arrivé à la salle de sport paye un Xéno-Cola à l'autre !
 
 -> Rejoindre Fred à la salle de sport
@@ -373,16 +378,16 @@ colorID: 2
 << fadeIn >>
 << hide >>
 << setBackground sport >>
-<< advanceTime 0:15 >>
+<< advanceTimeBy 0:15 >>
 << fadeOut >>
 
 Vous retrouvez Fred à la salle de sport. #line:04c3d89 
 Fred_excited: C'est moi qui suis arrivé le premier !
-You: Normal, ton appart' est à côté de la salle de sport...
+You: Normal, ton appart' est à côté de la salle de sport…
 Fred_happy: Bon, prêt pour une super séance de fight contact avec des exosquelettes ?
-You: Euh... T'as pas un truc plus soft ?
+You: Euh… T'as pas un truc plus soft ?
 Fred_smiling: Quoi, la valse ?
-You: Très drôle...
+You: Très drôle…
 -> Enfiler son exosquelette
     <<jump Sport_Stress>>
 -> Proposer un footing à la place
@@ -395,16 +400,16 @@ position: -2836,-986
 colorID: 2
 ---
 << visit Sport_Destress >>
-You: Je pensais plutôt à... un footing ?
+You: Je pensais plutôt à… un footing ?
 Fred_sad: Du footing ?! Mais c'est chiant. #line:02b6739 
 You: Pas que. Le footing permet d'évacuer les toxines tout en stimulant les masses musculaires, lymphatiques et le système nerveux. #line:0b71253 
-Fred_smiling: Euh... Ok, Docteur { $name }. Tu vas me dire de manger de la salade d'épinards, après ?
+Fred_smiling: Euh… Ok, Docteur { $name }. Tu vas me dire de manger de la salade d'épinards, après ?
 Fred_happy: Je plaisante. On peut faire un footing si tu veux.
 << loopFX Sports_LOOP 16000 >>
 Vous faites un premier tour de piste, puis un second, puis un troisième.  #line:0385730 
 Petit à petit, vous trouvez votre rythme de pas et votre cadence respiratoire. Vous vous sentez détendu et oxygéné.
 << stopFX Sports_LOOP >>
-<< advanceTime 1:15 >>
+<< advanceTimeBy 1:15 >>
 << removeFromGauge stress 20 >>
 << removeFromGauge mentalLoad 20 >>
 Au bout d'1h30, vous décidez de vous arrêter sur la ligne d'arrivée, où Fred vous attend, essouflé.
@@ -428,14 +433,14 @@ position: -3014,-762
 
 Vous rattrapez au vol l'exosquelette que vous tend Fred, enfilez la combinaison et rejoignez Fred sur la piste.
 Fred_excited: Allez, viens, que je te mette KO à la GTR !
-You: Je suis pas sûr que... #line:0a0c2a5 
+You: Je suis pas sûr que… #line:0a0c2a5 
 << hide >>
 << loopFX Sports_LOOP 16000 >>
 Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons.
 Le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. Vos muscles et vos poumons, en revanche, se raidissent et surchauffent. Après plus d'une heure d'exo-boxing endiablé, vous déclarez forfait. 
 << stopFX Sports_LOOP >>
 << removeFromGauge sleep 20 >>
-Vous avez la langue sèche et les membres engourdis. Ce sport violent n'a pas pour autant évacué votre angoisse...
+Vous avez la langue sèche et les membres engourdis. Ce sport violent n'a pas pour autant évacué votre angoisse…
 
 << advanceTimeBy 1:15 >>
 << visit Sport_Stress>>
@@ -447,9 +452,9 @@ title: NoMove
 tags: 
 position: -2976,-627
 ---
-You: Nan... Je crois pas, oublie...
+You: Nan… Je crois pas, oublie…
 Fred@holo_excited: Allez, faut que tu penses à autre chose ! #line:0dad407 
-You: Pas envie... #line:090df95 
+You: Pas envie… #line:090df95 
 Fred@holo_happy: D'accord, alors on joue en ligne ! Attention, je te défie à Call of Study !
 
 -> Accepter de jouer avec Fred
@@ -457,16 +462,16 @@ Fred@holo_happy: D'accord, alors on joue en ligne ! Attention, je te défie à C
     << hide ! >>
     << setBackground bedroom desk >>
     << fadeOut >>
-    Vous vous connectez au jeu Crawl of Study, vous retrouvez dans le Hub l'avatar de Fred, Fredator.
+    Vous vous connectez au jeu Call of Study, vous retrouvez dans le Hub l'avatar de Fred, Fredator.
     Vous respirez un bon coup et plongez dans Call of Study, ce jeu d'action et de stratégie développé par des étudiants en game design, se situant dans une reconstitution 3D de l'Académie.
-    Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser. #line:0bd645f
-    << advanceTimeBy 1:30 >>
     << removeFromGauge stress 20 >>
+    Fred a volontairement choisi un jeu qui ne vous laisse pas le temps de penser, ce qui évite à votre esprit de s'égarer.
+    << advanceTimeBy 1:30 >>
 -> Refuser la proposition de Fred
-    You: Nan, je préfère rester chez moi... Tu vas encore utiliser ton personnage de niveau 100 à la noix contre moi !
+    You: Nan, je préfère rester chez moi… Tu vas encore utiliser ton personnage de niveau 100 à la noix contre moi !
     Fred_angry: Hé, comment tu parles de Fredator ?!
     Fred_smiling: Bon, c'est pas grave, j'aurai tout essayé, alors.
-    You: Ouaiiis, désolé, Fred. Je suis pas vraiment dans mon assiette, aujourd'hui...
+    You: Ouaiiis, désolé, Fred. Je suis pas vraiment dans mon assiette, aujourd'hui…
 << fadeIn >>
 <<jump Liste_Taches>>
 ===
@@ -482,7 +487,7 @@ position: -1954,-331
 
 Vous retrouvez devant l'entrée de la salle de classe, Fred. Ce dernier vous regarde avec perplexité. #line:0d4376f 
 Fred_surprised: Ça va ? Tu as l'air étrange.
-You: Ça va, ça va... #line:05bfbf2 
+You: Ça va, ça va… #line:05bfbf2 
 
 <<if visited("Sport_Stress")>>
 Fred_sad: Ah bon ? J'ai bien l'impression que notre séance de fight ne t'a pas réussi.  #line:08cfda9 
@@ -494,10 +499,11 @@ You: Si tu le dis. #line:00d2895
 Fred_sad: Ah bon ? Hier, tu crachais le feu. Aujourd'hui, tu es glacé. #line:0d28dc6 
 <<endif>>
 
-<< loopFX Chime_LOOP 2000 >>
+<< loopFX PhoneRing_LOOP 2000 >>
+<< screenshake 10 600 >>
 Votre palmphone vibre. C'est votre mère qui tente de vous rejoindre. Fred vous fixe des yeux : #line:0bbaf53 
 Fred_sad: T'es sûr ? Ça va ? #line:036c307 
-You: Attends... #line:02ef916 
+You: Attends… #line:02ef916 
 << hide >>
 
 -> Prendre l'appel  #line:041bcf1 
@@ -517,37 +523,35 @@ position: -1747,-272
 You: Maman ? #line:01d7c34 
 Maman@holo_shadow: Oui, mon chou. C'est à propos de mamie.
 You: Quoi encore ? #line:0115589 
-Maman@holo_shadow: Elle est sortie du bloc. #line:06fe828 
-You: Et alors ? #line:0527a7a 
-Maman@holo_shadow: Ça va... Mais... #line:081d30c 
+Maman@holo_shadow: Elle est sortie du bloc. Ça a porté ses fruits… Mais… #line:081d30c 
 You: Mais ? #line:0129bd2 
-Maman@holo_shadow: On l'a transféré en salle de réanimation. Elle n'est pas sortie du coma...
-You: Nom de.... #line:029a81d 
-Maman@holo_shadow: Rassure-toi, { $name }, ta mamie est une personne forte. Elle s'en sortira...
-You: Je sais, mais... C'est dur.
-La sonnerie de l'Académie retentit : il est l'heure...
+Maman@holo_shadow: On l'a transféré en salle de réanimation. Elle n'est pas sortie du coma…
+You: Nom de…. #line:029a81d 
+Maman@holo_shadow: Rassure-toi, { $name }, ta mamie est une personne forte. Elle s'en sortira…
+You: Je sais, mais… C'est dur.
+La sonnerie de l'Académie retentit : il est l'heure…
 You: Je te laisse, on doit aller en examen ! #line:03a63ba 
-Maman@holo_shadow: Courage, mon chou... #line:0879b59 
+Maman@holo_shadow: Courage, mon chou… #line:0879b59 
 <<else>>
 You: Je sais. mamie est toujours dans le coma. #line:019efa8 
-Maman@holo_shadow: Comment tu...
+Maman@holo_shadow: Comment tu…
 You: On m'a prévenu. #line:0c0f730 
 Maman@holo_shadow: Et tu te sens comment ? #line:010991d 
 You: T'inquiète, maman, je gère. #line:0a0d529 
-Maman@holo_shadow: C'est bien { $name }. Ta mamie est une personne forte. Elle s'en sortira...
-La sonnerie de l'Académie retentit : il est l'heure...
+Maman@holo_shadow: C'est bien { $name }. Ta mamie est une personne forte. Elle s'en sortira…
+La sonnerie de l'Académie retentit : il est l'heure…
 You: Je te laisse, on va en examen ! #line:0bf1ef8 
-Maman@holo_shadow: Courage, mon chou... #line:0531828 
+Maman@holo_shadow: Courage, mon chou… #line:0531828 
 <<endif>>
 << hide >>
 << addToGauge stress 20 >>
 
 Fred_sad: Alors ? Mauvaises nouvelles ? #line:0429c77 
-You: On peut dire ça... 
-Fred_surprised: Pardon ?! Tu veux qu'on en parle ensemble ? #line:0764b28 
+You: On peut dire ça… 
+Fred_surprised: Tu veux qu'on en parle ensemble ?
 
 -> Tout raconter à Fred  #line:0bc06f4 
-    <<jump Fred_implorer>>
+    <<jump Fred_raconter>>
 -> Ne rien dire à Fred  #line:073a28d 
     <<jump Fred_silence>>
 ===
@@ -590,10 +594,10 @@ position: -1512,-399
 ---
 Fred_happy: Dis-moi. #line:009b207 
 You: Rien. #line:0a41100 
-Fred_smiling: { $name}... #line:061e67e 
-You: Noon... C'est inutile ! #line:0e09195 
-Fred_sad: Ok, si tu le prends comme ça... #line:01d8393 
-L'horloge sonne ! Il est l'heure d'entrer dans la salle. L'examen va commencer... #line:0d418c6 
+Fred_smiling: { $name}… #line:061e67e 
+You: Noon… C'est inutile ! #line:0e09195 
+Fred_sad: Ok, si tu le prends comme ça… #line:01d8393 
+L'horloge sonne ! Il est l'heure d'entrer dans la salle. L'examen va commencer… #line:0d418c6 
 
 -> Entrer dans la salle  #line:0446488 
     <<jump Examen>>
@@ -608,7 +612,7 @@ position: -1285,-355
 << setBackground class >>
 << fadeOut >>
 
-Vous vous asseyez devant votre pupitre, et le sujet s'affiche à l'écran: La loi de Murphy dans la GRH... #line:03751f2 
+Vous vous asseyez devant votre pupitre, et le sujet s'affiche à l'écran: La loi de Murphy dans la GRH… #line:03751f2 
 
 << if getGauge("stress") > 66>>
 Vous lisez les questions, votre esprit vagabonde entre vos révisions et votre grand-mère. #line:01c8f35 
@@ -617,11 +621,13 @@ Vous répondez aux questions au hasard, sans trop savoir ce que l'on vous demand
 <<else >>
 Vous arrivez à faire abstraction de vos pensées intrusives, et vous vous donnez pleinement au problème présent. #line:0811f47 
     <<if getGauge("learning") < 50 >>
-    Hélas, vos révisions n'ont pas suffit, et vous n'arrivez pas à répondre à la moitié des questions...
+    Hélas, vos révisions n'ont pas suffit, et vous n'arrivez pas à répondre à la moitié des questions…
+    << advanceTimeBy 4:00 sleep food >>
     <<jump Resultats_Bad>>
     <<else>>
     Vous répondez aux questions, en prenant soin de peaufiner vos arguments.
-    Le temps imparti passe très vite. Vous validez votre copie et vous sortez de la salle en sifflotant. #line:080b64b  
+    Le temps imparti passe très vite. Vous validez votre copie et vous sortez de la salle en sifflotant. #line:080b64b 
+    << advanceTimeBy 4:00 sleep food >>
     <<jump Resultats_Good>>
     <<endif>>
 << endif >>
@@ -636,8 +642,8 @@ position: -1286,-264
 << fadeOut >>
 
 Vous retrouvez Fred devant la porte. Il vous fixe d'un air ahuri.
-Fred_surprised: Wow, je me suis totalement foiré, cette fois... Et toi ?
-You: Pareil... Bon, on se revoit il y a 10 heures...
+Fred_surprised: Wow, je me suis totalement foiré, cette fois… Et toi ?
+You: Pareil… Bon, on se revoit il y a 10 heures…
 Fred_surprised: Hein ?
 You: Laisse tomber.
 
@@ -647,7 +653,7 @@ You: Laisse tomber.
 Vous quittez la salle d'un pas lourd, sans même attendre les résultats, toujours sous le choc des nouvelles de votre grand-mère.
 
 << setBackground bedroom >>
-<< fadeOut>>
+<< fadeOut >>
 
 De retour chez vous, vous êtes encore plus anxieux. L'examen est passé, et maintenant c'est le week-end : plus rien ne retient vos pensées anxiogènes.
 << addToGauge stress 40 >>
@@ -665,11 +671,11 @@ position: -1286,-264
 << visit Win >>
 
 Vous retrouvez Fred devant la porte. Il vous fixe d'un air ahuri.
-Fred_surprised: Wow, je me suis totalement foiré, cette fois...
+Fred_surprised: Wow, je me suis totalement foiré, cette fois…
 << fx Notification >>
 << setBackground door class-screen >>
-Fred_sad: Mince... J'ai eu que C+, c'est pas terrible. Et toi ?
-You: J'ai eu... B+ !
+Fred_sad: Mince… J'ai eu que C+, c'est pas terrible. Et toi ?
+You: J'ai eu… B+ !
 Fred_smiling: Bravo, { $name }, tu m'as rattrapé ! Mais tu as toujours pas l'air dans ton état normal. Tu devrais prendre un peu de temps pour toi.
 Fred a raison. Vous lui souhaitez un bon week-end et vous filer vous reposer.
 << hide >>
@@ -679,9 +685,13 @@ Fred a raison. Vous lui souhaitez un bon week-end et vous filer vous reposer.
 De retour chez vous, vous êtes soulagé d'avoir réussi, mais encore plus anxieux. L'examen est passé, et maintenant c'est le week-end : plus rien ne retient vos pensées anxiogènes.
 << addToGauge stress 40 >>
 Vous pensez toujours à votre grand-mère. Que lui arrive-t-il ? Est-elle sur la voie de la guérison ou pas ?
-<< fadeIn >>
 << setBackground bedroom bed >>
+<< fadeIn 1 >>
+<< addBlur 1 >>
+<< fadeOut >>
 Votre corps et votre instinct vous disent qu'il faut trouver le sommeil. Mais vos pensées sont toujours là et vous agitent l'esprit.
+<< removeBlur >>
+<< fadeOut 1 >>
 <<jump Choix_night>>
 ===
 
@@ -690,21 +700,33 @@ tags:
 position: -1077,-545
 colorID: 1
 ---
-<<if getGauge("sleep") <= 0 >>
+<<if getGauge("sleep") <= 0 || $choicesDone >= 4 >>
 << fadeIn >>
-Incapable de dormir à cause du stress, vous vous forcez à garder les yeux fermés. Toutes vos pensées se dirigent vers votre grand-mère... Vous êtes trop fatigué pour faire quoi que ce soit...
+<< visit FailSecondPart >>
+Incapable de dormir à cause du stress, vous vous forcez à garder les yeux fermés. Toutes vos pensées se dirigent vers votre grand-mère… Vous êtes trop fatigué pour faire quoi que ce soit…
 Vous finissez quand-même par vous endormir, à bout de force.
+
 <<if !visited("Assemblee_Sages")>>
 <<jump Transition_Assemblee>>
 <<else>>
-Ledai_doubtful: { $name }, tu n'as pas réussi
+Ledai_doubtful: { $name }, une fois de plus, tu n'es pas parvenu à te détacher de tes émotions négatives. Veux-tu une piqûre de rappel sur nos enseignements ?
+-> Revoir la séquence des Sages
+    <<jump Assemblee_Sages>>
+-> Recommencer la journée <<if !visited("Win")>>
+    << resetLevel >>
+    <<jump Start>>
+-> Recommencer l'après-midi <<if visited("Win")>>
+    <<jump SecondPartAfterFail>>
 <<endif>>
 <<endif>>
 
 << setBackground bedroom bed >>
 << fadeOut>>
+<<if !visited("VousExaminez")>>
+<< set $choicesDone to 0 >>
+<< visit VousExaminez >>
 Vous examinez votre palmphone : aucun appel ou message. Comment allez-vous réussir à fermer l'oeil ?
-
+<<endif>>
 -> Couper toute distraction mentale #once #line:0e0b5f8 
     <<jump Zero_Distraction>>
 -> Appeler votre mère #once #line:07d2a54 
@@ -721,7 +743,7 @@ position: -1296,-631
 ---
 Vous demandez à Room Mate, votre IA, de basculer en mode "Immersion Studieuse". Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même, face à vos questions et vos appréhensions.  #line:0f8e8a8 
 L'ambiance "studieuse" de votre chambre était une bonne idée, mais ça ne suffit pas. Ce soir, dans ce silence, vous ne vous sentez pas capable de pratiquer la méditation de pleine conscience. Il vous faut trouver autre chose. #line:0acbd71 
-
+<<set $choicesDone to ($choicesDone + 1)>>
 <<jump Choix_night>>
 ===
 
@@ -729,9 +751,9 @@ title: Maman_callnight
 tags: 
 position: -792,-554
 ---
-Vous rappelez votre mère. Elle ne répond pas. Vous ne laissez aucun message. Vous raccrochez et vous regrettez votre geste. Vous avez encore cédé aux émotions nuisibles... #line:0561efa 
-<< advanceTime 0:15 >>
-
+Vous rappelez votre mère. Elle ne répond pas. Vous ne laissez aucun message. Vous raccrochez et vous regrettez votre geste. Vous avez encore cédé aux émotions nuisibles… #line:0561efa 
+<< advanceTimeBy 0:15 >>
+<<set $choicesDone to ($choicesDone + 1)>>
 << addToGauge stress 20>>
 <<jump Choix_night>>
 ===
@@ -750,7 +772,7 @@ La chanson raconte l'histoire d'une fille recréée artificiellement par son pè
 << advanceTimeBy 1:00 >>
 << music Neutral >>
 << removeFromGauge stress 40 >>
-
+<<set $choicesDone to ($choicesDone + 1)>>
 <<jump Choix_night>>
 ===
 
@@ -759,7 +781,8 @@ tags:
 position: -1030,-720
 colorID: 2
 ---
-<< if getGauge("stress") > 33 >>
+<<set $choicesDone to ($choicesDone + 1)>>
+<< if getGauge("stress") > 50 >>
     <<jump Sieste_dontwork>>
 <<else>>
     <<jump Sleep_End>>
@@ -770,7 +793,7 @@ title: Sieste_dontwork
 tags: 
 position: -1091,-894
 ---
-La sieste est une technique efficace quand on éprouve une fatigue importante et relativement saine. En revanche, si le corps ou le mental est perturbé ou malade, ça ne marche pas...  #line:0c4f3da 
+La sieste est une technique efficace quand on éprouve une fatigue importante et relativement saine. En revanche, si le corps ou le mental est perturbé ou malade, ça ne marche pas…  #line:0c4f3da 
 Vous avez beau fermer les yeux, rien ne se passe. Vos idées noires continuent de vous hanter. #line:0bec4c7 
 << advanceTimeBy 0:30 >>
 <<jump Choix_night>>
@@ -782,7 +805,10 @@ position: -853,-877
 colorID: 2
 ---
 << fadeIn >>
-Votre esprit est suffisamment détendu. Vous fermez les yeux, vous relâchez votre corps, vous glissez dans le sommeil. Vous dites enfin adieu à ce vendredi stressant...
+Votre esprit est suffisamment détendu. Vous fermez les yeux, vous relâchez votre corps, vous glissez dans le sommeil. Vous dites enfin adieu à ce vendredi stressant…
+<<if visited("Win")>>
+<< completeLevel >>
+<<endif>>
 <<if !visited("Assemblee_Sages")>>
 <<jump Transition_Assemblee>>
 <<else>>
@@ -800,15 +826,16 @@ colorID: 2
 << setBackground astronomy >>
 << fadeOut >>
 Vous enseignez comme à votre habitude l'Astronomie Ultra-Dimensionnelle à vos élèves de l'Académie. L'un de vos élèves lève la main pour vous poser une question.
-C'est étrange, l'élève fait au moins trois tête de plus que vous et sa peau est métallique... On dirait presque...
+C'est étrange, l'élève fait au moins trois tête de plus que vous et sa peau est métallique… On dirait presque…
 Ledai_happy: { $name }, ça va, bien installé ?
-You: Qu'est-ce que... Ah, Ledai. J'aimerais bien dormir, là...
+You: Qu'est-ce que… Ah, Ledai. J'aimerais bien dormir, là…
 Ledai_explaining: Cela tombe bien : c'est ce que tu fais actuellement.
 You: Pardon ??
-Ledai_doubtful: Miss Temdé a insisté pour que nous ne te dérangions pas dans ton sommeil. Du coup, nous sommes venus te chercher... Dans tes rêves.
+Ledai_doubtful: Miss Temdé a insisté pour que nous ne te dérangions pas dans ton sommeil. Du coup, nous sommes venus te chercher… Dans tes rêves.
 You: On est dans un rêve, là ?
 Ledai_happy: Exact ! Maintenant, si tu le veux bien, pense très fort à l'Assemblée des Sages. Toi-seul peut contrôler ton rêve !
 -> Comment vous rentrez dans les rêves des gens ?
+    You: Comment vous faites ça ?
     Ledai_explaining: Vois-tu, nous autres sages, nous maîtrisons la science de la méta-métacognition, ce qui nous permet de voyager à l'intérieur des processus mentaux.
     You: Vous vous fichez de moi, pas vrai ?
     Ledai_doubtful: Oui. Ou pas. Tu le sauras lorsque tu auras acquis notre niveau ! Maintenant, pense très fort à l'Assemblée.
@@ -816,6 +843,7 @@ Ledai_happy: Exact ! Maintenant, si tu le veux bien, pense très fort à l'Assem
 -> Penser très fort à l'Assemblée des Sages
     <<jump Assemblee_Sages>>
 -> (Passer la séquence des Sages)
+    <<jump CheckForWin>>
 ===
 
 title: Assemblee_Sages
@@ -824,273 +852,148 @@ position: -296.3774108886719,-523.0119018554688
 colorID: 1
 ---
 << fadeIn >>
-You: Mmmmh... L'assemblée des sages... L'assemblée des Sages... L'assemblée des Sages...
+You: Mmmmh… L'assemblée des sages… L'assemblée des Sages… L'assemblée des Sages…
+<< completeSages >>
 
 << setBackground circle >>
 << fadeOut >>
 << fx Warp >>
-
+You: Nous y voilà !
 You: Vous allez m'apprendre quoi cette fois ? #line:085bdbf 
 Azul_happy: À gérer tes émotions. #line:099e81f 
 Temde_cheerful: À prévoir tout, même l'imprévisible. #line:0f478a5 
-
-stress
-Sapiens_thinking: Tu t'égares. L'émotion t'empêche de raisonner froidement.  #line:066c741 
-Azul_sad: Tu es stressé, énervé, angoissé, déboussolé. #line:05d61dc 
-Sapiens_thinking: Tu dois reprendre le contrôle de ton système nerveux central ! #line:08a589d 
-Temde_sad: Tu dois surtout lâcher prise, laisser les choses se faire. Tu n'y peux rien. Tu ne contrôles rien. #line:03d991b 
-Azul_happy: Tu dois te recentrer sur l'essentiel. Toi et le moment présent. C'est là-dessus que tu peux agir. Pas plus, pas moins. #line:063ccd8 
-You: Quoi ?! Je comprends rien... #line:0c2deb0 
-Temde_smiling: Ta grand-mère traverse une épreuve difficile. C'est un fait. Malheureusement, c'est son épreuve, pas la tienne. #line:0e4f776 
-You: Quoi ?! Vous me demandez de l'ignorer, d'agir en égoïste ?! #line:00fc0a0 
-Agacé, vous sautez sur place! Le sang vous monte à la tête... #line:0b62136 
-Sapiens_angry: Suffit ! #line:021e1d9 
-Azul_sad: Calme-toi et écoute. Fais-nous confiance  #line:0b54896 
-<<jump Frustration>>
+Sapiens_thinking: De manière à ce que le stress ne te prenne pas par surprise.
+<<jump Sages_FreeChoice>>
 ===
 
-title: Frustration
-tags:  noUi
-position: 139.20672988891602,-521.7066955566406
+title: Sages_FreeChoice
+tags: noUi
+position: -296.3774108886719,-523.0119018554688
+colorID: 1
 ---
-You: J'écoute... #line:0385d2b 
-Azul_happy: C'est normal et c'est bien que tu penses à elle. La médecine a fait tout ce qu'elle pouvait pour l'aider. Tes pensées et celles de tes parents sont à son chevet. Maintenant, c'est à ta grand-mère de faire le reste du chemin. Seule. Tu n'as aucune prise sur cet événement.  #line:0d20089 
-You: Pardon ? #line:0da5724 
-Ledai_explaining: On ne peut pas tout contrôler dans une expérience de vie. Contente-toi de maîtriser ce que tu peux modifier. Tes émotions par exemple. #line:007036c 
-Sapiens_concerned: Ton stress n'aidera pas ta grand-mère à aller mieux. Par contre il t'empêche de voir clair et de rester lucide. #line:0543ba2 
-You: C'est vous qui êtes malades ! #line:06779ec 
-Azul_sad: Détrompes-toi, j'ai vécu des événements difficiles comme toi. Ce que j'ai appris, c'est de ne pas me laisser envahir par ces idées noires qui me font du mal.  #line:08f163c 
-Ledai_doubtful: Crois-tu que ton stress va guérir ta grand-mère ? #line:0310c7f 
-You: Heu... Ben... #line:0c516c7 
-Ledai_doubtful: Alors, cesse d'y penser ! #line:0a40a87 
-Temde_thinking: Ledai a raison. Tu ne peux pas faire plus. À part attendre la suite. #line:0756dc1 
-You: Et si ? #line:0d1fc40 
-Azul_happy: Arrête de voir les choses en noir. Tu verras bien. #line:00d9fae 
-
--> Comment?  #line:030e796 
-    <<jump Stress_cognition>>
-===
-
-title: Stress_cognition
-tags:  noUi
-position: 355.3255420923233,-521.4594421386719
----
-Sapiens_thinking: Le stress est un carburant utile dans les situations de péril et de danger immédiat. Il permet de réagir vite et intensément. Toutefois, quand, comme toi, on se retrouve dans une configuration où l'on a aucune prise possible sur les paramètres et les variables...  #line:08a20e6 
-Sapiens_thinking: Cela devient insupportable. Tout ce carburant, cette énergie se retourne contre nous. Puisqu'on ne peut la brûler en agissant concrètement, elle nous consume de l'intérieur. #line:03c6a95 
-You: Vous voulez dire que le stress est une sorte de fuel ? #line:08d4b26 
-Ledai_happy: Tout à fait. #line:0eaba99 
-You: Et c'est quoi le rapport avec l'apprentissage ? #line:019f653 
-Azul_happy: Ce carburant qu'est le stress fait monter la température dans ton esprit. Ton cerveau devient incapable de gérer le présent. #line:0574bf5 
-You: Comment ça ? #line:0fb6715 
-Azul_happy: Imagine que tu roules sur une autoroute. Soudainement, ton accélérateur casse alors que tu appuies dessus. La vitesse augmente de plus en plus, sans but ni fin. Au début, tu peux encore arriver à contrôler ton véhicule. Mais plus celui-ci accélère, plus cela devient difficile.  #line:0179dbc 
-Azul_sad: À un moment donné, cela devient même ingérable. Tu finis par perdre le contrôle de ton engin.  #line:0e217c9 
-You: C'est ça le stress ?  #line:014d0b5 
-Ledai_explaining: Le temps semble s'écouler de plus en plus vite. Au point où tu n'arrives plus à traiter les informations. #line:0784fab 
-Sapiens_thinking: Tu ne peux plus à la fois analyser, décider et choisir ton mode d'action. #line:00bb75c 
-You: Et comment faire pour combattre le stress ? #line:02fbd74 
-
-<<jump Destress>>
-===
-
-title: Destress
-tags:  noUi
-position: 572.5399280786514,-522.0587158203125
----
-Azul_proud: Réduire la vitesse. #line:066b91b 
-Ledai_explaining: Ramener ton stress à un niveau suffisamment bas pour qu'il ne t'empêche pas de raisonner. #line:0227b9c 
-You: Et concrètement ? #line:0d7e978 
-Temde_smiling: Entreprendre des actions qui te permettent de reprendre le contrôle de tes pensées. #line:0fb4f7c 
-You: C'est-à-dire ? #line:01df5c1 
-Sapiens_happy: Toute action qui mobilise activement et positivement ton attention. #line:00ef55d 
-Azul_happy: Et aussi toute action qui relâche la pression sur ton mental. #line:039db62 
-You: Ouais. Tout ça reste très théorique. #line:08b9500 
-Temde_smiling: Par exemple toute activité agréable qui demande attention ou concentration. #line:04ce601 
-You: Lesquelles ? #line:054469b 
-Azul_happy: Jouer de la musique, chanter, dessiner, danser avec entrain. Le sport, quant il est pratiqué de manière sereine et consciente. La méditation... #line:0f401a0 
-
--> C'est tout?  #line:031821d 
-    <<jump Lacher_prise>>
-===
-
-title: Lacher_prise
-tags:  noUi
-position: 793.904296875,-520.1957778930664
----
-Sapiens_thinking: L'important est que ton engin cérébral évacue cette énergie négative d'une manière et d'une autre. #line:0326e33 
-Ledai_explaining: Et surtout qu'il arrête d'en produire à nouveau. #line:0656268 
-Temde_thinking: Ces idées noires qui tournent en boucle te polluent la tête. Elles te rongent de l'intérieur. #line:093e629 
-Azul_happy: Il faut les laisser sortir de ta tête... #line:0125bd3 
-You: OK. Ça a l'air si simple, à vous écouter. Pourtant, je me sens si mal... Et j'ai essayé des trucs, ça n'a rien donné. #line:0b5b00c 
-Sapiens_concerned: Ne t'inquiète pas. Nous n'en avons pas fini. Je vais encore poser quelques questions Quizz pour m'assurer que tu as bien compris... #line:0f1597f 
-Azul: ... comment répondre de manière consciente et sereine à la peur, à l'angoisse, au stress. #line:08b659c 
-
--> Prêt?  #line:07cb8ee 
+-> Vous me demandez d'ignorer mon stress ?
+    You: Vous me demandez d'ignorer mon stress ? Même si ma grand-mère est en danger ?
+    Temde_sad: Tu dois surtout lâcher prise, laisser les choses se faire. Tu n'y peux rien. Tu ne contrôles rien. #line:03d991b 
+    Sapiens_thinking: Le stress est comme un carburant, utile dans les situations périlleuses. Il permet de réagir vite et intensément. Toutefois, quand on se retrouve dans une configuration où l'on ne peut pas réagir directement…
+    Sapiens_thinking: Cela devient insupportable. Tout ce carburant, cette énergie se retourne contre nous. Puisqu'on ne peut la brûler en agissant concrètement, elle nous consume de l'intérieur. #line:03c6a95 
+    Azul_happy: Ce carburant qu'est le stress fait monter la température dans ton esprit. Ton cerveau devient incapable de gérer le présent. #line:0574bf5 
+    Azul_happy: Ce qui fait que tu dois te recentrer sur l'essentiel. Toi et le moment présent. C'est là-dessus que tu peux agir.
+    -> Donc je ne devrais pas penser à ma grand-mère ? 
+        Azul_happy: C'est normal que tu penses à ta grand-mère. La médecine a fait tout ce qu'elle pouvait pour l'aider. Tes pensées et celles de tes parents sont à son chevet. Maintenant, c'est à ta grand-mère de faire le reste du chemin. Tu n'as aucune prise sur cet événement.
+        Ledai_explaining: On ne peut pas tout contrôler dans une expérience de vie. Contente-toi de maîtriser ce que tu peux modifier. Tes émotions par exemple. #line:007036c 
+        Sapiens_concerned: Ton stress n'aidera pas ta grand-mère à aller mieux. Par contre il t'empêche de voir clair et de rester lucide. #line:0543ba2 
+        Azul_sad: Tu n'es pas seul, { $name }. J'ai aussi vécu des périodes difficiles, et ce que j'ai appris, c'est de ne pas me laisser envahir par ces idées noires qui me font du mal.
+    -> J'ai compris
+    <<jump Sages_FreeChoice>>
+-> Comment faire pour diminuer son stress ?
+    Ledai_explaining: Il faut amener ton stress à un niveau suffisamment bas pour qu'il ne t'empêche pas de raisonner.
+    Temde_smiling: Entreprendre des actions qui te permettent de reprendre le contrôle de tes pensées. #line:0fb4f7c 
+    Sapiens_happy: Toute action qui mobilise activement et positivement ton attention, tout en lâchant la pression sur le mental.
+    Temde_smiling: Par exemple toute activité agréable qui demande attention ou concentration. #line:04ce601 
+    Azul_happy: Jouer de la musique, chanter, dessiner, danser avec entrain. Le sport, quant il est pratiqué de manière sereine et consciente. La méditation… #line:0f401a0 
+    Sapiens_thinking: L'important est que tu évacues cette énergie négative d'une manière et d'une autre.
+    Temde_smiling: En parler, avec quelqu'un qui est susceptible de t'écouter ou de te faire penser à autre chose, peut aider.
+    <<jump Sages_FreeChoice>>
+-> J'ai compris !
     <<jump Quizz_Meditation>>
+<<jump Frustration>>
 ===
 
 title: Quizz_Meditation
 tags:  noUi
 position: 1016.406005859375,-521.5471496582031
 ---
-Sapiens_thinking: Je t'ai dit qu'il te faut pratiquer une activé qui mobilise ton attention... immédiate. Azul t'a énuméré quelques exemples d'actions utiles pour réduire le stress. Tu t'en souviens? #line:00cb185 
-You: Oui. #line:0d9abf2 
-Sapiens_happy: Parfait. Alors, pour réduire ton stress, dois-tu: #line:086741b 
+Sapiens_happy: Maintenant, tu connais la chanson, c'est l'heure du quizz ! Pour réduire ton stress, tu dois…
 
--> Te concentrer intensément et écraser à l'aide de ta volonté tes mauvaises pensées?  #line:057ac50 
-    <<jump Meditation_No>>
--> Pratiquer la méditation en pleine conscience?  #line:0250606 
-    <<jump Meditation_Yes>>
+-> L'affronter à l'aide de ma volonté
+    << fx Failure >>
+    Sapiens_angry: Mauvaise réponse ! S'il suffisait d'appuyer sur un bouton pour supprimer le stress, ça se saurait… #line:09c2ae3 
+    Azul_proud: Ce que veut dire Master Sapiens, c'est que la volonté, la pensée rationnelle n'est pas forcément la mieux à même de combattre les émotions, comme le stress. #line:0ca95e4 
+    Temde_neutral: Toutes les activités qui gardent ton attention captive, comme la musique ou la méditation en pleine conscience, sont autant de moyens de diminuer le stress.
+-> Rediriger mon attention sur une activité agréable
+    << fx Success >>
+    Sapiens_happy: Oui ! Toutes les activités qui gardent ton attention captive, comme la musique ou la méditation en pleine conscience, sont autant de moyens de diminuer le stress.
+<<jump Quizz_sport>>
 ===
 
-title: Meditation_No
-tags:  noUi
-position: 1234.60498046875,-412.95176696777344
----
-<< fx Failure >>
-
-Sapiens_angry: Mauvaise réponse ! S'il suffisait d'appuyer sur un bouton pour supprimer le stress, ça se saurait... #line:09c2ae3 
-Azul_proud: Ce que veux dire Master Sapiens, c'est que la volonté, la pensée rationnelle n'est pas forcément la mieux à même de combattre les émotions, comme le stress. #line:0ca95e4 
-You: Je fais comment alors ? #line:0b9e181 
-Sapiens_thinking: La méditation en pleine conscience. #line:020bf6e 
-You: Ça veut dire quoi au juste la pleine conscience ? #line:0efe8bf 
-Azul_happy: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négative. Tu le fais en pleine conscience tu ne dors pas.  #line:0c5866f 
-Azul_cheerful: Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental. #line:08eb3c1 
-You: Ah bon ? #line:0488445 
-Azul_happy: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent... #line:037bc77 
-You: Ahhh. D'accord... #line:0285d20 
-
--> Question suivante  #line:00e90e3 
-    <<jump Quizz_sport>>
-===
-
-title: Meditation_Yes
-tags:  noUi
-position: 1235.787353515625,-625.0085754394531
----
-<< fx Success >>
-
-Sapiens_happy: Parfait! C'est la méditation en pleine conscience. #line:0ed2d4e 
-You: Ça veut dire quoi au juste la pleine conscience? #line:0a8bb0a 
-Azul_happy: En méditation tu cherches à relâcher tout ton corps, ton métabolisme, te vider de tes émotions négatives. Tu le fais en pleine conscience, tu ne dors pas.  #line:0577800 
-Azul_cheerful: Tu te concentres sur ce que fait dans l'immédiat : respirer, ressentir ton corps, cesser de ressasser les mauvaises pensées, ouvrir ton esprit, laisser les énergies négatives s'échapper de ton corps et cesser de polluer ton mental. #line:0c306e3 
-You: Ah bon ? #line:0d3c44c 
-Azul_happy: La méditation est une manière de se déconnecter des traumas du passé, des angoisses à venir. Et revenir à l'essentiel. Toi, ton esprit et ton corps dans le présent... #line:0a55295 
-You: Ouaaah... ça a l'air bien... #line:03d3ae5 
-
--> Question suivante  #line:0e823f9 
-    <<jump Quizz_sport>>
-===
 title: Quizz_sport
 tags:  noUi
 position: 1450.59033203125,-520.900390625
 ---
-Sapiens_thinking: Voyons si tu vas trouver la bonne réponse. Pour réduire ton stress, tu peux également agir de manière physique et tangible. #line:0994985 
-
--> En imaginant que le sac de frappe sur lequel tu tapes représente la cause de ta frustration  #line:0b9387c 
-    <<jump Sport_No>>
--> En pratiquant un sport plus doux et moins agressif. Comme le jogging  #line:0e7881f 
-    <<jump Sport_Yes>>
+Sapiens_thinking: Voyons si tu vas trouver la réponse à la prochaine. Pour réduire ton stress, tu peux également agir de manière physique et tangible.
+-> En me défoulant un maximum pour déchaîner sa frustration
+    << fx Failure >>
+    Sapiens_angry: Choix malheureux et risqué. Un sport intense comme la boxe peut, certes, aider à se défouler. Il faut également veiller à ce que le sport violent ne risque pas d'entretenir ta frustration ou ta colère.
+    Sapiens_thinking: Toute activité physique ou sportive n'est pas forcément adaptée pour réduire le stress. Elle peut consolider le stress et la frustration initiale si elle n'est pas pratiquée en douceur.
+-> En pratiquant un sport plus doux et moins agressif
+    << fx Success >>
+    Sapiens_happy: Bien répondu. Il faut veiller à choisir une activité physique ou sportive qui ne risque pas d'entretenir ta frustration ou ta colère. Ce serait inefficace voire contre-productif. #line:0230bee 
+<<jump End_Quizz>>
 ===
 
-title: Sport_No
-tags:  noUi
-position: 1664.98046875,-415.6497802734375
----
-<< fx Failure >>
-
-Sapiens_angry: Choix malheureux et risqué. La boxe peut, certes, aider à se défouler. Il faut également veiller à ce que la boxe ne risque pas d'entretenir ta frustration ou ta colère.  #line:0f1e98c 
-You: Pourquoi ? #line:06780ec 
-Sapiens_thinking: Toute activité  physique ou sportive n'est pas forcément adaptée pour réduire le stress. La boxe est un sport de nature violente. Et si cette violence n'est pas également évacuée à l'issue de la session, elle peut consolider le stress et la frustration initiale. Ce serait inefficace voire contre-productif. #line:00541e9 
-Azul_happy: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité plus calme, qui consomme ton énergie en douceur, te détende, sans t'aigrir.  #line:02c67bd 
-Sapiens_thinking: En conclusion, éviter une activité trop brutale, qui pourrait générer à son tour du stress ou de la tension.  #line:0237735 
-You: Ah. #line:0ecea0f 
-
--> Dernière question  #line:08efe6d 
-    <<jump Quizz_Art>>
-===
-
-title: Sport_Yes
-tags:  noUi
-position: 1666.5789794921875,-631.7974548339844
----
-<< fx Success >>
-
-Sapiens_happy: Bien répondu. Il faut également veiller à choisir une activité physique ou sportive qui ne risque pas d'entretenir ta frustration ou ta colère. Ce serait inefficace voire contre-productif. #line:0230bee 
-Azul_happy: Plus tu es troublé, plus tu as du mal à prendre du recul, à lâcher prise. Si ton stress est élevé, il est préférable de choisir une activité calme, qui consomme ton énergie en douceur, te détende.  #line:08d0d28 
-Sapiens_thinking: En conclusion, éviter une activité trop violente, trop agressive, qui pourrait générer à son tour du stress ou de la tension.  #line:09c0781 
-
--> Dernière question  #line:0803d28 
-    <<jump Quizz_Art>>
-===
-
-title: Quizz_Art
+title: End_Quizz
 tags:  noUi
 position: 1890.22265625,-521.7122497558594
 ---
-Sapiens_thinking: Dernière question. Pour réduire ton stress, tu peux choisir de pratiquer une activité ludique, créative, artistique...   #line:0d64976 
-Sapiens_thinking: Qui fait écho à ton angoisse, comme visionner un film mélodramatique ou tragique ? Ou qui détourne ton attention de ton angoisse comme jouer des musiques joyeuses, radieuses, pleines de vie ? #line:081cadd 
-
--> Echo à l'angoisse #line:0445f79 
-    <<jump Art_No>>
--> S'en détourner #line:07ff9e0 
-    <<jump Art_Yes>>
-===
-
-title: Art_No
-tags:  noUi
-position: 2105.76904296875,-416.95750427246094
----
-<< fx Failure >>
-
-Sapiens_angry: Mauvaise réponse ! Tu n'as pas compris qu'il faut éviter au maximum de maintenir ton mental dans cet environnement négatif et stérile ! #line:06ad591 
-Azul_sad: Ce qu'il veut dire c'est que tu dois te fier à cette règle de bon sens: "lâcher prise". #line:05cfd41 
-You: Ça veut dire quoi au juste, "lâcher prise" ? #line:08ec02b 
-Azul_sad: Faire le vide dans ta tête ! Ne plus entretenir ces idées noires, ne pas les ressasser, ne pas les contempler de trop près, ne pas les retenir, les laisser filer...   #line:0654dde 
-Sapiens_concerned: Seuls ceux qui ont une maîtrise émotionnelle élevée sont capables d'affronter leurs peurs et leurs angoisses en face. #line:0e8fdd7 
-Azul_happy: Quand on est encore débutant, il est préférable de se tenir le plus éloigné possible de ces mauvaises énergies. #line:0fab1bc 
-Sapiens_concerned: Elles sont plus fortes que toi. #line:03d0547 
-Azul_happy: Il te faudra plus d'une nuit avant de pouvoir te protéger d'elles... #line:0855545 
-You: Ah... #line:0252e84 
-Sapiens_thinking: N'hésite pas à recourir aux choix clairs et éprouvés. #line:00cf502 
-Azul_happy: L'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent.  #line:099e17e 
-You: Je note tout ça dans mon "carnet d'ingénieur tout-terrain" ? #line:0c85eb8 
-Ledai_happy: Oui ! #line:0a8f4a1 
-<< hide >>
--> Noter tout ça dans ton journal mental #line:0675eef 
-    <<jump Journal_Mental>>
-===
-
-title: Art_Yes
-tags:  noUi
-position: 2107.091552734375,-635.6663513183594
----
-<< fx Success >>
-
-Sapiens_happy: Bonne réponse ! Il ne faut pas sur-estimer sa capacité à faire face à ses peurs et ses angoisses. Seuls ceux qui ont une maîtrise émotionnelle élevée sont capables de le faire. #line:09c710c 
-Azul_happy: Oui, il vaut mieux se fier à cette règle de bon sens: "lâcher prise". #line:09e5021 
-You: Ça veut dire quoi au juste, "lâcher prise" ? #line:0be62ca 
-Azul_happy: Faire le vide dans ta tête ! Ne plus entretenir ces idées noires, ne pas les ressasser, ne pas les contempler de trop près, ne pas les retenir, les laisser filer.  #line:06bcd8a 
-Sapiens_concerned: Ces mauvaises énergies sont plus fortes que toi. Il est préférable, au début, de se tenir le plus éloigné possible d'elles. #line:0b4a2c4 
-Azul_happy: Il te faudra plus d'une nuit avant de pouvoir les affronter face à face... #line:0d8ac57 
-You: Ah... #line:0526094 
-Sapiens_concerned: N'hésite pas à recourir aux choix clairs et éprouvés. #line:01b7d85 
-Azul_happy: L'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent.  #line:0c38101 
+Azul_happy: Retiens bien : l'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent.  #line:0c38101 
 You: Je note tout ça dans mon "carnet d'ingénieur tout-terrain"? #line:0a20f39 
 Ledai_happy: Oui ! #line:0a1c9b2 
 << hide >>
--> Noter tout ça dans ton journal mental  #line:0b985d8 
-    <<jump Journal_Mental>>
-===
+<<jump Journal_Mental>>
+=== 
 
 title: Journal_Mental
 tags:  noUi
 position: 2327.053466796875,-530.3265838623047
 ---
 << fx Warp >>
-<< music Neutral >>
-<< fadeIn 100 ffffff >>
+<< fadeIn 1500 12ea12 >>
 << setBackground bedroom night >>
-<< fadeOut 400 >>
+<< fadeOut >>
 
-Vous êtes de nouveau transporté dans cette bulle de pénombre, de calme et de sérénité. Serait-ce un lieu dédié à ce que le sage Azul nomme le "lâcher prise". Vous contemplez votre "carnet d'ingénieur tout-terrain". Est-il garanti stressproof, anti idées noires ?... #line:014b088 
+Vous êtes de nouveau transporté dans cette bulle de pénombre, de calme et de sérénité. Un peu rassuré par les conseils des sages, vous ouvrez votre journal…
+
+<< showJournal stress >>
+<< completeJournal >>
+
+<<jump CheckForWin>>
+===
+
+title: CheckForWin
+tags:  noUi
+position: 2327.053466796875,-530.3265838623047
+---
+<< hide >>
+<<if !visited("Win")>>
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    << jump Start >>
+<<else>>
+<<if !visited("FailSecondPart")>>
+-> Passer au prochain chapitre
+<<else>>
+-> Recommencer l'après-midi
+    <<jump SecondPartAfterFail>>
+<<endif>>
+<<endif>>
+===
+
+title: SecondPartAfterFail
+tags:
+position: 2327.053466796875,-530.3265838623047
+---
+<< fx Warp >>
+<< fadeIn 1500 12ea12 >>
+<< resetLevel >>
+<< setGauge sleep 50 >>
+<< setGauge food 50 >>
+<< setGauge mentalLoad 40 >>
+<< setGauge stress 70 >>
+<< setTime 18:00 >>
+<< setBackground bedroom bed >>
+<< fadeOut >>
+Ce n'est pas dans l'habitude des Sages, mais on dirait bien que ces derniers vous ont renvoyé à l'après-midi. Peut-être une chance de vous détendre un peu avant de bien dormir…
+<<jump Choix_night>>
 ===

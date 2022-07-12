@@ -16,6 +16,7 @@ position: -215,-1026
 << setTime 8:00 2 >>
 << fadeOut >>
 << loopFX Chime_LOOP 2000 >>
+<< screenshake 10 600 >>
 << set $silence to false >>
 Bip ! Bip ! Il est 8 heures, vous rappelle votre horloge connectée.  #line:0aa5e7b 
 << stopFX Chime_LOOP >>
@@ -27,6 +28,7 @@ Du repos, vous en auriez bien besoin… Pas d'un point de vue physique, mais men
 Tutorial: La jauge de Charge Mentale mesure à quel point vous surchargez votre cerveau. Si elle atteint 100, c'est perdu !
 Vous vous demandez comment vous allez faire pour rédiger la note de synthèse que vous devez rendre aujourd'hui sans vous arracher les cheveux…
 << loopFX PhoneRing_LOOP 5000 >>
+<< screenshake 10 600 >>
 Votre palmphone vibre. Sans suprise, vous voyez que l'appel vient de Fred. #line:0a81caa 
 
 -> Prendre l'appel #line:02b8348 
@@ -308,6 +310,7 @@ Vous vous retroussez les manches et vous commencez ce travail fastidieux mais in
 
 <<if $silence == false>>
 << fx PhoneRing_LOOP >>
+<< screenshake 10 600 >>
 Dring ! Vous êtes au beau milieu d'un paragraphe, en pleine concentration, quand Fred vous appelle.
 << stopFX PhoneRing_LOOP >>
 Fred@holo_excited: Yo ! Je suis à la salle de sport, là ! Alors, tu viens ou tu te défiles ?
@@ -584,6 +587,7 @@ La projection holographique disparaît et l'ambiance studieuse aussi. Vous réac
 <<if !visited("FredCall") && visited("Redaction_Note")>>
 << visit FredCall >>
 << fx PhoneRing_LOOP >>
+<< screenshake 10 600 >>
 Justement ! Au moment où votre palmphone se remet en route, vous recevez un appel de fred !
 << stopFX PhoneRing_LOOP>>
 Fred@holo_happy: Ah, te voilà enfin ! Je t'ai appelé 200 fois, t'étais où ?

@@ -12,6 +12,7 @@ position: -245,126
 << setBackground bedroom >>
 << setTime 8:00>>
 << loopFX Chime_LOOP 2000 >>
+<< screenshake 10 600 >>
 << music >>
 << fadeOut >>
 
@@ -25,6 +26,7 @@ Quel rêve étrange …
 Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:00aae49 
 
 << loopFX PhoneRing_LOOP 5000 >>
+<< screenshake 10 600 >>
 Votre palmphone vibre : <b>Fred</b> veut vous parler. #line:0c10bcd 
 -> Prendre l'appel #line:0c4a7b0 
     <<jump Appel_Fred_Rewind>>
@@ -129,7 +131,12 @@ Temde_sad: Bon… Nous allons te renvoyer encore une fois dans le passé. Attent
 <<endif>>
 
 << if isTimeOver("12:00") >>
+
+<<if !visited("DejaMidi")>>
+<< visit DejaMidi >>
 Déjà midi passé ! C'est bientôt l'heure de l'examen !
+<<endif>>
+
 -> Cuisine@cuisine #line:0b8d567 
     <<jump cuisine_subchoice>>
 -> Porte@porte
