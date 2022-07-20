@@ -50,7 +50,7 @@ export const dialogScenes = [
   "C3",
   "C4",
   "C5",
-  "D6",
+  "C6",
   "D7_level2",
 ];
 

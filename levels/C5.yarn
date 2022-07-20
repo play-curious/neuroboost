@@ -508,10 +508,10 @@ You: Attends… #line:02ef916
 << hide >>
 
 -> Prendre l'appel  #line:041bcf1 
-    << stopFX Chime_LOOP >>
+    << stopFX PhoneRing_LOOP >>
     <<jump Maman_blabla>>
 -> Rejeter l'appel  #line:0757205 
-    << stopFX Chime_LOOP >>
+    << stopFX PhoneRing_LOOP >>
     <<jump Maman_message>>
 ===
 
@@ -940,10 +940,10 @@ Azul_happy: Retiens bien : l'important, c'est le bien être, la pensée claire e
 You: Je note tout ça dans mon "carnet d'ingénieur tout-terrain"? #line:0a20f39 
 Ledai_happy: Oui ! #line:0a1c9b2 
 << hide >>
-<<jump Journal_Mental>>
+<<jump Journal>>
 === 
 
-title: Journal_Mental
+title: Journal
 tags:  noUi
 position: 2327.053466796875,-530.3265838623047
 ---

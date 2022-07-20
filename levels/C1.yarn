@@ -753,10 +753,10 @@ Temde_smiling: Lorsque tu auras eu le temps de noter dans ton journal, nous te r
 <<endif>>
 
 << completeSages >>
-<<jump Journal_Rappel_libre>>
+<<jump Journal>>
 ===
 
-title: Journal_Rappel_libre
+title: Journal
 tags: noUi
 position: 544,1399
 ---

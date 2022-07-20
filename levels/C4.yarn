@@ -26,6 +26,7 @@ Ah, oui ! La théorie du chaos dans la macrobiologie post-darwinienne. C'est com
 Quelque chose cloche… Fred ne vous a toujours pas appelé ! Ça ne lui ressemble pas…
 -> Appeler Fred sur son Palmphone
     << loopFX PhoneRing_LOOP 5000 >>
+    << screenshake 10 600 >>
     …
     << stopFX PhoneRing_LOOP 5000 >>
     Fred@holo_excited: Yooo, c'est Fred !
@@ -417,21 +418,24 @@ Vous êtes à bout !
 <<jump Failed>>
 ===
 
-
 title: Travail_Memoire_subchoice
 tags: subchoice
 position: -914,77
 colorID: 1
 ---
--> Montrer vos notes à Fred <<if !visited("Redaction")>> #once #line:0611eb4 
+-> Montrer vos notes à Fred (2h) #once #line:0611eb4 
     <<jump Notes_You>>
--> Demander à Fred ses notes <<if !visited("Redaction")>> #once 
+-> Demander à Fred ses notes (2h) #once 
     <<jump Notes_Fred>>
--> Rédiger le mémoire <<if visited("Plan")>> #once
+-> Rédiger la première partie (1h) <<if visited("Plan")>> #once
     <<jump Redaction>>
--> Valider le plan du mémoire <<if visited("Notes_You") && visited("Notes_Fred")>> #once
+-> Rédiger la deuxième partie (1h) <<if visited("Plan")>> #once
+    <<jump Redaction>>
+-> Rédiger la conclusion (1h) <<if visited("Plan")>> #once
+    <<jump Redaction>>
+-> Valider le plan du mémoire (2h) <<if visited("Notes_You") && visited("Notes_Fred")>> #once
     <<jump Plan>>
--> Relire le mémoire <<if visited("Redaction")>> #once
+-> Relire le mémoire (Passe le temps jusqu'à 20h) <<if visited("Redaction")>> #once
     Vous relisez le mémoire, tentant de corriger les erreurs de logique et de grammaire, jusqu'à ce que votre temps s'écoule.
     << addToGauge learning 10 >>
     << advanceTimeUntil 20:00 >>
@@ -753,15 +757,55 @@ tags:
 colorID: 0
 position: -893,277
 ---
-You: On se met à la rédaction du mémoire ?
+<<if !visited("Redaction")>>
+You: On commence la rédaction du mémoire ?
 Fred_happy: Yes. On se répartit la tâche comment ? #line:005280e 
-
 <<visit Redaction>>
-
 -> Demander l'avis de Fred <<if $silence && !visited("WorkWithoutFred")>>
     <<jump Redaction_Good>>
--> Dire à Fred quoi faire et l'assister
+-> Dire à Fred quoi faire
     <<jump Redaction_Bad>>
+
+<<elseif !visited("Redaction2")>>
+
+<<if !visited("Redaction_Bad")>>
+<< visit Redaction2 >>
+You: On reprend la rédaction ?
+Fred_happy: Ouais, c'est reparti !
+Vous entamez le reste du mémoire. Comme à son habitude, Fred rebondit en permanence sur vos arguments et vous fournit assez de matière à développer.
+Après une heure, le gros de la partie est terminé !
+<< addToGauge mentalLoad 10 >>
+<< addToGauge learning 10 >>
+<< advanceTimeBy 1:00 >>
+<<else>>
+You: On reprend la rédaction ?
+Fred_bored: Ouais...
+Vous entamez la partie 2 du mémoire. Fred ne semble toujours pas emballé par la production, il paraît très distrait et peu investi.
+Après une heure, le gros de la partie est terminé !
+<< addToGauge mentalLoad 15 >>
+<< addToGauge learning 5 >>
+<< advanceTimeBy 1:00 >>
+<<endif>>
+
+<<else>>
+
+<<if !visited("Redaction_Bad")>>
+Fred_smiling: Dernière ligne droite ! On la reprend, cette rédaction ?
+You: Ouais ! c'est parti !
+L'heure suivante, vous vous efforcez de tenir pour la dernière ligne droite de la rédaction. Vous et Fred échangez beaucoup, et avec son aide, vous la terminez avec brio.
+<< addToGauge mentalLoad 10 >>
+<< addToGauge learning 10 >>
+<< advanceTimeBy 1:00 >>
+<<else>>
+Fred_bored: Bon... J'imagine qu'on doit reprendre la rédaction, maintenant ?
+You: Ouais ! On a pas le choix !
+L'heure suivante, vous vous efforcez de tenir pour la dernière ligne droite de la rédaction. Une heure pénible et peu productive... Peut-être que si Fred était plus motivé, cela se serait passé autrement...
+<< addToGauge mentalLoad 15 >>
+<< addToGauge learning 5 >>
+<< advanceTimeBy 1:00 >>
+<<endif>>
+<<endif>>
+<<jump Liste_Taches>>
 ===
 
 title: Redaction_Good
@@ -772,12 +816,11 @@ colorID: 2
 You: Tu as une idée ?
 Fred_smiling: J'ai plein d'idées. Tu sais quoi, je me sers du plan pour arranger les idées, et tu mets tout au clair en rédigeant.
 You: Ouais… Je vais tout rédiger, quoi…
-Fred_happy: T'inquiète, { $name }… Je ferai la conclu et l'intro !
+Fred_happy: T'inquiète, { $name }… Je rédigerai au moins l'intro, promis !
 Vous travaillez d'arrache-pied pour fournir un mémoire dont vous serez tous deux satisfaits. Fred vous donne ses idées, et vous les mettez au propre, formant une chaîne de production efficace.
-Le gros du travail est terminé ! Il ne vous manque plus que la conclusion et la relecture.
-<< addToGauge learning 30 >>
-<< addToGauge mentalLoad 20 >>
-<< advanceTimeBy 3:00 >>
+<< addToGauge mentalLoad 10 >>
+<< addToGauge learning 10 >>
+<< advanceTimeBy 1:00 >>
 <<jump Liste_Taches>>
 ===
 
@@ -801,12 +844,12 @@ Fred_sad: Ok, ça marche…
 
 << hide >>
 << fadeIn >>
-<< advanceTimeBy 3:00 >>
-<< addToGauge learning 10 >>
-<< addToGauge mentalLoad 30 >>
+<< addToGauge mentalLoad 15 >>
+<< addToGauge learning 5 >>
+<< advanceTimeBy 1:00 >>
 << fadeOut >>
 
-Au final, vous n'avez pas avancé si vite que cela… Vos parties ressemblent à un simple brouillon, surtout celles de Fred. Vous allez devoir travailler un peu plus pour la conclusion…
+Au final, vous n'avez pas avancé si vite que cela… Votre partie ressemble à un simple brouillon. Vous allez devoir travailler un peu plus pour les autres…
 
 <<jump Liste_Taches>>
 ===
@@ -880,6 +923,8 @@ position: -1864,35
 << setBackground bedroom night >>
 << fadeOut >>
 
+<< visit win >>
+
 Une fois chez vous, vous prenez un peu de temps pour éditer le mémoire, puis le rendez le mémoire sur le serveur de l'Académie, convaincu de la qualité de votre travail.
 << completeLevel >>
 Fred@holo_smiling: C'est pas mal, ce qu'on a fait, non ? Ca mérite bien un petit GTR…
@@ -927,7 +972,7 @@ position: -1913,850
 << visit Assemblee_Sages>>
 
 Sapiens_happy: Tu vois, nous étions impatients de te revoir. #line:02c6d14 
-Azul_proud: C'est que derrière ses airs de maître inflexible, se cache un coeur tendre. N'est-ce pas, Master Sapiens ? #line:0fc9524 
+Azul_proud: C'est que derrière ses airs de maître inflexible se cache un coeur tendre. N'est-ce pas, Master Sapiens ? #line:0fc9524 
 Sapiens_angry: Tu ne crois pas exagérer, Azul ? #line:0896e67 
 Temde_thinking: À peine. Tiens-toi bien, { $name }, aujourd'hui, on attaque un gros morceau : les styles d'apprentissage !
 Ledai_happy: Une leçon indispensable pour tout chef de projet en herbe !
@@ -945,7 +990,7 @@ Azul_happy: Ce qui t'aidera à mieux comprendre le tien. #line:0f445b0
     Sapiens_thinking: Disons que nos cerveaux ne sont pas rigoureusement identiques. En bref, nous avons des profils différents.
 -> Trouver le profil de Fred
 You: D'accord, et comment je trouve le profil de Fred ?
-Temde_cheerful: Bien. L'un d'entre nous correspond au profil de ton ami Fred. Il ne te reste plus qu'à trouver qui, et surtout pourquoi. #line:0b2b81f  
+Temde_cheerful: L'un d'entre nous correspond au profil de ton ami Fred. Il ne te reste plus qu'à trouver qui, et surtout pourquoi. #line:0b2b81f  
 Azul_proud: C'est ça, le travail collaboratif : comprendre et valoriser les forces vives de chacun.
 
 -> Interroger les Sages  #line:0f7fa48 
@@ -960,23 +1005,27 @@ position: -940,907
 << hide >>
 
 -> Interroger Miss Temdé #line:0cb5a6e 
+    You: Miss Temdé…
     <<jump QuestionsTemde>>
--> Interroger Master Sapiens #line:00f2b31 
+-> Interroger Master Sapiens #line:00f2b31
+    You: Master Sapiens…
     <<jump QuestionsSapiens>>
 -> Interroger Ledai #line:041c420 
+    You: Ledai…
     <<jump QuestionsLedai>>
 -> Interroger Azul #line:09f651a 
+    You: Azul…
     <<jump QuestionsAzul>>
 -> Révéler quel Sage ressemble à Fred  #line:0319aa8 
     <<jump Trouver_Fred>>
 ===
 
 title: QuestionsTemde
-tags: noUi, subchoice
+tags: noUi
 colorID: 0
 position: -1895,1126
 ---
-You: Miss Temdé…
+<< show Temde >>
 -> Demander ce que Temdé aime faire
     You: Qu'est-ce que tu aimes faire le plus ? #line:0d80347 
     Temde_smiling: Agir dans le feu de l'action, se trouver face à un problème concret et devoir trouver une solution. #line:0a8c4db 
@@ -989,16 +1038,18 @@ You: Miss Temdé…
     You: Comment tu te définirais ? #line:09897ab 
     Temde_cheerful: J'aime prendre des risques, j'avance à tâtons, mes erreurs m'aident à progresser. #line:00fc2ad 
     <<jump QuestionsTemde>>
--> back
+-> Interroger un autre Sage
+    You: Je crois que j'ai trouvé à qui ressemble Fred !
+    Sapiens_happy: Nous t'écoutons. #line:04dced3 
     <<jump Questions_Sages>>
 ===
 
 title: QuestionsSapiens
-tags: noUi, subchoice
+tags: noUi
 colorID: 0
 position: -1525,1148
 ---
-You: Master Sapiens…
+<< show Sapiens >>
 -> Demander ce que Sapiens aime faire
     You: Qu'est-ce que tu aimes faire le plus ?
     Sapiens_happy: Accumuler des données, des théories, des concepts. #line:0897191 
@@ -1011,16 +1062,16 @@ You: Master Sapiens…
     You: Comment tu te définirais ? #line:09897ab 
     Sapiens_thinking: J'ai soif de savoir et d'informations. Plus je sais et plus je maîtrise la moindre situation, le moindre imprévu.  #line:0153123 
     <<jump QuestionsSapiens>>
--> back
+-> Interroger un autre Sage
     <<jump Questions_Sages>>
 ===
 
 title: QuestionsLedai
-tags: noUi, subchoice
+tags: noUi
 colorID: 0
 position: -1201,1184
 ---
-You: Ledai…
+<< show Ledai >>
 -> Demander ce que Ledai aime faire
     You: Qu'est-ce que tu aimes faire le plus ?
     Ledai_happy: Appliquer un process qu'on m'a confié, étape par étape, avec rigueur et discernement. #line:0e39ad0
@@ -1033,16 +1084,16 @@ You: Ledai…
     You: Comment tu te définirais ? #line:09897ab 
     Ledai_explaining: Je suis une machine de précision. J'aime agir selon un protocole que j'ai eu le temps de valider. #line:0aa9a21 
     <<jump QuestionsLedai>> 
--> back
+-> Interroger un autre Sage
     <<jump Questions_Sages>>
 ===
 
 title: QuestionsAzul
-tags: noUi, subchoice
+tags: noUi
 colorID: 0
 position: -892,1220
 ---
-You: Azul…
+<< show Azul >>
 -> Demander ce qu'Azul aime faire
     You: Qu'est-ce que tu aimes faire le plus ?
     Azul_happy: J'aime réfléchir, discuter avec les autres, imaginer une solution.  #line:0b109d5 
@@ -1055,19 +1106,15 @@ You: Azul…
     You: Comment tu te définirais ? #line:09897ab 
     Azul_proud: Je suis un créatif, un inspiré, j'aime déceler une piste que personne n'a encore explorée. #line:0e46387 
     <<jump QuestionsAzul>> 
--> back
+-> Interroger un autre Sage
     <<jump Questions_Sages>>
 ===
 
 title: Trouver_Fred
-tags: noUi, subchoice
+tags: noUi
 colorID: 0
 position: -575,926
 ---
-Sapiens_happy: Alors, tu as trouvé qui a le profil correspondant à celui de ton ami ? #line:03178d8 
-You: Oui, je crois. #line:00ae19f 
-Sapiens_happy: Nous t'écoutons. #line:04dced3 
-
 -> C'est vous, Master Sapiens  #line:0e8379b 
     <<jump SapiensNo>>
 -> C'est vous, Miss Temdé  #line:0f5d309 
@@ -1076,7 +1123,7 @@ Sapiens_happy: Nous t'écoutons. #line:04dced3
     <<jump AzulYes>>
 -> C'est vous, Ledai  #line:0cb251b 
     <<jump LedaiNo>>
--> back
+-> Interroger les Sages
     <<jump Questions_Sages>>
 ===
 
@@ -1145,7 +1192,7 @@ position: -116,1177
     Azul_sad: En ce qui me concerne, je perds facilement mes moyens quand il s'agit de mettre par écrit mes idées et mes arguments. Je peine à respecter un plan rigide et méthodique, c'est fastidieux et démotivant. #line:07b9cd1 
     Azul_happy: J'ai besoin de donner mon avis, d'échanger avec les autres, de confronter mon ressenti avec le leur, ça m'aide à fixer mon jugement.
     Azul_proud: Pour guider quelqu'un comme nous, il faut nous donner des idées à explorer, de quoi échanger.
-    Ledai_happy: Tu le guides pas-à-pas jusqu'à la fin du projet, en lui demandant son avis verbalement. Il te fournira des idées, des pistes de réflexion, et tu n'auras plus qu'à trier.
+    Ledai_happy: Il faut le guider pas-à-pas jusqu'à la fin du projet, en lui demandant son avis verbalement. Il te fournira des idées, des pistes de réflexion, et tu n'auras plus qu'à trier.
     Temde_happy: Sans oublier de le solliciter et de lui rapporter ce que tu as trouvé, verbalement aussi ! Et de lui demander ce qu'il a noté ou retenu. C'est comme ça qu'un esprit divergent fonctionne.
     You: Un esprit "divergent" ?! #line:00adb08 
     Azul_proud: C'est ce que moi et Fred sommes.  #line:0908d96 
@@ -1158,19 +1205,28 @@ position: -116,1177
 -> J'ai compris (Quitter les sages)
     You: Je crois que j'ai compris la leçon d'aujourd'hui. Bonne nuit, les Sages !
     << hide >>
-    <<jump Journal_Mental>>
+    <<jump Journal>>
 ===
 
-title: Journal_Mental
+title: Journal
 tags: noUi
 colorID: 0
 position: -1002,1672
 ---
 << fx Warp >>
-<< fadeIn 200 0xFFFFFF >>
+<< fadeIn 1500 12ea12 >>
 << setBackground bedroom night >>
-<< fadeOut 200 >>
+<< fadeOut >>
 
 Vous voilà encore dans cette parenthèse de douce pénombre maternelle… Vous êtes au calme, seul avec vous-même. Ou presque. Vous avez un compagnon qui ne vous quitte jamais : votre journal mental.
 << completeJournal >>
+<<if !visited("Win")>>
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+<<else>>
+-> Passer au prochain chapitre
+<<endif>>
 ===

@@ -13,7 +13,7 @@ position: -891,402
 << setGauge mentalLoad 80 >>
 << setGauge stress 40 >>
 << showGauges >>
-<< setTime 15:50 >>
+<< setTime 14:00 >>
 << setBackground oral >>
 
 
@@ -35,10 +35,12 @@ Tutorial: Dans NeuroBoost, vous serez amené à faire des choix. Certains d'entr
 
 << addToGauge stress 20 >>
 -> Prendre vos notes pour éviter d'être perdu
-    Tant pis si cela vous coûte des points, vous prenez une holo-feuille de notes sur laquelle vous avez écrits les grands points à aborder.
-    En voyant cela, les membres du jury semblent déjà ennuyés avant-même que vous ayiez commencé.
+    Tant pis si cela vous coûte des points, vous prenez une holo-feuille de notes sur laquelle vous avez écrit les grands points à aborder.
+    << addToGauge learning 5 >>
+    En voyant cela, les membres du jury semblent déjà ennuyés avant-même que vous ayez commencé.
+    << addToGauge stress 20 >>
 -> Vous rassurer en faisant mine d'être confiant
-
+    << removeFromGauge stress 10 >>
 Vous commencez par vous présenter au jury, puis vous leur rappelez ce que vous avez choisi comme matière de Grand Oral : <b>la Philosophie quantique</b>. #line:08fe26e 
 L'un des jurés enfile de drôles de lunettes et vous fixe un moment avant de s'écrier : "La décohérence quantique"… #line:0ea98fb 
 
@@ -52,35 +54,17 @@ Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la prépare
 << addToGauge stress 25 >>
 
 -> Tenter de broder comme vous pouvez
-    <<jump Broder>>
+    Pendant l'oral, vous faites de votre mieux pour meubler le temps comme vous le pouvez. D'habitude, vous êtes un maître pour broder, mais là, vos lacunes vous empêchent de tenir un discours cohérent.
+    Puis, quand est venu le temps des questions-réponses… Ce fut le massacre. Le jury ne vous a épargné aucun coup, aucune humiliation. #line:0dbcc7e 
+    <<jump Sortie_Salle>>
 -> Essayer de rediriger vers un autre sujet
-    <<jump Ramener_vers_sujet>>
+    Vous tentez tant bien que mal de rediriger le sujet, mais les jurés voient clair à travers votre stratagème et vous posent des questions encore plus pointilleuses sur cette fichue décohérence quantique.
+    <<jump Sortie_Salle>>
 -> Abandonner et sortir du théâtre
-    <<jump ragequit>>
+    Vous décidez d'assumer pleinement votre défaite et d'abandonner, sans rien dire, en descendant les marches du podium. Les jurés se contentent d'exclamer un froid "suivant !" et vous passez amèrement la porte du théâtre, laissant derrière vous vos espoirs académiques.
+    <<jump Chambre_Soir>>
+===
 
-===
-title: Broder
-tags:
-position: -822,745
----
-Pendant l'oral, vous faites de votre mieux pour meubler le temps comme vous le pouvez. D'habitude, vous êtes un maître pour broder, mais là, vos lacunes vous empêchent de tenir un discours cohérent.
-Puis, quand est venu le temps des questions-réponses… Ce fut le massacre. Le jury ne vous a épargné aucun coup, aucune humiliation. #line:0dbcc7e 
-<<jump Sortie_Salle>>
-===
-title: Ramener_vers_sujet
-tags:
-position: -543,672
----
-Vous tentez tant bien que mal de rediriger le sujet, mais les jurés voient clair à travers votre stratagème et vous posent des questions encore plus pointilleuses sur cette fichue décohérence quantique.
-<<jump Sortie_Salle>>
-===
-title: ragequit
-tags:
-position: -540,524
----
-Vous décidez d'assumer pleinement votre défaite et d'abandonner, sans rien dire, en descendant les marches du podium. Les jurés se contentent d'exclamer un froid "suivant !" et vous passez amèrement la porte du théâtre, laissant derrière vous vos espoirs académiques.
-<<jump Chambre_Soir>>
-===
 title: Sortie_Salle
 tags:
 position: -549,805
@@ -90,10 +74,9 @@ position: -549,805
 << music NegativeSad >>
 Vous sortez de la salle en tremblant. C'est à peine si vous vous rappelez qui vous êtes et où vous êtes… #line:02751be 
 Pas la peine d'attendre les résultats pour savoir que vous avez royalement raté. Vous retournez dans votre chambre sans vraiment voir le trajet, ressassant sans cesse tout ce que vous avez mal fait… #line:0d4406a 
-
-
 <<jump Chambre_Soir>>
 ===
+
 title: Chambre_Soir
 tags: noUi
 position: -352.5212097167969,897.6408081054688
@@ -106,8 +89,8 @@ position: -352.5212097167969,897.6408081054688
 Le Grand Oral était une épreuve éliminatoire, et vous doutez fortement que le jury ne vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues…
 Vous vous glissez tout de suite dans votre lit. Quelle semaine pourrie… #line:0da04e6 
 
-<< fx Sleep_LOOP >>
 -> Faire un gros somme #line:002a60d 
+    << fx Sleep_LOOP >>
     <<jump Reveil_Sage>>
 ===
 
@@ -119,8 +102,9 @@ position: -177,968
 << setBackground bedroom night >>
 << music Mysterious >>
 
+???: Hé oh ! Réveille-toi.
 
-???: Hé oh ! Réveille-toi. 
+<< stopFX Sleep_LOOP >>
 
 <<show temde>>
 << fadeOut >>
@@ -176,6 +160,7 @@ Un rayon en jaillit et vous englobe de sa lumière verte phosphorescente. #line:
 
 <<jump Assemblee_Sages>>
 ===
+
 title: Assemblee_Sages
 tags: noUi
 position: -562.1727294921875,1164.6718139648438
@@ -276,6 +261,7 @@ Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquis
     Azul_happy: C'est-à-dire comment apprendre… à apprendre ! #line:011a5d4 
 <<jump Metacognition>>
 ===
+
 title: Metacognition
 tags: noUi
 position: -730.5562744140625,1421.6199951171875
