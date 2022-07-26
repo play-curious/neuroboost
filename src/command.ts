@@ -350,6 +350,8 @@ export const commands: Record<string, Command> = {
     // Look up the index of the chapter to get the number
     const chapter = dialog.dialogScenes.indexOf(this.levelName);
     const hint = hintWords.join(" ");
+
+    this.entityConfig.fxMachine.play("Success");
     return new chapter_menus.ScoreMenu({
       chapter,
       score,
