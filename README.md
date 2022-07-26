@@ -10,8 +10,6 @@ Use `yarn` to install dependencies
 
 ## Development
 
-Compile YarnSpinner scripts with `gulp`
-
 Compile and watch with `yarn watch`
 
 Compile and watch just TypeScript `yarn start` or `yarn serve`
