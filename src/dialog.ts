@@ -51,7 +51,8 @@ export const dialogScenes = [
   "C4",
   "C5",
   "C6",
-  "D7_level2",
+  "D7_level1",
+  "C7",
 ];
 
 export const debuggingDialogScenes = [
@@ -368,7 +369,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       options.length === 1 &&
       indexOfBack !== -1
     ) {
-      this._handleDialog("Vous ne pouvez rien faire ici...", indexOfBack);
+      this._handleDialog("Vous ne pouvez plus rien faire ici pour le moment.", indexOfBack);
       return;
     }
 

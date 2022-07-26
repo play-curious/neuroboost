@@ -237,9 +237,9 @@ colorID: 6
     <<jump Reviser>>
 -> Faire des fiches de révision #once
     <<jump Fiches>>
--> Relire ses fiches de révision <<if $jour == "dimanche">> #once
+-> Relire ses fiches de révision <<if $jour == "dimanche" && visited("Fiches")>> #once
     <<jump Reviser_Fiches_dimanche>>
--> Relire une dernière fois ses fiches <<if $jour == "lundi">> #once
+-> Relire une dernière fois ses fiches <<if $jour == "lundi" && visited("Fiches")>> #once
     <<jump Reviser_Fiches_lundi>>
 -> Activer le mode Zéro-Distraction <<if !$silence>>
     <<jump Zero_Distraction>>
@@ -525,6 +525,9 @@ RoomMate: Les activités de détente sont désactivées avec le mode Zéro-Distr
     <<jump BingeTV>>
 -> Jouer de la guitare
     <<jump Musique>>
+-> Passer le temps jusqu'à 20h <<if !isTimeOver("20:00")>>
+    << advanceTimeUntil 20:00 >>
+    <<jump Liste_Taches>>
 -> back #line:0aaf8ca 
     << fadeIn >>
     <<jump Liste_Taches>>
@@ -782,8 +785,7 @@ Maintenant, il va falloir défendre votre réputation. #line:0030929
 
 <<empty>>
 << if visited("Dance") >> 
-Heureusement, vous avez répété cet après-midi. Vos mouvements de danse sont 
-Vous transmettez à toute l'audience votre enthousiasme, votre passion, le rythme de vos mouvements.
+Heureusement, vous avez répété cet après-midi. Vous transmettez à toute l'audience votre enthousiasme, votre passion, le rythme de vos mouvements.
 Tout le monde se souviendra de votre intervention. Vous êtes le soleil de ce samedi soir de folie, l'astre de la danse et du Body Beat. #line:06b9fa9 
 
 << removeFromGauge mentalLoad 50 >>
@@ -1247,7 +1249,7 @@ Vous avez entre les mains votre "carnet d'ingénieur tout-terrain". Vous avez pl
 <<if !visited("Win")>>
 -> Recommencer le week-end
     << fadeIn 1500 12ea12 >>
-    << fx warp >>
+    << fx Warp >>
     << resetLevel >>
     <<jump Start>>
 <<else>>
@@ -1259,8 +1261,9 @@ title: FailGauge
 tags: 
 position: 590,408
 ---
+<< fadeIn >>
+<< addBlur 1 >>
 << fadeOut >>
-<< fadeIn 1000 >>
 
 <<if getGauge("sleep") <= 0 >>
 Vous vous sentez beaucoup trop fatigué... #line:0e90aa8 
@@ -1276,7 +1279,8 @@ Vous vous êtes trop donné aux révisions, votre cerveau n'enregistre plus rien
 
 -> Recommencer le week-end #line:0d1ef81 
     << fadeIn 1500 12ea12 >>
-    << fx warp >>
+    << removeBlur >>
+    << fx Warp >>
     << resetLevel >>
     <<jump Start>>
 ===

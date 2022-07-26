@@ -1,0 +1,717 @@
+﻿title: Start
+tags: 
+colorID: 8
+position: -2477,816
+---
+<< fadeIn >>
+<< showTitle Chapitre 7 >>
+<< setBackground bedroom >>
+<< music Tense >>
+<< setTime 18:00 >>
+<< set $triesLeft to 5 >>
+<< set $motivationFred to 0 >>
+<< fadeOut >>
+
+Vous avez réussi, vous vous êtes surpassé, vous avez brisé la boucle. Il ne manque plus qu'à fêter ça.
+Vous appelez Fred. Après tout, c'est lui qui organise la fête de ce soir à la cafétéria...
+<< loopFX PhoneRing_LOOP >>
+<< screenshake 10 600 >>
+<< stopFX PhoneRing_LOOP >>
+Pas de réponse. Qu'est-ce qu'il peut bien faire ? Vous ne l'avez pas croisé dans les couloirs, et il n'a même pas essayé de vous contacter après l'Oral...
+Quelque chose cloche. Vous devez retrouver votre ami. Peut-être qu'il s'est passé quelque chose...
+Il pourrait être n'importe où dans le campus, mais vous avez déjà quelques pistes en tête.
+
+<<jump FreeRoam>>
+===
+
+title: FreeRoam
+tags: 
+position: -2241,812
+---
+<< hide >>
+<< fadeIn >>
+<< setBackground outside >>
+<< fadeOut >>
+
+-> Aller aux toilettes de l'amphithéâtre <<if visited("KnowsAboutWC")>>
+    << fadeIn >>
+    <<jump WC>>
+-> Aller chez fred
+    << fadeIn >>
+    <<jump Door_Fred>>
+-> Aller à la cafétéria
+    << fadeIn >>
+    <<jump Cafeteria>>
+-> Aller à la bibliothèque
+    << fadeIn >>
+    <<jump Bibliotheque>>
+-> Aller à la salle de sport
+    << fadeIn >>
+    <<jump Salle_Sport>>
+===
+
+title: WC
+tags: subchoice
+position: -2386,654
+---
+<< setBackground door toilet >>
+<< advanceTime 0:05 >>
+<< fadeOut >>
+
+<<if !visited("WC")>>
+<< visit WC >>
+Si ce que vous a dit le sportif est vrai, Fred s'est rendu aux toilettes avant de disparaître. S'il faut, il y est encore !
+L'odeur putride vous prend aux narines alors que vous rentrez dans les lieux. Décidément, l'Académie devrait investir dans autre chose que des écrans holographiques...
+<<endif>>
+
+-> Inspecter les toilettes #once
+    Vous prenez votre courage à deux mains et ouvrez à contre-coeur les portes des toilettes, une à une. L'une d'elles semble verrouillée.
+    You: Fred !! Je sais que tu es là !
+    ???: Hein ?? Qui c'est, Fred ?! Laissez-moi tranquille !
+    You: Euh... Pardon.
+-> Inspecter le sol #once
+    << visitPermanent CarteEtudiante >>
+    Devant la rangée de toilettes se trouve une unique poubelle. Vous jetez un oeil à l'intérieur, puis à côté. Au sol, vous trouvez un morceau de plastique de forme familière.
+    Vous inspectez l'objet, sur lequel figure une photo de Fred et son identifiant étudiant : Id47n5296H.
+    You: La carte étudiante de Fred ! Il a voulu la jeter ? Vous mettez les morceaux bout à bout dans votre tête, ça ne sent pas bon...
+-> back
+    <<jump FreeRoam>>
+<<jump WC>>
+===
+
+title: Salle_Sport
+tags: subchoice
+position: -2192,585
+---
+<< setBackground sport >>
+<< advanceTime 0:10 >>
+<< fadeOut >>
+
+<<if !visited("Salle_Sport")>>
+<< visit Salle_Sport >>
+La salle de sport, c'est le repère de Fred. C'est ici qu'il va lorsqu'il a du temps à perdre, qu'il aille bien ou mal. S'il y a bien un endroit où il a pu filer, c'est là !
+<<endif>>
+
+-> Faire le tour de la piste #once
+    Vous faites le tour de la piste, résolu à trouver Fred à la sueur de votre front. En ces temps d'examen, le quartier des sports est désert, et vous ne voyez personne qui pourrait vous venir en aide.
+-> Se rendre aux cages de Fight Contact #once
+    << visit KnowsAboutWC >>
+    Bien sûr ! Fred a dû enfiler sa combinaison de fight contact pour se défouler après l'oral ! Vous approchez des cages dédiées au Fight Contact, ce sport brutal et ultra-moderne.
+    Un grand gaillard en exosquelette se tourne vers vous, intrigué par votre présence.
+    "Si je connais Fred ?! C'est le Contact Fighter le plus teigneux que je connaisse."
+    "Il paraît qu'il s'est dégonflé en plein milieu de son oral ! Il a demandé d'aller aux toilettes, et on l'a plus revu."
+    Vous remerciez le sportif et rebroussez chemin, choqué par ce que vous venez d'entendre. Cela ne ressemble pas, mais alors pas du tout à Fred.
+    Vous continuez votre enquête...
+-> back
+    <<jump FreeRoam>>
+<<jump Salle_Sport>>
+===
+
+title: Bibliotheque
+tags: subchoice
+position: -1973,571
+---
+<< setBackground library >>
+<< advanceTime 0:10 >>
+<< fadeOut >>
+
+<<if !visited("Bibliotheque")>>
+<< visit Bibliotheque >>
+Vous pénétrez dans l'immense aile de l'Académie, remplie d'étudiants en cette période d'examens. C'est comme chercher une aiguille dans une botte de foin...
+<<endif>>
+
+-> Chercher parmi les bureaux d'études #once
+    Mais bien sûr ! Fred doit sûrement repasser demain s'il n'a pas pu aujourd'hui ! Il est sûrement en train de réviser pour son Oral.
+    Vous parcourez les rangées de bureaux à la recherche de sa tignasse rousse, sans succès. Vous étiez pourtant fier de votre théorie...
+-> Chercher à la salle de repos <<if !visited("XenoCola")>>
+    <<if !visited("ReposRoom")>>
+    << visit ReposRoom >>
+    Si Fred cherche à se changer les idées de l'Oral, il est sûrement à la salle de repos ! Vous vous dirigez vers celle-ci.
+    << fadeIn >>
+    << setBackground cafeteria >>
+    << fadeOut >>
+    Vous ne voyez que des packs de Xéno-Cola empilés ça et là... Bizarre...
+    -> Prendre les packs de Xéno-Cola <<if visited("BarBotTalk")>>
+        Vous attrapez des packs de Xéno-Cola, que vous soulevez difficilement. Vous en gavez votre sac-à-dos, puis continuez.
+        << visit XenoCola >>
+    -> back
+        <<jump Bibliotheque>>
+    <<else>>
+    << fadeIn >>
+    << setBackground cafeteria >>
+    << fadeOut >>
+    Voyons, voir. La salle est toujours remplie de packs de Xéno-Cola...
+    -> Prendre les packs de Xéno-Cola <<if visited("BarBotTalk")>>
+        Vous attrapez des packs de Xéno-Cola, que vous soulevez difficilement. Vous en gavez votre sac-à-dos, puis continuez.
+        << visit XenoCola >>
+    -> back
+        <<jump Bibliotheque>>
+    <<endif>>
+-> back
+    <<jump FreeRoam>>
+<<jump Bibliotheque>>
+===
+
+title: Cafeteria
+tags: subchoice
+position: -1968,679
+---
+<< setBackground party >>
+<< advanceTime 0:10 >>
+<< fadeOut >>
+
+<<if !visited("BarBotTalk")>>
+<< visit BarBotTalk >>
+On dirait que la cafétéria est déjà prête pour la fête ! Les plus impatients ont déjà leur verre en main.
+A votre venue, le BarBot se précipite vers vous.
+BarBot: Yo, { $name }. T'as intérêt à avoir une bonne excuse pour ton pote ! J'écoute.
+-> Une quoi ?
+    You: Une excuse ?? Pourquoi ? Il a des ennuis ?
+-> J'en sais rien, je le cherche !
+    You: Justement ! Je sais pas où il est, je le cherche !
+BarBot: Hé, c'est pas en faisant une grimace à un vieux singe... Je veux dire, c'est pas un vieux singe qui apprend la grimace... Euh, bref. Tu la feras pas à l'envers à BB-Rex !
+You: Je t'assure, je sais pas ce qu'il se passe !
+BarBot: Il se passe que ton pote nous a fait un sale coup, voilà tout ! Il était censé apporter toutes les boissons softs pour la soirée, et il s'est jamais pointé !
+You: Ah ! Si c'est que ça...
+BarBot: Je veux rien entendre. Si vous ramenez pas les boissons d'ici tout-à-l'heure, vous êtes morts ! Vous pourrez dire adieu à votre réputation !
+You: Comment ça ?
+BarBot: Tu crois que ce barbot se pilote tout seul ? Non, derrière, y a un hacker, en chair et en os !
+BarBot: Maintenant, ramène les boissons si tu veux pas que ton historique internet se retrouve affiché dans le métaverse académique.
+<<else>>
+<<if !visited("GiveSoft")>>
+BarBot: Alors ? T'as ramené les boissons ? Fais gaffe, je peux hacker ton IDE à tout moment.
+<<else>>
+BarBot: Qu'est-ce que tu cherches ?
+<<endif>>
+-> Tiens ! <<if visited("XenoCola")>> #once
+    <<jump GiveSoft>>
+-> Tu pourrais hacker Fred ? <<if !visited("PassWord")>>
+    <<if !visited("GiveSoft")>>
+    You: Mais... Tu peux pas hacker Fred pour le retrouver, du coup ?
+    BarBot: Ramène-moi ces fichues boissons et je vois ce que je peux faire.
+    <<elseif !visited("CarteEtudiante")>>
+    You: Tu pourrais hacker Fred pour moi ?
+    BarBot: Et puis quoi, encore ? Je te l'ai dit : si j'ai pas son identifiant étudiant, je peux rien faire pour toi.
+    <<else>>
+    You: Tiens, j'ai la carte étudiante de Fred ! Tu peux le hacker pour moi ?
+    BarBot: Tu veux un accès à sa webcam ? Pervers.
+    You: Non, j'ai juste besoin du mot de passe de son appartement. Pitié !
+    BarBot: Je rigole, c'est dans mes cordes. C'est bien parce que tu m'as aidé. Voyons... HAHA !
+    BarBot: Xx_Fr3d4tor_XX. C'est son mot de passe.
+    You: J'aurais dû m'en douter. C'est son pseudo sur Call of Study !
+    << visitPermanent PassWord >>
+    <<endif>>
+-> back
+    <<jump FreeRoam>>
+<<endif>>
+<<jump FreeRoam>>
+===
+
+title: GiveSoft
+tags:
+position: -1923,760
+---
+<< visit GiveSoft >>
+<< fx Success >>
+You: Oui, oui, voilà. J'ai six packs de Xéno-Cola.
+BarBot: Bien... D'ailleurs, c'était pas vrai. J'ai pas accès à ton historique. Il me faudrait ton numéro identifiant d'étudiant pour te pirater.
+-> Justement, j'ai l'identifiant de Fred ! <<if visited("CarteEtudiante")>>
+    You: Justement ! Regarde, j'ai la carte étudiante de Fred !
+    BarBot: Et alors ? Tu veux un accès à sa webcam ? Pervers.
+    You: Non, j'ai juste besoin du mot de passe de son appartement. Pitié !
+    BarBot: Je rigole, c'est dans mes cordes. C'est bien parce que tu m'as aidé. Voyons... HAHA !
+    BarBot: Xx_Fr3d4tor_XX. C'est son mot de passe.
+    You: J'aurais dû m'en douter. C'est son pseudo sur Call of Study !
+    << visitPermanent PassWord >>
+-> Sérieux ?
+    You: Quoi, sérieux ?
+    BarBot: Hahaha, ces premières années, on peut leur faire gober n'importe quoi. C'est mignon.
+    BarBot: Bref. Reviens quand tu veux si tu as besoin de services... inhabituels.
+<<jump FreeRoam>>
+===
+
+title: Door_Fred
+tags: subchoice
+position: -2154,899
+---
+<< setBackground door >>
+<< advanceTime 0:15 >>
+<< fadeOut >>
+
+<<if !visited("Bedroom_Fred")>>
+<< visit Bedroom_Fred >>
+Vous toquez à la porte, mais personne ne répond.
+Pourtant, on dirait que l'appartement de Fred est allumé. Peut-être qu'il est juste rentré chez lui, ou qu'il est... parti en trombe ? Vous imaginez le pire.
+You: Fred ! Ouvre ! C'est pas drôle !
+Vous pianotez sur l'interphone, jusqu'à entendre une voix cristalline.
+RoomMate: Bienvenue, Fred. Veuillez entrer le mot de passe de votre IDE étudiant.
+<<endif>>
+
+-> Essayer "123456" #once
+    << fx Failure >>
+    RoomMate: Mot de passe incorrect. Rappel : le mot de passe doit contenir des lettres majuscules et minuscules.
+    You: Mince !
+-> Essayer "Gtr66" #once
+    << fx Failure >>
+    RoomMate: Mot de passe incorrect. Rappel : le mot de passe doit contenir au moins 6 caractères.
+    You: Raaaah !
+-> Essayer "MotDePasse1" #once
+    << fx Failure >>
+    RoomMate: Mot de passe incorrect. Rappel : le mot de passe ne peut pas être le même que celui d'un autre étudiant.
+    You: Ah oui, ça c'est le mien. Je devrais peut-être le changer un jour.
+-> Essayer l'identifiant étudiant de Fred, "Id47n5296H" <<if visited("CarteEtudiante")>>#once
+    << fx Failure >>
+    RoomMate: Mot de passe incorrect. Rappel : le mot de passe ne peut pas être le même que votre identifiant étudiant.
+    You: J'aurai essayé !
+-> Essayer "Xx_Fr3d4tor_XX" <<if visited("PassWord")>>
+    << fx Success >>
+    RoomMate: Bienvenue, Fred. Vous avez 1 nouveau message.
+    <<jump ChezFred>>
+-> back
+    <<jump FreeRoam>>
+
+<< set $triesLeft to ($triesLeft - 1) >>
+RoomMate: Nombre d'essais restants : { $triesLeft }.
+<<if $triesLeft <= 1>>
+You: Mince, plus qu'un essai. Je devrais arrêter d'essayer n'importe quoi.
+<<endif>>
+
+<<jump Door_Fred>>
+===
+
+title: ChezFred
+tags: 
+position: -2154,977
+---
+RoomMate: Vous avez un nouveau message non-lu, de : Académie de Polytechnologie Universelle.
+You: Euh... Très bien, lis-moi le message.
+RoomMate: "Suite à votre absence injustifiée lors de l'examen du Grand Oral, la note de F vous sera attribuée par défaut. Vous êtes convoqué à une séance de rattrapage demain après-midi à 15h."
+<< hide >>
+<< fadeIn >>
+<< setBackground bedroom_fred messy >>
+<< fadeOut >>
+Vous entrez dans la chambre de Fred, et l'apercevez. Le dos tourné, il ne fait pas attention à vous. On dirait qu'il est en train de faire ses valises.
+You: Fred ! Qu'est-ce que tu fais ?
+Fred_surprised: { $name } ! Comment tu es rentré ?
+You: Xx_Fr3d4tor_XX ? Sérieusement ? C'est ton pseudo sur Call of Study ! Qu'est-ce que tu fabriques ?
+Fred_sad: A ton avis ? Je fais mes valises ! C'est fini pour moi, game over.
+-> Dis pas ça, t'es le meilleur !
+    You: Dis pas ça, Fred ! T'as toujours été plus doué que quiconque ! Tu vaux mieux que ça !
+    Fred_sad: C'est ce que je pensais, aussi... Mais j'ai perdu mon avance. J'ai gâché mon potentiel.
+-> Qu'est-ce qui te prend ?
+    You: Qu'est-ce qui te passe par la tête ? Tu veux tout abandonner, comme ça ?
+    Fred_sad: Peut-être bien... Je pensais être capable de me débrouiller dans cette voie, mais je crois qu'il n'y a pas de place pour quelqu'un comme moi...
+Fred_sad: Dis-toi que c'est sûrement pour le mieux. Je vais recommencer à partir de zéro, trouver une autre voie.
+You: Mais... C'est ça, que tu voulais faire, non ?
+Fred_sad: Ouais... C'était facile au début, et je pensais que... Enfin, bref. Il s'est avéré que c'était juste de la chance.
+You: Comment ça ? Tu pensais quoi, crache le morceau !
+Fred_surprised: C'était presque trop facile pour moi... Alors, j'ai cru que j'étais un élu, une sorte de demi-dieu, quoi !
+-> Ha ha ha !
+    Vous ne pouvez pas vous empêcher de rire face à la naïveté de votre ami. C'est une manière de dédramatiser la situation, de maîtriser le ton de la conversation.
+    Mais... On ne dirait que ça n'a pas l'effet escompté sur Fred.
+    Fred_angry: Hé ! Je te permets pas de te moquer de moi ! J'ai peut-être abusé, mais je mérite pas que mon seul vrai ami se fiche de moi.
+-> Tu te prends trop au sérieux !
+    You: C'est ça ton problème : tu te prends beaucoup trop au sérieux.
+    << fx Success >>
+    << set $motivationFred to ($motivationFred+1)>>
+    Fred_surprised: Tu crois ?... Peut-être que c'est pour ça que je remets tout au dernier moment...
+Fred_sad: ...Mais ça n'a pas d'importance. C'est trop tard, le Grand Oral est passé, et je pourrai jamais le rattraper.
+You: Tu plaisantes, ou quoi ? Tu as des capacités exceptionnelles, bien sûr que tu peux le rattraper. Ce n'est pas parce que ta note...
+Fred_surprised: Tu as vu ma note ? Alors, ça donne quoi ?
+-> C'est juste un B-...
+    You: Tu vois que tu accordes toujours de l'importance à ça ! Tu as eu... Un B-. Tu vois, ce n'est pas non plus désespéré.
+    Fred_surprised: Hein ?? Je suis parti avant les questions-réponses et ils m'ont mis B- ? Mais...
+    You: Que veux-tu ? Ils t'aiment bien, ils voulaient peut-être te donner une seconde chance.
+    << fx Success >>
+    << visit LieToFred >>
+    Fred_surprised: Peut-être bien... Peut-être que je n'étais pas totalement à côté de la plaque...
+-> Euh... F.
+    You: On dirait que tu accordes plus d'importance que tu le croyais à cette note... Je vais être très honnête avec toi, ce n'est pas excellent.
+    Fred_sad: Vas-y, balance...
+    You: Tu as eu un F... C'est pas fameux, mais...
+    Fred_angry2: Tu vois, je te l'avais dis ! Je suis un incapable et un fainéant, c'est tout !
+    You: Pas du tout...
+Fred_sad: De toute façon, même si je le pouvais, j'ai aucune chance de rattraper le coup. J'ai raté le Grand Oral ! C'est Game Over, je te dis !
+-> Mentionner les Sages
+    You: Ecoute... Tu ne vas sûrement pas me croire, mais je vais te révéler quelque chose de fou.
+    Fred_surprised: Euh... Ok...
+    You: J'ai raté le Grand Oral. Enfin, je veux dire... A la base, je l'ai raté. Mais j'ai eu une seconde chance.
+    Fred_surprised: Tu veux dire que tu as redoublé ? J'étais pas au courant !
+    You: Non ! J'ai rencontré ces... Sages, des êtres très puissants... Un peu comme des demi-dieux. Ils m'ont aidé... Tu ne vas pas me croire, mais écoute jusqu'à la fin.
+    Fred_surprised: Attends... T'as triché au Grand Oral ?!
+    You: Non, pas du tout ! J'ai... J'ai remonté le temps. Avec leur pouvoir.
+    Fred_surprised: Mais... Tu t'es pas débrouillé tout seul, alors ? C'est de la triche !
+    You: Attends... Tu me crois, vraiment ?
+    Fred_angry: Depuis le temps que je te connais, je sais quand tu dis la vérité ! J'arrive pas à le croire ! T'as triché, t'as recommencé l'Oral en connaissant les réponses !
+    You: Non, tu comprends pas... Le jury peut lire dans les pensées, ils peuvent voir quel sujet...
+    Fred_angry2: Tu t'enfonces, là !
+    You: Un peu... Mais les Sages peuvent t'aider, Fred ! Ils peuvent te donner une seconde chance !...
+    Fred_angry: Plutôt déménager loin d'ici que d'être un menteur, un tricheur ! Maintenant, laisse-moi faire mes valises.
+    <<jump TransitionSagesLose>>
+-> Mentionner le rattrapage
+    You: Ecoute... Un Game Over, c'est pas forcément la fin du jeu ! Parfois, il faut charger la dernière sauvegarde, réessayer !
+    Fred_surprised: De quoi tu parles ? De voyage dans le temps ?
+    You: Et bien... Le voyage dans le temps n'est pas à exclure de l'équation mais... Je parlais plutôt du rattrapage de demain.
+    Fred_surprised: Le rattrapage ? Mais... J'ai eu un F !
+    You: Fred, le jury a été clément avec toi. Ils ont compté ta... disparition... comme une absence. Et donc, tu peux aller au rattrapage demain !
+    Fred_surprised: Comment tu sais ça ?
+    You: J'ai comme qui dirait... Ecouté tes messages ?
+    Fred_excited: Mais ça veut dire que j'ai une seconde chance ??
+You: C'est ce que je me tue à te dire ! Mais le rattrapage est demain ! Il faut se dépêcher, et faire quelque chose !
+Fred_sad: Je sais pas... Je vais jamais réussir à rattraper tout mon retard en un jour...
+-> Parlons-en sur la piste de jogging
+    You: C'est ce que tu crois. Tu sais quoi ? On en parle en courant, ça nous changera les idées.
+    << fx Success >>
+    << set $motivationFred to ($motivationFred+1) >>
+    << visit JoggingWithFred >>
+    Fred_smiling: Hé, bonne idée, ça !
+    << fadeIn >>
+    << setBackground sports >>
+    << fadeOut >>
+    You: Tu sais, je crois en toi, mais il va sérieusement falloir t'y mettre si tu veux y arriver.
+-> Alors mieux vaut s'y mettre tout de suite
+    You: Exactement, c'est la raison pour laquelle il ne faut pas tarder et travailler dès maintenant !
+Fred_sad: Mouais... C'est juste... Si je suis même pas sûr d'y arriver, à quoi bon ?
+On dirait que Fred a vraiment perdu confiance en lui... Vous pourriez regonfler son égo en lui rappelant à quel point il est un étudiant génial...
+...Démontrer sobrement quels sont ses points forts...
+...Ou aller droit au but en lui rappelant les défauts qui le tirent vers le bas...
+-> Flatter Fred
+    You: Tu te rends pas compte Fred ! T'es une star, ici ! Tu arrives à comprendre les notions les plus complexes, naturellement !
+    Fred_sad: Justement, c'est ce que je te disais ! J'avais peut-être des facilités, mais je les ai gâchées ! J'ai tout foiré...
+-> Démontrer les forces de Fred
+    You: Bon, écoute. Tu avais peut-être tort quand tu te pensais au-dessus de tout le monde, mais tu as des forces véritables.
+    << fx Success >>
+    << set $motivationFred to ($motivationFred+1)>>
+    Fred_surprised: C'est vrai ? Comme quoi, par exemple ?
+    You: Tu as plein de qualités, mais ce qui te différencie réellement...
+    -> Tu es honnête, et tu as du coeur
+        You: ...C'est que tu as du coeur... C'est vrai ! Tu es une bonne personne, tu n'hésites pas à aider les gens, bien que tu manques de discipline.
+        Fred_sad: Euh... Ouais, peut-être... J'essaie d'être un humain décent, quoi. Je vois pas en quoi ça m'aide dans mes études.
+    -> Tu es imaginatif, créatif et plein d'idées
+        You: ...C'est que tu n'as pas peur d'aller hors des sentiers battus, tu trouves toujours des ruses, des idées originales. Tu es un créatif !
+        << fx Success >>
+        << set $motivationFred to ($motivationFred+1)>>
+        Fred_smiling: Mmmh... J'y avais pas pensé comme ça... Tu penses que c'est ça qui fait ma force ?
+        You: Exactement, et c'est comme ça que tu vas t'en sortir. En prenant le problème différemment. Tu l'as toujours fait.
+    -> Tu adores échanger avec les autres, et tu le fais avec brio
+        You: ...C'est que tu es doué avec les autres, tu as du charisme, tu n'hésites pas à échanger et à étayer ton point de vue en parlant.
+        << fx Success >>
+        << set $motivationFred to ($motivationFred+1)>>
+        Fred_smiling: Mmmh... C'est vrai, ça. Mais je vois pas quel rapport ça a avec...
+        You: Tout le rapport du monde ! Tu es doué quand tu collabores avec une équipe, même si tu manques clairement de discipline tout seul. Et c'est comme ça que tu vas t'en sortir. Tu n'es pas seul, cette fois !
+    -> Tu es intelligent, tu sais résoudre les problèmes
+        You: ...C'est parce que tu es le gars le plus intelligent que je connaisse. Lorsqu'on te présente un problème, il ne reste pas longtemps sans solution... Pourvu que tu trouves la discipline.
+        Fred_sad: { $name }, ça va paraître pédant, mais... Je sais que je suis doué, et c'est à cause de ça que je me repose sur mes lauriers.
+-> Rappeler les faiblesses de Fred
+    You: Je ne vais pas y aller par quatre chemins. Tu ne supportes pas qu'on te pose un cadre trop rigide, et du coup, tu manques de discipline.
+    Fred_sad: C'est vrai, tu as raison. Mais je peux rien y faire, je suis comme ça...
+    You: C'est pas pour autant que tu dois abandonner ! Tu as plein d'autres qualités, mais... Tu n'aimes pas apprendre par coeur, et l'écrit ne t'enchante pas. C'est trop dommage !
+    Fred_angry: C'est bon, j'ai compris ! Où est-ce que tu veux en venir, tu veux me tirer encore plus vers le fond du gouffre ?
+    You: Justement, ce sont ces défauts qui te tirent vers le bas. Et c'est en les reconnaissant que tu vas t'en sortir.
+You: Bon. Assez parlé, place aux révisions, maintenant ! Tu sais quoi ? J'ai un petit creux. On passe chez moi ?
+Fred_sad: Ouais... Je fais à manger ?
+You: Encore en train de repousser le travail, hein ? Vas-y, je dois faire quelque chose en même temps...
+<< hide >>
+<< fadeIn >>
+<< setBackground bedroom >>
+<< fadeOut >>
+Pendant que Fred est occupé à préparer son plat favori avec votre FoodPrinter, vous vous installez sur votre bureau.
+<< fadeIn >>
+<< setBackground bedroom desk >>
+<< fadeOut >>
+Vous allez faire des fiches de révision taillées aux besoins de Fred. Vous griffonez à une vitesse éclair les différentes notions sur les dizaines de petites cartes en papier cartonné.
+Fred_happy: Hé, à table !
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+Vous jetez un oeil aux Giga-Tacos que Fred vient de préparer, dégoulinants de fromage fondu et de sauce piquante.
+-> Euh... T'es sûr de toi ?
+    You: Euh... T'es sûr que tu vas pas t'effondrer sur le canapé avec un repas comme ça ?
+    Fred_smiling: Moi ? Aucune chance. Toi, par contre...
+    You: Justement. Je les garderai pour un autre jour, quand on aura pas un weekend de révisions à accomplir en une soirée.
+    << fx Success >>
+    << set $motivationFred to ($motivationFred+1)>>
+    Fred_happy: Euh... Ouais, t'as sûrement raison. Une euh... salade. C'est tout ce qu'il nous faut. Haha.
+-> Si ça te fait plaisir...
+    You: Bon... C'est très... fort en énergie, mais tant mieux si ça te fait plaisir. Je peux en prendre une seule moitié ?
+    Fred_smiling: Seulement si je peux la manger à ta place !
+    You: Euh... Oublie.
+Pendant qu'il mange, Fred jette un oeilà son palmphone...
+
+<<if visited("LieToFred")>>
+Fred_smiling: Tiens, j'ai reçu ma convocation pour le rattrapage !
+Fred_surprised: Euh... Ils m'ont mis F ?! Comment ça se fait ? Je croyais que...
+Fred_angry: Tu m'as menti ?! Mais, pourquoi tu m'as pas dit la vérité tout de suite ?
+You: Je... Désolé. Je voulais te remonter le moral. Je croyais que...
+Fred_angry2: Quoi ?! Tu croyais que j'étais pas assez fort pour endurer un échec ?
+You: Peut-être...
+<< fx Failure >>
+Fred_sad: Je... Euh... C'est pas grave. Oublie.
+<<else>>
+Fred_sad: Ah... La note est tombée. T'avais raison, F.
+You: Fred, t'inquiète pas... C'est pas...
+<< fx Success >>
+<< set $motivationFred to ($motivationFred+1) >>
+Fred_excited: Je sais, { $name }. C'est pas fameux, mais au moins je peux pas faire pire cette fois. Du moins, je vais tenter.
+<<endif>>
+
+Après cette pause dinatoire, vous foncez dans votre salon pour réviser.
+<< setBackground bedroom night >>
+Fred_happy: Bon. Tu faisais quoi, dans ton coin ?
+You: Des tonnes de fiches de révision, regarde !
+En voyant le nombre de feuilles annotées dans votre main, le visage de Fred se décompose un instant.
+Fred_surprised: Ouah, c'est... C'est gentil...
+You: Allez, c'est pas si difficile !
+Fred_sad: Tu sais quoi ? Je sais pas si j'ai envie de faire ça. Je me débrouillerai, mais ton truc va nous prendre toute la nuit...
+-> Donner un objectif à Fred
+    You: Ca va aller. Il suffit qu'on te fixe un objectif... Ce soir, on révise toutes les fiches, et demain, on recherche les citations et les références. C'est bon pour toi ?
+    Fred_sad: Bon... Je vais essayer...
+-> Demander à Fred de se fixer un objectif
+    You: Ca va aller. Il suffit que tu te fixes un objectif, que tu sais que tu peux atteindre.
+    Fred_surprised: Euh... Je sais.
+    Fred vous prend les fiches de la main, et divise le paquet en deux. Puis, il vous rend la deuxième moitié.
+    Fred_smiling: Ce soir, on fait la moitié du travail. Tout ça. C'est déjà beaucoup. Et la suite, on la voit demain. Comme ça, j'ai pas trop de trucs à emmagasiner d'un coup.
+    << fx Success >>
+    << set $motivationFred to ($motivationFred+1)>>
+    You: Hé, c'est une bonne idée, ça !
+-> Donner les fiches de révision à Fred
+    You: Tiens, voilà les fiches de révision. Il y a tout ce dont tu as besoin dedans !
+    Fred_surprised: { $name }, je sais vraiment pas quoi faire de ça.
+    You: On les lit ensemble !
+    Fred_sad: Euh... Ok...
+Vous mettez tout en oeuvre pour tenter de faire ingurgiter un maximum d'informations à Fred, tant et si bien que vous ne voyez pas les heures défiler. Vous sentez vos paupières s'alourdir en écoutant votre camarade lire la dernière fiche...
+<< fadeIn >>
+Intrication... Décohérence... Rattrapage... Tout se mélange dans votre tête alors que vous plongez dans les bras de Morphée.
+<< setBackground bedroom >>
+<< fadeOut >>
+Lorsque vous ouvrez les yeux , vous paniquez : le soleil est au zénith, et Fred n'est nulle part dans votre appartement.
+Vous allumez votre palmphone et composez en vitesse le numéro de Fred.
+<< loopFX PhoneRing_LOOP >>
+You: Allez, décroche, Fred !
+<< stopFX PhoneRing_LOOP >>
+<<if $motivationFred >= 4>>
+Fred@holo_happy: Yo, { $name } ! Bien dormi ?
+You: Fred ! T'es où ? Pourquoi tu m'as pas réveillé ?!
+Fred@holo_smiling: Hé, du calme. Je suis devant la porte de la salle de rattrapage. Tu voulais tellement bien faire hier, tu t'es donné à fond pour m'aider. Et je t'en remercie ! Mais j'allais pas t'en demander encore plus !
+You: Mais... On a pas fini les révisions comme prévu ?!
+Fred@holo_bored: T'inquiète pas, { $name }, tu me prends pour qui... J'ai révisé de mon côté ! J'y ai passé toute la matinée, mais je suis prêt maintenant !
+You: C'est vrai ?!
+Fred@holo_happy: Puisque je te le dis !
+<< fx AlarmClock_LOOP >>
+Fred@holo_excited: Oh ! On dirait que c'est mon tour !
+You: Fred !...
+-> Bonne chance !!
+    You: Bonne chance !! Montre-leur de quoi tu es capable !
+    Fred@holo_smiling: Merci ! T'inquiète, je m'en charge ! Et surtout, merci pour hier soir !
+    You: On se revoit à la fête ce soir !
+-> Tu m'en dois une !!
+    You: Tu m'en dois une !!
+    Fred@holo_smiling: Oh que oui, je vais tout casser grâce à toi ! Je te revaudrai ça !!
+    You: T'auras l'occasion à la fête de ce soir !
+-> N'oublie pas : la décohérence quantique...
+    You: N'oublie pas : la décohérence quantique, c'est quand plusieurs états se superposent dans...
+    Fred@holo_smiling: Hey, t'inquiète. Je t'ai dit que j'avais révisé de mon côté !
+    You: Ouais, j'en doutais pas ...! Allez, on se revoit à la fête de ce soir !
+Fred est contraint de raccrocher... Maintenant, il n'y a plus qu'à attendre !
+<< stopFX AlarmClock_LOOP >>
+<<else>>
+Fred@holo_surprised: { $name }... T'es enfin réveillé ??
+You: Fred ! T'es où ? Pourquoi tu m'as pas réveillé ?!
+Fred@holo_bored: Ben... Devant la porte de la salle de rattrapage. Tu étais tellement crevé, je voulais pas te déranger.
+You: Mais... On a pas fini les révisions comme prévu ?!
+Fred@holo_sad: Ouaaais, je sais... Mais bon... Le mal est fait, maintenant y a plus qu'à croiser les doigts !
+<< loopFX PhoneRing_LOOP >>
+Fred@holo_surprised: Mince... C'est mon tour, on dirait.
+You: Fred, tu l'as dit toi-même, ce n'est pas qu'une question de chance...
+Fred est contraint de raccrocher...
+<<jump TransitionSagesLose>>
+<<endif>>
+===
+
+title: TransitionSagesLose
+tags: 
+colorID: 0
+position: -1585,1337
+---
+You: Hé, les Sages !! Venez, vite !
+Azul_cheerful: Salut, { $name } ! Alors, pourquoi tu nous a appelé ? Tu as pourtant réussi ton Grand Oral ?... Tu devrais prendre du repos, non ?
+You: C'est pas à propos de moi... C'est mon ami Fred. Il faut que vous l'aidiez.
+Azul_sad: Euh... Je crains que... Ce soit impossible pour nous.
+You: Mais euh... Vous m'avez bien aidé avec mes examens quand je vous ai demandé, non ?!
+Azul_happy: Précisément !... Tu nous a appelés. Ton esprit a cherché notre aide, alors nous sommes venus. Mais Fred... Il ne veut pas admettre qu'il a besoin d'aide.
+-> Aidez-le quand-même !
+    Azul_sad: Désolé, { $name }... C'est un problème contractuel. On ne peut pas intervenir dans la vie de quelqu'un sans son consentement.
+    You: Sinon, quoi ? Vous vous faites taper sur les doigts par le tribunal des Sages ??
+    Azul_sad: Quelque chose comme ça, oui... Par contre...
+    Azul_proud: Par contre ! On peut contourner la règle... Si nous te prenons en charge personnellement, nous pourrions te renvoyer dans le passé, et tu pourrais donc influencer le cours de la vie de Fred... Indépendamment de notre volonté.
+-> Aidez-moi à l'aider, au moins !
+    Azul_proud: Ce n'est... Pas une mauvaise idée ! En te prenant en charge personnellement, nous pourrions te renvoyer dans le passé, et tu pourrais donc influencer le cours de la vie de Fred... Indépendamment de notre volonté.
+Azul_sad: Mais... Cela voudrait dire qu'on ne serait, par la suite, plus autorisés à t'aider.
+You: Faites-le !
+Azul_happy: Bien... Si tu le souhaites ! Cap sur l'Assemblée des Sages !
+-> Suivre Azul
+    <<jump Assemble_Sages>>
+-> Recommencer la soirée (Passer la séquence des Sages)
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    << jump Start >>
+===
+
+
+
+
+
+
+
+
+title: Grand_Oral
+tags: 
+position: -1543,1900
+---
+
+
+Quand vous sortez de là, vous devez attendre quelques temps avant de voir sortir à son tour Fred. #line:023f102 
+<< advanceTime 0:45 >>
+<< show fred >>
+You: Alors ?  #line:07d6de0 
+Fred_smiling: Je pense que c'est bon. #line:0851e88 
+You: Je suis tombé sur le sujet de l'intrication quantique. Et toi ? #line:0f51007 
+Fred_happy: Celui de la décohérence quantique. #line:0e694c7 
+You: Suspense... #line:0410caa 
+Fred_smiling: T'inquiète, j'ai géré. #line:0af313d 
+Vous restez là, à discutez, le temps que les résultats s'affichent sur l'écran.  #line:04065c6 
+
+<< fx Notification >>
+<< music Victory >>
+<< setBackground door class-screen >>
+
+You: Super, Fred! T'es trop fort ! Tu as eu [b]A+[/b] ! #line:0dd8817 
+Fred_happy: Merci. Mais c'est grâce à toi tout ça, mon pote. Et toi ? Tu as eu combien ? #line:0df9254 
+You: Heu... [b]B+[/b]. C'est pas aussi bling que toi... #line:05f9c10 
+Fred_surprised: Cesse de te rabaisser, { $name }. Tu mérites amplement d'avoir un [b]A+[/b]. #line:0a54008 
+You: Ouais... L'important, c'est que tu restes ici. #line:02056b2 
+Fred_surprised: Quoi ?! #line:0bd6159 
+You: Tu te demandais pas si tu allais quitter la fac ? #line:0d671f3 
+Fred: Damned, tu l'avais senti ? #line:0d2086d 
+You: Si l'on veut. #line:0c1b24a 
+Fred_excited: Maintenant qu'on a les résultats et qu'ils sont bons... On peut aller fêter ça à la cafétéria ? #line:0dda84c 
+You: Yes ! #line:02d8c98 
+
+<< hide >>
+<< fadeIn >>
+<< setBackground cafeteria >>
+<< advanceTime 0:15 >>
+<< fadeOut >>
+
+Vous vous installez à la cafétéria. Les étudiants présents dans la salle vous fixent des yeux. #line:0a3011c 
+You: Tu as vu ? Les gens ont remarqué que la star de l'Académie est à la cafétéria en ce moment. #line:0209cff 
+Fred: Pas seulement { $name }. Ils ont aussi reconnu la star du glam rock : toi ! #line:07f1277 
+You: Naan, tu plaisantes. #line:0456a2f 
+Fred_smiling: Yes yes. Tu vaux plus que tu ne le crois. #line:0523ac6 
+You: Merci. De ta part, c'est un sacré compliment. #line:0e5451a 
+Fred: Tu le mérites. Sans toi, j'allais dans le mur. #line:08f3bd7 
+You: Tu sais. c'est grâce à toi aussi que je suis devenu un killer de la métacognition.  #line:0cfd59e 
+Fred_surprised: La métacognition ?! C'est quoi ça ? #line:0b29efd 
+You: Pour faire simple : l'art d'apprendre à apprendre. #line:03ead8e 
+Fred: Yes yes. Je confirme. Allez, c'est mon tour de jouer le boss, c'est moi qui commande et paye ! #line:097a96f 
+Fred commande à boire. C'est l'heure de l'apéro. On vous sert des pintes de cyberbière bien mousseusses. Vous trinquez et goûtez le breuvage. Pas mal. Vous sentez que c'est le moment de le dire à Fred... #line:0676bc6 
+You: Je t'avoue même que, grâce à toi, j'ai mieux compris mes erreurs.  #line:047eb74 
+Fred_surprised: Quelles erreurs ? #line:0feb0fb 
+
+You: Tu l'as dis. Je ne me faisais pas assez confiance. Je me sentais tellement en-dessous de toi.  #line:02e3558 
+Fred: T'exagères. #line:066c15a 
+You: Naan. Tu me semblais indépassable. Je voulais tant être ton égal. #line:07ea7db 
+Fred_happy: Rien que ça ? #line:0e97a2d 
+You: Voire plus ! Je rêvais d'être meilleur que la star de l'Académie ! #line:0377d17 
+Fred: Sans blague ! Tu es aussi une star à l'Académie, je te le redis. #line:0801e8a 
+You: Ouais. Mais c'est pas le plus important.  #line:0dea586 
+Fred_smiling: OK. #line:02ae7f9 
+You: Ce qui compte, c'est ce que je veux, moi. Te dépasser dans le classement, j'en ai rien à foutre !  #line:0248640 
+You: Cela ne m'aide pas à mieux me connaître. Et c'est ça ce qui compte : savoir qui l'on est vraiment, ce que l'on veut dans la vie, dans les études. #line:003b334 
+Fred_happy: Yes yes. T'as 100% raison. #line:0110424 
+You: Quand j'ai compris que tu projetais de quitter l'Académie, j'ai paniqué ! #line:017ab08 
+Fred: Sérieux ? #line:0f9ba21 
+You: Tu es mon meilleur pote. #line:0f33c66 
+Fred: Je vois ça. #line:0cb7096 
+You: Mais, je comprends là encore que je me suis trompé. Le plus important c'est que, quoiqu'il se passe, nous restions amis. #line:0a7f5b2 
+Fred_smiling: Yes yes. Tu es un vrai sage. #line:02ce292 
+You: J'espère en tout cas le devenir un jour. #line:02a32b6 
+La journée continue un moment. Vous payez la seconde tournée. Fred en commande une troisième. Vous en profitez également pour grignotter une salade ou un chill and chips.  #line:0861543 
+
+<< advanceTime 2:00 >>
+L'heure tourne. Il est grand temps de rentrer. Vous reprenez les cours demain matin. #line:094c0b4 
+Vous vous faites l'accolade et vous vous dites à demain ! #line:04fc725 
+
+<< fadeIn >>
+<< setBackground bedroom >>
+<< fadeOut >>
+
+Dans votre chambre, vous vous posez sur votre lit. #line:0c915bd 
+Fatigué, repu, mais content d'être parvenu à remplir cette dernière mission... La dernière mission... Il n'y en aura plus d'autre après ?... #line:0d9685d 
+
+Temde_cheerful: Yep, c'est ta dernière épreuve et tu l'as réussie. #line:05d377a 
+You: Je vous verrai plus ? #line:0a7b2e4 
+Temde_smiling: Presque plus. #line:07bbedf 
+You: Comment ça, presque plus ? #line:04ef838 
+Temde: Viens { $name }, rejoins-nous, ça sera plus facile de te l'expliquer... #line:0b2a497 
+
+-> Suivre Miss Temdé. #line:045dea8 
+  << fx Warp >>
+  << fadeIn 1500 >>
+  << hide >>
+  << jump AuRevoir_Sages >>
+===
+title: AuRevoir_Sages
+tags: 
+colorID: 0
+position: -1985,1819
+---
+<< fx Warp >>
+<< music Victory >>
+<< fadeIn 1500 12ea12 >>
+<< setBackground circle >>
+<< fadeOut >>
+
+Vous vous retrouvez encore dans ce verdoyant écrin de calme et de sérénité. Les quatre Sages vous applaudit, le sourire aux lèvres. #line:078268e 
+Sapiens_happy: Bravo ! Tu utilises avec brio les quatre stratégies d'apprentissage. En aidant Fred à surmonter ses propres obstacles, tu as su exploiter au mieux les techniques et les secrets que nous t'avons enseignés.  #line:017b09c 
+Ledai_happy: Parfait ! Tu as franchi la dernière marche. Tu as [b]appris à apprendre[/b].  #line:0a68f0c 
+Azul_happy: Félicitations ! Tu es devenu un [b]Apprenant Universel[/b] ! #line:0e05aaf 
+Temde_happy: Yep ! Je te l'ai dit. Tu es autonome. Tu n'as plus besoin de nous.  #line:0d04fae 
+You: Vous voulez dire que je ne vous verrai plus ? #line:0cce37c 
+Temde_sad: Non, ce n'est pas ça. #line:0341448 
+Ledai_explaining: Nous ne viendrons plus te réveiller tous les soirs.  #line:0bfe203 
+Azul_proud: Mais nous serons toujours présents à tes côtés. #line:0e76ddc 
+Temde_smiling: Dans ton coeur et dans tes pensées. #line:0b32a64 
+Sapiens_happy: Dans tes lectures et tes écrits. #line:0417897 
+You: Un peu comme des anges ? #line:0434098 
+Azul_cheerful: Oui. Nous sommes devenus tes Anges de la métacognition. #line:0029545 
+You: Cool ! C'est chouette !  #line:062b141 
+Sapiens_angry: Suffit. Il est tard. Il te faut dormir. #line:097ac2c 
+Ledai_happy: Bonne nuit { $name }. #line:0d4a8c1 
+Azul_happy: Que tes songes soient créatifs et originaux. #line:0366dbd 
+Temde_cheerful: N'oublie pas de rêver à nous de temps en temps... #line:050222d 
+===
+
+title: Attendre_Fred
+tags: 
+colorID: 0
+position: 2028,1231
+---
+Vous attendez Fred...  #line:053f5cc 
+<< advanceTime 1:00 >>
+
+Encore et encore...  #line:089f8a2 
+<< advanceTime 1:00 >>
+
+Manifestement, iel pense qu'une seule séance de révision avec vos fiches lui suffit. Vous avez oublié que Fred n'a pris toute la mesure de ses limites.  #line:0acf125 
+Soit, iel se surestime, soit iel se sous-estime. Vous ne pouvez encore le laisser seul, sans le guider jusqu'au Grand Oral. #line:0822be4 
+
+<< fx Failure >>
+Vous avez encore foiré. Il faut tout recommencer ! #line:0667f38 
+
+-> Retour à lundi matin! #line:0737cb6 
+  << resetLevel >>
+  << jump Lundi_matin >>
+// A mon sens, c'est un choix très imprudent pour le joueur de laisser Fred en roue libre lundi matin. Pour moi, c'est game over. Qu'en pensez-vous?
+===
