@@ -79,7 +79,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   _setup() {
     const raw =
-        localStorage.getItem("settings") || JSON.stringify(defaultSettings);
+      localStorage.getItem("settings") || JSON.stringify(defaultSettings);
 
     this.settings = JSON.parse(raw);
     this.settings.fullscreen = util.inFullscreen();
@@ -89,9 +89,9 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       this.blackBackground = new PIXI.Graphics()
-          .beginFill(0)
-          .drawRect(0, 0, variable.width, variable.height)
-          .endFill();
+        .beginFill(0)
+        .drawRect(0, 0, variable.width, variable.height)
+        .endFill();
       this.blackBackground.alpha = 0.5;
       this.blackBackground.interactive = true;
       this._on(this.blackBackground, "pointerup", this.close);
@@ -112,19 +112,19 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       // Cadre du menu
       this.popupBackground = new PIXI.NineSlicePlane(
-          this._entityConfig.app.loader.resources[
-              "images/ui/resizable_container.png"
-              ].texture,
-          116,
-          125,
-          116,
-          125
+        this._entityConfig.app.loader.resources[
+          "images/ui/resizable_container.png"
+        ].texture,
+        116,
+        125,
+        116,
+        125
       );
       this.popupBackground.width = 571;
       this.popupBackground.height = 1028;
       this.popupBackground.position.set(
-          0,
-          (this._entityConfig.app.view.height - 1028) / 2
+        0,
+        (this._entityConfig.app.view.height - 1028) / 2
       ); // Vertically center
       this.popupBackground.interactive = true;
       this.container.addChild(this.popupBackground);
@@ -133,8 +133,8 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       this._controlsContainer = new PIXI.Container();
       this._controlsContainer.position.set(
-          0,
-          (this._entityConfig.app.view.height - 1028) / 2
+        0,
+        (this._entityConfig.app.view.height - 1028) / 2
       );
       this.container.addChild(this._controlsContainer);
     }
@@ -142,18 +142,18 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       // TOC link
       this._tocButton = this.makeText(
-          "Chapitres",
-          {
-            fontFamily: "Ubuntu",
-            fill: "white",
-            fontSize: 50,
-          },
-          (it) => {
-            it.anchor.set(0.5, 0);
-            it.position.set(this.popupBackground.width / 2, 110);
-            it.interactive = true;
-            it.buttonMode = true;
-          }
+        "Chapitres",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 50,
+        },
+        (it) => {
+          it.anchor.set(0.5, 0);
+          it.position.set(this.popupBackground.width / 2, 110);
+          it.interactive = true;
+          it.buttonMode = true;
+        }
       );
       this._on(this._tocButton, "pointerup", this._onTapTocButton);
       this._controlsContainer.addChild(this._tocButton);
@@ -213,20 +213,20 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this._controlsContainer.addChild(image);
 
       this.journal = this.makeText(
-          "Journal",
-          {
-            fontFamily: "Ubuntu",
-            fill: "white",
-            fontSize: 50,
-          },
-          (it) => {
-            it.anchor.set(0, 0.5);
-            it.position.set(x + 45, y);
-            it.interactive = true;
-            it.buttonMode = true;
+        "Journal",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 50,
+        },
+        (it) => {
+          it.anchor.set(0, 0.5);
+          it.position.set(x + 45, y);
+          it.interactive = true;
+          it.buttonMode = true;
 
-            this._on(it, "pointerup", this._downloadJournal);
-          }
+          this._on(it, "pointerup", this._downloadJournal);
+        }
       );
       this._controlsContainer.addChild(this.journal);
       // this.journalUpdated = false;
@@ -247,18 +247,18 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this._controlsContainer.addChild(image);
 
       this.creditButton = this.makeText(
-          "Credits",
-          {
-            fontFamily: "Ubuntu",
-            fill: "white",
-            fontSize: 40,
-          },
-          (it) => {
-            it.anchor.set(0.5);
-            it.position.set(x - 150, y);
-            it.interactive = true;
-            it.buttonMode = true;
-          }
+        "Credits",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 40,
+        },
+        (it) => {
+          it.anchor.set(0.5);
+          it.position.set(x - 150, y);
+          it.interactive = true;
+          it.buttonMode = true;
+        }
       );
       this._on(this.creditButton, "pointertap", this._showCredits);
       this._controlsContainer.addChild(this.creditButton);
@@ -270,25 +270,25 @@ export class Menu extends extension.ExtendedCompositeEntity {
     if (util.supportsFullscreen()) {
       // Création texte
       const textFullscreen = this.makeText(
-          "Plein-écran",
-          {
-            fontFamily: "Ubuntu",
-            fill: "white",
-            fontSize: 30,
-          },
-          (it) => {
-            it.anchor.set(0);
-            it.position.set(+90, 20);
-          }
+        "Plein-écran",
+        {
+          fontFamily: "Ubuntu",
+          fill: "white",
+          fontSize: 30,
+        },
+        (it) => {
+          it.anchor.set(0);
+          it.position.set(+90, 20);
+        }
       );
       this._controlsContainer.addChild(textFullscreen);
       // Création image
       this.fullscreenSwitcher = new SpriteSwitcher(
-          {
-            on: "images/menu/fullscreen_off.png",
-            off: "images/menu/fullscreen_on.png",
-          },
-          this.settings.fullscreen ? "on" : "off"
+        {
+          on: "images/menu/fullscreen_off.png",
+          off: "images/menu/fullscreen_on.png",
+        },
+        this.settings.fullscreen ? "on" : "off"
       );
       this.fullscreenSwitcher.container.scale.set(0.7);
       this.fullscreenSwitcher.container.position.set(50, 50);
@@ -316,14 +316,14 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this._controlsContainer.addChild(logo);
 
       this.musicVolumeSwitcher = new SpriteRangeSwitcher(
-          {
-            0: "images/menu/fx_000.png",
-            0.25: "images/menu/fx_025.png",
-            0.5: "images/menu/fx_050.png",
-            0.75: "images/menu/fx_075.png",
-            1: "images/menu/fx_100.png",
-          },
-          this.settings.music ?? defaultSettings.music
+        {
+          0: "images/menu/fx_000.png",
+          0.25: "images/menu/fx_025.png",
+          0.5: "images/menu/fx_050.png",
+          0.75: "images/menu/fx_075.png",
+          1: "images/menu/fx_100.png",
+        },
+        this.settings.music ?? defaultSettings.music
       );
       this.musicVolumeSwitcher.container.scale.set(0.8);
       this.musicVolumeSwitcher.container.position.set(x, y);
@@ -348,14 +348,14 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this._controlsContainer.addChild(logo);
 
       this.soundVolumeSwitcher = new SpriteRangeSwitcher(
-          {
-            0: "images/menu/fx_000.png",
-            0.25: "images/menu/fx_025.png",
-            0.5: "images/menu/fx_050.png",
-            0.75: "images/menu/fx_075.png",
-            1: "images/menu/fx_100.png",
-          },
-          this.settings.fx ?? defaultSettings.fx
+        {
+          0: "images/menu/fx_000.png",
+          0.25: "images/menu/fx_025.png",
+          0.5: "images/menu/fx_050.png",
+          0.75: "images/menu/fx_075.png",
+          1: "images/menu/fx_100.png",
+        },
+        this.settings.fx ?? defaultSettings.fx
       );
       this.soundVolumeSwitcher.container.scale.set(0.8);
       this.soundVolumeSwitcher.container.position.set(x, y);
@@ -371,26 +371,30 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       const x = this.popupBackground.width - 280;
       const y = 870;
-      const logo = this.makeText("Vitesse du texte", {
-        fontFamily: "Ubuntu",
-        fontSize:32,
-        fontStyle: "bolder",
-        fill:"white"
-      }, (it)=>{
-        it.anchor.set(0.5);
-        it.position.set(x, y-60);
-      });
+      const logo = this.makeText(
+        "Vitesse du texte",
+        {
+          fontFamily: "Ubuntu",
+          fontSize: 32,
+          fontStyle: "bolder",
+          fill: "white",
+        },
+        (it) => {
+          it.anchor.set(0.5);
+          it.position.set(x, y - 60);
+        }
+      );
       this._controlsContainer.addChild(logo);
 
       this.textSpeedSwitcher = new SpriteRangeSwitcher(
-          {
-            0: "images/menu/fx_000.png",
-            0.25: "images/menu/fx_025.png",
-            0.5: "images/menu/fx_050.png",
-            0.75: "images/menu/fx_075.png",
-            1: "images/menu/fx_100.png",
-          },
-          this.settings.textSpeed ?? defaultSettings.fx
+        {
+          0: "images/menu/fx_000.png",
+          0.25: "images/menu/fx_025.png",
+          0.5: "images/menu/fx_050.png",
+          0.75: "images/menu/fx_075.png",
+          1: "images/menu/fx_100.png",
+        },
+        this.settings.textSpeed ?? defaultSettings.fx
       );
       this.textSpeedSwitcher.container.scale.set(0.8);
       this.textSpeedSwitcher.container.position.set(x, y);
@@ -444,28 +448,28 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }*/
 
     this._activateChildEntity(
-        this.fullscreenSwitcher,
-        entity.extendConfig({
-          container: this._controlsContainer,
-        })
+      this.fullscreenSwitcher,
+      entity.extendConfig({
+        container: this._controlsContainer,
+      })
     );
     this._activateChildEntity(
-        this.musicVolumeSwitcher,
-        entity.extendConfig({
-          container: this._controlsContainer,
-        })
+      this.musicVolumeSwitcher,
+      entity.extendConfig({
+        container: this._controlsContainer,
+      })
     );
     this._activateChildEntity(
-        this.soundVolumeSwitcher,
-        entity.extendConfig({
-          container: this._controlsContainer,
-        })
+      this.soundVolumeSwitcher,
+      entity.extendConfig({
+        container: this._controlsContainer,
+      })
     );
     this._activateChildEntity(
-        this.textSpeedSwitcher,
-        entity.extendConfig({
-          container: this._controlsContainer,
-        })
+      this.textSpeedSwitcher,
+      entity.extendConfig({
+        container: this._controlsContainer,
+      })
     );
 
     this._entityConfig.container.addChild(this.container);
@@ -480,15 +484,15 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   private _onTapTocButton() {
     const message =
-        "Etes-vous sûr de vouloir retourner au choix des chapitres ?";
+      "Etes-vous sûr de vouloir retourner au choix des chapitres ?";
     this._activateChildEntity(
-        new popup.Confirm(message, (result: boolean) => {
-          if (!result) return;
+      new popup.Confirm(message, (result: boolean) => {
+        if (!result) return;
 
-          // Return to the TOC and close the menu
-          this._entityConfig.gameStateMachine.changeState("toc");
-          this.close();
-        })
+        // Return to the TOC and close the menu
+        this._entityConfig.gameStateMachine.changeState("toc");
+        this.close();
+      })
     );
   }
 
@@ -544,13 +548,13 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     // Check if the journal button should be activated or deactivated
     const shouldEnableJournal =
-        Object.keys(this.config.variableStorage.get("journalAnswers")).length > 0;
+      Object.keys(this.config.variableStorage.get("journalAnswers")).length > 0;
     this._enableButton(this.journal, shouldEnableJournal);
 
     // Check if the TOC button should be activated
     const shouldEnableTocButton =
-        this._entityConfig.gameStateMachine.isSetup &&
-        this._entityConfig.gameStateMachine.lastTransition.name !== "toc";
+      this._entityConfig.gameStateMachine.isSetup &&
+      this._entityConfig.gameStateMachine.lastTransition.name !== "toc";
     this._enableButton(this._tocButton, shouldEnableTocButton);
     this._enableButton(this._gameLogo, shouldEnableTocButton);
   }
@@ -568,9 +572,9 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
   private _showHistory() {
     const background = new PIXI.Graphics()
-        .beginFill(0x000000, 0.8)
-        .drawRect(0, 0, 1920, 1080)
-        .endFill();
+      .beginFill(0x000000, 0.8)
+      .drawRect(0, 0, 1920, 1080)
+      .endFill();
 
     this.container.addChild(background);
 
@@ -582,10 +586,10 @@ export class Menu extends extension.ExtendedCompositeEntity {
     });
 
     this._activateChildEntity(
-        scrollBox,
-        entity.extendConfig({
-          container: this.container,
-        })
+      scrollBox,
+      entity.extendConfig({
+        container: this.container,
+      })
     );
 
     scrollBox.container.position.set(100);
@@ -604,11 +608,11 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     if (empty) {
       scrollBox.content.addChild(
-          this.makeText("Empty history - Historique vide", {
-            fontFamily: "Ubuntu",
-            fontSize: "50px",
-            fill: "#ffffff",
-          })
+        this.makeText("Empty history - Historique vide", {
+          fontFamily: "Ubuntu",
+          fontSize: "50px",
+          fill: "#ffffff",
+        })
       );
     }
 
@@ -623,32 +627,32 @@ export class Menu extends extension.ExtendedCompositeEntity {
   private _downloadJournal() {
     // If no journal entries exist, should do nothing
     if (
-        Object.keys(this.config.variableStorage.get("journalAnswers")).length ===
-        0
+      Object.keys(this.config.variableStorage.get("journalAnswers")).length ===
+      0
     )
       return;
 
     this._activateChildEntity(
-        new popup.Confirm(
-            "Télécharger votre journal de la métacognition ?",
-            (validated: boolean) => {
-              if (!validated) return;
-              const journalDownload = new journal.JournalPDF();
-              this._activateChildEntity(journalDownload);
-              journalDownload.journalToPDF(
-                  this.config.variableStorage.get("journalAnswers"),
-                  this.makeSprite("images/journalPDF/background.png")
-              );
-              this._deactivateChildEntity(journalDownload);
-            }
-        )
+      new popup.Confirm(
+        "Télécharger votre journal de la métacognition ?",
+        (validated: boolean) => {
+          if (!validated) return;
+          const journalDownload = new journal.JournalPDF();
+          this._activateChildEntity(journalDownload);
+          journalDownload.journalToPDF(
+            this.config.variableStorage.get("journalAnswers"),
+            this.makeSprite("images/journalPDF/background.png")
+          );
+          this._deactivateChildEntity(journalDownload);
+        }
+      )
     );
   }
 }
 
 export function makeInstallMenu(
-    rootConfig: entity.EntityConfig,
-    rootEntity: entity.ParallelEntity
+  rootConfig: entity.EntityConfig,
+  rootEntity: entity.ParallelEntity
 ) {
   rootConfig.menu = new Menu();
   rootEntity.addChildEntity(rootConfig.menu);
@@ -659,19 +663,19 @@ export function makeInstallMenu(
  * - newState: keyof States
  */
 export class SpriteSwitcher<
-    States extends Record<string | number, string> = Record<"on" | "off", string>
-    > extends entity.EntityBase {
+  States extends Record<string | number, string> = Record<"on" | "off", string>
+> extends entity.EntityBase {
   public currentSprite?: PIXI.Sprite;
   public currentState?: keyof States;
   public container = new PIXI.Container();
 
   constructor(
-      private states: States,
-      private initialState?: keyof States,
-      private stateController?: (
-          this: SpriteSwitcher<States>,
-          event: PIXI.InteractionEvent
-      ) => unknown
+    private states: States,
+    private initialState?: keyof States,
+    private stateController?: (
+      this: SpriteSwitcher<States>,
+      event: PIXI.InteractionEvent
+    ) => unknown
   ) {
     super();
   }
@@ -695,15 +699,15 @@ export class SpriteSwitcher<
     this.currentState = stateName;
     this.container.removeChildren();
     this.currentSprite = new PIXI.Sprite(
-        this._entityConfig.app.loader.resources[this.states[stateName]].texture
+      this._entityConfig.app.loader.resources[this.states[stateName]].texture
     );
     this.currentSprite.buttonMode = true;
     this.currentSprite.interactive = true;
     this.currentSprite.anchor.set(0.5);
     this._once(
-        this.currentSprite,
-        "pointerup",
-        this.stateController?.bind(this) ?? this.next.bind(this)
+      this.currentSprite,
+      "pointerup",
+      this.stateController?.bind(this) ?? this.next.bind(this)
     );
     this.container.addChild(this.currentSprite);
     this.emit("newState", stateName);
@@ -712,13 +716,13 @@ export class SpriteSwitcher<
   next() {
     const stateNames = Object.keys(this.states);
     const newState =
-        stateNames[stateNames.indexOf(this.currentState as string) + 1];
+      stateNames[stateNames.indexOf(this.currentState as string) + 1];
     this.switch(newState ?? stateNames[0]);
   }
 }
 
 export interface SpriteRangeSwitcherStates
-    extends Record<string | number, string> {
+  extends Record<string | number, string> {
   0: string;
   0.25: string;
   0.5: string;
@@ -728,13 +732,13 @@ export interface SpriteRangeSwitcherStates
 
 export class SpriteRangeSwitcher extends SpriteSwitcher<SpriteRangeSwitcherStates> {
   constructor(
-      states: SpriteRangeSwitcherStates,
-      initialState?: keyof SpriteRangeSwitcherStates
+    states: SpriteRangeSwitcherStates,
+    initialState?: keyof SpriteRangeSwitcherStates
   ) {
     super(states, initialState, function (event) {
       const cursor = event.data.getLocalPosition(this.currentSprite);
       const factor =
-          (cursor.x + this.currentSprite.width / 2) / this.currentSprite.width;
+        (cursor.x + this.currentSprite.width / 2) / this.currentSprite.width;
 
       if (factor < 0.2) {
         this.switch(0);
