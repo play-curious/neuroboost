@@ -204,7 +204,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       // Bouton journal
       const x = this.popupBackground.width / 2 - 115;
-      const y = 505;
+      const y = 545;
       let image = this.makeSprite("images/menu/journal.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.4);
@@ -307,7 +307,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       const x = this.popupBackground.width - 250;
-      const y = 620;
+      const y = 650;
       const logo = this.makeSprite("images/menu/musique.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.3);
@@ -339,7 +339,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       const x = this.popupBackground.width - 250;
-      const y = 710;
+      const y = 740;
       const logo = this.makeSprite("images/menu/bruitage.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.3);
@@ -370,7 +370,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       const x = this.popupBackground.width - 280;
-      const y = 830;
+      const y = 870;
       const logo = this.makeText("Vitesse du texte", {
         fontFamily: "Ubuntu",
         fontSize:32,
