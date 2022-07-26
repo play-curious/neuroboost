@@ -1017,6 +1017,8 @@ position: -940,907
     You: Azul…
     <<jump QuestionsAzul>>
 -> Révéler quel Sage ressemble à Fred  #line:0319aa8 
+    You: Je crois que j'ai trouvé à qui ressemble Fred !
+    Sapiens_happy: Nous t'écoutons. #line:04dced3 
     <<jump Trouver_Fred>>
 ===
 
@@ -1039,8 +1041,6 @@ position: -1895,1126
     Temde_cheerful: J'aime prendre des risques, j'avance à tâtons, mes erreurs m'aident à progresser. #line:00fc2ad 
     <<jump QuestionsTemde>>
 -> Interroger un autre Sage
-    You: Je crois que j'ai trouvé à qui ressemble Fred !
-    Sapiens_happy: Nous t'écoutons. #line:04dced3 
     <<jump Questions_Sages>>
 ===
 
