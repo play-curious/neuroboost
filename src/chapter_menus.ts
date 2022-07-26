@@ -334,6 +334,15 @@ export class ScoreMenu extends extension.ExtendedCompositeEntity {
     {
       // Make stars
       const starWidth = 128;
+      switch(this._options.score)
+      {
+        case 3:
+          this._entityConfig.fxMachine.play("Success");
+        break;
+        case 0:
+          this._entityConfig.fxMachine.play("Failure");
+        break;
+      }
       for (let i = 0; i < 3; i++) {
         const starVariant = this._options.score > i ? "highlight" : "greyed";
         const fileName = `images/ui/star-big-${starVariant}.png`;
