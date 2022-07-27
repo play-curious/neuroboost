@@ -26,9 +26,9 @@ Vous avez rejoint leur assemblée ! Vous êtes devenu un expert de la métacogni
     << setBackground bedroom >>
     Vous levez les bras en l'air et vous époumonez, criant toute votre joie. Vous vous rendez alors compte que vous étiez allongé… Dans votre lit.
     << fadeOut >>
-    Refaire voisin
-    ???: Ca va pas la tête ?! Tu m'as réveillé, sale…
-    Il est presque 8h, vous en profitez pour vous lever, sans prêter attention aux propos de votre voisin. Les murs sont fins, dans la cité résidentielle de l'Académie !
+    Vous entendez la voix de votre voisin qui résonne à travers les parois de l'immeuble. Les murs sont fins, dans la cité résidentielle de l'Académie !
+    ???: Ca va pas la tête ?! Tu m'as réveillé !
+    Il est presque 8h, vous en profitez pour vous lever, sans prêter attention aux propos de votre voisin.
 -> Faire un test de réalité
     << fadeIn >>
     << setBackground bedroom >>
@@ -150,151 +150,17 @@ position: -2006,-802
 << setBackground bedroom desk >>
 << fadeOut >>
 
--> Réviser votre cours, façon "rappel libre" #once #line:0d03aa4 
+-> Réviser votre cours, façon "rappel libre" (2h) #once #line:0d03aa4 
     <<jump Rappel_libre>>
--> Approfondir votre cours <<if visited("Rappel_libre")>> #once
+-> Approfondir votre cours (2h) <<if visited("Rappel_libre")>> #once
     <<jump Approfondir>>
--> Vous informer en ligne sur les causes et les effets des pathologies cardiaques#once #line:0ecd663 
+-> Vous informer en ligne sur les causes et les effets des pathologies cardiaques (1h) #once #line:0ecd663 
     <<jump Web_Info>>
 -> back #line:0b4e444 
     << fadeIn >>
     <<jump Liste_Taches>>
 ===
 
-title: cuisine_subchoice
-tags: subchoice
-position: -2300,-808
----
-<< fadeIn >>
-<< setBackground bedroom kitchen >>
-<< fadeOut >>
-
--> Prendre votre petit déjeuner#once #line:0e22ba7 
-    <<jump Breakfast>>
--> back #line:0e01364 
-    << fadeIn >>
-    <<jump Liste_Taches>>
-===
-
-title: salon_subchoice
-tags: subchoice
-position: -2527,-570
----
-<< fadeIn >>
-<< setBackground bedroom chill >>
-<< fadeOut >>
-
--> Appeler vos parents#once #line:01f72bb 
-    <<jump Maman_Call>>
--> Appeler Fred#once #line:08995b6 
-    <<jump Fred_Call>>
--> Méditer pour se détendre#once #line:0248b56 
-    <<jump Mediter>>
--> Jouer de la guitare
-    <<jump Guitar_Playing>>
--> back #line:0e609cb 
-    << fadeIn >>
-    <<jump Liste_Taches>>
-===
-
-title: lit_subchoice
-tags: subchoice
-position: -1877,-619
----
-<< fadeIn >>
-<< setBackground bedroom bed >>
-<< fadeOut >>
--> Faire une sieste (1h30) #once
-    <<jump Sieste>>
--> back
-    <<jump Liste_Taches>>
-===
-
-title: Sieste
-tags: 
-position: -1644,-626
----
-<<if getGauge("stress") <= 66>>
-Vous vous allongez dans votre lit. Peut-être que le sommeil vous changerait les idées… Vous ne parvenez pas à penser à autre chose que votre grand-mère.
-Au bout d'un certain temps, vous arrêtez la torture, incapable de fermer l'oeil.
-<< advanceTimeBy 0:30 sleep >>
-<<else>>
-<< fx Sleep_LOOP>>
-Vous vous allongez dans votre lit. Vous avez du mal à fermer l'oeil, mais vous vous forcez pour reprendre vos esprits.
-<< stopFX Sleep_LOOP>>
-Vous vous relevez, un peu plus détendu.
-<< removeFromGauge stress 10 >>
-<< removeFromGauge mentalLoad 20 >>
-<< addToGauge sleep 40 >>
-<< advanceTimeBy 1:30 sleep food >>
-<<endif>>
-
-<<jump Liste_Taches>>
-===
-
-title: Breakfast
-tags: 
-position: -2293,-967
----
-<< fadeIn >>
-<< setBackground bedroom kitchen >>
-<< fadeOut >>
-<< advanceTimeBy 0:15 food >>
-Ce matin, l'important est moins de manger équilibré que de garder son calme. Vous vous gavez de chimicookies et vous buvez un synthécafé.
-<< addToGauge food 40 >>
-<<jump Liste_Taches>>
-===
-
-title: Mediter
-tags: 
-position: -1302.82568359375,241.21925354003906
-colorID: 2
----
-Vous décidez de prendre un peu de temps pour vous détendre, en utilisant une méthode que vous connaissez peu : la méditation.
-Vous vous mettez confortablement sur votre canapé, et vous commencez… #line:0fd44de 
-
-<< fx Bell_Meditation >>
-Vous sentez vos poumons se gonfler puis se vider.  #line:042e656 
-Vous sentez l'air entrer dans votre bouche et descendre jusqu'au niveau du ventre avant de faire le chemin inverse à l'expiration. Votre corps se relâche peu à peu. Vos pensées se font moins bruyantes, moins oppressantes, moins nombreuses.  #line:0ad1fee 
-Vous comprenez un peu mieux ce que veut dire : se connecter à l'instant présent. #line:0077027 
-<< advanceTimeBy 0:30>>
-<< removeFromGauge stress 30>>
-
-<<jump Liste_Taches>>
-===
-
-title: Guitar_Playing
-tags: 
-position: -2897,-497
----
-<< music AcousticGuitar >>
-Avec les dernières nouvelles, vous préférez garder votre esprit concentré sur autre chose. Vous attrapez votre instrument et vous positionnez.
-<< advanceTimeBy 1:00 >>
-Vous passez l'heure suivante à gratter les cordes en rythme, consacrant entièrement votre esprit à l'harmonie et à vos mélodies improvisées.
-<< removeFromGauge stress 20 >>
-Vous vous sentez comme allégé et apaisé par cette séance de création musicale.
-<< music Neutral >>
-<<jump Liste_Taches>>
-===
-
-title: Maman_Call
-tags: 
-position: -2876,-389
----
-Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous appuyez sur le bouton "appel". Votre mère décroche : #line:04f580b 
-
-Maman@holo_shadow: Mon chou. Tu es au courant ? #line:0997c40 
-You: Oui. Mamie m'a appelé. Pourquoi tu n'as rien dit ? #line:0ecb0f2 
-Maman@holo_shadow: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus. #line:0c3842c 
-You: Merci. Du coup, je suis encore plus stressé…
-Maman@holo_shadow: Mon chou, je ne pensais pas te…  #line:0e60133 
-You: J'ai compris. A plus ! #line:0a1b54f 
-<< hide >>
-Vous raccrochez, encore plus fébrile que tout-à-l'heure.
-<< addToGauge stress 10 >>
-<< advanceTimeBy 0:15 >>
-<<jump Liste_Taches>>
-===
 
 title: Rappel_libre
 tags: 
@@ -352,6 +218,77 @@ Vous passez l'heure suivante à lire des tonnes d'articles sur le sujet. Vous n'
 Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes… #line:023c812 
 Vous en ressortez encore plus stressé.
 << addToGauge stress 20 >>
+<<jump Liste_Taches>>
+===
+
+
+title: cuisine_subchoice
+tags: subchoice
+position: -2300,-808
+---
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+
+-> Prendre votre petit déjeuner (15 min) #once #line:0e22ba7 
+    <<jump Breakfast>>
+-> back #line:0e01364 
+    << fadeIn >>
+    <<jump Liste_Taches>>
+===
+
+title: Breakfast
+tags: 
+position: -2293,-967
+---
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+<< advanceTimeBy 0:15 food >>
+<< fx EatCook >>
+Ce matin, l'important est moins de manger équilibré que de garder son calme. Vous vous gavez de chimicookies et vous buvez un synthécafé.
+<< addToGauge food 40 >>
+<<jump Liste_Taches>>
+===
+
+
+title: salon_subchoice
+tags: subchoice
+position: -2527,-570
+---
+<< fadeIn >>
+<< setBackground bedroom chill >>
+<< fadeOut >>
+
+-> Appeler vos parents #once #line:01f72bb 
+    <<jump Maman_Call>>
+-> Appeler Fred #once #line:08995b6 
+    <<jump Fred_Call>>
+-> Méditer pour se détendre (30 min) #once
+    <<jump Mediter>>
+-> Jouer de la guitare (1h) #once
+    <<jump Guitar_Playing>>
+-> back #line:0e609cb 
+    << fadeIn >>
+    <<jump Liste_Taches>>
+===
+
+title: Maman_Call
+tags: 
+position: -2876,-389
+---
+Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous appuyez sur le bouton "appel". Votre mère décroche : #line:04f580b 
+
+Maman@holo_shadow: Mon chou. Tu es au courant ? #line:0997c40 
+You: Oui. Mamie m'a appelé. Pourquoi tu n'as rien dit ? #line:0ecb0f2 
+Maman@holo_shadow: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus. #line:0c3842c 
+You: Merci. Du coup, je suis encore plus stressé…
+Maman@holo_shadow: Mon chou, je ne pensais pas te…  #line:0e60133 
+You: J'ai compris. A plus ! #line:0a1b54f 
+<< hide >>
+Vous raccrochez, encore plus fébrile que tout-à-l'heure.
+<< addToGauge stress 10 >>
+<< advanceTimeBy 0:15 >>
 <<jump Liste_Taches>>
 ===
 
@@ -478,6 +415,75 @@ Fred@holo_happy: D'accord, alors on joue en ligne ! Attention, je te défie à C
 <<jump Liste_Taches>>
 ===
 
+title: Mediter
+tags: 
+position: -1302.82568359375,241.21925354003906
+colorID: 2
+---
+Vous décidez de prendre un peu de temps pour vous détendre, en utilisant une méthode que vous connaissez peu : la méditation.
+Vous vous mettez confortablement sur votre canapé, et vous commencez… #line:0fd44de 
+<< music >>
+<< fx Bell_Meditation >>
+Vous sentez vos poumons se gonfler puis se vider.  #line:042e656 
+Vous sentez l'air entrer dans votre bouche et descendre jusqu'au niveau du ventre avant de faire le chemin inverse à l'expiration. Votre corps se relâche peu à peu. Vos pensées se font moins bruyantes, moins oppressantes, moins nombreuses.  #line:0ad1fee 
+Vous comprenez un peu mieux ce que veut dire : se connecter à l'instant présent. #line:0077027 
+<< advanceTimeBy 0:30>>
+<< removeFromGauge stress 30>>
+<< music Neutral >>
+<<jump Liste_Taches>>
+===
+
+title: Guitar_Playing
+tags: 
+position: -2897,-497
+---
+<< music AcousticGuitar >>
+Avec les dernières nouvelles, vous préférez garder votre esprit concentré sur autre chose. Vous attrapez votre instrument et vous positionnez.
+<< advanceTimeBy 1:00 >>
+Vous passez l'heure suivante à gratter les cordes en rythme, consacrant entièrement votre esprit à l'harmonie et à vos mélodies improvisées.
+<< removeFromGauge stress 20 >>
+Vous vous sentez comme allégé et apaisé par cette séance de création musicale.
+<< music Neutral >>
+<<jump Liste_Taches>>
+===
+
+
+title: lit_subchoice
+tags: subchoice
+position: -1877,-619
+---
+<< fadeIn >>
+<< setBackground bedroom bed >>
+<< fadeOut >>
+-> Faire une sieste (1h30) #once
+    <<jump Sieste>>
+-> back
+    <<jump Liste_Taches>>
+===
+
+title: Sieste
+tags: 
+position: -1644,-626
+---
+<<if getGauge("stress") <= 66>>
+Vous vous allongez dans votre lit. Peut-être que le sommeil vous changerait les idées… Vous ne parvenez pas à penser à autre chose que votre grand-mère.
+Au bout d'un certain temps, vous arrêtez la torture, incapable de fermer l'oeil.
+<< advanceTimeBy 0:30 sleep >>
+<<else>>
+<< fx Sleep_LOOP>>
+Vous vous allongez dans votre lit. Vous avez du mal à fermer l'oeil, mais vous vous forcez pour reprendre vos esprits.
+<< stopFX Sleep_LOOP>>
+Vous vous relevez, un peu plus détendu.
+<< removeFromGauge stress 10 >>
+<< removeFromGauge mentalLoad 20 >>
+<< addToGauge sleep 40 >>
+<< advanceTimeBy 1:30 sleep food >>
+<<endif>>
+
+<<jump Liste_Taches>>
+===
+
+
 title: Salle_Examen
 tags: 
 position: -1954,-331
@@ -501,7 +507,7 @@ You: Si tu le dis. #line:00d2895
 Fred_sad: Ah bon ? Hier, tu crachais le feu. Aujourd'hui, tu es glacé. #line:0d28dc6 
 <<endif>>
 
-<< loopFX PhoneRing_LOOP 2000 >>
+<< loopFX PhoneRing_LOOP >>
 << screenshake 10 600 >>
 Votre palmphone vibre. C'est votre mère qui tente de vous rejoindre. Fred vous fixe des yeux : #line:0bbaf53 
 Fred_sad: T'es sûr ? Ça va ? #line:036c307 
@@ -627,7 +633,8 @@ Vous arrivez à faire abstraction de vos pensées intrusives, et vous vous donne
     << advanceTimeBy 4:00 sleep food >>
     <<jump Resultats_Bad>>
     <<else>>
-    Vous répondez aux questions, en prenant soin de peaufiner vos arguments.
+    << music Victory >>
+    Vous répondez aux questions, en prenant soin de peaufiner vos arguments. Vous êtes plutôt sûr de vous !
     Le temps imparti passe très vite. Vous validez votre copie et vous sortez de la salle en sifflotant. #line:080b64b 
     << advanceTimeBy 4:00 sleep food >>
     <<jump Resultats_Good>>
@@ -684,6 +691,7 @@ Fred a raison. Vous lui souhaitez un bon week-end et vous filer vous reposer.
 << fadeIn >>
 << setBackground bedroom >>
 << fadeOut>>
+<< music NegativeSad >>
 De retour chez vous, vous êtes soulagé d'avoir réussi, mais encore plus anxieux. L'examen est passé, et maintenant c'est le week-end : plus rien ne retient vos pensées anxiogènes.
 << addToGauge stress 40 >>
 Vous pensez toujours à votre grand-mère. Que lui arrive-t-il ? Est-elle sur la voie de la guérison ou pas ?
@@ -696,6 +704,7 @@ Votre corps et votre instinct vous disent qu'il faut trouver le sommeil. Mais vo
 << fadeOut 1 >>
 <<jump Choix_night>>
 ===
+
 
 title: Choix_night
 tags: 
@@ -807,6 +816,7 @@ position: -853,-877
 colorID: 2
 ---
 << fadeIn >>
+<< music Victory >>
 Votre esprit est suffisamment détendu. Vous fermez les yeux, vous relâchez votre corps, vous glissez dans le sommeil. Vous dites enfin adieu à ce vendredi stressant…
 <<if visited("Win")>>
 << completeLevel >>
@@ -934,15 +944,13 @@ Sapiens_thinking: Voyons si tu vas trouver la réponse à la prochaine. Pour ré
 ===
 
 title: End_Quizz
-tags:  noUi
+tags: noUi
 position: 1890.22265625,-521.7122497558594
 ---
-Azul_happy: Retiens bien : l'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent.  #line:0c38101 
-You: Je note tout ça dans mon "carnet d'ingénieur tout-terrain"? #line:0a20f39 
-Ledai_happy: Oui ! #line:0a1c9b2 
+Azul_happy: Retiens bien : l'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent. A bientôt !
 << hide >>
 <<jump Journal>>
-=== 
+===
 
 title: Journal
 tags:  noUi

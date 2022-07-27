@@ -743,8 +743,8 @@ title: Quit_Sages
 tags: noUi
 position: 243.36883544921875,1410.058349609375
 ---
-You: C'est bon pour moi… Mais en attendant, va falloir que je me souvienne de tout ça à mon réveil. Comment faire ?
-Ledai_happy: En notant toutes les idées importantes dans ton <bi>Journal Mental</bi> ! #line:0838542 
+You: C'est bon pour moi… Je crois.
+Ledai_happy: Tiens, tu as mérité un petit cadeau. Cette tablette de mon invention te servira de <bi>Journal Mental</bi>. Il te servira à t'aiguiller après chacune de nos séances.
 
 <<if !visited("Resultats_Good")>>
 Temde_smiling: Lorsque tu auras eu le temps de noter dans ton journal, nous te renverrons au début de cette journée. Bonne chance !

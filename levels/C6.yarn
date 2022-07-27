@@ -174,9 +174,9 @@ Votre frigo est complètement vide ! Vous devriez acheter de ma matière organiq
 <<jump Liste_Taches>>
 <<endif>>
 
--> Manger sainement
+-> Manger sainement (45 min)
     <<jump MangerSain>>
--> Manger vite
+-> Manger vite (15 min)
     <<jump MangerVite>>
 -> back #line:07871a6 
     << fadeIn >>
@@ -227,19 +227,19 @@ colorID: 6
 << setBackground bedroom desk >>
 << fadeOut >>
 
--> Faire le planning du week-end #once
+-> Faire le planning du week-end (30 min) #once
     <<jump Planning_samedi>>
--> Réorganiser le planning <<if $jour == "dimanche" && visited("Planning_samedi")>> #once
+-> Réorganiser le planning (30 min) <<if $jour == "dimanche" && visited("Planning_samedi")>> #once
     <<jump Planning_dimanche>>
--> Réorganiser une dernière fois le planning <<if $jour == "lundi" && visited("Planning_dimanche")>> #once
+-> Réorganiser une dernière fois le planning (30 min) <<if $jour == "lundi" && visited("Planning_dimanche")>> #once
     <<jump Planning_lundi>>
--> Réviser la Philosophie Quantique
+-> Réviser la Philosophie Quantique (2h)
     <<jump Reviser>>
--> Faire des fiches de révision #once
+-> Faire des fiches de révision (1h) #once
     <<jump Fiches>>
--> Relire ses fiches de révision <<if $jour == "dimanche" && visited("Fiches")>> #once
+-> Relire ses fiches de révision (30 min) <<if $jour == "dimanche" && visited("Fiches")>> #once
     <<jump Reviser_Fiches_dimanche>>
--> Relire une dernière fois ses fiches <<if $jour == "lundi" && visited("Fiches")>> #once
+-> Relire une dernière fois ses fiches (30 min) <<if $jour == "lundi" && visited("Fiches")>> #once
     <<jump Reviser_Fiches_lundi>>
 -> Activer le mode Zéro-Distraction <<if !$silence>>
     <<jump Zero_Distraction>>
@@ -443,7 +443,6 @@ Cette piqûre de rappel n'est sûrement pas de trop avant d'aborder l'examen !
 <<jump Liste_Taches>>
 ===
 
-
 title: Zero_Distraction
 tags: 
 position: 768,-255
@@ -477,7 +476,7 @@ colorID: 6
 << setBackground bedroom bed >>
 << fadeOut >>
 
--> Faire une sieste #line:08fade8 
+-> Faire une sieste (1h30)
     <<jump Sieste>>
 -> back #line:0b5b481 
     << fadeIn >>
@@ -521,12 +520,15 @@ RoomMate: Les activités de détente sont désactivées avec le mode Zéro-Distr
 <<jump Liste_Taches>>
 <<endif>>
 
--> Regarder Star Mars
+-> Regarder Star Mars (2h)
     <<jump BingeTV>>
--> Jouer de la guitare
+-> Jouer de la guitare (2h)
     <<jump Musique>>
+-> Méditer (30 min)
+    <<jump Mediter>>
 -> Passer le temps jusqu'à 20h <<if !isTimeOver("20:00")>>
     << advanceTimeUntil 20:00 >>
+    Vous estimez avoir fait ce que vous aviez à faire pour aujourd'hui. Vous en profitez pour ranger un peu votre appartement et jetter un oeil à votre messagerie avant le soir.
     <<jump Liste_Taches>>
 -> back #line:0aaf8ca 
     << fadeIn >>
@@ -552,7 +554,7 @@ Le plan machiavélique des Saturniens, le Portail Multiversel d'Unification, vie
 << removeFromGauge stress 20 >>
 
 Cela fait déjà 2 heures que vous regardez le film, vous pourriez le terminer ou remettre la fin pour une prochaine fois.
--> Continuer à regarder #line:046fa2a 
+-> Continuer à regarder (1h)
 -> Retourner à vos occupations #line:08aa712 
     << hide >>
     << fadeIn >>
@@ -595,6 +597,22 @@ Vous vous lancez alors dans une petite improvisation musicale. Le son brut et ar
 <<jump Liste_Taches>>
 ===
 
+title: Mediter
+tags: 
+position: -1302.82568359375,241.21925354003906
+colorID: 2
+---
+Vous décidez de vous vider l'esprit, de vous concentrer sur le moment présent, en pratiquant la méditation en pleine conscience.
+<< music >>
+<< fx Bell_Meditation >>
+Vous vous concentrez sur les pensées positives, sur l'avenir, mais aussi le présent. Vos émotions se stabilisent à mesure que vous inspirez et expirez lentement.
+<< advanceTimeBy 0:30>>
+<< removeFromGauge stress 30>>
+Vous vous sentez léger, et plus serein.
+<< music Neutral >>
+<<jump Liste_Taches>>
+===
+
 title: Reseaux_samedi
 tags: 
 position: 1591,-83
@@ -621,16 +639,16 @@ colorID: 6
 <<if $jour == "samedi">>
 -> Aller au club de Jungle Body Beat (Passe le temps jusqu'à 14h) <<if !isTimeOver("14:30") && $jour == "samedi">> #once
     <<jump Sport_samedi>>
--> Faire les courses <<if !visited("Courses")>>
+-> Faire les courses (1h) <<if !visited("Courses")>>
     <<jump Courses>>
 -> back #line:055ab07 
     <<jump Liste_Taches>>
 <<else>>
--> Faire les courses <<if !visited("Courses")>>
+-> Faire les courses (1h) <<if !visited("Courses")>>
     <<jump Courses>>
 -> Aller au Grand Oral (Passe le temps jusqu'à 15h) <<if $jour == "lundi">>
     <<jump Grand_Oral>>
--> Aller chercher Fred pour faire un jogging avant l'examen <<if $jour == "lundi">> #once
+-> Aller chercher Fred pour faire un jogging avant l'examen (2h) <<if $jour == "lundi">> #once
     <<jump Jogging>>
 -> back #line:055ab07 
     <<jump Liste_Taches>>
@@ -700,6 +718,34 @@ Vous remplissez votre caddie avec de la matière organique synthétique, une qua
 <<jump Liste_Taches>>
 ===
 
+title: Jogging
+tags: 
+position: 1672,1359
+---
+Il vous reste un peu de temps avant votre passage. Vous allez en profiter pour faire un petit jogging pour bien réveiller votre corps.
+
+<< fadeIn >>
+<< setBackground door >>
+<< fadeOut >>
+
+Vous passez devant l'appartement de Fred, mais celui-ci ne répond pas. Peut-être une urgence ? Vous vous rendez au stade seul.
+
+<< fadeIn >>
+<< setBackground sport >>
+<< fadeOut >>
+<< loopFX Sports_LOOP 16000 >>
+
+Une fois au stade, vous commencez par réaliser quelques tours de piste, à pas mesurés. Puis, quand vous estimez que votre corps est suffisamment chauffé et stimulé, vous accélérez la cadence.  #line:06db36a 
+<< removeFromGauge stress 20 >>
+<< removeFromGauge mentalLoad 20 >>
+Vous voilà plus calme, reposé, plus prêt à affronter les regards inquisiteurs des membres du jury.
+
+<< advanceTimeBy 2:00 >>
+
+<< stopFX Sports_LOOP >>
+<<jump Liste_Taches>>
+===
+
 
 
 
@@ -708,6 +754,7 @@ tags:
 position: 1548,338
 colorID: 4
 ---
+<< set $silence to false >>
 Le soleil s'est couché, il est temps de clore votre journée par un dîner bien mérité.
 
 <<if $foodinfridge <= 0>>
@@ -879,6 +926,7 @@ tags:
 position: 1449,860
 colorID: 4
 ---
+<< set $silence to false >>
 Il est plus de 20 heures ?! Il est temps de se préparer un petit dîner. #line:0822b76 
 
 << if $foodinfridge <= 0 >>
@@ -933,34 +981,6 @@ Vous prenez le temps de petit-déjeuner, pour mettre toutes les chances de votre
 
 L'examen se rapproche de plus en plus, ce n'est plus qu'une question d'heures avant que le jury ne vous pose une colle. L'examen débute à 14h.
 
-<<jump Liste_Taches>>
-===
-
-title: Jogging
-tags: 
-position: 1672,1359
----
-Il vous reste un peu de temps avant votre passage. Vous allez en profiter pour faire un petit jogging pour bien réveiller votre corps.
-
-<< fadeIn >>
-<< setBackground door >>
-<< fadeOut >>
-
-Vous passez devant l'appartement de Fred, mais celui-ci ne répond pas. Peut-être une urgence ? Vous vous rendez au stade seul.
-
-<< fadeIn >>
-<< setBackground sport >>
-<< fadeOut >>
-<< loopFX Sports_LOOP 16000 >>
-
-Une fois au stade, vous commencez par réaliser quelques tours de piste, à pas mesurés. Puis, quand vous estimez que votre corps est suffisamment chauffé et stimulé, vous accélérez la cadence.  #line:06db36a 
-<< removeFromGauge stress 20 >>
-<< removeFromGauge mentalLoad 20 >>
-Vous voilà plus calme, reposé, plus prêt à affronter les regards inquisiteurs des membres du jury.
-
-<< advanceTimeBy 2:00 >>
-
-<< stopFX Sports_LOOP >>
 <<jump Liste_Taches>>
 ===
 
@@ -1239,7 +1259,7 @@ position: 1922,1555
 << hide >>
 << fx Warp >>
 << setBackground bedroom night >>
-<< fadeOut 200 >>
+<< fadeOut >>
 
 Vous avez entre les mains votre "carnet d'ingénieur tout-terrain". Vous avez plein de choses à noter dedans.
 

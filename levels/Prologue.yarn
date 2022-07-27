@@ -90,6 +90,8 @@ Vous vous glissez tout de suite dans votre lit. Quelle semaine pourrie… #line:
 
 -> Faire un gros somme #line:002a60d 
     << fx Sleep_LOOP >>
+    << fadeIn >>
+    Tutorial: Conseil : N'hésitez pas à ouvrir le menu d'options pour régler le volume et la vitesse du teste.
     <<jump Reveil_Sage>>
 ===
 
@@ -97,7 +99,6 @@ title: Reveil_Sage
 tags: noUi
 position: -177,968
 ---
-<< fadeIn >>
 << setBackground bedroom night >>
 << music Mysterious >>
 
