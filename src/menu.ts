@@ -204,7 +204,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       // Bouton journal
       const x = this.popupBackground.width / 2 - 115;
-      const y = 575;
+      const y = 545;
       let image = this.makeSprite("images/menu/journal.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.4);
@@ -307,7 +307,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       const x = this.popupBackground.width - 250;
-      const y = 690;
+      const y = 650;
       const logo = this.makeSprite("images/menu/musique.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.3);
@@ -339,7 +339,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     {
       const x = this.popupBackground.width - 250;
-      const y = 780;
+      const y = 740;
       const logo = this.makeSprite("images/menu/bruitage.png", (it) => {
         it.anchor.set(0.5);
         it.scale.set(0.3);
@@ -369,13 +369,21 @@ export class Menu extends extension.ExtendedCompositeEntity {
     }
 
     {
-      const x = this.popupBackground.width - 250;
+      const x = this.popupBackground.width - 280;
       const y = 870;
-      const logo = this.makeSprite("images/menu/speed.png", (it) => {
-        it.anchor.set(0.5);
-        it.scale.set(0.3);
-        it.position.set(x - 165, y);
-      });
+      const logo = this.makeText(
+        "Vitesse du texte",
+        {
+          fontFamily: "Ubuntu",
+          fontSize: 32,
+          fontStyle: "bolder",
+          fill: "white",
+        },
+        (it) => {
+          it.anchor.set(0.5);
+          it.position.set(x, y - 60);
+        }
+      );
       this._controlsContainer.addChild(logo);
 
       this.textSpeedSwitcher = new SpriteRangeSwitcher(
