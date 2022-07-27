@@ -26,6 +26,7 @@ Vous avez rejoint leur assemblée ! Vous êtes devenu un expert de la métacogni
     << setBackground bedroom >>
     Vous levez les bras en l'air et vous époumonez, criant toute votre joie. Vous vous rendez alors compte que vous étiez allongé… Dans votre lit.
     << fadeOut >>
+    Refaire voisin
     ???: Ca va pas la tête ?! Tu m'as réveillé, sale…
     Il est presque 8h, vous en profitez pour vous lever, sans prêter attention aux propos de votre voisin. Les murs sont fins, dans la cité résidentielle de l'Académie !
 -> Faire un test de réalité

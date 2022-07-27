@@ -245,15 +245,13 @@ colorID: 7
 position: -1269,1157
 ---
 << if getGauge("learning") >= 50 >>
--> Il est temps de passer cet examen ! #line:02b7a89 
-    <<jump Test_Rewind>>
+<<jump Test_Rewind>>
 << else >>
--> Il est temps de passer cet examen ! #line:02b7a89 
-    <<if visited("Assemblee_Sages")>>
-        <<jump Resultats_Bad_Again>>
-    <<else>>
-        <<jump Test>>
-    <<endif>>
+<<if visited("Assemblee_Sages")>>
+<<jump Resultats_Bad_Again>>
+<<else>>
+<<jump Test>>
+<<endif>>
 << endif >>
 ===
 
