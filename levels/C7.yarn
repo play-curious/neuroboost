@@ -198,7 +198,7 @@ BarBot: Alors ? T'as ramené les boissons ? Fais gaffe, je peux hacker ton porta
 <<else>>
 BarBot: Qu'est-ce que tu cherches ?
 <<endif>>
--> Tiens ! <<if visited("XenoCola")>> #once
+-> Tiens ! <<if visited("XenoCola")>>
     <<jump GiveSoft>>
 -> Tu pourrais hacker Fred ? <<if !visited("PassWord")>>
     <<if !visited("GiveSoft")>>
