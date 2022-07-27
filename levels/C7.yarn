@@ -66,7 +66,7 @@ tags: subchoice
 position: -2386,654
 ---
 << setBackground door toilet >>
-<< advanceTime 0:05 >>
+<< advanceTimeBy 0:10 >>
 << fadeOut >>
 
 <<if !visited("WC")>>
@@ -96,7 +96,7 @@ tags: subchoice
 position: -2192,585
 ---
 << setBackground sport >>
-<< advanceTime 0:10 >>
+<< advanceTimeBy 0:10 >>
 << fadeOut >>
 
 <<if !visited("Salle_Sport")>>
@@ -125,7 +125,7 @@ tags: subchoice
 position: -1973,571
 ---
 << setBackground library >>
-<< advanceTime 0:10 >>
+<< advanceTimeBy 0:10 >>
 << fadeOut >>
 
 <<if !visited("Bibliotheque")>>
@@ -172,7 +172,7 @@ tags: subchoice
 position: -1968,679
 ---
 << setBackground party >>
-<< advanceTime 0:10 >>
+<< advanceTimeBy 0:10 >>
 << fadeOut >>
 
 <<if !visited("BarBotTalk")>>
@@ -252,7 +252,7 @@ tags: subchoice
 position: -2154,899
 ---
 << setBackground door >>
-<< advanceTime 0:15 >>
+<< advanceTime 0:10 >>
 << fadeOut >>
 
 <<if !visited("Bedroom_Fred")>>
@@ -284,7 +284,7 @@ RoomMate: Bienvenue, Fred. Veuillez entrer le mot de passe de votre portail étu
     << fx Success >>
     RoomMate: Bienvenue, Fred. Vous avez 1 nouveau message non-lu, de : Académie de Polytechnologie Universelle.
     You: Euh… Très bien, lis-moi le message.
-    RoomMate: "Suite à votre absence injustifiée lors de l'examen du Grand Oral, la note de F vous sera attribuée par défaut. Vous êtes convoqué à une séance de rattrapage demain après-midi à 15h."
+    RoomMate: "Suite à votre absence injustifiée lors de l'examen du Grand Oral, la note de F vous sera attribuée par défaut. Vous êtes convoqué à une séance de rattrapage demain après-midi à 13h."
     <<jump ChezFred>>
 -> back
     <<jump FreeRoam>>
@@ -389,9 +389,11 @@ Fred_sad: Je sais pas… Je vais jamais réussir à rattraper tout mon retard en
     << fadeIn >>
     << setBackground sport >>
     << fadeOut >>
+    << loopFX Sports_LOOP >>
     You: Tu sais, je crois en toi, mais il va sérieusement falloir t'y mettre si tu veux y arriver.
 -> Alors mieux vaut s'y mettre tout de suite
     You: Exactement, c'est la raison pour laquelle il ne faut pas tarder et travailler dès maintenant !
+<< advanceTimeBy 0:10 >>
 Fred_sad: Mouais… C'est juste… Si je suis même pas sûr d'y arriver, à quoi bon ?
 On dirait que Fred a vraiment perdu confiance en lui… Vous pourriez regonfler son égo en lui rappelant à quel point il est un étudiant génial…
 …Démontrer sobrement quels sont ses points forts…
@@ -429,6 +431,7 @@ On dirait que Fred a vraiment perdu confiance en lui… Vous pourriez regonfler 
     You: C'est pas pour autant que tu dois abandonner ! Tu as plein d'autres qualités, mais… Tu n'aimes pas apprendre par coeur, et l'écrit ne t'enchante pas. C'est trop dommage !
     Fred_angry: C'est bon, j'ai compris ! Où est-ce que tu veux en venir, tu veux me tirer encore plus vers le fond du gouffre ?
     You: Justement, ce sont ces défauts qui te tirent vers le bas. Et c'est en les reconnaissant que tu vas t'en sortir.
+<< stopFX Sports_LOOP >>
 You: Bon. Assez parlé, place aux révisions, maintenant ! Tu sais quoi ? J'ai un petit creux. On passe chez moi ?
 Fred_sad: Ouais… Je fais à manger ?
 You: Encore en train de repousser le travail, hein ? Vas-y, je dois faire quelque chose en même temps…
@@ -441,7 +444,9 @@ Pendant que Fred est occupé à préparer son plat favori avec votre FoodPrinter
 << setBackground bedroom desk >>
 << fadeOut >>
 Vous allez faire des fiches de révision taillées aux besoins de Fred. Vous griffonez à une vitesse éclair les différentes notions sur les dizaines de petites cartes en papier cartonné.
+<< advanceTimeBy 0:30 >>
 Fred_happy: Hé, à table !
+<< fx EatCook >>
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
@@ -476,6 +481,7 @@ You: Fred, t'inquiète pas… C'est pas…
 Fred_excited: Je sais, { $name }. C'est pas fameux, mais au moins je peux pas faire pire cette fois. Du moins, je vais tenter.
 <<endif>>
 
+<< advanceTimeBy 0:30 >>
 Après cette pause dinatoire, vous foncez dans votre salon pour réviser.
 << fadeIn >>
 << setBackground bedroom night >>
@@ -502,12 +508,14 @@ Fred_sad: Tu sais quoi ? Je sais pas si j'ai envie de faire ça. Je me débrouil
     Fred_surprised: { $name }, je sais vraiment pas quoi faire de ça.
     You: On les lit ensemble !
     Fred_sad: Euh… Ok…
+<< advanceTimeUntil 2:00 >>
 Vous mettez tout en oeuvre pour tenter de faire ingurgiter un maximum d'informations à Fred, tant et si bien que vous ne voyez pas les heures défiler. Vous sentez vos paupières s'alourdir en écoutant votre camarade lire la dernière fiche…
 << fadeIn >>
 << hide >>
 Intrication… Décohérence… Rattrapage… Tout se mélange dans votre tête alors que vous plongez dans les bras de Morphée.
 << setBackground bedroom >>
 << fadeOut >>
+<< advanceTimeUntil 13:00 >>
 Lorsque vous ouvrez les yeux , vous paniquez : le soleil est au zénith, et Fred n'est nulle part dans votre appartement.
 Vous allumez votre palmphone et composez en vitesse le numéro de Fred.
 << loopFX PhoneRing_LOOP >>
@@ -690,7 +698,7 @@ Sapiens_thinking: Mais, plus précisément, qu'est-ce qu' un bon objectif ?
     << fx Success >>
     Sapiens_happy: Parfait ! C'est ça. #line:0ebcf40 
 Temde_cheerful: Bravo ! Nous avons terminé cette dernière leçon.
-Ledai_happy: Utilise ton journal mental pour définir ton propre rapport à la réussite, et fonce rejoindre ton ami Fred !
+Ledai_happy: Utilise ton Journal Mental pour définir ton propre rapport à la réussite, et fonce rejoindre ton ami Fred !
 -> Ecrire dans le journal
 << hide >>
 << completeSages >>

@@ -1156,7 +1156,7 @@ position: 3341.1002807617188,392.2286071777344
 ---
 Sapiens_happy: Oui, cela dépend des personnes. Ce qui me rappelle le temps où je… #line:0715588 
 Temde_neutral: Non, on coupe ! Le temps presse ! #line:0beff39 
-Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:092a6ff 
+Ledai_explaining: En effet, on va te renvoyer chez toi. N'oublie pas de jeter un oeil à ton Journal Mental !
 
 << hide >>
 << fx Warp >>
@@ -1176,7 +1176,7 @@ position: 3557.0534057617188,389.2486877441406
 
 Le carré de jardin tranquille des sages a disparu subitement ! #line:0e91632 
 Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être. #line:05ae07d 
-Vous contemplez ce "carnet d'ingénieur tout-terrain". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages… #line:01686de 
+Vous contemplez ce "iMetaJournal". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages…
 
 <<jump Journal>>
 ===
