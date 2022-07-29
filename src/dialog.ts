@@ -58,6 +58,7 @@ export const debuggingDialogScenes = [
   "characters",
   "backgrounds",
   "test_simulation",
+  "test_deadline",
   "test_highlight_sages",
   "test_highlight_party",
 ];
