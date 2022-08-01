@@ -50,6 +50,7 @@ title: Actions_List
 tags: freechoice
 position: -1210,-459
 ---
+<< music Neutral2 >>
 << setBackground bedroom >>
 << fadeOut >>
 
@@ -233,6 +234,7 @@ position: -603,-422
 ---
 << fadeIn >>
 << setBackground bedroom_fred >>
+<< music Neutral3 >>
 << fadeOut >>
 
 << advanceTimeBy 0:15 >>
@@ -268,6 +270,7 @@ colorID: 0
 position: -705,-208
 ---
 << fadeIn >>
+<< music Neutral3 >>
 << setBackground library >>
 << advanceTimeBy 0:15 >>
 << fadeOut >>
@@ -295,7 +298,7 @@ Que faire en attendant ?
         Le morceau mêle des motifs de basse et guitare qui se répètent sans cesse, accompagnant avec merveille la voix d'Alec Burner. Un classique !
         << removeFromGauge mentalLoad 20 >>
         Vous vous sentez détendu et revigoré par cet interlude musical.
-        << music Neutral >>
+        << music Neutral3 >>
     -> Un mix Xéno-Techno Bass-Boosted de EarsKiller !
         RoomMate: Entendu !
         << music DanceQuiet >>
@@ -303,7 +306,7 @@ Que faire en attendant ?
         Les basses frénétiques et hypnotisantes de EarsKiller vous prennent aux tripes et vous mettent dans un état de transe hypnotique.
         << addToGauge sleep 20 >>
         Vous vous sentez énergisé et prêt à tout donner.
-        << music Neutral >>
+        << music Neutral3 >>
 Vous levez les yeux pour enfin voir Fred !
 << show fred >>
 Fred_happy: Yo !! Bon… Je peux officiellement dire que le nouveau GTR est encore mieux que l'ancien !!
@@ -596,7 +599,7 @@ Fred_smiling: Yeeees. Je t'écoute ! #line:0a51cb6
 You: Non, mais je ne peux pas te lire à haute voix, on est à la bibliothèque ! #line:08e64e8 
 << endif >> 
 
--> Vous lui lisez vos notes << if $silence == true >> #line:0bfb9d2 
+-> Vous lui lisez vos notes #line:0bfb9d2 
     << jump Notes_You_Good >>
 -> Vous le laissez lire vos notes
     << jump Notes_You_Bad >>
@@ -609,6 +612,14 @@ colorID: 2
 ---
 You: Grace à la bulle immersive, on va pouvoir faire ça à l'oral ! Cool, non ?
 Fred_smiling: Super ! Vas-y, je t'écoute !
+
+<< if !$silence >>
+Alors que vous parlez haut et fort, d'autres étudiants à proximité se tournent vers vous d'un air désapprobateur.
+<< fx Failure >>
+???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie...
+<<jump Notes_You_Bad>>
+<<endif>>
+
 Ne sachant pas par quoi commencer, vous dites la première remarque qui vous vient en tête. Et puis, de fil en aiguille, une remarque en amène une autre, et ainsi de suite.
 Fred est un auditeur très bienveillant, il rebondit sur certaines de vos idées et vous incite à les clarifier, les critiquer, les nuancer.
 
@@ -618,7 +629,6 @@ Fred est un auditeur très bienveillant, il rebondit sur certaines de vos idées
 
 RoomMate: Voulez-vous que je conserve le fichier audio de la conversation pour en garder la trace ?
 Fred_happy: Vas-y, BibliMate !
-
 <<jump Liste_Taches>>
 ===
 
@@ -648,13 +658,9 @@ position: -1192,159
 You: Je sais que toi aussi, tu as avancé sur le travail de rédaction du mémoire. Tu as tes notes avec toi ?
 Fred_happy: Tu veux pas plutôt qu'on en parle de vive voix ? #line:0a57c1c 
 
-<< if $silence == false >>
-You: Heu… C'est plus facile pour moi de les lire. Surtout qu'on est à la bibliothèque, il ne faut pas faire du bruit. #line:0f34e21 
-<< endif >> 
-
 <<visit Notes_Fred>>
 
--> Écouter Fred présenter ses notes <<if $silence == true >> #line:031034a 
+-> Écouter Fred présenter ses notes #line:031034a 
     << jump Notes_Fred_Good >>
 -> Demander à Fred de vous envoyer ses notes écrites #line:0b165d9 
     << jump Notes_Fred_Bad >>
@@ -666,6 +672,15 @@ position: -1300,62
 colorID: 2
 ---
 Fred_happy: Tout est dans ma tête. Tu veux que je commence par quoi ? #line:0ca8f0f 
+
+<< if !$silence >>
+Alors que vous parlez haut et fort, d'autres étudiants à proximité se tournent vers vous d'un air désapprobateur.
+<< fx Failure >>
+???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie...
+<<jump Notes_Fred_Bad>>
+<<endif>>
+
+
 
 << advanceTimeBy 2:00 >>
 << addToGauge learning 20 >>
@@ -684,6 +699,7 @@ tags:
 position: -1349,229
 colorID: 2
 ---
+Vous décidez de plutôt faire ça à l'écrit.
 Fred pianote sur son ordinateur, l'instant d'après, vous réceptionnez ses documents… Il n'y a pas grand chose d'exploitable… Que des bouts de phrases, de mots et quelques commentaires en annexe.
 You: Je sais pas trop quoi faire de ça, Fred… Tu peux reprendre ton travail, s'il te plaît ?
 Fred_sad: Bon, d'accord. Puisque tu insistes. C'est bien parce que c'est toi… #line:0b3e63f 
@@ -711,10 +727,10 @@ Fred_happy: Oui, plein, y a l'embarras du choix. #line:0b977ec
 
 << visit Plan >>
 
--> Vous prenez le temps de discuter avec Fred de tous les plans possibles <<if $silence>>
-    << jump Plan_Good >>
--> Vous présentez votre plan à Fred
-    << jump Plan_Bad >>
+-> Prendre le temps de discuter avec Fred de tous les plans possibles
+    <<jump Plan_Good>>
+-> Envoyer votre plan à Fred
+    <<jump Plan_Bad>>
 ===
 
 title: Plan_Good
@@ -725,6 +741,14 @@ colorID: 2
 You: C'est le dernier jour, on doit choisir un plan et s'y tenir.  #line:0774d64 
 Fred_happy: Très bien. Donne-moi les parties et je te dirai ce que j'en pense.
 You: Ok.  #line:02303dd 
+
+<< if !$silence >>
+Alors que vous parlez haut et fort, d'autres étudiants à proximité se tournent vers vous d'un air désapprobateur.
+<< fx Failure >>
+???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie...
+<<jump Plan_Bad>>
+<<endif>>
+
 Vous commencez ensuite à lui présentez vos trois grandes parties, vos sections et sous-sections. Fred se met à la place du jury pour vous faire les meilleures remarques et vous proposer de meilleures options.
 Il réussit à étoffer votre argumentaire et ajoute plein de nouvelles idées.
 << advanceTimeBy 2:00 >>
@@ -739,7 +763,8 @@ tags:
 position: -1268,409
 colorID: 2
 ---
-You: Ben… C'est le problème. On n'a plus le temps d'hésiter. On doit choisir un plan et s'y tenir.
+Vous décidez alors d'envoyer directement le plan à Fred.
+You: Bon. On n'a plus le temps d'hésiter. On doit choisir un plan et s'y tenir.
 Fred_sad: C'est vraiment dommage. #line:0c92611 
 You: Je te rappelle qu'on doit le rendre ce soir, ce mémoire. Je te renvoie le plan et on le valide. Un point, c'est tout.
 Aussitôt, Fred se met dans une position d'avocat de l'accusation, vous fait douter de vos parties et de la structure que vous avez choisie à mesure que vous la lui présentez.
@@ -761,7 +786,7 @@ position: -893,277
 You: On commence la rédaction du mémoire ?
 Fred_happy: Yes. On se répartit la tâche comment ? #line:005280e 
 <<visit Redaction>>
--> Demander l'avis de Fred <<if $silence && !visited("WorkWithoutFred")>>
+-> Demander l'avis de Fred <<if !visited("WorkWithoutFred")>>
     <<jump Redaction_Good>>
 -> Dire à Fred quoi faire
     <<jump Redaction_Bad>>
@@ -815,6 +840,14 @@ colorID: 2
 ---
 You: Tu as une idée ?
 Fred_smiling: J'ai plein d'idées. Tu sais quoi, je me sers du plan pour arranger les idées, et tu mets tout au clair en rédigeant.
+
+<< if !$silence >>
+Alors que vous parlez haut et fort, d'autres étudiants à proximité se tournent vers vous d'un air désapprobateur.
+<< fx Failure >>
+???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie...
+<<jump Redaction_Bad>>
+<<endif>>
+
 You: Ouais… Je vais tout rédiger, quoi…
 Fred_happy: T'inquiète, { $name }… Je rédigerai au moins l'intro, promis !
 Vous travaillez d'arrache-pied pour fournir un mémoire dont vous serez tous deux satisfaits. Fred vous donne ses idées, et vous les mettez au propre, formant une chaîne de production efficace.
@@ -836,7 +869,7 @@ You: Ben… Ouais. T'étais pas là !
 Fred_sad: Ah bon ?
 Fred vous regarde avec une mine désappointée. Il ne s'attendait sûrement pas à ce que vous travailliez sur le mémoire sans lui.
 <<endif>>
-You: Donc… Je vais répartir les taches en suivant le plan et en m'aidant de nos recherches…
+You: Bon… On ne va pas en parler trop longtemps. Je vais répartir les taches en suivant le plan et en m'aidant de nos recherches…
 You: Je m'occupe du problème du degré d'erreur des modèles déterministes… et je te laisse réfléchir sur la révolution du paradigme post-darwinien en macrobiologie pour la conclusion ?
 Fred_surprised: Je suppose que je fais l'introduction, aussi ?
 You: Oui, tu peux ! Je vérifierai ton travail une fois qu'il sera fait. Pour l'instant, à la rédaction !
@@ -968,6 +1001,7 @@ position: -1913,850
 << fx Warp >>
 << fadeIn 1500 12ea12 >>
 << setBackground circle >>
+<< music Mysterious >>
 << fadeOut >>
 << visit Assemblee_Sages>>
 

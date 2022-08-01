@@ -118,9 +118,9 @@ const options: { [key: string]: any } = {
       question: "Quel est ton rapport à la réussite ?",
       answers: [
         "Stratégique - Je fais tout pour obtenir les meilleurs résultats",
-        "Compréhensive - C'est l'apprentissage qui compte, pas le diplôme",
-        "Instrumentale - Je dois juste valider mon année",
-        "Relative - Mon but est de faire aussi bien que mes amis",
+        "Compréhensif - C'est l'apprentissage qui compte, pas le diplôme",
+        "Instrumental - Je dois juste valider mon année",
+        "Relatif - Mon but est de faire aussi bien que mes amis",
       ],
     },
     openQuestion: {

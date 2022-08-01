@@ -20,7 +20,7 @@ Vous appelez Fred. Après tout, c'est lui qui organise la fête de ce soir à la
 << stopFX PhoneRing_LOOP >>
 Pas de réponse. Qu'est-ce qu'il peut bien faire ? Vous ne l'avez pas croisé dans les couloirs, et il n'a même pas essayé de vous contacter après l'Oral…
 Quelque chose cloche. Vous devez retrouver votre ami. Peut-être qu'il s'est passé quelque chose…
-<< music Tense >>
+<< music Mysterious >>
 Il pourrait être n'importe où dans le campus, mais vous avez déjà quelques pistes en tête.
 <<jump FreeRoam>>
 <<else>>
@@ -66,11 +66,11 @@ tags: subchoice
 position: -2386,654
 ---
 << setBackground door toilet >>
-<< advanceTimeBy 0:10 >>
 << fadeOut >>
 
 <<if !visited("WC")>>
 << visit WC >>
+<< advanceTimeBy 0:10 >>
 Si ce que vous a dit le sportif est vrai, Fred s'est rendu aux toilettes avant de disparaître. S'il faut, il y est encore !
 L'odeur putride vous prend aux narines alors que vous rentrez dans les lieux. Décidément, l'Académie devrait investir dans autre chose que des écrans holographiques…
 <<endif>>
@@ -96,11 +96,11 @@ tags: subchoice
 position: -2192,585
 ---
 << setBackground sport >>
-<< advanceTimeBy 0:10 >>
 << fadeOut >>
 
 <<if !visited("Salle_Sport")>>
 << visit Salle_Sport >>
+<< advanceTimeBy 0:10 >>
 La salle de sport, c'est le repère de Fred. C'est ici qu'il va lorsqu'il a du temps à perdre, qu'il aille bien ou mal. S'il y a bien un endroit où il a pu filer, c'est là !
 <<endif>>
 
@@ -125,11 +125,11 @@ tags: subchoice
 position: -1973,571
 ---
 << setBackground library >>
-<< advanceTimeBy 0:10 >>
 << fadeOut >>
 
 <<if !visited("Bibliotheque")>>
 << visit Bibliotheque >>
+<< advanceTimeBy 0:10 >>
 Vous pénétrez dans l'immense aile de l'Académie, remplie d'étudiants en cette période d'examens. C'est comme chercher une aiguille dans une botte de foin…
 <<endif>>
 
@@ -172,11 +172,11 @@ tags: subchoice
 position: -1968,679
 ---
 << setBackground party >>
-<< advanceTimeBy 0:10 >>
 << fadeOut >>
 
 <<if !visited("BarBotTalk")>>
 << visit BarBotTalk >>
+<< advanceTimeBy 0:10 >>
 On dirait que la cafétéria est déjà prête pour la fête ! Les plus impatients ont déjà leur verre en main.
 A votre venue, le BarBot se précipite vers vous.
 BarBot: Yo, { $name }. T'as intérêt à avoir une bonne excuse pour ton pote ! J'écoute.
@@ -252,11 +252,11 @@ tags: subchoice
 position: -2154,899
 ---
 << setBackground door >>
-<< advanceTime 0:10 >>
 << fadeOut >>
 
 <<if !visited("Bedroom_Fred")>>
 << visit Bedroom_Fred >>
+<< advanceTime 0:10 >>
 Vous toquez à la porte, mais personne ne répond.
 Pourtant, on dirait que l'appartement de Fred est allumé. Peut-être qu'il est juste rentré chez lui, ou qu'il est… parti en trombe ? Vous imaginez le pire.
 You: Fred ! Ouvre ! C'est pas drôle !
@@ -276,7 +276,7 @@ RoomMate: Bienvenue, Fred. Veuillez entrer le mot de passe de votre portail étu
     << fx Failure >>
     RoomMate: Mot de passe incorrect. Rappel : le mot de passe ne peut pas être le même que celui d'un autre étudiant.
     You: Ah oui, ça c'est le mien. Je devrais peut-être le changer un jour.
--> Essayer l'identifiant étudiant de Fred, "Id47n5296H" <<if visited("CarteEtudiante")>>#once
+-> Essayer l'identifiant étudiant de Fred, "Id47n5296H" <<if visited("CarteEtudiante")>> #once
     << fx Failure >>
     RoomMate: Mot de passe incorrect. Rappel : le mot de passe ne peut pas être le même que votre identifiant étudiant.
     You: J'aurai essayé !
@@ -312,7 +312,7 @@ You: Fred ! Qu'est-ce que tu fais ?
 Fred_surprised: { $name } ! Comment tu es rentré ?
 You: Xx_Fr3d4tor_xX ? Sérieusement ? C'est ton pseudo sur Call of Study ! Qu'est-ce que tu fabriques ?
 Fred_sad: A ton avis ? Je fais mes valises ! C'est fini pour moi, game over.
--> Dis pas ça, t'es le meilleur !
+->  Dis pas ça, t'es le meilleur !
     You: Dis pas ça, Fred ! T'as toujours été plus doué que quiconque ! Tu vaux mieux que ça !
     Fred_sad: C'est ce que je pensais, aussi… Mais j'ai perdu mon avance. J'ai gâché mon potentiel.
 -> Qu'est-ce qui te prend ?
@@ -327,11 +327,11 @@ Fred_surprised: C'était presque trop facile pour moi… Alors, j'ai cru que j'�
     Vous ne pouvez pas vous empêcher de rire face à la naïveté de votre ami. C'est une manière de dédramatiser la situation, de maîtriser le ton de la conversation.
     Mais… On ne dirait que ça n'a pas l'effet escompté sur Fred.
     Fred_angry: Hé ! Je te permets pas de te moquer de moi ! J'ai peut-être abusé, mais je mérite pas que mon seul vrai ami se fiche de moi.
--> Tu te prends trop au sérieux !
-    You: C'est ça ton problème : tu te prends beaucoup trop au sérieux.
+-> Personne ne peut être parfait partout...
+    You: C'est ça ton problème : tu prends les choses trop au sérieux, tu ne peux pas être parfait tout le temps ! Même les plus grands Contact Fighters ont besoin d'un exosquelette...
     << fx Success >>
     << set $motivationFred to ($motivationFred+1)>>
-    Fred_surprised: Tu crois ?… Peut-être que c'est pour ça que je remets tout au dernier moment…
+    Fred_surprised: Tu crois ?… Tu as sûrement raison, j'étais persuadé que j'étais... inébranlable !
 Fred_sad: …Mais ça n'a pas d'importance. C'est trop tard, le Grand Oral est passé, et je pourrai jamais le rattraper.
 You: Tu plaisantes, ou quoi ? Tu as des capacités exceptionnelles, bien sûr que tu peux le rattraper. Ce n'est pas parce que ta note…
 Fred_surprised: Tu as vu ma note ? Alors, ça donne quoi ?
@@ -339,7 +339,6 @@ Fred_surprised: Tu as vu ma note ? Alors, ça donne quoi ?
     You: Tu vois que tu accordes toujours de l'importance à ça ! Tu as eu… Un B-. Tu vois, ce n'est pas non plus désespéré.
     Fred_surprised: Hein ?? Je suis parti avant les questions-réponses et ils m'ont mis B- ? Mais…
     You: Que veux-tu ? Ils t'aiment bien, ils voulaient peut-être te donner une seconde chance.
-    << fx Success >>
     << visit LieToFred >>
     Fred_surprised: Peut-être bien… Peut-être que je n'étais pas totalement à côté de la plaque…
 -> Euh… F.
@@ -377,7 +376,7 @@ Fred_sad: De toute façon, même si je le pouvais, j'ai aucune chance de rattrap
     Fred_surprised: Comment tu sais ça ?
     You: J'ai comme qui dirait… Ecouté tes messages ?
     Fred_excited: Mais ça veut dire que j'ai une seconde chance ??
-<< music Tense >>
+<< music Neutral3 >>
 You: C'est ce que je me tue à te dire ! Mais le rattrapage est demain ! Il faut se dépêcher, et faire quelque chose !
 Fred_sad: Je sais pas… Je vais jamais réussir à rattraper tout mon retard en un jour…
 -> Parlons-en sur la piste de jogging
@@ -545,6 +544,7 @@ You: Fred !…
     Fred@holo_smiling: Hey, t'inquiète. Je t'ai dit que j'avais révisé de mon côté !
     You: Ouais, j'en doutais pas …! Allez, on se revoit à la fête de ce soir !
 << stopFX AlarmClock_LOOP >>
+<< hide >>
 Fred est contraint de raccrocher… Maintenant, il n'y a plus qu'à attendre !
 << music Victory >>
 << completeLevel >>
@@ -571,10 +571,11 @@ You: Fred ! T'es où ? Pourquoi tu m'as pas réveillé ?!
 Fred@holo_bored: Ben… Devant la porte de la salle de rattrapage. Tu étais tellement crevé, je voulais pas te déranger.
 You: Mais… On a pas fini les révisions comme prévu ?!
 Fred@holo_sad: Ouaaais, je sais… Mais bon… Le mal est fait, maintenant y a plus qu'à croiser les doigts !
-<< loopFX PhoneRing_LOOP >>
+<< loopFX AlarmClock_LOOP >>
 Fred@holo_surprised: Mince… C'est mon tour, on dirait.
 You: Fred, tu l'as dit toi-même, ce n'est pas qu'une question de chance…
 << stopFX AlarmClock_LOOP >>
+<< hide >>
 Fred est contraint de raccrocher…
 <<jump TransitionSagesLose>>
 <<endif>>
@@ -585,6 +586,9 @@ tags: noUi
 colorID: 0
 position: -1585,1337
 ---
+<< hide >>
+<< set $motivationFred to 3 >>
+<< set $motivationPercent to (($motivationFred*100)/7) >>
 << music NegativeSad >>
 -> Appeler les Sages à l'aide
 <<if !visited("Assemblee_Sages")>>
@@ -592,7 +596,8 @@ You: Hé, les Sages !! Venez, vite !
 Azul_cheerful: Salut, { $name } ! Alors, pourquoi tu nous a appelé ? Tu as pourtant réussi ton Grand Oral ?… Tu devrais prendre du repos, non ?
 You: C'est pas à propos de moi… C'est mon ami Fred. Il faut que vous l'aidiez.
 Azul_sad: Euh… Je crains que… Ce soit impossible pour nous.
-You: Mais euh… Vous m'avez bien aidé avec mes examens quand je vous ai demandé, non ?!
+Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { $motivationPercent }% pour son Oral. Dommage... Une motivation de 50% aurait suffit.
+You: Epargnez-moi les statistiques ! Vous m'avez bien aidé avec mes examens quand je vous ai demandé, non ?!
 Azul_happy: Précisément !… Tu nous a appelés. Ton esprit a cherché notre aide, alors nous sommes venus. Mais Fred… Il ne veut pas admettre qu'il a besoin d'aide.
 -> Aidez-le quand-même !
     Azul_sad: Désolé, { $name }… C'est un problème contractuel. On ne peut pas intervenir dans la vie de quelqu'un sans son consentement.
@@ -606,11 +611,13 @@ You: Faites-le !
 Azul_happy: Bien… Si tu le souhaites ! Cap sur l'Assemblée des Sages !
 <<else>>
 You: Les Sages ? Vous êtes toujours là ?
+Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { $motivationPercent }% pour son Oral, cette fois. Dommage... Une motivation de 50% aurait suffit.
 Azul_sad: Bien sûr… On dirait que tu as besoin qu'on te reparle de la motivation…
 <<endif>>
 -> Suivre Azul
     <<jump Assemblee_Sages>>
 -> Recommencer la soirée (Passer la séquence des Sages)
+    << hide >>
     << fx Warp >>
     << fadeIn 1500 12ea12 >>
     << resetLevel >>
@@ -650,17 +657,8 @@ position: -395.6365661621094,463.4656677246094
     Temde_cheerful: Réfléchir à son rapport à la réussite, c'est apprendre à mieux se connaître. #line:07acb4b 
     Ledai_explaining: Le rapport à la réussite détermine ce que l'on veut vraiment. Ce qui aide ensuite à choisir la meilleure stratégie pour y arriver. #line:04d28c0 
     Azul_happy: Nous t'avons déjà montré comment nous étions tous les quatre différents. Nous allons reprendre l'exercice, pour que tu puisses mieux cerner le profil de Fred.
-    Sapiens_thinking: Réussir, pour moi, cela signifie devenir une encyclopédie vivante, avoir réponse à tout, être la source la plus fiable de la connaissance. #line:075c3d9 
-    Ledai_happy: Réussir, pour moi, c'est être prêt en toute circonstance, à déployer une méthodologie ou un processus fiable. #line:02a3a85 
-    Azul_proud: Réussir, pour moi, c'est être capable de tirer profit de la situation. Même si elle me semble défavorable. On a toujours quelque chose à apprendre. #line:0fd75e2 
-    Temde_smiling: Pour moi, réussir, même si je n'aime pas ce mot-là, signifie être capable de s'adapter à n'importe quelle situation, même la plus improbable. #line:0e5baa0 
-    Azul_proud: Mais revenons à toi. Que veux-tu ? Qu'attends-tu donc de ton passage à l'Académie ? #line:015b6cd 
-    -> Je veux avoir un avenir, faire de grandes choses !
-    -> Je veux être le meilleur !
-    -> Je veux expérimenter, apprendre des choses intéressantes !
-    -> Je veux devenir polyvalent !
-    Ledai_explaining: Bien. Chacun doit avoir ses propres [b]objectifs personnels[/b], à court et long terme. 
-    Temde_neutral: Ces objectifs doivent être définis par sa propre personnalité, son rapport à la réussite. Personne ne peut le faire à la place d'un autre.
+    You: D'accord. Voyons...
+    <<jump Sages_Questions>>
 -> Comment maintenir la motivation ?
     Sapiens: Nous avons déjà vu que pour apprendre à apprendre, il faut mettre en place des stratégies d'apprentissage.
     Sapiens_thinking: Par exemple, les [b]stratégies cognitives[/b], qui permettent de stimuler la mémoire longue, ou encore les [b]stratégies d'organisation[/b] : plannification, travail en groupe…
@@ -677,6 +675,50 @@ position: -395.6365661621094,463.4656677246094
     Sapiens_happy: Bien. Tu connais la chanson, je présume ? Un dernier QCM, un !
     <<jump QCM>>
 <<jump Sages_FreeChoice>>
+===
+
+title: Sages_Questions
+tags: noUi
+position: -395.6365661621094,463.4656677246094
+---
+-> Interroger Sapiens
+    Sapiens_thinking: Chacun d'entre nous a sa propre manière d'aborder la réussite. J'ai un rapport [b]'Compréhensif'[/b] à la réussite, ce qui veut dire que j'accorde plus d'importance à l'acte d'apprendre qu'aux finalités académiques.
+    Sapiens_happy: Lorsque j'étais à l'école, je révisais toujours les cours à l'avance, sans qu'on ne me le demande !
+-> Interroger Ledai
+    Ledai_explaining: Mon rapport de la réussite est [b]'Stratégique'[/b] : contrairement à mes confrères, je considère l'apprentissage et le travail comme des outils qui m'aident à être performant pour atteindre mes objectifs.
+    Ledai_happy: Que ce soit à l'école ou dans tout autre contexte, mon but a toujours été d'être le meilleur, quel qu'en soit le coût !
+-> Interroger Temdé
+    Temde_smiling: Personnellement, je ne vois la réussite que de manière [b]'Instrumentale'[/b] : pour moi, la vraie valeur ne peut pas être mesurée, ce qui m'importe, c'est pouvoir continuer d'avancer.
+    Temde_cheerful: Durant mes années d'études, je travaillais juste assez pour obtenir mon diplôme, gardant un maximum de temps pour moi.
+-> Interroger Azul
+    Azul_proud: Quant à moi, j'entretiens un rapport [b]'Relatif'[/b] avec la réussite : pour moi, réussir, c'est être à l'aise parmi mes pairs, mon environnement.
+    Azul_proud: Quand j'étais étudiant, je ne m'inquiétais pas trop de mes résultats tant que ceux-ci étaient au moins aussi bons que mes proches, et j'utilisais mes facilités pour minimiser les efforts tout en restant compétitif.
+-> Choisir le rapport à la réussite de Fred
+    Azul_proud: Revenons donc à ton ami Fred : quel est donc son rapport à la réussite ?
+    <<jump Sages_FindFred>>
+<<jump Sages_Questions>>
+===
+
+title: Sages_FindFred
+tags: noUi
+position: -395.6365661621094,463.4656677246094
+---
+-> Rapport Compréhensif
+    << fx Failure >>
+    Sapiens_angry: Non, pas du tout ! Fred n'accorde aucune importance au Savoir avec un grand S, la recherche de la vérité ! Essaye encore.
+-> Rapport Stratégique
+    << fx Failure >>
+    Ledai_doubtful: Et bien, je dois avouer que tu n'es pas très loin. Pour moi et Fred, la réussite est l'atteinte des objectifs visés, ni plus, ni moins. Mais Fred n'accorde pas d'importance à la régularité, la discipline.
+-> Rapport Instrumental
+    << fx Failure >>
+    Temde_sad: Pour autant que je respecte Fred, nos rapports à la réussite sont très différents. Je n'accorde pas autant d'importance à la performance, à la compétition.
+-> Rapport Relatif
+    << fx Success >>
+    Azul_smiling: C'est exact. Tout comme pour notre profil d'apprentissage, nous avons le même fonctionnement. Fred et moi nous comparons sans cesse à notre entourage, et cela nous importe peu de travailler dans un environnement qui n'est pas compétitif, social.
+    Ledai_explaining: Chacun doit avoir ses propres [b]objectifs personnels[/b], à court et long terme. 
+    Temde_neutral: Ces objectifs doivent être définis par sa propre personnalité, son rapport à la réussite. Personne ne peut le faire à la place d'un autre.
+    <<jump Sages_FreeChoice>>
+<<jump Sages_FindFred>>
 ===
 
 title: QCM
@@ -712,7 +754,6 @@ position: 2903.8995971679688,471.1633605957031
 << fx Warp >>
 << fadeIn 1500 12ea12 >>
 << setBackground bedroom night >>
-<< music Neutral >>
 << fadeOut 200 >>
 
 Encore une fois, vous voilà transporté dans votre chambre d'étudiant. Comme d'habitude, vous allez prendre note dans votre carnet, puis… vous allez fermer les yeux, et remonter le temps.

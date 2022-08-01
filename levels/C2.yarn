@@ -74,6 +74,7 @@ title: Actions_Before_Party
 tags: freechoice
 position: -1210,-459
 ---
+<< music Neutral2 >>
 << setBackground bedroom >>
 << fadeOut >>
 <<if isTimeOver("21:30")>>
@@ -194,7 +195,6 @@ position: -1082,-816
 Pas de soirée qui se respecte sans un guitariste amateur grattant les accords de WanderHall… Vous, vous préférez le bon vieux néo-shredding, ou encore le galactic jazz. Dans tous les cas, vous vous entraînez un peu pour amuser la galerie tout à l'heure.
 << visit Guitar_Training >>
 << advanceTimeBy 1:00 >>
-<< music Neutral >>
 <<jump Actions_Before_Party>>
 ===
 
@@ -478,7 +478,7 @@ Fred_smiling: On a gagné !! On est les premiers à avoir battu BB-Rex !
 Fred_excited: C'est grâce à toi, { $name } ! Allez, on fête ça ?
 You: Je suis un peu fatigué, là…
 Fred_happy: Tu as raison, on ferait mieux de rentrer. Demain, je dois t'aider avec ton drone ! A plus, tout le monde !
-<< music Neutral >>
+<< music >>
 <<jump TransitionMatin>>
 ===
 
@@ -491,7 +491,7 @@ Tous les étudiants vous regardent d'un air déçu, puis reviennent à leurs occ
 Fred_sad: Mince… On a pas réussi… Mais au moins on s'est bien amusés. Merci d'être resté jusqu'au bout, { $name }.
 You: Je suis un peu fatigué, là...
 Fred_happy: Tu as raison, on ferait mieux de rentrer. Demain, je dois t'aider avec ton drone ! A plus, tout le monde !
-<< music Neutral >>
+<< music >>
 <<jump TransitionMatin>>
 ===
 
@@ -501,8 +501,8 @@ position: -40,256
 ---
 << fadeIn >>
 << hide >>
-<< music Neutral >>
 << setBackground bedroom night >>
+<< music >>
 << fadeOut >>
 A peine rentré, vous vous effondrez dans votre lit, songeant à la journée suivante…
 <<if visited("End_Rap")>>
@@ -517,6 +517,7 @@ tags:
 position: 259,328
 ---
 << fadeIn >>
+<< music Neutral >>
 << setBackground bedroom >>
 << addToGauge sleep 50 >>
 << advanceTimeUntil 8:00 sleep food >>
@@ -537,6 +538,7 @@ tags:
 position: -418,177
 ---
 << fadeIn >>
+<< music Neutral >>
 << setBackground bedroom >>
 << addToGauge sleep 50 >>
 << advanceTimeUntil 8:00 sleep food>>
@@ -911,7 +913,7 @@ tags:
 position: -443,-816
 ---
 << music DanseQuiet >>
-Vous vous dirigez vers l'entrée, épuisé et priant de ne pas être trop épuisé pour demain. Vous êtes en train de reprendre vos affaires quand Fred vous arrête dans votre lancée.
+Vous vous dirigez vers l'entrée, lessivé, et priant de ne pas être trop épuisé pour demain. Vous êtes en train de reprendre vos affaires quand Fred vous arrête dans votre lancée.
 Fred_surprised: Hey, { $name }, tu t'en vas déjà ?? La soirée a à peine commencé, on doit toujours vaincre BB à son propre jeu !
 You: Je sais pas trop, je suis un peu fatigué, là… En plus, demain matin, on a TP. Tu pourrais rentrer toi aussi !
 Fred_happy: Hors de question, ça ! Allez, reste un peu, le temps d'obtenir le reste des points ! Promis, je t'aiderai avec ton drone !
@@ -919,7 +921,6 @@ Fred_happy: Hors de question, ça ! Allez, reste un peu, le temps d'obtenir le r
     <<jump Rester>>
 -> Rentrer
     <<jump Chambre_Soir_Fail>>
-    << music Neutral >>
 ===
 
 title: Rester
@@ -944,7 +945,6 @@ position: -349,-969
 << fadeOut >>
 Lessivé, vous décidez de rentrer chez vous avant de ne plus pouvoir assumer le lendemain. Vous laissez Fred derrière, mais tant pis. Après tout, vous auriez dû travailler sur ce drone il ya bien longtemps…
 Vous vous jetez sur votre lit et vous endormez profondément.
-<< music Neutral >>
 <<jump MatinLose>>
 ===
 

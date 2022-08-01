@@ -130,6 +130,8 @@ Temde_sad: Bon… Nous allons te renvoyer encore une fois dans le passé. Attent
 <<jump Start>>
 <<endif>>
 
+<< music Neutral2 >>
+
 << if isTimeOver("12:00") >>
 
 <<if !visited("DejaMidi")>>
@@ -244,6 +246,7 @@ tags:
 colorID: 7
 position: -1269,1157
 ---
+<< music Neutral3 >>
 << if getGauge("learning") >= 50 >>
 <<jump Test_Rewind>>
 << else >>

@@ -119,6 +119,7 @@ Ce n'est pas votre journée… Vous avez négligé votre corps. Vous fermez vos 
 << resetLevel >>
 <<jump Start>>
 <<endif>>
+<< music Neutral2 >>
 
 -> Bureau@bureau #line:0e03da3 
     <<jump bureau_subchoice>>
@@ -316,6 +317,7 @@ colorID: 2
 ---
 << fadeIn >>
 << hide >>
+<< music Neutral3 >>
 << setBackground sport >>
 << advanceTimeBy 0:15 >>
 << fadeOut >>
@@ -429,7 +431,7 @@ Vous sentez l'air entrer dans votre bouche et descendre jusqu'au niveau du ventr
 Vous comprenez un peu mieux ce que veut dire : se connecter à l'instant présent. #line:0077027 
 << advanceTimeBy 0:30>>
 << removeFromGauge stress 30>>
-<< music Neutral >>
+<< music Neutral2 >>
 <<jump Liste_Taches>>
 ===
 
@@ -443,7 +445,7 @@ Avec les dernières nouvelles, vous préférez garder votre esprit concentré su
 Vous passez l'heure suivante à gratter les cordes en rythme, consacrant entièrement votre esprit à l'harmonie et à vos mélodies improvisées.
 << removeFromGauge stress 20 >>
 Vous vous sentez comme allégé et apaisé par cette séance de création musicale.
-<< music Neutral >>
+<< music Neutral2 >>
 <<jump Liste_Taches>>
 ===
 
@@ -489,6 +491,7 @@ tags:
 position: -1954,-331
 ---
 << fadeIn >>
+<< music Neutral3 >>
 << setBackground door class >>
 << advanceTimeUntil 14:00 >>
 << fadeOut >>
@@ -781,7 +784,7 @@ Vous vous levez de votre lit et vous prenez votre cycloluth, une guitare archaï
 Vous jouez une balade bien connue des poètes inter-galactiques : En Mémoire de Hope.
 La chanson raconte l'histoire d'une fille recréée artificiellement par son père. Elle est touchante et mélancolique, vous inspire et soulage votre coeur.
 << advanceTimeBy 1:00 >>
-<< music Neutral >>
+<< music Neutral2 >>
 << removeFromGauge stress 40 >>
 <<set $choicesDone to ($choicesDone + 1)>>
 <<jump Choix_night>>

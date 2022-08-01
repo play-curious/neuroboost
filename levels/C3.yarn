@@ -106,6 +106,7 @@ position: -420,-531
 <<endif>>
 
 << fadeOut >>
+<< music Neutral2 >>
 
 -> Lit@lit #line:0b6bd1f 
     <<jump lit_subchoice>>
@@ -683,8 +684,6 @@ tags:  noUi
 colorID: 0
 position: -285,372
 ---
-<< music Neutral >>
-
 You: Ça consiste en quoi, la technique Pomodoro ?
 Ledai_explaining: C'est très simple. Il s'agit de fractionner ta tâche en plusieurs petites tâches. #line:03602b4 
 Ledai_explaining: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir en une seule fois. Tu vas le couper en plus petit bouts que tu vas manger du premier au dernier. #line:0077256 
@@ -716,7 +715,7 @@ Temde_cheerful: C'est ce qu'on va voir ! Allez, à toi de jouer !
 << hideDialog >>
 << music Tense >>
 << minigame Juggling >>
-<< music Neutral >>
+<< music Mysterious >>
 << showDialog >>
 // Necessary so that Yarn evaluates the variable correctly
 << empty >> 

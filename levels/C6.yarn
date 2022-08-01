@@ -118,6 +118,8 @@ Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoir
 <<endif>>
 <<endif>>
 
+<< music Neutral2 >>
+
 -> Cuisine@cuisine #line:0717775 
     <<jump cuisine_subchoice >>
 -> Porte@porte #line:0d21566 
@@ -591,7 +593,7 @@ Vous vous lancez alors dans une petite improvisation musicale. Le son brut et ar
 
 << removeFromGauge mentalLoad 20 >>
 << removeFromGauge stress 20 >>
-<< music Neutral >>
+<< music Neutral2 >>
 
 << fadeIn >>
 <<jump Liste_Taches>>
@@ -609,7 +611,6 @@ Vous vous concentrez sur les pensées positives, sur l'avenir, mais aussi le pr�
 << advanceTimeBy 0:30>>
 << removeFromGauge stress 30>>
 Vous vous sentez léger, et plus serein.
-<< music Neutral >>
 <<jump Liste_Taches>>
 ===
 
@@ -682,7 +683,6 @@ Vous entrez à votre tour dans la séance et, comme d'habitude, vous vous lâche
 << removeFromGauge stress 20 >>
 Le coach tape des mains, signifiant la fin de la séance. Il remercie tout le monde et surtout vous, pour donner chair et souffle à sa troupe. #line:009ab8d 
 Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous avez encore des choses à faire aujourd'hui. #line:0ba30f3 
-<< music Neutral >>
 
 << fadeIn >>
 <<jump Liste_Taches>>
@@ -726,6 +726,7 @@ Il vous reste un peu de temps avant votre passage. Vous allez en profiter pour f
 
 << fadeIn >>
 << setBackground door >>
+<< music Neutral3 >>
 << fadeOut >>
 
 Vous passez devant l'appartement de Fred, mais celui-ci ne répond pas. Peut-être une urgence ? Vous vous rendez au stade seul.
@@ -962,6 +963,7 @@ position: 1464,1216
 colorID: 1
 ---
 << setBackground bedroom >>
+<< music Neutral >>
 << set $plannedDay to false >>
 << set $jour to "lundi" >>
 << advanceTimeUntil 10:00 sleep >>
@@ -990,6 +992,7 @@ position: 164,25
 ---
 << music Tense >>
 << fadeIn >>
+<< music Neutral3 >>
 << setBackground door class >>
 << fadeOut >>
 
@@ -1165,6 +1168,7 @@ position: 1924,1433
 ---
 << fx Warp >>
 << fadeIn 1500 12ea12 >>
+<< music Mysterious >>
 << setBackground circle >>
 << fadeOut >>
 
@@ -1282,6 +1286,7 @@ tags:
 position: 590,408
 ---
 << fadeIn >>
+<< music NegativeSad >>
 << addBlur 1 >>
 << fadeOut >>
 

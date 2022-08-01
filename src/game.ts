@@ -208,6 +208,8 @@ const musicAssets = [
   "DanseQuiet",
   "Victory",
   "Neutral",
+  "Neutral2",
+  "Neutral3",
   "Tense",
   "Danse",
   "Solo1",
