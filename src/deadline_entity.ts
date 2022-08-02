@@ -74,22 +74,16 @@ export class DeadlineEntity extends extension.ExtendedCompositeEntity {
     this._activateChildEntity(animP);
   }
 
-  public _update(frameInfo: entity.FrameInfo) {
-    if (this._missed) {
-      this._icon.tint = 0xffe538;
-      this._text.style.fill = this._icon.tint;
-      if (!this._shake) {
-        this._shake = new graphics.ScreenShake(15, 700);
-        this._activateChildEntity(
+  public missed() {
+    this._icon.tint = 0xffe538;
+    this._text.style.fill = this._icon.tint;
+    if (!this._shake) {
+      this._shake = new graphics.ScreenShake(15, 700);
+      this._activateChildEntity(
           this._shake,
           entity.extendConfig({ container: this._icon })
-        );
-      }
+      );
     }
-  }
-
-  public missed() {
-    this._missed = true;
   }
 
   public remove() {

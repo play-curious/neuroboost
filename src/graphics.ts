@@ -1026,12 +1026,14 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
   public missDeadline() {
     if (!this._deadline) return;
+
     this._deadline.missed();
     this._graphicsState.lastDeadline.missed = true;
   }
 
   public removeDeadline() {
     if (!this._deadline) return;
+
     this._deadline.remove();
     this._graphicsState.lastDeadline = null;
   }

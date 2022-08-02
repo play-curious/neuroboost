@@ -369,10 +369,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       options.length === 1 &&
       indexOfBack !== -1
     ) {
-      this._handleDialog(
-        "Vous ne pouvez plus rien faire ici pour le moment.",
-        indexOfBack
-      );
+      this._handleDialog("Vous ne pouvez plus rien faire ici pour le moment.", indexOfBack);
       return;
     }
 
