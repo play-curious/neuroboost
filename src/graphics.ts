@@ -130,7 +130,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public loadSave(loadedGraphicsState: save.GraphicsState) {
-    console.log("save loaded")
     if (loadedGraphicsState.lastBg)
       this.setBackground(
         loadedGraphicsState.lastBg,
