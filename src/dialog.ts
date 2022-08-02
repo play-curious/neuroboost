@@ -14,6 +14,7 @@ import * as extension from "./extension";
 import * as gauge from "./gauge";
 
 import * as yarnBound from "yarn-bound";
+import * as chapter_menus from "./chapter_menus";
 
 declare module "yarn-bound" {
   interface Metadata {
@@ -63,9 +64,6 @@ export const debuggingDialogScenes = [
 ];
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
-  saveScore(arg0: string, hintWords: string[]): entity.Entity {
-      throw new Error("Method not implemented.");
-  }
   public lastNodeData: yarnBound.Metadata;
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
@@ -523,9 +521,25 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     }
   }
 
+  saveScore(score:string, hintWords: string[]):entity.Entity{
+    const scoreNumber:number = Number(score);
+    save.updateCompletedLevel(this.levelName, scoreNumber);
+    // Look up the index of the chapter to get the number
+    const chapter = dialogScenes.indexOf(this.levelName);
+    const hint = hintWords.join(" ");
+
+    this.entityConfig.fxMachine.play("Success");
+    return new chapter_menus.ScoreMenu({
+      chapter,
+      score:scoreNumber,
+      hint,
+    });
+  }
+
   calculateC7Score(): number
   {
     const motivation:number = Number(this.entityConfig.variableStorage.get("motivationFred"));
+    console.log(motivation);
     if(motivation >= 7)
     {
       return 3;
