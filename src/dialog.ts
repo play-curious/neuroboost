@@ -521,7 +521,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     }
   }
 
-  saveScore(score:string, hintWords: string[]):entity.Entity{
+  showAndSaveScore(score:string, hintWords: string[]):entity.Entity{
     const scoreNumber:number = Number(score);
     save.updateCompletedLevel(this.levelName, scoreNumber);
     // Look up the index of the chapter to get the number

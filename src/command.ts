@@ -346,12 +346,13 @@ export const commands: Record<string, Command> = {
 
   completeLevel(...hintWords: string[]): entity.Entity {
     const score = this.calculateScore();
-    return this.saveScore(String(score), hintWords);
+    return this.showAndSaveScore(String(score), hintWords);
   },
 
-  completeLevel7(...hintWords: string[]): entity.Entity {
+  //only completes the C7 level
+  completeLevelC7(...hintWords: string[]): entity.Entity {
     const score = this.calculateC7Score();
-    return this.saveScore(String(score), hintWords);
+    return this.showAndSaveScore(String(score), hintWords);
   },
 
   completeSages(): void {
