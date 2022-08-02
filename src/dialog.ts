@@ -146,7 +146,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     this.enabled = true;
     this.selectedOptions = [];
-    this.entityConfig.variableStorage.get("motivationFred")
 
     this._startNode = this._enteringTransition.params?.startNode || "Start";
 
