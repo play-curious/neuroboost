@@ -63,6 +63,9 @@ export const debuggingDialogScenes = [
 ];
 
 export class DialogScene extends extension.ExtendedCompositeEntity {
+  saveScore(arg0: string, hintWords: string[]): entity.Entity {
+      throw new Error("Method not implemented.");
+  }
   public lastNodeData: yarnBound.Metadata;
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
   public graphics: graphics.Graphics;
@@ -518,6 +521,24 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       const newValue = Math.max(Number(oldValue) - simulatedFood, 0);
       this.config.variableStorage.set("food", `${newValue}`);
     }
+  }
+
+  calculateC7Score(): number
+  {
+    const motivation:number = Number(this.entityConfig.variableStorage.get("motivationFred"));
+    if(motivation >= 7)
+    {
+      return 3;
+    }
+    if(motivation >= 5)
+    {
+      return 2;
+    }
+    if(motivation >= 4)
+    {
+      return 1;
+    }
+    return 0;
   }
 
   calculateScore(): number {
