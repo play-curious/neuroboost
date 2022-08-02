@@ -29,14 +29,15 @@ class RequestTransitionEntity extends entity.EntityBase {
 }
 
 function checkSave(): entity.Transition {
-  if (!save.hasSave()) return entity.makeTransition("toc");
+  // if no save exists, start with the prologue
+  if (!save.hasSave()) return entity.makeTransition("Prologue");
 
   // Load variable storage from memory
   this._entityConfig.variableStorage.data = save.getVariableStorage();
 
   const loadedChapterData = save.getCurrentChapter();
 
-  // If no save exists, go the main menu
+  // If the save exists but doesn't specify a level, go to the table of contents
   if (!loadedChapterData) {
     return entity.makeTransition("toc");
   } else {
