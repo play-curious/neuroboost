@@ -384,20 +384,17 @@ export const commands: Record<string, Command> = {
     this.graphics.removeBlur();
   },
 
-  setDeadline(name:string, timestamp:string)
-  {
+  setDeadline(name: string, timestamp: string) {
     this.graphics.addDeadline(name, timestamp);
   },
 
-  missedDeadline()
-  {
+  missedDeadline() {
     this.graphics.missDeadline();
   },
 
-  removeDeadline()
-  {
+  removeDeadline() {
     this.graphics.removeDeadline();
-  }
+  },
 };
 
 export const functions: Record<string, YarnFunction> = {

@@ -146,6 +146,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     this.enabled = true;
     this.selectedOptions = [];
+    this.entityConfig.variableStorage.get("motivationFred")
 
     this._startNode = this._enteringTransition.params?.startNode || "Start";
 
@@ -369,7 +370,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       options.length === 1 &&
       indexOfBack !== -1
     ) {
-      this._handleDialog("Vous ne pouvez plus rien faire ici pour le moment.", indexOfBack);
+      this._handleDialog(
+        "Vous ne pouvez plus rien faire ici pour le moment.",
+        indexOfBack
+      );
       return;
     }
 

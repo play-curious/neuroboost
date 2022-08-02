@@ -130,6 +130,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   }
 
   public loadSave(loadedGraphicsState: save.GraphicsState) {
+    console.log("save loaded")
     if (loadedGraphicsState.lastBg)
       this.setBackground(
         loadedGraphicsState.lastBg,
@@ -144,7 +145,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this.toggleGauges(true, ...loadedGraphicsState.lastGauges);
     if (loadedGraphicsState.lastMusic)
       this.config.jukebox.play(loadedGraphicsState.lastMusic);
-
+    if (loadedGraphicsState.lastDeadline) {
+      this.addDeadline(
+        loadedGraphicsState.lastDeadline.name,
+        loadedGraphicsState.lastDeadline.time
+      );
+      if (loadedGraphicsState.lastDeadline.missed) {
+        this.missDeadline();
+      }
+    }
     this._graphicsState = loadedGraphicsState;
   }
 
@@ -993,35 +1002,39 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     );
   }
 
-  public addDeadline(name:string, timestamp:string)
-  {
+  public addDeadline(name: string, timestamp: string) {
     //if(!timestamp.match("\d{2}:\d{2}")) throw "Dead line error : timestamp must be like HH:MM";
 
     this.removeDeadline();
-    let hours:string = timestamp.split(":")[0];
-    let minutes:string = timestamp.split(":")[1];
-    this._deadline = new deadline.DeadlineEntity(name, hours, minutes)
+    let hours: string = timestamp.split(":")[0];
+    let minutes: string = timestamp.split(":")[1];
+    this._deadline = new deadline.DeadlineEntity(name, hours, minutes);
     this._activateChildEntity(
-        this._deadline,
-        entity.extendConfig({ container: this._container })
+      this._deadline,
+      entity.extendConfig({ container: this._container })
     );
-    this._on(this, "deactivatedChildEntity", (e)=>{
-      if(e === this._deadline)
-      {
+    this._on(this, "deactivatedChildEntity", (e) => {
+      if (e === this._deadline) {
         this._deadline = null;
       }
-    })
+    });
+    this._graphicsState.lastDeadline = {
+      missed: false,
+      time: timestamp,
+      name,
+    };
   }
 
-  public missDeadline()
-  {
-    if(!this._deadline) return;
+  public missDeadline() {
+    if (!this._deadline) return;
     this._deadline.missed();
+    this._graphicsState.lastDeadline.missed = true;
   }
 
-  public removeDeadline()
-  {
-    if(this._deadline) this._deadline.remove();
+  public removeDeadline() {
+    if (!this._deadline) return;
+    this._deadline.remove();
+    this._graphicsState.lastDeadline = null;
   }
 
   public addScreenShake(amount = 20, time = 500) {

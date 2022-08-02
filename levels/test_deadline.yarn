@@ -8,6 +8,12 @@ position: -571,1504
   <<missedDeadline>>
 -> remove deadline
   <<removeDeadline>>
-
+<< jump Other >>
+===
+title: Other
+tags:
+position: -571,1504
+---
+back to start
 << jump Start >>
 ===

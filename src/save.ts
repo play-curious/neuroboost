@@ -14,6 +14,12 @@ export class CompletedChapter {
   completedSages: boolean = false;
 }
 
+export interface DeadlineState {
+  name: string;
+  time: string;
+  missed: boolean;
+}
+
 export interface GraphicsState {
   lastBg?: string;
   lastBgMood?: string;
@@ -21,6 +27,7 @@ export interface GraphicsState {
   lastMood?: string;
   lastMusic?: string;
   lastGauges?: string[];
+  lastDeadline?: DeadlineState;
 }
 
 export interface CurrentChapter {
