@@ -14,6 +14,7 @@ import * as variable from "./variable";
 import * as images from "./images";
 import * as gauge from "./gauge";
 import * as save from "./save";
+import * as deadline from "./deadline_entity";
 
 // Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
@@ -50,6 +51,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _dialogSpeaker: PIXI.Container;
 
   private _screenShake?: ScreenShake;
+  private _deadline?: deadline.DeadlineEntity;
   private _blur?: Blur;
 
   private _nodeDisplay: PIXI.Container;
@@ -142,7 +144,15 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       this.toggleGauges(true, ...loadedGraphicsState.lastGauges);
     if (loadedGraphicsState.lastMusic)
       this.config.jukebox.play(loadedGraphicsState.lastMusic);
-
+    if (loadedGraphicsState.lastDeadline) {
+      this.addDeadline(
+        loadedGraphicsState.lastDeadline.name,
+        loadedGraphicsState.lastDeadline.time
+      );
+      if (loadedGraphicsState.lastDeadline.missed) {
+        this.missDeadline();
+      }
+    }
     this._graphicsState = loadedGraphicsState;
   }
 
@@ -991,6 +1001,43 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     );
   }
 
+  public addDeadline(name: string, timestamp: string) {
+    //if(!timestamp.match("\d{2}:\d{2}")) throw "Dead line error : timestamp must be like HH:MM";
+
+    this.removeDeadline();
+    let hours: string = timestamp.split(":")[0];
+    let minutes: string = timestamp.split(":")[1];
+    this._deadline = new deadline.DeadlineEntity(name, hours, minutes);
+    this._activateChildEntity(
+      this._deadline,
+      entity.extendConfig({ container: this._container })
+    );
+    this._on(this, "deactivatedChildEntity", (e) => {
+      if (e === this._deadline) {
+        this._deadline = null;
+      }
+    });
+    this._graphicsState.lastDeadline = {
+      missed: false,
+      time: timestamp,
+      name,
+    };
+  }
+
+  public missDeadline() {
+    if (!this._deadline) return;
+
+    this._deadline.missed();
+    this._graphicsState.lastDeadline.missed = true;
+  }
+
+  public removeDeadline() {
+    if (!this._deadline) return;
+
+    this._deadline.remove();
+    this._graphicsState.lastDeadline = null;
+  }
+
   public addScreenShake(amount = 20, time = 500) {
     if (this._screenShake) return;
 
@@ -1174,7 +1221,7 @@ function splitIntoLines(input: string, lineLength: number): string {
   return result;
 }
 
-class ScreenShake extends entity.EntityBase {
+export class ScreenShake extends entity.EntityBase {
   private _originalPos: PIXI.Point;
   private _elapsedTime: number;
 

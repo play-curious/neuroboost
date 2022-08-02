@@ -297,6 +297,7 @@ export const commands: Record<string, Command> = {
   resetLevel() {
     this.selectedOptions = [];
     this.visited = new Set();
+    this.graphics.removeDeadline();
   },
 
   minigame(className: string) {
@@ -381,6 +382,18 @@ export const commands: Record<string, Command> = {
 
   removeBlur(): void {
     this.graphics.removeBlur();
+  },
+
+  setDeadline(name: string, timestamp: string) {
+    this.graphics.addDeadline(name, timestamp);
+  },
+
+  missedDeadline() {
+    this.graphics.missDeadline();
+  },
+
+  removeDeadline() {
+    this.graphics.removeDeadline();
   },
 };
 
