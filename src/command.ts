@@ -347,17 +347,13 @@ export const commands: Record<string, Command> = {
 
   completeLevel(...hintWords: string[]): entity.Entity {
     const score = this.calculateScore();
-    save.updateCompletedLevel(this.levelName, score);
-    // Look up the index of the chapter to get the number
-    const chapter = dialog.dialogScenes.indexOf(this.levelName);
-    const hint = hintWords.join(" ");
+    return this.showAndSaveScore(String(score), hintWords);
+  },
 
-    this.entityConfig.fxMachine.play("Success");
-    return new chapter_menus.ScoreMenu({
-      chapter,
-      score,
-      hint,
-    });
+  //only completes the C7 level
+  completeLevelC7(...hintWords: string[]): entity.Entity {
+    const score = this.calculateC7Score();
+    return this.showAndSaveScore(String(score), hintWords);
   },
 
   completeSages(): void {
