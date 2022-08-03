@@ -80,8 +80,8 @@ export class DeadlineEntity extends extension.ExtendedCompositeEntity {
     if (!this._shake) {
       this._shake = new graphics.ScreenShake(15, 700);
       this._activateChildEntity(
-          this._shake,
-          entity.extendConfig({ container: this._icon })
+        this._shake,
+        entity.extendConfig({ container: this._icon })
       );
     }
   }
