@@ -1,0 +1,19 @@
+title: Start
+tags:
+position: -571,1504
+---
+-> set deadline
+  <<setDeadline Danse 10:00>>
+-> miss deadline
+  <<missedDeadline>>
+-> remove deadline
+  <<removeDeadline>>
+<< jump Other >>
+===
+title: Other
+tags:
+position: -571,1504
+---
+back to start
+<< jump Start >>
+===

@@ -1,0 +1,8 @@
+title: Start
+tags:
+position: -571,1504
+---
+<<set $mavar to 5/3>>
+bonjour { round_places($mavar, 3) }
+<<jump Start>>
+===

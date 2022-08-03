@@ -297,6 +297,7 @@ export const commands: Record<string, Command> = {
   resetLevel() {
     this.selectedOptions = [];
     this.visited = new Set();
+    this.graphics.removeDeadline();
   },
 
   minigame(className: string) {
@@ -346,17 +347,13 @@ export const commands: Record<string, Command> = {
 
   completeLevel(...hintWords: string[]): entity.Entity {
     const score = this.calculateScore();
-    save.updateCompletedLevel(this.levelName, score);
-    // Look up the index of the chapter to get the number
-    const chapter = dialog.dialogScenes.indexOf(this.levelName);
-    const hint = hintWords.join(" ");
+    return this.showAndSaveScore(String(score), hintWords);
+  },
 
-    this.entityConfig.fxMachine.play("Success");
-    return new chapter_menus.ScoreMenu({
-      chapter,
-      score,
-      hint,
-    });
+  //only completes the C7 level
+  completeLevelC7(...hintWords: string[]): entity.Entity {
+    const score = this.calculateC7Score();
+    return this.showAndSaveScore(String(score), hintWords);
   },
 
   completeSages(): void {
@@ -382,6 +379,18 @@ export const commands: Record<string, Command> = {
   removeBlur(): void {
     this.graphics.removeBlur();
   },
+
+  setDeadline(name: string, timestamp: string) {
+    this.graphics.addDeadline(name, timestamp);
+  },
+
+  missedDeadline() {
+    this.graphics.missDeadline();
+  },
+
+  removeDeadline() {
+    this.graphics.removeDeadline();
+  },
 };
 
 export const functions: Record<string, YarnFunction> = {
@@ -392,6 +401,10 @@ export const functions: Record<string, YarnFunction> = {
     return nodes.every(
       (node) => this.visited.has(node) || this.visitedPermanent.has(node)
     );
+  },
+
+  round_places(n: string, places: string): string {
+    return Number(n).toFixed(parseInt(places));
   },
 
   getGauge(gauge: string): number {

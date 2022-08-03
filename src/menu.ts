@@ -26,10 +26,14 @@ const defaultSettings: Settings = {
 
 const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
   credits: {
-    Programming: ["Camille Abella", "Quentin André", "Eliot Maréchal"],
+    Programming: [
+      "Florian Boyer",
+      "André Quentin",
+      "Maréchal Eliot",
+      "Camille Abella",
+    ],
     "Game Design": "Jesse Himmelstein",
-    "Narrative Design": "Ronan Le Breton",
-    Locator: "William Barreau",
+    "Narrative Design": ["Grégoire Francisco", "Ronan Le Breton"],
     "Sound Design": "Jean-Baptiste Mar",
     "Graphic Design": [
       "Xuan Le",
@@ -38,10 +42,11 @@ const creditsOptions: Partial<booyah.CreditsEntityOptions> = {
       "Juliette Amélie",
     ],
     Animation: ["Xuan Le", "Sana Coftier"],
-    QA: "Ilyes Khamassi",
+    Translation: "William Barreau",
+    QA: ["Cédrik Saint-Germain", "Ilyes Khamassi"],
   },
   fontFamily: "Optimus",
-  textSize: 40,
+  textSize: 30,
 };
 
 export class Menu extends extension.ExtendedCompositeEntity {

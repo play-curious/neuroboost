@@ -547,7 +547,7 @@ You: Fred !…
 << hide >>
 Fred est contraint de raccrocher… Maintenant, il n'y a plus qu'à attendre !
 << music Victory >>
-<< completeLevel >>
+<< completeLevelC7 >>
 <<if !visited("Assemblee_Sages")>>
 Azul_cheerful: Hé ! Tu t'es bien débrouillé avec Fred ! On dirait qu'il est fin prêt pour son Oral de rattrapage !
 You: Comment tu peux être aussi sûr, Azul ?
