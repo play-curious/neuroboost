@@ -537,6 +537,23 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         )
       );
 
+      const choicetext: PIXI.Text = this.makeText(
+        nodeOptions[i].text,
+        {
+          fill: 0xfdf4d3,
+          fontFamily: "Ubuntu",
+          fontSize: 40,
+          fontStyle: "normal",
+          wordWrap: true,
+          wordWrapWidth: 1325,
+          leading: 10,
+        },
+        (it) => {
+          it.anchor.set(0.5);
+          it.position.set(choicebox.width / 2, choicebox.height / 2);
+        }
+      );
+
       currentY -= choicebox.height + 20;
       choicebox.pivot.set(choicebox.width / 2, choicebox.y);
 
@@ -566,12 +583,30 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             choicebox.buttonMode = true;
 
             this._on(choicebox, "pointerup", () => {
-              this.config.dialogScene.addToHistory(
-                "[choice]",
-                nodeOptions[i].text
+              console.log("click");
+              this._activateChildEntity(
+                new entity.EntitySequence([
+                  /*new tween.Tween({
+                    obj: choicetext.style,
+                    to: 0x000000,
+                    property: "fill",
+                    duration: 2000,
+                    interpolate: tween.interpolation.color,
+                  }),*/
+                  new entity.FunctionCallEntity(() => {
+                    choicetext.style.fill = 0x000000;
+                  }),
+                  /*new entity.FunctionCallEntity(() => {
+                    console.log(choicetext.style);
+                    this.config.dialogScene.addToHistory(
+                      "[choice]",
+                      nodeOptions[i].text
+                    );
+                    this.hideNode();
+                    onBoxClick(Number(nodeOptions[i].id));
+                  }),*/
+                ])
               );
-              this.hideNode();
-              onBoxClick(Number(nodeOptions[i].id));
             });
 
             this._on(choicebox, "mouseover", () => {
@@ -604,24 +639,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         ])
       );
 
-      choicebox.addChild(
-        this.makeText(
-          nodeOptions[i].text,
-          {
-            fill: "#fdf4d3",
-            fontFamily: "Ubuntu",
-            fontSize: 40,
-            fontStyle: "normal",
-            wordWrap: true,
-            wordWrapWidth: 1325,
-            leading: 10,
-          },
-          (it) => {
-            it.anchor.set(0.5);
-            it.position.set(choicebox.width / 2, choicebox.height / 2);
-          }
-        )
-      );
+      choicebox.addChild(choicetext);
 
       this._nodeDisplay.addChild(choicebox);
     }
@@ -721,6 +739,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             highlight.buttonMode = true;
 
             this._on(highlight, "pointerup", () => {
+              this._activateChildEntity(
+                new entity.EntitySequence([
+                  //TODO : animate
+                ])
+              );
               this.config.dialogScene.addToHistory("[freechoice]", choiceText);
               this.hideNode();
               onBoxClick(i);
