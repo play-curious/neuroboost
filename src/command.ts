@@ -32,8 +32,6 @@ export const commands: Record<string, Command> = {
     this.graphics.removeCharacters(instantaneous === undefined);
   },
 
-  round(n: string, places: string) {},
-
   prompt<VarName extends keyof variable.Variables>(
     varName: VarName,
     message: string,
