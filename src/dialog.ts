@@ -60,6 +60,7 @@ export const debuggingDialogScenes = [
   "backgrounds",
   "test_simulation",
   "test_deadline",
+  "test_round",
   "test_highlight_sages",
   "test_highlight_party",
 ];
@@ -370,7 +371,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       options.length === 1 &&
       indexOfBack !== -1
     ) {
-      this._handleDialog("Vous ne pouvez plus rien faire ici pour le moment.", indexOfBack);
+      this._handleDialog(
+        "Vous ne pouvez plus rien faire ici pour le moment.",
+        indexOfBack
+      );
       return;
     }
 
@@ -522,8 +526,8 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     }
   }
 
-  showAndSaveScore(score:string, hintWords: string[]):entity.Entity{
-    const scoreNumber:number = Number(score);
+  showAndSaveScore(score: string, hintWords: string[]): entity.Entity {
+    const scoreNumber: number = Number(score);
     save.updateCompletedLevel(this.levelName, scoreNumber);
     // Look up the index of the chapter to get the number
     const chapter = dialogScenes.indexOf(this.levelName);
@@ -532,25 +536,23 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.entityConfig.fxMachine.play("Success");
     return new chapter_menus.ScoreMenu({
       chapter,
-      score:scoreNumber,
+      score: scoreNumber,
       hint,
     });
   }
 
-  calculateC7Score(): number
-  {
-    const motivation:number = Number(this.entityConfig.variableStorage.get("motivationFred"));
+  calculateC7Score(): number {
+    const motivation: number = Number(
+      this.entityConfig.variableStorage.get("motivationFred")
+    );
     console.log(motivation);
-    if(motivation >= 7)
-    {
+    if (motivation >= 7) {
       return 3;
     }
-    if(motivation >= 5)
-    {
+    if (motivation >= 5) {
       return 2;
     }
-    if(motivation >= 4)
-    {
+    if (motivation >= 4) {
       return 1;
     }
     return 0;

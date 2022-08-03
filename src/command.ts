@@ -403,6 +403,10 @@ export const functions: Record<string, YarnFunction> = {
     );
   },
 
+  round_places(n: string, places: string): string {
+    return Number(n).toFixed(parseInt(places));
+  },
+
   getGauge(gauge: string): number {
     return parseInt(this.entityConfig.variableStorage.get(gauge));
   },
