@@ -33,9 +33,9 @@ En prenant votre petit déjeuner, vous vous grattez la tête : vous aviez un cou
 
 << advanceTimeBy 0:30 >>
 
-Vous jetez un oeil à votre palmphone : pas de nouvelle de l'hôpital ni de votre grand-mère. C'est peut-être mauvais signe...
+Vous jetez un œil à votre palmphone : pas de nouvelle de l'hôpital ni de votre grand-mère. C'est peut-être mauvais signe…
 << addToGauge stress 50 >>
-Peut-être que votre mère en sait quelque chose ? Et si la nouvelle était mauvaise ?... Très mauvaise ?...
+Peut-être que votre mère en sait quelque chose ? Et si la nouvelle était mauvaise ?… Très mauvaise ?…
 
 Bon, il est temps de s'y mettre. C'est qu'il y a beaucoup a réviser, même pour un week-end entier. #line:0f2bdb6 
 
@@ -61,13 +61,13 @@ colorID: 2
 << visit MamanCall >>
 Votre palmphone vibre : c'est maman ! Elle a sûrement des nouvelles de mamie !
 -> Répondre
-    Maman@holo_shadow: Salut mon chou ! J'ai des nouvelles de ta mamie...
+    Maman@holo_shadow: Salut mon chou ! J'ai des nouvelles de ta mamie…
     You: Alors ?? Elle va mieux ?
     Maman@holo_shadow: Oui. Elle s'est réveillée du coma dans la nuit. Elle est encore faible, mais elle devrait se rétablir d'ici peu.
     << removeFromGauge stress 40 >>
     You: Pourquoi tu me l'as pas dit plus tôt ??
-    Maman@holo_shadow: Désolée, { $name }. Je ne voulais pas te déranger dans ton sommeil, et je viens de me réveiller... La nuit a été rude.
-    You: T'inquiète... J'étais juste un peu stressé. Mais ça va mieux.
+    Maman@holo_shadow: Désolée, { $name }. Je ne voulais pas te déranger dans ton sommeil, et je viens de me réveiller… La nuit a été rude.
+    You: T'inquiète… J'étais juste un peu stressé. Mais ça va mieux.
     Maman@holo_shadow: Je suis contente que tu sois autant épanoui, dans tes études et ta vie. Courage pour le Grand Oral !
     You: Merci, maman ! Je réviserai à la santé de mamie !
 -> Mettre en silencieux
@@ -88,14 +88,14 @@ Vous recevez un appel. Il provient de votre grand-mère !
     <<jump MamieCall_dimanche>>
 -> Ne pas répondre
     << stopFX PhoneRing_LOOP>>
-    Votre mamie vous appelle après avoir frôlé le cercueil... Vous ne pouvez pas lui répondre, cela pourrait vous briser le coeur et vous faire rater vos examens.
-    Vous ne décrochez ni cet appel, ni celui qui suit. Tant pis, vous vivrez avec cela sur le coeur...
+    Votre mamie vous appelle après avoir frôlé le cercueil… Vous ne pouvez pas lui répondre, cela pourrait vous briser le cœur et vous faire rater vos examens.
+    Vous ne décrochez ni cet appel, ni celui qui suit. Tant pis, vous vivrez avec cela sur le cœur…
     << addToGauge stress 40 >>
 <<endif>>
 <<endif>>
 
 <<if $jour == "lundi" && isTimeOver("14:05")>>
-Vous ne vous êtes pas rendu à l'examen ! Vous avez tout fichu en l'air, encore une fois...
+Vous ne vous êtes pas rendu à l'examen ! Vous avez tout fichu en l'air, encore une fois…
 -> Recommencer le week-end
     << fx Warp >>
     << fadeIn 1500 12ea12 >>
@@ -142,14 +142,14 @@ Mamie@holo_shadow: Je te dérange ?  #line:05faa07
 -> Je ne peux pas parler très longtemps << if visited("Planning_dimanche") >> #line:089fd8a 
     Mamie@holo_shadow: Ah bon ? #line:01912fb 
     You: Je suis content d'avoir de tes nouvelles. Mais j'ai établi un planning très strict pour aujourd'hui, afin de réussir mes examens ! #line:0b763d2 
-    Mamie@holo_shadow: D'accord, je comprends ! Je suis fier de toi, mon chouchou... #line:00dd5e4 
+    Mamie@holo_shadow: D'accord, je comprends ! Je suis fier de toi, mon chouchou… #line:00dd5e4 
     << advanceTimeBy 0:15 >>
     << removeFromGauge stress 10 >>
     << hide >>
     Vous n'êtes resté que 15 minutes au téléphone, mais votre grand-mère a été ravie de vous avoir.
--> Heu... #line:0a41837 
+-> Heu… #line:0a41837 
     Mamie@holo_shadow: Tant que ça ? #line:0e5fa25 
-    You: Naan... Mais... #line:0928628 
+    You: Naan… Mais… #line:0928628 
     Mamie@holo_shadow: Tu me demandes pas comment ça va ? #line:090777a 
     You: Heu, si. Comment vas-tu ? #line:0c1864e 
     Mamie@holo_shadow: Très bien. Mieux que toi apparemment. Je suis sorti du coma et j'ai repris tous mes esprits. #line:04d321b 
@@ -172,7 +172,7 @@ colorID: 6
 << fadeOut >>
 
 <<if $foodinfridge <= 0>>
-Votre frigo est complètement vide ! Vous devriez acheter de ma matière organique synthétique pour votre Imprimante Alimentaire, ou vous abstenir de manger...
+Votre frigo est complètement vide ! Vous devriez acheter de ma matière organique synthétique pour votre Imprimante Alimentaire, ou vous abstenir de manger…
 <<jump Liste_Taches>>
 <<endif>>
 
@@ -197,7 +197,7 @@ Vous décidez de vous préparer un plat sain pour être en forme pour vos révis
 << removeFromGauge mentalLoad 10 >>
 Vous vous sentez tout de suite mieux et d'attaque pour la suite. #line:0a8430e 
 <<if $foodinfridge <= 0>>
-Tiens... Vous remarquez qu'il ne vous reste plus aucune matière calorique au frigo ! Vous devriez faire un saut aux courses à un moment où un autre...
+Tiens… Vous remarquez qu'il ne vous reste plus aucune matière calorique au frigo ! Vous devriez faire un saut aux courses à un moment où un autre…
 <<endif>>
 <<jump Liste_Taches>>
 ===
@@ -213,7 +213,7 @@ Encore ce bon vieux Burger Big Proteins, rapide à cuisiner, croustillant et nou
 << addToGauge food 40 >>
 Vous rangez rapidement la vaisselle, et vous y retournez. #line:0ed8d99 
 <<if $foodinfridge <= 0>>
-Tiens... Vous remarquez qu'il ne vous reste plus aucune matière calorique au frigo ! Vous devriez faire un saut aux courses à un moment où un autre...
+Tiens… Vous remarquez qu'il ne vous reste plus aucune matière calorique au frigo ! Vous devriez faire un saut aux courses à un moment où un autre…
 <<endif>>
 <<jump Liste_Taches>>
 ===
@@ -262,10 +262,10 @@ position: 943,-321
 
 You: RoomMate, tu peux me rappeler l'heure de ma séance de Jungle Body Beat ?
 RoomMate: Votre séance est à 14h. Voulez-vous que j'organise votre planning ?
-You: Vas-y RoomMate. Je suis sûr d'avoir prévu quelque chose ce soir...
-RoomMate: Voyons voir... Pour ce soir, j'ai noté "La fièvre du samedi soir".
+You: Vas-y RoomMate. Je suis sûr d'avoir prévu quelque chose ce soir…
+RoomMate: Voyons voir… Pour ce soir, j'ai noté "La fièvre du samedi soir".
 You: Oui, c'est ça ! Une fête dansante à la cafétéria, j'ai promis à Fred d'y aller avec lui !
-RoomMate: Je note également dans votre agenda... Les révisions des différents thèmes de la philosophie quantique, durant tout le week-end.
+RoomMate: Je note également dans votre agenda… Les révisions des différents thèmes de la philosophie quantique, durant tout le week-end.
 RoomMate: Les thèmes à aborder sont : la décohérence quantique, l'incertitude, la superposition d'états, l'intrication quantique.
 
 <<if $foodinfridge <= 2>>
@@ -286,7 +286,7 @@ position: 2089,802
 ---
 <<set $plannedDay to true>>
 RoomMate: Voulez-vous que je mette à jour le planning ?
-You: Voyons voir...
+You: Voyons voir…
 <<if getGauge("learning") > 80>>
 RoomMate: Vous avez accompli toutes vos révisions sur la philosophie quantique.
 <<elseif getGauge("learning") > 50>>
@@ -337,7 +337,7 @@ position: 943,-321
 ---
 Quatre thèmes à aborder, un week-end. Il serait peut-être préférable de prendre des notes pour revoir rapidement les grandes notions à aborder durant l'Oral !
 << addToGauge learning 10 >>
-Ces rappels succints des différentes notions de vos cours vous permettent à la fois de les éclaircir en les écrivant, mais aussi de pouvoir les réviser facilement plus tard.
+Ces rappels succincts des différentes notions de vos cours vous permettent à la fois de les éclaircir en les écrivant, mais aussi de pouvoir les réviser facilement plus tard.
 << visit Fiches >>
 
 << advanceTimeBy 1:00 >>
@@ -352,7 +352,7 @@ tags:
 position: 1069,-255
 ---
 <<if getGauge("stress") > 66 >>
-Malgré votre envie de travailler, vous ne pouvez pas vous empêcher d'être distrait par tout le stress et l'anxiété qui sont en vous...
+Malgré votre envie de travailler, vous ne pouvez pas vous empêcher d'être distrait par tout le stress et l'anxiété qui sont en vous…
 Vous vous efforcez de travailler sur la philosophie quantique, puis vous arrêtez, certain que votre état mental influence trop votre capacité à travailler.
 << addToGauge learning 10>>
 << addToGauge mentalLoad 30>>
@@ -393,7 +393,7 @@ Encore une fois, vous remettez le nez dans vos révisions. Vous ne le relevez qu
 << advanceTimeBy 2:00 >>
 
 <<if !$silence>>
-Vous n'avez pas pu vous empêcher d'être distrait par les messages de vos amis durant cette séance de révision...
+Vous n'avez pas pu vous empêcher d'être distrait par les messages de vos amis durant cette séance de révision…
 <<endif>>
 
 <<if $plannedDay && $silence>>
@@ -405,14 +405,14 @@ Vous n'avez pas pu vous empêcher d'être distrait par les messages de vos amis 
 <<endif>>
 
 <<if getGauge("stress") > 33>>
-Malgré vos efforts, vos pensées sont toujours distraites par le stress... Peut-être que vous changer les idées pourrait calmer vos nerfs...
+Malgré vos efforts, vos pensées sont toujours distraites par le stress… Peut-être que vous changer les idées pourrait calmer vos nerfs…
 << addToGauge mentalLoad 20 >>
 <<else>>
 << addToGauge mentalLoad 30 >>
 <<endif>>
 
 <<if !$plannedDay>>
-Dommage que vous n'ayez pas de planning à jour pour l'occasion... Cela vous aurait sûrement aidé.
+Dommage que vous n'ayez pas de planning à jour pour l'occasion… Cela vous aurait sûrement aidé.
 <<endif>>
 
 << fadeIn >>
@@ -436,7 +436,7 @@ title: Reviser_Fiches_lundi
 tags: 
 position: 1069,-255
 ---
-Vous prenez vos fiches dans l'ordre des thèmes abordés à l'Oral : l'intrication quantique, le phénomène d'incertitude, la décohérence quantique...
+Vous prenez vos fiches dans l'ordre des thèmes abordés à l'Oral : l'intrication quantique, le phénomène d'incertitude, la décohérence quantique…
 << addToGauge learning 10 >>
 << addToGauge mentalLoad 5 >>
 Cette piqûre de rappel n'est sûrement pas de trop avant d'aborder l'examen !
@@ -452,7 +452,7 @@ position: 768,-255
 << set $silence to true >>
 You: RoomMate ! Passe la chambre en mode Zéro-Distraction !
 << fx Success >>
-RoomMate: Entendu ! Je désactive les activités de détente et autres distracteurs.
+RoomMate: Entendu ! Je désactive les activités de détente et autres distractions.
 <<visit Zero_Distraction >>
 <<jump bureau_subchoice>>
 ===
@@ -462,7 +462,7 @@ tags:
 position: 742,-163
 ---
 << set $silence to false >>
-You: RoomMate, désactive le mode Zéro-Distraction
+You: RoomMate, désactive le mode Zéro-Distraction.
 << fx Success >>
 RoomMate: C'est fait ! Je débloque les appels, les notifications et les activités de détente !
 <<jump Liste_Taches>>
@@ -530,7 +530,7 @@ RoomMate: Les activités de détente sont désactivées avec le mode Zéro-Distr
     <<jump Mediter>>
 -> Passer le temps jusqu'à 20h <<if !isTimeOver("20:00")>>
     << advanceTimeUntil 20:00 >>
-    Vous estimez avoir fait ce que vous aviez à faire pour aujourd'hui. Vous en profitez pour ranger un peu votre appartement et jetter un oeil à votre messagerie avant le soir.
+    Vous estimez avoir fait ce que vous aviez à faire pour aujourd'hui. Vous en profitez pour ranger un peu votre appartement et jeter un œil à votre messagerie avant le soir.
     <<jump Liste_Taches>>
 -> back #line:0aaf8ca 
     << fadeIn >>
@@ -565,7 +565,7 @@ Cela fait déjà 2 heures que vous regardez le film, vous pourriez le terminer o
 <<visit StarMars2>>
 
 Avec l'aide de leurs jeunes apprentis, les chevaliers Chédaï parviennent à mettre en péril les Saturniens et à détruire leur P.M.U infernal, refermant l'ouverture extra-dimensionnelle.
-Tout est rentré dans l'ordre, les habitants de la planète Provencia peuvent désormais vivre en paix, et célèbrent leur victoire dans une fête géante. Quand soudain...
+Tout est rentré dans l'ordre, les habitants de la planète Provencia peuvent désormais vivre en paix, et célèbrent leur victoire dans une fête géante. Quand soudain…
 L'ex-Empereur Suprême de l'Impérium Noir, caché dans la foule, perce d'un tir de pistolet laser l'armure de Dude !
 
 << advanceTimeBy 1:00 >>
@@ -575,7 +575,7 @@ L'ex-Empereur Suprême de l'Impérium Noir, caché dans la foule, perce d'un tir
 << stopFX TVStarwars_LOOP >>
 << hide >>
 
-Quel suspense ! Est-ce que Dude Highwalker va y survivre ? La suite, vous l'aurez sûrement en regardant le prochain film...
+Quel suspense ! Est-ce que Dude Highwalker va y survivre ? La suite, vous l'aurez sûrement en regardant le prochain film…
 
 << fadeIn >>
 <<jump Liste_Taches>>
@@ -620,7 +620,7 @@ position: 1591,-83
 ---
 Vous prenez votre palmphone. Vous cliquez sur l'icône DisBoard.
 << fx Notification >>
-Loulou vous ping, puis c'est le tour de Tim, de Bob, Dom... Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses...  #line:020529c 
+Loulou vous ping, puis c'est le tour de Tim, de Bob, Dom… Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses…  #line:020529c 
 Vous vous sentez calme et confiant. #line:084795a 
 
 << advanceTimeBy 2:00 >>
@@ -647,7 +647,7 @@ colorID: 6
 <<else>>
 -> Faire les courses (1h) <<if !visited("Courses")>>
     <<jump Courses>>
--> Aller au Grand Oral (Passe le temps jusqu'à 15h) <<if $jour == "lundi">>
+-> Aller au Grand Oral (Passe le temps jusqu'à 14h) <<if $jour == "lundi">>
     <<jump Grand_Oral>>
 -> Aller chercher Fred pour faire un jogging avant l'examen (2h) <<if $jour == "lundi">> #once
     <<jump Jogging>>
@@ -768,14 +768,14 @@ Vous avez faim et vous avez le temps de vous imprimer un petit plat exotique : d
 
 << advanceTimeBy 1:00 food >>
 
-Vous faites le bilan de votre première journée. C'est un début, mais il en reste du travail à faire. Pas grave, vous avez encore toute la journée de dimanche. Et même ce soir. Peut-être que...
+Vous faites le bilan de votre première journée. C'est un début, mais il en reste du travail à faire. Pas grave, vous avez encore toute la journée de dimanche. Et même ce soir. Peut-être que…
 << fx Notification >>
-Soudain, quelqu'un sonne à la porte...  #line:0873fc8 
+Soudain, quelqu'un sonne à la porte…  #line:0873fc8 
 <<if !visited("knowsAboutParty")>>
 << visitPermanent knowsAboutParty >>
-Zut ! Vous aviez complètement oublié. Fred vous en a parlé dimanche dernier... #line:098d496 
+Zut ! Vous aviez complètement oublié. Fred vous en a parlé dimanche dernier… #line:098d496 
 Fred_excited-mask: Ben alors, ces quoi ces vêtements ? T'as pas oublié la fièvre du samedi soir, quand-même ?
-You: Euh... J'avais oublié...
+You: Euh… J'avais oublié…
 Fred_smiling-mask: Pas grave, enfile ta tenue et on y va !
 <<else>>
 Comme vous l'attendiez, Fred vient vous chercher pour aller à la fête. Il y a mis les formes, on dirait !
@@ -785,8 +785,8 @@ Fred_excited-mask: Alors, on y va, à cette fièvre du samedi soir, ou quoi ?
 << empty >>
 
 -> Refuser #line:0927d6c 
-    You: Désolé, Fred... J'ai plein de choses à faire ce week-end. J'aurais adoré, mais je préfère passer mon tour.
-    Fred_sad-mask: Bon, tu fais ce que tu veux, mais c'est pas cool...
+    You: Désolé, Fred… J'ai plein de choses à faire ce week-end. J'aurais adoré, mais je préfère passer mon tour.
+    Fred_sad-mask: Bon, tu fais ce que tu veux, mais c'est pas cool…
     << hide >>
     Dommage que vous n'ayez pas le temps pour célébrer. Vous vous demandez ce que vous allez faire de votre soirée.
     -> Réviser
@@ -895,22 +895,22 @@ colorID: 1
 Vous vous réveillez le lendemain avec des étoiles plein les yeux. Ce fut une super fièvre du samedi soir. Vous étiez le soleil de cette galaxie festive. Dommage que la partie soit finie. #line:0f68a70 
 Dommage aussi que le jour se soit levé depuis un moment. Vous seriez bien resté au lit. Cependant, il est déjà temps de se lever et de prendre son petit-déjeuner.
 <<else>>
-Vous vous réveillez le lendemain, toutes vos pensées tournées vers la philospohie quantique.
-Vous seriez bien resté au lit. Cependant, il est déjà 9 heures, il est temps de se lever et de prendre son petit-déjeuner. #line:03e59d8 
+Vous vous réveillez le lendemain, toutes vos pensées tournées vers la philosophie quantique.
+Vous seriez bien resté au lit. Cependant, il est déjà 10 heures, il est temps de se lever et de prendre son petit-déjeuner. #line:03e59d8 
 <<endif>>
 << removeFromGauge learning 20 >>
-En vous levant, vous tentez de vous remettre en tête la citation d'un maître à penser de la philosophie quantique... C'était qui, déjà ? On dirait que certaines notions vous sont sorties de la tête dans la nuit...
+En vous levant, vous tentez de vous remettre en tête la citation d'un maître à penser de la philosophie quantique… C'était qui, déjà ? On dirait que certaines notions vous sont sorties de la tête dans la nuit…
 
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
 <<if $foodinfridge <= 0 >>
-Rien à manger ce matin... Vous feriez mieux de faire des courses avant que le magasin ferme.
+Rien à manger ce matin… Vous feriez mieux de faire des courses avant que le magasin ferme.
 <<else>>
 << fx EatCook >>
 << set $foodinfridge to $foodinfridge - 1>>
-Vous vérifiez ce que votre cuisine a en stock et vous vous préparez un solide petit-déjeuner sucré salé. Un jus de fruit, un maxi café, des tartines beurrées, un œuf de Mégalodinde brouillé et quelques néotomates cerises.
+Vous vérifiez ce que votre cuisine a en stock et vous vous préparez un solide petit-déjeuner sucré salé. Un jus de fruit, un maxi café, des tartines beurrées, un œuf de Mégalodinde brouillé et quelques néo-tomates cerises.
 << addToGauge food 60 >>
 C'est riche, délicieux, copieux et varié. Vous êtes rassasié. #line:01d09d8 
 << advanceTimeBy 0:30 >>
@@ -932,7 +932,7 @@ Il est plus de 20 heures ?! Il est temps de se préparer un petit dîner. #line:
 
 << if $foodinfridge <= 0 >>
 
-Toujours rien à manger... Vous n'avez pas pensé à faire les courses.
+Toujours rien à manger… Vous n'avez pas pensé à faire les courses.
 
 << else >>
 << set $foodinfridge to ($foodinfridge - 1)>>
@@ -971,7 +971,7 @@ colorID: 1
 << fadeOut >>
 
 << music Tense >>
-Vous ne rouvrez les yeux que le lendemain, au matin. Alors, c'est aujourd'hui le grand jour... Mince, vous ne pouvez pas vous empêcher de vous remémorer votre dernier passage, aussi humiliant soit-il.
+Vous ne rouvrez les yeux que le lendemain, au matin. Alors, c'est aujourd'hui le grand jour… Mince, vous ne pouvez pas vous empêcher de vous remémorer votre dernier passage, aussi humiliant soit-il.
 << addToGauge stress 30 >>
 Vous tentez de vous remettre votre cours en tête. Encore une fois, on dirait que certaines notions vous ont échappé.
 << removeFromGauge learning 20 >>
@@ -992,7 +992,6 @@ position: 164,25
 ---
 << music Tense >>
 << fadeIn >>
-<< music Neutral3 >>
 << setBackground door class >>
 << fadeOut >>
 
@@ -1011,13 +1010,13 @@ Vous expirez tout l'air de vos poumons. Puis, vous ouvrez la porte et pénétrez
 << setBackground oral >>
 << fadeOut >>
 
-Voilà venu le Grand Oral... A nouveau. L'épreuve impitoyable, qui décidera de votre sort pour le reste de vos études.
+Voilà venu le Grand Oral… À nouveau. L'épreuve impitoyable, qui décidera de votre sort pour le reste de vos études.
 Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Comme vous vous en rappelez, cela ne se passe pas bien du tout, et le jury se montre intransigeant.
 "On en a assez vu, allez, AU SUIVANT !"
-Vous savez que c'est à vous, mais vous jetez quand-même un dernier coup d'oeil à la feuille de passage, pour faire durer l'instant.
-Vous pensez être plus à l'aise que la dernière fois, mais vous avez quand-même peur d'avoir des lacunes...
+Vous savez que c'est à vous, mais vous jetez quand-même un dernier coup d'œil à la feuille de passage, pour faire durer l'instant.
+Vous pensez être plus à l'aise que la dernière fois, mais vous avez quand-même peur d'avoir des lacunes…
 -> Prendre vos notes pour éviter d'être perdu
-    Tant pis si cela vous coûte des points, vous prenez une holo-feuille de notes sur laquelle vous avez écrits les grands points à aborder.
+    Tant pis si cela vous coûte des points, vous prenez une holo-feuille de notes sur laquelle vous avez écrit les grands points à aborder.
     << addToGauge learning 5 >>
     En voyant cela, les membres du jury semblent déjà ennuyés avant-même que vous ayez commencé.
     << addToGauge stress 20 >>
@@ -1026,16 +1025,16 @@ Vous pensez être plus à l'aise que la dernière fois, mais vous avez quand-mê
 Après quelques secondes d'hésitation, vous vous levez enfin, pour vous placer au pupitre.
 Vous commencez par vous présenter au jury, puis vous leur rappelez ce que vous avez choisi comme matière de Grand Oral : <b>la Philosophie quantique</b>. #line:08fe26e 
 L'un des jurés enfile de drôles de lunettes et vous fixe un moment avant de s'écrier : "L'intrication Quantique"…
-L'intrication ?? Vous étiez persuadé qu'ils allaient vous interroger sur la décohérence quantique, comme dans le passé ! Quel genre de sorcellerie est-ce que...
+L'intrication ?? Vous étiez persuadé qu'ils allaient vous interroger sur la décohérence quantique, comme dans le passé ! Quel genre de sorcellerie est-ce que…
 << addToGauge stress 20 >>
 Voilà que vous paniquez une nouvelle fois. Vous êtes forcé de reprendre vos esprits, le jury vous ayant donné la parole.
 
 <<if getGauge("stress") >= 66>>
-You: Euh... La décohérence quanti... Pardon. Je reprends.
-You: L'intritica- l'intritaci- l'intrica...
+You: Euh… La décohérence quanti… Pardon. Je reprends.
+You: L'intritica- l'intritaci- l'intrica…
 -> L'INTRICATION !!
 -> Reprendre depuis le début
-You: Hum... L'intrica- intrication quantique ! C'est quand... deux particules forment un système li...
+You: Hum… L'intrica- intrication quantique ! C'est quand… deux particules forment un système li…
 << fadeIn >>
 << addBlur 1 >>
 << fadeOut >>
@@ -1043,11 +1042,11 @@ Vous manquez d'air. Vous étouffez réellement. Vous attrapez votre gorge à deu
 << fadeIn >>
 Vous ne voyez plus rien. Vous étiez tellement stressé, vous avez dû faire une attaque. Vous distinguez la silhouette de votre grand-mère.
 Mamie: Allons, mon chou, reprends tes esprits !
-You: Mamie, je... Je viens te rejoindre..
+You: Mamie, je… Je viens te rejoindre..
 Mamie: Mais qu'est-ce que tu racontes ? Je suis pas morte !
 You: Ah oui, c'est vrai.
 Temde_sad: Il délire complètement, là. Il était tellement stressé, il a fait un malaise en public.
-You: Mamie... Euh je veux dire... Miss Temdé ??
+You: Mamie… Euh je veux dire… Miss Temdé ??
 << setBackground circle >>
 << fadeOut >>
 Sapiens_concerned: On dirait qu'il retrouve peu à peu ses esprits.
@@ -1055,37 +1054,37 @@ Sapiens_concerned: On dirait qu'il retrouve peu à peu ses esprits.
 <<endif>>
 
 <<if getGauge("learning") >= 50>>
-You: Euh... L'intrication quantique, c'est quand deux particules forment un système lié...
-Heureusement que vous avez pris le temps de réviser chacuns des quatre thèmes. Vous récitez votre cours, en étoffant avec des exemples pratiques et des citations.
+You: Euh… L'intrication quantique, c'est quand deux particules forment un système lié…
+Heureusement que vous avez pris le temps de réviser chacun des quatre thèmes. Vous récitez votre cours, en étoffant avec des exemples pratiques et des citations.
 Lors de votre passage, vous ne pouvez pas vous empêcher d'observer le comportement de chaque membre du jury.
 L'un d'entre eux n'arrête pas de prendre des notes, un autre passe son temps à regarder son palmphone l'heure passer, un autre fronce les sourcils avec désapprobation à chaque mot que vous prononcez, et puis le dernier semble boire chacune de vos paroles.
-Leur manière de travailler et de tester vos capacités sont si différentes, ils doivent former une fine équipe lorsqu'ils sont réunis. Ils vous rappellent un autre quatuor que vous connaissez bien.
+Leur manière de travailler et de tester vos capacités sont si différentes, ils doivent former une fine équipe. Ils vous rappellent un autre quatuor que vous connaissez bien.
 Au moment des questions réponses, ils vous laissent développer vos idées et rebondissent sur d'autres sujets. C'est presque trop beau pour être vrai. Vous sortez le sourire au lèvre, convaincu d'avoir réussi.
 << music Victory >>
 << completeLevel >>
 << advanceTimeBy 0:30 food sleep >>
 <<jump WinExamNight>>
 <<else>>
-You: Euh... L'intrication quantique, c'est quand deux... trucs... se retrouvent dans un même... machin...
+You: Euh… L'intrication quantique, c'est quand deux… trucs… se retrouvent dans un même… machin…
 -> Et du coup, les trucs sont liés entre eux dans le machin, quoi !
-    You: Et, du coup, les trucs et les machins, ils font une espèce de... Ils sont liés entre eux, quoi.
-    You: Et euh... Un scientifique a dit que...
-    "Bravo, M. { $name }. Vous parvenez très bien à résumer le principe..."
-    You: Merci...
-    "...pour quelqu'un qui ne connaît rien à son cours. Si nous étions des enfants de 6 ans, nous en demanderions encore."
--> Mais laissez-moi vous parler de la décohérence quantique...
+    You: Et, du coup, les trucs et les machins, ils font une espèce de… Ils sont liés entre eux, quoi.
+    You: Et euh… Un scientifique a dit que…
+    "Bravo, M. { $name }. Vous parvenez très bien à résumer le principe…"
+    You: Merci…
+    "…pour quelqu'un qui ne connaît rien à son cours. Si nous étions des enfants de 6 ans, nous en demanderions encore."
+-> Mais laissez-moi vous parler de la décohérence quantique…
     You: Mais, en tout cas, c'est très différent de la décohérence quantique ! Laissez-moi vous en parler un instant.
     Vous complétez votre oral en récitant tout ce que vous savez sur la décohérence quantique. Vous vous sentez brillant, jusqu'à ce que le premier jury prenne la parole.
     "HORS SUJET !"
 -> Les Sages ! Aidez-moi !
-    You: Euh... Les Sages, venez-moi en aide ! Temdé, Azul ?!
+    You: Euh… Les Sages, venez-moi en aide ! Temdé, Azul ?!
     Tous les jeunes public éclatent de rire quand vous hurlez le nom des sages, si sûr de vous que tout le monde vous prend pour un fou.
     Les sages n'arrivent pas, et le jury s'en amuse. Ils regardent autour de leurs épaules, plaisantent entre eux, puis s'adressent à vous.
     "Qui que soient vos complices, on dirait qu'ils ont décidé de vous abandonner. Allez, au suivant !"
 << fadeIn >>
-Vous ne vous remettez pas de la brutalité du jury. Brisé, vous quittez les lieux et tentez déjà d'oublier cette expérience humiliante, pour la deuxième fois...
+Vous ne vous remettez pas de la brutalité du jury. Brisé, vous quittez les lieux et tentez déjà d'oublier cette expérience humiliante, pour la deuxième fois…
 << music NegativeSad >>
-Vous sortez en trombe de l'amphithéâtre pour rejoindre votre chambre...
+Vous sortez en trombe de l'amphithéâtre pour rejoindre votre chambre…
 <<jump FailExamNight>>
 <<endif>>
 ===
@@ -1114,7 +1113,7 @@ Temde_thinking: Nous ne pouvons pas tout faire à ta place, { $name }, sois-en c
     << resetLevel >>
     <<jump Start>>
 << else >>
-Vous allez dans votre lit et fermez les yeux, déprimé...
+Vous allez dans votre lit et fermez les yeux, déprimé…
 Temde_sad: Allons, allons. Tu vas y arriver, un jour. Veux-tu réécouter nos conseils ?
 -> Réécouter les conseils des Sages
     <<jump Assemblee_Sages>>
@@ -1140,9 +1139,9 @@ position: 866,1141
 << if !visited("Assemblee_Sages") >>
 
 << visitPermanent sages >>
-De retour dans votre chambre, vous constatez que celle-ci est vide, pas de trace de Temdé ou de Master Sapiens. En regardant par la fenêtre, vous distinguez néanmoins les traits d'Azul...
-You: Azul... Je te vois !
-Azul_cheerful: Héhé, je suis pas très fort en cachette. C'est que... nous autres sages... On voulait savoir comment tu t'en es sorti, quoi !
+De retour dans votre chambre, vous constatez que celle-ci est vide, pas de trace de Temdé ou de Master Sapiens. En regardant par la fenêtre, vous distinguez néanmoins les traits d'Azul…
+You: Azul… Je te vois !
+Azul_cheerful: Héhé, je suis pas très fort en cachette. C'est que… nous autres sages… On voulait savoir comment tu t'en es sorti, quoi !
 You: Plutôt bien, en fait ! Je suppose que vous êtes à nouveau là pour me donner vos conseils !
 Azul_proud: Et comment ! Non pas que tu en aies besoin, mais cela peut toujours servir !
 -> Suivre Azul
@@ -1177,8 +1176,8 @@ position: 1924,1433
 Vous retrouvez les Sages attablés, dans leur jardin à la verdure inégalable.  #line:059c7a5 
 
 Sapiens_thinking: Tu as fait un long chemin depuis que nous t'avons pris en charge. Mais nous n'en avons pas pour autant fini avec toi.
-Ledai_explaining: Tu as vu à quel point il était difficile de plannifier son temps libre. Mais il y a des astuces pour établir un bon planning et s'y tenir.
-Sapiens_happy: ...Tout en maintenant ses connaissances à l'aide de piqûres de rappel !
+Ledai_explaining: Tu as vu à quel point il était difficile de planifier son temps libre. Mais il y a des astuces pour établir un bon planning et s'y tenir.
+Sapiens_happy: …Tout en maintenant ses connaissances à l'aide de piqûres de rappel !
 <<jump Sages_FreeChoice>>
 ===
 
@@ -1196,15 +1195,15 @@ position: 1924,1433
     Ledai_explaining: Après, tu révises chaque thème, en utilisant la méthode "pomodoro" et les autres techniques que nous t'avons apprises.
     <<jump Sages_FreeChoice>>
 -> Comment consolider ses connaissances ?
-    Sapiens_thinking: Nous avons déjà vu la différence entre la mémoire courte et la mémoire longue. Les informations mettent non seulement du temps à parvenir à cette dernière...
-    Sapiens_happy: ...Mais elles peuvent également la quitter si elles ne sont pas régulièrement stimulées !
+    Sapiens_thinking: Nous avons déjà vu la différence entre la mémoire courte et la mémoire longue. Les informations mettent non seulement du temps à parvenir à cette dernière…
+    Sapiens_happy: …Mais elles peuvent également la quitter si elles ne sont pas régulièrement stimulées !
     Sapiens_concerned: Pour cela, il y a la méthode de "la piqûre de rappel". #line:0ecc8e1 
-    Sapiens_happy: Tu mobilises tes connaissances encore fragiles. Par un rappel libre, un test, un exercice récapitulatif... #line:09a8795 
+    Sapiens_happy: Tu mobilises tes connaissances encore fragiles. Par un rappel libre, un test, un exercice récapitulatif… #line:09a8795 
     Ledai_explaining: L'important est que tu sollicites ta mémoire courte pour enregistrer durablement ces nouvelles informations. #line:0f06cfe 
     Sapiens_happy: Pour cela, des fiches de révision peuvent être un excellent outil.
     <<jump Sages_FreeChoice>>
--> Attendez... Comment le jury a changé le thème ? #once
-    You: Euh... La dernière fois, avant que je ne remonte dans le temps, le jury m'avait interrogé sur la décohérence quantique...
+-> Attendez… Comment le jury a changé le thème ? #once
+    You: Euh… La dernière fois, avant que je ne remonte dans le temps, le jury m'avait interrogé sur la décohérence quantique…
     Sapiens_thinking: Et cette fois, ils t'ont interrogé sur un tout autre sujet, c'est ça ?
     You: Oui, c'est ça ! Comment vous savez ?
     Sapiens_happy: Cela confirme nos hypothèses. Il semblerait que le jury ait accès à une technologie - primitive, il va sans dire - de lecture de pensées.
@@ -1291,15 +1290,15 @@ position: 590,408
 << fadeOut >>
 
 <<if getGauge("sleep") <= 0 >>
-Vous vous sentez beaucoup trop fatigué... #line:0e90aa8 
+Vous vous sentez beaucoup trop fatigué… #line:0e90aa8 
 <<endif>>
 
 <<if getGauge("food") <= 0 >>
-Vous avez trop faim pour faire quoi que ce soit... #line:063722e 
+Vous avez trop faim pour faire quoi que ce soit… #line:063722e 
 <<endif>>
 
 <<if getGauge("mentalLoad") >= 100 >>
-Vous vous êtes trop donné aux révisions, votre cerveau n'enregistre plus rien... #line:0000016 
+Vous vous êtes trop donné aux révisions, votre cerveau n'enregistre plus rien… #line:0000016 
 <<endif>>
 
 -> Recommencer le week-end #line:0d1ef81 

@@ -29,7 +29,7 @@ Vous vous dirigez sans attendre vers l'appartement de Fred pour retrouver ce der
 << setBackground door >>
 << fadeOut >>
 RoomMate: Bienvenue, Fred. Veuillez…
-You: ...Le mot de passe, c'est Xx_Fr3d4tor_xX !
+You: …Le mot de passe, c'est Xx_Fr3d4tor_xX !
 RoomMate: Bienvenue chez vous, Fred…
 <<jump ChezFred>>
 <<endif>>
@@ -76,13 +76,13 @@ L'odeur putride vous prend aux narines alors que vous rentrez dans les lieux. D�
 <<endif>>
 
 -> Inspecter les toilettes #once
-    Vous prenez votre courage à deux mains et ouvrez à contre-coeur les portes des toilettes, une à une. L'une d'elles semble verrouillée.
+    Vous prenez votre courage à deux mains et ouvrez à contre-cœur les portes des toilettes, une à une. L'une d'elles semble verrouillée.
     You: Fred !! Je sais que tu es là !
     ???: Hein ?? Qui c'est, Fred ?! Laissez-moi tranquille !
     You: Euh… Pardon.
 -> Inspecter le sol #once
     << visitPermanent CarteEtudiante >>
-    Devant la rangée de toilettes se trouve une unique poubelle. Vous jetez un oeil à l'intérieur, puis à côté. Au sol, vous trouvez un morceau de plastique de forme familière.
+    Devant la rangée de toilettes se trouve une unique poubelle. Vous jetez un œil à l'intérieur, puis à côté. Au sol, vous trouvez un morceau de plastique de forme familière.
     Vous inspectez l'objet, sur lequel figure une photo de Fred et son identifiant étudiant : Id47n5296H.
     << fx Success >>
     You: La carte étudiante de Fred ! Il a voulu la jeter ? Vous mettez les morceaux bout à bout dans votre tête, ça ne sent pas bon…
@@ -191,7 +191,7 @@ You: Ah ! Si c'est que ça…
 BarBot: Je veux rien entendre. Si vous ramenez pas les boissons d'ici tout-à-l'heure, vous êtes morts ! Vous pourrez dire adieu à votre réputation !
 You: Comment ça ?
 BarBot: Tu crois que ce barbot se pilote tout seul ? Non, derrière, y a un hacker, en chair et en os !
-BarBot: Maintenant, ramène les boissons si tu veux pas que ton historique internet se retrouve affiché dans le métaverse académique.
+BarBot: Maintenant, ramène les boissons si tu veux pas que ton historique internet se retrouve affiché dans le métavers académique.
 <<else>>
 <<if !visited("GiveSoft")>>
 BarBot: Alors ? T'as ramené les boissons ? Fais gaffe, je peux hacker ton portail étudiant à tout moment.
@@ -327,11 +327,11 @@ Fred_surprised: C'était presque trop facile pour moi… Alors, j'ai cru que j'�
     Vous ne pouvez pas vous empêcher de rire face à la naïveté de votre ami. C'est une manière de dédramatiser la situation, de maîtriser le ton de la conversation.
     Mais… On ne dirait que ça n'a pas l'effet escompté sur Fred.
     Fred_angry: Hé ! Je te permets pas de te moquer de moi ! J'ai peut-être abusé, mais je mérite pas que mon seul vrai ami se fiche de moi.
--> Personne ne peut être parfait partout...
-    You: C'est ça ton problème : tu prends les choses trop au sérieux, tu ne peux pas être parfait tout le temps ! Même les plus grands Contact Fighters ont besoin d'un exosquelette...
+-> Personne ne peut être parfait partout…
+    You: C'est ça ton problème : tu prends les choses trop au sérieux, tu ne peux pas être parfait tout le temps ! Même les plus grands Contact Fighters ont besoin d'un exosquelette…
     << fx Success >>
     << set $motivationFred to ($motivationFred+1)>>
-    Fred_surprised: Tu crois ?… Tu as sûrement raison, j'étais persuadé que j'étais... inébranlable !
+    Fred_surprised: Tu crois ?… Tu as sûrement raison, j'étais persuadé que j'étais… inébranlable !
 Fred_sad: …Mais ça n'a pas d'importance. C'est trop tard, le Grand Oral est passé, et je pourrai jamais le rattraper.
 You: Tu plaisantes, ou quoi ? Tu as des capacités exceptionnelles, bien sûr que tu peux le rattraper. Ce n'est pas parce que ta note…
 Fred_surprised: Tu as vu ma note ? Alors, ça donne quoi ?
@@ -349,7 +349,7 @@ Fred_surprised: Tu as vu ma note ? Alors, ça donne quoi ?
     You: Pas du tout…
 Fred_sad: De toute façon, même si je le pouvais, j'ai aucune chance de rattraper le coup. J'ai raté le Grand Oral ! C'est Game Over, je te dis !
 -> Mentionner les Sages
-    You: Ecoute… Tu ne vas sûrement pas me croire, mais je vais te révéler quelque chose de fou.
+    You: Écoute… Tu ne vas sûrement pas me croire, mais je vais te révéler quelque chose de fou.
     Fred_surprised: Euh… Ok…
     You: J'ai raté le Grand Oral. Enfin, je veux dire… A la base, je l'ai raté. Mais j'ai eu une seconde chance.
     Fred_surprised: Tu veux dire que tu as redoublé ? J'étais pas au courant !
@@ -368,13 +368,13 @@ Fred_sad: De toute façon, même si je le pouvais, j'ai aucune chance de rattrap
     << fadeOut >>
     <<jump TransitionSagesLose>>
 -> Mentionner le rattrapage
-    You: Ecoute… Un Game Over, c'est pas forcément la fin du jeu ! Parfois, il faut charger la dernière sauvegarde, réessayer !
+    You: Écoute… Un Game Over, c'est pas forcément la fin du jeu ! Parfois, il faut charger la dernière sauvegarde, réessayer !
     Fred_surprised: De quoi tu parles ? De voyage dans le temps ?
     You: Et bien… Le voyage dans le temps n'est pas à exclure de l'équation mais… Je parlais plutôt du rattrapage de demain.
     Fred_surprised: Le rattrapage ? Mais… Je me suis enfui de l'amphithéâtre !
     You: Fred, le jury a été clément avec toi. Ils ont compté ta… disparition… comme une absence. Et donc, tu peux aller au rattrapage demain !
     Fred_surprised: Comment tu sais ça ?
-    You: J'ai comme qui dirait… Ecouté tes messages ?
+    You: J'ai comme qui dirait… Écouté tes messages ?
     Fred_excited: Mais ça veut dire que j'ai une seconde chance ??
 << music Neutral3 >>
 You: C'est ce que je me tue à te dire ! Mais le rattrapage est demain ! Il faut se dépêcher, et faire quelque chose !
@@ -406,8 +406,8 @@ On dirait que Fred a vraiment perdu confiance en lui… Vous pourriez regonfler 
     << set $motivationFred to ($motivationFred+1)>>
     Fred_surprised: C'est vrai ? Comme quoi, par exemple ?
     You: Tu as plein de qualités, mais ce qui te différencie réellement…
-    -> Tu es honnête, et tu as du coeur
-        You: …C'est que tu as du coeur… C'est vrai ! Tu es une bonne personne, tu n'hésites pas à aider les gens, bien que tu manques de discipline.
+    -> Tu es honnête, et tu as du cœur
+        You: …C'est que tu as du cœur… C'est vrai ! Tu es une bonne personne, tu n'hésites pas à aider les gens, bien que tu manques de discipline.
         Fred_sad: Euh… Ouais, peut-être… J'essaie d'être un humain décent, quoi. Je vois pas en quoi ça m'aide dans mes études.
     -> Tu es imaginatif, créatif et plein d'idées
         You: …C'est que tu n'as pas peur d'aller hors des sentiers battus, tu trouves toujours des ruses, des idées originales. Tu es un créatif !
@@ -427,7 +427,7 @@ On dirait que Fred a vraiment perdu confiance en lui… Vous pourriez regonfler 
 -> Rappeler les faiblesses de Fred
     You: Je ne vais pas y aller par quatre chemins. Tu ne supportes pas qu'on te pose un cadre trop rigide, et du coup, tu manques de discipline.
     Fred_sad: C'est vrai, tu as raison. Mais je peux rien y faire, je suis comme ça…
-    You: C'est pas pour autant que tu dois abandonner ! Tu as plein d'autres qualités, mais… Tu n'aimes pas apprendre par coeur, et l'écrit ne t'enchante pas. C'est trop dommage !
+    You: C'est pas pour autant que tu dois abandonner ! Tu as plein d'autres qualités, mais… Tu n'aimes pas apprendre par cœur, et l'écrit ne t'enchante pas. C'est trop dommage !
     Fred_angry: C'est bon, j'ai compris ! Où est-ce que tu veux en venir, tu veux me tirer encore plus vers le fond du gouffre ?
     You: Justement, ce sont ces défauts qui te tirent vers le bas. Et c'est en les reconnaissant que tu vas t'en sortir.
 << stopFX Sports_LOOP >>
@@ -442,14 +442,14 @@ Pendant que Fred est occupé à préparer son plat favori avec votre FoodPrinter
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
-Vous allez faire des fiches de révision taillées aux besoins de Fred. Vous griffonez à une vitesse éclair les différentes notions sur les dizaines de petites cartes en papier cartonné.
+Vous allez faire des fiches de révision taillées aux besoins de Fred. Vous griffonnez à une vitesse éclair les différentes notions sur les dizaines de petites cartes en papier cartonné.
 << advanceTimeBy 0:30 >>
 Fred_happy: Hé, à table !
 << fx EatCook >>
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
-Vous jetez un oeil aux Giga-Tacos que Fred vient de préparer, dégoulinants de fromage fondu et de sauce piquante.
+Vous jetez un œil aux Giga-Tacos que Fred vient de préparer, dégoulinants de fromage fondu et de sauce piquante.
 -> Euh… T'es sûr de toi ?
     You: Euh… T'es sûr que tu vas pas t'effondrer sur le canapé avec un repas comme ça ?
     Fred_smiling: Moi ? Aucune chance. Toi, par contre…
@@ -461,7 +461,7 @@ Vous jetez un oeil aux Giga-Tacos que Fred vient de préparer, dégoulinants de 
     You: Bon… C'est très… fort en énergie, mais tant mieux si ça te fait plaisir. Je peux en prendre une seule moitié ?
     Fred_smiling: Seulement si je peux la manger à ta place !
     You: Euh… Oublie.
-Pendant qu'il mange, Fred jette un oeil sur son palmphone…
+Pendant qu'il mange, Fred jette un œil sur son palmphone…
 
 <<if visited("LieToFred")>>
 Fred_smiling: Tiens, j'ai reçu ma convocation pour le rattrapage !
@@ -481,7 +481,7 @@ Fred_excited: Je sais, { $name }. C'est pas fameux, mais au moins je peux pas fa
 <<endif>>
 
 << advanceTimeBy 0:30 >>
-Après cette pause dinatoire, vous foncez dans votre salon pour réviser.
+Après cette pause dînatoire, vous foncez dans votre salon pour réviser.
 << fadeIn >>
 << setBackground bedroom night >>
 << fadeOut >>
@@ -492,10 +492,10 @@ Fred_surprised: Ouah, c'est… C'est gentil…
 You: Allez, c'est pas si difficile !
 Fred_sad: Tu sais quoi ? Je sais pas si j'ai envie de faire ça. Je me débrouillerai, mais ton truc va nous prendre toute la nuit…
 -> Donner un objectif à Fred
-    You: Ca va aller. Il suffit qu'on te fixe un objectif… Ce soir, on révise toutes les fiches, et demain, on recherche les citations et les références. C'est bon pour toi ?
+    You: Ça va aller. Il suffit qu'on te fixe un objectif… Ce soir, on révise toutes les fiches, et demain, on recherche les citations et les références. C'est bon pour toi ?
     Fred_sad: Bon… Je vais essayer…
 -> Demander à Fred de se fixer un objectif
-    You: Ca va aller. Il suffit que tu te fixes un objectif, que tu sais que tu peux atteindre.
+    You: Ça va aller. Il suffit que tu te fixes un objectif, que tu sais que tu peux atteindre.
     Fred_surprised: Euh… Je sais.
     Fred vous prend les fiches de la main, et divise le paquet en deux. Puis, il vous rend la deuxième moitié.
     Fred_smiling: Ce soir, on fait la moitié du travail. Tout ça. C'est déjà beaucoup. Et la suite, on la voit demain. Comme ça, j'ai pas trop de trucs à emmagasiner d'un coup.
@@ -596,8 +596,8 @@ You: Hé, les Sages !! Venez, vite !
 Azul_cheerful: Salut, { $name } ! Alors, pourquoi tu nous a appelé ? Tu as pourtant réussi ton Grand Oral ?… Tu devrais prendre du repos, non ?
 You: C'est pas à propos de moi… C'est mon ami Fred. Il faut que vous l'aidiez.
 Azul_sad: Euh… Je crains que… Ce soit impossible pour nous.
-Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { $motivationPercent }% pour son Oral. Dommage... Une motivation de 50% aurait suffit.
-You: Epargnez-moi les statistiques ! Vous m'avez bien aidé avec mes examens quand je vous ai demandé, non ?!
+Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { $motivationPercent }% pour son Oral. Dommage… Une motivation de 50% aurait suffit.
+You: Épargnez-moi les statistiques ! Vous m'avez bien aidé avec mes examens quand je vous ai demandé, non ?!
 Azul_happy: Précisément !… Tu nous a appelés. Ton esprit a cherché notre aide, alors nous sommes venus. Mais Fred… Il ne veut pas admettre qu'il a besoin d'aide.
 -> Aidez-le quand-même !
     Azul_sad: Désolé, { $name }… C'est un problème contractuel. On ne peut pas intervenir dans la vie de quelqu'un sans son consentement.
@@ -611,7 +611,7 @@ You: Faites-le !
 Azul_happy: Bien… Si tu le souhaites ! Cap sur l'Assemblée des Sages !
 <<else>>
 You: Les Sages ? Vous êtes toujours là ?
-Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { $motivationPercent }% pour son Oral, cette fois. Dommage... Une motivation de 50% aurait suffit.
+Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { $motivationPercent }% pour son Oral, cette fois. Dommage… Une motivation de 50% aurait suffit.
 Azul_sad: Bien sûr… On dirait que tu as besoin qu'on te reparle de la motivation…
 <<endif>>
 -> Suivre Azul
@@ -657,18 +657,18 @@ position: -395.6365661621094,463.4656677246094
     Temde_cheerful: Réfléchir à son rapport à la réussite, c'est apprendre à mieux se connaître. #line:07acb4b 
     Ledai_explaining: Le rapport à la réussite détermine ce que l'on veut vraiment. Ce qui aide ensuite à choisir la meilleure stratégie pour y arriver. #line:04d28c0 
     Azul_happy: Nous t'avons déjà montré comment nous étions tous les quatre différents. Nous allons reprendre l'exercice, pour que tu puisses mieux cerner le profil de Fred.
-    You: D'accord. Voyons...
+    You: D'accord. Voyons…
     <<jump Sages_Questions>>
 -> Comment maintenir la motivation ?
     Sapiens: Nous avons déjà vu que pour apprendre à apprendre, il faut mettre en place des stratégies d'apprentissage.
-    Sapiens_thinking: Par exemple, les [b]stratégies cognitives[/b], qui permettent de stimuler la mémoire longue, ou encore les [b]stratégies d'organisation[/b] : plannification, travail en groupe…
+    Sapiens_thinking: Par exemple, les [b]stratégies cognitives[/b], qui permettent de stimuler la mémoire longue, ou encore les [b]stratégies d'organisation[/b] : planification, travail en groupe…
     Sapiens: Nous n'avons plus rien à t'apprendre sur ces stratégies, que je qualifierais de "quantitatives".
     Sapiens: Pour ce qui est des stratégies qualitatives, nous t'avons appris à gérer ton bien-être, ton stress. Il s'agit de la [b]la stratégie affective[/b].
     Sapiens_thinking: Mais nous avons mis de côté deux variables : [b]la confiance en soi[/b] et [b]la motivation[/b]. Qui font pourtant partie intégrante de cette stratégie. #line:0b1add3 
     Azul_happy: Il semblerait en tout cas que, par la force des choses, tu aies pris de plus en plus confiance en toi.
     Sapiens_concerned: Mais ton ami, nous en avons déjà parlé, a un profil "divergent", comme celui d'Azul. #line:0297373 
     Azul_cheerful: Je suis probablement celui qui comprend mieux Fred. Son point fort, c'est l'originalité, l'intuition, l'imagination, l'échange verbal avec ses pairs. #line:0bbfce1 
-    Azul_sad: Ses points faibles, en revanche, sont : la mise en forme par écrit, l'apprentissage par coeur, et le manque de structure.
+    Azul_sad: Ses points faibles, en revanche, sont : la mise en forme par écrit, l'apprentissage par cœur, et le manque de structure.
     Temde_neutral: Pour guider quelqu'un à prendre confiance, il vaut mieux se concentrer sur ses forces, ce qui le tire vers le haut…
     Ledai_explaining: …Tout en restant honnête et réaliste, en laissant de la place pour lui montrer les variables à améliorer.
 -> J'ai compris !
@@ -735,13 +735,13 @@ Sapiens_concerned: Comment aider quelqu'un à formuler une stratégie métacogni
 Sapiens_thinking: Mais, plus précisément, qu'est-ce qu' un bon objectif ?
 -> Un objectif universel, défini grâce aux lois de la réussite
     << fx Failure >>
-    Sapiens_sad: Quel piège énorme, et tu es tombé dedans ! Il n'existe pas de 'loi de la réussite', seulements des rapports subjectifs !
+    Sapiens_sad: Quel piège énorme, et tu es tombé dedans ! Il n'existe pas de 'loi de la réussite', seulement des rapports subjectifs !
 -> Un objectif personnel, défini par son propre rapport à la réussite
     << fx Success >>
     Sapiens_happy: Parfait ! C'est ça. #line:0ebcf40 
 Temde_cheerful: Bravo ! Nous avons terminé cette dernière leçon.
 Ledai_happy: Utilise ton Journal Mental pour définir ton propre rapport à la réussite, et fonce rejoindre ton ami Fred !
--> Ecrire dans le journal
+-> Écrire dans le journal
 << hide >>
 << completeSages >>
 <<jump Journal>>
@@ -815,7 +815,7 @@ Azul_proud: Notre aide, tu l'auras pour toujours. Quant à nous… Ferme les yeu
 << music AcousticGuitar >>
 << fadeOut >>
 Azul_proud: Tu vois ? Nous serons toujours présents à tes côtés.
-Temde_smiling: Dans ton coeur et dans tes pensées. #line:0b32a64 
+Temde_smiling: Dans ton cœur et dans tes pensées. #line:0b32a64 
 Sapiens_happy: Dans tes lectures et tes écrits. #line:0417897 
 Ledai_happy: Mais nous ne viendrons plus te réveiller tous les soirs.
 You: Un peu comme des anges ? #line:0434098 

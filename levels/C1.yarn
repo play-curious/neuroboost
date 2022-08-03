@@ -30,6 +30,10 @@ Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'
 Votre palmphone vibre : <b>Fred</b> veut vous parler. #line:0c10bcd 
 -> Prendre l'appel #line:0c4a7b0 
     <<jump Appel_Fred_Rewind>>
+-> Rejeter l'appel <<if visited("FredCall")>>
+    << stopFX Phone_off_Rewind >>
+    Vous savez déjà ce que Fred veut vous dire, alors à quoi bon… Vous le retrouverez à 14h avant l'examen !
+    <<jump Phone_off_Rewind>>
 ===
 
 title: Appel_Fred_Rewind
@@ -173,13 +177,13 @@ position: -525,562
 << setBackground bedroom kitchen >>
 << fadeOut >>
 <<if !isTimeOver("12:00")>>
--> Prendre le petit déjeuner (30 min) <<if !visited("Petit_dej")>>#line:079d0ff 
+-> Prendre le petit déjeuner (30 min) #once
     <<jump Petit_dej_Rewind>>
 -> back #line:0fad580 
     << fadeIn >>
     <<jump Action_List_Rewind>>
 <<else>>
--> Manger avant l'examen
+-> Manger avant l'examen #once
     <<jump Lunch_Rewind>>
 -> back
     <<jump Action_List_Rewind>>
@@ -197,7 +201,7 @@ position: -993.6492929458618,-75.37680292129517
     <<jump Chat_Rewind>>
 -> Réviser cette fichue Astronometric Data Management (2h) <<if !visited("Revision")>> #line:070f359 
     <<jump Revision_Rewind>>
--> Essayer la technique du rappel libre (2h) <<if !visited("Rappel_libre")>> #line:0310da3 
+-> Essayer de restituer les notions du cours, sans aide (2h) <<if !visited("Rappel_libre")>> #line:0310da3 
     <<jump Rappel_libre>>
 -> back #line:0a06fb6 
     << fadeIn >>
@@ -211,7 +215,7 @@ position: -1427,217
 << fadeIn >>
 << setBackground bedroom chill >>
 << fadeOut >>
--> Regarder votre série préférée (Au moins 2h…) <<if !visited("BingeTV")>> #line:0f2e31c 
+-> Regarder votre série préférée (Au moins 2h…) <<if !visited("BingeTV")>> #once
     <<jump BingeTV_Rewind>>
 -> back #line:0341673 
     <<jump Action_List_Rewind>>
@@ -282,7 +286,7 @@ colorID: 0
 position: -907,703
 ---
 
-Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. C'est lundi, après tout… Vous êtes pingé par Alex, vous engagez la conversation. #line:0ecf0bf 
+Vous cliquez sur l'icône ChatApp de votre Palmphone. Vous êtes surpris de voir le nombre d'étudiants connectés à cette heure si matinale. C'est lundi, après tout… Vous engagez la conversation avec votre ami Alex.
 
 << fx Notification >>
 
@@ -334,7 +338,7 @@ Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affich
 << show lightsaber@holo >>
 << loopFX TVStarwars_LOOP 10000 >>
 
-Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogénisé par l'impitoyable corsaire Yann Salto. #line:0dd0537 
+Le générique démarre et déroule sur un fond scintillant d'étoiles un texte récapitulatif des épisodes précédents. L'infâme Jaba Fett s'est fait cryogéniser par l'impitoyable corsaire Yann Salto. #line:0dd0537 
 Yann Salto doit désormais ramener sa capture sur la planète prison Jailhouse. Encore faut-il échapper aux attaques des pirates de l'espace, qui sont nombreux à sillonner autour de Jailhouse… #line:0335c72 
 
 << if visited("BingeTV_Before") >>
@@ -463,7 +467,7 @@ Tutorial: Bien joué ! Vous venez de terminer le premier Chapitre.
 
 Tutorial: Vous pouvez recommencer un Chapitre à tout moment via le menu, pour battre votre score ou simplement revoir l'histoire !
 
-Mais vous n'êtes pas encore dans le peleton de tête… Vous n'avez que <b>B</b>. Fred vous distance encore… #line:0395b52 
+Mais vous n'êtes pas encore dans le peloton de tête… Vous n'avez que <b>B</b>. Fred vous distance encore… #line:0395b52 
 
 Fred_smiling: Hé, C'est vachement bien pour une matière que tu détestes. #line:085368d 
 You: Facile à dire pour toi. Tu as eu <b>A+</b>. #line:04e24fc 
@@ -508,7 +512,7 @@ Hélas, vous avez encore une fois échoué votre examen ! L'onirique Miss Temdé
 
 Temde_sad: Je vois que tu n'as pas écouté nos conseils à la lettre ! Tu veux les écouter à nouveau ?
 
--> Ecouter à nouveau les conseils des Sages
+-> Écouter à nouveau les conseils des Sages
     <<jump Assemblee_Sages>>
 -> Recommencer la journée
     << hide >>
@@ -539,7 +543,7 @@ You: Ah bon ? #line:086ed91
 Fred_surprised: Ouais, t'en as pas trouvé ? #line:0d5781e 
 You: Non. #line:0818e11 
 Fred_smiling: C'est dommage. Tu sais, une mauvaise réponse t'enlève autant de points qu'une bonne réponse. #line:0bf1cd4 
-You: Heuuuu… #line:0facc92 
+You: Euuuuuh…
 
 << advanceTimeBy 0:15 >>
 

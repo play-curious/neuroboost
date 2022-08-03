@@ -18,7 +18,7 @@ colorID: 8
 << music Victory >>
 << fadeOut >>
 
-Vous êtes attablé à un large plateau oblong, vous riez. Vous êtes entouré de vos confrères et consoeurs : les 4 sages !  #line:0321513 
+Vous êtes attablé à un large plateau oblong, vous riez. Vous êtes entouré de vos confrères et consœurs : les 4 sages !  #line:0321513 
 Vous avez rejoint leur assemblée ! Vous êtes devenu un expert de la métacognition !
 
 -> Crier de joie
@@ -27,7 +27,7 @@ Vous avez rejoint leur assemblée ! Vous êtes devenu un expert de la métacogni
     Vous levez les bras en l'air et vous époumonez, criant toute votre joie. Vous vous rendez alors compte que vous étiez allongé… Dans votre lit.
     << fadeOut >>
     Vous entendez la voix de votre voisin qui résonne à travers les parois de l'immeuble. Les murs sont fins, dans la cité résidentielle de l'Académie !
-    ???: Ca va pas la tête ?! Tu m'as réveillé !
+    ???: Ça va pas la tête ?! Tu m'as réveillé !
     Il est presque 8h, vous en profitez pour vous lever, sans prêter attention aux propos de votre voisin.
 -> Faire un test de réalité
     << fadeIn >>
@@ -48,7 +48,7 @@ colorID: 8
 << music Neutral >>
 << removeBlur >>
 Vendredi… La semaine des partiels n'est pas terminée. Aujourd'hui, c'est examen de GRH : Gestion des Ressources Hybrides, à 14h.
-Ca devrait aller vite, vous n'aurez qu'à passer une partie de la matinée à réviser et le tour devrait être joué.
+Ça devrait aller vite, vous n'aurez qu'à passer une partie de la matinée à réviser et le tour devrait être joué.
 << loopFX PhoneRing_LOOP 5000 >>
 << screenshake 10 600 >>
 <<if !visited("MamieCall")>>
@@ -63,9 +63,9 @@ Mamie@holo_shadow: Je suis à l'hôpital et on m'a branchée sur des dizaines de
 You: Qu'est-ce qui t'est arrivé ?
 Mamie@holo_shadow: Rien de grave, chouchou. Tes parents ne t'ont rien dit ? #line:00db0dd 
 You: Heu… Non…
-Mamie@holo_shadow: Ah… Bien sûr… Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux…
+Mamie@holo_shadow: Ah… Bien sûr… Ne t'inquiète pas. Je vais bien. Mon cœur va bien mieux…
 
-You: Ton coeur ?! Mamie… #line:07ebf06 
+You: Ton cœur ?! Mamie… #line:07ebf06 
 Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire ! #line:0dcce80 
 << hide >> 
 << music NegativeSad >>
@@ -82,7 +82,7 @@ C'est mamie, et elle ne va pas très bien, quoi qu'elle en dise… #line:0d27193
 You: Bonjour mamie ! Tu vas mieux ?  #line:0bbacfe 
 Mamie@holo_shadow: Bonjour chouchou, donc tes parents t'ont déjà expliqué la situation ? #line:0f09c1c 
 You: Euh…
-Mamie@holo_shadow: Ne t'inquiète pas. Je vais bien. Mon coeur va bien mieux…  #line:0c1da5e 
+Mamie@holo_shadow: Ne t'inquiète pas. Je vais bien. Mon cœur va bien mieux…  #line:0c1da5e 
 You: Courage mamie ! #line:06a7beb 
 Vous aimeriez parler plus, mais le Paramedibot arrive pour l'emmener au bloc opératoire ! #line:0cd2819 
 << hide >> 
@@ -353,7 +353,7 @@ Petit à petit, vous trouvez votre rythme de pas et votre cadence respiratoire. 
 << advanceTimeBy 1:15 >>
 << removeFromGauge stress 20 >>
 << removeFromGauge mentalLoad 20 >>
-Au bout d'1h30, vous décidez de vous arrêter sur la ligne d'arrivée, où Fred vous attend, essouflé.
+Au bout d'1h30, vous décidez de vous arrêter sur la ligne d'arrivée, où Fred vous attend, essoufflé.
 Fred_bored: Ouah, ça fait un moment que je t'attends, héhé.
 You: Merci d'avoir été là, Fred ! J'aurais pas eu la force sans toi.
 Fred_smiling: Yes, toi aussi ! Et bonne chance pour l'exam !
@@ -378,7 +378,7 @@ You: Je suis pas sûr que… #line:0a0c2a5
 << hide >>
 << loopFX Sports_LOOP 16000 >>
 Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons.
-Le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. Vos muscles et vos poumons, en revanche, se raidissent et surchauffent. Après plus d'une heure d'exo-boxing endiablé, vous déclarez forfait. 
+Le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. Vos muscles et vos poumons, en revanche, se raidissent et surchauffent. Après plus d'une heure de fight contact endiablé, vous déclarez forfait. 
 << stopFX Sports_LOOP >>
 << removeFromGauge sleep 20 >>
 Vous avez la langue sèche et les membres engourdis. Ce sport violent n'a pas pour autant évacué votre angoisse…
@@ -469,11 +469,11 @@ position: -1644,-626
 ---
 <<if getGauge("stress") <= 66>>
 Vous vous allongez dans votre lit. Peut-être que le sommeil vous changerait les idées… Vous ne parvenez pas à penser à autre chose que votre grand-mère.
-Au bout d'un certain temps, vous arrêtez la torture, incapable de fermer l'oeil.
+Au bout d'un certain temps, vous arrêtez la torture, incapable de fermer l'œil.
 << advanceTimeBy 0:30 sleep >>
 <<else>>
 << fx Sleep_LOOP>>
-Vous vous allongez dans votre lit. Vous avez du mal à fermer l'oeil, mais vous vous forcez pour reprendre vos esprits.
+Vous vous allongez dans votre lit. Vous avez du mal à fermer l'œil, mais vous vous forcez pour reprendre vos esprits.
 << stopFX Sleep_LOOP>>
 Vous vous relevez, un peu plus détendu.
 << removeFromGauge stress 10 >>
@@ -689,7 +689,7 @@ Fred_surprised: Wow, je me suis totalement foiré, cette fois…
 Fred_sad: Mince… J'ai eu que C+, c'est pas terrible. Et toi ?
 You: J'ai eu… B+ !
 Fred_smiling: Bravo, { $name }, tu m'as rattrapé ! Mais tu as toujours pas l'air dans ton état normal. Tu devrais prendre un peu de temps pour toi.
-Fred a raison. Vous lui souhaitez un bon week-end et vous filer vous reposer.
+Fred a raison. Vous lui souhaitez un bon week-end, puis filez vous reposer.
 << hide >>
 << fadeIn >>
 << setBackground bedroom >>
@@ -739,7 +739,7 @@ Ledai_doubtful: { $name }, une fois de plus, tu n'es pas parvenu à te détacher
 <<if !visited("VousExaminez")>>
 << set $choicesDone to 0 >>
 << visit VousExaminez >>
-Vous examinez votre palmphone : aucun appel ou message. Comment allez-vous réussir à fermer l'oeil ?
+Vous examinez votre palmphone : aucun appel ou message. Comment allez-vous réussir à fermer l'œil ?
 <<endif>>
 -> Couper toute distraction mentale #once #line:0e0b5f8 
     <<jump Zero_Distraction>>
@@ -782,7 +782,7 @@ colorID: 2
 Vous vous levez de votre lit et vous prenez votre cycloluth, une guitare archaïque de la planète Feudall. #line:038a982 
 << music AcousticGuitar >>
 Vous jouez une balade bien connue des poètes inter-galactiques : En Mémoire de Hope.
-La chanson raconte l'histoire d'une fille recréée artificiellement par son père. Elle est touchante et mélancolique, vous inspire et soulage votre coeur.
+La chanson raconte l'histoire d'une fille recréée artificiellement par son père. Elle est touchante et mélancolique, vous inspire et soulage votre cœur.
 << advanceTimeBy 1:00 >>
 << music Neutral2 >>
 << removeFromGauge stress 40 >>
@@ -918,7 +918,7 @@ title: Quizz_Meditation
 tags:  noUi
 position: 1016.406005859375,-521.5471496582031
 ---
-Sapiens_happy: Maintenant, tu connais la chanson, c'est l'heure du quizz ! Pour réduire ton stress, tu dois…
+Sapiens_happy: Maintenant, tu connais la chanson, c'est l'heure du quiz ! Pour réduire ton stress, tu dois…
 
 -> L'affronter à l'aide de ma volonté
     << fx Failure >>
@@ -936,7 +936,7 @@ tags:  noUi
 position: 1450.59033203125,-520.900390625
 ---
 Sapiens_thinking: Voyons si tu vas trouver la réponse à la prochaine. Pour réduire ton stress, tu peux également agir de manière physique et tangible.
--> En me défoulant un maximum pour déchaîner sa frustration
+-> En me défoulant un maximum pour déchaîner ma frustration
     << fx Failure >>
     Sapiens_angry: Choix malheureux et risqué. Un sport intense comme la boxe peut, certes, aider à se défouler. Il faut également veiller à ce que le sport violent ne risque pas d'entretenir ta frustration ou ta colère.
     Sapiens_thinking: Toute activité physique ou sportive n'est pas forcément adaptée pour réduire le stress. Elle peut consolider le stress et la frustration initiale si elle n'est pas pratiquée en douceur.

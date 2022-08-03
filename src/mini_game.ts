@@ -44,7 +44,7 @@ export class Juggling extends MiniGame {
     this.hitCount = 0;
     this.balls = [];
     this.text = this.makeText(
-      "Cliquer sur une balle pour la jongler",
+      "Cliquer sur une balle pour jongler avec !",
       {
         fontFamily: "Ubuntu",
         align: "center",

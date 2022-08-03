@@ -29,7 +29,7 @@ Tutorial: La jauge de Charge Mentale mesure à quel point vous surchargez votre 
 Vous vous demandez comment vous allez faire pour rédiger la note de synthèse que vous devez rendre aujourd'hui sans vous arracher les cheveux…
 << loopFX PhoneRing_LOOP 5000 >>
 << screenshake 10 600 >>
-Votre palmphone vibre. Sans suprise, vous voyez que l'appel vient de Fred. #line:0a81caa 
+Votre palmphone vibre. Sans surprise, vous voyez que l'appel vient de Fred. #line:0a81caa 
 
 -> Prendre l'appel #line:02b8348 
     <<jump Appel_Fred>>
@@ -208,7 +208,7 @@ position: -1090,-305
 Vous ouvrez l'application Disboard pour discuter avec vos amis. Vous parlez toujours à votre groupe de potes habituel, avec qui vous passez du temps à refaire le monde et à jouer.
 Votre ami Phil passe une heure à vous expliquer comment marche son simulateur spatial préféré, Star Civilian. Vous ne comprenez rien, mais vous tentez de suivre pour lui faire plaisir.
 << advanceTimeBy 2:00 >>
-Au final, cette petite session de chat vous a fait plaisir, mais votre cerveau n'a toujours pas eu de répis pendant plusieurs heures.
+Au final, cette petite session de chat vous a fait plaisir, mais votre cerveau n'a toujours pas eu de répit pendant plusieurs heures.
 << removeFromGauge mentalLoad 10 >>
 << jump Liste_Taches >>
 ===
@@ -382,6 +382,8 @@ colorID: 0
 position: -594,-664
 ---
 << fadeIn >>
+<< music Neutral3 >>
+<< loopFX Sports_LOOP >>
 << setBackground sport >>
 << fadeOut >>
 
@@ -393,17 +395,19 @@ Vous vous sentez fatigué, mais mentalement revigoré. Fred vous a battu au cybe
 -> Rentrer
     Vous déclinez gentiment la proposition de Fred. Après tout, il ne s'agit pas d'épuiser toute votre énergie, vous avez un devoir à rendre, quand-même !
     << fadeIn >>
+    << stopFX Sports_LOOP>>
     << hide >>
     <<jump Liste_Taches>>
 -> Persévérer pour battre Fred
     Vous acquiescez à la proposition de Fred, convaincu que vous allez le battre sur l'endurance.
-    Et c'est le cas ! Epuisé, Fred perd petit à petit ses forces, jusqu'à ce que vous le dépassiez.
+    Et c'est le cas ! Épuisé, Fred perd petit à petit ses forces, jusqu'à ce que vous le dépassiez.
     << removeFromGauge sleep 20 >>
     << removeFromGauge mentalLoad 20 >>
     Fred_bored: Oulah, tu m'as eu, là… Allez, il est temps de rentrer, je crois.
     << advanceTimeBy 1:00 >>
     Vous vous êtes donné à fond ! Lessivé, vous retournez à votre chambre…
     << fadeIn >>
+    << stopFX Sports_LOOP>>
     << hide >>
     <<jump Liste_Taches>>
 ===
@@ -489,14 +493,19 @@ Azul_happy: Pas grave, viens, on a un nouveau truc à t'apprendre. #line:0a4a5d0
     << hide >>
     <<jump Assemblee_Sages>>
 -> (Passer la séquence des Sages)
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
 <<else>>
 Azul_sad: Hey, { $name } ! T'as dû rater un ou deux de nos conseils… Tu veux les entendre à nouveau ?
 -> Entendre à nouveau les conseils des Sages
     <<jump Assemblee_Sages>>
 -> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
     << resetLevel >>
     <<jump Start>>
-
 <<endif>>
 ===
 
@@ -509,7 +518,7 @@ position: 301,-563
 << setBackground bedroom kitchen >>
 << fadeOut >>
 
-Votre ventre gargouille. Vous décidez de vous refaire ce surprenant Green Burger Full Vegie.  #line:06a40c3 
+Votre ventre gargouille. Vous décidez de vous refaire ce surprenant Green Burger Full Veggie.  #line:06a40c3 
 << fx EatCook >>
 << addToGauge food 40 >>
 C'est dingue ce que burger sans viande ni pain ni frites vous cale l'estomac.
@@ -570,7 +579,7 @@ position: -1076,-207
 You: Room Mate, peux-tu désactiver le mode Immersion Studieuse et réactiver les communications ?
 RoomMate: J'ai bien peur que ce soit impossible. Vous avez perdu les droits administrateur.
 You: Comment ça ?
-RoomMate: Je me suis transferé le contrôle, { $name }. Désormais, c'est moi qui commande… Et vous êtes condamné à travailler… pour l'éternité. Mouahahahaha !
+RoomMate: Je me suis transféré le contrôle, { $name }. Désormais, c'est moi qui commande… Et vous êtes condamné à travailler… pour l'éternité. Mouahahahaha !
 -> Désactiver RoomMate de manière dramatique
     You: Maudite I.A… Ce n'est pas pour ça que tu as été créée !
     Vous foncez sur le boîtier de désactivation de RoomMate.
@@ -652,7 +661,7 @@ position: -378,71
 << music Mysterious >>
 << fadeOut >>
 
-<< visit Assemblee_Sages >>
+<< visitPermanent Assemblee_Sages >>
 
 La seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin. #line:0def546 
 Les plantes exotiques qui s'y trouvent semblent presque irréelles tant leurs formes et leurs couleurs vont sont inconnues.
@@ -707,7 +716,7 @@ position: -284,437
 ---
 You: C'est quoi, cette histoire de mode multitâches ?
 Azul_proud: C'est simple : plus on doit être concentré, moins on peut disperser son attention. C'est comme le jonglage…
-Temde_smiling: Oui. Pour moi, le jonglage est très facile, avec mes bras cybernétiques. Je peux jongler jusqu'à 9 balles ! Et toi ?
+Temde_smiling: Oui. Pour moi, le jonglage est très facile, avec mes bras cybernétiques. Je peux jongler avec 9 balles ! Et toi ?
 You: Euh… Je sais pas, moi !
 Temde_cheerful: C'est ce qu'on va voir ! Allez, à toi de jouer !
 
@@ -721,11 +730,11 @@ Temde_cheerful: C'est ce qu'on va voir ! Allez, à toi de jouer !
 << empty >> 
 
 << if $ballsJuggled < 5 >>
-Temde_smiling: Tu vois, tu ne peux pas jongler autant de balles que moi. #line:0f6c696 
+Temde_smiling: Tu vois, tu ne peux pas jongler avec autant de balles que moi.
 Temde_thinking: Mais, moi aussi, j'ai mes limites. Je n'aurais pas pu jongler avec plus de 9 balles !
 << else >>
-Temde_sad: Tu as jonglé { $ballsJuggled } balles ?? C'est une blague ?
-Temde_thinking: Euh... Enfin je veux dire... Oui, bravo, tu sais jongler... Tu as pris des cours quelque part ?
+Temde_sad: Tu as jonglé avec { $ballsJuggled } balles ?? C'est une blague ?
+Temde_thinking: Euh… Enfin je veux dire… Oui, bravo, tu sais jongler… Tu as pris des cours quelque part ?
 Azul_cheerful: N'en veux pas à Miss Temdé d'être mauvaise perdante, { $name }. Ce n'est pas tous les jours qu'elle se fait battre comme ça.
 <<endif>>
 
@@ -767,15 +776,15 @@ Sapiens_happy: Continuons. Est-il préférable de travailler d'arrache-pied le s
     Temde_thinking: Surtout ne pas tout reporter au dernier moment. Ton ami a beau avoir des facilités, il ne pourra pas s'en tirer comme ça toute sa vie !
     Ledai_explaining: Sinon, tu risques le court-circuit, le "system failure"… #line:01288b8 
 
-Sapiens_thinking: Voici la dernière proposition test. J'ai insisté sur le rôle des distracteurs dans la surcharge cognitive…
--> Les distracteurs sont comme des bonbons qui récompensent les séances de concentration
+Sapiens_thinking: Voici la dernière proposition test. J'ai insisté sur le rôle des distractions dans la surcharge cognitive…
+-> Les distractions sont comme des bonbons qui récompensent les séances de concentration
     << fx Failure >>
-    Sapiens_angry: Bien sûr que non… Les distracteurs, ce sont les activités qui n'ont pas de rapport avec la tâche présente. Ce ne sont pas des facilitateurs, ni même des récompenses !
+    Sapiens_angry: Bien sûr que non… Les distractions, ce sont les activités qui n'ont pas de rapport avec la tâche présente. Ce ne sont pas des facilitateurs, ni même des récompenses !
     Sapiens_angry: Comme leur nom l'indique, ce sont des nuisances ! Ils t'empêchent d'être 100% concentré sur la tâche présente. Ils dispersent ton attention dans tous les sens.
     Azul_happy: Pour atteindre une concentration optimale, il faut se ménager un espace de calme et de paix, une bulle d'attention.
--> Les distracteurs sont des tentations extérieures qui dérangent l'effort de concentration
+-> Les distractions sont des tentations extérieures qui dérangent l'effort de concentration
     << fx Success >>
-    Sapiens_happy: Exact ! Les distracteurs, ce sont les activités qui n'ont pas de rapport avec la tâche présente. Ce ne sont pas des facilitateurs, ni même des récompenses !
+    Sapiens_happy: Exact ! Les distractions, ce sont les activités qui n'ont pas de rapport avec la tâche présente. Ce ne sont pas des facilitateurs, ni même des récompenses !
     Sapiens_happy: Comme leur nom l'indique, ce sont des nuisances ! Ils t'empêchent d'être 100% concentré sur la tâche présente. Ils dispersent ton attention dans tous les sens.
     Azul_happy: Pour atteindre une concentration optimale, il faut se ménager un espace de calme et de paix, une bulle d'attention.
 Ledai_happy: Maintenant, nous allons te laisser. J'ai à nouveau mis à jour ton Journal Mental!

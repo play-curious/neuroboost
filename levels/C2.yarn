@@ -240,7 +240,7 @@ position: -939,-153
 ---
 << fadeIn >>
 << setBackground party >>
-<<if isTimeOver("21:30")>>
+<<if isTimeOver("21:31")>>
 << advanceTimeBy 00:15 >>
 <<else>>
 << advanceTimeUntil 21:30 >>
@@ -255,7 +255,7 @@ Fred_excited: Yo, te voilà enfin ! Alors, pas mal, cette fête, non ?
 You: Carrément ! Alors, on le commence, ce défi ?
 Fred_excited: Ouais, mais avant ça, il faut trouver notre adversaire, BB-Rex !
 You: Et il est où, ce… BB-Rex ?
-Fred_happy: Euh… Ca, je sais pas vraiment… Je l'ai jamais vu avant. Mais il paraît que c'est le plus grand fêtard de l'université, alors il devrait pas être difficile à trouver !
+Fred_happy: Euh… Ça, je sais pas vraiment… Je l'ai jamais vu avant. Mais il paraît que c'est le plus grand fêtard de l'université, alors il devrait pas être difficile à trouver !
 You: Euh… Ok… On fait quoi en attendant ?
 Fred_smiling: En attendant, allons nous chercher de quoi nous remplir le gosier ! Tiens, un BarBot !
 BarBot: Qu'est-ce que je peux vous offrir, les losers ?
@@ -335,7 +335,7 @@ tags:
 position: -170,-251
 ---
 Enivré par la foule et la musique, vous ne vous rendez pas compte à temps que votre ventre crie famine.
-Vous vous dirigez vers les snacks pour constater avec horreur qu'ils ont tous disparus. Vous vous sentez de moins en moins bien, de plus en plus nauséeux et votre coeur bat très fort à cause des baffles.
+Vous vous dirigez vers les snacks pour constater avec horreur qu'ils ont tous disparus. Vous vous sentez de moins en moins bien, de plus en plus nauséeux et votre cœur bat très fort à cause des baffles.
 Si vous voulez éviter le malaise, vous allez devoir rentrer… Vous auriez mieux fait de manger quelque chose…
 <<jump Chambre_Soir_Fail>>
 ===
@@ -391,7 +391,7 @@ position: -174,-126
 ---
 You: Et pourtant nos rimes sont plus dures que du diamant !
 BarBot: Mmmh… Peut-être, mais pour des premières années…
-BarBot: Je suis étonné… que vous ayiez appris à rapper !
+BarBot: Je suis étonné… que vous ayez appris à rapper !
 << visit Good_Rap >>
 
 -> On a beau être jeune, toi tu n'es pas de taille…
@@ -489,7 +489,7 @@ position: -54,166
 Barbot: …Et de plus ramener vos faces de losers !
 Tous les étudiants vous regardent d'un air déçu, puis reviennent à leurs occupations.
 Fred_sad: Mince… On a pas réussi… Mais au moins on s'est bien amusés. Merci d'être resté jusqu'au bout, { $name }.
-You: Je suis un peu fatigué, là...
+You: Je suis un peu fatigué, là…
 Fred_happy: Tu as raison, on ferait mieux de rentrer. Demain, je dois t'aider avec ton drone ! A plus, tout le monde !
 << music >>
 <<jump TransitionMatin>>
@@ -616,7 +616,7 @@ tags:
 position: 470,-242
 ---
 Vous vous approchez de l'instrument, une cyber-guitare améliorée par un groupe de docteurs. Celle-ci est posée contre un énorme amplificateur d'où sortent une ribambelle de cables et de pédales d'effets bricolées maison.
-Vous allumez l'amplificateur et grattez la première corde. Un son puissant et dissonnant jaillit du caisson d'amplificateur. Vous allez devoir apprendre à dompter la bête.
+Vous allumez l'amplificateur et grattez la première corde. Un son puissant et dissonant jaillit du caisson d'amplificateur. Vous allez devoir apprendre à dompter la bête.
 Le temps d'accorder l'instrument et de le prendre en main, un petit groupe s'est déjà amassé autour de vous, prêt à entendre vos mélodies.
 Le robot BarBot modifié, BB-Rex, vous entend et coupe sa sono intégrée pour vous écouter.
 BarBot: Yo la rockstar, on va voir si ton groove est à la hauteur de BB-Rex !
@@ -635,7 +635,7 @@ position: 585,-117
 ---
 << music Solo1 >>
 Stressé par la tension et la foule, vous entamez votre solo. Vous aimeriez avoir un peu révisé avant de venir, mais c'est trop tard désormais.
-Heureusement, Fred est là pour vous accompagner. Muni de sa Rythm-Box portable M47, il vous crée un beat du tonnerre.
+Heureusement, Fred est là pour vous accompagner. Muni de sa Rhythm-Box portable M47, il vous crée un beat du tonnerre.
 Vous parvenez tout de même à tenir une belle performance, qui ne laisse pas les étudiants indifférents.
 BarBot: Bon, ça, c'est ce que j'aime voir ! Bon, c'était un peu basique pour BB-Rex, mais vous avez réussi à ravir le public. Allez, pour la peine, voilà 1 PARTY POINT !
 << fx Success >>
@@ -653,7 +653,7 @@ position: 719,-183
 ---
 << music Solo2 >>
 Confiant de vos compétences et fier d'avoir mené le groupe de Galactic Jazz au temps du lycée, vous entamez un shredding digne des plus grands.
-Heureusement, Fred est là pour vous accompagner. Muni de sa Rythm-Box portable M47, il vous crée un beat du tonnerre.
+Heureusement, Fred est là pour vous accompagner. Muni de sa Rhythm-Box portable M47, il vous crée un beat du tonnerre.
 Les cordes rugissent au rythme de vos ongles, se tendent et s'étouffent pour laisser la distortion s'exprimer.
 Le public est en extase. Vous êtes parvenus à créer un spectacle digne de ce nom.
 BarBot: Ok, je vous laisse ma couronne, les amis, vous l'avez mérité. J'ai pas entendu de licks pareils depuis les seventies !
@@ -786,7 +786,7 @@ tags:
 position: 128,-897
 ---
 BarBot: C'est bien ce que je pensais… Allez, voilà un truc tout soft, à ton image… Haha !
-Vous vous sentez revigoré par la boisson caféinée. Maintenant, votre coeur bat à fond. Pas idéal pour faire une sieste, mais au moins, vous pourrez tenir un peu.
+Vous vous sentez revigoré par la boisson caféinée. Maintenant, votre cœur bat à fond. Pas idéal pour faire une sieste, mais au moins, vous pourrez tenir un peu.
 << addToGauge sleep 15 >>
 << addToGauge food 10 >>
 << advanceTimeBy 0:15 >>
@@ -802,7 +802,7 @@ Vous contemplez BB-Rex, le Barbot reprogrammé par les docteurs pour devenir le 
 Vous vous glissez derrière l'androïde et connectez votre tablette portable sur son boîtier principal.
 << advanceTimeBy 0:30 >>
 BINGO ! Devant vous, une interface de code vous montre les comportements basiques du robot.
--> LIBERER_PARTY_POINT
+-> LIBÉRER_PARTY_POINT
     <<jump Reward_Piratage>>
 ===
 
@@ -874,7 +874,7 @@ position: -787,56
 ---
 Vous invitez Fred à s'installer sur le canapé, proche de vous.
 You: Dis, Fred, tu pourrais m'expliquer ton système de pilotage assisté pour le TP de demain ?
-Fred_surprised: Là, maintenant ?! On est dans le coeur de la fête !
+Fred_surprised: Là, maintenant ?! On est dans le cœur de la fête !
 You: Je serais un peu moins stressé pour demain si je savais comment ça marchait…
 Fred_smiling: Bon, ok… Je vais faire vite, alors. Tu vois, les systèmes de correction de trajectoire par advanced learning…
 Fred semble, au final, plutôt passionné par le sujet, et vous en ressortez avec quelques notions, mais rien qui puisse changer la donne pour demain…
@@ -890,11 +890,11 @@ tags:
 position: -625,119
 ---
 << fx Sleep_LOOP >>
-Vous vous allongez sur le canapé de la cafétéria. Le tissu en nanofibre se laisse facilement détendre sous votre poids et vous vous endormez vite malgré la musique et la fête alentours.
+Vous vous allongez sur le canapé de la cafétéria. Le tissu en nano-fibre se laisse facilement détendre sous votre poids et vous vous endormez vite malgré la musique et la fête alentours.
 << addToGauge sleep 40 >>
 << advanceTimeBy 1:00 sleep >>
 << stopFX Sleep_LOOP>>
-Une fois révéillé, vous vous sentez revigoré, d'attaque.
+Une fois réveillé, vous vous sentez revigoré, d'attaque.
 <<jump Actions_Party>>
 ===
 
@@ -981,7 +981,7 @@ You: C'est sûr ! J'ai hâte de voir ma note. Merci de m'avoir aidé !
 Fred_excited: C'est normal. Oh, les notes viennent de tomber !
 You: Bon… J'ai eu un B… Et toi !
 Fred_happy: Un A. C'est génial, tu me rattrapes presque !
-You: Ca te fait peur ?
+You: Ça te fait peur ?
 Fred_smiling: Héhé, même pas un peu. On se voit demain ?
 You: Carrément !
 
@@ -1095,12 +1095,12 @@ Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut 
 -> Vrai, seul le nombre de calories compte pour être plein d'énergie
     << fx Failure >>
     Sapiens_angry: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité. #line:01481b0 
-    Azul_sad: Master Sapiens, { $name } est encore novice et vous avez d'autres quizz à lui poser. #line:05300f3 
+    Azul_sad: Master Sapiens, { $name } est encore novice et vous avez d'autres quiz à lui poser. #line:05300f3 
     Sapiens_thinking: En effet. #line:08df99c 
 -> Faux, il faut veiller à manger équilibré plutôt qu'en grande quantité
     << fx Success >>
     Sapiens_happy: Excellente réponse ! Le secret d'un entretien métabolique durable est de se nourrir régulièrement, de manière équilibrée. #line:07f18aa 
-    Azul_cheerful: Est-ce la fin de la séance de quizz ? #line:0bb5bcf 
+    Azul_cheerful: Est-ce la fin de la séance de quiz ? #line:0bb5bcf 
     Sapiens_thinking: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième:  #line:0bb34b1 
     
 Sapiens_thinking: L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil. #line:0c5a2c7 
@@ -1156,7 +1156,7 @@ position: 3341.1002807617188,392.2286071777344
 ---
 Sapiens_happy: Oui, cela dépend des personnes. Ce qui me rappelle le temps où je… #line:0715588 
 Temde_neutral: Non, on coupe ! Le temps presse ! #line:0beff39 
-Ledai_explaining: En effet, on va te renvoyer chez toi. N'oublie pas de jeter un oeil à ton Journal Mental !
+Ledai_explaining: En effet, on va te renvoyer chez toi. N'oublie pas de jeter un œil à ton Journal Mental !
 
 << hide >>
 << fx Warp >>
@@ -1175,7 +1175,7 @@ position: 3557.0534057617188,389.2486877441406
 << completeSages >>
 
 Le carré de jardin tranquille des sages a disparu subitement ! #line:0e91632 
-Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le coeur de bien-être. #line:05ae07d 
+Vous vous retrouvez dans ce cocon de nuit, éclairé par un douce lumière tamisée, qui vous emplit le cœur de bien-être. #line:05ae07d 
 Vous contemplez ce "iMetaJournal". Ce fameux <bi>journal mental</bi> dont parlent les 4 sages…
 
 <<jump Journal>>

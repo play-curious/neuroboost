@@ -22,9 +22,10 @@ colorID: 8
 << visitPermanent NoFredCall >>
 Après vous être réveillé en douceur, vous prenez votre petit déjeuner tranquillement en attendant l'appel de Fred.
 Aujourd'hui, vous devez travailler en binôme pour rédiger un mémoire… Sur quoi, déjà ?
-Ah, oui ! La théorie du chaos dans la macrobiologie post-darwinienne. C'est compliqué, comme sujet, il vaut mieux être à deux pour l'aborder !
+Ah, oui ! La théorie du chaos dans la macro-biologie post-darwinienne. C'est compliqué, comme sujet, il vaut mieux être à deux pour l'aborder !
 Quelque chose cloche… Fred ne vous a toujours pas appelé ! Ça ne lui ressemble pas…
 -> Appeler Fred sur son Palmphone
+    << visit TryToCallFred >>
     << loopFX PhoneRing_LOOP 5000 >>
     << screenshake 10 600 >>
     …
@@ -39,7 +40,6 @@ Quelque chose cloche… Fred ne vous a toujours pas appelé ! Ça ne lui ressemb
 
 Vous vous étiez mis d'accord pour aller travailler sur le mémoire à la bibliothèque de l'Académie… Tout seul, qu'est-ce que vous allez faire ?
 <<else>>
-
 Vous vous levez une nouvelle fois. Pas besoin d'appeler Fred, vous savez qu'il est occupé à poncer le dernier GTR…
 <<endif>>
 << hide >>
@@ -73,7 +73,7 @@ position: -1220,-672
 << fadeIn >>
 << setBackground bedroom bed >>
 << fadeOut >>
--> Se recoucher en attendant Fred (1h30)
+-> Se recoucher en attendant Fred (1h30) #once
     <<jump Sleep_Morning>>
 -> back
     <<jump Actions_List>>
@@ -147,8 +147,10 @@ You: Accouche !!! QU'EST-CE QU'IL S'EST PASSÉ, FRED ??
 Fred@holo_excited: J'AI REÇU… LE DERNIER OPUS… DE GRAND THRILL RODEO !!! JE SAIS, C'EST INCROYABLE !
 -> FRED !! Tu m'as fait peur !
     You: Ça va pas, la tête ?! Tu m'as fait peur !
+    <<if visited("TryToCallFred")>>
     Fred@holo_happy: Quoi ? Ahhh, t'as essayé de m'appeler… J'étais en plein dans le jeu ! J'en suis au chapitre 4 !
     You: Ouais, super. J'en ai pas grand chose à faire, en fait.
+    <<endif>>
 -> Ça nous aidera pas à finir le mémoire…
     Fred@holo_happy: Ah ouais… C'est vrai, tu m'as appelé… J'étais en plein dans le jeu ! J'en suis au chapitre 4 !
     You: Ouais, super. J'en ai pas grand chose à faire, en fait.
@@ -303,9 +305,9 @@ Que faire en attendant ?
         RoomMate: Entendu !
         << music DanceQuiet >>
         << advanceTimeBy 2:00 >>
-        Les basses frénétiques et hypnotisantes de EarsKiller vous prennent aux tripes et vous mettent dans un état de transe hypnotique.
+        Les basses frénétiques et hypnotiques de EarsKiller vous prennent aux tripes et vous mettent dans un état de transe hypnotique.
         << addToGauge sleep 20 >>
-        Vous vous sentez énergisé et prêt à tout donner.
+        Vous vous sentez plein d'énergie et prêt à tout donner.
         << music Neutral3 >>
 Vous levez les yeux pour enfin voir Fred !
 << show fred >>
@@ -503,7 +505,7 @@ position: -1021,-218
 ---
 You: Un petit café pour se remonter ?
 Fred_surprised: Je savais pas que tu buvais du café…
-You: Pas d'habitude, mais là, je suis crévé. On y va ?
+You: Pas d'habitude, mais là, je suis crevé. On y va ?
 Fred_happy: Allez !
 
 << hide >>
@@ -616,7 +618,7 @@ Fred_smiling: Super ! Vas-y, je t'écoute !
 << if !$silence >>
 Alors que vous parlez haut et fort, d'autres étudiants à proximité se tournent vers vous d'un air désapprobateur.
 << fx Failure >>
-???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie...
+???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie…
 <<jump Notes_You_Bad>>
 <<endif>>
 
@@ -676,7 +678,7 @@ Fred_happy: Tout est dans ma tête. Tu veux que je commence par quoi ? #line:0ca
 << if !$silence >>
 Alors que vous parlez haut et fort, d'autres étudiants à proximité se tournent vers vous d'un air désapprobateur.
 << fx Failure >>
-???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie...
+???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie…
 <<jump Notes_Fred_Bad>>
 <<endif>>
 
@@ -745,7 +747,7 @@ You: Ok.  #line:02303dd
 << if !$silence >>
 Alors que vous parlez haut et fort, d'autres étudiants à proximité se tournent vers vous d'un air désapprobateur.
 << fx Failure >>
-???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie...
+???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie…
 <<jump Plan_Bad>>
 <<endif>>
 
@@ -804,7 +806,7 @@ Après une heure, le gros de la partie est terminé !
 << advanceTimeBy 1:00 >>
 <<else>>
 You: On reprend la rédaction ?
-Fred_bored: Ouais...
+Fred_bored: Ouais…
 Vous entamez la partie 2 du mémoire. Fred ne semble toujours pas emballé par la production, il paraît très distrait et peu investi.
 Après une heure, le gros de la partie est terminé !
 << addToGauge mentalLoad 15 >>
@@ -822,9 +824,9 @@ L'heure suivante, vous vous efforcez de tenir pour la dernière ligne droite de 
 << addToGauge learning 10 >>
 << advanceTimeBy 1:00 >>
 <<else>>
-Fred_bored: Bon... J'imagine qu'on doit reprendre la rédaction, maintenant ?
+Fred_bored: Bon… J'imagine qu'on doit reprendre la rédaction, maintenant ?
 You: Ouais ! On a pas le choix !
-L'heure suivante, vous vous efforcez de tenir pour la dernière ligne droite de la rédaction. Une heure pénible et peu productive... Peut-être que si Fred était plus motivé, cela se serait passé autrement...
+L'heure suivante, vous vous efforcez de tenir pour la dernière ligne droite de la rédaction. Une heure pénible et peu productive… Peut-être que si Fred était plus motivé, cela se serait passé autrement…
 << addToGauge mentalLoad 15 >>
 << addToGauge learning 5 >>
 << advanceTimeBy 1:00 >>
@@ -844,7 +846,7 @@ Fred_smiling: J'ai plein d'idées. Tu sais quoi, je me sers du plan pour arrange
 << if !$silence >>
 Alors que vous parlez haut et fort, d'autres étudiants à proximité se tournent vers vous d'un air désapprobateur.
 << fx Failure >>
-???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie...
+???: Hé, on est à la bibliothèque, là ! Un peu de silence, s'il vous plaît ? Activez une bulle d'immersion, qu'on ne vous entende pas dans toute l'Académie…
 <<jump Redaction_Bad>>
 <<endif>>
 
@@ -870,7 +872,7 @@ Fred_sad: Ah bon ?
 Fred vous regarde avec une mine désappointée. Il ne s'attendait sûrement pas à ce que vous travailliez sur le mémoire sans lui.
 <<endif>>
 You: Bon… On ne va pas en parler trop longtemps. Je vais répartir les taches en suivant le plan et en m'aidant de nos recherches…
-You: Je m'occupe du problème du degré d'erreur des modèles déterministes… et je te laisse réfléchir sur la révolution du paradigme post-darwinien en macrobiologie pour la conclusion ?
+You: Je m'occupe du problème du degré d'erreur des modèles déterministes… et je te laisse réfléchir sur la révolution du paradigme post-darwinien en macro-biologie pour la conclusion ?
 Fred_surprised: Je suppose que je fais l'introduction, aussi ?
 You: Oui, tu peux ! Je vérifierai ton travail une fois qu'il sera fait. Pour l'instant, à la rédaction !
 Fred_sad: Ok, ça marche…
@@ -897,7 +899,7 @@ RoomMate: Ding-dong ! Allez, on remballe ses affaires ! La bibliothèque va ferm
 
 << if getGauge("learning") >= 50 >>
 You: Bon, c'est cool, ça ! On a presque fini !
-Fred_happy: Oui, on n'a qu'à relire et paufiner un peu la conclusion et on est bons !
+Fred_happy: Oui, on n'a qu'à relire et peaufiner un peu la conclusion et on est bons !
 You: On se voit sur Disboard plus tard ?
 Fred_smiling: Ouaip. Allez, courage !
 << hide >>
@@ -956,11 +958,11 @@ position: -1864,35
 << setBackground bedroom night >>
 << fadeOut >>
 
-<< visit win >>
+<< visit Win >>
 
 Une fois chez vous, vous prenez un peu de temps pour éditer le mémoire, puis le rendez le mémoire sur le serveur de l'Académie, convaincu de la qualité de votre travail.
 << completeLevel >>
-Fred@holo_smiling: C'est pas mal, ce qu'on a fait, non ? Ca mérite bien un petit GTR…
+Fred@holo_smiling: C'est pas mal, ce qu'on a fait, non ? Ça mérite bien un petit GTR…
 You: Carrément !
 <<if !visited("Assemblee_Sages")>>
 Tout d'un coup, Fred semble se figer sur place derrière son holo-écran.
@@ -978,6 +980,7 @@ colorID: 0
 position: -1704,-114
 ---
 << visit Chapitre4 >>
+<< music Mysterious >>
 Fred@holo_surprised: Euh… QU'EST CE QUE ??! { $name }, Y A UN VIEUX PERVERS AVEC UN CHAPEAU BIZARRE DANS TA CHAMBRE !!
 Vous tournez la tête, terrifié, et constatez avec soulagement que derrière vous se tient…
 Sapiens_angry: Il m'a traité de vieux quoi, l'autre morveux ??
@@ -1006,7 +1009,7 @@ position: -1913,850
 << visit Assemblee_Sages>>
 
 Sapiens_happy: Tu vois, nous étions impatients de te revoir. #line:02c6d14 
-Azul_proud: C'est que derrière ses airs de maître inflexible se cache un coeur tendre. N'est-ce pas, Master Sapiens ? #line:0fc9524 
+Azul_proud: C'est que derrière ses airs de maître inflexible se cache un cœur tendre. N'est-ce pas, Master Sapiens ? #line:0fc9524 
 Sapiens_angry: Tu ne crois pas exagérer, Azul ? #line:0896e67 
 Temde_thinking: À peine. Tiens-toi bien, { $name }, aujourd'hui, on attaque un gros morceau : les styles d'apprentissage !
 Ledai_happy: Une leçon indispensable pour tout chef de projet en herbe !

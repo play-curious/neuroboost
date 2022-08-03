@@ -54,7 +54,7 @@ Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la prépare
 
 -> Tenter de broder comme vous pouvez
     Pendant l'oral, vous faites de votre mieux pour meubler le temps comme vous le pouvez. D'habitude, vous êtes un maître pour broder, mais là, vos lacunes vous empêchent de tenir un discours cohérent.
-    Puis, quand est venu le temps des questions-réponses… Ce fut le massacre. Le jury ne vous a épargné aucun coup, aucune humiliation. #line:0dbcc7e 
+    Au moment des questions-réponses, c'est le massacre. Le jury ne vous épargne aucun coup, aucune humiliation.
     <<jump Sortie_Salle>>
 -> Essayer de rediriger vers un autre sujet
     Vous tentez tant bien que mal de rediriger le sujet, mais les jurés voient clair à travers votre stratagème et vous posent des questions encore plus pointilleuses sur cette fichue décohérence quantique.
@@ -91,7 +91,7 @@ Vous vous glissez tout de suite dans votre lit. Quelle semaine pourrie… #line:
 -> Faire un gros somme #line:002a60d 
     << fx Sleep_LOOP >>
     << fadeIn >>
-    Tutorial: Conseil : N'hésitez pas à ouvrir le menu d'options pour régler le volume et la vitesse du teste.
+    Tutorial: Conseil : N'hésitez pas à ouvrir le menu d'options si vous souhaitez régler le volume et la vitesse du texte.
     <<jump Reveil_Sage>>
 ===
 
@@ -210,7 +210,7 @@ You: Vous… Vous êtes qui, vous ??
 Temde_neutral: Nous sommes les sages de la métacognition.
 Azul_sad: Nous devrions nous présenter à { $name }. C'est la première nuit que nous nous immisçons dans sa vie. Notre visiteur de ce soir ne sait plus à quel sage se vouer.
 Sapiens_thinking: Très juste, <b>Azul</b>. Puisque j'ai pris la parole, je me présente : je suis <b>Master Sapiens</b>, le Gardien des Savoirs. #line:08b4377 
-Ledai_explaining: Et moi, je suis <b>Ledaï</b>, le Gardien des Pratiques. #line:0f3a432 
+Ledai_explaining: Et moi, je suis <b>Ledai</b>, le Gardien des Pratiques. #line:0f3a432 
 Azul_proud: Enchanté de te rencontrer, { $name }. On m'appelle <b>Azul</b>, le Gardien des Précognitions. #line:0f4924c 
 Ledai_explaining: Et tu as déjà fait la connaissance de notre 4e sage <b>Miss Temdé</b>… #line:039d16f 
 Temde_smiling: … La Gardienne des Improvisations. #line:0e517ee 
