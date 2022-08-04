@@ -384,7 +384,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       // Show highlight zones
       this.graphics.setFreechoice(options, (id) => {
-        this.config.fxMachine.play("Click");
         this._advance.bind(this)(id);
       });
     } else {
@@ -394,7 +393,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this.graphics.setChoice(
         options,
         (id) => {
-          this.config.fxMachine.play("Click");
           this.selectedOptions.push(
             `${this.metadata.title}|${this.metadata.choiceId}|${id}`
           );

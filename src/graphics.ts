@@ -27,6 +27,9 @@ const maxLineLength = 68;
 
 const typewriterDurationPerLetter = 50;
 
+const choiceFadeDuration = 150;
+const choiceColor = 0xf4dc70;
+
 export class Graphics extends extension.ExtendedCompositeEntity {
   private _characters: Map<
     string,
@@ -515,6 +518,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       clickCatcher.interactive = false;
       this._on(clickCatcher, "pointerup", () => {
         this.hideNode();
+        this.config.fxMachine.play("Click");
         onBoxClick(backOptionIndex);
       });
       this._nodeDisplay.addChild(clickCatcher);
@@ -523,6 +527,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const animationShifting = 120;
     let currentY: number = 1080 - 40;
     const box_tweens: entity.EntityBase[] = [];
+    const boxList: PIXI.Container[] = [];
     for (let i: number = 0; i < nodeOptions.length; i++) {
       if (backOptionIndex === Number(nodeOptions[i].id)) continue;
 
@@ -536,6 +541,19 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             : "images/ui/choicebox_empty.png"
         )
       );
+      boxList.push(choicebox);
+
+      const choicetext: PIXI.Text = new PIXI.Text(nodeOptions[i].text, {
+        fill: 0xfdf4d3,
+        fontFamily: "Ubuntu",
+        fontSize: 40,
+        fontStyle: "normal",
+        wordWrap: true,
+        wordWrapWidth: 1325,
+        leading: 10,
+      });
+      choicetext.anchor.set(0.5);
+      choicetext.position.set(choicebox.width / 2, choicebox.height / 2);
 
       currentY -= choicebox.height + 20;
       choicebox.pivot.set(choicebox.width / 2, choicebox.y);
@@ -566,12 +584,37 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             choicebox.buttonMode = true;
 
             this._on(choicebox, "pointerup", () => {
-              this.config.dialogScene.addToHistory(
-                "[choice]",
-                nodeOptions[i].text
+              this._activateChildEntity(
+                new entity.EntitySequence([
+                  () => {
+                    this.config.fxMachine.play("Click");
+                    choicetext.style.fill = choiceColor;
+                    const tweensFade: tween.Tween[] = [];
+                    for (const box of boxList) {
+                      if (box !== choicebox) {
+                        tweensFade.push(
+                          new tween.Tween({
+                            obj: box,
+                            to: 0,
+                            property: "alpha",
+                            duration: choiceFadeDuration,
+                          })
+                        );
+                      }
+                    }
+                    return new entity.ParallelEntity(tweensFade);
+                  },
+                  new entity.WaitingEntity(200),
+                  new entity.FunctionCallEntity(() => {
+                    this.config.dialogScene.addToHistory(
+                      "[choice]",
+                      nodeOptions[i].text
+                    );
+                    this.hideNode();
+                    onBoxClick(Number(nodeOptions[i].id));
+                  }),
+                ])
               );
-              this.hideNode();
-              onBoxClick(Number(nodeOptions[i].id));
             });
 
             this._on(choicebox, "mouseover", () => {
@@ -604,24 +647,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         ])
       );
 
-      choicebox.addChild(
-        this.makeText(
-          nodeOptions[i].text,
-          {
-            fill: "#fdf4d3",
-            fontFamily: "Ubuntu",
-            fontSize: 40,
-            fontStyle: "normal",
-            wordWrap: true,
-            wordWrapWidth: 1325,
-            leading: 10,
-          },
-          (it) => {
-            it.anchor.set(0.5);
-            it.position.set(choicebox.width / 2, choicebox.height / 2);
-          }
-        )
-      );
+      choicebox.addChild(choicetext);
 
       this._nodeDisplay.addChild(choicebox);
     }
@@ -638,6 +664,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       arrow_back.buttonMode = true;
       this._on(arrow_back, "pointerup", () => {
         this.hideNode();
+        this.config.fxMachine.play("Click");
         onBoxClick(backOptionIndex);
       });
       this._on(arrow_back, "mouseover", () => {
@@ -684,6 +711,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     const freeboxTweens: entity.EntityBase[] = [];
     const [animationShifting, baseAlpha] = [120, 0.6];
     let freechoicesFound = 0;
+
+    const boxList: PIXI.Container[] = [];
     for (let i = 0; i < nodeOptions.length; i++) {
       const [choiceText, jsonValue] = nodeOptions[i].text.trim().split("@");
       if (!highlightJSON.hasOwnProperty(jsonValue)) continue;
@@ -701,6 +730,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       } else {
         throw new Error(`Missing highlight sprite ${path}`);
       }
+      boxList.push(highlight);
 
       const hitboxPositions = highlightJSON[jsonValue];
       highlight.hitArea = new PIXI.Polygon(hitboxPositions);
@@ -721,9 +751,36 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             highlight.buttonMode = true;
 
             this._on(highlight, "pointerup", () => {
-              this.config.dialogScene.addToHistory("[freechoice]", choiceText);
-              this.hideNode();
-              onBoxClick(i);
+              this._activateChildEntity(
+                new entity.EntitySequence([
+                  () => {
+                    this.config.fxMachine.play("Click");
+                    const tweensFade: tween.Tween[] = [];
+                    for (const box of boxList) {
+                      if (box !== highlight) {
+                        tweensFade.push(
+                          new tween.Tween({
+                            obj: box,
+                            to: 0,
+                            property: "alpha",
+                            duration: choiceFadeDuration,
+                          })
+                        );
+                      }
+                    }
+                    return new entity.ParallelEntity(tweensFade);
+                  },
+                  new entity.WaitingEntity(200),
+                  new entity.FunctionCallEntity(() => {
+                    this.config.dialogScene.addToHistory(
+                      "[freechoice]",
+                      choiceText
+                    );
+                    this.hideNode();
+                    onBoxClick(i);
+                  }),
+                ])
+              );
             });
 
             this._on(highlight, "mouseover", () => {
