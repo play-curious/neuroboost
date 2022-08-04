@@ -8,6 +8,7 @@ colorID: 8
 << fadeIn 1 >>
 << showTitle Chapitre 5 >>
 << setTime 7:55 4 >>
+<< set $silence to false >>
 << showGauges >>
 << setGauge learning 0 >>
 << setGauge sleep 100 >>
@@ -89,6 +90,8 @@ Vous aimeriez parler plus, mais le Paramedibot arrive pour l'emmener au bloc op�
 << addToGauge stress 70 >>
 <<endif>>
 
+<< advanceTimeBy 0:15 >>
+
 Tutorial: La nouvelle jauge mesure votre Stress. Tentez de la diminuer avant la fin de la journée !
 << setDeadline Examen 14:00 >>
 <<jump Liste_Taches>>
@@ -158,6 +161,10 @@ position: -2006,-802
     <<jump Approfondir>>
 -> Vous informer en ligne sur les causes et les effets des pathologies cardiaques (1h) #once #line:0ecd663 
     <<jump Web_Info>>
+-> Activer le mode Zéro Distraction <<if !$silence>>
+    <<jump Activer_Zero_Distraction>>
+-> Désactiver le mode Zéro Distraction <<if $silence>>
+    <<jump Desactiver_Zero_Distraction>>
 -> back #line:0b4e444 
     << fadeIn >>
     <<jump Liste_Taches>>
@@ -170,6 +177,12 @@ position: -1999,-977
 ---
 << visit Rappel_libre >>
 Vous avez des lacunes en GRH, mais vous n'êtes pas non plus inculte en la matière. La technique du "rappel libre" devrait faire son office. Vous vous lancez dans une récapitulation des différents chapitres et thèmes abordés.  #line:03a836e 
+
+<<if !$silence>>
+<< fx Failure >>
+<< addToGauge mentalLoad 10 >>
+Les distractions qui vous entourent perturbent votre concentration…
+<<endif>>
 
 <<if getGauge("stress") < 66 >>
 Vous mettez de côté les pensées qui bifurquent sur l'état de votre grand-mère, et vous vous concentrez sur votre matière.
@@ -192,6 +205,13 @@ tags:
 position: -1692,-812
 ---
 Vous décidez de vous y remettre. Vous avez vos problèmes, mais la GRH ne se révisera pas toute seule !
+
+<<if !$silence>>
+<< fx Failure >>
+<< addToGauge mentalLoad 10 >>
+Les distractions qui vous entourent perturbent votre concentration…
+<<endif>>
+
 <<if getGauge("stress") < 66 >>
 Vous passez les quelques heures qui suivent à approfondir le sujet, vous plongeant pleinement dans vos révisions.
 << addToGauge learning 40 >>
@@ -223,6 +243,27 @@ Vous en ressortez encore plus stressé.
 <<jump Liste_Taches>>
 ===
 
+title: Activer_Zero_Distraction
+tags: 
+position: -1823,-911
+---
+<< fx Success >>
+<< set $silence to true >>
+RoomMate: Mode Zéro-Distraction activé !
+<< hide >>
+<<jump bureau_subchoice>>
+===
+
+title: Activer_Zero_Distraction
+tags: 
+position: -1823,-911
+---
+<< fx Success >>
+<< set $silence to false >>
+RoomMate: Mode Zéro-Distraction désactivé !
+<< hide >>
+<<jump bureau_subchoice>>
+===
 
 title: cuisine_subchoice
 tags: subchoice
@@ -261,6 +302,16 @@ position: -2527,-570
 << fadeIn >>
 << setBackground bedroom chill >>
 << fadeOut >>
+
+<<if $silence>>
+RoomMate: Voulez-vous que je désactive le mode zéro-distraction pour vous permettre une pause ?
+-> Oui
+    << fx Success>>
+    <<set $silence to false>>
+-> Non
+    <<jump Liste_Taches>>
+<< hide>>
+<<endif>>
 
 -> Appeler vos parents #once #line:01f72bb 
     <<jump Maman_Call>>

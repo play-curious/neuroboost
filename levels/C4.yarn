@@ -5,7 +5,7 @@ tags:
 position: -1656,-460
 colorID: 8
 ---
-<< fadeIn 1 >>
+<< fadeIn >>
 << showTitle Chapitre 4 >>
 << setTime 8:00 3 >>
 << set $silence to false >>
@@ -73,7 +73,7 @@ position: -1220,-672
 << fadeIn >>
 << setBackground bedroom bed >>
 << fadeOut >>
--> Se recoucher en attendant Fred (1h30) #once
+-> Se recoucher (1h30) #once
     <<jump Sleep_Morning>>
 -> back
     <<jump Actions_List>>
@@ -127,7 +127,7 @@ position: -874,-487
 << fadeIn >>
 << setBackground bedroom chill >>
 << fadeOut >>
--> Attendre Fred en  regardant Star Mars #once
+-> Regarder Star Mars #once
     <<jump TV>>
 -> back #line:0341673 
     <<jump Actions_List>>
@@ -202,7 +202,7 @@ tags:
 colorID: 0
 position: -675,-613
 ---
-Vous allumez votre télé holographique en attendant Fred… Après tout, vous n'avez pas à porter toute la responsabilité tout seul…
+Vous allumez votre télé holographique en attendant que Fred se bouge… Après tout, vous n'avez pas à porter toute la responsabilité tout seul…
 << show lightsaber@holo >>
 << loopFX TVStarwars_LOOP 10000 >>
 Aujourd'hui, pas d'épisode de votre show favori, mais à la place un dessin animé dérivé… Kids Mars…
@@ -332,11 +332,10 @@ position: -442,-200
 Fred_happy: Hey, quand on a fini, on pourra se faire un petit GTR, tu crois pas ?
 -> Si ça te fait plaisir…
     You: Oui, si on a encore le temps. Au pire, on pourra faire ça un autre jour !
-    Fred_excited: Yes ! Bon alors, on s'y met ?
 -> Arrête avec ton GTR !
     You: Bon sang mais Fred, calme-toi avec GTR ! Tu pourras y jouer plus tard !
     Fred_bored: Pffff… Ouais, t'as sûrement raison…
-Fred_smiling: Bon, on s'y met ? C'est toi le chef de projet, non ? Alors, on fait quoi ?
+Fred_smiling: Bon d'accord, on s'y met, alors ? C'est toi le chef de projet, non ? Alors, on fait quoi ?
 << hide >>
 <<jump Liste_Taches>>
 ===

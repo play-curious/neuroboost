@@ -162,6 +162,16 @@ position: -131,-343
 ---
 << setBackground bedroom chill >>
 
+<<if $silence>>
+RoomMate: Voulez-vous que je désactive le mode zéro-distraction pour vous permettre une pause ?
+-> Oui
+    << fx Success>>
+    <<set $silence to false>>
+-> Non
+    <<jump Liste_Taches>>
+<< hide >>
+<<endif>>
+
 -> Se détendre devant la TV (3h) #once #line:01eb1a1 
     <<jump Binge_TV>>
 -> back #line:0a20dff 

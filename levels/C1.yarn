@@ -137,18 +137,11 @@ Temde_sad: Bon… Nous allons te renvoyer encore une fois dans le passé. Attent
 
 << music Neutral2 >>
 
-<< if isTimeOver("12:00") >>
-
-<<if !visited("DejaMidi")>>
+<< if isTimeOver("12:00") && !visited("DejaMidi")>>
 << visit DejaMidi >>
 Déjà midi passé ! C'est bientôt l'heure de l'examen !
 <<endif>>
 
--> Cuisine@cuisine #line:0b8d567 
-    <<jump cuisine_subchoice>>
--> Porte@porte
-    <<jump porte_subchoice>>
-<<else>>
 -> Cuisine@cuisine #line:0b8d567 
     <<jump cuisine_subchoice>>
 -> Bureau@bureau #line:0027a0c 
@@ -157,7 +150,6 @@ Déjà midi passé ! C'est bientôt l'heure de l'examen !
     <<jump salon_subchoice>>
 -> Porte@porte
     <<jump porte_subchoice>>
-<< endif>>
 ===
 
 title: porte_subchoice
