@@ -31,7 +31,7 @@ Cela dit, il va falloir travailler à fond pour être opérationnel pour le Gran
 << addToGauge food 100 >>
 En prenant votre petit déjeuner, vous vous grattez la tête : vous aviez un cours de danse aujourd'hui, mais vous n'avez aucune idée de quand. Votre RoomMate a peut-être noté l'heure ?
 
-<< advanceTimeBy 0:30 >>
+<< advanceTimeBy 0:30 sleep food >>
 
 Vous jetez un œil à votre palmphone : pas de nouvelle de l'hôpital ni de votre grand-mère. C'est peut-être mauvais signe…
 << addToGauge stress 50 >>
@@ -518,10 +518,13 @@ colorID: 6
 << fadeOut >>
 
 <<if $silence>>
-<< fx Failure >>
-RoomMate: Les activités de détente sont désactivées avec le mode Zéro-Distraction, { $name }.
-<< hide >>
-<<jump Liste_Taches>>
+RoomMate: Voulez-vous que je désactive le mode zéro-distraction pour vous permettre une pause ?
+-> Oui
+    << fx Success>>
+    <<set $silence to false>>
+-> Non
+    <<jump Liste_Taches>>
+<< hide>>
 <<endif>>
 
 -> Regarder Star Mars (2h)
@@ -530,7 +533,7 @@ RoomMate: Les activités de détente sont désactivées avec le mode Zéro-Distr
     <<jump Musique>>
 -> Méditer (30 min)
     <<jump Mediter>>
--> Passer le temps jusqu'à 20h <<if !isTimeOver("20:00")>>
+-> Passer le temps jusqu'à 20h <<if !isTimeOver("20:00") && $jour != "lundi">>
     << advanceTimeUntil 20:00 >>
     Vous estimez avoir fait ce que vous aviez à faire pour aujourd'hui. Vous en profitez pour ranger un peu votre appartement et jeter un œil à votre messagerie avant le soir.
     <<jump Liste_Taches>>

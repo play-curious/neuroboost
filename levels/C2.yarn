@@ -529,6 +529,7 @@ Fred@holo_excited: Yo, { $name } ! Bien dormi ? Pas moi ! Je t'ai envoyé les pl
 You: Merci, Fred !
 Fred@holo_happy: T'inquiète, c'est pour être resté jusqu'au bout hier soir ! Alors… Pour ce qui est de l'allègement des matériaux, j'ai penché pour une coque en méta-plastique…
 << addToGauge learning 70 >>
+<< advanceTimeBy 1:00 food sleep >>
 Fred et vous prenez 1h pour travailler sur le drone. Au final, celui-ci semble fin prêt pour le TP de pilotage ! Va-t-il tenir jusqu'au bout ?
 -> Aller au TP
     << hide >>
@@ -552,6 +553,7 @@ You: Merci, Fred ! T'étais pas obligé, tu sais…
 Fred@holo_sarcasme: Je sais, et crois pas que je vais passer 1h à t'expliquer comment ça marche alors que t'es parti super tôt hier !
 << hide >>
 << addToGauge learning 20 >>
+<< advanceTimeBy 1:00 food sleep >>
 Au final, vous parvenez à faire des améliorations légères sur votre drone, mais sans les explications de Fred, le résultat n'est pas fameux…
 -> Aller au TP
     <<jump TpLose>>
@@ -562,6 +564,7 @@ tags:
 position: -223,301
 ---
 << fadeIn >>
+<< advanceTimeBy 0:30 food sleep >>
 << setBackground class >>
 << fadeOut >>
 
@@ -955,6 +958,7 @@ tags:
 position: 375.0788269042969,1111.1724853515625
 ---
 << fadeIn >>
+<< advanceTimeBy 0:30 food sleep >>
 << setBackground class >>
 << fadeOut >>
 

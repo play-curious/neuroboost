@@ -13,7 +13,7 @@ position: -891,402
 << setGauge mentalLoad 80 >>
 << setGauge stress 40 >>
 << showGauges >>
-<< setTime 14:00 >>
+<< setTime 14:00 0 >>
 << setBackground oral >>
 
 Voilà finalement venu le Grand Oral.
