@@ -30,11 +30,11 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Check types
-        run: yarn types
-
       - name: Build dist
         run: yarn dist
+
+      - name: Check types
+        run: yarn types
 
       - name: Upload to DigitalOcean
         uses: idlefingers/do-space-sync-action@master
