@@ -583,7 +583,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             choicebox.interactive = true;
             choicebox.buttonMode = true;
 
-            this._on(choicebox, "pointerup", () => {
+            this._once(choicebox, "pointerup", () => {
               this._activateChildEntity(
                 new entity.EntitySequence([
                   () => {
@@ -592,6 +592,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
                     const tweensFade: tween.Tween[] = [];
                     for (const box of boxList) {
                       if (box !== choicebox) {
+                        box.interactive = false;
                         tweensFade.push(
                           new tween.Tween({
                             obj: box,
@@ -750,7 +751,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
             highlight.interactive = true;
             highlight.buttonMode = true;
 
-            this._on(highlight, "pointerup", () => {
+            this._once(highlight, "pointerup", () => {
               this._activateChildEntity(
                 new entity.EntitySequence([
                   () => {
@@ -758,6 +759,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
                     const tweensFade: tween.Tween[] = [];
                     for (const box of boxList) {
                       if (box !== highlight) {
+                        box.interactive = false;
                         tweensFade.push(
                           new tween.Tween({
                             obj: box,
