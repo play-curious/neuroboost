@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: yarn
 
+      - name: Check types
+        run: yarn types
+
       - name: Build dist
         run: yarn dist
 
