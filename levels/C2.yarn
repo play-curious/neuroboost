@@ -57,7 +57,7 @@ position: -1367,-540
 << fadeIn >>
 << setBackground bedroom >>
 << fadeOut >>
-<< setTime 18:30 1 >>
+<< setTime 18:30 0 >>
 
 << showGauges >>
 
