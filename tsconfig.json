@@ -1,8 +1,9 @@
 {
   "include": ["src/**/*"],
-  "exclude": [".node_modules"],
+  "exclude": ["./node_modules"],
   "compilerOptions": {
     "alwaysStrict": true,
+    "skipLibCheck": true,
     "noImplicitAny": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,

@@ -11,7 +11,8 @@
     "translate": "gulp yarnToCSV",
     "build": "yarn images && webpack --config webpack.dev.js",
     "dist": "yarn images && webpack --config webpack.prod.js",
-    "format": "prettier --write src gulpfile.js README.md"
+    "format": "prettier --write src gulpfile.js README.md",
+    "types": "tsc --noEmit"
   },
   "keywords": [],
   "author": "playcurious",
