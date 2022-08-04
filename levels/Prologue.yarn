@@ -135,7 +135,7 @@ Temde_sad: Arrête tes jérémiades ! Tu as bricolé comme tu as pu, ça n'a pas
 You: Qui m'attend ? Où, là-bas ? #line:0940e22 
 Temde_smiling: Assez de blabla { $name }, suis-moi. On ne va pas y passer toute la nuit, quand même ! #line:02f8956 
 
--> Dire à cette fichue apparition onirique <i>Temdé</i> de s'en aller #line:018cd35 
+-> Dire à cette fichue apparition onirique Temdé de s'en aller #line:018cd35 
     <<jump Tenter_rester_chambre>>
 -> Se laisser guider par l'irréelle Miss Temdé #line:0c2f10c 
     << fx Warp >>
