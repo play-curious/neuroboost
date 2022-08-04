@@ -56,8 +56,8 @@ position: -1367,-540
 
 << fadeIn >>
 << setBackground bedroom >>
-<< setTime 18:30 >>
 << fadeOut >>
+<< setTime 18:30 1 >>
 
 << showGauges >>
 
@@ -67,6 +67,7 @@ Vous vous retrouvez seul. Vous et Fred avez rendez-vous à 21h30, mais entre tem
 Tutorial: Les jauges d'Énergie et de Nutrition mesurent votre fatigue et votre faim. Si l'une d'elle tombe à 0, c'est perdu !
 Tutorial: Pour obtenir les 3 étoiles, tentez de garder toutes les jauges à un niveau élevé !
 <<endif>>
+<< setDeadline Fête 21:30 >>
 <<jump Actions_Before_Party>>
 ===
 
@@ -77,7 +78,8 @@ position: -1210,-459
 << music Neutral2 >>
 << setBackground bedroom >>
 << fadeOut >>
-<<if isTimeOver("21:30")>>
+<<if isTimeOver("21:31")>>
+<< removeDeadline >>
 Vous avez oublié de vous rendre à la soirée ! Vite, allez retrouver Fred !
     <<jump Debut_Soiree>>
 <<else>>
@@ -240,7 +242,7 @@ position: -939,-153
 ---
 << fadeIn >>
 << setBackground party >>
-<<if isTimeOver("21:31")>>
+<<if isTimeOver("21:30")>>
 << advanceTimeBy 00:15 >>
 <<else>>
 << advanceTimeUntil 21:30 >>
@@ -285,7 +287,7 @@ Fred_surprised: T'as entendu le tas de ferraille, { $name }, il faut qu'on se fa
 You: Carrément ! Allez, allons chercher ce BB-Rex !
 Fred_excited: Yoo, je vois que t'es d'attaque !
 Fred_happy: Le seul petit problème, c'est que je sais pas vraiment… qui c'est. Mais c'est le plus grand fêtard de l'uni…
-You: T'inquiètes, je le connais !
+You: T'inquiète, je le connais !
 Fred_surprised: Tu… Tu le connais, toi ?
 You: Ben ouais… C'est le vieux BarBot de la cafétéria, qui a été reprogrammé par les docteurs !
 Fred_smiling: Haha, ouais je le savais… C'était pour te faire marcher !
@@ -615,7 +617,7 @@ title: Solo_Guitare
 tags:
 position: 470,-242
 ---
-Vous vous approchez de l'instrument, une cyber-guitare améliorée par un groupe de docteurs. Celle-ci est posée contre un énorme amplificateur d'où sortent une ribambelle de cables et de pédales d'effets bricolées maison.
+Vous vous approchez de l'instrument, une cyber-guitare améliorée par un groupe de docteurs. Celle-ci est posée contre un énorme amplificateur d'où sortent une ribambelle de câbles et de pédales d'effets bricolées maison.
 Vous allumez l'amplificateur et grattez la première corde. Un son puissant et dissonant jaillit du caisson d'amplificateur. Vous allez devoir apprendre à dompter la bête.
 Le temps d'accorder l'instrument et de le prendre en main, un petit groupe s'est déjà amassé autour de vous, prêt à entendre vos mélodies.
 Le robot BarBot modifié, BB-Rex, vous entend et coupe sa sono intégrée pour vous écouter.
@@ -654,7 +656,7 @@ position: 719,-183
 << music Solo2 >>
 Confiant de vos compétences et fier d'avoir mené le groupe de Galactic Jazz au temps du lycée, vous entamez un shredding digne des plus grands.
 Heureusement, Fred est là pour vous accompagner. Muni de sa Rhythm-Box portable M47, il vous crée un beat du tonnerre.
-Les cordes rugissent au rythme de vos ongles, se tendent et s'étouffent pour laisser la distortion s'exprimer.
+Les cordes rugissent au rythme de vos ongles, se tendent et s'étouffent pour laisser la distorsion s'exprimer.
 Le public est en extase. Vous êtes parvenus à créer un spectacle digne de ce nom.
 BarBot: Ok, je vous laisse ma couronne, les amis, vous l'avez mérité. J'ai pas entendu de licks pareils depuis les seventies !
 Fred_surprised: Qu'est-ce qu'il raconte ?
@@ -767,7 +769,7 @@ tags:
 position: 128,-897
 ---
 << advanceTimeBy 0:15 >>
-Barbot: C'est ce qe je veux entendre. Allez, bois-moi ça comme un vrai homme.
+Barbot: C'est ce que je veux entendre. Allez, bois-moi ça comme un vrai homme.
 BB-Rex vous sert un grand verre contenant un liquide semi-translucide. A l'intérieur, les couleurs virevoltent et se croisent pour former des mélanges.
 Vous avalez le cocktail d'un coup. Vous sentez votre gorge frémir et vous manquez de tout rejetez, tant le mélange est corsé.
 Barbot: Haha ! C'est ce que j'aime !! Allez, pour la bravoure, voilà 1 Party Point !
@@ -1103,7 +1105,7 @@ Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut 
     Azul_cheerful: Est-ce la fin de la séance de quiz ? #line:0bb5bcf 
     Sapiens_thinking: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième:  #line:0bb34b1 
     
-Sapiens_thinking: L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut peut dérégler l'horloge biologique, celle du sommeil. #line:0c5a2c7 
+Sapiens_thinking: L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut dérégler l'horloge biologique, celle du sommeil. #line:0c5a2c7 
 
 -> Vrai, l'activité physique peut dérégler le sommeil
     << fx Success >>

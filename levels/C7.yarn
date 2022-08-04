@@ -7,7 +7,7 @@ position: -2477,816
 << showTitle Chapitre 7 >>
 << setBackground bedroom >>
 << music Neutral >>
-<< setTime 18:00 >>
+<< setTime 18:00 6 >>
 << set $triesLeft to 5 >>
 << set $motivationFred to 0 >>
 << fadeOut >>
@@ -508,7 +508,7 @@ Fred_sad: Tu sais quoi ? Je sais pas si j'ai envie de faire ça. Je me débrouil
     You: On les lit ensemble !
     Fred_sad: Euh… Ok…
 << advanceTimeUntil 2:00 >>
-Vous mettez tout en oeuvre pour tenter de faire ingurgiter un maximum d'informations à Fred, tant et si bien que vous ne voyez pas les heures défiler. Vous sentez vos paupières s'alourdir en écoutant votre camarade lire la dernière fiche…
+Vous mettez tout en œuvre pour tenter de faire ingurgiter un maximum d'informations à Fred, tant et si bien que vous ne voyez pas les heures défiler. Vous sentez vos paupières s'alourdir en écoutant votre camarade lire la dernière fiche…
 << fadeIn >>
 << hide >>
 Intrication… Décohérence… Rattrapage… Tout se mélange dans votre tête alors que vous plongez dans les bras de Morphée.
@@ -524,7 +524,7 @@ You: Allez, décroche, Fred !
 Fred@holo_happy: Yo, { $name } ! Bien dormi ?
 You: Fred ! T'es où ? Pourquoi tu m'as pas réveillé ?!
 Fred@holo_smiling: Hé, du calme. Je suis devant la porte de la salle de rattrapage. Tu voulais tellement bien faire hier, tu t'es donné à fond pour m'aider. Et je t'en remercie ! Mais j'allais pas t'en demander encore plus !
-You: Mais… On a pas fini les révisions comme prévu ?!
+You: Mais… On n'a pas fini les révisions comme prévu ?!
 Fred@holo_bored: T'inquiète pas, { $name }, tu me prends pour qui… J'ai révisé de mon côté ! J'y ai passé toute la matinée, mais je suis prêt maintenant !
 You: C'est vrai ?!
 Fred@holo_happy: Puisque je te le dis !
@@ -587,18 +587,17 @@ colorID: 0
 position: -1585,1337
 ---
 << hide >>
-<< set $motivationFred to 3 >>
 << set $motivationPercent to (($motivationFred*100)/7) >>
 << music NegativeSad >>
 -> Appeler les Sages à l'aide
 <<if !visited("Assemblee_Sages")>>
 You: Hé, les Sages !! Venez, vite !
-Azul_cheerful: Salut, { $name } ! Alors, pourquoi tu nous a appelé ? Tu as pourtant réussi ton Grand Oral ?… Tu devrais prendre du repos, non ?
+Azul_cheerful: Salut, { $name } ! Alors, pourquoi tu nous as appelés ? Tu as pourtant réussi ton Grand Oral ?… Tu devrais prendre du repos, non ?
 You: C'est pas à propos de moi… C'est mon ami Fred. Il faut que vous l'aidiez.
 Azul_sad: Euh… Je crains que… Ce soit impossible pour nous.
-Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { $motivationPercent }% pour son Oral. Dommage… Une motivation de 50% aurait suffit.
+Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { round_places($motivationPercent, 2) }% pour son Oral. Dommage… Une motivation de 50% aurait suffi.
 You: Épargnez-moi les statistiques ! Vous m'avez bien aidé avec mes examens quand je vous ai demandé, non ?!
-Azul_happy: Précisément !… Tu nous a appelés. Ton esprit a cherché notre aide, alors nous sommes venus. Mais Fred… Il ne veut pas admettre qu'il a besoin d'aide.
+Azul_happy: Précisément !… Tu nous as appelés. Ton esprit a cherché notre aide, alors nous sommes venus. Mais Fred… Il ne veut pas admettre qu'il a besoin d'aide.
 -> Aidez-le quand-même !
     Azul_sad: Désolé, { $name }… C'est un problème contractuel. On ne peut pas intervenir dans la vie de quelqu'un sans son consentement.
     You: Sinon, quoi ? Vous vous faites taper sur les doigts par le tribunal des Sages ??
@@ -611,7 +610,7 @@ You: Faites-le !
 Azul_happy: Bien… Si tu le souhaites ! Cap sur l'Assemblée des Sages !
 <<else>>
 You: Les Sages ? Vous êtes toujours là ?
-Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { $motivationPercent }% pour son Oral, cette fois. Dommage… Une motivation de 50% aurait suffit.
+Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { $motivationPercent }% pour son Oral, cette fois. Dommage… Une motivation de 50% aurait suffi.
 Azul_sad: Bien sûr… On dirait que tu as besoin qu'on te reparle de la motivation…
 <<endif>>
 -> Suivre Azul
@@ -804,7 +803,7 @@ Fred_smiling: Euh… { $name }, je crois qu'il y a un mec en déguisement bizarr
 You: Qui ça…?
 Azul_cheerful: Comment ça va, { $name } ? Chouette, ta soirée !
 You: Euh… Azul, qu'est-ce que tu fais là ?
-Azul_smiling: Je suis venu te dire adieu, { $name }. Tu n'a plus besoin de nous, et nous avons d'autres étudiants en détresse à aider.
+Azul_smiling: Je suis venu te dire adieu, { $name }. Tu n'as plus besoin de nous, et nous avons d'autres étudiants en détresse à aider.
 You: Mais… Comment je vais faire, tout seul, sans votre aide ?
 Azul_proud: Notre aide, tu l'auras pour toujours. Quant à nous… Ferme les yeux.
 -> Fermer les yeux

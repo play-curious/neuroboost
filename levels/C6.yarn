@@ -24,7 +24,7 @@ colorID: 1
 << fadeOut >>
 
 Vous vous réveillez, naturellement, sans sonnerie. C'est le week-end, synonyme de repos, vous avez pu faire la grasse matinée.
-Ceci dit, il va falloir travailler à fond pour être opérationnel pour le Grand Oral de lundi ! Vous l'avez raté une fois, mais ce coup-ci, toutes les chances sont avec vous !
+Cela dit, il va falloir travailler à fond pour être opérationnel pour le Grand Oral de lundi ! Vous l'avez raté une fois, mais ce coup-ci, toutes les chances sont avec vous !
 
 
 << fx EatCook >>
@@ -37,7 +37,7 @@ Vous jetez un œil à votre palmphone : pas de nouvelle de l'hôpital ni de votr
 << addToGauge stress 50 >>
 Peut-être que votre mère en sait quelque chose ? Et si la nouvelle était mauvaise ?… Très mauvaise ?…
 
-Bon, il est temps de s'y mettre. C'est qu'il y a beaucoup a réviser, même pour un week-end entier. #line:0f2bdb6 
+Bon, il est temps de s'y mettre. C'est qu'il y a beaucoup à réviser, même pour un week-end entier. #line:0f2bdb6 
 
 <<jump Liste_Taches>>
 ===
@@ -95,6 +95,7 @@ Vous recevez un appel. Il provient de votre grand-mère !
 <<endif>>
 
 <<if $jour == "lundi" && isTimeOver("14:05")>>
+<< missedDeadline >>
 Vous ne vous êtes pas rendu à l'examen ! Vous avez tout fichu en l'air, encore une fois…
 -> Recommencer le week-end
     << fx Warp >>
@@ -262,6 +263,7 @@ position: 943,-321
 
 You: RoomMate, tu peux me rappeler l'heure de ma séance de Jungle Body Beat ?
 RoomMate: Votre séance est à 14h. Voulez-vous que j'organise votre planning ?
+<< setDeadline Danse 14:00 >>
 You: Vas-y RoomMate. Je suis sûr d'avoir prévu quelque chose ce soir…
 RoomMate: Voyons voir… Pour ce soir, j'ai noté "La fièvre du samedi soir".
 You: Oui, c'est ça ! Une fête dansante à la cafétéria, j'ai promis à Fred d'y aller avec lui !
@@ -639,7 +641,7 @@ colorID: 6
 ---
 <<if $jour == "samedi">>
 -> Aller au club de Jungle Body Beat (Passe le temps jusqu'à 14h) <<if !isTimeOver("14:30") && $jour == "samedi">> #once
-    <<jump Sport_samedi>>
+    <<jump Danse_samedi>>
 -> Faire les courses (1h) <<if !visited("Courses")>>
     <<jump Courses>>
 -> back #line:055ab07 
@@ -656,7 +658,7 @@ colorID: 6
 <<endif>>
 ===
 
-title: Sport_samedi
+title: Danse_samedi
 tags: 
 position: 885,409
 ---
@@ -669,6 +671,7 @@ position: 885,409
 << visit Dance >>
 
 << if isTimeOver("14:00") >>
+<< removeDeadline >>
 Vous arrivez dans les derniers, cependant, le cours n'a pas encore commencé. Plus exactement, votre coach vous attendait.  #line:09eafb6 
 << else >>
 << advanceTimeUntil 14:00 >>
@@ -971,6 +974,7 @@ colorID: 1
 << fadeOut >>
 
 << music Tense >>
+<< setDeadline Oral 14:00 >>
 Vous ne rouvrez les yeux que le lendemain, au matin. Alors, c'est aujourd'hui le grand jour… Mince, vous ne pouvez pas vous empêcher de vous remémorer votre dernier passage, aussi humiliant soit-il.
 << addToGauge stress 30 >>
 Vous tentez de vous remettre votre cours en tête. Encore une fois, on dirait que certaines notions vous ont échappé.

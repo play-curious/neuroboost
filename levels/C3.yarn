@@ -26,7 +26,8 @@ Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est 
 Du repos, vous en auriez bien besoin… Pas d'un point de vue physique, mais mental : entre les deux examens que vous venez d'enchaîner et les cours barbants d'hier après-midi, vous commencez à saturer.
 << addToGauge mentalLoad 50 >>
 Tutorial: La jauge de Charge Mentale mesure à quel point vous surchargez votre cerveau. Si elle atteint 100, c'est perdu !
-Vous vous demandez comment vous allez faire pour rédiger la note de synthèse que vous devez rendre aujourd'hui sans vous arracher les cheveux…
+Vous vous demandez comment vous allez faire pour rédiger la note de synthèse que vous devez rendre avant minuit sans vous arracher les cheveux…
+<< setDeadline Rendu 0:00 >>
 << loopFX PhoneRing_LOOP 5000 >>
 << screenshake 10 600 >>
 Votre palmphone vibre. Sans surprise, vous voyez que l'appel vient de Fred. #line:0a81caa 
@@ -464,11 +465,8 @@ tags:
 colorID: 2
 position: 152,-865
 ---
-<< if getGauge("learning") > 50 >>
-    <<jump Envoi_Note_Synthese>>
-<< endif >>
-
-Vous n'avez pas fini votre rédaction à temps… #line:0b460db 
+<< missedDeadline >>
+Vous n'avez pas envoyé votre rédaction à temps…
 -> Recommencer la journée
     << fx Warp >>
     << fadeIn 1500 12ea12 >>

@@ -149,11 +149,11 @@ Fred@holo_excited: J'AI REÇU… LE DERNIER OPUS… DE GRAND THRILL RODEO !!! JE
     You: Ça va pas, la tête ?! Tu m'as fait peur !
     <<if visited("TryToCallFred")>>
     Fred@holo_happy: Quoi ? Ahhh, t'as essayé de m'appeler… J'étais en plein dans le jeu ! J'en suis au chapitre 4 !
-    You: Ouais, super. J'en ai pas grand chose à faire, en fait.
+    You: Ouais, super. J'en ai pas grand-chose à faire, en fait.
     <<endif>>
 -> Ça nous aidera pas à finir le mémoire…
     Fred@holo_happy: Ah ouais… C'est vrai, tu m'as appelé… J'étais en plein dans le jeu ! J'en suis au chapitre 4 !
-    You: Ouais, super. J'en ai pas grand chose à faire, en fait.
+    You: Ouais, super. J'en ai pas grand-chose à faire, en fait.
 Fred@holo_excited: Tu te rends pas compte ! Le dernier opus était  il y a 36 ans, { $name } ! Ça se jouait encore à la MANETTE à l'époque ! Tu te souviens des "manettes" ??
 You: Euh… Ouais, je crois. Bref, on a rendez-vous à la bibliothèque, tu te souviens ?
 Fred@holo_happy: Euh… Ouais, on fera ça plus tard ! Pour l'instant, il FAUT que tu viennes chez moi, on va tester le mode multi !
@@ -245,7 +245,7 @@ Fred vous fait entrer à la première sonnerie. #line:024dd08
 
 Fred_excited: Aaaah, { $name } ! Juste à temps pour tester le nouveau GTR !!
 You: Je suis pas venu jouer, Fred… On a le mémoire, rappelle-toi…
-Fred_happy: Ouaiiiiis, je sais… T'inquiètes, j'ai quasiment tout le plan en tête ! C'est comme si c'était déjà rédigé, en fait !
+Fred_happy: Ouaiiiiis, je sais… T'inquiète, j'ai quasiment tout le plan en tête ! C'est comme si c'était déjà rédigé, en fait !
 You: On doit se rendre à la bibliothèque, elle ferme à 20h…
 Fred_smiling: Ouais, ouais, mais avant ça, j'ai un chapitre 4 à finir !
 You: Moi aussi…
@@ -275,6 +275,7 @@ position: -705,-208
 << music Neutral3 >>
 << setBackground library >>
 << advanceTimeBy 0:15 >>
+<< setDeadline Fermeture 20:00 >>
 << fadeOut >>
 
 Au lieu d'attendre bêtement Fred, vous vous rendez dans cette immense et riche bibliothèque de l'Académie.
@@ -325,6 +326,7 @@ position: -442,-200
 ---
 << fadeIn >>
 << setBackground library >>
+<< setDeadline Fermeture 20:00 >>
 << fadeOut >>
 
 Fred_happy: Hey, quand on a fini, on pourra se faire un petit GTR, tu crois pas ?
@@ -482,7 +484,7 @@ Vous commandez un déjeuner à la cafétéria. Autour de vous, les discussions d
 
 << addToGauge food 40 >>
 
-Fred_angry: Hé ! NO SPOIL !! On a pas fini le jeu, nous autres !
+Fred_angry: Hé ! NO SPOIL !! On n'a pas fini le jeu, nous autres !
 Vous riez quand vous observez Fred engloutir son repas en une bouchée et tourner le dos furieusement au groupe d'étudiants qui parlaient du jeu pour allumer sa console portable.
 << removeFromGauge mentalLoad 20 >>
 << advanceTimeBy 1:00 food sleep >>
@@ -702,7 +704,7 @@ position: -1349,229
 colorID: 2
 ---
 Vous décidez de plutôt faire ça à l'écrit.
-Fred pianote sur son ordinateur, l'instant d'après, vous réceptionnez ses documents… Il n'y a pas grand chose d'exploitable… Que des bouts de phrases, de mots et quelques commentaires en annexe.
+Fred pianote sur son ordinateur, l'instant d'après, vous réceptionnez ses documents… Il n'y a pas grand-chose d'exploitable… Que des bouts de phrases, de mots et quelques commentaires en annexe.
 You: Je sais pas trop quoi faire de ça, Fred… Tu peux reprendre ton travail, s'il te plaît ?
 Fred_sad: Bon, d'accord. Puisque tu insistes. C'est bien parce que c'est toi… #line:0b3e63f 
 Vous voyez à son air pincé que Fred se fait violence pour vous faire plaisir. Après un bon moment, Fred, vous renvoie les fichiers mis à jour. #line:0d827ea 
@@ -751,7 +753,7 @@ Alors que vous parlez haut et fort, d'autres étudiants à proximité se tournen
 <<jump Plan_Bad>>
 <<endif>>
 
-Vous commencez ensuite à lui présentez vos trois grandes parties, vos sections et sous-sections. Fred se met à la place du jury pour vous faire les meilleures remarques et vous proposer de meilleures options.
+Vous commencez ensuite à lui présenter vos trois grandes parties, vos sections et sous-sections. Fred se met à la place du jury pour vous faire les meilleures remarques et vous proposer de meilleures options.
 Il réussit à étoffer votre argumentaire et ajoute plein de nouvelles idées.
 << advanceTimeBy 2:00 >>
 << addToGauge learning 20 >>
@@ -865,7 +867,7 @@ position: -1001,420
 colorID: 2
 ---
 <<if visited("WorkWithoutFred")>>
-You: Bon… Alors… J'ai déjà commencé à rédigé nos parties au propre, on va l'utiliser en se servant de notre plan…
+You: Bon… Alors… J'ai déjà commencé à rédiger nos parties au propre, on va l'utiliser en se servant de notre plan…
 Fred_surprised: Attends… T'as commencé la rédaction sans moi ?
 You: Ben… Ouais. T'étais pas là !
 Fred_sad: Ah bon ?
@@ -895,6 +897,7 @@ position: -1294,-46
 colorID: 1
 ---
 << fx Notification >>
+<< removeDeadline >>
 RoomMate: Ding-dong ! Allez, on remballe ses affaires ! La bibliothèque va fermer !
 
 << if getGauge("learning") >= 50 >>
@@ -911,7 +914,7 @@ Fred_smiling: Ouaip. Allez, courage !
 You: Non, on est loin d'avoir fini !! #line:0c62d43 
 Fred_smiling: Mais, non, t'inquiète, ça va aller ! Je m'occupe de l'intro et de la conclusion, comme on a dit. Je te fais confiance pour le reste.
 You: Bon… On échange nos rendus sur Disboard, on compile et on valide.
-Satisfait de vos résolutions, et confiant dans les capacité de Fred, habitué à livrer ses rendus à la dernière minute, vous retournez dans votre chambre.
+Satisfait de vos résolutions, et confiant dans les capacités de Fred, habitué à livrer ses rendus à la dernière minute, vous retournez dans votre chambre.
 << hide >>
 <<jump Bedroom_Lose>>
 << endif >>
@@ -1236,7 +1239,7 @@ position: -116,1177
     <<jump Azul_FreeQuestions>>
 -> Et moi, c'est quoi, mon profil ? #once
     You: Et moi ? Je ressemble à quel sage ?
-    Azul_cheerful: À toi de trouver. N'oublie pas de le noter dans ton Journal Mental quand tu nous quittera !
+    Azul_cheerful: À toi de trouver. N'oublie pas de le noter dans ton Journal Mental quand tu nous quitteras !
     You: J'y penserai !
     <<jump Azul_FreeQuestions>>
 -> J'ai compris (Quitter les sages)

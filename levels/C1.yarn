@@ -10,7 +10,7 @@ position: -245,126
 << showTitle Chapitre 1 >>
 << setGauge learning 0 >>
 << setBackground bedroom >>
-<< setTime 8:00>>
+<< setTime 8:00 0 >>
 << loopFX Chime_LOOP 2000 >>
 << screenshake 10 600 >>
 << music >>
@@ -31,7 +31,7 @@ Votre palmphone vibre : <b>Fred</b> veut vous parler. #line:0c10bcd
 -> Prendre l'appel #line:0c4a7b0 
     <<jump Appel_Fred_Rewind>>
 -> Rejeter l'appel <<if visited("FredCall")>>
-    << stopFX Phone_off_Rewind >>
+    << stopFX PhoneRing_LOOP >>
     Vous savez déjà ce que Fred veut vous dire, alors à quoi bon… Vous le retrouverez à 14h avant l'examen !
     <<jump Phone_off_Rewind>>
 ===
@@ -104,7 +104,7 @@ Vous poussez un puissant "BINGO" qui résonne contre les quatre murs de votre ch
 Il vous reste quelques heures avant le partiel… De la semaine dernière !
 
 <<visitPermanent FredCall>>
-
+<< setDeadline Examen 14:00 >>
 <<jump Action_List_Rewind>>
 ===
 
@@ -125,6 +125,7 @@ Que faites-vous maintenant ? #line:03f3124
 << endif >>
 
 <<if isTimeOver("14:10")>>
+<< missedDeadline >>
 Vous avez oublié de vous rendre à l'examen ! Vous allez être en retard !
 Temde_sad: Bon… Nous allons te renvoyer encore une fois dans le passé. Attention, ça va chatouiller un peu !
 << fx Warp >>
@@ -367,7 +368,7 @@ position: -485,416
 ---
 Vous tentez d'appliquer la méthode du rappel libre. #line:0b8f655 
 Vous essayez de vous souvenir de ce que vous avez retenu en cours, sans aide. Ce n'est pas brillant. Très peu de choses vous reviennent. Pas étonnant, vous n'aimez pas cette matière. #line:07f35ff 
-Mais lorsque vous replongez dans la lecture pour verifier vos réponses, vous constatez que ça vous aide vraiment à mettre de l'ordre dans votre esprit. Il y a encore du travail à faire, mais ça sort plus facilement de votre tête ! #line:080fdf4 
+Mais lorsque vous replongez dans la lecture pour vérifier vos réponses, vous constatez que ça vous aide vraiment à mettre de l'ordre dans votre esprit. Il y a encore du travail à faire, mais ça sort plus facilement de votre tête ! #line:080fdf4 
 
 << visit Rappel_libre >>
 << addToGauge learning 60 >>

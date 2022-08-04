@@ -59,7 +59,7 @@ Votre palmphone vibre. Pour une fois, ce n'est pas Fred, mais votre grand-mère.
 You: Bonjour mamie ! Pourquoi je ne te vois pas ? #line:0dc5f32 
 Mamie@holo_shadow: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir… #line:09e9477 
 You: Ah bon ? #line:0b2c720 
-Mamie@holo_shadow: Je suis à l'hôpital et on m'a branchée sur des dizaines de câbles et de moniteurs. Je ressemble plus à une véhicule accidenté qu'à une grand-mère.  #line:0cb28e3 
+Mamie@holo_shadow: Je suis à l'hôpital et on m'a branchée sur des dizaines de câbles et de moniteurs. Je ressemble plus à un véhicule accidenté qu'à une grand-mère.  #line:0cb28e3 
 You: Qu'est-ce qui t'est arrivé ?
 Mamie@holo_shadow: Rien de grave, chouchou. Tes parents ne t'ont rien dit ? #line:00db0dd 
 You: Heu… Non…
@@ -90,7 +90,7 @@ Vous aimeriez parler plus, mais le Paramedibot arrive pour l'emmener au bloc op�
 <<endif>>
 
 Tutorial: La nouvelle jauge mesure votre Stress. Tentez de la diminuer avant la fin de la journée !
-
+<< setDeadline Examen 21:30 >>
 <<jump Liste_Taches>>
 ===
 
@@ -104,6 +104,7 @@ colorID: 1
 << fadeOut >>
 
 <<if isTimeOver("14:00")>>
+<< missedDeadline >>
 Vous êtes en retard pour l'examen ! Si seulement il y avait un moyen de revenir en arrière…
 -> Recommencer la journée
     << fx Warp >>
@@ -781,7 +782,7 @@ colorID: 2
 << setBackground bedroom chill >>
 Vous vous levez de votre lit et vous prenez votre cycloluth, une guitare archaïque de la planète Feudall. #line:038a982 
 << music AcousticGuitar >>
-Vous jouez une balade bien connue des poètes inter-galactiques : En Mémoire de Hope.
+Vous jouez une balade bien connue des poètes intergalactiques : En Mémoire de Hope.
 La chanson raconte l'histoire d'une fille recréée artificiellement par son père. Elle est touchante et mélancolique, vous inspire et soulage votre cœur.
 << advanceTimeBy 1:00 >>
 << music Neutral2 >>
@@ -841,7 +842,7 @@ colorID: 2
 << setBackground astronomy >>
 << fadeOut >>
 Vous enseignez comme à votre habitude l'Astronomie Ultra-Dimensionnelle à vos élèves de l'Académie. L'un de vos élèves lève la main pour vous poser une question.
-C'est étrange, l'élève fait au moins trois tête de plus que vous et sa peau est métallique… On dirait presque…
+C'est étrange, l'élève fait au moins trois têtes de plus que vous et sa peau est métallique… On dirait presque…
 Ledai_happy: { $name }, ça va, bien installé ?
 You: Qu'est-ce que… Ah, Ledai. J'aimerais bien dormir, là…
 Ledai_explaining: Cela tombe bien : c'est ce que tu fais actuellement.
