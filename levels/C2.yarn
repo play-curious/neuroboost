@@ -79,7 +79,6 @@ position: -1210,-459
 << setBackground bedroom >>
 << fadeOut >>
 <<if isTimeOver("21:31")>>
-<< removeDeadline >>
 Vous avez oublié de vous rendre à la soirée ! Vite, allez retrouver Fred !
     <<jump Debut_Soiree>>
 <<else>>
@@ -240,6 +239,7 @@ title: Debut_Soiree
 tags: 
 position: -939,-153
 ---
+<< removeDeadline >>
 << fadeIn >>
 << setBackground party >>
 <<if isTimeOver("21:30")>>

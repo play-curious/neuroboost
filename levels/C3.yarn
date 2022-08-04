@@ -617,6 +617,7 @@ tags:
 colorID: 2
 position: 104,-709
 ---
+<< removeDeadline >>
 << music Victory >>
 Victoire ! Vous avez réussi ! Il n'est pas encore minuit et vous avez terminé la rédaction de la note de synthèse. #line:0638ff5 
 Vous daignez prendre encore le temps de faire un vérification syntaxique par votre ordinateur avant d'expédier votre fichier final au serveur FTP de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:062ddf5 

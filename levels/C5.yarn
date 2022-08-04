@@ -90,7 +90,7 @@ Vous aimeriez parler plus, mais le Paramedibot arrive pour l'emmener au bloc op√
 <<endif>>
 
 Tutorial: La nouvelle jauge mesure votre Stress. Tentez de la diminuer avant la fin de la journ√©e !
-<< setDeadline Examen 21:30 >>
+<< setDeadline Examen 14:00 >>
 <<jump Liste_Taches>>
 ===
 

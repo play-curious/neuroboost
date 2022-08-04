@@ -251,6 +251,7 @@ tags:
 colorID: 7
 position: -1269,1157
 ---
+<< removeDeadline >>
 << music Neutral3 >>
 << if getGauge("learning") >= 50 >>
 <<jump Test_Rewind>>
