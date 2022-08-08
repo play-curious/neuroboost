@@ -15,8 +15,6 @@ import * as images from "./images";
 import * as gauge from "./gauge";
 import * as save from "./save";
 import * as deadline from "./deadline_entity";
-import { SimpleLightmapFilter } from "pixi-filters";
-import { Sprite } from "pixi.js";
 
 // Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
