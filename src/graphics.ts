@@ -52,7 +52,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
   private _dialogSpeaker: PIXI.Container;
-  private _bubbleFilter: PIXI.Filter;
+  private _bubbleFilter: filters.SimpleLightmapFilter & PIXI.Filter;
 
   private _screenShake?: ScreenShake;
   private _deadline?: deadline.DeadlineEntity;
@@ -132,10 +132,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       height: this._backgroundLayer.height,
     });
     renderer.render(this._backgroundLayer);
-    //TODO : find a way to solve this typing issue (not a threat for running, but could be in the future)
     this._bubbleFilter = new filters.SimpleLightmapFilter(
       this._entityConfig.app.loader.resources["images/ui/bubble.png"].texture
-    );
+    ) as filters.SimpleLightmapFilter & PIXI.Filter;
     this._backgroundLayer.filters = [this._bubbleFilter];
     this._bubbleFilter.enabled = false;
   }
