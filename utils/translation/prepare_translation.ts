@@ -46,13 +46,27 @@ program
   .description(
     "Prepare translation by creating new TSV files from existing translations and updated files"
   )
+  .option(
+    "-d, --dry-run",
+    "Print files to the terminal rather than changing them"
+  )
+  .option(
+    "-o, --output-directory <dir>",
+    "Output directory for the TSV file",
+    "./"
+  )
   .argument("<yarn_file>", "New Yarn file to translate")
   .argument(
     "<existing_translations...>",
     "TSV files to check for existing translations"
   )
-  .action((yarnFile: string, existingTranslations: string[]) => {
-    go(yarnFile, existingTranslations);
+  .action((yarnFile: string, existingTranslations: string[], options: any) => {
+    go(
+      yarnFile,
+      existingTranslations,
+      !!options.dryRun,
+      options.outputDirectory
+    );
   });
 
 program.parse();
@@ -79,7 +93,12 @@ function findLineTranslation(
   return;
 }
 
-function go(yarnFilename: string, existingTranslationsFilenames: string[]) {
+function go(
+  yarnFilename: string,
+  existingTranslationsFilenames: string[],
+  dryRun: boolean,
+  outputDirectory: string
+) {
   const basename = path.basename(yarnFilename);
 
   // Load text files in memory
@@ -94,6 +113,7 @@ function go(yarnFilename: string, existingTranslationsFilenames: string[]) {
       });
     });
 
+  let newYarnBody: string = "";
   let outputTsvRecords: OutputTsvRecord[] = [];
 
   // Read input file line by line
@@ -161,6 +181,9 @@ function go(yarnFilename: string, existingTranslationsFilenames: string[]) {
         // @ts-ignore
         const id = "0" + crypto.randomBytes(3).toString("hex");
 
+        // Add tag to line
+        line = line + " #line:" + id;
+
         const output: OutputTsvRecord = {
           LANGUAGE: "en",
           ID: id,
@@ -176,13 +199,29 @@ function go(yarnFilename: string, existingTranslationsFilenames: string[]) {
         outputTsvRecords.push(output);
       }
     }
+
+    // Add line to body
+    newYarnBody += line + "\n";
+
     lineNumber++;
   }
 
-  // let body = "LANGUAGE	ID	TEXT	FILE	NODE	LINE	LOCK	COMMENTAIRE	CHANGED?\n";
+  const tsvOutput = generateTsvOutput(outputTsvRecords);
 
-  const output = generateTsvOutput(outputTsvRecords);
-  console.log(output);
+  if (dryRun) {
+    console.log("** OUTPUT TSV **\n\n" + tsvOutput);
+    console.log("** OUTPUT YARN **\n\n" + newYarnBody);
+  } else {
+    const tsvOutputFilename =
+      path.join(outputDirectory, path.basename(yarnFilename, ".yarn")) + ".tsv";
+    console.log(`Writing TSV to ${tsvOutputFilename} ...`);
+    fs.writeFileSync(tsvOutputFilename, tsvOutput);
+    console.log("Done.");
+
+    console.log(`Writing Yarn to ${yarnFilename} ...`);
+    fs.writeFileSync(yarnFilename, newYarnBody);
+    console.log("Done");
+  }
 }
 
 function generateTsvOutput(outputTsvRecords: OutputTsvRecord[]): string {
