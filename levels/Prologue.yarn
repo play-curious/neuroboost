@@ -16,7 +16,7 @@ position: -891,402
 << setTime 14:00 0 >>
 << setBackground oral >>
 
-Voilà finalement venu le Grand Oral.
+Voici finalement venu le Grand Oral.
 
 L'Académie met beaucoup en avant l'importance de cette épreuve dès la première année. Impitoyable, elle met les élèves en difficulté et indique s'ils peuvent continuer leur cursus.
 Autrement dit, cette épreuve est éliminatoire.
@@ -40,8 +40,8 @@ Tutorial: Dans NeuroBoost, vous serez amené à faire des choix. Certains d'entr
     << addToGauge stress 20 >>
 -> Vous rassurer en faisant mine d'être confiant
     << removeFromGauge stress 10 >>
-Vous commencez par vous présenter au jury, puis vous leur rappelez ce que vous avez choisi comme matière de Grand Oral : <b>la Philosophie quantique</b>. #line:08fe26e 
-L'un des jurés enfile de drôles de lunettes et vous fixe un moment avant de s'écrier : "La décohérence quantique"… #line:0ea98fb 
+Vous commencez par vous présenter au jury, puis vous leur rappelez ce que vous avez choisi comme matière pour le Grand Oral : <b>la Philosophie quantique</b>.
+L'un des jurés chausse de drôles de lunettes et vous fixe un moment avant de s'écrier : "La décohérence quantique"…
 
 << addToGauge stress 20 >>
 
@@ -60,7 +60,7 @@ Pourquoi la décohérence quantique ? Vous n'avez pas eu le temps de la prépare
     Vous tentez tant bien que mal de rediriger le sujet, mais les jurés voient clair à travers votre stratagème et vous posent des questions encore plus pointilleuses sur cette fichue décohérence quantique.
     <<jump Sortie_Salle>>
 -> Abandonner et sortir du théâtre
-    Vous décidez d'assumer pleinement votre défaite et d'abandonner, sans rien dire, en descendant les marches du podium. Les jurés se contentent d'exclamer un froid "suivant !" et vous passez amèrement la porte du théâtre, laissant derrière vous vos espoirs académiques.
+    Vous décidez d'assumer pleinement votre défaite et d'abandonner, sans rien dire, en descendant les marches du podium. Les jurés se contentent d'annoncer un froid "suivant !" et vous passez amèrement la porte du théâtre, laissant derrière vous vos espoirs académiques.
     <<jump Chambre_Soir>>
 ===
 
@@ -85,7 +85,7 @@ position: -352.5212097167969,897.6408081054688
 << setBackground bedroom night >>
 << fadeOut >>
 << music NegativeSad >>
-Le Grand Oral était une épreuve éliminatoire, et vous doutez fortement que le jury ne vous donne une seconde chance, tenant compte des dernières notes que vous avez obtenues…
+Le Grand Oral était une épreuve éliminatoire, et vous doutez fortement du fait que le jury vous donne une seconde chance, compte tenu des dernières notes que vous avez obtenues…
 Vous vous glissez tout de suite dans votre lit. Quelle semaine pourrie… #line:0da04e6 
 
 -> Faire un gros somme #line:002a60d 
@@ -247,7 +247,7 @@ title: Metaconnexion
 tags: noUi
 position: -878.8255004882812,1170.7235107421875
 ---
-You: Heuuuuu… J'ai rien compris de ce que vous avez dit. La métaconnexion ???
+You: Heuuuuu… J'ai rien compris à ce que vous avez dit. La métaconnexion ???
 Azul_proud: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien. #line:06f975d 
 Temde_smiling: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de faire ! Et de trouver une solution qui marche ! #line:0fc8373 
 Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences… #line:005e8f4 
@@ -255,7 +255,7 @@ Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquis
     Sapiens_happy: Les sciences appliquées au fonctionnement de tes processus mentaux. #line:07d59a3 
     Temde_sad: Quel est le mode d'emploi de ton cerveau, quoi. #line:0f1b183 
     Sapiens_concerned: Hum… J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière. #line:02856f8 
--> Et la métacognition, alors ?
+-> Et la métacognition alors ?
     Sapiens_thinking: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux. #line:031e501 
     You: Hein ??? #line:090bf79 
     Azul_happy: C'est-à-dire comment apprendre… à apprendre ! #line:011a5d4 

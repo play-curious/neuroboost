@@ -71,7 +71,7 @@ position: -2386,654
 <<if !visited("WC")>>
 << visit WC >>
 << advanceTimeBy 0:10 >>
-Si ce que vous a dit le sportif est vrai, Fred s'est rendu aux toilettes avant de disparaître. S'il faut, iel y est encore !
+Si ce que vous a dit le sportif est vrai, Fred s'est rendu aux toilettes avant de disparaître. Peut-être qu'iel y est encore !
 L'odeur putride vous prend aux narines alors que vous rentrez dans les lieux. Décidément, l'Académie devrait investir dans autre chose que des écrans holographiques…
 <<endif>>
 
@@ -111,7 +111,7 @@ La salle de sport, c'est le repère de Fred. C'est ici qu'iel va lorsqu'iel a du
     Bien sûr ! Fred a dû enfiler sa combinaison de fight contact pour se défouler après l'oral ! Vous approchez des cages dédiées au Fight Contact, ce sport brutal et ultra-moderne.
     Un grand gaillard en exosquelette se tourne vers vous, intrigué par votre présence.
     "Si je connais Fred ?! C'est le Contact Fighter le plus teigneux que je connaisse."
-    "Il paraît qu'iel s'est dégonflé en plein milieu de son oral ! Iel a demandé d'aller aux toilettes, et on l'a plus revu."
+    "Il paraît qu'iel s'est dégonflé en plein milieu de son oral ! Iel a demandé à aller aux toilettes, et on l'a plus revu."
     << fx Success >>
     Vous remerciez le sportif et rebroussez chemin, choqué par ce que vous venez d'entendre. Cela ne ressemble pas, mais alors pas du tout à Fred.
     Vous continuez votre enquête…
@@ -139,14 +139,14 @@ Vous pénétrez dans l'immense aile de l'Académie, remplie d'étudiants en cett
 -> Chercher à la salle de repos <<if !visited("XenoCola")>>
     <<if !visited("ReposRoom")>>
     << visit ReposRoom >>
-    Si Fred cherche à se changer les idées de l'Oral, iel est sûrement à la salle de repos ! Vous vous dirigez vers celle-ci.
+    Si Fred cherche à se changer les idées après l'Oral, iel est sûrement à la salle de repos ! Vous vous dirigez vers celle-ci.
     << fadeIn >>
     << setBackground cafeteria >>
     << fadeOut >>
     Vous ne voyez que des packs de Xéno-Cola empilés ça et là… Bizarre…
     -> Prendre les packs de Xéno-Cola <<if visited("BarBotTalk")>>
         << fx Success >>
-        Vous attrapez des packs de Xéno-Cola, que vous soulevez difficilement. Vous en gavez votre sac-à-dos, puis continuez.
+        Vous attrapez des packs de Xéno-Cola, que vous soulevez difficilement. Vous en gavez votre sac à dos, puis continuez.
         << visit XenoCola >>
     -> back
         <<jump Bibliotheque>>
@@ -157,7 +157,7 @@ Vous pénétrez dans l'immense aile de l'Académie, remplie d'étudiants en cett
     Voyons, voir. La salle est toujours remplie de packs de Xéno-Cola…
     -> Prendre les packs de Xéno-Cola <<if visited("BarBotTalk")>>
         << fx Success >>
-        Vous attrapez des packs de Xéno-Cola, que vous soulevez difficilement. Vous en gavez votre sac-à-dos, puis continuez.
+        Vous attrapez des packs de Xéno-Cola, que vous soulevez difficilement. Vous en gavez votre sac à dos, puis continuez.
         << visit XenoCola >>
     -> back
         <<jump Bibliotheque>>
@@ -188,7 +188,7 @@ BarBot: Hé, c'est pas en faisant une grimace à un vieux singe… Je veux dire,
 You: Je t'assure, je sais pas ce qu'il se passe !
 BarBot: Il se passe que ton pote nous a fait un sale coup, voilà tout ! Iel était censé apporter toutes les boissons softs pour la soirée, et iel s'est jamais pointé !
 You: Ah ! Si c'est que ça…
-BarBot: Je veux rien entendre. Si vous ramenez pas les boissons d'ici tout-à-l'heure, vous êtes morts ! Vous pourrez dire adieu à votre réputation !
+BarBot: Je veux rien entendre. Si vous ramenez pas les boissons d'ici peu, vous êtes morts ! Vous pourrez dire adieu à votre réputation !
 You: Comment ça ?
 BarBot: Tu crois que ce barbot se pilote tout seul ? Non, derrière, y a un hacker, en chair et en os !
 BarBot: Maintenant, ramène les boissons si tu veux pas que ton historique internet se retrouve affiché dans le métavers académique.
@@ -206,7 +206,7 @@ BarBot: Qu'est-ce que tu cherches ?
     BarBot: Ramène-moi ces fichues boissons et je vois ce que je peux faire.
     <<elseif !visited("CarteEtudiante")>>
     You: Tu pourrais hacker Fred pour moi ?
-    BarBot: Et puis quoi, encore ? Je te l'ai dit : si j'ai pas son identifiant étudiant, je peux rien faire pour toi.
+    BarBot: Et puis quoi encore ? Je te l'ai dit : si j'ai pas son identifiant étudiant, je peux rien faire pour toi.
     <<else>>
     You: Tiens, j'ai la carte étudiante de Fred ! Tu peux le hacker pour moi ?
     BarBot: Tu veux un accès à sa webcam ? Pervers.
@@ -282,9 +282,9 @@ RoomMate: Bienvenue, Fred. Veuillez entrer le mot de passe de votre portail étu
     You: J'aurai essayé !
 -> Essayer "Xx_Fr3d4tor_xX" <<if visited("PassWord")>>
     << fx Success >>
-    RoomMate: Bienvenue, Fred. Vous avez 1 nouveau message non-lu, de : Académie de Polytechnologie Universelle.
+    RoomMate: Bienvenue, Fred. Vous avez 1 nouveau message non lu, de : Académie de Polytechnologie Universelle.
     You: Euh… Très bien, lis-moi le message.
-    RoomMate: "Suite à votre absence injustifiée lors de l'examen du Grand Oral, la note de F vous sera attribuée par défaut. Vous êtes convoqué à une séance de rattrapage demain après-midi à 13h."
+    RoomMate: "Suite à votre absence injustifiée lors de l'examen du Grand Oral, la note F vous sera attribuée par défaut. Vous êtes convoqué à une séance de rattrapage demain après-midi à 13h."
     <<jump ChezFred>>
 -> back
     <<jump FreeRoam>>
@@ -325,7 +325,7 @@ You: Comment ça ? Tu pensais quoi, crache le morceau !
 Fred_surprised: C'était presque trop facile pour moi… Alors, j'ai cru que j'étais un élu, une sorte de demi-dieu, quoi !
 -> Ha ha ha !
     Vous ne pouvez pas vous empêcher de rire face à la naïveté de votre ami. C'est une manière de dédramatiser la situation, de maîtriser le ton de la conversation.
-    Mais… On ne dirait que ça n'a pas l'effet escompté sur Fred.
+    Mais… On dirait que ça n'a pas l'effet escompté sur Fred.
     Fred_angry: Hé ! Je te permets pas de te moquer de moi ! J'ai peut-être abusé, mais je mérite pas que mon seul vrai ami se fiche de moi.
 -> Personne ne peut être parfait partout…
     You: C'est ça ton problème : tu prends les choses trop au sérieux, tu ne peux pas être parfait tout le temps ! Même les plus grands Contact Fighters ont besoin d'un exosquelette…
@@ -401,7 +401,7 @@ On dirait que Fred a vraiment perdu confiance en lui… Vous pourriez regonfler 
     You: Tu te rends pas compte Fred ! T'es une star, ici ! Tu arrives à comprendre les notions les plus complexes, naturellement !
     Fred_sad: Justement, c'est ce que je te disais ! J'avais peut-être des facilités, mais je les ai gâchées ! J'ai tout foiré…
 -> Démontrer les forces de Fred
-    You: Bon, écoute. Tu avais peut-être tort quand tu te pensais au-dessus de tout le monde, mais tu as des forces véritables.
+    You: Bon, écoute. Tu avais peut-être tort quand tu te pensais au-dessus de tout le monde, mais tu as de véritables forces.
     << fx Success >>
     << set $motivationFred to ($motivationFred+1)>>
     Fred_surprised: C'est vrai ? Comme quoi, par exemple ?
@@ -410,10 +410,10 @@ On dirait que Fred a vraiment perdu confiance en lui… Vous pourriez regonfler 
         You: …C'est que tu as du cœur… C'est vrai ! Tu es une bonne personne, tu n'hésites pas à aider les gens, bien que tu manques de discipline.
         Fred_sad: Euh… Ouais, peut-être… J'essaie d'être un humain décent, quoi. Je vois pas en quoi ça m'aide dans mes études.
     -> Tu es imaginatif, créatif et plein d'idées
-        You: …C'est que tu n'as pas peur d'aller hors des sentiers battus, tu trouves toujours des ruses, des idées originales. Tu es un créatif !
+        You: …C'est que tu n'as pas peur d'aller hors des sentiers battus, tu trouves toujours des astuces, des idées originales. Tu es un créatif !
         << fx Success >>
         << set $motivationFred to ($motivationFred+1)>>
-        Fred_smiling: Mmmh… J'y avais pas pensé comme ça… Tu penses que c'est ça qui fait ma force ?
+        Fred_smiling: Mmmh… J'avais pas vu les choses comme ça… Tu penses que c'est ça qui fait ma force ?
         You: Exactement, et c'est comme ça que tu vas t'en sortir. En prenant le problème différemment. Tu l'as toujours fait.
     -> Tu adores échanger avec les autres, et tu le fais avec brio
         You: …C'est que tu es doué avec les autres, tu as du charisme, tu n'hésites pas à échanger et à étayer ton point de vue en parlant.
@@ -422,7 +422,7 @@ On dirait que Fred a vraiment perdu confiance en lui… Vous pourriez regonfler 
         Fred_smiling: Mmmh… C'est vrai, ça. Mais je vois pas quel rapport ça a avec…
         You: Tout le rapport du monde ! Tu es doué quand tu collabores avec une équipe, même si tu manques clairement de discipline tout seul. Et c'est comme ça que tu vas t'en sortir. Tu n'es pas seul, cette fois !
     -> Tu es intelligent, tu sais résoudre les problèmes
-        You: …C'est parce que tu es le gars le plus intelligent que je connaisse. Lorsqu'on te présente un problème, il ne reste pas longtemps sans solution… Pourvu que tu trouves la discipline.
+        You: …C'est parce que tu es le gars le plus intelligent que je connaisse. Lorsqu'on te présente un problème, il ne reste pas longtemps sans solution… Pourvu que tu t'imposes un minimum de discipline.
         Fred_sad: { $name }, ça va paraître pédant, mais… Je sais que je suis doué, et c'est à cause de ça que je me repose sur mes lauriers.
 -> Rappeler les faiblesses de Fred
     You: Je ne vais pas y aller par quatre chemins. Tu ne supportes pas qu'on te pose un cadre trop rigide, et du coup, tu manques de discipline.
@@ -442,7 +442,7 @@ Pendant que Fred est occupé à préparer son plat favori avec votre FoodPrinter
 << fadeIn >>
 << setBackground bedroom desk >>
 << fadeOut >>
-Vous allez faire des fiches de révision taillées aux besoins de Fred. Vous griffonnez à une vitesse éclair les différentes notions sur les dizaines de petites cartes en papier cartonné.
+Vous allez faire des fiches de révision taillées sur mesure pour Fred. Vous griffonnez à une vitesse éclair les différentes notions sur les dizaines de petites cartes en papier cartonné.
 << advanceTimeBy 0:30 >>
 Fred_happy: Hé, à table !
 << fx EatCook >>
@@ -453,7 +453,7 @@ Vous jetez un œil aux Giga-Tacos que Fred vient de préparer, dégoulinants de 
 -> Euh… T'es sûr de toi ?
     You: Euh… T'es sûr que tu vas pas t'effondrer sur le canapé avec un repas comme ça ?
     Fred_smiling: Moi ? Aucune chance. Toi, par contre…
-    You: Justement. Je les garderai pour un autre jour, quand on aura pas un weekend de révisions à accomplir en une soirée.
+    You: Justement. Je les garderai pour un autre jour, quand on aura pas un week-end de révisions à accomplir en une soirée.
     << fx Success >>
     << set $motivationFred to ($motivationFred+1)>>
     Fred_happy: Euh… Ouais, t'as sûrement raison. Une euh… salade. C'est tout ce qu'il nous faut. Haha.
@@ -550,7 +550,7 @@ Fred est contraint de raccrocher… Maintenant, il n'y a plus qu'à attendre !
 << completeLevelC7 >>
 <<if !visited("Assemblee_Sages")>>
 Azul_cheerful: Hé ! Tu t'es bien débrouillé avec Fred ! On dirait qu'iel est fin prêt pour son Oral de rattrapage !
-You: Comment tu peux être aussi sûr, Azul ?
+You: Comment tu peux en être aussi sûr, Azul ?
 Azul_proud: T'inquiète, je suis plein de ressources… En attendant qu'iel termine tout ça, rejoins-nous pour ta dernière leçon !
 -> Suivre Azul
     <<jump Assemblee_Sages>>
@@ -598,7 +598,7 @@ Azul_sad: Euh… Je crains que… Ce soit impossible pour nous.
 Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { round_places($motivationPercent, 2) }% pour son Oral. Dommage… Une motivation de 50% aurait suffi.
 You: Épargnez-moi les statistiques ! Vous m'avez bien aidé avec mes examens quand je vous ai demandé, non ?!
 Azul_happy: Précisément !… Tu nous as appelés. Ton esprit a cherché notre aide, alors nous sommes venus. Mais Fred… Iel ne veut pas admettre qu'iel a besoin d'aide.
--> Aidez-le quand-même !
+-> Aidez-le quand même !
     Azul_sad: Désolé, { $name }… C'est un problème contractuel. On ne peut pas intervenir dans la vie de quelqu'un sans son consentement.
     You: Sinon, quoi ? Vous vous faites taper sur les doigts par le tribunal des Sages ??
     Azul_sad: Quelque chose comme ça, oui… Par contre…
@@ -655,12 +655,12 @@ position: -395.6365661621094,463.4656677246094
     Sapiens: Commençons par la première notion : le rapport à la réussite. Il définit ce qu'une personne tire de son apprentissage.
     Temde_cheerful: Réfléchir à son rapport à la réussite, c'est apprendre à mieux se connaître. #line:07acb4b 
     Ledai_explaining: Le rapport à la réussite détermine ce que l'on veut vraiment. Ce qui aide ensuite à choisir la meilleure stratégie pour y arriver. #line:04d28c0 
-    Azul_happy: Nous t'avons déjà montré comment nous étions tous les quatre différents. Nous allons reprendre l'exercice, pour que tu puisses mieux cerner le profil de Fred.
+    Azul_happy: Nous t'avons déjà proposé d'appréhender les différences de nos quatre profils avec un petit exercice. Nous allons reprendre nos profils, pour que tu puisses mieux cerner le profil de Fred.
     You: D'accord. Voyons…
     <<jump Sages_Questions>>
 -> Comment maintenir la motivation ?
     Sapiens: Nous avons déjà vu que pour apprendre à apprendre, il faut mettre en place des stratégies d'apprentissage.
-    Sapiens_thinking: Par exemple, les [b]stratégies cognitives[/b], qui permettent de stimuler la mémoire longue, ou encore les [b]stratégies d'organisation[/b] : planification, travail en groupe…
+    Sapiens_thinking: Par exemple, les [b]stratégies cognitives[/b], qui permettent de stimuler la mémoire à long terme, ou encore les [b]stratégies d'organisation[/b] : planification, travail en groupe…
     Sapiens: Nous n'avons plus rien à t'apprendre sur ces stratégies, que je qualifierais de "quantitatives".
     Sapiens: Pour ce qui est des stratégies qualitatives, nous t'avons appris à gérer ton bien-être, ton stress. Il s'agit de la [b]la stratégie affective[/b].
     Sapiens_thinking: Mais nous avons mis de côté deux variables : [b]la confiance en soi[/b] et [b]la motivation[/b]. Qui font pourtant partie intégrante de cette stratégie. #line:0b1add3 
@@ -668,7 +668,7 @@ position: -395.6365661621094,463.4656677246094
     Sapiens_concerned: Mais ton ami, nous en avons déjà parlé, a un profil "divergent", comme celui d'Azul. #line:0297373 
     Azul_cheerful: Je suis probablement celui qui comprend mieux Fred. Son point fort, c'est l'originalité, l'intuition, l'imagination, l'échange verbal avec ses pairs. #line:0bbfce1 
     Azul_sad: Ses points faibles, en revanche, sont : la mise en forme par écrit, l'apprentissage par cœur, et le manque de structure.
-    Temde_neutral: Pour guider quelqu'un à prendre confiance, il vaut mieux se concentrer sur ses forces, ce qui le tire vers le haut…
+    Temde_neutral: Pour aider quelqu'un à reprendre confiance, il vaut mieux se concentrer sur ses forces, ce qui le tire vers le haut…
     Ledai_explaining: …Tout en restant honnête et réaliste, en laissant de la place pour lui montrer les variables à améliorer.
 -> J'ai compris !
     Sapiens_happy: Bien. Tu connais la chanson, je présume ? Un dernier QCM, un !
@@ -687,11 +687,11 @@ position: -395.6365661621094,463.4656677246094
     Ledai_explaining: Mon rapport de la réussite est [b]'Stratégique'[/b] : contrairement à mes confrères, je considère l'apprentissage et le travail comme des outils qui m'aident à être performant pour atteindre mes objectifs.
     Ledai_happy: Que ce soit à l'école ou dans tout autre contexte, mon but a toujours été d'être le meilleur, quel qu'en soit le coût !
 -> Interroger Temdé
-    Temde_smiling: Personnellement, je ne vois la réussite que de manière [b]'Instrumentale'[/b] : pour moi, la vraie valeur ne peut pas être mesurée, ce qui m'importe, c'est pouvoir continuer d'avancer.
+    Temde_smiling: Personnellement, je ne vois la réussite que de manière [b]'Instrumentale'[/b] : pour moi, la vraie valeur ne peut pas être mesurée, ce qui m'importe, c'est de pouvoir continuer d'avancer.
     Temde_cheerful: Durant mes années d'études, je travaillais juste assez pour obtenir mon diplôme, gardant un maximum de temps pour moi.
 -> Interroger Azul
     Azul_proud: Quant à moi, j'entretiens un rapport [b]'Relatif'[/b] avec la réussite : pour moi, réussir, c'est être à l'aise parmi mes pairs, mon environnement.
-    Azul_proud: Quand j'étais étudiant, je ne m'inquiétais pas trop de mes résultats tant que ceux-ci étaient au moins aussi bons que mes proches, et j'utilisais mes facilités pour minimiser les efforts tout en restant compétitif.
+    Azul_proud: Quand j'étais étudiant, je ne m'inquiétais pas trop de mes résultats tant que ceux-ci étaient au moins aussi bons que ceux de mes camarades, et j'utilisais mes facilités pour minimiser les efforts tout en restant compétitif.
 -> Choisir le rapport à la réussite de Fred
     Azul_proud: Revenons donc à ton ami Fred : quel est donc son rapport à la réussite ?
     <<jump Sages_FindFred>>
@@ -704,18 +704,18 @@ position: -395.6365661621094,463.4656677246094
 ---
 -> Rapport Compréhensif
     << fx Failure >>
-    Sapiens_angry: Non, pas du tout ! Fred n'accorde aucune importance au Savoir avec un grand S, la recherche de la vérité ! Essaye encore.
+    Sapiens_angry: Non, pas du tout ! Fred n'accorde aucune importance au Savoir avec un grand S, à la recherche de la vérité ! Essaye encore.
 -> Rapport Stratégique
     << fx Failure >>
-    Ledai_doubtful: Et bien, je dois avouer que tu n'es pas très loin. Pour moi et Fred, la réussite est l'atteinte des objectifs visés, ni plus, ni moins. Mais Fred n'accorde pas d'importance à la régularité, la discipline.
+    Ledai_doubtful: Et bien, je dois avouer que tu n'es pas très loin. Pour moi et Fred, la réussite est l'atteinte des objectifs visés, ni plus ni moins. Mais Fred n'accorde pas d'importance à la régularité, la discipline.
 -> Rapport Instrumental
     << fx Failure >>
     Temde_sad: Pour autant que je respecte Fred, nos rapports à la réussite sont très différents. Je n'accorde pas autant d'importance à la performance, à la compétition.
 -> Rapport Relatif
     << fx Success >>
-    Azul_smiling: C'est exact. Tout comme pour notre profil d'apprentissage, nous avons le même fonctionnement. Fred et moi nous comparons sans cesse à notre entourage, et cela nous importe peu de travailler dans un environnement qui n'est pas compétitif, social.
+    Azul_smiling: C'est exact. Tout comme pour notre profil d'apprentissage, nous avons le même fonctionnement. Fred et moi, nous nous comparons sans cesse à notre entourage, et cela nous importe peu de travailler dans un environnement qui n'est pas compétitif, social.
     Ledai_explaining: Chacun doit avoir ses propres [b]objectifs personnels[/b], à court et long terme. 
-    Temde_neutral: Ces objectifs doivent être définis par sa propre personnalité, son rapport à la réussite. Personne ne peut le faire à la place d'un autre.
+    Temde_neutral: Ces objectifs doivent être définis par sa propre personnalité, son rapport à la réussite. Personne ne peut le faire pour quelqu'un d'autre.
     <<jump Sages_FreeChoice>>
 <<jump Sages_FindFred>>
 ===
@@ -727,7 +727,7 @@ position: 2022.2449951171875,462.113037109375
 Sapiens_concerned: Comment aider quelqu'un à formuler une stratégie métacognitive efficace ?
 -> En lui proposant une méthode universelle ?
     << fx Failure >>
-    Sapiens_angry: Non, pas du tout ! Il n'y a pas méthode miracle ! Il faut adapter sa stratégie à la personne et à la situation ! #line:0cdcebf 
+    Sapiens_angry: Non, pas du tout ! Il n'y a pas de méthode miracle ! Il faut adapter sa stratégie à la personne et à la situation !
 -> En le laissant prendre conscience de ses forces et de ses faiblesses ?
     << fx Success >>
     Sapiens_happy: Parfait ! Il faut adapter sa stratégie à la personne et à la situation ! #line:0a3ec4e 
@@ -792,11 +792,11 @@ Vous tombez finalement sur Fred, qui parle avec enthousiasme de l'examen à un g
 Fred_excited: { $name } ! T'es enfin là ! On va enfin pouvoir fêter la fin des examens !
 You: Waouh, Fred, t'as l'air en forme ! T'as dû réussir tes examens, toi !
 Fred_happy: Et comment ! C'est grâce à toi, tu sais ? J'arrive pas à croire que j'étais prêt à abandonner ! Au final, j'ai eu A-.
-You: Haha, c'est toi tout craché, ça ! Réviser à la dernière minute et partir avec les lauriers !
+You: Haha, c'est toi tout craché, ça ! Réviser à la dernière minute et ramasser les lauriers !
 Fred_smiling: C'est possible… Et toi, tu m'as toujours pas dit ta note ?
 You: C'est parce que je voulais pas te frustrer, toi qui es toujours devant moi ! J'ai eu A.
-Fred_happy: Haha, c'est toi tout craché, ça ! Partir avec les lauriers et prendre le temps d'aider ses potes !
-You: C'est possible… Tu sais, je pensais jamais te dépasser un jour. T'étais un objectif insurmontable, inatteignable !
+Fred_happy: Haha, c'est toi tout craché, ça ! Ramasser les lauriers et prendre le temps d'aider ses potes !
+You: C'est possible… Tu sais, je pensais jamais te dépasser un jour. Tu étais un objectif insurmontable, inatteignable !
 Fred_surprised: Non, c'est vrai ?
 You: Totalement.
 Fred_smiling: Euh… { $name }, je crois qu'il y a un mec en déguisement bizarre qui veut te parler.
@@ -822,7 +822,7 @@ Azul_cheerful: Oui. Nous sommes devenus tes Anges de la métacognition. #line:00
 Sapiens_angry: Suffit. Il est temps. Nous devons nous éclipser, laisser { $name } vivre sa vie !
 Ledai_happy: Adieu, { $name }.
 Azul_happy: Que tes songes soient créatifs et originaux. #line:0366dbd 
-Temde_cheerful: Et n'oublie pas de rêver à nous de temps en temps…
+Temde_cheerful: Et n'oublie pas de rêver de nous de temps en temps…
 << showTitle Fin >>
 ===
 
