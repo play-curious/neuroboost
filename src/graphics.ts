@@ -1069,7 +1069,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._deadline = new deadline.DeadlineEntity(name, hours, minutes);
     this._activateChildEntity(
       this._deadline,
-      entity.extendConfig({ container: this._container })
+      entity.extendConfig({ container: this._uiLayer })
     );
     this._on(this, "deactivatedChildEntity", (e) => {
       if (e === this._deadline) {

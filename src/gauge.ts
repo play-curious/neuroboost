@@ -60,7 +60,7 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   }
 
   _setup() {
-    this._value = parseInt(this.config.variableStorage.get(this.name));
+    this._value = Math.ceil(Number(this.config.variableStorage.get(this.name)));
     this._inverted = variable.InvertedGauges.includes(this.name);
 
     this._innerDisk = new PIXI.Sprite();
