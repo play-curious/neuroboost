@@ -1,0 +1,18 @@
+title: Start
+tags:
+position: -571,1504
+---
+<< setBackground bedroom >>
+-> add bubble
+    <<addImmersiveBubble>>
+-> remove bubble
+    <<removeImmersiveBubble>>
+<< jump Other >>
+===
+title: Other
+tags:
+position: -571,1504
+---
+bubble set
+<< jump Start >>
+===

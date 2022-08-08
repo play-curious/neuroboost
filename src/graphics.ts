@@ -15,6 +15,8 @@ import * as images from "./images";
 import * as gauge from "./gauge";
 import * as save from "./save";
 import * as deadline from "./deadline_entity";
+import { SimpleLightmapFilter } from "pixi-filters";
+import { Sprite } from "pixi.js";
 
 // Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
@@ -52,6 +54,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
   private _dialogSpeaker: PIXI.Container;
+  private _bubbleFilter: PIXI.Filter;
 
   private _screenShake?: ScreenShake;
   private _deadline?: deadline.DeadlineEntity;
@@ -125,11 +128,33 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._on(this, "deactivatedChildEntity", (entity) => {
       if (entity === this._screenShake) this._screenShake = null;
     });
+
+    let renderer = PIXI.autoDetectRenderer({
+      width: this._backgroundLayer.width,
+      height: this._backgroundLayer.height,
+    });
+    renderer.render(this._backgroundLayer);
+    //TODO : find a way to solve this typing issue (not a threat for running, but could be in the future)
+    this._bubbleFilter = new filters.SimpleLightmapFilter(
+      this._entityConfig.app.loader.resources["images/ui/bubble.png"].texture
+    );
+    this._backgroundLayer.filters = [this._bubbleFilter];
+    this._bubbleFilter.enabled = false;
   }
 
   _teardown() {
     this.config.container.removeChild(this._container);
     this._container = null;
+  }
+
+  public addBubble() {
+    this._bubbleFilter.enabled = true;
+    this.graphicsState.inBubble = true;
+  }
+
+  public removeBubble() {
+    this._bubbleFilter.enabled = false;
+    this.graphicsState.inBubble = false;
   }
 
   public loadSave(loadedGraphicsState: save.GraphicsState) {
@@ -155,6 +180,11 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       if (loadedGraphicsState.lastDeadline.missed) {
         this.missDeadline();
       }
+    }
+    if (loadedGraphicsState.inBubble) {
+      this.addBubble();
+    } else {
+      this.removeBubble();
     }
     this._graphicsState = loadedGraphicsState;
   }

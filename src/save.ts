@@ -28,6 +28,7 @@ export interface GraphicsState {
   lastMusic?: string;
   lastGauges?: string[];
   lastDeadline?: DeadlineState;
+  inBubble?: boolean;
 }
 
 export interface CurrentChapter {
