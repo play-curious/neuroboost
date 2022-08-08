@@ -15,6 +15,7 @@ import * as images from "./images";
 import * as gauge from "./gauge";
 import * as save from "./save";
 import * as deadline from "./deadline_entity";
+import * as bubble from "./buble_icon_entity";
 
 // Initialize Underscore templates to resemble YarnSpinner
 const templateSettings = {
@@ -44,6 +45,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _fade: PIXI.Graphics;
   private _container: PIXI.Container;
   private _backgroundLayer: PIXI.Container;
+  private _bubbleLayer: PIXI.Container;
   private _backgroundEntity: entity.ParallelEntity;
   private _fxLayer: PIXI.Container;
   private _characterLayer: PIXI.Container;
@@ -52,10 +54,12 @@ export class Graphics extends extension.ExtendedCompositeEntity {
   private _uiLayer: PIXI.Container;
   private _dialogLayer: PIXI.Container;
   private _dialogSpeaker: PIXI.Container;
-  private _bubbleFilter: filter.Bubble;
+
+  private _bubbleFilter: PIXI.Sprite;
 
   private _screenShake?: ScreenShake;
   private _deadline?: deadline.DeadlineEntity;
+  private _bubble?: bubble.BubbleIconEntity;
   private _blur?: Blur;
 
   private _nodeDisplay: PIXI.Container;
@@ -83,6 +87,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this.config.container.addChild(this._container);
 
     this._backgroundLayer = new PIXI.Container();
+    this._bubbleLayer = new PIXI.Container();
     this._characterLayer = new PIXI.Container();
     this._closeupLayer = new PIXI.Container();
     this._miniGameLayer = new PIXI.Container();
@@ -92,6 +97,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     this._container.addChild(
       this._backgroundLayer,
+      this._bubbleLayer,
       this._characterLayer,
       this._closeupLayer,
       this._uiLayer,
@@ -132,9 +138,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       height: this._backgroundLayer.height,
     });
     renderer.render(this._backgroundLayer);
-    this._bubbleFilter = filter.newBubble();
-    this._backgroundLayer.filters = [this._bubbleFilter];
-    this._bubbleFilter.enabled = false;
   }
 
   _teardown() {
@@ -142,14 +145,61 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._container = null;
   }
 
-  public addBubble() {
-    this._bubbleFilter.enabled = true;
+  public addBubble(makeTransition: boolean = true) {
+    if (!this._bubbleFilter) {
+      this._bubbleFilter = this.makeSprite("images/ui/bubble.png", (it) => {
+        it.width = this._backgroundLayer.width;
+        it.height = this._backgroundLayer.height;
+        it.tint = 0x84f2ff;
+        it.alpha = 0;
+      });
+      this._bubbleLayer.addChild(this._bubbleFilter);
+    }
     this.graphicsState.inBubble = true;
+    if (makeTransition) {
+      this._activateChildEntity(
+        new tween.Tween({
+          obj: this._bubbleFilter,
+          to: 0.5,
+          property: "alpha",
+          duration: 500,
+        })
+      );
+    }
+    if (!this._bubble) {
+      console.log("add");
+      this._bubble = new bubble.BubbleIconEntity();
+      this._activateChildEntity(
+        this._bubble,
+        entity.extendConfig({ container: this._container })
+      );
+      this._bubble.onRemove((it) => {
+        this._deactivateChildEntity(it);
+        this._bubble = null;
+        console.log("removed");
+      });
+    }
   }
 
   public removeBubble() {
-    this._bubbleFilter.enabled = false;
+    if (!this._bubbleFilter) return;
+
     this.graphicsState.inBubble = false;
+    this._bubble.remove();
+    this._activateChildEntity(
+      new entity.EntitySequence([
+        new tween.Tween({
+          obj: this._bubbleFilter,
+          to: 0,
+          property: "alpha",
+          duration: 500,
+        }),
+        new entity.FunctionCallEntity(() => {
+          this._bubbleLayer.removeChild(this._bubbleFilter);
+          this._bubbleFilter = null;
+        }),
+      ])
+    );
   }
 
   public loadSave(loadedGraphicsState: save.GraphicsState) {
@@ -1092,6 +1142,10 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     let hours: string = timestamp.split(":")[0];
     let minutes: string = timestamp.split(":")[1];
     this._deadline = new deadline.DeadlineEntity(name, hours, minutes);
+    this._deadline.onRemove((it) => {
+      this._deactivateChildEntity(it);
+      this._deadline = null;
+    });
     this._activateChildEntity(
       this._deadline,
       entity.extendConfig({ container: this._uiLayer })

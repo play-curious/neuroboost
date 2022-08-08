@@ -29,12 +29,6 @@ export function newGlitch() {
   }) as Glitch;
 }
 
-export function newBubble() {
-  return new SimpleLightmapFilter(
-    this._entityConfig.app.loader.resources["images/ui/bubble.png"].texture
-  ) as Bubble;
-}
-
 export function newHolograph() {
   return new CRTFilter({
     curvature: 0,

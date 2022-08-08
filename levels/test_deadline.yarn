@@ -2,14 +2,12 @@ title: Start
 tags:
 position: -571,1504
 ---
-<< fadeIn >>
 -> set deadline
   <<setDeadline Danse 10:00>>
 -> miss deadline
   <<missedDeadline>>
 -> remove deadline
   <<removeDeadline>>
-<< fadeOut >>
 << jump Other >>
 ===
 title: Other
