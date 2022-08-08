@@ -44,7 +44,7 @@ colorID: 0
 position: -202,-823
 ---
 << stopFX PhoneRing_LOOP >>
-Vous rejetez l'appel de Fred, convaincu qu'il vous fera plus perdre de temps qu'autre chose…
+Vous rejetez l'appel de Fred, convaincu qu'iel vous fera plus perdre de temps qu'autre chose…
 << advanceTimeBy 0:30 >>
 <<jump Liste_Taches>>
 ===
@@ -86,6 +86,7 @@ tags: freechoice
 colorID: 1
 position: -420,-531
 ---
+<< hide >>
 << setBackground bedroom >>
 
 << if getGauge("mentalLoad") >= 100 >>
@@ -168,6 +169,7 @@ RoomMate: Voulez-vous que je désactive le mode zéro-distraction pour vous perm
     << fx Success>>
     <<set $silence to false>>
 -> Non
+    << hide >>
     <<jump Liste_Taches>>
 << hide >>
 <<endif>>
@@ -321,6 +323,8 @@ Vous vous retroussez les manches et vous commencez ce travail fastidieux mais in
 << advanceTimeBy 2:00>>
 
 <<if $silence == false>>
+
+<<if !isTimeOver("19:00")>>
 << fx PhoneRing_LOOP >>
 << screenshake 10 600 >>
 Dring ! Vous êtes au beau milieu d'un paragraphe, en pleine concentration, quand Fred vous appelle.
@@ -334,7 +338,6 @@ Vous hésitez. D'un côté, vous serez obligé de vous remettre dedans lorsque v
     << hide >>
     <<jump Fred_Sport>>
 -> Rester travailler
-
 You: Ben… non. Tu m'aurais appelé plus tard, j'aurais peut-être accepté, mais là, c'est pas le moment !
 Fred@holo_angry: Oh, sérieux ?? Tu me lâches comme ça ? Tout ça pour rédiger la note ? C'est pas cool de ta part…
 << hide >>
@@ -342,6 +345,7 @@ Fred@holo_angry: Oh, sérieux ?? Tu me lâches comme ça ? Tout ça pour rédige
 << addToGauge mentalLoad 30 >>
 Votre altercation avec Fred vous a un peu démotivé, pèse sur votre mental, mais vous parvenez au moins à finir ce maudit paragraphe.
 Quitte à refuser la proposition de Fred, peut-être auriez-vous dû mettre votre palmphone en silencieux…
+<<endif>>
 
 <<else>>
 Avec l'aide du mode Zero Distraction, vous parvenez à garder votre concentration au maximum. Votre première partie est finie.
@@ -530,7 +534,7 @@ Votre ventre gargouille. Vous décidez de vous refaire ce surprenant Green Burge
 << fx EatCook >>
 << addToGauge food 40 >>
 C'est dingue ce que burger sans viande ni pain ni frites vous cale l'estomac.
-<< advanceTimeBy 0:30 food >>
+<< advanceTimeBy 0:30 food sleep >>
 
 <<jump Liste_Taches>>
 ===
@@ -549,7 +553,7 @@ Comme hier, le soir venu, vous avez la flemme de cuisiner, et vous n'avez pas au
 << addToGauge food 80 >>
 Le mix de ratatouilles de légumes du soleil d'Aldébaran avec son assiette de céréales complètes, ça vous va très bien.  #line:0ea36db 
 
-<< advanceTimeBy 1:00 sleep >>
+<< advanceTimeBy 1:00 sleep food >>
 
 <<jump Liste_Taches>>
 ===
@@ -571,7 +575,7 @@ La projection holographique vous donne de la compagnie et de la motivation pour 
 RoomMate: Mode "Immersion Studieuse" activé !
 <<endif>>
 
-<< hide>>
+<< hide >>
 <<jump bureau_subchoice>>
 ===
 
@@ -603,21 +607,27 @@ RoomMate: Mode "Immersion Studieuse" désactivé !
 La projection holographique disparaît et l'ambiance studieuse aussi. Vous réactivez les appels.
 
 <<if !visited("FredCall") && visited("Redaction_Note")>>
+
+<<if !isTimeOver("19:00")>>
 << visit FredCall >>
 << fx PhoneRing_LOOP >>
 << screenshake 10 600 >>
-Justement ! Au moment où votre palmphone se remet en route, vous recevez un appel de fred !
+Justement ! Au moment où votre palmphone se remet en route, vous recevez un appel de Fred !
 << stopFX PhoneRing_LOOP>>
 Fred@holo_happy: Ah, te voilà enfin ! Je t'ai appelé 200 fois, t'étais où ?
 You: J'étais en train de travailler, Fred… J'avais désactivé les notifs.
 Fred@holo_smiling: Ok, c'est pas grave ! Tu viens à la salle de sport ou pas ?
 -> Aller à la salle de sport avec Fred
-    <<hide>>
+    << hide >>
     <<jump Fred_Sport >>
 -> Rester
     You: Euh… Non, j'ai d'autres choses à faire.
     Fred@holo_angry: Oh, sérieux ?? Tu me lâches comme ça ? C'est pas cool de ta part…
     << hide >>
+<<else>>
+Vous constatez en rallumant votre palmphone que Fred n'a cessé de vous appeler pour que vous fassiez du sport ensemble. Tant pis, le travail était plus important !
+<<endif>>
+
 <<endif>>
 <<jump bureau_subchoice>>
 ===
@@ -650,8 +660,7 @@ Azul_happy: Pas grave, viens, on a un nouveau truc à t'apprendre. #line:0a4a5d0
     << hide >>
     <<jump Assemblee_Sages>>
 -> (Passer la séquence des Sages)
-    << resetLevel >>
-    <<jump Start>>
+    << hide >>
 <<else>>
 -> Réécrire dans le journal
     << showJournal mentalWorkload >>
@@ -781,8 +790,8 @@ Sapiens_happy: Continuons. Est-il préférable de travailler d'arrache-pied le s
 -> Bien se détendre pour travailler le soir, l'esprit clair
     << fx Failure >>
     Azul_sad: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil : Il faut travailler régulièrement, sans excès. #line:0f80780 
-    You: Mon ami Fred, il bosse à la dernière minute, et ça marche !
-    Temde_thinking: Surtout ne pas tout reporter au dernier moment. Ton ami a beau avoir des facilités, il ne pourra pas s'en tirer comme ça toute sa vie !
+    You: Mon ami Fred, iel bosse à la dernière minute, et ça marche !
+    Temde_thinking: Surtout ne pas tout reporter au dernier moment. Ton ami a beau avoir des facilités, iel ne pourra pas s'en tirer comme ça toute sa vie !
     Ledai_explaining: Sinon, tu risques le court-circuit, le "system failure"… #line:01288b8 
 
 Sapiens_thinking: Voici la dernière proposition test. J'ai insisté sur le rôle des distractions dans la surcharge cognitive…
