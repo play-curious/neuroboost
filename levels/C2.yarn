@@ -26,7 +26,7 @@ Fred_smiling: Tranquille, le mien fonctionne du tonnerre, je te passerai mes pla
 
 Fred_happy: Ok, je vois que t'es difficile en affaires… En même temps, j'aurai besoin de toi si je veux être sûr de gagner le défi des docteurs.
 Fred_excited: Si on gagne le défi des docteurs, tu peux être sûr que je prendrai du temps pour t'aider avec ton drone demain matin. T'en dis quoi ?
-Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir ce défi ?! Il tient vraiment à sa réputation, celui-là… En tout cas, vous savez qu'avec ses talents d'ingénierie, vous pourriez rattraper le retard de votre drone !
+Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir ce défi ?! Iel tient vraiment à sa réputation, celui-là… En tout cas, vous savez qu'avec ses talents d'ingénierie, vous pourriez rattraper le retard de votre drone !
 
 -> C'est quoi, exactement, ce défi ?
     Fred_smiling: Le défi du roi de la fête ! Le champion incontesté, c'est BB-Rex. On va devoir l'impressionner si on veut remporter son titre !
@@ -524,7 +524,7 @@ position: 259,328
 << addToGauge sleep 50 >>
 << advanceTimeUntil 8:00 sleep food >>
 << fadeOut >>
-Bip !! Vous êtes réveillé par votre Palmphone. C'est Fred qui appelle. Il veut sûrement aider pour le TP de drones !
+Bip !! Vous êtes réveillé par votre Palmphone. C'est Fred qui appelle. Iel veut sûrement aider pour le TP de drones !
 Fred@holo_excited: Yo, { $name } ! Bien dormi ? Pas moi ! Je t'ai envoyé les plans de mon drone, t'as vu, je tiens mes promesses !
 You: Merci, Fred !
 Fred@holo_happy: T'inquiète, c'est pour être resté jusqu'au bout hier soir ! Alors… Pour ce qui est de l'allègement des matériaux, j'ai penché pour une coque en méta-plastique…
@@ -584,7 +584,7 @@ Fred_happy: Hey, fais pas cette tête… T'as tenu la moitié du temps, au moins
 
 En voyant vos résultats, Fred affiche une moue gênée… Les professeurs ne vous ont pas raté, vous mettant un D-.
 << hide >>
-Vous tournez les talons sans rien lui dire. Après tout, ce ne serait pas arrivée s'il vous avait aidé… Au final, vous êtes plus en colère contre vous-même qu'autre chose.
+Vous tournez les talons sans rien lui dire. Après tout, ce ne serait pas arrivée s'iel vous avait aidé… Au final, vous êtes plus en colère contre vous-même qu'autre chose.
 
 << fadeIn >>
 << setBackground bedroom >>
@@ -640,7 +640,7 @@ position: 585,-117
 ---
 << music Solo1 >>
 Stressé par la tension et la foule, vous entamez votre solo. Vous aimeriez avoir un peu révisé avant de venir, mais c'est trop tard désormais.
-Heureusement, Fred est là pour vous accompagner. Muni de sa Rhythm-Box portable M47, il vous crée un beat du tonnerre.
+Heureusement, Fred est là pour vous accompagner. Muni de sa Rhythm-Box portable M47, iel vous crée un beat du tonnerre.
 Vous parvenez tout de même à tenir une belle performance, qui ne laisse pas les étudiants indifférents.
 BarBot: Bon, ça, c'est ce que j'aime voir ! Bon, c'était un peu basique pour BB-Rex, mais vous avez réussi à ravir le public. Allez, pour la peine, voilà 1 PARTY POINT !
 << fx Success >>
@@ -658,7 +658,7 @@ position: 719,-183
 ---
 << music Solo2 >>
 Confiant de vos compétences et fier d'avoir mené le groupe de Galactic Jazz au temps du lycée, vous entamez un shredding digne des plus grands.
-Heureusement, Fred est là pour vous accompagner. Muni de sa Rhythm-Box portable M47, il vous crée un beat du tonnerre.
+Heureusement, Fred est là pour vous accompagner. Muni de sa Rhythm-Box portable M47, iel vous crée un beat du tonnerre.
 Les cordes rugissent au rythme de vos ongles, se tendent et s'étouffent pour laisser la distorsion s'exprimer.
 Le public est en extase. Vous êtes parvenus à créer un spectacle digne de ce nom.
 BarBot: Ok, je vous laisse ma couronne, les amis, vous l'avez mérité. J'ai pas entendu de licks pareils depuis les seventies !

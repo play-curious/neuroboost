@@ -523,6 +523,7 @@ RoomMate: Voulez-vous que je désactive le mode zéro-distraction pour vous perm
     << fx Success>>
     <<set $silence to false>>
 -> Non
+    << hide >>
     <<jump Liste_Taches>>
 << hide>>
 <<endif>>
@@ -670,11 +671,11 @@ position: 885,409
 << setBackground repetition >>
 << music >>
 << fadeOut >>
+<< removeDeadline >>
 
 << visit Dance >>
 
 << if isTimeOver("14:00") >>
-<< removeDeadline >>
 Vous arrivez dans les derniers, cependant, le cours n'a pas encore commencé. Plus exactement, votre coach vous attendait.  #line:09eafb6 
 << else >>
 << advanceTimeUntil 14:00 >>
@@ -784,7 +785,7 @@ Fred_excited-mask: Ben alors, ces quoi ces vêtements ? T'as pas oublié la fiè
 You: Euh… J'avais oublié…
 Fred_smiling-mask: Pas grave, enfile ta tenue et on y va !
 <<else>>
-Comme vous l'attendiez, Fred vient vous chercher pour aller à la fête. Il y a mis les formes, on dirait !
+Comme vous l'attendiez, Fred vient vous chercher pour aller à la fête. Iel y a mis les formes, on dirait !
 Fred_excited-mask: Alors, on y va, à cette fièvre du samedi soir, ou quoi ?
 <<endif>>
 
@@ -1008,7 +1009,7 @@ position: 164,25
 << advanceTimeBy 0:15 >>
 <<endif>>
 
-Vous vous retrouvez devant la porte de l'amphithéâtre. Fred n'est pas là, il doit sûrement passer à un autre moment.
+Vous vous retrouvez devant la porte de l'amphithéâtre. Fred n'est pas là, iel doit sûrement passer à un autre moment.
 Vous expirez tout l'air de vos poumons. Puis, vous ouvrez la porte et pénétrez l'immense amphithéâtre.
 
 -> C'est le moment de vérité  #line:0b7af9f 

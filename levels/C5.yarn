@@ -5,6 +5,16 @@ tags: noUi
 position: -2541,-299
 colorID: 8
 ---
+<< fadeIn >>
+<<if !visited("Intro")>>
+<< setBackground bedroom night >>
+<< fx Warp >>
+<< fadeOut >>
+Le faisceau de voyage temporel des Sages vous ramène en arrière, après avoir terminé votre rédaction.
+FredFred@holo_smiling: C'est pas mal, ce qu'on a fait, non ? Ça mérite bien un petit GTR…
+Vous passez le reste de la soirée à vous amuser comme un fou avec Fred, puis vous sautez dans votre lit pour un repos bien mérité…
+<< hide >>
+
 << fadeIn 1 >>
 << showTitle Chapitre 5 >>
 << setTime 7:55 4 >>
@@ -36,6 +46,19 @@ Vous avez rejoint leur assemblée ! Vous êtes devenu un expert de la métacogni
     Non, c'est impossible… Vous devez rêver, c'est sûr ! Vous passez la main sur votre nez, vos joues, vos yeux. Ceux-ci ne ressentent rien : ils sont fermés !
     << fadeOut >>
     Vous vous réveillez en sursaut. Il est presque 8h, vous en profitez pour vous lever, déçu de ne pas vous être trompé…
+<< visit Intro >>
+<<else>>
+<< showTitle Chapitre 5 >>
+<< setTime 7:55 4 >>
+<< set $silence to false >>
+<< showGauges >>
+<< setGauge learning 0 >>
+<< setGauge sleep 100 >>
+<< setGauge food 80 >>
+<< setGauge mentalLoad 0 >>
+<< setGauge stress 0 >>
+<<endif>>
+
 <<jump Reveil>>
 ===
 
@@ -106,7 +129,7 @@ colorID: 1
 << setBackground bedroom >>
 << fadeOut >>
 
-<<if isTimeOver("14:00")>>
+<<if isTimeOver("14:05")>>
 << missedDeadline >>
 Vous êtes en retard pour l'examen ! Si seulement il y avait un moyen de revenir en arrière…
 -> Recommencer la journée
@@ -429,7 +452,7 @@ Fred_excited: Allez, viens, que je te mette KO à la GTR !
 You: Je suis pas sûr que… #line:0a0c2a5 
 << hide >>
 << loopFX Sports_LOOP 16000 >>
-Fred ne vous laisse pas le temps d'articuler, il se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, il vous fait expulser tout l'air contenu dans vos poumons.
+Fred ne vous laisse pas le temps d'articuler, iel se rue sur vous et vous fait tomber ! Vous suffoquez sur le coup, iel vous fait expulser tout l'air contenu dans vos poumons.
 Le bouclier énergétique de l'exosquelette encaisse les chocs sans faiblir. Vos muscles et vos poumons, en revanche, se raidissent et surchauffent. Après plus d'une heure de fight contact endiablé, vous déclarez forfait. 
 << stopFX Sports_LOOP >>
 << removeFromGauge sleep 20 >>
@@ -605,6 +628,7 @@ Maman@holo_shadow: C'est bien { $name }. Ta mamie est une personne forte. Elle s
 La sonnerie de l'Académie retentit : il est l'heure…
 You: Je te laisse, on va en examen ! #line:0bf1ef8 
 Maman@holo_shadow: Courage, mon chou… #line:0531828 
+<< advanceTimeBy 0:05 >>
 <<endif>>
 << hide >>
 << addToGauge stress 20 >>
@@ -646,6 +670,7 @@ position: -1510,-293
 ---
 C'est plus fort que vous. Vous avez envie de tout déballer devant Fred. Et c'est ce que vous faites. Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Vous êtes tellement stressé que vous monopolisez la parole.
 Fred vous console tant bien que mal, mais rien que le fait de vous être lâché fait redescendre la pression accumulée. Vous vous sentez plus prêt à commencer cet examen. #line:01aac71 
+<< advanceTimeBy 0:05 >>
 << removeFromGauge stress 20 >>
 -> Entrer dans la salle  #line:0126187 
     <<jump Examen>>
@@ -705,7 +730,7 @@ position: -1286,-264
 << setBackground door class >>
 << fadeOut >>
 
-Vous retrouvez Fred devant la porte. Il vous fixe d'un air ahuri.
+Vous retrouvez Fred devant la porte. Iel vous fixe d'un air ahuri.
 Fred_surprised: Wow, je me suis totalement foiré, cette fois… Et toi ?
 You: Pareil… Bon, on se revoit il y a 10 heures…
 Fred_surprised: Hein ?
@@ -734,7 +759,7 @@ position: -1286,-264
 << fadeOut >>
 << visit Win >>
 
-Vous retrouvez Fred devant la porte. Il vous fixe d'un air ahuri.
+Vous retrouvez Fred devant la porte. Iel vous fixe d'un air ahuri.
 Fred_surprised: Wow, je me suis totalement foiré, cette fois…
 << fx Notification >>
 << setBackground door class-screen >>

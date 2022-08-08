@@ -18,10 +18,10 @@ Vous appelez Fred. Après tout, c'est lui qui organise la fête de ce soir à la
 << loopFX PhoneRing_LOOP >>
 << screenshake 10 600 >>
 << stopFX PhoneRing_LOOP >>
-Pas de réponse. Qu'est-ce qu'il peut bien faire ? Vous ne l'avez pas croisé dans les couloirs, et il n'a même pas essayé de vous contacter après l'Oral…
+Pas de réponse. Qu'est-ce qu'iel peut bien faire ? Vous ne l'avez pas croisé dans les couloirs, et iel n'a même pas essayé de vous contacter après l'Oral…
 Quelque chose cloche. Vous devez retrouver votre ami. Peut-être qu'il s'est passé quelque chose…
 << music Mysterious >>
-Il pourrait être n'importe où dans le campus, mais vous avez déjà quelques pistes en tête.
+Iel pourrait être n'importe où dans le campus, mais vous avez déjà quelques pistes en tête.
 <<jump FreeRoam>>
 <<else>>
 Vous vous dirigez sans attendre vers l'appartement de Fred pour retrouver ce dernier.
@@ -71,7 +71,7 @@ position: -2386,654
 <<if !visited("WC")>>
 << visit WC >>
 << advanceTimeBy 0:10 >>
-Si ce que vous a dit le sportif est vrai, Fred s'est rendu aux toilettes avant de disparaître. S'il faut, il y est encore !
+Si ce que vous a dit le sportif est vrai, Fred s'est rendu aux toilettes avant de disparaître. S'il faut, iel y est encore !
 L'odeur putride vous prend aux narines alors que vous rentrez dans les lieux. Décidément, l'Académie devrait investir dans autre chose que des écrans holographiques…
 <<endif>>
 
@@ -85,7 +85,7 @@ L'odeur putride vous prend aux narines alors que vous rentrez dans les lieux. D�
     Devant la rangée de toilettes se trouve une unique poubelle. Vous jetez un œil à l'intérieur, puis à côté. Au sol, vous trouvez un morceau de plastique de forme familière.
     Vous inspectez l'objet, sur lequel figure une photo de Fred et son identifiant étudiant : Id47n5296H.
     << fx Success >>
-    You: La carte étudiante de Fred ! Il a voulu la jeter ? Vous mettez les morceaux bout à bout dans votre tête, ça ne sent pas bon…
+    You: La carte étudiante de Fred ! Iel a voulu la jeter ? Vous mettez les morceaux bout à bout dans votre tête, ça ne sent pas bon…
 -> back
     <<jump FreeRoam>>
 <<jump WC>>
@@ -101,7 +101,7 @@ position: -2192,585
 <<if !visited("Salle_Sport")>>
 << visit Salle_Sport >>
 << advanceTimeBy 0:10 >>
-La salle de sport, c'est le repère de Fred. C'est ici qu'il va lorsqu'il a du temps à perdre, qu'il aille bien ou mal. S'il y a bien un endroit où il a pu filer, c'est là !
+La salle de sport, c'est le repère de Fred. C'est ici qu'iel va lorsqu'iel a du temps à perdre, qu'iel aille bien ou mal. S'il y a bien un endroit où iel a pu filer, c'est là !
 <<endif>>
 
 -> Faire le tour de la piste #once
@@ -111,7 +111,7 @@ La salle de sport, c'est le repère de Fred. C'est ici qu'il va lorsqu'il a du t
     Bien sûr ! Fred a dû enfiler sa combinaison de fight contact pour se défouler après l'oral ! Vous approchez des cages dédiées au Fight Contact, ce sport brutal et ultra-moderne.
     Un grand gaillard en exosquelette se tourne vers vous, intrigué par votre présence.
     "Si je connais Fred ?! C'est le Contact Fighter le plus teigneux que je connaisse."
-    "Il paraît qu'il s'est dégonflé en plein milieu de son oral ! Il a demandé d'aller aux toilettes, et on l'a plus revu."
+    "Il paraît qu'iel s'est dégonflé en plein milieu de son oral ! Iel a demandé d'aller aux toilettes, et on l'a plus revu."
     << fx Success >>
     Vous remerciez le sportif et rebroussez chemin, choqué par ce que vous venez d'entendre. Cela ne ressemble pas, mais alors pas du tout à Fred.
     Vous continuez votre enquête…
@@ -134,12 +134,12 @@ Vous pénétrez dans l'immense aile de l'Académie, remplie d'étudiants en cett
 <<endif>>
 
 -> Chercher parmi les bureaux d'études #once
-    Mais bien sûr ! Fred doit sûrement repasser demain s'il n'a pas pu aujourd'hui ! Il est sûrement en train de réviser pour son Oral.
+    Mais bien sûr ! Fred doit sûrement repasser demain s'iel n'a pas pu aujourd'hui ! Iel est sûrement en train de réviser pour son Oral.
     Vous parcourez les rangées de bureaux à la recherche de sa tignasse rousse, sans succès. Vous étiez pourtant fier de votre théorie…
 -> Chercher à la salle de repos <<if !visited("XenoCola")>>
     <<if !visited("ReposRoom")>>
     << visit ReposRoom >>
-    Si Fred cherche à se changer les idées de l'Oral, il est sûrement à la salle de repos ! Vous vous dirigez vers celle-ci.
+    Si Fred cherche à se changer les idées de l'Oral, iel est sûrement à la salle de repos ! Vous vous dirigez vers celle-ci.
     << fadeIn >>
     << setBackground cafeteria >>
     << fadeOut >>
@@ -181,12 +181,12 @@ On dirait que la cafétéria est déjà prête pour la fête ! Les plus impatien
 A votre venue, le BarBot se précipite vers vous.
 BarBot: Yo, { $name }. T'as intérêt à avoir une bonne excuse pour ton pote ! J'écoute.
 -> Une quoi ?
-    You: Une excuse ?? Pourquoi ? Il a des ennuis ?
+    You: Une excuse ?? Pourquoi ? Iel a des ennuis ?
 -> J'en sais rien, je le cherche !
-    You: Justement ! Je sais pas où il est, je le cherche !
+    You: Justement ! Je sais pas où iel est, je le cherche !
 BarBot: Hé, c'est pas en faisant une grimace à un vieux singe… Je veux dire, c'est pas un vieux singe qui apprend la grimace… Euh, bref. Tu la feras pas à l'envers à BB-Rex !
 You: Je t'assure, je sais pas ce qu'il se passe !
-BarBot: Il se passe que ton pote nous a fait un sale coup, voilà tout ! Il était censé apporter toutes les boissons softs pour la soirée, et il s'est jamais pointé !
+BarBot: Il se passe que ton pote nous a fait un sale coup, voilà tout ! Iel était censé apporter toutes les boissons softs pour la soirée, et iel s'est jamais pointé !
 You: Ah ! Si c'est que ça…
 BarBot: Je veux rien entendre. Si vous ramenez pas les boissons d'ici tout-à-l'heure, vous êtes morts ! Vous pourrez dire adieu à votre réputation !
 You: Comment ça ?
@@ -258,7 +258,7 @@ position: -2154,899
 << visit Bedroom_Fred >>
 << advanceTime 0:10 >>
 Vous toquez à la porte, mais personne ne répond.
-Pourtant, on dirait que l'appartement de Fred est allumé. Peut-être qu'il est juste rentré chez lui, ou qu'il est… parti en trombe ? Vous imaginez le pire.
+Pourtant, on dirait que l'appartement de Fred est allumé. Peut-être qu'iel est juste rentré chez lui, ou qu'iel est… parti en trombe ? Vous imaginez le pire.
 You: Fred ! Ouvre ! C'est pas drôle !
 Vous pianotez sur l'interphone, jusqu'à entendre une voix cristalline.
 RoomMate: Bienvenue, Fred. Veuillez entrer le mot de passe de votre portail étudiant.
@@ -307,7 +307,7 @@ position: -2154,977
 << setBackground bedroom_fred messy >>
 << music NegativeSad >>
 << fadeOut >>
-Vous entrez dans la chambre de Fred, et l'apercevez. Le dos tourné, il ne fait pas attention à vous. On dirait qu'il est en train de faire ses valises.
+Vous entrez dans la chambre de Fred, et l'apercevez. Le dos tourné, iel ne fait pas attention à vous. On dirait qu'iel est en train de faire ses valises.
 You: Fred ! Qu'est-ce que tu fais ?
 Fred_surprised: { $name } ! Comment tu es rentré ?
 You: Xx_Fr3d4tor_xX ? Sérieusement ? C'est ton pseudo sur Call of Study ! Qu'est-ce que tu fabriques ?
@@ -394,7 +394,7 @@ Fred_sad: Je sais pas… Je vais jamais réussir à rattraper tout mon retard en
     You: Exactement, c'est la raison pour laquelle il ne faut pas tarder et travailler dès maintenant !
 << advanceTimeBy 0:10 >>
 Fred_sad: Mouais… C'est juste… Si je suis même pas sûr d'y arriver, à quoi bon ?
-On dirait que Fred a vraiment perdu confiance en lui… Vous pourriez regonfler son égo en lui rappelant à quel point il est un étudiant génial…
+On dirait que Fred a vraiment perdu confiance en lui… Vous pourriez regonfler son égo en lui rappelant à quel point iel est un étudiant génial…
 …Démontrer sobrement quels sont ses points forts…
 …Ou aller droit au but en lui rappelant les défauts qui le tirent vers le bas…
 -> Flatter Fred
@@ -461,7 +461,7 @@ Vous jetez un œil aux Giga-Tacos que Fred vient de préparer, dégoulinants de 
     You: Bon… C'est très… fort en énergie, mais tant mieux si ça te fait plaisir. Je peux en prendre une seule moitié ?
     Fred_smiling: Seulement si je peux la manger à ta place !
     You: Euh… Oublie.
-Pendant qu'il mange, Fred jette un œil sur son palmphone…
+Pendant qu'iel mange, Fred jette un œil sur son palmphone…
 
 <<if visited("LieToFred")>>
 Fred_smiling: Tiens, j'ai reçu ma convocation pour le rattrapage !
@@ -497,7 +497,7 @@ Fred_sad: Tu sais quoi ? Je sais pas si j'ai envie de faire ça. Je me débrouil
 -> Demander à Fred de se fixer un objectif
     You: Ça va aller. Il suffit que tu te fixes un objectif, que tu sais que tu peux atteindre.
     Fred_surprised: Euh… Je sais.
-    Fred vous prend les fiches de la main, et divise le paquet en deux. Puis, il vous rend la deuxième moitié.
+    Fred vous prend les fiches de la main, et divise le paquet en deux. Puis, iel vous rend la deuxième moitié.
     Fred_smiling: Ce soir, on fait la moitié du travail. Tout ça. C'est déjà beaucoup. Et la suite, on la voit demain. Comme ça, j'ai pas trop de trucs à emmagasiner d'un coup.
     << fx Success >>
     << set $motivationFred to ($motivationFred+1)>>
@@ -549,9 +549,9 @@ Fred est contraint de raccrocher… Maintenant, il n'y a plus qu'à attendre !
 << music Victory >>
 << completeLevelC7 >>
 <<if !visited("Assemblee_Sages")>>
-Azul_cheerful: Hé ! Tu t'es bien débrouillé avec Fred ! On dirait qu'il est fin prêt pour son Oral de rattrapage !
+Azul_cheerful: Hé ! Tu t'es bien débrouillé avec Fred ! On dirait qu'iel est fin prêt pour son Oral de rattrapage !
 You: Comment tu peux être aussi sûr, Azul ?
-Azul_proud: T'inquiète, je suis plein de ressources… En attendant qu'il termine tout ça, rejoins-nous pour ta dernière leçon !
+Azul_proud: T'inquiète, je suis plein de ressources… En attendant qu'iel termine tout ça, rejoins-nous pour ta dernière leçon !
 -> Suivre Azul
     <<jump Assemblee_Sages>>
 -> Passer la séquence des Sages
@@ -597,7 +597,7 @@ You: C'est pas à propos de moi… C'est mon ami Fred. Il faut que vous l'aidiez
 Azul_sad: Euh… Je crains que… Ce soit impossible pour nous.
 Ledai_explaining: D'après mes calculs, Fred était motivé à hauteur de { round_places($motivationPercent, 2) }% pour son Oral. Dommage… Une motivation de 50% aurait suffi.
 You: Épargnez-moi les statistiques ! Vous m'avez bien aidé avec mes examens quand je vous ai demandé, non ?!
-Azul_happy: Précisément !… Tu nous as appelés. Ton esprit a cherché notre aide, alors nous sommes venus. Mais Fred… Il ne veut pas admettre qu'il a besoin d'aide.
+Azul_happy: Précisément !… Tu nous as appelés. Ton esprit a cherché notre aide, alors nous sommes venus. Mais Fred… Iel ne veut pas admettre qu'iel a besoin d'aide.
 -> Aidez-le quand-même !
     Azul_sad: Désolé, { $name }… C'est un problème contractuel. On ne peut pas intervenir dans la vie de quelqu'un sans son consentement.
     You: Sinon, quoi ? Vous vous faites taper sur les doigts par le tribunal des Sages ??
@@ -788,7 +788,7 @@ position: -1543,1900
 << fadeOut >>
 Vous sortez de votre appartement et vous dirigez vers la cafétéria, où vous avez donné rendez-vous à Fred.
 Celle-ci est encore remplie d'étudiants qui se trémoussent et discutent après leurs derniers examens. Après tout, c'est bientôt les vacances, et le moment de retourner dans vos familles respectives.
-Vous tombez finalement sur Fred, qui parle avec enthousiasme de l'examen à un groupe d'étudiants. Il a l'air heureux !
+Vous tombez finalement sur Fred, qui parle avec enthousiasme de l'examen à un groupe d'étudiants. Iel a l'air heureux !
 Fred_excited: { $name } ! T'es enfin là ! On va enfin pouvoir fêter la fin des examens !
 You: Waouh, Fred, t'as l'air en forme ! T'as dû réussir tes examens, toi !
 Fred_happy: Et comment ! C'est grâce à toi, tu sais ? J'arrive pas à croire que j'étais prêt à abandonner ! Au final, j'ai eu A-.
