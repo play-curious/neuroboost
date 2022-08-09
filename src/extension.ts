@@ -49,7 +49,11 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
 
     // If mood is incorrect, get default one
     if (!_.has(baseJson, mood)) mood = baseJson["default"];
-
+    const holo = filter.newHolograph();
+    const glitch = filter.newGlitch();
+    const adjust = filter.newAdjustment();
+    const glow = filter.newGlow();
+    let rects: PIXI.Rectangle[] = [];
     // For each part
     for (const bodyPart of baseJson[mood]) {
       if (
@@ -71,6 +75,7 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
             }
           }
         );
+        rects.push(animatedSpriteEntity.sprite.getBounds());
 
         // Add animated sprite to entity
         CE.entity.addChildEntity(animatedSpriteEntity);
@@ -81,11 +86,13 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
 
     // Handle holographic filter
     if (displayMode === "holo") {
-      const holo = filter.newHolograph();
-      const glitch = filter.newGlitch();
-      const adjust = filter.newAdjustment();
-      const glow = filter.newGlow();
       CE.container.filters = [holo, glow, adjust, glitch];
+      let rect: PIXI.Rectangle = rects[0];
+      for (let r of rects) {
+        rect.enlarge(r);
+      }
+      rect.width *= 2;
+      CE.container.filterArea = rect;
       this._activateChildEntity(filter.wrapHolograph(holo as any));
       this._activateChildEntity(filter.wrapGlitchHolo(glitch as any));
     }
