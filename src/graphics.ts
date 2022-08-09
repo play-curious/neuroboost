@@ -132,12 +132,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     this._on(this, "deactivatedChildEntity", (entity) => {
       if (entity === this._screenShake) this._screenShake = null;
     });
-
-    let renderer = PIXI.autoDetectRenderer({
-      width: this._backgroundLayer.width,
-      height: this._backgroundLayer.height,
-    });
-    renderer.render(this._backgroundLayer);
   }
 
   _teardown() {
@@ -173,10 +167,9 @@ export class Graphics extends extension.ExtendedCompositeEntity {
         this._bubble,
         entity.extendConfig({ container: this._container })
       );
-      this._bubble.onRemove((it) => {
-        this._deactivateChildEntity(it);
+      this._bubble.on("removed", () => {
+        this._deactivateChildEntity(this._bubble);
         this._bubble = null;
-        console.log("removed");
       });
     }
   }
@@ -1142,8 +1135,8 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     let hours: string = timestamp.split(":")[0];
     let minutes: string = timestamp.split(":")[1];
     this._deadline = new deadline.DeadlineEntity(name, hours, minutes);
-    this._deadline.onRemove((it) => {
-      this._deactivateChildEntity(it);
+    this._deadline.on("removed", () => {
+      this._deactivateChildEntity(this._deadline);
       this._deadline = null;
     });
     this._activateChildEntity(

@@ -26,7 +26,6 @@ export abstract class SlideTextEntity extends extension.ExtendedCompositeEntity 
   private _iconPath: string;
   private _enterStyle: EnterType;
   private _options: SlideOptions;
-  private _onRemove: (it: SlideTextEntity) => void;
 
   protected _container: PIXI.Container;
   protected _text: PIXI.Text;
@@ -161,17 +160,11 @@ export abstract class SlideTextEntity extends extension.ExtendedCompositeEntity 
     const td = new entity.EntitySequence([
       animP,
       new entity.FunctionCallEntity(() => {
-        if (this._onRemove) {
-          this._onRemove(this);
-        }
+        this.emit("removed");
         this._transition = entity.makeTransition();
       }),
     ]);
     this._activateChildEntity(td);
-  }
-
-  public onRemove(cb: (it: SlideTextEntity) => void) {
-    this._onRemove = cb;
   }
 
   public _teardown(frameInfo: entity.FrameInfo) {
