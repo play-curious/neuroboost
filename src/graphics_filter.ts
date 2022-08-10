@@ -131,7 +131,7 @@ export function wrapHolograph(holo: CRTFilter) {
   return new entity.FunctionalEntity({
     update: () => {
       holo.seed = Math.random();
-      holo.time = (holo.time + 0.1) % 1;
+      holo.time = (holo.time + 0.1) % 20;
     },
   });
 }
