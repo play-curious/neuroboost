@@ -845,18 +845,12 @@ export class Graphics extends extension.ExtendedCompositeEntity {
     // Remove background
     this._backgroundLayer.removeChildren();
     if (this._backgroundEntity !== undefined) {
-      if (this.childEntities.indexOf(this._backgroundEntity) != -1)
-        this._deactivateChildEntity(this._backgroundEntity);
+      this._deactivateChildEntity(this._backgroundEntity);
       this._backgroundEntity = undefined;
     }
 
     // Create Entity
     this._backgroundEntity = new entity.ParallelEntity();
-    // Activate entity
-    this._activateChildEntity(
-      this._backgroundEntity,
-      entity.extendConfig({ container: this._backgroundLayer })
-    );
 
     // Set directory to access resources
     const baseDir = `images/bg/${bg}`;
@@ -882,6 +876,12 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       // Add animated sprite to entity
       this._backgroundEntity.addChildEntity(animatedSpriteEntity);
     }
+
+    // Activate entity
+    this._activateChildEntity(
+      this._backgroundEntity,
+      entity.extendConfig({ container: this._backgroundLayer })
+    );
   }
 
   /**
@@ -968,13 +968,17 @@ export class Graphics extends extension.ExtendedCompositeEntity {
               },
               onTeardown: () => {
                 this._characterLayer.removeChild(character.container);
-                // this._deactivateChildEntity(character.entity);
               },
             })
           );
         }
       } else {
         this._characterLayer.removeChild(character.container);
+      }
+      for (let entity of character.entity.children) {
+        if (entity.isSetup) {
+          this._deactivateChildEntity(character.entity);
+        }
       }
     }
 

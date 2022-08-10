@@ -75,7 +75,14 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
             }
           }
         );
-        rects.push(animatedSpriteEntity.sprite.getBounds());
+        let bounds = animatedSpriteEntity.sprite.getBounds();
+        let sprite = animatedSpriteEntity.sprite;
+        rects.push(
+          new PIXI.Rectangle(bounds.x, bounds.y, bounds.width, bounds.height)
+        );
+        rects.push(
+          new PIXI.Rectangle(sprite.x, sprite.y, sprite.width, sprite.height)
+        );
 
         // Add animated sprite to entity
         CE.entity.addChildEntity(animatedSpriteEntity);
@@ -89,12 +96,13 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
       CE.container.filters = [holo, glow, adjust, glitch];
       let rect: PIXI.Rectangle = rects[0];
       for (let r of rects) {
-        rect.enlarge(r);
+        rect = rect.enlarge(r);
       }
-      rect.width *= 2;
       CE.container.filterArea = rect;
-      this._activateChildEntity(filter.wrapHolograph(holo as any));
-      this._activateChildEntity(filter.wrapGlitchHolo(glitch as any));
+      let holoEntity = filter.wrapHolograph(holo as any);
+      let glitchEntity = filter.wrapGlitchHolo(glitch as any);
+      CE.entity.addChildEntity(holoEntity);
+      CE.entity.addChildEntity(glitchEntity);
     }
 
     // If character changed, do animation
