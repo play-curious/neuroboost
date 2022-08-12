@@ -219,6 +219,17 @@ const musicAssets = [
   "JungleBodyBeat",
 ];
 
+const params = new URLSearchParams(window.location.search);
+
+const lang = params.get("lang") ?? navigator.language;
+
+const textAssetNames = ["journal", "interface", "c1"];
+
+const jsonAssets = textAssetNames.map((key) => ({
+  key,
+  url: `json/${key}_${lang}.json`,
+}));
+
 const videoAssets = ["game-by-play-curious"];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
@@ -226,18 +237,20 @@ const fontAssets: string[] = ["Ubuntu", "Jura"];
 export const screenSize = new PIXI.Point(1920, 1080);
 
 const splashScreen = "images/splash_screen.jpg";
-
-const params = new URLSearchParams(window.location.search);
 const startingScene = params.get("level") || params.get("scene") || "start";
 const startingNode = params.get("startNode") || params.get("node") || "Start";
 const startingSceneParams = { startNode: startingNode };
 
 booyah.go({
+  rootConfig: {
+    language: lang,
+  },
   startingScene,
   startingSceneParams,
   states,
   transitions,
   graphicalAssets: images.graphicalAssets,
+  jsonAssets,
   fontAssets,
   fxAssets,
   musicAssets,

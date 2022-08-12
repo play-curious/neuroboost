@@ -15,6 +15,9 @@ import * as gauge from "./gauge";
 
 import * as yarnBound from "yarn-bound";
 import * as chapter_menus from "./chapter_menus";
+import { levelType, translateDialog } from "./wrapper/i18n";
+import i18n from "./generated/i18n";
+import { TextResult } from "yarn-bound";
 
 declare module "yarn-bound" {
   interface Metadata {
@@ -317,8 +320,24 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       return;
     }
 
+    let lineId;
+    for (let hash of textResult.hashtags) {
+      if (hash.startsWith("line")) {
+        lineId = hash.split(":")[1].trim();
+      }
+    }
+    let translatedText = text;
+    if (lineId) {
+      translatedText = translateDialog(
+        this,
+        this.levelName.toLowerCase() as levelType,
+        lineId as i18n[keyof i18n][levelType][number]["id"],
+        text
+      );
+    }
+
     this.graphics.showDialog(
-      text,
+      translatedText,
       speaker,
       this.config.variableStorage.get("name"),
       () => {
@@ -329,7 +348,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   }
 
   private _handleChoice() {
-    const result = this.runner.currentResult;
+    const result = this.runner.currentResult as TextResult;
 
     if (!isOption(result))
       throw new Error("Called _handleChoice for unknown result");
@@ -346,6 +365,22 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       const option = result.options[i];
       const optionText = option.text.trim();
 
+      let lineId;
+      for (let hash of result.hashtags) {
+        if (hash.startsWith("line")) {
+          lineId = hash.split(":")[1].trim();
+        }
+      }
+      let translatedText = optionText;
+      if (lineId) {
+        translatedText = translateDialog(
+          this,
+          this.levelName.toLowerCase() as levelType,
+          lineId as i18n[keyof i18n][levelType][number]["id"],
+          optionText
+        );
+      }
+
       if (optionText.includes("@")) {
         freeChoiceCount++;
       }
@@ -359,7 +394,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         continue;
 
       options.push({
-        text: optionText,
+        text: translatedText,
         id: `${i}`,
       });
 

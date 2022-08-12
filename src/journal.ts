@@ -9,126 +9,8 @@ import * as variable from "./variable";
 import * as extension from "./extension";
 import * as save from "./save";
 import dayjs from "dayjs";
-
-const options: { [key: string]: any } = {
-  // Journal jour 1
-  method: {
-    title: "Méthode de révision",
-    closeQuestion: {
-      question:
-        "Lorsque tu as besoin de réviser, quelle technique utilises-tu ?",
-      answers: [
-        "Rappel libre",
-        "Lecture de notes",
-        "Lecture à voix haute",
-        "Révision en groupe",
-        "Faire des exercices",
-      ],
-    },
-    openQuestion: {
-      question:
-        "Si tu pouvais apprendre plus facilement ou retenir des informations plus longtemps, qu'est-ce que cela pourrait changer à ta vie ?",
-    },
-  },
-  // Journal jour 2
-  food: {
-    title: "Alimentation",
-    closeQuestion: {
-      question: "Penses-tu que ton alimentation est saine ?",
-      answers: ["Oui", "Souvent oui", "Rarement oui", "Non"],
-    },
-    openQuestion: {
-      question:
-        "Comment pourrais-tu améliorer ton alimentation pour mieux apprendre ?",
-    },
-  },
-  // Journal jour 2
-  sleep: {
-    title: "Sommeil",
-    closeQuestion: {
-      question: "De combien de temps de sommeil as tu besoin ?",
-      answers: ["10h ou plus", "9h", "8h", "7h", "6h ou moins"],
-    },
-    openQuestion: {
-      question: "Quels facteurs te permettent de bien dormir le soir ?",
-    },
-  },
-  // Journal jour 3
-  mentalWorkload: {
-    title: "Charge mentale",
-    closeQuestion: {
-      question: "Combien de balles sais-tu jongler ?",
-      answers: ["1", "2", "3", "4", "5 ou plus"],
-    },
-    openQuestion: {
-      question:
-        "Comment pourrais-tu faire pour réduire les distracteurs dans ton travail ?",
-    },
-  },
-  // Journal jour 4
-  profiles: {
-    title: "Profils d'apprentissage",
-    closeQuestion: {
-      question:
-        "De quel sage est-tu le plus proche en tant que profil d'apprentissage ?",
-      answers: ["Tembde", "Azul", "Sapiens", "LedAI"],
-    },
-    openQuestion: {
-      question:
-        "As-tu déjà recontré des problèmes en travaillant avec des personnes de profils différents ?",
-    },
-  },
-  // Journal jour 5
-  stress: {
-    title: "Stress",
-    closeQuestion: {
-      question: "À quelle fréquence te trouves-tu en situation de stress ?",
-      answers: [
-        "Tous les jours",
-        "Toutes les semaines",
-        "Tous les mois",
-        "Rarement",
-      ],
-    },
-    openQuestion: {
-      question:
-        "Lorsque tu es stressé, que fais-tu comme activité pour lâcher prise ? ",
-    },
-  },
-  // Journal jour 6
-  organisation: {
-    title: "Organisation",
-    closeQuestion: {
-      question: "Est-ce que tu étudies le weekend ?",
-      answers: [
-        "Non, le weekend est sacré",
-        "Seulement si je ne peux pas faire autrement",
-        "Le weekend, le soir, la journée... c'est pareil",
-      ],
-    },
-    openQuestion: {
-      question:
-        "Comment fais-tu pour organiser tes priorités, lorsque tu as beaucoup de tâches avec lesquelles jongler ?",
-    },
-  },
-  // Journal jour 7
-  success: {
-    title: "Success",
-    closeQuestion: {
-      question: "Quel est ton rapport à la réussite ?",
-      answers: [
-        "Stratégique - Je fais tout pour obtenir les meilleurs résultats",
-        "Compréhensif - C'est l'apprentissage qui compte, pas le diplôme",
-        "Instrumental - Je dois juste valider mon année",
-        "Relatif - Mon but est de faire aussi bien que mes amis",
-      ],
-    },
-    openQuestion: {
-      question:
-        "En dehors du travail et des études, quels objectifs fixes-tu pour la vie ?",
-    },
-  },
-};
+import { translateJournal } from "./wrapper/i18n";
+import i18n from "./generated/i18n";
 
 export class JournalScene extends extension.ExtendedCompositeEntity {
   private _glitch: filter.Glitch;
@@ -138,7 +20,7 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
   private _answerInputs: HTMLInputElement[];
   private _textArea: HTMLTextAreaElement;
 
-  constructor(private name: string) {
+  constructor(private name: i18n[keyof i18n]["journal"][number]["id"]) {
     super();
   }
 
@@ -169,13 +51,11 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
 
       leftElements.insertAdjacentHTML(
         "beforeend",
-        `<p>${options[this.name].closeQuestion.question}</h1>`
+        `<p>${translateJournal(this, this.name, "closedquestion")}</h1>`
       );
-
-      const answers = options[this.name].closeQuestion.answers;
       this._answerInputs = [];
 
-      for (let i = 0; i < answers.length; i++) {
+      for (let i = 0; i < 5; i++) {
         const answer: HTMLInputElement = document.createElement("input");
         answer.type = "radio";
         answer.required = true;
@@ -185,7 +65,9 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         this._answerInputs[i] = answer;
 
         const label: HTMLLabelElement = document.createElement("label");
-        label.innerText = `${answers[i]}`;
+        let answerTag = ("answer" +
+          (i + 1)) as keyof i18n[keyof i18n]["journal"][number];
+        label.innerText = `${translateJournal(this, this.name, answerTag)}`;
         label.setAttribute("for", `closed-question-${i}`);
 
         leftElements.append(document.createElement("br"), answer, label);
@@ -199,7 +81,11 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
 
       const rightQuestion = document.createElement("p");
       rightQuestion.className = "journal-right-question";
-      rightQuestion.textContent = options[this.name].openQuestion.question;
+      rightQuestion.textContent = translateJournal(
+        this,
+        this.name,
+        "openquestion"
+      );
       rightElements.appendChild(rightQuestion);
 
       this._textArea = document.createElement(
@@ -336,30 +222,38 @@ export class JournalPDF extends extension.ExtendedCompositeEntity {
       // Title
       doc.setFontSize(22);
       doc.text(
-        `${options[journal].title}`,
+        `${translateJournal(
+          this,
+          journal as i18n[keyof i18n]["journal"][number]["id"],
+          "title"
+        )}`,
         _options.margin.left,
         15,
         textOptions
       );
 
       // CloseQuestion
-      const closeQuestion = options[journal].closeQuestion;
-      doc.setFontSize(20);
-      doc.text(
-        `${closeQuestion.question}`,
-        _options.margin.left,
-        35,
-        textOptions
+      const closeQuestion = translateJournal(
+        this,
+        journal as i18n[keyof i18n]["journal"][number]["id"],
+        "closedquestion"
       );
+      doc.setFontSize(20);
+      doc.text(`${closeQuestion}`, _options.margin.left, 35, textOptions);
       doc.setFontSize(17);
       let i = 0;
-      for (const answer of closeQuestion.answers) {
+      for (let answer = 0; answer < 5; answer++) {
         doc.setFont(
           undefined,
           i == journalStorage[journal].closeQuestion ? "bold" : "normal"
         );
         doc.text(
-          `    - ${answer}\n`,
+          `    - ${translateJournal(
+            this,
+            journal as i18n[keyof i18n]["journal"][number]["id"],
+            ("answer" +
+              (answer + 1)) as keyof i18n[keyof i18n]["journal"][number]
+          )}\n`,
           _options.margin.left,
           61 + 10 * i++,
           textOptions
@@ -369,7 +263,11 @@ export class JournalPDF extends extension.ExtendedCompositeEntity {
       // OpenQuestion
       doc.setFontSize(19).setFont(undefined, "normal");
       doc.text(
-        `${options[journal].openQuestion.question}`,
+        `${translateJournal(
+          this,
+          journal as i18n[keyof i18n]["journal"][number]["id"],
+          "openquestion"
+        )}`,
         _options.margin.left,
         148,
         textOptions

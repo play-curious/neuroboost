@@ -3,6 +3,8 @@ import * as graphics from "./graphics";
 import * as PIXI from "pixi.js";
 import * as extension from "./extension";
 import * as tween from "booyah/src/tween";
+import { translateInterface } from "./wrapper/i18n";
+import i18n from "./generated/i18n";
 
 export class DeadlineEntity extends extension.ExtendedCompositeEntity {
   private static _ANIMATION_DURATION: number = 300;
@@ -24,11 +26,22 @@ export class DeadlineEntity extends extension.ExtendedCompositeEntity {
     frameInfo: entity.FrameInfo,
     entityConfig: entity.EntityConfig
   ): void {
+    console.log(this.deadlinename);
     this._missed = false;
     this._container = new PIXI.Container();
     this._entityConfig.container.addChild(this._container);
     this._text = new PIXI.Text(
-      this.deadlinename + " à " + this.hour + "h" + this.minutes,
+      translateInterface(
+        this,
+        ("deadline_" +
+          this.deadlinename.toLowerCase()) as i18n[keyof i18n]["interface"][number]["id"]
+      ) +
+        " " +
+        translateInterface(this, "time_marker") +
+        " " +
+        this.hour +
+        "h" +
+        this.minutes,
       {
         fontFamily: "Jura",
         fontSize: 35,

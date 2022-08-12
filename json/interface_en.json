@@ -1,0 +1,62 @@
+{
+  "gauge_stress": {
+    "id": "gauge_stress",
+    "text": "Stress"
+  },
+  "gauge_learning": {
+    "id": "gauge_learning",
+    "text": "Learning"
+  },
+  "deadline_examen": {
+    "id": "deadline_examen",
+    "text": "Test"
+  },
+  "deadline_rendu": {
+    "id": "deadline_rendu",
+    "text": "Due"
+  },
+  "deadline_fermeture": {
+    "id": "deadline_fermeture",
+    "text": "Closing"
+  },
+  "deadline_danse": {
+    "id": "deadline_danse",
+    "text": "Dance"
+  },
+  "deadline_oral": {
+    "id": "deadline_oral",
+    "text": "Presentation"
+  },
+  "time_marker": {
+    "id": "time_marker",
+    "text": "at"
+  },
+  "day_0": {
+    "id": "day_0",
+    "text": "Monday"
+  },
+  "day_1": {
+    "id": "day_1",
+    "text": "Tuesday"
+  },
+  "day_2": {
+    "id": "day_2",
+    "text": "Wednesday"
+  },
+  "day_3": {
+    "id": "day_3",
+    "text": "Thursday"
+  },
+  "day_4": {
+    "id": "day_4",
+    "text": "Friday"
+  },
+  "day_5": {
+    "id": "day_5",
+    "text": "Saturday"
+  },
+  "day_6": {
+    "id": "day_6",
+    "text": "Sunday"
+  }
+}
