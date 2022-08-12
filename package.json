@@ -52,9 +52,11 @@
     "yarn-bound": "github:play-curious/yarn-bound#dev"
   },
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
     "@types/gulp-tap": "^1.0.1",
     "@types/webpack-merge": "^5.0.0",
     "clean-webpack-plugin": "^3.0.0",
+    "commander": "^9.4.0",
     "copy-webpack-plugin": "^9.0.0",
     "esbuild-loader": "^2.15.1",
     "gulp-tap": "^2.0.0",
