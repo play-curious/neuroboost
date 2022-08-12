@@ -652,7 +652,7 @@ tags: noUi
 position: -395.6365661621094,463.4656677246094
 ---
 -> C'est-à-dire, un objectif adapté ?
-    Sapiens: Commençons par la première notion : le rapport à la réussite. Il définit ce qu'une personne tire de son apprentissage.
+    Sapiens: Pour comprendre comment adapter les objectifs à la personne, abordons en premier lieu une notion très simple : le rapport à la réussite. Il définit ce qu'une personne tire de son apprentissage.
     Temde_cheerful: Réfléchir à son rapport à la réussite, c'est apprendre à mieux se connaître. #line:07acb4b 
     Ledai_explaining: Le rapport à la réussite détermine ce que l'on veut vraiment. Ce qui aide ensuite à choisir la meilleure stratégie pour y arriver. #line:04d28c0 
     Azul_happy: Nous t'avons déjà proposé d'appréhender les différences de nos quatre profils avec un petit exercice. Nous allons reprendre nos profils, pour que tu puisses mieux cerner le profil de Fred.
@@ -823,6 +823,15 @@ Sapiens_angry: Suffit. Il est temps. Nous devons nous éclipser, laisser { $name
 Ledai_happy: Adieu, { $name }.
 Azul_happy: Que tes songes soient créatifs et originaux. #line:0366dbd 
 Temde_cheerful: Et n'oublie pas de rêver de nous de temps en temps…
+<< fadeIn >>
 << showTitle Fin >>
+<<jump EndLoop>>
 ===
 
+title: EndLoop
+tags: noUi
+position: -1543,1900
+---
+Tutorial: Merci d'avoir joué ! N'hésitez pas à rejouer aux chapitres via le menu pour améliorer votre score ! - L'équipe Play Curious.
+<<jump EndLoop>>
+===

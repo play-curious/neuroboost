@@ -169,18 +169,13 @@ position: -525,562
 << fadeIn >>
 << setBackground bedroom kitchen >>
 << fadeOut >>
-<<if !isTimeOver("12:00")>>
--> Prendre le petit déjeuner (30 min) #once
+-> Prendre le petit déjeuner (30 min) <<if !isTimeOver("12:00")>> #once
     <<jump Petit_dej_Rewind>>
+-> Manger avant l'examen (45 min) <<if isTimeOver("12:00")>> #once
+    <<jump Lunch_Rewind>>
 -> back #line:0fad580 
     << fadeIn >>
     <<jump Action_List_Rewind>>
-<<else>>
--> Manger avant l'examen #once
-    <<jump Lunch_Rewind>>
--> back
-    <<jump Action_List_Rewind>>
-<<endif>>
 ===
 
 title: bureau_subchoice
@@ -457,7 +452,7 @@ Voilà… Les scores s'affichent sur l'écran de la porte principale… Vous ave
 
 Tutorial: Bien joué ! Vous venez de terminer le premier Chapitre.
 
-<< completeLevel Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger. >>
+<< completeLevel Astuce des sages : Pour augmenter votre score, révisez un maximum avant l'examen. >>
 
 Tutorial: Vous pouvez recommencer un Chapitre à tout moment via le menu, pour battre votre score ou simplement revoir l'histoire !
 

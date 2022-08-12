@@ -152,7 +152,7 @@ Fred@holo_excited: J'AI REÇU… LE DERNIER OPUS… DE GRAND THRILL RODEO !!! JE
     You: Ouais, super. J'en ai pas grand-chose à faire, en fait.
     <<endif>>
 -> Ça nous aidera pas à finir le mémoire…
-    Fred@holo_happy: Ah ouais… C'est vrai, tu m'as appelé… J'étais en plein dans le jeu ! J'en suis au chapitre 4 !
+    Fred@holo_happy: Désolé, je suis en plein dans le jeu ! J'en suis au chapitre 4 !
     You: Ouais, super. J'en ai pas grand-chose à faire, en fait.
 Fred@holo_excited: Tu te rends pas compte ! Le dernier opus était  il y a 36 ans, { $name } ! Ça se jouait encore à la MANETTE à l'époque ! Tu te souviens des "manettes" ??
 You: Euh… Ouais, je crois. Bref, on a rendez-vous à la bibliothèque, tu te souviens ?
@@ -963,7 +963,7 @@ position: -1864,35
 << visit Win >>
 
 Une fois chez vous, vous prenez un peu de temps pour éditer le mémoire, puis le rendez le mémoire sur le serveur de l'Académie, convaincu de la qualité de votre travail.
-<< completeLevel >>
+<< completeLevel Astuce des sages : Pour augmenter votre score, prenez compte des atouts de votre équipe. >>
 Fred@holo_smiling: C'est pas mal, ce qu'on a fait, non ? Ça mérite bien un petit GTR…
 You: Carrément !
 <<if !visited("Assemblee_Sages")>>
@@ -1258,6 +1258,8 @@ position: -1002,1672
 << fadeOut >>
 
 Vous voilà encore dans cette parenthèse de douce pénombre maternelle… Vous êtes au calme, seul avec vous-même. Ou presque. Vous avez un compagnon qui ne vous quitte jamais : votre journal mental.
+<< showJournal profiles >>
+
 << completeJournal >>
 <<if !visited("Win")>>
 -> Recommencer la journée

@@ -967,7 +967,7 @@ Votre drone est complet et répond parfaitement aux commandes. À part une erreu
 Puis, vous sortez de la salle de classe. #line:09197a3
 
 << visitPermanent Chapitre2 >>
-<< completeLevel >>
+<< completeLevel Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger. >>
 << visit Tp_Win >>
 
 <<jump Sortir_Classe>>

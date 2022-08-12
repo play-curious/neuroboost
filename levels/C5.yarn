@@ -899,7 +899,7 @@ colorID: 2
 << music Victory >>
 Votre esprit est suffisamment détendu. Vous fermez les yeux, vous relâchez votre corps, vous glissez dans le sommeil. Vous dites enfin adieu à ce vendredi stressant…
 <<if visited("Win")>>
-<< completeLevel >>
+<< completeLevel Astuce des sages : Pour augmenter votre score, tentez de ne pas trop stresser. >>
 <<endif>>
 <<if !visited("Assemblee_Sages")>>
 <<jump Transition_Assemblee>>

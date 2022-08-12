@@ -673,7 +673,7 @@ position: 885,409
 
 << visit Dance >>
 
-<< if isTimeOver("14:00") >>
+<< if isTimeOver("13:59") >>
 Vous arrivez dans les derniers, cependant, le cours n'a pas encore commencé. Plus exactement, votre coach vous attendait.  #line:09eafb6 
 << else >>
 << advanceTimeUntil 14:00 >>
@@ -971,7 +971,7 @@ colorID: 1
 << music Neutral >>
 << set $plannedDay to false >>
 << set $jour to "lundi" >>
-<< advanceTimeUntil 10:00 sleep >>
+<< advanceTimeUntil 10:00 sleep food >>
 << addToGauge sleep 100 >>
 << fadeOut >>
 
@@ -1067,7 +1067,7 @@ L'un d'entre eux n'arrête pas de prendre des notes, un autre passe son temps à
 Leur manière de travailler et de tester vos capacités sont si différentes, ils doivent former une fine équipe. Ils vous rappellent un autre quatuor que vous connaissez bien.
 Au moment des questions-réponses, ils vous laissent développer vos idées et rebondissent sur d'autres sujets. C'est presque trop beau pour être vrai. Vous sortez le sourire au lèvre, convaincu d'avoir réussi.
 << music Victory >>
-<< completeLevel >>
+<< completeLevel Astuce des sages : Pour augmenter votre score, pensez à planifier vos journées. >>
 << advanceTimeBy 0:30 food sleep >>
 <<jump WinExamNight>>
 <<else>>
@@ -1152,11 +1152,7 @@ You: Plutôt bien, en fait ! Je suppose que vous êtes à nouveau là pour me do
 Azul_proud: Et comment ! Non pas que tu en aies besoin, mais cela peut toujours servir !
 -> Suivre Azul
     <<jump Assemblee_Sages>>
--> Recommencer le week-end
-    << fx Warp >>
-    << fadeIn 1500 12ea12 >>
-    << resetLevel >>
-    <<jump Start>>
+-> Passer la séquence des Sages
 << else >>
 Enfin rentré ! L'heure du repos a finalement sonné !
 -> Passer au chapitre suivant
