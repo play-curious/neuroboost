@@ -350,7 +350,18 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         freeChoiceCount++;
       }
 
-      const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
+      let lineId;
+      for (let hash of option.hashtags) {
+        if (hash.startsWith("line")) {
+          lineId = hash.split(":")[1].trim();
+        }
+      }
+
+      if (!lineId) {
+        console.warn("No line id for choice '" + optionText + "'");
+      }
+
+      const selectedOptionId = `${this.metadata.title}|${lineId ?? ""}`;
       if (
         (option.hashtags.includes("once") &&
           this.selectedOptions.includes(selectedOptionId)) ||
@@ -393,9 +404,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this.graphics.setChoice(
         options,
         (id) => {
-          this.selectedOptions.push(
-            `${this.metadata.title}|${this.metadata.choiceId}|${id}`
-          );
+          this.selectedOptions.push(`${this.metadata.title}|${id}`);
           this._advance.bind(this)(id);
         },
         this._hasTag(this.metadata, "subchoice") ? indexOfBack : undefined
