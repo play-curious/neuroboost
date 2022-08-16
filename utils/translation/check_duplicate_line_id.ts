@@ -29,6 +29,8 @@ function lineRecordToString(lineRecord: LineRecord): string {
 }
 
 function go(filenames: string) {
+  let totalDuplicateCount = 0;
+
   for (const filename of filenames) {
     const lineIdToRecords: Record<string, LineRecord[]> = {};
     const yarnFile = fs.readFileSync(filename, "utf8");
@@ -65,5 +67,9 @@ function go(filenames: string) {
       }
       console.log("");
     }
+
+    totalDuplicateCount += duplicateCount;
   }
+
+  if (totalDuplicateCount > 0) process.exit(1);
 }

@@ -1,0 +1,90 @@
+{
+  "method": {
+    "id": "method",
+    "title": "Méthode de révision",
+    "openquestion": "Si tu pouvais apprendre plus facilement ou retenir des informations plus longtemps, qu'est-ce que cela pourrait changer dans ta vie ?",
+    "closedquestion": "Lorsque tu as besoin de réviser, quelle technique utilises-tu ?",
+    "answer1": "Rappel libre",
+    "answer2": "Lecture de notes",
+    "answer3": "Lecture à voix haute",
+    "answer4": "Révision en groupe",
+    "answer5": "Faire des exercices"
+  },
+  "food": {
+    "id": "food",
+    "title": "Alimentation",
+    "openquestion": "Comment pourrais-tu améliorer ton alimentation pour mieux apprendre ?",
+    "closedquestion": "Penses-tu que ton alimentation est saine ?",
+    "answer1": "Oui",
+    "answer2": "Souvent oui",
+    "answer3": "Rarement oui",
+    "answer4": "Non",
+    "answer5": ""
+  },
+  "sleep": {
+    "id": "sleep",
+    "title": "Sommeil",
+    "openquestion": "Quels facteurs te permettent de bien dormir le soir ?",
+    "closedquestion": "De combien d'heures de sommeil as-tu besoin ?",
+    "answer1": "10h ou plus",
+    "answer2": "9h",
+    "answer3": "8h",
+    "answer4": "7h",
+    "answer5": "6h ou moins"
+  },
+  "mentalWorkload": {
+    "id": "mentalWorkload",
+    "title": "Charge mentale",
+    "openquestion": "Comment pourrais-tu faire pour réduire les distracteurs dans ton travail ?",
+    "closedquestion": "Combien de balles sais-tu jongler ?",
+    "answer1": "1",
+    "answer2": "2",
+    "answer3": "3",
+    "answer4": "4",
+    "answer5": "5 ou plus"
+  },
+  "profiles": {
+    "id": "profiles",
+    "title": "Profils d'apprentissage",
+    "openquestion": "As-tu déjà recontré des problèmes en travaillant avec des personnes de profils différents ?",
+    "closedquestion": "De quel sage es-tu le plus proche au niveau du profil d'apprentissage ?",
+    "answer1": "Temdé",
+    "answer2": "Azul",
+    "answer3": "Sapiens",
+    "answer4": "LedAI",
+    "answer5": ""
+  },
+  "stress": {
+    "id": "stress",
+    "title": "Stress",
+    "openquestion": "Lorsque tu es stressé·e, que fais-tu comme activité pour lâcher prise ?",
+    "closedquestion": "A quelle fréquence te trouves-tu en situation de stress ?",
+    "answer1": "Tous les jours",
+    "answer2": "Toutes les semaines",
+    "answer3": "Tous les mois",
+    "answer4": "Rarement",
+    "answer5": ""
+  },
+  "organisation": {
+    "id": "organisation",
+    "title": "Organisation",
+    "openquestion": "Comment fais-tu pour organiser tes priorités, lorsque tu dois jongler avec beaucoup de tâches ?",
+    "closedquestion": "Est-ce que tu étudies le weekend ?",
+    "answer1": "Non, le weekend est sacré",
+    "answer2": "Seulement si je ne peux pas faire autrement",
+    "answer3": "Le weekend, le soir, la journée... ils sont tous pareils",
+    "answer4": "",
+    "answer5": ""
+  },
+  "success": {
+    "id": "success",
+    "title": "Réussite",
+    "openquestion": "En dehors du travail et des études, quels objectifs te fixes-tu dans la vie ?",
+    "closedquestion": "Quel est ton rapport à la réussite ?",
+    "answer1": "Stratégique - Je fais tout pour obtenir les meilleurs résultats",
+    "answer2": "Compréhensive - C'est l'apprentissage qui compte, pas le diplôme",
+    "answer3": "Instrumentale - Je dois juste valider mon année",
+    "answer4": "Relative - Mon but est de faire aussi bien que mes amis",
+    "answer5": ""
+  }
+}
