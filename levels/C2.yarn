@@ -28,7 +28,7 @@ Fred_happy: Ok, je vois que t'es difficile en affaires… En même temps, j'aura
 Fred_excited: Si on gagne le défi des docteurs, tu peux être sûr que je prendrai du temps pour t'aider avec ton drone demain matin. T'en dis quoi ?
 Fred serait prêt à vous donner ses plans ET son aide personnelle pour réussir ce défi ?! Iel tient vraiment à sa réputation, celui-là… En tout cas, vous savez qu'avec ses talents d'ingénierie, vous pourriez rattraper le retard de votre drone !
 
--> C'est quoi, exactement, ce défi ?
+-> C'est quoi exactement, ce défi ?
     Fred_smiling: Le défi du roi de la fête ! Le champion incontesté, c'est BB-Rex. On va devoir l'impressionner si on veut remporter son titre !
     You: BB-Rex ?? On dirait le nom d'un mauvais rappeur !
     Fred_happy: Ouais, je sais, mais c'est lui le champion !
@@ -38,7 +38,7 @@ You: Bon… Tu me laisses pas le choix, là ! On se retrouve vers 21h30 ?
 Fred_smiling: Haha, ça, c'est l'attitude que je préfère ! Allez, à plus tard !
 <<else>>
 You: On se retrouve à la fête à 21 heures, du coup ?
-Fred_happy: Hein ? Je… Ok, à tout-à-l'heure, alors !
+Fred_happy: Hein ? Je… Ok, à tout à l'heure, alors !
 <<endif>>
 
 -> Rentrer
@@ -217,7 +217,7 @@ position: -1349,-851
 << loopFX TVStarwars_LOOP 10000 >>
 Allez, un petit épisode pour se calmer les nerfs avant de partir se défouler. Pas de nouvel épisode aujourd'hui, mais vous en profitez pour revisiter un classique : sur la planète Métopsia, nos héros doivent déjouer les plans du Collectionneur, une créature polymorphe désirant absorber l'ADN de tous les individus.
 << advanceTimeBy 1:00 >>
-L'histoire est si passionnante que vous restez jusqu'à la fin de l'épisode, le "cliffhanger", même si vous l'avez déjà vu : le méchant était en réalité une créature bienveillante, désirant empêcher une incursion extra-terrestre. Quel suspense !
+L'histoire est si passionnante que vous restez jusqu'à la fin de l'épisode, le "cliffhanger", même si vous l'avez déjà vu : le méchant était en réalité une créature bienveillante, désirant empêcher une incursion extraterrestre. Quel suspense !
 << advanceTimeBy 0:30 >>
 << visit Star_Mars_Incursion >>
 << stopFX TVStarwars_LOOP >>
@@ -255,9 +255,9 @@ Fred_excited: Yo, te voilà enfin ! Alors, pas mal, cette fête, non ?
 
 <<if !visited("Chapitre2")>>
 You: Carrément ! Alors, on le commence, ce défi ?
-Fred_excited: Ouais, mais avant ça, il faut trouver notre adversaire, BB-Rex !
+Fred_excited: Ouais, mais avant ça il faut trouver notre adversaire, BB-Rex !
 You: Et il est où, ce… BB-Rex ?
-Fred_happy: Euh… Ça, je sais pas vraiment… Je l'ai jamais vu avant. Mais il paraît que c'est le plus grand fêtard de l'université, alors il devrait pas être difficile à trouver !
+Fred_happy: Euh… Ça, je sais pas vraiment… Je l'ai jamais vu avant. Mais il paraît que c'est le plus grand fêtard de l'université alors il devrait pas être difficile à trouver !
 You: Euh… Ok… On fait quoi en attendant ?
 Fred_smiling: En attendant, allons nous chercher de quoi nous remplir le gosier ! Tiens, un BarBot !
 BarBot: Qu'est-ce que je peux vous offrir, les losers ?
@@ -356,7 +356,7 @@ title: FailSleep
 tags:
 position: -170,-251
 ---
-Enivré par la foule et la musique, vous ne vous rendez pas compte à temps que vous avez dépensé toute l'énergie que vous aviez accumulé.
+Enivré par la foule et la musique, vous ne vous rendez pas compte à temps que vous avez dépensé toute l'énergie que vous aviez accumulée.
 Vous prenez un peu de temps loin des baffles, mais réalisez que vous vous endormez presque instantanément.
 Si vous voulez éviter de dormir n'importe où, vous allez devoir rentrer…
 <<jump Chambre_Soir_Fail>>
@@ -396,7 +396,7 @@ BarBot: Mmmh… Peut-être, mais pour des premières années…
 BarBot: Je suis étonné… que vous ayez appris à rapper !
 << visit Good_Rap >>
 
--> On a beau être jeune, toi tu n'es pas de taille…
+-> On a beau être jeunes, toi tu n'es pas de taille…
     <<jump Good_Rap2>>
 -> Toi t'es qu'un robot, tes rimes sont tellement pauvres…
     <<jump Bad_Rap2>>
@@ -412,7 +412,7 @@ You: Mais quand on rappe on a des punchlines d'argent !
 BarBot: Pfff… Sérieusement ? Faire rimer Argent et Argent…
 BarBot: Venant de la part d'enfants, ça n'est pas très étonnant !
 
--> On a beau être jeune, toi tu n'es pas de taille…
+-> On a beau être jeunes, toi tu n'es pas de taille…
     <<jump Good_Rap2>>
 -> Toi t'es qu'un robot, tes rimes sont tellement pauvres…
     <<jump Bad_Rap2>>
@@ -424,7 +424,7 @@ title: Good_Rap2
 tags:
 position: 142,-26
 ---
-You: On a beau être jeune, toi tu n'es pas de taille…
+You: On a beau être jeunes, toi tu n'es pas de taille…
 Fred_excited: Alors mords la poussière, espèce de tas de ferraille !
 << visit Good_Rap >>
 <<jump End_Rap>>
@@ -436,7 +436,7 @@ position: -89,-10
 ---
 You: Toi t'es qu'un robot, tes rimes sont tellement pauvres…
 Fred_surprised: Euh… En plus t'es… T'as la tête… Tu…
-Fred_angry: Sérieusement, { $name }, t'as pas des rimes encore plus difficiles ?!
+Fred_angry: Sérieusement, { $name }, t'as pas des rimes encore plus difficiles à trouver ?!
 
 <<jump End_Rap>>
 ===
@@ -489,7 +489,7 @@ tags:
 position: -54,166
 ---
 Barbot: …Et de plus ramener vos faces de losers !
-Tous les étudiants vous regardent d'un air déçu, puis reviennent à leurs occupations.
+Tous les étudiants vous regardent d'un air déçu, puis retournent à leurs occupations.
 Fred_sad: Mince… On a pas réussi… Mais au moins on s'est bien amusés. Merci d'être resté jusqu'au bout, { $name }.
 You: Je suis un peu fatigué, là…
 Fred_happy: Tu as raison, on ferait mieux de rentrer. Demain, je dois t'aider avec ton drone ! A plus, tout le monde !
@@ -568,7 +568,7 @@ position: -223,301
 << setBackground class >>
 << fadeOut >>
 
-Vous entrez dans la salle de cours et allumez votre drone. Ce dernier est encore perfectible, vous auriez aimé avoir plus de temps pour le tester et le régler, mais c'est trop tard.
+Vous entrez dans la salle de cours et allumez votre drone. Ce dernier est encore perfectible. Vous auriez aimé avoir plus de temps pour le tester et le régler, mais c'est trop tard.
 Comme vous vous y attendiez, vous pilotez maladroitement l'engin, qui vient s'écraser à l'autre bout de la salle à la moitié de l'examen.
 Vous quittez la salle avec une mine déçue.
 
@@ -584,7 +584,7 @@ Fred_happy: Hey, fais pas cette tête… T'as tenu la moitié du temps, au moins
 
 En voyant vos résultats, Fred affiche une moue gênée… Les professeurs ne vous ont pas raté, vous mettant un D-.
 << hide >>
-Vous tournez les talons sans rien lui dire. Après tout, ce ne serait pas arrivée s'iel vous avait aidé… Au final, vous êtes plus en colère contre vous-même qu'autre chose.
+Vous tournez les talons sans rien lui dire. Après tout, ce ne serait pas arrivé s'iel vous avait aidé… Au final, vous êtes plus en colère contre vous-même qu'autre chose.
 
 << fadeIn >>
 << setBackground bedroom >>
@@ -657,11 +657,11 @@ tags:
 position: 719,-183
 ---
 << music Solo2 >>
-Confiant de vos compétences et fier d'avoir mené le groupe de Galactic Jazz au temps du lycée, vous entamez un shredding digne des plus grands.
+Confiant en vos compétences et fier d'avoir mené le groupe de Galactic Jazz au temps du lycée, vous entamez un shredding digne des plus grands.
 Heureusement, Fred est là pour vous accompagner. Muni de sa Rhythm-Box portable M47, iel vous crée un beat du tonnerre.
 Les cordes rugissent au rythme de vos ongles, se tendent et s'étouffent pour laisser la distorsion s'exprimer.
 Le public est en extase. Vous êtes parvenus à créer un spectacle digne de ce nom.
-BarBot: Ok, je vous laisse ma couronne, les amis, vous l'avez mérité. J'ai pas entendu de licks pareils depuis les seventies !
+BarBot: Ok, je vous laisse ma couronne, les amis, vous l'avez méritée. J'ai pas entendu des licks pareils depuis les seventies !
 Fred_surprised: Qu'est-ce qu'il raconte ?
 << fx Success >>
 Le barbot éjecte 2 gâteaux apéritifs teintés d'or que vous et Fred attrapez au vol.
@@ -698,7 +698,7 @@ C'est comme si vous vous étiez calé sur l'orbite de la Planète Disco. Vous vo
 Vous vous retournez pour constater que Fred vous a rejoint sur la piste de danse !
 Les danseurs s'écartent et vous abandonnent la piste ! Tous les spots et les regards sont fixés sur vous. Vous voilà au centre de l'attention. Au lieu de vous refroidir, cela vous emplit d'énergie et d'enthousiasme. Vous donnez libre cours à votre inspiration, vous entrez en résonance avec le rythme et la joie du public ! #line:03f5ea5 
 Puis, vous estimez qu'il est temps de faire une pause. Vous décrochez progressivement de l'orbite disco, vous saluez trois fois la foule avant de quitter la piste de danse. Votre sortie est suivie par un tonnerre d'applaudissements ! #line:0fa106d 
-Barbot: Wow, je vois que vous êtes plus que familiers avec le monde magique de la disco ! C'était puissant, les amis. Voilà 2 PARTY POINTS pour la peine !
+Barbot: Wow, je vois que vous êtes plus que familiers avec le monde magique du disco ! C'était puissant, les amis. Voilà 2 PARTY POINTS pour la peine !
 << fx Success >>
 Le barbot éjecte 2 gâteaux apéritifs teintés d'or que vous et Fred attrapez au vol.
 Fred_excited: Deux Party Points ?? Trop bien ! On avance deux fois plus vite !
@@ -774,7 +774,7 @@ position: 128,-897
 << advanceTimeBy 0:15 >>
 Barbot: C'est ce que je veux entendre. Allez, bois-moi ça comme un vrai homme.
 BB-Rex vous sert un grand verre contenant un liquide semi-translucide. A l'intérieur, les couleurs virevoltent et se croisent pour former des mélanges.
-Vous avalez le cocktail d'un coup. Vous sentez votre gorge frémir et vous manquez de tout rejetez, tant le mélange est corsé.
+Vous avalez le cocktail d'un coup. Vous sentez votre gorge frémir et vous manquez de tout rejeter, tant le mélange est corsé.
 Barbot: Haha ! C'est ce que j'aime !! Allez, pour la bravoure, voilà 1 Party Point !
 << set $partyPoints to $partyPoints+1 >>
 << removeFromGauge sleep 20 >>
@@ -895,7 +895,7 @@ tags:
 position: -625,119
 ---
 << fx Sleep_LOOP >>
-Vous vous allongez sur le canapé de la cafétéria. Le tissu en nano-fibre se laisse facilement détendre sous votre poids et vous vous endormez vite malgré la musique et la fête alentours.
+Vous vous allongez sur le canapé de la cafétéria. Le tissu en nano-fibre se laisse facilement détendre sous votre poids et vous vous endormez vite malgré la musique et la fête alentour.
 << addToGauge sleep 40 >>
 << advanceTimeBy 1:00 sleep >>
 << stopFX Sleep_LOOP>>
@@ -918,7 +918,7 @@ tags:
 position: -443,-816
 ---
 << music DanseQuiet >>
-Vous vous dirigez vers l'entrée, lessivé, et priant de ne pas être trop épuisé pour demain. Vous êtes en train de reprendre vos affaires quand Fred vous arrête dans votre lancée.
+Vous vous dirigez vers l'entrée, lessivé, et priant pour ne pas être trop épuisé pour demain. Vous êtes en train de reprendre vos affaires quand Fred vous arrête dans votre lancée.
 Fred_surprised: Hey, { $name }, tu t'en vas déjà ?? La soirée a à peine commencé, on doit toujours vaincre BB à son propre jeu !
 You: Je sais pas trop, je suis un peu fatigué, là… En plus, demain matin, on a TP. Tu pourrais rentrer toi aussi !
 Fred_happy: Hors de question, ça ! Allez, reste un peu, le temps d'obtenir le reste des points ! Promis, je t'aiderai avec ton drone !
@@ -948,7 +948,7 @@ position: -349,-969
 << advanceTimeBy 0:30 >>
 << music NegativeSad >>
 << fadeOut >>
-Lessivé, vous décidez de rentrer chez vous avant de ne plus pouvoir assumer le lendemain. Vous laissez Fred derrière, mais tant pis. Après tout, vous auriez dû travailler sur ce drone il ya bien longtemps…
+Lessivé, vous décidez de rentrer chez vous avant de ne plus pouvoir assumer le lendemain. Vous laissez Fred derrière, mais tant pis. Après tout, vous auriez dû travailler sur ce drone il y a bien longtemps…
 Vous vous jetez sur votre lit et vous endormez profondément.
 <<jump MatinLose>>
 ===
@@ -967,7 +967,7 @@ Votre drone est complet et répond parfaitement aux commandes. À part une erreu
 Puis, vous sortez de la salle de classe. #line:09197a3
 
 << visitPermanent Chapitre2 >>
-<< completeLevel >>
+<< completeLevel Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger. >>
 << visit Tp_Win >>
 
 <<jump Sortir_Classe>>
@@ -985,7 +985,7 @@ Fred_smiling: On s'est tous les deux bien débrouillés, non ?
 You: C'est sûr ! J'ai hâte de voir ma note. Merci de m'avoir aidé !
 << setBackground door class-screen>>
 Fred_excited: C'est normal. Oh, les notes viennent de tomber !
-You: Bon… J'ai eu un B… Et toi !
+You: Bon… J'ai eu un B… Et toi ?
 Fred_happy: Un A. C'est génial, tu me rattrapes presque !
 You: Ça te fait peur ?
 Fred_smiling: Héhé, même pas un peu. On se voit demain ?
@@ -1028,7 +1028,7 @@ colorID: 1
 Sapiens_happy: Bonsoir { $name }, content de te revoir parmi nous. Nous allons t'enseigner un deuxième secret pour mieux apprendre. #line:005f939 
 Ledai_happy: Un mode d'emploi pour optimiser les performances de ton moteur biologique ! #line:03dea3d 
 You: Mon moteur biologique ? Mais… Je suis pas une machine, moi !
-Temde_neutral: Très juste, n'en déplaise à Ledai. Ce que veulent dirent ces deux sages, c'est que comme une machine… Tu as besoin d'énergie.
+Temde_neutral: Très juste, n'en déplaise à Ledai. Ce que veulent dire ces deux sages, c'est que comme une machine… Tu as besoin d'énergie.
 Azul_proud: Et c'est de cela qu'on va parler, maintenant ! D'abord, comment bien alimenter ton matériel biologique pour qu'il soit au top !
 Ledai_explaining: Mais aussi, comment le reposer pour le garder au meilleur de sa performance.
 <<jump Sages_FreeChoice>>
@@ -1067,7 +1067,7 @@ position: 2464.5450744628906,392.3604736328125
 ---
 Sapiens_thinking: Ton système biologique, comme ton palmphone, a besoin chaque nuit de recharger sa batterie. #line:0f23713 
 Ledai_explaining: Imagine que ton appareil s'éteigne brutalement parce que sa batterie est à plat. Tu ne peux plus t'en servir, il faut d'abord recharger sa batterie. #line:0b4074e 
-You: Ouais, mais pour ce qui est de mon palmphone, dès qu'il est remonté à 10%, je peux le rallumer et m'en servir. #line:041bf71 
+You: Ouais, mais pour ce qui est de mon palmphone, dès qu'il est rechargé à 10%, je peux le rallumer et m'en servir. #line:041bf71 
 Azul_happy: Ton enveloppe biologique est plus exigeante et plus gourmande. #line:00e89c0 
 Temde_smiling: Elle en demande plus. Une nuit de sommeil ! #line:047de87 
 You: Ça veut dire combien ? #line:019496e 
@@ -1101,7 +1101,7 @@ Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut 
 -> Vrai, seul le nombre de calories compte pour être plein d'énergie
     << fx Failure >>
     Sapiens_angry: Quelle méconnaissance de la mécanique humaine ! Il faut l'entretenir avec soin et régularité. #line:01481b0 
-    Azul_sad: Master Sapiens, { $name } est encore novice et vous avez d'autres quiz à lui poser. #line:05300f3 
+    Azul_sad: Master Sapiens, { $name } est encore novice et vous avez d'autres quiz à lui soumettre.
     Sapiens_thinking: En effet. #line:08df99c 
 -> Faux, il faut veiller à manger équilibré plutôt qu'en grande quantité
     << fx Success >>
@@ -1109,26 +1109,26 @@ Sapiens_thinking: La voici. Cela ne sert à rien de manger équilibré. Il faut 
     Azul_cheerful: Est-ce la fin de la séance de quiz ? #line:0bb5bcf 
     Sapiens_thinking: Pas du tout, j'ai encore deux fiches en stock. Voici la troisième:  #line:0bb34b1 
     
-Sapiens_thinking: L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut dérégler l'horloge biologique, celle du sommeil. #line:0c5a2c7 
+Sapiens_thinking: L'activité physique fait du bien au métabolisme étudiant. Mais le soir ou la nuit, elle peut dérégler l'horloge biologique, celle du sommeil.
 
 -> Vrai, l'activité physique peut dérégler le sommeil
     << fx Success >>
     Sapiens_happy: Exactement ! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand ! #line:0151139 
     Temde_smiling: Très bien, mais faites court et concis ! { $name } est fatigué ! #line:024a0ce 
-    Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue. #line:063cb95 
+    Ledai_explaining: Ce que Master Sapiens veut dire, c'est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue. #line:063cb95 
 -> Faux, l'activité physique est forcément positive
     << fx Failure >>
     Sapiens_angry: Encore une idée reçue, une affirmation infondée! L'activité physique et sportive, oui, mais pas tout le temps et n'importe quand! #line:02baefc 
-    Temde_sad: Très bien, mais faites court et concis! { $name } est fatiguée! #line:0eb5a88 
+    Temde_sad: Très bien, mais faites court et concis! { $name } est fatigué !
     Sapiens_concerned: C'est comme ça quand on ne prend pas soin de son métabolisme! #line:07ef4f6 
-    Ledai_explaining: Ce que Master Sapiens veut dire est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue. #line:0fcdca1 
+    Ledai_explaining: Ce que Master Sapiens veut dire, c'est que l'activité physique trop tardive empêche l'engin biologique de s'endormir la nuit venue. #line:0fcdca1 
 
 Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Après une soirée festive inconséquente et immodérée jusqu'à l'aube, le seul moyen pour récupérer de cette nuit sans sommeil est de dormir deux fois plus longtemps la nuit suivante. #line:01528df 
 
 -> Vrai, il faut dormir deux fois plus après avoir être privé de sommeil
     << fx Failure >>
-    Sapiens_angry: Non-sens ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! #line:00201f3 
-    Azul_sad: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment. #line:0976d40 
+    Sapiens_angry: Non-sens ! Le métabolisme ne stocke pas le sommeil jour après jour, pas plus qu'il ne récupère l'énergie perdue en emmagasinant plus d'une charge journalière !
+    Azul_sad: En clair, Master Sapiens te rappelle qu'il faut dormir chaque nuit suffisamment chaque nuit.
     Sapiens_thinking: Je profite de la remarque d'Azul pour poser une question subsidiaire. Pour recharger ton métabolisme, combien d'heures tu dois dormir chaque jour ? #line:02c089d 
     -> 8 heures #line:08035d4 
         <<jump huit_heures>>
@@ -1136,7 +1136,7 @@ Sapiens_thinking: Et je n'ai pas fini. Il me reste la dernière fiche test!  Apr
         <<jump six_10_heures>>
 -> Faux, il suffit de faire des nuits complètes pour se remettre dans le rythme
     << fx Success >>
-    Sapiens_happy: Bien sûr ! Pas plus que le métabolisme stocke du sommeil jour après jour, il ne peut récupérer l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que… #line:0bc13d5 
+    Sapiens_happy: Bien sûr ! Le métabolisme ne stocke pas le sommeil jour après jour, pas plus qu'il ne récupère l'énergie perdue en emmagasinant plus d'une charge journalière ! D'ailleurs, cela me fait penser que…
     Temde_neutral: Non non, on coupe ! Le temps presse ! #line:0ff8a03 
     Ledai_explaining: En effet, on va te renvoyer chez toi, prends le temps de noter tout ce que tu as appris sur ton journal mental ! #line:083bddf 
     <<jump journal_mental>> 
