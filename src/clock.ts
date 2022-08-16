@@ -5,20 +5,12 @@ import * as tween from "booyah/src/tween";
 import * as easing from "booyah/src/easing";
 
 import * as extension from "./extension";
+import { translateInterface } from "./wrapper/i18n";
+import i18n from "./generated/i18n";
 
 export type ResolvableTime = `${number}:${number}`;
 
 export const dayMinutes = 60 * 24;
-
-export const dayNames = [
-  "Lundi",
-  "Mardi",
-  "Mercredi",
-  "Jeudi",
-  "Vendredi",
-  "Samedi",
-  "Dimanche",
-];
 
 export function parseTime(
   time: ResolvableTime
@@ -84,7 +76,10 @@ export class Clock extends extension.ExtendedCompositeEntity {
     );
     const minutes = this._minutesSinceMidnight % 60;
     const time = `${hours} : ${minutes < 10 ? "0" + minutes : minutes}`;
-    const dayName = dayNames[days % 7];
+    const dayName = translateInterface(
+      this,
+      ("day_" + (days % 7)) as i18n[keyof i18n]["interface"][number]["id"]
+    );
 
     this._textBox.text = `${time}\n${dayName}`;
   }

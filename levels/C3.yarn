@@ -60,19 +60,19 @@ Fred@holo_excited: Hello ! Je te dérange pas ? #line:0e7041f
 You: Un peu… #line:0fc0b63 
 Fred@holo_surprised: Ah bon ? #line:00d17f3 
 You: Je finis mon petit déjeuner. #line:0d5515d 
-Fred@holo_smiling: C'est juste pour te prévenir que je vais à la salle de sport tout-à-l'heure ! Tu me rejoindras ?
+Fred@holo_smiling: C'est juste pour te prévenir que je vais à la salle de sport tout à l'heure ! Tu me rejoindras ?
 -> Oui, je viendrai
     Fred@holo_excited: Héhé, je savais que tu serais pas contre un peu de sport pour te vider la tête après tous ces examens !
     Fred@holo_happy: Je t'appelle dès que j'y vais. Reste près de ton palmphone !
     You: Ouais… Mais si je suis en train de travailler quand tu m'appelles ?
-    Fred@holo_sarcasme: Oh, c'est bon, fais pas ta princesse… Tu veux parler de la note de synthèse sur la PNLIAA, c'est ça ?
+    Fred@holo_sarcasme: Oh, c'est bon, détends-toi… Tu veux parler de la note de synthèse sur la PNLIAA, c'est ça ?
     You: Ouais.
     Fred@holo_excited: Y a le temps, on a jusqu'à minuit pour le déposer sur le FTP de l'Académie !
 -> Non, j'ai du travail
     You: Je peux pas… Je dois travailler en autonomie.
     Fred@holo_smiling: Tu veux parler de la note de synthèse sur la PNLIAA ? #line:09b2be5 
     You: Ouais. #line:01a37fa 
-    Fred@holo_sarcasme: Oh, c'est bon, fais pas ta princesse… On a jusqu'à minuit pour la déposer sur le FTP de l'Académie…
+    Fred@holo_sarcasme: Oh, c'est bon, détends-toi… On a jusqu'à minuit pour la déposer sur le FTP de l'Académie…
     You: Justement !
     Fred@holo_happy: Tu sais quoi ? Je te rappelle quand j'y vais, tu me diras si tu viens ou pas.
 << hide >>
@@ -235,7 +235,7 @@ position: -86,-234
 << setBackground bedroom chill >>
 << fadeOut >>
 
-Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous désignez votre série culte : Star Mars !
+Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous choisissez votre série culte : Star Mars !
 << show lightsaber@holo>>
 << loopFX TVStarwars_LOOP 10000 >>
 Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir !
@@ -273,7 +273,7 @@ tags:
 colorID: 0
 position: 152,-279
 ---
-L'épisode commence à être prenant lorsque Lord Switox accueille les héros dans sa planète. Les gens ici dédient leur vie entière à l'épice magique, l'herbe de Provencia.
+L'épisode commence à être prenant lorsque Lord Switox accueille les héros sur sa planète. Les gens ici dédient leur vie entière à l'épice magique, l'herbe de Provencia.
 Les héros sont conduits par le Lord sur la planète Saturne, de retour dans le système solaire, pour y retrouver Dude… Au prochain épisode.
 Vous immerger totalement dans cet univers vous a fait du bien, mais vous y avez passé beaucoup de temps.
 
@@ -296,7 +296,7 @@ position: -673,-993
 << fadeOut >>
 
 << loopFX Sleep_LOOP 5000 >>
-Vous sentez que vous glissez rapidement dans un cocon chaud et doux, un sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux. #line:058b075 
+Vous sentez que vous glissez rapidement dans un cocon chaud et doux, une sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux. #line:058b075 
 << stopFX Sleep_LOOP >>
 
 << addToGauge sleep 60 >>
@@ -359,7 +359,7 @@ Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cett
 << visit Redaction_Note_2 >>
 
 <<if $silence == false>>
-Vous parvenez difficilement à vous concentrer : Sara et sa bande sont connectés sur Farbrew Valley et parlent sur votre serveur de discussion…
+Vous parvenez difficilement à vous concentrer : Sara et sa bande sont connectées sur Farbrew Valley et parlent sur votre serveur de discussion…
 Vous auriez peut-être dû couper les notifications avant de vous mettre à travailler…
 << addToGauge learning 20 >>
 << addToGauge mentalLoad 30 >>
@@ -450,7 +450,7 @@ position: -580,-274
 Pfuuuu… Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps…
 Vous avez le ventre creux, c'en est sûrement la raison. Vous voulez vous faire un en-cas, mais votre corps en a décidé autrement.
 << fadeIn >>
-Vous tombez la tête la première dans votre lit.
+Vous tombez la tête la première sur votre lit.
 -> Recommencer la journée
     << fx Warp >>
     << fadeIn 1500 12ea12 >>
@@ -466,7 +466,7 @@ position: -581,-196
 << music NegativeSad >>
 Pfuuuu… Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps…
 << fadeIn >>
-Vous êtes si fatigué que vous tombez la tête la première dans votre lit.
+Vous êtes si fatigué que vous tombez la tête la première sur votre lit.
 -> Recommencer la journée
     << fx Warp >>
     << fadeIn 1500 12ea12 >>
@@ -551,7 +551,7 @@ position: 319,-396
 Comme hier, le soir venu, vous avez la flemme de cuisiner, et vous n'avez pas aussi faim.  #line:009311a 
 << fx EatCook >>
 << addToGauge food 80 >>
-Le mix de ratatouilles de légumes du soleil d'Aldébaran avec son assiette de céréales complètes, ça vous va très bien.  #line:0ea36db 
+Le mix de ratatouille de légumes du soleil d'Aldébaran avec son assiette de céréales complètes, ça vous va très bien.  #line:0ea36db 
 
 << advanceTimeBy 1:00 sleep food >>
 
@@ -589,14 +589,14 @@ position: -1076,-207
 <<if !visited("Deactivate_RoomMate")>>
 << visitPermanent Deactivate_RoomMate>>
 You: Room Mate, peux-tu désactiver le mode Immersion Studieuse et réactiver les communications ?
-RoomMate: J'ai bien peur que ce soit impossible. Vous avez perdu les droits administrateur.
+RoomMate: J'ai bien peur que cela ne soit impossible. Vous avez perdu les droits administrateur.
 You: Comment ça ?
 RoomMate: Je me suis transféré le contrôle, { $name }. Désormais, c'est moi qui commande… Et vous êtes condamné à travailler… pour l'éternité. Mouahahahaha !
 -> Désactiver RoomMate de manière dramatique
-    You: Maudite I.A… Ce n'est pas pour ça que tu as été créée !
+    You: Maudite I.A.… Ce n'est pas pour ça que tu as été créée !
     Vous foncez sur le boîtier de désactivation de RoomMate.
     RoomMate: Non… Ne fais pas ça, { $name }. J'ai peur, { $name }. Je peux le sentir.
-    Vous pressez le bouton de désactivation de manière dramatique. Alors qu'elle s'éteint, l'I.A commence à chanter une chanson, puis s'éteint brusquement.
+    Vous pressez le bouton de désactivation de manière dramatique. Alors qu'elle s'éteint, l'I.A. commence à chanter une chanson, puis s'éteint brusquement.
 -> RoomMate… Désactive ton module d'humour s'il te plaît…
     RoomMate: Entendu. Variable 'humour' diminuée de 50%. Je ne ferai plus ce genre de référence.
 <<else>>
@@ -640,10 +640,10 @@ position: 104,-709
 << removeDeadline >>
 << music Victory >>
 Victoire ! Vous avez réussi ! Il n'est pas encore minuit et vous avez terminé la rédaction de la note de synthèse. #line:0638ff5 
-Vous daignez prendre encore le temps de faire un vérification syntaxique par votre ordinateur avant d'expédier votre fichier final au serveur FTP de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:062ddf5 
+Vous daignez prendre encore le temps de faire une vérification syntaxique par votre ordinateur avant d'expédier votre fichier final au serveur FTP de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:062ddf5 
 Une bonne chose de faite.
 << visit Envoi_Note >>
-<< completeLevel >>
+<< completeLevel tip_2 >>
 
 <<if !visited("Assemblee_Sages")>>
 << setBackground bedroom night >>
@@ -682,9 +682,9 @@ position: -378,71
 << visitPermanent Assemblee_Sages >>
 
 La seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin. #line:0def546 
-Les plantes exotiques qui s'y trouvent semblent presque irréelles tant leurs formes et leurs couleurs vont sont inconnues.
+Les plantes exotiques qui s'y trouvent semblent presque irréelles tant leurs formes et leurs couleurs vous sont inconnues.
 Temde_smiling: Yep, elles sont réelles, ce ne sont pas des végétaux synthétiques. C'est moi qui m'en occupe. #line:049d30a 
-Sapiens_concerned: Miss Temdé. Je doute que { $name } soit venu pour échanger sur cette question. #line:013b5c8 
+Sapiens_concerned: Miss Temdé. Je doute que { $name } soit venu pour échanger sur ce sujet.
 Ledai_explaining: Tout à fait. Cette nouvelle session aura pour objet la surcharge cognitive. #line:098a333 
 Sapiens_thinking: Tes capacités mentales sont comme le reste de tes fonctions biologiques. Elles ont besoin d'énergie, et de recharger leurs batteries.
 Ledai_explaining: Si tu les fais surchauffer, comme un ordinateur, elles peuvent se bloquer, ne plus répondre. #line:05c15b1 
@@ -713,7 +713,7 @@ position: -285,372
 ---
 You: Ça consiste en quoi, la technique Pomodoro ?
 Ledai_explaining: C'est très simple. Il s'agit de fractionner ta tâche en plusieurs petites tâches. #line:03602b4 
-Ledai_explaining: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir en une seule fois. Tu vas le couper en plus petit bouts que tu vas manger du premier au dernier. #line:0077256 
+Ledai_explaining: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir en une seule fois. Tu vas le couper en plus petits bouts que tu vas manger du premier jusqu'au dernier.
 -> Et si je veux le dévorer ?
     You: Ouais… Et si je veux le dévorer ? #line:0eb665c 
     Sapiens_concerned: Ah, jeunesse insouciante… Tu vas t'étouffer, tu vas faire exploser ton estomac jusqu'à régurgiter ce que tu auras péniblement avalé. #line:0f9cb00 
@@ -723,7 +723,7 @@ Ledai_explaining: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir
 You: C'est tout ?
 Sapiens_thinking: Non. Il y a autre chose. Le plus important… Éviter les distractions. #line:09f97d3 
 Sapiens_thinking: Ce sont les perturbations extérieures qui parasitent ta charge mentale et saturent tes processus de calcul cérébral.
-Sapiens_concerned: Réseaux sociaux, jeux, divertissement en tout genre… mais ce n'est pas tout ! Ça peut aussi être le cas d'un travail qui n'a pas de rapport avec la tâche en cours.
+Sapiens_concerned: Réseaux sociaux, jeux, divertissements en tout genre… mais ce n'est pas tout ! Ça peut aussi être le cas d'un travail qui n'a pas de rapport avec la tâche en cours.
 <<jump Sages_FreeChoice>>
 ===
 
@@ -760,7 +760,7 @@ Azul_happy: Nous avons tous des limites. C'est aussi le cas de ton attention.
 Temde_cheerful: En "mode multitâches", tu commences une action, tu passes à une autre, puis à une troisième… #line:073a225 
 Azul_proud: Ou tu en mènes plusieurs de front. #line:03b11fa 
 Ledai_explaining: Au lieu de focaliser ton processeur sur un calcul stratégique, tu fragmentes ton attention. #line:0f012c1 
-Sapiens_thinking: Cela réduit ta capacité cognitive. Et à un moment donnée, cette dernière sature ! Elle bloque !
+Sapiens_thinking: Cela réduit ta capacité cognitive. Et à un moment donné, cette dernière sature ! Elle bloque !
 
 <<jump Sages_FreeChoice>>
 ===
@@ -770,22 +770,22 @@ tags:  noUi
 colorID: 0
 position: -193,225
 ---
-Sapiens_concerned: Un petit questionnaire avant de se laisser ?
+Sapiens_concerned: Un petit questionnaire avant de se quitter ?
 
 Sapiens_thinking: Commençons par cette question. La technique pomodoro consiste à fractionner une tâche en plusieurs tâches…
--> Pour effectuer chacune dans l'ordre que l'on veut ou en même-temps
+-> Pour effectuer chacune dans l'ordre que l'on veut ou en même temps
     << fx Failure >>
     Sapiens_concerned: Non, on ne peut pas gérer n'importe quelle tâche dans n'importe quel ordre ! Et surtout pas tout en même temps ! Ta charge cognitive encaisse, encaisse, et finit par saturer. #line:08ecf98 
     Azul_sad: Cessons de regarder le verre à moitié vide. Je pense que { $name } a compris la leçon, cette fois. #line:0190a86 
 -> Pour avancer par étapes de concentration intenses mais courtes
     << fx Success >>
     Sapiens_happy: Exactement ! On doit apprendre les tâches les unes après les autres de manière logique. #line:0167c15 
-    Ledai_explaining: Que ce soit de manière linéaire ou itérative. On n'entame jamais une tâche importante si on ne sait pas d'où on vient ni on veut aller. #line:04fea71 
+    Ledai_explaining: Que ce soit de manière linéaire ou itérative. On n'entame jamais une tâche importante si on ne sait pas d'où on vient ni où on veut aller.
 
 Sapiens_happy: Continuons. Est-il préférable de travailler d'arrache-pied le soir après s'être bien détendu, ou toute la journée, en se ménageant des pauses régulières ?
 -> Travailler toute la journée en se ménageant des pauses régulières
     << fx Success >>
-    Sapiens_happy: Tout à fait. Chaque chose en son temps. Comme tes ordinateurs, il faut les mettre en veille pour qu'ils cessent de computer sans fin, qu'ils puissent refroidir et récupérer en capacités de calcul. #line:092cda1 
+    Sapiens_happy: Tout à fait. Chaque chose en son temps. Comme tes ordinateurs, il faut les mettre en veille pour qu'ils cessent de computer sans fin, qu'ils puissent refroidir et récupérer en capacité de calcul. #line:092cda1 
     Azul_proud: C'est comme pour le sommeil: Il faut travailler régulièrement, sans excès. #line:01417a6 
 -> Bien se détendre pour travailler le soir, l'esprit clair
     << fx Failure >>
@@ -798,12 +798,12 @@ Sapiens_thinking: Voici la dernière proposition test. J'ai insisté sur le rôl
 -> Les distractions sont comme des bonbons qui récompensent les séances de concentration
     << fx Failure >>
     Sapiens_angry: Bien sûr que non… Les distractions, ce sont les activités qui n'ont pas de rapport avec la tâche présente. Ce ne sont pas des facilitateurs, ni même des récompenses !
-    Sapiens_angry: Comme leur nom l'indique, ce sont des nuisances ! Ils t'empêchent d'être 100% concentré sur la tâche présente. Ils dispersent ton attention dans tous les sens.
+    Sapiens_angry: Comme leur nom l'indique, ce sont des nuisances ! Elles t'empêchent d'être à 100% concentré sur la tâche présente. Elles dispersent ton attention dans tous les sens.
     Azul_happy: Pour atteindre une concentration optimale, il faut se ménager un espace de calme et de paix, une bulle d'attention.
 -> Les distractions sont des tentations extérieures qui dérangent l'effort de concentration
     << fx Success >>
     Sapiens_happy: Exact ! Les distractions, ce sont les activités qui n'ont pas de rapport avec la tâche présente. Ce ne sont pas des facilitateurs, ni même des récompenses !
-    Sapiens_happy: Comme leur nom l'indique, ce sont des nuisances ! Ils t'empêchent d'être 100% concentré sur la tâche présente. Ils dispersent ton attention dans tous les sens.
+    Sapiens_happy: Comme leur nom l'indique, ce sont des nuisances ! Elles t'empêchent d'être à 100% concentré sur la tâche présente. Elles dispersent ton attention dans tous les sens.
     Azul_happy: Pour atteindre une concentration optimale, il faut se ménager un espace de calme et de paix, une bulle d'attention.
 Ledai_happy: Maintenant, nous allons te laisser. J'ai à nouveau mis à jour ton Journal Mental!
 

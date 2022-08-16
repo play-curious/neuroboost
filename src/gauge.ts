@@ -7,14 +7,8 @@ import * as easing from "booyah/src/easing";
 import * as extension from "./extension";
 import * as variable from "./variable";
 import { SpritePath } from "./images";
-
-export const gaugesNames = {
-  learning: `Apprentissage`,
-  sleep: `Énergie`,
-  food: `Nutrition`,
-  mentalLoad: `Charge Mentale`,
-  stress: `Stress`,
-};
+import { translateInterface } from "./wrapper/i18n";
+import i18n from "./generated/i18n";
 
 export interface GaugeLimits {
   /** The minimum value for the gauge to be yellow */
@@ -26,7 +20,7 @@ export interface GaugeLimits {
 
 const defaultGaugeLimits = { minMedium: 33, minHigh: 66 };
 
-export const gaugeLevels: Record<keyof typeof gaugesNames, GaugeLimits> = {
+export const gaugeLevels: Record<string, GaugeLimits> = {
   learning: { minMedium: 50, minHigh: 80 },
   sleep: defaultGaugeLimits,
   food: defaultGaugeLimits,
@@ -106,7 +100,10 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     this._on(this._container, "pointerover", () => {
       let tooltipX = this._center.x;
       this._tooltip = this.makeText(
-        `${gaugesNames[this.name]}\n${this._value.toFixed(0)} %`,
+        `${translateInterface(
+          this,
+          ("gauge_" + this.name) as i18n[keyof i18n]["interface"][number]["id"]
+        )}\n${this._value.toFixed(0)} %`,
         {
           fill: "0xFFF",
           fontFamily: "Ubuntu",

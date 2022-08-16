@@ -11,6 +11,8 @@ import * as popup from "./popup";
 import * as journal from "./journal";
 import * as title from "./title";
 import * as chapter_menus from "./chapter_menus";
+import i18n from "./generated/i18n";
+import { translateInterface } from "./wrapper/i18n";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (
@@ -327,7 +329,9 @@ export const commands: Record<string, Command> = {
     this.disable();
     this.activate(
       new entity.EntitySequence([
-        new journal.JournalScene(name),
+        new journal.JournalScene(
+          name as i18n[keyof i18n]["journal"][number]["id"]
+        ),
         new entity.FunctionCallEntity(() => {
           // Restore background
           this.graphics.setBackground(
@@ -341,19 +345,41 @@ export const commands: Record<string, Command> = {
   },
 
   showTitle(...words: string[]): entity.Entity {
-    const text = words.join(" ");
+    let text;
+    if (/^\d+$/.test(words[1])) {
+      text = translateInterface(this, "chapitre_nom", {
+        chapterNumber: words[1],
+      });
+    } else {
+      text = translateInterface(
+        this,
+        ("chapitre_" +
+          words
+            .join(" ")
+            .toLowerCase()) as i18n[keyof i18n]["interface"][number]["id"],
+        {
+          chapterNumber: words[1],
+        }
+      );
+    }
     return new title.Title(text);
   },
 
-  completeLevel(...hintWords: string[]): entity.Entity {
+  completeLevel(hintKey: string): entity.Entity {
     const score = this.calculateScore();
-    return this.showAndSaveScore(String(score), hintWords);
+    return this.showAndSaveScore(
+      String(score),
+      translateInterface(
+        this,
+        hintKey as i18n[keyof i18n]["interface"][number]["id"]
+      )
+    );
   },
 
   //only completes the C7 level
-  completeLevelC7(...hintWords: string[]): entity.Entity {
+  completeLevelC7(): entity.Entity {
     const score = this.calculateC7Score();
-    return this.showAndSaveScore(String(score), hintWords);
+    return this.showAndSaveScore(String(score), "");
   },
 
   completeSages(): void {

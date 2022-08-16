@@ -29,11 +29,11 @@ Comme tous les matins, vous vous réveillez dans votre chambre d'étudiant de l'
 << screenshake 10 600 >>
 Votre palmphone vibre : <b>Fred</b> veut vous parler. #line:0c10bcd
 -> Prendre l'appel #line:0c4a7b0
-<<jump Appel_Fred_Rewind>>
+    <<jump Appel_Fred_Rewind>>
 -> Rejeter l'appel <<if visited("FredCall")>> #line:07e6150
-<< stopFX PhoneRing_LOOP >>
-Vous savez déjà ce que Fred veut vous dire, alors à quoi bon… Vous le retrouverez à 14h avant l'examen ! #line:0f1aa35
-<<jump Phone_off_Rewind>>
+    << stopFX PhoneRing_LOOP >>
+    Vous savez déjà ce que Fred veut vous dire, alors à quoi bon… Vous le retrouverez à 14h avant l'examen ! #line:0f1aa35
+    <<jump Phone_off_Rewind>>
 ===
 
 title: Appel_Fred_Rewind
@@ -143,13 +143,13 @@ Déjà midi passé ! C'est bientôt l'heure de l'examen ! #line:0d163e5
 <<endif>>
 
 -> Cuisine@cuisine #line:0b8d567
-<<jump cuisine_subchoice>>
+    <<jump cuisine_subchoice>>
 -> Bureau@bureau #line:0027a0c
-<<jump bureau_subchoice>>
+    <<jump bureau_subchoice>>
 -> Salon@salon #line:021edd5
-<<jump salon_subchoice>>
+    <<jump salon_subchoice>>
 -> Porte@porte
-<<jump porte_subchoice>>
+    <<jump porte_subchoice>>
 ===
 
 title: porte_subchoice
@@ -157,9 +157,9 @@ tags: subchoice
 position: -525,562
 ---
 -> Aller à l'examen (passer jusqu'à 14h) #line:0e25052
-<<jump Check_Results>>
+    <<jump Check_Results>>
 -> back
-<<jump Action_List_Rewind>>
+    <<jump Action_List_Rewind>>
 ===
 
 title: cuisine_subchoice
@@ -171,15 +171,15 @@ position: -525,562
 << fadeOut >>
 <<if !isTimeOver("12:00")>>
 -> Prendre le petit déjeuner (30 min) #once #line:0c8469b
-<<jump Petit_dej_Rewind>>
+    <<jump Petit_dej_Rewind>>
 -> back #line:0fad580
-<< fadeIn >>
-<<jump Action_List_Rewind>>
+    << fadeIn >>
+    <<jump Action_List_Rewind>>
 <<else>>
 -> Manger avant l'examen #once #line:0d1ea2b
-<<jump Lunch_Rewind>>
+    <<jump Lunch_Rewind>>
 -> back
-<<jump Action_List_Rewind>>
+    <<jump Action_List_Rewind>>
 <<endif>>
 ===
 
@@ -191,14 +191,14 @@ position: -993.6492929458618,-75.37680292129517
 << setBackground bedroom desk >>
 << fadeOut >>
 -> Passer du temps sur le chat avec un pote (Au moins 1h…) <<if !visited("Chat")>> #line:026de4e
-<<jump Chat_Rewind>>
+    <<jump Chat_Rewind>>
 -> Réviser cette fichue Astronometric Data Management (2h) <<if !visited("Revision")>> #line:070f359
-<<jump Revision_Rewind>>
+    <<jump Revision_Rewind>>
 -> Essayer de restituer les notions du cours, sans aide (2h) <<if !visited("Rappel_libre")>> #line:0310da3
-<<jump Rappel_libre>>
+    <<jump Rappel_libre>>
 -> back #line:0a06fb6
-<< fadeIn >>
-<<jump Action_List_Rewind>>
+    << fadeIn >>
+    <<jump Action_List_Rewind>>
 ===
 
 title: salon_subchoice
@@ -209,9 +209,9 @@ position: -1427,217
 << setBackground bedroom chill >>
 << fadeOut >>
 -> Regarder votre série préférée (Au moins 2h…) <<if !visited("BingeTV")>> #once #line:0aad3a9
-<<jump BingeTV_Rewind>>
+    <<jump BingeTV_Rewind>>
 -> back #line:0341673
-<<jump Action_List_Rewind>>
+    <<jump Action_List_Rewind>>
 ===
 
 title: Lunch_Rewind
@@ -457,7 +457,7 @@ Voilà… Les scores s'affichent sur l'écran de la porte principale… Vous ave
 
 Tutorial: Bien joué ! Vous venez de terminer le premier Chapitre. #line:01cbd8a
 
-<< completeLevel Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger. >>
+<< completeLevel tip_0 >>
 
 Tutorial: Vous pouvez recommencer un Chapitre à tout moment via le menu, pour battre votre score ou simplement revoir l'histoire ! #line:06641d4
 
@@ -479,9 +479,9 @@ You: Ce serait sympa, mais… #line:0afcf1a
 <<jump Sages_Victoire>>
 <<else>>
 -> Réécrire dans le Journal mental #line:066c2c9
-<< showJournal method >>
-<< completeJournal >>
-<< jump AfterJournal >>
+    << showJournal method >>
+    << completeJournal >>
+    << jump AfterJournal >>
 -> Passer au chapitre suivant #line:03dd8b9
 <<endif>>
 ===
@@ -507,11 +507,11 @@ Hélas, vous avez encore une fois échoué votre examen ! L'onirique Miss Temdé
 Temde_sad: Je vois que tu n'as pas écouté nos conseils à la lettre ! Tu veux les écouter à nouveau ? #line:06346d2
 
 -> Écouter à nouveau les conseils des Sages #line:0adf5f4
-<<jump Assemblee_Sages>>
+    <<jump Assemblee_Sages>>
 -> Recommencer la journée #line:001fc21
-<< hide >>
-<< resetLevel >>
-<< jump Start>>
+    << hide >>
+    << resetLevel >>
+    << jump Start>>
 
 << setTime 8:15 >>
 
@@ -595,17 +595,17 @@ Sérieusement ! Même en l'ayant passé la semaine dernière, vous avez quand-m�
 
 Temde_neutral: Allons, ne sois pas défaitiste, { $name }, l'apprentissage de la métacognition n'est pas évident au début, mais nous allons tout faire pour t'aider. Viens, suis-moi une fois de plus. #line:04dd6e8
 -> On va encore remonter le temps ? #line:0984f16
-You: Où ça ? On va encore remonter le temps ? #line:02b35e3
+    You: Où ça ? On va encore remonter le temps ? #line:02b35e3
 Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre. #line:07ab599
-<<jump Assemblee_Sages>>
+    <<jump Assemblee_Sages>>
 -> Suivre Miss Temdé #line:0c2fcc4
-<<jump Assemblee_Sages>>
+    <<jump Assemblee_Sages>>
 -> (Passer la séquence des Sages) #line:0f8916f
-<< fx Warp >>
-<< fadeIn 1500 12ea12 >>
-<< hide ! >>
-<< resetLevel >>
-<<jump Start>>
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << hide ! >>
+    << resetLevel >>
+    <<jump Start>>
 ===
 
 title: Sages_Victoire
@@ -617,15 +617,15 @@ Temde_neutral: { $name } ! Je vois que tu es déjà parvenu à t'améliorer par 
 You: Euh… J'étais avec mon pote là… #line:02f04a7
 Temde_smiling: Pas d'inquiétude, nous te renverrons à cet instant précis dès que nous aurons terminé. Pour l'instant, viens, suis-moi une fois de plus. #line:09f63da
 -> On va encore remonter le temps ? #line:0124be3
-You: Où ça ? On va encore remonter le temps ? #line:0b51b91
-Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre. #line:08e21fc
-<<jump Assemblee_Sages>>
+    You: Où ça ? On va encore remonter le temps ? #line:0b51b91
+    Temde_cheerful: Patience, { $name }. Pour l'instant, cap vers l'Assemblée des Sages. Nous avons quelques astuces à t'apprendre. #line:08e21fc
+    <<jump Assemblee_Sages>>
 -> Suivre Miss Temdé #line:04de304
-<<jump Assemblee_Sages>>
+    <<jump Assemblee_Sages>>
 -> (Passer la séquence des Sages) #line:059fae8
-<< fx Warp >>
-<< fadeIn 1500 12ea12 >>
-<< hide ! >>
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << hide ! >>
 ===
 
 title: Assemblee_Sages
@@ -667,11 +667,11 @@ position: -366.2418212890625,1422.0413818359375
 Azul_happy: Alors, que veux-tu approfondir maintenant ? #line:01c1138
 
 -> Mémoire courte et mémoire longue #line:0f5e666
-<<jump Types_Memoire>>
+    <<jump Types_Memoire>>
 -> Comment consolider ses connaissances #line:0291ef7
-<<jump Routinisation>>
+    <<jump Routinisation>>
 -> C'est bon pour moi ! (Quitter les sages) #line:0505844
-<<jump Quit_Sages>>
+    <<jump Quit_Sages>>
 ===
 
 title: Types_Memoire
@@ -693,7 +693,7 @@ Ledai_explaining: Oui. Ce qui fait que quand tu es à la recherche d'une référ
 Sapiens_thinking: Tout à fait, c'est le chaos ! La panique ! La catastrophe !.. Alors que <b>la mémoire longue</b>… #line:03bbbec
 
 -> C'est quoi la mémoire longue? #line:0617b83
-<<jump Memoire_Longue>>
+    <<jump Memoire_Longue>>
 ===
 
 title: Memoire_Longue
@@ -728,10 +728,10 @@ You: Et comment je fais pour que ma pratique devienne une routine? #line:0439386
 Ledai_explaining: Tout simplement en répétant, en appliquant. #line:0832a45
 
 << if visited("Rappel_libre") >>
-You: C'est la méthode du rappel libre, pas vrai ? #line:03f7ca5
-Sapiens_happy: Exact ! Tu l'as déjà bien assimilé, on dirait ! #line:00049fb
+    You: C'est la méthode du rappel libre, pas vrai ? #line:03f7ca5
+    Sapiens_happy: Exact ! Tu l'as déjà bien assimilé, on dirait ! #line:00049fb
 << else >>
-Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : <b>les rappels libres</b>. #line:0318be0
+    Sapiens_thinking: C'est ce que l'on appelle, dans la vocabulaire de la métacognition : <b>les rappels libres</b>. #line:0318be0
 << endif >>
 
 Ledai_explaining: Le rappel libre, c'est tenter de restituer, par soi-même, et sans ordre précis, les notions que l'on a retenues. Cette méthode est moins connue, mais bien plus efficace qu'une relecture classique. #line:064a1a2
@@ -748,11 +748,11 @@ You: C'est bon pour moi… Je crois. #line:0e76c37
 Ledai_happy: Tiens, tu as mérité un petit cadeau. Cette tablette de mon invention te servira de <bi>Journal Mental</bi>. Il te servira à t'aiguiller après chacune de nos séances. #line:0e3987e
 
 <<if !visited("Resultats_Good")>>
-Temde_smiling: Lorsque tu auras eu le temps de noter dans ton journal, nous te renverrons au début de cette journée. Bonne chance ! #line:0b3e749
+    Temde_smiling: Lorsque tu auras eu le temps de noter dans ton journal, nous te renverrons au début de cette journée. Bonne chance ! #line:0b3e749
 <<endif>>
 
-<< completeSages >>
-<<jump Journal>>
+    << completeSages >>
+    <<jump Journal>>
 ===
 
 title: Journal
@@ -780,8 +780,8 @@ Tutorial: Vous pouvez télécharger votre Journal au format PDF à tout moment v
 
 <<if !visited("Resultats_Good")>>
 -> Recommencer la journée #line:0380a89
-<< resetLevel >>
-<< jump Start>>
+    << resetLevel >>
+    << jump Start>>
 <<else>>
 -> Revenir vers Fred #line:0f50564
 << fx Warp >>

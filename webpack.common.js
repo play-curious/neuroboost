@@ -74,6 +74,10 @@ module.exports = {
           to: "fonts",
         },
         {
+          from: "json",
+          to: "json",
+        },
+        {
           from: "audio",
           to: "audio",
         },

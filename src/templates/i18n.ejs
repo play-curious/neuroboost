@@ -1,0 +1,9 @@
+export default interface i18n {
+    <%- languages.map((lang) => {
+        return `  ${lang}: {${
+            filenames.map(filename => {
+                return `    ${filename}: ${JSON.stringify(rawTexts[lang][filename], null, 2)};`
+            }).join("\n")
+        }};`
+    }).join("\n") %>
+}

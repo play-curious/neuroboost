@@ -1,0 +1,90 @@
+{
+  "method": {
+    "id": "method",
+    "title": "Studying",
+    "openquestion": "If you had an easier time learning, or could remember what you've learned for longer, how could that change your life?",
+    "closedquestion": "When you need to study, what technique do you use the most?",
+    "answer1": "Free recall",
+    "answer2": "Reading over notes",
+    "answer3": "Reading out loud",
+    "answer4": "Studing in a group",
+    "answer5": "Doing exercises"
+  },
+  "food": {
+    "id": "food",
+    "title": "Nutrition",
+    "openquestion": "How could you improve your diet?",
+    "closedquestion": "Do you think that your current diet is healthy?",
+    "answer1": "Yes",
+    "answer2": "Most of the time",
+    "answer3": "Rarely",
+    "answer4": "Almost never",
+    "answer5": ""
+  },
+  "sleep": {
+    "id": "sleep",
+    "title": "Sleep",
+    "openquestion": "What helps you get a good night's rest?",
+    "closedquestion": "How many hours of sleep do you need a night?",
+    "answer1": "10 or more",
+    "answer2": "9",
+    "answer3": "8",
+    "answer4": "7",
+    "answer5": "6 or less"
+  },
+  "mentalWorkload": {
+    "id": "mentalWorkload",
+    "title": "Mental Workload",
+    "openquestion": "What can you do to cut off sources of distraction in your work or study?",
+    "closedquestion": "How many balls can you juggle at once?",
+    "answer1": "1",
+    "answer2": "2",
+    "answer3": "3",
+    "answer4": "4",
+    "answer5": "5 or more"
+  },
+  "profiles": {
+    "id": "profiles",
+    "title": "Learning Profiles",
+    "openquestion": "Have you ever run into problems when working with people of different learning profiles?",
+    "closedquestion": "What elder are you the closest to in terms of learning profile?",
+    "answer1": "Diyana",
+    "answer2": "Azul",
+    "answer3": "Sapiens",
+    "answer4": "LedAI",
+    "answer5": ""
+  },
+  "stress": {
+    "id": "stress",
+    "title": "Stress",
+    "openquestion": "When you're stressed, what can you do to relax?",
+    "closedquestion": "How often do you find yourself stressed out?",
+    "answer1": "Every day",
+    "answer2": "At least once a week",
+    "answer3": "At least once a month",
+    "answer4": "Rarely",
+    "answer5": ""
+  },
+  "organisation": {
+    "id": "organisation",
+    "title": "Organization",
+    "openquestion": "What do you do to organize your work, when you have lots of tasks?",
+    "closedquestion": "Do you work or study on the weekend?",
+    "answer1": "No, the weekend is sacred!",
+    "answer2": "Only if I absolutely have to",
+    "answer3": "The weekend, the night, the day… it's all the same",
+    "answer4": "",
+    "answer5": ""
+  },
+  "success": {
+    "id": "success",
+    "title": "Success",
+    "openquestion": "Beyond work and study, what goals to you have for your life?",
+    "closedquestion": "What is your relation to success?",
+    "answer1": "Strategic - I do as much or as little as needed to get the top grades",
+    "answer2": "Comprehensive - It's the learning that counts, not the diploma",
+    "answer3": "Instrumental - I just need to get the degree",
+    "answer4": "Relative - I want to do as well as my peers",
+    "answer5": ""
+  }
+}
