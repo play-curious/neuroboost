@@ -4,12 +4,10 @@ import {
   CRTFilter,
   GlowFilter,
   AdjustmentFilter,
-  SimpleLightmapFilter,
 } from "pixi-filters";
 import * as entity from "booyah/src/entity";
 
 export type Glitch = GlitchFilter & Filter;
-export type Bubble = SimpleLightmapFilter & Filter;
 export type Holograph = CRTFilter & Filter;
 export type Adjustment = AdjustmentFilter & Filter;
 export type Glow = GlowFilter & Filter;
