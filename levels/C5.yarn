@@ -11,7 +11,7 @@ colorID: 8
 << fx Warp >>
 << fadeOut >>
 Le faisceau de voyage temporel des Sages vous ramène en arrière, après avoir terminé votre rédaction.
-FredFred@holo_smiling: C'est pas mal, ce qu'on a fait, non ? Ça mérite bien un petit GTR…
+Fred@holo_smiling: C'est pas mal, ce qu'on a fait, non ? Ça mérite bien un petit GTR…
 Vous passez le reste de la soirée à vous amuser comme un fou avec Fred, puis vous sautez dans votre lit pour un repos bien mérité…
 << hide >>
 
@@ -260,7 +260,7 @@ position: -1823,-911
 Vous vous approchez de votre ordinateur de bureau, puis recherchez les différentes pathologies qui incluent des problèmes cardiaques.
 Vous passez l'heure suivante à lire des tonnes d'articles sur le sujet. Vous n'êtes pas médecin, il vous est difficile de faire le tri dans les informations.
 << advanceTimeBy 1:00 >>
-Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétantes, déprimantes, angoissantes… #line:023c812 
+Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétants, déprimants, angoissants…
 Vous en ressortez encore plus stressé.
 << addToGauge stress 20 >>
 <<jump Liste_Taches>>
@@ -362,7 +362,7 @@ You: Merci. Du coup, je suis encore plus stressé…
 Maman@holo_shadow: Mon chou, je ne pensais pas te…  #line:0e60133 
 You: J'ai compris. A plus ! #line:0a1b54f 
 << hide >>
-Vous raccrochez, encore plus fébrile que tout-à-l'heure.
+Vous raccrochez, encore plus fébrile que tout à l'heure.
 << addToGauge stress 10 >>
 << advanceTimeBy 0:15 >>
 <<jump Liste_Taches>>
@@ -372,7 +372,7 @@ title: Fred_Call
 tags: 
 position: -2698,-721
 ---
-Vous parcourez le journal d'appel de votre palmphone, vous y trouvez facilement son numéro et vous l'appeler. #line:0a40e46 
+Vous composez le numéro de Fred sur votre palmphone et l'appelez.
 Fred@holo_excited: Hey ! C'est toi qui m'appelles pour une fois ! #line:0187982 
 You: Ouais. J'ai besoin de toi. #line:07d3e5b 
 Fred@holo_happy: C'est vrai ? #line:0d37c0c 
@@ -423,7 +423,7 @@ Fred_smiling: Euh… Ok, Docteur { $name }. Tu vas me dire de manger de la salad
 Fred_happy: Je plaisante. On peut faire un footing si tu veux.
 << loopFX Sports_LOOP 16000 >>
 Vous faites un premier tour de piste, puis un second, puis un troisième.  #line:0385730 
-Petit à petit, vous trouvez votre rythme de pas et votre cadence respiratoire. Vous vous sentez détendu et oxygéné.
+Petit à petit, vous trouvez votre cadence de course et votre rythme respiratoire. Vous vous sentez détendu et oxygéné.
 << stopFX Sports_LOOP >>
 << advanceTimeBy 1:15 >>
 << removeFromGauge stress 20 >>
@@ -431,7 +431,7 @@ Petit à petit, vous trouvez votre rythme de pas et votre cadence respiratoire. 
 Au bout d'1h30, vous décidez de vous arrêter sur la ligne d'arrivée, où Fred vous attend, essoufflé.
 Fred_bored: Ouah, ça fait un moment que je t'attends, héhé.
 You: Merci d'avoir été là, Fred ! J'aurais pas eu la force sans toi.
-Fred_smiling: Yes, toi aussi ! Et bonne chance pour l'exam !
+Fred_smiling: Yes, de rien ! Et bonne chance pour l'exam !
 
 << fadeIn >>
 <<jump Liste_Taches>>
@@ -587,7 +587,7 @@ Fred_sad: Ah bon ? Hier, tu crachais le feu. Aujourd'hui, tu es glacé. #line:0d
 
 << loopFX PhoneRing_LOOP >>
 << screenshake 10 600 >>
-Votre palmphone vibre. C'est votre mère qui tente de vous rejoindre. Fred vous fixe des yeux : #line:0bbaf53 
+Votre palmphone vibre. C'est votre mère qui tente de vous joindre. Fred vous fixe des yeux :
 Fred_sad: T'es sûr ? Ça va ? #line:036c307 
 You: Attends… #line:02ef916 
 << hide >>
@@ -611,7 +611,7 @@ Maman@holo_shadow: Oui, mon chou. C'est à propos de mamie.
 You: Quoi encore ? #line:0115589 
 Maman@holo_shadow: Elle est sortie du bloc. Ça a porté ses fruits… Mais… #line:081d30c 
 You: Mais ? #line:0129bd2 
-Maman@holo_shadow: On l'a transféré en salle de réanimation. Elle n'est pas sortie du coma…
+Maman@holo_shadow: On l'a transférée en salle de réanimation. Elle n'est pas sortie du coma…
 You: Nom de…. #line:029a81d 
 Maman@holo_shadow: Rassure-toi, { $name }, ta mamie est une personne forte. Elle s'en sortira…
 You: Je sais, mais… C'est dur.
@@ -709,7 +709,7 @@ Vous répondez aux questions au hasard, sans trop savoir ce que l'on vous demand
 <<else >>
 Vous arrivez à faire abstraction de vos pensées intrusives, et vous vous donnez pleinement au problème présent. #line:0811f47 
     <<if getGauge("learning") < 50 >>
-    Hélas, vos révisions n'ont pas suffit, et vous n'arrivez pas à répondre à la moitié des questions…
+    Hélas, vos révisions n'ont pas suffi, et vous n'arrivez pas à répondre à la moitié des questions…
     << advanceTimeBy 4:00 sleep food >>
     <<jump Resultats_Bad>>
     <<else>>
@@ -795,7 +795,7 @@ colorID: 1
 << fadeIn >>
 << visit FailSecondPart >>
 Incapable de dormir à cause du stress, vous vous forcez à garder les yeux fermés. Toutes vos pensées se dirigent vers votre grand-mère… Vous êtes trop fatigué pour faire quoi que ce soit…
-Vous finissez quand-même par vous endormir, à bout de force.
+Vous finissez quand même par vous endormir, à bout de forces.
 
 <<if !visited("Assemblee_Sages")>>
 <<jump Transition_Assemblee>>
@@ -832,7 +832,7 @@ title: Zero_Distraction
 tags: 
 position: -1296,-631
 ---
-Vous demandez à Room Mate, votre IA, de basculer en mode "Immersion Studieuse". Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même, face à vos questions et vos appréhensions.  #line:0f8e8a8 
+Vous demandez à RoomMate, votre I.A., de basculer en mode "Immersion Studieuse". Vous êtes aussitôt coupé de tout connexion numérique. Vous voilà face à vous-même, face à vos questions et vos appréhensions.
 L'ambiance "studieuse" de votre chambre était une bonne idée, mais ça ne suffit pas. Ce soir, dans ce silence, vous ne vous sentez pas capable de pratiquer la méditation de pleine conscience. Il vous faut trouver autre chose. #line:0acbd71 
 <<set $choicesDone to ($choicesDone + 1)>>
 <<jump Choix_night>>
@@ -842,7 +842,7 @@ title: Maman_callnight
 tags: 
 position: -792,-554
 ---
-Vous rappelez votre mère. Elle ne répond pas. Vous ne laissez aucun message. Vous raccrochez et vous regrettez votre geste. Vous avez encore cédé aux émotions nuisibles… #line:0561efa 
+Vous rappelez votre mère. Elle ne répond pas. Vous ne laissez aucun message. Vous raccrochez et vous regrettez votre geste.
 << advanceTimeBy 0:15 >>
 <<set $choicesDone to ($choicesDone + 1)>>
 << addToGauge stress 20>>
@@ -884,7 +884,7 @@ title: Sieste_dontwork
 tags: 
 position: -1091,-894
 ---
-La sieste est une technique efficace quand on éprouve une fatigue importante et relativement saine. En revanche, si le corps ou le mental est perturbé ou malade, ça ne marche pas…  #line:0c4f3da 
+La sieste est une technique efficace quand on éprouve une fatigue importante tout en étant dans son état normal. En revanche, si le corps ou le mental est perturbé ou malade, ça ne marche pas…
 Vous avez beau fermer les yeux, rien ne se passe. Vos idées noires continuent de vous hanter. #line:0bec4c7 
 << advanceTimeBy 0:30 >>
 <<jump Choix_night>>
@@ -899,7 +899,7 @@ colorID: 2
 << music Victory >>
 Votre esprit est suffisamment détendu. Vous fermez les yeux, vous relâchez votre corps, vous glissez dans le sommeil. Vous dites enfin adieu à ce vendredi stressant…
 <<if visited("Win")>>
-<< completeLevel >>
+<< completeLevel  >>
 <<endif>>
 <<if !visited("Assemblee_Sages")>>
 <<jump Transition_Assemblee>>
@@ -925,7 +925,7 @@ Ledai_explaining: Cela tombe bien : c'est ce que tu fais actuellement.
 You: Pardon ??
 Ledai_doubtful: Miss Temdé a insisté pour que nous ne te dérangions pas dans ton sommeil. Du coup, nous sommes venus te chercher… Dans tes rêves.
 You: On est dans un rêve, là ?
-Ledai_happy: Exact ! Maintenant, si tu le veux bien, pense très fort à l'Assemblée des Sages. Toi-seul peut contrôler ton rêve !
+Ledai_happy: Exact ! Maintenant, si tu le veux bien, pense très fort à l'Assemblée des Sages. Toi seul peut contrôler ton rêve !
 -> Comment vous rentrez dans les rêves des gens ?
     You: Comment vous faites ça ?
     Ledai_explaining: Vois-tu, nous autres sages, nous maîtrisons la science de la méta-métacognition, ce qui nous permet de voyager à l'intérieur des processus mentaux.
@@ -953,7 +953,7 @@ You: Mmmmh… L'assemblée des sages… L'assemblée des Sages… L'assemblée d
 You: Nous y voilà !
 You: Vous allez m'apprendre quoi cette fois ? #line:085bdbf 
 Azul_happy: À gérer tes émotions. #line:099e81f 
-Temde_cheerful: À prévoir tout, même l'imprévisible. #line:0f478a5 
+Temde_cheerful: À tout prévoir, même l'imprévisible. #line:0f478a5 
 Sapiens_thinking: De manière à ce que le stress ne te prenne pas par surprise.
 <<jump Sages_FreeChoice>>
 ===
@@ -964,7 +964,7 @@ position: -296.3774108886719,-523.0119018554688
 colorID: 1
 ---
 -> Vous me demandez d'ignorer mon stress ?
-    You: Vous me demandez d'ignorer mon stress ? Même si ma grand-mère est en danger ?
+    You: Vous me demandez d'ignorer mon stress ? Même si ma grand-mère est dans le coma ?
     Temde_sad: Tu dois surtout lâcher prise, laisser les choses se faire. Tu n'y peux rien. Tu ne contrôles rien. #line:03d991b 
     Sapiens_thinking: Le stress est comme un carburant, utile dans les situations périlleuses. Il permet de réagir vite et intensément. Toutefois, quand on se retrouve dans une configuration où l'on ne peut pas réagir directement…
     Sapiens_thinking: Cela devient insupportable. Tout ce carburant, cette énergie se retourne contre nous. Puisqu'on ne peut la brûler en agissant concrètement, elle nous consume de l'intérieur. #line:03c6a95 
@@ -982,10 +982,10 @@ colorID: 1
     Temde_smiling: Entreprendre des actions qui te permettent de reprendre le contrôle de tes pensées. #line:0fb4f7c 
     Sapiens_happy: Toute action qui mobilise activement et positivement ton attention, tout en lâchant la pression sur le mental.
     Temde_smiling: Par exemple toute activité agréable qui demande attention ou concentration. #line:04ce601 
-    Azul_happy: Jouer de la musique, chanter, dessiner, danser avec entrain. Le sport, quant il est pratiqué de manière sereine et consciente. La méditation… #line:0f401a0 
+    Azul_happy: Jouer de la musique, chanter, dessiner, danser avec entrain. Le sport, quand il est pratiqué de manière sereine et consciente. La méditation… #line:0f401a0 
     Sapiens_thinking: L'important est que tu évacues cette énergie négative d'une manière et d'une autre.
-    Temde_smiling: En parler, avec quelqu'un qui est susceptible de t'écouter ou de te faire penser à autre chose, peut aider.
-    <<jump Sages_FreeChoice>>
+    Temde_smiling: En parler, avec quelqu'un qui e
+    <<jump Sages_FreeChoice>>st susceptible de t'écouter ou de te faire penser à autre chose, peut aider.
 -> J'ai compris !
     <<jump Quizz_Meditation>>
 <<jump Frustration>>
@@ -1001,7 +1001,7 @@ Sapiens_happy: Maintenant, tu connais la chanson, c'est l'heure du quiz ! Pour r
     << fx Failure >>
     Sapiens_angry: Mauvaise réponse ! S'il suffisait d'appuyer sur un bouton pour supprimer le stress, ça se saurait… #line:09c2ae3 
     Azul_proud: Ce que veut dire Master Sapiens, c'est que la volonté, la pensée rationnelle n'est pas forcément la mieux à même de combattre les émotions, comme le stress. #line:0ca95e4 
-    Temde_neutral: Toutes les activités qui gardent ton attention captive, comme la musique ou la méditation en pleine conscience, sont autant de moyens de diminuer le stress.
+    Temde_neutral: Toutes les activités qui gardent ton attention mobilisée, comme la musique ou la méditation en pleine conscience, sont autant de moyens de diminuer le stress.
 -> Rediriger mon attention sur une activité agréable
     << fx Success >>
     Sapiens_happy: Oui ! Toutes les activités qui gardent ton attention captive, comme la musique ou la méditation en pleine conscience, sont autant de moyens de diminuer le stress.
@@ -1015,7 +1015,7 @@ position: 1450.59033203125,-520.900390625
 Sapiens_thinking: Voyons si tu vas trouver la réponse à la prochaine. Pour réduire ton stress, tu peux également agir de manière physique et tangible.
 -> En me défoulant un maximum pour déchaîner ma frustration
     << fx Failure >>
-    Sapiens_angry: Choix malheureux et risqué. Un sport intense comme la boxe peut, certes, aider à se défouler. Il faut également veiller à ce que le sport violent ne risque pas d'entretenir ta frustration ou ta colère.
+    Sapiens_angry: Choix malheureux et risqué. Un sport intense comme la boxe peut, certes, aider à se défouler. Il faut également veiller à ce qu'un sport violent ne risque pas d'entretenir ta frustration ou ta colère.
     Sapiens_thinking: Toute activité physique ou sportive n'est pas forcément adaptée pour réduire le stress. Elle peut consolider le stress et la frustration initiale si elle n'est pas pratiquée en douceur.
 -> En pratiquant un sport plus doux et moins agressif
     << fx Success >>
@@ -1027,7 +1027,7 @@ title: End_Quizz
 tags: noUi
 position: 1890.22265625,-521.7122497558594
 ---
-Azul_happy: Retiens bien : l'important, c'est le bien être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent. A bientôt !
+Azul_happy: Retiens bien : l'important, c'est le bien-être, la pensée claire et lucide. Mieux vaut être pragmatique et prudent. A bientôt !
 << hide >>
 <<jump Journal>>
 ===

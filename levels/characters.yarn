@@ -4,21 +4,6 @@ tags:
 <<empty>>
 << setBackground bedroom chill >>
 
-<< show lightsaber>>
-Film
-<< show lightsaber@holo>>
-Film Holo
-
-Roommate: Hey !
-<< hide >>
-...
-Roommate_big: Hey !
-
-Mamie@holo_shadow: shadow
-Maman@holo_shadow: shadow
-
-Fred@holo_shadow: shadow
-Fred_drunk: drunk
 Fred_excited: excited
 Fred_happy: happy
 Fred_sad: sad
@@ -29,28 +14,45 @@ Fred_angry2: angry2
 Fred_bored: bored
 Fred_veille: veille
 Fred_sarcasme: sarcasme
+Fred_drunk: drunk
 Fred_happy-mask: Happy mask
 Fred_excited-mask: Excited mask
 Fred_smiling-mask: Smiling mask
-
+Fred@holo_shadow: shadow
 
 Azul_cheerful: cheerful
 Azul_happy: happy
 Azul_proud: proud
 Azul_sad: sad
 
+Ledai_happy: happy
 Ledai_doubtful: doubtful
 Ledai_explaining: explaining
-Ledai_happy: happy
 
-Sapiens_angry: angry
+Sapiens_thinking: thinking
 Sapiens_concerned: concerned
 Sapiens_happy: happy
-Sapiens_thinking: thinking
+Sapiens_angry: angry
 
 Temde_cheerful: cheerful
 Temde_neutral: neutral
 Temde_sad: sad
 Temde_smiling: smiling
 Temde_thinking: thinking
+
+Barbot: neutral
+
+Mamie@holo_shadow: shadow
+
+Maman@holo_shadow: shadow
+
+<< show lightsaber>>
+Film
+<< show lightsaber@holo>>
+Film Holo
+
+Roommate: Hey !
+<< hide >>
+...
+Roommate_big: Hey !
 ===
