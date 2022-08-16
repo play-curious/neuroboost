@@ -9,7 +9,7 @@ import * as variable from "./variable";
 import * as extension from "./extension";
 import * as save from "./save";
 import dayjs from "dayjs";
-import { translateJournal } from "./wrapper/i18n";
+import { translateInterface, translateJournal } from "./wrapper/i18n";
 import i18n from "./generated/i18n";
 
 export class JournalScene extends extension.ExtendedCompositeEntity {
@@ -93,7 +93,10 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       ) as HTMLTextAreaElement;
       this._textArea.required = true;
       this._textArea.minLength = 30;
-      this._textArea.placeholder = "Ecrire ici...";
+      this._textArea.placeholder = translateInterface(
+        this,
+        "journal_notes_placeholder"
+      );
       this._textArea.className = "journal-right-answer";
       rightElements.appendChild(this._textArea);
 
@@ -110,11 +113,14 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         this._on(button, "pointerup", this._validate);
         buttonContainer.addChild(button);
 
-        const buttonText = new PIXI.Text("VALIDER", {
-          fontFamily: "Ubuntu",
-          fontSize: 32,
-          fill: "white",
-        });
+        const buttonText = new PIXI.Text(
+          translateInterface(this, "journal_valider"),
+          {
+            fontFamily: "Ubuntu",
+            fontSize: 32,
+            fill: "white",
+          }
+        );
         buttonText.anchor.set(0.5, 0.5);
         buttonContainer.addChild(buttonText);
       }
@@ -133,11 +139,14 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         this._on(button, "pointerup", this._skip);
         buttonContainer.addChild(button);
 
-        const buttonText = new PIXI.Text("Passer", {
-          fontFamily: "Ubuntu",
-          fontSize: 32,
-          fill: 0xdddddd,
-        });
+        const buttonText = new PIXI.Text(
+          translateInterface(this, "journal_passer"),
+          {
+            fontFamily: "Ubuntu",
+            fontSize: 32,
+            fill: 0xdddddd,
+          }
+        );
         buttonText.anchor.set(0.5, 0.5);
         buttonContainer.addChild(buttonText);
       }

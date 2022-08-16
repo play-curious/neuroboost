@@ -19,15 +19,14 @@ export function translateDialog<
   if (ctx.entityConfig.language === "fr") {
     return originalText;
   }
-  console.log(level);
   return translate(ctx, level, lineId, "text");
 }
 
 export function translateInterface<
   ColIndex extends keyof i18n[keyof i18n]["interface"] & number,
   ColName extends i18n[keyof i18n]["interface"][ColIndex]["id"]
->(ctx: entity.EntityBase, rowId: ColName): string {
-  return translate(ctx, "interface", rowId, "text");
+>(ctx: entity.EntityBase, rowId: ColName, data: any = {}): string {
+  return translate(ctx, "interface", rowId, "text", data);
 }
 
 export function translateJournal<
@@ -49,7 +48,8 @@ export function translate<
   ctx: entity.EntityBase,
   bottomTabName: TabName,
   rowId: ColName,
-  columnId: keyof i18n[keyof i18n][TabName][ColIndex]
+  columnId: keyof i18n[keyof i18n][TabName][ColIndex],
+  data: any = {}
 ): string {
   try {
     if (!ctx.entityConfig.jsonAssets.hasOwnProperty(bottomTabName))
@@ -70,12 +70,12 @@ export function translate<
 
     return _.template(
       ctx.entityConfig.jsonAssets[bottomTabName][rowId][columnId]
-    )(ctx.entityConfig.level?.ejsContext);
+    )({ ...ctx.entityConfig.level?.ejsContext, ...data });
   } catch (e) {
     console.warn(
       `No translation found for ${bottomTabName}/${columnId}/${rowId} => `,
       e.message
     );
-    return "<== placeholder ==>";
+    return "%== placeholder ==%";
   }
 }

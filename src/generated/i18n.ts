@@ -2,30 +2,6 @@ export default interface i18n {
       en: {    c1: [
   {
     "language": "en",
-    "id": "73105",
-    "original_text": "Azul_happy: Et c'est comme ça que tu réussis à conserver l'information le plus longtemps possible ! #line:0073105",
-    "text": "And that's how you can keep the information for as long as possible!",
-    "file": "C1.yarn",
-    "node": "Routinisation",
-    "line": "739",
-    "lock": "33a7b43f",
-    "commentaire": "",
-    "changed?": "New"
-  },
-  {
-    "language": "en",
-    "id": "73346",
-    "original_text": "Au final, vous avez regardé plus d'épisodes que prévu… #line:0073346",
-    "text": "You couldn't help yourself. It looks like you watched a few more episodes than planned.",
-    "file": "C1.yarn",
-    "node": "BingeTV_Rewind",
-    "line": "348",
-    "lock": "a5f40458",
-    "commentaire": "",
-    "changed?": "New"
-  },
-  {
-    "language": "en",
     "id": "352286",
     "original_text": "Vous voilà désormais dans la grande salle. Vous vous installez devant votre écran de travail. À peine vous cliquez sur le fichier <b>Sujet d'examen</b> que le compteur se met en route.",
     "text": "You arrive at the enormous classroom and take a seat in front of your exam screen. The second you click on the file <b>Exam Topic</b>, the timer starts.",
@@ -62,18 +38,6 @@ export default interface i18n {
   },
   {
     "language": "en",
-    "id": "763208",
-    "original_text": "Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Vous voilà seul… Dans une bulle de noirceur, éclairée par un douce lumière tamisée. #line:0763208",
-    "text": "The green paradise the elders call home is no longer there. You're alone… in the soft dim light of your room at night.",
-    "file": "C1.yarn",
-    "node": "Journal",
-    "line": "768",
-    "lock": "347e25e1",
-    "commentaire": "",
-    "changed?": "New"
-  },
-  {
-    "language": "en",
     "id": "804335",
     "original_text": "Fred_smiling: Yes, je m'attendais à plus tordu que ça.",
     "text": "Yes, I expected something more twisted.",
@@ -83,18 +47,6 @@ export default interface i18n {
     "lock": "37659235",
     "commentaire": "",
     "changed?": "No"
-  },
-  {
-    "language": "en",
-    "id": "819983",
-    "original_text": "Fred@holo_excited: Salut ! C'est Fred ! #line:0819983",
-    "text": "Hiya! It's Fred! ",
-    "file": "C1.yarn",
-    "node": "Appel_Fred_Rewind",
-    "line": "47",
-    "lock": "15d81e09",
-    "commentaire": "",
-    "changed?": "New"
   },
   {
     "language": "en",
@@ -189,6 +141,18 @@ export default interface i18n {
     "node": "Start",
     "line": "35",
     "lock": "f8924a4c",
+    "commentaire": "",
+    "changed?": "New"
+  },
+  {
+    "language": "en",
+    "id": "0819983",
+    "original_text": "Fred@holo_excited: Salut ! C'est Fred ! #line:0819983",
+    "text": "Hiya! It's Fred! ",
+    "file": "C1.yarn",
+    "node": "Appel_Fred_Rewind",
+    "line": "47",
+    "lock": "15d81e09",
     "commentaire": "",
     "changed?": "New"
   },
@@ -602,7 +566,7 @@ export default interface i18n {
   },
   {
     "language": "en",
-    "id": "0,00E+00",
+    "id": "0e25052",
     "original_text": "-> Aller à l'examen (passer jusqu'à 14h) #line:0e25052",
     "text": "Go to class to take the exam (wait until 2 p.m.)",
     "file": "C1.yarn",
@@ -897,6 +861,18 @@ export default interface i18n {
     "node": "BingeTV_Rewind",
     "line": "342",
     "lock": "aaaebcfa",
+    "commentaire": "",
+    "changed?": "New"
+  },
+  {
+    "language": "en",
+    "id": "0073346",
+    "original_text": "Au final, vous avez regardé plus d'épisodes que prévu… #line:0073346",
+    "text": "You couldn't help yourself. It looks like you watched a few more episodes than planned.",
+    "file": "C1.yarn",
+    "node": "BingeTV_Rewind",
+    "line": "348",
+    "lock": "a5f40458",
     "commentaire": "",
     "changed?": "New"
   },
@@ -1418,7 +1394,7 @@ export default interface i18n {
   },
   {
     "language": "en",
-    "id": "8,18E+13",
+    "id": "0818e13",
     "original_text": "You: Non.",
     "text": "No.",
     "file": "C1.yarn",
@@ -1886,7 +1862,7 @@ export default interface i18n {
   },
   {
     "language": "en",
-    "id": "8,50E+257",
+    "id": "085e256",
     "original_text": "Sapiens_thinking: Mmh… Bien. Pour commencer, nous pouvons te parler des types de mémoires : la mémoire courte et la mémoire longue…",
     "text": "Yes … well. To behin, we will first present the two kinds of memory: short-term memory and long-term memory.",
     "file": "C1.yarn",
@@ -1946,7 +1922,7 @@ export default interface i18n {
   },
   {
     "language": "en",
-    "id": "8,53E+72",
+    "id": "0853e70",
     "original_text": "Sapiens_thinking: En bref, la cartographie de la mémoire dans le cerveau se découpe en deux zones. Comme tes deux hémisphères.",
     "text": "In short, the mapping of memory in the brain is divided into two areas. Like your two hemispheres.",
     "file": "C1.yarn",
@@ -2186,6 +2162,18 @@ export default interface i18n {
   },
   {
     "language": "en",
+    "id": "0073105",
+    "original_text": "Azul_happy: Et c'est comme ça que tu réussis à conserver l'information le plus longtemps possible ! #line:0073105",
+    "text": "And that's how you can keep the information for as long as possible!",
+    "file": "C1.yarn",
+    "node": "Routinisation",
+    "line": "739",
+    "lock": "33a7b43f",
+    "commentaire": "",
+    "changed?": "New"
+  },
+  {
+    "language": "en",
     "id": "0e76c37",
     "original_text": "You: C'est bon pour moi… Je crois. #line:0e76c37",
     "text": "That's enough for me, I think.",
@@ -2217,6 +2205,18 @@ export default interface i18n {
     "node": "Quit_Sages",
     "line": "751",
     "lock": "e9b39db2",
+    "commentaire": "",
+    "changed?": "New"
+  },
+  {
+    "language": "en",
+    "id": "0763208",
+    "original_text": "Le paradis verdoyant et rayonnant des 4 sages n'est plus là ! Vous voilà seul… Dans une bulle de noirceur, éclairée par un douce lumière tamisée. #line:0763208",
+    "text": "The green paradise the elders call home is no longer there. You're alone… in the soft dim light of your room at night.",
+    "file": "C1.yarn",
+    "node": "Journal",
+    "line": "768",
+    "lock": "347e25e1",
     "commentaire": "",
     "changed?": "New"
   },
@@ -2355,7 +2355,96 @@ export default interface i18n {
     "text": "Sunday"
   }
 ];
-    journal: [];};
+    journal: [
+  {
+    "id": "method",
+    "title": "Studying",
+    "openquestion": "If you had an easier time learning, or could remember what you've learned for longer, how could that change your life?",
+    "closedquestion": "When you need to study, what technique do you use the most?",
+    "answer1": "Free recall",
+    "answer2": "Reading over notes",
+    "answer3": "Reading out loud",
+    "answer4": "Studing in a group",
+    "answer5": "Doing exercises"
+  },
+  {
+    "id": "food",
+    "title": "Nutrition",
+    "openquestion": "How could you improve your diet?",
+    "closedquestion": "Do you think that your current diet is healthy?",
+    "answer1": "Yes",
+    "answer2": "Most of the time",
+    "answer3": "Rarely",
+    "answer4": "Almost never",
+    "answer5": ""
+  },
+  {
+    "id": "sleep",
+    "title": "Sleep",
+    "openquestion": "What helps you get a good night's rest?",
+    "closedquestion": "How many hours of sleep do you need a night?",
+    "answer1": "10 or more",
+    "answer2": "9",
+    "answer3": "8",
+    "answer4": "7",
+    "answer5": "6 or less"
+  },
+  {
+    "id": "mentalWorkload",
+    "title": "Mental Workload",
+    "openquestion": "What can you do to cut off sources of distraction in your work or study?",
+    "closedquestion": "How many balls can you juggle at once?",
+    "answer1": "1",
+    "answer2": "2",
+    "answer3": "3",
+    "answer4": "4",
+    "answer5": "5 or more"
+  },
+  {
+    "id": "profiles",
+    "title": "Learning Profiles",
+    "openquestion": "Have you ever run into problems when working with people of different learning profiles?",
+    "closedquestion": "What elder are you the closest to in terms of learning profile?",
+    "answer1": "Diyana",
+    "answer2": "Azul",
+    "answer3": "Sapiens",
+    "answer4": "LedAI",
+    "answer5": ""
+  },
+  {
+    "id": "stress",
+    "title": "Stress",
+    "openquestion": "When you're stressed, what can you do to relax?",
+    "closedquestion": "How often do you find yourself stressed out?",
+    "answer1": "Every day",
+    "answer2": "At least once a week",
+    "answer3": "At least once a month",
+    "answer4": "Rarely",
+    "answer5": ""
+  },
+  {
+    "id": "organisation",
+    "title": "Organization",
+    "openquestion": "What do you do to organize your work, when you have lots of tasks?",
+    "closedquestion": "Do you work or study on the weekend?",
+    "answer1": "No, the weekend is sacred!",
+    "answer2": "Only if I absolutely have to",
+    "answer3": "The weekend, the night, the day… it's all the same",
+    "answer4": "",
+    "answer5": ""
+  },
+  {
+    "id": "success",
+    "title": "Success",
+    "openquestion": "Beyond work and study, what goals to you have for your life?",
+    "closedquestion": "What is your relation to success?",
+    "answer1": "Strategic - I do as much or as little as needed to get the top grades",
+    "answer2": "Comprehensive - It's the learning that counts, not the diploma",
+    "answer3": "Instrumental - I just need to get the degree",
+    "answer4": "Relative - I want to do as well as my peers",
+    "answer5": ""
+  }
+];};
   fr: {    c1: undefined;
     interface: [
   {
@@ -2365,6 +2454,18 @@ export default interface i18n {
   {
     "id": "gauge_learning",
     "text": "Apprentissage"
+  },
+  {
+    "id": "gauge_sleep",
+    "text": "Repos"
+  },
+  {
+    "id": "gauge_food",
+    "text": "Faim"
+  },
+  {
+    "id": "gauge_mentalLoad",
+    "text": "Charge mentale"
   },
   {
     "id": "deadline_examen",
@@ -2417,6 +2518,122 @@ export default interface i18n {
   {
     "id": "day_6",
     "text": "Dimanche"
+  },
+  {
+    "id": "menu_plein_ecran",
+    "text": "Plein-écran"
+  },
+  {
+    "id": "menu_fenetre",
+    "text": "Fenêtré"
+  },
+  {
+    "id": "menu_chapitre",
+    "text": "Chapitres"
+  },
+  {
+    "id": "menu_journal",
+    "text": "Journal"
+  },
+  {
+    "id": "menu_vitesse_texte",
+    "text": "Vitesse du texte"
+  },
+  {
+    "id": "menu_credits",
+    "text": "Credits"
+  },
+  {
+    "id": "popup_retour_chapitres",
+    "text": "Etes-vous sûr de vouloir retourner au choix des chapitres ?"
+  },
+  {
+    "id": "journal_historique_vide",
+    "text": "Historique vide"
+  },
+  {
+    "id": "journal_telecharger",
+    "text": "Télécharger votre journal de la métacognition ?"
+  },
+  {
+    "id": "journal_passer",
+    "text": "Passer"
+  },
+  {
+    "id": "journal_valider",
+    "text": "VALIDER"
+  },
+  {
+    "id": "journal_notes_placeholder",
+    "text": "Ecrire ici..."
+  },
+  {
+    "id": "chapitre_prologue",
+    "text": "Prologue"
+  },
+  {
+    "id": "chapitre_nom",
+    "text": "Chapitre <%= chapterNumber %>"
+  },
+  {
+    "id": "chapitre_fin",
+    "text": "Fin"
+  },
+  {
+    "id": "menu_chapitre_titre",
+    "text": "Choix du chapitre"
+  },
+  {
+    "id": "menu_chapitre_sages",
+    "text": "Acceder aux sages"
+  },
+  {
+    "id": "menu_chapitre_ecrire",
+    "text": "Ecrire dans le journal"
+  },
+  {
+    "id": "menu_chapitre_continuer",
+    "text": "Continuer"
+  },
+  {
+    "id": "score_menu_reussi",
+    "text": "Chapitre <%= chapterNumber %> réussi !"
+  },
+  {
+    "id": "score_menu_recommencer",
+    "text": "Recommencer"
+  },
+  {
+    "id": "score_menu_choisir_chapitre",
+    "text": "Choisir un chapitre"
+  },
+  {
+    "id": "score_menu_continuer",
+    "text": "Continuer"
+  },
+  {
+    "id": "dialog_no_action",
+    "text": "Vous ne pouvez plus rien faire ici pour le moment."
+  },
+  {
+    "id": "score_0",
+    "text": "Peut mieux faire"
+  },
+  {
+    "id": "score_1",
+    "text": "Continuez sur cette voie"
+  },
+  {
+    "id": "score_2",
+    "text": "Excellent, perseverez"
+  },
+  {
+    "id": "tip_0",
+    "text": "Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger."
+  },
+  {
+    "id": "tip_7",
+    "text": ""
   }
 ];
     journal: [
@@ -2499,7 +2716,7 @@ export default interface i18n {
   },
   {
     "id": "success",
-    "title": "Succès/Réussite",
+    "title": "Réussite",
     "openquestion": "En dehors du travail et des études, quels objectifs te fixes-tu dans la vie ?",
     "closedquestion": "Quel est ton rapport à la réussite ?",
     "answer1": "Stratégique - Je fais tout pour obtenir les meilleurs résultats",

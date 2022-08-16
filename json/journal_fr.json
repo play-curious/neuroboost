@@ -78,7 +78,7 @@
   },
   "success": {
     "id": "success",
-    "title": "Succès/Réussite",
+    "title": "Réussite",
     "openquestion": "En dehors du travail et des études, quels objectifs te fixes-tu dans la vie ?",
     "closedquestion": "Quel est ton rapport à la réussite ?",
     "answer1": "Stratégique - Je fais tout pour obtenir les meilleurs résultats",

@@ -9,6 +9,7 @@ import * as extension from "./extension";
 import * as variable from "./variable";
 import * as journal from "./journal";
 import * as popup from "./popup";
+import { translateInterface } from "./wrapper/i18n";
 
 interface Settings {
   fx: number;
@@ -147,7 +148,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
     {
       // TOC link
       this._tocButton = this.makeText(
-        "Chapitres",
+        translateInterface(this, "menu_chapitre"),
         {
           fontFamily: "Ubuntu",
           fill: "white",
@@ -218,7 +219,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this._controlsContainer.addChild(image);
 
       this.journal = this.makeText(
-        "Journal",
+        translateInterface(this, "menu_journal"),
         {
           fontFamily: "Ubuntu",
           fill: "white",
@@ -252,7 +253,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this._controlsContainer.addChild(image);
 
       this.creditButton = this.makeText(
-        "Credits",
+        translateInterface(this, "menu_credits"),
         {
           fontFamily: "Ubuntu",
           fill: "white",
@@ -275,7 +276,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
     if (util.supportsFullscreen()) {
       // Création texte
       const textFullscreen = this.makeText(
-        "Plein-écran",
+        translateInterface(this, "menu_plein_ecran"),
         {
           fontFamily: "Ubuntu",
           fill: "white",
@@ -300,10 +301,10 @@ export class Menu extends extension.ExtendedCompositeEntity {
       this.fullscreenSwitcher.onStateChange((state) => {
         if (state === "on") {
           util.requestFullscreen(document.getElementById("game-parent"));
-          textFullscreen.text = "Fenêtré";
+          textFullscreen.text = translateInterface(this, "menu_fenetre");
         } else if (util.inFullscreen()) {
           util.exitFullscreen();
-          textFullscreen.text = "Plein-écran";
+          textFullscreen.text = translateInterface(this, "menu_plein_ecran");
         }
         this.settings.fullscreen = state === "on";
         this.saveSettings();
@@ -377,7 +378,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
       const x = this.popupBackground.width - 280;
       const y = 870;
       const logo = this.makeText(
-        "Vitesse du texte",
+        translateInterface(this, "menu_vitesse_texte"),
         {
           fontFamily: "Ubuntu",
           fontSize: 32,
@@ -488,8 +489,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
   }
 
   private _onTapTocButton() {
-    const message =
-      "Etes-vous sûr de vouloir retourner au choix des chapitres ?";
+    const message = translateInterface(this, "popup_retour_chapitres");
     this._activateChildEntity(
       new popup.Confirm(message, (result: boolean) => {
         if (!result) return;
@@ -613,7 +613,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     if (empty) {
       scrollBox.content.addChild(
-        this.makeText("Empty history - Historique vide", {
+        this.makeText(translateInterface(this, "journal_historique_vide"), {
           fontFamily: "Ubuntu",
           fontSize: "50px",
           fill: "#ffffff",
@@ -639,7 +639,7 @@ export class Menu extends extension.ExtendedCompositeEntity {
 
     this._activateChildEntity(
       new popup.Confirm(
-        "Télécharger votre journal de la métacognition ?",
+        translateInterface(this, "journal_telecharger"),
         (validated: boolean) => {
           if (!validated) return;
           const journalDownload = new journal.JournalPDF();

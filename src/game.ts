@@ -223,12 +223,19 @@ const params = new URLSearchParams(window.location.search);
 
 const lang = params.get("lang") ?? navigator.language;
 
-const textAssetNames = ["journal", "interface", "c1"];
+const translatedLevels = ["c1"];
 
-const jsonAssets = textAssetNames.map((key) => ({
-  key,
-  url: `json/${key}_${lang}.json`,
-}));
+const textAssetNames = ["journal", "interface"];
+textAssetNames.push(...translatedLevels);
+
+const jsonAssets = textAssetNames
+  .filter((key) => {
+    return !(translatedLevels.includes(key) && lang === "fr");
+  })
+  .map((key) => ({
+    key,
+    url: `json/${key}_${lang}.json`,
+  }));
 
 const videoAssets = ["game-by-play-curious"];
 
