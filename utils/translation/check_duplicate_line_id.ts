@@ -1,5 +1,5 @@
 /**
- * Script to check if translations contain line IDs that are not unique.
+ * Script to check if Yarnspinner files contain duline IDs that are not unique.
  *
  * Call like
  *  `ts-node check_duplicate_line_ids.ts ../../levels/*.yarn`
@@ -29,33 +29,41 @@ function lineRecordToString(lineRecord: LineRecord): string {
 }
 
 function go(filenames: string) {
-  const lineIdToRecord: Record<string, LineRecord> = {};
-  let duplicateCount = 0;
-
   for (const filename of filenames) {
+    const lineIdToRecords: Record<string, LineRecord[]> = {};
     const yarnFile = fs.readFileSync(filename, "utf8");
+    let duplicateCount = 0;
     let lineNumber = 0;
 
     for (const line of yarnFile.split("\n")) {
+      lineNumber++;
+
       let [text, id] = line.split("#line:");
       if (!id) continue;
 
       id = id.trim();
       const currentRecord = { id, filename, lineNumber };
-      const firstRecord = lineIdToRecord[id];
-      if (!firstRecord) {
+      const existingRecords = lineIdToRecords[id];
+      if (!existingRecords) {
         // Add to records
-        lineIdToRecord[id] = currentRecord;
+        lineIdToRecords[id] = [currentRecord];
       } else {
         duplicateCount++;
-
-        console.log("Duplicate line id found:");
-        console.log("First at ", lineRecordToString(firstRecord));
-        console.log("Again at ", lineRecordToString(currentRecord));
+        lineIdToRecords[id].push(currentRecord);
       }
-      lineNumber++;
+    }
+
+    console.log(
+      `Completed ${filename}. ${duplicateCount} duplicate line IDs found`
+    );
+
+    for (const lineRecords of Object.values(lineIdToRecords)) {
+      if (lineRecords.length === 1) continue;
+
+      for (const record of lineRecords) {
+        console.log(lineRecordToString(record));
+      }
+      console.log("");
     }
   }
-
-  console.log(`Done. ${duplicateCount} duplicate line IDs found`);
 }

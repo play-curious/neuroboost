@@ -54,15 +54,15 @@ position: -1210,-459
 << setBackground bedroom >>
 << fadeOut >>
 
--> Cuisine@cuisine #line:0717775 
+-> Cuisine@cuisine #line:0717776 
     <<jump cuisine_subchoice>>
--> Porte@porte #line:0d21566 
+-> Porte@porte #line:0d21567 
     <<jump porte_subchoice>>
--> Bureau@bureau #line:048f567 
+-> Bureau@bureau #line:048f568 
     <<jump bureau_subchoice>>
--> Lit@lit #line:03dbf5c 
+-> Lit@lit #line:03dbf5d 
     <<jump lit_subchoice>>
--> Salon@salon #line:0645318 
+-> Salon@salon #line:0645319 
     <<jump salon_subchoice>>
 ===
 
@@ -1072,11 +1072,11 @@ position: -1895,1126
     Temde_smiling: Agir dans le feu de l'action, se trouver face à un problème concret et devoir trouver une solution. #line:0a8c4db 
     <<jump QuestionsTemde>>
 -> Demander ce que Temdé n'aime pas faire
-    You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd74 
+    You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd76 
     Temde_thinking: La théorie, la routine, suivre les consignes de quelqu'un d'autre.  #line:07ded1f 
     <<jump QuestionsTemde>>
 -> Demander comment Temdé se définirait
-    You: Comment tu te définirais ? #line:09897ab 
+    You: Comment tu te définirais ? #line:09897ad 
     Temde_cheerful: J'aime prendre des risques, j'avance à tâtons, mes erreurs m'aident à progresser. #line:00fc2ad 
     <<jump QuestionsTemde>>
 -> Interroger un autre Sage
@@ -1094,11 +1094,11 @@ position: -1525,1148
     Sapiens_happy: Accumuler des données, des théories, des concepts. #line:0897191 
     <<jump QuestionsSapiens>>
 -> Demander ce que Sapiens n'aime pas faire
-    You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd74 
+    You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd77 
     Sapiens_concerned: Qu'on ne me laisse pas le temps de raisonner avant de donner ma réponse. Qu'on me harcèle de questions sans préavis. #line:088bf63 
     <<jump QuestionsSapiens>>
 -> Demander comment Sapiens se définirait
-    You: Comment tu te définirais ? #line:09897ab 
+    You: Comment tu te définirais ? #line:09897ae 
     Sapiens_thinking: J'ai soif de savoir et d'informations. Plus je sais et plus je maîtrise la moindre situation, le moindre imprévu.  #line:0153123 
     <<jump QuestionsSapiens>>
 -> Interroger un autre Sage
@@ -1116,11 +1116,11 @@ position: -1201,1184
     Ledai_happy: Appliquer un process qu'on m'a confié, étape par étape, avec rigueur et discernement. #line:0e39ad0
     <<jump QuestionsLedai>> 
 -> Demander ce que Ledai n'aime pas faire
-    You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd74 
+    You: Qu'est-ce que tu n'aimes pas du tout faire ? #line:066fd75 
     Ledai_doubtful: Ne pas avoir de plan d'action préalable, ou ne pas avoir de priorité claire dans ma liste de tâches.  #line:05c6676 
     <<jump QuestionsLedai>> 
 -> Demander comment Ledai se définirait
-    You: Comment tu te définirais ? #line:09897ab 
+    You: Comment tu te définirais ? #line:09897ac 
     Ledai_explaining: Je suis une machine de précision. J'aime agir selon un protocole que j'ai eu le temps de valider. #line:0aa9a21 
     <<jump QuestionsLedai>> 
 -> Interroger un autre Sage

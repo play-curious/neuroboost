@@ -5,8 +5,6 @@
  *  `ts-node prepare_translation.ts ../../levels/C1.yarn ../../levels/old_translations/D1*.tsv > ../../levels/lang/en/C1.tsv`
  */
 
-// TODO: update yarn file with line tags
-
 const { Command } = require("commander");
 const fs = require("fs");
 const path = require("path");
@@ -75,7 +73,7 @@ function shouldSkipLine(line: string): boolean {
   return (
     line === "" ||
     line.startsWith("<<") ||
-    line === "-> back" ||
+    line.startsWith("-> back") ||
     (line.includes("->") && line.includes("@"))
   );
 }
@@ -121,19 +119,19 @@ function go(
   let readingHeader = true;
   let lineNumber = 1;
   for (let line of yarnFile.split("\n")) {
-    line = line.trim();
-    if (line === "===") {
+    const trimmedLine = line.trim();
+    if (trimmedLine === "===") {
       readingHeader = true;
-    } else if (line === "---") {
+    } else if (trimmedLine === "---") {
       readingHeader = false;
     } else if (readingHeader) {
-      const [name, value] = line.split(": ");
+      const [name, value] = trimmedLine.split(": ");
       if (name === "title") {
         currentNode = value;
       }
-    } else if (!shouldSkipLine(line)) {
+    } else if (!shouldSkipLine(trimmedLine)) {
       // Try to find line tag
-      let [text, id] = line.split("#line:");
+      let [text, id] = trimmedLine.split("#line:");
       if (id) {
         text = text.trim();
 
@@ -182,12 +180,12 @@ function go(
         const id = "0" + crypto.randomBytes(3).toString("hex");
 
         // Add tag to line
-        line = line + " #line:" + id;
+        line += " #line:" + id;
 
         const output: OutputTsvRecord = {
           LANGUAGE: "en",
           ID: id,
-          ORIGINAL_TEXT: line,
+          ORIGINAL_TEXT: trimmedLine,
           TEXT: "",
           FILE: basename,
           NODE: currentNode,

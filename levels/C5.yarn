@@ -78,7 +78,7 @@ Vendredi… La semaine des partiels n'est pas terminée. Aujourd'hui, c'est exam
 <<if !visited("MamieCall")>>
 << visitPermanent MamieCall >>
 Votre palmphone vibre. Pour une fois, ce n'est pas Fred, mais votre grand-mère. Qu'est-ce qui lui prend de vous appeler à cette heure-ci ?
--> Prendre l'appel  #line:0d5ad22 
+-> Prendre l'appel  #line:0d5ad23 
 << stopFX PhoneRing_LOOP >>
 You: Bonjour mamie ! Pourquoi je ne te vois pas ? #line:0dc5f32 
 Mamie@holo_shadow: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir… #line:09e9477 
@@ -166,7 +166,7 @@ position: -2077,-400
 ---
 -> Aller à l'examen (passe le temps jusqu'à 14h)
     <<jump Salle_Examen>>
--> back #line:0b4e444 
+-> back #line:0b4e445 
     <<jump Liste_Taches>>
 ===
 

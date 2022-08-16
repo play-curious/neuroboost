@@ -501,7 +501,7 @@ You: Miss Temdé ? C'est toi ?
 Azul_proud: Raté, c'est moi, Azul. #line:0508ea5 
 You: Zut… #line:00470e3 
 Azul_happy: Pas grave, viens, on a un nouveau truc à t'apprendre. #line:0a4a5d0 
--> Suivre Azul  #line:07c135a 
+-> Suivre Azul  #line:07c135c 
     << hide >>
     <<jump Assemblee_Sages>>
 -> (Passer la séquence des Sages)
@@ -649,14 +649,14 @@ Une bonne chose de faite.
 << setBackground bedroom night >>
 Vous vous apprêtez à vous détendre en jouant un peu de guitare quand vous entendez une voix familière.
 
-???: Tout va bien, { $name } ? #line:0660f97 
+???: Tout va bien, { $name } ? #line:0660f98 
 You: Miss Temdé ! C'est toi ?
 << fadeOut >>
-Azul_proud: Raté, c'est moi, Azul. #line:0508ea5 
-You: Zut… #line:00470e3 
-Azul_happy: Pas grave, viens, on a un nouveau truc à t'apprendre. #line:0a4a5d0 
+Azul_proud: Raté, c'est moi, Azul. #line:0508ea6 
+You: Zut… #line:00470e4 
+Azul_happy: Pas grave, viens, on a un nouveau truc à t'apprendre. #line:0a4a5d1 
 
--> Suivre Azul  #line:07c135a 
+-> Suivre Azul  #line:07c135b 
     << hide >>
     <<jump Assemblee_Sages>>
 -> (Passer la séquence des Sages)

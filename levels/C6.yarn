@@ -648,7 +648,7 @@ colorID: 6
     <<jump Danse_samedi>>
 -> Faire les courses (1h) <<if !visited("Courses")>>
     <<jump Courses>>
--> back #line:055ab07 
+-> back 
     <<jump Liste_Taches>>
 <<else>>
 -> Faire les courses (1h) <<if !visited("Courses")>>
@@ -657,7 +657,7 @@ colorID: 6
     <<jump Grand_Oral>>
 -> Aller chercher Fred pour faire un jogging avant l'examen (2h) <<if $jour == "lundi">> #once
     <<jump Jogging>>
--> back #line:055ab07 
+-> back  
     <<jump Liste_Taches>>
 <<endif>>
 ===
