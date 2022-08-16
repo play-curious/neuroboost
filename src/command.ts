@@ -298,6 +298,7 @@ export const commands: Record<string, Command> = {
     this.selectedOptions = [];
     this.visited = new Set();
     this.graphics.removeDeadline();
+    this.graphics.removeBubble();
   },
 
   minigame(className: string) {
@@ -390,6 +391,14 @@ export const commands: Record<string, Command> = {
 
   removeDeadline() {
     this.graphics.removeDeadline();
+  },
+
+  addImmersiveBubble() {
+    this.graphics.addBubble();
+  },
+
+  removeImmersiveBubble() {
+    this.graphics.removeBubble();
   },
 };
 

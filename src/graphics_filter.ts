@@ -2,7 +2,6 @@ import { Filter } from "pixi.js";
 import {
   GlitchFilter,
   CRTFilter,
-  GlowFilter,
   AdjustmentFilter,
   OutlineFilter,
 } from "pixi-filters";

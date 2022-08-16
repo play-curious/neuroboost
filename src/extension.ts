@@ -49,6 +49,7 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
 
     // If mood is incorrect, get default one
     if (!_.has(baseJson, mood)) mood = baseJson["default"];
+    
     const holo = filter.newHolograph();
     const glitch = filter.newGlitch();
     const adjust = filter.newAdjustment();
@@ -86,6 +87,7 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
 
         // Add animated sprite to entity
         CE.entity.addChildEntity(animatedSpriteEntity);
+        rects.push(animatedSpriteEntity.sprite.getBounds());
       } else {
         console.log(`Missing : ${baseDir}/${bodyPart.model}.json`);
       }
@@ -106,7 +108,7 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
     }
 
     // If character changed, do animation
-    if (animate) {
+    if (animate && false) {
       if (displayMode === "holo") {
         this._activateChildEntity(
           new tween.Tween({
