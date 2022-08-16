@@ -328,6 +328,20 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     );
   }
 
+  private stringToHash(string: string) {
+    var hash = 0;
+
+    if (string.length == 0) return hash;
+
+    for (let i = 0; i < string.length; i++) {
+      let char = string.charCodeAt(i);
+      hash = (hash << 5) - hash + char;
+      hash = hash & hash;
+    }
+
+    return hash;
+  }
+
   private _handleChoice() {
     const result = this.runner.currentResult;
 
@@ -345,32 +359,36 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     for (let i = 0; i < result.options.length; i++) {
       const option = result.options[i];
       const optionText = option.text.trim();
+      let lineId = null;
 
       if (optionText.includes("@")) {
         freeChoiceCount++;
-      }
-
-      let lineId;
-      for (let hash of option.hashtags) {
-        if (hash.startsWith("line")) {
-          lineId = hash.split(":")[1].trim();
+      } else {
+        for (let hash of option.hashtags) {
+          if (hash.startsWith("line")) {
+            lineId = hash.split(":")[1].trim();
+          }
         }
-      }
 
-      if (!lineId) {
-        console.warn("No line id for choice '" + optionText + "'");
-      }
+        if (!lineId) {
+          console.warn(
+            "No line id for choice '" + optionText + "', taking hash instead"
+          );
+          lineId = this.stringToHash(optionText).toString();
+        }
 
-      const selectedOptionId = `${this.metadata.title}|${lineId ?? ""}`;
-      if (
-        (option.hashtags.includes("once") &&
-          this.selectedOptions.includes(selectedOptionId)) ||
-        !option.isAvailable
-      )
-        continue;
+        const selectedOptionId = `${this.metadata.title}|${lineId}`;
+        if (
+          (option.hashtags.includes("once") &&
+            this.selectedOptions.includes(selectedOptionId)) ||
+          !option.isAvailable
+        )
+          continue;
+      }
 
       options.push({
         text: optionText,
+        lineId,
         id: `${i}`,
       });
 
@@ -404,7 +422,13 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       this.graphics.setChoice(
         options,
         (id) => {
-          this.selectedOptions.push(`${this.metadata.title}|${id}`);
+          this.selectedOptions.push(
+            `${this.metadata.title}|${
+              options.filter((obj) => {
+                return obj.id === id.toString();
+              })[0].lineId
+            }`
+          );
           this._advance.bind(this)(id);
         },
         this._hasTag(this.metadata, "subchoice") ? indexOfBack : undefined
