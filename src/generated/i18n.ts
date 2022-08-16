@@ -2616,24 +2616,40 @@ export default interface i18n {
     "text": "Vous ne pouvez plus rien faire ici pour le moment."
   },
   {
-    "id": "score_0",
+    "id": "score_1",
     "text": "Peut mieux faire"
   },
   {
-    "id": "score_1",
+    "id": "score_2",
     "text": "Continuez sur cette voie"
   },
   {
-    "id": "score_2",
+    "id": "score_3",
     "text": "Excellent, perseverez"
   },
   {
     "id": "tip_0",
+    "text": "Astuce des sages : Pour augmenter votre score, révisez un maximum avant l'examen."
+  },
+  {
+    "id": "tip_1",
     "text": "Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger."
   },
   {
-    "id": "tip_7",
-    "text": ""
+    "id": "tip_2",
+    "text": "Astuce des sages : Pour augmenter votre score, tentez de réduire un maximum votre charge mentale."
+  },
+  {
+    "id": "tip_3",
+    "text": "Astuce des sages : Pour augmenter votre score, prenez compte des atouts de votre équipe."
+  },
+  {
+    "id": "tip_4",
+    "text": "Astuce des sages : Pour augmenter votre score, tentez de ne pas trop stresser."
+  },
+  {
+    "id": "tip_5",
+    "text": "Astuce des sages : Pour augmenter votre score, pensez à planifier vos journées."
   }
 ];
     journal: [

@@ -167,24 +167,40 @@
     "id": "dialog_no_action",
     "text": "Vous ne pouvez plus rien faire ici pour le moment."
   },
-  "score_0": {
-    "id": "score_0",
-    "text": "Peut mieux faire"
-  },
   "score_1": {
     "id": "score_1",
-    "text": "Continuez sur cette voie"
+    "text": "Peut mieux faire"
   },
   "score_2": {
     "id": "score_2",
+    "text": "Continuez sur cette voie"
+  },
+  "score_3": {
+    "id": "score_3",
     "text": "Excellent, perseverez"
   },
   "tip_0": {
     "id": "tip_0",
+    "text": "Astuce des sages : Pour augmenter votre score, révisez un maximum avant l'examen."
+  },
+  "tip_1": {
+    "id": "tip_1",
     "text": "Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger."
   },
-  "tip_7": {
-    "id": "tip_7",
-    "text": ""
+  "tip_2": {
+    "id": "tip_2",
+    "text": "Astuce des sages : Pour augmenter votre score, tentez de réduire un maximum votre charge mentale."
+  },
+  "tip_3": {
+    "id": "tip_3",
+    "text": "Astuce des sages : Pour augmenter votre score, prenez compte des atouts de votre équipe."
+  },
+  "tip_4": {
+    "id": "tip_4",
+    "text": "Astuce des sages : Pour augmenter votre score, tentez de ne pas trop stresser."
+  },
+  "tip_5": {
+    "id": "tip_5",
+    "text": "Astuce des sages : Pour augmenter votre score, pensez à planifier vos journées."
   }
 }

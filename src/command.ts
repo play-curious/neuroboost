@@ -379,10 +379,7 @@ export const commands: Record<string, Command> = {
   //only completes the C7 level
   completeLevelC7(): entity.Entity {
     const score = this.calculateC7Score();
-    return this.showAndSaveScore(
-      String(score),
-      translateInterface(this, "tip_7")
-    );
+    return this.showAndSaveScore(String(score), "");
   },
 
   completeSages(): void {
