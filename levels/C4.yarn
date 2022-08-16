@@ -963,7 +963,7 @@ position: -1864,35
 << visit Win >>
 
 Une fois chez vous, vous prenez un peu de temps pour éditer le mémoire, puis le rendez le mémoire sur le serveur de l'Académie, convaincu de la qualité de votre travail.
-<< completeLevel Astuce des sages : Pour augmenter votre score, prenez compte des atouts de votre équipe. >>
+<< completeLevel  >>
 Fred@holo_smiling: C'est pas mal, ce qu'on a fait, non ? Ça mérite bien un petit GTR…
 You: Carrément !
 <<if !visited("Assemblee_Sages")>>

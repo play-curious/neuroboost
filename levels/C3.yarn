@@ -643,7 +643,7 @@ Victoire ! Vous avez réussi ! Il n'est pas encore minuit et vous avez terminé 
 Vous daignez prendre encore le temps de faire une vérification syntaxique par votre ordinateur avant d'expédier votre fichier final au serveur FTP de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:062ddf5 
 Une bonne chose de faite.
 << visit Envoi_Note >>
-<< completeLevel Astuce des sages : Pour augmenter votre score, tentez de réduire un maximum votre charge mentale. >>
+<< completeLevel tip_2 >>
 
 <<if !visited("Assemblee_Sages")>>
 << setBackground bedroom night >>
