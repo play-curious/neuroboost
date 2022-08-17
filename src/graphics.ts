@@ -1043,11 +1043,6 @@ export class Graphics extends extension.ExtendedCompositeEntity {
       } else {
         this._characterLayer.removeChild(character.container);
       }
-      for (let entity of character.entity.children) {
-        if (entity.isSetup) {
-          this._deactivateChildEntity(character.entity);
-        }
-      }
     }
 
     delete this._graphicsState.lastCharacter;

@@ -49,7 +49,7 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
 
     // If mood is incorrect, get default one
     if (!_.has(baseJson, mood)) mood = baseJson["default"];
-    
+
     const holo = filter.newHolograph();
     const glitch = filter.newGlitch();
     const adjust = filter.newAdjustment();
@@ -108,7 +108,7 @@ export abstract class ExtendedCompositeEntity extends entity.CompositeEntity {
     }
 
     // If character changed, do animation
-    if (animate && false) {
+    if (animate) {
       if (displayMode === "holo") {
         this._activateChildEntity(
           new tween.Tween({
