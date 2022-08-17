@@ -160,6 +160,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       this.visited = new Set(loadedChapterData.visited);
       this.visitedPermanent = new Set(loadedChapterData.visitedPermanent);
+      this.selectedOptions = loadedChapterData.selectedOptions;
 
       // this.config.history = saveData.history;
     } else {
@@ -474,6 +475,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       levelName: this.levelName,
       nodeName: this.metadata.title,
       visited: Array.from(this.visited),
+      selectedOptions: this.selectedOptions,
       visitedPermanent: Array.from(this.visitedPermanent),
       graphicsState: this.graphics.graphicsState,
     });
@@ -578,7 +580,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       } else {
         if (
           // @ts-ignore
-          parseInt(vars.get(gaugeName)) < gauge.gaugeLevels[gaugeName].minLow
+          parseInt(vars.get(gaugeName)) < gauge.gaugeLevels[gaugeName].minMedium
         )
           return 2;
       }
