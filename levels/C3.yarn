@@ -167,6 +167,7 @@ position: -131,-343
 RoomMate: Voulez-vous que je désactive le mode zéro-distraction pour vous permettre une pause ?
 -> Oui
     << fx Success>>
+    << removeImmersiveBubble >>
     <<set $silence to false>>
 -> Non
     << hide >>
@@ -397,6 +398,7 @@ colorID: 0
 position: -594,-664
 ---
 << fadeIn >>
+<< removeImmersiveBubble >>
 << music Neutral3 >>
 << loopFX Sports_LOOP >>
 << setBackground sport >>
@@ -575,6 +577,8 @@ La projection holographique vous donne de la compagnie et de la motivation pour 
 RoomMate: Mode "Immersion Studieuse" activé !
 <<endif>>
 
+<< addImmersiveBubble >>
+
 << hide >>
 <<jump bureau_subchoice>>
 ===
@@ -602,7 +606,7 @@ RoomMate: Je me suis transféré le contrôle, { $name }. Désormais, c'est moi 
 <<else>>
 RoomMate: Mode "Immersion Studieuse" désactivé !
 <<endif>>
-
+<< removeImmersiveBubble >>
 << hide >>
 La projection holographique disparaît et l'ambiance studieuse aussi. Vous réactivez les appels.
 
