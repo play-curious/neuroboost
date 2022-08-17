@@ -1067,7 +1067,7 @@ L'un d'entre eux n'arrête pas de prendre des notes, un autre passe son temps à
 Leur manière de travailler et de tester vos capacités sont si différentes, ils doivent former une fine équipe. Ils vous rappellent un autre quatuor que vous connaissez bien.
 Au moment des questions-réponses, ils vous laissent développer vos idées et rebondissent sur d'autres sujets. C'est presque trop beau pour être vrai. Vous sortez le sourire au lèvre, convaincu d'avoir réussi.
 << music Victory >>
-<< completeLevel tip_5 >>
+<< completeLevel Astuce des sages : Pour augmenter votre score, pensez à planifier vos journées. >>
 << advanceTimeBy 0:30 food sleep >>
 <<jump WinExamNight>>
 <<else>>

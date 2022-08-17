@@ -406,8 +406,10 @@ export class ScoreMenu extends extension.ExtendedCompositeEntity {
   private _restartLevel() {
     this._entityConfig.fxMachine.play("Click");
 
-    // Tell the state machine to restart the current level
-    const stateDescriptor = this._entityConfig.gameStateMachine.lastTransition;
+    // Tell the state machine to restart the current level without save params
+    const stateDescriptor = entity.makeTransition(
+      this._entityConfig.gameStateMachine.lastTransition.name
+    );
     this._entityConfig.gameStateMachine.changeState(stateDescriptor);
   }
 
