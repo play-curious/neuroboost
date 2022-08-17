@@ -1,0 +1,28 @@
+title: Start
+tags:
+position: -571,1504
+---
+<< setBackground library >>
+<< jump Choices >>
+===
+title: Choices
+tags:
+position: -571,1504
+---
+-> add bubble
+    <<addImmersiveBubble>>
+-> remove bubble
+    <<removeImmersiveBubble>>
+-> background bedroom
+    <<setBackground bedroom>>
+-> background library
+    <<setBackground library>>
+<< jump Other >>
+===
+title: Other
+tags:
+position: -571,1504
+---
+bubble set
+<< jump Choices >>
+===

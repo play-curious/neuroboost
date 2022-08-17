@@ -6,6 +6,7 @@ position: 560,139
 colorID: 1
 ---
 << fadeIn 1 >>
+<< showTitle Chapitre 6 >>
 << music Neutral >>
 << setBackground bedroom >>
 << showGauges >>
@@ -1258,7 +1259,7 @@ Sapiens_thinking: L'Académie d'Omniscience et de Polytechnologie Universelle po
 Azul_proud: Secret que nous avons percé à jour. #line:074fc01 
 Ledai_explaining: Ils ont un détecteur neurocérébral. Ils peuvent lire dans vos pensées. #line:05beea6 
 Temde_smiling: Moins bien que nous. Mais ça marche pas top mal. #line:0b544ab 
-Sapiens_happy: Ils s'en servent le jour du Grand Oral. Pour vérifiez si les candidats n'ont pas de grosses lacunes. #line:0a90d20 
+Sapiens_happy: Ils s'en servent le jour du Grand Oral. Pour vérifier si les candidats n'ont pas de grosses lacunes. #line:0a90d20 
 Ledai_explaining: Et si c'est le cas, le jury vous interroge sur le sujet que vous n'avez pris le temps d'apprendre. #line:0d20282 
 You: Hé ! C'est vicieux !  #line:0e0d68f 
 Sapiens_thinking: Le jour du Grand Oral, aucune excuse ne tient !  #line:00e3fb2 
@@ -1503,7 +1504,7 @@ Vous prenez une grande inspiration avant de prendre la parole. Vous vous présen
 <<if !visited("sages")>>
 L'un des jurés enfile des lunettes d'amplification de lumière, d'infravision... Vous ne savez pas vraiment pourquoi... Il vous fixe un moment avant de s'écrier : "La décohérence quantique"... #line:0044462 
 <<else>>
-L'un des jurés enfile à nouveau ces lunettes étranges... Des lunettes de détection neurocérébral. Il vous fixe un moment avant de s'écrier : "L'incertitude quantique"... #line:0d497f9 
+L'un des jurés enfile à nouveau ces lunettes étranges... Des lunettes de détection neurocérébrale. Il vous fixe un moment avant de s'écrier : "L'incertitude quantique"... #line:0d497f9 
 <<endif>>
 
 Pfouu.... Vous soufflez un grand coup. Bien entendu, l'incertitude quantique n'est pas votre thème préféré. Malgré tout, vous avez des arguments, des concepts, des débats, des problématiques, des polémiques qui vous viennent aussitôt en tête. #line:0767c66 
@@ -1758,7 +1759,7 @@ Vous avez trop faim pour faire quoi que ce soit... #line:063722e
 <<endif>>
 
 <<if getGauge("mentalLoad") >= 100 >>
-Vous vous êtes trop donner aux révisions, votre cerveau n'enregistre plus rien... #line:0000016 
+Vous vous êtes trop donné aux révisions, votre cerveau n'enregistre plus rien... #line:0000016 
 <<endif>>
 
 -> Recommencer le week-end #line:0d1ef81 
@@ -1784,7 +1785,7 @@ position: 1742.1867031989302,580.8256842017254
 ---
 <<visit Grignoter_S>>
 
-Vous grignotez un petit quelque chose #line:0c463ee 
+Vous grignotez un petit quelque chose. #line:0c463ee 
 
 << advanceTime 0:15 >>
 << addToGauge food 30 >>

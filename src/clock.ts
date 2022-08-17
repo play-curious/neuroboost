@@ -112,14 +112,22 @@ export class Clock extends extension.ExtendedCompositeEntity {
     return this._textBox.text;
   }
 
+  /** Sets the time without any animation */
   setTime(newMinutes: number) {
-    if (this._clockTween) this._deactivateChildEntity(this._clockTween);
+    if (this._clockTween) {
+      this._deactivateChildEntity(this._clockTween);
+      this._clockTween = null;
+    }
 
     this.minutesSinceMidnight = newMinutes;
   }
 
+  /** Advances the time until @param newMinutes with an animation */
   advanceTime(newMinutes: number) {
-    if (this._clockTween) this._deactivateChildEntity(this._clockTween);
+    if (this._clockTween) {
+      this._deactivateChildEntity(this._clockTween);
+      this._clockTween = null;
+    }
 
     const currentMinutes = this._minutesSinceMidnight;
     this._clockTween = new tween.Tween({

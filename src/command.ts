@@ -8,6 +8,9 @@ import * as miniGame from "./mini_game";
 import * as clock from "./clock";
 import * as save from "./save";
 import * as popup from "./popup";
+import * as journal from "./journal";
+import * as title from "./title";
+import * as chapter_menus from "./chapter_menus";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (
@@ -21,7 +24,7 @@ export const savedGauges: Map<keyof variable.Gauges, number> = new Map();
 export const commands: Record<string, Command> = {
   // Shortcut for _changeCharacter()
   show(character: string, mood?: string): void {
-    this.graphics.addCharacter(character, mood);
+    this.graphics.addCharacter(character.toLowerCase(), mood?.toLowerCase());
   },
 
   // Shortcut for _changeCharacter()
@@ -82,11 +85,16 @@ export const commands: Record<string, Command> = {
     this.config.clock.setTime(minutesSinceMidnight);
   },
 
+  /** @deprecated */
   advanceTime(
     time: clock.ResolvableTime,
     maxTime?: clock.ResolvableTime,
     stepTime?: clock.ResolvableTime
   ) {
+    console.warn(
+      "<<advanceTime>> is deprecated. Use <<advanceTimeBy>> or <<advanceTimeTo>> instead"
+    );
+
     const [, , minutesToAdvance] = clock.parseTime(time);
 
     let minutesToStop, minutesStep;
@@ -108,6 +116,45 @@ export const commands: Record<string, Command> = {
     this.config.variableStorage.set("time", `${newMinutes}`);
 
     this.config.clock.advanceTime(newMinutes);
+  },
+
+  /**
+   * Makes time clock forward by a certain amount.
+   * Automatically adjusts food and sleep meters
+   */
+  advanceTimeBy(time: clock.ResolvableTime, ...gaugesToIgnore: string[]) {
+    const [, , minutesToAdvance] = clock.parseTime(time);
+
+    const minutesSinceMidnight = Number(
+      this.config.variableStorage.get("time")
+    );
+    const newMinutes = minutesSinceMidnight + minutesToAdvance;
+
+    this.config.variableStorage.set("time", `${newMinutes}`);
+
+    this.config.clock.advanceTime(newMinutes);
+    this.simulateGauges(minutesToAdvance, gaugesToIgnore);
+  },
+
+  /** Makes the clock move forward until a certain time */
+  advanceTimeUntil(time: clock.ResolvableTime, ...gaugesToIgnore: string[]) {
+    const oldMinutesSinceMidnight = Number(
+      this.config.variableStorage.get("time")
+    );
+    let [, , newMinutesSinceMidnight] = clock.parseTime(time);
+
+    // OPT: This loop is inefficient but won't be called more than 7 times in the current scenario
+    while (newMinutesSinceMidnight <= oldMinutesSinceMidnight) {
+      // Must have gone to the next day
+      newMinutesSinceMidnight += clock.dayMinutes;
+    }
+
+    this.config.variableStorage.set("time", `${newMinutesSinceMidnight}`);
+
+    this.config.clock.advanceTime(newMinutesSinceMidnight);
+
+    const minutesToAdvance = newMinutesSinceMidnight - oldMinutesSinceMidnight;
+    this.simulateGauges(minutesToAdvance, gaugesToIgnore);
   },
 
   hideClock() {
@@ -154,23 +201,23 @@ export const commands: Record<string, Command> = {
     this.config.variableStorage.set(gaugeName, `${newValue}`);
   },
 
-  saveGauges<VarName extends keyof variable.Gauges>(...names: VarName[]) {
-    savedGauges.clear();
-    names.forEach((name) => {
-      savedGauges.set(name, Number(this.config.variableStorage.get(name)));
-    });
-  },
+  // saveGauges<VarName extends keyof variable.Gauges>(...names: VarName[]) {
+  //   savedGauges.clear();
+  //   names.forEach((name) => {
+  //     savedGauges.set(name, Number(this.config.variableStorage.get(name)));
+  //   });
+  // },
 
-  loadGauges() {
-    savedGauges.forEach((id, key) => {
-      this.config.variableStorage.set(key, `${savedGauges.get(key)}`);
-    });
-  },
+  // loadGauges() {
+  //   savedGauges.forEach((id, key) => {
+  //     this.config.variableStorage.set(key, `${savedGauges.get(key)}`);
+  //   });
+  // },
 
   // MUSIC FX
 
   music(musicName?: string) {
-    this.graphics.last.lastMusic = musicName;
+    this.graphics.graphicsState.lastMusic = musicName;
     this.config.jukebox.play(musicName);
   },
 
@@ -250,6 +297,8 @@ export const commands: Record<string, Command> = {
   resetLevel() {
     this.selectedOptions = [];
     this.visited = new Set();
+    this.graphics.removeDeadline();
+    this.graphics.removeBubble();
   },
 
   minigame(className: string) {
@@ -269,7 +318,88 @@ export const commands: Record<string, Command> = {
     );
   },
 
-  empty() {},
+  showJournal(name: string): void {
+    if (!name) {
+      throw new Error("Missing argument journal name");
+    }
+
+    this.graphics.setBackground("bedroom", "night");
+
+    this.disable();
+    this.activate(
+      new entity.EntitySequence([
+        new journal.JournalScene(name),
+        new entity.FunctionCallEntity(() => {
+          // Restore background
+          this.graphics.setBackground(
+            this.graphics.graphicsState.lastBg,
+            this.graphics.graphicsState.lastBgMood
+          );
+          this.enable();
+        }),
+      ])
+    );
+  },
+
+  showTitle(...words: string[]): entity.Entity {
+    const text = words.join(" ");
+    return new title.Title(text);
+  },
+
+  completeLevel(...hintWords: string[]): entity.Entity {
+    const score = this.calculateScore();
+    return this.showAndSaveScore(String(score), hintWords);
+  },
+
+  //only completes the C7 level
+  completeLevelC7(...hintWords: string[]): entity.Entity {
+    const score = this.calculateC7Score();
+    return this.showAndSaveScore(String(score), hintWords);
+  },
+
+  completeSages(): void {
+    save.updateCompletedSages(this.levelName);
+  },
+
+  completeJournal(): void {
+    save.updateCompletedJournal(this.levelName);
+  },
+
+  empty(): void {},
+
+  screenshake(amount = "20", time = "500"): entity.Entity {
+    this.graphics.addScreenShake(parseInt(amount), parseInt(time));
+
+    return new entity.WaitingEntity(parseInt(time));
+  },
+
+  addBlur(amount = "4"): void {
+    this.graphics.addBlur(parseInt(amount));
+  },
+
+  removeBlur(): void {
+    this.graphics.removeBlur();
+  },
+
+  setDeadline(name: string, timestamp: string) {
+    this.graphics.addDeadline(name, timestamp);
+  },
+
+  missedDeadline() {
+    this.graphics.missDeadline();
+  },
+
+  removeDeadline() {
+    this.graphics.removeDeadline();
+  },
+
+  addImmersiveBubble() {
+    this.graphics.addBubble();
+  },
+
+  removeImmersiveBubble() {
+    this.graphics.removeBubble();
+  },
 };
 
 export const functions: Record<string, YarnFunction> = {
@@ -282,21 +412,25 @@ export const functions: Record<string, YarnFunction> = {
     );
   },
 
+  round_places(n: string, places: string): string {
+    return Number(n).toFixed(parseInt(places));
+  },
+
   getGauge(gauge: string): number {
-    return this.graphics.getGaugeValue(gauge);
+    return parseInt(this.entityConfig.variableStorage.get(gauge));
   },
 
-  save() {
-    save.save(this);
-  },
+  // save() {
+  //   save.save(this);
+  // },
 
-  resetSave() {
-    save.deleteSave();
-  },
+  // resetSave() {
+  //   save.deleteSave();
+  // },
 
-  hasSave(): boolean {
-    return save.hasSave();
-  },
+  // hasSave(): boolean {
+  //   return save.hasSave();
+  // },
 
   isTimeOver(time: clock.ResolvableTime, day?: string): boolean {
     let [, , minutesSinceMidnight] = clock.parseTime(time);

@@ -3,7 +3,7 @@
 title: Start
 tags:
 colorID: 0
-position: -893,370
+position: -568,-53
 ---
 << empty >>
 << fadeIn 1 >>
@@ -30,7 +30,7 @@ Ronronron... Cette fois, c'est votre palmphone qui vibre : FRED veut vous parler
 title: Appel_Fred_Rewind
 tags: 
 colorID: 0
-position: -592,376
+position: -570,57
 ---
 << stopFX PhoneRing_LOOP >>
 
@@ -60,7 +60,7 @@ Vous raccrochez sans vous en rendre compte #line:077b761
 title: Rejet_Fred_Rewind
 tags:
 colorID: 0
-position: -758,62
+position: -326,-51
 ---
 Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais vaincu. Il vous rappelle aussitôt ! #line:064cdc3 
 -> Prendre l'appel #line:04b2664 
@@ -69,7 +69,7 @@ Décidément, vous ne voulez pas comprendre qui est Fred. Il ne s'avoue jamais v
 title: Phone_off_Rewind
 tags:
 colorID: 0
-position: -342,363
+position: -316,223
 ---
 << setBackground bedroom >>
 << fadeOut >>
@@ -84,7 +84,7 @@ Il vous reste 6 heures avant l'heure H... Aujourd'hui, vous allez montrer à Fre
 title: Action_List_Rewind
 tags: freechoice
 colorID: 0
-position: -895,604
+position: -1122,466
 ---
 << setBackground bedroom >>
 << fadeOut >>
@@ -109,7 +109,7 @@ Il est déjà l'heure de déjeuner. C'est tout ce que vous pouvez faire avant d'
 ===
 title: cuisine_subchoice
 tags: subchoice
-position: -319.1514720916748,-55.38755989074707
+position: -543,533
 ---
 << fadeIn >>
 << setBackground bedroom kitchen >>
@@ -139,7 +139,7 @@ position: -993.6492929458618,-75.37680292129517
 ===
 title: salon_subchoice
 tags: subchoice
-position: -1716.8310852050781,-38.99417304992676
+position: -1427,217
 ---
 << fadeIn >>
 << setBackground bedroom chill >>
@@ -186,7 +186,7 @@ Bon, ce n'est pas tout. #line:0d01fa8
 title: Chat_Rewind
 tags:
 colorID: 0
-position: -755,827
+position: -907,703
 ---
 <b>Pensez-vous vraiment que c'est ce que vous a recommandé les 4 Sages de la Métacognition?</b> #line:0349739 
 
@@ -210,7 +210,7 @@ Vous passez deux heures à discuter de tout, mais surtout de rien. #line:06ab06b
 title: Revision_Rewind
 tags:
 colorID: 0
-position: -508,824
+position: -591,772
 ---
 Vous ouvrez une nouvelle fois votre dossier Astrometric Data Management. Qu'est-ce que c'est barbant... Mais cette fois, vous ravalez votre bile. #line:0ca527e 
 Aujourd'hui, vous voulez réussir votre journée. Vous voulez coiffer Fred au poteau! Vous aussi, vous aurez un <i>A+</i> #line:04765d7 
@@ -227,7 +227,7 @@ Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à pot
 title: BingeTV_Rewind
 tags:
 colorID: 0
-position: -288,823
+position: -741,452
 ---
 
 <bi>Pensez-vous vraiment que c'est ce que vous ont recommandé les 4 Sages de la Métacognition?</bi> #line:04a07cf 
@@ -257,7 +257,7 @@ Au final vous passez trop de temps à binger votre série préférée. #line:023
 title: Rappel_libre
 tags:
 colorID: 0
-position: -42,822
+position: -468,480
 ---
 Il est temps d'appliquer la méthode miracle que vous ont enseignée ces esprits qui vous ont parlé durant votre sommeil. #line:0b8f655 
 Vous essayez de vous souvenir de ce que vous avez retenu en cours. Ce n'est pas brillant. Vous vous ne que souvenez de très peu de choses. Pas étonnant, vous n'aimez pas cette matière. #line:07f35ff 

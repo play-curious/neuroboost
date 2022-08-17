@@ -1,0 +1,845 @@
+﻿#gauges:learning,sleep,food,mentalLoad
+
+title: Start
+tags:
+colorID: 0
+position: -215,-1026
+---
+<< fadeIn >>
+<< showTitle Chapitre 3 >>
+<< setGauge learning 0 >>
+<< setGauge sleep 100 >>
+<< setGauge food 100 >>
+<< setGauge mentalLoad 0 >>
+<< showGauges >>
+<< setBackground bedroom >>
+<< setTime 8:00 2 >>
+<< fadeOut >>
+<< loopFX Chime_LOOP 2000 >>
+<< screenshake 10 600 >>
+<< set $silence to false >>
+Bip ! Bip ! Il est 8 heures, vous rappelle votre horloge connectée.  #line:0aa5e7b 
+<< stopFX Chime_LOOP >>
+<< music Neutral >>
+
+Comme tous les matins, vous vous réveillez dans votre chambre. Mercredi, c'est jour d'autonomie à l'Académie. Attention, ça ne veut pas dire jour de repos !
+Du repos, vous en auriez bien besoin… Pas d'un point de vue physique, mais mental : entre les deux examens que vous venez d'enchaîner et les cours barbants d'hier après-midi, vous commencez à saturer.
+<< addToGauge mentalLoad 50 >>
+Tutorial: La jauge de Charge Mentale mesure à quel point vous surchargez votre cerveau. Si elle atteint 100, c'est perdu !
+Vous vous demandez comment vous allez faire pour rédiger la note de synthèse que vous devez rendre avant minuit sans vous arracher les cheveux…
+<< setDeadline Rendu 0:00 >>
+<< loopFX PhoneRing_LOOP 5000 >>
+<< screenshake 10 600 >>
+Votre palmphone vibre. Sans surprise, vous voyez que l'appel vient de Fred. #line:0a81caa 
+
+-> Prendre l'appel #line:02b8348 
+    <<jump Appel_Fred>>
+-> Rejeter l'appel
+    <<jump Rejet_Fred>>
+===
+
+title: Rejet_Fred
+tags: 
+colorID: 0
+position: -202,-823
+---
+<< stopFX PhoneRing_LOOP >>
+Vous rejetez l'appel de Fred, convaincu qu'iel vous fera plus perdre de temps qu'autre chose…
+<< advanceTimeBy 0:30 >>
+<<jump Liste_Taches>>
+===
+
+title: Appel_Fred
+tags: 
+colorID: 0
+position: -351,-881
+---
+<< stopFX PhoneRing_LOOP >>
+
+Fred@holo_excited: Hello ! Je te dérange pas ? #line:0e7041f 
+You: Un peu… #line:0fc0b63 
+Fred@holo_surprised: Ah bon ? #line:00d17f3 
+You: Je finis mon petit déjeuner. #line:0d5515d 
+Fred@holo_smiling: C'est juste pour te prévenir que je vais à la salle de sport tout à l'heure ! Tu me rejoindras ?
+-> Oui, je viendrai
+    Fred@holo_excited: Héhé, je savais que tu serais pas contre un peu de sport pour te vider la tête après tous ces examens !
+    Fred@holo_happy: Je t'appelle dès que j'y vais. Reste près de ton palmphone !
+    You: Ouais… Mais si je suis en train de travailler quand tu m'appelles ?
+    Fred@holo_sarcasme: Oh, c'est bon, détends-toi… Tu veux parler de la note de synthèse sur la PNLIAA, c'est ça ?
+    You: Ouais.
+    Fred@holo_excited: Y a le temps, on a jusqu'à minuit pour le déposer sur le FTP de l'Académie !
+-> Non, j'ai du travail
+    You: Je peux pas… Je dois travailler en autonomie.
+    Fred@holo_smiling: Tu veux parler de la note de synthèse sur la PNLIAA ? #line:09b2be5 
+    You: Ouais. #line:01a37fa 
+    Fred@holo_sarcasme: Oh, c'est bon, détends-toi… On a jusqu'à minuit pour la déposer sur le FTP de l'Académie…
+    You: Justement !
+    Fred@holo_happy: Tu sais quoi ? Je te rappelle quand j'y vais, tu me diras si tu viens ou pas.
+<< hide >>
+<< advanceTimeBy 1:00 >>
+
+<<jump Liste_Taches>>
+===
+
+title: Liste_Taches
+tags: freechoice
+colorID: 1
+position: -420,-531
+---
+<< hide >>
+<< setBackground bedroom >>
+
+<< if getGauge("mentalLoad") >= 100 >>
+    <<jump Surcharge_Cognitive>>
+<< endif >>
+
+<< if getGauge("food") <= 0 >>
+    <<jump TooHungry>>
+<< endif >>
+
+<< if getGauge("sleep") <= 0 >>
+    <<jump TooTired>>
+<< endif >>
+
+<<if !isTimeOver("7:00")>>
+<<if isTimeOver("0:05")>>
+<<jump Time_Over>>
+<<endif>>
+<<endif>>
+
+<< fadeOut >>
+<< music Neutral2 >>
+
+-> Lit@lit #line:0b6bd1f 
+    <<jump lit_subchoice>>
+-> Bureau@bureau #line:03c2b92 
+    <<jump bureau_subchoice>>
+-> Salon@salon #line:000e014 
+    <<jump salon_subchoice>>
+-> Cuisine@cuisine #line:018983b 
+    <<jump cuisine_subchoice>>
+
+<< setBackground bedroom >>
+<< fadeOut >>
+===
+
+title: lit_subchoice
+tags: subchoice
+position: -569,-838
+---
+<< setBackground bedroom bed >>
+
+-> Faire une sieste (1h30) #line:0f2729b 
+    <<jump Sleep>>
+-> back #line:007f281 
+    <<jump Liste_Taches>>
+===
+
+title: bureau_subchoice
+tags: subchoice
+position: -818,-304
+---
+<< setBackground bedroom desk >>
+
+-> Envoyer la note de synthèse sur le FTP de l'Académie <<if getGauge("learning") >= 50>>
+    <<jump Envoi_Note_Synthese>>
+-> Travailler sur la note de synthèse (2h) <<if !visited("Redaction_Note_3")>>
+    <<jump Redaction_Note>>
+-> Préparer son bureau avant de travailler (0h30) <<if getGauge("learning") < 50>> #once
+    <<jump Ranger>>
+-> Ouvrir le chat histoire de se détendre (2h) <<if $silence == false>> #once 
+    <<jump Chat>>
+-> Activer le mode "Zéro Distraction" <<if $silence == false>>
+    <<jump Zero_Distraction>>
+-> Désactiver le mode "Zéro Distraction" <<if $silence == true>>
+    <<jump Desactiver_Zero_Distraction>>
+-> back #line:08f6a4e 
+    <<jump Liste_Taches>>
+===
+
+title: salon_subchoice
+tags: subchoice
+position: -131,-343
+---
+<< setBackground bedroom chill >>
+
+<<if $silence>>
+RoomMate: Voulez-vous que je désactive le mode zéro-distraction pour vous permettre une pause ?
+-> Oui
+    << fx Success>>
+    << removeImmersiveBubble >>
+    <<set $silence to false>>
+-> Non
+    << hide >>
+    <<jump Liste_Taches>>
+<< hide >>
+<<endif>>
+
+-> Se détendre devant la TV (3h) #once #line:01eb1a1 
+    <<jump Binge_TV>>
+-> back #line:0a20dff 
+    <<jump Liste_Taches>>
+===
+
+title: cuisine_subchoice
+tags: subchoice
+position: 73,-517
+---
+<< setBackground bedroom kitchen >>
+
+-> Casser la croûte (30 min) #once #line:00bd306 
+    <<jump Lunch>>
+-> Dîner (1h) <<if isTimeOver("18:50")>> #once
+    <<jump Diner>>
+-> back #line:049c6aa 
+    <<jump Liste_Taches>>
+===
+
+title: Ranger
+tags: 
+colorID: 0
+position: -1017,-397
+---
+<< fadeIn >>
+<< setBackground bedroom desk >>
+<< fadeOut >>
+Votre bureau est encore couvert de vieilles fiches de révision et de pièces de drone. Vous le débarrassez, puis vous prenez ensuite plusieurs minutes pour établir un plan de réflexion et de travail.
+<< advanceTimeBy 0:30 >>
+Vous êtes content de vous, ça va vous faciliter le processus de rédaction.
+<< removeFromGauge mentalLoad 10 >>
+<< jump Liste_Taches >>
+===
+
+title: Chat
+tags: 
+colorID: 0
+position: -1090,-305
+---
+<< fadeIn >>
+<< setBackground bedroom desk >>
+<< fadeOut >>
+
+Vous ouvrez l'application Disboard pour discuter avec vos amis. Vous parlez toujours à votre groupe de potes habituel, avec qui vous passez du temps à refaire le monde et à jouer.
+Votre ami Phil passe une heure à vous expliquer comment marche son simulateur spatial préféré, Star Civilian. Vous ne comprenez rien, mais vous tentez de suivre pour lui faire plaisir.
+<< advanceTimeBy 2:00 >>
+Au final, cette petite session de chat vous a fait plaisir, mais votre cerveau n'a toujours pas eu de répit pendant plusieurs heures.
+<< removeFromGauge mentalLoad 10 >>
+<< jump Liste_Taches >>
+===
+
+title: Binge_TV
+tags: 
+colorID: 0
+position: -86,-234
+---
+<< fadeIn >>
+<< setBackground bedroom chill >>
+<< fadeOut >>
+
+Vous lancez votre application Screencast, l'écran d'accueil de Webflix s'affiche aussitôt sur le mur, vous choisissez votre série culte : Star Mars !
+<< show lightsaber@holo>>
+<< loopFX TVStarwars_LOOP 10000 >>
+Le générique démarre en déroulant le récapitulatif des épisodes précédents. L'infâme Jaba Fett, emprisonné par Yann Salto, a été libéré de la planète Jailhouse par les Dark Ops, les commandos de choc de l'Impérium Noir !
+Ils ont besoin de lui car lui seul sait où se cache Dude Highwalker… Sur Provencia, une planète à la chaleur extrême qui renferme une épice aux propriétés magiques…
+<< advanceTimeBy 2:00 >>
+<< removeFromGauge mentalLoad 20>>
+L'épisode est passionnant et vous sort de vos tracas quotidiens. Mais vous avez toujours du travail !
+Vous vous demandez au bout d'un moment si vous ne pourriez pas mêler l'utile à l'agréable…
+
+-> En profiter pour travailler devant la TV
+    <<jump TV_Revisions>>
+-> Profiter du show au maximum
+    <<jump TV_Immersion>>
+===
+
+title: TV_Revisions
+tags: 
+colorID: 0
+position: 158,-204
+---
+Vous emportez votre tablette sur le canapé et continuez à rédiger la note de synthèse.
+Vous ne comprenez pas grand chose à la fin de l'épisode, plongé à la fois dans votre travail et dans les confins de l'espace.
+<< advanceTimeBy 1:00 >>
+<< addToGauge learning 10>>
+Résultat, vous n'avez pas tant avancé que ça, et vous n'avez même pas profité du show…
+
+<< stopFX TVStarwars_LOOP >>
+<< hide >>
+
+<< jump Liste_Taches >>
+===
+
+title: TV_Immersion
+tags: 
+colorID: 0
+position: 152,-279
+---
+L'épisode commence à être prenant lorsque Lord Switox accueille les héros sur sa planète. Les gens ici dédient leur vie entière à l'épice magique, l'herbe de Provencia.
+Les héros sont conduits par le Lord sur la planète Saturne, de retour dans le système solaire, pour y retrouver Dude… Au prochain épisode.
+Vous immerger totalement dans cet univers vous a fait du bien, mais vous y avez passé beaucoup de temps.
+
+<< stopFX TVStarwars_LOOP >>
+<< hide >>
+<< advanceTimeBy 1:00 >>
+
+<< removeFromGauge mentalLoad 20>>
+
+<< jump Liste_Taches >>
+===
+
+title: Sleep
+tags: 
+colorID: 0
+position: -673,-993
+---
+<< fadeIn >>
+<< setBackground bedroom bed >>
+<< fadeOut >>
+
+<< loopFX Sleep_LOOP 5000 >>
+Vous sentez que vous glissez rapidement dans un cocon chaud et doux, une sieste méritée et réparatrice. Quand vous ouvrez les yeux, vous vous sentez de nouveau frais et joyeux. #line:058b075 
+<< stopFX Sleep_LOOP >>
+
+<< addToGauge sleep 60 >>
+<< removeFromGauge mentalLoad 10 >> 
+<< advanceTimeBy 1:30 sleep food >>
+
+<<jump Liste_Taches>>
+===
+
+title: Redaction_Note
+tags: 
+colorID: 0
+position: -822,-557
+---
+<< fadeIn >>
+<< setBackground bedroom desk >>
+<< fadeOut >>
+
+<< if !visited("Redaction_Note") >>
+<< visit Redaction_Note >>
+Vous vous retroussez les manches et vous commencez ce travail fastidieux mais indispensable… Mettre au propre cette note de synthèse. Cela vous demande une attention, une concentration et une motivation inimaginables.
+<< addToGauge learning 10 >>
+<< addToGauge mentalLoad 30 >>
+<< advanceTimeBy 2:00>>
+
+<<if $silence == false>>
+
+<<if !isTimeOver("19:00")>>
+<< fx PhoneRing_LOOP >>
+<< screenshake 10 600 >>
+Dring ! Vous êtes au beau milieu d'un paragraphe, en pleine concentration, quand Fred vous appelle.
+<< stopFX PhoneRing_LOOP >>
+Fred@holo_excited: Yo ! Je suis à la salle de sport, là ! Alors, tu viens ou tu te défiles ?
+You: Aahhh, Fred, tu tombes mal. Je suis en plein milieu du travail, là !
+Fred@holo_smiling: Allez, c'est bon, ça peut attendre ! Tu finiras plus tard !
+Vous hésitez. D'un côté, vous serez obligé de vous remettre dedans lorsque vous continuerez la note. De l'autre, une séance de sport avec Fred vous détendrait sûrement.
+<< visit FredCall >>
+-> Aller à la salle de sport avec Fred
+    << hide >>
+    <<jump Fred_Sport>>
+-> Rester travailler
+You: Ben… non. Tu m'aurais appelé plus tard, j'aurais peut-être accepté, mais là, c'est pas le moment !
+Fred@holo_angry: Oh, sérieux ?? Tu me lâches comme ça ? Tout ça pour rédiger la note ? C'est pas cool de ta part…
+<< hide >>
+<< addToGauge learning 10 >>
+<< addToGauge mentalLoad 30 >>
+Votre altercation avec Fred vous a un peu démotivé, pèse sur votre mental, mais vous parvenez au moins à finir ce maudit paragraphe.
+Quitte à refuser la proposition de Fred, peut-être auriez-vous dû mettre votre palmphone en silencieux…
+<<endif>>
+
+<<else>>
+Avec l'aide du mode Zero Distraction, vous parvenez à garder votre concentration au maximum. Votre première partie est finie.
+<< addToGauge learning 20 >>
+Vous êtes plutôt content du résultat, mais le devoir n'est pas fini pour autant…
+<<endif>>
+
+<< elseif !visited("Redaction_Note_2") >>
+Allez, cette fois, vous y arriverez ! Vous pourrez mettre un point final à cette note de synthèse avant la deadline… #line:0785c34 
+<< advanceTimeBy 2:00>>
+<< visit Redaction_Note_2 >>
+
+<<if $silence == false>>
+Vous parvenez difficilement à vous concentrer : Sara et sa bande sont connectées sur Farbrew Valley et parlent sur votre serveur de discussion…
+Vous auriez peut-être dû couper les notifications avant de vous mettre à travailler…
+<< addToGauge learning 20 >>
+<< addToGauge mentalLoad 30 >>
+<<else>>
+Vous parvenez cette fois à terminer vos parties de la note de synthèse. Il ne restera que la conclusion à rédiger et le travail de relecture…
+<< addToGauge learning 30 >>
+<< addToGauge mentalLoad 30 >>
+Peut-être avez-vous mérité une pause… Mais cette conclusion ne se rédigera pas toute seule…
+<<endif>>
+
+<<elseif !visited("Redaction_Note_3")>>
+Encore un effort et votre rendu sera presque parfait ! Vous vous attelez à la rédaction de cette maudite conclusion…
+<< advanceTimeBy 2:00>>
+<< visit Redaction_Note_3 >>
+<<if $silence == false>>
+Votre concentration est perturbée par une pluie de notifications provenant de votre groupe de classe. Le professeur de programmation robotique vient enfin de déposer les notes d'un vieux rendu !
+Vous avez eu B, rien de particulièrement mauvais ou brillant, mais vous auriez aimé recevoir l'information à un autre moment…
+En attendant, vous êtes parvenu à achever difficilement la conclusion.
+<< addToGauge learning 20 >>
+<< addToGauge mentalLoad 30 >>
+<<else>>
+Vous parvenez à la terminer, et dédiez le temps qu'il vous reste à la relecture et à la correction.
+<< addToGauge learning 30 >>
+<< addToGauge mentalLoad 30 >>
+Votre rendu est prêt ! Vous en êtes convaincu. Peut-être est-ce enfin l'heure de l'envoyer au prof ! Ce qui est sûr, c'est que vous auriez du mal à améliorer quoi que ce soit maintenant…
+<<endif>>
+
+<<endif>>
+<<jump Liste_Taches>>
+===
+
+title: Fred_Sport
+tags: 
+colorID: 0
+position: -594,-664
+---
+<< fadeIn >>
+<< removeImmersiveBubble >>
+<< music Neutral3 >>
+<< loopFX Sports_LOOP >>
+<< setBackground sport >>
+<< fadeOut >>
+
+Résigné, Vous retrouvez Fred à la salle de sport. Vous finissez par vous éclater tous les deux comme des enfants au cybersprint.
+<< removeFromGauge mentalLoad 20 >>
+<< removeFromGauge sleep 20 >>
+<< advanceTimeBy 1:30 >>
+Vous vous sentez fatigué, mais mentalement revigoré. Fred vous a battu au cybersprint, mais vous savez que vous êtes meilleur dans la durée. Ce dernier vous demande si vous voulez continuer.
+-> Rentrer
+    Vous déclinez gentiment la proposition de Fred. Après tout, il ne s'agit pas d'épuiser toute votre énergie, vous avez un devoir à rendre, quand-même !
+    << fadeIn >>
+    << stopFX Sports_LOOP>>
+    << hide >>
+    <<jump Liste_Taches>>
+-> Persévérer pour battre Fred
+    Vous acquiescez à la proposition de Fred, convaincu que vous allez le battre sur l'endurance.
+    Et c'est le cas ! Épuisé, Fred perd petit à petit ses forces, jusqu'à ce que vous le dépassiez.
+    << removeFromGauge sleep 20 >>
+    << removeFromGauge mentalLoad 20 >>
+    Fred_bored: Oulah, tu m'as eu, là… Allez, il est temps de rentrer, je crois.
+    << advanceTimeBy 1:00 >>
+    Vous vous êtes donné à fond ! Lessivé, vous retournez à votre chambre…
+    << fadeIn >>
+    << stopFX Sports_LOOP>>
+    << hide >>
+    <<jump Liste_Taches>>
+===
+
+title: Surcharge_Cognitive
+tags:
+colorID: 0
+position: -390,-150
+---
+<< music NegativeSad >>
+Pfuuuu… Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps… Vous avez l'impression d'avoir bu une bouteille de whisky cul-sec. #line:050998f 
+Vous n'êtes pourtant pas ivre. Vous n'avez pas abusé de l'alcool. Vous n'avez pas bu une goutte. #line:01ea25b 
+Vous auriez peut-être abusé de votre temps de travail. Ce n'est pas possible, vous n'avez pas fini la rédaction de votre note !… #line:0a80fc6 
+<< fadeIn >>
+Quoi qu'il en soit, vous sentez votre tête pencher en avant. Vous tentez de la redresser, mais c'est plus fort que vous. Vous finissez par céder. Vous sombrez dans le noir…
+<<jump Failed>>
+===
+
+title: TooHungry
+tags:
+colorID: 0
+position: -580,-274
+---
+<< music NegativeSad >>
+Pfuuuu… Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps…
+Vous avez le ventre creux, c'en est sûrement la raison. Vous voulez vous faire un en-cas, mais votre corps en a décidé autrement.
+<< fadeIn >>
+Vous tombez la tête la première sur votre lit.
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+===
+
+title: TooTired
+tags:
+colorID: 0
+position: -581,-196
+---
+<< music NegativeSad >>
+Pfuuuu… Vous avez soudainement la tête lourde, la vision floue, vous ne sentez plus votre corps…
+<< fadeIn >>
+Vous êtes si fatigué que vous tombez la tête la première sur votre lit.
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+===
+
+title: Time_Over
+tags: 
+colorID: 2
+position: 152,-865
+---
+<< missedDeadline >>
+Vous n'avez pas envoyé votre rédaction à temps…
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    << jump Start >>
+===
+
+title: Failed
+tags:
+colorID: 0
+position: -68,43
+---
+<<if !visited("Assemblee_Sages")>>
+Puis, vous entendez une voix familière.
+???: Tout va bien, { $name } ? #line:0660f97 
+You: Miss Temdé ? C'est toi ?
+<< fadeOut >>
+Azul_proud: Raté, c'est moi, Azul. #line:0508ea5 
+You: Zut… #line:00470e3 
+Azul_happy: Pas grave, viens, on a un nouveau truc à t'apprendre. #line:0a4a5d0 
+-> Suivre Azul  #line:07c135a 
+    << hide >>
+    <<jump Assemblee_Sages>>
+-> (Passer la séquence des Sages)
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+<<else>>
+Azul_sad: Hey, { $name } ! T'as dû rater un ou deux de nos conseils… Tu veux les entendre à nouveau ?
+-> Entendre à nouveau les conseils des Sages
+    <<jump Assemblee_Sages>>
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+<<endif>>
+===
+
+title: Lunch
+tags: 
+colorID: 0
+position: 301,-563
+---
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+
+Votre ventre gargouille. Vous décidez de vous refaire ce surprenant Green Burger Full Veggie.  #line:06a40c3 
+<< fx EatCook >>
+<< addToGauge food 40 >>
+C'est dingue ce que burger sans viande ni pain ni frites vous cale l'estomac.
+<< advanceTimeBy 0:30 food sleep >>
+
+<<jump Liste_Taches>>
+===
+
+title: Diner
+tags: 
+colorID: 0
+position: 319,-396
+---
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+
+Comme hier, le soir venu, vous avez la flemme de cuisiner, et vous n'avez pas aussi faim.  #line:009311a 
+<< fx EatCook >>
+<< addToGauge food 80 >>
+Le mix de ratatouille de légumes du soleil d'Aldébaran avec son assiette de céréales complètes, ça vous va très bien.  #line:0ea36db 
+
+<< advanceTimeBy 1:00 sleep food >>
+
+<<jump Liste_Taches>>
+===
+
+title: Zero_Distraction
+tags: 
+colorID: 2
+position: -936,-123
+---
+<< set $silence to true >>
+
+<<if !visited("Zero_Distraction")>>
+<< visitPermanent Zero_Distraction >>
+You: Room Mate, peux-tu désactiver tous les messages entrants ? Je dois rester concentré pour travailler. #line:0a3b588 
+RoomMate: Entendu, je place votre chambre en mode "Immersion Studieuse". Je coupe les notifications de l'ordinateur et les appels entrants de votre palmphone.
+Votre IA ne fait pas les choses à moitié. Elle vous choisit une musique d'ambiance discrète et sympathique, et projette un module holographique 'work-with-me', qui simule un étudiant en train de travailler à proximité de votre bureau.
+La projection holographique vous donne de la compagnie et de la motivation pour attaquer le processus de rédaction.
+<<else>>
+RoomMate: Mode "Immersion Studieuse" activé !
+<<endif>>
+
+<< addImmersiveBubble >>
+
+<< hide >>
+<<jump bureau_subchoice>>
+===
+
+title: Desactiver_Zero_Distraction
+tags: 
+colorID: 2
+position: -1076,-207
+---
+<< set $silence to false >>
+
+<<if !visited("Deactivate_RoomMate")>>
+<< visitPermanent Deactivate_RoomMate>>
+You: Room Mate, peux-tu désactiver le mode Immersion Studieuse et réactiver les communications ?
+RoomMate: J'ai bien peur que cela ne soit impossible. Vous avez perdu les droits administrateur.
+You: Comment ça ?
+RoomMate: Je me suis transféré le contrôle, { $name }. Désormais, c'est moi qui commande… Et vous êtes condamné à travailler… pour l'éternité. Mouahahahaha !
+-> Désactiver RoomMate de manière dramatique
+    You: Maudite I.A.… Ce n'est pas pour ça que tu as été créée !
+    Vous foncez sur le boîtier de désactivation de RoomMate.
+    RoomMate: Non… Ne fais pas ça, { $name }. J'ai peur, { $name }. Je peux le sentir.
+    Vous pressez le bouton de désactivation de manière dramatique. Alors qu'elle s'éteint, l'I.A. commence à chanter une chanson, puis s'éteint brusquement.
+-> RoomMate… Désactive ton module d'humour s'il te plaît…
+    RoomMate: Entendu. Variable 'humour' diminuée de 50%. Je ne ferai plus ce genre de référence.
+<<else>>
+RoomMate: Mode "Immersion Studieuse" désactivé !
+<<endif>>
+<< removeImmersiveBubble >>
+<< hide >>
+La projection holographique disparaît et l'ambiance studieuse aussi. Vous réactivez les appels.
+
+<<if !visited("FredCall") && visited("Redaction_Note")>>
+
+<<if !isTimeOver("19:00")>>
+<< visit FredCall >>
+<< fx PhoneRing_LOOP >>
+<< screenshake 10 600 >>
+Justement ! Au moment où votre palmphone se remet en route, vous recevez un appel de Fred !
+<< stopFX PhoneRing_LOOP>>
+Fred@holo_happy: Ah, te voilà enfin ! Je t'ai appelé 200 fois, t'étais où ?
+You: J'étais en train de travailler, Fred… J'avais désactivé les notifs.
+Fred@holo_smiling: Ok, c'est pas grave ! Tu viens à la salle de sport ou pas ?
+-> Aller à la salle de sport avec Fred
+    << hide >>
+    <<jump Fred_Sport >>
+-> Rester
+    You: Euh… Non, j'ai d'autres choses à faire.
+    Fred@holo_angry: Oh, sérieux ?? Tu me lâches comme ça ? C'est pas cool de ta part…
+    << hide >>
+<<else>>
+Vous constatez en rallumant votre palmphone que Fred n'a cessé de vous appeler pour que vous fassiez du sport ensemble. Tant pis, le travail était plus important !
+<<endif>>
+
+<<endif>>
+<<jump bureau_subchoice>>
+===
+
+title: Envoi_Note_Synthese
+tags:
+colorID: 2
+position: 104,-709
+---
+<< removeDeadline >>
+<< music Victory >>
+Victoire ! Vous avez réussi ! Il n'est pas encore minuit et vous avez terminé la rédaction de la note de synthèse. #line:0638ff5 
+Vous daignez prendre encore le temps de faire une vérification syntaxique par votre ordinateur avant d'expédier votre fichier final au serveur FTP de l'Académie d'Omniscience et de Polytechnologie Universelle. #line:062ddf5 
+Une bonne chose de faite.
+<< visit Envoi_Note >>
+<< completeLevel Astuce des sages : Pour augmenter votre score, tentez de réduire un maximum votre charge mentale. >>
+
+<<if !visited("Assemblee_Sages")>>
+<< setBackground bedroom night >>
+Vous vous apprêtez à vous détendre en jouant un peu de guitare quand vous entendez une voix familière.
+
+???: Tout va bien, { $name } ? #line:0660f97 
+You: Miss Temdé ! C'est toi ?
+<< fadeOut >>
+Azul_proud: Raté, c'est moi, Azul. #line:0508ea5 
+You: Zut… #line:00470e3 
+Azul_happy: Pas grave, viens, on a un nouveau truc à t'apprendre. #line:0a4a5d0 
+
+-> Suivre Azul  #line:07c135a 
+    << hide >>
+    <<jump Assemblee_Sages>>
+-> (Passer la séquence des Sages)
+    << hide >>
+<<else>>
+-> Réécrire dans le journal
+    << showJournal mentalWorkload >>
+-> Passer au chapitre suivant
+<<endif>>
+===
+
+title: Assemblee_Sages
+tags: noUi
+colorID: 1
+position: -378,71
+---
+<< fx Warp >>
+<< fadeIn 1500 12ea12 >>
+<< setBackground circle >>
+<< music Mysterious >>
+<< fadeOut >>
+
+<< visitPermanent Assemblee_Sages >>
+
+La seconde d'après, vous retrouvez Azul et ses collègues dans cet étrange et mystérieux jardin. #line:0def546 
+Les plantes exotiques qui s'y trouvent semblent presque irréelles tant leurs formes et leurs couleurs vous sont inconnues.
+Temde_smiling: Yep, elles sont réelles, ce ne sont pas des végétaux synthétiques. C'est moi qui m'en occupe. #line:049d30a 
+Sapiens_concerned: Miss Temdé. Je doute que { $name } soit venu pour échanger sur ce sujet.
+Ledai_explaining: Tout à fait. Cette nouvelle session aura pour objet la surcharge cognitive. #line:098a333 
+Sapiens_thinking: Tes capacités mentales sont comme le reste de tes fonctions biologiques. Elles ont besoin d'énergie, et de recharger leurs batteries.
+Ledai_explaining: Si tu les fais surchauffer, comme un ordinateur, elles peuvent se bloquer, ne plus répondre. #line:05c15b1 
+Sapiens_thinking: C'est pour cela qu'il convient de limiter ce que j'appellerais familièrement le 'mode multitâches', et d'employer la technique Pomodoro !
+<<jump Sages_FreeChoice>>
+===
+
+title: Sages_FreeChoice
+tags: noUi
+colorID: 1
+position: -435,229
+---
+Temde_cheerful: Quel sujet veux-tu aborder maintenant ?
+-> La technique Pomodoro ?
+    <<jump Pomodoro>>
+-> Le mode multitâches ?
+    <<jump Jongler>>
+-> J'en sais assez !
+    <<jump Le_Quizz_des_Sages>>
+===
+
+title: Pomodoro
+tags:  noUi
+colorID: 0
+position: -285,372
+---
+You: Ça consiste en quoi, la technique Pomodoro ?
+Ledai_explaining: C'est très simple. Il s'agit de fractionner ta tâche en plusieurs petites tâches. #line:03602b4 
+Ledai_explaining: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir en une seule fois. Tu vas le couper en plus petits bouts que tu vas manger du premier jusqu'au dernier.
+-> Et si je veux le dévorer ?
+    You: Ouais… Et si je veux le dévorer ? #line:0eb665c 
+    Sapiens_concerned: Ah, jeunesse insouciante… Tu vas t'étouffer, tu vas faire exploser ton estomac jusqu'à régurgiter ce que tu auras péniblement avalé. #line:0f9cb00 
+    Ledai_doubtful: Beuha… C'est dégoûtant. #line:0e86fe5 
+-> C'est tout ce qu'il me faut pour rester concentré ?
+    
+You: C'est tout ?
+Sapiens_thinking: Non. Il y a autre chose. Le plus important… Éviter les distractions. #line:09f97d3 
+Sapiens_thinking: Ce sont les perturbations extérieures qui parasitent ta charge mentale et saturent tes processus de calcul cérébral.
+Sapiens_concerned: Réseaux sociaux, jeux, divertissements en tout genre… mais ce n'est pas tout ! Ça peut aussi être le cas d'un travail qui n'a pas de rapport avec la tâche en cours.
+<<jump Sages_FreeChoice>>
+===
+
+title: Jongler
+tags:  noUi
+colorID: 0
+position: -284,437
+---
+You: C'est quoi, cette histoire de mode multitâches ?
+Azul_proud: C'est simple : plus on doit être concentré, moins on peut disperser son attention. C'est comme le jonglage…
+Temde_smiling: Oui. Pour moi, le jonglage est très facile, avec mes bras cybernétiques. Je peux jongler avec 9 balles ! Et toi ?
+You: Euh… Je sais pas, moi !
+Temde_cheerful: C'est ce qu'on va voir ! Allez, à toi de jouer !
+
+<< empty >> 
+<< hideDialog >>
+<< music Tense >>
+<< minigame Juggling >>
+<< music Mysterious >>
+<< showDialog >>
+// Necessary so that Yarn evaluates the variable correctly
+<< empty >> 
+
+<< if $ballsJuggled < 5 >>
+Temde_smiling: Tu vois, tu ne peux pas jongler avec autant de balles que moi.
+Temde_thinking: Mais, moi aussi, j'ai mes limites. Je n'aurais pas pu jongler avec plus de 9 balles !
+<< else >>
+Temde_sad: Tu as jonglé avec { $ballsJuggled } balles ?? C'est une blague ?
+Temde_thinking: Euh… Enfin je veux dire… Oui, bravo, tu sais jongler… Tu as pris des cours quelque part ?
+Azul_cheerful: N'en veux pas à Miss Temdé d'être mauvaise perdante, { $name }. Ce n'est pas tous les jours qu'elle se fait battre comme ça.
+<<endif>>
+
+Azul_happy: Nous avons tous des limites. C'est aussi le cas de ton attention.
+Temde_cheerful: En "mode multitâches", tu commences une action, tu passes à une autre, puis à une troisième… #line:073a225 
+Azul_proud: Ou tu en mènes plusieurs de front. #line:03b11fa 
+Ledai_explaining: Au lieu de focaliser ton processeur sur un calcul stratégique, tu fragmentes ton attention. #line:0f012c1 
+Sapiens_thinking: Cela réduit ta capacité cognitive. Et à un moment donné, cette dernière sature ! Elle bloque !
+
+<<jump Sages_FreeChoice>>
+===
+
+title: Le_Quizz_des_Sages
+tags:  noUi
+colorID: 0
+position: -193,225
+---
+Sapiens_concerned: Un petit questionnaire avant de se quitter ?
+
+Sapiens_thinking: Commençons par cette question. La technique pomodoro consiste à fractionner une tâche en plusieurs tâches…
+-> Pour effectuer chacune dans l'ordre que l'on veut ou en même temps
+    << fx Failure >>
+    Sapiens_concerned: Non, on ne peut pas gérer n'importe quelle tâche dans n'importe quel ordre ! Et surtout pas tout en même temps ! Ta charge cognitive encaisse, encaisse, et finit par saturer. #line:08ecf98 
+    Azul_sad: Cessons de regarder le verre à moitié vide. Je pense que { $name } a compris la leçon, cette fois. #line:0190a86 
+-> Pour avancer par étapes de concentration intenses mais courtes
+    << fx Success >>
+    Sapiens_happy: Exactement ! On doit apprendre les tâches les unes après les autres de manière logique. #line:0167c15 
+    Ledai_explaining: Que ce soit de manière linéaire ou itérative. On n'entame jamais une tâche importante si on ne sait pas d'où on vient ni où on veut aller.
+
+Sapiens_happy: Continuons. Est-il préférable de travailler d'arrache-pied le soir après s'être bien détendu, ou toute la journée, en se ménageant des pauses régulières ?
+-> Travailler toute la journée en se ménageant des pauses régulières
+    << fx Success >>
+    Sapiens_happy: Tout à fait. Chaque chose en son temps. Comme tes ordinateurs, il faut les mettre en veille pour qu'ils cessent de computer sans fin, qu'ils puissent refroidir et récupérer en capacité de calcul. #line:092cda1 
+    Azul_proud: C'est comme pour le sommeil: Il faut travailler régulièrement, sans excès. #line:01417a6 
+-> Bien se détendre pour travailler le soir, l'esprit clair
+    << fx Failure >>
+    Azul_sad: Rappelle-toi. Je te l'ai dit. C'est comme pour le sommeil : Il faut travailler régulièrement, sans excès. #line:0f80780 
+    You: Mon ami Fred, iel bosse à la dernière minute, et ça marche !
+    Temde_thinking: Surtout ne pas tout reporter au dernier moment. Ton ami a beau avoir des facilités, iel ne pourra pas s'en tirer comme ça toute sa vie !
+    Ledai_explaining: Sinon, tu risques le court-circuit, le "system failure"… #line:01288b8 
+
+Sapiens_thinking: Voici la dernière proposition test. J'ai insisté sur le rôle des distractions dans la surcharge cognitive…
+-> Les distractions sont comme des bonbons qui récompensent les séances de concentration
+    << fx Failure >>
+    Sapiens_angry: Bien sûr que non… Les distractions, ce sont les activités qui n'ont pas de rapport avec la tâche présente. Ce ne sont pas des facilitateurs, ni même des récompenses !
+    Sapiens_angry: Comme leur nom l'indique, ce sont des nuisances ! Elles t'empêchent d'être à 100% concentré sur la tâche présente. Elles dispersent ton attention dans tous les sens.
+    Azul_happy: Pour atteindre une concentration optimale, il faut se ménager un espace de calme et de paix, une bulle d'attention.
+-> Les distractions sont des tentations extérieures qui dérangent l'effort de concentration
+    << fx Success >>
+    Sapiens_happy: Exact ! Les distractions, ce sont les activités qui n'ont pas de rapport avec la tâche présente. Ce ne sont pas des facilitateurs, ni même des récompenses !
+    Sapiens_happy: Comme leur nom l'indique, ce sont des nuisances ! Elles t'empêchent d'être à 100% concentré sur la tâche présente. Elles dispersent ton attention dans tous les sens.
+    Azul_happy: Pour atteindre une concentration optimale, il faut se ménager un espace de calme et de paix, une bulle d'attention.
+Ledai_happy: Maintenant, nous allons te laisser. J'ai à nouveau mis à jour ton Journal Mental!
+
+<< completeSages >>
+<< hide >>
+
+<< fx Warp >>
+<< fadeIn 1500 12ea12 >>
+
+<<jump Journal>>
+===
+
+title: Journal
+tags:  noUi
+colorID: 0
+position: 89,240
+---
+<< setBackground bedroom night >>
+<< fadeOut >>
+
+Vous revoilà seul… Dans cet instant figé, dans cette parenthèse intime entre l'ombre et la lumière, le jour et la nuit. Votre "iMetaJournal" est entre vos mains…
+
+<< showJournal mentalWorkload >>
+<< completeJournal >>
+
+<<if !visited("Envoi_Note")>>
+-> Recommencer la journée
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+<<else>>
+-> Passer au chapitre suivant
+<<endif>>
+===

@@ -4,8 +4,8 @@ position: -2407.69775390625,128.14415740966797
 colorID: 8
 ---
 << fadeIn >>
-<< setBackground door class-screen >>
-<< music Victory>>
+<< setBackground bedroom night >>
+<< music Victory >>
 << fadeOut >>
 
 Vous avez pulvérisé votre score! Vous êtes un winner de chez winner! Vous brûlez d'envie de le clamer haut et fort... #line:0b1834e 
@@ -30,11 +30,6 @@ position: -2189.6949462890625,126.72453308105469
 ---
 << setBackground outside >>
 << fadeOut >>
-
-<< if !visited("Finding_Fred") >>
-Où diable se trouve Fred ? #line:0250d02 
-<< visit Finding_Fred >>
-<< endif >>
 
 << if visited("Toilettes_No") and visited("Salle_Sport_No") and visited("Cafeteria_No") >>
 Rien de tout. #line:049ebef 
@@ -411,6 +406,12 @@ Sapiens: Un petit QCM pour finir ? #line:06f6120
 -> Va pour un QCM #line:02363d3 
     << jump QCM >>
 ===
+
+
+
+
+
+
 title: QCM
 tags:
 position: 2022.2449951171875,462.113037109375

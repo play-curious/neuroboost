@@ -28,41 +28,7 @@ Fred_smiling: No worry, on s'en va avant l'aube, on fait une petite sieste et on
 -> Refuser l'invitation #line:071c41d 
     << hide >>
     <<jump Retour_chambre>>
-===
-title: Retour_chambre
-tags:
-position: -1298.765380859375,-151.80938720703125
----
-<< fadeIn >>
-<< setBackground bedroom >>
-<< advanceTime 00:15 >>
-<< fadeOut >>
 
-Allongé tranquillement sur votre lit, vous vous replongez dans la lecture augmentée de l'atlas Ouiki_4D de Star Mars - The Lone Lightsaber... Quand... #line:093f153 
-DRING ! DRING ! DRIIIIIING !... Inutile d'allumer le téléscreen de votre porte. Vous vous doutez qui sonne comme un dératé... FRED !! #line:0644ad9 
-
-Fred_excited: Allez, tu peux pas me laisser tout seul. #line:0ad5ed8 
-You: Et si. #line:0e3b6da 
-Fred_happy: On n'est plus potes ? À la vie, à la mort ? #line:0b45563 
-You: Arrête de jouer ta victime, Fred, c'est fatiguant. #line:08d875c 
-Fred_happy: Steuplay... #line:0a32634 
-
-<< if isTimeOver("19:30") >>
--> Accepter l'invitation #line:09c92c6 
-    << fadeIn >>
-    << hide ! >>
-    <<jump Cafeteria>>
-<< else >>
--> Accepter l'invitation #line:04b2532 
-    << fadeIn >>
-    << hide ! >>
-    <<jump Cafeteria>>
--> Refuser l'invitation #line:08a8526 
-    << fadeIn >>
-    << hide ! >>
-    <<jump Retour_chambre>>
-<< endif >>
-===
 title: Cafeteria
 tags:
 position: -1075.3348388671875,-37.09675598144531
@@ -452,7 +418,7 @@ Temde_cheerful: Yep, on n'a pas fini de t'embêter en effet. #line:0387094
 You: M'embêter ?! Vous lisez dans mes pensées ?! #line:0a6f34c 
 Temde_cheerful: Oui, je te l'ai dit, c'est possible. Allez suis-moi, on y retourne ! #line:0ffe000 
 You: Où ça ? #line:06f3c00 
-Temde_smiling: À l'Assemblée des 4 sages #line:0076238 
+Temde_smiling: À l'Assemblée des 4 sages. #line:0076238 
 
 << fx Warp >>
 << fadeIn >>

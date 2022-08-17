@@ -1,0 +1,1320 @@
+﻿#gauges:learning,sleep,food,mentalLoad,stress
+
+title: Start
+tags: freechoice
+position: 542,139
+colorID: 1
+---
+<< fadeIn 1 >>
+<< showTitle Chapitre 6 >>
+<< music Neutral >>
+<< setBackground bedroom >>
+<< showGauges >>
+<< setGauge learning 0 >>
+<< setGauge sleep 100 >>
+<< setGauge food 60 >>
+<< setGauge mentalLoad 20 >>
+<< setGauge stress 30 >>
+<< setTime 10:00 5 >>
+<< hide >>
+<< set $silence to false >>
+<< set $jour to "samedi" >>
+<< set $foodinfridge to 1 >>
+<< set $plannedDay to false >>
+<< fadeOut >>
+
+Vous vous réveillez, naturellement, sans sonnerie. C'est le week-end, synonyme de repos, vous avez pu faire la grasse matinée.
+Cela dit, il va falloir travailler à fond pour être opérationnel pour le Grand Oral de lundi ! Vous l'avez raté une fois, mais ce coup-ci, toutes les chances sont avec vous !
+
+
+<< fx EatCook >>
+<< addToGauge food 100 >>
+En prenant votre petit déjeuner, vous vous grattez la tête : vous aviez un cours de danse aujourd'hui, mais vous n'avez aucune idée de quand. Votre RoomMate a peut-être noté l'heure ?
+
+<< advanceTimeBy 0:30 sleep food >>
+
+Vous jetez un œil à votre palmphone : pas de nouvelle de l'hôpital ni de votre grand-mère. C'est peut-être mauvais signe…
+<< addToGauge stress 50 >>
+Peut-être que votre mère en sait quelque chose ? Et si la nouvelle était mauvaise ?… Très mauvaise ?…
+
+Bon, il est temps de s'y mettre. C'est qu'il y a beaucoup à réviser, même pour un week-end entier. #line:0f2bdb6 
+
+<<jump Liste_Taches>>
+===
+
+title: Liste_Taches
+tags: freechoice
+position: 1036,139
+colorID: 2
+---
+<< hide >>
+
+<<if getGauge("sleep") <= 0 || getGauge("food") <= 0 || getGauge("mentalLoad") >= 100 >>
+<<jump FailGauge>>
+<< endif >>
+
+<< setBackground bedroom >>
+<< fadeOut >>
+
+<<if (isTimeOver("12:00") && !visited("MamanCall")) && !$silence>>
+
+<< visit MamanCall >>
+Votre palmphone vibre : c'est maman ! Elle a sûrement des nouvelles de mamie !
+-> Répondre
+    Maman@holo_shadow: Salut mon chou ! J'ai des nouvelles de ta mamie…
+    You: Alors ?? Elle va mieux ?
+    Maman@holo_shadow: Oui. Elle s'est réveillée du coma dans la nuit. Elle est encore faible, mais elle devrait se rétablir d'ici peu.
+    << removeFromGauge stress 40 >>
+    You: Pourquoi tu me l'as pas dit plus tôt ??
+    Maman@holo_shadow: Désolée, { $name }. Je ne voulais pas te déranger dans ton sommeil, et je viens de me réveiller… La nuit a été rude.
+    You: T'inquiète… J'étais juste un peu stressé. Mais ça va mieux.
+    Maman@holo_shadow: Je suis contente que tu sois autant épanoui, dans tes études et ta vie. Courage pour le Grand Oral !
+    You: Merci, maman ! Je réviserai à la santé de mamie !
+-> Mettre en silencieux
+    Vous coupez la sonnerie de votre palmphone. Vous n'avez plus envie que des mauvaises nouvelles viennent perturber vos révisions.
+    << addToGauge stress 20 >>
+    Vous ne pouvez pas vous empêcher de penser à toutes les possibilités, ce qui vous rend encore plus stressé.
+<< hide >>
+
+<<endif>>
+
+<<if isTimeOver("15:00") && !visited("MamieCall")>>
+<<if $jour == "dimanche" && !$silence>>
+<< visit MamieCall>>
+<< loopFX PhoneRing_LOOP 5000 >>
+Vous recevez un appel. Il provient de votre grand-mère ! 
+-> Répondre #line:0bf0436 
+    << stopFX PhoneRing_LOOP>>
+    <<jump MamieCall_dimanche>>
+-> Ne pas répondre
+    << stopFX PhoneRing_LOOP>>
+    Votre mamie vous appelle mais pris par le temps vous ne pouvez pas lui répondre. Cela vous ronge mais vous savez qu'elle va bien et vous ne pouvez pas prendre plus de retard !
+    Vous ne décrochez ni cet appel, ni celui qui suit. Tant pis, vous vivrez avec cela sur le cœur jusqu'à ce que vous puissiez la rappeler…
+    << addToGauge stress 40 >>
+<<endif>>
+<<endif>>
+
+<<if $jour == "lundi" && isTimeOver("14:05")>>
+<< missedDeadline >>
+Vous ne vous êtes pas rendu à l'examen ! Vous avez tout fichu en l'air, encore une fois…
+-> Recommencer le week-end
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+<<endif>>
+
+<<if isTimeOver("20:00")>>
+<<if $jour == "samedi">>
+Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories. #line:0576ac8 
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+<<jump Soir_samedi>>
+<<else>>
+<< fadeIn >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+<<jump Soir_dimanche>>
+<<endif>>
+<<endif>>
+
+<< music Neutral2 >>
+
+-> Cuisine@cuisine #line:0717775 
+    <<jump cuisine_subchoice >>
+-> Porte@porte #line:0d21566 
+    <<jump porte_subchoice>>
+-> Bureau@bureau #line:048f567 
+    <<jump bureau_subchoice>>
+-> Lit@lit #line:03dbf5c 
+    <<jump lit_subchoice>>
+-> Salon@salon #line:0645318 
+    <<jump salon_subchoice>>
+===
+
+title: MamieCall_dimanche
+tags: 
+position: 2347,791
+---
+Mamie@holo_shadow: Coucou mon chouchou !  #line:0bcc9ca 
+You: Salut mamie ! Je suis soulagé de t'entendre ! J'étais très inquiet, mais maman m'a dit que ça allait mieux !
+Mamie@holo_shadow: Tu n'es pas trop occupé ? Je peux toujours rappeler plus tard.
+-> J'ai un planning de révisions assez serré ! << if visited("Planning_dimanche") >> #line:089fd8a 
+    Mamie@holo_shadow: Ah bon ? #line:01912fb 
+    You: Je suis content d'avoir de tes nouvelles. Mais j'ai établi un planning très strict pour aujourd'hui, afin de réussir mes examens ! #line:0b763d2 
+    Mamie@holo_shadow: D'accord, je comprends ! Je suis fier de toi, mon chouchou… #line:00dd5e4 
+    << advanceTimeBy 0:15 >>
+    << removeFromGauge stress 10 >>
+    << hide >>
+    Vous n'êtes resté que 15 minutes au téléphone, mais votre grand-mère a été ravie de vous avoir.
+-> Euh… Non, je crois pas…
+    Mamie@holo_shadow: Bon ! Alors, tu me demandes pas comment ça va ?
+    You: Heu, si. Comment vas-tu ? #line:0c1864e 
+    Mamie@holo_shadow: Très bien. Mieux que toi, apparemment. Je suis sortie du coma et j'ai repris tous mes esprits.
+    << advanceTimeBy 1:00 >>
+    << removeFromGauge stress 20 >>
+    << hide >>
+    Même au bout d'une heure au téléphone, vous ne saviez pas comment raccrocher. Au moins, votre grand-mère a passé un bon moment en votre compagnie !
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+
+title: cuisine_subchoice
+tags: subchoice
+position: 1323,130
+colorID: 6
+---
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+
+<<if $foodinfridge <= 0>>
+Votre frigo est complètement vide ! Vous devriez acheter de la matière organique synthétique pour votre Imprimante Alimentaire, ou vous abstenir de manger…
+<<jump Liste_Taches>>
+<<endif>>
+
+-> Manger sainement (45 min)
+    <<jump MangerSain>>
+-> Manger vite (15 min)
+    <<jump MangerVite>>
+-> back #line:07871a6 
+    << fadeIn >>
+    <<jump Liste_Taches>>
+===
+
+title: MangerSain
+tags: 
+position: 1564,41
+---
+<< set $foodinfridge to ($foodinfridge - 1) >>
+<< visit MangerMidi_samedi >>
+Vous décidez de vous préparer un plat sain pour être en forme pour vos révisions : Un plat de nouilles de soja aux légumes. Le plat est fin, copieux, et avant tout délicieux.
+<< advanceTimeBy 0:45 food sleep >>
+<< addToGauge food 70 >>
+<< removeFromGauge mentalLoad 10 >>
+Vous vous sentez tout de suite mieux et d'attaque pour la suite. #line:0a8430e 
+<<if $foodinfridge <= 0>>
+Tiens… Vous remarquez qu'il ne vous reste plus aucune matière calorique au frigo ! Vous devriez faire un saut aux courses à un moment où un autre…
+<<endif>>
+<<jump Liste_Taches>>
+===
+
+title: MangerVite
+tags: 
+position: 1570,154
+---
+<< set $foodinfridge to( $foodinfridge - 1) >>
+<< visit MangerMidi_samedi >>
+Encore ce bon vieux Burger Big Proteins, rapide à cuisiner, croustillant et nourrissant à souhait. Ce n'est pas le repas le plus sain, mais c'est toujours ça d'avalé.
+<< advanceTimeBy 0:15 food sleep >>
+<< addToGauge food 40 >>
+Vous rangez rapidement la vaisselle, et vous y retournez. #line:0ed8d99 
+<<if $foodinfridge <= 0>>
+Tiens… Vous remarquez qu'il ne vous reste plus aucune matière calorique au frigo ! Vous devriez faire un saut aux courses à un moment où un autre…
+<<endif>>
+<<jump Liste_Taches>>
+===
+
+
+title: bureau_subchoice
+tags: subchoice
+position: 957,-95
+colorID: 6
+---
+<< hide >>
+<< fadeIn >>
+<< setBackground bedroom desk >>
+<< fadeOut >>
+
+-> Faire le planning du week-end (30 min) #once
+    <<jump Planning_samedi>>
+-> Réorganiser le planning (30 min) <<if $jour == "dimanche" && visited("Planning_samedi")>> #once
+    <<jump Planning_dimanche>>
+-> Réorganiser une dernière fois le planning (30 min) <<if $jour == "lundi" && visited("Planning_dimanche")>> #once
+    <<jump Planning_lundi>>
+-> Réviser la Philosophie Quantique (2h)
+    <<jump Reviser>>
+-> Faire des fiches de révision (1h) #once
+    <<jump Fiches>>
+-> Relire ses fiches de révision (30 min) <<if $jour == "dimanche" && visited("Fiches")>> #once
+    <<jump Reviser_Fiches_dimanche>>
+-> Relire une dernière fois ses fiches (30 min) <<if $jour == "lundi" && visited("Fiches")>> #once
+    <<jump Reviser_Fiches_lundi>>
+-> Activer le mode Zéro-Distraction <<if !$silence>>
+    <<jump Zero_Distraction>>
+-> Désactiver le mode Zéro-Distraction <<if $silence>>
+    <<jump Desactiver_Zero_Distraction>>
+-> back #line:08d239b 
+    << fadeIn >>
+    <<jump Liste_Taches>>
+===
+
+title: Planning_samedi
+tags: 
+position: 943,-321
+---
+<< visit Planning_samedi >>
+<< set $plannedDay to true >>
+<< visitPermanent knowsAboutParty >>
+
+You: RoomMate, tu peux me rappeler l'heure de ma séance de Jungle Body Beat ?
+RoomMate: Votre séance est à 14h. Voulez-vous que j'organise votre planning ?
+<< setDeadline Danse 14:00 >>
+You: Vas-y RoomMate. Je suis sûr d'avoir prévu quelque chose ce soir…
+RoomMate: Voyons voir… Pour ce soir, j'ai noté "La fièvre du samedi soir".
+You: Oui, c'est ça ! Une fête dansante à la cafétéria, j'ai promis à Fred d'y aller avec lui !
+RoomMate: Je note également dans votre agenda… Les révisions des différents thèmes de la philosophie quantique, durant tout le week-end.
+RoomMate: Les thèmes à aborder sont : la décohérence quantique, l'incertitude, la superposition d'états, l'intrication quantique.
+
+<<if $foodinfridge <= 2>>
+RoomMate: Je détecte aussi un manque de nourriture dans le réfrigérateur. Peut-être serait-il judicieux de faire les courses ?
+You: Oui, sûrement ! Note aussi une pause sieste dans le planning, pour me requinquer.
+RoomMate: C'est noté ! Planning mis à jour. Le supermarché est ouvert jusqu'à 18h, et jusqu'à midi le dimanche.
+<<endif>>
+
+<< advanceTimeBy 0:30 >>
+
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+title: Planning_dimanche
+tags: 
+position: 2089,802
+---
+<<set $plannedDay to true>>
+RoomMate: Voulez-vous que je mette à jour le planning ?
+You: Voyons voir…
+<<if getGauge("learning") > 80>>
+RoomMate: Vous avez effectué toutes vos révisions sur la philosophie quantique.
+<<elseif getGauge("learning") > 50>>
+RoomMate: Vous pouvez encore approfondir les différents thèmes de la philosophie quantique.
+<<else>>
+RoomMate: Vous devez compléter vos révisions sur les quatre thèmes de la philosophie quantique.
+<<endif>>
+
+<<if visited("Fiches")>>
+RoomMate: Vous pourriez dédier un peu de votre temps à la relecture de vos fiches de révision.
+<<else>>
+RoomMate: Vous pourriez rédiger des fiches de révision, c'est une bonne piqûre de rappel en cas de doute.
+<<endif>>
+
+<<if $foodinfridge < 2>>
+RoomMate: Vous pourriez faire les courses, et acheter de quoi remplir votre Fabricateur Alimentaire.
+<<endif>>
+
+RoomMate: Et enfin n'oubliez pas de vous reposer pour être en forme durant l'examen !
+
+<< visit Planning_dimanche >>
+<< advanceTimeBy 0:30 >>
+
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+title: Planning_lundi
+tags: 
+position: 2089,802
+---
+<<set $plannedDay to true>>
+Vous passez en revue votre planning de votre dernière matinée avant le grand bain.
+You: RoomMate ! Prévois un espace "piqûre de rappel" sur mon planning, pour me remettre les idées en place.
+You: Ensuite, une pause détente, ou sport. Un petit jogging, peut-être ? Pour me faire respirer un peu.
+RoomMate: Bien noté ! N'oubliez pas d'aller à l'oral d'ici 14h !
+<< hide >>
+<< visit Planning_dimanche >>
+<< advanceTimeBy 0:30 >>
+
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+title: Fiches
+tags: 
+position: 943,-321
+---
+Quatre thèmes à aborder, un week-end. Il serait peut-être préférable de prendre des notes pour revoir rapidement les grandes notions à aborder durant l'Oral !
+<< addToGauge learning 10 >>
+Ces rappels succincts des différentes notions de vos cours vous permettent à la fois de les éclaircir en les écrivant, mais aussi de pouvoir les réviser facilement plus tard.
+<< visit Fiches >>
+
+<< advanceTimeBy 1:00 >>
+<< addToGauge mentalLoad 20 >>
+
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+title: Reviser
+tags: 
+position: 1069,-255
+---
+<<if getGauge("stress") > 66 >>
+Malgré votre envie de travailler, vous ne pouvez pas vous empêcher d'être distrait par tout le stress et l'anxiété qui sont en vous…
+Vous vous efforcez de travailler sur la philosophie quantique, puis vous arrêtez, certain que votre état mental influence trop votre capacité à travailler.
+<< addToGauge learning 10>>
+<< addToGauge mentalLoad 30>>
+<< advanceTimeBy 2:00 >>
+<< fadeIn >>
+<<jump Liste_Taches>>
+<<endif>>
+
+<< if !visited("revision1") >>
+<< visit revision1 >>
+La philosophie quantique. Un beau et riche sujet. Vous en avez lu, des livres sur la question.
+
+<<if $plannedDay>>
+Heureusement, vous avez pris le temps d'établir un planning, vous savez donc par où commencer : le principe d'incertitude ou d'indétermination.
+<< else >>
+Par quoi allez-vous commencer ce matin ? Vous ne savez pas trop. Vous n'avez pas vraiment réfléchi à la question. Tant pis.
+<< endif >>
+
+Vous prenez un temps fou à passer en revue les différentes notions issues de vos cours, n'hésitant pas à approfondir avec vos propres recherches.
+
+<< elseif !visited("revision2") >>
+<< visit revision2 >>
+Il est l'heure d'attaquer l'intrication quantique !
+Vous avancez à un bon rythme, n'oubliant pas de vous ménager avec des pauses entre chaque session en grattant quelques accords, ce qui vous permet de maintenir votre concentration.
+
+<< elseif !visited("revision3") >>
+
+<< visit revision3 >>
+Vous vous replongez dans vos cours et vos notes. Vous abordez cette fois le paradoxe du chat de Schrödinger et la superposition d'états différents.
+Vous faites une pause pour vous remettre les idées en place, puis continuez tranquillement les révisions.
+
+<<else>>
+
+Encore une fois, vous remettez le nez dans vos révisions. Vous ne le relevez qu'après une pénible, mais productive, séance de travail.
+
+<< endif >>
+
+<< advanceTimeBy 2:00 >>
+
+<<if !$silence>>
+Vous n'avez pas pu vous empêcher d'être distrait par les messages de vos amis durant cette séance de révision…
+<<endif>>
+
+<<if $plannedDay && $silence>>
+<< addToGauge learning 20 >>
+<<elseif $plannedDay || $silence>>
+<< addToGauge learning 15 >>
+<<else>>
+<< addToGauge learning 10 >>
+<<endif>>
+
+<<if getGauge("stress") > 33>>
+Malgré vos efforts, vos pensées sont toujours distraites par le stress… Peut-être que vous changer les idées pourrait calmer vos nerfs…
+<< addToGauge mentalLoad 20 >>
+<<else>>
+<< addToGauge mentalLoad 30 >>
+<<endif>>
+
+<<if !$plannedDay>>
+Dommage que vous n'ayez pas de planning à jour pour l'occasion… Cela vous aurait sûrement aidé.
+<<endif>>
+
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+title: Reviser_Fiches_dimanche
+tags: 
+position: 1069,-255
+---
+Vous prenez un peu de temps pour relire vos fiches. Cette piqûre de rappel a le mérite de consolider vos connaissances des fondamentaux.
+<< addToGauge learning 10 >>
+<< addToGauge mentalLoad 5 >>
+Ce n'est peut-être pas ce qui va vous permettre de réussir l'oral haut la main, mais c'est une bonne manière de se remémorer les notions principales.
+<< advanceTimeBy 0:30 >>
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+title: Reviser_Fiches_lundi
+tags: 
+position: 1069,-255
+---
+Vous prenez vos fiches dans l'ordre des thèmes abordés à l'Oral : l'intrication quantique, le phénomène d'incertitude, la décohérence quantique…
+<< addToGauge learning 10 >>
+<< addToGauge mentalLoad 5 >>
+Cette piqûre de rappel n'est sûrement pas de trop avant d'aborder l'examen !
+<< advanceTimeBy 0:30 >>
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+title: Zero_Distraction
+tags: 
+position: 768,-255
+---
+<< set $silence to true >>
+You: RoomMate ! Passe la chambre en mode Zéro-Distraction !
+<< fx Success >>
+<< addImmersiveBubble >>
+RoomMate: Entendu ! Je désactive les activités de détente et autres distractions.
+<<visit Zero_Distraction >>
+<<jump bureau_subchoice>>
+===
+
+title: Desactiver_Zero_Distraction
+tags: 
+position: 742,-163
+---
+<< set $silence to false >>
+You: RoomMate, désactive le mode Zéro-Distraction.
+<< fx Success >>
+<< removeImmersiveBubble >>
+RoomMate: C'est fait ! Je débloque les appels, les notifications et les activités de détente !
+<<jump Liste_Taches>>
+===
+
+
+title: lit_subchoice
+tags: subchoice
+position: 1270,432
+colorID: 6
+---
+<< fadeIn >>
+<< setBackground bedroom bed >>
+<< fadeOut >>
+
+-> Faire une sieste (1h30)
+    <<jump Sieste>>
+-> back #line:0b5b481 
+    << fadeIn >>
+    <<jump Liste_Taches>>
+===
+
+title: Sieste
+tags: 
+position: 1379,529
+---
+<< fadeIn >>
+<< setBackground bedroom bed >>
+<< fx Sleep_LOOP>>
+Voici venu le moment de recharger vos "batteries biologiques". Vous vous allongez dans votre lit, et en seulement 5 minutes vous vous trouvez déjà dans les bras de Morphée.
+<< stopFX Sleep_LOOP >>
+<< fadeOut >>
+
+<< advanceTimeBy 1:30 food sleep >>
+Après un bon bout de temps, vous vous forcez à vous tirer de votre somme : après tout, vous n'avez pas que ça à faire.
+<< addToGauge sleep 40 >>
+<< removeFromGauge mentalLoad 10 >>
+
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+
+title: salon_subchoice
+tags: subchoice
+position: 1373,-108
+colorID: 6
+---
+<< fadeIn >>
+<< setBackground bedroom chill >>
+<< fadeOut >>
+
+<<if $silence>>
+RoomMate: Voulez-vous que je désactive le mode zéro-distraction pour vous permettre une pause ?
+-> Oui
+    << fx Success>>
+    << removeImmersiveBubble >>
+    <<set $silence to false>>
+-> Non
+    << hide >>
+    <<jump Liste_Taches>>
+<< hide>>
+<<endif>>
+
+-> Regarder Star Mars (2h)
+    <<jump BingeTV>>
+-> Jouer de la guitare (2h)
+    <<jump Musique>>
+-> Méditer (30 min)
+    <<jump Mediter>>
+-> Passer le temps jusqu'à 20h <<if !isTimeOver("20:00") && $jour != "lundi">>
+    << advanceTimeUntil 20:00 >>
+    Vous estimez avoir fait ce que vous aviez à faire pour aujourd'hui. Vous en profitez pour ranger un peu votre appartement et jeter un œil à votre messagerie avant le soir.
+    <<jump Liste_Taches>>
+-> back #line:0aaf8ca 
+    << fadeIn >>
+    <<jump Liste_Taches>>
+===
+
+title: BingeTV
+tags: 
+position: 1492,-189
+---
+<<visit StarMars1>>
+Bon, c'est le week-end, et vous avez bien travaillé cette semaine. Vous méritez bien une pause télé ! En plus, vous n'avez pas encore vu le film officiel Star Mars : Star Multiverse.
+
+<< loopFX TVStarwars_LOOP 10000 >>
+<< show lightsaber@holo>>
+
+Vous lancez Webflix et sélectionnez le film. Celui-ci démarre sur un récapitulatif de la série : dans les derniers épisodes, les héros avaient retrouvé Dude Highwalker parmi les légions de l'Empire Saturnien.
+Le plan machiavélique des Saturniens, le Portail Multiversel d'Unification, vient d'aboutir, et a transféré les enfants de la série dérivée "Kids Mars" dans cet univers !
+<< advanceTimeBy 2:00 >>
+<< stopFX TVStarwars_LOOP >>
+
+<< removeFromGauge mentalLoad 20 >>
+<< removeFromGauge stress 20 >>
+
+Cela fait déjà 2 heures que vous regardez le film, vous pourriez le terminer ou remettre la fin pour une prochaine fois.
+-> Continuer à regarder (1h)
+-> Retourner à vos occupations #line:08aa712 
+    << hide >>
+    << fadeIn >>
+    <<jump Liste_Taches>>
+
+<<visit StarMars2>>
+
+Avec l'aide de leurs jeunes apprentis, les chevaliers Chédaï parviennent à mettre en déroute les Saturniens et à détruire leur P.M.U infernal, refermant ainsi l'ouverture extra-dimensionnelle.
+Tout est rentré dans l'ordre, les habitants de la planète Provencia peuvent désormais vivre en paix, et célèbrent leur victoire dans une fête géante. Quand soudain…
+L'ex-Empereur Suprême de l'Impérium Noir, caché dans la foule, perce d'un tir de pistolet laser l'armure de Dude !
+
+<< advanceTimeBy 1:00 >>
+<< removeFromGauge mentalLoad 20 >>
+<< removeFromGauge stress 20 >>
+
+<< stopFX TVStarwars_LOOP >>
+<< hide >>
+
+Quel suspense ! Est-ce que Dude Highwalker va survivre ? La suite, vous la découvrirez sûrement en regardant le prochain film…
+
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+title: Musique
+tags: 
+position: 1552,-131
+---
+<< music AcousticGuitar >>
+
+Vous vous lancez alors dans une petite improvisation musicale. Le son brut et archaïque de cet instrument vous détend, vous apaise, vous nettoie l'esprit.
+
+<< advanceTimeBy 2:00 >>
+
+<< removeFromGauge mentalLoad 20 >>
+<< removeFromGauge stress 20 >>
+<< music Neutral2 >>
+
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+title: Mediter
+tags: 
+position: -1302.82568359375,241.21925354003906
+colorID: 2
+---
+Vous décidez de vous vider l'esprit, de vous concentrer sur le moment présent, en pratiquant la méditation en pleine conscience.
+<< music >>
+<< fx Bell_Meditation >>
+Vous vous concentrez sur les pensées positives, sur l'avenir, mais aussi le présent. Vos émotions se stabilisent à mesure que vous inspirez et expirez lentement.
+<< advanceTimeBy 0:30>>
+<< removeFromGauge stress 30>>
+Vous vous sentez léger, et plus serein.
+<<jump Liste_Taches>>
+===
+
+title: Reseaux_samedi
+tags: 
+position: 1591,-83
+---
+Vous prenez votre palmphone. Vous cliquez sur l'icône DisBoard.
+<< fx Notification >>
+Loulou vous ping, puis c'est le tour de Tim, de Bob, Dom… Vous leur racontez la semaine endiablée que vous venez de traverser. Tous ces imprévus, ces obstacles, ces rebondissements, ces récompenses…  #line:020529c 
+Vous vous sentez calme et confiant. #line:084795a 
+
+<< advanceTimeBy 2:00 >>
+
+<< removeFromGauge mentalLoad 10 >>
+
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+
+title: porte_subchoice
+tags: subchoice
+position: 1027,287
+colorID: 6
+---
+<<if $jour == "samedi">>
+-> Aller au club de Jungle Body Beat (Passe le temps jusqu'à 14h) <<if !isTimeOver("14:30") && $jour == "samedi">> #once
+    <<jump Danse_samedi>>
+-> Faire les courses (1h) <<if !visited("Courses")>>
+    <<jump Courses>>
+-> back #line:055ab07 
+    <<jump Liste_Taches>>
+<<else>>
+-> Faire les courses (1h) <<if !visited("Courses")>>
+    <<jump Courses>>
+-> Aller au Grand Oral (Passe le temps jusqu'à 14h) <<if $jour == "lundi">>
+    <<jump Grand_Oral>>
+-> Aller chercher Fred pour faire un jogging avant l'examen (2h) <<if $jour == "lundi">> #once
+    <<jump Jogging>>
+-> back #line:055ab07 
+    <<jump Liste_Taches>>
+<<endif>>
+===
+
+title: Danse_samedi
+tags: 
+position: 885,409
+---
+<< fadeIn >>
+<< advanceTimeBy 0:15 >>
+<< setBackground repetition >>
+<< music >>
+<< fadeOut >>
+<< removeDeadline >>
+
+<< visit Dance >>
+
+<< if isTimeOver("13:59") >>
+Vous arrivez dans les derniers, cependant, le cours n'a pas encore commencé. Plus exactement, votre coach vous attendait.  #line:09eafb6 
+<< else >>
+<< advanceTimeUntil 14:00 >>
+Vous avez de l'avance, vous en profitez pour parler avec les autres étudiants.
+<< endif >>
+
+<< music JungleBodyBeat >>
+Quand votre coach lance la musique et commence ses mouvements d'échauffement, il se tourne vers vous. Cela ne vous déroute pas, vous êtes dans votre élément.
+Vous entrez à votre tour dans la séance et, comme d'habitude, vous vous lâchez. Vous fusionnez avec la musique, le rythme, la direction du coach, la chorégraphie du groupe.
+<< advanceTimeBy 1:30 >>
+<< removeFromGauge mentalLoad 20 >>
+<< removeFromGauge stress 20 >>
+Le coach tape des mains, signifiant la fin de la séance. Il remercie tout le monde et surtout vous, pour transmis votre entrain et votre dynamisme au groupe entier.
+Vous dites au revoir à tout le monde et vous vous précipitez chez vous. Vous avez encore des choses à faire aujourd'hui. #line:0ba30f3 
+
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+title: Courses
+tags: 
+position: 1042,472
+---
+<< fadeIn >>
+<< setBackground outside >>
+<< fadeOut >>
+<< visit Courses >>
+
+<< if (isTimeOver("12:00") && $jour == "dimanche") || isTimeOver("18:00")>>
+
+<< fx Failure >>
+Lorsque vous arrivez au supermarché, vous constatez que celui-ci est fermé ! Vous regardez les horaires sur la porte :
+Du lundi au samedi : 8h à 18h. Ouvert le dimanche matin, de 8h à 12h.
+<< advanceTimeBy 0:15 >>
+
+<< else >>
+
+<< set $foodinfridge to 10 >>
+
+Vous remplissez votre caddie avec de la matière organique synthétique, une quantité suffisante pour remplir votre Imprimante Alimentaire à ras bord.
+
+<< advanceTimeBy 1:00 >>
+
+<< endif >>
+
+<< fadeIn >>
+<<jump Liste_Taches>>
+===
+
+title: Jogging
+tags: 
+position: 1672,1359
+---
+Il vous reste un peu de temps avant votre passage. Vous allez en profiter pour faire un petit jogging pour bien réveiller votre corps.
+
+<< fadeIn >>
+<< removeImmersiveBubble >>
+<< setBackground door >>
+<< music Neutral3 >>
+<< fadeOut >>
+
+Vous passez devant l'appartement de Fred, mais celui-ci ne répond pas. Peut-être une urgence ? Vous vous rendez au stade seul.
+
+<< fadeIn >>
+<< setBackground sport >>
+<< fadeOut >>
+<< loopFX Sports_LOOP 16000 >>
+
+Une fois arrivé sur place, vous commencez par réaliser quelques tours de stade, à pas mesurés. Puis, quand vous estimez que votre corps est suffisamment chauffé et stimulé, vous accélérez la cadence.
+<< removeFromGauge stress 20 >>
+<< removeFromGauge mentalLoad 20 >>
+Vous voilà plus calme, reposé, plus prêt à affronter les regards inquisiteurs des membres du jury.
+
+<< advanceTimeBy 2:00 >>
+
+<< stopFX Sports_LOOP >>
+<<jump Liste_Taches>>
+===
+
+
+
+
+title: Soir_samedi
+tags: 
+position: 1548,338
+colorID: 4
+---
+<< set $silence to false >>
+<< removeImmersiveBubble >>
+Le soleil s'est couché, il est temps de clore votre journée par un dîner bien mérité.
+
+<<if $foodinfridge <= 0>>
+Hélas, votre Imprimante Alimentaire n'a plus de matière calorique pour vous préparer un repas digne de ce nom. Vous pourrez en acheter demain, à l'aube !
+<<else>>
+<< set $foodinfridge to ($foodinfridge - 1)>>
+Vous avez faim et vous avez le temps de vous imprimer un petit plat exotique : des lasagnes vénusiennes. C'est délicieux et riches en nutriments essentiels.
+<< addToGauge food 60 >>
+<<endif>>
+
+<< advanceTimeBy 1:00 food >>
+
+Vous faites le bilan de votre première journée. C'est un début, mais il en reste du travail à faire. Pas grave, vous avez encore toute la journée de dimanche. Et même ce soir. Peut-être que…
+<< fx Notification >>
+Soudain, quelqu'un sonne à la porte…  #line:0873fc8 
+<<if !visited("knowsAboutParty")>>
+<< visitPermanent knowsAboutParty >>
+Zut ! Vous aviez complètement oublié. Fred vous en a parlé dimanche dernier… #line:098d496 
+Fred_excited-mask: Ben alors, c'est quoi ces vêtements ? T'as pas oublié la fièvre du samedi soir, quand même ?
+You: Euh… J'avais oublié…
+Fred_smiling-mask: Pas grave, enfile ta tenue et on y va !
+<<else>>
+Comme vous l'attendiez, Fred vient vous chercher pour aller à la fête. Iel y a mis les formes, on dirait !
+Fred_excited-mask: Alors, on y va, à cette fièvre du samedi soir, ou quoi ?
+<<endif>>
+
+<< empty >>
+
+-> Refuser #line:0927d6c 
+    You: Désolé, Fred… J'ai plein de choses à faire ce week-end. J'aurais adoré, mais je préfère passer mon tour.
+    Fred_sad-mask: Bon, tu fais ce que tu veux, mais c'est pas cool…
+    << hide >>
+    Dommage que vous n'ayez pas le temps pour célébrer. Vous vous demandez ce que vous allez faire de votre soirée.
+    -> Réviser
+        <<jump ReviserSoir_samedi>>
+    -> Aller se coucher
+        <<jump Dormir_samedi>>
+-> Suivre Fred #line:02831a3 
+    Vous vous précipitez vers votre armoire puis, aiguillé par les conseils de Fred, vous enfilez une tenue de Glam Rockeur qui claque.
+    << hide >>
+    <<jump Soiree_samedi>>
+===
+
+title: ReviserSoir_samedi
+tags: 
+position: 1733,357
+---
+<< visit ReviserSoir_samedi >>
+
+Vous profitez de cette soirée au calme pour réviser à la lumière de votre lampe de chevet.
+
+<< advanceTimeBy 1:30>>
+
+Après un bon moment à passer en revue les notions annexes de la philosophie quantique, vous filez enfin au lit.
+
+<< addToGauge learning 10 >>
+<< addToGauge mentalLoad 20 >>
+<<jump Dormir_samedi>>
+===
+
+title: Soiree_samedi
+tags: 
+position: 1647,453
+---
+<< fadeIn >>
+<< advanceTimeBy 0:15 >>
+<< setBackground party >>
+<< music Danse >>
+<< fadeOut >>
+<< visit Soiree_samedi>>
+
+Entre Fred et sa tenue masquée et vous, et votre attirail de star du Glam Rock, vous ne savez pas qui brille le plus auprès du public.
+Fred a beau être le garçon le plus populaire de l'académie, vous êtes bel et bien la star des soirées de la cafétéria !
+Maintenant, il va falloir défendre votre réputation. #line:0030929 
+
+<<empty>>
+<< if visited("Dance") >> 
+Heureusement, vous avez répété cet après-midi. Vous transmettez à toute l'audience votre enthousiasme, votre passion, le rythme de vos mouvements.
+Tout le monde se souviendra de votre intervention. Vous êtes le soleil de ce samedi soir de folie, l'astre de la danse et du Body Beat. #line:06b9fa9 
+
+<< removeFromGauge mentalLoad 50 >>
+<< removeFromGauge stress 50 >>
+
+<< else >> 
+Dommage que vous ne vous soyez pas entraîné aujourd'hui ! Vous vous sentez tout lourd sur la piste, et vous manquez de tomber à cause d'un faux pas.
+Cette erreur vous aura coûté le grand prix, mais vous êtes quand-même heureux d'avoir performé aujourd'hui. Cela vous a remis les idées en place.
+<< removeFromGauge mentalLoad 20 >>
+<< removeFromGauge stress 20 >>
+<< endif >>
+
+Il est grand temps de s'en aller. Vous dites au revoir à Fred, qui vous assure qu'il ne va pas tarder à faire de même. Vous n'avez pas la patience de l'attendre.  #line:07e22f9 
+<< advanceTimeBy 3:00 >>
+Vous quittez la cafétéria et rejoignez votre chambre. #line:0062db8 
+
+<<jump Dormir_samedi>>
+===
+
+title: Dormir_samedi
+tags: 
+position: 1938,405
+---
+<< fadeIn >>
+<< advanceTimeBy 0:15 >>
+<< setBackground bedroom night >>
+<< music >>
+<< fadeOut >>
+
+Vous vous plongez dans un sommeil bien mérité.
+
+<<jump Reveil_dimanche>>
+===
+
+
+
+
+
+
+
+
+
+
+title: Reveil_dimanche
+tags: 
+position: 2213,420
+colorID: 1
+---
+<< fadeIn >>
+<< set $jour to "dimanche" >>
+<< set $plannedDay to false >>
+<< advanceTimeUntil 10:00 sleep food >>
+<< setBackground bedroom >>
+<< music Neutral >>
+<< addToGauge sleep 100 >>
+<< fadeOut >>
+
+<<if visited("Soiree_samedi")>>
+Vous vous réveillez le lendemain avec des étoiles plein les yeux. Ce fut une super fièvre du samedi soir. Vous étiez le soleil de cette galaxie festive. Dommage que la partie soit finie. #line:0f68a70 
+Dommage aussi que le jour se soit levé depuis un moment. Vous seriez bien resté au lit. Cependant, il est déjà temps de se lever et de prendre son petit-déjeuner.
+<<else>>
+Vous vous réveillez le lendemain, toutes vos pensées tournées vers la philosophie quantique.
+Vous seriez bien resté au lit. Cependant, il est déjà 10 heures, il est temps de se lever et de prendre son petit déjeuner.
+<<endif>>
+<< removeFromGauge learning 20 >>
+En vous levant, vous tentez de vous remettre en tête la citation d'un maître à penser de la philosophie quantique… C'était qui, déjà ? On dirait que certaines notions vous ont échappé dans la nuit…
+
+<< fadeIn >>
+<< setBackground bedroom kitchen >>
+<< fadeOut >>
+
+<<if $foodinfridge <= 0 >>
+Rien à manger ce matin… Vous feriez mieux de faire des courses avant que le magasin ferme.
+<<else>>
+<< fx EatCook >>
+<< set $foodinfridge to $foodinfridge - 1>>
+Vous vérifiez ce que votre cuisine a en stock et vous vous préparez un solide petit déjeuner sucré salé. Un jus de fruit, un maxi café, des tartines beurrées, un œuf de Mégalodinde brouillé et quelques néo-tomates cerises.
+<< addToGauge food 60 >>
+C'est riche, délicieux, copieux et varié. Vous êtes rassasié. #line:01d09d8 
+<< advanceTimeBy 0:30 >>
+<<endif>>
+
+<<jump Liste_Taches>>
+===
+
+
+
+
+title: Soir_dimanche
+tags: 
+position: 1449,860
+colorID: 4
+---
+<< set $silence to false >>
+<< removeImmersiveBubble >>
+Il est plus de 20 heures ?! Il est temps de se préparer un petit dîner. #line:0822b76 
+
+<< if $foodinfridge <= 0 >>
+
+Toujours rien à manger… Vous n'avez pas pensé à faire les courses.
+
+<< else >>
+<< set $foodinfridge to ($foodinfridge - 1)>>
+Vous consultez à nouveau les réserves dans votre cuisine. Vous vous imprimez un bon petit plat de la mer.
+
+<< fx EatCook >>
+
+C'est fin et ça nourrit bien son étudiant. Vous débarrassez la table et vous vous posez un peu sur les réseaux sociaux, avant de partir vous coucher.
+
+<< addToGauge food 60 >>
+<< advanceTimeBy 0:30 >>
+
+<< endif >>
+
+Vous vous allongez sur votre lit et fermez les yeux. Vous allez être frais pour l'examen, c'est sûr !
+<< fadeIn >>
+
+<<jump Reveil_lundi>>
+===
+
+
+
+
+
+title: Reveil_lundi
+tags: 
+position: 1464,1216
+colorID: 1
+---
+<< setBackground bedroom >>
+<< music Neutral >>
+<< set $plannedDay to false >>
+<< set $jour to "lundi" >>
+<< advanceTimeUntil 10:00 sleep food >>
+<< addToGauge sleep 100 >>
+<< fadeOut >>
+
+<< music Tense >>
+<< setDeadline Oral 14:00 >>
+Vous ne rouvrez les yeux que le lendemain, au matin. Alors, c'est aujourd'hui le grand jour… Mince, vous ne pouvez pas vous empêcher de vous remémorer votre dernier passage, une belle humiliation.
+<< addToGauge stress 30 >>
+Vous tentez de vous remettre votre cours en tête. Encore une fois, on dirait que certaines notions vous ont échappé.
+<< removeFromGauge learning 20 >>
+
+Vous prenez le temps de petit-déjeuner, pour mettre toutes les chances de votre côté. #line:026a8a3 
+
+<< advanceTimeBy 0:30 food sleep >>
+<< addToGauge food 90 >>
+
+L'examen se rapproche de plus en plus, ce n'est plus qu'une question d'heures avant que le jury ne vous pose une colle. L'examen débute à 14h.
+
+<<jump Liste_Taches>>
+===
+
+title: Grand_Oral
+tags:
+position: 164,25
+---
+<< removeImmersiveBubble >>
+
+<< music Tense >>
+<< fadeIn >>
+<< setBackground door class >>
+<< fadeOut >>
+
+<<if !isTimeOver("15:00")>>
+<< advanceTimeUntil 15:00 >>
+<<else>>
+<< advanceTimeBy 0:15 >>
+<<endif>>
+
+Vous vous retrouvez devant la porte de l'amphithéâtre. Fred n'est pas là, iel doit sûrement passer à un autre moment.
+Vous expirez tout l'air de vos poumons. Puis, vous ouvrez la porte et pénétrez l'immense amphithéâtre.
+
+-> C'est le moment de vérité  #line:0b7af9f 
+
+<< fadeIn >>
+<< setBackground oral >>
+<< fadeOut >>
+
+Voici venu le Grand Oral… À nouveau. L'épreuve impitoyable, qui décidera de votre sort pour le reste de vos études.
+Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Comme vous vous en rappelez, cela ne se passe pas bien du tout, et le jury se montre intransigeant.
+"On en a assez vu, allez, AU SUIVANT !"
+Vous savez que c'est à vous, mais vous jetez quand même un dernier coup d'œil à la feuille de passage, pour faire durer l'instant.
+Vous pensez être plus à l'aise que la dernière fois, mais vous avez quand même peur d'avoir des lacunes…
+-> Prendre vos notes pour éviter d'être perdu
+    Tant pis si cela vous coûte des points, vous prenez une holo-feuille de notes sur laquelle vous avez écrit les grands points à aborder.
+    << addToGauge learning 5 >>
+    En voyant cela, les membres du jury semblent déjà ennuyés avant même que vous ayez commencé.
+    << addToGauge stress 20 >>
+-> Vous rassurer en faisant mine d'être confiant
+    << removeFromGauge stress 10 >>
+Après quelques secondes d'hésitation, vous vous levez enfin, pour vous placer au pupitre.
+Vous commencez par vous présenter au jury, puis vous leur rappelez ce que vous avez choisi comme matière de Grand Oral : <b>la Philosophie quantique</b>. #line:08fe26e 
+L'un des jurés chausse de drôles de lunettes et vous fixe un moment avant de s'écrier : "L'intrication Quantique"…
+L'intrication ?? Vous étiez persuadé qu'ils allaient vous interroger sur la décohérence quantique, comme dans le passé ! Quel genre de sorcellerie est-ce que…
+<< addToGauge stress 20 >>
+Voilà que vous paniquez une nouvelle fois. Vous êtes forcé de reprendre vos esprits, le jury vous ayant donné la parole.
+
+<<if getGauge("stress") >= 66>>
+You: Euh… La décohérence quanti… Pardon. Je reprends.
+You: L'intritica- l'intritaci- l'intrica…
+-> L'INTRICATION !!
+-> Reprendre depuis le début
+You: Hum… L'intrica- intrication quantique ! C'est quand… deux particules forment un système li…
+<< fadeIn >>
+<< addBlur 1 >>
+<< fadeOut >>
+Vous manquez d'air. Vous étouffez réellement. Vous attrapez votre gorge à deux mains, votre visage devient chaud, votre vue devient floue.
+<< fadeIn >>
+Vous ne voyez plus rien. Vous étiez tellement stressé, vous avez dû faire une attaque. Vous distinguez la silhouette de votre grand-mère.
+Mamie: Allons, mon chou, reprends tes esprits !
+You: Mamie, je… Je viens te rejoindre..
+Mamie: Mais qu'est-ce que tu racontes ? Je suis pas morte !
+You: Ah oui, c'est vrai.
+Temde_sad: Il délire complètement, là. Il était tellement stressé, il a fait un malaise en public.
+You: Mamie… Euh je veux dire… Miss Temdé ??
+<< setBackground circle >>
+<< fadeOut >>
+Sapiens_concerned: On dirait qu'il retrouve peu à peu ses esprits.
+<<jump Assemblee_Sages>>
+<<endif>>
+
+<<if getGauge("learning") >= 50>>
+You: Euh… L'intrication quantique, c'est quand deux particules forment un système lié…
+Heureusement que vous avez pris le temps de réviser chacun des quatre thèmes. Vous récitez votre cours, en étoffant avec des exemples pratiques et des citations.
+Lors de votre passage, vous ne pouvez pas vous empêcher d'observer le comportement de chaque membre du jury.
+L'un d'entre eux n'arrête pas de prendre des notes, un autre passe son temps à regarder l'heure passer sur son palmphone, un autre fronce les sourcils avec désapprobation à chaque mot que vous prononcez, et puis le dernier semble boire chacune de vos paroles.
+Leur manière de travailler et de tester vos capacités sont si différentes, ils doivent former une fine équipe. Ils vous rappellent un autre quatuor que vous connaissez bien.
+Au moment des questions-réponses, ils vous laissent développer vos idées et rebondissent sur d'autres sujets. C'est presque trop beau pour être vrai. Vous sortez le sourire au lèvre, convaincu d'avoir réussi.
+<< music Victory >>
+<< completeLevel Astuce des sages : Pour augmenter votre score, pensez à planifier vos journées. >>
+<< advanceTimeBy 0:30 food sleep >>
+<<jump WinExamNight>>
+<<else>>
+You: Euh… L'intrication quantique, c'est quand deux… trucs… se retrouvent dans un même… machin…
+-> Et du coup, les trucs sont liés entre eux dans le machin, quoi !
+    You: Et, du coup, les trucs et les machins, ils font une espèce de… Ils sont liés entre eux, quoi.
+    You: Et euh… Un scientifique a dit que…
+    "Bravo, M. { $name }. Vous parvenez très bien à résumer le principe…"
+    You: Merci…
+    "…pour quelqu'un qui ne connaît rien à son cours. Si nous étions des enfants de 6 ans, nous en demanderions encore."
+-> Mais laissez-moi vous parler de la décohérence quantique…
+    You: Mais, en tout cas, c'est très différent de la décohérence quantique ! Laissez-moi vous en parler un instant.
+    Vous complétez votre oral en récitant tout ce que vous savez sur la décohérence quantique. Vous vous sentez brillant, jusqu'à ce que le premier jury prenne la parole.
+    "HORS SUJET !"
+-> Les Sages ! Aidez-moi !
+    You: Euh… Les Sages, venez-moi en aide ! Temdé, Azul ?!
+    Tous les jeunes dans le public éclatent de rire quand vous hurlez le nom des sages avec un ton si déterminé que tout le monde vous prend pour un fou.
+    Les sages n'arrivent pas, et le jury s'en amuse. Ils regardent au-dessus de leurs épaules, plaisantent entre eux, puis s'adressent à vous.
+    "Qui que soient vos complices, on dirait qu'ils ont décidé de vous abandonner. Allez, au suivant !"
+<< fadeIn >>
+Vous ne vous remettez pas de la brutalité du jury. Brisé, vous quittez les lieux et tentez déjà d'oublier cette expérience humiliante, pour la deuxième fois…
+<< music NegativeSad >>
+Vous sortez en trombe de l'amphithéâtre pour rejoindre votre chambre…
+<<jump FailExamNight>>
+<<endif>>
+===
+
+title: FailExamNight
+tags: noUi
+position: 866,1141
+---
+<< setBackground bedroom night>>
+<< advanceTimeBy 0:15 >>
+<< fadeOut >>
+
+<< if !visited("Assemblee_Sages") >>
+
+<< visitPermanent sages >>
+À peine de retour dans votre chambre, vous appelez les Sages à l'aide.
+You: Hé oh ! Vous m'entendez ? Aidez-moi ?
+Temde_sad: Nous t'avons entendu, { $name }.
+You: Qu'est-ce que vous attendiez pour m'aider ?
+Temde_thinking: Nous ne pouvons pas tout faire à ta place, { $name }, sois-en conscient. Par contre, nous pouvons te donner tous nos conseils pour t'améliorer. Suis-moi.
+-> Suivre Miss Temdé
+    <<jump Assemblee_Sages>>
+-> Recommencer le week-end
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+<< else >>
+Vous allez dans votre lit et fermez les yeux, déprimé…
+Temde_sad: Allons, allons. Tu vas y arriver, un jour. Veux-tu réécouter nos conseils ?
+-> Réécouter les conseils des Sages
+    <<jump Assemblee_Sages>>
+-> Recommencer le week-end #line:00ba4bc 
+    << fx Warp >>
+    << fadeIn 1500 12ea12 >>
+    << resetLevel >>
+    <<jump Start>>
+<< endif >>
+===
+
+title: WinExamNight
+tags: noUi
+position: 866,1141
+---
+<< fadeIn >>
+<< setBackground bedroom night>>
+<< advanceTimeBy 0:15 >>
+<< fadeOut >>
+
+<< visit Win >>
+
+<< if !visited("Assemblee_Sages") >>
+
+<< visitPermanent sages >>
+De retour dans votre chambre, vous constatez que celle-ci est vide, pas de trace de Temdé ou de Master Sapiens. En regardant par la fenêtre, vous distinguez néanmoins les traits d'Azul…
+You: Azul… Je te vois !
+Azul_cheerful: Héhé, je suis pas très fort en cachette. C'est que… nous autres sages… On voulait savoir comment tu t'en es sorti, quoi !
+You: Plutôt bien, en fait ! Je suppose que vous êtes à nouveau là pour me donner vos conseils !
+Azul_proud: Et comment ! Non pas que tu en aies besoin, mais cela peut toujours servir !
+-> Suivre Azul
+    <<jump Assemblee_Sages>>
+-> Passer la séquence des Sages
+<< else >>
+Enfin rentré ! L'heure du repos a finalement sonné !
+-> Passer au chapitre suivant
+    <<jump Assemblee_Sages>>
+-> Réécrire dans le journal mental 
+    <<jump Journal>>
+<< endif >>
+===
+
+
+title: Assemblee_Sages
+tags: noUi
+position: 1924,1433
+---
+<< fx Warp >>
+<< fadeIn 1500 12ea12 >>
+<< music Mysterious >>
+<< setBackground circle >>
+<< fadeOut >>
+
+<< completeSages >>
+
+Vous retrouvez les Sages attablés, dans leur jardin à la verdure inégalable.  #line:059c7a5 
+
+Sapiens_thinking: Tu as fait un long chemin depuis que nous t'avons pris en charge. Mais nous n'en avons pas pour autant fini avec toi.
+Ledai_explaining: Tu as vu à quel point il était difficile de planifier son temps libre. Mais il y a des astuces pour établir un bon planning et s'y tenir.
+Sapiens_happy: …Tout en maintenant ses connaissances à l'aide de piqûres de rappel !
+<<jump Sages_FreeChoice>>
+===
+
+title: Sages_FreeChoice
+tags: noUi
+position: 1924,1433
+---
+-> Comment tenir un planning ?
+    Azul_happy: C'est simple. Imaginons que tu doives remplir un seau, avec des pierres, des cailloux et du sable.
+    Azul_proud: Pour parvenir à le remplir, tu commences par les plus gros objets, les pierres. Ensuite les cailloux, et tu termines par le sable. Ce n'est possible que dans cet ordre.
+    Temde_neutral: Le seau représente ta journée de travail. C'est pour cela qu'il te faut ordonner tes tâches, définir tes priorités.
+    Ledai_explaining: Tu commences toujours par les pierres, la tâche la plus importante. Puis, tu passes aux tâches secondaires, les cailloux.
+    Sapiens_happy: Enfin, lorsque cela est pris en compte, tu peux passer au sable, aux activités plus accessoires, qui ne sont ni urgentes ni prioritaires.
+    Sapiens_thinking: En notant cela dans ton agenda, tu planifies tes priorités. Ici, tes révisions. Et les tâches secondaires, comme les courses. Et enfin, les tâches accessoires, une activité sociale par exemple !
+    Ledai_explaining: Après, tu révises chaque thème, en utilisant la méthode "pomodoro" et les autres techniques que nous t'avons apprises.
+    <<jump Sages_FreeChoice>>
+-> Comment consolider ses connaissances ?
+    Sapiens_thinking: Nous avons déjà vu la différence entre la mémoire à court terme et la mémoire à long terme. Les informations mettent non seulement du temps à parvenir à cette dernière…
+    Sapiens_happy: …Mais elles peuvent également la quitter si elles ne sont pas régulièrement stimulées !
+    Sapiens_concerned: Pour cela, il y a la méthode de "la piqûre de rappel". #line:0ecc8e1 
+    Sapiens_happy: Tu mobilises tes connaissances encore fragiles. Par un rappel libre, un test, un exercice récapitulatif… #line:09a8795 
+    Ledai_explaining: L'important est que tu sollicites ta mémoire à court terme pour enregistrer durablement ces nouvelles informations. #line:0f06cfe 
+    Sapiens_happy: Pour cela, des fiches de révision peuvent être un excellent outil.
+    <<jump Sages_FreeChoice>>
+-> Attendez… Comment le jury a changé le thème ? #once
+    You: Euh… La dernière fois, avant que je ne remonte dans le temps, le jury m'avait interrogé sur la décohérence quantique…
+    Sapiens_thinking: Et cette fois, ils t'ont interrogé sur un tout autre sujet, c'est ça ?
+    You: Oui, c'est ça ! Comment vous savez ?
+    Sapiens_happy: Cela confirme nos hypothèses. Il semblerait que le jury ait accès à une technologie - primitive, il va sans dire - de lecture de pensées.
+    Temde_smiling: Ils s'en servent le jour du Grand Oral, pour vérifier si les candidats n'ont pas de grosses lacunes.
+    Ledai_explaining: Et si c'est le cas, le jury vous interroge sur le sujet que vous maîtrisez le moins.
+    <<jump Sages_FreeChoice>>
+-> J'ai compris !
+    <<jump Quizz_Sages>>
+===
+
+title: Quizz_Sages
+tags: noUi
+position: 1924,1433
+---
+Sapiens_happy: Prêt à répondre à quelques questions ?
+Sapiens: Sur ton planning, tu indiques toutes les tâches de ta journée. En ce qui concerne la session de révision. Tu la mets où ? #line:0a327f4 
+
+-> Tout en haut, en priorité ! #line:0e4228c 
+    << fx Success >>
+    Sapiens_happy: Exactement ! Réviser est ta tâche prioritaire ! Elle doit donc être tout en haut de ton agenda ! #line:0f5a235 
+-> Plus loin. Tu t'en occuperas quand tu auras le temps. #line:073e87a 
+    << fx Failure >>
+    Sapiens_angry: Enfin ! Quelle ineptie ! Réviser est ta tâche prioritaire ! Elle doit donc être tout en haut de ton agenda ! #line:0320467 
+    Azul_sad: Rappelle-toi l'image du seau. Les pierres, ce sont tes séances de révision.  #line:0abae5e 
+
+Sapiens: Deuxième question. Une fois que tu as entamé ta tâche prioritaire. Acceptes-tu d'être dérangé par un ami, un appel, un message ? #line:04c9727 
+
+-> Oui. Cela fait partie des aléas de la vie.  #line:01ebcb5 
+    << fx Failure >>
+    Sapiens_angry: Non, non et non ! Quand tu te mets à réviser, tu dois solliciter ton attention cérébrale à 100%. Sinon, tu ne vas pas cesser de te disperser. #line:0150290 
+    Ledai_doubtful: La priorité la plus urgente en premier ! Et une priorité à la fois ! C'est simple comme règle, non ? #line:0a74667 
+-> Non. Je dois accomplir une tâche à la fois. Pas de distraction ! #line:0e9cc90 
+    << fx Success >>
+    Sapiens_happy: Oui, la priorité la plus urgente en premier !  #line:0148ac0 
+
+Sapiens_thinking: Maintenant que tu as établi ton planning pour ton week-end de révision. Que fais-tu ? #line:0609893 
+
+-> Tu le suis jusqu'au lundi matin ? #line:029fc8a 
+    << fx Failure >>
+    Sapiens_angry: N'importe quoi ! Nous avons pourtant bien insisté. #line:0baf843 
+    Ledai_explaining: S'observer et s'auto-réguler ! Il faut régulièrement revoir le planning, l'adapter, le mettre à jour.
+-> Tu le revois et le réévalue chaque jour ? #line:05cc1af 
+    << fx Success >>
+    Sapiens_happy: Bonne réponse ! S'observer et s'auto-réguler ! #line:090fd10 
+
+Azul_happy: C'est tout pour aujourd'hui, je crois, { $name } !
+
+<<jump Journal>>
+===
+
+title: Journal
+tags: noUi
+position: 1922,1555
+---
+<< fadeIn 1500 12ea12 >>
+<< hide >>
+<< fx Warp >>
+<< setBackground bedroom night >>
+<< fadeOut >>
+
+Vous avez entre les mains votre "carnet d'ingénieur tout-terrain". Vous avez plein de choses à noter dedans.
+
+<< showJournal organisation >>
+<< completeJournal >>
+
+<<if !visited("Win")>>
+-> Recommencer le week-end
+    << fadeIn 1500 12ea12 >>
+    << fx Warp >>
+    << resetLevel >>
+    <<jump Start>>
+<<else>>
+-> Passer au prochain chapitre
+<<endif>>
+===
+
+title: FailGauge
+tags: 
+position: 590,408
+---
+<< fadeIn >>
+<< music NegativeSad >>
+<< addBlur 1 >>
+<< fadeOut >>
+
+<<if getGauge("sleep") <= 0 >>
+Vous vous sentez beaucoup trop fatigué… #line:0e90aa8 
+<<endif>>
+
+<<if getGauge("food") <= 0 >>
+Vous avez trop faim pour faire quoi que ce soit… #line:063722e 
+<<endif>>
+
+<<if getGauge("mentalLoad") >= 100 >>
+Vous vous êtes trop donné aux révisions, votre cerveau n'enregistre plus rien… #line:0000016 
+<<endif>>
+
+-> Recommencer le week-end #line:0d1ef81 
+    << fadeIn 1500 12ea12 >>
+    << removeBlur >>
+    << fx Warp >>
+    << resetLevel >>
+    <<jump Start>>
+===

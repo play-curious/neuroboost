@@ -11,7 +11,8 @@
     "translate": "gulp yarnToCSV",
     "build": "yarn images && webpack --config webpack.dev.js",
     "dist": "yarn images && webpack --config webpack.prod.js",
-    "format": "prettier --write src gulpfile.js README.md"
+    "format": "prettier --write src gulpfile.js README.md",
+    "types": "tsc --noEmit"
   },
   "keywords": [],
   "author": "playcurious",
@@ -27,6 +28,7 @@
     "csv-parse": "^4.16.0",
     "dayjs": "^1.10.8",
     "del": "^6.0.0",
+    "fancy-log": "^2.0.0",
     "firebase": "^8.6.7",
     "git-rev-sync": "^3.0.1",
     "gulp": "^4.0.2",

@@ -11,8 +11,10 @@ import * as command from "./command";
 import * as variable from "./variable";
 import * as graphics from "./graphics";
 import * as extension from "./extension";
+import * as gauge from "./gauge";
 
 import * as yarnBound from "yarn-bound";
+import * as chapter_menus from "./chapter_menus";
 
 declare module "yarn-bound" {
   interface Metadata {
@@ -41,6 +43,29 @@ export function isOption(
   return result instanceof yarnBound.OptionsResult;
 }
 
+// Setup level order
+export const dialogScenes = [
+  "Prologue",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "C5",
+  "C6",
+  "C7",
+];
+
+export const debuggingDialogScenes = [
+  "characters",
+  "backgrounds",
+  "test_simulation",
+  "test_deadline",
+  "test_bubble",
+  "test_round",
+  "test_highlight_sages",
+  "test_highlight_party",
+];
+
 export class DialogScene extends extension.ExtendedCompositeEntity {
   public lastNodeData: yarnBound.Metadata;
   public runner: yarnBound.YarnBound<variable.VariableStorage>;
@@ -50,7 +75,9 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   public selectedOptions: string[];
   public enabled: boolean;
 
-  constructor(public levelName: string, public startNode: string) {
+  private _startNode: string;
+
+  constructor(public levelName: string) {
     super();
   }
 
@@ -115,34 +142,31 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
   _setup(): void {
     //@ts-ignore
     window.dialogScene = this;
-    this._entityConfig.dialogScene = this;
 
-    // this.history = [];
-    // this.lastHistory = 0;
+    // TODO: this is incorrect, should provide child entities with the dialogScene
+    this._entityConfig.dialogScene = this;
+    this.config.dialogScene = this;
+
     this.enabled = true;
     this.selectedOptions = [];
 
-    const saveData = DialogScene.loadSave ? save.getSave() : undefined;
+    this._startNode = this._enteringTransition.params?.startNode || "Start";
 
-    DialogScene.loadSave = false;
+    const loadedChapterData = this._enteringTransition.params
+      ?.loadedChapterData as save.CurrentChapter;
+    if (loadedChapterData) {
+      this._startNode = loadedChapterData.nodeName;
+      this.levelName = loadedChapterData.levelName;
 
-    if (saveData) {
-      this.startNode = saveData.nodeName;
-      this.levelName = saveData.levelName;
+      this.visited = new Set(loadedChapterData.visited);
+      this.visitedPermanent = new Set(loadedChapterData.visitedPermanent);
+      this.selectedOptions = loadedChapterData.selectedOptions;
 
-      this.visited = new Set(saveData.visited);
-      this.visitedPermanent = new Set(saveData.visitedPermanent);
-
-      this.config.history = saveData.history;
-      this.config.variableStorage = new variable.VariableStorage(
-        saveData.variableStorage
-      );
+      // this.config.history = saveData.history;
     } else {
       this.visited = new Set();
       this.visitedPermanent = new Set();
     }
-
-    this.config.dialogScene = this;
 
     command.fxLoops.clear();
 
@@ -162,8 +186,6 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       "stress",
     ]);
 
-    if (saveData) this.graphics.loadSave();
-
     // Setup clock
     this._activateChildEntity(
       this.config.clock,
@@ -175,13 +197,17 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     this._initRunner();
     this._parseFileTags();
+
+    if (loadedChapterData)
+      this.graphics.loadSave(loadedChapterData.graphicsState);
+
     this._advance(-1);
   }
 
   private _initRunner() {
     this.runner = new yarnBound.YarnBound({
       dialogue: this.config.levels[this.levelName],
-      startAt: this.startNode,
+      startAt: this._startNode,
       variableStorage: this.config.variableStorage,
       functions: {},
     });
@@ -237,36 +263,44 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       return;
     }
 
-    this.graphics.hideNode();
-
     // Check if the node data has changed
     if (this.lastNodeData?.title !== this.metadata.title) {
       this._onChangeNodeData(this.lastNodeData, this.metadata);
       this.lastNodeData = this.metadata;
 
-      if (!this._hasTag(this.lastNodeData, "nosave")) {
-        save.save(this);
-      }
+      this._saveProgress();
     }
 
     const result = this.runner.currentResult;
 
     if (isText(result)) {
-      this.graphics.showDialogLayer();
-      this._handleDialog();
+      const textResult = this.runner.currentResult as yarnBound.TextResult;
+
+      if (result.text.trim().length === 0) {
+        // Occasionnally Yarn will give us an empty line. Skip to the next
+        this._advance();
+      } else if (textResult.markup[0]?.properties["name"] === "Tutorial") {
+        this._handleTutorial();
+      } else {
+        this.graphics.showDialogLayer();
+        this._handleDialog();
+      }
     } else if (isOption(result)) {
       this.graphics.showDialogLayer();
-      if (this._hasTag(this.metadata, "freechoice")) {
-        this._handleFreechoice();
-      } else {
-        this._handleChoice();
-      }
+      this._handleChoice();
     } else if (isCommand(result)) {
       this._handleCommand();
     } else {
       console.error("Unknown bondage result:", this.runner.currentResult);
       throw new Error(`Unknown bondage result`);
     }
+  }
+
+  private _handleTutorial() {
+    const textResult = this.runner.currentResult as yarnBound.TextResult;
+    this.graphics.showTutorial(textResult.text.trim(), () => {
+      this._advance();
+    });
   }
 
   private _handleDialog(placeholder?: string, id?: number) {
@@ -308,21 +342,26 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
     const options: Record<string, string>[] = [];
 
-    let indexOfBack = 0;
+    let indexOfBack;
+    let freeChoiceCount = 0;
     for (let i = 0; i < result.options.length; i++) {
       const option = result.options[i];
       const optionText = option.text.trim();
 
+      if (optionText.includes("@")) {
+        freeChoiceCount++;
+      }
+
       const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
       if (
-        (option.hashtags.includes("once" as never) &&
+        (option.hashtags.includes("once") &&
           this.selectedOptions.includes(selectedOptionId)) ||
         !option.isAvailable
       )
         continue;
 
       options.push({
-        text:optionText,
+        text: optionText,
         id: `${i}`,
       });
 
@@ -334,40 +373,36 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       options.length === 1 &&
       indexOfBack !== -1
     ) {
-      this._handleDialog("Vous ne pouvez rien faire ici...", indexOfBack);
+      this._handleDialog(
+        "Vous ne pouvez plus rien faire ici pour le moment.",
+        indexOfBack
+      );
       return;
     }
 
-    options.reverse();
+    if (freeChoiceCount > 0) {
+      if (freeChoiceCount < options.length)
+        throw new Error("Cannot mix free choices and normal choices");
 
-    this.graphics.setChoice(
-      options,
-      (id) => {
-        this.config.fxMachine.play("Click");
-        this.selectedOptions.push(
-          `${this.metadata.title}|${this.metadata.choiceId}|${id}`
-        );
+      // Show highlight zones
+      this.graphics.setFreechoice(options, (id) => {
         this._advance.bind(this)(id);
-      },
-      this._hasTag(this.metadata, "subchoice") ? indexOfBack : undefined
-    );
-  }
+      });
+    } else {
+      // Regular choice
+      options.reverse();
 
-  private _handleFreechoice() {
-    const result = this.runner.currentResult;
-
-    if (!isOption(result))
-      throw new Error("Called _handleChoice for unknown result");
-
-    const options: string[] = [];
-    for (const option of result.options) {
-      if (option.isAvailable) options.push(option.text);
+      this.graphics.setChoice(
+        options,
+        (id) => {
+          this.selectedOptions.push(
+            `${this.metadata.title}|${this.metadata.choiceId}|${id}`
+          );
+          this._advance.bind(this)(id);
+        },
+        this._hasTag(this.metadata, "subchoice") ? indexOfBack : undefined
+      );
     }
-
-    this.graphics.setFreechoice(options, (id) => {
-      this.config.fxMachine.play("Click");
-      this._advance.bind(this)(id);
-    });
   }
 
   private _handleCommand(): void {
@@ -433,6 +468,20 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     this.emit("changeNodeData", oldNodeData, newNodeData);
   }
 
+  private _saveProgress() {
+    if (this._hasTag(this.lastNodeData, "nosave")) return;
+
+    save.updateCurrentChapter({
+      levelName: this.levelName,
+      nodeName: this.metadata.title,
+      visited: Array.from(this.visited),
+      selectedOptions: this.selectedOptions,
+      visitedPermanent: Array.from(this.visitedPermanent),
+      graphicsState: this.graphics.graphicsState,
+    });
+    save.updateVariableStorage(this._entityConfig.variableStorage.data);
+  }
+
   activate(
     e: entity.EntityBase,
     config?: entity.EntityConfigResolvable,
@@ -447,12 +496,97 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   disable() {
     this.enabled = false;
+    // TODO: why is this necessary?
     this.graphics.hideNode();
   }
 
   enable() {
     this.enabled = true;
-    this.graphics.showNode();
     this._advance();
+  }
+
+  /** Automatically simulate effects on sleep & food gauges */
+  simulateGauges(minutes: number, gaugesToIgnore: string[]): void {
+    // Need about 8 hours of sleep per day (15% for 2:15)
+    const sleepPerHour = 15 / 2.25;
+    // No more than 9 between meals (25% for 2:15)
+    const foodPerHour = 25 / 2.25;
+
+    if (!gaugesToIgnore.includes("sleep")) {
+      const oldValue = this.config.variableStorage.get("sleep");
+      const simulatedSleep = (sleepPerHour * minutes) / 60;
+      const newValue = Math.max(Number(oldValue) - simulatedSleep, 0);
+      this.config.variableStorage.set("sleep", `${newValue}`);
+    }
+
+    if (!gaugesToIgnore.includes("food")) {
+      const oldValue = this.config.variableStorage.get("food");
+      const simulatedFood = (foodPerHour * minutes) / 60;
+      const newValue = Math.max(Number(oldValue) - simulatedFood, 0);
+      this.config.variableStorage.set("food", `${newValue}`);
+    }
+  }
+
+  showAndSaveScore(score: string, hintWords: string[]): entity.Entity {
+    const scoreNumber: number = Number(score);
+    save.updateCompletedLevel(this.levelName, scoreNumber);
+    // Look up the index of the chapter to get the number
+    const chapter = dialogScenes.indexOf(this.levelName);
+    const hint = hintWords.join(" ");
+
+    this.entityConfig.fxMachine.play("Success");
+    return new chapter_menus.ScoreMenu({
+      chapter,
+      score: scoreNumber,
+      hint,
+    });
+  }
+
+  calculateC7Score(): number {
+    const motivation: number = Number(
+      this.entityConfig.variableStorage.get("motivationFred")
+    );
+    console.log(motivation);
+    if (motivation >= 7) {
+      return 3;
+    }
+    if (motivation >= 5) {
+      return 2;
+    }
+    if (motivation >= 4) {
+      return 1;
+    }
+    return 0;
+  }
+
+  calculateScore(): number {
+    const vars = this.config.variableStorage;
+
+    const learning = parseInt(vars.get("learning"));
+
+    // If learning is red, 0 stars
+    if (learning < gauge.gaugeLevels["learning"].minMedium) return 0;
+    // If learning is yellow 1 star
+    if (learning < gauge.gaugeLevels["learning"].minHigh) return 1;
+
+    // If any other (shown) gauges are red, 2 stars
+    for (const gaugeName of this.graphics.currentGauges) {
+      if (variable.InvertedGauges.includes(gaugeName)) {
+        if (
+          // @ts-ignore
+          parseInt(vars.get(gaugeName)) >= gauge.gaugeLevels[gaugeName].minHigh
+        )
+          return 2;
+      } else {
+        if (
+          // @ts-ignore
+          parseInt(vars.get(gaugeName)) < gauge.gaugeLevels[gaugeName].minMedium
+        )
+          return 2;
+      }
+    }
+
+    // 3 stars!
+    return 3;
   }
 }

@@ -2,15 +2,15 @@ import { Filter } from "pixi.js";
 import {
   GlitchFilter,
   CRTFilter,
-  GlowFilter,
   AdjustmentFilter,
+  OutlineFilter,
 } from "pixi-filters";
 import * as entity from "booyah/src/entity";
 
 export type Glitch = GlitchFilter & Filter;
 export type Holograph = CRTFilter & Filter;
 export type Adjustment = AdjustmentFilter & Filter;
-export type Glow = GlowFilter & Filter;
+export type Glow = OutlineFilter & Filter;
 
 /**
  * Create a new glitch effect
@@ -37,10 +37,7 @@ export function newHolograph() {
 }
 
 export function newGlow() {
-  return new GlowFilter({
-    outerStrength: 5.0,
-    color: 0x2cd2d2,
-  }) as Glow;
+  return new OutlineFilter(5, 0xffffff, 0.03) as Glow;
 }
 
 export function newAdjustment() {

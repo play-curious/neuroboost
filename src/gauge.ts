@@ -6,14 +6,32 @@ import * as easing from "booyah/src/easing";
 
 import * as extension from "./extension";
 import * as variable from "./variable";
-import { StaticSpritePath } from "./images";
+import { SpritePath } from "./images";
 
-const gaugesNames = {
+export const gaugesNames = {
+  learning: `Apprentissage`,
   sleep: `Énergie`,
   food: `Nutrition`,
-  learning: `Apprentissage`,
   mentalLoad: `Charge Mentale`,
   stress: `Stress`,
+};
+
+export interface GaugeLimits {
+  /** The minimum value for the gauge to be yellow */
+  minMedium: number;
+
+  /** The minimum value for the gauge to be green (or red, if inverted) */
+  minHigh: number;
+}
+
+const defaultGaugeLimits = { minMedium: 33, minHigh: 66 };
+
+export const gaugeLevels: Record<keyof typeof gaugesNames, GaugeLimits> = {
+  learning: { minMedium: 50, minHigh: 80 },
+  sleep: defaultGaugeLimits,
+  food: defaultGaugeLimits,
+  mentalLoad: defaultGaugeLimits,
+  stress: defaultGaugeLimits,
 };
 
 export class Gauge extends extension.ExtendedCompositeEntity {
@@ -42,7 +60,7 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   }
 
   _setup() {
-    this._value = parseInt(this.config.variableStorage.get(this.name));
+    this._value = Math.ceil(Number(this.config.variableStorage.get(this.name)));
     this._inverted = variable.InvertedGauges.includes(this.name);
 
     this._innerDisk = new PIXI.Sprite();
@@ -135,12 +153,13 @@ export class Gauge extends extension.ExtendedCompositeEntity {
     return this._value;
   }
 
-  colorByValue(value: number): StaticSpritePath {
-    if (value > 66)
+  colorByValue(value: number): SpritePath {
+    if (value >= gaugeLevels[this.name].minHigh)
       return this._inverted
         ? "images/ui/gauges/innerDisk_red.png"
         : "images/ui/gauges/innerDisk_green.png";
-    else if (value > 33) return "images/ui/gauges/innerDisk_yellow.png";
+    else if (value >= gaugeLevels[this.name].minMedium)
+      return "images/ui/gauges/innerDisk_yellow.png";
     else
       return this._inverted
         ? "images/ui/gauges/innerDisk_green.png"
@@ -183,9 +202,10 @@ export class Gauge extends extension.ExtendedCompositeEntity {
   }
 
   changeValue(newValue: number) {
-    if (newValue === this._value) return;
-    if (this._currentTween.animation)
+    if (this._currentTween.animation) {
       this._deactivateChildEntity(this._currentTween.animation);
+      this._currentTween.animation = null;
+    }
 
     this._currentTween.to = newValue;
     this._currentTween.animation = new tween.Tween({

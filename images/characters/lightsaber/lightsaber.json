@@ -1,0 +1,823 @@
+{"frames": {
+
+"lightsaber_v2.png":
+{
+	"frame": {"x":612,"y":446,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v3.png":
+{
+	"frame": {"x":612,"y":446,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v4.png":
+{
+	"frame": {"x":612,"y":446,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v5.png":
+{
+	"frame": {"x":1221,"y":1781,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v6.png":
+{
+	"frame": {"x":1221,"y":1781,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v7.png":
+{
+	"frame": {"x":1221,"y":1781,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v8.png":
+{
+	"frame": {"x":1,"y":1,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v9.png":
+{
+	"frame": {"x":1,"y":1,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v10.png":
+{
+	"frame": {"x":1,"y":1,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v11.png":
+{
+	"frame": {"x":1845,"y":1,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v12.png":
+{
+	"frame": {"x":2455,"y":1,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v13.png":
+{
+	"frame": {"x":2455,"y":1,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v14.png":
+{
+	"frame": {"x":3065,"y":1,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v15.png":
+{
+	"frame": {"x":3065,"y":1,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v16.png":
+{
+	"frame": {"x":3065,"y":1,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v17.png":
+{
+	"frame": {"x":1,"y":446,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v18.png":
+{
+	"frame": {"x":1,"y":446,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v19.png":
+{
+	"frame": {"x":1,"y":446,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v20.png":
+{
+	"frame": {"x":1236,"y":446,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v21.png":
+{
+	"frame": {"x":1236,"y":446,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v22.png":
+{
+	"frame": {"x":1845,"y":446,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v23.png":
+{
+	"frame": {"x":2454,"y":446,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v24.png":
+{
+	"frame": {"x":2454,"y":446,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v25.png":
+{
+	"frame": {"x":3064,"y":446,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v26.png":
+{
+	"frame": {"x":1,"y":891,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v27.png":
+{
+	"frame": {"x":1,"y":891,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v28.png":
+{
+	"frame": {"x":625,"y":891,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v29.png":
+{
+	"frame": {"x":1249,"y":891,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v30.png":
+{
+	"frame": {"x":1249,"y":891,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v31.png":
+{
+	"frame": {"x":1249,"y":891,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v32.png":
+{
+	"frame": {"x":1860,"y":891,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v33.png":
+{
+	"frame": {"x":1860,"y":891,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v34.png":
+{
+	"frame": {"x":1860,"y":891,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v35.png":
+{
+	"frame": {"x":2469,"y":891,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v36.png":
+{
+	"frame": {"x":3079,"y":891,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v37.png":
+{
+	"frame": {"x":3079,"y":891,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v38.png":
+{
+	"frame": {"x":1,"y":1336,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v39.png":
+{
+	"frame": {"x":625,"y":1336,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v40.png":
+{
+	"frame": {"x":625,"y":1336,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v41.png":
+{
+	"frame": {"x":1249,"y":1336,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v42.png":
+{
+	"frame": {"x":1860,"y":1336,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v43.png":
+{
+	"frame": {"x":1860,"y":1336,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v44.png":
+{
+	"frame": {"x":2471,"y":1336,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v45.png":
+{
+	"frame": {"x":3080,"y":1336,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v46.png":
+{
+	"frame": {"x":3080,"y":1336,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v47.png":
+{
+	"frame": {"x":1,"y":1781,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v48.png":
+{
+	"frame": {"x":611,"y":1781,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v49.png":
+{
+	"frame": {"x":611,"y":1781,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v50.png":
+{
+	"frame": {"x":1832,"y":1781,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v51.png":
+{
+	"frame": {"x":1832,"y":1781,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v52.png":
+{
+	"frame": {"x":1832,"y":1781,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v53.png":
+{
+	"frame": {"x":2456,"y":1781,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v54.png":
+{
+	"frame": {"x":2456,"y":1781,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v55.png":
+{
+	"frame": {"x":2456,"y":1781,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v56.png":
+{
+	"frame": {"x":3067,"y":1781,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v57.png":
+{
+	"frame": {"x":3067,"y":1781,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v58.png":
+{
+	"frame": {"x":3067,"y":1781,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v59.png":
+{
+	"frame": {"x":1,"y":2226,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v60.png":
+{
+	"frame": {"x":1,"y":2226,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v61.png":
+{
+	"frame": {"x":1,"y":2226,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v62.png":
+{
+	"frame": {"x":611,"y":2226,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v63.png":
+{
+	"frame": {"x":611,"y":2226,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v64.png":
+{
+	"frame": {"x":611,"y":2226,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v65.png":
+{
+	"frame": {"x":1235,"y":2226,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v66.png":
+{
+	"frame": {"x":1235,"y":2226,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v67.png":
+{
+	"frame": {"x":1235,"y":2226,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v68.png":
+{
+	"frame": {"x":1846,"y":2226,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v69.png":
+{
+	"frame": {"x":1846,"y":2226,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v70.png":
+{
+	"frame": {"x":2455,"y":2226,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v71.png":
+{
+	"frame": {"x":3064,"y":2226,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v72.png":
+{
+	"frame": {"x":3064,"y":2226,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v73.png":
+{
+	"frame": {"x":1,"y":2671,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v74.png":
+{
+	"frame": {"x":611,"y":2671,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v75.png":
+{
+	"frame": {"x":611,"y":2671,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v76.png":
+{
+	"frame": {"x":1235,"y":2671,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v77.png":
+{
+	"frame": {"x":1859,"y":2671,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v78.png":
+{
+	"frame": {"x":1859,"y":2671,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v79.png":
+{
+	"frame": {"x":2470,"y":2671,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v80.png":
+{
+	"frame": {"x":3081,"y":2671,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v81.png":
+{
+	"frame": {"x":3081,"y":2671,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v82.png":
+{
+	"frame": {"x":1,"y":3116,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v83.png":
+{
+	"frame": {"x":610,"y":3116,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v84.png":
+{
+	"frame": {"x":610,"y":3116,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v85.png":
+{
+	"frame": {"x":1235,"y":3561,"w":608,"h":455},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":85,"w":608,"h":455},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v86.png":
+{
+	"frame": {"x":1845,"y":3561,"w":622,"h":455},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":85,"w":622,"h":455},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v87.png":
+{
+	"frame": {"x":1845,"y":3561,"w":622,"h":455},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":85,"w":622,"h":455},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v88.png":
+{
+	"frame": {"x":1845,"y":3561,"w":622,"h":455},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":85,"w":622,"h":455},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v89.png":
+{
+	"frame": {"x":2469,"y":3561,"w":609,"h":455},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":85,"w":609,"h":455},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v90.png":
+{
+	"frame": {"x":2469,"y":3561,"w":609,"h":455},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":85,"w":609,"h":455},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v91.png":
+{
+	"frame": {"x":1220,"y":3116,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v92.png":
+{
+	"frame": {"x":1831,"y":3116,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v93.png":
+{
+	"frame": {"x":1831,"y":3116,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v94.png":
+{
+	"frame": {"x":2440,"y":3116,"w":607,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":212,"y":97,"w":607,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v95.png":
+{
+	"frame": {"x":3049,"y":3116,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v96.png":
+{
+	"frame": {"x":3049,"y":3116,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v97.png":
+{
+	"frame": {"x":1,"y":3561,"w":608,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":608,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v98.png":
+{
+	"frame": {"x":611,"y":3561,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v99.png":
+{
+	"frame": {"x":611,"y":3561,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v100.png":
+{
+	"frame": {"x":610,"y":1,"w":622,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":197,"y":97,"w":622,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v101.png":
+{
+	"frame": {"x":1234,"y":1,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+},
+"lightsaber_v102.png":
+{
+	"frame": {"x":1234,"y":1,"w":609,"h":443},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":211,"y":97,"w":609,"h":443},
+	"sourceSize": {"w":960,"h":540}
+}},
+"animations": {
+	"lightsaber_v": ["lightsaber_v2.png","lightsaber_v3.png","lightsaber_v4.png","lightsaber_v5.png","lightsaber_v6.png","lightsaber_v7.png","lightsaber_v8.png","lightsaber_v9.png","lightsaber_v10.png","lightsaber_v11.png","lightsaber_v12.png","lightsaber_v13.png","lightsaber_v14.png","lightsaber_v15.png","lightsaber_v16.png","lightsaber_v17.png","lightsaber_v18.png","lightsaber_v19.png","lightsaber_v20.png","lightsaber_v21.png","lightsaber_v22.png","lightsaber_v23.png","lightsaber_v24.png","lightsaber_v25.png","lightsaber_v26.png","lightsaber_v27.png","lightsaber_v28.png","lightsaber_v29.png","lightsaber_v30.png","lightsaber_v31.png","lightsaber_v32.png","lightsaber_v33.png","lightsaber_v34.png","lightsaber_v35.png","lightsaber_v36.png","lightsaber_v37.png","lightsaber_v38.png","lightsaber_v39.png","lightsaber_v40.png","lightsaber_v41.png","lightsaber_v42.png","lightsaber_v43.png","lightsaber_v44.png","lightsaber_v45.png","lightsaber_v46.png","lightsaber_v47.png","lightsaber_v48.png","lightsaber_v49.png","lightsaber_v50.png","lightsaber_v51.png","lightsaber_v52.png","lightsaber_v53.png","lightsaber_v54.png","lightsaber_v55.png","lightsaber_v56.png","lightsaber_v57.png","lightsaber_v58.png","lightsaber_v59.png","lightsaber_v60.png","lightsaber_v61.png","lightsaber_v62.png","lightsaber_v63.png","lightsaber_v64.png","lightsaber_v65.png","lightsaber_v66.png","lightsaber_v67.png","lightsaber_v68.png","lightsaber_v69.png","lightsaber_v70.png","lightsaber_v71.png","lightsaber_v72.png","lightsaber_v73.png","lightsaber_v74.png","lightsaber_v75.png","lightsaber_v76.png","lightsaber_v77.png","lightsaber_v78.png","lightsaber_v79.png","lightsaber_v80.png","lightsaber_v81.png","lightsaber_v82.png","lightsaber_v83.png","lightsaber_v84.png","lightsaber_v85.png","lightsaber_v86.png","lightsaber_v87.png","lightsaber_v88.png","lightsaber_v89.png","lightsaber_v90.png","lightsaber_v91.png","lightsaber_v92.png","lightsaber_v93.png","lightsaber_v94.png","lightsaber_v95.png","lightsaber_v96.png","lightsaber_v97.png","lightsaber_v98.png","lightsaber_v99.png","lightsaber_v100.png","lightsaber_v101.png","lightsaber_v102.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lightsaber.png",
+	"format": "RGBA8888",
+	"size": {"w":3689,"h":4017},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:47bcf331b95cf62de23e047a1ca8d307:6e2917d845cb756f9581d4136d038a1c:f0fbf91041c819cd2ebf6a71e6a4acb9$"
+}
+}
