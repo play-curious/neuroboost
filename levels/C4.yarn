@@ -564,6 +564,9 @@ position: -413,49
 ---
 You: Hey, BibliMate, active le mode Immersion Studieuse !
 RoomMate: C'est parti ! Une sphère de travail immersive, une !
+
+<< addImmersiveBubble >>
+
 <<if !visited("Zero_Distraction")>>
 Aussitôt, un dôme de lumière opaque se referme sur votre table et vous isole du reste de la bibliothèque et des étudiants. Le son devient net et réverbéré, comme dans un studio d'enregistrement.
 Fred_smiling: Bonne idée, la bulle de silence. On va pouvoir parler comme on veut tous les deux !
@@ -584,6 +587,7 @@ position: -413,-37
 ---
 You: Hey, BibliMate, désactive le mode immersif, s'il te plaît !
 RoomMate: Pas de souci ! 
+<< removeImmersiveBubble >>
 << set $silence to false >>
 <<jump Liste_Taches>>
 ===
@@ -895,6 +899,8 @@ tags:
 position: -1294,-46
 colorID: 1
 ---
+<< removeImmersiveBubble >>
+
 << fx Notification >>
 << removeDeadline >>
 RoomMate: Ding-dong ! Allez, on remballe ses affaires ! La bibliothèque va fermer !

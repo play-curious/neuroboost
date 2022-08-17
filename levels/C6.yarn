@@ -452,6 +452,7 @@ position: 768,-255
 << set $silence to true >>
 You: RoomMate ! Passe la chambre en mode Zéro-Distraction !
 << fx Success >>
+<< addImmersiveBubble >>
 RoomMate: Entendu ! Je désactive les activités de détente et autres distractions.
 <<visit Zero_Distraction >>
 <<jump bureau_subchoice>>
@@ -464,6 +465,7 @@ position: 742,-163
 << set $silence to false >>
 You: RoomMate, désactive le mode Zéro-Distraction.
 << fx Success >>
+<< removeImmersiveBubble >>
 RoomMate: C'est fait ! Je débloque les appels, les notifications et les activités de détente !
 <<jump Liste_Taches>>
 ===
@@ -519,6 +521,7 @@ colorID: 6
 RoomMate: Voulez-vous que je désactive le mode zéro-distraction pour vous permettre une pause ?
 -> Oui
     << fx Success>>
+    << removeImmersiveBubble >>
     <<set $silence to false>>
 -> Non
     << hide >>
@@ -730,6 +733,7 @@ position: 1672,1359
 Il vous reste un peu de temps avant votre passage. Vous allez en profiter pour faire un petit jogging pour bien réveiller votre corps.
 
 << fadeIn >>
+<< removeImmersiveBubble >>
 << setBackground door >>
 << music Neutral3 >>
 << fadeOut >>
@@ -761,6 +765,7 @@ position: 1548,338
 colorID: 4
 ---
 << set $silence to false >>
+<< removeImmersiveBubble >>
 Le soleil s'est couché, il est temps de clore votre journée par un dîner bien mérité.
 
 <<if $foodinfridge <= 0>>
@@ -933,6 +938,7 @@ position: 1449,860
 colorID: 4
 ---
 << set $silence to false >>
+<< removeImmersiveBubble >>
 Il est plus de 20 heures ?! Il est temps de se préparer un petit dîner. #line:0822b76 
 
 << if $foodinfridge <= 0 >>
@@ -996,6 +1002,8 @@ title: Grand_Oral
 tags:
 position: 164,25
 ---
+<< removeImmersiveBubble >>
+
 << music Tense >>
 << fadeIn >>
 << setBackground door class >>
