@@ -2303,6 +2303,18 @@ export default interface i18n {
     "text": "Learning"
   },
   {
+    "id": "gauge_sleep",
+    "text": "Sleep"
+  },
+  {
+    "id": "gauge_food",
+    "text": "Food"
+  },
+  {
+    "id": "gauge_mentalLoad",
+    "text": "Mental Load"
+  },
+  {
     "id": "deadline_examen",
     "text": "Test"
   },
@@ -2353,6 +2365,138 @@ export default interface i18n {
   {
     "id": "day_6",
     "text": "Sunday"
+  },
+  {
+    "id": "menu_plein_ecran",
+    "text": "Full screen"
+  },
+  {
+    "id": "menu_fenetre",
+    "text": "Windowed"
+  },
+  {
+    "id": "menu_chapitre",
+    "text": "Chapter"
+  },
+  {
+    "id": "menu_journal",
+    "text": "Journal"
+  },
+  {
+    "id": "menu_vitesse_texte",
+    "text": "Text Speed"
+  },
+  {
+    "id": "menu_credits",
+    "text": "Credits"
+  },
+  {
+    "id": "popup_retour_chapitres",
+    "text": "Are you sure you want to return to the table of contents?"
+  },
+  {
+    "id": "journal_historique_vide",
+    "text": "History empty"
+  },
+  {
+    "id": "journal_telecharger",
+    "text": "Download your metacognition journal?"
+  },
+  {
+    "id": "journal_passer",
+    "text": "Skip"
+  },
+  {
+    "id": "journal_valider",
+    "text": "DONE"
+  },
+  {
+    "id": "journal_notes_placeholder",
+    "text": "Write here..."
+  },
+  {
+    "id": "chapitre_prologue",
+    "text": "Prologue"
+  },
+  {
+    "id": "chapitre_nom",
+    "text": "Chapter <%= chapterNumber %>"
+  },
+  {
+    "id": "chapitre_fin",
+    "text": "End"
+  },
+  {
+    "id": "menu_chapitre_titre",
+    "text": "Table of Contents"
+  },
+  {
+    "id": "menu_chapitre_sages",
+    "text": "Visit the elders"
+  },
+  {
+    "id": "menu_chapitre_ecrire",
+    "text": "Write in the journal"
+  },
+  {
+    "id": "menu_chapitre_continuer",
+    "text": "Continue"
+  },
+  {
+    "id": "score_menu_reussi",
+    "text": "Chapter <%= chapterNumber %> done !"
+  },
+  {
+    "id": "score_menu_recommencer",
+    "text": "Restart"
+  },
+  {
+    "id": "score_menu_choisir_chapitre",
+    "text": "Choose a Chapter"
+  },
+  {
+    "id": "score_menu_continuer",
+    "text": "Continue"
+  },
+  {
+    "id": "dialog_no_action",
+    "text": "There's nothing to do here right now."
+  },
+  {
+    "id": "score_1",
+    "text": "Could do better..."
+  },
+  {
+    "id": "score_2",
+    "text": "Not bad"
+  },
+  {
+    "id": "score_3",
+    "text": "Excellent"
+  },
+  {
+    "id": "tip_0",
+    "text": "Elder's tip: to increase your score, use the most effective studying techniques"
+  },
+  {
+    "id": "tip_1",
+    "text": "Elder's tip: to increase your score, don't forget to sleep and eat well"
+  },
+  {
+    "id": "tip_2",
+    "text": "Elder's tip: to increase your score, try to reduce your mental load"
+  },
+  {
+    "id": "tip_3",
+    "text": "Elder's tip: to increase your score, take your team's strong points into account"
+  },
+  {
+    "id": "tip_4",
+    "text": "Elder's tip: to increase your score, try to reduce your stress"
+  },
+  {
+    "id": "tip_5",
+    "text": "Elder's tip: to increase your score, don't forget to plan out your days"
   }
 ];
     journal: [
@@ -2629,7 +2773,7 @@ export default interface i18n {
   },
   {
     "id": "tip_0",
-    "text": "Astuce des sages : Pour augmenter votre score, révisez un maximum avant l'examen."
+    "text": "Astuce des sages : Pour augmenter votre score, essayer d'optimiser vos révisions."
   },
   {
     "id": "tip_1",

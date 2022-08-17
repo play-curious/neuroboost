@@ -7,6 +7,18 @@
     "id": "gauge_learning",
     "text": "Learning"
   },
+  "gauge_sleep": {
+    "id": "gauge_sleep",
+    "text": "Sleep"
+  },
+  "gauge_food": {
+    "id": "gauge_food",
+    "text": "Food"
+  },
+  "gauge_mentalLoad": {
+    "id": "gauge_mentalLoad",
+    "text": "Mental Load"
+  },
   "deadline_examen": {
     "id": "deadline_examen",
     "text": "Test"
@@ -58,5 +70,137 @@
   "day_6": {
     "id": "day_6",
     "text": "Sunday"
+  },
+  "menu_plein_ecran": {
+    "id": "menu_plein_ecran",
+    "text": "Full screen"
+  },
+  "menu_fenetre": {
+    "id": "menu_fenetre",
+    "text": "Windowed"
+  },
+  "menu_chapitre": {
+    "id": "menu_chapitre",
+    "text": "Chapter"
+  },
+  "menu_journal": {
+    "id": "menu_journal",
+    "text": "Journal"
+  },
+  "menu_vitesse_texte": {
+    "id": "menu_vitesse_texte",
+    "text": "Text Speed"
+  },
+  "menu_credits": {
+    "id": "menu_credits",
+    "text": "Credits"
+  },
+  "popup_retour_chapitres": {
+    "id": "popup_retour_chapitres",
+    "text": "Are you sure you want to return to the table of contents?"
+  },
+  "journal_historique_vide": {
+    "id": "journal_historique_vide",
+    "text": "History empty"
+  },
+  "journal_telecharger": {
+    "id": "journal_telecharger",
+    "text": "Download your metacognition journal?"
+  },
+  "journal_passer": {
+    "id": "journal_passer",
+    "text": "Skip"
+  },
+  "journal_valider": {
+    "id": "journal_valider",
+    "text": "DONE"
+  },
+  "journal_notes_placeholder": {
+    "id": "journal_notes_placeholder",
+    "text": "Write here..."
+  },
+  "chapitre_prologue": {
+    "id": "chapitre_prologue",
+    "text": "Prologue"
+  },
+  "chapitre_nom": {
+    "id": "chapitre_nom",
+    "text": "Chapter <%= chapterNumber %>"
+  },
+  "chapitre_fin": {
+    "id": "chapitre_fin",
+    "text": "End"
+  },
+  "menu_chapitre_titre": {
+    "id": "menu_chapitre_titre",
+    "text": "Table of Contents"
+  },
+  "menu_chapitre_sages": {
+    "id": "menu_chapitre_sages",
+    "text": "Visit the elders"
+  },
+  "menu_chapitre_ecrire": {
+    "id": "menu_chapitre_ecrire",
+    "text": "Write in the journal"
+  },
+  "menu_chapitre_continuer": {
+    "id": "menu_chapitre_continuer",
+    "text": "Continue"
+  },
+  "score_menu_reussi": {
+    "id": "score_menu_reussi",
+    "text": "Chapter <%= chapterNumber %> done !"
+  },
+  "score_menu_recommencer": {
+    "id": "score_menu_recommencer",
+    "text": "Restart"
+  },
+  "score_menu_choisir_chapitre": {
+    "id": "score_menu_choisir_chapitre",
+    "text": "Choose a Chapter"
+  },
+  "score_menu_continuer": {
+    "id": "score_menu_continuer",
+    "text": "Continue"
+  },
+  "dialog_no_action": {
+    "id": "dialog_no_action",
+    "text": "There's nothing to do here right now."
+  },
+  "score_1": {
+    "id": "score_1",
+    "text": "Could do better..."
+  },
+  "score_2": {
+    "id": "score_2",
+    "text": "Not bad"
+  },
+  "score_3": {
+    "id": "score_3",
+    "text": "Excellent"
+  },
+  "tip_0": {
+    "id": "tip_0",
+    "text": "Elder's tip: to increase your score, use the most effective studying techniques"
+  },
+  "tip_1": {
+    "id": "tip_1",
+    "text": "Elder's tip: to increase your score, don't forget to sleep and eat well"
+  },
+  "tip_2": {
+    "id": "tip_2",
+    "text": "Elder's tip: to increase your score, try to reduce your mental load"
+  },
+  "tip_3": {
+    "id": "tip_3",
+    "text": "Elder's tip: to increase your score, take your team's strong points into account"
+  },
+  "tip_4": {
+    "id": "tip_4",
+    "text": "Elder's tip: to increase your score, try to reduce your stress"
+  },
+  "tip_5": {
+    "id": "tip_5",
+    "text": "Elder's tip: to increase your score, don't forget to plan out your days"
   }
 }

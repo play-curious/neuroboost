@@ -220,8 +220,13 @@ const musicAssets = [
 ];
 
 const params = new URLSearchParams(window.location.search);
+const languages = ["fr", "en"];
 
-const lang = params.get("lang") ?? navigator.language;
+let lang = params.get("lang") ?? navigator.language;
+if (!languages.includes(lang)) {
+  console.warn("Language " + lang + " not known, switching to english version");
+  lang = "en";
+}
 
 const translatedLevels = ["c1"];
 
