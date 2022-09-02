@@ -272,6 +272,7 @@ position: -1823,-911
 ---
 << fx Success >>
 << set $silence to true >>
+<< addImmersiveBubble >>
 RoomMate: Mode Zéro-Distraction activé !
 << hide >>
 <<jump bureau_subchoice>>
@@ -283,6 +284,7 @@ position: -1823,-911
 ---
 << fx Success >>
 << set $silence to false >>
+<< removeImmersiveBubble >>
 RoomMate: Mode Zéro-Distraction désactivé !
 << hide >>
 <<jump bureau_subchoice>>
@@ -330,6 +332,7 @@ position: -2527,-570
 RoomMate: Voulez-vous que je désactive le mode zéro-distraction pour vous permettre une pause ?
 -> Oui
     << fx Success>>
+    << removeImmersiveBubble >>
     <<set $silence to false>>
 -> Non
     <<jump Liste_Taches>>
@@ -392,6 +395,7 @@ colorID: 2
 ---
 << fadeIn >>
 << hide >>
+<< removeImmersiveBubble >>
 << music Neutral3 >>
 << setBackground sport >>
 << advanceTimeBy 0:15 >>
@@ -566,6 +570,7 @@ tags:
 position: -1954,-331
 ---
 << fadeIn >>
+<< removeImmersiveBubble >>
 << music Neutral3 >>
 << setBackground door class >>
 << advanceTimeUntil 14:00 >>

@@ -63,6 +63,7 @@ export const debuggingDialogScenes = [
   "backgrounds",
   "test_simulation",
   "test_deadline",
+  "test_bubble",
   "test_round",
   "test_highlight_sages",
   "test_highlight_party",
@@ -162,6 +163,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       this.visited = new Set(loadedChapterData.visited);
       this.visitedPermanent = new Set(loadedChapterData.visitedPermanent);
+      this.selectedOptions = loadedChapterData.selectedOptions;
 
       // this.config.history = saveData.history;
     } else {
@@ -384,6 +386,20 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     );
   }
 
+  private stringToHash(string: string) {
+    var hash = 0;
+
+    if (string.length == 0) return hash;
+
+    for (let i = 0; i < string.length; i++) {
+      let char = string.charCodeAt(i);
+      hash = (hash << 5) - hash + char;
+      hash = hash & hash;
+    }
+
+    return hash;
+  }
+
   private _handleChoice() {
     const result = this.runner.currentResult as TextResult;
 
@@ -423,15 +439,28 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
       if (optionText.includes("@")) {
         freeChoiceCount++;
-      }
+      } else {
+        for (let hash of option.hashtags) {
+          if (hash.startsWith("line")) {
+            lineId = hash.split(":")[1].trim();
+          }
+        }
 
-      const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
-      if (
-        (option.hashtags.includes("once") &&
-          this.selectedOptions.includes(selectedOptionId)) ||
-        !option.isAvailable
-      )
-        continue;
+        if (!lineId) {
+          console.warn(
+            "No line id for choice '" + optionText + "', taking hash instead"
+          );
+          lineId = this.stringToHash(optionText).toString();
+        }
+
+        const selectedOptionId = `${this.metadata.title}|${lineId}`;
+        if (
+          (option.hashtags.includes("once") &&
+            this.selectedOptions.includes(selectedOptionId)) ||
+          !option.isAvailable
+        )
+          continue;
+      }
 
       options.push({
         text: translatedText,
@@ -467,7 +496,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         options,
         (id) => {
           this.selectedOptions.push(
-            `${this.metadata.title}|${this.metadata.choiceId}|${id}`
+            `${this.metadata.title}|${
+              options.filter((obj) => {
+                return obj.id === id.toString();
+              })[0].lineId
+            }`
           );
           this._advance.bind(this)(id);
         },
@@ -546,6 +579,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       levelName: this.levelName,
       nodeName: this.metadata.title,
       visited: Array.from(this.visited),
+      selectedOptions: this.selectedOptions,
       visitedPermanent: Array.from(this.visitedPermanent),
       graphicsState: this.graphics.graphicsState,
     });
@@ -649,7 +683,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       } else {
         if (
           // @ts-ignore
-          parseInt(vars.get(gaugeName)) < gauge.gaugeLevels[gaugeName].minLow
+          parseInt(vars.get(gaugeName)) < gauge.gaugeLevels[gaugeName].minMedium
         )
           return 2;
       }

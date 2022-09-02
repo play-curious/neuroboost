@@ -28,13 +28,16 @@ export interface GraphicsState {
   lastMusic?: string;
   lastGauges?: string[];
   lastDeadline?: DeadlineState;
+  inBubble?: boolean;
 }
 
 export interface CurrentChapter {
   levelName: string;
   nodeName: string;
   /** Set<string> */
+  selectedOptions: string[];
   visited: string[];
+
   visitedPermanent: string[];
   graphicsState: GraphicsState;
 }
