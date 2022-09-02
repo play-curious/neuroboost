@@ -22,7 +22,7 @@ L'Académie met beaucoup en avant l'importance de cette épreuve dès la premiè
 Autrement dit, cette épreuve est éliminatoire.
 << music Tense >>
 << fadeOut >>
-"On en a assez vu ! Allez, AU SUIVANT !"
+"Votre travail n'est pas suffisant pour valider cette étape, désolé !"
 Ces mots prononcés par le jury alors même que vous vous asseyez dans les gradins vous glacent le sang.
 Le dernier élève se dirige vers la porte en sanglots. Vous angoissez, peu rassuré par ce que vous venez de voir…
 
@@ -210,10 +210,14 @@ You: Vous… Vous êtes qui, vous ??
 Temde_neutral: Nous sommes les sages de la métacognition.
 Azul_sad: Nous devrions nous présenter à { $name }. C'est la première nuit que nous nous immisçons dans sa vie. Notre visiteur de ce soir ne sait plus à quel sage se vouer.
 Sapiens_thinking: Très juste, <b>Azul</b>. Puisque j'ai pris la parole, je me présente : je suis <b>Master Sapiens</b>, le Gardien des Savoirs. #line:08b4377 
+Sapiens_happy: Peut-être comme moi aimes-tu comprendre avant d’apprendre, te baser sur des faits, des preuves, des chiffres et élaborer des théories ?
 Ledai_explaining: Et moi, je suis <b>Ledai</b>, le Gardien des Pratiques. #line:0f3a432 
+Ledai_happy: Rien ne vaut l'expérimentation pour apprendre et comprendre. Pouvoir résoudre des problèmes et construire des chemins logiques.
 Azul_proud: Enchanté de te rencontrer, { $name }. On m'appelle <b>Azul</b>, le Gardien des Précognitions. #line:0f4924c 
+Azul_happy: La créativité est le maître mot ! Comprendre les phénomènes, c’est les voir dans leur globalité et aller à la rencontrer des avis différents.
 Ledai_explaining: Et tu as déjà fait la connaissance de notre 4e sage <b>Miss Temdé</b>… #line:039d16f 
-Temde_smiling: … La Gardienne des Improvisations. #line:0e517ee 
+Temde_smiling: … La Gardienne de l'Organisation. #line:0e517ee 
+Temde_happy: Je ne peux pas m'empêcher de mettre en place des solutions et d'organiser le travail de tout le monde, en suivant ma propre initiative !
 << visit explications1 >>
 <<jump Sages_FreeChoice>>
 ===
@@ -249,16 +253,19 @@ position: -878.8255004882812,1170.7235107421875
 ---
 You: Heuuuuu… J'ai rien compris à ce que vous avez dit. La métaconnexion ???
 Azul_proud: Ne t'inquiète pas, moi aussi, quand j'ai commencé mon initiation, je ne comprenais rien à rien. #line:06f975d 
-Temde_smiling: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de faire ! Et de trouver une solution qui marche ! #line:0fc8373 
+Temde_smiling: Yep. J'ajouterais même que tous ces blablas n'ont pas d'importance. Ce qui compte, c'est de trouver une solution qui marche ! #line:0fc8373 
 Sapiens_thinking: <b>Miss Temdé</b>, l'heure n'est pas au débat, ni au réquisitoire de l'accusation. Mais à la découverte des mystères du cerveau et des neurosciences… #line:005e8f4 
 -> Les neurosciences ?
-    Sapiens_happy: Les sciences appliquées au fonctionnement de tes processus mentaux. #line:07d59a3 
+    Sapiens_happy: Elles étudient notre système nerveux et nos neurones. #line:07d59a3 
     Temde_sad: Quel est le mode d'emploi de ton cerveau, quoi. #line:0f1b183 
     Sapiens_concerned: Hum… J'allais le dire, <b>Miss Temdé</b>. Mais pas de cette manière. #line:02856f8 
 -> Et la métacognition alors ?
     Sapiens_thinking: Hé bien, c'est le fait d'exercer un processus  mental sur ses propres processus mentaux. #line:031e501 
     You: Hein ??? #line:090bf79 
     Azul_happy: C'est-à-dire comment apprendre… à apprendre ! #line:011a5d4 
+    Ledai_explaining: La métacognition, c’est comprendre comment on apprend, connaître ses capacités et ses fonctionnements.
+    Temde_cheerful: Par exemple, certaines personnes ont un état d'esprit "fixe", pensent qu'elles ne peuvent pas changer leurs capacités…
+    Azul_cheerful: Tandis que d'autres cherchent activement à les améliorer ! Tout le monde fonctionne différemment.
 <<jump Metacognition>>
 ===
 

@@ -196,6 +196,8 @@ position: -993.6492929458618,-75.37680292129517
     <<jump Revision_Rewind>>
 -> Essayer de restituer les notions du cours, sans aide (2h) <<if !visited("Rappel_libre")>> #line:0310da3
     <<jump Rappel_libre>>
+-> Rédiger des questions basées sur vos acquis (1h) <<if visited("Rappel_libre") && !visited("Quiz_Perso")>>
+    <<jump Quiz_Perso>>
 -> back #line:0a06fb6
     << fadeIn >>
     <<jump Action_List_Rewind>>
@@ -313,7 +315,7 @@ Aujourd'hui, vous voulez réussir votre journée. Vous aussi, vous aurez un <i>A
 
 << advanceTimeBy 2:00 >>
 
-<< addToGauge learning 30 >>
+<< addToGauge learning 20 >>
 
 Vous vous infligez un supplice volontaire : passer les 2 heures suivantes à potasser ce long pensum ennuyeux ! Beuark ! #line:0cd60f9
 
@@ -360,15 +362,31 @@ colorID: 0
 position: -485,416
 ---
 Vous tentez d'appliquer la méthode du rappel libre. #line:0b8f655
-Vous essayez de vous souvenir de ce que vous avez retenu en cours, sans aide. Ce n'est pas brillant. Très peu de choses vous reviennent. Pas étonnant, vous n'aimez pas cette matière. #line:07f35ff
-Mais lorsque vous replongez dans la lecture pour vérifier vos réponses, vous constatez que ça vous aide vraiment à mettre de l'ordre dans votre esprit. Il y a encore du travail à faire, mais ça sort plus facilement de votre tête ! #line:080fdf4
+Plutôt que de relire votre cours encore et encore, vous essayez de vous souvenir de ce que vous avez retenu en classe, sans aide. Ce n'est pas brillant. Très peu de choses vous reviennent. Pas étonnant, vous n'aimez pas cette matière. #line:07f35ff
 
 << visit Rappel_libre >>
-<< addToGauge learning 60 >>
+<< addToGauge learning 50 >>
 
-Vous prenez encore le temps de relire votre cours pour combler les lacunes qui vous gênent encore. Résultat, vous vous sentez bien plus prêt à attaquer l'examen. #line:0988ada
+Après avoir repris votre cours pour vérifier vos réponses, vous constatez que vous êtes bien plus prêts à ressortir toutes ces informations !
+Peut-être que vous pourriez-vous aller encore plus en profondeur dans cette démarche…
 
 << advanceTimeBy 2:00 >>
+
+<< fadeIn >>
+<<jump Action_List_Rewind>>
+===
+
+title: Quiz_Perso
+position: -485,416
+---
+En vous aidant de votre travail de rappel libre, vous reprenez votre cours et écrivez ce que vous avez retenu sous forme de questions à retenir.
+
+<< visit Quiz_Perso >>
+<< addToGauge learning 30 >>
+
+Ce quiz personnel vous aide à mettre de l'ordre dans votre esprit et à bien retenir.
+
+<< advanceTimeBy 1:00 >>
 
 << fadeIn >>
 <<jump Action_List_Rewind>>
@@ -655,7 +673,7 @@ Ledai_explaining: La mémorisation est un art complexe et puissant qui ne s'appr
 Temde_thinking: Pourtant, il le faudra bien. On n'a qu'une nuit à accorder à { $name }. #line:0d49277
 Sapiens_angry: Oui bien sûr. Mais dans ce cas, <b>Miss Temdé</b>, évite de nous interrompre sans arrêt… #line:0a57318
 Azul_cheerful: Vous savez quoi ? On va demander à { $name } ce qui l'intéresse, au lieu de se chamailler ! #line:084845b
-Sapiens_thinking: Mmh… Bien. Pour commencer, nous pouvons te parler des types de mémoires : la mémoire courte et la mémoire longue… #line:085e256
+Sapiens_thinking: Mmh… Bien. Pour commencer, nous pouvons te parler de deux grands types de mémoires : la mémoire courte et la mémoire longue… #line:085e256
 Ledai_happy: Nous pouvons aussi t'expliquer comment passer de l'une à l'autre pour consolider tes connaissances ! #line:08d4028
 <<jump Sages_FreeChoice>>
 ===
@@ -682,15 +700,15 @@ position: -366.2418212890625,1422.0413818359375
 << setBackground schema >>
 << fadeOut 200 >>
 
-Sapiens_thinking: En bref, la cartographie de la mémoire dans le cerveau se découpe en deux zones. Comme tes deux hémisphères. #line:0853e70
+Sapiens_thinking: En bref, il n'y a pas une, mais plusieurs mémoires, en fonction de ce qui est vécu, lu, entendu, ressenti... #line:0853e70
 
 << setBackground schema shelf-disorganized >>
 
-Sapiens_thinking: Il y a tout d'abord <b>La mémoire courte</b>. Elle est utilisée quand tu travailles sur une tâche nouvelle, un nouveau savoir. Elle enregistre ce que tu regardes, ce que tu lis, ce que tu perçois, ce que tu interprètes, ce que tu comprends ou pas… Et elle stocke ça dans un énorme container. #line:0bc94b1
-Sapiens_thinking: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sans ordre précis. Elle les empile en vrac, les unes sur les autres, à gauche à droite. En bref, elle range ça n'importe comment, comme un amateur, un dilettante ! #line:08ab121
+Sapiens_thinking: Quand on apprend, <b>la mémoire courte</b> permet de maintenir en mémoire une information pendant qu'on est en train de l'utiliser. #line:0bc94b1
+Sapiens_thinking: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sur un temps court. C'est pour cela qu'on l'appelle la mémoire de travail. #line:08ab121
 
-Ledai_explaining: Oui. Ce qui fait que quand tu es à la recherche d'une référence particulière, tu ne sais plus où elle se trouve, ni si tous les documents sont rangés au même endroit. #line:0991ef5
-Sapiens_thinking: Tout à fait, c'est le chaos ! La panique ! La catastrophe !.. Alors que <b>la mémoire longue</b>… #line:03bbbec
+Ledai_explaining: Ce n'est pas cette mémoire qui permet de retenir sur le long terme. Quand tu découvres de nouvelles notions, il faut ensuite les revoir, les utiliser… #line:0991ef5
+Sapiens_thinking: Tout à fait, tu fais des exercices, du rappel libre en te posant des questions, et si possible de façon espacée dans le temps, tu en parles avec ton entourage, tu le mets en oeuvre…
 
 -> C'est quoi la mémoire longue? #line:0617b83
     <<jump Memoire_Longue>>
