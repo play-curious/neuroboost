@@ -81,19 +81,28 @@ Votre palmphone vibre. Pour une fois, ce n'est pas Fred, mais votre grand-mère.
 -> Prendre l'appel  #line:0d5ad23 
 << stopFX PhoneRing_LOOP >>
 You: Bonjour mamie ! Pourquoi je ne te vois pas ? #line:0dc5f32 
-Mamie@holo_shadow: Bonjour chouchou, c'est pour te rassurer. Je vais bien ! Mais je ne suis pas belle à voir… #line:09e9477 
-You: Ah bon ? #line:0b2c720 
-Mamie@holo_shadow: Je suis à l'hôpital et on m'a branchée sur des dizaines de câbles et de moniteurs. Je ressemble plus à un véhicule accidenté qu'à une grand-mère.  #line:0cb28e3 
-You: Qu'est-ce qui t'est arrivé ?
-Mamie@holo_shadow: Rien de grave, chouchou. Tes parents ne t'ont rien dit ? #line:00db0dd 
-You: Heu… Non…
-Mamie@holo_shadow: Ah… Bien sûr… Ne t'inquiète pas. Je vais bien. Mon cœur va bien mieux…
-
-You: Ton cœur ?! Mamie… #line:07ebf06 
-Vous aimeriez en savoir plus mais vous entendez une voix synthétique interrompre votre conversation. C'est un Paramedibot qui vient chercher votre grand-mère. On l'emmène au bloc opératoire ! #line:0dcce80 
+Mamie@holo_shadow: Bonjour chouchou, comme tu le sais, je suis en plein dans les préparations de la fête, je n'en vois pas le bout ! #line:09e9477 
+You: La… Fête ? #line:0b2c720 
+Mamie@holo_shadow: Et mince ! J'aurais dû me douter que ta mère allait garder la surprise ! #line:0cb28e3 
+You: De quoi tu parles, mamie ?!
+Mamie@holo_shadow: Bon, puisque j'ai commencé… Nous organisons une grande fête spécialement pour toi, pour ton passage en année supérieure ! #line:00db0dd 
+You: Mais… On sait pas encore si je passe…
+Mamie@holo_shadow: Bon, assez de blabla ! Je dois préparer l'arrivée de ton grand-frère, et il doit choisir son billet de fusée spatiale ! Tu préfères mardi ou mercredi prochain ?
+-> MON FRÈRE SERA LÀ ?!
+    You: Attends… Mon frère ?! Il est parti faire carrière d'ingénieur sur Proxima du Centaure !
+    Mamie@holo_shadow: Justement ! Il a décidé de faire escale ici pour te féliciter de ta réussite des examens ! Mais les billets ne sont pas donnés !
+    You: Mais… Il a accepté de revenir pour ça ?!
+    Mamie@holo_shadow: Bien sûr ! Il est comblé qu'un autre membre de la famille trouve sa voie dans l'Académie ! Même s'il n'a eu qu'une mention Bien… Un vrai cancre, celui-là !
+    You: Mais…
+    Mamie@holo_shadow: Bon, vu que tu n'as pas l'air décis, on va dire pour mercredi.
+    You: Euh… D'accord…
+-> Euh… Mercredi ?
+    You: D'accord, mamie… Va pour mercredi ?
+    Mamie@holo_shadow: Bon, et bien à mercredi, alors ! Et félicitations pour tes examens !
+    You: Je n'ai pas…
+Vous aimeriez vous expliquer avec votre grand-mère mais celle-ci coupe court à la conversation. Quel poids ! #line:0dcce80 
 << hide >> 
-<< music NegativeSad >>
-Votre aïeule coupe court à la conversation. Vous n'en saurez pas plus. Quel choc !!  #line:0104bbb 
+<< music NegativeSad >> //derniers changements
 Votre grand-mère, dure comme du béton armé, à l'hôpital ? Ça ne sent pas bon…
 Il y a des journées comme celle-ci qu'on préférerait zapper… Vous ne savez plus du tout par quoi vous allez commencer…
 << addToGauge stress 70 >>

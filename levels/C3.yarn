@@ -716,7 +716,8 @@ colorID: 0
 position: -285,372
 ---
 You: Ça consiste en quoi, la technique Pomodoro ?
-Ledai_explaining: C'est très simple. Il s'agit de fractionner ta tâche en plusieurs petites tâches. #line:03602b4 
+Ledai_explaining: C'est très simple. Il s'agit de fractionner ta tâche en plusieurs petites tâches que tu pourras réaliser sur un temps de 25 minutes avant de faire une pause. #line:03602b4 
+Sapiens_thinking: 25 minutes, c’est la durée moyenne de concentration optimale de notre cerveau. Après cela, 5 minutes de pause et on repart pour une session de 25 minutes.
 Ledai_explaining: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir en une seule fois. Tu vas le couper en plus petits bouts que tu vas manger du premier jusqu'au dernier.
 -> Et si je veux le dévorer ?
     You: Ouais… Et si je veux le dévorer ? #line:0eb665c 
@@ -725,7 +726,7 @@ Ledai_explaining: Imagine un fruit aussi gros que toi. Tu ne vas pas l'engloutir
 -> C'est tout ce qu'il me faut pour rester concentré ?
     
 You: C'est tout ?
-Sapiens_thinking: Non. Il y a autre chose. Le plus important… Éviter les distractions. #line:09f97d3 
+Sapiens_thinking: Non. Il y a autre chose. Le plus important si tu veux vraiment être efficace pendant 25 minutes… Éviter les distractions. #line:09f97d3 
 Sapiens_thinking: Ce sont les perturbations extérieures qui parasitent ta charge mentale et saturent tes processus de calcul cérébral.
 Sapiens_concerned: Réseaux sociaux, jeux, divertissements en tout genre… mais ce n'est pas tout ! Ça peut aussi être le cas d'un travail qui n'a pas de rapport avec la tâche en cours.
 <<jump Sages_FreeChoice>>

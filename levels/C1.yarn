@@ -697,13 +697,16 @@ position: -366.2418212890625,1422.0413818359375
 
 Sapiens_thinking: En bref, il n'y a pas une, mais plusieurs mémoires, en fonction de ce qui est vécu, lu, entendu, ressenti... #line:0853e70
 
+Sapiens_thinking: Quand on apprend, <b>la mémoire à court terme</b> permet de maintenir en mémoire une information pendant qu'on est en train de l'utiliser. #line:0bc94b1
+
 << setBackground schema shelf-disorganized >>
 
-Sapiens_thinking: Quand on apprend, <b>la mémoire à court terme</b> permet de maintenir en mémoire une information pendant qu'on est en train de l'utiliser. #line:0bc94b1
 Sapiens_thinking: Le souci, c'est qu'elle amasse toutes ces nouvelles informations sur un temps court. C'est pour cela qu'on l'appelle la mémoire de travail. #line:08ab121
 
 Ledai_explaining: Ce n'est pas cette mémoire qui permet de retenir sur le long terme. Quand tu découvres de nouvelles notions, il faut ensuite les revoir, les utiliser… #line:0991ef5
 Sapiens_thinking: Tout à fait, tu fais des exercices, du rappel libre en te posant des questions, et si possible de façon espacée dans le temps, tu en parles avec ton entourage, tu le mets en oeuvre…
+Sapiens_happy: C’est ce qu’on appelle la "récupération" de la trace mnésique qui aide ainsi à la consolider dans la mémoire.
+Temde_happy: Comme ça, tu peux faire passer l'information dans la <b>mémoire à long terme</b>.
 
 -> C'est quoi la mémoire à long terme? #line:0617b83 
     <<jump Memoire_Longue>>
@@ -715,16 +718,15 @@ position: -67,1414
 ---
 << setBackground schema shelf-organized >>
 
-Sapiens_thinking: <b>La mémoire à long terme</b> c'est le caviar de la connaissance. Là au contraire, tout y est ordonné, rangé, archivé, classifié. Comme dans une authentique bibliothèque. Dès qu'on a besoin de trouver quelque chose, on sait où le trouver. #line:0b78acd 
-
-Ledai_explaining: Sans compter que chaque élément de <b>la mémoire à long terme</b> contient un index, une table des matières. Le cerveau n'a plus qu'à suivre le plan et ça roule sans sursaut. #line:0970ca1
-Sapiens_thinking: En bref, le secret pour bien apprendre réside dans ta capacité à consolider tes nouvelles connaissances, les stocker de manière logique et efficace. #line:041c990
+Sapiens_thinking: <b>La mémoire à long terme</b> c'est le caviar de la connaissance. Cette mémoire à des capacités infinies et classe les mots, les idées et les expériences. #line:0b78acd 
+Ledai_explaining: Même quand tu penses les avoir oubliés, les apprentissages reviennent le jour où tu en as besoin. #line:0970ca1
+Sapiens_thinking: En bref, le secret pour bien apprendre réside dans ta capacité à capter une information puis à la stocker et surtout à la récupérer de manière logique et efficace. #line:041c990
 
 << fadeIn 200 >>
 << setBackground circle >>
 << fadeOut 200 >>
 
-Azul_happy: Tu as saisi ? La clé est de faire glisser tes nouveaux savoirs de la mémoire à court terme à la mémoire à long terme. #line:0ba2da0 
+Azul_happy: Tu as saisi ? La clé est de comprendre les façons dont tu peux récupérer ce que tu veux apprendre, et faire glisser ce savoir de la mémoire à court terme à la mémoire à long terme. #line:0ba2da0 
 
 <<jump Sages_FreeChoice>>
 ===
@@ -734,22 +736,11 @@ tags: noUi
 position: 243.36883544921875,1410.058349609375
 ---
 Sapiens_thinking: Pour consolider ses connaissances, pas de médaille sans sueur, il faut travailler ! #line:00d8be0
-Ledai_explaining: Il faut surtout pratiquer ! Répéter et répéter et encore répéter ! À force de faire, on apprend à refaire. De plus en plus facilement, de plus en plus rapidement. #line:00317ce
-Azul_happy: Nos deux savants ont raison. Ta pratique finit par devenir une routine. Imagine que tu es cuisinier. À force de réaliser la même recette, tu finis par la maîtriser. #line:050ca2d
-Ledai_explaining: Pour une fois que je suis d'accord avec <b>Azul</b>. Ainsi, tu mémorises la liste des ingrédients, les dosages, comme les étapes de préparation et les temps de cuisson. #line:0e3a8de
-You: Et comment je fais pour que ma pratique devienne une routine? #line:0439386
-Ledai_explaining: Tout simplement en répétant, en appliquant. #line:0832a45
-
-<< if visited("Rappel_libre") >>
-    You: C'est la méthode du rappel libre, pas vrai ? #line:03f7ca5
-    Sapiens_happy: Exact ! Tu l'as déjà bien assimilée, on dirait ! #line:00049fb
-<< else >>
-Sapiens_thinking: C'est ce que l'on appelle, dans le vocabulaire de la métacognition : <b>les rappels libres</b>.
-<< endif >>
-
-Ledai_explaining: Le rappel libre, c'est tenter de restituer, par soi-même, et sans ordre précis, les notions que l'on a retenues. Cette méthode est moins connue, mais bien plus efficace qu'une relecture classique. #line:064a1a2
-Sapiens_happy: La raison est très simple : en récupérant par toi-même les informations dans ta mémoire vive, tu indiques à ton cerveau qu'il doit consolider l'information, la faire passer dans la mémoire à long terme. #line:07d1f6a
-Azul_happy: Et c'est comme ça que tu réussis à conserver l'information le plus longtemps possible ! #line:0073105
+Ledai_explaining: Il faut surtout pratiquer ! Avec un exercice, un projet, en discutant avec d’autres personnes, en te posant des questions à partir de tes cours… #line:00317ce
+Sapiens_happy: Oui, pour être sûr de bien « récupérer » les nouvelles notions.
+Azul_happy: Nos deux savants ont raison. C'est en observant comment tu aimes apprendre que tu trouveras les bonnes stratégies pour toi. #line:050ca2d
+Ledai_explaining: Pour une fois que je suis d'accord avec <b>Azul</b>. Trouver ses méthodes d'apprentissage est important et ne se fait pas en un clin d’œil. et tu peux aussi avoir besoin d’aide. #line:0e3a8de
+Azul_happy: Exact ! C’est aussi une bonne stratégie de ne pas rester tout seul et de s’inspirer des techniques des autres.
 <<jump Sages_FreeChoice>>
 ===
 

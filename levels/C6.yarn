@@ -423,7 +423,7 @@ title: Reviser_Fiches_dimanche
 tags: 
 position: 1069,-255
 ---
-Vous prenez un peu de temps pour relire vos fiches. Cette piqûre de rappel a le mérite de consolider vos connaissances des fondamentaux.
+Vous prenez un peu de temps pour relire vos fiches et vous poser des questions sur les notions clefs. Cette piqûre de rappel a le mérite de consolider vos connaissances des fondamentaux.
 << addToGauge learning 10 >>
 << addToGauge mentalLoad 5 >>
 Ce n'est peut-être pas ce qui va vous permettre de réussir l'oral haut la main, mais c'est une bonne manière de se remémorer les notions principales.
@@ -1055,10 +1055,10 @@ You: Hum… L'intrica- intrication quantique ! C'est quand… deux particules fo
 Vous manquez d'air. Vous étouffez réellement. Vous attrapez votre gorge à deux mains, votre visage devient chaud, votre vue devient floue.
 << fadeIn >>
 Vous ne voyez plus rien. Vous étiez tellement stressé, vous avez dû faire une attaque. Vous distinguez la silhouette de votre grand-mère.
-Mamie: Allons, mon chou, reprends tes esprits !
-You: Mamie, je… Je viens te rejoindre..
-Mamie: Mais qu'est-ce que tu racontes ? Je suis pas morte !
-You: Ah oui, c'est vrai.
+Mamie: Allons, mon chou, reprends tes esprits ! On a une fête à préparer !
+You: Mamie, je… J'ai tout raté !
+Mamie: Mais qu'est-ce que tu racontes ? On a invité tout le monde, fais un effort pour t'en sortir !
+You: Non, mamie, il faut tout annuler !!
 Temde_sad: Il délire complètement, là. Il était tellement stressé, il a fait un malaise en public.
 You: Mamie… Euh je veux dire… Miss Temdé ??
 << setBackground circle >>
@@ -1096,7 +1096,7 @@ You: Euh… L'intrication quantique, c'est quand deux… trucs… se retrouvent 
     Les sages n'arrivent pas, et le jury s'en amuse. Ils regardent au-dessus de leurs épaules, plaisantent entre eux, puis s'adressent à vous.
     "Qui que soient vos complices, on dirait qu'ils ont décidé de vous abandonner. Allez, au suivant !"
 << fadeIn >>
-Vous ne vous remettez pas de la brutalité du jury. Brisé, vous quittez les lieux et tentez déjà d'oublier cette expérience humiliante, pour la deuxième fois…
+Vous ne vous remettez pas du niveau d'exigence du jury. Brisé, vous quittez les lieux et tentez déjà d'oublier cette expérience humiliante, pour la deuxième fois…
 << music NegativeSad >>
 Vous sortez en trombe de l'amphithéâtre pour rejoindre votre chambre…
 <<jump FailExamNight>>
