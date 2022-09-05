@@ -98,33 +98,41 @@ Mamie@holo_shadow: Bon, assez de blabla ! Je dois préparer l'arrivée de ton gr
     You: Euh… D'accord…
 -> Euh… Mercredi ?
     You: D'accord, mamie… Va pour mercredi ?
-    Mamie@holo_shadow: Bon, et bien à mercredi, alors ! Et félicitations pour tes examens !
-    You: Je n'ai pas…
+Mamie@holo_shadow: Bon, et bien à mercredi, alors ! Je préviens toute la famille de ce pas ! Et félicitations pour tes examens !
+You: Mamie, je n'ai pas…
 Vous aimeriez vous expliquer avec votre grand-mère mais celle-ci coupe court à la conversation. Quel poids ! #line:0dcce80 
 << hide >> 
 << music NegativeSad >> //derniers changements
-Votre grand-mère, dure comme du béton armé, à l'hôpital ? Ça ne sent pas bon…
+Elle a invité toute la famille pour fêter vos résultats d'examen ? Quelle angoisse ! Elle ne sait même pas que vous les avez déjà ratés une fois…
+…Et votre frère va venir lui aussi ? Que va-t-il dire, lui qui a réussi ses études avec brio ?
 Il y a des journées comme celle-ci qu'on préférerait zapper… Vous ne savez plus du tout par quoi vous allez commencer…
 << addToGauge stress 70 >>
+Tutorial: La nouvelle jauge mesure votre Stress. Tentez de la diminuer avant la fin de la journée !
 
 <<else>>
-Votre palmphone vibre. C'est votre grand-mère qui vous rappelle. Vous savez ce qu'elle va vous dire, mais vous devez prendre son appel.
-C'est mamie, et elle ne va pas très bien, quoi qu'elle en dise… #line:0d27193 
+Votre palmphone vibre. C'est votre grand-mère qui vous rappelle. Vous savez à quel point elle est obstinée, elle ne vous lâchera pas de la matinée.
 -> Prendre l'appel  #line:0d5ad22 
 << stopFX PhoneRing_LOOP >>
-You: Bonjour mamie ! Tu vas mieux ?  #line:0bbacfe 
-Mamie@holo_shadow: Bonjour chouchou, donc tes parents t'ont déjà expliqué la situation ? #line:0f09c1c 
-You: Euh…
-Mamie@holo_shadow: Ne t'inquiète pas. Je vais bien. Mon cœur va bien mieux…  #line:0c1da5e 
-You: Courage mamie ! #line:06a7beb 
-Vous aimeriez parler plus, mais le Paramedibot arrive pour l'emmener au bloc opératoire ! #line:0cd2819 
+You: Bonjour mamie ! Tu organises la fête, c'est ça ?  #line:0bbacfe 
+Mamie@holo_shadow: Bonjour chouchou, donc tes parents ne t'ont pas gardé la surprise ? #line:0f09c1c 
+You: Non, je le sais bien, mon frère doit prendre le billet, c'est ça ?
+Mamie@holo_shadow: ! Oui ! Alors, tu préfères mardi ou mercredi ? #line:0c1da5e 
+-> Annule tout !
+    You: Aucun des deux ! Annule tout !
+    Mamie@holo_shadow: Ne dis pas de bêtises mon chou, il faut bien fêter ta réussite comme il se doit ! Va pour mercredi, d'accord ?
+    You: Euh…
+-> Mercredi…
+    You: Euh… Mercredi, alors ?
+Mamie@holo_shadow: Bon, et bien à mercredi, alors ! Je préviens toute la famille de ce pas ! Et félicitations pour tes examens !
+You: Encore une fois mamie, je ne sais pas si je…
+Votre aïeule coupe de nouveau court à la conversation ! C'est pas vrai, elle fait exprès…
+Décidément, vous ne parviendrez jamais à la démotiver… Et en attendant, vous aller encore angoisser en songeant à votre frère…
 << hide >> 
 << addToGauge stress 70 >>
 <<endif>>
 
 << advanceTimeBy 0:15 >>
 
-Tutorial: La nouvelle jauge mesure votre Stress. Tentez de la diminuer avant la fin de la journée !
 << setDeadline Examen 14:00 >>
 <<jump Liste_Taches>>
 ===
@@ -191,7 +199,7 @@ position: -2006,-802
     <<jump Rappel_libre>>
 -> Approfondir votre cours (2h) <<if visited("Rappel_libre")>> #once
     <<jump Approfondir>>
--> Vous informer en ligne sur les causes et les effets des pathologies cardiaques (1h) #once #line:0ecd663 
+-> Vous regardez la liste des invités à la fête (1h) #once #line:0ecd663 
     <<jump Web_Info>>
 -> Activer le mode Zéro Distraction <<if !$silence>>
     <<jump Activer_Zero_Distraction>>
@@ -217,12 +225,12 @@ Les distractions qui vous entourent perturbent votre concentration…
 <<endif>>
 
 <<if getGauge("stress") < 66 >>
-Vous mettez de côté les pensées qui bifurquent sur l'état de votre grand-mère, et vous vous concentrez sur votre matière.
+Vous mettez de côté les pensées qui bifurquent sur les attentes de votre famille, et vous vous concentrez sur votre matière.
 Vous arrivez à vous y mettre de plus en plus, et faites de bons progrès, ce qui vous satisfait. #line:049b74e 
 << addToGauge learning 40 >>
 << addToGauge mentalLoad 20>>
 <<else>>
-Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs… En direction de votre grand-mère, de son problème cardiaque, de son opération.  #line:0552a35 
+Malheureusement, l'exercice s'avère plus difficile que prévu. Vos pensées n'arrêtent pas de bifurquer ailleurs… En direction de votre famille, de leurs attentes irréalistes envers vous.  #line:0552a35 
 Vous tentez régulièrement de revenir à votre matière à réviser, à relire finalement certaines pages de cours. Peine perdue, votre cerveau est trop chamboulé pour tourner rond… #line:02ce1eb 
 << addToGauge learning 20 >>
 << addToGauge mentalLoad 20>>
@@ -266,10 +274,11 @@ position: -1823,-911
 << setBackground bedroom desk >>
 << fadeOut >>
 
-Vous vous approchez de votre ordinateur de bureau, puis recherchez les différentes pathologies qui incluent des problèmes cardiaques.
-Vous passez l'heure suivante à lire des tonnes d'articles sur le sujet. Vous n'êtes pas médecin, il vous est difficile de faire le tri dans les informations.
+Vous vous connectez sur le groupe WhatSnap de votre famille. Plusieurs personnes sont connectées en même temps.
+Vos cousins et cousines, tantes et oncles discutent avec passion de la fête à venir. Vous parvenez difficilement à vous retrouver dans le fil de discussion.
+On dirait que votre grand-mère n'a pas fait les choses à moitié. Toute la famille est là, à discuter de vos examens, même les parents les plus éloignés.
 << advanceTimeBy 1:00 >>
-Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Dans l'ensemble, les renseignements que vous glanez sur le web sont inquiétants, déprimants, angoissants…
+Le moins que l'on puisse dire est que ça ne vous rassure pas franchement. Tout ce monde va être terriblement déçu si vous ratez votre coup…
 Vous en ressortez encore plus stressé.
 << addToGauge stress 20 >>
 <<jump Liste_Taches>>
@@ -367,9 +376,9 @@ position: -2876,-389
 ---
 Vous empoignez votre palmphone et sélectionnez le numéro de votre mère. Vous appuyez sur le bouton "appel". Votre mère décroche : #line:04f580b 
 
-Maman@holo_shadow: Mon chou. Tu es au courant ? #line:0997c40 
+Maman@holo_shadow: Mon chou. Tu es au courant pour la fête ? #line:0997c40 
 You: Oui. Mamie m'a appelé. Pourquoi tu n'as rien dit ? #line:0ecb0f2 
-Maman@holo_shadow: Tu passes tes examens. On ne voulait pas te stresser. On attendait d'en savoir plus. #line:0c3842c 
+Maman@holo_shadow: Tu passes tes examens. On ne voulait te faire la surprise, pour ne pas trop te stresser. #line:0c3842c 
 You: Merci. Du coup, je suis encore plus stressé…
 Maman@holo_shadow: Mon chou, je ne pensais pas te…  #line:0e60133 
 You: J'ai compris. A plus ! #line:0a1b54f 
@@ -528,7 +537,7 @@ tags:
 position: -2897,-497
 ---
 << music AcousticGuitar >>
-Avec les dernières nouvelles, vous préférez garder votre esprit concentré sur autre chose. Vous attrapez votre instrument et vous positionnez.
+Avec le stress de la fête, vous préférez garder votre esprit concentré sur autre chose. Vous attrapez votre instrument et vous positionnez.
 << advanceTimeBy 1:00 >>
 Vous passez l'heure suivante à gratter les cordes en rythme, consacrant entièrement votre esprit à l'harmonie et à vos mélodies improvisées.
 << removeFromGauge stress 20 >>
@@ -556,7 +565,7 @@ tags:
 position: -1644,-626
 ---
 <<if getGauge("stress") <= 66>>
-Vous vous allongez dans votre lit. Peut-être que le sommeil vous changerait les idées… Vous ne parvenez pas à penser à autre chose que votre grand-mère.
+Vous vous allongez dans votre lit. Peut-être que le sommeil vous changerait les idées… Vous ne parvenez pas à penser à autre chose que les attentes de votre famille.
 Au bout d'un certain temps, vous arrêtez la torture, incapable de fermer l'œil.
 << advanceTimeBy 0:30 sleep >>
 <<else>>
@@ -621,29 +630,35 @@ position: -1747,-272
 <<if !visited("MamieComa")>>
 << visitPermanent MamieComa >>
 You: Maman ? #line:01d7c34 
-Maman@holo_shadow: Oui, mon chou. C'est à propos de mamie.
+Maman@holo_shadow: Oui, mon chou. C'est à propos de ton frère.
 You: Quoi encore ? #line:0115589 
-Maman@holo_shadow: Elle est sortie du bloc. Ça a porté ses fruits… Mais… #line:081d30c 
-You: Mais ? #line:0129bd2 
-Maman@holo_shadow: On l'a transférée en salle de réanimation. Elle n'est pas sortie du coma…
-You: Nom de…. #line:029a81d 
-Maman@holo_shadow: Rassure-toi, { $name }, ta mamie est une personne forte. Elle s'en sortira…
-You: Je sais, mais… C'est dur.
+Maman@holo_shadow: Il a réussi à modifier son agenda, et va rester encore pendant une semaine. #line:081d30c 
+You: Ah bon ? #line:0129bd2 
+Maman@holo_shadow: Il a dit qu'il était très fier de toi et qu'il prendrait un peu de temps pour revisiter l'Académie avec toi ! C'est pas génial ?
+-> Non ! Et si je rate tout ?
+    You: Pas du tout ! Si je rate tous mes examens, que je ne passe pas mon année, qu'est-ce qu'il va dire ?!
+    Maman@holo_shadow: Allons, mon chou… Il ne faut pas t'en faire ! Tu n'es qu'au début de tes études, les examens sont presque donnés ! Tu y arriveras haut la main.
+    You: Tu ne comprends pas…
+-> Sûrement…
+    You: Euh… Oui, sûrement ?
+    Maman@holo_shadow: Tu n'as pas l'air emballé… Tout va bien, mon chouchou…
+    You: Si, si, je t'assure… 
 La sonnerie de l'Académie retentit : il est l'heure…
-You: Je te laisse, on doit aller en examen ! #line:03a63ba 
-Maman@holo_shadow: Courage, mon chou… #line:0879b59 
+You: Bon, je te laisse, on doit aller en examen ! #line:03a63ba 
+Maman@holo_shadow: Courage, mon chou ! #line:0879b59 
+Si seulement elle savait toutes les épreuves que vous endurez… Et dire que vous avez déjà tout raté par le passé !
 <<else>>
-You: Je sais. mamie est toujours dans le coma. #line:019efa8 
+You: Je sais. Mon frère revient plus longtemps pour revisiter l'Académie. #line:019efa8 
 Maman@holo_shadow: Comment tu…
 You: On m'a prévenu. #line:0c0f730 
-Maman@holo_shadow: Et tu te sens comment ? #line:010991d 
-You: T'inquiète, maman, je gère. #line:0a0d529 
-Maman@holo_shadow: C'est bien { $name }. Ta mamie est une personne forte. Elle s'en sortira…
+Maman@holo_shadow: Et alors ? C'est génial, non ? #line:010991d 
+You: Oui, sans doute. Sauf si je rate tout… #line:0a0d529 
+Maman@holo_shadow: Hahahaha ! Qu'est-ce que tu me fais rire, mon chou ! Comme si tu allais rater…
 La sonnerie de l'Académie retentit : il est l'heure…
-You: Je te laisse, on va en examen ! #line:0bf1ef8 
-Maman@holo_shadow: Courage, mon chou… #line:0531828 
-<< advanceTimeBy 0:05 >>
+You: Bon, je te laisse, on doit aller en examen !
+Maman@holo_shadow: Courage, mon chou ! #line:0531828 
 <<endif>>
+<< advanceTimeBy 0:05 >>
 << hide >>
 << addToGauge stress 20 >>
 
@@ -668,7 +683,7 @@ You: C'est compliqué. #line:0cb0937
 << fx Notification >>
 Votre palmphone gigote à nouveau ! Votre mère a laissé un message sur votre répondeur. Vous ne pouvez vous empêcher de fixer votre appareil. #line:068ccbf 
 Vous entrez dans le journal de messagerie et demandez la conversion textuelle du message :  #line:0d7370f 
-"L'opération a été menée à bien, mais ta grand-mère a fait un malaise. Elle a été transférée en service de réanimation critique. Bisous. Maman." #line:0515369 
+"Ton frère a réussi à modifier son agenda. Il restera une semaine entière avec nous, pour revisiter l'Académie avec toi. Il est très fier de toi. Bisous. Maman." #line:0515369 
 Fred_sad: Alors ? #line:0987b6c 
 << addToGauge stress 20>>
 
@@ -682,7 +697,7 @@ title: Fred_raconter
 tags: 
 position: -1510,-293
 ---
-C'est plus fort que vous. Vous avez envie de tout déballer devant Fred. Et c'est ce que vous faites. Vous commencez par lui avouer que tout a commencé ce matin, avec votre grand-mère. Vous êtes tellement stressé que vous monopolisez la parole.
+C'est plus fort que vous. Vous avez envie de tout déballer devant Fred. Et c'est ce que vous faites. Vous expliquez toute la pression que votre famille vous met sur les épaules avec cette fête…
 Fred vous console tant bien que mal, mais rien que le fait de vous être lâché fait redescendre la pression accumulée. Vous vous sentez plus prêt à commencer cet examen. #line:01aac71 
 << advanceTimeBy 0:05 >>
 << removeFromGauge stress 20 >>
@@ -717,7 +732,7 @@ position: -1285,-355
 Vous vous asseyez devant votre pupitre, et le sujet s'affiche à l'écran: La loi de Murphy dans la GRH… #line:03751f2 
 
 << if getGauge("stress") > 66>>
-Vous lisez les questions, votre esprit vagabonde entre vos révisions et votre grand-mère. #line:01c8f35 
+Vous lisez les questions, votre esprit vagabonde entre vos révisions et votre famille. #line:01c8f35 
 Vous répondez aux questions au hasard, sans trop savoir ce que l'on vous demande et ce qu'il faut indiquer. C'est un peu comme si votre corps était là, mais votre esprit ailleurs. #line:00058cf 
 <<jump Resultats_Bad>>
 <<else >>
@@ -753,7 +768,7 @@ You: Laisse tomber.
 << visit Fail >>
 << hide >>
 << fadeIn >>
-Vous quittez la salle d'un pas lourd, sans même attendre les résultats, toujours sous le choc des nouvelles de votre grand-mère.
+Vous quittez la salle d'un pas lourd, sans même attendre les résultats, toujours angoissé à l'idée de la fête à venir.
 
 << setBackground bedroom >>
 << fadeOut >>
@@ -788,7 +803,7 @@ Fred a raison. Vous lui souhaitez un bon week-end, puis filez vous reposer.
 << music NegativeSad >>
 De retour chez vous, vous êtes soulagé d'avoir réussi, mais encore plus anxieux. L'examen est passé, et maintenant c'est le week-end : plus rien ne retient vos pensées anxiogènes.
 << addToGauge stress 40 >>
-Vous pensez toujours à votre grand-mère. Que lui arrive-t-il ? Est-elle sur la voie de la guérison ou pas ?
+Vous pensez toujours à la fête organisée par votre grand-mère. Sont-ils à ce point persuadés que vous allez réussir ? Et si vous ratez tout, alors ?
 << setBackground bedroom bed >>
 << fadeIn 1 >>
 << addBlur 1 >>
@@ -808,7 +823,7 @@ colorID: 1
 <<if getGauge("sleep") <= 0 || $choicesDone >= 4 >>
 << fadeIn >>
 << visit FailSecondPart >>
-Incapable de dormir à cause du stress, vous vous forcez à garder les yeux fermés. Toutes vos pensées se dirigent vers votre grand-mère… Vous êtes trop fatigué pour faire quoi que ce soit…
+Incapable de dormir à cause du stress, vous vous forcez à garder les yeux fermés. Toutes vos pensées se dirigent vers votre famille… Vous êtes trop fatigué pour faire quoi que ce soit…
 Vous finissez quand même par vous endormir, à bout de forces.
 
 <<if !visited("Assemblee_Sages")>>
@@ -978,28 +993,28 @@ position: -296.3774108886719,-523.0119018554688
 colorID: 1
 ---
 -> Vous me demandez d'ignorer mon stress ?
-    You: Vous me demandez d'ignorer mon stress ? Même si ma grand-mère est dans le coma ?
+    You: Vous me demandez d'ignorer mon stress ? Même si je doute que je vais réussir et que toute a famille est persuadée du contraire ?
     Temde_sad: Tu dois surtout lâcher prise, laisser les choses se faire. Tu n'y peux rien. Tu ne contrôles rien. #line:03d991b 
     Sapiens_thinking: Le stress est comme un carburant, utile dans les situations périlleuses. Il permet de réagir vite et intensément. Toutefois, quand on se retrouve dans une configuration où l'on ne peut pas réagir directement…
     Sapiens_thinking: Cela devient insupportable. Tout ce carburant, cette énergie se retourne contre nous. Puisqu'on ne peut la brûler en agissant concrètement, elle nous consume de l'intérieur. #line:03c6a95 
     Azul_happy: Ce carburant qu'est le stress fait monter la température dans ton esprit. Ton cerveau devient incapable de gérer le présent. #line:0574bf5 
     Azul_happy: Ce qui fait que tu dois te recentrer sur l'essentiel. Toi et le moment présent. C'est là-dessus que tu peux agir.
-    -> Donc je ne devrais pas penser à ma grand-mère ? 
-        Azul_happy: C'est normal que tu penses à ta grand-mère. La médecine a fait tout ce qu'elle pouvait pour l'aider. Tes pensées et celles de tes parents sont à son chevet. Maintenant, c'est à ta grand-mère de faire le reste du chemin. Tu n'as aucune prise sur cet événement.
+    -> Mais comment vont-ils réagir si j'échoue ?
+        Azul_happy: C'est normal que tu penses à ta tout cela. Mais il faut te donner du temps et ne pas être trop dur.e avec toi. Tu vis une expérience et il faut l’accepter comme telle. Tes parents sont conscients de ton travail et de tes efforts.
         Ledai_explaining: On ne peut pas tout contrôler dans une expérience de vie. Contente-toi de maîtriser ce que tu peux modifier. Tes émotions par exemple. #line:007036c 
-        Sapiens_concerned: Ton stress n'aidera pas ta grand-mère à aller mieux. Par contre il t'empêche de voir clair et de rester lucide. #line:0543ba2 
+        Sapiens_concerned: Ton stress ne t'aidera pas à aller mieux, il t'empêche au contraire de voir clair et de rester lucide. #line:0543ba2 
         Azul_sad: Tu n'es pas seul, { $name }. J'ai aussi vécu des périodes difficiles, et ce que j'ai appris, c'est de ne pas me laisser envahir par ces idées noires qui me font du mal.
     -> J'ai compris
     <<jump Sages_FreeChoice>>
 -> Comment faire pour diminuer son stress ?
-    Ledai_explaining: Il faut amener ton stress à un niveau suffisamment bas pour qu'il ne t'empêche pas de raisonner.
+    Ledai_explaining: Il faut amener ton stress à un niveau suffisamment bas pour qu'il ne t'empêche pas de raisonner. Cela ne veut pas dire qu’il faut le nier, mais justement en prendre conscience et comprendre ce qu'il provoque en toi.
     Temde_smiling: Entreprendre des actions qui te permettent de reprendre le contrôle de tes pensées. #line:0fb4f7c 
     Sapiens_happy: Toute action qui mobilise activement et positivement ton attention, tout en lâchant la pression sur le mental.
     Temde_smiling: Par exemple toute activité agréable qui demande attention ou concentration. #line:04ce601 
     Azul_happy: Jouer de la musique, chanter, dessiner, danser avec entrain. Le sport, quand il est pratiqué de manière sereine et consciente. La méditation… #line:0f401a0 
     Sapiens_thinking: L'important est que tu évacues cette énergie négative d'une manière et d'une autre.
-    Temde_smiling: En parler, avec quelqu'un qui e
-    <<jump Sages_FreeChoice>>st susceptible de t'écouter ou de te faire penser à autre chose, peut aider.
+    Temde_smiling: En parler, avec quelqu'un qui est susceptible de t'écouter ou de te faire penser à autre chose, peut aider.
+    <<jump Sages_FreeChoice>>
 -> J'ai compris !
     <<jump Quizz_Meditation>>
 <<jump Frustration>>
@@ -1019,6 +1034,7 @@ Sapiens_happy: Maintenant, tu connais la chanson, c'est l'heure du quiz ! Pour r
 -> Rediriger mon attention sur une activité agréable
     << fx Success >>
     Sapiens_happy: Oui ! Toutes les activités qui gardent ton attention captive, comme la musique ou la méditation en pleine conscience, sont autant de moyens de diminuer le stress.
+    Temde_smiling: Elles t’aident à garder un esprit positif et de profiter des bonnes choses que tu vis aussi en ce moment. Cela peut tout changer !
 <<jump Quizz_sport>>
 ===
 

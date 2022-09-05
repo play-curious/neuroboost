@@ -59,21 +59,27 @@ colorID: 2
 <<if (isTimeOver("12:00") && !visited("MamanCall")) && !$silence>>
 
 << visit MamanCall >>
-Votre palmphone vibre : c'est maman ! Elle a sûrement des nouvelles de mamie !
+Votre palmphone vibre : c'est maman ! Elle a sûrement des nouvelles de la fête…
 -> Répondre
-    Maman@holo_shadow: Salut mon chou ! J'ai des nouvelles de ta mamie…
-    You: Alors ?? Elle va mieux ?
-    Maman@holo_shadow: Oui. Elle s'est réveillée du coma dans la nuit. Elle est encore faible, mais elle devrait se rétablir d'ici peu.
+    Maman@holo_shadow: Salut mon chou ! J'ai des mauvaises nouvelles…
+    You: Ah bon ? Comment ça ?
+    Maman@holo_shadow: Ton frère a été contacté par un de ses employeurs pour une opportunité en or… Il va devoir annuler son billet de fusée…
+    You: Donc il ne pourra pas venir à la fête ?
+    Maman@holo_shadow: Oh, mon chou, je suis désolé… Avec ces nouvelles, mamie a préféré repousser la fête jusqu'à ce qu'on ait ses prochaines dates de congé…
+    -> Ouf !
+        You: Ouf !
+        Maman@holo_shadow: Tu n'es pas déçu que ta fête soit annulée ?
+        You: C'est juste que… Ça me met un peu moins de pression sur les épaules, quoi.
+        Maman@holo_shadow: Mmh, je comprends. Mais ne va pas rater ces examens pour autant !
+    -> Oh non, ma fête…
+        You: Oh non… Ma fête…
+        Maman@holo_shadow: Si tu es trop déçu, on peut toujours célébrer ça avec les cousins proches…
+        You: T'inquiète pas maman, ça va aller.
     << removeFromGauge stress 40 >>
-    You: Pourquoi tu me l'as pas dit plus tôt ??
-    Maman@holo_shadow: Désolée, { $name }. Je ne voulais pas te déranger dans ton sommeil, et je viens de me réveiller… La nuit a été rude.
-    You: T'inquiète… J'étais juste un peu stressé. Mais ça va mieux.
-    Maman@holo_shadow: Je suis contente que tu sois autant épanoui, dans tes études et ta vie. Courage pour le Grand Oral !
-    You: Merci, maman ! Je réviserai à la santé de mamie !
 -> Mettre en silencieux
     Vous coupez la sonnerie de votre palmphone. Vous n'avez plus envie que des mauvaises nouvelles viennent perturber vos révisions.
     << addToGauge stress 20 >>
-    Vous ne pouvez pas vous empêcher de penser à toutes les possibilités, ce qui vous rend encore plus stressé.
+    Vous ne pouvez pas vous empêcher de penser aux attentes de votre mère, ce qui vous rend encore plus stressé.
 << hide >>
 
 <<endif>>
@@ -82,7 +88,7 @@ Votre palmphone vibre : c'est maman ! Elle a sûrement des nouvelles de mamie !
 <<if $jour == "dimanche" && !$silence>>
 << visit MamieCall>>
 << loopFX PhoneRing_LOOP 5000 >>
-Vous recevez un appel. Il provient de votre grand-mère ! 
+Vous recevez un appel en provenance de votre grand-mère.
 -> Répondre #line:0bf0436 
     << stopFX PhoneRing_LOOP>>
     <<jump MamieCall_dimanche>>
@@ -106,7 +112,7 @@ Vous ne vous êtes pas rendu à l'examen ! Vous avez tout fichu en l'air, encore
 
 <<if isTimeOver("20:00")>>
 <<if $jour == "samedi">>
-Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories. #line:0576ac8 
+Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et de refaire le plein de calories. #line:0576ac8 
 << fadeIn >>
 << setBackground bedroom night >>
 << fadeOut >>
@@ -138,9 +144,11 @@ tags:
 position: 2347,791
 ---
 Mamie@holo_shadow: Coucou mon chouchou !  #line:0bcc9ca 
-You: Salut mamie ! Je suis soulagé de t'entendre ! J'étais très inquiet, mais maman m'a dit que ça allait mieux !
-Mamie@holo_shadow: Tu n'es pas trop occupé ? Je peux toujours rappeler plus tard.
+You: Salut mamie !
+Mamie@holo_shadow: Je ne sais pas si ta mère t'a dit, mais on a dû repousser la fête… Mais dès que ton frère est à nouveau disponible, on reprend les préparations !
+Mamie@holo_shadow: Dis, tu n'es pas trop occupé ? Je peux toujours rappeler plus tard.
 -> J'ai un planning de révisions assez serré ! << if visited("Planning_dimanche") >> #line:089fd8a 
+    You: Un petit peu !
     Mamie@holo_shadow: Ah bon ? #line:01912fb 
     You: Je suis content d'avoir de tes nouvelles. Mais j'ai établi un planning très strict pour aujourd'hui, afin de réussir mes examens ! #line:0b763d2 
     Mamie@holo_shadow: D'accord, je comprends ! Je suis fier de toi, mon chouchou… #line:00dd5e4 
@@ -149,9 +157,10 @@ Mamie@holo_shadow: Tu n'es pas trop occupé ? Je peux toujours rappeler plus tar
     << hide >>
     Vous n'êtes resté que 15 minutes au téléphone, mais votre grand-mère a été ravie de vous avoir.
 -> Euh… Non, je crois pas…
-    Mamie@holo_shadow: Bon ! Alors, tu me demandes pas comment ça va ?
+    You: Euh… Non, je crois pas…
+    Mamie@holo_shadow: Bon ! Alors, tu ne me demandes pas comment ça va ?
     You: Heu, si. Comment vas-tu ? #line:0c1864e 
-    Mamie@holo_shadow: Très bien. Mieux que toi, apparemment. Je suis sortie du coma et j'ai repris tous mes esprits.
+    Mamie@holo_shadow: Très bien. Mieux que toi, apparemment. Mais je suis toujours déçue que cette fête ne se fasse pas…
     << advanceTimeBy 1:00 >>
     << removeFromGauge stress 20 >>
     << hide >>
