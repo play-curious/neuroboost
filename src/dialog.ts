@@ -320,7 +320,10 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       console.warn(
         "No line id found on dialog '" + textResult.text.trim() + "'"
       );
-      translatedText = "%== placeholder ==%";
+      translatedText =
+        this.entityConfig.language === "fr"
+          ? textResult.text.trim()
+          : "%== placeholder ==%";
     }
     this.graphics.showTutorial(translatedText, () => {
       this._advance();
@@ -372,7 +375,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       );
     } else {
       console.warn("No line id found on dialog '" + text + "'");
-      translatedText = "%== placeholder ==%";
+
+      translatedText =
+        this.entityConfig.language === "fr"
+          ? textResult.text.trim()
+          : "%== placeholder ==%";
     }
 
     this.graphics.showDialog(
@@ -434,7 +441,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         );
       } else {
         console.warn("No line id found on choice '" + optionText + "'");
-        translatedText = "%== placeholder ==%";
+
+        translatedText =
+          this.entityConfig.language === "fr"
+            ? optionText.trim()
+            : "%== placeholder ==%";
       }
 
       if (optionText.includes("@")) {

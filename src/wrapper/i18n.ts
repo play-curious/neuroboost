@@ -15,7 +15,6 @@ export function translateDialog<
   lineId: ColName,
   originalText: string
 ): string {
-  console.log(ctx.entityConfig.language);
   if (ctx.entityConfig.language === "fr") {
     return originalText;
   }

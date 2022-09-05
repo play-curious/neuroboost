@@ -13,7 +13,7 @@
   },
   "gauge_food": {
     "id": "gauge_food",
-    "text": "Faim"
+    "text": "Nutrition"
   },
   "gauge_mentalLoad": {
     "id": "gauge_mentalLoad",

@@ -2304,11 +2304,11 @@ export default interface i18n {
   },
   {
     "id": "gauge_sleep",
-    "text": "Sleep"
+    "text": "Rest"
   },
   {
     "id": "gauge_food",
-    "text": "Food"
+    "text": "Nutrition"
   },
   {
     "id": "gauge_mentalLoad",
@@ -2605,7 +2605,7 @@ export default interface i18n {
   },
   {
     "id": "gauge_food",
-    "text": "Faim"
+    "text": "Nutrition"
   },
   {
     "id": "gauge_mentalLoad",

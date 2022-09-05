@@ -9,11 +9,11 @@
   },
   "gauge_sleep": {
     "id": "gauge_sleep",
-    "text": "Sleep"
+    "text": "Rest"
   },
   "gauge_food": {
     "id": "gauge_food",
-    "text": "Food"
+    "text": "Nutrition"
   },
   "gauge_mentalLoad": {
     "id": "gauge_mentalLoad",
