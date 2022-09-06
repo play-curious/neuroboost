@@ -131,7 +131,7 @@ for (let i = 0; i < dialog.dialogScenes.length - 1; i++) {
 }
 
 // The last dialog scene goes to the outro video, then the end
-transitions[dialog.dialogScenes.length - 1] =
+transitions[dialog.dialogScenes[dialog.dialogScenes.length - 1]] =
   entity.makeTransition("outro_video");
 transitions["outro_video"] = entity.makeTransition("end");
 
