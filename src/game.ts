@@ -219,14 +219,20 @@ const musicAssets = [
   "JungleBodyBeat",
 ];
 
+// Determine language
 const params = new URLSearchParams(window.location.search);
-const languages = ["fr", "en"];
+const supportedLanguages = ["fr", "en"];
 
-let lang = params.get("lang") ?? navigator.language;
-if (!languages.includes(lang)) {
-  console.warn("Language " + lang + " not known, switching to english version");
-  lang = "en";
+let chosenLanguage = (params.get("lang") ?? navigator.language)
+  .substring(0, 2)
+  .toLowerCase();
+if (!supportedLanguages.includes(chosenLanguage)) {
+  console.warn(
+    "Language " + chosenLanguage + " not known, switching to english version"
+  );
+  chosenLanguage = "en";
 }
+console.log("Using language", chosenLanguage);
 
 const translatedLevels = ["c1"];
 
@@ -235,11 +241,11 @@ textAssetNames.push(...translatedLevels);
 
 const jsonAssets = textAssetNames
   .filter((key) => {
-    return !(translatedLevels.includes(key) && lang === "fr");
+    return !(translatedLevels.includes(key) && chosenLanguage === "fr");
   })
   .map((key) => ({
     key,
-    url: `json/${key}_${lang}.json`,
+    url: `json/${key}_${chosenLanguage}.json`,
   }));
 
 const videoAssets = ["game-by-play-curious"];
@@ -255,7 +261,7 @@ const startingSceneParams = { startNode: startingNode };
 
 booyah.go({
   rootConfig: {
-    language: lang,
+    language: chosenLanguage,
   },
   startingScene,
   startingSceneParams,
