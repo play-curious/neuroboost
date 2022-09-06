@@ -2415,6 +2415,10 @@ export default interface i18n {
     "text": "Write here..."
   },
   {
+    "id": "journal_link",
+    "text": "For more information..."
+  },
+  {
     "id": "chapitre_prologue",
     "text": "Prologue"
   },
@@ -2509,7 +2513,8 @@ export default interface i18n {
     "answer2": "Reading over notes",
     "answer3": "Reading out loud",
     "answer4": "Studing in a group",
-    "answer5": "Doing exercises"
+    "answer5": "Doing exercises",
+    "link": ""
   },
   {
     "id": "food",
@@ -2520,7 +2525,8 @@ export default interface i18n {
     "answer2": "Most of the time",
     "answer3": "Rarely",
     "answer4": "Almost never",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   {
     "id": "sleep",
@@ -2531,7 +2537,8 @@ export default interface i18n {
     "answer2": "9",
     "answer3": "8",
     "answer4": "7",
-    "answer5": "6 or less"
+    "answer5": "6 or less",
+    "link": ""
   },
   {
     "id": "mentalWorkload",
@@ -2542,7 +2549,8 @@ export default interface i18n {
     "answer2": "2",
     "answer3": "3",
     "answer4": "4",
-    "answer5": "5 or more"
+    "answer5": "5 or more",
+    "link": ""
   },
   {
     "id": "profiles",
@@ -2553,7 +2561,8 @@ export default interface i18n {
     "answer2": "Azul",
     "answer3": "Sapiens",
     "answer4": "LedAI",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   {
     "id": "stress",
@@ -2564,7 +2573,8 @@ export default interface i18n {
     "answer2": "At least once a week",
     "answer3": "At least once a month",
     "answer4": "Rarely",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   {
     "id": "organisation",
@@ -2575,7 +2585,8 @@ export default interface i18n {
     "answer2": "Only if I absolutely have to",
     "answer3": "The weekend, the night, the day… it's all the same",
     "answer4": "",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   {
     "id": "success",
@@ -2586,7 +2597,8 @@ export default interface i18n {
     "answer2": "Comprehensive - It's the learning that counts, not the diploma",
     "answer3": "Instrumental - I just need to get the degree",
     "answer4": "Relative - I want to do as well as my peers",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   }
 ];};
   fr: {    c1: undefined;
@@ -2712,6 +2724,10 @@ export default interface i18n {
     "text": "Ecrire ici..."
   },
   {
+    "id": "journal_link",
+    "text": "Pour plus d'informations..."
+  },
+  {
     "id": "chapitre_prologue",
     "text": "Prologue"
   },
@@ -2806,7 +2822,8 @@ export default interface i18n {
     "answer2": "Lecture de notes",
     "answer3": "Lecture à voix haute",
     "answer4": "Révision en groupe",
-    "answer5": "Faire des exercices"
+    "answer5": "Faire des exercices",
+    "link": "references/test.pdf"
   },
   {
     "id": "food",
@@ -2817,7 +2834,8 @@ export default interface i18n {
     "answer2": "Souvent oui",
     "answer3": "Rarement oui",
     "answer4": "Non",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   {
     "id": "sleep",
@@ -2828,7 +2846,8 @@ export default interface i18n {
     "answer2": "9h",
     "answer3": "8h",
     "answer4": "7h",
-    "answer5": "6h ou moins"
+    "answer5": "6h ou moins",
+    "link": ""
   },
   {
     "id": "mentalWorkload",
@@ -2839,7 +2858,8 @@ export default interface i18n {
     "answer2": "2",
     "answer3": "3",
     "answer4": "4",
-    "answer5": "5 ou plus"
+    "answer5": "5 ou plus",
+    "link": ""
   },
   {
     "id": "profiles",
@@ -2850,7 +2870,8 @@ export default interface i18n {
     "answer2": "Azul",
     "answer3": "Sapiens",
     "answer4": "LedAI",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   {
     "id": "stress",
@@ -2861,7 +2882,8 @@ export default interface i18n {
     "answer2": "Toutes les semaines",
     "answer3": "Tous les mois",
     "answer4": "Rarement",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   {
     "id": "organisation",
@@ -2872,7 +2894,8 @@ export default interface i18n {
     "answer2": "Seulement si je ne peux pas faire autrement",
     "answer3": "Le weekend, le soir, la journée... ils sont tous pareils",
     "answer4": "",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   {
     "id": "success",
@@ -2883,7 +2906,8 @@ export default interface i18n {
     "answer2": "Compréhensive - C'est l'apprentissage qui compte, pas le diplôme",
     "answer3": "Instrumentale - Je dois juste valider mon année",
     "answer4": "Relative - Mon but est de faire aussi bien que mes amis",
-    "answer5": ""
+    "answer5": "",
+    "link": "references/motivation.pdf"
   }
 ];};
 }

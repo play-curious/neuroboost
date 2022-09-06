@@ -8,7 +8,8 @@
     "answer2": "Lecture de notes",
     "answer3": "Lecture à voix haute",
     "answer4": "Révision en groupe",
-    "answer5": "Faire des exercices"
+    "answer5": "Faire des exercices",
+    "link": "references/test.pdf"
   },
   "food": {
     "id": "food",
@@ -19,7 +20,8 @@
     "answer2": "Souvent oui",
     "answer3": "Rarement oui",
     "answer4": "Non",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   "sleep": {
     "id": "sleep",
@@ -30,7 +32,8 @@
     "answer2": "9h",
     "answer3": "8h",
     "answer4": "7h",
-    "answer5": "6h ou moins"
+    "answer5": "6h ou moins",
+    "link": ""
   },
   "mentalWorkload": {
     "id": "mentalWorkload",
@@ -41,7 +44,8 @@
     "answer2": "2",
     "answer3": "3",
     "answer4": "4",
-    "answer5": "5 ou plus"
+    "answer5": "5 ou plus",
+    "link": ""
   },
   "profiles": {
     "id": "profiles",
@@ -52,7 +56,8 @@
     "answer2": "Azul",
     "answer3": "Sapiens",
     "answer4": "LedAI",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   "stress": {
     "id": "stress",
@@ -63,7 +68,8 @@
     "answer2": "Toutes les semaines",
     "answer3": "Tous les mois",
     "answer4": "Rarement",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   "organisation": {
     "id": "organisation",
@@ -74,7 +80,8 @@
     "answer2": "Seulement si je ne peux pas faire autrement",
     "answer3": "Le weekend, le soir, la journée... ils sont tous pareils",
     "answer4": "",
-    "answer5": ""
+    "answer5": "",
+    "link": ""
   },
   "success": {
     "id": "success",
@@ -85,6 +92,7 @@
     "answer2": "Compréhensive - C'est l'apprentissage qui compte, pas le diplôme",
     "answer3": "Instrumentale - Je dois juste valider mon année",
     "answer4": "Relative - Mon but est de faire aussi bien que mes amis",
-    "answer5": ""
+    "answer5": "",
+    "link": "references/motivation.pdf"
   }
 }

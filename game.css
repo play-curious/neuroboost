@@ -231,6 +231,21 @@ body.embedded {
   font-size: 32px;
 }
 
+.journal-more-information {
+  position: absolute;
+  left: 230px;
+  top: 780px;
+}
+
+.journal-more-information a:link,
+.journal-more-information a:visited,
+.journal-more-information a:hover,
+.journal-more-information a:active {
+  font-family: "Jura";
+  font-size: 32px;
+  color: white;
+}
+
 .journal-right-question {
   position: absolute;
   left: 940px;

@@ -119,6 +119,10 @@
     "id": "journal_notes_placeholder",
     "text": "Write here..."
   },
+  "journal_link": {
+    "id": "journal_link",
+    "text": "For more information..."
+  },
   "chapitre_prologue": {
     "id": "chapitre_prologue",
     "text": "Prologue"

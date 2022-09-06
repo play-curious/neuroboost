@@ -89,6 +89,10 @@ module.exports = {
           from: "video",
           to: "video",
         },
+        {
+          from: "references",
+          to: "references",
+        },
       ],
     }),
     // //opimize all image file

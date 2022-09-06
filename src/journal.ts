@@ -56,6 +56,11 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
       this._answerInputs = [];
 
       for (let i = 0; i < 5; i++) {
+        const answerTag = ("answer" +
+          (i + 1)) as keyof i18n[keyof i18n]["journal"][number];
+        const answerText = translateJournal(this, this.name, answerTag);
+        if (!answerText) continue;
+
         const answer: HTMLInputElement = document.createElement("input");
         answer.type = "radio";
         answer.required = true;
@@ -65,12 +70,28 @@ export class JournalScene extends extension.ExtendedCompositeEntity {
         this._answerInputs[i] = answer;
 
         const label: HTMLLabelElement = document.createElement("label");
-        let answerTag = ("answer" +
-          (i + 1)) as keyof i18n[keyof i18n]["journal"][number];
-        label.innerText = `${translateJournal(this, this.name, answerTag)}`;
+        label.innerText = answerText;
         label.setAttribute("for", `closed-question-${i}`);
 
         leftElements.append(document.createElement("br"), answer, label);
+      }
+    }
+
+    // Create link for more information on left
+    {
+      const linkUrl = translateJournal(this, this.name, "link");
+
+      if (linkUrl) {
+        const linkText = translateInterface(this, "journal_link");
+
+        const linkElement = document.createElement("div");
+        linkElement.className = "journal-more-information";
+        this._htmlContainer.appendChild(linkElement);
+
+        linkElement.insertAdjacentHTML(
+          "beforeend",
+          `<a href="${linkUrl}" target="_blank">${linkText}</a>`
+        );
       }
     }
 
