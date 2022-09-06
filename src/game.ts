@@ -248,7 +248,7 @@ const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 export const screenSize = new PIXI.Point(1920, 1080);
 
-const splashScreen = "images/splash_screen.jpg";
+const splashScreen = "images/splash_screen.png";
 const startingScene = params.get("level") || params.get("scene") || "start";
 const startingNode = params.get("startNode") || params.get("node") || "Start";
 const startingSceneParams = { startNode: startingNode };
