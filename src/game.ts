@@ -219,19 +219,23 @@ const musicAssets = [
   "JungleBodyBeat",
 ];
 
-// Determine language
 const params = new URLSearchParams(window.location.search);
-const supportedLanguages = ["fr", "en"];
 
-let chosenLanguage = (params.get("lang") ?? navigator.language)
-  .substring(0, 2)
-  .toLowerCase();
-if (!supportedLanguages.includes(chosenLanguage)) {
-  console.warn(
-    "Language " + chosenLanguage + " not known, switching to english version"
-  );
-  chosenLanguage = "en";
-}
+// Determine language
+// const supportedLanguages = ["fr", "en"];
+
+// let chosenLanguage = (params.get("lang") ?? navigator.language)
+//   .substring(0, 2)
+//   .toLowerCase();
+// if (!supportedLanguages.includes(chosenLanguage)) {
+//   console.warn(
+//     "Language " + chosenLanguage + " not known, switching to english version"
+//   );
+//   chosenLanguage = "en";
+// }
+
+// Temporarily force language choice to French until translations are complete
+const chosenLanguage = "fr";
 console.log("Using language", chosenLanguage);
 
 const translatedLevels = ["c1"];
