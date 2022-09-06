@@ -74,6 +74,10 @@ module.exports = {
           to: "fonts",
         },
         {
+          from: "json",
+          to: "json",
+        },
+        {
           from: "audio",
           to: "audio",
         },
@@ -84,6 +88,10 @@ module.exports = {
         {
           from: "video",
           to: "video",
+        },
+        {
+          from: "references",
+          to: "references",
         },
       ],
     }),

@@ -715,7 +715,8 @@ position: -395.6365661621094,463.4656677246094
     << fx Success >>
     Azul_smiling: C'est exact. Tout comme pour notre profil d'apprentissage, nous avons le même fonctionnement. Fred et moi, nous nous comparons sans cesse à notre entourage, et cela nous importe peu de travailler dans un environnement qui n'est pas compétitif, social.
     Ledai_explaining: Chacun doit avoir ses propres [b]objectifs personnels[/b], à court et long terme. 
-    Temde_neutral: Ces objectifs doivent être définis par sa propre personnalité, son rapport à la réussite. Personne ne peut le faire pour quelqu'un d'autre.
+    Sapiens_thinking: Ces objectifs doivent être définis par sa propre personnalité, son rapport à la réussite. Personne ne peut le faire pour quelqu'un d'autre.
+    Temde_smiling: Mais il est vrai que cela dépend aussi de l’environnement dans lequel on se trouve. Par exemple, le manque de temps ou d’intérêt pour un domaine peut nous diriger vers une réussite stratégique. 
     <<jump Sages_FreeChoice>>
 <<jump Sages_FindFred>>
 ===
@@ -772,12 +773,6 @@ Seulement, vous savez que cette fois, c'est peut-être la dernière fois.
     << jump Start >>
 <<endif>>
 ===
-
-
-
-
-
-
 title: Epilogue
 tags: noUi
 position: -1543,1900
@@ -825,13 +820,12 @@ Azul_happy: Que tes songes soient créatifs et originaux. #line:0366dbd
 Temde_cheerful: Et n'oublie pas de rêver de nous de temps en temps…
 << fadeIn >>
 << showTitle Fin >>
-<<jump EndLoop>>
+<<jump End>>
 ===
-
-title: EndLoop
+title: End
 tags: noUi
 position: -1543,1900
 ---
+<< empty >>
 Tutorial: Merci d'avoir joué ! N'hésitez pas à rejouer aux chapitres via le menu pour améliorer votre score ! - L'équipe Play Curious.
-<<jump EndLoop>>
 ===

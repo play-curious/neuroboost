@@ -7,7 +7,7 @@
     "images": "gulp images",
     "watch": "gulp watch",
     "serve": "yarn watch",
-    "start": "yarn serve",
+    "start": "gulp && yarn serve",
     "translate": "gulp yarnToCSV",
     "build": "yarn images && webpack --config webpack.dev.js",
     "dist": "yarn images && webpack --config webpack.prod.js",
@@ -28,19 +28,10 @@
     "csv-parse": "^4.16.0",
     "dayjs": "^1.10.8",
     "del": "^6.0.0",
+    "ejs": "^3.1.8",
     "fancy-log": "^2.0.0",
     "firebase": "^8.6.7",
     "git-rev-sync": "^3.0.1",
-    "gulp": "^4.0.2",
-    "gulp-cli": "^2.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-download-stream": "^0.0.19",
-    "gulp-html-replace": "^1.6.2",
-    "gulp-rename": "^2.0.0",
-    "gulp-template": "^5.0.0",
-    "gulp-transform": "^3.0.5",
-    "gulp-uglify": "^3.0.2",
-    "gulp-useref": "^5.0.0",
     "hash.js": "^1.1.7",
     "jspdf": "^2.5.1",
     "pixi-filters": "^4.1.2",
@@ -52,11 +43,26 @@
     "yarn-bound": "github:play-curious/yarn-bound#dev"
   },
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
     "@types/gulp-tap": "^1.0.1",
     "@types/webpack-merge": "^5.0.0",
     "clean-webpack-plugin": "^3.0.0",
+    "commander": "^9.4.0",
     "copy-webpack-plugin": "^9.0.0",
     "esbuild-loader": "^2.15.1",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-data": "^1.3.1",
+    "gulp-download-stream": "^0.0.19",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.1.3",
+    "gulp-template": "^5.0.0",
+    "gulp-transform": "^3.0.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-useref": "^5.0.0",
     "gulp-tap": "^2.0.0",
     "gulp-util": "^3.0.8",
     "html-webpack-plugin": "^5.3.1",
@@ -69,5 +75,22 @@
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
+  },
+  "textAssets": {
+    "fr": {
+      "spreadsheet": "1TKEAL81fK-FpuEEKUMk-W7RN-HVZxDCUc973xyfsrG8",
+      "sheets": {
+        "journal": 0,
+        "interface": 910435210
+      }
+    },
+    "en": {
+      "spreadsheet": "1lxx105IN0IG2fDRKznhXY8sYRYfWpcXeIbIl46Jsteg",
+      "sheets": {
+        "journal": 697937786,
+        "interface": 602721446,
+        "c1": 0
+      }
+    }
   }
 }

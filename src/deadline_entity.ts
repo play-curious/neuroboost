@@ -3,11 +3,15 @@ import * as graphics from "./graphics";
 import * as PIXI from "pixi.js";
 import * as extension from "./extension";
 import * as tween from "booyah/src/tween";
-import * as slide from "./slide_text_entity";
-import { EnterType } from "./slide_text_entity";
+import { translateInterface } from "./wrapper/i18n";
+import i18n from "./generated/i18n";
 
-export class DeadlineEntity extends slide.SlideTextEntity {
+export class DeadlineEntity extends extension.ExtendedCompositeEntity {
+  private static _ANIMATION_DURATION: number = 300;
+  private _container: PIXI.Container;
+  private _text: PIXI.Text;
   private _missed: boolean;
+  private _icon: PIXI.Sprite;
   private _shake: graphics.ScreenShake;
 
   public constructor(
@@ -15,11 +19,72 @@ export class DeadlineEntity extends slide.SlideTextEntity {
     public readonly hour: string,
     public readonly minutes: string
   ) {
-    super(1650, 5, "images/ui/deadline.png", {
-      text: deadlinename + " à " + hour + "h" + minutes,
-      icon: "images/ui/deadline_ring.png",
-    });
+    super();
+  }
+
+  protected _setup(
+    frameInfo: entity.FrameInfo,
+    entityConfig: entity.EntityConfig
+  ): void {
+    console.log(this.deadlinename);
     this._missed = false;
+    this._container = new PIXI.Container();
+    this._entityConfig.container.addChild(this._container);
+    this._text = new PIXI.Text(
+      translateInterface(
+        this,
+        ("deadline_" +
+          this.deadlinename.toLowerCase()) as i18n[keyof i18n]["interface"][number]["id"]
+      ) +
+        " " +
+        translateInterface(this, "time_marker") +
+        " " +
+        this.hour +
+        "h" +
+        this.minutes,
+      {
+        fontFamily: "Jura",
+        fontSize: 35,
+        fill: "black",
+      }
+    );
+    const textbg = new PIXI.Sprite(
+      this._entityConfig.app.loader.resources["images/ui/deadline.png"].texture
+    );
+
+    this._icon = new PIXI.Sprite(
+      this._entityConfig.app.loader.resources[
+        "images/ui/deadline_ring.png"
+      ].texture
+    );
+    const x = 1650 - this._container.width - textbg.width + 1;
+    const y = 5;
+
+    //masking
+    const mask = new PIXI.Graphics()
+      .beginFill(0xffffff)
+      .drawRect(x, y, textbg.width, textbg.height)
+      .endFill();
+    this._container.mask = mask;
+
+    this._text.position.set(
+      textbg.width / 2 - this._text.width / 2 + 30,
+      textbg.height / 2 - this._text.height / 2
+    );
+    this._container.addChild(textbg);
+    textbg.addChild(this._text);
+    textbg.addChild(this._icon);
+    this._icon.tint = 0;
+    this._icon.position.set(30, textbg.height / 2 - this._icon.height / 2);
+    this._container.position.set(x, y);
+    const animP = new tween.Tween({
+      obj: this._container.position,
+      property: "x",
+      from: x + this._container.width,
+      to: x,
+      duration: DeadlineEntity._ANIMATION_DURATION,
+    });
+    this._activateChildEntity(animP);
   }
 
   public missed() {
@@ -32,5 +97,26 @@ export class DeadlineEntity extends slide.SlideTextEntity {
         entity.extendConfig({ container: this._icon })
       );
     }
+  }
+
+  public remove() {
+    const animP = new tween.Tween({
+      obj: this._container.position,
+      property: "x",
+      from: this._container.position.x,
+      to: this._container.position.x + this._container.width,
+      duration: DeadlineEntity._ANIMATION_DURATION,
+    });
+    const td = new entity.EntitySequence([
+      animP,
+      new entity.FunctionCallEntity(() => {
+        this._transition = entity.makeTransition();
+      }),
+    ]);
+    this._activateChildEntity(td);
+  }
+
+  public _teardown(frameInfo: entity.FrameInfo) {
+    this._entityConfig.container.removeChild(this._container);
   }
 }

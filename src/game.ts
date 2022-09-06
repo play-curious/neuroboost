@@ -131,7 +131,7 @@ for (let i = 0; i < dialog.dialogScenes.length - 1; i++) {
 }
 
 // The last dialog scene goes to the outro video, then the end
-transitions[dialog.dialogScenes.length - 1] =
+transitions[dialog.dialogScenes[dialog.dialogScenes.length - 1]] =
   entity.makeTransition("outro_video");
 transitions["outro_video"] = entity.makeTransition("end");
 
@@ -219,25 +219,60 @@ const musicAssets = [
   "JungleBodyBeat",
 ];
 
+const params = new URLSearchParams(window.location.search);
+
+// Determine language
+// const supportedLanguages = ["fr", "en"];
+
+// let chosenLanguage = (params.get("lang") ?? navigator.language)
+//   .substring(0, 2)
+//   .toLowerCase();
+// if (!supportedLanguages.includes(chosenLanguage)) {
+//   console.warn(
+//     "Language " + chosenLanguage + " not known, switching to english version"
+//   );
+//   chosenLanguage = "en";
+// }
+
+// Temporarily force language choice to French until translations are complete
+const chosenLanguage = "fr";
+console.log("Using language", chosenLanguage);
+
+const translatedLevels = ["c1"];
+
+const textAssetNames = ["journal", "interface"];
+textAssetNames.push(...translatedLevels);
+
+const jsonAssets = textAssetNames
+  .filter((key) => {
+    return !(translatedLevels.includes(key) && chosenLanguage === "fr");
+  })
+  .map((key) => ({
+    key,
+    url: `json/${key}_${chosenLanguage}.json`,
+  }));
+
 const videoAssets = ["game-by-play-curious"];
 
 const fontAssets: string[] = ["Ubuntu", "Jura"];
 
 export const screenSize = new PIXI.Point(1920, 1080);
 
-const splashScreen = "images/splash_screen.jpg";
-
-const params = new URLSearchParams(window.location.search);
+const splashScreen = "images/splash_screen.png";
 const startingScene = params.get("level") || params.get("scene") || "start";
 const startingNode = params.get("startNode") || params.get("node") || "Start";
 const startingSceneParams = { startNode: startingNode };
 
 booyah.go({
+  rootConfig: {
+    language: chosenLanguage,
+  },
   startingScene,
   startingSceneParams,
   states,
   transitions,
   graphicalAssets: images.graphicalAssets,
+  jsonAssets,
   fontAssets,
   fxAssets,
   musicAssets,

@@ -9,17 +9,13 @@ import * as util from "booyah/src/util";
 import * as extension from "./extension";
 import * as save from "./save";
 import * as dialog from "./dialog";
+import { translateInterface } from "./wrapper/i18n";
+import i18n from "./generated/i18n";
 
 export type SceneType = "level" | "sages" | "journal";
 
 const yellow = 0xf9c560;
 const subtitleFontSize = 34;
-
-const scoreMessages = [
-  "Peut mieux faire",
-  "Continuez sur cette voie",
-  "Excellent, perseverez !",
-];
 
 export class TableOfContents extends extension.ExtendedCompositeEntity {
   private _container: PIXI.Container;
@@ -61,11 +57,14 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
 
     {
       // Title
-      const text = new PIXI.Text("Choix du chapitre", {
-        fontFamily: "Jura",
-        fontSize: 52,
-        fill: "white",
-      });
+      const text = new PIXI.Text(
+        translateInterface(this, "menu_chapitre_titre"),
+        {
+          fontFamily: "Jura",
+          fontSize: 52,
+          fill: "white",
+        }
+      );
       text.position.set(432, 82);
       this._container.addChild(text);
     }
@@ -115,7 +114,11 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
 
           {
             const titleText =
-              chapter === 0 ? "Prologue" : `Chapitre ${chapter}`;
+              chapter === 0
+                ? translateInterface(this, "chapitre_prologue")
+                : translateInterface(this, "chapitre_nom", {
+                    chapterNumber: chapter,
+                  });
             const title = new PIXI.Text(titleText, {
               fontFamily: "Jura",
               fontStyle: "bold",
@@ -162,7 +165,7 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
             this._container.addChild(line);
 
             {
-              const sagesText = " Accéder aux Sages ";
+              const sagesText = translateInterface(this, "menu_chapitre_sages");
               const sages = new PIXI.Text(sagesText, {
                 fontFamily: "Ubuntu",
                 fontStyle: "italic",
@@ -203,7 +206,10 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
             this._container.addChild(line);
 
             {
-              const textContent = " Écrire sur le journal ";
+              const textContent = translateInterface(
+                this,
+                "menu_chapitre_ecrire"
+              );
               const text = new PIXI.Text(textContent, {
                 fontFamily: "Ubuntu",
                 fontStyle: "italic",
@@ -235,7 +241,10 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
 
     if (save.getCurrentChapter()) {
       // Make continue button
-      const buttonContainer = this._makeButton("Continue", 500);
+      const buttonContainer = this._makeButton(
+        translateInterface(this, "menu_chapitre_continuer"),
+        500
+      );
       buttonContainer.position.set(this._entityConfig.app.view.width / 2, 950);
       this._on(buttonContainer, "pointerup", this._continue);
       this._container.addChild(buttonContainer);
@@ -309,11 +318,16 @@ export class ScoreMenu extends extension.ExtendedCompositeEntity {
 
     {
       // Title
-      const text = new PIXI.Text(`Chapitre ${this._options.chapter} réussi !`, {
-        fontFamily: "Jura",
-        fontSize: 52,
-        fill: "white",
-      });
+      const text = new PIXI.Text(
+        translateInterface(this, "score_menu_reussi", {
+          chapterNumber: this._options.chapter,
+        }),
+        {
+          fontFamily: "Jura",
+          fontSize: 52,
+          fill: "white",
+        }
+      );
       text.anchor.set(0.5, 0);
       text.position.set(this._entityConfig.app.view.width / 2, 170);
       this._container.addChild(text);
@@ -347,7 +361,11 @@ export class ScoreMenu extends extension.ExtendedCompositeEntity {
 
     {
       // Make score message
-      const text = scoreMessages[this._options.score - 1];
+      const text = translateInterface(
+        this,
+        ("score_" +
+          this._options.score) as i18n[keyof i18n]["interface"][number]["id"]
+      );
       const message = new PIXI.Text(text, {
         fontFamily: "Ubuntu",
         fontStyle: "bold",
@@ -377,21 +395,30 @@ export class ScoreMenu extends extension.ExtendedCompositeEntity {
 
     {
       // Make restart button
-      const buttonContainer = this._makeButton("Recommencer", 333);
+      const buttonContainer = this._makeButton(
+        translateInterface(this, "score_menu_recommencer"),
+        333
+      );
       buttonContainer.position.set(609, 731);
       this._on(buttonContainer, "pointerup", this._restartLevel);
       this._container.addChild(buttonContainer);
     }
     {
       // Make TOC button
-      const buttonContainer = this._makeButton("Choisir un chapitre", 333);
+      const buttonContainer = this._makeButton(
+        translateInterface(this, "score_menu_choisir_chapitre"),
+        333
+      );
       buttonContainer.position.set(970, 731);
       this._on(buttonContainer, "pointerup", this._gotoToc);
       this._container.addChild(buttonContainer);
     }
     {
       // Make continue button
-      const buttonContainer = this._makeButton("Continuer", 333);
+      const buttonContainer = this._makeButton(
+        translateInterface(this, "score_menu_continuer"),
+        333
+      );
       buttonContainer.position.set(1331, 731);
       this._on(buttonContainer, "pointerup", this._continue);
       this._container.addChild(buttonContainer);

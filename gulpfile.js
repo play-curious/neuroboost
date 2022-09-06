@@ -6,7 +6,14 @@ const path = require("path");
 const tap = require("gulp-tap");
 const cp = require("child_process");
 const fs = require("fs");
+const clean = require("gulp-clean");
+const csvparse = require("csv-parse/lib/sync");
+const ejs = require("ejs");
 const hash = require("hash.js");
+const download = require("gulp-download-stream");
+
+const _ = require("underscore");
+const PACKAGE = require("./package.json");
 
 function images() {
   const template = fs.readFileSync(
@@ -64,6 +71,23 @@ function images() {
         );
       })
     );
+}
+
+function downloadText() {
+  if (!PACKAGE.textAssets)
+    throw new Error(`Cannot find "textAssets" in package.json`);
+
+  const downloadCommands = _.chain(PACKAGE.textAssets)
+    .map((info, language) => {
+      return _.map(info.sheets, (gid, name) => ({
+        file: `${name}_${language}.tsv`,
+        url: `https://docs.google.com/spreadsheets/d/${info.spreadsheet}/export?format=tsv&sheet&gid=${gid}`,
+      }));
+    })
+    .flatten(true)
+    .value();
+
+  return download(downloadCommands).pipe(gulp.dest("text_src/"));
 }
 
 function watch(cb) {
@@ -141,10 +165,106 @@ function convertLevelsToCSV() {
     .pipe(gulp.dest("levels/lang/en/"));
 }
 
+function buildEjsI18n(done) {
+  const regex = /_(en|fr)\.json$/;
+  const rawTexts = {};
+
+  const jsonDir = fs
+    .readdirSync(path.join(__dirname, "json"), "utf-8")
+    .filter((filename) => regex.test(filename));
+
+  for (const filename of jsonDir) {
+    const match = regex.exec(filename);
+
+    if (match) {
+      const lang = match[1];
+      const name = filename.replace(regex, "");
+      const content = Object.values(
+        require(path.join(__dirname, "json", filename))
+      );
+
+      if (rawTexts[lang]) {
+        rawTexts[lang][name] = content;
+      } else
+        rawTexts[lang] = {
+          [name]: content,
+        };
+    }
+  }
+
+  const context = {
+    languages: Object.keys(rawTexts),
+    filenames: [
+      ...new Set(jsonDir.map((filename) => filename.replace(regex, ""))),
+    ],
+    rawTexts,
+  };
+
+  const template = fs.readFileSync(
+    path.join(__dirname, "src", "templates", "i18n.ejs"),
+    "utf-8"
+  );
+
+  const gen = ejs.render(template, context);
+
+  fs.writeFileSync(
+    path.join(__dirname, "src", "generated", "i18n.ts"),
+    gen,
+    "utf-8"
+  );
+
+  done();
+}
+
+function convertTsvTextToJson(csvText) {
+  const lines = csvparse(csvText, {
+    columns: true,
+    delimiter: "\t",
+    escape: false,
+    quote: false,
+  });
+
+  const output = {};
+  for (const line of lines) {
+    if (line.ID === "") continue;
+
+    const obj = {};
+    for (const key in line) {
+      obj[key.toLowerCase()] = line[key];
+    }
+    output[line.ID] = obj;
+  }
+
+  return JSON.stringify(output, null, 2);
+}
+
+function cleanTSV() {
+  return gulp
+    .src(["text_src", "levels_src"], { read: false, allowEmpty: true })
+    .pipe(clean({ force: true }));
+}
+
+function convertText() {
+  return gulp
+    .src(["text_src/*.tsv"])
+    .pipe(transform("utf8", convertTsvTextToJson))
+    .pipe(rename({ extname: ".json" }))
+    .pipe(gulp.dest("json/"));
+}
+
+const genTypes = gulp.series(buildEjsI18n);
+
+const genJSON = gulp.series(
+  gulp.parallel(downloadText),
+  gulp.parallel(convertText),
+  cleanTSV
+);
+
 exports.images = images;
 exports.watch = gulp.series(images, watch);
 exports.yarnToCSV = convertLevelsToCSV;
+exports.json = genJSON;
+exports.types = genTypes;
 
 // Meta-tasks
-
-exports.default = images;
+exports.default = gulp.series(images, genJSON, genTypes);

@@ -1,0 +1,210 @@
+{
+  "gauge_stress": {
+    "id": "gauge_stress",
+    "text": "Stress"
+  },
+  "gauge_learning": {
+    "id": "gauge_learning",
+    "text": "Apprentissage"
+  },
+  "gauge_sleep": {
+    "id": "gauge_sleep",
+    "text": "Repos"
+  },
+  "gauge_food": {
+    "id": "gauge_food",
+    "text": "Nutrition"
+  },
+  "gauge_mentalLoad": {
+    "id": "gauge_mentalLoad",
+    "text": "Charge mentale"
+  },
+  "deadline_examen": {
+    "id": "deadline_examen",
+    "text": "Examen"
+  },
+  "deadline_rendu": {
+    "id": "deadline_rendu",
+    "text": "Rendu"
+  },
+  "deadline_fermeture": {
+    "id": "deadline_fermeture",
+    "text": "Fermeture"
+  },
+  "deadline_danse": {
+    "id": "deadline_danse",
+    "text": "Danse"
+  },
+  "deadline_oral": {
+    "id": "deadline_oral",
+    "text": "Oral"
+  },
+  "time_marker": {
+    "id": "time_marker",
+    "text": "à"
+  },
+  "day_0": {
+    "id": "day_0",
+    "text": "Lundi"
+  },
+  "day_1": {
+    "id": "day_1",
+    "text": "Mardi"
+  },
+  "day_2": {
+    "id": "day_2",
+    "text": "Mercredi"
+  },
+  "day_3": {
+    "id": "day_3",
+    "text": "Jeudi"
+  },
+  "day_4": {
+    "id": "day_4",
+    "text": "Vendredi"
+  },
+  "day_5": {
+    "id": "day_5",
+    "text": "Samedi"
+  },
+  "day_6": {
+    "id": "day_6",
+    "text": "Dimanche"
+  },
+  "menu_plein_ecran": {
+    "id": "menu_plein_ecran",
+    "text": "Plein-écran"
+  },
+  "menu_fenetre": {
+    "id": "menu_fenetre",
+    "text": "Fenêtré"
+  },
+  "menu_chapitre": {
+    "id": "menu_chapitre",
+    "text": "Chapitres"
+  },
+  "menu_journal": {
+    "id": "menu_journal",
+    "text": "Journal"
+  },
+  "menu_vitesse_texte": {
+    "id": "menu_vitesse_texte",
+    "text": "Vitesse du texte"
+  },
+  "menu_credits": {
+    "id": "menu_credits",
+    "text": "Credits"
+  },
+  "popup_retour_chapitres": {
+    "id": "popup_retour_chapitres",
+    "text": "Etes-vous sûr de vouloir retourner au choix des chapitres ?"
+  },
+  "journal_historique_vide": {
+    "id": "journal_historique_vide",
+    "text": "Historique vide"
+  },
+  "journal_telecharger": {
+    "id": "journal_telecharger",
+    "text": "Télécharger votre journal de la métacognition ?"
+  },
+  "journal_passer": {
+    "id": "journal_passer",
+    "text": "Passer"
+  },
+  "journal_valider": {
+    "id": "journal_valider",
+    "text": "VALIDER"
+  },
+  "journal_notes_placeholder": {
+    "id": "journal_notes_placeholder",
+    "text": "Ecrire ici..."
+  },
+  "journal_link": {
+    "id": "journal_link",
+    "text": "Pour plus d'informations..."
+  },
+  "chapitre_prologue": {
+    "id": "chapitre_prologue",
+    "text": "Prologue"
+  },
+  "chapitre_nom": {
+    "id": "chapitre_nom",
+    "text": "Chapitre <%= chapterNumber %>"
+  },
+  "chapitre_fin": {
+    "id": "chapitre_fin",
+    "text": "Fin"
+  },
+  "menu_chapitre_titre": {
+    "id": "menu_chapitre_titre",
+    "text": "Choix du chapitre"
+  },
+  "menu_chapitre_sages": {
+    "id": "menu_chapitre_sages",
+    "text": "Acceder aux sages"
+  },
+  "menu_chapitre_ecrire": {
+    "id": "menu_chapitre_ecrire",
+    "text": "Ecrire dans le journal"
+  },
+  "menu_chapitre_continuer": {
+    "id": "menu_chapitre_continuer",
+    "text": "Continuer"
+  },
+  "score_menu_reussi": {
+    "id": "score_menu_reussi",
+    "text": "Chapitre <%= chapterNumber %> réussi !"
+  },
+  "score_menu_recommencer": {
+    "id": "score_menu_recommencer",
+    "text": "Recommencer"
+  },
+  "score_menu_choisir_chapitre": {
+    "id": "score_menu_choisir_chapitre",
+    "text": "Choisir un chapitre"
+  },
+  "score_menu_continuer": {
+    "id": "score_menu_continuer",
+    "text": "Continuer"
+  },
+  "dialog_no_action": {
+    "id": "dialog_no_action",
+    "text": "Vous ne pouvez plus rien faire ici pour le moment."
+  },
+  "score_1": {
+    "id": "score_1",
+    "text": "Peut mieux faire"
+  },
+  "score_2": {
+    "id": "score_2",
+    "text": "Continuez sur cette voie"
+  },
+  "score_3": {
+    "id": "score_3",
+    "text": "Excellent, perseverez"
+  },
+  "tip_0": {
+    "id": "tip_0",
+    "text": "Astuce des sages : Pour augmenter votre score, essayer d'optimiser vos révisions."
+  },
+  "tip_1": {
+    "id": "tip_1",
+    "text": "Astuce des sages : Pour augmenter votre score, pensez à vous reposer et à bien manger."
+  },
+  "tip_2": {
+    "id": "tip_2",
+    "text": "Astuce des sages : Pour augmenter votre score, tentez de réduire un maximum votre charge mentale."
+  },
+  "tip_3": {
+    "id": "tip_3",
+    "text": "Astuce des sages : Pour augmenter votre score, prenez compte des atouts de votre équipe."
+  },
+  "tip_4": {
+    "id": "tip_4",
+    "text": "Astuce des sages : Pour augmenter votre score, tentez de ne pas trop stresser."
+  },
+  "tip_5": {
+    "id": "tip_5",
+    "text": "Astuce des sages : Pour augmenter votre score, pensez à planifier vos journées."
+  }
+}

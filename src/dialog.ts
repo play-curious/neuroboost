@@ -15,6 +15,9 @@ import * as gauge from "./gauge";
 
 import * as yarnBound from "yarn-bound";
 import * as chapter_menus from "./chapter_menus";
+import { levelType, translateDialog, translateInterface } from "./wrapper/i18n";
+import i18n from "./generated/i18n";
+import { TextResult } from "yarn-bound";
 
 declare module "yarn-bound" {
   interface Metadata {
@@ -298,9 +301,46 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
 
   private _handleTutorial() {
     const textResult = this.runner.currentResult as yarnBound.TextResult;
-    this.graphics.showTutorial(textResult.text.trim(), () => {
+
+    let lineId;
+    for (let hash of textResult.hashtags) {
+      if (hash.startsWith("line")) {
+        lineId = hash.split(":")[1].trim();
+      }
+    }
+    let translatedText;
+    if (lineId) {
+      translatedText = translateDialog(
+        this,
+        this.levelName.toLowerCase() as levelType,
+        lineId as i18n[keyof i18n][levelType][number]["id"],
+        textResult.text.trim()
+      );
+    } else {
+      console.warn(
+        "No line id found on dialog '" + textResult.text.trim() + "'"
+      );
+      translatedText =
+        this.entityConfig.language === "fr"
+          ? textResult.text.trim()
+          : "%== placeholder ==%";
+    }
+    this.graphics.showTutorial(translatedText, () => {
       this._advance();
     });
+  }
+
+  private _displayPlaceholderDialog(id: number) {
+    let text = "Vous ne pouvez plus rien faire ici pour le moment.";
+    this.graphics.showDialog(
+      translateInterface(this, "dialog_no_action"),
+      "",
+      this.config.variableStorage.get("name"),
+      () => {
+        this.addToHistory("", text);
+        this._advance.bind(this)(id);
+      }
+    );
   }
 
   private _handleDialog(placeholder?: string, id?: number) {
@@ -319,8 +359,31 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       return;
     }
 
+    let lineId;
+    for (let hash of textResult.hashtags) {
+      if (hash.startsWith("line")) {
+        lineId = hash.split(":")[1].trim();
+      }
+    }
+    let translatedText;
+    if (lineId) {
+      translatedText = translateDialog(
+        this,
+        this.levelName.toLowerCase() as levelType,
+        lineId as i18n[keyof i18n][levelType][number]["id"],
+        text
+      );
+    } else {
+      console.warn("No line id found on dialog '" + text + "'");
+
+      translatedText =
+        this.entityConfig.language === "fr"
+          ? textResult.text.trim()
+          : "%== placeholder ==%";
+    }
+
     this.graphics.showDialog(
-      text,
+      translatedText,
       speaker,
       this.config.variableStorage.get("name"),
       () => {
@@ -330,8 +393,22 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     );
   }
 
+  private stringToHash(string: string) {
+    var hash = 0;
+
+    if (string.length == 0) return hash;
+
+    for (let i = 0; i < string.length; i++) {
+      let char = string.charCodeAt(i);
+      hash = (hash << 5) - hash + char;
+      hash = hash & hash;
+    }
+
+    return hash;
+  }
+
   private _handleChoice() {
-    const result = this.runner.currentResult;
+    const result = this.runner.currentResult as TextResult;
 
     if (!isOption(result))
       throw new Error("Called _handleChoice for unknown result");
@@ -348,20 +425,57 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       const option = result.options[i];
       const optionText = option.text.trim();
 
-      if (optionText.includes("@")) {
-        freeChoiceCount++;
+      let lineId;
+      for (let hash of option.hashtags) {
+        if (hash.startsWith("line")) {
+          lineId = hash.split(":")[1].trim();
+        }
+      }
+      let translatedText;
+      if (lineId) {
+        translatedText = translateDialog(
+          this,
+          this.levelName.toLowerCase() as levelType,
+          lineId as i18n[keyof i18n][levelType][number]["id"],
+          optionText
+        );
+      } else {
+        console.warn("No line id found on choice '" + optionText + "'");
+
+        translatedText =
+          this.entityConfig.language === "fr"
+            ? optionText.trim()
+            : "%== placeholder ==%";
       }
 
-      const selectedOptionId = `${this.metadata.title}|${this.metadata.choiceId}|${i}`;
-      if (
-        (option.hashtags.includes("once") &&
-          this.selectedOptions.includes(selectedOptionId)) ||
-        !option.isAvailable
-      )
-        continue;
+      if (optionText.includes("@")) {
+        freeChoiceCount++;
+      } else {
+        for (let hash of option.hashtags) {
+          if (hash.startsWith("line")) {
+            lineId = hash.split(":")[1].trim();
+          }
+        }
+
+        if (!lineId) {
+          console.warn(
+            "No line id for choice '" + optionText + "', taking hash instead"
+          );
+          lineId = this.stringToHash(optionText).toString();
+        }
+
+        const selectedOptionId = `${this.metadata.title}|${lineId}`;
+        if (
+          (option.hashtags.includes("once") &&
+            this.selectedOptions.includes(selectedOptionId)) ||
+          !option.isAvailable
+        )
+          continue;
+      }
 
       options.push({
-        text: optionText,
+        text: translatedText,
+        name: optionText,
         id: `${i}`,
       });
 
@@ -373,10 +487,7 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
       options.length === 1 &&
       indexOfBack !== -1
     ) {
-      this._handleDialog(
-        "Vous ne pouvez plus rien faire ici pour le moment.",
-        indexOfBack
-      );
+      this._displayPlaceholderDialog(indexOfBack);
       return;
     }
 
@@ -396,7 +507,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
         options,
         (id) => {
           this.selectedOptions.push(
-            `${this.metadata.title}|${this.metadata.choiceId}|${id}`
+            `${this.metadata.title}|${
+              options.filter((obj) => {
+                return obj.id === id.toString();
+              })[0].lineId
+            }`
           );
           this._advance.bind(this)(id);
         },
@@ -527,12 +642,11 @@ export class DialogScene extends extension.ExtendedCompositeEntity {
     }
   }
 
-  showAndSaveScore(score: string, hintWords: string[]): entity.Entity {
+  showAndSaveScore(score: string, hint: string): entity.Entity {
     const scoreNumber: number = Number(score);
     save.updateCompletedLevel(this.levelName, scoreNumber);
     // Look up the index of the chapter to get the number
     const chapter = dialogScenes.indexOf(this.levelName);
-    const hint = hintWords.join(" ");
 
     this.entityConfig.fxMachine.play("Success");
     return new chapter_menus.ScoreMenu({

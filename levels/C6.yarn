@@ -59,21 +59,27 @@ colorID: 2
 <<if (isTimeOver("12:00") && !visited("MamanCall")) && !$silence>>
 
 << visit MamanCall >>
-Votre palmphone vibre : c'est maman ! Elle a sûrement des nouvelles de mamie !
+Votre palmphone vibre : c'est maman ! Elle a sûrement des nouvelles de la fête…
 -> Répondre
-    Maman@holo_shadow: Salut mon chou ! J'ai des nouvelles de ta mamie…
-    You: Alors ?? Elle va mieux ?
-    Maman@holo_shadow: Oui. Elle s'est réveillée du coma dans la nuit. Elle est encore faible, mais elle devrait se rétablir d'ici peu.
+    Maman@holo_shadow: Salut mon chou ! J'ai des mauvaises nouvelles…
+    You: Ah bon ? Comment ça ?
+    Maman@holo_shadow: Ton frère a été contacté par un de ses employeurs pour une opportunité en or… Il va devoir annuler son billet de fusée…
+    You: Donc il ne pourra pas venir à la fête ?
+    Maman@holo_shadow: Oh, mon chou, je suis désolé… Avec ces nouvelles, mamie a préféré repousser la fête jusqu'à ce qu'on ait ses prochaines dates de congé…
+    -> Ouf !
+        You: Ouf !
+        Maman@holo_shadow: Tu n'es pas déçu que ta fête soit annulée ?
+        You: C'est juste que… Ça me met un peu moins de pression sur les épaules, quoi.
+        Maman@holo_shadow: Mmh, je comprends. Mais ne va pas rater ces examens pour autant !
+    -> Oh non, ma fête…
+        You: Oh non… Ma fête…
+        Maman@holo_shadow: Si tu es trop déçu, on peut toujours célébrer ça avec les cousins proches…
+        You: T'inquiète pas maman, ça va aller.
     << removeFromGauge stress 40 >>
-    You: Pourquoi tu me l'as pas dit plus tôt ??
-    Maman@holo_shadow: Désolée, { $name }. Je ne voulais pas te déranger dans ton sommeil, et je viens de me réveiller… La nuit a été rude.
-    You: T'inquiète… J'étais juste un peu stressé. Mais ça va mieux.
-    Maman@holo_shadow: Je suis contente que tu sois autant épanoui, dans tes études et ta vie. Courage pour le Grand Oral !
-    You: Merci, maman ! Je réviserai à la santé de mamie !
 -> Mettre en silencieux
     Vous coupez la sonnerie de votre palmphone. Vous n'avez plus envie que des mauvaises nouvelles viennent perturber vos révisions.
     << addToGauge stress 20 >>
-    Vous ne pouvez pas vous empêcher de penser à toutes les possibilités, ce qui vous rend encore plus stressé.
+    Vous ne pouvez pas vous empêcher de penser aux attentes de votre mère, ce qui vous rend encore plus stressé.
 << hide >>
 
 <<endif>>
@@ -82,7 +88,7 @@ Votre palmphone vibre : c'est maman ! Elle a sûrement des nouvelles de mamie !
 <<if $jour == "dimanche" && !$silence>>
 << visit MamieCall>>
 << loopFX PhoneRing_LOOP 5000 >>
-Vous recevez un appel. Il provient de votre grand-mère ! 
+Vous recevez un appel en provenance de votre grand-mère.
 -> Répondre #line:0bf0436 
     << stopFX PhoneRing_LOOP>>
     <<jump MamieCall_dimanche>>
@@ -106,7 +112,7 @@ Vous ne vous êtes pas rendu à l'examen ! Vous avez tout fichu en l'air, encore
 
 <<if isTimeOver("20:00")>>
 <<if $jour == "samedi">>
-Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et refaire le plein de calories. #line:0576ac8 
+Il est tard, votre ventre crie famine. Il est temps de faire une pause dînatoire et de refaire le plein de calories. #line:0576ac8 
 << fadeIn >>
 << setBackground bedroom night >>
 << fadeOut >>
@@ -138,9 +144,11 @@ tags:
 position: 2347,791
 ---
 Mamie@holo_shadow: Coucou mon chouchou !  #line:0bcc9ca 
-You: Salut mamie ! Je suis soulagé de t'entendre ! J'étais très inquiet, mais maman m'a dit que ça allait mieux !
-Mamie@holo_shadow: Tu n'es pas trop occupé ? Je peux toujours rappeler plus tard.
+You: Salut mamie !
+Mamie@holo_shadow: Je ne sais pas si ta mère t'a dit, mais on a dû repousser la fête… Mais dès que ton frère est à nouveau disponible, on reprend les préparations !
+Mamie@holo_shadow: Dis, tu n'es pas trop occupé ? Je peux toujours rappeler plus tard.
 -> J'ai un planning de révisions assez serré ! << if visited("Planning_dimanche") >> #line:089fd8a 
+    You: Un petit peu !
     Mamie@holo_shadow: Ah bon ? #line:01912fb 
     You: Je suis content d'avoir de tes nouvelles. Mais j'ai établi un planning très strict pour aujourd'hui, afin de réussir mes examens ! #line:0b763d2 
     Mamie@holo_shadow: D'accord, je comprends ! Je suis fier de toi, mon chouchou… #line:00dd5e4 
@@ -149,9 +157,10 @@ Mamie@holo_shadow: Tu n'es pas trop occupé ? Je peux toujours rappeler plus tar
     << hide >>
     Vous n'êtes resté que 15 minutes au téléphone, mais votre grand-mère a été ravie de vous avoir.
 -> Euh… Non, je crois pas…
-    Mamie@holo_shadow: Bon ! Alors, tu me demandes pas comment ça va ?
+    You: Euh… Non, je crois pas…
+    Mamie@holo_shadow: Bon ! Alors, tu ne me demandes pas comment ça va ?
     You: Heu, si. Comment vas-tu ? #line:0c1864e 
-    Mamie@holo_shadow: Très bien. Mieux que toi, apparemment. Je suis sortie du coma et j'ai repris tous mes esprits.
+    Mamie@holo_shadow: Très bien. Mieux que toi, apparemment. Mais je suis toujours déçue que cette fête ne se fasse pas…
     << advanceTimeBy 1:00 >>
     << removeFromGauge stress 20 >>
     << hide >>
@@ -423,7 +432,7 @@ title: Reviser_Fiches_dimanche
 tags: 
 position: 1069,-255
 ---
-Vous prenez un peu de temps pour relire vos fiches. Cette piqûre de rappel a le mérite de consolider vos connaissances des fondamentaux.
+Vous prenez un peu de temps pour relire vos fiches et vous poser des questions sur les notions clefs. Cette piqûre de rappel a le mérite de consolider vos connaissances des fondamentaux.
 << addToGauge learning 10 >>
 << addToGauge mentalLoad 5 >>
 Ce n'est peut-être pas ce qui va vous permettre de réussir l'oral haut la main, mais c'est une bonne manière de se remémorer les notions principales.
@@ -649,7 +658,7 @@ colorID: 6
     <<jump Danse_samedi>>
 -> Faire les courses (1h) <<if !visited("Courses")>>
     <<jump Courses>>
--> back #line:055ab07 
+-> back 
     <<jump Liste_Taches>>
 <<else>>
 -> Faire les courses (1h) <<if !visited("Courses")>>
@@ -658,7 +667,7 @@ colorID: 6
     <<jump Grand_Oral>>
 -> Aller chercher Fred pour faire un jogging avant l'examen (2h) <<if $jour == "lundi">> #once
     <<jump Jogging>>
--> back #line:055ab07 
+-> back  
     <<jump Liste_Taches>>
 <<endif>>
 ===
@@ -1026,7 +1035,7 @@ Vous expirez tout l'air de vos poumons. Puis, vous ouvrez la porte et pénétrez
 
 Voici venu le Grand Oral… À nouveau. L'épreuve impitoyable, qui décidera de votre sort pour le reste de vos études.
 Vous vous asseyez dans les gradins, et regardez la présentation de l'élève se faisant interroger. Comme vous vous en rappelez, cela ne se passe pas bien du tout, et le jury se montre intransigeant.
-"On en a assez vu, allez, AU SUIVANT !"
+"Votre travail n'est pas suffisant pour valider cette étape, désolé !"
 Vous savez que c'est à vous, mais vous jetez quand même un dernier coup d'œil à la feuille de passage, pour faire durer l'instant.
 Vous pensez être plus à l'aise que la dernière fois, mais vous avez quand même peur d'avoir des lacunes…
 -> Prendre vos notes pour éviter d'être perdu
@@ -1055,10 +1064,10 @@ You: Hum… L'intrica- intrication quantique ! C'est quand… deux particules fo
 Vous manquez d'air. Vous étouffez réellement. Vous attrapez votre gorge à deux mains, votre visage devient chaud, votre vue devient floue.
 << fadeIn >>
 Vous ne voyez plus rien. Vous étiez tellement stressé, vous avez dû faire une attaque. Vous distinguez la silhouette de votre grand-mère.
-Mamie: Allons, mon chou, reprends tes esprits !
-You: Mamie, je… Je viens te rejoindre..
-Mamie: Mais qu'est-ce que tu racontes ? Je suis pas morte !
-You: Ah oui, c'est vrai.
+Mamie: Allons, mon chou, reprends tes esprits ! On a une fête à préparer !
+You: Mamie, je… J'ai tout raté !
+Mamie: Mais qu'est-ce que tu racontes ? On a invité tout le monde, fais un effort pour t'en sortir !
+You: Non, mamie, il faut tout annuler !!
 Temde_sad: Il délire complètement, là. Il était tellement stressé, il a fait un malaise en public.
 You: Mamie… Euh je veux dire… Miss Temdé ??
 << setBackground circle >>
@@ -1075,7 +1084,7 @@ L'un d'entre eux n'arrête pas de prendre des notes, un autre passe son temps à
 Leur manière de travailler et de tester vos capacités sont si différentes, ils doivent former une fine équipe. Ils vous rappellent un autre quatuor que vous connaissez bien.
 Au moment des questions-réponses, ils vous laissent développer vos idées et rebondissent sur d'autres sujets. C'est presque trop beau pour être vrai. Vous sortez le sourire au lèvre, convaincu d'avoir réussi.
 << music Victory >>
-<< completeLevel Astuce des sages : Pour augmenter votre score, pensez à planifier vos journées. >>
+<< completeLevel tip_5 >>
 << advanceTimeBy 0:30 food sleep >>
 <<jump WinExamNight>>
 <<else>>
@@ -1096,7 +1105,7 @@ You: Euh… L'intrication quantique, c'est quand deux… trucs… se retrouvent 
     Les sages n'arrivent pas, et le jury s'en amuse. Ils regardent au-dessus de leurs épaules, plaisantent entre eux, puis s'adressent à vous.
     "Qui que soient vos complices, on dirait qu'ils ont décidé de vous abandonner. Allez, au suivant !"
 << fadeIn >>
-Vous ne vous remettez pas de la brutalité du jury. Brisé, vous quittez les lieux et tentez déjà d'oublier cette expérience humiliante, pour la deuxième fois…
+Vous ne vous remettez pas du niveau d'exigence du jury. Brisé, vous quittez les lieux et tentez déjà d'oublier cette expérience humiliante, pour la deuxième fois…
 << music NegativeSad >>
 Vous sortez en trombe de l'amphithéâtre pour rejoindre votre chambre…
 <<jump FailExamNight>>

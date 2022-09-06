@@ -783,7 +783,7 @@ export class Graphics extends extension.ExtendedCompositeEntity {
 
     const boxList: PIXI.Container[] = [];
     for (let i = 0; i < nodeOptions.length; i++) {
-      const [choiceText, jsonValue] = nodeOptions[i].text.trim().split("@");
+      const [choiceText, jsonValue] = nodeOptions[i].name.trim().split("@");
       if (!highlightJSON.hasOwnProperty(jsonValue)) continue;
       freechoicesFound++;
 
