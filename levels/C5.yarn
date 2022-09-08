@@ -16,7 +16,7 @@ Vous passez le reste de la soirée à vous amuser comme un fou avec Fred, puis v
 << hide >>
 
 << fadeIn 1 >>
-<< showTitle Chapitre 5 >>
+<< showTitle 5 >>
 << setTime 7:55 4 >>
 << set $silence to false >>
 << showGauges >>
@@ -48,7 +48,7 @@ Vous avez rejoint leur assemblée ! Vous êtes devenu un expert de la métacogni
     Vous vous réveillez en sursaut. Il est presque 8h, vous en profitez pour vous lever, déçu de ne pas vous être trompé…
 << visit Intro >>
 <<else>>
-<< showTitle Chapitre 5 >>
+<< showTitle 5 >>
 << setTime 7:55 4 >>
 << set $silence to false >>
 << showGauges >>

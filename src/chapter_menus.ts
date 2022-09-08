@@ -9,7 +9,7 @@ import * as util from "booyah/src/util";
 import * as extension from "./extension";
 import * as save from "./save";
 import * as dialog from "./dialog";
-import { translateInterface } from "./wrapper/i18n";
+import { translateInterface, translateTitle } from "./wrapper/i18n";
 import i18n from "./generated/i18n";
 
 export type SceneType = "level" | "sages" | "journal";
@@ -102,7 +102,7 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
 
         {
           const line = new PIXI.Container();
-          line.position.set(gridCell.x + indent.x, gridCell.y + indent.y);
+          line.position.set(gridCell.x, gridCell.y + indent.y);
           line.hitArea = new PIXI.Rectangle(0, 0, columnWidthAfterIndent, 50);
           line.interactive = true;
           line.buttonMode = true;
@@ -116,9 +116,11 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
             const titleText =
               chapter === 0
                 ? translateInterface(this, "chapitre_prologue")
-                : translateInterface(this, "chapitre_nom", {
-                    chapterNumber: chapter,
-                  });
+                : `${chapter} - ${translateTitle(
+                    this,
+                    chapter as any,
+                    "short"
+                  )}`;
             const title = new PIXI.Text(titleText, {
               fontFamily: "Jura",
               fontStyle: "bold",
@@ -139,10 +141,7 @@ export class TableOfContents extends extension.ExtendedCompositeEntity {
                 this._entityConfig.app.loader.resources[fileName].texture
               );
               sprite.anchor.set(1, 0);
-              sprite.position.set(
-                columnWidthAfterIndent - (2 - i) * starWidth,
-                0
-              );
+              sprite.position.set(columnWidth - (2 - i) * starWidth, 0);
               line.addChild(sprite);
             }
           }

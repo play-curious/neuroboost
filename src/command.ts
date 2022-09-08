@@ -12,7 +12,7 @@ import * as journal from "./journal";
 import * as title from "./title";
 import * as chapter_menus from "./chapter_menus";
 import i18n from "./generated/i18n";
-import { translateInterface } from "./wrapper/i18n";
+import { translateInterface, translateTitle } from "./wrapper/i18n";
 
 export type Command = (this: dialog.DialogScene, ...args: string[]) => unknown;
 export type YarnFunction = (
@@ -345,24 +345,24 @@ export const commands: Record<string, Command> = {
     );
   },
 
-  showTitle(...words: string[]): entity.Entity {
-    let text;
-    if (/^\d+$/.test(words[1])) {
-      text = translateInterface(this, "chapitre_nom", {
-        chapterNumber: words[1],
-      });
-    } else {
-      text = translateInterface(
-        this,
-        ("chapitre_" +
-          words
-            .join(" ")
-            .toLowerCase()) as i18n[keyof i18n]["interface"][number]["id"],
-        {
-          chapterNumber: words[1],
-        }
-      );
+  showTitle(id: string): entity.Entity {
+    let text = "";
+
+    // If the title is a numbered chapter, include that part
+    if (!isNaN(parseInt(id))) {
+      text =
+        translateInterface(this, "chapitre_nom", {
+          chapterNumber: id,
+        }) + "\n\n";
     }
+
+    // Include the long version of the title
+    text += translateTitle(
+      this,
+      id as i18n[keyof i18n]["titles"][number]["id"],
+      "long"
+    );
+
     return new title.Title(text);
   },
 

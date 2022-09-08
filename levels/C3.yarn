@@ -6,7 +6,7 @@ colorID: 0
 position: -215,-1026
 ---
 << fadeIn >>
-<< showTitle Chapitre 3 >>
+<< showTitle 3 >>
 << setGauge learning 0 >>
 << setGauge sleep 100 >>
 << setGauge food 100 >>

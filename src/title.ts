@@ -44,6 +44,7 @@ export class Title extends extension.ExtendedCompositeEntity {
         fontFamily: "Jura",
         fontSize: 72,
         fill: "white",
+        align: "center",
       });
       text.anchor.set(0.5);
       text.position.set(

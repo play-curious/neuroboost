@@ -240,7 +240,7 @@ console.log("Using language", chosenLanguage);
 
 const translatedLevels = ["c1"];
 
-const textAssetNames = ["journal", "interface"];
+const textAssetNames = ["journal", "interface", "titles"];
 textAssetNames.push(...translatedLevels);
 
 const jsonAssets = textAssetNames

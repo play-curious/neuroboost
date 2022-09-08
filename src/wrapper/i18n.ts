@@ -28,6 +28,17 @@ export function translateInterface<
   return translate(ctx, "interface", rowId, "text", data);
 }
 
+export function translateTitle<
+  ColIndex extends keyof i18n[keyof i18n]["titles"] & number,
+  ColName extends i18n[keyof i18n]["titles"][ColIndex]["id"]
+>(
+  ctx: entity.EntityBase,
+  rowId: ColName,
+  columnId: keyof i18n[keyof i18n]["titles"][ColIndex]
+): string {
+  return translate(ctx, "titles", rowId, columnId);
+}
+
 export function translateJournal<
   ColIndex extends keyof i18n[keyof i18n]["journal"] & number,
   ColName extends i18n[keyof i18n]["journal"][ColIndex]["id"]

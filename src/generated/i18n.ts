@@ -2600,7 +2600,8 @@ export default interface i18n {
     "answer5": "",
     "link": ""
   }
-];};
+];
+    titles: undefined;};
   fr: {    c1: undefined;
     interface: [
   {
@@ -2908,6 +2909,58 @@ export default interface i18n {
     "answer4": "Relative - Mon but est de faire aussi bien que mes amis",
     "answer5": "",
     "link": "references/motivation.pdf"
+  }
+];
+    titles: [
+  {
+    "id": "1",
+    "short": "Mémoire",
+    "long": "Les Types de Mémoire"
+  },
+  {
+    "id": "2",
+    "short": "Bien-Être",
+    "long": "Bien-Être"
+  },
+  {
+    "id": "3",
+    "short": "Charge Cognitive",
+    "long": "Soulager la Charge Cognitive"
+  },
+  {
+    "id": "4",
+    "short": "Quatre Styles",
+    "long": "Les Quatre Styles d'Apprentissage"
+  },
+  {
+    "id": "5",
+    "short": "Émotions",
+    "long": "Gérer ses Émotions"
+  },
+  {
+    "id": "6",
+    "short": "Organisation",
+    "long": "Affiner ses Stratégies d'Organisation"
+  },
+  {
+    "id": "7",
+    "short": "Motivation",
+    "long": "Comprendre sa Motivation"
+  },
+  {
+    "id": "prologue",
+    "short": "Prologue",
+    "long": "Prologue"
+  },
+  {
+    "id": "epilogue",
+    "short": "Épilogue",
+    "long": "Épilogue"
+  },
+  {
+    "id": "end",
+    "short": "Fin",
+    "long": "Fin"
   }
 ];};
 }

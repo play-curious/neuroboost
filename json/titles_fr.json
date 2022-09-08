@@ -1,0 +1,52 @@
+{
+  "1": {
+    "id": "1",
+    "short": "Mémoire",
+    "long": "Les Types de Mémoire"
+  },
+  "2": {
+    "id": "2",
+    "short": "Bien-Être",
+    "long": "Bien-Être"
+  },
+  "3": {
+    "id": "3",
+    "short": "Charge Cognitive",
+    "long": "Soulager la Charge Cognitive"
+  },
+  "4": {
+    "id": "4",
+    "short": "Quatre Styles",
+    "long": "Les Quatre Styles d'Apprentissage"
+  },
+  "5": {
+    "id": "5",
+    "short": "Émotions",
+    "long": "Gérer ses Émotions"
+  },
+  "6": {
+    "id": "6",
+    "short": "Organisation",
+    "long": "Affiner ses Stratégies d'Organisation"
+  },
+  "7": {
+    "id": "7",
+    "short": "Motivation",
+    "long": "Comprendre sa Motivation"
+  },
+  "prologue": {
+    "id": "prologue",
+    "short": "Prologue",
+    "long": "Prologue"
+  },
+  "epilogue": {
+    "id": "epilogue",
+    "short": "Épilogue",
+    "long": "Épilogue"
+  },
+  "end": {
+    "id": "end",
+    "short": "Fin",
+    "long": "Fin"
+  }
+}

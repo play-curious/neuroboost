@@ -4,7 +4,7 @@ colorID: 8
 position: -2477,816
 ---
 << fadeIn >>
-<< showTitle Chapitre 7 >>
+<< showTitle 7 >>
 << setBackground bedroom >>
 << music Neutral >>
 << setTime 18:00 6 >>
@@ -779,7 +779,7 @@ position: -1543,1900
 ---
 << fadeIn >>
 << setBackground party >>
-<< showTitle Epilogue >>
+<< showTitle epilogue >>
 << fadeOut >>
 Vous sortez de votre appartement et vous dirigez vers la cafétéria, où vous avez donné rendez-vous à Fred.
 Celle-ci est encore remplie d'étudiants qui se trémoussent et discutent après leurs derniers examens. Après tout, c'est bientôt les vacances, et le moment de retourner dans vos familles respectives.
@@ -819,7 +819,7 @@ Ledai_happy: Adieu, { $name }.
 Azul_happy: Que tes songes soient créatifs et originaux. #line:0366dbd 
 Temde_cheerful: Et n'oublie pas de rêver de nous de temps en temps…
 << fadeIn >>
-<< showTitle Fin >>
+<< showTitle end >>
 <<jump End>>
 ===
 title: End

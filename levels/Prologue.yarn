@@ -6,7 +6,7 @@ colorID: 0
 position: -891,402
 ---
 << fadeIn >>
-<< showTitle Prologue >>
+<< showTitle prologue >>
 << setGauge learning 0 >>
 << setGauge sleep 30 >>
 << setGauge food 50 >>

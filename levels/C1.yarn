@@ -7,7 +7,7 @@ position: -245,126
 ---
 << empty >>
 << fadeIn 1 >>
-<< showTitle Chapitre 1 >>
+<< showTitle 1 >>
 << setGauge learning 0 >>
 << setBackground bedroom >>
 << setTime 8:00 0 >>
